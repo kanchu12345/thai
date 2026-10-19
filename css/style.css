@@ -18,19 +18,21 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap');
 
 :root {
-  /* Walkers Tours Color System */
-  --color-dark-blue: #002B49;
-  --color-secondary-blue: #005B8C;
-  --color-dark-black: #111111;
-  --color-light-black: #4A4A4A;
-  --color-light-blue: #F4F8FA;
-  --color-light-gray: #EBEFF2;
-  --color-dark-green: #0E3628;
-  --color-gold: #DA8E28;
-  --color-gold-hover: #BF7819;
-  --color-footer-bg: #16191E;
+  /* LOTUS CEYLON Brand Color System (Derived Directly from Official 3D Emblem Logo) */
+  --color-gold: #D4A359;              /* Radiant Lotus Gold (Lotus Petals & 3D Typography) */
+  --color-gold-hover: #B38744;        /* Burnished Antique Gold Shadow */
+  --color-gold-light: #F4E8D0;        /* Soft Champagne Gold Background Tint */
+  --color-gold-bright: #EFD388;       /* Highlight Shimmer Gold (Sunlit Stupa & Rays) */
+  --color-dark-blue: #0A2239;         /* Royal Midnight Navy (Deep Luxury Horizon) */
+  --color-secondary-blue: #0E3B60;    /* Ocean Sapphire (Coastal Waters in Emblem) */
+  --color-dark-green: #235B4B;        /* Ceylon Tropical Emerald (Lush Palms & Mountains) */
+  --color-dark-black: #111418;        /* Rich Deep Obsidian Charcoal */
+  --color-light-black: #3E454F;       /* Balanced Readable Body Slate */
+  --color-light-blue: #F7F9FB;        /* Clean Island Mist Background */
+  --color-light-gray: #ECEFE9;        /* Warm Neutral Watermark Gray */
+  --color-footer-bg: #0D1722;         /* Deep Midnight Lagoon Footer */
   --color-white: #FFFFFF;
-  --color-border-subtle: #E3E8EC;
+  --color-border-subtle: #E5E0D5;     /* Warm Champagne Subtle Border */
 
   /* Typography */
   --font-main: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -292,7 +294,7 @@ ul, ol {
   background: var(--color-gold);
   padding: 0.65rem 1.4rem;
   border-radius: var(--radius-full);
-  box-shadow: 0 4px 15px rgba(218, 142, 40, 0.35);
+  box-shadow: 0 4px 15px rgba(212, 163, 89, 0.35);
 }
 
 .next-btn--gold:hover {
@@ -646,7 +648,7 @@ ul, ol {
 .inquire-btn:hover {
   background: var(--color-gold);
   color: #FFFFFF;
-  box-shadow: 0 6px 20px rgba(218, 142, 40, 0.4);
+  box-shadow: 0 6px 20px rgba(212, 163, 89, 0.4);
   transform: translateY(-2px);
 }
 
@@ -1864,7 +1866,7 @@ ul, ol {
   align-items: center;
   justify-content: center;
   color: var(--color-gold);
-  border: 1px solid rgba(218, 142, 40, 0.3);
+  border: 1px solid rgba(212, 163, 89, 0.3);
   transition: all 0.3s ease;
 }
 
@@ -2060,7 +2062,7 @@ ul, ol {
 }
 
 .lang-toggle-btn:hover {
-  background: rgba(218, 142, 40, 0.2);
+  background: rgba(212, 163, 89, 0.2);
   border-color: var(--color-gold);
 }
 
@@ -2139,7 +2141,7 @@ ul, ol {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  background: rgba(218, 142, 40, 0.2);
+  background: rgba(212, 163, 89, 0.2);
   border: 1px solid var(--color-gold);
   padding: 0.4rem 1.1rem;
   border-radius: var(--radius-full);
@@ -2732,7 +2734,7 @@ ul, ol {
   align-items: center;
   justify-content: center;
   gap: 0.75rem;
-  box-shadow: 0 8px 25px rgba(218, 142, 40, 0.4);
+  box-shadow: 0 8px 25px rgba(212, 163, 89, 0.4);
   transition: var(--transition);
   width: 100%;
   max-width: 480px;
@@ -2740,7 +2742,7 @@ ul, ol {
 
 .btn-primary-gold:hover {
   transform: translateY(-2px);
-  box-shadow: 0 12px 30px rgba(218, 142, 40, 0.55);
+  box-shadow: 0 12px 30px rgba(212, 163, 89, 0.55);
   background: linear-gradient(135deg, #E59E35 0%, #C98226 100%);
 }
 
@@ -2817,7 +2819,7 @@ ul, ol {
   width: 65px;
   height: 65px;
   margin: 0 auto 1.25rem;
-  background: rgba(218, 142, 40, 0.15);
+  background: rgba(212, 163, 89, 0.15);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -2981,7 +2983,7 @@ ul, ol {
 
 .footer-since-badge {
   display: inline-block;
-  background: rgba(218, 142, 40, 0.2);
+  background: rgba(212, 163, 89, 0.2);
   border: 1px solid var(--color-gold);
   color: var(--color-gold);
   font-size: 0.75rem;
