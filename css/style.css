@@ -332,18 +332,29 @@ ul, ol {
 .header-brand {
   display: flex;
   align-items: center;
-  gap: 0.85rem;
+  gap: 1rem;
   text-decoration: none;
 }
 
 .header-brand-logo {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
+  height: 75px;
+  width: auto;
+  max-width: 95px;
+  border-radius: 0;
   object-fit: contain;
-  background: #FFFFFF;
-  padding: 2px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  background: transparent;
+  padding: 0;
+  box-shadow: none;
+  filter: drop-shadow(0 4px 14px rgba(0, 0, 0, 0.45));
+  transition: transform 0.3s ease, height 0.3s ease;
+}
+
+.header-brand-logo:hover {
+  transform: scale(1.04);
+}
+
+.site-header-walkers.is-scrolled .header-brand-logo {
+  height: 60px;
 }
 
 .header-brand-text {
@@ -365,6 +376,47 @@ ul, ol {
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
+}
+
+.walkers-brand-link {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  text-decoration: none;
+}
+
+.walkers-brand-logo {
+  height: 75px;
+  width: auto;
+  max-width: 95px;
+  border-radius: 0;
+  object-fit: contain;
+  background: transparent;
+  padding: 0;
+  box-shadow: none;
+  filter: drop-shadow(0 4px 14px rgba(0, 0, 0, 0.45));
+  transition: transform 0.3s ease, height 0.3s ease;
+}
+
+.walkers-brand-logo:hover {
+  transform: scale(1.04);
+}
+
+.walkers-header.is-scrolled .walkers-brand-logo {
+  height: 60px;
+}
+
+.walkers-brand-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.walkers-brand-title {
+  color: #FFFFFF;
+  font-weight: 700;
+  font-size: 1.15rem;
+  letter-spacing: 0.05em;
+  line-height: 1.15;
 }
 
 /* Primary Desktop Navigation Menu */
@@ -1927,10 +1979,16 @@ ul, ol {
 }
 
 .brand-logo-img {
-  width: 50px;
-  height: 50px;
+  height: 70px;
+  width: auto;
+  max-width: 90px;
   object-fit: contain;
-  filter: drop-shadow(0 2px 8px rgba(218, 142, 40, 0.4));
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.4));
+  transition: transform 0.3s ease;
+}
+
+.brand-logo-img:hover {
+  transform: scale(1.04);
 }
 
 .brand-text {
