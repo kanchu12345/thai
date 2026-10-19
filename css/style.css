@@ -931,20 +931,71 @@ ul, ol {
 }
 
 /* ==========================================================================
-   SECTION 2: WHY BOOK WITH US + LIVE ANIMATED COUNTERS
+   SECTION 2: WHY BOOK WITH US + SACRED AURA & LIVE ANIMATED COUNTERS
    ========================================================================== */
+#why-us {
+  position: relative;
+  background: 
+    radial-gradient(circle at 10% 20%, rgba(212, 163, 89, 0.12) 0%, transparent 45%),
+    radial-gradient(circle at 90% 80%, rgba(196, 85, 122, 0.10) 0%, transparent 45%),
+    radial-gradient(circle at 50% 50%, rgba(212, 163, 89, 0.05) 0%, transparent 60%),
+    linear-gradient(180deg, #FDFBF7 0%, #F5F1E8 50%, #F9F7F2 100%);
+  overflow: hidden;
+}
+
+/* Subtle Sacred Watermark in Background */
+#why-us::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 700px;
+  height: 700px;
+  background-image: radial-gradient(circle, rgba(212, 163, 89, 0.08) 1px, transparent 1px), radial-gradient(circle, rgba(196, 85, 122, 0.05) 1px, transparent 1px);
+  background-size: 32px 32px;
+  background-position: 0 0, 16px 16px;
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+/* Sacred Pill Badge */
+.sacred-badge-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 1.1rem;
+  background: linear-gradient(135deg, rgba(212, 163, 89, 0.15) 0%, rgba(196, 85, 122, 0.12) 100%);
+  border: 1px solid rgba(212, 163, 89, 0.35);
+  border-radius: var(--radius-full);
+  color: var(--color-dark-blue);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-bottom: 1.25rem;
+  box-shadow: 0 2px 10px rgba(212, 163, 89, 0.12);
+}
+
+.sacred-badge-tag .sacred-icon {
+  color: var(--color-lotus-pink);
+  font-size: 0.9rem;
+}
+
 .why-book-split-grid {
   display: grid;
   grid-template-columns: 1.15fr 1fr;
-  gap: 4rem;
+  gap: 3.5rem;
   align-items: center;
-  margin-top: 3.5rem;
+  margin-top: 3rem;
+  position: relative;
+  z-index: 2;
 }
 
 .icon-boxes-list {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1.15rem;
 }
 
 .icon-box {
@@ -952,56 +1003,216 @@ ul, ol {
   align-items: center;
   gap: 1.25rem;
   padding: 1.15rem 1.5rem;
-  background-color: var(--color-light-blue);
+  background-color: #FFFFFF;
   border-radius: var(--radius-md);
-  border: 1px solid #EAF0F4;
-  transition: var(--transition);
+  border: 1px solid rgba(212, 163, 89, 0.22);
+  border-left: 5px solid var(--color-gold);
+  box-shadow: 0 4px 18px rgba(10, 34, 57, 0.04);
+  transition: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
+  position: relative;
+  overflow: hidden;
 }
 
 .icon-box:hover {
   background-color: #FFFFFF;
-  box-shadow: var(--shadow-sm);
-  border-color: var(--color-gold);
-  transform: translateX(6px);
+  box-shadow: 0 10px 28px rgba(10, 34, 57, 0.09), 0 2px 10px rgba(212, 163, 89, 0.18);
+  transform: translateX(8px);
 }
 
 .icon-box__left {
-  width: 44px;
-  height: 44px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
-  background-color: #FFFFFF;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  box-shadow: 0 4px 10px rgba(0, 43, 73, 0.08);
+  transition: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
-.icon-box__left img, .icon-box__left svg {
-  width: 24px;
-  height: 24px;
+.icon-box__left svg {
+  width: 22px;
+  height: 22px;
+  transition: all 0.35s ease;
 }
 
 .icon-box__right p {
   font-size: 1.02rem;
   font-weight: 500;
   color: var(--color-dark-black);
+  line-height: 1.5;
 }
 
-/* 4 Counters Grid */
+.icon-box__right strong {
+  color: var(--color-dark-blue);
+  font-weight: 700;
+  transition: color 0.25s ease;
+}
+
+/* Card 1: Lotus Gold */
+.icon-box--gold {
+  border-left-color: var(--color-gold);
+}
+.icon-box--gold .icon-box__left {
+  background: linear-gradient(135deg, #FFF8EB 0%, #FDF3DF 100%);
+  border: 1.5px solid rgba(212, 163, 89, 0.35);
+  color: #B8860B;
+}
+.icon-box--gold:hover {
+  border-left-color: #B8860B;
+  box-shadow: 0 10px 28px rgba(212, 163, 89, 0.25);
+}
+.icon-box--gold:hover .icon-box__left {
+  background: linear-gradient(135deg, #D4A359 0%, #B8860B 100%);
+  border-color: transparent;
+  color: #FFFFFF;
+  box-shadow: 0 6px 18px rgba(212, 163, 89, 0.4);
+  transform: scale(1.08) rotate(4deg);
+}
+.icon-box--gold:hover .icon-box__right strong {
+  color: #B8860B;
+}
+
+/* Card 2: Sacred Lotus Pink */
+.icon-box--lotus {
+  border-left-color: var(--color-lotus-pink);
+}
+.icon-box--lotus .icon-box__left {
+  background: linear-gradient(135deg, #FFF0F4 0%, #FDE4EB 100%);
+  border: 1.5px solid rgba(196, 85, 122, 0.35);
+  color: var(--color-lotus-pink);
+}
+.icon-box--lotus:hover {
+  border-left-color: var(--color-lotus-pink);
+  box-shadow: 0 10px 28px rgba(196, 85, 122, 0.25);
+}
+.icon-box--lotus:hover .icon-box__left {
+  background: linear-gradient(135deg, #C4557A 0%, #D4A359 100%);
+  border-color: transparent;
+  color: #FFFFFF;
+  box-shadow: 0 6px 18px rgba(196, 85, 122, 0.4);
+  transform: scale(1.08) rotate(-4deg);
+}
+.icon-box--lotus:hover .icon-box__right strong {
+  color: var(--color-lotus-pink);
+}
+
+/* Card 3: Ocean Sapphire Blue */
+.icon-box--navy {
+  border-left-color: #0E3B60;
+}
+.icon-box--navy .icon-box__left {
+  background: linear-gradient(135deg, #EDF5FB 0%, #E1EFF8 100%);
+  border: 1.5px solid rgba(14, 59, 96, 0.3);
+  color: #0E3B60;
+}
+.icon-box--navy:hover {
+  border-left-color: #0E3B60;
+  box-shadow: 0 10px 28px rgba(14, 59, 96, 0.25);
+}
+.icon-box--navy:hover .icon-box__left {
+  background: linear-gradient(135deg, #0A2239 0%, #1D6FA5 100%);
+  border-color: transparent;
+  color: #FFFFFF;
+  box-shadow: 0 6px 18px rgba(14, 59, 96, 0.35);
+  transform: scale(1.08) rotate(4deg);
+}
+.icon-box--navy:hover .icon-box__right strong {
+  color: #0E3B60;
+}
+
+/* Card 4: Ceylon Tropical Emerald */
+.icon-box--emerald {
+  border-left-color: var(--color-dark-green);
+}
+.icon-box--emerald .icon-box__left {
+  background: linear-gradient(135deg, #EEF7F4 0%, #E0F0EB 100%);
+  border: 1.5px solid rgba(35, 91, 75, 0.3);
+  color: var(--color-dark-green);
+}
+.icon-box--emerald:hover {
+  border-left-color: var(--color-dark-green);
+  box-shadow: 0 10px 28px rgba(35, 91, 75, 0.25);
+}
+.icon-box--emerald:hover .icon-box__left {
+  background: linear-gradient(135deg, #235B4B 0%, #357D69 100%);
+  border-color: transparent;
+  color: #FFFFFF;
+  box-shadow: 0 6px 18px rgba(35, 91, 75, 0.35);
+  transform: scale(1.08) rotate(-4deg);
+}
+.icon-box--emerald:hover .icon-box__right strong {
+  color: var(--color-dark-green);
+}
+
+/* Card 5: Rose Petal Coral */
+.icon-box--rose {
+  border-left-color: #D96B7A;
+}
+.icon-box--rose .icon-box__left {
+  background: linear-gradient(135deg, #FFF0F2 0%, #FDE4E7 100%);
+  border: 1.5px solid rgba(217, 107, 122, 0.32);
+  color: #D96B7A;
+}
+.icon-box--rose:hover {
+  border-left-color: #D96B7A;
+  box-shadow: 0 10px 28px rgba(217, 107, 122, 0.25);
+}
+.icon-box--rose:hover .icon-box__left {
+  background: linear-gradient(135deg, #D96B7A 0%, #C4557A 100%);
+  border-color: transparent;
+  color: #FFFFFF;
+  box-shadow: 0 6px 18px rgba(217, 107, 122, 0.35);
+  transform: scale(1.08) rotate(4deg);
+}
+.icon-box--rose:hover .icon-box__right strong {
+  color: #D96B7A;
+}
+
+/* 4 Counters Luxury Navy Jewel Card */
 .counter-wrap {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 2.5rem 2rem;
-  padding: 3rem 2.5rem;
-  background-color: var(--color-light-blue);
+  padding: 3.5rem 2.8rem;
+  background: linear-gradient(145deg, #0A2239 0%, #061726 100%);
   border-radius: var(--radius-lg);
-  border: 1px solid #EAF0F4;
+  border: 1.5px solid rgba(212, 163, 89, 0.35);
+  box-shadow: 0 20px 45px rgba(10, 34, 57, 0.25), 0 4px 20px rgba(212, 163, 89, 0.15);
+  position: relative;
+  overflow: hidden;
+}
+
+.counter-wrap::before {
+  content: '';
+  position: absolute;
+  top: -60px;
+  right: -60px;
+  width: 220px;
+  height: 220px;
+  background: radial-gradient(circle, rgba(212, 163, 89, 0.25) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.counter-wrap::after {
+  content: '';
+  position: absolute;
+  bottom: -50px;
+  left: -50px;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(196, 85, 122, 0.22) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
 }
 
 .counter-box {
-  border-bottom: 2px solid #E0E7EC;
-  padding-bottom: 1.5rem;
+  border-bottom: 1.5px solid rgba(212, 163, 89, 0.22);
+  padding-bottom: 1.75rem;
+  position: relative;
+  z-index: 1;
+  transition: transform 0.3s ease;
 }
 
 .counter-box:nth-last-child(-n+2) {
@@ -1009,24 +1220,122 @@ ul, ol {
   padding-bottom: 0;
 }
 
+.counter-box:hover {
+  transform: translateY(-4px);
+}
+
 .counter-number {
-  color: var(--color-dark-blue);
   font-size: clamp(2.8rem, 4.5vw, 4.2rem);
   font-weight: 700;
   line-height: 1;
-  margin-bottom: 0.35rem;
+  margin-bottom: 0.45rem;
+  transition: all 0.3s ease;
 }
 
 .counter-number span {
   font-family: var(--font-main);
 }
 
+/* Stat 1: Radiant Gold */
+.counter-box--gold .counter-number {
+  background: linear-gradient(135deg, #FFF1D0 0%, #D4A359 50%, #EFD388 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 2px 10px rgba(212, 163, 89, 0.35));
+}
+
+/* Stat 2: Ocean Sapphire / Sky Blue */
+.counter-box--sapphire .counter-number {
+  background: linear-gradient(135deg, #D4EDFF 0%, #38BDF8 50%, #60A5FA 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 2px 10px rgba(56, 189, 248, 0.35));
+}
+
+/* Stat 3: Ceylon Tropical Emerald */
+.counter-box--emerald .counter-number {
+  background: linear-gradient(135deg, #D1FAE5 0%, #34D399 50%, #10B981 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 2px 10px rgba(52, 211, 153, 0.35));
+}
+
+/* Stat 4: Sacred Lotus Pink */
+.counter-box--lotus .counter-number {
+  background: linear-gradient(135deg, #FFE4E6 0%, #F472B6 50%, #C4557A 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 2px 10px rgba(244, 114, 182, 0.35));
+}
+
 .counter-label {
-  font-size: 0.88rem;
+  font-size: 0.85rem;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--color-light-black);
+  letter-spacing: 0.1em;
+  color: #C8D6E5;
+  line-height: 1.35;
+}
+
+/* ==========================================================================
+   AUTO-SWAPPING CARD IMAGE SLIDER (5 IMAGES PER BOX)
+   ========================================================================== */
+.card-image-slider {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.card-image-slider .slider-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1), transform 6s cubic-bezier(0.25, 0.8, 0.25, 1);
+  transform: scale(1);
+  will-change: opacity, transform;
+}
+
+.card-image-slider .slider-img.active {
+  opacity: 1;
+  transform: scale(1.07);
+}
+
+.card-image-slider .slider-dots {
+  position: absolute;
+  top: 1.15rem;
+  right: 1.15rem;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  z-index: 5;
+  background: rgba(10, 34, 57, 0.55);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  padding: 4px 8px;
+  border-radius: 20px;
+  border: 1px solid rgba(212, 163, 89, 0.35);
+  pointer-events: none;
+}
+
+.card-image-slider .slider-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.45);
+  transition: all 0.35s ease;
+}
+
+.card-image-slider .slider-dot.active {
+  background: var(--color-gold);
+  width: 16px;
+  border-radius: 4px;
+  box-shadow: 0 0 8px rgba(212, 163, 89, 0.6);
 }
 
 /* ==========================================================================
