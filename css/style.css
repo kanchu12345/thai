@@ -29,7 +29,8 @@
   --color-dark-black: #111418;        /* Rich Deep Obsidian Charcoal */
   --color-light-black: #3E454F;       /* Balanced Readable Body Slate */
   --color-light-blue: #F7F9FB;        /* Clean Island Mist Background */
-  --color-light-gray: #ECEFE9;        /* Warm Neutral Watermark Gray */
+  --color-light-gray: rgba(212, 163, 89, 0.22);        /* Radiant Gold Watermark */
+  --color-watermark-gold: rgba(212, 163, 89, 0.22);
   --color-footer-bg: #0D1722;         /* Deep Midnight Lagoon Footer */
   --color-white: #FFFFFF;
   --color-border-subtle: #E5E0D5;     /* Warm Champagne Subtle Border */
@@ -40,8 +41,9 @@
 
   /* Shadows & Transitions */
   --shadow-sm: 0 4px 15px rgba(0, 43, 73, 0.06);
-  --shadow-md: 0 10px 30px rgba(0, 43, 73, 0.10);
-  --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.16);
+  --shadow-md: 0 10px 30px rgba(0, 43, 73, 0.08), 0 2px 10px rgba(212, 163, 89, 0.12);
+  --shadow-lg: 0 20px 50px rgba(0, 43, 73, 0.12), 0 4px 20px rgba(212, 163, 89, 0.16);
+  --shadow-gold: 0 8px 30px rgba(212, 163, 89, 0.35);
   --transition: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
   --radius-sm: 6px;
   --radius-md: 10px;
@@ -214,20 +216,22 @@ ul, ol {
   letter-spacing: 0.08em;
 }
 
-/* Watermark typography in background */
+/* Watermark typography in background - Luxury Gold Shadow Effect */
 .watermark-heading {
-  font-size: clamp(60px, 11vw, 150px);
-  font-weight: 700;
-  color: var(--color-light-gray);
+  font-size: clamp(48px, 10.5vw, 140px);
+  font-weight: 800;
+  color: var(--color-watermark-gold);
+  text-shadow: 0 4px 25px rgba(212, 163, 89, 0.22), 0 1px 3px rgba(179, 135, 68, 0.15);
   text-align: center;
   text-transform: uppercase;
   line-height: 0.85;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.05em;
   user-select: none;
   pointer-events: none;
   margin-bottom: -1.2rem;
   position: relative;
   z-index: 1;
+  max-width: 100%;
 }
 
 /* Next Button System (Walkers Tours Round Arrow Pill) */
