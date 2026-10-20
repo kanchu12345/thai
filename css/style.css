@@ -15,55 +15,59 @@
  * - White: #FFFFFF
  */
 
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap');
 
 :root {
-  /* LOTUS CEYLON Brand Color System (Derived Directly from Official 3D Emblem Logo) */
-  --color-gold: #D4A359;              /* Radiant Lotus Gold (Lotus Petals & 3D Typography) */
-  --color-gold-hover: #B38744;        /* Burnished Antique Gold Shadow */
-  --color-gold-light: #F4E8D0;        /* Soft Champagne Gold Background Tint */
-  --color-gold-bright: #EFD388;       /* Highlight Shimmer Gold (Sunlit Stupa & Rays) */
-  --color-dark-blue: #224A2A;         /* Ceylon Forest Emerald Green Base (Palette #5) */
-  --color-secondary-blue: #16361D;    /* Deep Forest Canopy (Palette #5 dark) */
-  --color-dark-green: #224A2A;        /* Ceylon Tropical Emerald (Lotus Leaf Forest Green) */
-  --color-dark-black: #111418;        /* Rich Deep Obsidian Charcoal */
-  --color-light-black: #3E454F;       /* Balanced Readable Body Slate */
-  --color-light-blue: #FAF5F2;        /* Soft Lotus Cream Mist (Palette #1) */
-  --color-light-gray: rgba(212, 163, 89, 0.22);        /* Radiant Gold Watermark */
+  /* MASTER COLOUR TOKENS (Defined per Master Project Rules & Matched to Real 3D Logo) */
+  --lotus-primary: #C95451;        /* Buttons, highlights, active links (Primary Lotus Carmine) */
+  --lotus-primary-dark: #7E1442;   /* Hover, dark luxury footer */
+  --sacred-gold: #D4A359;          /* Accents, numbers, dividers (Real 3D Emblem Gold) */
+  --sacred-gold-hover: #B38744;
+  --leaf-green: #224A2A;           /* Secondary buttons, icons (Ceylon Rainforest) */
+  --ink: #1C1B1F;                  /* Headings and body text */
+  --ivory: #FBF7F0;                /* Page background, solid header on scroll */
+  --mist: #F1E9E1;                 /* Alternate sections, cards */
+  --white: #FFFFFF;                /* Header over hero, card surfaces */
+
+  /* System Color Mappings */
+  --color-gold: var(--sacred-gold);
+  --color-gold-hover: var(--sacred-gold-hover);
+  --color-dark-blue: var(--leaf-green);
+  --color-secondary-blue: #16361D;
+  --color-dark-green: var(--leaf-green);
+  --color-footer-bg: var(--leaf-green);
+  --color-lotus-pink: var(--lotus-primary);
+  --color-lotus-pink-hover: var(--lotus-primary-dark);
+  --color-lotus-pink-light: var(--ivory);
+  --color-dark-black: var(--ink);
+  --color-light-black: #3E454F;
+  --color-light-blue: var(--mist);
+  --color-white: var(--white);
+  --color-light-gray: rgba(212, 163, 89, 0.22);
   --color-watermark-gold: rgba(212, 163, 89, 0.22);
-  --color-footer-bg: #142B19;         /* Deep Forest Emerald Luxury Footer (Palette #5) */
-  --color-white: #FFFFFF;
-  --color-border-subtle: #E5E0D5;     /* Warm Champagne Subtle Border */
+  --color-border-subtle: #E8E2D8;
 
-  /* Authentic 5-Color Harmonic Lotus Palette */
-  --palette-cream: #F8E5DD;           /* 1. Soft Lotus Cream / Petal Blush Mist */
-  --palette-petal-light: #E8B2AB;     /* 2. Soft Lotus Blossom Rose */
-  --palette-rose-medium: #DA827D;     /* 3. Warm Lotus Blossom Coral Rose */
-  --palette-rose-deep: #C95451;       /* 4. Deep Lotus Carmine Rose (Primary Lotus Accent) */
-  --palette-leaf-green: #224A2A;      /* 5. Sacred Lotus Leaf Forest Green */
-
-  /* Sacred Lotus Pink Accent Palette (Pure Journeys & Sacred Lotus Petal Identity) */
-  --color-lotus-pink: #C95451;        /* Primary Lotus Carmine Rose (Palette #4) */
-  --color-lotus-pink-hover: #B0423F;  /* Deep Carmine Hover */
-  --color-lotus-pink-medium: #DA827D; /* Warm Blossom Rose (Palette #3) */
-  --color-lotus-pink-soft: #E8B2AB;   /* Soft Petal Pink (Palette #2) */
-  --color-lotus-pink-light: #F8E5DD;  /* Soft Petal Blush Tint (Palette #1) */
-  --color-lotus-pink-border: rgba(201, 84, 81, 0.28);
-  --color-lotus-pink-glow: rgba(201, 84, 81, 0.35);
-  --color-lotus-gradient: linear-gradient(135deg, #C95451 0%, #DA827D 50%, #D4A359 100%);
-  --color-lotus-coral-gradient: linear-gradient(135deg, #C95451 0%, #DA827D 100%);
-  --color-lotus-blush-gradient: linear-gradient(135deg, #F8E5DD 0%, #E8B2AB 100%);
-
-  /* Typography */
-  --font-main: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  /* Typography: Playfair Display for headings, Inter for body */
   --font-serif: 'Playfair Display', Georgia, serif;
+  --font-main: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  /* 8px Spacing Scale */
+  --space-1: 8px;
+  --space-2: 16px;
+  --space-3: 24px;
+  --space-4: 32px;
+  --space-5: 40px;
+  --space-6: 48px;
+  --space-8: 64px;
+  --space-10: 80px;
+  --space-12: 96px;
 
   /* Shadows & Transitions */
-  --shadow-sm: 0 4px 15px rgba(34, 74, 42, 0.06);
-  --shadow-md: 0 10px 30px rgba(34, 74, 42, 0.08), 0 2px 10px rgba(212, 163, 89, 0.12);
-  --shadow-lg: 0 20px 50px rgba(34, 74, 42, 0.12), 0 4px 20px rgba(212, 163, 89, 0.16);
+  --shadow-sm: 0 4px 15px rgba(28, 27, 31, 0.05);
+  --shadow-md: 0 10px 30px rgba(28, 27, 31, 0.08), 0 2px 10px rgba(212, 163, 89, 0.12);
+  --shadow-lg: 0 20px 50px rgba(28, 27, 31, 0.12), 0 4px 20px rgba(212, 163, 89, 0.16);
   --shadow-gold: 0 8px 30px rgba(212, 163, 89, 0.35);
-  --transition: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
+  --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   --radius-sm: 6px;
   --radius-md: 10px;
   --radius-lg: 16px;
@@ -4126,5 +4130,707 @@ ul, ol {
 
   .inner-card.hover-box {
     height: 420px;
+  }
+}
+
+
+/* ==========================================================================
+   STEP 1: MASTER HEADER & NAVIGATION SPECIFICATION
+   - Transparent over hero with white links
+   - Solid ivory after 80px scroll with colour logo, soft shadow, 300ms transition
+   - Tours Mega Dropdown with 10 categories
+   - 10-slot Language Switcher
+   - Gold "Inquire" button with hover fill-slide effect
+   - Full-screen mobile slide-in menu with staggered link fade-up
+   - Floating WhatsApp button (+94 71 54 22 384)
+   - Floating "Inquire" tab with gentle pulse ring every 6s
+   ========================================================================== */
+
+/* Main Header Container */
+.site-header-walkers {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background-color: transparent;
+  padding: 1.25rem 0;
+  transition: background-color 300ms cubic-bezier(0.4, 0, 0.2, 1),
+              padding 300ms cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1),
+              border-color 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* After 80px Scroll State: Solid Ivory with Soft Shadow & Slight Shrink */
+.site-header-walkers.is-scrolled {
+  background-color: var(--ivory) !important;
+  padding: 0.65rem 0 !important;
+  box-shadow: 0 4px 25px rgba(28, 27, 31, 0.08) !important;
+  border-bottom: 1px solid rgba(241, 233, 225, 0.8);
+}
+
+.header-top-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+/* Brand Link */
+.header-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.85rem;
+  text-decoration: none;
+}
+
+.header-brand-logo {
+  height: 64px;
+  width: auto;
+  max-width: 80px;
+  object-fit: contain;
+  transition: transform 300ms ease, height 300ms ease;
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.35));
+}
+
+.site-header-walkers.is-scrolled .header-brand-logo {
+  height: 52px;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.15));
+}
+
+.header-brand-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  line-height: 1.12;
+}
+
+.header-brand-name {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: 1.45rem;
+  letter-spacing: 0.03em;
+  color: var(--white);
+  transition: color 300ms ease;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.4));
+}
+
+.brand-name-lotus {
+  color: #FFFFFF;
+}
+
+.brand-name-ceylon {
+  color: var(--sacred-gold);
+}
+
+.site-header-walkers.is-scrolled .header-brand-name {
+  color: var(--ink);
+  filter: none;
+}
+
+.site-header-walkers.is-scrolled .brand-name-lotus {
+  color: var(--ink);
+}
+
+.site-header-walkers.is-scrolled .brand-name-ceylon {
+  color: var(--lotus-primary);
+}
+
+.header-brand-sub {
+  color: var(--sacred-gold);
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-top: 2px;
+  transition: color 300ms ease;
+}
+
+.site-header-walkers.is-scrolled .header-brand-sub {
+  color: var(--leaf-green);
+}
+
+/* Primary Desktop Navigation Menu */
+.walkers-menu {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  list-style: none;
+}
+
+.walkers-menu-item {
+  position: relative;
+}
+
+.walkers-menu-link {
+  color: var(--white);
+  font-weight: 500;
+  font-size: 0.92rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.5rem 0;
+  position: relative;
+  transition: color 250ms ease;
+  text-decoration: none;
+}
+
+.walkers-menu-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--lotus-primary) 0%, var(--sacred-gold) 100%);
+  transition: width 280ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.walkers-menu-item:hover > .walkers-menu-link,
+.walkers-menu-link.active {
+  color: var(--sacred-gold);
+}
+
+.walkers-menu-item:hover > .walkers-menu-link::after,
+.walkers-menu-link.active::after {
+  width: 100%;
+}
+
+.site-header-walkers.is-scrolled .walkers-menu-link {
+  color: var(--ink);
+}
+
+.site-header-walkers.is-scrolled .walkers-menu-item:hover > .walkers-menu-link,
+.site-header-walkers.is-scrolled .walkers-menu-link.active {
+  color: var(--lotus-primary);
+}
+
+.walkers-caret {
+  width: 8px;
+  height: 5px;
+  transition: transform 250ms ease;
+}
+
+.walkers-menu-item:hover > .walkers-menu-link .walkers-caret {
+  transform: rotate(180deg);
+}
+
+/* TOURS MEGA DROPDOWN (10 Categories Grid) */
+.walkers-megamenu {
+  position: absolute;
+  top: 100%;
+  left: -120px;
+  width: 680px;
+  background-color: var(--white);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  box-shadow: 0 18px 45px rgba(28, 27, 31, 0.14);
+  border: 1px solid var(--mist);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(12px);
+  transition: opacity 280ms ease, transform 280ms ease, visibility 280ms ease;
+  pointer-events: none;
+  z-index: 1100;
+}
+
+.walkers-menu-item:hover > .walkers-megamenu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(4px);
+  pointer-events: auto;
+}
+
+.megamenu-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 0.85rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid var(--mist);
+}
+
+.megamenu-header-title {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.megamenu-view-all {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--lotus-primary);
+  text-decoration: none;
+}
+
+.megamenu-view-all:hover {
+  color: var(--lotus-primary-dark);
+}
+
+.megamenu-grid-10 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.65rem 1.25rem;
+}
+
+.megamenu-cat-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.6rem 0.75rem;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  transition: background-color 200ms ease, transform 200ms ease;
+}
+
+.megamenu-cat-card:hover {
+  background-color: var(--ivory);
+  transform: translateX(4px);
+}
+
+.megamenu-cat-icon {
+  font-size: 1.15rem;
+  line-height: 1;
+  color: var(--sacred-gold);
+  margin-top: 2px;
+}
+
+.megamenu-cat-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.megamenu-cat-name {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--ink);
+  transition: color 200ms ease;
+}
+
+.megamenu-cat-card:hover .megamenu-cat-name {
+  color: var(--lotus-primary);
+}
+
+.megamenu-cat-desc {
+  font-size: 0.72rem;
+  color: #6B7280;
+  line-height: 1.35;
+  margin-top: 1px;
+}
+
+/* Regular Dropdown */
+.walkers-submenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 220px;
+  background-color: var(--white);
+  border-radius: var(--radius-md);
+  padding: 0.75rem 0;
+  box-shadow: 0 15px 35px rgba(28, 27, 31, 0.12);
+  border: 1px solid var(--mist);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all 250ms ease;
+  pointer-events: none;
+  list-style: none;
+  z-index: 1100;
+}
+
+.walkers-menu-item:hover > .walkers-submenu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(4px);
+  pointer-events: auto;
+}
+
+.walkers-submenu li a {
+  display: block;
+  padding: 0.55rem 1.25rem;
+  color: var(--ink);
+  font-size: 0.88rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 200ms ease;
+}
+
+.walkers-submenu li a:hover {
+  color: var(--lotus-primary);
+  background-color: var(--ivory);
+  padding-left: 1.5rem;
+}
+
+/* RIGHT HEADER TOOLS */
+.header-tools {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* 10-Slot Language Switcher */
+.custom-lang-pill {
+  position: relative;
+}
+
+.lang-pill-btn {
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  color: var(--white);
+  padding: 0.42rem 0.85rem;
+  border-radius: var(--radius-full);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  cursor: pointer;
+  transition: all 250ms ease;
+}
+
+.site-header-walkers.is-scrolled .lang-pill-btn {
+  background: var(--white);
+  border-color: var(--mist);
+  color: var(--ink);
+}
+
+.lang-pill-btn:hover {
+  border-color: var(--sacred-gold);
+  transform: translateY(-1px);
+}
+
+.lang-pill-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  width: 190px;
+  max-height: 320px;
+  overflow-y: auto;
+  background-color: var(--white);
+  border-radius: var(--radius-md);
+  box-shadow: 0 15px 35px rgba(28, 27, 31, 0.14);
+  border: 1px solid var(--mist);
+  padding: 0.5rem 0;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
+  transition: all 250ms ease;
+  z-index: 1200;
+}
+
+.lang-pill-dropdown.is-active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.lang-pill-dropdown button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.5rem 1rem;
+  background: none;
+  border: none;
+  color: var(--ink);
+  font-size: 0.82rem;
+  font-weight: 500;
+  text-align: left;
+  cursor: pointer;
+  transition: background 180ms ease, color 180ms ease;
+}
+
+.lang-pill-dropdown button:hover {
+  background-color: var(--ivory);
+  color: var(--lotus-primary);
+}
+
+.lang-pill-dropdown button.is-active {
+  font-weight: 700;
+  color: var(--lotus-primary);
+  background-color: var(--ivory);
+}
+
+.lang-slot-tag {
+  margin-left: auto;
+  font-size: 0.65rem;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background-color: var(--mist);
+  color: #6B7280;
+}
+
+/* GOLD INQUIRE BUTTON WITH HOVER FILL-SLIDE EFFECT */
+.gold-inquire-btn {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--sacred-gold);
+  color: var(--white) !important;
+  padding: 0.58rem 1.45rem;
+  border-radius: var(--radius-full);
+  font-size: 0.84rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 4px 15px rgba(201, 162, 75, 0.35);
+  text-decoration: none;
+  cursor: pointer;
+  z-index: 1;
+  transition: color 300ms ease, transform 300ms ease, box-shadow 300ms ease;
+}
+
+/* Hover Fill-Slide Animation Effect */
+.gold-inquire-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, var(--lotus-primary) 0%, var(--lotus-primary-dark) 100%);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 320ms cubic-bezier(0.25, 0.8, 0.25, 1);
+  z-index: -1;
+  border-radius: inherit;
+}
+
+.gold-inquire-btn:hover {
+  color: var(--white) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(201, 84, 81, 0.5);
+}
+
+.gold-inquire-btn:hover::before {
+  transform: scaleX(1);
+}
+
+.gold-inquire-btn svg {
+  fill: currentColor;
+  width: 16px;
+  height: 16px;
+  transition: transform 250ms ease;
+}
+
+.gold-inquire-btn:hover svg {
+  transform: scale(1.1);
+}
+
+/* Mobile Hamburger Toggle */
+.walkers-ham {
+  display: none;
+  background: none;
+  border: none;
+  width: 40px;
+  height: 40px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.walkers-ham span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background-color: var(--white);
+  border-radius: 2px;
+  transition: all 250ms ease;
+}
+
+.site-header-walkers.is-scrolled .walkers-ham span {
+  background-color: var(--ink);
+}
+
+/* FULL-SCREEN MOBILE SLIDE-IN MENU */
+.mobile-nav-fullscreen {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 100%;
+  height: 100vh;
+  background-color: var(--ivory);
+  z-index: 2000;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 1.75rem;
+  overflow-y: auto;
+  transition: right 380ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.mobile-nav-fullscreen.is-open {
+  right: 0;
+}
+
+.mobile-nav-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--mist);
+  margin-bottom: 1.5rem;
+}
+
+.mobile-nav-close {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  line-height: 1;
+  color: var(--ink);
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+}
+
+.mobile-nav-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  list-style: none;
+  margin-bottom: 2rem;
+}
+
+/* Staggered Link Fade-Up */
+.mobile-nav-item {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 350ms ease, transform 350ms ease;
+}
+
+.mobile-nav-fullscreen.is-open .mobile-nav-item {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.mobile-nav-fullscreen.is-open .mobile-nav-item:nth-child(1) { transition-delay: 0.08s; }
+.mobile-nav-fullscreen.is-open .mobile-nav-item:nth-child(2) { transition-delay: 0.14s; }
+.mobile-nav-fullscreen.is-open .mobile-nav-item:nth-child(3) { transition-delay: 0.20s; }
+.mobile-nav-fullscreen.is-open .mobile-nav-item:nth-child(4) { transition-delay: 0.26s; }
+.mobile-nav-fullscreen.is-open .mobile-nav-item:nth-child(5) { transition-delay: 0.32s; }
+.mobile-nav-fullscreen.is-open .mobile-nav-item:nth-child(6) { transition-delay: 0.38s; }
+.mobile-nav-fullscreen.is-open .mobile-nav-item:nth-child(7) { transition-delay: 0.44s; }
+.mobile-nav-fullscreen.is-open .mobile-nav-item:nth-child(8) { transition-delay: 0.50s; }
+.mobile-nav-fullscreen.is-open .mobile-nav-item:nth-child(9) { transition-delay: 0.56s; }
+
+.mobile-nav-link {
+  font-family: var(--font-serif);
+  font-size: 1.45rem;
+  font-weight: 600;
+  color: var(--ink);
+  text-decoration: none;
+  display: block;
+  transition: color 200ms ease;
+}
+
+.mobile-nav-link:hover {
+  color: var(--lotus-primary);
+}
+
+.mobile-nav-categories {
+  padding-left: 1rem;
+  margin-top: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.mobile-nav-cat-link {
+  font-size: 0.95rem;
+  color: #4B5563;
+  text-decoration: none;
+}
+
+.mobile-nav-cat-link:hover {
+  color: var(--lotus-primary);
+}
+
+/* FLOATING BUTTONS: WHATSAPP & PULSING INQUIRE TAB */
+.floating-whatsapp-btn {
+  position: fixed;
+  bottom: 28px;
+  left: 28px;
+  width: 54px;
+  height: 54px;
+  background-color: #25D366;
+  color: #FFFFFF;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.45);
+  z-index: 990;
+  text-decoration: none;
+  transition: transform 250ms ease, box-shadow 250ms ease;
+}
+
+.floating-whatsapp-btn:hover {
+  transform: scale(1.1) translateY(-2px);
+  box-shadow: 0 10px 25px rgba(37, 211, 102, 0.6);
+}
+
+.floating-whatsapp-btn svg {
+  width: 30px;
+  height: 30px;
+  fill: #FFFFFF;
+}
+
+/* Floating "Inquire" Tab Bottom-Right with Gentle 6s Pulse Ring */
+@keyframes pulseRing6s {
+  0%, 82%, 100% {
+    box-shadow: 0 6px 22px rgba(201, 162, 75, 0.35);
+  }
+  12% {
+    box-shadow: 0 0 0 16px rgba(201, 162, 75, 0), 0 6px 22px rgba(201, 162, 75, 0.5);
+  }
+}
+
+.floating-inquire-tab {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  background: linear-gradient(135deg, var(--sacred-gold) 0%, var(--lotus-primary) 100%);
+  color: var(--white);
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-full);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  text-decoration: none;
+  z-index: 990;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  animation: pulseRing6s 6s cubic-bezier(0.25, 0.8, 0.25, 1) infinite;
+  transition: transform 250ms ease;
+}
+
+.floating-inquire-tab:hover {
+  transform: translateY(-3px) scale(1.04);
+}
+
+.floating-inquire-tab svg {
+  width: 17px;
+  height: 17px;
+  fill: currentColor;
+}
+
+@media (max-width: 1024px) {
+  .walkers-menu,
+  .custom-lang-pill,
+  .header-tools .gold-inquire-btn {
+    display: none;
+  }
+  .walkers-ham {
+    display: flex;
   }
 }

@@ -73,9 +73,38 @@ const LOTUS_CONFIG = {
 
   // Designer / Developer Credits
   designer: {
-    name: "Lotus Ceylon Digital Studio",
-    url: "https://lotusceylon.com"
+    name: "Infinite Design",
+    url: "https://infiniteweb.dev/",
+    facebookUrl: "https://facebook.com/infinitedesign"
   },
+
+  // 10 Supported Language Slots (EN & 中文 first)
+  languages: [
+    { code: "en", name: "English", flag: "🇬🇧", active: true },
+    { code: "zh", name: "中文 (Chinese)", flag: "🇨🇳", active: true },
+    { code: "de", name: "Deutsch", flag: "🇩🇪", active: false },
+    { code: "fr", name: "Français", flag: "🇫🇷", active: false },
+    { code: "ru", name: "Русский", flag: "🇷🇺", active: false },
+    { code: "es", name: "Español", flag: "🇪🇸", active: false },
+    { code: "it", name: "Italiano", flag: "🇮🇹", active: false },
+    { code: "ja", name: "日本語", flag: "🇯🇵", active: false },
+    { code: "ar", name: "العربية", flag: "🇦🇪", active: false },
+    { code: "hi", name: "हिन्दी", flag: "🇮🇳", active: false }
+  ],
+
+  // Tour Categories for Mega Dropdown & Ticker
+  tourCategories: [
+    { id: "cultural", name: "Cultural", desc: "Ancient kingdoms, rock temples, and sacred living heritage" },
+    { id: "buddhist", name: "Buddhist Heritage", desc: "Sacred stupas, tooth relic veneration, and monastic pilgrimages" },
+    { id: "wildlife", name: "Wildlife & Safari", desc: "Leopard tracking in Yala and majestic elephant gathering" },
+    { id: "beach", name: "Beach & Coast", desc: "Golden southern palms, secluded coves, and surf sanctuaries" },
+    { id: "hill-country", name: "Hill Country", desc: "Misty tea estates, emerald valleys, and historic train routes" },
+    { id: "ayurveda", name: "Ayurveda & Wellness", desc: "Authentic herbal therapies, panchakarma, and mindful meditation" },
+    { id: "honeymoon", name: "Honeymoon & Romance", desc: "Private butler estates, sunset cruises, and candlelit dinners" },
+    { id: "family", name: "Family Journeys", desc: "Child-safe adventures, turtle hatcheries, and interactive crafts" },
+    { id: "adventure", name: "Adventure & Trekking", desc: "Ella rock climbs, white-water rapids, and rainforest treks" },
+    { id: "ramayana", name: "Ramayana Trail", desc: "Epic mythology trails from Ravana falls to Seetha Amman temple" }
+  ],
 
   // Submission Backend Endpoint Settings
   // Option 1: Formspree (Default and easiest for GitHub Pages: replace with your Formspree endpoint or keep demo endpoint)
