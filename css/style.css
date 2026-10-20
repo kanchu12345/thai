@@ -25,7 +25,7 @@
   --color-gold-bright: #EFD388;       /* Highlight Shimmer Gold (Sunlit Stupa & Rays) */
   --color-dark-blue: #0A2239;         /* Royal Midnight Navy (Deep Luxury Horizon) */
   --color-secondary-blue: #0E3B60;    /* Ocean Sapphire (Coastal Waters in Emblem) */
-  --color-dark-green: #235B4B;        /* Ceylon Tropical Emerald (Lush Palms & Mountains) */
+  --color-dark-green: #224A2A;        /* Ceylon Tropical Emerald (Lotus Leaf Forest Green) */
   --color-dark-black: #111418;        /* Rich Deep Obsidian Charcoal */
   --color-light-black: #3E454F;       /* Balanced Readable Body Slate */
   --color-light-blue: #F7F9FB;        /* Clean Island Mist Background */
@@ -35,13 +35,24 @@
   --color-white: #FFFFFF;
   --color-border-subtle: #E5E0D5;     /* Warm Champagne Subtle Border */
 
+  /* Authentic 5-Color Harmonic Lotus Palette */
+  --palette-cream: #F8E5DD;           /* 1. Soft Lotus Cream / Petal Blush Mist */
+  --palette-petal-light: #E8B2AB;     /* 2. Soft Lotus Blossom Rose */
+  --palette-rose-medium: #DA827D;     /* 3. Warm Lotus Blossom Coral Rose */
+  --palette-rose-deep: #C95451;       /* 4. Deep Lotus Carmine Rose (Primary Lotus Accent) */
+  --palette-leaf-green: #224A2A;      /* 5. Sacred Lotus Leaf Forest Green */
+
   /* Sacred Lotus Pink Accent Palette (Pure Journeys & Sacred Lotus Petal Identity) */
-  --color-lotus-pink: #C4557A;        /* Sacred Lotus Blossom Rose */
-  --color-lotus-pink-hover: #A83B60;  /* Deep Sacred Lotus Petal */
-  --color-lotus-pink-light: #FDF0F3;  /* Soft Petal Blush Tint */
-  --color-lotus-pink-border: rgba(196, 85, 122, 0.28);
-  --color-lotus-pink-glow: rgba(196, 85, 122, 0.35);
-  --color-lotus-gradient: linear-gradient(135deg, #C4557A 0%, #D4A359 100%);
+  --color-lotus-pink: #C95451;        /* Primary Lotus Carmine Rose (Palette #4) */
+  --color-lotus-pink-hover: #B0423F;  /* Deep Carmine Hover */
+  --color-lotus-pink-medium: #DA827D; /* Warm Blossom Rose (Palette #3) */
+  --color-lotus-pink-soft: #E8B2AB;   /* Soft Petal Pink (Palette #2) */
+  --color-lotus-pink-light: #F8E5DD;  /* Soft Petal Blush Tint (Palette #1) */
+  --color-lotus-pink-border: rgba(201, 84, 81, 0.28);
+  --color-lotus-pink-glow: rgba(201, 84, 81, 0.35);
+  --color-lotus-gradient: linear-gradient(135deg, #C95451 0%, #DA827D 50%, #D4A359 100%);
+  --color-lotus-coral-gradient: linear-gradient(135deg, #C95451 0%, #DA827D 100%);
+  --color-lotus-blush-gradient: linear-gradient(135deg, #F8E5DD 0%, #E8B2AB 100%);
 
   /* Typography */
   --font-main: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -660,7 +671,7 @@ ul, ol {
 .inquire-btn:hover {
   background: var(--color-lotus-gradient);
   color: #FFFFFF;
-  box-shadow: 0 6px 22px rgba(196, 85, 122, 0.42);
+  box-shadow: 0 6px 22px rgba(201, 84, 81, 0.42);
   transform: translateY(-2px);
 }
 
@@ -927,7 +938,7 @@ ul, ol {
   font-size: 0.75rem;
   font-weight: 700;
   flex-shrink: 0;
-  box-shadow: 0 2px 8px rgba(196, 85, 122, 0.35);
+  box-shadow: 0 2px 8px rgba(201, 84, 81, 0.35);
 }
 
 /* ==========================================================================
@@ -937,7 +948,7 @@ ul, ol {
   position: relative;
   background: 
     radial-gradient(circle at 10% 20%, rgba(212, 163, 89, 0.12) 0%, transparent 45%),
-    radial-gradient(circle at 90% 80%, rgba(196, 85, 122, 0.10) 0%, transparent 45%),
+    radial-gradient(circle at 90% 80%, rgba(201, 84, 81, 0.10) 0%, transparent 45%),
     radial-gradient(circle at 50% 50%, rgba(212, 163, 89, 0.05) 0%, transparent 60%),
     linear-gradient(180deg, #FDFBF7 0%, #F5F1E8 50%, #F9F7F2 100%);
   overflow: hidden;
@@ -952,7 +963,7 @@ ul, ol {
   transform: translate(-50%, -50%);
   width: 700px;
   height: 700px;
-  background-image: radial-gradient(circle, rgba(212, 163, 89, 0.08) 1px, transparent 1px), radial-gradient(circle, rgba(196, 85, 122, 0.05) 1px, transparent 1px);
+  background-image: radial-gradient(circle, rgba(212, 163, 89, 0.08) 1px, transparent 1px), radial-gradient(circle, rgba(201, 84, 81, 0.05) 1px, transparent 1px);
   background-size: 32px 32px;
   background-position: 0 0, 16px 16px;
   pointer-events: none;
@@ -964,9 +975,9 @@ ul, ol {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.4rem 1.1rem;
-  background: linear-gradient(135deg, rgba(212, 163, 89, 0.15) 0%, rgba(196, 85, 122, 0.12) 100%);
-  border: 1px solid rgba(212, 163, 89, 0.35);
+  padding: 0.45rem 1.25rem;
+  background: linear-gradient(135deg, rgba(248, 229, 221, 0.9) 0%, rgba(232, 178, 171, 0.35) 100%);
+  border: 1px solid rgba(201, 84, 81, 0.35);
   border-radius: var(--radius-full);
   color: var(--color-dark-blue);
   font-size: 0.78rem;
@@ -974,7 +985,7 @@ ul, ol {
   letter-spacing: 0.14em;
   text-transform: uppercase;
   margin-bottom: 1.25rem;
-  box-shadow: 0 2px 10px rgba(212, 163, 89, 0.12);
+  box-shadow: 0 3px 14px rgba(201, 84, 81, 0.15);
 }
 
 .sacred-badge-tag .sacred-icon {
@@ -1073,24 +1084,24 @@ ul, ol {
   color: #B8860B;
 }
 
-/* Card 2: Sacred Lotus Pink */
+/* Card 2: Sacred Lotus Carmine Rose (Palette #4 & #2) */
 .icon-box--lotus {
   border-left-color: var(--color-lotus-pink);
 }
 .icon-box--lotus .icon-box__left {
-  background: linear-gradient(135deg, #FFF0F4 0%, #FDE4EB 100%);
-  border: 1.5px solid rgba(196, 85, 122, 0.35);
+  background: linear-gradient(135deg, #F8E5DD 0%, #E8B2AB 100%);
+  border: 1.5px solid rgba(201, 84, 81, 0.35);
   color: var(--color-lotus-pink);
 }
 .icon-box--lotus:hover {
   border-left-color: var(--color-lotus-pink);
-  box-shadow: 0 10px 28px rgba(196, 85, 122, 0.25);
+  box-shadow: 0 10px 28px rgba(201, 84, 81, 0.25);
 }
 .icon-box--lotus:hover .icon-box__left {
-  background: linear-gradient(135deg, #C4557A 0%, #D4A359 100%);
+  background: linear-gradient(135deg, #C95451 0%, #DA827D 100%);
   border-color: transparent;
   color: #FFFFFF;
-  box-shadow: 0 6px 18px rgba(196, 85, 122, 0.4);
+  box-shadow: 0 6px 18px rgba(201, 84, 81, 0.4);
   transform: scale(1.08) rotate(-4deg);
 }
 .icon-box--lotus:hover .icon-box__right strong {
@@ -1121,52 +1132,52 @@ ul, ol {
   color: #0E3B60;
 }
 
-/* Card 4: Ceylon Tropical Emerald */
+/* Card 4: Ceylon Tropical Emerald / Lotus Leaf (Palette #5) */
 .icon-box--emerald {
   border-left-color: var(--color-dark-green);
 }
 .icon-box--emerald .icon-box__left {
-  background: linear-gradient(135deg, #EEF7F4 0%, #E0F0EB 100%);
-  border: 1.5px solid rgba(35, 91, 75, 0.3);
+  background: linear-gradient(135deg, #EEF4EF 0%, #D8E5DA 100%);
+  border: 1.5px solid rgba(34, 74, 42, 0.3);
   color: var(--color-dark-green);
 }
 .icon-box--emerald:hover {
   border-left-color: var(--color-dark-green);
-  box-shadow: 0 10px 28px rgba(35, 91, 75, 0.25);
+  box-shadow: 0 10px 28px rgba(34, 74, 42, 0.25);
 }
 .icon-box--emerald:hover .icon-box__left {
-  background: linear-gradient(135deg, #235B4B 0%, #357D69 100%);
+  background: linear-gradient(135deg, #224A2A 0%, #387645 100%);
   border-color: transparent;
   color: #FFFFFF;
-  box-shadow: 0 6px 18px rgba(35, 91, 75, 0.35);
+  box-shadow: 0 6px 18px rgba(34, 74, 42, 0.35);
   transform: scale(1.08) rotate(-4deg);
 }
 .icon-box--emerald:hover .icon-box__right strong {
   color: var(--color-dark-green);
 }
 
-/* Card 5: Rose Petal Coral */
+/* Card 5: Warm Blossom Coral Rose (Palette #3 & #1) */
 .icon-box--rose {
-  border-left-color: #D96B7A;
+  border-left-color: var(--palette-rose-medium);
 }
 .icon-box--rose .icon-box__left {
-  background: linear-gradient(135deg, #FFF0F2 0%, #FDE4E7 100%);
-  border: 1.5px solid rgba(217, 107, 122, 0.32);
-  color: #D96B7A;
+  background: linear-gradient(135deg, #F8E5DD 0%, #E8B2AB 100%);
+  border: 1.5px solid rgba(218, 130, 125, 0.35);
+  color: #DA827D;
 }
 .icon-box--rose:hover {
-  border-left-color: #D96B7A;
-  box-shadow: 0 10px 28px rgba(217, 107, 122, 0.25);
+  border-left-color: #C95451;
+  box-shadow: 0 10px 28px rgba(201, 84, 81, 0.25);
 }
 .icon-box--rose:hover .icon-box__left {
-  background: linear-gradient(135deg, #D96B7A 0%, #C4557A 100%);
+  background: linear-gradient(135deg, #DA827D 0%, #C95451 100%);
   border-color: transparent;
   color: #FFFFFF;
-  box-shadow: 0 6px 18px rgba(217, 107, 122, 0.35);
+  box-shadow: 0 6px 18px rgba(201, 84, 81, 0.35);
   transform: scale(1.08) rotate(4deg);
 }
 .icon-box--rose:hover .icon-box__right strong {
-  color: #D96B7A;
+  color: #C95451;
 }
 
 /* 4 Counters Luxury Navy Jewel Card */
@@ -1202,7 +1213,7 @@ ul, ol {
   left: -50px;
   width: 200px;
   height: 200px;
-  background: radial-gradient(circle, rgba(196, 85, 122, 0.22) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(201, 84, 81, 0.22) 0%, transparent 70%);
   border-radius: 50%;
   pointer-events: none;
 }
@@ -1252,20 +1263,20 @@ ul, ol {
   filter: drop-shadow(0 2px 10px rgba(56, 189, 248, 0.35));
 }
 
-/* Stat 3: Ceylon Tropical Emerald */
+/* Stat 3: Ceylon Tropical Emerald / Lotus Leaf (Palette #5) */
 .counter-box--emerald .counter-number {
-  background: linear-gradient(135deg, #D1FAE5 0%, #34D399 50%, #10B981 100%);
+  background: linear-gradient(135deg, #E0ECE2 0%, #529E65 50%, #224A2A 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 2px 10px rgba(52, 211, 153, 0.35));
+  filter: drop-shadow(0 2px 10px rgba(52, 158, 101, 0.35));
 }
 
-/* Stat 4: Sacred Lotus Pink */
+/* Stat 4: Sacred Lotus Carmine Rose (Palette #1, #3, #4) */
 .counter-box--lotus .counter-number {
-  background: linear-gradient(135deg, #FFE4E6 0%, #F472B6 50%, #C4557A 100%);
+  background: linear-gradient(135deg, #F8E5DD 0%, #DA827D 50%, #C95451 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 2px 10px rgba(244, 114, 182, 0.35));
+  filter: drop-shadow(0 2px 10px rgba(201, 84, 81, 0.4));
 }
 
 .counter-label {
@@ -1361,7 +1372,7 @@ ul, ol {
 
 .hover-box:hover {
   transform: translateY(-5px);
-  box-shadow: 0 16px 45px rgba(0, 30, 52, 0.25), 0 0 0 1px rgba(196, 85, 122, 0.3);
+  box-shadow: 0 16px 45px rgba(0, 30, 52, 0.25), 0 0 0 1px rgba(201, 84, 81, 0.3);
 }
 
 .hover-box__img {
@@ -1386,7 +1397,7 @@ ul, ol {
 }
 
 .hover-box:hover .hover-box__overlay {
-  background: linear-gradient(180deg, rgba(0, 43, 73, 0.15) 25%, rgba(10, 34, 57, 0.90) 80%, rgba(196, 85, 122, 0.35) 100%);
+  background: linear-gradient(180deg, rgba(0, 43, 73, 0.15) 25%, rgba(10, 34, 57, 0.90) 80%, rgba(201, 84, 81, 0.35) 100%);
 }
 
 .hover-box__details {
@@ -1424,7 +1435,7 @@ ul, ol {
 .hover-box:hover .para--white-line::after {
   width: 75px;
   background: linear-gradient(90deg, var(--color-gold) 0%, var(--color-lotus-pink) 100%);
-  box-shadow: 0 0 10px rgba(196, 85, 122, 0.5);
+  box-shadow: 0 0 10px rgba(201, 84, 81, 0.5);
 }
 
 .hover-box .next-btn--white .next-btn-circle {
@@ -1434,7 +1445,7 @@ ul, ol {
 .hover-box:hover .next-btn--white .next-btn-circle {
   background-color: var(--color-lotus-pink);
   color: #FFFFFF;
-  box-shadow: 0 4px 14px rgba(196, 85, 122, 0.55);
+  box-shadow: 0 4px 14px rgba(201, 84, 81, 0.55);
   transform: translateX(4px);
 }
 
@@ -1467,7 +1478,7 @@ ul, ol {
   text-transform: uppercase;
   letter-spacing: 0.1em;
   z-index: 3;
-  box-shadow: 0 4px 15px rgba(196, 85, 122, 0.4);
+  box-shadow: 0 4px 15px rgba(201, 84, 81, 0.4);
   border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
@@ -2281,7 +2292,7 @@ ul, ol {
   transform: scale(1.1) translateY(-2px);
   background: var(--color-lotus-gradient);
   border-color: rgba(255, 255, 255, 0.4);
-  box-shadow: 0 8px 25px rgba(196, 85, 122, 0.5);
+  box-shadow: 0 8px 25px rgba(201, 84, 81, 0.5);
 }
 
 .inquire-floating-walkers svg {
@@ -3831,7 +3842,7 @@ ul, ol {
   background: var(--color-lotus-gradient);
   border-color: transparent;
   color: #FFFFFF;
-  box-shadow: 0 4px 15px rgba(196, 85, 122, 0.4);
+  box-shadow: 0 4px 15px rgba(201, 84, 81, 0.4);
 }
 
 /* 3-Column Tour Cards Grid */
