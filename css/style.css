@@ -313,20 +313,48 @@ ul, ol {
 }
 
 .next-btn--gold {
-  color: #FFFFFF;
-  background: linear-gradient(135deg, var(--color-lotus-pink) 0%, #DA827D 50%, var(--color-gold) 100%);
-  padding: 0.75rem 1.75rem;
-  border-radius: var(--radius-full);
-  font-weight: 700;
-  box-shadow: 0 6px 22px rgba(201, 84, 81, 0.45);
-  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #FFFFFF !important;
+  background: linear-gradient(135deg, #C95451 0%, #DA827D 100%) !important;
+  padding: 0.75rem 1.85rem !important;
+  border-radius: var(--radius-full) !important;
+  font-weight: 700 !important;
+  box-shadow: 0 6px 24px rgba(201, 84, 81, 0.55) !important;
+  border: 1px solid rgba(248, 229, 221, 0.45) !important;
+  transition: var(--transition) !important;
 }
 
 .next-btn--gold:hover {
-  background: linear-gradient(135deg, var(--color-gold) 0%, var(--color-lotus-pink) 100%);
-  color: #FFFFFF;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 28px rgba(201, 84, 81, 0.65);
+  background: linear-gradient(135deg, #DA827D 0%, #C95451 100%) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 30px rgba(201, 84, 81, 0.75) !important;
+}
+
+.next-btn--white {
+  color: #F8E5DD !important;
+  background: rgba(34, 74, 42, 0.45) !important;
+  backdrop-filter: blur(8px) !important;
+  border: 1.5px solid rgba(232, 178, 171, 0.5) !important;
+  padding: 0.75rem 1.85rem !important;
+  border-radius: var(--radius-full) !important;
+  transition: var(--transition) !important;
+}
+
+.next-btn--white:hover {
+  background: #DA827D !important;
+  color: #FFFFFF !important;
+  border-color: #DA827D !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 22px rgba(218, 130, 125, 0.5) !important;
+}
+
+.next-btn--white .next-btn-circle {
+  background-color: rgba(248, 229, 221, 0.25) !important;
+  color: #F8E5DD !important;
+}
+
+.next-btn--white:hover .next-btn-circle {
+  background-color: #FFFFFF !important;
+  color: #DA827D !important;
 }
 
 /* ==========================================================================
@@ -395,36 +423,51 @@ ul, ol {
 
 .header-brand-name {
   font-family: var(--font-serif);
-  color: #FFFFFF;
+  color: #F8E5DD;
   font-weight: 700;
-  font-size: 1.5rem;
+  font-size: 1.55rem;
   letter-spacing: 0.03em;
   line-height: 1.1;
-  background: linear-gradient(135deg, #FFFFFF 0%, #F8E5DD 25%, #D4A359 65%, #C95451 100%);
+  background: linear-gradient(135deg, #FFFFFF 0%, #F8E5DD 35%, #E8B2AB 65%, #DA827D 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.4));
+  filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.5));
   transition: all 0.3s ease;
 }
 
+.brand-name-lotus {
+  color: #F8E5DD;
+  background: linear-gradient(135deg, #FFFFFF 0%, #F8E5DD 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.brand-name-ceylon {
+  color: #DA827D;
+  background: linear-gradient(135deg, #E8B2AB 0%, #DA827D 50%, #C95451 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 .header-brand:hover .header-brand-name {
-  background: linear-gradient(135deg, #FFFFFF 0%, #EFD388 45%, #D4A359 100%);
+  background: linear-gradient(135deg, #FFFFFF 0%, #F8E5DD 40%, #E8B2AB 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .header-brand-sub {
-  color: var(--color-gold);
-  font-size: 0.62rem;
+  color: #F8E5DD;
+  font-size: 0.63rem;
   font-weight: 700;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  margin-top: 2px;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  margin-top: 3px;
+  opacity: 0.95;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.65);
 }
 
 .site-header-walkers.is-scrolled .header-brand-name {
-  font-size: 1.3rem;
+  font-size: 1.35rem;
 }
 
 .walkers-brand-link {
@@ -464,25 +507,27 @@ ul, ol {
 
 .walkers-brand-title {
   font-family: var(--font-serif);
-  color: #FFFFFF;
+  color: #F8E5DD;
   font-weight: 700;
-  font-size: 1.5rem;
+  font-size: 1.55rem;
   letter-spacing: 0.03em;
   line-height: 1.1;
-  background: linear-gradient(135deg, #FFFFFF 0%, #F8E5DD 25%, #D4A359 65%, #C95451 100%);
+  background: linear-gradient(135deg, #FFFFFF 0%, #F8E5DD 35%, #E8B2AB 65%, #DA827D 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.4));
+  filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.5));
   transition: all 0.3s ease;
 }
 
 .walkers-brand-sub {
-  color: var(--color-gold);
-  font-size: 0.62rem;
+  color: #F8E5DD;
+  font-size: 0.63rem;
   font-weight: 700;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  margin-top: 2px;
+  margin-top: 3px;
+  opacity: 0.95;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.65);
 }
 
 /* Primary Desktop Navigation Menu */
@@ -499,8 +544,8 @@ ul, ol {
 }
 
 .walkers-menu-link {
-  color: #FFFFFF;
-  font-weight: 400;
+  color: #F8E5DD;
+  font-weight: 500;
   font-size: 0.95rem;
   display: inline-flex;
   align-items: center;
@@ -517,13 +562,13 @@ ul, ol {
   left: 0;
   width: 0%;
   height: 2px;
-  background: linear-gradient(90deg, var(--color-gold) 0%, var(--color-lotus-pink) 100%);
+  background: linear-gradient(90deg, #C95451 0%, #DA827D 50%, #F8E5DD 100%);
   transition: width 0.3s ease;
 }
 
 .walkers-menu-item:hover > .walkers-menu-link,
 .walkers-menu-link.active {
-  color: var(--color-gold);
+  color: #DA827D;
 }
 
 .walkers-menu-item:hover > .walkers-menu-link::after,
@@ -912,10 +957,15 @@ ul, ol {
   line-height: 1.12;
   color: #FFFFFF;
   margin-bottom: 1.25rem;
+  text-shadow: 0 3px 15px rgba(0, 0, 0, 0.55);
 }
 
 .banner-main-title span {
   font-weight: 700;
+  background: linear-gradient(135deg, #FFFFFF 0%, #F8E5DD 30%, #E8B2AB 60%, #DA827D 85%, #C95451 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.4));
 }
 
 .banner-actions {
@@ -2403,24 +2453,25 @@ ul, ol {
 
 .brand-title {
   font-family: var(--font-serif);
-  color: #FFFFFF;
-  font-size: 1.5rem;
+  color: #F8E5DD;
+  font-size: 1.55rem;
   font-weight: 700;
   letter-spacing: 0.03em;
   line-height: 1.1;
-  background: linear-gradient(135deg, #FFFFFF 0%, #F8E5DD 25%, #D4A359 65%, #C95451 100%);
+  background: linear-gradient(135deg, #FFFFFF 0%, #F8E5DD 35%, #E8B2AB 65%, #DA827D 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.4));
+  filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.5));
 }
 
 .brand-slogan {
-  color: var(--color-gold);
-  font-size: 0.62rem;
+  color: #F8E5DD;
+  font-size: 0.63rem;
   font-weight: 700;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  margin-top: 2px;
+  margin-top: 3px;
+  opacity: 0.95;
 }
 
 .nav-menu {
