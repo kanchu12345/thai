@@ -1,0 +1,8 @@
+User-agent: *
+Disallow: /admin/
+Disallow: /admin
+Allow: /
+
+# LOTUS Ceylon International Tours & Services (Pvt) Ltd
+# Public Sitemap
+Sitemap: https://lotusceylon.com/sitemap.xml

@@ -39,6 +39,16 @@
     },
 
     /**
+     * Sanitise rich-text and dynamic HTML using DOMPurify
+     */
+    safeHtml(html) {
+      if (window.DOMPurify && typeof window.DOMPurify.sanitize === 'function') {
+        return window.DOMPurify.sanitize(html);
+      }
+      return html;
+    },
+
+    /**
      * Initialize Language Selection
      */
     initLanguage() {
@@ -399,7 +409,7 @@
 
       document.title = `${this.t('title', pkg)} | Lotus Ceylon Tours`;
 
-      container.innerHTML = `
+      const markup = `
         <section class="tour-hero-section" style="position: relative; min-height: 55vh; display: flex; align-items: flex-end; background: url('${pkg.hero_image || 'assets/images/cultural-triangle.jpg'}') center/cover no-repeat; padding: 60px 0;">
           <div style="position: absolute; inset: 0; background: linear-gradient(0deg, rgba(28,27,31,0.85) 0%, rgba(28,27,31,0.3) 100%);"></div>
           <div class="wrapper--80" style="position: relative; z-index: 2; color: #fff;">
@@ -465,6 +475,8 @@
           </div>
         </section>
       `;
+
+      container.innerHTML = this.safeHtml(markup);
     },
 
     /**

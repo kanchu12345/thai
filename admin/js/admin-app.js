@@ -1048,9 +1048,19 @@
       for (let i = 0; i < files.length; i++) {
         const file = files[i];
 
-        // 1. Check size limit
+        // 1. Strict MIME type & extension validation (Security against malicious uploads)
+        const validMimes = ['image/jpeg', 'image/png', 'image/webp', 'image/gif', 'image/avif'];
+        const validExts = ['.jpg', '.jpeg', '.png', '.webp', '.gif', '.avif'];
+        const fileExt = '.' + file.name.split('.').pop().toLowerCase();
+
+        if (!validMimes.includes(file.type.toLowerCase()) || !validExts.includes(fileExt)) {
+          this.showToast(`Rejected "${file.name}": Only JPEG, PNG, WebP, GIF, or AVIF image files are permitted.`, 'error', 4500);
+          continue;
+        }
+
+        // 2. Check 5MB size limit
         if (file.size > MAX_IMAGE_SIZE_BYTES) {
-          this.showToast(`File "${file.name}" exceeds the 5MB limit.`, 'error');
+          this.showToast(`Rejected "${file.name}": File exceeds the 5MB upload limit.`, 'error', 4500);
           continue;
         }
 

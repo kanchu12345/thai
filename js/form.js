@@ -621,6 +621,34 @@ async function handleFormSubmit(form, isQuickForm) {
     return;
   }
 
+  // 1. Honeypot Anti-Spam Verification
+  const hpField = form.querySelector('#hp_website_lotus') || form.querySelector('[name="b_hp_field"]') || form.querySelector('#hp_field');
+  if (hpField && hpField.value.trim() !== "") {
+    console.warn("[Lotus Security] Spam bot detected by honeypot trap. Request neutralized.");
+    form.reset();
+    return;
+  }
+
+  // 2. Client-Side Rate Limiting (10s cooldown, max 3 inquiries per 10 mins)
+  const now = Date.now();
+  const lastSubTime = parseInt(localStorage.getItem('lotus_last_sub_time') || '0', 10);
+  if (now - lastSubTime < 10000) {
+    alert("Please wait a few seconds before submitting another inquiry.");
+    return;
+  }
+
+  let subTimestamps = [];
+  try {
+    subTimestamps = JSON.parse(localStorage.getItem('lotus_sub_history') || '[]');
+  } catch (e) { subTimestamps = []; }
+
+  // Filter timestamps within the past 10 minutes (600,000 ms)
+  subTimestamps = subTimestamps.filter(ts => (now - ts) < 600000);
+  if (subTimestamps.length >= 3) {
+    alert("You have reached the maximum number of inquiries allowed in 10 minutes. Please connect directly via WhatsApp: +94 71 54 22 384");
+    return;
+  }
+
   // Collect data
   const formData = extractFormData(form, isQuickForm);
 
@@ -640,6 +668,11 @@ async function handleFormSubmit(form, isQuickForm) {
 
     // Save inquiry to localStorage for reference
     saveInquiryLocally(formData);
+
+    // Record rate-limiting timestamps
+    subTimestamps.push(now);
+    localStorage.setItem('lotus_sub_history', JSON.stringify(subTimestamps));
+    localStorage.setItem('lotus_last_sub_time', now.toString());
 
     // Show Thank-You Modal with WhatsApp action
     showThankYouModal(formData);
