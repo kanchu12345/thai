@@ -23,15 +23,15 @@
   --color-gold-hover: #B38744;        /* Burnished Antique Gold Shadow */
   --color-gold-light: #F4E8D0;        /* Soft Champagne Gold Background Tint */
   --color-gold-bright: #EFD388;       /* Highlight Shimmer Gold (Sunlit Stupa & Rays) */
-  --color-dark-blue: #0A2239;         /* Royal Midnight Navy (Deep Luxury Horizon) */
-  --color-secondary-blue: #0E3B60;    /* Ocean Sapphire (Coastal Waters in Emblem) */
+  --color-dark-blue: #224A2A;         /* Ceylon Forest Emerald Green Base (Palette #5) */
+  --color-secondary-blue: #16361D;    /* Deep Forest Canopy (Palette #5 dark) */
   --color-dark-green: #224A2A;        /* Ceylon Tropical Emerald (Lotus Leaf Forest Green) */
   --color-dark-black: #111418;        /* Rich Deep Obsidian Charcoal */
   --color-light-black: #3E454F;       /* Balanced Readable Body Slate */
-  --color-light-blue: #F7F9FB;        /* Clean Island Mist Background */
+  --color-light-blue: #FAF5F2;        /* Soft Lotus Cream Mist (Palette #1) */
   --color-light-gray: rgba(212, 163, 89, 0.22);        /* Radiant Gold Watermark */
   --color-watermark-gold: rgba(212, 163, 89, 0.22);
-  --color-footer-bg: #0D1722;         /* Deep Midnight Lagoon Footer */
+  --color-footer-bg: #142B19;         /* Deep Forest Emerald Luxury Footer (Palette #5) */
   --color-white: #FFFFFF;
   --color-border-subtle: #E5E0D5;     /* Warm Champagne Subtle Border */
 
@@ -59,9 +59,9 @@
   --font-serif: 'Playfair Display', Georgia, serif;
 
   /* Shadows & Transitions */
-  --shadow-sm: 0 4px 15px rgba(0, 43, 73, 0.06);
-  --shadow-md: 0 10px 30px rgba(0, 43, 73, 0.08), 0 2px 10px rgba(212, 163, 89, 0.12);
-  --shadow-lg: 0 20px 50px rgba(0, 43, 73, 0.12), 0 4px 20px rgba(212, 163, 89, 0.16);
+  --shadow-sm: 0 4px 15px rgba(34, 74, 42, 0.06);
+  --shadow-md: 0 10px 30px rgba(34, 74, 42, 0.08), 0 2px 10px rgba(212, 163, 89, 0.12);
+  --shadow-lg: 0 20px 50px rgba(34, 74, 42, 0.12), 0 4px 20px rgba(212, 163, 89, 0.16);
   --shadow-gold: 0 8px 30px rgba(212, 163, 89, 0.35);
   --transition: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
   --radius-sm: 6px;
@@ -344,10 +344,11 @@ ul, ol {
 }
 
 .site-header-walkers.is-scrolled {
-  background-color: rgba(0, 43, 73, 0.96);
+  background-color: rgba(22, 54, 29, 0.97);
   backdrop-filter: blur(12px);
   padding: 0.75rem 0;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.18);
+  box-shadow: 0 8px 30px rgba(18, 43, 23, 0.35);
+  border-bottom: 1.5px solid rgba(201, 84, 81, 0.3);
 }
 
 .header-top-row {
@@ -715,7 +716,7 @@ ul, ol {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 43, 73, 0.97);
+  background: rgba(20, 43, 25, 0.98);
   backdrop-filter: blur(15px);
   z-index: 2000;
   display: flex;
@@ -1028,7 +1029,7 @@ ul, ol {
   border-radius: var(--radius-md);
   border: 1px solid rgba(212, 163, 89, 0.22);
   border-left: 5px solid var(--color-gold);
-  box-shadow: 0 4px 18px rgba(10, 34, 57, 0.04);
+  box-shadow: 0 4px 18px rgba(34, 74, 42, 0.04);
   transition: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
   position: relative;
   overflow: hidden;
@@ -1036,7 +1037,7 @@ ul, ol {
 
 .icon-box:hover {
   background-color: #FFFFFF;
-  box-shadow: 0 10px 28px rgba(10, 34, 57, 0.09), 0 2px 10px rgba(212, 163, 89, 0.18);
+  box-shadow: 0 10px 28px rgba(34, 74, 42, 0.09), 0 2px 10px rgba(212, 163, 89, 0.18);
   transform: translateX(8px);
 }
 
@@ -1118,28 +1119,28 @@ ul, ol {
   color: var(--color-lotus-pink);
 }
 
-/* Card 3: Ocean Sapphire Blue */
+/* Card 3: Ceylon Forest Canopy Green (from Palette #5) */
 .icon-box--navy {
-  border-left-color: #0E3B60;
+  border-left-color: var(--color-dark-green);
 }
 .icon-box--navy .icon-box__left {
-  background: linear-gradient(135deg, #EDF5FB 0%, #E1EFF8 100%);
-  border: 1.5px solid rgba(14, 59, 96, 0.3);
-  color: #0E3B60;
+  background: linear-gradient(135deg, #F0F6F1 0%, #DFECDE 100%);
+  border: 1.5px solid rgba(34, 74, 42, 0.3);
+  color: var(--color-dark-green);
 }
 .icon-box--navy:hover {
-  border-left-color: #0E3B60;
-  box-shadow: 0 10px 28px rgba(14, 59, 96, 0.25);
+  border-left-color: var(--color-dark-green);
+  box-shadow: 0 10px 28px rgba(34, 74, 42, 0.25);
 }
 .icon-box--navy:hover .icon-box__left {
-  background: linear-gradient(135deg, #0A2239 0%, #1D6FA5 100%);
+  background: linear-gradient(135deg, #224A2A 0%, #397847 100%);
   border-color: transparent;
   color: #FFFFFF;
-  box-shadow: 0 6px 18px rgba(14, 59, 96, 0.35);
+  box-shadow: 0 6px 18px rgba(34, 74, 42, 0.35);
   transform: scale(1.08) rotate(4deg);
 }
 .icon-box--navy:hover .icon-box__right strong {
-  color: #0E3B60;
+  color: var(--color-dark-green);
 }
 
 /* Card 4: Ceylon Tropical Emerald / Lotus Leaf (Palette #5) */
@@ -1190,16 +1191,16 @@ ul, ol {
   color: #C95451;
 }
 
-/* 4 Counters Luxury Navy Jewel Card */
+/* 4 Counters Luxury Forest Green Jewel Card (from Palette #5) */
 .counter-wrap {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 2.5rem 2rem;
   padding: 3.5rem 2.8rem;
-  background: linear-gradient(145deg, #0A2239 0%, #061726 100%);
+  background: linear-gradient(145deg, #1C4023 0%, #122816 100%);
   border-radius: var(--radius-lg);
-  border: 1.5px solid rgba(212, 163, 89, 0.35);
-  box-shadow: 0 20px 45px rgba(10, 34, 57, 0.25), 0 4px 20px rgba(212, 163, 89, 0.15);
+  border: 1.5px solid rgba(212, 163, 89, 0.4);
+  box-shadow: 0 20px 45px rgba(18, 40, 22, 0.35), 0 4px 20px rgba(201, 84, 81, 0.2);
   position: relative;
   overflow: hidden;
 }
@@ -1265,12 +1266,12 @@ ul, ol {
   filter: drop-shadow(0 2px 10px rgba(212, 163, 89, 0.35));
 }
 
-/* Stat 2: Ocean Sapphire / Sky Blue */
+/* Stat 2: Ceylon Forest Gold Shimmer (from Palette #5 + Gold) */
 .counter-box--sapphire .counter-number {
-  background: linear-gradient(135deg, #D4EDFF 0%, #38BDF8 50%, #60A5FA 100%);
+  background: linear-gradient(135deg, #FFF4E5 0%, #DA827D 50%, #C95451 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 2px 10px rgba(56, 189, 248, 0.35));
+  filter: drop-shadow(0 2px 10px rgba(201, 84, 81, 0.35));
 }
 
 /* Stat 3: Ceylon Tropical Emerald / Lotus Leaf (Palette #5) */
@@ -1335,7 +1336,7 @@ ul, ol {
   align-items: center;
   gap: 5px;
   z-index: 5;
-  background: rgba(10, 34, 57, 0.55);
+  background: rgba(20, 43, 25, 0.65);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
   padding: 4px 8px;
@@ -1407,7 +1408,7 @@ ul, ol {
 }
 
 .hover-box:hover .hover-box__overlay {
-  background: linear-gradient(180deg, rgba(0, 43, 73, 0.15) 25%, rgba(10, 34, 57, 0.90) 80%, rgba(201, 84, 81, 0.35) 100%);
+  background: linear-gradient(180deg, rgba(0, 43, 73, 0.15) 25%, rgba(18, 40, 22, 0.92) 80%, rgba(201, 84, 81, 0.35) 100%);
 }
 
 .hover-box__details {
@@ -2549,7 +2550,7 @@ ul, ol {
 .form-card {
   background: #FFFFFF;
   border-radius: var(--radius-lg);
-  box-shadow: 0 15px 40px rgba(0, 43, 73, 0.08);
+  box-shadow: 0 15px 40px rgba(34, 74, 42, 0.08);
   padding: 3.5rem 3rem;
   max-width: 960px;
   margin: 0 auto;
@@ -2918,7 +2919,7 @@ ul, ol {
 .selectable-card.selected {
   border-color: var(--color-dark-blue);
   background: #EFF6FB;
-  box-shadow: 0 4px 15px rgba(0, 43, 73, 0.12);
+  box-shadow: 0 4px 15px rgba(34, 74, 42, 0.12);
 }
 
 .card-checkmark {
@@ -3128,7 +3129,7 @@ ul, ol {
   display: none;
   position: fixed;
   inset: 0;
-  background: rgba(0, 43, 73, 0.75);
+  background: rgba(22, 54, 29, 0.85);
   backdrop-filter: blur(5px);
   z-index: 2000;
   align-items: center;
@@ -3772,7 +3773,7 @@ ul, ol {
   background: #FFFFFF;
   border-radius: var(--radius-lg);
   overflow: hidden;
-  box-shadow: 0 15px 40px rgba(0, 43, 73, 0.08);
+  box-shadow: 0 15px 40px rgba(34, 74, 42, 0.08);
   border: 1px solid var(--color-border-subtle);
   transition: var(--transition);
 }
@@ -3868,7 +3869,7 @@ ul, ol {
   overflow: hidden;
   height: 480px;
   background-color: var(--color-dark-blue);
-  box-shadow: 0 10px 30px rgba(0, 43, 73, 0.12);
+  box-shadow: 0 10px 30px rgba(34, 74, 42, 0.12);
   transition: transform 0.4s ease, box-shadow 0.4s ease;
   display: block;
   text-decoration: none;
