@@ -145,7 +145,15 @@ const LOTUS_CONFIG = {
     { code: "SAR", symbol: "SAR", name: "Saudi Riyal" },
     { code: "RUB", symbol: "₽", name: "Russian Ruble" },
     { code: "LKR", symbol: "Rs", name: "Sri Lankan Rupee" }
-  ]
+  ],
+
+  // Supabase Backend CMS Configuration
+  // (Safe for frontend: protected by Postgres Row Level Security)
+  supabase: {
+    url: "", // e.g. "https://your-project-id.supabase.co"
+    anonKey: "", // Public anon key from Project Settings > API
+    storageBucket: "media"
+  }
 };
 
 // Freeze config object to prevent accidental runtime mutations

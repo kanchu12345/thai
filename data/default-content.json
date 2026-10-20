@@ -1,0 +1,163 @@
+{
+  "site_settings": {
+    "general": {
+      "companyName": "LOTUS CEYLON International Tours & Services (Pvt) Ltd",
+      "shortName": "Lotus Ceylon Tours",
+      "slogan": "PURE JOURNEYS. SACRED EXPERIENCES.",
+      "foundedYear": 2014,
+      "phone": "+94 71 54 22 384",
+      "phoneRaw": "94715422384",
+      "email": "inquiry@lotusceylon.com",
+      "secondaryEmail": "lotusceylontours@gmail.com",
+      "address": "286/C, Niwandama South, Ja-Ela, Sri Lanka – 11350",
+      "whatsapp": "+94 71 54 22 384"
+    },
+    "hero": {
+      "headline": "PURE JOURNEYS. SACRED EXPERIENCES.",
+      "intro": "Handcrafted luxury, cultural immersion, and timeless heritage across the pearl of the Indian Ocean with Lotus Ceylon Tours since 2014."
+    }
+  },
+  "tour_categories": [
+    {
+      "slug": "cultural-triangle",
+      "name": "Cultural Triangle",
+      "tagline": "Ancient Palaces & Monasteries",
+      "description": "Explore Sigiriya, Polonnaruwa, and Anuradhapura.",
+      "sort_order": 1,
+      "is_published": true
+    },
+    {
+      "slug": "buddhist-heritage",
+      "name": "Buddhist Heritage",
+      "tagline": "Sacred Temples & Pilgrimages",
+      "description": "Sacred relics, Temple of the Tooth, and revered caves.",
+      "sort_order": 2,
+      "is_published": true
+    },
+    {
+      "slug": "wildlife-safari",
+      "name": "Wildlife & Safari",
+      "tagline": "Leopards, Elephants & Whales",
+      "description": "Yala, Udawalawe, Minneriya and ocean whale sanctuaries.",
+      "sort_order": 3,
+      "is_published": true
+    },
+    {
+      "slug": "pristine-beaches",
+      "name": "Pristine Beaches",
+      "tagline": "Golden Shores & Coastal Calm",
+      "description": "Bentota, Mirissa, Tangalle and Pasikudah coastal havens.",
+      "sort_order": 4,
+      "is_published": true
+    },
+    {
+      "slug": "hill-country-tea",
+      "name": "Hill Country & Tea",
+      "tagline": "Mist, Waterfalls & Plantations",
+      "description": "Nuwara Eliya, Ella, and world-renowned Ceylon tea estates.",
+      "sort_order": 5,
+      "is_published": true
+    },
+    {
+      "slug": "authentic-ayurveda",
+      "name": "Authentic Ayurveda",
+      "tagline": "Holistic Healing & Wellness",
+      "description": "Rejuvenating herbal wellness therapies and yoga retreats.",
+      "sort_order": 6,
+      "is_published": true
+    },
+    {
+      "slug": "romantic-honeymoon",
+      "name": "Romantic Honeymoon",
+      "tagline": "Private Escapes & Sunset Cruises",
+      "description": "Curated romantic hideaways with bespoke candlelit dinners.",
+      "sort_order": 7,
+      "is_published": true
+    },
+    {
+      "slug": "family-escapes",
+      "name": "Family Escapes",
+      "tagline": "Joyful Discoveries for All Ages",
+      "description": "Comfortable transfers, wildlife safaris, and beach fun.",
+      "sort_order": 8,
+      "is_published": true
+    },
+    {
+      "slug": "adventure-trekking",
+      "name": "Adventure & Trekking",
+      "tagline": "Peaks, Rainforests & Rapids",
+      "description": "Knuckles Mountain Range, Adam’s Peak, and white water rafting.",
+      "sort_order": 9,
+      "is_published": true
+    },
+    {
+      "slug": "ramayana-trail",
+      "name": "Ramayana Trail",
+      "tagline": "Epic Legend & Sacred Sites",
+      "description": "Seetha Amman temple, Ravana caves, and ancient legend spots.",
+      "sort_order": 10,
+      "is_published": true
+    }
+  ],
+  "tours": [
+    {
+      "slug": "grand-ceylon-heritage",
+      "title": "Grand Ceylon Heritage & Wildlife Odyssey",
+      "category_slug": "cultural-triangle",
+      "nights": 9,
+      "days": 10,
+      "price_from": 1450,
+      "is_popular": true,
+      "hero_image": "assets/images/cultural-triangle.jpg",
+      "overview": "A definitive voyage through Sri Lanka’s UNESCO world heritage wonders, misty highlands, and untamed leopard territory.",
+      "highlights": ["Sigiriya Rock Fortress sunrise climb", "Private Yala National Park jeep safari", "Scenic Kandy to Ella mountain train ride", "Temple of the Sacred Tooth Relic visit"],
+      "is_published": true
+    },
+    {
+      "slug": "sacred-footsteps-pilgrimage",
+      "title": "Sacred Footsteps Buddhist Pilgrimage",
+      "category_slug": "buddhist-heritage",
+      "nights": 7,
+      "days": 8,
+      "price_from": 1150,
+      "is_popular": false,
+      "hero_image": "assets/images/kandy.jpg",
+      "overview": "Immerse in peaceful ancient monastic ruins, sacred stupas, and guided meditation with venerable monks.",
+      "highlights": ["Anuradhapura Sacred Bodhi Tree", "Dambulla Golden Cave Temple", "Mihintale cradle of Buddhism", "Kandy evening Thewawa ceremony"],
+      "is_published": true
+    },
+    {
+      "slug": "southern-ocean-wildlife-escape",
+      "title": "Southern Coast & Wild Leopard Safari",
+      "category_slug": "wildlife-safari",
+      "nights": 6,
+      "days": 7,
+      "price_from": 980,
+      "is_popular": false,
+      "hero_image": "assets/images/yala.jpg",
+      "overview": "Experience the majestic ocean giants of Mirissa combined with high-density leopard trails in Yala and golden sunsets.",
+      "highlights": ["Blue whale watching expedition", "2 game drives in Yala Block 1", "Galle Dutch Fort walking tour", "Private beachfront dinner in Mirissa"],
+      "is_published": true
+    }
+  ],
+  "reviews": [
+    {
+      "guest_name": "David & Sarah Jenkins",
+      "country": "United Kingdom",
+      "rating": 5,
+      "review_text": "Lotus Ceylon made our 10-day tour utterly magical. The chauffeur-guide was exceptionally knowledgeable and every hotel exceeded our expectations.",
+      "tour_taken": "Grand Ceylon Heritage",
+      "date_traveled": "February 2026",
+      "is_published": true
+    },
+    {
+      "guest_name": "Li Wei & Family",
+      "country": "China",
+      "rating": 5,
+      "review_text": "Very professional service, punctual luxury transport, and child-friendly itinerary. We loved the tea plantation and elephant gathering!",
+      "tour_taken": "Family Escapes",
+      "date_traveled": "January 2026",
+      "is_published": true
+    }
+  ]
+}
