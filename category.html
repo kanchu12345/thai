@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tour Category | Lotus Ceylon International Tours</title>
+  <link rel="icon" type="image/png" href="logo.png?v=20261021_step1">
+  <link rel="stylesheet" href="css/style.css?v=20261021_step1">
+  <!-- Dynamic Supabase Integration -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/config.js"></script>
+  <script src="js/supabase-client.js"></script>
+  <script src="js/dynamic-renderer.js"></script>
+</head>
+<body>
+
+  <!-- Sticky Header -->
+  <header class="site-header-walkers is-scrolled" id="header" style="position: sticky; top: 0; background: var(--ivory);">
+    <div class="wrapper--95">
+      <div class="header-nav-wrap">
+        <a href="index.html" class="walkers-brand-link">
+          <img src="logo.png?v=20261021_step1" alt="Lotus Ceylon Logo" class="walkers-brand-logo">
+          <div class="walkers-brand-text">
+            <span class="walkers-brand-title">Lotus Ceylon</span>
+            <span class="walkers-brand-sub">INTERNATIONAL TOURS &amp; SERVICES</span>
+          </div>
+        </a>
+
+        <nav aria-label="Main Navigation">
+          <ul class="walkers-menu">
+            <li class="walkers-menu-item"><a href="index.html" class="walkers-menu-link">Home</a></li>
+            <li class="walkers-menu-item"><a href="tours.html" class="walkers-menu-link active">Tours</a></li>
+            <li class="walkers-menu-item"><a href="index.html#about" class="walkers-menu-link">About Us</a></li>
+            <li class="walkers-menu-item"><a href="index.html#reviews" class="walkers-menu-link">Reviews</a></li>
+            <li class="walkers-menu-item"><a href="index.html#contact" class="walkers-menu-link">Contact</a></li>
+          </ul>
+        </nav>
+
+        <div class="header-tools">
+          <a href="inquiry-detailed.html" class="gold-inquire-btn">
+            <span>Inquire Now</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Category Hero Banner -->
+  <section class="banner-section-inner" style="background: linear-gradient(135deg, var(--ink) 0%, var(--lotus-primary-dark) 100%); padding: 80px 0; text-align: center; color: #fff;">
+    <div class="wrapper--80">
+      <span style="color: var(--sacred-gold); font-size: 0.85rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 700;">Curated Journey Theme</span>
+      <h1 class="serif" id="categoryPageTitle" style="font-size: 3rem; margin: 12px 0; color: #fff;">Loading Category...</h1>
+      <p id="categoryPageDesc" style="max-width: 650px; margin: 0 auto; color: rgba(255,255,255,0.85); font-size: 1.1rem; line-height: 1.6;"></p>
+    </div>
+  </section>
+
+  <!-- Matching Packages Grid -->
+  <main class="padding-top--70 padding-bottom--70">
+    <div class="wrapper--80">
+      <h2 class="serif" style="font-size: 1.8rem; margin-bottom: 24px;">Featured Itineraries</h2>
+      <div id="categoryToursContainer" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 30px;">
+        <!-- Filled dynamically by DynamicRenderer -->
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer-walkers" style="background: var(--ink); color: #fff; padding: 60px 0 30px;">
+    <div class="wrapper--80" style="text-align: center;">
+      <p>&copy; <span id="currentYear">2026</span> LOTUS CEYLON INTERNATIONAL TOURS &amp; SERVICES (PVT) LTD.</p>
+      <div class="designer-credit" style="margin-top: 10px; font-size: 0.85rem; color: rgba(255,255,255,0.6);">
+        Designed &amp; Developed by <a href="https://infiniteweb.dev/" target="_blank" rel="noopener" style="color: var(--sacred-gold);">Infinite Design</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

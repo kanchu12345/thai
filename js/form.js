@@ -717,10 +717,35 @@ function extractFormData(form, isQuickForm) {
 }
 
 /**
- * Submit to backend (Formspree / EmailJS / Custom API)
+ * Submit to backend (Supabase / Formspree / EmailJS / Custom API)
  */
 async function submitToService(data) {
-  const provider = LOTUS_CONFIG.submission.provider;
+  // 1. Direct Supabase Inquiries Table Insert with RLS Protection
+  if (window.LotusSupabase && typeof window.LotusSupabase.submitInquiry === "function") {
+    try {
+      const supaPayload = {
+        reference_no: data.referenceId,
+        full_name: data.fullName,
+        email: data.emailAddress,
+        phone: data.whatsapp,
+        country: data.country,
+        travel_dates: `${data.arrivalDate || ''} to ${data.departureDate || ''}`,
+        travelers_count: parseInt(data.totalPax) || 2,
+        package_type: data.interests || (data.isQuickForm ? 'Quick Inquiry' : 'Custom Tour Inquiry'),
+        budget_range: `${data.currency || 'USD'} ${data.packageBudget || ''}`,
+        special_notes: `Hotels: ${data.hotelCategory || 'N/A'}\nRooms: ${data.roomsRequired || '1'}\nMeal Plan: ${data.mealPlan || 'N/A'}\nNotes: ${data.otherRequirements || ''}`
+      };
+      const result = await window.LotusSupabase.submitInquiry(supaPayload);
+      if (result && result.referenceNo) {
+        data.referenceId = result.referenceNo;
+      }
+      console.info("[Lotus CMS] Inquiry recorded in Supabase:", data.referenceId);
+    } catch (e) {
+      console.warn("[Lotus CMS] Supabase insert warning:", e);
+    }
+  }
+
+  const provider = LOTUS_CONFIG.submission ? LOTUS_CONFIG.submission.provider : null;
 
   if (provider === "formspree" && LOTUS_CONFIG.submission.formspreeEndpoint) {
     const response = await fetch(LOTUS_CONFIG.submission.formspreeEndpoint, {
@@ -746,7 +771,7 @@ async function submitToService(data) {
   }
 
   // Fallback simulator for GitHub Pages static hosting
-  return new Promise((resolve) => setTimeout(resolve, 800));
+  return new Promise((resolve) => setTimeout(resolve, 600));
 }
 
 /**

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Travel Stories & Sri Lanka Insights | Lotus Ceylon</title>
+  <link rel="icon" type="image/png" href="logo.png?v=20261021_step1">
+  <link rel="stylesheet" href="css/style.css?v=20261021_step1">
+  <!-- Dynamic Supabase Integration -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/config.js"></script>
+  <script src="js/supabase-client.js"></script>
+  <script src="js/dynamic-renderer.js"></script>
+</head>
+<body>
+
+  <!-- Sticky Header -->
+  <header class="site-header-walkers is-scrolled" id="header" style="position: sticky; top: 0; background: var(--ivory);">
+    <div class="wrapper--95">
+      <div class="header-nav-wrap">
+        <a href="index.html" class="walkers-brand-link">
+          <img src="logo.png?v=20261021_step1" alt="Lotus Ceylon Logo" class="walkers-brand-logo">
+          <div class="walkers-brand-text">
+            <span class="walkers-brand-title">Lotus Ceylon</span>
+            <span class="walkers-brand-sub">INTERNATIONAL TOURS &amp; SERVICES</span>
+          </div>
+        </a>
+
+        <nav aria-label="Main Navigation">
+          <ul class="walkers-menu">
+            <li class="walkers-menu-item"><a href="index.html" class="walkers-menu-link">Home</a></li>
+            <li class="walkers-menu-item"><a href="tours.html" class="walkers-menu-link">Tours</a></li>
+            <li class="walkers-menu-item"><a href="index.html#about" class="walkers-menu-link">About Us</a></li>
+            <li class="walkers-menu-item"><a href="blog.html" class="walkers-menu-link active">Blog</a></li>
+            <li class="walkers-menu-item"><a href="index.html#contact" class="walkers-menu-link">Contact</a></li>
+          </ul>
+        </nav>
+
+        <div class="header-tools">
+          <a href="inquiry-detailed.html" class="gold-inquire-btn">
+            <span>Inquire Now</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Dynamic Blog Single Container -->
+  <main id="singleBlogContainer">
+    <div style="max-width: 800px; margin: 0 auto; padding: 60px 20px;">
+      <span style="color: var(--lotus-primary); font-weight: 700; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px;">Lotus Ceylon Travel Insights</span>
+      <h1 class="serif" style="font-size: 2.8rem; margin: 12px 0 16px; line-height: 1.2;">The Sacred Essence of Ancient Ceylon: Monasteries, Mist & Healing</h1>
+      <p style="color: var(--ink-muted); font-size: 0.85rem; margin-bottom: 24px;">Published by Lotus Ceylon Editorial &bull; 8 min read</p>
+      
+      <img src="assets/images/cultural-triangle.jpg" alt="Ancient Ceylon" style="width: 100%; height: 420px; object-fit: cover; border-radius: 12px; margin-bottom: 30px;">
+      
+      <div style="font-size: 1.1rem; line-height: 1.85; color: var(--ink-light);">
+        <p style="margin-bottom: 20px;">
+          Sri Lanka is more than an island of sun-drenched shores; it is an enduring sanctuary of ancient Buddhist heritage, architectural miracles, and holistic Ayurvedic renewal that has sustained travelers for thousands of years.
+        </p>
+        <p style="margin-bottom: 20px;">
+          From the soaring monolith of Sigiriya—crowned with 5th-century royal gardens and exquisite cloud maidens—to the serene stupas of Anuradhapura that pierce the northern sky, every corner reflects our ethos of <em>Pure Journeys and Sacred Experiences</em>.
+        </p>
+        <div style="background: var(--ivory); border-left: 4px solid var(--lotus-primary); padding: 20px; border-radius: 8px; margin: 30px 0;">
+          <p style="font-style: italic; font-weight: 600; color: var(--ink);">
+            &ldquo;Travel in Sri Lanka is not merely movement across geography; it is an awakening of mindfulness, hospitality, and profound connection with nature.&rdquo;
+          </p>
+        </div>
+        <p style="margin-bottom: 20px;">
+          Whether sipping fresh Pekoe tea amidst the mist-cloaked peaks of Nuwara Eliya or witnessing the gathering of hundreds of wild Asian elephants on the Minneriya lakebed, Lotus Ceylon crafts each private expedition to resonate deep within the spirit.
+        </p>
+      </div>
+
+      <div style="margin-top: 50px; padding: 30px; background: var(--mist); border-radius: 14px; text-align: center;">
+        <h3 class="serif" style="font-size: 1.6rem; margin-bottom: 8px;">Ready to Experience This Sacred Journey?</h3>
+        <p style="color: var(--ink-light); margin-bottom: 20px; font-size: 0.95rem;">Let our master travel designers tailor an exclusive journey for your family or private group.</p>
+        <a href="inquiry-detailed.html" class="gold-inquire-btn" style="display: inline-flex;">Plan My Bespoke Itinerary</a>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer-walkers" style="background: var(--ink); color: #fff; padding: 60px 0 30px;">
+    <div class="wrapper--80" style="text-align: center;">
+      <p>&copy; <span id="currentYear">2026</span> LOTUS CEYLON INTERNATIONAL TOURS &amp; SERVICES (PVT) LTD.</p>
+      <div class="designer-credit" style="margin-top: 10px; font-size: 0.85rem; color: rgba(255,255,255,0.6);">
+        Designed &amp; Developed by <a href="https://infiniteweb.dev/" target="_blank" rel="noopener" style="color: var(--sacred-gold);">Infinite Design</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
