@@ -313,17 +313,20 @@ ul, ol {
 }
 
 .next-btn--gold {
-  color: var(--color-dark-blue);
-  background: var(--color-gold);
-  padding: 0.65rem 1.4rem;
+  color: #FFFFFF;
+  background: linear-gradient(135deg, var(--color-lotus-pink) 0%, #DA827D 50%, var(--color-gold) 100%);
+  padding: 0.75rem 1.75rem;
   border-radius: var(--radius-full);
-  box-shadow: 0 4px 15px rgba(212, 163, 89, 0.35);
+  font-weight: 700;
+  box-shadow: 0 6px 22px rgba(201, 84, 81, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.25);
 }
 
 .next-btn--gold:hover {
-  background: var(--color-gold-hover);
-  color: var(--color-white);
+  background: linear-gradient(135deg, var(--color-gold) 0%, var(--color-lotus-pink) 100%);
+  color: #FFFFFF;
   transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(201, 84, 81, 0.65);
 }
 
 /* ==========================================================================
@@ -644,11 +647,11 @@ ul, ol {
   color: #FFFFFF;
 }
 
-/* Inquire Now Pill Button */
+/* Inquire Now Pill Button (Deep Lotus Carmine Rose Palette #4) */
 .inquire-btn {
-  background: #FFFFFF;
-  color: var(--color-dark-blue);
-  padding: 0.55rem 1.35rem;
+  background: var(--color-lotus-pink);
+  color: #FFFFFF;
+  padding: 0.58rem 1.45rem;
   border-radius: var(--radius-full);
   font-size: 0.86rem;
   font-weight: 700;
@@ -656,22 +659,23 @@ ul, ol {
   letter-spacing: 0.08em;
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.12);
+  gap: 0.6rem;
+  box-shadow: 0 4px 18px rgba(201, 84, 81, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   transition: var(--transition);
 }
 
 .inquire-btn svg {
-  fill: var(--color-dark-blue);
+  fill: #FFFFFF;
   width: 18px;
   height: 18px;
   transition: transform 0.3s ease;
 }
 
 .inquire-btn:hover {
-  background: var(--color-lotus-gradient);
+  background: linear-gradient(135deg, #DA827D 0%, #C95451 100%);
   color: #FFFFFF;
-  box-shadow: 0 6px 22px rgba(201, 84, 81, 0.42);
+  box-shadow: 0 6px 24px rgba(201, 84, 81, 0.65);
   transform: translateY(-2px);
 }
 
@@ -850,12 +854,18 @@ ul, ol {
 
 .banner-subtitle-badge {
   display: inline-block;
-  font-size: 0.85rem;
-  font-weight: 600;
+  font-size: 0.82rem;
+  font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.16em;
-  color: var(--color-gold);
-  margin-bottom: 0.75rem;
+  color: #FFFFFF;
+  background: rgba(201, 84, 81, 0.88);
+  border: 1px solid rgba(248, 229, 221, 0.45);
+  padding: 0.35rem 1.15rem;
+  border-radius: var(--radius-full);
+  margin-bottom: 0.95rem;
+  box-shadow: 0 4px 16px rgba(201, 84, 81, 0.4);
+  backdrop-filter: blur(6px);
 }
 
 .banner-main-title {
