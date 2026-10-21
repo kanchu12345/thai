@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tour Category | Lotus Ceylon International Tours</title>
   <link rel="icon" type="image/png" href="logo.png?v=20261021_step1">
-  <link rel="stylesheet" href="css/style.css?v=20261021_step1">
+  <link rel="stylesheet" href="css/style.css?v=20261021_watermark">
   <!-- Dynamic Supabase Integration -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="https://cdn.jsdelivr.net/npm/dompurify@3.1.6/dist/purify.min.js"></script>
@@ -58,7 +58,10 @@
   <!-- Matching Packages Grid -->
   <main class="padding-top--70 padding-bottom--70">
     <div class="wrapper--80">
-      <h2 class="serif" style="font-size: 1.8rem; margin-bottom: 24px;">Featured Itineraries</h2>
+      <div class="section-watermark-header">
+        <p class="watermark-heading">itineraries</p>
+        <h2 class="section-header-title">Featured Itineraries</h2>
+      </div>
       <div id="categoryToursContainer" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 30px;">
         <!-- Filled dynamically by DynamicRenderer -->
       </div>

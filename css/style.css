@@ -239,22 +239,55 @@ ul, ol {
   letter-spacing: 0.08em;
 }
 
-/* Watermark typography in background - Luxury Gold Shadow Effect */
-.watermark-heading {
-  font-size: clamp(48px, 10.5vw, 140px);
-  font-weight: 800;
-  color: var(--color-watermark-gold);
-  text-shadow: 0 4px 25px rgba(212, 163, 89, 0.22), 0 1px 3px rgba(179, 135, 68, 0.15);
+/* ==============================================================================
+ * WALKERS TOURS SIGNATURE WATERMARK HEADER EFFECT (Clean Light Gray Backdrop)
+ * ============================================================================== */
+.section-watermark-header {
+  position: relative;
   text-align: center;
-  text-transform: uppercase;
-  line-height: 0.85;
-  letter-spacing: 0.05em;
+  margin-bottom: 2.2rem;
+  padding-top: 0.5rem;
+}
+
+.watermark-heading {
+  font-family: var(--font-main, 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif);
+  font-size: clamp(52px, 8.8vw, 130px);
+  font-weight: 700;
+  color: #E2E6E9; /* Exact soft light gray backdrop as in reference */
+  text-align: center;
+  text-transform: lowercase;
+  line-height: 0.92;
+  letter-spacing: -0.025em;
   user-select: none;
   pointer-events: none;
-  margin-bottom: -1.2rem;
+  margin: 0 auto -0.42em;
   position: relative;
   z-index: 1;
   max-width: 100%;
+  display: block;
+}
+
+.watermark-heading + h2,
+.watermark-heading + .heading--60,
+.section-watermark-header h2,
+.section-watermark-header .section-header-title {
+  position: relative;
+  z-index: 2;
+  font-family: var(--font-main, 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif);
+  font-size: clamp(26px, 3.4vw, 42px);
+  font-weight: 700;
+  color: var(--ink, #1C1B1F);
+  text-align: center;
+  letter-spacing: -0.015em;
+  line-height: 1.25;
+  margin: 0 auto;
+}
+
+.watermark-heading + h2 span,
+.watermark-heading + .heading--60 span,
+.section-watermark-header h2 span {
+  font-weight: 700;
+  color: var(--ink, #1C1B1F);
 }
 
 /* Next Button System (Walkers Tours Round Arrow Pill) */
