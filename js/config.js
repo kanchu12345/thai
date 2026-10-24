@@ -153,6 +153,24 @@ const LOTUS_CONFIG = {
     url: "", // e.g. "https://your-project-id.supabase.co"
     anonKey: "", // Public anon key from Project Settings > API
     storageBucket: "media"
+  },
+
+  // Firebase Web App Configuration (Public Client Values)
+  firebase: {
+    apiKey: "AIzaSyD5NyCFaPHeS1cKlsgxZ_WsraswHlYonNA",
+    authDomain: "louterst-36b64.firebaseapp.com",
+    projectId: "louterst-36b64",
+    storageBucket: "louterst-36b64.firebasestorage.app",
+    messagingSenderId: "416036235757",
+    appId: "1:416036235757:web:544c89abdb74b41a585fe4",
+    measurementId: "G-KKNCD89X6F"
+  },
+
+  // Cloudinary Client Configuration (Public CDN & Unsigned Upload)
+  cloudinary: {
+    cloudName: "qmukrbh6",
+    uploadPreset: "lotus_tours_unsigned",
+    folder: "lotus/tours"
   }
 };
 
