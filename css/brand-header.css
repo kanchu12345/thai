@@ -1,47 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Montserrat:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&display=swap');
+
 /* ==============================================================================
- * LOTUS CEYLON - HEADER BRAND TYPOGRAPHY ILLUMINATION
- * Fixes subtitle "INTERNATIONAL TOURS & SERVICES" to match top white text
+ * LOTUS CEYLON - PREMIUM BRAND LOGO & TYPOGRAPHY SYSTEM
+ * Upgrades the emblem size, radiance, luxury typography & crystal visibility
  * ============================================================================== */
 
-/* Brand Title: Lotus Ceylon */
+/* Brand Link Container */
+.header-brand {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 1.1rem !important;
+  text-decoration: none !important;
+}
+
+/* 3D Golden Emblem Logo - Bigger, Radiant & Vivid */
+.header-brand-logo {
+  height: 78px !important;
+  width: auto !important;
+  max-width: 98px !important;
+  object-fit: contain !important;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.75)) drop-shadow(0 0 18px rgba(247, 202, 104, 0.5)) !important;
+  transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1), 
+              filter 300ms cubic-bezier(0.4, 0, 0.2, 1), 
+              height 300ms ease !important;
+}
+
+.header-brand:hover .header-brand-logo {
+  transform: scale(1.05) !important;
+  filter: drop-shadow(0 6px 20px rgba(0, 0, 0, 0.85)) drop-shadow(0 0 24px rgba(247, 202, 104, 0.75)) !important;
+}
+
+/* Brand Text Block */
+.header-brand-text {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  line-height: 1.15 !important;
+}
+
+/* Primary Brand Title: LOTUS CEYLON
+ * Uses 'Cinzel' (Classic Imperial Luxury Roman Serif) for supreme elegance and visibility */
 .header-brand-name,
 .walkers-brand-title {
-  font-family: 'Playfair Display', Georgia, serif !important;
-  font-weight: 700 !important;
-  font-size: 1.45rem !important;
-  letter-spacing: 0.03em !important;
-  color: #FFFFFF !important;
-  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.65)) !important;
+  font-family: 'Cinzel', 'Playfair Display', Georgia, serif !important;
+  font-weight: 800 !important;
+  font-size: 1.68rem !important;
+  letter-spacing: 0.05em !important;
   line-height: 1.1 !important;
+  display: flex !important;
+  align-items: baseline !important;
+  gap: 0.45rem !important;
+  margin: 0 !important;
+  filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.9)) !important;
+  transition: all 300ms ease !important;
 }
 
+/* Lotus - Pure Brilliant Crisp White */
 .brand-name-lotus {
   color: #FFFFFF !important;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.95), 0 0 16px rgba(255, 255, 255, 0.35) !important;
 }
 
+/* Ceylon - Rich Radiant 3D Emblem Gold */
 .brand-name-ceylon {
-  color: #E89E9B !important; /* Soft luxury Lotus Rose */
+  background: linear-gradient(135deg, #FFF1D0 0%, #F7CA68 45%, #E5A538 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.9)) drop-shadow(0 0 14px rgba(247, 202, 104, 0.55)) !important;
 }
 
-/* Subtitle: "INTERNATIONAL TOURS & SERVICES"
- * Illuminated crisp white over dark hero banner, eliminating the dark/black text */
+/* Subtitle: INTERNATIONAL TOURS AND SERVICES
+ * Modern luxury geometric sans-serif (Plus Jakarta Sans) with wide tracking for maximum readability */
 .header-brand-sub,
 .walkers-brand-sub,
 .brand-slogan {
-  color: #FFFFFF !important; /* Matches top white text */
-  font-family: 'Playfair Display', Georgia, serif !important;
-  font-size: 0.62rem !important;
-  font-weight: 600 !important;
-  letter-spacing: 0.22em !important;
+  font-family: 'Plus Jakarta Sans', 'Montserrat', -apple-system, sans-serif !important;
+  font-size: 0.67rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.28em !important;
   text-transform: uppercase !important;
-  margin-top: 3px !important;
+  color: #FFFFFF !important;
+  margin-top: 5px !important;
   display: block !important;
-  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.85) !important;
-  opacity: 0.95 !important;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.95), 0 2px 8px rgba(0, 0, 0, 0.8) !important;
+  opacity: 0.98 !important;
   transition: color 300ms ease, text-shadow 300ms ease, opacity 300ms ease !important;
 }
 
 /* When Scrolled (Header transitions to solid ivory #FBF7F0) */
+.site-header-walkers.is-scrolled .header-brand-logo {
+  height: 56px !important;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.2)) !important;
+}
+
 .site-header-walkers.is-scrolled .header-brand-name,
 .site-header-walkers.is-scrolled .walkers-brand-title {
   color: var(--ink, #1C1B1F) !important;
@@ -50,18 +101,23 @@
 
 .site-header-walkers.is-scrolled .brand-name-lotus {
   color: var(--ink, #1C1B1F) !important;
+  text-shadow: none !important;
 }
 
 .site-header-walkers.is-scrolled .brand-name-ceylon {
-  color: var(--lotus-primary, #C95451) !important;
+  background: none !important;
+  -webkit-background-clip: initial !important;
+  -webkit-text-fill-color: initial !important;
+  color: #C95451 !important; /* Signature Lotus Carmine over ivory */
+  filter: none !important;
 }
 
 .site-header-walkers.is-scrolled .header-brand-sub,
 .site-header-walkers.is-scrolled .walkers-brand-sub,
 .site-header-walkers.is-scrolled .brand-slogan {
-  color: var(--ink, #1C1B1F) !important;
+  color: #4A453E !important;
   text-shadow: none !important;
-  opacity: 0.85 !important;
+  opacity: 0.9 !important;
 }
 
 /* ==============================================================================
