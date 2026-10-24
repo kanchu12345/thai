@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sri Lanka Ramayana Tour Packages & Sacred Pilgrimages | Lotus Ceylon</title>
+  <meta name="description" content="Discover sacred Ramayana tours in Sri Lanka with Lotus Ceylon. Visit Seetha Amman Temple, Munneswaram, Ravana Cave, and Koneswaram.">
+  <link rel="icon" type="image/png" href="logo.png?v=20261021_step1">
+
+  <!-- Google Fonts: DM Sans & Playfair Display -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+  <!-- Master Stylesheets -->
+  <link rel="stylesheet" href="css/style.css?v=20261021_watermark_v2">
+  <link rel="stylesheet" href="css/brand-header.css?v=20261021_wide_v2">
+
+  <style>
+    :root {
+      --watermark-shadow-pink: #EEDBE2;
+    }
+    .watermark-heading, .section-watermark-header .watermark-heading {
+      color: #EEDBE2 !important;
+      -webkit-text-stroke: 1px rgba(201, 84, 81, 0.18) !important;
+    }
+    .beach-packages-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 32px;
+      margin-top: 40px;
+    }
+    .beach-package-card {
+      background: #FFFFFF;
+      border: 1px solid #E2E8F0;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+      display: flex;
+      flex-direction: column;
+      transition: all 0.35s ease;
+    }
+    .beach-package-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 16px 32px rgba(0,43,73,0.1);
+      border-color: #C5A880;
+    }
+    .beach-card-img-wrap {
+      position: relative;
+      height: 230px;
+      overflow: hidden;
+    }
+    .beach-card-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .beach-package-card:hover .beach-card-img-wrap img {
+      transform: scale(1.05);
+    }
+    .beach-tag-badge {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      background: rgba(0, 43, 73, 0.88);
+      color: #C5A880;
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .beach-duration-pill {
+      position: absolute;
+      bottom: 14px;
+      right: 14px;
+      background: rgba(255, 255, 255, 0.95);
+      color: #002B49;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.78rem;
+      font-weight: 700;
+    }
+    .beach-card-body {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+    .beach-card-category {
+      font-size: 0.8rem;
+      color: #C5A880;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .beach-card-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.35rem;
+      color: #002B49;
+      margin-bottom: 8px;
+    }
+    .beach-card-route {
+      font-size: 0.84rem;
+      color: #64748B;
+      margin-bottom: 12px;
+      line-height: 1.5;
+    }
+    .beach-card-desc {
+      color: #475569;
+      font-size: 0.9rem;
+      line-height: 1.6;
+      margin-bottom: 16px;
+      flex-grow: 1;
+    }
+    .beach-card-highlights {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 20px 0;
+      border-top: 1px dashed #E2E8F0;
+      padding-top: 14px;
+    }
+    .beach-card-highlights li {
+      font-size: 0.85rem;
+      color: #1E293B;
+      padding: 4px 0;
+    }
+    .beach-card-actions {
+      display: flex;
+      gap: 10px;
+      margin-top: auto;
+    }
+    .btn-beach-view {
+      flex: 1;
+      background: #002B49;
+      color: #FFFFFF;
+      text-decoration: none;
+      padding: 10px 14px;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: background 0.2s;
+    }
+    .btn-beach-view:hover {
+      background: #C5A880;
+      color: #002B49;
+    }
+    .btn-beach-inquire {
+      background: transparent;
+      border: 1px solid #002B49;
+      color: #002B49;
+      text-decoration: none;
+      padding: 10px 18px;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+    }
+    .btn-beach-inquire:hover {
+      background: #002B49;
+      color: #FFFFFF;
+    }
+    .comparison-table-wrap {
+      background: #FFFFFF;
+      border: 1px solid #E2E8F0;
+      border-radius: 12px;
+      overflow-x: auto;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.03);
+      margin-top: 30px;
+    }
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+    .comparison-table th, .comparison-table td {
+      padding: 16px 20px;
+      border-bottom: 1px solid #F1F5F9;
+    }
+    .comparison-table th {
+      background: #002B49;
+      color: #FFFFFF;
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+    }
+    .comparison-table tr:hover {
+      background: #F8FAFC;
+    }
+    .comp-check {
+      color: #10B981;
+      font-weight: 800;
+      font-size: 1.1rem;
+    }
+    .comp-cross {
+      color: #CBD5E1;
+      font-size: 1.1rem;
+    }
+  </style>
+</head>
+
+<body>
+
+<header class="site-header-walkers" id="siteHeader">
+    <div class="wrapper--95">
+      <div class="header-top-row">
+        
+        <!-- Brand Logo & Title -->
+        <a href="index.html" class="header-brand" title="Lotus Ceylon International Tours &amp; Services">
+          <img src="logo.png?v=20261021_step1" alt="Lotus Ceylon Emblem" class="header-brand-logo">
+          <div class="header-brand-text">
+            <span class="header-brand-name"><span class="brand-name-lotus">Lotus</span> <span class="brand-name-ceylon">Ceylon</span></span>
+            <span class="header-brand-sub">INTERNATIONAL TOURS &amp; SERVICES</span>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation Menu -->
+        <nav aria-label="Main Navigation">
+          <ul class="walkers-menu" id="primaryNav">
+            <li class="walkers-menu-item">
+              <a href="index.html" class="walkers-menu-link active">Home</a>
+            </li>
+
+            <!-- Tours with Mega Dropdown (10 Categories) -->
+            <li class="walkers-menu-item">
+              <a href="#packages" class="walkers-menu-link">
+                <span>Tours</span>
+                <svg class="walkers-caret" viewBox="0 0 10 6"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" fill="none"/></svg>
+              </a>
+              <div class="walkers-megamenu">
+                <div class="megamenu-header">
+                  <span class="megamenu-header-title">Curated Ceylon Tour Categories</span>
+                  <a href="sri-lanka-tours.html" class="megamenu-view-all">All Tours ➔</a>
+                </div>
+                <div class="megamenu-grid-10">
+                  <a href="cultural-tours.html" class="megamenu-cat-card">
+                    <span class="megamenu-cat-icon">🏛️</span>
+                    <div class="megamenu-cat-text">
+                      <span class="megamenu-cat-name">Cultural</span>
+                      <span class="megamenu-cat-desc">Ancient kingdoms & rock temples</span>
+                    </div>
+                  </a>
+                  <a href="sri-lanka-tours.html#buddhist" class="megamenu-cat-card">
+                    <span class="megamenu-cat-icon">☸️</span>
+                    <div class="megamenu-cat-text">
+                      <span class="megamenu-cat-name">Buddhist Heritage</span>
+                      <span class="megamenu-cat-desc">Sacred stupas & monastic pilgrimages</span>
+                    </div>
+                  </a>
+                  <a href="wildlife-tours.html" class="megamenu-cat-card">
+                    <span class="megamenu-cat-icon">🐆</span>
+                    <div class="megamenu-cat-text">
+                      <span class="megamenu-cat-name">Wildlife</span>
+                      <span class="megamenu-cat-desc">Yala leopards & elephant gathering</span>
+                    </div>
+                  </a>
+                  <a href="beach-tours.html" class="megamenu-cat-card">
+                    <span class="megamenu-cat-icon">🏖️</span>
+                    <div class="megamenu-cat-text">
+                      <span class="megamenu-cat-name">Beach</span>
+                      <span class="megamenu-cat-desc">Golden palms & private bays</span>
+                    </div>
+                  </a>
+                  <a href="sri-lanka-tours.html#hill-country" class="megamenu-cat-card">
+                    <span class="megamenu-cat-icon">⛰️</span>
+                    <div class="megamenu-cat-text">
+                      <span class="megamenu-cat-name">Hill Country</span>
+                      <span class="megamenu-cat-desc">Misty tea peaks & scenic rail</span>
+                    </div>
+                  </a>
+                  <a href="sri-lanka-tours.html#ayurveda" class="megamenu-cat-card">
+                    <span class="megamenu-cat-icon">🌿</span>
+                    <div class="megamenu-cat-text">
+                      <span class="megamenu-cat-name">Ayurveda</span>
+                      <span class="megamenu-cat-desc">Herbal sanctuaries & wellness</span>
+                    </div>
+                  </a>
+                  <a href="sri-lanka-tours.html#honeymoon" class="megamenu-cat-card">
+                    <span class="megamenu-cat-icon">💍</span>
+                    <div class="megamenu-cat-text">
+                      <span class="megamenu-cat-name">Honeymoon</span>
+                      <span class="megamenu-cat-desc">Bespoke luxury for couples</span>
+                    </div>
+                  </a>
+                  <a href="sri-lanka-tours.html#family" class="megamenu-cat-card">
+                    <span class="megamenu-cat-icon">👨‍👩‍👧‍👦</span>
+                    <div class="megamenu-cat-text">
+                      <span class="megamenu-cat-name">Family</span>
+                      <span class="megamenu-cat-desc">Safe journeys for all generations</span>
+                    </div>
+                  </a>
+                  <a href="sri-lanka-tours.html#adventure" class="megamenu-cat-card">
+                    <span class="megamenu-cat-icon">🧗‍♂️</span>
+                    <div class="megamenu-cat-text">
+                      <span class="megamenu-cat-name">Adventure</span>
+                      <span class="megamenu-cat-desc">Trekking, surfing & waterfalls</span>
+                    </div>
+                  </a>
+                  <a href="sri-lanka-tours.html#ramayana" class="megamenu-cat-card">
+                    <span class="megamenu-cat-icon">🏹</span>
+                    <div class="megamenu-cat-text">
+                      <span class="megamenu-cat-name">Ramayana</span>
+                      <span class="megamenu-cat-desc">Epic legendary sacred trail</span>
+                    </div>
+                  </a>
+                </div>
+              </div>
+            </li>
+
+            <li class="walkers-menu-item">
+              <a href="#destinations" class="walkers-menu-link">Destinations</a>
+            </li>
+            <li class="walkers-menu-item">
+              <a href="#experiences" class="walkers-menu-link">Experiences</a>
+            </li>
+            <li class="walkers-menu-item">
+              <a href="about.html" class="walkers-menu-link">About Us</a>
+            </li>
+            <li class="walkers-menu-item">
+              <a href="#gallery" class="walkers-menu-link">Gallery</a>
+            </li>
+            <li class="walkers-menu-item">
+              <a href="#reviews" class="walkers-menu-link">Reviews</a>
+            </li>
+            <li class="walkers-menu-item">
+              <a href="#news" class="walkers-menu-link">Blog</a>
+            </li>
+            <li class="walkers-menu-item">
+              <a href="#contact" class="walkers-menu-link">Contact</a>
+            </li>
+          </ul>
+        </nav>
+
+        <!-- Right Header Tools: 10-Slot Language Switcher & Gold Inquire Button -->
+        <div class="header-tools">
+          
+          <!-- 10-Slot Language Switcher -->
+          <div class="custom-lang-pill">
+            <button type="button" class="lang-pill-btn" id="langPillToggle" title="Select Language (10 Languages)">
+              <span id="currentLangLabel">EN</span>
+              <svg class="walkers-caret" viewBox="0 0 10 6"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" fill="none"/></svg>
+            </button>
+            <div class="lang-pill-dropdown" id="langPillMenu">
+              <button type="button" data-lang="en" class="is-active">🇬🇧 English <span class="lang-slot-tag">Active</span></button>
+              <button type="button" data-lang="zh">🇨🇳 中文 (Chinese) <span class="lang-slot-tag">Active</span></button>
+              <button type="button" data-lang="de">🇩🇪 Deutsch <span class="lang-slot-tag">Slot 3</span></button>
+              <button type="button" data-lang="fr">🇫🇷 Français <span class="lang-slot-tag">Slot 4</span></button>
+              <button type="button" data-lang="ru">🇷🇺 Русский <span class="lang-slot-tag">Slot 5</span></button>
+              <button type="button" data-lang="es">🇪🇸 Español <span class="lang-slot-tag">Slot 6</span></button>
+              <button type="button" data-lang="it">🇮🇹 Italiano <span class="lang-slot-tag">Slot 7</span></button>
+              <button type="button" data-lang="ja">🇯🇵 日本語 <span class="lang-slot-tag">Slot 8</span></button>
+              <button type="button" data-lang="ar">🇦🇪 العربية <span class="lang-slot-tag">Slot 9</span></button>
+              <button type="button" data-lang="hi">🇮🇳 हिन्दी <span class="lang-slot-tag">Slot 10</span></button>
+            </div>
+          </div>
+
+          <!-- Gold Inquire Button with Hover Fill-Slide Effect -->
+          <a href="inquiry-detailed.html" class="gold-inquire-btn" title="Inquire Now">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 20 20" fill="none">
+              <path d="M16.5909 5.02051H16.1522V8.43079C16.1522 10.9574 14.0966 13.013 11.57 13.013H5.02148V13.4518C5.02148 15.3322 6.55138 16.862 8.43177 16.862H15.4373L19.0401 19.8644C19.1474 19.9538 19.2808 20.0002 19.4154 20.0002C19.7375 20.0002 20.0012 19.7388 20.0012 19.4142V8.43079C20.0012 6.5475 18.4775 5.02051 16.5909 5.02051Z"/>
+              <path d="M14.9797 8.43118V3.41029C14.9797 1.52363 13.4528 0 11.5694 0H3.41029C1.52363 0 0 1.52684 0 3.41029V14.3937C0 14.7181 0.26368 14.9797 0.585802 14.9797C0.720388 14.9797 0.853754 14.9333 0.961027 14.8437L4.56388 11.8415H11.5694C13.4498 11.8415 14.9797 10.3117 14.9797 8.43118Z"/>
+            </svg>
+            <span>Inquire</span>
+          </a>
+
+          <!-- Mobile Hamburger Toggle -->
+          <button type="button" class="walkers-ham" id="mobileHamToggle" aria-label="Toggle Mobile Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- SECTION 1: HERO BANNER -->
+  <section class="banner-section-inner position-relative overflow-hidden" style="background: linear-gradient(135deg, rgba(0,26,44,0.82) 0%, rgba(0,43,73,0.88) 100%), url('assets/images/polonnaruwa.jpg') center/cover no-repeat; padding: 130px 0 90px; text-align: center; color: #FFFFFF;">
+    <div class="wrapper--90">
+      <div class="tours-breadcrumbs" style="margin-bottom: 1.25rem; font-size: 0.85rem; letter-spacing: 0.05em; text-transform: uppercase; color: rgba(255,255,255,0.75);">
+        <a href="index.html" style="color: #FFFFFF; text-decoration: none;">Home</a>
+        <span class="sep" style="margin: 0 0.5rem;">/</span>
+        <a href="tours/index.html" style="color: #FFFFFF; text-decoration: none;">Tours</a>
+        <span class="sep" style="margin: 0 0.5rem;">/</span>
+        <span>Sri Lanka Ramayana Heritage Tours</span>
+      </div>
+      <h1 style="font-family: 'Playfair Display', serif; font-size: 3.2rem; margin-bottom: 15px; color: #FFFFFF;">
+        Sri Lanka Ramayana Heritage Tours <span style="font-style: italic; color: #C5A880;">& Sacred Legend Trails</span>
+      </h1>
+      <p style="max-width: 720px; margin: 0 auto; color: rgba(255,255,255,0.88); font-size: 1.15rem; line-height: 1.6;">
+        Walk in the footsteps of Sri Rama, Sita Devi, Lakshmana, and Hanuman. From Munneswaram and Koneswaram temples to Seetha Amman Temple and Ravana Falls, immerse in the living tapestry of the Ramayana epic.
+      </p>
+    </div>
+  </section>
+
+  <!-- SECTION 2: EDITORIAL INTRO -->
+  <section class="padding-top--70 padding-bottom--50">
+    <div class="wrapper--80 text-center">
+      <div class="section-watermark-header" style="margin-bottom: 1.5rem;">
+        <p class="watermark-heading">SACRED EPIC</p>
+        <h2 class="section-header-title">Sacred Geography, Ancient Shrines & Timeless Epics</h2>
+      </div>
+      <p style="max-width: 780px; margin: 0 auto; color: #475569; font-size: 1.05rem; line-height: 1.75;">
+        Sri Lanka holds over 50 prominent sites intrinsically linked to the ancient Ramayana epic. Our scholarly guides bring the Ramayana to life with deep devotional respect, comfortable chauffeured journeys, and authentic temple pujas.
+      </p>
+    </div>
+  </section>
+
+  <!-- SECTION 3: SIGNATURE PACKAGES CARDS -->
+  <section class="padding-bottom--70">
+    <div class="wrapper--90">
+      <div class="beach-packages-grid">
+        
+        <!-- Package Card: Sacred Ramayana Heritage Trail -->
+        <article class="beach-package-card">
+          <div class="beach-card-img-wrap">
+            <img src="assets/images/polonnaruwa.jpg" alt="Sacred Ramayana Heritage Trail" loading="lazy">
+            <span class="beach-tag-badge">Pilgrimage</span>
+            <span class="beach-duration-pill">6 Nights &bull; 7 Days</span>
+          </div>
+
+          <div class="beach-card-body">
+            <span class="beach-card-category">EPIC LEGENDS • SACRED SHRINES • ANCIENT CHRONICLES</span>
+            <h3 class="beach-card-title">Sacred Ramayana Heritage Trail</h3>
+            <p class="beach-card-route">
+              <strong>Route:</strong> Colombo &bull; Chilaw &bull; Kandy &bull; Nuwara Eliya
+            </p>
+            <p class="beach-card-desc">
+              Follow the legendary epic through Munneswaram, Manavari, Seetha Amman Temple, and Ashoka Vatika.
+            </p>
+
+            <ul class="beach-card-highlights">
+              <li>✓ Special puja blessing at Munneswaram Temple, one of the five ancient Ishwarams</li><li>✓ Visit Manavari Temple where Lord Rama installed the first Shiva Lingam (Ramalingam)</li><li>✓ Devotional morning darshan at Seetha Amman Temple in Seetha Eliya</li><li>✓ Walk through Hakgala Botanical Gardens, the legendary Ashoka Vatika pleasure gardens</li>
+            </ul>
+
+            <div class="beach-card-actions">
+              <a href="tours/ramayana/sacred-ramayana-heritage-trail/index.html" class="btn-beach-view">
+                <span>View Full Itinerary</span>
+                <span>➔</span>
+              </a>
+              <a href="inquiry-detailed.html?package=Sacred+Ramayana+Heritage+Trail" class="btn-beach-inquire">
+                <span>Inquire</span>
+              </a>
+            </div>
+          </div>
+        </article>
+        
+
+        <!-- Package Card: The Epic Ramayana Chronicle Pilgrimage -->
+        <article class="beach-package-card">
+          <div class="beach-card-img-wrap">
+            <img src="assets/images/polonnaruwa.jpg" alt="The Epic Ramayana Chronicle Pilgrimage" loading="lazy">
+            <span class="beach-tag-badge">Full Pilgrimage</span>
+            <span class="beach-duration-pill">9 Nights &bull; 10 Days</span>
+          </div>
+
+          <div class="beach-card-body">
+            <span class="beach-card-category">EPIC LEGENDS • SACRED SHRINES • ANCIENT CHRONICLES</span>
+            <h3 class="beach-card-title">The Epic Ramayana Chronicle Pilgrimage</h3>
+            <p class="beach-card-route">
+              <strong>Route:</strong> Colombo &bull; Mannar &bull; Jaffna &bull; Trincomalee &bull; Kandy &bull; Nuwara Eliya &bull; Ella
+            </p>
+            <p class="beach-card-desc">
+              The ultimate 10-day cross-island pilgrimage tracing sacred shrines from Mannar to Nuwara Eliya and Ella.
+            </p>
+
+            <ul class="beach-card-highlights">
+              <li>✓ Visit Thiruketheeswaram Temple and Adam's Bridge (Rama Setu) in Mannar</li><li>✓ Koneswaram Temple (Dakshina Kailasam) built on Swami Rock overlooking Trincomalee</li><li>✓ Kanniya Hot Springs created by King Ravana with his sword</li><li>✓ Seetha Amman Temple, Ashoka Vatika, and Divurumpola in the central highlands</li>
+            </ul>
+
+            <div class="beach-card-actions">
+              <a href="tours/ramayana/the-epic-ramayana-chronicle-pilgrimage/index.html" class="btn-beach-view">
+                <span>View Full Itinerary</span>
+                <span>➔</span>
+              </a>
+              <a href="inquiry-detailed.html?package=The+Epic+Ramayana+Chronicle+Pilgrimage" class="btn-beach-inquire">
+                <span>Inquire</span>
+              </a>
+            </div>
+          </div>
+        </article>
+        
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 4: COMPARISON MATRIX -->
+  <section class="padding-top--70 padding-bottom--70" style="background: #F8FAFC; border-top: 1px solid #E2E8F0;">
+    <div class="wrapper--90">
+      <div class="section-watermark-header text-center" style="margin-bottom: 1.5rem;">
+        <p class="watermark-heading">PACKAGE COMPARISON</p>
+        <h2 class="section-header-title">Compare Itineraries &amp; Inclusions</h2>
+      </div>
+      <p style="text-align: center; color: #64748B; max-width: 650px; margin: 0 auto; font-size: 0.95rem;">
+        Review signature experiences across each tour to find your perfect bespoke route.
+      </p>
+
+      <div class="comparison-table-wrap">
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th style="width: 32%;">Signature Inclusions &amp; Experiences</th>
+              <th class="text-center">Sacred Ramayana Heritage Trail<br><span style="font-size: 0.78rem; font-weight: normal; color: #C5A880;">6N/7D</span></th><th class="text-center">The Epic Ramayana Chronicle Pilgrimage<br><span style="font-size: 0.78rem; font-weight: normal; color: #C5A880;">9N/10D</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            
+        <tr>
+          <td><strong>Devotional Knowledgeable Chauffeur Guide</strong></td>
+          <td class="text-center"><span class="comp-check">✓</span></td><td class="text-center"><span class="comp-check">✓</span></td>
+        </tr>
+        
+
+        <tr>
+          <td><strong>Munneswaram & Manavari Shiva Lingam Temples</strong></td>
+          <td class="text-center"><span class="comp-check">✓</span></td><td class="text-center"><span class="comp-check">✓</span></td>
+        </tr>
+        
+
+        <tr>
+          <td><strong>Koneswaram Temple Overlooking Swami Rock</strong></td>
+          <td class="text-center"><span class="comp-check">✓</span></td><td class="text-center"><span class="comp-check">✓</span></td>
+        </tr>
+        
+
+        <tr>
+          <td><strong>Seetha Amman Temple & Ashoka Vatika (Hakgala)</strong></td>
+          <td class="text-center"><span class="comp-check">✓</span></td><td class="text-center"><span class="comp-check">✓</span></td>
+        </tr>
+        
+
+        <tr>
+          <td><strong>Ravana Ella Falls & Ravana Cave Excursion</strong></td>
+          <td class="text-center"><span class="comp-check">✓</span></td><td class="text-center"><span class="comp-check">✓</span></td>
+        </tr>
+        
+
+        <tr>
+          <td><strong>Divurumpola Agni Pariksha Sacred Shrine</strong></td>
+          <td class="text-center"><span class="comp-cross">—</span></td><td class="text-center"><span class="comp-check">✓</span></td>
+        </tr>
+        
+
+        <tr>
+          <td><strong>Vegetarian / Sattvic Dining Options Handpicked</strong></td>
+          <td class="text-center"><span class="comp-check">✓</span></td><td class="text-center"><span class="comp-cross">—</span></td>
+        </tr>
+        
+
+        <tr>
+          <td><strong>Evening Puja Blessings at Premier Historical Temples</strong></td>
+          <td class="text-center"><span class="comp-cross">—</span></td><td class="text-center"><span class="comp-check">✓</span></td>
+        </tr>
+        
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 5: ROUTE MAP -->
+  <section class="padding-top--70 padding-bottom--70">
+    <div class="wrapper--80 text-center">
+      <div class="section-watermark-header" style="margin-bottom: 1.5rem;">
+        <p class="watermark-heading">ROUTE MAP</p>
+        <h2 class="section-header-title">Discover Sri Lanka’s Sacred Ramayana Trail</h2>
+      </div>
+      <div style="background: #F8FAFC; border: 1px dashed #CBD5E1; border-radius: 12px; padding: 50px 20px; max-width: 700px; margin: 0 auto;">
+        <div style="font-size: 3rem; margin-bottom: 12px;">🗺️</div>
+        <h3 style="font-family: 'Playfair Display', serif; color: #002B49; font-size: 1.35rem; margin-bottom: 8px;">Route Map Coming Soon</h3>
+        <p style="color: #64748B; font-size: 0.95rem; max-width: 500px; margin: 0 auto;">
+          Trace sacred Ramayana sites from Chilaw and Trincomalee across the central hills to Nuwara Eliya and Ella.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 6: BOTTOM CTA BANNER -->
+  <section class="banner-bottom-cta padding-top--80 padding-bottom--80" style="background: linear-gradient(135deg, #001A2C 0%, #002B49 100%); color: #FFFFFF; text-align: center;">
+    <div class="wrapper--70">
+      <span style="color: #C5A880; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase;">PURE JOURNEYS &bull; SACRED EXPERIENCES</span>
+      <h2 style="font-family: 'Playfair Display', serif; font-size: 2.6rem; margin: 1rem 0; color: #FFFFFF;">Ready to Plan Your Sri Lanka Ramayana Heritage Tours?</h2>
+      <p style="color: rgba(255,255,255,0.85); font-size: 1.1rem; max-width: 680px; margin: 0 auto 2rem; line-height: 1.65;">
+        Every single day, boutique stay, and transfer is customized entirely around you. Our destination experts craft your dream itinerary within 24 hours.
+      </p>
+      <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+        <a href="inquiry-detailed.html?category=ramayana" class="gold-inquire-btn" style="text-decoration: none; padding: 14px 30px; font-weight: 700;">Design Your Custom Journey</a>
+        <a href="https://wa.me/94715422384" target="_blank" rel="noopener" class="gold-inquire-btn" style="background: transparent; border: 2px solid #C5A880; color: #C5A880; text-decoration: none; padding: 12px 26px; font-weight: 700;">WhatsApp Specialist (+94 71 54 22 384)</a>
+      </div>
+    </div>
+  </section>
+
+<footer class="site-footer-walkers" id="contact">
+    <div class="wrapper--80">
+      
+      <div class="footer-top-grid">
+        <!-- Col 1: Contact Information & Global Desks -->
+        <div>
+          <p class="footer-col-title">Address &amp; Headquarters</p>
+          <div class="footer-contact-list">
+            <div class="footer-contact-item">
+              <p>
+                <strong>LOTUS CEYLON INTERNATIONAL TOURS &amp; SERVICES (PRIVATE) LIMITED</strong><br>
+                286/C, Niwandama South,<br>
+                Ja-Ela, Sri Lanka &ndash; 11350
+              </p>
+            </div>
+            <div class="footer-contact-item">
+              <p style="margin-bottom: 0.25rem; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-gold);">Phone / WhatsApp Hotline</p>
+              <a href="tel:+94715422384" style="color: #FFFFFF; font-weight: 700; font-size: 1.05rem;">+94 71 54 22 384</a>
+            </div>
+            <div class="footer-contact-item">
+              <p style="margin-bottom: 0.25rem; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-gold);">Email Inquiries</p>
+              <a href="mailto:paliforbuddhism@gmail.com" style="color: #CBD5E1;">paliforbuddhism@gmail.com</a>
+            </div>
+            <div class="footer-contact-item">
+              <p style="margin-bottom: 0.35rem; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-gold);">WeChat &amp; LINE Concierge</p>
+              <p style="font-size: 0.88rem; line-height: 1.6; color: #E2E8F0;">
+                <span style="color: var(--color-gold); font-weight: 600;">WeChat ID:</span> FGUTaiwan90 (+9471 54 22 384)<br>
+                <span style="color: var(--color-gold); font-weight: 600;">LINE ID:</span> dpbs2024 (Line Phone: +886 958 561 954)
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Col 2: Quick Links -->
+        <div>
+          <p class="footer-col-title">Quick Links</p>
+          <div class="footer-links-grid">
+            <a href="index.html">Home</a>
+            <a href="sri-lanka-tours.html">Sri Lanka Tours</a>
+            <a href="#bespoke">Tailor-Made</a>
+            <a href="#brands">Our Brands</a>
+            <a href="#sustainability">Sustainability</a>
+            <a href="about.html">About Lotus Ceylon</a>
+            <a href="#testimonials">Guest Reviews</a>
+            <a href="#faq">Travel FAQ</a>
+            <a href="inquiry-detailed.html">Detailed Inquiry</a>
+            <a href="inquiry-quick.html">Quick Inquiry</a>
+            <a href="#contact">Contact Us</a>
+          </div>
+        </div>
+
+        <!-- Col 3: Newsletter, QR Codes & Payment Partners -->
+        <div>
+          <div class="newsletter-box">
+            <p class="footer-col-title">Stay Inspired</p>
+            <p>Subscribe to receive curated Sri Lanka holiday inspiration and early-booking privileges.</p>
+            <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Thank you for subscribing to Lotus Ceylon!'); this.reset();">
+              <input type="email" placeholder="Enter your email address" required>
+              <button type="submit" aria-label="Subscribe">➔</button>
+            </form>
+          </div>
+
+          <!-- Instant Chat QR Codes -->
+          <div style="margin: 1.5rem 0 1.25rem;">
+            <p style="font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.12em; color: #FFFFFF; font-weight: 700; margin-bottom: 0.65rem;">Scan &amp; Chat Instantly</p>
+            <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+              <a href="https://wa.me/94715422384" target="_blank" rel="noopener" style="background: rgba(255,255,255,0.08); padding: 0.5rem; border-radius: 6px; text-align: center; text-decoration: none; border: 1px solid rgba(255,255,255,0.12); width: 85px;">
+                <img src="assets/qr/whatsapp-qr.png" alt="WhatsApp QR" style="width: 70px; height: 70px; border-radius: 4px; display: block; margin: 0 auto 0.25rem; object-fit: contain;">
+                <span style="font-size: 0.72rem; color: #E2E8F0; display: block; font-weight: 600;">WhatsApp</span>
+              </a>
+              <div style="background: rgba(255,255,255,0.08); padding: 0.5rem; border-radius: 6px; text-align: center; border: 1px solid rgba(255,255,255,0.12); width: 85px;">
+                <img src="assets/qr/wechat-qr.png" alt="WeChat QR" style="width: 70px; height: 70px; border-radius: 4px; display: block; margin: 0 auto 0.25rem; object-fit: contain;">
+                <span style="font-size: 0.72rem; color: #E2E8F0; display: block; font-weight: 600;">WeChat</span>
+              </div>
+              <div style="background: rgba(255,255,255,0.08); padding: 0.5rem; border-radius: 6px; text-align: center; border: 1px solid rgba(255,255,255,0.12); width: 85px;">
+                <img src="assets/qr/line-qr.png" alt="LINE QR" style="width: 70px; height: 70px; border-radius: 4px; display: block; margin: 0 auto 0.25rem; object-fit: contain;">
+                <span style="font-size: 0.72rem; color: #E2E8F0; display: block; font-weight: 600;">LINE</span>
+              </div>
+            </div>
+          </div>
+
+          <p style="font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.12em; color: #FFFFFF; font-weight: 700; margin-bottom: 0.5rem;">Accepted Payment Partners</p>
+          <div class="payment-badges-row">
+            <span class="payment-badge-pill">VISA</span>
+            <span class="payment-badge-pill">Mastercard</span>
+            <span class="payment-badge-pill">AMEX</span>
+            <span class="payment-badge-pill">UnionPay</span>
+          </div>
+
+          <div class="footer-social-row">
+            <a href="https://wa.me/94715422384" target="_blank" rel="noopener" class="social-icon-btn" title="WhatsApp">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.698.077-1.11-.059-.441-.144-1.025-.338-1.776-.816-1.579-1.004-2.613-2.616-2.695-2.726-.082-.11-1.082-1.442-1.082-2.75 0-1.309.684-1.954.928-2.222.244-.268.531-.334.708-.334.177 0 .354.002.508.01.164.008.385-.062.602.459.223.535.759 1.854.825 1.99.066.136.111.297.022.474-.088.177-.133.287-.266.442-.133.155-.28.347-.399.465-.133.133-.271.277-.117.542.155.266.689 1.134 1.477 1.835 1.014.903 1.87 1.182 2.136 1.315.266.133.421.111.576-.066.155-.177.664-.774.841-1.039.177-.266.354-.222.597-.133.244.089 1.549.73 1.815.863.266.133.443.2.509.311.066.11.066.643-.078 1.048z"/></svg>
+            </a>
+            <a href="https://facebook.com" target="_blank" rel="noopener" class="social-icon-btn" title="Facebook">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"/></svg>
+            </a>
+            <a href="https://instagram.com" target="_blank" rel="noopener" class="social-icon-btn" title="Instagram">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            </a>
+            <a href="https://linkedin.com" target="_blank" rel="noopener" class="social-icon-btn" title="LinkedIn">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom-row">
+        <div>
+          &copy; 2026 LOTUS CEYLON INTERNATIONAL TOURS &amp; SERVICES (PRIVATE) LIMITED. All Rights Reserved. Since 2014.
+        </div>
+        <div>
+          Designed &amp; Developed by <a href="https://infiniteweb.dev/" target="_blank" rel="noopener" style="color: var(--color-gold); text-decoration: none; font-weight: 600; transition: color 0.25s ease;" onmouseover="this.style.color='var(--color-lotus-pink)'" onmouseout="this.style.color='var(--color-gold)'">Infinite Design</a> &middot; Reg: PV 00374439
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+</body>
+</html>

@@ -1235,5 +1235,89 @@ window.TOUR_CATEGORY_I18N = {
     ar: "سفاري الحياة البرية",
     es: "Safaris de Vida Silvestre",
     hi: "वन्यजीव सफारी और जंगल यात्राएं"
+  },
+  "hill-country": {
+    en: "Hill Country & Tea Trails",
+    fr: "Plantations de Thé et Hauts Plateaux",
+    de: "Teehochland und Bergwelten",
+    it: "Piantagioni di Tè e Altopiani",
+    zh: "高山茶园与全景火车之旅",
+    ja: "紅茶畑＆高原パノラマ列車ツアー",
+    ru: "Чайные плантации и высокогорье",
+    ar: "مزارع الشاي والمرتفعات",
+    es: "Plantaciones de Té y Tierras Altas",
+    hi: "चाय के बागान और पहाड़ी यात्राएं"
+  },
+  adventure: {
+    en: "Adventure & Active Expeditions",
+    fr: "Aventure et Randonnées Actives",
+    de: "Abenteuer und Aktivtouren",
+    it: "Avventura e Spedizioni Attive",
+    zh: "户外探险与冲浪远征",
+    ja: "アドベンチャー＆サーフツアー",
+    ru: "Приключения и активный отдых",
+    ar: "المغامرات والرحلات النشطة",
+    es: "Aventura y Expediciones Activas",
+    hi: "साहसिक और सक्रिय यात्राएं"
+  },
+  ayurvedic: {
+    en: "Ayurvedic & Holistic Wellness",
+    fr: "Séjours Ayurvéda et Bien-Être",
+    de: "Ayurveda und Holistische Erholung",
+    it: "Ayurveda e Benessere Olistico",
+    zh: "阿育吠陀养生疗愈之旅",
+    ja: "アーユルヴェーダ＆ウェルネスリトリート",
+    ru: "Аюрведа и оздоровительный отдых",
+    ar: "الأيورفيدا والعافية الشاملة",
+    es: "Ayurveda y Bienestar Holístico",
+    hi: "आयुर्वेद और समग्र कल्याण"
+  },
+  honeymoon: {
+    en: "Luxury Honeymoon & Romance",
+    fr: "Lunes de Miel de Luxe et Romantisme",
+    de: "Flitterwochen und Romantikurlaub",
+    it: "Lune di Miele di Lusso e Romantiche",
+    zh: "奢华蜜月与浪漫假期",
+    ja: "ラグジュアリー ハネムーンツアー",
+    ru: "Медовый месяц и романтический отдых",
+    ar: "شهر العسل الفاخر والرومانسية",
+    es: "Lunas de Miel de Lujo y Romance",
+    hi: "विलासिता हनीमून और रोमांस"
+  },
+  family: {
+    en: "Multi-Generational Family Holidays",
+    fr: "Vacances en Famille Multigénérationnelles",
+    de: "Familienreisen für Alle Generationen",
+    it: "Vacanze Familiari Multigenerazionali",
+    zh: "多代同堂亲子家庭游",
+    ja: "ファミリー＆三世代旅行ツアー",
+    ru: "Семейные туры для всех поколений",
+    ar: "عطلات عائلية متعددة الأجيال",
+    es: "Vacaciones Familiares Multigeneracionales",
+    hi: "पारिवारिक छुट्टियां और यात्राएं"
+  },
+  ramayana: {
+    en: "Sacred Ramayana Heritage Trails",
+    fr: "Circuits Sacrés du Ramayana",
+    de: "Heilige Ramayana Pilgerreisen",
+    it: "Itinerari Sacri del Ramayana",
+    zh: "罗摩衍那圣迹朝圣之旅",
+    ja: "ラーマーヤナ聖地巡礼ツアー",
+    ru: "Священные тропы Рамаяны",
+    ar: "مسارات رامايانا التراثية المقدسة",
+    es: "Rutas Sagradas del Ramayana",
+    hi: "पवित्र रामायण विरासत यात्राएं"
+  },
+  golf: {
+    en: "Championship Golf & Fairway Holidays",
+    fr: "Séjours Golf et Parcours d'Élite",
+    de: "Golfreisen und Meisterschaftsplätze",
+    it: "Vacanze Golf e Campionati",
+    zh: "高尔夫度假与锦标赛球场游",
+    ja: "チャンピオンシップ ゴルフツアー",
+    ru: "Гольф-туры и чемпионские поля",
+    ar: "عطلات الجولف والملاعب الملكية",
+    es: "Vacaciones de Golf y Campeonatos",
+    hi: "गोल्फ छुट्टियां और चैंपियनशिप"
   }
 };

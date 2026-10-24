@@ -83,6 +83,195 @@
         "Mirissa Oceanic Blue Whale Safari",
         "UNESCO Sinharaja Endemic Bird Trek"
       ]
+    },
+    "hill-country": {
+      "id": "cat-hill-country",
+      "slug": "hill-country",
+      "title": "Sri Lanka Hill Country & Tea Country Tours",
+      "titleHighlight": "& Misty Mountain Trails",
+      "tagline": "MISTY VALLEYS • HERITAGE TEA TRAILS • HIGHLAND SANCTUARY",
+      "description": "Escape to the cool emerald highlands of Ceylon. Wander through rolling tea plantations, ride the legendary scenic railway over Nine Arches Bridge, stay in restored British colonial planter bungalows, and breathe crisp mountain air.",
+      "overviewTitle": "Verdant Tea Valleys, Cascading Waterfalls & Alpine Air",
+      "overviewText": "Rising into the central heartlands of Sri Lanka, the Hill Country offers an exhilarating change of climate and scenery. Towering peaks veiled in early morning mist give way to endless slopes of manicured tea bushes, dramatic cliff drops, and colonial railway engineering marvels.",
+      "watermark": "tea trails",
+      "heroImage": "assets/images/tea-country.jpg",
+      "mapImage": "",
+      "mapHeading": "Discover Sri Lanka’s Highland Trails",
+      "mapDescription": "Follow our scenic railway and highland routes connecting Kandy, Hatton, Nuwara Eliya, Horton Plains, and Ella.",
+      "seoTitle": "Sri Lanka Hill Country Tours & Tea Trails Holidays | Lotus Ceylon",
+      "seoDescription": "Explore misty Sri Lanka hill country tours with Lotus Ceylon. Scenic train rides, luxury tea planter bungalows, Nuwara Eliya, and Ella.",
+      "comparisonFeatures": [
+        "Private Luxury Chauffeur & Mountain Vehicle",
+        "Restored Colonial Tea Planter Bungalows",
+        "Iconic Kandy to Ella Scenic Train First-Class",
+        "Private Guided Tea Plucking & Factory Tasting",
+        "Horton Plains & World's End Sunrise Trek",
+        "Nine Arches Bridge & Little Adam's Peak",
+        "Hakgala Sub-Tropical Botanic Gardens",
+        "Kitulgala River Crossing & Waterfalls"
+      ]
+    },
+    "adventure": {
+      "id": "cat-adventure",
+      "slug": "adventure",
+      "title": "Sri Lanka Adventure & Active Expeditions",
+      "titleHighlight": "& Wild Outdoor Trails",
+      "tagline": "WILD RAPIDS • PEAK ASCENTS • OCEAN SURF",
+      "description": "Challenge your spirit across raw, untamed terrain. White water rafting down raging Kelani rapids, trekking the misty Knuckles wilderness, cliffside zip-lining in Ella, and catching world-class waves at sunrise.",
+      "overviewTitle": "Raging Rivers, Sacred Summits & Ocean Swells",
+      "overviewText": "Sri Lanka's dramatic topography concentrates world-class outdoor thrills within a few hours of travel. From high-altitude mountain trekking to ocean wave surfing and canyoning, every day offers a new pulse-racing expedition.",
+      "watermark": "untamed pulse",
+      "heroImage": "assets/images/adventure.jpg",
+      "mapImage": "",
+      "mapHeading": "Discover Sri Lanka’s Adventure Corridors",
+      "mapDescription": "Track adrenaline routes spanning river canyons, cloud forest peaks, and rugged surf bays.",
+      "seoTitle": "Sri Lanka Adventure Tours & Active Expeditions | Lotus Ceylon",
+      "seoDescription": "Experience thrilling adventure holidays in Sri Lanka. White water rafting, Knuckles trekking, Ella zip-lining, and private guided expeditions.",
+      "comparisonFeatures": [
+        "Private 4WD Expedition Vehicle & Chauffeur",
+        "Certified Whitewater & Wilderness Trekking Guides",
+        "Kitulgala White Water Rafting & Canyoning",
+        "Knuckles Mountain Range Cloud Forest Trek",
+        "Flying Ravana Zip-line & Ella Rock Summit",
+        "Adams Peak Sacred Sunrise Night Pilgrimage",
+        "Arugam Bay Dawn Surf Instruction",
+        "Sinharaja Rainforest Canopy Expedition"
+      ]
+    },
+    "ayurvedic": {
+      "id": "cat-ayurvedic",
+      "slug": "ayurvedic",
+      "title": "Sri Lanka Ayurvedic & Holistic Wellness Retreats",
+      "titleHighlight": "& Sacred Healing Sanctuaries",
+      "tagline": "SACRED BOTANICAL HEALING • MINDFULNESS • YOGA RETREATS",
+      "description": "Restore harmony of body, mind, and spirit with 3,000-year-old indigenous Ayurveda. Certified physician consultations, bespoke herbal oil therapies, lakeside dawn meditation, and nourishing sattvic cuisine.",
+      "overviewTitle": "Ancient Botanical Wisdom & Deep Restorative Solace",
+      "overviewText": "Ayurveda in Sri Lanka is a living sacred science refined over millennia. In our peaceful coastal and lakeside wellness sanctuaries, skilled Ayurvedic physicians design personalized panchakarma and rejuvenation protocols.",
+      "watermark": "holistic harmony",
+      "heroImage": "assets/images/temple-culture.jpg",
+      "mapImage": "",
+      "mapHeading": "Discover Sri Lanka’s Holistic Sanctuaries",
+      "mapDescription": "Explore restorative sanctuaries nestled beside peaceful lagoons, herbal forest groves, and secluded southern beaches.",
+      "seoTitle": "Sri Lanka Ayurvedic & Wellness Retreats | Lotus Ceylon",
+      "seoDescription": "Rejuvenate your soul with authentic Ayurveda wellness holidays in Sri Lanka. Physician consultations, herbal panchakarma, and lakeside yoga.",
+      "comparisonFeatures": [
+        "Resident Ayurvedic Doctor Consultation & Dosha Analysis",
+        "Daily Tailored Panchakarma & Herbal Oil Therapies",
+        "Tranquil Lagoon & Beachfront Healing Sanctuaries",
+        "Daily Dawn Yoga & Mindful Meditation Sessions",
+        "Fresh Sattvic & Ayurvedic Organic Cuisine",
+        "Herbal Medicine & Botanical Garden Excursions",
+        "Buddhist Monastic Sound Healing & Chanting",
+        "Private Luxury Chauffeur Between Sanctuaries"
+      ]
+    },
+    "honeymoon": {
+      "id": "cat-honeymoon",
+      "slug": "honeymoon",
+      "title": "Sri Lanka Luxury Honeymoon Tours",
+      "titleHighlight": "& Romantic Coastal Hideaways",
+      "tagline": "INTIMATE LUXURY • SECLUDED BAYS • CANDLELIT RAMPS",
+      "description": "Celebrate your love in an enchanted tropical paradise. Secluded oceanfront plunge pool villas, private candlelight dinners on historic ramparts, scenic railway journeys, and starlit safari luxury glamping.",
+      "overviewTitle": "Boutique Intimacy, Golden Sunsets & Bespoke Romance",
+      "overviewText": "Ceylon creates the ultimate setting for romance. From hand-in-hand sunset walks along Galle's centuries-old ramparts to sipping champagne beside private mountain infinity pools, our honeymoon journeys are crafted exclusively for two.",
+      "watermark": "pure romance",
+      "heroImage": "assets/images/couple-travel.jpg",
+      "mapImage": "",
+      "mapHeading": "Discover Sri Lanka’s Romantic Hideaways",
+      "mapDescription": "Follow romantic trails connecting secluded private villas, emerald tea estates, and wild safari camps.",
+      "seoTitle": "Sri Lanka Luxury Honeymoon Tours & Romantic Escapes | Lotus Ceylon",
+      "seoDescription": "Tailor-made luxury honeymoons in Sri Lanka by Lotus Ceylon. Private pool villas, candlelit beach dinners, and romantic boutique hideaways.",
+      "comparisonFeatures": [
+        "Private Luxury Chauffeur & Romantic Vehicle Amenities",
+        "Handpicked Secluded Boutique Pool Villas",
+        "Private Candlelight Rampart / Beach Dinners",
+        "Couples Ayurvedic Aromatherapy Spa Rituals",
+        "Sunset Sailing Catamaran Charter",
+        "Tea Trails High Tea Overlooking Misty Valleys",
+        "Leopard Safari with Luxury Champagne Sundowners",
+        "Personalized Honeymoon Surprises & Amenities"
+      ]
+    },
+    "family": {
+      "id": "cat-family",
+      "slug": "family",
+      "title": "Sri Lanka Family Holiday Packages",
+      "titleHighlight": "& Multi-Generational Journeys",
+      "tagline": "SAFE EXPEDITIONS • LIVING NATURE • TIMELESS BONDING",
+      "description": "Create unforgettable memories across generations. Engaging wildlife safaris, baby sea turtle hatcheries, gentle train rides, scenic mountain walks, and family-friendly beach resorts tailored to children and elders alike.",
+      "overviewTitle": "Wholesome Wonder, Gentle Wildlife & Inspiring Discovery",
+      "overviewText": "Sri Lanka is warm, safe, and endlessly captivating for families. We balance rich educational discoveries with spacious private vehicles, child-safe boutique resorts, and relaxed travel paces that respect every family member.",
+      "watermark": "family bond",
+      "heroImage": "assets/images/hero-nine-arches.jpg",
+      "mapImage": "",
+      "mapHeading": "Discover Sri Lanka’s Family Travel Routes",
+      "mapDescription": "Follow family-friendly routes connecting turtle hatcheries, elephant transit homes, and golden swimming bays.",
+      "seoTitle": "Sri Lanka Family Tours & Multi-Generational Holidays | Lotus Ceylon",
+      "seoDescription": "Plan a stress-free family holiday in Sri Lanka. Child-friendly wildlife safaris, turtle hatcheries, spacious vehicles, and family resorts.",
+      "comparisonFeatures": [
+        "Spacious Luxury AC Van with Experienced Family Chauffeur",
+        "Family Suites & Interconnecting Luxury Rooms",
+        "Udawalawe Elephant Transit Baby Feeding Excursion",
+        "Kosgoda Sea Turtle Hatchery & Baby Release",
+        "Gentle Scenic Train Ride Over Nine Arches Bridge",
+        "Safe Calming Shallow Lagoon Swimming in Pasikudah",
+        "Interactive Cooking Class & Village Bull-Cart Ride",
+        "Flexible Daily Schedule with Child-Friendly Rest Stops"
+      ]
+    },
+    "ramayana": {
+      "id": "cat-ramayana",
+      "slug": "ramayana",
+      "title": "Sri Lanka Ramayana Heritage Tours",
+      "titleHighlight": "& Sacred Legend Trails",
+      "tagline": "EPIC LEGENDS • SACRED SHRINES • ANCIENT CHRONICLES",
+      "description": "Walk in the footsteps of Sri Rama, Sita Devi, Lakshmana, and Hanuman. From Munneswaram and Koneswaram temples to Seetha Amman Temple and Ravana Falls, immerse in the living tapestry of the Ramayana epic.",
+      "overviewTitle": "Sacred Geography, Ancient Shrines & Timeless Epics",
+      "overviewText": "Sri Lanka holds over 50 prominent sites intrinsically linked to the ancient Ramayana epic. Our scholarly guides bring the Ramayana to life with deep devotional respect, comfortable chauffeured journeys, and authentic temple pujas.",
+      "watermark": "sacred epic",
+      "heroImage": "assets/images/polonnaruwa.jpg",
+      "mapImage": "",
+      "mapHeading": "Discover Sri Lanka’s Sacred Ramayana Trail",
+      "mapDescription": "Trace sacred Ramayana sites from Chilaw and Trincomalee across the central hills to Nuwara Eliya and Ella.",
+      "seoTitle": "Sri Lanka Ramayana Tour Packages & Sacred Pilgrimages | Lotus Ceylon",
+      "seoDescription": "Discover sacred Ramayana tours in Sri Lanka with Lotus Ceylon. Visit Seetha Amman Temple, Munneswaram, Ravana Cave, and Koneswaram.",
+      "comparisonFeatures": [
+        "Devotional Knowledgeable Chauffeur Guide",
+        "Munneswaram & Manavari Shiva Lingam Temples",
+        "Koneswaram Temple Overlooking Swami Rock",
+        "Seetha Amman Temple & Ashoka Vatika (Hakgala)",
+        "Ravana Ella Falls & Ravana Cave Excursion",
+        "Divurumpola Agni Pariksha Sacred Shrine",
+        "Vegetarian / Sattvic Dining Options Handpicked",
+        "Evening Puja Blessings at Premier Historical Temples"
+      ]
+    },
+    "golf": {
+      "id": "cat-golf",
+      "slug": "golf",
+      "title": "Sri Lanka Golf Holidays & Championship Tours",
+      "titleHighlight": "& Historic Fairways",
+      "tagline": "COLONIAL GREENS • CHAMPIONSHIP LINKS • TROPICAL FAIRWAYS",
+      "description": "Tee off across Asia’s most scenic and historic courses. The 1879 Royal Colombo Golf Club, Donald Steel’s breathtaking Victoria Golf Resort in Kandy, the colonial Nuwara Eliya Golf Club, and oceanfront coastal links.",
+      "overviewTitle": "Historic Colonial Fairways, Mountain Backdrops & Coastal Greens",
+      "overviewText": "Sri Lanka's golf legacy dates back more than 140 years. Experience the rare pleasure of golfing amidst cool mountain mist in Nuwara Eliya, alongside the Victoria reservoir, and across historic manicured colonial parklands.",
+      "watermark": "fairway greens",
+      "heroImage": "assets/images/tea-country.jpg",
+      "mapImage": "",
+      "mapHeading": "Discover Sri Lanka’s Championship Golf Courses",
+      "mapDescription": "Connect Colombo's heritage links, Kandy's reservoir championship greens, and Nuwara Eliya's historic pine fairways.",
+      "seoTitle": "Sri Lanka Golf Tours & Championship Fairway Holidays | Lotus Ceylon",
+      "seoDescription": "Play golf in Sri Lanka with Lotus Ceylon. Royal Colombo Golf Club, Victoria Golf Resort, and colonial Nuwara Eliya Golf Club.",
+      "comparisonFeatures": [
+        "Private Luxury Chauffeur & Dedicated Golf Gear Transport",
+        "Pre-Booked Prime Tee Times & Caddy Services",
+        "Victoria Golf Resort (Donald Steel Championship 18)",
+        "Royal Colombo Golf Club (Established 1879)",
+        "Historic Nuwara Eliya Golf Club (Established 1889)",
+        "Shangri-La Hambantota Coastal Golf Links",
+        "Boutique Golf Clubhouse & Resort Accommodations",
+        "Curated Sightseeing for Non-Golfing Partners"
+      ]
     }
   },
   "packages": [
@@ -1227,6 +1416,2079 @@
       ],
       "seoTitle": "Untamed Biosphere & Rainforest Odyssey 17-Day Safari | Lotus Ceylon",
       "seoDescription": "A grand 17-day wildlife expedition across Sri Lanka: Gal Oya swimming elephants, Sinharaja rainforest, Yala leopards, and Kumana wetlands."
+    },
+    {
+      "id": "pkg-ceylon-tea-trails-colonial-grandeur",
+      "slug": "ceylon-tea-trails-colonial-grandeur",
+      "category": "hill-country",
+      "title": "Ceylon Tea Trails & Colonial Grandeur",
+      "tagline": "A refined highland journey through colonial planter estates, manicured tea gardens, and misty valleys.",
+      "nights": 7,
+      "days": 8,
+      "tags": [
+        "Popular",
+        "Highland Luxury",
+        "Private Chauffeur"
+      ],
+      "destinations": [
+        "Colombo",
+        "Kandy",
+        "Nuwara Eliya",
+        "Ella"
+      ],
+      "highlights": [
+        "Stay in historic restored colonial tea planter bungalows",
+        "First-Class reserved seats on Kandy to Nuwara Eliya scenic railway",
+        "Private guided tea factory tour & sensory connoisseur tea tasting",
+        "Sunset cocktail overlooking Nine Arches Viaduct Bridge",
+        "High tea on the manicured lawn of The Grand Hotel Nuwara Eliya"
+      ],
+      "itinerary": [
+        {
+          "day": "01",
+          "title": "Ayubowan & Transfer to the Royal Hill Capital of Kandy",
+          "description": "Meet your private chauffeur guide at Bandaranaike International Airport (CMB) with a fragrant frangipani welcome. Drive through scenic lowlands into the verdant Kandyan hills. Check into your boutique mountain sanctuary overlooking Mahaweli River.",
+          "meals": "Dinner Included",
+          "stay": "Luxury Boutique Sanctuary, Kandy"
+        },
+        {
+          "day": "02",
+          "title": "Sacred Temple of the Tooth & Peradeniya Royal Botanic Gardens",
+          "description": "Morning private scholarly tour of the Sacred Relic Temple of the Tooth (Sri Dalada Maligawa). In the afternoon, stroll beneath towering Royal Palms and giant bamboo groves in the historic Royal Botanic Gardens Peradeniya.",
+          "meals": "Breakfast & Dinner",
+          "stay": "Luxury Boutique Sanctuary, Kandy"
+        },
+        {
+          "day": "03",
+          "title": "Scenic Mountain Railway to Nuwara Eliya (Little England)",
+          "description": "Board the legendary blue train in first-class reserved carriage. Gaze in awe as the train winds past cascading St. Clair's and Devon Falls. Arrive in Nuwara Eliya, renowned for Tudor-style colonial architecture.",
+          "meals": "Breakfast & Dinner",
+          "stay": "Historic Colonial Planter Estate, Nuwara Eliya"
+        },
+        {
+          "day": "04",
+          "title": "Pedro Tea Estate Plucking & Connoisseur Tea Tasting",
+          "description": "Put on a traditional woven tea basket and join local estate pluckers on misty slopes to harvest two leaves and a bud. Experience the rolling, drying, and grading process inside an operating 1885 factory followed by master tasting.",
+          "meals": "Breakfast, High Tea & Dinner",
+          "stay": "Historic Colonial Planter Estate, Nuwara Eliya"
+        },
+        {
+          "day": "05",
+          "title": "Horton Plains National Park & Sunrise at World's End",
+          "description": "Pre-dawn drive to Horton Plains plateau. Trek through cloud forests, encounter endemic sambar deer, and stand at World’s End cliff face plunging 880 meters straight down into southern plains.",
+          "meals": "Breakfast & Dinner",
+          "stay": "Historic Colonial Planter Estate, Nuwara Eliya"
+        },
+        {
+          "day": "06",
+          "title": "Picturesque Transfer to Ella & Nine Arches Bridge Walk",
+          "description": "Scenic drive winding through tea terraces to the laid-back mountain hub of Ella. Stroll through eucalyptus woods to photograph the magnificent brick Nine Arches Viaduct Bridge as the afternoon train chugs across.",
+          "meals": "Breakfast & Dinner",
+          "stay": "Luxury Mountain Villa, Ella"
+        },
+        {
+          "day": "07",
+          "title": "Little Adam’s Peak Sunrise & Ravana Falls Gorge",
+          "description": "Gentle dawn hike to Little Adam’s Peak summit for 360-degree panoramic views across Ella Gap. Visit the thunderous multi-tiered Ravana Falls cascading down jagged limestone crags.",
+          "meals": "Breakfast & Dinner",
+          "stay": "Luxury Mountain Villa, Ella"
+        },
+        {
+          "day": "08",
+          "title": "Descent to Colombo & International Departure",
+          "description": "After a champagne breakfast on your private mountain terrace, enjoy a scenic highway transfer back to Colombo or CMB airport for your onward flight, carrying the aroma of Ceylon highlands.",
+          "meals": "Breakfast Included",
+          "stay": "Departure"
+        }
+      ],
+      "inclusions": [
+        "7 Nights in luxury colonial tea bungalows & mountain boutique resorts",
+        "Daily breakfast, gourmet dinners, and traditional afternoon high tea",
+        "Private luxury air-conditioned vehicle with dedicated mountain chauffeur",
+        "Reserved first-class seats on Kandy to Nuwara Eliya scenic train",
+        "Private guided factory tour and master tea tasting at Pedro Estate",
+        "All national park permits, entrance tickets and conservation taxes",
+        "24/7 Lotus Ceylon dedicated concierge support"
+      ],
+      "exclusions": [
+        "International flight tickets & Sri Lanka visa (ETA)",
+        "Lunches and alcoholic beverages not specified",
+        "Personal tipping and porterage",
+        "Travel insurance"
+      ],
+      "bestSeason": "December to April (Clear crisp blue skies, magnificent mountain visibility)",
+      "priceNote": "Price on request",
+      "images": [
+        "assets/images/tea-country.jpg"
+      ],
+      "seoTitle": "Ceylon Tea Trails & Colonial Grandeur 8-Day Tour | Lotus Ceylon",
+      "seoDescription": "Discover the romance of Sri Lanka's tea country with Lotus Ceylon. Colonial planter bungalows, scenic train rides, and misty Nuwara Eliya hills."
+    },
+    {
+      "id": "pkg-misty-peaks-scenic-railways-expedition",
+      "slug": "misty-peaks-scenic-railways-expedition",
+      "category": "hill-country",
+      "title": "Misty Peaks & Scenic Railways Expedition",
+      "tagline": "The definitive highland railway odyssey across dramatic bridges, cloud forests, and tea valleys.",
+      "nights": 9,
+      "days": 10,
+      "tags": [
+        "Scenic Train",
+        "Highlands",
+        "Private Tour"
+      ],
+      "destinations": [
+        "Negombo",
+        "Kandy",
+        "Hatton",
+        "Nuwara Eliya",
+        "Ella",
+        "Bandarawela"
+      ],
+      "highlights": [
+        "Comprehensive 3-stage scenic railway traversal of the Central Highlands",
+        "Exclusive stay overlooking Castlereagh Lake in Hatton",
+        "Private morning birdwatching walk in Horton Plains cloud forest",
+        "Ella Rock summit hike with private wilderness mountain guide",
+        "Traditional colonial afternoon tea at the historic Bandarawela Hotel"
+      ],
+      "itinerary": [
+        {
+          "day": "01",
+          "title": "Arrival in Tropical Negombo Coastal Haven",
+          "description": "Arrive at CMB airport and enjoy a private 20-minute transfer to your coastal hotel. Relax after your flight with sea breezes.",
+          "meals": "Dinner Included",
+          "stay": "Beachfront Boutique Resort, Negombo"
+        },
+        {
+          "day": "02",
+          "title": "Ascent to Sacred Kandy & Cultural Heritage Evening",
+          "description": "Drive past lush pineapple plantations into Kandy. Evening cultural drum performance followed by a private temple blessing.",
+          "meals": "Breakfast & Dinner",
+          "stay": "Hillside Heritage Estate, Kandy"
+        },
+        {
+          "day": "03",
+          "title": "Train Stage 1: Kandy to Hatton Tea Country",
+          "description": "Board the observation saloon train climbing through steep mountain bends into Hatton, the golden heart of Ceylon black tea.",
+          "meals": "Breakfast & Dinner",
+          "stay": "Lakefront Tea Bungalow, Hatton"
+        },
+        {
+          "day": "04",
+          "title": "Castlereagh Reservoir Cruise & High Mountain Tea Plucking",
+          "description": "Gentle morning boat excursion on the mirror-like waters of Castlereagh lake. Private afternoon walk through working tea fields.",
+          "meals": "Breakfast, Lunch & Dinner",
+          "stay": "Lakefront Tea Bungalow, Hatton"
+        },
+        {
+          "day": "05",
+          "title": "Train Stage 2: Hatton to Nanu Oya (Nuwara Eliya)",
+          "description": "Board the train for the scenic climb through Great Western mountain pass to Nanu Oya station. Transfer into Nuwara Eliya.",
+          "meals": "Breakfast & Dinner",
+          "stay": "Luxury Colonial Residence, Nuwara Eliya"
+        },
+        {
+          "day": "06",
+          "title": "Horton Plains Plateau & Baker’s Falls Cloud Forest",
+          "description": "Explore the windswept misty moorlands of Horton Plains. Walk along Baker’s Falls trail surrounded by giant rhododendrons.",
+          "meals": "Breakfast & Dinner",
+          "stay": "Luxury Colonial Residence, Nuwara Eliya"
+        },
+        {
+          "day": "07",
+          "title": "Train Stage 3: Nanu Oya to Ella Over Demodara Loop",
+          "description": "The most dramatic train journey in Asia. Experience the spiral rail engineering wonder of Demodara Loop and Nine Arches.",
+          "meals": "Breakfast & Dinner",
+          "stay": "Luxury Viewpoint Villa, Ella"
+        },
+        {
+          "day": "08",
+          "title": "Ella Rock Trek & Ravana Gorge Adventure",
+          "description": "Hike through pine forests and mountain ridges to the peak of Ella Rock, gazing over southern plains stretching to the ocean.",
+          "meals": "Breakfast & Dinner",
+          "stay": "Luxury Viewpoint Villa, Ella"
+        },
+        {
+          "day": "09",
+          "title": "Bandarawela Colonial Heritage & Dowa Rock Temple",
+          "description": "Visit the 2,000-year-old rock-hewn Buddha of Dowa. Enjoy afternoon high tea on the colonial terrace of Bandarawela Hotel.",
+          "meals": "Breakfast & Dinner",
+          "stay": "Historic Mountain Estate, Bandarawela"
+        },
+        {
+          "day": "10",
+          "title": "Scenic Highway Descent to Colombo & Departure",
+          "description": "Private chauffeur transfer through scenic southern highway to Colombo or CMB airport for your flight home.",
+          "meals": "Breakfast Included",
+          "stay": "Departure"
+        }
+      ],
+      "inclusions": [
+        "9 Nights in luxury boutique mountain hotels and restored planter bungalows",
+        "Daily breakfast and 3-course gourmet dinners",
+        "First-class reserved tickets for 3 scenic railway segments",
+        "Dedicated private chauffeur guide and private mountain vehicle",
+        "All national park and excursion entrance permits",
+        "24/7 on-ground travel designer support"
+      ],
+      "exclusions": [
+        "International flights & visas",
+        "Lunches not specified",
+        "Personal expenses"
+      ],
+      "bestSeason": "Year-Round (Best: December to April and July to September)",
+      "priceNote": "Price on request",
+      "images": [
+        "assets/images/hero-nine-arches.jpg"
+      ],
+      "seoTitle": "Misty Peaks & Scenic Railways Expedition 10-Day Tour | Lotus Ceylon",
+      "seoDescription": "Experience Sri Lanka's world-famous scenic train journeys through Kandy, Hatton, Nuwara Eliya, and Ella with Lotus Ceylon."
+    },
+    {
+      "id": "pkg-highland-wilderness-cascading-waterfalls",
+      "slug": "highland-wilderness-cascading-waterfalls",
+      "category": "hill-country",
+      "title": "Highland Wilderness & Cascading Waterfalls",
+      "tagline": "A majestic exploration of Sri Lanka's alpine wilderness, roaring cataracts, and sacred mountain peaks.",
+      "nights": 11,
+      "days": 12,
+      "tags": [
+        "Nature",
+        "Waterfalls",
+        "Highlands"
+      ],
+      "destinations": [
+        "Colombo",
+        "Kitulgala",
+        "Nuwara Eliya",
+        "Horton Plains",
+        "Haputale",
+        "Ella",
+        "Adam's Peak"
+      ],
+      "highlights": [
+        "Witness 8 of Sri Lanka's most majestic waterfalls including Diyaluma & Bambarakanda",
+        "Stargazing and sunrise from Lipton’s Seat in Haputale",
+        "Private night ascent option of sacred Adam's Peak (Sri Pada)",
+        "Hidden waterfall plunge pool swim at secret mountain cascading stream",
+        "Highland forest trail walk with a certified botanist"
+      ],
+      "itinerary": [
+        {
+          "day": "01",
+          "title": "Arrival in Colombo & Transfer to Kelani River Valley",
+          "description": "Meet your private chauffeur guide and drive into the rainforest valley of Kitulgala, backdrop to 'The Bridge on the River Kwai'.",
+          "meals": "Dinner Included",
+          "stay": "Riverside Eco-Luxury Lodge, Kitulgala"
+        },
+        {
+          "day": "02",
+          "title": "Rainforest Waterfalls & Secret Canyon Pools",
+          "description": "Morning trek through riverine rainforest to hidden waterfalls. Enjoy a refreshing natural rock pool dip surrounded by emerald forest.",
+          "meals": "Breakfast & Dinner",
+          "stay": "Riverside Eco-Luxury Lodge, Kitulgala"
+        },
+        {
+          "day": "03",
+          "title": "Aberdeen & Laxapana Twin Cataracts Route",
+          "description": "Scenic drive visiting Aberdeen Falls and the roaring 126-meter Laxapana cataract. Ascend to Nuwara Eliya.",
+          "meals": "Breakfast & Dinner",
+          "stay": "Boutique Alpine Retreat, Nuwara Eliya"
+        },
+        {
+          "day": "04",
+          "title": "St. Clair’s & Devon Falls Panoramic Circuit",
+          "description": "Visit 'Little Niagara of Sri Lanka' St. Clair's Falls. Taste artisanal Ceylon teas overlooking rolling tea valleys.",
+          "meals": "Breakfast & Dinner",
+          "stay": "Boutique Alpine Retreat, Nuwara Eliya"
+        },
+        {
+          "day": "05",
+          "title": "Horton Plains Wilderness & World’s End",
+          "description": "Hike the 9.5 km loop of Horton Plains. Marvel at misty Baker's Falls cascading over dark volcanic stone.",
+          "meals": "Breakfast & Dinner",
+          "stay": "Boutique Alpine Retreat, Nuwara Eliya"
+        },
+        {
+          "day": "06",
+          "title": "Transfer to Misty Haputale & High Tea",
+          "description": "Drive along cliff-hugging mountain roads to Haputale, perched on the razor-edge of the southern highland ridge.",
+          "meals": "Breakfast & Dinner",
+          "stay": "Ridge-Top Boutique Villa, Haputale"
+        },
+        {
+          "day": "07",
+          "title": "Lipton’s Seat Sunrise & Dambatenne Tea Estate",
+          "description": "Dawn drive to Sir Thomas Lipton’s favorite vantage point. Gaze over 5 provinces bathed in morning golden light.",
+          "meals": "Breakfast & Dinner",
+          "stay": "Ridge-Top Boutique Villa, Haputale"
+        },
+        {
+          "day": "08",
+          "title": "Bambarakanda & Diyaluma Waterfall Adventures",
+          "description": "Stand beneath Sri Lanka's tallest waterfall, Bambarakanda (263m), and trek to the natural infinity pools atop Diyaluma Falls.",
+          "meals": "Breakfast & Dinner",
+          "stay": "Luxury Mountain Villa, Ella"
+        },
+        {
+          "day": "09",
+          "title": "Ella Gap & Nine Arches Bridge Walk",
+          "description": "Explore the vibrant cafes, spice gardens, and historic railway viaduct of picturesque Ella valley.",
+          "meals": "Breakfast & Dinner",
+          "stay": "Luxury Mountain Villa, Ella"
+        },
+        {
+          "day": "10",
+          "title": "Adam’s Peak Wilderness Foothills / Sri Pada Trail",
+          "description": "Transfer to the sacred foothills of Adam's Peak. Prepare for the evening pilgrimage trail or relax in cloud-forest nature.",
+          "meals": "Breakfast & Dinner",
+          "stay": "Pilgrimage Mountain Resort, Nallathanniya"
+        },
+        {
+          "day": "11",
+          "title": "Sacred Sunrise Over Adam’s Peak Summit",
+          "description": "Experience the shadow of the sacred peak projected onto the morning cloud blanket. Return for a well-deserved rest.",
+          "meals": "Breakfast & Dinner",
+          "stay": "Pilgrimage Mountain Resort, Nallathanniya"
+        },
+        {
+          "day": "12",
+          "title": "Descent to Colombo & Departure",
+          "description": "Enjoy a leisurely morning breakfast before private chauffeur transfer to Colombo or CMB airport.",
+          "meals": "Breakfast Included",
+          "stay": "Departure"
+        }
+      ],
+      "inclusions": [
+        "11 Nights in boutique mountain lodges and luxury ridge-top villas",
+        "Daily breakfast and dinner throughout",
+        "Private luxury vehicle with seasoned highland chauffeur guide",
+        "All waterfall conservation zone permits and guide fees",
+        "Horton Plains National Park trek and Lipton's Seat excursion"
+      ],
+      "exclusions": [
+        "International flights",
+        "Visas",
+        "Lunches not stated"
+      ],
+      "bestSeason": "December to April (Clear summit weather, calm waterfall trails)",
+      "priceNote": "Price on request",
+      "images": [
+        "assets/images/tea-country.jpg"
+      ],
+      "seoTitle": "Highland Wilderness & Waterfalls 12-Day Tour | Lotus Ceylon",
+      "seoDescription": "Explore Sri Lanka's tallest waterfalls, misty peaks, Horton Plains, and Lipton's Seat with Lotus Ceylon."
+    },
+    {
+      "id": "pkg-island-adrenaline-rapids-expedition",
+      "slug": "island-adrenaline-rapids-expedition",
+      "category": "adventure",
+      "title": "Island Adrenaline & Rapids Expedition",
+      "tagline": "Grade III white water rapids, jungle canyoning, Knuckles cloud trekking, and southern ocean surf.",
+      "nights": 7,
+      "days": 8,
+      "tags": [
+        "Active",
+        "Water Rafting",
+        "Trekking"
+      ],
+      "destinations": [
+        "Colombo",
+        "Kitulgala",
+        "Knuckles",
+        "Ella",
+        "Mirissa"
+      ],
+      "highlights": [
+        "Grade III & IV white water rafting down the surging Kelani River",
+        "Knuckles Mountain Range cloud forest trek with wilderness survival guide",
+        "Flying Ravana mega zip-line & abseiling in Ella",
+        "Private morning surf lesson with ISA-certified instructor in Weligama Bay",
+        "Night jungle walk searching for nocturnal slender loris"
+      ],
+      "itinerary": [
+        {
+          "day": "01",
+          "title": "Arrival in Colombo & Direct Expedition Transfer to Kitulgala",
+          "description": "Meet your adventure chauffeur guide. Drive to Kitulgala river canyon basecamp. Safety briefing and gear fitting.",
+          "meals": "Dinner Included",
+          "stay": "Adventure Safari Camp, Kitulgala"
+        },
+        {
+          "day": "02",
+          "title": "White Water Rafting & Confidence Waterfall Jump",
+          "description": "Conquer Head Chopper, Virgin's Breast, and Butter Crunch Grade III/IV rapids. Afternoon river canyoning and natural rock sliding.",
+          "meals": "Breakfast, BBQ Lunch & Dinner",
+          "stay": "Adventure Safari Camp, Kitulgala"
+        },
+        {
+          "day": "03",
+          "title": "Ascent to Knuckles UNESCO Wilderness Range",
+          "description": "Transfer to the rugged Knuckles mountain massif. Trek past isolated cardamom villages and crystal mountain streams.",
+          "meals": "Breakfast & Dinner",
+          "stay": "Wilderness Eco Lodge, Knuckles"
+        },
+        {
+          "day": "04",
+          "title": "Knuckles Ridge Cloud Forest Summit Trek",
+          "description": "Full day 16km trek across mist-shrouded knife-edge ridges and endemic pygmy forests with certified naturalists.",
+          "meals": "Breakfast, Trail Lunch & Dinner",
+          "stay": "Wilderness Eco Lodge, Knuckles"
+        },
+        {
+          "day": "05",
+          "title": "Transfer to Ella & Flying Ravana Mega Zip-Line",
+          "description": "Scenic mountain drive to Ella. Strap in for Sri Lanka’s fastest mega zip-line flying at 80 km/h over tea valleys.",
+          "meals": "Breakfast & Dinner",
+          "stay": "Mountain Action Lodge, Ella"
+        },
+        {
+          "day": "06",
+          "title": "Ella Rock Scramble & Descent to South Coast Surf",
+          "description": "Morning off-trail rock scramble up Ella Rock. Afternoon highway transfer to Weligama Bay surf sanctuary.",
+          "meals": "Breakfast & Dinner",
+          "stay": "Boutique Surf Villa, Mirissa/Weligama"
+        },
+        {
+          "day": "07",
+          "title": "Private Surf Coaching & Sunset Ocean Cruise",
+          "description": "Private morning surf session tailored to your skill level. Afternoon coastal speedboat cruise searching for marine life.",
+          "meals": "Breakfast & Dinner",
+          "stay": "Boutique Surf Villa, Mirissa/Weligama"
+        },
+        {
+          "day": "08",
+          "title": "Express Highway Transfer to Colombo & Departure",
+          "description": "Final morning beach dip followed by private highway transfer to CMB airport for onward journey.",
+          "meals": "Breakfast Included",
+          "stay": "Departure"
+        }
+      ],
+      "inclusions": [
+        "7 Nights in adventure eco-lodges, wilderness camps and boutique surf villas",
+        "All adventure gear (helmets, CE lifejackets, harnesses, surfboards)",
+        "Certified river guides, trekking naturalists and surf instructors",
+        "All national park permits, river fees, and activity insurances",
+        "Private 4WD AC vehicle and dedicated driver-guide"
+      ],
+      "exclusions": [
+        "International flights",
+        "Visas",
+        "Alcoholic drinks"
+      ],
+      "bestSeason": "November to April (Ideal rapids, dry mountain trekking, perfect surf)",
+      "priceNote": "Price on request",
+      "images": [
+        "assets/images/adventure.jpg"
+      ],
+      "seoTitle": "Island Adrenaline & Rapids Expedition 8-Day Tour | Lotus Ceylon",
+      "seoDescription": "Conquer Sri Lanka's wildest outdoor thrills: white water rafting, Knuckles trekking, Ella zip-line, and surfing with Lotus Ceylon."
+    },
+    {
+      "id": "pkg-wild-peaks-trails-surf-safari",
+      "slug": "wild-peaks-trails-surf-safari",
+      "category": "adventure",
+      "title": "Wild Peaks, Trails & Surf Safari",
+      "tagline": "From the deep virgin canopy of Sinharaja to high-altitude peaks and legendary eastern point breaks.",
+      "nights": 10,
+      "days": 11,
+      "tags": [
+        "Rainforest",
+        "Surf Safari",
+        "Adventure"
+      ],
+      "destinations": [
+        "Negombo",
+        "Sinharaja",
+        "Ella",
+        "Arugam Bay",
+        "Yala"
+      ],
+      "highlights": [
+        "Deep virgin trek through UNESCO Sinharaja Biosphere Reserve",
+        "Camping under equatorial stars in Arugam Bay surf lagoons",
+        "Surfing the iconic right-hand point breaks of Arugam Bay and Whiskey Point",
+        "Rugged 4x4 off-road safari tracking leopards in Yala East (Kumana)",
+        "Private evening beach campfire with freshly caught grilled seafood"
+      ],
+      "itinerary": [
+        {
+          "day": "01",
+          "title": "Arrival & Coastal Transition in Negombo",
+          "description": "Meet your private adventure guide. Rest and refresh overlooking the ocean.",
+          "meals": "Dinner Included",
+          "stay": "Beach Villa, Negombo"
+        },
+        {
+          "day": "02",
+          "title": "Into the Deep UNESCO Sinharaja Rainforest",
+          "description": "Drive to the borders of Sinharaja. Trek under towering rainforest canopy with leech socks and certified biodiversity tracker.",
+          "meals": "Breakfast & Dinner",
+          "stay": "Rainforest Canopy Lodge, Sinharaja"
+        },
+        {
+          "day": "03",
+          "title": "Sinharaja Bird Waves & Hidden Waterfall Rappel",
+          "description": "Witness the world's largest mixed-species bird feeding flocks. Enjoy controlled waterfall abseiling in dense jungle.",
+          "meals": "Breakfast & Dinner",
+          "stay": "Rainforest Canopy Lodge, Sinharaja"
+        },
+        {
+          "day": "04",
+          "title": "Ascent to Ella High Ridges",
+          "description": "Drive into the central highlands. Hike through tea terraces to Little Adam’s Peak and explore Ravana’s Cave.",
+          "meals": "Breakfast & Dinner",
+          "stay": "Mountain Lodge, Ella"
+        },
+        {
+          "day": "05",
+          "title": "Descent to Arugam Bay Surf Mecca",
+          "description": "Cross the dramatic transition from misty tea highlands to arid eastern coastline and world-renowned surf bays.",
+          "meals": "Breakfast & Dinner",
+          "stay": "Beachfront Surf Sanctuary, Arugam Bay"
+        },
+        {
+          "day": "06",
+          "title": "Dawn Surf Session & Lagoon Wildlife Kayak",
+          "description": "Catch golden dawn waves at Main Point. Afternoon kayak safari through Pottuvil lagoon watching wild elephants and crocodiles.",
+          "meals": "Breakfast & Dinner",
+          "stay": "Beachfront Surf Sanctuary, Arugam Bay"
+        },
+        {
+          "day": "07",
+          "title": "Secret Point Surfing & Kudumbigala Monastery Trek",
+          "description": "Trek through scrub jungles to ancient rock monastery of Kudumbigala with sweeping 360-degree views across untamed wilderness.",
+          "meals": "Breakfast & Dinner",
+          "stay": "Beachfront Surf Sanctuary, Arugam Bay"
+        },
+        {
+          "day": "08",
+          "title": "Kumana (Yala East) National Park Off-Road Safari",
+          "description": "Full-day 4WD expedition in Kumana tracking elusive coastal leopards, sloth bears, and massive aquatic bird breeding colonies.",
+          "meals": "Breakfast, Safari Lunch & Dinner",
+          "stay": "Tented Safari Camp, Kumana Border"
+        },
+        {
+          "day": "09",
+          "title": "Southern Coastline Transition to Galle Ramparts",
+          "description": "Drive along scenic southern shoreline. Evening craft beer walk along historic cobblestone Dutch streets of Galle Fort.",
+          "meals": "Breakfast & Dinner",
+          "stay": "Historic Fort Hotel, Galle"
+        },
+        {
+          "day": "10",
+          "title": "Ocean Jet-Ski & Mangrove Lagoon Jet Exploration",
+          "description": "Morning coastal watersports followed by relaxed heritage walking tour and sunset cocktails on the lighthouse ramparts.",
+          "meals": "Breakfast & Dinner",
+          "stay": "Historic Fort Hotel, Galle"
+        },
+        {
+          "day": "11",
+          "title": "Express Highway Transfer & Departure",
+          "description": "Private chauffeur transfer via southern expressway directly to CMB airport.",
+          "meals": "Breakfast Included",
+          "stay": "Departure"
+        }
+      ],
+      "inclusions": [
+        "10 Nights in boutique rainforest lodges, surf retreats, and tented safari camps",
+        "Private custom expedition 4WD vehicle and adventure chauffeur",
+        "Sinharaja expert tracking naturalist and Kumana 4x4 safari drives",
+        "Lagoon kayak expedition and surf coaching gear",
+        "All national park permits and conservation tickets"
+      ],
+      "exclusions": [
+        "International flights",
+        "Visas",
+        "Personal extras"
+      ],
+      "bestSeason": "May to October (Peak Arugam Bay surf season and dry East Coast sunshine)",
+      "priceNote": "Price on request",
+      "images": [
+        "assets/images/adventure.jpg"
+      ],
+      "seoTitle": "Wild Peaks, Trails & Surf Safari 11-Day Tour | Lotus Ceylon",
+      "seoDescription": "The ultimate adventure: Sinharaja rainforest, Ella hiking, Arugam Bay surfing, and Kumana safari with Lotus Ceylon."
+    },
+    {
+      "id": "pkg-lotus-ayu-holistic-rejuvenation",
+      "slug": "lotus-ayu-holistic-rejuvenation",
+      "category": "ayurvedic",
+      "title": "Lotus Ayu Holistic Rejuvenation",
+      "tagline": "A restorative sanctuary escape dedicated to authentic physician-led panchakarma and tranquil rejuvenation.",
+      "nights": 9,
+      "days": 10,
+      "tags": [
+        "Wellness",
+        "Ayurveda",
+        "Panchakarma"
+      ],
+      "destinations": [
+        "Negombo",
+        "Wadduwa",
+        "Bentota",
+        "Colombo"
+      ],
+      "highlights": [
+        "Private initial pulse diagnosis & dosha consultation with senior Vaidya physician",
+        "Daily bespoke 2.5-hour Ayurvedic treatments (Shirodhara, Abhyanga, Pinda Sweda)",
+        "Sunrise yoga and pranayama breathwork overlooking calm Indian Ocean",
+        "Individualized sattvic organic meal plan prepared according to your dosha",
+        "Herbal garden tour and traditional Ayurvedic medicine preparation workshop"
+      ],
+      "itinerary": [
+        {
+          "day": "01",
+          "title": "Ayubowan & Welcome to Ayurvedic Beachfront Sanctuary",
+          "description": "Peaceful arrival transfer to your dedicated Ayurvedic coastal sanctuary in Wadduwa. Welcome herbal infusion and tranquil check-in.",
+          "meals": "Sattvic Dinner",
+          "stay": "Ayurvedic Beach Sanctuary, Wadduwa"
+        },
+        {
+          "day": "02",
+          "title": "Physician Consultation & Initial Dosha Diagnosis",
+          "description": "In-depth pulse analysis (Nadi Pariksha) by our resident Ayurvedic physician. Your personalized therapy and diet plan begins.",
+          "meals": "Ayurvedic Full Board",
+          "stay": "Ayurvedic Beach Sanctuary, Wadduwa"
+        },
+        {
+          "day": "03",
+          "title": "Panchakarma Phase 1: Deep Herbal Snehana (Oleation)",
+          "description": "Synchronized full-body warm herbal oil massage (Abhyanga) followed by steam herbal bath (Swedana) to release accumulated toxins.",
+          "meals": "Ayurvedic Full Board",
+          "stay": "Ayurvedic Beach Sanctuary, Wadduwa"
+        },
+        {
+          "day": "04",
+          "title": "The Art of Shirodhara & Nervous System Restoration",
+          "description": "Experience continuous stream of warm medicinal oil over the third eye chakra (Shirodhara), releasing stress and insomnia.",
+          "meals": "Ayurvedic Full Board",
+          "stay": "Ayurvedic Beach Sanctuary, Wadduwa"
+        },
+        {
+          "day": "05",
+          "title": "Herbal Steam Bath & Organic Botanical Garden Walk",
+          "description": "Guided walking tour through our medicinal botanical gardens identifying sacred neem, gotu kola, and ashwagandha plants.",
+          "meals": "Ayurvedic Full Board",
+          "stay": "Ayurvedic Beach Sanctuary, Wadduwa"
+        },
+        {
+          "day": "06",
+          "title": "Pinda Sweda (Medicinal Rice & Herbal Bolus Therapy)",
+          "description": "Warm herbal poultice massage deeply rejuvenating joints and muscle tissues. Sunset meditation on the beach.",
+          "meals": "Ayurvedic Full Board",
+          "stay": "Ayurvedic Beach Sanctuary, Wadduwa"
+        },
+        {
+          "day": "07",
+          "title": "Lagoon Mindfulness & Silent Sunset Reflection",
+          "description": "Gentle boat ride through peaceful mangrove lagoon waters. Silent mindful walking meditation under ancient banyan trees.",
+          "meals": "Ayurvedic Full Board",
+          "stay": "Ayurvedic Beach Sanctuary, Wadduwa"
+        },
+        {
+          "day": "08",
+          "title": "Ayurvedic Cooking Workshop & Nutrition Principles",
+          "description": "Interactive culinary masterclass learning to use indigenous spices (turmeric, cinnamon, cardamon) for optimal digestion (Agni).",
+          "meals": "Ayurvedic Full Board",
+          "stay": "Ayurvedic Beach Sanctuary, Wadduwa"
+        },
+        {
+          "day": "09",
+          "title": "Final Physician Evaluation & Home Wellness Protocol",
+          "description": "Post-treatment assessment with your doctor. Receive tailored herbal prescriptions and daily routine (Dinacharya) advice.",
+          "meals": "Ayurvedic Full Board",
+          "stay": "Ayurvedic Beach Sanctuary, Wadduwa"
+        },
+        {
+          "day": "10",
+          "title": "Revitalized Departure Transfer to Colombo Airport",
+          "description": "Enjoy a final dawn yoga session and fresh herbal tonic before private chauffeur transfer to CMB airport.",
+          "meals": "Breakfast Included",
+          "stay": "Departure"
+        }
+      ],
+      "inclusions": [
+        "9 Nights in dedicated oceanfront Ayurvedic wellness resort",
+        "Complete Ayurvedic full-board organic dining tailored to individual doshas",
+        "Daily doctor consultations and personalized daily 2.5-hour therapies",
+        "Daily morning yoga, pranayama, and evening guided meditation",
+        "All herbal medicines, tonics, and customized treatment oils",
+        "Private airport chauffeur transfers in quiet air-conditioned vehicle"
+      ],
+      "exclusions": [
+        "International flights",
+        "Entry visa",
+        "Personal non-wellness expenses"
+      ],
+      "bestSeason": "Year-Round (Ayurveda is traditionally most effective during gentle monsoon months: May to September and Nov to Jan)",
+      "priceNote": "Price on request",
+      "images": [
+        "assets/images/temple-culture.jpg"
+      ],
+      "seoTitle": "Lotus Ayu Holistic Rejuvenation 10-Day Retreat | Lotus Ceylon",
+      "seoDescription": "Authentic physician-guided Ayurvedic panchakarma retreat in Sri Lanka. Shirodhara, daily yoga, and organic sattvic dining."
+    },
+    {
+      "id": "pkg-sacred-serenity-forest-meditation-retreat",
+      "slug": "sacred-serenity-forest-meditation-retreat",
+      "category": "ayurvedic",
+      "title": "Sacred Serenity & Forest Meditation Retreat",
+      "tagline": "Combine ancient Buddhist meditation, forest monasteries, and Ayurvedic restorative healing.",
+      "nights": 13,
+      "days": 14,
+      "tags": [
+        "Meditation",
+        "Ayurveda",
+        "Spiritual"
+      ],
+      "destinations": [
+        "Colombo",
+        "Dambulla",
+        "Kandy",
+        "Bentota"
+      ],
+      "highlights": [
+        "Silent morning walking meditation in ancient forest monastery caves",
+        "Private audience and Dhamma discussion with senior Buddhist monastic scholar",
+        "7 Days of restorative authentic Ayurvedic therapies at a secluded coastal sanctuary",
+        "Sound bowl healing session and oil lamp blessing ceremony",
+        "Mindful vegetarian dining inspired by sacred temple traditions"
+      ],
+      "itinerary": [
+        {
+          "day": "01",
+          "title": "Arrival & Gentle Transfer to Cultural Forest Haven",
+          "description": "Arrival at CMB airport. Private transfer to a serene forest hermitage retreat near Dambulla surrounded by birdsong.",
+          "meals": "Dinner Included",
+          "stay": "Forest Meditation Sanctuary, Dambulla"
+        },
+        {
+          "day": "02",
+          "title": "Dambulla Sacred Rock Caves & Vipassana Introduction",
+          "description": "Morning silent walk through the five sacred cave sanctuaries of Dambulla. Introduction to mindfulness breathing (Anapanasati).",
+          "meals": "Breakfast & Dinner",
+          "stay": "Forest Meditation Sanctuary, Dambulla"
+        },
+        {
+          "day": "03",
+          "title": "Forest Hermitage Meditation & Monastic Audience",
+          "description": "Visit an active Buddhist forest monastery (Aranya Senasanaya). Experience seated meditation under ancient canopy trees.",
+          "meals": "Breakfast & Vegetarian Lunch",
+          "stay": "Forest Meditation Sanctuary, Dambulla"
+        },
+        {
+          "day": "04",
+          "title": "Ritigala Strict Nature Reserve & Meditative Ruins",
+          "description": "Explore the stone monastic bridges and meditation platforms of 1st-century BCE Ritigala monastery secluded deep in nature.",
+          "meals": "Breakfast & Dinner",
+          "stay": "Forest Meditation Sanctuary, Dambulla"
+        },
+        {
+          "day": "05",
+          "title": "Transfer to Kandy & Evening Temple Puja Drums",
+          "description": "Drive into the hills of Kandy. Participate in evening oil lamp offering and meditative drumming puja at the Temple of the Tooth.",
+          "meals": "Breakfast & Dinner",
+          "stay": "Hillside Heritage Sanctuary, Kandy"
+        },
+        {
+          "day": "06",
+          "title": "Embekke Woodcarving Shrines & Meditation Walk",
+          "description": "Visit the 14th-century Gadaladeniya and Embekke temples. Mindful walking along historic rural village pathways.",
+          "meals": "Breakfast & Dinner",
+          "stay": "Hillside Heritage Sanctuary, Kandy"
+        },
+        {
+          "day": "07",
+          "title": "Descent to Secluded South Coast Ayurvedic Sanctuary",
+          "description": "Drive down to your peaceful oceanfront Ayurvedic hospital-retreat in Bentota. Settle into total tranquility.",
+          "meals": "Ayurvedic Dinner",
+          "stay": "Oceanfront Ayurvedic Sanctuary, Bentota"
+        },
+        {
+          "day": "08",
+          "title": "Doctor Consultation & Panchakarma Commences",
+          "description": "Comprehensive doctor assessment. Begin tailored daily detox therapies, warm herbal oil massage, and herbal steam baths.",
+          "meals": "Ayurvedic Full Board",
+          "stay": "Oceanfront Ayurvedic Sanctuary, Bentota"
+        },
+        {
+          "day": "09",
+          "title": "Shirodhara & Sound Frequency Healing",
+          "description": "Deep restorative Shirodhara oil flow over the forehead complemented by Tibetan singing bowl acoustic frequency balancing.",
+          "meals": "Ayurvedic Full Board",
+          "stay": "Oceanfront Ayurvedic Sanctuary, Bentota"
+        },
+        {
+          "day": "10",
+          "title": "Herbal Facial & Body Rejuvenation Protocols",
+          "description": "Facial herbal treatments using sandalwood and saffron masks. Daily yoga, pranayama breathing, and peaceful ocean reflection.",
+          "meals": "Ayurvedic Full Board",
+          "stay": "Oceanfront Ayurvedic Sanctuary, Bentota"
+        },
+        {
+          "day": "11",
+          "title": "Pinda Sweda & Botanical Garden Healing",
+          "description": "Medicinal poultice therapies for joint mobility. Walking meditation in lush herb gardens smelling medicinal cinnamon leaves.",
+          "meals": "Ayurvedic Full Board",
+          "stay": "Oceanfront Ayurvedic Sanctuary, Bentota"
+        },
+        {
+          "day": "12",
+          "title": "Internal Purification & Mindful Stillness",
+          "description": "Gentle detoxification day supported by physician-prescribed herbal decoctions and quiet contemplative reading.",
+          "meals": "Ayurvedic Full Board",
+          "stay": "Oceanfront Ayurvedic Sanctuary, Bentota"
+        },
+        {
+          "day": "13",
+          "title": "Closing Puja & Life Integration Consultation",
+          "description": "Final medical consultation. Traditional blessing cord ceremony by Buddhist monks wishing health, peace, and longevity.",
+          "meals": "Ayurvedic Full Board",
+          "stay": "Oceanfront Ayurvedic Sanctuary, Bentota"
+        },
+        {
+          "day": "14",
+          "title": "Departure in Complete Renewed Harmony",
+          "description": "Private chauffeur transfer to CMB airport, completely revitalized in body, clarity, and spirit.",
+          "meals": "Breakfast Included",
+          "stay": "Departure"
+        }
+      ],
+      "inclusions": [
+        "13 Nights in monastic eco-retreats and premier oceanfront Ayurvedic sanctuary",
+        "All Ayurvedic therapies, doctor consultations, medicines, and daily yoga",
+        "Full board dining during Ayurvedic stay and half board in cultural sanctuaries",
+        "Private scholarly Buddhist guide for temple and forest hermitage visits",
+        "Private luxury air-conditioned chauffeur throughout"
+      ],
+      "exclusions": [
+        "International flights",
+        "Visas",
+        "Personal extras"
+      ],
+      "bestSeason": "Year-Round",
+      "priceNote": "Price on request",
+      "images": [
+        "assets/images/temple-culture.jpg"
+      ],
+      "seoTitle": "Sacred Serenity & Forest Meditation 14-Day Retreat | Lotus Ceylon",
+      "seoDescription": "Discover inner tranquility with Buddhist forest meditation and authentic Ayurveda wellness in Sri Lanka."
+    },
+    {
+      "id": "pkg-enchanted-ceylon-romantic-hideaway",
+      "slug": "enchanted-ceylon-romantic-hideaway",
+      "category": "honeymoon",
+      "title": "Enchanted Ceylon Romantic Hideaway",
+      "tagline": "Private plunge pool villas, misty tea trails, candlelit rampart dining, and secluded southern bays.",
+      "nights": 8,
+      "days": 9,
+      "tags": [
+        "Honeymoon",
+        "Romantic",
+        "Luxury Stays"
+      ],
+      "destinations": [
+        "Negombo",
+        "Kandy",
+        "Tea Trails",
+        "Galle Fort",
+        "Tangalle"
+      ],
+      "highlights": [
+        "Handpicked secluded private pool villas throughout the journey",
+        "Private champagne high tea overlooking emerald valleys in Ceylon Tea Trails",
+        "Romantic 5-course candlelight dinner on the historic ramparts of Galle Dutch Fort",
+        "Couples signature aromatherapy spa ritual with warm virgin coconut oil",
+        "Sunset catamaran sailing excursion along secluded southern coves"
+      ],
+      "itinerary": [
+        {
+          "day": "01",
+          "title": "Ayubowan & Welcome to Your Private Coastal Hideaway",
+          "description": "Arrive at CMB airport where your private chauffeur welcomes you with twin orchids. Transfer to a romantic boutique beachfront suite.",
+          "meals": "Dinner & Welcome Champagne",
+          "stay": "Romantic Coastal Villa, Negombo"
+        },
+        {
+          "day": "02",
+          "title": "Ascent to the Royal Hills of Kandy",
+          "description": "Scenic drive to Kandy. Visit the sacred Temple of the Tooth and enjoy an intimate dinner overlooking candlelit valley lights.",
+          "meals": "Breakfast & Dinner",
+          "stay": "Hillside Luxury Sanctuary, Kandy"
+        },
+        {
+          "day": "03",
+          "title": "Journey into Colonial Ceylon Tea Trails",
+          "description": "Winding drive through misty tea hills to your restored luxury colonial planter bungalow. Unwind beside your fireplace with fine wine.",
+          "meals": "All-Inclusive Luxury Dining",
+          "stay": "Ceylon Tea Trails Bungalow, Hatton"
+        },
+        {
+          "day": "04",
+          "title": "Romantic Lakeside Picnics & Tea Plantation Strolls",
+          "description": "Delight in a private gourmet picnic hamper set up beside Castlereagh Lake. Hand-in-hand stroll through emerald tea slopes.",
+          "meals": "All-Inclusive Luxury Dining",
+          "stay": "Ceylon Tea Trails Bungalow, Hatton"
+        },
+        {
+          "day": "05",
+          "title": "Descent to Galle Fort & Sunset Ramparts Walk",
+          "description": "Drive down to the UNESCO World Heritage Galle Fort. Check into a historic 17th-century merchant mansion suite with private butler.",
+          "meals": "Breakfast & Dinner",
+          "stay": "Historic Amangalla / Luxury Fort Suite, Galle"
+        },
+        {
+          "day": "06",
+          "title": "Private Candlelight Rampart Dinner for Two",
+          "description": "Explore cobblestone alleys, artisan gem boutiques, and perfumed spice courtyards. In the evening, savor a private 5-course dinner under stars.",
+          "meals": "Breakfast & Romantic Dinner",
+          "stay": "Historic Fort Suite, Galle"
+        },
+        {
+          "day": "07",
+          "title": "Transfer to Tangalle Secluded Ocean Coves",
+          "description": "Drive to the secluded golden bays of Tangalle. Check into your private ocean plunge pool villa hidden among coconut palms.",
+          "meals": "Breakfast & Dinner",
+          "stay": "Private Plunge Pool Villa, Tangalle"
+        },
+        {
+          "day": "08",
+          "title": "Couples Spa Ritual & Sunset Beach Stroll",
+          "description": "Indulge in a 2-hour synchronized couples massage. Sip chilled Prosecco as the equatorial sunset turns the Indian Ocean to gold.",
+          "meals": "Breakfast & Dinner",
+          "stay": "Private Plunge Pool Villa, Tangalle"
+        },
+        {
+          "day": "09",
+          "title": "Champagne Breakfast & Departure Transfer",
+          "description": "Leisurely in-villa champagne breakfast before your private chauffeur transfers you via southern expressway to CMB airport.",
+          "meals": "Breakfast Included",
+          "stay": "Departure"
+        }
+      ],
+      "inclusions": [
+        "8 Nights in premier boutique villas, Tea Trails bungalows and private pool suites",
+        "All gourmet dining, welcome champagne, and private candlelight dinner",
+        "Couples signature 2-hour Ayurvedic spa massage ritual",
+        "Private luxury air-conditioned vehicle with discreet executive chauffeur",
+        "All private monument permits, boat charters, and romantic surprises",
+        "24/7 personalized Lotus Ceylon concierge on call"
+      ],
+      "exclusions": [
+        "International flights",
+        "Visas",
+        "Discretionary staff gratuities"
+      ],
+      "bestSeason": "December to April (Glorious sunshine, crystal calm southern beaches)",
+      "priceNote": "Price on request",
+      "images": [
+        "assets/images/couple-travel.jpg"
+      ],
+      "seoTitle": "Enchanted Ceylon Romantic Hideaway 9-Day Honeymoon | Lotus Ceylon",
+      "seoDescription": "The ultimate luxury honeymoon in Sri Lanka. Tea Trails bungalows, Galle Fort candlelit dinners, and private plunge pool ocean villas."
+    },
+    {
+      "id": "pkg-pure-serenade-coastal-highland-romance",
+      "slug": "pure-serenade-coastal-highland-romance",
+      "category": "honeymoon",
+      "title": "Pure Serenade Coastal & Highland Romance",
+      "tagline": "An intimate grand tour uniting ancient water gardens, mist-clad peaks, wild safari glamping, and turquoise oceans.",
+      "nights": 11,
+      "days": 12,
+      "tags": [
+        "Grand Honeymoon",
+        "Safari Glamping",
+        "Luxury"
+      ],
+      "destinations": [
+        "Colombo",
+        "Cultural Triangle",
+        "Nuwara Eliya",
+        "Yala",
+        "Mirissa"
+      ],
+      "highlights": [
+        "Private sunset champagne climb of Sigiriya Rock Fortress",
+        "Luxury tented safari glamping in Yala with private plunge pool",
+        "Scenic first-class railway ride through tea-carpeted mountains",
+        "Private sunrise whale watching catamaran charter in Mirissa",
+        "Romantic seafood barbecue dinner directly on secluded private beach"
+      ],
+      "itinerary": [
+        {
+          "day": "01",
+          "title": "Arrival in Colombo & Transfer to Cultural Oasis",
+          "description": "Warm welcome at CMB airport. Transfer to an eco-luxury water pavilion resort in the Cultural Triangle.",
+          "meals": "Dinner & Champagne",
+          "stay": "Water Garden Pavilion, Sigiriya"
+        },
+        {
+          "day": "02",
+          "title": "Sigiriya Rock Palace at Golden Hour",
+          "description": "Morning at leisure by your private pool. In the late afternoon, ascend Sigiriya rock fortress as the sun casts long golden shadows.",
+          "meals": "Breakfast & Dinner",
+          "stay": "Water Garden Pavilion, Sigiriya"
+        },
+        {
+          "day": "03",
+          "title": "Bicycle Ride Through Ancient Royal Monasteries",
+          "description": "Leisurely cycling through shaded ruins of Polonnaruwa royal capital. Private sunset boat ride on ancient Minneriya lake.",
+          "meals": "Breakfast & Dinner",
+          "stay": "Water Garden Pavilion, Sigiriya"
+        },
+        {
+          "day": "04",
+          "title": "Ascent to Nuwara Eliya Mountain Retreat",
+          "description": "Drive past Dambulla into misty tea country. Check into a colonial manor surrounded by manicured rose gardens.",
+          "meals": "Breakfast & Dinner",
+          "stay": "Luxury Manor, Nuwara Eliya"
+        },
+        {
+          "day": "05",
+          "title": "Scenic Mountain Train & Nine Arches Viaduct",
+          "description": "Scenic rail journey through tea-clad cliffs to Ella. Stroll along Nine Arches Bridge and enjoy sunset cocktails.",
+          "meals": "Breakfast & Dinner",
+          "stay": "Highland Boutique Villa, Ella"
+        },
+        {
+          "day": "06",
+          "title": "Descent to Yala Safari Wilderness Glamping",
+          "description": "Drive to Yala. Check into your ultra-luxury cocoon safari tent featuring teak decks, four-poster bed, and private plunge pool.",
+          "meals": "All-Inclusive Luxury Dining",
+          "stay": "Wild Coast Tented Lodge / Luxury Glamping, Yala"
+        },
+        {
+          "day": "07",
+          "title": "Private Leopard Safari & Bush Sundowners",
+          "description": "Morning and afternoon private jeep drives tracking leopards and sloth bears with senior naturalist. Sunset champagne in the bush.",
+          "meals": "All-Inclusive Luxury Dining",
+          "stay": "Luxury Glamping Safari Tent, Yala"
+        },
+        {
+          "day": "08",
+          "title": "Coastal Transfer to Mirissa Beachfront Sanctuary",
+          "description": "Scenic drive along golden southern shores to your private beachfront boutique villa in Mirissa.",
+          "meals": "Breakfast & Dinner",
+          "stay": "Luxury Beachfront Sanctuary, Mirissa"
+        },
+        {
+          "day": "09",
+          "title": "Private Blue Whale Watching Catamaran Charter",
+          "description": "Private morning boat charter sailing into deep waters. Spot colossal blue whales and spinner dolphins in complete seclusion.",
+          "meals": "Breakfast & Dinner",
+          "stay": "Luxury Beachfront Sanctuary, Mirissa"
+        },
+        {
+          "day": "10",
+          "title": "Couples Spa Day & Galle Fort Sunset Ramble",
+          "description": "Indulgent couples Ayurvedic herbal massage. Evening walk along Galle's ramparts followed by an intimate dining experience.",
+          "meals": "Breakfast & Dinner",
+          "stay": "Luxury Beachfront Sanctuary, Mirissa"
+        },
+        {
+          "day": "11",
+          "title": "Barefoot Luxury & Private Beach Barbecue",
+          "description": "A day entirely at leisure to soak up the sun, swim in turquoise waters, and savor a lantern-lit seafood dinner on the sand.",
+          "meals": "Breakfast & Private Beach BBQ",
+          "stay": "Luxury Beachfront Sanctuary, Mirissa"
+        },
+        {
+          "day": "12",
+          "title": "Highway Transfer to Colombo & Departure",
+          "description": "Private luxury chauffeur transfer via expressway to CMB airport for onward romantic journey.",
+          "meals": "Breakfast Included",
+          "stay": "Departure"
+        }
+      ],
+      "inclusions": [
+        "11 Nights in premier boutique hotels, luxury glamping tents, and pool villas",
+        "All gourmet dinners including private beach BBQ and champagne sundowners",
+        "Exclusive private whale watching charter boat in Mirissa",
+        "Private 4x4 custom safari drives in Yala with dedicated naturalist",
+        "Private luxury vehicle with executive chauffeur guide",
+        "All park permits, monument entrances, and government taxes"
+      ],
+      "exclusions": [
+        "International flights",
+        "Visas",
+        "Personal extras"
+      ],
+      "bestSeason": "November to April (Prime whale sightings, calm seas, and dry safari drives)",
+      "priceNote": "Price on request",
+      "images": [
+        "assets/images/couple-travel.jpg"
+      ],
+      "seoTitle": "Pure Serenade Coastal & Highland 12-Day Honeymoon | Lotus Ceylon",
+      "seoDescription": "Experience the ultimate Sri Lanka honeymoon: Sigiriya luxury pavilions, Yala safari glamping, and private beachfront villas."
+    },
+    {
+      "id": "pkg-island-wonder-multi-gen-family-discovery",
+      "slug": "island-wonder-multi-gen-family-discovery",
+      "category": "family",
+      "title": "Island Wonder Multi-Gen Family Discovery",
+      "tagline": "Safe, gentle, and deeply engaging exploration for grandparents, parents, and children alike.",
+      "nights": 9,
+      "days": 10,
+      "tags": [
+        "Family Friendly",
+        "All Ages",
+        "Wildlife"
+      ],
+      "destinations": [
+        "Negombo",
+        "Pinnawala",
+        "Sigiriya",
+        "Kandy",
+        "Nuwara Eliya",
+        "Bentota"
+      ],
+      "highlights": [
+        "Spacious private luxury air-conditioned passenger van with family-specialist driver",
+        "Gentle elephant bath viewing at Pinnawala Elephant Orphanage",
+        "Interactive village bullock cart ride and Sri Lankan bread-making class",
+        "Kosgoda Sea Turtle Hatchery where kids release newborn hatchlings into the ocean",
+        "Calm, shallow beach resort in Bentota with kids pool and family interconnecting suites"
+      ],
+      "itinerary": [
+        {
+          "day": "01",
+          "title": "Arrival in Colombo & Child-Friendly Coastal Check-In",
+          "description": "Meet your family-friendly chauffeur guide at CMB airport. Short 20-minute drive to Negombo beach resort with warm swimming pools.",
+          "meals": "Dinner Included",
+          "stay": "Family Beach Resort, Negombo"
+        },
+        {
+          "day": "02",
+          "title": "Pinnawala Elephants & Transfer to Sigiriya Forest Resort",
+          "description": "Watch majestic elephant herds bathing in Ma Oya river. Drive into Cultural Triangle to a spacious eco-resort with gardens.",
+          "meals": "Breakfast & Dinner",
+          "stay": "Family Eco-Resort, Sigiriya"
+        },
+        {
+          "day": "03",
+          "title": "Sigiriya Water Gardens & Traditional Village Expedition",
+          "description": "Explore the ancient water gardens at the base of Sigiriya rock (easy walking for all generations). Traditional catamaran ride.",
+          "meals": "Breakfast, Village Lunch & Dinner",
+          "stay": "Family Eco-Resort, Sigiriya"
+        },
+        {
+          "day": "04",
+          "title": "Minneriya Wild Elephant Gathering Safari",
+          "description": "Afternoon open-top jeep safari into Minneriya National Park to observe large herds of wild elephants with playful calves.",
+          "meals": "Breakfast & Dinner",
+          "stay": "Family Eco-Resort, Sigiriya"
+        },
+        {
+          "day": "05",
+          "title": "Spices of Matale & Ascent to Kandy Royal City",
+          "description": "Visit an aromatic spice garden where kids touch cinnamon bark and vanilla pods. Evening traditional cultural dance show in Kandy.",
+          "meals": "Breakfast & Dinner",
+          "stay": "Family Hillside Resort, Kandy"
+        },
+        {
+          "day": "06",
+          "title": "Peradeniya Royal Botanic Gardens & Scenic Train",
+          "description": "Walk among giant Javanese fig trees and vibrant orchids. Board the scenic train for a gentle ride into tea hills.",
+          "meals": "Breakfast & Dinner",
+          "stay": "Colonial Mountain Resort, Nuwara Eliya"
+        },
+        {
+          "day": "07",
+          "title": "Pedro Tea Estate & Gregory Lake Pedal Boats",
+          "description": "Kids pick tea leaves with mini baskets. Afternoon pedal-boating and pony rides along the scenic banks of Lake Gregory.",
+          "meals": "Breakfast & Dinner",
+          "stay": "Colonial Mountain Resort, Nuwara Eliya"
+        },
+        {
+          "day": "08",
+          "title": "Descent to Bentota Golden Beach Resort",
+          "description": "Scenic highway drive to the golden shores of Bentota. Relax by the ocean and enjoy calm swimming waters.",
+          "meals": "Breakfast & Dinner",
+          "stay": "Luxury Family Beach Resort, Bentota"
+        },
+        {
+          "day": "09",
+          "title": "Kosgoda Sea Turtle Hatchery & Baby Turtle Release",
+          "description": "Visit the sea turtle conservation centre. Children hold baby turtles and release healthy hatchlings directly into the ocean at dusk.",
+          "meals": "Breakfast & Dinner",
+          "stay": "Luxury Family Beach Resort, Bentota"
+        },
+        {
+          "day": "10",
+          "title": "Express Highway Transfer to Colombo & Farewell",
+          "description": "Enjoy a final family swim and tropical fruit breakfast before private transfer to CMB airport for your flight home.",
+          "meals": "Breakfast Included",
+          "stay": "Departure"
+        }
+      ],
+      "inclusions": [
+        "9 Nights in spacious family-friendly resorts with interconnecting rooms / family suites",
+        "Spacious luxury air-conditioned van with professional family chauffeur",
+        "Minneriya National Park private family safari jeep and entrance permits",
+        "Kosgoda sea turtle hatchery and baby turtle release program",
+        "All monument entrances, village boat rides, and daily breakfasts & dinners"
+      ],
+      "exclusions": [
+        "International flights",
+        "Visas",
+        "Lunches not stated"
+      ],
+      "bestSeason": "Year-Round (Best: December to April and July to August for school holidays)",
+      "priceNote": "Price on request",
+      "images": [
+        "assets/images/hero-nine-arches.jpg"
+      ],
+      "seoTitle": "Island Wonder Multi-Gen Family 10-Day Tour | Lotus Ceylon",
+      "seoDescription": "The perfect family holiday in Sri Lanka: gentle elephant safaris, turtle hatcheries, scenic train rides, and safe beach resorts."
+    },
+    {
+      "id": "pkg-wild-safari-coastal-family-holiday",
+      "slug": "wild-safari-coastal-family-holiday",
+      "category": "family",
+      "title": "Wild Safari & Coastal Family Holiday",
+      "tagline": "The ideal blend of exciting animal encounters, rainforest wonders, and warm golden beach relaxation.",
+      "nights": 11,
+      "days": 12,
+      "tags": [
+        "Safari",
+        "Beaches",
+        "Family Adventure"
+      ],
+      "destinations": [
+        "Colombo",
+        "Minneriya",
+        "Kandy",
+        "Ella",
+        "Yala",
+        "Galle",
+        "Mirissa"
+      ],
+      "highlights": [
+        "Witness wild elephant herds of 150+ in Minneriya National Park",
+        "Visit the Udawalawe Elephant Transit Home during baby milk feeding time",
+        "Yala National Park jeep safari tracking leopards, sloth bears, and crocodiles",
+        "Walk the historic 17th-century ramparts of Galle Fort and enjoy artisanal gelato",
+        "Mirissa whale and dolphin ocean safari suitable for older children"
+      ],
+      "itinerary": [
+        {
+          "day": "01",
+          "title": "Arrival & Leisurely Recovery in Negombo Lagoon Resort",
+          "description": "Meet your private chauffeur. Check into a calm lagoon resort to recover from long flights with swimming pools.",
+          "meals": "Dinner Included",
+          "stay": "Lagoon Resort, Negombo"
+        },
+        {
+          "day": "02",
+          "title": "Drive to Minneriya Elephant Country",
+          "description": "Drive into the north-central dry zone. Check into a spacious nature lodge with treehouse balconies.",
+          "meals": "Breakfast & Dinner",
+          "stay": "Safari Nature Lodge, Habarana"
+        },
+        {
+          "day": "03",
+          "title": "Minneriya Great Elephant Gathering Safari",
+          "description": "Afternoon private 4x4 open-top jeep safari watching herds of wild elephants drinking and playing in ancient reservoir waters.",
+          "meals": "Breakfast & Dinner",
+          "stay": "Safari Nature Lodge, Habarana"
+        },
+        {
+          "day": "04",
+          "title": "Sigiriya Lion Rock Morning Exploration",
+          "description": "Morning visit to the dramatic 5th-century palace citadel. Children love the giant lion paws carved into the stone.",
+          "meals": "Breakfast & Dinner",
+          "stay": "Safari Nature Lodge, Habarana"
+        },
+        {
+          "day": "05",
+          "title": "Transfer to Hill Country Kandy & Temple Walk",
+          "description": "Scenic drive into Kandy. Visit the historic lakeside temple and witness colorful traditional fire-dancing shows.",
+          "meals": "Breakfast & Dinner",
+          "stay": "Hillside Family Resort, Kandy"
+        },
+        {
+          "day": "06",
+          "title": "Scenic Train to Ella & Nine Arches Bridge",
+          "description": "Experience the famous mountain rail journey over viaduct bridges. Walk through tea estates to view Nine Arches Bridge.",
+          "meals": "Breakfast & Dinner",
+          "stay": "Mountain View Lodge, Ella"
+        },
+        {
+          "day": "07",
+          "title": "Udawalawe Elephant Transit Home & Baby Milk Feeding",
+          "description": "Watch orphaned baby elephants rush out for their bottle-feeding at the transit rehabilitation center before transfer to Yala.",
+          "meals": "Breakfast & Dinner",
+          "stay": "Wilderness Resort, Yala Border"
+        },
+        {
+          "day": "08",
+          "title": "Yala National Park Wildlife Safari",
+          "description": "Thrilling morning safari drive in search of leopards, sloth bears, spotted deer, wild boar, and peacock displays.",
+          "meals": "Breakfast & Dinner",
+          "stay": "Wilderness Resort, Yala Border"
+        },
+        {
+          "day": "09",
+          "title": "Transfer to Mirissa Beach & Weligama Bay",
+          "description": "Drive along the southern coast. Settle into a beachfront resort with calm family swimming pools and sandy beaches.",
+          "meals": "Breakfast & Dinner",
+          "stay": "Beachfront Family Resort, Mirissa"
+        },
+        {
+          "day": "10",
+          "title": "Mirissa Whale Safari & Galle Fort Gelato Walk",
+          "description": "Morning boat excursion to spot blue whales. Afternoon exploration of Galle Fort with artisan Italian gelato stops.",
+          "meals": "Breakfast & Dinner",
+          "stay": "Beachfront Family Resort, Mirissa"
+        },
+        {
+          "day": "11",
+          "title": "Beachfront Leisure & Sea Turtle Conservation",
+          "description": "A completely relaxed day for sandcastle building, snorkeling in shallow bays, and visiting a turtle nursery.",
+          "meals": "Breakfast & Dinner",
+          "stay": "Beachfront Family Resort, Mirissa"
+        },
+        {
+          "day": "12",
+          "title": "Southern Expressway to Colombo Airport & Departure",
+          "description": "Private transfer via highway to CMB airport for your flight home, with wonderful family stories to tell.",
+          "meals": "Breakfast Included",
+          "stay": "Departure"
+        }
+      ],
+      "inclusions": [
+        "11 Nights in premium family-friendly hotels and safari lodges",
+        "Private spacious air-conditioned vehicle with patient family driver",
+        "Minneriya & Yala National Park safari jeeps, park rangers, and fees",
+        "Udawalawe Elephant Transit Home and Kosgoda turtle hatchery tickets",
+        "First-class train tickets and daily breakfast and dinner"
+      ],
+      "exclusions": [
+        "International airfare",
+        "Visas",
+        "Optional water sports"
+      ],
+      "bestSeason": "December to April and July to August",
+      "priceNote": "Price on request",
+      "images": [
+        "assets/images/wildlife.jpg"
+      ],
+      "seoTitle": "Wild Safari & Coastal Family Holiday 12-Day Tour | Lotus Ceylon",
+      "seoDescription": "An unforgettable family journey through Sri Lanka: wild elephant gatherings, baby elephant transit home, Yala safari, and Mirissa beaches."
+    },
+    {
+      "id": "pkg-the-grand-ceylon-family-adventure",
+      "slug": "the-grand-ceylon-family-adventure",
+      "category": "family",
+      "title": "The Grand Ceylon Family Adventure",
+      "tagline": "Two magical weeks covering ancient wonders, wild national parks, scenic rail, and coastal water sports.",
+      "nights": 13,
+      "days": 14,
+      "tags": [
+        "Grand Family",
+        "Comprehensive",
+        "Multi-Gen"
+      ],
+      "destinations": [
+        "Negombo",
+        "Wilpattu",
+        "Cultural Triangle",
+        "Kandy",
+        "Scenic Train",
+        "Bentota"
+      ],
+      "highlights": [
+        "Wilpattu National Park safari with natural lake (Villu) landscapes",
+        "Sigiriya rock fortress and traditional chena village cooking experience",
+        "Kandy to Ella scenic mountain railway journey in first-class seats",
+        "Bentota watersports: banana boat, gentle jet-ski, and river mangrove safari",
+        "Spacious luxury air-conditioned coaster/van with dedicated kid-friendly amenities"
+      ],
+      "itinerary": [
+        {
+          "day": "01",
+          "title": "Welcome to Ceylon & Coastal Relaxation in Negombo",
+          "description": "Arrival at CMB airport. Private transfer to a family resort with swimming pool and lush tropical gardens.",
+          "meals": "Dinner Included",
+          "stay": "Coastal Family Resort, Negombo"
+        },
+        {
+          "day": "02",
+          "title": "Drive North to Wilpattu National Park Border",
+          "description": "Journey through scenic coconut estates to the borders of Wilpattu, Sri Lanka's largest and oldest national park.",
+          "meals": "Breakfast & Dinner",
+          "stay": "Safari Forest Resort, Wilpattu"
+        },
+        {
+          "day": "03",
+          "title": "Wilpattu Safari & Sandstone Ruins of Anuradhapura",
+          "description": "Morning jeep safari around natural sand-rimmed water basins (Villus). Afternoon visit to the ancient sacred city of Anuradhapura.",
+          "meals": "Breakfast & Dinner",
+          "stay": "Heritage Resort, Anuradhapura"
+        },
+        {
+          "day": "04",
+          "title": "Sacred Bodhi Tree & Transfer to Sigiriya",
+          "description": "Visit the 2,300-year-old Jaya Sri Maha Bodhi tree. Drive south to a beautiful resort in Sigiriya with outdoor pool.",
+          "meals": "Breakfast & Dinner",
+          "stay": "Family Resort, Sigiriya"
+        },
+        {
+          "day": "05",
+          "title": "Sigiriya Rock Palace & Chena Farm Village Lunch",
+          "description": "Morning ascent of Sigiriya Rock Fortress. Enjoy an authentic rural lunch cooked in clay pots over coconut husks.",
+          "meals": "Breakfast, Farm Lunch & Dinner",
+          "stay": "Family Resort, Sigiriya"
+        },
+        {
+          "day": "06",
+          "title": "Dambulla Golden Caves & Matale Spice Gardens",
+          "description": "Visit the majestic painted cave temple of Dambulla. Touch fresh cinnamon and cocoa pods in Matale spice groves.",
+          "meals": "Breakfast & Dinner",
+          "stay": "Lakeside Resort, Kandy"
+        },
+        {
+          "day": "07",
+          "title": "Kandy Sacred Temple & Royal Botanic Gardens",
+          "description": "Explore the Temple of the Tooth and stroll through the immense bamboo forests of Peradeniya Botanic Gardens.",
+          "meals": "Breakfast & Dinner",
+          "stay": "Lakeside Resort, Kandy"
+        },
+        {
+          "day": "08",
+          "title": "Scenic Mountain Train Ride to Nuwara Eliya",
+          "description": "Board the famous hill country train. Kids delight in mountain tunnels and cascading waterfalls visible from windows.",
+          "meals": "Breakfast & Dinner",
+          "stay": "Historic Mountain Resort, Nuwara Eliya"
+        },
+        {
+          "day": "09",
+          "title": "Pedro Tea Plantation & Gregory Lake Family Fun",
+          "description": "Learn how tea is made from leaf to cup. Afternoon pedal boating and cycling along Lake Gregory promenade.",
+          "meals": "Breakfast & Dinner",
+          "stay": "Historic Mountain Resort, Nuwara Eliya"
+        },
+        {
+          "day": "10",
+          "title": "Descent Past Waterfalls to Bentota Golden Coast",
+          "description": "Scenic drive winding past Devon and St. Clair's waterfalls, descending to the warm golden beaches of Bentota.",
+          "meals": "Breakfast & Dinner",
+          "stay": "Beachfront Luxury Resort, Bentota"
+        },
+        {
+          "day": "11",
+          "title": "Madu River Mangrove Boat Safari & Fish Therapy",
+          "description": "Speedboat safari through 64 mangrove islands. Visit a cinnamon-peeling island and watch birds in their natural sanctuary.",
+          "meals": "Breakfast & Dinner",
+          "stay": "Beachfront Luxury Resort, Bentota"
+        },
+        {
+          "day": "12",
+          "title": "Kosgoda Sea Turtle Hatchery & Baby Release",
+          "description": "Hands-on conservation experience learning about sea turtles and releasing newly-hatched baby turtles into the sea.",
+          "meals": "Breakfast & Dinner",
+          "stay": "Beachfront Luxury Resort, Bentota"
+        },
+        {
+          "day": "13",
+          "title": "Bentota Water Sports & Farewell Family Beach Dinner",
+          "description": "Exciting banana boat and tube rides on Bentota lagoon. In the evening, gather for a special private farewell seafood beach dinner.",
+          "meals": "Breakfast & Special Dinner",
+          "stay": "Beachfront Luxury Resort, Bentota"
+        },
+        {
+          "day": "14",
+          "title": "Express Highway Transfer to Colombo Airport & Departure",
+          "description": "After breakfast, enjoy a smooth private highway transfer to CMB airport for your flight home.",
+          "meals": "Breakfast Included",
+          "stay": "Departure"
+        }
+      ],
+      "inclusions": [
+        "13 Nights in luxury family-friendly resorts with interconnecting rooms",
+        "Private spacious air-conditioned vehicle with experienced family chauffeur",
+        "Wilpattu National Park safari jeep, guide, and entrance permits",
+        "Madu Ganga river boat safari and Kosgoda turtle hatchery tickets",
+        "All national monument tickets and daily breakfast and dinner"
+      ],
+      "exclusions": [
+        "International flights",
+        "Visas",
+        "Personal expenses"
+      ],
+      "bestSeason": "Year-Round",
+      "priceNote": "Price on request",
+      "images": [
+        "assets/images/hero-nine-arches.jpg"
+      ],
+      "seoTitle": "The Grand Ceylon Family Adventure 14-Day Tour | Lotus Ceylon",
+      "seoDescription": "The ultimate two-week family tour of Sri Lanka: Wilpattu safaris, ancient royal cities, scenic mountain trains, and Bentota beaches."
+    },
+    {
+      "id": "pkg-sacred-ramayana-heritage-trail",
+      "slug": "sacred-ramayana-heritage-trail",
+      "category": "ramayana",
+      "title": "Sacred Ramayana Heritage Trail",
+      "tagline": "Follow the legendary epic through Munneswaram, Manavari, Seetha Amman Temple, and Ashoka Vatika.",
+      "nights": 6,
+      "days": 7,
+      "tags": [
+        "Pilgrimage",
+        "Ramayana",
+        "Heritage"
+      ],
+      "destinations": [
+        "Colombo",
+        "Chilaw",
+        "Kandy",
+        "Nuwara Eliya"
+      ],
+      "highlights": [
+        "Special puja blessing at Munneswaram Temple, one of the five ancient Ishwarams",
+        "Visit Manavari Temple where Lord Rama installed the first Shiva Lingam (Ramalingam)",
+        "Devotional morning darshan at Seetha Amman Temple in Seetha Eliya",
+        "Walk through Hakgala Botanical Gardens, the legendary Ashoka Vatika pleasure gardens",
+        "Visit Divurumpola Temple, the revered site of Sita Devi's Agni Pariksha"
+      ],
+      "itinerary": [
+        {
+          "day": "01",
+          "title": "Ayubowan & Arrival in Colombo",
+          "description": "Warm welcome by your scholarly chauffeur guide. Transfer to your comfortable hotel in Colombo or Negombo.",
+          "meals": "Dinner Included",
+          "stay": "Heritage Hotel, Colombo/Negombo"
+        },
+        {
+          "day": "02",
+          "title": "Munneswaram & Manavari Temples (Lord Rama’s Sins Cleansed)",
+          "description": "Drive north to Chilaw. Visit Munneswaram Shiva Temple where Lord Rama prayed to Lord Shiva after slaying Ravana. Visit Manavari Temple to venerate the sacred Ramalingam.",
+          "meals": "Breakfast & Vegetarian Dinner",
+          "stay": "Heritage Resort, Kandy"
+        },
+        {
+          "day": "03",
+          "title": "Kandy Royal City & Sri Bhakta Hanuman Temple (Ramboda)",
+          "description": "Ascend into the misty hills. Stop at Ramboda to visit the 16-foot granite deity at Sri Bhakta Hanuman Temple built by Chinmaya Mission.",
+          "meals": "Breakfast & Vegetarian Dinner",
+          "stay": "Highland Resort, Nuwara Eliya"
+        },
+        {
+          "day": "04",
+          "title": "Seetha Amman Temple & Ashoka Vatika (Hakgala)",
+          "description": "Visit the world’s only Seetha Amman Temple where Sita Devi was held captive. See the footmarks of Lord Hanuman in the stream bed. Stroll through Ashoka Vatika gardens.",
+          "meals": "Breakfast & Vegetarian Dinner",
+          "stay": "Highland Resort, Nuwara Eliya"
+        },
+        {
+          "day": "05",
+          "title": "Divurumpola (Agni Pariksha) & Gayathri Peedam",
+          "description": "Visit Divurumpola Temple, where Sita Devi underwent the Agni Pariksha to prove her chastity. Visit Gayathri Peedam, where King Ravana’s son Meghanath performed penance.",
+          "meals": "Breakfast & Vegetarian Dinner",
+          "stay": "Highland Resort, Nuwara Eliya"
+        },
+        {
+          "day": "06",
+          "title": "Kelaniya Vibhishana Temple & Return to Colombo",
+          "description": "Drive down to Colombo. Visit the historic Kelaniya Raja Maha Vihara, where Vibhishana was crowned King of Lanka by Lakshmana after Ravana's defeat.",
+          "meals": "Breakfast & Vegetarian Dinner",
+          "stay": "Luxury Hotel, Colombo"
+        },
+        {
+          "day": "07",
+          "title": "Panchamuga Anjaneyar Temple & Departure",
+          "description": "Visit Sri Anjaneyar Temple in Dehiwala housing the five-faced Hanuman. Transfer to CMB airport for onward devotional journey.",
+          "meals": "Breakfast Included",
+          "stay": "Departure"
+        }
+      ],
+      "inclusions": [
+        "6 Nights in carefully selected hotels with vegetarian / sattvic dining options",
+        "Private dedicated air-conditioned vehicle with Ramayana-knowledgeable chauffeur guide",
+        "All temple special puja offerings, coconuts, and entrance permits",
+        "Hakgala Botanical Gardens (Ashoka Vatika) entrance tickets",
+        "Daily vegetarian breakfast and dinner throughout"
+      ],
+      "exclusions": [
+        "International airfare",
+        "Visas",
+        "Personal dakshina / donations"
+      ],
+      "bestSeason": "Year-Round (Pleasant and devotional throughout the year)",
+      "priceNote": "Price on request",
+      "images": [
+        "assets/images/polonnaruwa.jpg"
+      ],
+      "seoTitle": "Sacred Ramayana Heritage Trail 7-Day Tour | Lotus Ceylon",
+      "seoDescription": "Walk the holy Ramayana trail in Sri Lanka. Visit Munneswaram, Seetha Amman Temple, Ashoka Vatika, and Kelaniya with Lotus Ceylon."
+    },
+    {
+      "id": "pkg-the-epic-ramayana-chronicle-pilgrimage",
+      "slug": "the-epic-ramayana-chronicle-pilgrimage",
+      "category": "ramayana",
+      "title": "The Epic Ramayana Chronicle Pilgrimage",
+      "tagline": "The ultimate 10-day cross-island pilgrimage tracing sacred shrines from Mannar to Nuwara Eliya and Ella.",
+      "nights": 9,
+      "days": 10,
+      "tags": [
+        "Full Pilgrimage",
+        "Sacred Shrines",
+        "Ramayana"
+      ],
+      "destinations": [
+        "Colombo",
+        "Mannar",
+        "Jaffna",
+        "Trincomalee",
+        "Kandy",
+        "Nuwara Eliya",
+        "Ella"
+      ],
+      "highlights": [
+        "Visit Thiruketheeswaram Temple and Adam's Bridge (Rama Setu) in Mannar",
+        "Koneswaram Temple (Dakshina Kailasam) built on Swami Rock overlooking Trincomalee",
+        "Kanniya Hot Springs created by King Ravana with his sword",
+        "Seetha Amman Temple, Ashoka Vatika, and Divurumpola in the central highlands",
+        "Explore Ravana Ella Falls and the subterranean Ravana Cave in Ella"
+      ],
+      "itinerary": [
+        {
+          "day": "01",
+          "title": "Arrival in Colombo & Coastal Journey to Chilaw",
+          "description": "Meet your private scholarly guide. Drive north to Chilaw. Evening puja at Munneswaram and Manavari temples.",
+          "meals": "Vegetarian Dinner",
+          "stay": "Coastal Hotel, Chilaw/Kalpitiya"
+        },
+        {
+          "day": "02",
+          "title": "Mannar Island, Thiruketheeswaram & Rama Setu (Adam's Bridge)",
+          "description": "Drive across Mannar causeway. Visit ancient Thiruketheeswaram Shiva temple. Stand at the sandbar vantage point of Rama Setu.",
+          "meals": "Breakfast & Dinner",
+          "stay": "Heritage Lodge, Mannar/Jaffna"
+        },
+        {
+          "day": "03",
+          "title": "Naguleswaram Temple & Jaffna Cultural Heritage",
+          "description": "Visit Naguleswaram temple and sacred Keerimalai springs where sage Nagula Muni bathed. Tour historic Nallur Kandaswamy Kovil.",
+          "meals": "Breakfast & Dinner",
+          "stay": "Heritage Hotel, Jaffna"
+        },
+        {
+          "day": "04",
+          "title": "Trincomalee Koneswaram Temple & Kanniya Hot Springs",
+          "description": "Cross to the east coast. Visit Koneswaram Temple perched atop Swami Rock cliff face. Visit the 7 sacred Kanniya hot wells.",
+          "meals": "Breakfast & Dinner",
+          "stay": "Beach Resort, Trincomalee"
+        },
+        {
+          "day": "05",
+          "title": "Ascent to Hill Capital of Kandy",
+          "description": "Scenic drive into central highlands. Evening cultural drum offering and blessings at the sacred Temple of the Tooth.",
+          "meals": "Breakfast & Dinner",
+          "stay": "Hillside Hotel, Kandy"
+        },
+        {
+          "day": "06",
+          "title": "Sri Bhakta Hanuman Temple & Seetha Amman Temple",
+          "description": "Visit the 16ft Hanuman statue in Ramboda. Continue to Seetha Eliya to venerate Seetha Amman Temple and see Hanuman footprints.",
+          "meals": "Breakfast & Dinner",
+          "stay": "Colonial Resort, Nuwara Eliya"
+        },
+        {
+          "day": "07",
+          "title": "Ashoka Vatika (Hakgala) & Divurumpola Agni Pariksha",
+          "description": "Walk through Hakgala Botanical Gardens (Ashoka Vatika). Visit Divurumpola Temple where Sita Devi underwent the trial of fire.",
+          "meals": "Breakfast & Dinner",
+          "stay": "Colonial Resort, Nuwara Eliya"
+        },
+        {
+          "day": "08",
+          "title": "Ravana Falls, Ravana Cave & Ella Mountain Valley",
+          "description": "Explore the cascading Ravana Falls and trek to Ravana Cave where King Ravana hid Sita Devi. Enjoy breathtaking Ella Gap views.",
+          "meals": "Breakfast & Dinner",
+          "stay": "Mountain Villa, Ella"
+        },
+        {
+          "day": "09",
+          "title": "Kelaniya Temple & Colombo Capital Pilgrimage",
+          "description": "Scenic highway drive to Colombo. Visit Kelaniya Raja Maha Vihara and Sri Anjaneyar Temple in Dehiwala.",
+          "meals": "Breakfast & Dinner",
+          "stay": "Luxury Hotel, Colombo"
+        },
+        {
+          "day": "10",
+          "title": "Final Blessings & Departure Transfer",
+          "description": "Conclude your comprehensive sacred pilgrimage with private chauffeur transfer to CMB airport.",
+          "meals": "Breakfast Included",
+          "stay": "Departure"
+        }
+      ],
+      "inclusions": [
+        "9 Nights in handpicked hotels with authentic vegetarian dining options",
+        "Dedicated private air-conditioned vehicle with Ramayana-specialist chauffeur guide",
+        "All temple puja offerings, entry permits, and sacred site access",
+        "Daily vegetarian breakfast and dinner throughout",
+        "24/7 Lotus Ceylon concierge and pilgrim support"
+      ],
+      "exclusions": [
+        "International flights",
+        "Visas",
+        "Personal donations"
+      ],
+      "bestSeason": "Year-Round",
+      "priceNote": "Price on request",
+      "images": [
+        "assets/images/polonnaruwa.jpg"
+      ],
+      "seoTitle": "The Epic Ramayana Chronicle 10-Day Pilgrimage | Lotus Ceylon",
+      "seoDescription": "Cross-island sacred Ramayana pilgrimage: Rama Setu Mannar, Koneswaram, Seetha Amman Temple, and Ravana Falls."
+    },
+    {
+      "id": "pkg-the-royal-ceylon-fairways-tour",
+      "slug": "the-royal-ceylon-fairways-tour",
+      "category": "golf",
+      "title": "The Royal Ceylon Fairways Tour",
+      "tagline": "Tee off at Asia’s oldest golf clubs: Royal Colombo and Donald Steel’s spectacular Victoria Golf Resort.",
+      "nights": 6,
+      "days": 7,
+      "tags": [
+        "Championship Golf",
+        "Luxury",
+        "Clubhouse Stays"
+      ],
+      "destinations": [
+        "Colombo",
+        "Kandy"
+      ],
+      "highlights": [
+        "18 Holes at Royal Colombo Golf Club (Founded 1879, second oldest outside the UK)",
+        "36 Holes at Victoria Golf Resort in Kandy, ranked among the world’s top 100 most scenic courses",
+        "Pre-booked guaranteed prime morning tee times with private caddies and golf carts",
+        "Stay in luxury fairway villas overlooking Victoria reservoir",
+        "Private chauffeur and dedicated vehicle with ample luggage capacity for golf bags"
+      ],
+      "itinerary": [
+        {
+          "day": "01",
+          "title": "Arrival in Colombo & Welcome to The Galle Face Hotel",
+          "description": "Meet your private chauffeur guide at CMB airport. Transfer to Colombo's iconic colonial hotel. Unpack your clubs and enjoy sunset drinks.",
+          "meals": "Dinner Included",
+          "stay": "The Galle Face Hotel, Colombo"
+        },
+        {
+          "day": "02",
+          "title": "Round 1: 18 Holes at Royal Colombo Golf Club (RCGC)",
+          "description": "Tee off on the historic tree-lined fairways of the 145-year-old RCGC. Watch the historic Kelani Valley commuter train pass through the course.",
+          "meals": "Breakfast & Clubhouse Lunch",
+          "stay": "The Galle Face Hotel, Colombo"
+        },
+        {
+          "day": "03",
+          "title": "Scenic Transfer to Victoria Golf Resort Kandy",
+          "description": "Drive through lush tropical scenery into the Kandyan hills. Check into your fairway villa overlooking the turquoise Victoria reservoir.",
+          "meals": "Breakfast & Dinner",
+          "stay": "Victoria Golf Resort Chalets, Kandy"
+        },
+        {
+          "day": "04",
+          "title": "Round 2: 18 Holes at Donald Steel’s Victoria Championship Course",
+          "description": "Play Donald Steel's award-winning 73-par masterpiece flanked by majestic tamarind trees, rolling ridges, and lake vistas.",
+          "meals": "Breakfast & Dinner",
+          "stay": "Victoria Golf Resort Chalets, Kandy"
+        },
+        {
+          "day": "05",
+          "title": "Kandy Heritage Exploration & Rest Day / Twilight 9 Holes",
+          "description": "Morning private tour of the sacred Temple of the Tooth and Peradeniya Botanic Gardens. Optional twilight 9-hole putting or driving range.",
+          "meals": "Breakfast & Dinner",
+          "stay": "Victoria Golf Resort Chalets, Kandy"
+        },
+        {
+          "day": "06",
+          "title": "Round 3: 18 Holes Championship Re-Match at Victoria",
+          "description": "Second full 18-hole round mastering the dramatic elevated tee shots and undulating greens of Victoria course.",
+          "meals": "Breakfast & Dinner",
+          "stay": "Victoria Golf Resort Chalets, Kandy"
+        },
+        {
+          "day": "07",
+          "title": "Scenic Highway Return to Colombo & Departure",
+          "description": "Enjoy a relaxed breakfast overlooking the reservoir before your private chauffeur transfers you and your gear to CMB airport.",
+          "meals": "Breakfast Included",
+          "stay": "Departure"
+        }
+      ],
+      "inclusions": [
+        "6 Nights in 5-star colonial heritage hotels and fairway resort chalets",
+        "Green fees, private caddies, and shared golf carts for 3 full 18-hole rounds",
+        "Pre-reserved prime morning tee times",
+        "Spacious private air-conditioned vehicle accommodating all passenger golf bags",
+        "Daily breakfast and fine dining dinners throughout"
+      ],
+      "exclusions": [
+        "Club rental fees (available on request)",
+        "International airfare",
+        "Visas"
+      ],
+      "bestSeason": "Year-Round (Best: December to April and July to September)",
+      "priceNote": "Price on request",
+      "images": [
+        "assets/images/tea-country.jpg"
+      ],
+      "seoTitle": "The Royal Ceylon Fairways 7-Day Golf Tour | Lotus Ceylon",
+      "seoDescription": "Play golf at Royal Colombo Golf Club and Donald Steel's scenic Victoria Golf Resort in Kandy with Lotus Ceylon."
+    },
+    {
+      "id": "pkg-highland-greens-coastal-links-championship",
+      "slug": "highland-greens-coastal-links-championship",
+      "category": "golf",
+      "title": "Highland Greens & Coastal Links Championship",
+      "tagline": "The complete golf circuit: colonial fairways, highland pine greens, and oceanfront coastal links.",
+      "nights": 9,
+      "days": 10,
+      "tags": [
+        "Full Circuit",
+        "Golf Championship",
+        "Luxury"
+      ],
+      "destinations": [
+        "Colombo",
+        "Kandy",
+        "Nuwara Eliya",
+        "Hambantota"
+      ],
+      "highlights": [
+        "Play 4 premier courses: Royal Colombo, Victoria Kandy, Nuwara Eliya Golf Club, and Shangri-La Hambantota",
+        "Tee off at 1,890 meters altitude in Nuwara Eliya’s 1889 colonial pine-lined fairways",
+        "18-hole coastal links play with ocean breezes at Shangri-La Golf Resort",
+        "Non-golfing partner luxury spa packages and cultural excursions included",
+        "Dedicated luxury van ensuring seamless transit of clubs and luggage"
+      ],
+      "itinerary": [
+        {
+          "day": "01",
+          "title": "Arrival in Colombo & Royal Colombo Clubhouse Welcome",
+          "description": "Chauffeur meet & greet at CMB airport. Transfer to luxury 5-star hotel in Colombo. Evening drink at the historic RCGC clubhouse.",
+          "meals": "Dinner Included",
+          "stay": "Luxury 5-Star Hotel, Colombo"
+        },
+        {
+          "day": "02",
+          "title": "Round 1: 18 Holes at Royal Colombo Golf Club",
+          "description": "Tee off at the historic RCGC. Experience classic parkland golf in the heart of the capital with private caddy.",
+          "meals": "Breakfast & Dinner",
+          "stay": "Luxury 5-Star Hotel, Colombo"
+        },
+        {
+          "day": "03",
+          "title": "Transfer to Victoria Golf Resort Kandy",
+          "description": "Drive past spice hills to Victoria Golf Resort. Practice on the driving range overlooking the reservoir.",
+          "meals": "Breakfast & Dinner",
+          "stay": "Victoria Golf Resort, Kandy"
+        },
+        {
+          "day": "04",
+          "title": "Round 2: 18 Holes at Victoria Championship Course",
+          "description": "Conquer Donald Steel’s spectacular course with elevation drops and breathtaking mountain water hazards.",
+          "meals": "Breakfast & Dinner",
+          "stay": "Victoria Golf Resort, Kandy"
+        },
+        {
+          "day": "05",
+          "title": "Ascent to Nuwara Eliya & Round 3: 18 Holes at NEGC",
+          "description": "Drive up to 'Little England'. Play the historic 1889 Nuwara Eliya Golf Club lined with towering pines and British colonial charm.",
+          "meals": "Breakfast & Dinner",
+          "stay": "The Grand Hotel, Nuwara Eliya"
+        },
+        {
+          "day": "06",
+          "title": "Highland Tea Tasting & Scenic Descent to Southern Coast",
+          "description": "Morning tea factory connoisseur tasting. Descend through Ella Gap to Shangri-La Hambantota Golf Resort.",
+          "meals": "Breakfast & Dinner",
+          "stay": "Shangri-La Golf Resort & Spa, Hambantota"
+        },
+        {
+          "day": "07",
+          "title": "Round 4: 18 Holes at Shangri-La Coastal Links",
+          "description": "Tee off on Rodney Wright's championship eco-links course running alongside sand dunes, salt pans, and ocean breezes.",
+          "meals": "Breakfast & Dinner",
+          "stay": "Shangri-La Golf Resort & Spa, Hambantota"
+        },
+        {
+          "day": "08",
+          "title": "Morning Yala Safari Drive & Afternoon Re-Play",
+          "description": "Dawn 4x4 safari drive tracking leopards in Yala. Afternoon relaxing golf round or luxury Chi Spa treatment.",
+          "meals": "Breakfast & Dinner",
+          "stay": "Shangri-La Golf Resort & Spa, Hambantota"
+        },
+        {
+          "day": "09",
+          "title": "Coastal Expressway Drive to Galle Fort",
+          "description": "Drive along southern shores to historic Galle Fort. Sunset walk along Dutch ramparts and celebratory farewell dinner.",
+          "meals": "Breakfast & Special Dinner",
+          "stay": "Boutique Heritage Suite, Galle"
+        },
+        {
+          "day": "10",
+          "title": "Expressway Transfer to Colombo Airport & Departure",
+          "description": "Direct highway transfer to CMB airport with golf clubs safely packed.",
+          "meals": "Breakfast Included",
+          "stay": "Departure"
+        }
+      ],
+      "inclusions": [
+        "9 Nights in 5-star luxury hotels, golf resorts, and colonial manors",
+        "Green fees, caddies, and carts for 4 championship 18-hole rounds",
+        "Guaranteed morning tee times at all 4 courses",
+        "Private luxury air-conditioned van with dedicated golf luggage rack",
+        "Daily breakfast and gourmet dinners throughout"
+      ],
+      "exclusions": [
+        "International flights",
+        "Visas",
+        "Club rentals"
+      ],
+      "bestSeason": "December to April",
+      "priceNote": "Price on request",
+      "images": [
+        "assets/images/tea-country.jpg"
+      ],
+      "seoTitle": "Highland Greens & Coastal Links 10-Day Golf Tour | Lotus Ceylon",
+      "seoDescription": "Play Sri Lanka's 4 best golf courses: Royal Colombo, Victoria Kandy, Nuwara Eliya, and Shangri-La Hambantota."
+    },
+    {
+      "id": "pkg-the-grand-ceylon-masters-golf-odyssey",
+      "slug": "the-grand-ceylon-masters-golf-odyssey",
+      "category": "golf",
+      "title": "The Grand Ceylon Masters Golf Odyssey",
+      "tagline": "The ultimate luxury golfing journey: 6 rounds across championship courses with 5★ boutique hospitality.",
+      "nights": 11,
+      "days": 12,
+      "tags": [
+        "Masters Odyssey",
+        "6 Rounds",
+        "VIP Golf"
+      ],
+      "destinations": [
+        "Colombo",
+        "Kandy",
+        "Nuwara Eliya",
+        "Hambantota",
+        "Galle"
+      ],
+      "highlights": [
+        "6 Full 18-hole championship rounds across Sri Lanka’s premier golf resorts",
+        "Exclusive VIP tournament-level caddy allocation and pre-booked tee times",
+        "Luxury private helicopter transfer option between Colombo and Kandy",
+        "Unlimited driving range balls and complimentary club tune-up",
+        "Gourmet culinary experiences and champagne sundowners on fairway terraces"
+      ],
+      "itinerary": [
+        {
+          "day": "01",
+          "title": "VIP Airport Arrival & The Kingsbury Colombo Check-In",
+          "description": "VIP expedited arrival at CMB airport. Check into your ocean-facing luxury suite. Unpack and inspect golf gear.",
+          "meals": "Dinner & Welcome Cocktails",
+          "stay": "The Kingsbury 5-Star Hotel, Colombo"
+        },
+        {
+          "day": "02",
+          "title": "Round 1: 18 Holes at Royal Colombo Golf Club",
+          "description": "Morning 18-hole championship round on historic colonial parkland fairways.",
+          "meals": "Breakfast & Clubhouse Lunch",
+          "stay": "The Kingsbury, Colombo"
+        },
+        {
+          "day": "03",
+          "title": "Transfer to Victoria Golf Resort Kandy",
+          "description": "Private luxury transfer into the central hills. Afternoon practice round on Victoria's undulating greens.",
+          "meals": "Breakfast & Dinner",
+          "stay": "Victoria Golf Resort, Kandy"
+        },
+        {
+          "day": "04",
+          "title": "Round 2: 18 Holes at Victoria Championship Course",
+          "description": "First competitive 18 holes on Donald Steel’s spectacular lake-bordered fairways.",
+          "meals": "Breakfast & Dinner",
+          "stay": "Victoria Golf Resort, Kandy"
+        },
+        {
+          "day": "05",
+          "title": "Round 3: 18 Holes Victoria Re-Match & Temple Visit",
+          "description": "Second full 18-hole round at Victoria. Evening private cultural blessing at the Temple of the Tooth.",
+          "meals": "Breakfast & Dinner",
+          "stay": "Victoria Golf Resort, Kandy"
+        },
+        {
+          "day": "06",
+          "title": "Scenic Ascent to Nuwara Eliya Alpine Highlands",
+          "description": "Drive past Devon Falls to Nuwara Eliya. Check into the historic Grand Hotel.",
+          "meals": "Breakfast & Dinner",
+          "stay": "The Grand Hotel, Nuwara Eliya"
+        },
+        {
+          "day": "07",
+          "title": "Round 4: 18 Holes at Nuwara Eliya Golf Club (NEGC)",
+          "description": "Tee off amidst crisp mountain air and towering pines at the 135-year-old NEGC course.",
+          "meals": "Breakfast & Dinner",
+          "stay": "The Grand Hotel, Nuwara Eliya"
+        },
+        {
+          "day": "08",
+          "title": "Scenic Descent to Shangri-La Hambantota Golf Links",
+          "description": "Scenic highway drive to the southern coast. Relax in oceanfront resort pools.",
+          "meals": "Breakfast & Dinner",
+          "stay": "Shangri-La Golf Resort, Hambantota"
+        },
+        {
+          "day": "09",
+          "title": "Round 5: 18 Holes at Shangri-La Coastal Links",
+          "description": "Play Rodney Wright's coastal course through former sapphire mines and coastal lagoons.",
+          "meals": "Breakfast & Dinner",
+          "stay": "Shangri-La Golf Resort, Hambantota"
+        },
+        {
+          "day": "10",
+          "title": "Round 6: 18 Holes Championship Finale at Shangri-La",
+          "description": "Final 18-hole championship finale round with trophy presentation dinner.",
+          "meals": "Breakfast & Awards Dinner",
+          "stay": "Shangri-La Golf Resort, Hambantota"
+        },
+        {
+          "day": "11",
+          "title": "Coastal Transfer to Galle Fort & Lighthouse Walk",
+          "description": "Drive to Galle. Relax with luxury spa massages and sunset stroll along the ramparts.",
+          "meals": "Breakfast & Dinner",
+          "stay": "Historic Fort Hotel, Galle"
+        },
+        {
+          "day": "12",
+          "title": "Express Highway Transfer to Colombo Airport & Departure",
+          "description": "Private chauffeur transfer directly to CMB airport for onward journey.",
+          "meals": "Breakfast Included",
+          "stay": "Departure"
+        }
+      ],
+      "inclusions": [
+        "11 Nights in 5-star luxury hotels, golf villas, and colonial manors",
+        "Green fees, private senior caddies, and carts for 6 championship 18-hole rounds",
+        "Guaranteed prime morning tee times and unlimited practice range balls",
+        "Spacious private luxury executive van for players, companions, and all golf bags",
+        "Daily breakfast, gourmet clubhouse lunches, and fine dining dinners"
+      ],
+      "exclusions": [
+        "International airfare",
+        "Visas",
+        "Club rentals"
+      ],
+      "bestSeason": "December to April",
+      "priceNote": "Price on request",
+      "images": [
+        "assets/images/tea-country.jpg"
+      ],
+      "seoTitle": "The Grand Ceylon Masters Golf Odyssey 12-Day Tour | Lotus Ceylon",
+      "seoDescription": "The definitive Sri Lanka golf tour: 6 championship rounds at Royal Colombo, Victoria Kandy, Nuwara Eliya, and Shangri-La."
     }
   ]
 }

@@ -207,7 +207,6 @@
     .btn-related-explore:hover {
       color: #C5A880;
     }
-    /* Lightbox Modal */
     .map-lightbox-modal {
       display: none;
       position: fixed;
@@ -221,24 +220,9 @@
       justify-content: center;
       padding: 20px;
     }
-    .map-lightbox-modal.active {
-      display: flex;
-    }
-    .map-lightbox-content {
-      max-width: 90vw;
-      max-height: 90vh;
-      object-fit: contain;
-      border-radius: 8px;
-    }
-    .map-lightbox-close {
-      position: absolute;
-      top: 25px;
-      right: 35px;
-      color: #fff;
-      font-size: 40px;
-      font-weight: 300;
-      cursor: pointer;
-    }
+    .map-lightbox-modal.active { display: flex; }
+    .map-lightbox-content { max-width: 90vw; max-height: 90vh; object-fit: contain; border-radius: 8px; }
+    .map-lightbox-close { position: absolute; top: 25px; right: 35px; color: #fff; font-size: 40px; font-weight: 300; cursor: pointer; }
   </style>
 </head>
 <body class="page-tour-detail">
@@ -417,9 +401,6 @@
     </div>
   </header>
 
-  <!-- ==========================================================================
-       HERO BANNER
-       ========================================================================== -->
   <section class="tour-hero-section" id="tourHero" style="background-image: url('../../../assets/tours/wildlife/predator-trail-1.jpg');">
     <div class="tour-hero-overlay"></div>
     <div class="wrapper--90">
@@ -451,9 +432,6 @@
     </div>
   </section>
 
-  <!-- ==========================================================================
-       QUICK FACTS BAR
-       ========================================================================== -->
   <section class="tour-facts-bar">
     <div class="wrapper--90">
       <div class="tour-facts-grid">
@@ -485,7 +463,7 @@
           <div class="tour-fact-icon">🏨</div>
           <div>
             <p class="tour-fact-label">Accommodation</p>
-            <p class="tour-fact-value">Handpicked 5★ &amp; Boutique Villas</p>
+            <p class="tour-fact-value">Handpicked 5★ &amp; Boutique Stays</p>
           </div>
         </div>
 
@@ -500,14 +478,10 @@
     </div>
   </section>
 
-  <!-- ==========================================================================
-       MAIN CONTENT: ITINERARY & STICKY BOOKING SIDEBAR
-       ========================================================================== -->
   <main class="tour-main-section padding-top--70 padding-bottom--100">
     <div class="wrapper--90">
       <div class="tour-main-layout" id="itinerary">
         
-        <!-- Left Column: Detailed Itinerary -->
         <div class="tour-itinerary-col">
           <div class="section-watermark-header" style="margin-bottom: 2rem;">
             <p class="watermark-heading">ITINERARY</p>
@@ -624,7 +598,6 @@
         
           </div>
 
-          <!-- Inclusions & Exclusions -->
           <div class="inclusions-grid">
             <div class="inclusions-box">
               <h3>✓ What's Included</h3>
@@ -641,7 +614,6 @@
             </div>
           </div>
 
-          <!-- Route Map Section -->
           
         <div class="detail-map-card" style="background: #F8FAFC; border: 1px dashed #CBD5E1; border-radius: 12px; padding: 40px 20px; text-align: center; margin-top: 40px;">
           <div class="section-watermark-header" style="margin-bottom: 1rem;">
@@ -658,7 +630,6 @@
 
         </div>
 
-        <!-- Right Column: Sticky Booking Card & Specialist Advice -->
         <aside class="tour-sidebar">
           <div class="tour-booking-card" style="position: sticky; top: 100px;">
             <div class="tour-price-header">
@@ -668,7 +639,7 @@
             </div>
 
             <div style="padding: 1.25rem 1.5rem 0.5rem;">
-              <h4 style="font-size: 0.95rem; font-weight: 700; color: #002B49; margin-bottom: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em;">Journey Highlights</h4>
+              <h4 style="font-size: 0.95rem; font-weight: 700; color: #002B49; margin-bottom: 0.75rem; text-transform: uppercase;">Journey Highlights</h4>
               <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.6rem;">
                 <li><span>★</span> Track leopards and sloth bears around the tranquil natural villu lakes of Wilpattu National Park</li><li><span>★</span> Witness up to 300 wild Asian elephants gather along the dry bed of Minneriya reservoir</li><li><span>★</span> Embark on private dawn and dusk 4x4 game drives in Yala Block 1, earth’s densest leopard habitat</li><li><span>★</span> Stay in luxury safari tented camps and eco-lodges with private naturalists and campfire storytelling</li><li><span>★</span> Encounter exotic hornbills, painted storks, mugger crocodiles, and spotted deer in pristine wilderness</li>
               </ul>
@@ -695,19 +666,12 @@
     </div>
   </main>
 
-  <!-- ==========================================================================
-       RELATED TOURS SECTION
-       ========================================================================== -->
   <section class="related-tours-section padding-top--70 padding-bottom--70" style="background: #F8FAFC; border-top: 1px solid #E2E8F0;">
     <div class="wrapper--90">
       <div class="section-watermark-header text-center" style="margin-bottom: 1.5rem;">
         <p class="watermark-heading">MORE EXPERIENCES</p>
         <h2 class="section-header-title">Other Signature Sri Lanka Wildlife Safaris</h2>
       </div>
-      <p style="text-align: center; color: #64748B; max-width: 650px; margin: 0 auto 2.5rem; font-size: 0.95rem;">
-        Discover other tailor-made routes within the Sri Lanka Wildlife Safaris portfolio designed by Lotus Ceylon.
-      </p>
-
       <div class="related-grid">
         
         <div class="related-tour-card">
@@ -743,9 +707,6 @@
     </div>
   </section>
 
-  <!-- ==========================================================================
-       BOTTOM CTA BANNER
-       ========================================================================== -->
   <section class="banner-bottom-cta padding-top--80 padding-bottom--80" style="background: linear-gradient(135deg, #001A2C 0%, #002B49 100%); color: #FFFFFF; text-align: center;">
     <div class="wrapper--70">
       <span style="color: #C5A880; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase;">PURE JOURNEYS &bull; SACRED EXPERIENCES</span>
@@ -760,7 +721,6 @@
     </div>
   </section>
 
-  <!-- Map Lightbox Modal -->
   <div class="map-lightbox-modal" id="mapLightbox" onclick="closeMapLightbox()">
     <span class="map-lightbox-close">&times;</span>
     <img src="../../../assets/images/sri-lanka-tourist-map.jpg" alt="Enlarged Sri Lanka Tourist Map" class="map-lightbox-content">
