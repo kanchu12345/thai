@@ -1,8 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+
 /**
  * LOTUS CEYLON INTERNATIONAL TOURS & SERVICES (PRIVATE) LIMITED
  * Master Stylesheet — Pure Journeys. Sacred Experiences.
  * Official Luxury Theme (Royal Navy, Lotus Gold & Sacred Petal Rose)
- */
  * - Dark Blue / Navy: #002B49 (Primary Luxury Tone)
  * - Deep Sapphire: #005B8C
  * - Dark Black: #111111
@@ -14,8 +15,6 @@
  * - Dark Luxury Footer: #16191E & #1E2229
  * - White: #FFFFFF
  */
-
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap');
 
 :root {
   /* MASTER COLOUR TOKENS (Defined per Master Project Rules & Matched to Real 3D Logo) */
@@ -49,7 +48,7 @@
 
   /* Typography: Playfair Display for headings, Inter for body */
   --font-serif: 'Playfair Display', Georgia, serif;
-  --font-main: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-main: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 
   /* 8px Spacing Scale */
   --space-1: 8px;
@@ -119,6 +118,12 @@ ul, ol {
 }
 
 /* Container Wrappers (Matching Walkers Tours wrapper--80 / 90) */
+.wrapper--wide {
+  width: 95%;
+  max-width: 1720px;
+  margin: 0 auto;
+}
+
 .wrapper--95 {
   width: 95%;
   max-width: 1540px;
@@ -1019,7 +1024,7 @@ ul, ol {
 .intro-3col-grid {
   display: grid;
   grid-template-columns: 1fr 1.6fr 1fr;
-  gap: 3rem;
+  gap: 2.25rem;
   align-items: center;
 }
 
@@ -1031,7 +1036,7 @@ ul, ol {
 
 .intro-img-card img {
   width: 100%;
-  height: 480px;
+  height: 520px;
   object-fit: cover;
   transition: transform 0.6s ease;
 }
@@ -1197,122 +1202,127 @@ ul, ol {
 
 /* Card 1: Lotus Gold */
 .icon-box--gold {
-  border-left-color: var(--color-gold);
+  border-left-color: #D4A359;
 }
 .icon-box--gold .icon-box__left {
-  background: linear-gradient(135deg, #FFF8EB 0%, #FDF3DF 100%);
-  border: 1.5px solid rgba(212, 163, 89, 0.35);
-  color: #B8860B;
+  background: linear-gradient(135deg, #FFF9EC 0%, #FCEBCA 100%);
+  border: 1.5px solid rgba(212, 163, 89, 0.45);
+  color: #B38012;
 }
 .icon-box--gold:hover {
-  border-left-color: #B8860B;
-  box-shadow: 0 10px 28px rgba(212, 163, 89, 0.25);
+  border-left-color: #B38012;
+  box-shadow: 0 14px 34px rgba(212, 163, 89, 0.22);
 }
 .icon-box--gold:hover .icon-box__left {
-  background: linear-gradient(135deg, #D4A359 0%, #B8860B 100%);
+  background: linear-gradient(135deg, #E5B362 0%, #B8860B 100%);
   border-color: transparent;
   color: #FFFFFF;
-  box-shadow: 0 6px 18px rgba(212, 163, 89, 0.4);
-  transform: scale(1.08) rotate(4deg);
+  box-shadow: 0 8px 20px rgba(212, 163, 89, 0.4);
 }
-.icon-box--gold:hover .icon-box__right strong {
-  color: #B8860B;
+.icon-box--gold .icon-box__right strong {
+  color: #9E6E0B;
 }
 
-/* Card 2: Sacred Lotus Carmine Rose (Palette #4 & #2) */
+/* Card 2: Sacred Lotus Carmine Rose */
 .icon-box--lotus {
-  border-left-color: var(--color-lotus-pink);
+  border-left-color: #C95451;
 }
 .icon-box--lotus .icon-box__left {
-  background: linear-gradient(135deg, #F8E5DD 0%, #E8B2AB 100%);
-  border: 1.5px solid rgba(201, 84, 81, 0.35);
-  color: var(--color-lotus-pink);
+  background: linear-gradient(135deg, #FDF0EE 0%, #F9D8D6 100%);
+  border: 1.5px solid rgba(201, 84, 81, 0.45);
+  color: #C95451;
 }
 .icon-box--lotus:hover {
-  border-left-color: var(--color-lotus-pink);
-  box-shadow: 0 10px 28px rgba(201, 84, 81, 0.25);
+  border-left-color: #9C2624;
+  box-shadow: 0 14px 34px rgba(201, 84, 81, 0.22);
 }
 .icon-box--lotus:hover .icon-box__left {
-  background: linear-gradient(135deg, #C95451 0%, #DA827D 100%);
+  background: linear-gradient(135deg, #DA6865 0%, #B83A38 100%);
   border-color: transparent;
   color: #FFFFFF;
-  box-shadow: 0 6px 18px rgba(201, 84, 81, 0.4);
-  transform: scale(1.08) rotate(-4deg);
+  box-shadow: 0 8px 20px rgba(201, 84, 81, 0.4);
 }
-.icon-box--lotus:hover .icon-box__right strong {
-  color: var(--color-lotus-pink);
+.icon-box--lotus .icon-box__right strong {
+  color: #AD3431;
 }
 
-/* Card 3: Ceylon Forest Canopy Green (from Palette #5) */
-.icon-box--navy {
-  border-left-color: var(--color-dark-green);
+/* Card 3: Ceylon Royal Sapphire Blue */
+.icon-box--navy,
+.icon-box--sapphire {
+  border-left-color: #0D629B;
 }
-.icon-box--navy .icon-box__left {
-  background: linear-gradient(135deg, #F0F6F1 0%, #DFECDE 100%);
-  border: 1.5px solid rgba(34, 74, 42, 0.3);
-  color: var(--color-dark-green);
+.icon-box--navy .icon-box__left,
+.icon-box--sapphire .icon-box__left {
+  background: linear-gradient(135deg, #EEF6FC 0%, #D4E8F8 100%);
+  border: 1.5px solid rgba(13, 98, 155, 0.45);
+  color: #0D629B;
 }
-.icon-box--navy:hover {
-  border-left-color: var(--color-dark-green);
-  box-shadow: 0 10px 28px rgba(34, 74, 42, 0.25);
+.icon-box--navy:hover,
+.icon-box--sapphire:hover {
+  border-left-color: #00487C;
+  box-shadow: 0 14px 34px rgba(13, 98, 155, 0.22);
 }
-.icon-box--navy:hover .icon-box__left {
-  background: linear-gradient(135deg, #224A2A 0%, #397847 100%);
+.icon-box--navy:hover .icon-box__left,
+.icon-box--sapphire:hover .icon-box__left {
+  background: linear-gradient(135deg, #1E7DC0 0%, #0D629B 100%);
   border-color: transparent;
   color: #FFFFFF;
-  box-shadow: 0 6px 18px rgba(34, 74, 42, 0.35);
-  transform: scale(1.08) rotate(4deg);
+  box-shadow: 0 8px 20px rgba(13, 98, 155, 0.4);
 }
-.icon-box--navy:hover .icon-box__right strong {
-  color: var(--color-dark-green);
+.icon-box--navy .icon-box__right strong,
+.icon-box--sapphire .icon-box__right strong {
+  color: #0A4C78;
 }
 
-/* Card 4: Ceylon Tropical Emerald / Lotus Leaf (Palette #5) */
+/* Card 4: Ceylon Rainforest Emerald */
 .icon-box--emerald {
-  border-left-color: var(--color-dark-green);
+  border-left-color: #1B6E3F;
 }
 .icon-box--emerald .icon-box__left {
-  background: linear-gradient(135deg, #EEF4EF 0%, #D8E5DA 100%);
-  border: 1.5px solid rgba(34, 74, 42, 0.3);
-  color: var(--color-dark-green);
+  background: linear-gradient(135deg, #EEF7F1 0%, #D3ECD9 100%);
+  border: 1.5px solid rgba(27, 110, 63, 0.45);
+  color: #1B6E3F;
 }
 .icon-box--emerald:hover {
-  border-left-color: var(--color-dark-green);
-  box-shadow: 0 10px 28px rgba(34, 74, 42, 0.25);
+  border-left-color: #114728;
+  box-shadow: 0 14px 34px rgba(27, 110, 63, 0.22);
 }
 .icon-box--emerald:hover .icon-box__left {
-  background: linear-gradient(135deg, #224A2A 0%, #387645 100%);
+  background: linear-gradient(135deg, #268C53 0%, #165A33 100%);
   border-color: transparent;
   color: #FFFFFF;
-  box-shadow: 0 6px 18px rgba(34, 74, 42, 0.35);
-  transform: scale(1.08) rotate(-4deg);
+  box-shadow: 0 8px 20px rgba(27, 110, 63, 0.4);
 }
-.icon-box--emerald:hover .icon-box__right strong {
-  color: var(--color-dark-green);
+.icon-box--emerald .icon-box__right strong {
+  color: #145530;
 }
 
-/* Card 5: Warm Blossom Coral Rose (Palette #3 & #1) */
-.icon-box--rose {
-  border-left-color: var(--palette-rose-medium);
+/* Card 5: Ceylon Cinnamon Terracotta */
+.icon-box--rose,
+.icon-box--amber {
+  border-left-color: #C2612D;
 }
-.icon-box--rose .icon-box__left {
-  background: linear-gradient(135deg, #F8E5DD 0%, #E8B2AB 100%);
-  border: 1.5px solid rgba(218, 130, 125, 0.35);
-  color: #DA827D;
+.icon-box--rose .icon-box__left,
+.icon-box--amber .icon-box__left {
+  background: linear-gradient(135deg, #FCF3ED 0%, #F8DEC9 100%);
+  border: 1.5px solid rgba(194, 97, 45, 0.45);
+  color: #C2612D;
 }
-.icon-box--rose:hover {
-  border-left-color: #C95451;
-  box-shadow: 0 10px 28px rgba(201, 84, 81, 0.25);
+.icon-box--rose:hover,
+.icon-box--amber:hover {
+  border-left-color: #8C3710;
+  box-shadow: 0 14px 34px rgba(194, 97, 45, 0.22);
 }
-.icon-box--rose:hover .icon-box__left {
-  background: linear-gradient(135deg, #DA827D 0%, #C95451 100%);
+.icon-box--rose:hover .icon-box__left,
+.icon-box--amber:hover .icon-box__left {
+  background: linear-gradient(135deg, #DC773E 0%, #BA5822 100%);
   border-color: transparent;
   color: #FFFFFF;
-  box-shadow: 0 6px 18px rgba(201, 84, 81, 0.35);
-  transform: scale(1.08) rotate(4deg);
+  box-shadow: 0 8px 20px rgba(194, 97, 45, 0.4);
 }
-.icon-box--rose:hover .icon-box__right strong {
-  color: #C95451;
+.icon-box--rose .icon-box__right strong,
+.icon-box--amber .icon-box__right strong {
+  color: #A34C1D;
 }
 
 /* 4 Counters Luxury Forest Green Jewel Card (from Palette #5) */
@@ -1487,6 +1497,13 @@ ul, ol {
 /* ==========================================================================
    SECTION 3: TOUR CATEGORIES (HOVER CARDS)
    ========================================================================== */
+#categories {
+  position: relative;
+  background: linear-gradient(180deg, #FDE8EE 0%, #FCDAE2 100%);
+  border-top: 1px solid rgba(201, 84, 81, 0.15);
+}
+
+
 .categories-slider-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -1589,7 +1606,9 @@ ul, ol {
    ========================================================================== */
 .package-sec {
   position: relative;
-  background-color: var(--color-white);
+  background: linear-gradient(180deg, #FDECEF 0%, #F9E5EA 50%, #FAF0F3 100%);
+  border-top: 1px solid rgba(201, 84, 81, 0.12);
+  border-bottom: 1px solid rgba(201, 84, 81, 0.12);
 }
 
 .package-cards-grid {

@@ -1,0 +1,1717 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tour Itinerary Details | Lotus Ceylon International Tours</title>
+  <meta name="description" content="Explore detailed day-by-day itineraries for tailor-made Sri Lanka beach and coastal tours by Lotus Ceylon. Private luxury chauffeur, boutique beachfront villas, and curated marine excursions.">
+  <link rel="icon" type="image/png" href="logo.png?v=20261021_step1">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+  <!-- Master Stylesheets -->
+  <link rel="stylesheet" href="css/style.css?v=20261022_beach_v1">
+  <link rel="stylesheet" href="css/brand-header.css?v=20261022_exact_hf_v1">
+  <link rel="stylesheet" href="css/tour-package-detail.css?v=20261022_pkg_v1">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="https://cdn.jsdelivr.net/npm/dompurify@3.1.6/dist/purify.min.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/supabase-client.js"></script>
+  <script src="js/dynamic-renderer.js"></script>
+</head>
+<body class="page-tour-detail">
+
+<header class="site-header-walkers" id="siteHeader">
+    <div class="wrapper--95">
+      <div class="header-top-row">
+        
+        <!-- Brand Logo & Title -->
+        <a href="index.html" class="header-brand" title="Lotus Ceylon International Tours &amp; Services">
+          <img src="logo.png?v=20261021_step1" alt="Lotus Ceylon Emblem" class="header-brand-logo">
+          <div class="header-brand-text">
+            <span class="header-brand-name"><span class="brand-name-lotus">Lotus</span> <span class="brand-name-ceylon">Ceylon</span></span>
+            <span class="header-brand-sub" style="color: #FFFFFF !important; text-shadow: 0 1px 6px rgba(0,0,0,0.85);">INTERNATIONAL TOURS &amp; SERVICES</span>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation Menu -->
+        <nav aria-label="Main Navigation">
+          <ul class="walkers-menu" id="primaryNav">
+            <li class="walkers-menu-item">
+              <a href="index.html" class="walkers-menu-link active">Home</a>
+            </li>
+
+            <!-- Tours with Mega Dropdown (10 Categories) -->
+            <li class="walkers-menu-item">
+              <a href="#packages" class="walkers-menu-link">
+                <span>Tours</span>
+                <svg class="walkers-caret" viewBox="0 0 10 6"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" fill="none"/></svg>
+              </a>
+              <div class="walkers-megamenu">
+                <div class="megamenu-header">
+                  <span class="megamenu-header-title">Curated Ceylon Tour Categories</span>
+                  <a href="sri-lanka-tours.html" class="megamenu-view-all">All Tours ➔</a>
+                </div>
+                <div class="megamenu-grid-10">
+                  <a href="cultural-tours.html" class="megamenu-cat-card">
+                    <span class="megamenu-cat-icon">🏛️</span>
+                    <div class="megamenu-cat-text">
+                      <span class="megamenu-cat-name">Cultural</span>
+                      <span class="megamenu-cat-desc">Ancient kingdoms & rock temples</span>
+                    </div>
+                  </a>
+                  <a href="sri-lanka-tours.html#buddhist" class="megamenu-cat-card">
+                    <span class="megamenu-cat-icon">☸️</span>
+                    <div class="megamenu-cat-text">
+                      <span class="megamenu-cat-name">Buddhist Heritage</span>
+                      <span class="megamenu-cat-desc">Sacred stupas & monastic pilgrimages</span>
+                    </div>
+                  </a>
+                  <a href="wildlife-tours.html" class="megamenu-cat-card">
+                    <span class="megamenu-cat-icon">🐆</span>
+                    <div class="megamenu-cat-text">
+                      <span class="megamenu-cat-name">Wildlife</span>
+                      <span class="megamenu-cat-desc">Yala leopards & elephant gathering</span>
+                    </div>
+                  </a>
+                  <a href="beach-tours.html" class="megamenu-cat-card">
+                    <span class="megamenu-cat-icon">🏖️</span>
+                    <div class="megamenu-cat-text">
+                      <span class="megamenu-cat-name">Beach</span>
+                      <span class="megamenu-cat-desc">Golden palms & private bays</span>
+                    </div>
+                  </a>
+                  <a href="sri-lanka-tours.html#hill-country" class="megamenu-cat-card">
+                    <span class="megamenu-cat-icon">⛰️</span>
+                    <div class="megamenu-cat-text">
+                      <span class="megamenu-cat-name">Hill Country</span>
+                      <span class="megamenu-cat-desc">Misty tea peaks & scenic rail</span>
+                    </div>
+                  </a>
+                  <a href="sri-lanka-tours.html#ayurveda" class="megamenu-cat-card">
+                    <span class="megamenu-cat-icon">🌿</span>
+                    <div class="megamenu-cat-text">
+                      <span class="megamenu-cat-name">Ayurveda</span>
+                      <span class="megamenu-cat-desc">Herbal sanctuaries & wellness</span>
+                    </div>
+                  </a>
+                  <a href="sri-lanka-tours.html#honeymoon" class="megamenu-cat-card">
+                    <span class="megamenu-cat-icon">💍</span>
+                    <div class="megamenu-cat-text">
+                      <span class="megamenu-cat-name">Honeymoon</span>
+                      <span class="megamenu-cat-desc">Bespoke luxury for couples</span>
+                    </div>
+                  </a>
+                  <a href="sri-lanka-tours.html#family" class="megamenu-cat-card">
+                    <span class="megamenu-cat-icon">👨‍👩‍👧‍👦</span>
+                    <div class="megamenu-cat-text">
+                      <span class="megamenu-cat-name">Family</span>
+                      <span class="megamenu-cat-desc">Safe journeys for all generations</span>
+                    </div>
+                  </a>
+                  <a href="sri-lanka-tours.html#adventure" class="megamenu-cat-card">
+                    <span class="megamenu-cat-icon">🧗‍♂️</span>
+                    <div class="megamenu-cat-text">
+                      <span class="megamenu-cat-name">Adventure</span>
+                      <span class="megamenu-cat-desc">Trekking, surfing & waterfalls</span>
+                    </div>
+                  </a>
+                  <a href="sri-lanka-tours.html#ramayana" class="megamenu-cat-card">
+                    <span class="megamenu-cat-icon">🏹</span>
+                    <div class="megamenu-cat-text">
+                      <span class="megamenu-cat-name">Ramayana</span>
+                      <span class="megamenu-cat-desc">Epic legendary sacred trail</span>
+                    </div>
+                  </a>
+                </div>
+              </div>
+            </li>
+
+            <li class="walkers-menu-item">
+              <a href="#destinations" class="walkers-menu-link">Destinations</a>
+            </li>
+            <li class="walkers-menu-item">
+              <a href="#experiences" class="walkers-menu-link">Experiences</a>
+            </li>
+            <li class="walkers-menu-item">
+              <a href="about.html" class="walkers-menu-link">About Us</a>
+            </li>
+            <li class="walkers-menu-item">
+              <a href="#gallery" class="walkers-menu-link">Gallery</a>
+            </li>
+            <li class="walkers-menu-item">
+              <a href="#reviews" class="walkers-menu-link">Reviews</a>
+            </li>
+            <li class="walkers-menu-item">
+              <a href="#news" class="walkers-menu-link">Blog</a>
+            </li>
+            <li class="walkers-menu-item">
+              <a href="#contact" class="walkers-menu-link">Contact</a>
+            </li>
+          </ul>
+        </nav>
+
+        <!-- Right Header Tools: 10-Slot Language Switcher & Gold Inquire Button -->
+        <div class="header-tools">
+          
+          <!-- 10-Slot Language Switcher -->
+          <div class="custom-lang-pill">
+            <button type="button" class="lang-pill-btn" id="langPillToggle" title="Select Language (10 Languages)">
+              <span id="currentLangLabel">EN</span>
+              <svg class="walkers-caret" viewBox="0 0 10 6"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" fill="none"/></svg>
+            </button>
+            <div class="lang-pill-dropdown" id="langPillMenu">
+              <button type="button" data-lang="en" class="is-active">🇬🇧 English <span class="lang-slot-tag">Active</span></button>
+              <button type="button" data-lang="zh">🇨🇳 中文 (Chinese) <span class="lang-slot-tag">Active</span></button>
+              <button type="button" data-lang="de">🇩🇪 Deutsch <span class="lang-slot-tag">Slot 3</span></button>
+              <button type="button" data-lang="fr">🇫🇷 Français <span class="lang-slot-tag">Slot 4</span></button>
+              <button type="button" data-lang="ru">🇷🇺 Русский <span class="lang-slot-tag">Slot 5</span></button>
+              <button type="button" data-lang="es">🇪🇸 Español <span class="lang-slot-tag">Slot 6</span></button>
+              <button type="button" data-lang="it">🇮🇹 Italiano <span class="lang-slot-tag">Slot 7</span></button>
+              <button type="button" data-lang="ja">🇯🇵 日本語 <span class="lang-slot-tag">Slot 8</span></button>
+              <button type="button" data-lang="ar">🇦🇪 العربية <span class="lang-slot-tag">Slot 9</span></button>
+              <button type="button" data-lang="hi">🇮🇳 हिन्दी <span class="lang-slot-tag">Slot 10</span></button>
+            </div>
+          </div>
+
+          <!-- Gold Inquire Button with Hover Fill-Slide Effect -->
+          <a href="inquiry-detailed.html" class="gold-inquire-btn" title="Inquire Now">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 20 20" fill="none">
+              <path d="M16.5909 5.02051H16.1522V8.43079C16.1522 10.9574 14.0966 13.013 11.57 13.013H5.02148V13.4518C5.02148 15.3322 6.55138 16.862 8.43177 16.862H15.4373L19.0401 19.8644C19.1474 19.9538 19.2808 20.0002 19.4154 20.0002C19.7375 20.0002 20.0012 19.7388 20.0012 19.4142V8.43079C20.0012 6.5475 18.4775 5.02051 16.5909 5.02051Z"/>
+              <path d="M14.9797 8.43118V3.41029C14.9797 1.52363 13.4528 0 11.5694 0H3.41029C1.52363 0 0 1.52684 0 3.41029V14.3937C0 14.7181 0.26368 14.9797 0.585802 14.9797C0.720388 14.9797 0.853754 14.9333 0.961027 14.8437L4.56388 11.8415H11.5694C13.4498 11.8415 14.9797 10.3117 14.9797 8.43118Z"/>
+            </svg>
+            <span>Inquire</span>
+          </a>
+
+          <!-- Mobile Hamburger Toggle -->
+          <button type="button" class="walkers-ham" id="mobileHamToggle" aria-label="Toggle Mobile Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- Full-Screen Slide-in Mobile Navigation Menu -->
+  <div class="mobile-nav-fullscreen" id="mobileNavFullscreen">
+    <div class="mobile-nav-header">
+      <a href="index.html" class="header-brand">
+        <img src="logo.png?v=20261021_step1" alt="Lotus Ceylon Logo" style="height: 48px; width: auto;">
+        <span class="header-brand-name" style="color: var(--ink); font-size: 1.25rem;"><span style="color: var(--ink);">Lotus</span> <span style="color: var(--lotus-primary);">Ceylon</span></span>
+      </a>
+      <button type="button" class="mobile-nav-close" id="mobileNavClose" aria-label="Close menu">&times;</button>
+    </div>
+    <ul class="mobile-nav-list">
+      <li class="mobile-nav-item"><a href="index.html" class="mobile-nav-link">Home</a></li>
+      <li class="mobile-nav-item">
+        <a href="#packages" class="mobile-nav-link">Tours</a>
+        <div class="mobile-nav-categories">
+          <a href="cultural-tours.html" class="mobile-nav-cat-link">🏛️ Cultural</a>
+          <a href="sri-lanka-tours.html#buddhist" class="mobile-nav-cat-link">☸️ Buddhist Heritage</a>
+          <a href="wildlife-tours.html" class="mobile-nav-cat-link">🐆 Wildlife</a>
+          <a href="beach-tours.html" class="mobile-nav-cat-link">🏖️ Beach</a>
+          <a href="sri-lanka-tours.html#hill-country" class="mobile-nav-cat-link">⛰️ Hill Country</a>
+          <a href="sri-lanka-tours.html#ayurveda" class="mobile-nav-cat-link">🌿 Ayurveda</a>
+          <a href="sri-lanka-tours.html#honeymoon" class="mobile-nav-cat-link">💍 Honeymoon</a>
+          <a href="sri-lanka-tours.html#family" class="mobile-nav-cat-link">👨‍👩‍👧‍👦 Family</a>
+          <a href="sri-lanka-tours.html#adventure" class="mobile-nav-cat-link">🧗‍♂️ Adventure</a>
+          <a href="sri-lanka-tours.html#ramayana" class="mobile-nav-cat-link">🏹 Ramayana</a>
+        </div>
+      </li>
+      <li class="mobile-nav-item"><a href="#destinations" class="mobile-nav-link">Destinations</a></li>
+      <li class="mobile-nav-item"><a href="#experiences" class="mobile-nav-link">Experiences</a></li>
+      <li class="mobile-nav-item"><a href="about.html" class="mobile-nav-link">About Us</a></li>
+      <li class="mobile-nav-item"><a href="#gallery" class="mobile-nav-link">Gallery</a></li>
+      <li class="mobile-nav-item"><a href="#reviews" class="mobile-nav-link">Reviews</a></li>
+      <li class="mobile-nav-item"><a href="#news" class="mobile-nav-link">Blog</a></li>
+      <li class="mobile-nav-item"><a href="#contact" class="mobile-nav-link">Contact</a></li>
+    </ul>
+    <div style="margin-top: auto; padding-top: 1.5rem; border-top: 1px solid var(--mist); display: flex; flex-direction: column; gap: 0.85rem;">
+      <a href="https://wa.me/94715422384" target="_blank" rel="noopener" style="background: #25D366; color: #FFFFFF; padding: 0.75rem 1.25rem; border-radius: 9999px; text-align: center; text-decoration: none; font-weight: 700; font-size: 0.88rem;">💬 WhatsApp (+94 71 54 22 384)</a>
+      <a href="inquiry-detailed.html" class="gold-inquire-btn" style="justify-content: center;">Plan My Bespoke Journey</a>
+    </div>
+  </div>
+
+  <!-- OFFCANVAS FULLSCREEN SEARCH DRAWER -->
+  <div class="offcanvas-search" id="offcanvasSearch" aria-modal="true" role="dialog">
+    <button type="button" class="offcanvas-search-close" id="searchCloseBtn" aria-label="Close search">&times;</button>
+    <div class="search-box-inner">
+      <h3>Discover Your Dream Sri Lanka Vacation</h3>
+      <form class="search-input-wrap" action="inquiry-detailed.html" method="get">
+        <input type="search" name="q" placeholder="Search by destination, interest, or tour..." required autofocus>
+        <button type="submit" aria-label="Search">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+            <path d="M19.209 18.0633L13.6789 12.5332C14.7501 11.21 15.395 9.52873 15.395 7.69754C15.395 3.45337 11.9417 0 7.6975 0C3.45333 0 0 3.45333 0 7.6975C0 11.9417 3.45337 15.395 7.69754 15.395C9.52873 15.395 11.21 14.7501 12.5332 13.6789L18.0633 19.209C18.2213 19.367 18.4287 19.4464 18.6361 19.4464C18.8436 19.4464 19.051 19.367 19.209 19.209C19.5258 18.8922 19.5258 18.3801 19.209 18.0633ZM7.69754 13.7745C4.34627 13.7745 1.62055 11.0488 1.62055 7.6975C1.62055 4.34623 4.34627 1.62051 7.69754 1.62051C11.0488 1.62051 13.7745 4.34623 13.7745 7.6975C13.7745 11.0488 11.0488 13.7745 7.69754 13.7745Z"/>
+          </svg>
+        </button>
+      </form>
+    </div>
+  </div>
+
+
+
+  <!-- ==========================================================================
+       HERO BANNER
+       ========================================================================== -->
+  <section class="tour-hero-section" id="tourHero" style="background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1800&fit=crop&q=90');">
+    <div class="tour-hero-overlay"></div>
+    <div class="wrapper--85 tour-hero-content">
+      
+      <!-- Breadcrumb -->
+      <nav class="tour-breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <span>&rsaquo;</span>
+        <a href="beach-tours.html" id="breadcrumbParentCategory">Beach Tours</a>
+        <span>&rsaquo;</span>
+        <span id="breadcrumbTourName" style="color: var(--color-gold);">Southern Sands Voyage</span>
+      </nav>
+
+      <!-- Badges -->
+      <div class="tour-hero-badges">
+        <span class="tour-badge-pill tour-badge-gold" id="heroDuration">09 Nights &bull; 10 Days</span>
+        <span class="tour-badge-pill tour-badge-glass" id="heroCategory">South Coast Odyssey</span>
+        <span class="tour-badge-pill tour-badge-glass">★ 5.0 Private Chauffeur Guided</span>
+      </div>
+
+      <!-- Main Title -->
+      <h1 class="tour-hero-title" id="heroTitle">Southern Sands Voyage</h1>
+      
+      <p class="tour-hero-tagline" id="heroTagline">
+        A sun-soaked luxury coastal odyssey winding from Negombo lagoon through the golden coves of Bentota, historic ramparts of Galle Fort, whale sanctuaries of Mirissa, and wild dunes of Yala.
+      </p>
+
+      <!-- Actions -->
+      <div class="tour-hero-actions">
+        <a href="#itinerary" class="btn-hero-primary">
+          <span>Explore Day-by-Day Itinerary &darr;</span>
+        </a>
+        <a href="inquiry-detailed.html?package=Southern+Sands+Voyage" id="heroInquireBtn" class="btn-hero-secondary">
+          <span>Inquire &amp; Customize This Tour ➔</span>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       TOUR SWITCHER TABS (Quick switch between Beach Packages)
+       ========================================================================== -->
+  <nav class="tour-switcher-bar" aria-label="Tour Packages Switcher">
+    <div class="wrapper--85">
+      <div class="tour-switcher-nav" id="tourSwitcherNav">
+        <a href="tour-package-detail.html?tour=southern-sands" class="tour-tab-btn active" id="tab-southern-sands">
+          <span>🏝️ Southern Sands Voyage (10 Days)</span>
+        </a>
+        <a href="tour-package-detail.html?tour=eastern-blue" class="tour-tab-btn" id="tab-eastern-blue">
+          <span>🌊 Eastern Blue Bliss (12 Days)</span>
+        </a>
+        <a href="tour-package-detail.html?tour=northern-seaboard" class="tour-tab-btn" id="tab-northern-seaboard">
+          <span>🌅 Sunrise Shores Explorer (10 Days)</span>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ==========================================================================
+       MAIN CONTENT CONTAINER
+       ========================================================================== -->
+  <main class="padding-bottom--90">
+    <div class="wrapper--85">
+      
+      <!-- Key Trip Facts Bar -->
+      <div class="tour-facts-grid">
+        <div class="tour-fact-item">
+          <div class="tour-fact-icon">⏱️</div>
+          <div>
+            <p class="tour-fact-label">Duration</p>
+            <p class="tour-fact-value" id="factDuration">10 Days / 9 Nights</p>
+          </div>
+        </div>
+
+        <div class="tour-fact-item">
+          <div class="tour-fact-icon">🚗</div>
+          <div>
+            <p class="tour-fact-label">Transport</p>
+            <p class="tour-fact-value">Private Luxury AC Vehicle</p>
+          </div>
+        </div>
+
+        <div class="tour-fact-item">
+          <div class="tour-fact-icon">☀️</div>
+          <div>
+            <p class="tour-fact-label">Best Season</p>
+            <p class="tour-fact-value" id="factSeason">November &ndash; April</p>
+          </div>
+        </div>
+
+        <div class="tour-fact-item">
+          <div class="tour-fact-icon">🏨</div>
+          <div>
+            <p class="tour-fact-label">Accommodation</p>
+            <p class="tour-fact-value" id="factAccommodation">Handpicked Beachfront 5★/Boutique</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2-Column Layout: Left = Itinerary, Right = Sticky Booking Card -->
+      <div class="tour-main-layout" id="itinerary">
+        
+        <!-- Left Column: Detailed Itinerary -->
+        <div class="tour-itinerary-col">
+          <h2 class="itinerary-section-title">Detailed Day-by-Day Journey</h2>
+          <p class="itinerary-section-sub">
+            Every itinerary by Lotus Ceylon is 100% tailor-made. Add nights, swap resorts, or insert scenic helicopter transfers as you wish.
+          </p>
+
+          <div class="itinerary-timeline" id="timelineContainer">
+            <!-- Filled dynamically by JavaScript based on selected package -->
+          </div>
+
+          <!-- What's Included & Excluded -->
+          <div class="inclusions-grid">
+            <div class="inc-box">
+              <h3 class="inc-box-title included">
+                <span>✓</span> What is Included
+              </h3>
+              <ul class="inc-list" id="inclusionsList">
+                <li><span>✓</span> 9 Nights in luxury beachfront boutique resorts &amp; 5★ hotels</li>
+                <li><span>✓</span> Daily gourmet breakfast &amp; welcome coastal refreshments</li>
+                <li><span>✓</span> Dedicated English-speaking certified Chauffeur Guide</li>
+                <li><span>✓</span> Private air-conditioned luxury vehicle with unlimited mileage &amp; highway tolls</li>
+                <li><span>✓</span> Private Mirissa Blue Whale Watching Boat Charter</li>
+                <li><span>✓</span> Guided walking tour of UNESCO Galle Dutch Fort ramparts</li>
+                <li><span>✓</span> Madu River mangrove biodiversity boat safari</li>
+                <li><span>✓</span> Kosgoda Sea Turtle Conservation project visit</li>
+                <li><span>✓</span> All entrance fees, conservation permits &amp; government taxes</li>
+                <li><span>✓</span> 24/7 dedicated on-ground Lotus Ceylon concierge support</li>
+              </ul>
+            </div>
+
+            <div class="inc-box">
+              <h3 class="inc-box-title excluded">
+                <span>✕</span> What is Not Included
+              </h3>
+              <ul class="inc-list" id="exclusionsList">
+                <li><span>✕</span> International round-trip flight airfares</li>
+                <li><span>✕</span> Sri Lanka entry visa fees (ETA)</li>
+                <li><span>✕</span> Lunches and dinners unless specified</li>
+                <li><span>✕</span> Optional motorized water sports (jet-ski, parasailing)</li>
+                <li><span>✕</span> Personal expenses, camera permits &amp; laundry</li>
+                <li><span>✕</span> Gratuities and tips for guide and chauffeurs</li>
+                <li><span>✕</span> Travel and medical insurance</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Right Column: Sticky Booking & Inquiry Card -->
+        <aside class="tour-sidebar">
+          <div class="tour-booking-card">
+            
+            <div class="tour-price-header">
+              <span class="tour-price-sub">Custom Private Journey</span>
+              <div class="tour-price-val">Tailor-Made Quote</div>
+              <p class="tour-price-note">Price customized based on your dates, party size &amp; preferred boutique villa tier.</p>
+            </div>
+
+            <ul class="tour-side-features">
+              <li><span>🛡️</span> 100% Flexible Cancellation &amp; Rescheduling</li>
+              <li><span>💎</span> Guaranteed Luxury Beachfront Villas</li>
+              <li><span>🚗</span> Modern Climate-Controlled Chauffeur</li>
+              <li><span>✨</span> Bespoke Ocean &amp; Dining Add-ons</li>
+            </ul>
+
+            <a href="inquiry-detailed.html?package=Southern+Sands+Voyage" id="sideInquireBtn" class="btn-sidebar-inquire">
+              <span>Request Custom Itinerary &amp; Quote ➔</span>
+            </a>
+
+            <a href="https://wa.me/94715422384" target="_blank" rel="noopener" id="sideWhatsAppBtn" class="btn-sidebar-whatsapp">
+              <span>💬 Chat on WhatsApp with Specialist</span>
+            </a>
+
+            <div class="tour-assistance-box">
+              <strong id="sideSpecialistTitle">Need Advice from a Travel Specialist?</strong>
+              <span id="sideSpecialistDesc">Our travel designers will craft your dream journey within 24 hours.</span>
+            </div>
+
+          </div>
+        </aside>
+
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Tour Data Script -->
+  <script>
+    const TOURS_DATA = {
+      'southern-sands': {
+        title: 'Southern Sands Voyage',
+        category: 'South Coast Odyssey',
+        type: 'beach',
+        duration: '09 Nights • 10 Days',
+        factDuration: '10 Days / 9 Nights',
+        season: 'November – April',
+        accommodation: 'Handpicked Beachfront 5★ / Boutique Villas',
+        heroImg: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1800&fit=crop&q=90',
+        tagline: 'A sun-soaked luxury coastal odyssey winding from Negombo lagoon through the golden coves of Bentota, historic ramparts of Galle Fort, whale sanctuaries of Mirissa, and wild dunes of Yala.',
+        inquireParam: 'Southern+Sands+Voyage',
+        inclusions: [
+          '9 Nights in luxury beachfront boutique resorts & 5★ hotels',
+          'Daily gourmet breakfast & welcome coastal refreshments',
+          'Dedicated English-speaking certified Chauffeur Guide',
+          'Private air-conditioned luxury vehicle with unlimited mileage & highway tolls',
+          'Private Mirissa Blue Whale Watching Boat Charter',
+          'Guided walking tour of UNESCO Galle Dutch Fort ramparts',
+          'Madu River mangrove biodiversity boat safari',
+          'Kosgoda Sea Turtle Conservation project visit',
+          'All entrance fees, conservation permits & government taxes',
+          '24/7 dedicated on-ground Lotus Ceylon concierge support'
+        ],
+        exclusions: [
+          'International round-trip flight airfares',
+          'Sri Lanka entry visa fees (ETA)',
+          'Lunches and dinners unless specified',
+          'Optional motorized water sports (jet-ski, parasailing)',
+          'Personal expenses, camera permits & laundry',
+          'Gratuities and tips for guide and chauffeurs',
+          'Travel and medical insurance'
+        ],
+        days: [
+          {
+            day: '01',
+            dest: 'Negombo Coastal Haven',
+            title: 'Ayubowan & Welcome to Tropical Sri Lanka',
+            img: 'https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=800&fit=crop&q=80',
+            desc: 'Touch down at Bandaranaike International Airport (CMB) where your dedicated Lotus Ceylon chauffeur awaits with a warm floral welcome. Enjoy a scenic 20-minute transfer to your luxury beachfront resort in Negombo. Unwind by the pool overlooking the Indian Ocean and sip on fresh King Coconut water as golden sunset paints the sea.',
+            tags: ['Private Airport Meet & Greet', 'Luxury Beachfront Resort Check-in', 'Welcome Sunset Cocktail']
+          },
+          {
+            day: '02',
+            dest: 'Bentota Golden Mile',
+            title: 'Mangrove Safari & Sea Turtle Sanctuary',
+            img: 'https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?w=800&fit=crop&q=80',
+            desc: 'Journey south along the coastal road towards Bentota. Glide along the mystical Madu River through ancient mangrove tunnels, visiting cinnamon peeling islands. Stop at the Kosgoda Sea Turtle Conservation project to see vulnerable olive ridley and green turtle hatchlings before checking into your beachfront villa.',
+            tags: ['Madu River Biodiversity Boat Safari', 'Kosgoda Turtle Sanctuary', 'Beach Villa Relaxation']
+          },
+          {
+            day: '03',
+            dest: 'Bentota Water Wonderland',
+            title: 'River Water Sports & Architectural Splendor',
+            img: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&fit=crop&q=80',
+            desc: 'Embrace high-energy river activities on the calm waters of the Bentota lagoon: jet-skiing, wakeboarding, and kayaking. In the afternoon, visit Brief Garden, the enchanting 1920s tropical garden estate designed by famed artist Bevis Bawa, followed by sunset cocktails on Bentota Beach.',
+            tags: ['Bentota Water Sports Center', 'Brief Garden Estate Walk', 'Golden Hour Beach Lounge']
+          },
+          {
+            day: '04',
+            dest: 'UNESCO Galle Dutch Fort',
+            title: 'Colonial Ramparts, Cobblestone Alleys & Boutique Living',
+            img: 'https://images.unsplash.com/photo-1588598198321-9735fd52455b?w=800&fit=crop&q=80',
+            desc: 'Travel along the southern coastline stopping at traditional mask-carving workshops in Ambalangoda. Arrive at Galle Dutch Fort, a living 17th-century UNESCO World Heritage site. Wander charming cobblestone lanes adorned with artisan jewelry boutiques, antique shops, colonial churches, and sunset views from the iconic white lighthouse ramparts.',
+            tags: ['Ambalangoda Mask Heritage', 'Galle Fort Guided Walking Tour', 'Lighthouse Ramparts Sunset']
+          },
+          {
+            day: '05',
+            dest: 'Mirissa & Weligama Bay',
+            title: 'Coconut Tree Hill & Stilt Fishermen Tradition',
+            img: 'https://images.unsplash.com/photo-1578328819058-b69f3a3b0f6b?w=800&fit=crop&q=80',
+            desc: 'Drive eastward along picturesque sapphire bays. Photograph the world-famous iconic stilt fishermen balanced gracefully above the surf in Koggala. Ascend the breezy Coconut Tree Hill for sweeping panoramas of Mirissa Bay and enjoy fresh catch-of-the-day seafood beneath starry skies.',
+            tags: ['Koggala Stilt Fishermen Photography', 'Coconut Tree Hill Viewpoint', 'Candlelit Beachfront Seafood Dinner']
+          },
+          {
+            day: '06',
+            dest: 'Mirissa Blue Whale Sanctuary',
+            title: 'Blue Whale & Dolphin Watching Expedition',
+            img: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&fit=crop&q=80',
+            desc: 'Board a comfortable private boat charter at dawn into the deep waters of the continental shelf. Witness mighty blue whales—the largest mammals on Earth—alongside playful spinner dolphins and sea turtles. Return to shore for relaxing spa treatments at your boutique resort.',
+            tags: ['Responsible Blue Whale Charter', 'Spinner Dolphin Watching', 'Luxury Ayurvedic Spa']
+          },
+          {
+            day: '07',
+            dest: 'Tangalle & Mawella Bay',
+            title: 'Secluded Turquoise Coves & Hummanaya Blowhole',
+            img: 'https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?w=800&fit=crop&q=80',
+            desc: 'Head further southeast to the tranquil sanctuary of Tangalle. Hear the roar of Hummanaya Blowhole shooting sea sprays 30 meters high. Stroll along the unspoiled curve of Mawella Beach, bordered by coconut groves without high-rise crowds.',
+            tags: ['Hummanaya Natural Blowhole', 'Mawella Quiet Beach Walk', 'Boutique Coastal Retreat']
+          },
+          {
+            day: '08',
+            dest: 'Yala National Park Coastline',
+            title: 'Where Jungle Meets Wild Ocean',
+            img: 'https://images.unsplash.com/photo-1600100397608-f010e423b971?w=800&fit=crop&q=80',
+            desc: 'Journey to the edge of Yala National Park where untamed wilderness borders dramatic ocean shores. Embark on an afternoon 4x4 safari tracking leopards, sloth bears, and herds of wild elephants drinking beside natural lagoons.',
+            tags: ['Yala Leopard Safari Jeep Tour', 'Coastal Dunes & Lagoons', 'Luxury Tented Safari Camp']
+          },
+          {
+            day: '09',
+            dest: 'Colombo Oceanfront',
+            title: 'Scenic Expressway Return & Galle Face Promenade',
+            img: 'https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=800&fit=crop&q=80',
+            desc: 'Cruise along the Southern Expressway towards the dynamic oceanfront metropolis of Colombo. Enjoy an afternoon heritage city tour, exploring Dutch Hospital shopping precinct, boutique gem stores, and sunset street snacks along Galle Face Green.',
+            tags: ['Southern Expressway Transfer', 'Old Dutch Hospital Shopping', 'Galle Face Green Sunset Walk']
+          },
+          {
+            day: '10',
+            dest: 'Colombo International Airport',
+            title: 'Subha Gaman & Homeward Flight',
+            img: 'https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?w=800&fit=crop&q=80',
+            desc: 'Savor a leisurely breakfast overlooking the ocean. Your private chauffeur transfers you to Bandaranaike International Airport in luxury comfort. Board your departure flight with golden memories of Sri Lanka’s sun-kissed coastlines.',
+            tags: ['Private Luxury Airport Transfer', 'Departure Assistance', 'Ayubowan & Warm Farewell']
+          }
+        ]
+      },
+      'eastern-blue': {
+        title: 'Eastern Blue Bliss',
+        category: 'East Coast Sanctuary',
+        type: 'beach',
+        duration: '11 Nights • 12 Days',
+        factDuration: '12 Days / 11 Nights',
+        season: 'May – October',
+        accommodation: 'Handpicked Beachfront 5★ / Luxury Chalets',
+        heroImg: 'https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=1800&fit=crop&q=90',
+        tagline: 'Immerse in the calmest crystal-clear waters in South Asia. Walk hundreds of meters into tranquil Pasikudah Bay, dive with reef sharks at Pigeon Island, and surf world-class right-hand point breaks in Arugam Bay.',
+        inquireParam: 'Eastern+Blue+Bliss',
+        inclusions: [
+          '11 Nights in luxury east coast beachfront resorts & boutique villas',
+          'Daily gourmet breakfast & fresh tropical fruit platters',
+          'Dedicated English-speaking certified Chauffeur Guide throughout',
+          'Private air-conditioned luxury vehicle with all fuel & highway tolls',
+          'Pigeon Island National Marine Park boat trip & guided snorkeling tour',
+          'Pasikudah Bay water activities & catamaran cruise',
+          'Arugam Bay surf safari or lagoon eco-boat expedition',
+          'Koneswaram Temple & Swami Rock viewpoint excursion in Trincomalee',
+          '24/7 dedicated on-ground Lotus Ceylon concierge assistance'
+        ],
+        exclusions: [
+          'International round-trip flight airfares',
+          'Sri Lanka entry visa fees (ETA)',
+          'Lunches and dinners unless specified',
+          'Optional scuba diving gear rental or advanced surf instruction',
+          'Personal expenses, laundry & alcoholic drinks',
+          'Gratuities and tips for guides and chauffeurs'
+        ],
+        days: [
+          {
+            day: '01',
+            dest: 'Negombo to Sigiriya Foothills',
+            title: 'Welcome to Sri Lanka & Gateway Inland',
+            img: 'https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=800&fit=crop&q=80',
+            desc: 'Arrive at CMB Airport and transfer to a relaxing eco-luxury lodge at the base of the Cultural Triangle, acclimatizing in lush tropical surrounds.',
+            tags: ['Airport Meet & Greet', 'Eco-Lodge Check-in', 'Welcome Dinner']
+          },
+          {
+            day: '02-04',
+            dest: 'Trincomalee & Nilaveli Beach',
+            title: 'Pigeon Island Snorkeling & Swami Rock Views',
+            img: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&fit=crop&q=80',
+            desc: 'Journey to the northeast coast. Snorkel with blacktip reef sharks and marine turtles at Pigeon Island Marine National Park. Visit clifftop Koneswaram Kovil overlooking one of the worlds finest natural deep-water harbours.',
+            tags: ['Pigeon Island Marine Park', 'Koneswaram Temple Clifftop', 'Nilaveli White Sand Beach']
+          },
+          {
+            day: '05-07',
+            dest: 'Pasikudah & Kalkudah Bay',
+            title: 'The Mirror-Flat Shallow Bays of the East',
+            img: 'https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?w=800&fit=crop&q=80',
+            desc: 'Experience Pasikudah’s legendary coral reef system where you can walk hundreds of meters into calm, waist-deep sapphire water. Kayak, paddleboard, or simply bask in barefoot luxury.',
+            tags: ['Pasikudah Shallow Bay', 'Catamaran Sailing', 'Luxury Beach Resort Relaxation']
+          },
+          {
+            day: '08-10',
+            dest: 'Arugam Bay Surf Haven',
+            title: 'World-Class Point Breaks & Kumana Safari',
+            img: 'https://images.unsplash.com/photo-1578328819058-b69f3a3b0f6b?w=800&fit=crop&q=80',
+            desc: 'Travel south to Arugam Bay, ranked among the worlds top surf destinations. Catch legendary waves at Main Point or Elephant Rock, or venture into Kumana National Park for undisturbed birdlife and leopard spotting.',
+            tags: ['Main Point Surfing', 'Elephant Rock Sunset', 'Kumana Safari Adventure']
+          },
+          {
+            day: '11-12',
+            dest: 'Colombo & Departure',
+            title: 'Scenic Highlands Transit & Departure',
+            img: 'https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?w=800&fit=crop&q=80',
+            desc: 'Travel across the island via scenic hill country roads towards Colombo, before transferring to CMB Airport for your flight.',
+            tags: ['Highland Scenic Drive', 'Colombo Souvenir Shopping', 'Airport Transfer']
+          }
+        ]
+      },
+      'northern-seaboard': {
+        title: 'Sunrise Shores & Northern Explorer',
+        category: 'North & East Frontier',
+        type: 'beach',
+        duration: '09 Nights • 10 Days',
+        factDuration: '10 Days / 9 Nights',
+        season: 'Year-Round (Best Feb – Sep)',
+        accommodation: 'Handpicked Coastal Boutique Resorts & Heritage Lodges',
+        heroImg: 'https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?w=1800&fit=crop&q=90',
+        tagline: 'Venture beyond the ordinary to Sri Lanka’s untamed northern seaboard. Spot spinner dolphins in Kalpitiya, cross Adam’s Bridge in historic Mannar, and discover Casuarina Beach in Jaffna.',
+        inquireParam: 'Sunrise+Shores+Tour',
+        inclusions: [
+          '9 Nights in handpicked boutique hotels, beach chalets & heritage villas',
+          'Daily gourmet breakfast & regional culinary tastings',
+          'Dedicated English-speaking certified Chauffeur Guide',
+          'Private air-conditioned luxury vehicle with all fuel & highway tolls',
+          'Kalpitiya dolphin-watching boat expedition',
+          'Mannar bird sanctuary & Adam’s Bridge sandbank excursion',
+          'Jaffna Casuarina Beach excursion & Nagadeepa ferry ride',
+          'Trincomalee Fort Frederick & Uppuveli beach relax',
+          '24/7 dedicated on-ground Lotus Ceylon concierge assistance'
+        ],
+        exclusions: [
+          'International round-trip flight airfares',
+          'Sri Lanka entry visa fees (ETA)',
+          'Lunches and dinners unless specified',
+          'Kitesurfing equipment rentals & coaching sessions',
+          'Personal laundry, alcoholic beverages & telephone calls',
+          'Gratuities and tips for guides and chauffeurs'
+        ],
+        days: [
+          {
+            day: '01-02',
+            dest: 'Kalpitiya Peninsula',
+            title: 'Dolphin Pods & Kitesurfing Lagoons',
+            img: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&fit=crop&q=80',
+            desc: 'Drive north to Kalpitiya, famous for mega-pods of thousands of spinner dolphins and world-class flatwater kitesurfing lagoons.',
+            tags: ['Kalpitiya Dolphin Safari', 'Lagoon Kitesurfing', 'Sand Spit Excursion']
+          },
+          {
+            day: '03-04',
+            dest: 'Mannar Island',
+            title: 'Baobab Trees & The Sandbanks of Adam’s Bridge',
+            img: 'https://images.unsplash.com/photo-1588598198321-9735fd52455b?w=800&fit=crop&q=80',
+            desc: 'Cross into mystical Mannar. Discover ancient Baobab trees planted by Arab traders centuries ago, flamingo migratory feeding grounds, and the legendary chain of sand islands leading toward India.',
+            tags: ['Adam’s Bridge Sandbanks', '700-Year Baobab Trees', 'Flamingo Bird Sanctuaries']
+          },
+          {
+            day: '05-07',
+            dest: 'Jaffna & Casuarina Beach',
+            title: 'Peninsula Culture & Pure White Sands',
+            img: 'https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=800&fit=crop&q=80',
+            desc: 'Immerse in vibrant Tamil culture, Nallur Kandaswamy Kovil, and bathe in sacred Keerimalai springs. Relax on shallow Casuarina Beach on Karaitivu island.',
+            tags: ['Nallur Kandaswamy Temple', 'Casuarina White Sand Beach', 'Keerimalai Natural Springs']
+          },
+          {
+            day: '08-09',
+            dest: 'Trincomalee',
+            title: 'Natural Deepwater Bay & Fort Frederick',
+            img: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&fit=crop&q=80',
+            desc: 'Travel south to Trincomalee to unwind on Uppuveli and Nilaveli beaches, spotting deer wandering inside historic Fort Frederick.',
+            tags: ['Fort Frederick', 'Uppuveli Beach', 'Hot Spring Baths']
+          },
+          {
+            day: '10',
+            dest: 'Colombo Departure',
+            title: 'Return to Colombo & Onward Flights',
+            img: 'https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?w=800&fit=crop&q=80',
+            desc: 'Comfortable private chauffeur transfer back to CMB Airport.',
+            tags: ['Airport Transfer', 'End of Tour']
+          }
+        ]
+      },
+      'cultural-odyssey': {
+        title: 'The Cultural Odyssey',
+        category: 'Cultural & Heritage Odyssey',
+        type: 'cultural',
+        duration: '08 Nights • 09 Days',
+        factDuration: '09 Days / 08 Nights',
+        season: 'Year-Round (Best Oct – Apr)',
+        accommodation: 'Handpicked Heritage & Boutique 5★ Hotels',
+        heroImg: 'https://images.unsplash.com/photo-1588598198321-9735fd52455b?w=1800&fit=crop&q=90',
+        tagline: 'Journey through the glorious heart of ancient Ceylon. Scale the 5th-century rock citadel of Sigiriya, cycle through the royal stone ruins of Polonnaruwa, marvel at the golden cave frescoes of Dambulla, and witness sacred evening rituals at Kandy’s Temple of the Sacred Tooth Relic.',
+        inquireParam: 'The+Cultural+Odyssey',
+        inclusions: [
+          '8 Nights in luxury boutique heritage hotels & 5★ colonial retreats',
+          'Daily gourmet breakfast & welcome Ceylon King Coconut refreshments',
+          'Dedicated English-speaking certified National Chauffeur Guide',
+          'Private air-conditioned luxury vehicle with unlimited fuel & expressway tolls',
+          'Sigiriya 5th-Century Lion Rock Fortress guided ascent & entrance tickets',
+          'Polonnaruwa UNESCO World Heritage ancient city cycling tour & permits',
+          'Dambulla Golden Rock Cave Temple guided exploration',
+          'Temple of the Sacred Tooth Relic evening Thevava puja & blessings ceremony',
+          'Embekke, Gadaladeniya & Lankathilake 14th-century temple excursion',
+          'Hiriwadunna authentic village catamaran boat ride & clay-pot lunch',
+          'Peradeniya Royal Botanical Gardens entrance',
+          'Ceylon Tea factory private estate tour with master tea tasting session',
+          'Colombo colonial heritage driving tour & Galle Face Green promenade',
+          '24/7 dedicated on-ground Lotus Ceylon concierge assistance'
+        ],
+        exclusions: [
+          'International round-trip flight airfares',
+          'Sri Lanka entry visa fees (ETA)',
+          'Lunches and dinners unless specified',
+          'Camera & video permits at select historic monuments',
+          'Personal expenses, laundry & alcoholic beverages',
+          'Gratuities and tips for guides and chauffeurs'
+        ],
+        days: [
+          {
+            day: '01',
+            dest: 'Negombo Coastal Haven',
+            title: 'Ayubowan & Welcome to Tropical Ceylon',
+            img: 'https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=800&fit=crop&q=80',
+            desc: 'Arrive at Bandaranaike International Airport (CMB) where your dedicated Lotus Ceylon chauffeur warmly welcomes you with fragrant floral garlands. Take a brief 20-minute drive to your seaside resort in Negombo. Unwind by the pool overlooking the Indian Ocean as the horizon turns golden.',
+            tags: ['Airport Meet & Greet', 'Seaside Resort Check-in', 'Welcome Refreshment']
+          },
+          {
+            day: '02',
+            dest: 'Negombo to Dambulla & Sigiriya',
+            title: 'Golden Rock Cave Temple of Antiquity',
+            img: 'https://images.unsplash.com/photo-1588598198321-9735fd52455b?w=800&fit=crop&q=80',
+            desc: 'Journey inland into the verdant heart of Sri Lanka’s Cultural Triangle. Ascend the sacred stone steps to the UNESCO World Heritage Dambulla Cave Temple complex. Marvel at over 150 Buddha statues and 2,100 square meters of preserved ancient ceiling frescoes across five natural rock chambers before checking into your luxury jungle sanctuary.',
+            tags: ['UNESCO Dambulla Cave Temple', 'Rock Frescoes', 'Cultural Triangle Lodge']
+          },
+          {
+            day: '03',
+            dest: 'Sigiriya Lion Rock & Village Traditions',
+            title: 'The 5th-Century Palace in the Sky',
+            img: 'https://images.unsplash.com/photo-1600100397608-f010e423b971?w=800&fit=crop&q=80',
+            desc: 'Climb the iconic 200-meter Sigiriya Lion Rock Fortress in the cool morning air. Admire the world-famous Sigiriya frescoes of celestial maidens, the polished Mirror Wall, and the colossal lion paws leading to King Kashyapa’s summit palace. Later, glide across a tranquil lotus lake in a traditional catamaran boat and savour a home-cooked village feast.',
+            tags: ['Sigiriya Sky Citadel', 'Mirror Wall Frescoes', 'Hiriwadunna Village Boat Ride']
+          },
+          {
+            day: '04',
+            dest: 'Polonnaruwa Medieval Kingdom',
+            title: 'Cycling Among Monuments of the Kings',
+            img: 'https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=800&fit=crop&q=80',
+            desc: 'Pedal on comfortable bicycles through the shady ruins of medieval Polonnaruwa. Stand in awe before the majestic Gal Vihara, four massive Buddha figures carved from a single granite rock face, and explore King Parakramabahu’s 7-story royal palace ruins and the sacred Quadrangle.',
+            tags: ['Polonnaruwa Bike Exploration', 'Gal Vihara Granite Sculptures', 'Royal Palace Ruins']
+          },
+          {
+            day: '05',
+            dest: 'Matale Spice Valleys to Kandy',
+            title: 'Aromatic Spices & The Sacred Hill Capital',
+            img: 'https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?w=800&fit=crop&q=80',
+            desc: 'Travel south towards the mist-shrouded central hills, pausing in Matale to discover how cinnamon, cardamom, cloves, and cocoa have been cultivated for centuries. Arrive in the royal hill capital of Kandy and settle into your hillside retreat overlooking tranquil valleys.',
+            tags: ['Matale Herbal Garden Tour', 'Scenic Hill Country Ascent', 'Kandy Hillside Retreat']
+          },
+          {
+            day: '06',
+            dest: 'Kandy & Gampola Heritage Temples',
+            title: 'Temple of the Tooth & Western Shrines',
+            img: 'https://images.unsplash.com/photo-1588598198321-9735fd52455b?w=800&fit=crop&q=80',
+            desc: 'Discover the architectural treasures of the 14th-century Gampola era: Embekke Devalaya, celebrated for its intricate pillars carved from jak wood, Lankathilake Vihara, and Gadaladeniya stone temple. In the evening, witness the ceremonial drumming and the sacred Thevava offering ritual at the golden-roofed Temple of the Sacred Tooth Relic.',
+            tags: ['Temple of the Sacred Tooth', 'Embekke Woodcarvings', 'Kandyan Evening Puja']
+          },
+          {
+            day: '07',
+            dest: 'Peradeniya to Nuwara Eliya',
+            title: 'Botanical Wonder & High Ceylon Tea Country',
+            img: 'https://images.unsplash.com/photo-1578328819058-b69f3a3b0f6b?w=800&fit=crop&q=80',
+            desc: 'Wander through the historic 147-acre Royal Botanical Gardens in Peradeniya, home to more than 4,000 species of tropical flora and orchid groves. Then ascend through emerald tea valleys to colonial Nuwara Eliya. Tour a working tea factory to learn the art of plucking and processing Pure Ceylon Tea.',
+            tags: ['Peradeniya Botanical Gardens', 'Ceylon Tea Factory Tour', 'Little England Heritage']
+          },
+          {
+            day: '08',
+            dest: 'Highlands to Colombo',
+            title: 'Descent to the Vibrant Coastal Capital',
+            img: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&fit=crop&q=80',
+            desc: 'Descend the breathtaking hill-country pass towards Colombo. In the late afternoon, enjoy a curated city orientation covering Gangaramaya Temple on Beira Lake, Independence Square, and the colonial Fort architecture, followed by a sunset walk on the bustling Galle Face Green.',
+            tags: ['Scenic Mountain Descent', 'Gangaramaya Buddhist Temple', 'Galle Face Green Sunset']
+          },
+          {
+            day: '09',
+            dest: 'Colombo Departure',
+            title: 'Subha Gaman & Homeward Farewell',
+            img: 'https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?w=800&fit=crop&q=80',
+            desc: 'Savour your final Ceylon breakfast. Enjoy last-minute shopping at Barefoot, Laksala, or luxury gem boutiques. Your private chauffeur transfers you seamlessly to Bandaranaike International Airport in time for your departure flight.',
+            tags: ['Boutique Souvenir Shopping', 'Chauffeur Airport Transfer', 'Subha Gaman Farewell']
+          }
+        ]
+      },
+      'ultimate-legacy': {
+        title: 'The Ultimate Legacy',
+        category: 'Grand Island-Wide Heritage Expedition',
+        type: 'cultural',
+        duration: '14 Nights • 15 Days',
+        factDuration: '15 Days / 14 Nights',
+        season: 'Year-Round (Best Nov – Aug)',
+        accommodation: 'Handpicked Heritage & 5★ Luxury Boutique Lodges',
+        heroImg: 'https://images.unsplash.com/photo-1600100397608-f010e423b971?w=1800&fit=crop&q=90',
+        tagline: 'A monumental 15-day cultural expedition spanning the full grandeur of Ceylon’s history: from the vibrant northern Tamil culture of Jaffna, to the colossal stupas of Anuradhapura, the royal kingdoms of Sigiriya and Kandy, misty tea country, and the living ramparts of Galle Fort.',
+        inquireParam: 'The+Ultimate+Legacy',
+        inclusions: [
+          '14 Nights in luxury heritage hotels, colonial tea bungalows & coastal retreats',
+          'Daily gourmet breakfast & welcome Ceylon refreshments throughout',
+          'Dedicated English-speaking certified National Chauffeur Guide for all 15 days',
+          'Private air-conditioned luxury vehicle with all fuel, driver accommodations & tolls',
+          'Anuradhapura 2,500-year-old ancient capital guided tour & sacred Bodhi tree blessings',
+          'Jaffna peninsula excursion: Nallur Kovil, Dutch Fort, Keerimalai & Nagadeepa ferry',
+          'Sigiriya 5th-Century Lion Rock Fortress ascent & Ritigala forest hermitage trek',
+          'Polonnaruwa medieval royal capital bicycle tour & archaeological museum',
+          'Minneriya National Park private 4x4 open-top elephant gathering safari',
+          'Dambulla Golden Rock Cave Temple exploration',
+          'Temple of the Tooth Relic puja in Kandy & Western Gampola temples excursion',
+          'Scenic blue train journey through mountain tea country to Nuwara Eliya',
+          'Nine Arches Bridge visit in Ella & Ravana Falls panoramic photo stop',
+          'Kataragama multi-faith sacred shrine evening ceremony',
+          'UNESCO Galle Dutch Fort walking tour with historic bastion sunset walk',
+          'Colombo architectural heritage tour & celebratory farewell dinner',
+          '24/7 dedicated on-ground Lotus Ceylon concierge assistance'
+        ],
+        exclusions: [
+          'International round-trip flight airfares',
+          'Sri Lanka entry visa fees (ETA)',
+          'Lunches and dinners unless specified',
+          'Camera & video permits at select sacred sites',
+          'Personal laundry, alcoholic beverages & telephone calls',
+          'Gratuities and tips for guides and chauffeurs'
+        ],
+        days: [
+          {
+            day: '01',
+            dest: 'Negombo Coastal Haven',
+            title: 'Arrival in Ceylon & Coastal Relaxation',
+            img: 'https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=800&fit=crop&q=80',
+            desc: 'Arrive at Bandaranaike International Airport (CMB) where you are greeted by your personal Lotus Ceylon chauffeur. Transfer to your luxury seaside hotel in Negombo to relax after your international flight.',
+            tags: ['VIP Airport Welcome', 'Negombo Seaside Hotel', 'Oceanfront Sunset']
+          },
+          {
+            day: '02',
+            dest: 'Anuradhapura Sacred Capital',
+            title: 'The First Kingdom & Sacred Bodhi Tree',
+            img: 'https://images.unsplash.com/photo-1600100397608-f010e423b971?w=800&fit=crop&q=80',
+            desc: 'Journey north to the 2,500-year-old sacred city of Anuradhapura. Pay homage at the Jaya Sri Maha Bodhi, the oldest historically authenticated tree in the world, and stand beneath the soaring domes of Ruwanwelisaya and Jetavanaramaya stupas.',
+            tags: ['Jaya Sri Maha Bodhi', 'Ruwanwelisaya Stupa', 'Anuradhapura World Heritage']
+          },
+          {
+            day: '03',
+            dest: 'Mihintale to Jaffna',
+            title: 'Cradle of Buddhism & Northern Frontier',
+            img: 'https://images.unsplash.com/photo-1588598198321-9735fd52455b?w=800&fit=crop&q=80',
+            desc: 'Ascend the 1,840 stone steps of Mihintale, where Buddhism was introduced to Sri Lanka in 247 BC. Proceed north through the Vanni plains across Elephant Pass into Jaffna, the cultural and intellectual capital of northern Tamil heritage.',
+            tags: ['Mihintale Sacred Hill', 'Elephant Pass Isthmus', 'Jaffna Cultural Gateway']
+          },
+          {
+            day: '04',
+            dest: 'Jaffna Peninsula & Nagadeepa',
+            title: 'Island Shrines & Colonial Strongholds',
+            img: 'https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?w=800&fit=crop&q=80',
+            desc: 'Board a passenger ferry across azure lagoons to Nagadeepa (Nainativu) Island to visit both the sacred Buddhist Vihara and the colorful Nagapooshani Amman Hindu Kovil. Later, tour Jaffna Dutch Fort and soak in the sacred oceanfront springs of Keerimalai.',
+            tags: ['Nagadeepa Island Ferry', 'Jaffna Dutch Fort', 'Keerimalai Sacred Springs']
+          },
+          {
+            day: '05',
+            dest: 'Jaffna to Cultural Triangle (Sigiriya)',
+            title: 'Nallur Kovil Devotion & Jungle Return',
+            img: 'https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=800&fit=crop&q=80',
+            desc: 'Attend the awe-inspiring morning prayer rituals at Nallur Kandaswamy Kovil with its towering golden gopuram. Travel south back into the lush Cultural Triangle, settling into your secluded eco-luxury resort in Sigiriya.',
+            tags: ['Nallur Kandaswamy Temple', 'Cultural Triangle Return', 'Jungle Eco-Resort']
+          },
+          {
+            day: '06',
+            dest: 'Sigiriya Lion Rock & Ritigala',
+            title: 'Citadel of the Skies & Forest Hermitage',
+            img: 'https://images.unsplash.com/photo-1600100397608-f010e423b971?w=800&fit=crop&q=80',
+            desc: 'Climb the 5th-century Sigiriya Rock Fortress in early morning sunlight. Later in the afternoon, trek the tranquil, moss-covered granite paths of Ritigala Strict Nature Reserve, discovering a secret 1st-century BC forest meditation monastery.',
+            tags: ['Sigiriya Rock Citadel', 'Ritigala Forest Hermitage', 'Nature & History Walk']
+          },
+          {
+            day: '07',
+            dest: 'Polonnaruwa & Minneriya Wildlife',
+            title: 'Medieval Stone Art & Wild Elephants',
+            img: 'https://images.unsplash.com/photo-1578328819058-b69f3a3b0f6b?w=800&fit=crop&q=80',
+            desc: 'Cycle through medieval Polonnaruwa, admiring the Gal Vihara rock sculptures and the Royal Audience Hall. In the afternoon, take a private 4x4 open-top jeep safari in Minneriya National Park to observe wild elephants grazing by the ancient reservoir.',
+            tags: ['Polonnaruwa Cycling Tour', 'Minneriya Elephant Safari', 'Gal Vihara Rock Statues']
+          },
+          {
+            day: '08',
+            dest: 'Dambulla to Kandy Royal Capital',
+            title: 'Cave Frescoes & Transition to Hill Country',
+            img: 'https://images.unsplash.com/photo-1588598198321-9735fd52455b?w=800&fit=crop&q=80',
+            desc: 'Explore Dambulla’s five rock caverns adorned with golden Buddha statues. Continue through Matale spice gardens up into the cool misty mountains of Kandy. Stroll along the scenic perimeter of Kandy Lake at twilight.',
+            tags: ['Dambulla Cave Temples', 'Matale Spice Garden', 'Kandy Lake Promenade']
+          },
+          {
+            day: '09',
+            dest: 'Kandy & Surrounding Shrines',
+            title: 'Temple of the Tooth Relic & Sacred Blessings',
+            img: 'https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=800&fit=crop&q=80',
+            desc: 'Visit the ancient Gampola period temples of Embekke, Lankathilake, and Gadaladeniya. At dusk, participate in the reverent puja ceremony at the Temple of the Sacred Tooth Relic amidst rhythmic drumming and fragrant lotus offerings.',
+            tags: ['Temple of the Tooth Relic', 'Embekke Woodcarvings', 'Sacred Drumming Ceremony']
+          },
+          {
+            day: '10',
+            dest: 'Scenic Blue Train to Nuwara Eliya',
+            title: 'Tea Country Panoramas & Little England',
+            img: 'https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?w=800&fit=crop&q=80',
+            desc: 'Board the iconic blue hill-country train curving past rushing waterfalls and emerald-green tea carpets. Arrive in colonial Nuwara Eliya and tour a century-old tea factory to sample the finest single-estate teas.',
+            tags: ['Scenic Blue Train Journey', 'Nuwara Eliya Tea Country', 'Colonial Heritage Hotel']
+          },
+          {
+            day: '11',
+            dest: 'Ella & Ravana Falls to Kataragama',
+            title: 'Viaduct Bridges to Southern Pilgrimage',
+            img: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&fit=crop&q=80',
+            desc: 'Visit the iconic Nine Arches Demodara Bridge nestled in dense jungle before viewing the thundering cascade of Ravana Falls. Descend to the dry southern plains of Kataragama, where Buddhists, Hindus, and Muslims gather in sacred harmony.',
+            tags: ['Nine Arches Bridge Ella', 'Ravana Falls', 'Kataragama Multi-Faith Shrine']
+          },
+          {
+            day: '12',
+            dest: 'Kataragama to Galle Dutch Fort',
+            title: 'Southern Coastline & Living Ramparts',
+            img: 'https://images.unsplash.com/photo-1588598198321-9735fd52455b?w=800&fit=crop&q=80',
+            desc: 'Follow the sapphire southern coast, pausing to see traditional stilt fishermen in Koggala. Enter the gate of the UNESCO World Heritage Galle Dutch Fort and check into a boutique heritage hotel within the 400-year-old stone walls.',
+            tags: ['Koggala Stilt Fishermen', 'Galle Dutch Fort UNESCO', 'Colonial Boutique Living']
+          },
+          {
+            day: '13',
+            dest: 'Galle Dutch Fort Heritage Living',
+            title: 'Cobblestone Alleys & Ocean Ramparts',
+            img: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&fit=crop&q=80',
+            desc: 'Spend a relaxed day exploring Galle Fort’s historic bastions, maritime museums, artisanal jewellery workshops, and charming cafes. Watch the fiery sunset melt into the ocean from the lighthouse ramparts.',
+            tags: ['Galle Ramparts Sunset', 'Artisan Jewellery Shops', 'Living UNESCO Fort']
+          },
+          {
+            day: '14',
+            dest: 'Galle to Colombo Capital',
+            title: 'Modern Metropolis & Farewell Banquet',
+            img: 'https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?w=800&fit=crop&q=80',
+            desc: 'Drive north along the expressway to Colombo. Discover the vibrant Old Dutch Hospital dining precinct, Independence Square, and Gangaramaya temple. Celebrate the culmination of your journey with a private farewell dinner.',
+            tags: ['Colombo City Exploration', 'Old Dutch Hospital Precinct', 'Farewell Celebration Dinner']
+          },
+          {
+            day: '15',
+            dest: 'Colombo Airport Departure',
+            title: 'Ayubowan Until We Meet Again',
+            img: 'https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=800&fit=crop&q=80',
+            desc: 'Indulge in a final Sri Lankan breakfast. Conclude any last-minute shopping before your private chauffeur transfers you to Bandaranaike International Airport for your homeward flight.',
+            tags: ['Private Airport Transfer', 'Final Souvenir Shopping', 'Ayubowan Farewell']
+          }
+        ]
+      },
+      'historical-journey': {
+        title: 'A Historical Journey',
+        category: 'Royal Heritage Express',
+        type: 'cultural',
+        duration: '05 Nights • 06 Days',
+        factDuration: '06 Days / 05 Nights',
+        season: 'Year-Round (Best Nov – Apr)',
+        accommodation: 'Handpicked Heritage & Boutique 5★ Hotels',
+        heroImg: 'https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=1800&fit=crop&q=90',
+        tagline: 'A perfectly balanced, high-impact cultural escape capturing Sri Lanka’s crown jewels: the UNESCO Golden Caves of Dambulla, the legendary 5th-century Sigiriya Sky Fortress, rural village traditions, and the sacred hill capital of Kandy.',
+        inquireParam: 'A+Historical+Journey',
+        inclusions: [
+          '5 Nights in luxury heritage hotels & boutique hillside retreats',
+          'Daily gourmet breakfast & welcome Ceylon refreshments',
+          'Dedicated English-speaking certified National Chauffeur Guide',
+          'Private air-conditioned luxury vehicle with all fuel & expressway tolls',
+          'Dambulla Golden Rock Cave Temple guided exploration & entrance',
+          'Sigiriya 5th-Century Lion Rock Fortress guided sunrise ascent',
+          'Hiriwadunna rural village catamaran boat cruise & authentic clay-pot lunch',
+          'Matale aromatic spice and herbal garden walking tour',
+          'Temple of the Sacred Tooth Relic evening puja & blessings ceremony',
+          'Traditional Kandyan cultural dance & drumming performance',
+          'Peradeniya Royal Botanical Gardens guided tour',
+          'Colombo architectural heritage tour & Galle Face Green sunset',
+          '24/7 dedicated on-ground Lotus Ceylon concierge assistance'
+        ],
+        exclusions: [
+          'International round-trip flight airfares',
+          'Sri Lanka entry visa fees (ETA)',
+          'Lunches and dinners unless specified',
+          'Camera & video permits at sacred sites',
+          'Personal laundry, alcoholic beverages & telephone calls',
+          'Gratuities and tips for guides and chauffeurs'
+        ],
+        days: [
+          {
+            day: '01',
+            dest: 'Negombo Coastal Haven',
+            title: 'Welcome to the Wonder of Ceylon',
+            img: 'https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=800&fit=crop&q=80',
+            desc: 'Arrive at Bandaranaike International Airport (CMB) and meet your Lotus Ceylon chauffeur guide. Take a brief transfer to your seaside resort in Negombo. Relax by the pool with fresh king coconut water as the sun sinks into the Indian Ocean.',
+            tags: ['Airport Meet & Greet', 'Negombo Coastal Resort', 'Sunset Welcome Drink']
+          },
+          {
+            day: '02',
+            dest: 'Negombo to Dambulla & Sigiriya',
+            title: 'The Golden Caves of Antiquity',
+            img: 'https://images.unsplash.com/photo-1588598198321-9735fd52455b?w=800&fit=crop&q=80',
+            desc: 'Travel inland to the Cultural Triangle. Ascend Dambulla Rock Cave Temple, discovering five ancient caverns containing more than 150 Buddha statues and vibrant ancient ceiling frescoes. Check into your luxury forest sanctuary in Sigiriya.',
+            tags: ['UNESCO Dambulla Cave Temple', 'Golden Rock Frescoes', 'Jungle Resort Check-in']
+          },
+          {
+            day: '03',
+            dest: 'Sigiriya Lion Rock & Village Life',
+            title: 'Palace of King Kashyapa & Rural Charm',
+            img: 'https://images.unsplash.com/photo-1600100397608-f010e423b971?w=800&fit=crop&q=80',
+            desc: 'Embark on an early morning climb up the legendary 200m Sigiriya Rock Fortress. Marvel at the ancient water gardens, frescoes of heavenly damsels, and the giant lion paws gateway. In the afternoon, enjoy a peaceful catamaran boat ride across a lotus lake and authentic village lunch.',
+            tags: ['Sigiriya Sky Fortress', 'Mirror Wall Paintings', 'Hiriwadunna Village Boat Ride']
+          },
+          {
+            day: '04',
+            dest: 'Sigiriya to Kandy Royal Capital',
+            title: 'Spice Trails & Temple of the Tooth',
+            img: 'https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?w=800&fit=crop&q=80',
+            desc: 'Drive south into the hill country, visiting an aromatic herbal spice garden in Matale. Arrive in royal Kandy. At twilight, enjoy a traditional Kandyan dance show followed by the reverent evening puja at the Temple of the Sacred Tooth Relic.',
+            tags: ['Matale Spice Garden', 'Kandyan Cultural Dance', 'Temple of the Sacred Tooth']
+          },
+          {
+            day: '05',
+            dest: 'Kandy to Colombo Capital',
+            title: 'Royal Botanical Gardens & Oceanfront Capital',
+            img: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&fit=crop&q=80',
+            desc: 'Explore the 147-acre Peradeniya Royal Botanical Gardens, renowned for its giant palm avenues and orchid house. Descend the winding mountain pass to Colombo. Enjoy an evening orientation of the colonial Fort and sunset on Galle Face Green.',
+            tags: ['Peradeniya Botanical Gardens', 'Scenic Highland Road', 'Galle Face Green Sunset']
+          },
+          {
+            day: '06',
+            dest: 'Colombo Departure',
+            title: 'Subha Gaman & Homeward Farewell',
+            img: 'https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?w=800&fit=crop&q=80',
+            desc: 'Enjoy breakfast and last-minute boutique souvenir or tea shopping in Colombo. Your private chauffeur transfers you to Bandaranaike International Airport in good time for your flight home.',
+            tags: ['Souvenir Shopping', 'Chauffeur Airport Transfer', 'Subha Gaman Farewell']
+          }
+        ]
+      },
+      'wild-ceylon-safari': {
+        title: 'The Wild Ceylon Safari',
+        category: 'Premier Predator & Elephant Trail',
+        type: 'wildlife',
+        duration: '07 Nights • 08 Days',
+        factDuration: '08 Days / 07 Nights',
+        season: 'Year-Round (Best Nov – Sep)',
+        accommodation: 'Handpicked Luxury Tented Glamping & Eco-Lodges',
+        heroImg: 'https://images.unsplash.com/photo-1534567153574-2b12153a87f0?w=1800&fit=crop&q=90',
+        tagline: 'An exhilarating journey through Sri Lanka’s premier national parks. Search for elusive leopards and sloth bears around the natural villus of Wilpattu, witness the majestic elephant gathering at Minneriya, and track apex predators across the rocky dunes of Yala.',
+        inquireParam: 'The+Wild+Ceylon+Safari',
+        inclusions: [
+          '7 Nights in luxury safari tented glamping camps & wilderness boutique lodges',
+          'Daily gourmet breakfast, field picnic hampers & welcome Ceylon refreshments',
+          'Dedicated English-speaking certified National Naturalist Chauffeur Guide',
+          'Private air-conditioned luxury vehicle with all highway tolls and unlimited fuel',
+          'Private open-top 4x4 Toyota Hilux / Land Cruiser safari jeeps in all national parks',
+          'Wilpattu National Park full-day game drive with villu lakes exploration',
+          'Minneriya / Kaudulla National Park Asian Elephant Gathering 4x4 safari',
+          'Yala National Park Block 1 dawn and dusk leopard tracking safaris',
+          'Bundala Ramsar Wetland migratory birding safari drive',
+          'High-powered optical binoculars and wildlife field guides on board',
+          'All national park entrance fees, wildlife tracker fees & conservation taxes',
+          '24/7 dedicated on-ground Lotus Ceylon concierge assistance'
+        ],
+        exclusions: [
+          'International round-trip flight airfares',
+          'Sri Lanka entry visa fees (ETA)',
+          'Lunches and dinners unless specified',
+          'Professional camera lenses rental or personal gear insurance',
+          'Gratuities and tips for safari trackers, drivers, and guides'
+        ],
+        days: [
+          {
+            day: '01',
+            dest: 'Negombo to Wilpattu Wilderness',
+            title: 'Welcome to Ceylon & Forest Gateway',
+            img: 'https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=800&fit=crop&q=80',
+            desc: 'Arrive at Bandaranaike International Airport (CMB) where your dedicated Lotus Ceylon naturalist chauffeur warmly greets you. Transfer north through coconut plantations into the buffer zone of Wilpattu National Park. Settle into your luxury tented glamping camp under the forest canopy and enjoy a welcome starlit dinner.',
+            tags: ['Airport Meet & Greet', 'Luxury Tented Glamping', 'Campfire Welcome Dinner']
+          },
+          {
+            day: '02',
+            dest: 'Wilpattu National Park',
+            title: 'Natural Villus & The Elusive Sloth Bear',
+            img: 'https://images.unsplash.com/photo-1534567153574-2b12153a87f0?w=800&fit=crop&q=80',
+            desc: 'Embark on an exhilarating full-day game drive in Wilpattu, Sri Lanka’s largest and oldest national park. Track elusive Sri Lankan leopards patrolling sand rims around natural freshwater villus, watch sloth bears digging for termites, and spot spotted deer and crocodiles basking in the morning sun.',
+            tags: ['Wilpattu Full-Day Safari', 'Sloth Bear Tracking', 'Natural Villu Habitats']
+          },
+          {
+            day: '03',
+            dest: 'Wilpattu to Minneriya',
+            title: 'The Great Asian Elephant Gathering',
+            img: 'https://images.unsplash.com/photo-1557050543-4d5f4e07ef46?w=800&fit=crop&q=80',
+            desc: 'Journey southeast into the North Central dry zone. In the afternoon, board your private 4x4 safari jeep into Minneriya National Park to witness the awe-inspiring Elephant Gathering, where hundreds of wild Asian elephants congregate to graze on fresh grass around the ancient reservoir.',
+            tags: ['Minneriya 4x4 Safari', 'Asian Elephant Gathering', 'Jungle Resort Check-in']
+          },
+          {
+            day: '04',
+            dest: 'Sigiriya & Habarana Forest',
+            title: 'Birding at Dawn & Lake Catamaran Ride',
+            img: 'https://images.unsplash.com/photo-1600100397608-f010e423b971?w=800&fit=crop&q=80',
+            desc: 'Awake to the calls of tropical birds on a guided nature walk around Habarana lake. Glide across lotus-filled waterways on an eco-catamaran boat. In the afternoon, explore Hurulu Eco Park or unwind beside your jungle resort pool.',
+            tags: ['Birding Nature Walk', 'Lake Catamaran Cruise', 'Wild Elephant Corridor']
+          },
+          {
+            day: '05',
+            dest: 'Habarana to Yala National Park',
+            title: 'Journey South into Leopard Country',
+            img: 'https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?w=800&fit=crop&q=80',
+            desc: 'Enjoy a scenic drive southward through the central foothills towards the wild southern plains of Yala. Check into your luxury safari retreat adjacent to the park and enjoy a twilight sundowner drink as the jungle night comes alive.',
+            tags: ['Scenic Foothill Drive', 'Yala Safari Lodge', 'Wilderness Sundowner']
+          },
+          {
+            day: '06',
+            dest: 'Yala National Park Block 1',
+            title: 'Dawn & Dusk Leopard Expeditions',
+            img: 'https://images.unsplash.com/photo-1534567153574-2b12153a87f0?w=800&fit=crop&q=80',
+            desc: 'Set out before dawn into Yala Block 1, home to the highest leopard density on the planet. Search for big cats resting atop colossal granite boulders or stalking through thorny scrubland. Return to the lodge for lunch and a siesta before an afternoon safari tracking sloth bears and wild boars.',
+            tags: ['Yala Dawn Game Drive', 'Leopard Tracking on Rocks', 'Golden Hour Wildlife Safari']
+          },
+          {
+            day: '07',
+            dest: 'Bundala Wetland to Colombo',
+            title: 'Wetland Flamingos & Capital Return',
+            img: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&fit=crop&q=80',
+            desc: 'Experience a morning safari through Bundala National Park, a UNESCO Biosphere and Ramsar wetland shelter for thousands of colorful migratory waterbirds. Cruise along the Southern Expressway to Colombo for an evening heritage city orientation.',
+            tags: ['Bundala Ramsar Wetland', 'Migratory Bird Sanctuary', 'Colombo Heritage Evening']
+          },
+          {
+            day: '08',
+            dest: 'Colombo Departure',
+            title: 'Subha Gaman & Homeward Farewell',
+            img: 'https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?w=800&fit=crop&q=80',
+            desc: 'Savor breakfast by the ocean. Conclude any last-minute shopping for Ceylon tea, spices, and artisan handicrafts before your private chauffeur transfers you to Bandaranaike International Airport for your departure flight.',
+            tags: ['Souvenir Shopping', 'VIP Airport Transfer', 'Subha Gaman Farewell']
+          }
+        ]
+      },
+      'big-five-expedition': {
+        title: 'The Big Five Expedition',
+        category: 'Ultimate Island-Wide Wildlife Odyssey',
+        type: 'wildlife',
+        duration: '10 Nights • 11 Days',
+        factDuration: '11 Days / 10 Nights',
+        season: 'Year-Round (Best Nov – Apr)',
+        accommodation: 'Handpicked Eco-Luxury Safari Tents & Oceanfront Boutique Resorts',
+        heroImg: 'https://images.unsplash.com/photo-1557050543-4d5f4e07ef46?w=1800&fit=crop&q=90',
+        tagline: 'An all-encompassing island-wide wildlife expedition. Track the legendary "Big Five" of Sri Lanka: the Sri Lankan Leopard, Asian Elephant, Sloth Bear, Blue Whale, and Sperm Whale—paired with private open-top 4x4 vehicles and expert marine biologists.',
+        inquireParam: 'The+Big+Five+Expedition',
+        inclusions: [
+          '10 Nights in luxury wilderness safari camps, eco-resorts & oceanfront boutique villas',
+          'Daily gourmet breakfast, packed safari trail hampers & fresh juices',
+          'Certified National Naturalist Chauffeur Guide accompanying all 11 days',
+          'Private air-conditioned luxury vehicle with unlimited fuel, highway tolls & driver stay',
+          'Private open-top 4x4 safari jeeps with veteran park trackers in Wilpattu, Minneriya, Udawalawe & Yala',
+          'Private chartered whale-watching vessel with certified marine biologist in Mirissa',
+          'Udawalawe Elephant Transit Home feeding session and conservation entry',
+          'All national park entrance permits, tracker fees & wildlife conservation levies',
+          '24/7 dedicated on-ground Lotus Ceylon concierge assistance'
+        ],
+        exclusions: [
+          'International round-trip flight airfares',
+          'Sri Lanka entry visa fees (ETA)',
+          'Lunches and dinners unless specified',
+          'Scuba diving or specialized telephoto camera rentals',
+          'Gratuities and tips for safari trackers and boat crew'
+        ],
+        days: [
+          {
+            day: '01',
+            dest: 'Negombo Coastal Gateway',
+            title: 'Ayubowan & Safari Briefing',
+            img: 'https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=800&fit=crop&q=80',
+            desc: 'Arrive at CMB Airport and meet your senior wildlife naturalist. Transfer to your coastal hotel in Negombo to review the safari route, species checklists, and photography equipment.',
+            tags: ['Naturalist Meet & Greet', 'Negombo Seaside Hotel', 'Expedition Briefing']
+          },
+          {
+            day: '02-03',
+            dest: 'Wilpattu National Park',
+            title: 'The Great Sloth Bear & Leopard Villus',
+            img: 'https://images.unsplash.com/photo-1534567153574-2b12153a87f0?w=800&fit=crop&q=80',
+            desc: 'Two full days dedicated to tracking big cats and sloth bears around the 60+ natural freshwater villu lakes in Wilpattu, with quiet observation of white-bellied sea eagles and mugger crocodiles.',
+            tags: ['Wilpattu National Park', 'Sloth Bear Habitats', 'Glamping Wilderness Camp']
+          },
+          {
+            day: '04',
+            dest: 'Minneriya National Park',
+            title: 'The Gathering of Asian Elephants',
+            img: 'https://images.unsplash.com/photo-1557050543-4d5f4e07ef46?w=800&fit=crop&q=80',
+            desc: 'Head east to Minneriya or Kaudulla to witness massive elephant family herds interacting, drinking, and bathing against the backdrop of ancient reservoirs.',
+            tags: ['Minneriya National Park', 'Asian Elephant Gathering', 'Jungle Eco-Lodge']
+          },
+          {
+            day: '05',
+            dest: 'Udawalawe National Park',
+            title: 'Grasslands & Elephant Transit Home',
+            img: 'https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=800&fit=crop&q=80',
+            desc: 'Travel south to Udawalawe National Park. Visit the Elephant Transit Home to watch orphaned elephant calves receive milk feeds, followed by a private grassland safari.',
+            tags: ['Udawalawe National Park', 'Elephant Transit Home', 'Grassland 4x4 Safari']
+          },
+          {
+            day: '06-07',
+            dest: 'Yala National Park',
+            title: 'Apex Predator Safaris in Block 1 & 5',
+            img: 'https://images.unsplash.com/photo-1534567153574-2b12153a87f0?w=800&fit=crop&q=80',
+            desc: 'Explore the diverse ecosystems of Yala. Multiple game drives targeting leopards basking on boulders, sloth bears, wild water buffaloes, and marsh crocodiles.',
+            tags: ['Yala Leopard Safari', 'Block 1 Dawn Game Drive', 'Luxury Tented Safari Camp']
+          },
+          {
+            day: '08-09',
+            dest: 'Mirissa Marine Sanctuary',
+            title: 'Marine Giants: Blue Whales & Sperm Whales',
+            img: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&fit=crop&q=80',
+            desc: 'Transition to the south coast. Board an early-morning private vessel charter out to the continental shelf to witness the mighty Blue Whale—the largest animal to ever live—and pods of sperm whales.',
+            tags: ['Private Whale Charter', 'Blue Whale Encounter', 'Mirissa Boutique Beachfront']
+          },
+          {
+            day: '10',
+            dest: 'Galle Fort to Colombo',
+            title: 'UNESCO Ramparts & Coastal Highway Return',
+            img: 'https://images.unsplash.com/photo-1588598198321-9735fd52455b?w=800&fit=crop&q=80',
+            desc: 'Stroll along the historic 17th-century ramparts of Galle Dutch Fort before taking the coastal expressway to Colombo for an evening farewell celebration dinner.',
+            tags: ['Galle Dutch Fort UNESCO', 'Expressway Transit', 'Farewell Celebration Dinner']
+          },
+          {
+            day: '11',
+            dest: 'Colombo Airport Departure',
+            title: 'Subha Gaman & Homeward Farewell',
+            img: 'https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?w=800&fit=crop&q=80',
+            desc: 'Breakfast by the sea and private chauffeur transfer to Bandaranaike International Airport in good time for your flight home.',
+            tags: ['Private Airport Chauffeur', 'Subha Gaman Farewell', 'End of Expedition']
+          }
+        ]
+      },
+      'untamed-wilderness': {
+        title: 'Rain & Wilderness Explorer',
+        category: 'Dense Jungles & Endemic Wildlife',
+        type: 'wildlife',
+        duration: '05 Nights • 06 Days',
+        factDuration: '06 Days / 05 Nights',
+        season: 'Year-Round',
+        accommodation: 'Handpicked Rainforest Eco-Lodges & Safari Tents',
+        heroImg: 'https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=1800&fit=crop&q=90',
+        tagline: 'A fast-paced, high-impact wildlife escape through contrasting ecosystems: from the virgin rainforest canopy of UNESCO Sinharaja with rare endemic birds, to the open elephant grasslands of Udawalawe and the wild leopard territory of Yala.',
+        inquireParam: 'Rain+and+Wilderness+Explorer',
+        inclusions: [
+          '5 Nights in handpicked luxury eco-lodges, treehouses & safari tented camps',
+          'Daily gourmet breakfast, guided forest tea breaks & tropical fruits',
+          'Dedicated English-speaking certified Naturalist Chauffeur Guide',
+          'Private air-conditioned luxury vehicle with all fuel and expressway tolls',
+          'Sinharaja UNESCO Rainforest guided biodiversity & endemic birding trek',
+          'Udawalawe National Park private 4x4 elephant safari & Elephant Transit Home visit',
+          'Yala National Park Block 1 late afternoon leopard game drive',
+          'All national park and forest reserve entrance permits and tracking fees',
+          '24/7 dedicated on-ground Lotus Ceylon concierge assistance'
+        ],
+        exclusions: [
+          'International round-trip flight airfares',
+          'Sri Lanka entry visa fees (ETA)',
+          'Lunches and dinners unless specified',
+          'Gratuities and tips for rainforest trackers and safari drivers'
+        ],
+        days: [
+          {
+            day: '01',
+            dest: 'Negombo to Udawalawe',
+            title: 'Welcome to Ceylon & Savanna Gateway',
+            img: 'https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=800&fit=crop&q=80',
+            desc: 'Meet your private naturalist chauffeur at CMB Airport. Journey south towards Udawalawe National Park, arriving at your boutique safari lodge surrounded by pristine wilderness.',
+            tags: ['Private Airport Welcome', 'Scenic Drive South', 'Boutique Safari Lodge']
+          },
+          {
+            day: '02',
+            dest: 'Udawalawe National Park',
+            title: 'Elephant Transit Home & Plains Safari',
+            img: 'https://images.unsplash.com/photo-1557050543-4d5f4e07ef46?w=800&fit=crop&q=80',
+            desc: 'Witness the morning milk feeding at the Elephant Transit Home where orphaned calves are rehabilitated. In the afternoon, explore Udawalawe in an open-top 4x4 jeep, viewing wild elephant herds, water buffaloes, and monitor lizards.',
+            tags: ['Udawalawe 4x4 Safari', 'Elephant Transit Home', 'Grassland Wildlife Watching']
+          },
+          {
+            day: '03',
+            dest: 'Sinharaja UNESCO Biosphere',
+            title: 'Virgin Tropical Rainforest Trek',
+            img: 'https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=800&fit=crop&q=80',
+            desc: 'Travel into the emerald heart of Sinharaja Rainforest, a UNESCO World Heritage site. Embark on a guided canopy walk with an expert ornithologist, tracking mixed-species bird feeding flocks including the Sri Lanka Blue Magpie and Red-faced Malkoha.',
+            tags: ['Sinharaja Rainforest Trek', 'Endemic Bird Species', 'Eco-Rainforest Lodge']
+          },
+          {
+            day: '04',
+            dest: 'Sinharaja to Yala National Park',
+            title: 'From Rain Canopy to Leopard Stronghold',
+            img: 'https://images.unsplash.com/photo-1534567153574-2b12153a87f0?w=800&fit=crop&q=80',
+            desc: 'Descend to the dry southern coastal belt of Yala. In the late afternoon, venture into Yala Block 1 for an exhilarating game drive targeting leopards basking on rocky hillocks and sloth bears foraging for food.',
+            tags: ['Yala Leopard Game Drive', 'Rocky Outcrop Tracking', 'Luxury Safari Glamping']
+          },
+          {
+            day: '05',
+            dest: 'Yala to Galle Dutch Fort',
+            title: 'Dawn Safari & Colonial Ocean Ramparts',
+            img: 'https://images.unsplash.com/photo-1588598198321-9735fd52455b?w=800&fit=crop&q=80',
+            desc: 'Take an early morning game drive in Yala, then travel along the southern coast to Galle Dutch Fort. Stroll cobblestone streets and enjoy sunset drinks atop the historic ocean ramparts.',
+            tags: ['Yala Dawn Safari', 'UNESCO Galle Fort Walk', 'Ramparts Sunset Cocktail']
+          },
+          {
+            day: '06',
+            dest: 'Galle to Colombo Departure',
+            title: 'Subha Gaman & Homeward Farewell',
+            img: 'https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?w=800&fit=crop&q=80',
+            desc: 'Enjoy a leisurely breakfast within the fort walls before your private chauffeur transfers you comfortably along the highway to CMB Airport for your flight home.',
+            tags: ['Boutique Breakfast', 'Highway Chauffeur Transfer', 'Subha Gaman Farewell']
+          }
+        ]
+      }
+    };
+
+    const CATEGORY_TABS = {
+      beach: [
+        { key: 'southern-sands', label: '🏝️ Southern Sands Voyage (10 Days)' },
+        { key: 'eastern-blue', label: '🌊 Eastern Blue Bliss (12 Days)' },
+        { key: 'northern-seaboard', label: '🌅 Sunrise Shores Explorer (10 Days)' }
+      ],
+      cultural: [
+        { key: 'cultural-odyssey', label: '🏛️ The Cultural Odyssey (9 Days)' },
+        { key: 'ultimate-legacy', label: '👑 The Ultimate Legacy (15 Days)' },
+        { key: 'historical-journey', label: '📜 A Historical Journey (6 Days)' }
+      ],
+      wildlife: [
+        { key: 'wild-ceylon-safari', label: '🐆 The Wild Ceylon Safari (8 Days)' },
+        { key: 'big-five-expedition', label: '🐋 The Big Five Expedition (11 Days)' },
+        { key: 'untamed-wilderness', label: '🌿 Rain & Wilderness Explorer (6 Days)' }
+      ]
+    };
+
+    // Function to load tour details based on URL query or default
+    function renderTour() {
+      const params = new URLSearchParams(window.location.search);
+      let tourKey = params.get('tour') || 'southern-sands';
+      if (!TOURS_DATA[tourKey]) tourKey = 'southern-sands';
+
+      const data = TOURS_DATA[tourKey];
+      const isCultural = data.type === 'cultural';
+      const isWildlife = data.type === 'wildlife';
+
+      // Update Header & Hero
+      document.title = data.title + ' | Lotus Ceylon Luxury Tours';
+      
+      const breadcrumbParent = document.getElementById('breadcrumbParentCategory');
+      if (breadcrumbParent) {
+        if (isCultural) {
+          breadcrumbParent.textContent = 'Cultural Tours';
+          breadcrumbParent.href = 'cultural-tours.html';
+        } else if (isWildlife) {
+          breadcrumbParent.textContent = 'Wildlife Tours';
+          breadcrumbParent.href = 'wildlife-tours.html';
+        } else {
+          breadcrumbParent.textContent = 'Beach Tours';
+          breadcrumbParent.href = 'beach-tours.html';
+        }
+      }
+
+      document.getElementById('breadcrumbTourName').textContent = data.title;
+      document.getElementById('heroTitle').textContent = data.title;
+      document.getElementById('heroTagline').textContent = data.tagline;
+      document.getElementById('heroDuration').textContent = data.duration;
+      document.getElementById('heroCategory').textContent = data.category;
+      document.getElementById('factDuration').textContent = data.factDuration;
+      document.getElementById('factSeason').textContent = data.season;
+      
+      const factAccommodation = document.getElementById('factAccommodation');
+      if (factAccommodation && data.accommodation) {
+        factAccommodation.textContent = data.accommodation;
+      }
+
+      document.getElementById('tourHero').style.backgroundImage = `url('${data.heroImg}')`;
+
+      // Update inquiry links
+      const inquireUrl = `inquiry-detailed.html?package=${data.inquireParam}`;
+      document.getElementById('heroInquireBtn').href = inquireUrl;
+      document.getElementById('sideInquireBtn').href = inquireUrl;
+
+      // Update WhatsApp link with dynamic tour title
+      const sideWhatsAppBtn = document.getElementById('sideWhatsAppBtn');
+      if (sideWhatsAppBtn) {
+        const waText = encodeURIComponent(`Hello Lotus Ceylon, I am interested in the ${data.title} tour.`);
+        sideWhatsAppBtn.href = `https://wa.me/94715422384?text=${waText}`;
+      }
+
+      // Update sidebar advice note
+      const specialistTitle = document.getElementById('sideSpecialistTitle');
+      const specialistDesc = document.getElementById('sideSpecialistDesc');
+      if (specialistTitle && specialistDesc) {
+        if (isCultural) {
+          specialistTitle.textContent = 'Need Advice from a Cultural Specialist?';
+          specialistDesc.textContent = 'Our heritage travel designers will craft your dream cultural journey within 24 hours.';
+        } else if (isWildlife) {
+          specialistTitle.textContent = 'Need Advice from a Wildlife Naturalist?';
+          specialistDesc.textContent = 'Our certified naturalist travel designers will craft your dream safari expedition within 24 hours.';
+        } else {
+          specialistTitle.textContent = 'Need Advice from a Coastal Specialist?';
+          specialistDesc.textContent = 'Our travel designers will craft your dream coastal journey within 24 hours.';
+        }
+      }
+
+      // Dynamically populate Tour Switcher Tabs
+      const switcherNav = document.getElementById('tourSwitcherNav');
+      if (switcherNav) {
+        const tabs = CATEGORY_TABS[data.type] || CATEGORY_TABS.beach;
+        switcherNav.innerHTML = tabs.map(tab => {
+          const activeClass = tab.key === tourKey ? ' active' : '';
+          return `<a href="tour-package-detail.html?tour=${tab.key}" class="tour-tab-btn${activeClass}" id="tab-${tab.key}"><span>${tab.label}</span></a>`;
+        }).join('');
+      }
+
+      // Dynamic Inclusions & Exclusions
+      const inclusionsList = document.getElementById('inclusionsList');
+      if (inclusionsList && data.inclusions && data.inclusions.length) {
+        inclusionsList.innerHTML = data.inclusions.map(item => `<li><span>✓</span> ${item}</li>`).join('');
+      }
+
+      const exclusionsList = document.getElementById('exclusionsList');
+      if (exclusionsList && data.exclusions && data.exclusions.length) {
+        exclusionsList.innerHTML = data.exclusions.map(item => `<li><span>✕</span> ${item}</li>`).join('');
+      }
+
+      // Build Days Timeline
+      const container = document.getElementById('timelineContainer');
+      container.innerHTML = '';
+
+      data.days.forEach((item, idx) => {
+        const dayCard = document.createElement('article');
+        dayCard.className = 'day-card';
+        
+        const tagsHtml = item.tags.map(t => `<span class="day-tag">${t}</span>`).join('');
+        const imgHtml = item.img ? `<img src="${item.img}" class="day-card-img" alt="${item.title}" loading="lazy">` : '';
+
+        dayCard.innerHTML = `
+          <div class="day-card-dot">${item.day.split('-')[0]}</div>
+          <div class="day-card-header">
+            <h3 class="day-card-title">Day ${item.day}: ${item.title}</h3>
+            <span class="day-card-dest">${item.dest}</span>
+          </div>
+          ${imgHtml}
+          <p class="day-card-desc">${item.desc}</p>
+          <div class="day-card-tags">
+            ${tagsHtml}
+          </div>
+        `;
+        container.appendChild(dayCard);
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', renderTour);
+  </script>
+
+<footer class="site-footer-walkers" id="contact">
+    <div class="wrapper--80">
+      
+      <div class="footer-top-grid">
+        <!-- Col 1: Contact Information & Global Desks -->
+        <div>
+          <p class="footer-col-title">Address &amp; Headquarters</p>
+          <div class="footer-contact-list">
+            <div class="footer-contact-item">
+              <p>
+                <strong>LOTUS CEYLON INTERNATIONAL TOURS &amp; SERVICES (PRIVATE) LIMITED</strong><br>
+                286/C, Niwandama South,<br>
+                Ja-Ela, Sri Lanka &ndash; 11350
+              </p>
+            </div>
+            <div class="footer-contact-item">
+              <p style="margin-bottom: 0.25rem; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-gold);">Phone / WhatsApp Hotline</p>
+              <a href="tel:+94715422384" style="color: #FFFFFF; font-weight: 700; font-size: 1.05rem;">+94 71 54 22 384</a>
+            </div>
+            <div class="footer-contact-item">
+              <p style="margin-bottom: 0.25rem; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-gold);">Email Inquiries</p>
+              <a href="mailto:paliforbuddhism@gmail.com" style="color: #CBD5E1;">paliforbuddhism@gmail.com</a>
+            </div>
+            <div class="footer-contact-item">
+              <p style="margin-bottom: 0.35rem; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-gold);">WeChat &amp; LINE Concierge</p>
+              <p style="font-size: 0.88rem; line-height: 1.6; color: #E2E8F0;">
+                <span style="color: var(--color-gold); font-weight: 600;">WeChat ID:</span> FGUTaiwan90 (+9471 54 22 384)<br>
+                <span style="color: var(--color-gold); font-weight: 600;">LINE ID:</span> dpbs2024 (Line Phone: +886 958 561 954)
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Col 2: Quick Links -->
+        <div>
+          <p class="footer-col-title">Quick Links</p>
+          <div class="footer-links-grid">
+            <a href="index.html">Home</a>
+            <a href="sri-lanka-tours.html">Sri Lanka Tours</a>
+            <a href="#bespoke">Tailor-Made</a>
+            <a href="#brands">Our Brands</a>
+            <a href="#sustainability">Sustainability</a>
+            <a href="about.html">About Lotus Ceylon</a>
+            <a href="#testimonials">Guest Reviews</a>
+            <a href="#faq">Travel FAQ</a>
+            <a href="inquiry-detailed.html">Detailed Inquiry</a>
+            <a href="inquiry-quick.html">Quick Inquiry</a>
+            <a href="#contact">Contact Us</a>
+          </div>
+        </div>
+
+        <!-- Col 3: Newsletter, QR Codes & Payment Partners -->
+        <div>
+          <div class="newsletter-box">
+            <p class="footer-col-title">Stay Inspired</p>
+            <p>Subscribe to receive curated Sri Lanka holiday inspiration and early-booking privileges.</p>
+            <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Thank you for subscribing to Lotus Ceylon!'); this.reset();">
+              <input type="email" placeholder="Enter your email address" required>
+              <button type="submit" aria-label="Subscribe">➔</button>
+            </form>
+          </div>
+
+          <!-- Instant Chat QR Codes -->
+          <div style="margin: 1.5rem 0 1.25rem;">
+            <p style="font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.12em; color: #FFFFFF; font-weight: 700; margin-bottom: 0.65rem;">Scan &amp; Chat Instantly</p>
+            <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+              <a href="https://wa.me/94715422384" target="_blank" rel="noopener" style="background: rgba(255,255,255,0.08); padding: 0.5rem; border-radius: 6px; text-align: center; text-decoration: none; border: 1px solid rgba(255,255,255,0.12); width: 85px;">
+                <img src="assets/qr/whatsapp-qr.png" alt="WhatsApp QR" style="width: 70px; height: 70px; border-radius: 4px; display: block; margin: 0 auto 0.25rem; object-fit: contain;">
+                <span style="font-size: 0.72rem; color: #E2E8F0; display: block; font-weight: 600;">WhatsApp</span>
+              </a>
+              <div style="background: rgba(255,255,255,0.08); padding: 0.5rem; border-radius: 6px; text-align: center; border: 1px solid rgba(255,255,255,0.12); width: 85px;">
+                <img src="assets/qr/wechat-qr.png" alt="WeChat QR" style="width: 70px; height: 70px; border-radius: 4px; display: block; margin: 0 auto 0.25rem; object-fit: contain;">
+                <span style="font-size: 0.72rem; color: #E2E8F0; display: block; font-weight: 600;">WeChat</span>
+              </div>
+              <div style="background: rgba(255,255,255,0.08); padding: 0.5rem; border-radius: 6px; text-align: center; border: 1px solid rgba(255,255,255,0.12); width: 85px;">
+                <img src="assets/qr/line-qr.png" alt="LINE QR" style="width: 70px; height: 70px; border-radius: 4px; display: block; margin: 0 auto 0.25rem; object-fit: contain;">
+                <span style="font-size: 0.72rem; color: #E2E8F0; display: block; font-weight: 600;">LINE</span>
+              </div>
+            </div>
+          </div>
+
+          <p style="font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.12em; color: #FFFFFF; font-weight: 700; margin-bottom: 0.5rem;">Accepted Payment Partners</p>
+          <div class="payment-badges-row">
+            <span class="payment-badge-pill">VISA</span>
+            <span class="payment-badge-pill">Mastercard</span>
+            <span class="payment-badge-pill">AMEX</span>
+            <span class="payment-badge-pill">UnionPay</span>
+          </div>
+
+          <div class="footer-social-row">
+            <a href="https://wa.me/94715422384" target="_blank" rel="noopener" class="social-icon-btn" title="WhatsApp">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.698.077-1.11-.059-.441-.144-1.025-.338-1.776-.816-1.579-1.004-2.613-2.616-2.695-2.726-.082-.11-1.082-1.442-1.082-2.75 0-1.309.684-1.954.928-2.222.244-.268.531-.334.708-.334.177 0 .354.002.508.01.164.008.385-.062.602.459.223.535.759 1.854.825 1.99.066.136.111.297.022.474-.088.177-.133.287-.266.442-.133.155-.28.347-.399.465-.133.133-.271.277-.117.542.155.266.689 1.134 1.477 1.835 1.014.903 1.87 1.182 2.136 1.315.266.133.421.111.576-.066.155-.177.664-.774.841-1.039.177-.266.354-.222.597-.133.244.089 1.549.73 1.815.863.266.133.443.2.509.311.066.11.066.643-.078 1.048z"/></svg>
+            </a>
+            <a href="https://facebook.com" target="_blank" rel="noopener" class="social-icon-btn" title="Facebook">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"/></svg>
+            </a>
+            <a href="https://instagram.com" target="_blank" rel="noopener" class="social-icon-btn" title="Instagram">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            </a>
+            <a href="https://linkedin.com" target="_blank" rel="noopener" class="social-icon-btn" title="LinkedIn">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom-row">
+        <div>
+          &copy; 2026 LOTUS CEYLON INTERNATIONAL TOURS &amp; SERVICES (PRIVATE) LIMITED. All Rights Reserved. Since 2014.
+        </div>
+        <div>
+          Designed &amp; Developed by <a href="https://infiniteweb.dev/" target="_blank" rel="noopener" style="color: var(--color-gold); text-decoration: none; font-weight: 600; transition: color 0.25s ease;" onmouseover="this.style.color='var(--color-lotus-pink)'" onmouseout="this.style.color='var(--color-gold)'">Infinite Design</a> &middot; Reg: PV 00374439
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ==========================================================================
+       STEP 1 FLOATING ACTIONS: WHATSAPP (+94 71 54 22 384) & 6S PULSING INQUIRE TAB
+       ========================================================================== -->
+  <!-- Floating WhatsApp Hotline (+94 71 54 22 384) -->
+  <a href="https://wa.me/94715422384" target="_blank" rel="noopener" class="floating-whatsapp-btn" title="Chat on WhatsApp (+94 71 54 22 384)" aria-label="Chat on WhatsApp">
+    <svg viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.698.077-1.11-.059-.441-.144-1.025-.338-1.776-.816-1.579-1.004-2.613-2.616-2.695-2.726-.082-.11-1.082-1.442-1.082-2.75 0-1.309.684-1.954.928-2.222.244-.268.531-.334.708-.334.177 0 .354.002.508.01.164.008.385-.062.602.459.223.535.759 1.854.825 1.99.066.136.111.297.022.474-.088.177-.133.287-.266.442-.133.155-.28.347-.399.465-.133.133-.271.277-.117.542.155.266.689 1.134 1.477 1.835 1.014.903 1.87 1.182 2.136 1.315.266.133.421.111.576-.066.155-.177.664-.774.841-1.039.177-.266.354-.222.597-.133.244.089 1.549.73 1.815.863.266.133.443.2.509.311.066.11.066.643-.078 1.048z"/></svg>
+  </a>
+
+  <!-- Floating Inquire Tab with 6s Pulse Ring -->
+  <a href="inquiry-detailed.html" class="floating-inquire-tab" title="Inquire Now">
+    <svg viewBox="0 0 20 20"><path d="M16.5909 5.02051H16.1522V8.43079C16.1522 10.9574 14.0966 13.013 11.57 13.013H5.02148V13.4518C5.02148 15.3322 6.55138 16.862 8.43177 16.862H15.4373L19.0401 19.8644C19.1474 19.9538 19.2808 20.0002 19.4154 20.0002C19.7375 20.0002 20.0012 19.7388 20.0012 19.4142V8.43079C20.0012 6.5475 18.4775 5.02051 16.5909 5.02051Z"/><path d="M14.9797 8.43118V3.41029C14.9797 1.52363 13.4528 0 11.5694 0H3.41029C1.52363 0 0 1.52684 0 3.41029V14.3937C0 14.7181 0.26368 14.9797 0.585802 14.9797C0.720388 14.9797 0.853754 14.9333 0.961027 14.8437L4.56388 11.8415H11.5694C13.4498 11.8415 14.9797 10.3117 14.9797 8.43118Z"/></svg>
+    <span>Inquire</span>
+  </a>
+
+  <!-- ==========================================================================
+       JAVASCRIPT LOGIC (STICKY HEADER, MOBILE DRAWER, OFFCANVAS SEARCH, ACCORDION)
+       ========================================================================== -->
+  <script>
+    // 1. Sticky Header Transparency Transition on Scroll
+    const siteHeader = document.getElementById('siteHeader');
+    function updateHeaderOnScroll() {
+      if (!siteHeader) return;
+      if (window.scrollY > 80) {
+        siteHeader.classList.add('is-scrolled');
+      } else {
+        siteHeader.classList.remove('is-scrolled');
+      }
+    }
+    window.addEventListener('scroll', updateHeaderOnScroll, { passive: true });
+    updateHeaderOnScroll();
+
+    // 2. Language Switcher (10 Slots Dropdown)
+    const langPillToggle = document.getElementById('langPillToggle');
+    const langPillMenu = document.getElementById('langPillMenu');
+    const currentLangLabel = document.getElementById('currentLangLabel');
+    if (langPillToggle && langPillMenu) {
+      langPillToggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        langPillMenu.classList.toggle('is-active');
+      });
+      document.addEventListener('click', (e) => {
+        if (!langPillToggle.contains(e.target) && !langPillMenu.contains(e.target)) {
+          langPillMenu.classList.remove('is-active');
+        }
+      });
+      langPillMenu.querySelectorAll('button').forEach(btn => {
+        btn.addEventListener('click', () => {
+          langPillMenu.querySelectorAll('button').forEach(b => b.classList.remove('is-active'));
+          btn.classList.add('is-active');
+          const code = btn.getAttribute('data-lang').toUpperCase();
+          if (currentLangLabel) currentLangLabel.textContent = code;
+          langPillMenu.classList.remove('is-active');
+        });
+      });
+    }
+
+    // 3. Mobile Navigation Fullscreen Drawer
+    const mobileHamToggle = document.getElementById('mobileHamToggle');
+    const mobileNavClose = document.getElementById('mobileNavClose');
+    const mobileNavFullscreen = document.getElementById('mobileNavFullscreen');
+    if (mobileHamToggle && mobileNavFullscreen) {
+      mobileHamToggle.addEventListener('click', () => {
+        mobileNavFullscreen.classList.add('is-open');
+        document.body.style.overflow = 'hidden';
+      });
+      if (mobileNavClose) {
+        mobileNavClose.addEventListener('click', () => {
+          mobileNavFullscreen.classList.remove('is-open');
+          document.body.style.overflow = '';
+        });
+      }
+      mobileNavFullscreen.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          mobileNavFullscreen.classList.remove('is-open');
+          document.body.style.overflow = '';
+        });
+      });
+    }
+
+    // 4. Offcanvas Search Modal Toggle
+    const searchTrigger = document.getElementById('searchTriggerBtn');
+    const searchClose = document.getElementById('searchCloseBtn');
+    const offcanvasSearch = document.getElementById('offcanvasSearch');
+    if (searchTrigger && offcanvasSearch) {
+      searchTrigger.addEventListener('click', () => {
+        offcanvasSearch.classList.add('show');
+      });
+      if (searchClose) {
+        searchClose.addEventListener('click', () => {
+          offcanvasSearch.classList.remove('show');
+        });
+      }
+      offcanvasSearch.addEventListener('click', (e) => {
+        if (e.target === offcanvasSearch) {
+          offcanvasSearch.classList.remove('show');
+        }
+      });
+    }
+
+    // 5. FAQ Accordion
+    document.querySelectorAll('.accordion-header-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.parentElement;
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.accordion-item').forEach(i => i.classList.remove('open'));
+        if (!isOpen) item.classList.add('open');
+      });
+    });
+  </script>
+</body>
+</html>
+

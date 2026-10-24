@@ -1,0 +1,603 @@
+/* ==========================================================================
+   LOTUS CEYLON - TOUR PACKAGE DETAIL STYLESHEET
+   Curated Luxury Coastal & Sri Lanka Itineraries
+   ========================================================================== */
+
+:root {
+  --color-gold: #C5A880;
+  --color-gold-dark: #A68B63;
+  --color-navy: #002B49;
+  --color-navy-dark: #001A2C;
+  --color-slate: #475569;
+  --color-light-bg: #F8FAFC;
+  --color-card-border: #E2E8F0;
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+body.page-tour-detail {
+  font-family: var(--font-sans);
+  color: #1E293B;
+  background-color: #FFFFFF;
+  line-height: 1.65;
+  overflow-x: hidden;
+}
+
+/* --------------------------------------------------------------------------
+   1. HERO SECTION & BREADCRUMBS
+   -------------------------------------------------------------------------- */
+.tour-hero-section {
+  position: relative;
+  min-height: 65vh;
+  display: flex;
+  align-items: center;
+  padding: 120px 0 80px;
+  background-size: cover;
+  background-position: center;
+  color: #FFFFFF;
+  overflow: hidden;
+}
+
+.tour-hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, rgba(0, 26, 44, 0.75) 0%, rgba(0, 43, 73, 0.85) 60%, rgba(0, 26, 44, 0.95) 100%);
+  z-index: 1;
+}
+
+.tour-hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 900px;
+}
+
+.tour-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.75);
+  margin-bottom: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.tour-breadcrumb a {
+  color: #FFFFFF;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.tour-breadcrumb a:hover {
+  color: var(--color-gold);
+}
+
+.tour-hero-badges {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.tour-badge-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.9rem;
+  border-radius: 9999px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.tour-badge-gold {
+  background: var(--color-gold);
+  color: #001A2C;
+}
+
+.tour-badge-glass {
+  background: rgba(255, 255, 255, 0.15);
+  color: #FFFFFF;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.tour-hero-title {
+  font-family: var(--font-serif);
+  font-size: clamp(2.3rem, 4.5vw, 3.8rem);
+  font-weight: 700;
+  line-height: 1.15;
+  color: #FFFFFF;
+  margin-bottom: 1.25rem;
+}
+
+.tour-hero-tagline {
+  font-size: 1.15rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.88);
+  margin-bottom: 2rem;
+  max-width: 720px;
+}
+
+.tour-hero-actions {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.btn-hero-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: var(--color-gold);
+  color: #002B49;
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+  padding: 0.9rem 2rem;
+  border-radius: 9999px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 24px rgba(197, 168, 128, 0.35);
+}
+
+.btn-hero-primary:hover {
+  background: #B09267;
+  transform: translateY(-2px);
+  color: #001A2C;
+}
+
+.btn-hero-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: rgba(255, 255, 255, 0.12);
+  color: #FFFFFF;
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 0.88rem 1.75rem;
+  border-radius: 9999px;
+  text-decoration: none;
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  transition: all 0.3s ease;
+}
+
+.btn-hero-secondary:hover {
+  background: rgba(255, 255, 255, 0.22);
+  color: #FFFFFF;
+}
+
+/* --------------------------------------------------------------------------
+   2. TOUR SWITCHER TABS (Select Between Beach Tours)
+   -------------------------------------------------------------------------- */
+.tour-switcher-bar {
+  background: #002B49;
+  padding: 1rem 0;
+  position: sticky;
+  top: 75px;
+  z-index: 40;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.tour-switcher-nav {
+  display: flex;
+  gap: 0.75rem;
+  overflow-x: auto;
+  padding-bottom: 4px;
+  scrollbar-width: none;
+}
+
+.tour-switcher-nav::-webkit-scrollbar {
+  display: none;
+}
+
+.tour-tab-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1.4rem;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.86rem;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: all 0.25s ease;
+  border: 1px solid transparent;
+}
+
+.tour-tab-btn:hover {
+  background: rgba(255, 255, 255, 0.18);
+  color: #FFFFFF;
+}
+
+.tour-tab-btn.active {
+  background: var(--color-gold);
+  color: #002B49;
+  font-weight: 700;
+  border-color: var(--color-gold);
+}
+
+/* --------------------------------------------------------------------------
+   3. TRIP QUICK FACTS BAR
+   -------------------------------------------------------------------------- */
+.tour-facts-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  background: #FFFFFF;
+  border: 1px solid var(--color-card-border);
+  border-radius: 16px;
+  padding: 1.75rem 2rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+  margin-top: -40px;
+  position: relative;
+  z-index: 10;
+}
+
+@media (max-width: 991px) {
+  .tour-facts-grid {
+    grid-template-columns: repeat(2, 1fr);
+    margin-top: 2rem;
+  }
+}
+
+@media (max-width: 575px) {
+  .tour-facts-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.tour-fact-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.tour-fact-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: rgba(197, 168, 128, 0.15);
+  color: var(--color-gold-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.35rem;
+  flex-shrink: 0;
+}
+
+.tour-fact-label {
+  font-size: 0.76rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-slate);
+  margin: 0;
+}
+
+.tour-fact-value {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-navy);
+  margin: 0.15rem 0 0;
+}
+
+/* --------------------------------------------------------------------------
+   4. TWO-COLUMN LAYOUT: MAIN ITINERARY & STICKY INQUIRY BOX
+   -------------------------------------------------------------------------- */
+.tour-main-layout {
+  display: grid;
+  grid-template-columns: 1.8fr 1fr;
+  gap: 3.5rem;
+  margin-top: 3.5rem;
+  align-items: start;
+}
+
+@media (max-width: 991px) {
+  .tour-main-layout {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   5. DAY-BY-DAY ITINERARY TIMELINE
+   -------------------------------------------------------------------------- */
+.itinerary-section-title {
+  font-family: var(--font-serif);
+  font-size: 2.1rem;
+  color: var(--color-navy);
+  margin-bottom: 0.75rem;
+}
+
+.itinerary-section-sub {
+  color: var(--color-slate);
+  margin-bottom: 2.5rem;
+  font-size: 1.05rem;
+}
+
+.itinerary-timeline {
+  position: relative;
+  padding-left: 2.5rem;
+}
+
+.itinerary-timeline::before {
+  content: '';
+  position: absolute;
+  top: 15px;
+  bottom: 20px;
+  left: 17px;
+  width: 2px;
+  background: #E2E8F0;
+}
+
+.day-card {
+  position: relative;
+  background: #FFFFFF;
+  border: 1px solid var(--color-card-border);
+  border-radius: 16px;
+  padding: 1.75rem;
+  margin-bottom: 1.75rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+  transition: all 0.3s ease;
+}
+
+.day-card:hover {
+  border-color: var(--color-gold);
+  box-shadow: 0 8px 26px rgba(0, 43, 73, 0.08);
+}
+
+.day-card-dot {
+  position: absolute;
+  top: 24px;
+  left: -2.5rem;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--color-navy);
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.78rem;
+  font-weight: 800;
+  border: 3px solid #FFFFFF;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.day-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.day-card-title {
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  color: var(--color-navy);
+  margin: 0;
+}
+
+.day-card-dest {
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: var(--color-gold-dark);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.day-card-img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin: 1rem 0;
+}
+
+.day-card-desc {
+  font-size: 0.98rem;
+  line-height: 1.75;
+  color: #334155;
+  margin-bottom: 1rem;
+}
+
+.day-card-tags {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.day-tag {
+  background: #F1F5F9;
+  color: #475569;
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.25rem 0.65rem;
+  border-radius: 6px;
+}
+
+/* --------------------------------------------------------------------------
+   6. INCLUSIONS & EXCLUSIONS
+   -------------------------------------------------------------------------- */
+.inclusions-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-top: 3rem;
+}
+
+@media (max-width: 640px) {
+  .inclusions-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.inc-box {
+  background: #F8FAFC;
+  border: 1px solid var(--color-card-border);
+  border-radius: 14px;
+  padding: 1.75rem;
+}
+
+.inc-box-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.inc-box-title.included {
+  color: #0D9488;
+}
+
+.inc-box-title.excluded {
+  color: #E11D48;
+}
+
+.inc-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.inc-list li {
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: #475569;
+  margin-bottom: 0.65rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+/* --------------------------------------------------------------------------
+   7. STICKY INQUIRY CARD (SIDEBAR)
+   -------------------------------------------------------------------------- */
+.tour-sidebar {
+  position: sticky;
+  top: 150px;
+}
+
+.tour-booking-card {
+  background: #FFFFFF;
+  border: 1px solid var(--color-card-border);
+  border-radius: 18px;
+  padding: 2.25rem;
+  box-shadow: 0 16px 40px rgba(0, 43, 73, 0.08);
+}
+
+.tour-price-header {
+  border-bottom: 1px solid #EDF2F7;
+  padding-bottom: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.tour-price-sub {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-slate);
+}
+
+.tour-price-val {
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-navy);
+  margin-top: 0.25rem;
+}
+
+.tour-price-note {
+  font-size: 0.82rem;
+  color: #64748B;
+  margin-top: 0.2rem;
+}
+
+.tour-side-features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.5rem 0;
+}
+
+.tour-side-features li {
+  font-size: 0.9rem;
+  color: #334155;
+  margin-bottom: 0.65rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.btn-sidebar-inquire {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  width: 100%;
+  background: var(--color-navy);
+  color: #FFFFFF;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 0.95rem 1.5rem;
+  border-radius: 9999px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  margin-bottom: 0.75rem;
+}
+
+.btn-sidebar-inquire:hover {
+  background: var(--color-gold);
+  color: #001A2C;
+}
+
+.btn-sidebar-whatsapp {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  width: 100%;
+  background: #25D366;
+  color: #FFFFFF;
+  font-size: 0.92rem;
+  font-weight: 700;
+  padding: 0.85rem 1.5rem;
+  border-radius: 9999px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.btn-sidebar-whatsapp:hover {
+  background: #1DA851;
+  color: #FFFFFF;
+}
+
+.tour-assistance-box {
+  margin-top: 1.5rem;
+  background: #F8FAFC;
+  border-radius: 12px;
+  padding: 1.25rem;
+  text-align: center;
+  font-size: 0.85rem;
+  color: #64748B;
+}
+
+.tour-assistance-box strong {
+  display: block;
+  color: var(--color-navy);
+  font-size: 0.95rem;
+  margin-bottom: 0.25rem;
+}

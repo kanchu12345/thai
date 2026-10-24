@@ -1,0 +1,703 @@
+/* ==========================================================================
+   SRI LANKA WILDLIFE & SAFARI TOURS DEDICATED STYLES (LOTUS CEYLON LUXURY ESCAPES)
+   ========================================================================== */
+
+.wildlife-hero-banner {
+  position: relative;
+  min-height: 540px;
+  background-image: linear-gradient(180deg, rgba(14, 30, 20, 0.6) 0%, rgba(6, 20, 14, 0.85) 100%), url('https://images.unsplash.com/photo-1534567153574-2b12153a87f0?w=1800&fit=crop&q=90');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  padding: 8rem 0 6rem;
+  color: #FFFFFF;
+}
+
+.wildlife-hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 920px;
+}
+
+.wildlife-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.88rem;
+  color: rgba(255, 255, 255, 0.82);
+  margin-bottom: 1.25rem;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.wildlife-breadcrumb a {
+  color: #FFFFFF;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.wildlife-breadcrumb a:hover {
+  color: var(--color-gold, #C5A880);
+}
+
+.wildlife-breadcrumb .active-crumb {
+  color: var(--color-gold, #C5A880);
+  font-weight: 600;
+}
+
+.wildlife-hero-badges {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.2rem;
+}
+
+.wildlife-badge-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.4rem 1rem;
+  border-radius: 9999px;
+}
+
+.wildlife-badge-gold {
+  background: var(--color-gold, #C5A880);
+  color: #111827;
+}
+
+.wildlife-badge-glass {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.wildlife-hero-title {
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: clamp(2.3rem, 4.4vw, 3.6rem);
+  font-weight: 700;
+  line-height: 1.18;
+  color: #FFFFFF;
+  margin-bottom: 1.2rem;
+  letter-spacing: -0.015em;
+}
+
+.wildlife-hero-title span {
+  font-weight: 400;
+  color: #FEE7BE;
+}
+
+.wildlife-hero-lead {
+  font-size: clamp(1rem, 1.28vw, 1.15rem);
+  line-height: 1.75;
+  color: rgba(255, 255, 255, 0.92);
+  max-width: 820px;
+  margin-bottom: 2.25rem;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.wildlife-hero-cta-row {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+/* Quick Wildlife Stats Bar */
+.wildlife-stats-strip {
+  background: #0E1E14;
+  padding: 1.75rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.wildlife-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  text-align: center;
+}
+
+@media (max-width: 850px) {
+  .wildlife-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+}
+
+.wildlife-stat-item h3 {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: clamp(1.8rem, 2.6vw, 2.3rem);
+  font-weight: 700;
+  color: var(--color-gold, #C5A880);
+  margin-bottom: 0.2rem;
+  line-height: 1.1;
+}
+
+.wildlife-stat-item p {
+  font-size: 0.85rem;
+  color: #CBD5E1;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin: 0;
+}
+
+/* Wildlife Packages Grid */
+.wildlife-grid-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+@media (max-width: 1080px) {
+  .wildlife-grid-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 720px) {
+  .wildlife-grid-cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+.wildlife-package-card {
+  background: #FFFFFF;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(14, 30, 20, 0.07);
+  border: 1px solid rgba(226, 232, 240, 0.85);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.wildlife-package-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 22px 45px rgba(14, 30, 20, 0.15);
+}
+
+.wildlife-card-img-wrap {
+  position: relative;
+  height: 250px;
+  overflow: hidden;
+  background: #1B2E22;
+}
+
+.wildlife-card-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.wildlife-package-card:hover .wildlife-card-img-wrap img {
+  transform: scale(1.06);
+}
+
+.wildlife-tag-badge {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  background: #1B4D3E;
+  color: #FFFFFF;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.38rem 0.9rem;
+  border-radius: 9999px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.wildlife-duration-pill {
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+  background: rgba(14, 30, 20, 0.88);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #FFFFFF;
+  font-size: 0.76rem;
+  font-weight: 700;
+  padding: 0.4rem 0.9rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.wildlife-card-body {
+  padding: 1.85rem 1.65rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.wildlife-card-category {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #15803D;
+  margin-bottom: 0.45rem;
+}
+
+.wildlife-card-title {
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #0F172A;
+  margin-bottom: 0.75rem;
+  line-height: 1.3;
+}
+
+.wildlife-card-route {
+  font-size: 0.84rem;
+  color: #64748B;
+  margin-bottom: 0.95rem;
+  line-height: 1.5;
+  background: #F8FAFC;
+  padding: 0.6rem 0.85rem;
+  border-radius: 8px;
+}
+
+.wildlife-card-route strong {
+  color: #0F172A;
+}
+
+.wildlife-card-desc {
+  font-size: 0.92rem;
+  color: #475569;
+  line-height: 1.65;
+  margin-bottom: 1.25rem;
+}
+
+.wildlife-card-highlights {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-size: 0.86rem;
+  color: #334155;
+  background: #F4FBF7;
+  padding: 1rem 1.25rem;
+  border-radius: 12px;
+  border-left: 3px solid #16A34A;
+}
+
+.wildlife-card-highlights li {
+  line-height: 1.45;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.45rem;
+}
+
+.wildlife-card-highlights .check-icon {
+  color: #16A34A;
+  font-weight: 800;
+}
+
+.wildlife-card-actions {
+  display: flex;
+  gap: 0.85rem;
+  align-items: center;
+  margin-top: auto;
+  padding-top: 1.25rem;
+  border-top: 1px solid #F1F5F9;
+  flex-wrap: wrap;
+}
+
+.btn-wildlife-view {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: var(--color-gold, #C5A880);
+  color: #002B49;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 0.72rem 1.35rem;
+  border-radius: 9999px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(197, 168, 128, 0.25);
+}
+
+.btn-wildlife-view:hover {
+  background: #B39266;
+  color: #001F35;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(179, 146, 102, 0.35);
+}
+
+.btn-wildlife-inquire {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  color: #0F172A;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 700;
+  padding: 0.72rem 1.25rem;
+  border-radius: 9999px;
+  text-decoration: none;
+  border: 1px solid #CBD5E1;
+  transition: all 0.3s ease;
+}
+
+.btn-wildlife-inquire:hover {
+  background: #0F172A;
+  color: #FFFFFF;
+  border-color: #0F172A;
+}
+
+/* ==========================================================================
+   OFFICIAL SRI LANKA TOURIST MAP SECTION (MATCHING #CDEDFA PALETTE)
+   ========================================================================== */
+.wildlife-routemap-section {
+  padding: 5.5rem 0 6rem;
+  background: linear-gradient(180deg, #D9F2FC 0%, #CDEDFA 45%, #E2F5FC 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.wildlife-map-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: 4.5rem;
+  align-items: center;
+}
+
+@media (max-width: 991px) {
+  .wildlife-map-wrapper {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+}
+
+.wildlife-map-figure {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.wildlife-map-img {
+  width: 100%;
+  max-width: 520px;
+  height: auto;
+  max-height: 720px;
+  object-fit: contain;
+  border-radius: 16px;
+  box-shadow: 0 16px 40px rgba(0, 43, 73, 0.12), 0 4px 12px rgba(0, 0, 0, 0.05);
+  border: 4px solid #FFFFFF;
+  background: #FFFFFF;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+  cursor: pointer;
+}
+
+.wildlife-map-figure:hover .wildlife-map-img {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 24px 50px rgba(0, 43, 73, 0.18);
+}
+
+.wildlife-map-tag {
+  position: absolute;
+  bottom: 18px;
+  right: 22px;
+  background: rgba(14, 30, 20, 0.9);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #FFFFFF;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.38rem 0.85rem;
+  border-radius: 9999px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+  pointer-events: none;
+}
+
+.wildlife-content-col {
+  padding-right: 1rem;
+}
+
+.wildlife-main-title {
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: clamp(2rem, 3.2vw, 2.9rem);
+  font-weight: 700;
+  color: #002B49;
+  line-height: 1.22;
+  margin-bottom: 1.35rem;
+  letter-spacing: -0.01em;
+}
+
+.wildlife-main-title span {
+  display: block;
+  font-weight: 400;
+  font-size: clamp(1.7rem, 2.6vw, 2.3rem);
+  color: #001A2C;
+  margin-top: 0.35rem;
+}
+
+.wildlife-lead-text {
+  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: #00243D;
+  margin-bottom: 2rem;
+  font-weight: 500;
+  max-width: 620px;
+}
+
+.wildlife-highlights-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  margin-bottom: 2.25rem;
+}
+
+.wildlife-highlight-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: 0.58rem 1.15rem;
+  border-radius: 9999px;
+  font-size: 0.86rem;
+  font-weight: 700;
+  color: #002B49;
+  box-shadow: 0 4px 14px rgba(0, 43, 73, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.98);
+}
+
+/* Wildlife Sanctuary Cards Grid */
+.sanctuaries-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.75rem;
+  margin-top: 2.5rem;
+}
+
+@media (max-width: 991px) {
+  .sanctuaries-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .sanctuaries-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.sanctuary-box {
+  background: #FFFFFF;
+  border-radius: 18px;
+  padding: 2rem 1.75rem;
+  border: 1px solid #E2E8F0;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s;
+  box-shadow: 0 4px 15px rgba(0, 43, 73, 0.04);
+}
+
+.sanctuary-box:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 30px rgba(0, 43, 73, 0.09);
+  border-color: rgba(22, 163, 74, 0.4);
+}
+
+.sanctuary-icon {
+  font-size: 2.3rem;
+  margin-bottom: 0.85rem;
+  line-height: 1;
+}
+
+.sanctuary-box h4 {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 1.22rem;
+  font-weight: 700;
+  color: #0F172A;
+  margin-bottom: 0.5rem;
+}
+
+.sanctuary-tag {
+  font-size: 0.74rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #15803D;
+  display: block;
+  margin-bottom: 0.75rem;
+}
+
+.sanctuary-box p {
+  font-size: 0.88rem;
+  line-height: 1.65;
+  color: #64748B;
+  margin: 0;
+}
+
+/* Safari Seasons Grid */
+.safari-seasons-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+@media (max-width: 850px) {
+  .safari-seasons-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.safari-season-card {
+  background: #FFFFFF;
+  border-radius: 18px;
+  padding: 2.25rem 2rem;
+  border: 1px solid #E2E8F0;
+  box-shadow: 0 4px 20px rgba(0, 43, 73, 0.04);
+}
+
+.safari-season-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.season-icon-circle {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: #E8F5E9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+}
+
+.season-title {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #0F172A;
+  margin: 0;
+}
+
+.season-loc {
+  font-size: 0.84rem;
+  color: #64748B;
+  margin: 0.2rem 0 0;
+}
+
+.safari-season-card p {
+  font-size: 0.94rem;
+  line-height: 1.7;
+  color: #475569;
+  margin-bottom: 1.25rem;
+}
+
+.season-perks-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  font-size: 0.88rem;
+  color: #334155;
+  line-height: 1.6;
+}
+
+.season-perks-list strong {
+  color: #0F172A;
+}
+
+/* Ethical Wildlife Banner */
+.ethical-wildlife-banner {
+  background: linear-gradient(135deg, #0E1E14 0%, #152C1D 100%);
+  border-radius: 24px;
+  padding: 3.5rem 3rem;
+  color: #FFFFFF;
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 3.5rem;
+  align-items: center;
+}
+
+@media (max-width: 900px) {
+  .ethical-wildlife-banner {
+    grid-template-columns: 1fr;
+    padding: 2.5rem 1.75rem;
+    gap: 2rem;
+  }
+}
+
+.ethical-title {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: clamp(1.8rem, 2.6vw, 2.4rem);
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+.ethical-title span {
+  color: var(--color-gold, #C5A880);
+}
+
+.ethical-desc {
+  font-size: 0.96rem;
+  line-height: 1.75;
+  color: #CBD5E1;
+  margin: 0;
+}
+
+.ethical-points-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.ethical-point-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: #E2E8F0;
+}
+
+.ethical-point-item strong {
+  color: #FFFFFF;
+}
+
+.ethical-check {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: rgba(34, 197, 94, 0.2);
+  color: #4ADE80;
+  font-size: 0.85rem;
+  font-weight: 800;
+  flex-shrink: 0;
+  margin-top: 2px;
+}

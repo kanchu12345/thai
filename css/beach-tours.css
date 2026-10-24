@@ -1,0 +1,847 @@
+/* ==========================================================================
+   SRI LANKA BEACH TOURS DEDICATED STYLES (LOTUS CEYLON LUXURY ESCAPES)
+   ========================================================================== */
+
+.beach-hero-banner {
+  position: relative;
+  min-height: 520px;
+  background-image: linear-gradient(180deg, rgba(0, 43, 73, 0.55) 0%, rgba(0, 43, 73, 0.78) 100%), url('../assets/images/beach-galle.jpg');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  padding: 7.5rem 0 5.5rem;
+  color: #FFFFFF;
+}
+
+.beach-hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+.beach-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.88rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 1.25rem;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.beach-breadcrumb a {
+  color: #FFFFFF;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.beach-breadcrumb a:hover {
+  color: var(--color-gold);
+}
+
+.beach-breadcrumb .active-crumb {
+  color: var(--color-gold);
+  font-weight: 600;
+}
+
+.beach-hero-title {
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: clamp(2.2rem, 4.2vw, 3.4rem);
+  font-weight: 600;
+  line-height: 1.2;
+  color: #FFFFFF;
+  margin-bottom: 1.2rem;
+  letter-spacing: -0.01em;
+}
+
+.beach-hero-title span {
+  font-weight: 400;
+  font-style: normal;
+  color: #FEE7BE;
+}
+
+.beach-hero-lead {
+  font-size: clamp(1rem, 1.3vw, 1.15rem);
+  line-height: 1.75;
+  color: rgba(255, 255, 255, 0.92);
+  max-width: 780px;
+  margin-bottom: 2.25rem;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.beach-hero-cta-row {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+/* Package Grid */
+.beach-grid-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2.25rem;
+}
+
+@media (max-width: 900px) {
+  .beach-grid-cards {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+.beach-package-card {
+  background: #FFFFFF;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 43, 73, 0.07);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.beach-package-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 43, 73, 0.14);
+}
+
+.beach-card-img-wrap {
+  position: relative;
+  height: 270px;
+  overflow: hidden;
+  background: #E2E8F0;
+}
+
+.beach-card-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.beach-package-card:hover .beach-card-img-wrap img {
+  transform: scale(1.06);
+}
+
+.beach-tag-badge {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  background: var(--color-gold, #C4984F);
+  color: #1C1B1F;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.35rem 0.85rem;
+  border-radius: 9999px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 2;
+}
+
+.beach-duration-pill {
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+  background: rgba(0, 31, 53, 0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #FFFFFF;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.35rem 0.85rem;
+  border-radius: 9999px;
+  letter-spacing: 0.04em;
+  z-index: 2;
+}
+
+.beach-card-body {
+  padding: 1.85rem 2rem 2rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.beach-card-category {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #C95451;
+  margin-bottom: 0.35rem;
+  display: inline-block;
+}
+
+.beach-card-title {
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 1.45rem;
+  font-weight: 600;
+  color: #111827;
+  line-height: 1.3;
+  margin-bottom: 0.65rem;
+}
+
+.beach-card-route {
+  font-size: 0.88rem;
+  color: #64748B;
+  padding-bottom: 0.85rem;
+  margin-bottom: 0.85rem;
+  border-bottom: 1px dashed #E2E8F0;
+  line-height: 1.5;
+}
+
+.beach-card-route strong {
+  color: #1E293B;
+  font-weight: 600;
+}
+
+.beach-card-desc {
+  font-size: 0.92rem;
+  color: #475569;
+  line-height: 1.65;
+  margin-bottom: 1.25rem;
+}
+
+.beach-card-highlights {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-size: 0.86rem;
+  color: #334155;
+  background: #F8FAFC;
+  padding: 1rem 1.25rem;
+  border-radius: 12px;
+  border-left: 3px solid var(--color-gold, #C4984F);
+}
+
+.beach-card-highlights li {
+  line-height: 1.45;
+}
+
+.beach-card-footer {
+  margin-top: auto;
+  padding-top: 1.25rem;
+  border-top: 1px solid #F1F5F9;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.btn-beach-inquire {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--color-dark-blue, #002B49);
+  color: #FFFFFF !important;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 600;
+  padding: 0.75rem 1.4rem;
+  border-radius: 9999px;
+  text-decoration: none;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 14px rgba(0, 43, 73, 0.15);
+}
+
+.btn-beach-inquire:hover {
+  background: var(--color-gold, #C4984F);
+  color: #1C1B1F !important;
+  transform: translateX(3px);
+  box-shadow: 0 6px 18px rgba(196, 152, 79, 0.3);
+}
+
+/* Seasonal Guide */
+.beach-seasons-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+@media (max-width: 850px) {
+  .beach-seasons-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.season-card {
+  background: #FFFFFF;
+  border-radius: 20px;
+  border: 1px solid #E2E8F0;
+  padding: 2.25rem 2rem;
+  box-shadow: 0 10px 25px rgba(0, 43, 73, 0.04);
+  transition: box-shadow 0.3s;
+}
+
+.season-card:hover {
+  box-shadow: 0 16px 35px rgba(0, 43, 73, 0.08);
+}
+
+.season-card-header {
+  padding-left: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
+.season-badge {
+  display: inline-block;
+  padding: 0.3rem 0.85rem;
+  border-radius: 9999px;
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background: rgba(196, 152, 79, 0.15);
+  color: #936B28;
+  margin-bottom: 0.5rem;
+}
+
+.season-title {
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 1.45rem;
+  color: #111827;
+  margin: 0.35rem 0 0.25rem;
+}
+
+.season-loc {
+  font-size: 0.86rem;
+  color: #64748B;
+}
+
+.season-card-body p {
+  font-size: 0.94rem;
+  line-height: 1.7;
+  color: #475569;
+  margin-bottom: 1.25rem;
+}
+
+.season-perks-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  font-size: 0.88rem;
+  color: #334155;
+  line-height: 1.6;
+}
+
+.season-perks-list strong {
+  color: #111827;
+}
+
+/* Ocean Experiences Grid */
+.ocean-experiences-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.75rem;
+  margin-top: 2rem;
+}
+
+@media (max-width: 950px) {
+  .ocean-experiences-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .ocean-experiences-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.ocean-exp-box {
+  background: #FFFFFF;
+  border-radius: 18px;
+  padding: 2.25rem 1.75rem;
+  border: 1px solid #E2E8F0;
+  text-align: center;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s;
+  box-shadow: 0 4px 15px rgba(0, 43, 73, 0.04);
+}
+
+.ocean-exp-box:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 30px rgba(0, 43, 73, 0.09);
+  border-color: rgba(196, 152, 79, 0.4);
+}
+
+.exp-icon-circle {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  display: inline-block;
+  line-height: 1;
+}
+
+.ocean-exp-box h4 {
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 1.25rem;
+  color: #111827;
+  margin-bottom: 0.6rem;
+}
+
+.ocean-exp-box p {
+  font-size: 0.88rem;
+  line-height: 1.65;
+  color: #64748B;
+  margin: 0;
+}
+
+/* Coastal FAQ */
+.beach-faq-list {
+  max-width: 780px;
+  margin: 2rem auto 0;
+}
+
+.accordion-item {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 14px;
+  margin-bottom: 1rem;
+  overflow: hidden;
+  transition: border-color 0.25s, box-shadow 0.25s;
+}
+
+.accordion-item.open {
+  border-color: rgba(196, 152, 79, 0.5);
+  box-shadow: 0 8px 24px rgba(0, 43, 73, 0.06);
+}
+
+.accordion-header-btn {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.2rem 1.5rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 1.02rem;
+  font-weight: 600;
+  color: #111827;
+  text-align: left;
+  transition: color 0.2s;
+}
+
+.accordion-header-btn:hover {
+  color: #C95451;
+}
+
+.accordion-icon {
+  font-size: 1.4rem;
+  line-height: 1;
+  color: var(--color-gold, #C4984F);
+  transition: transform 0.25s ease;
+  font-weight: 400;
+}
+
+.accordion-item.open .accordion-icon {
+  transform: rotate(45deg);
+  color: #C95451;
+}
+
+.accordion-body {
+  display: none;
+  padding: 0 1.5rem 1.35rem;
+}
+
+.accordion-item.open .accordion-body {
+  display: block;
+}
+
+.accordion-body p {
+  font-size: 0.94rem;
+  line-height: 1.7;
+  color: #475569;
+  margin: 0;
+}
+
+
+/* ==========================================================================
+   COMPARISON MATRIX (WALKERS TOURS STYLE)
+   ========================================================================== */
+.matrix-section {
+  padding: 5.5rem 0 6.5rem;
+  background: #FDFBF7;
+}
+
+.matrix-wrapper {
+  background: #FFFFFF;
+  border-radius: 20px;
+  box-shadow: 0 10px 35px rgba(0, 43, 73, 0.08);
+  border: 1px solid #E2E8F0;
+  overflow: hidden;
+  margin-top: 2.5rem;
+}
+
+.matrix-scroll-container {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.comparison-matrix {
+  display: grid;
+  grid-template-columns: 2fr repeat(3, 1fr);
+  width: 100%;
+  min-width: 820px;
+}
+
+.matrix-header {
+  padding: 1.5rem 1.25rem;
+  background: var(--color-dark-blue, #002B49);
+  color: #FFFFFF;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.matrix-header.corner-cell {
+  background: #001F35;
+  align-items: flex-start;
+  text-align: left;
+  padding-left: 1.5rem;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.7);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.matrix-header.tour-column span {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--color-gold, #C4984F);
+  margin-top: 0.35rem;
+  letter-spacing: 0.04em;
+}
+
+.matrix-row-label {
+  padding: 0.9rem 1.4rem;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.9rem;
+  border-bottom: 1px solid #F1F5F9;
+  border-right: 1px solid #F1F5F9;
+  display: flex;
+  align-items: center;
+}
+
+.matrix-row-label.parent-location {
+  background: #F8FAFC;
+  font-weight: 700;
+  color: #111827;
+  font-size: 0.95rem;
+}
+
+.matrix-row-label.child-activity {
+  padding-left: 2.5rem;
+  color: #475569;
+  font-size: 0.86rem;
+  background: #FFFFFF;
+}
+
+.matrix-row-label.child-activity::before {
+  content: "↳ ";
+  color: var(--color-gold, #C4984F);
+  margin-right: 0.4rem;
+  font-weight: 700;
+}
+
+.matrix-cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid #F1F5F9;
+  border-right: 1px solid #F1F5F9;
+  padding: 0.85rem;
+  background: #FFFFFF;
+}
+
+.matrix-cell.parent-bg {
+  background: #F8FAFC;
+}
+
+.matrix-cell.is-checked .checkmark-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(34, 197, 94, 0.14);
+  color: #16A34A;
+  font-weight: 800;
+  font-size: 1rem;
+}
+
+.matrix-cell.is-empty {
+  color: #E2E8F0;
+  font-size: 1.1rem;
+}
+
+/* ==========================================================================
+   ROUTE MAP & COASTLINE EXPLORATION SECTION
+   ========================================================================== */
+.routemap-section {
+  padding: 5.5rem 0;
+  background: linear-gradient(135deg, #F0F7FB 0%, #E6F0F7 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.routemap-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 3.5rem;
+  align-items: center;
+}
+
+@media (max-width: 900px) {
+  .routemap-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+}
+
+.routemap-card {
+  background: #FFFFFF;
+  border-radius: 20px;
+  padding: 1.5rem;
+  box-shadow: 0 12px 36px rgba(0, 43, 73, 0.08);
+  border: 1px solid #E2E8F0;
+  position: relative;
+  overflow: hidden;
+}
+
+.routemap-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 14px;
+  display: block;
+}
+
+.routemap-badge {
+  display: inline-block;
+  padding: 0.35rem 0.85rem;
+  border-radius: 9999px;
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: rgba(0, 43, 73, 0.08);
+  color: #111827;
+  margin-bottom: 0.85rem;
+}
+
+.routemap-title {
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  font-weight: 600;
+  color: #002B49;
+  line-height: 1.22;
+  margin-bottom: 1.2rem;
+}
+
+.routemap-title span {
+  font-weight: 400;
+  font-style: normal;
+  color: #C95451;
+}
+
+.routemap-desc {
+  font-size: 0.96rem;
+  line-height: 1.75;
+  color: #475569;
+  margin-bottom: 1.5rem;
+}
+
+.coastal-stops-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+}
+
+.coastal-stops-list li {
+  font-size: 0.88rem;
+  color: #1E293B;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.coastal-stops-list li span {
+  color: var(--color-gold, #C4984F);
+  font-weight: 700;
+}
+
+
+/* ==========================================================================
+   COASTLINE MAP & EXPLORATION SECTION (IMAGE 2 & 3 STYLE)
+   ========================================================================== */
+.coastline-map-section {
+  padding: 5.5rem 0 6rem;
+  background: linear-gradient(180deg, #D9F2FC 0%, #CDEDFA 45%, #E2F5FC 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.coastline-map-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: 4.5rem;
+  align-items: center;
+}
+
+@media (max-width: 991px) {
+  .coastline-map-wrapper {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+}
+
+.coastline-map-figure {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.coastline-map-img {
+  width: 100%;
+  max-width: 520px;
+  height: auto;
+  max-height: 720px;
+  object-fit: contain;
+  border-radius: 16px;
+  box-shadow: 0 16px 40px rgba(0, 43, 73, 0.12), 0 4px 12px rgba(0, 0, 0, 0.05);
+  border: 4px solid #FFFFFF;
+  background: #FFFFFF;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+  cursor: pointer;
+}
+
+.coastline-map-figure:hover .coastline-map-img {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 24px 50px rgba(0, 43, 73, 0.18);
+}
+
+.coastline-map-tag {
+  position: absolute;
+  bottom: 18px;
+  right: 22px;
+  background: rgba(0, 43, 73, 0.88);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #FFFFFF;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.38rem 0.85rem;
+  border-radius: 9999px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+  pointer-events: none;
+}
+
+.coastline-content-col {
+  padding-right: 1rem;
+}
+
+.coastline-main-title {
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: clamp(2rem, 3.2vw, 2.9rem);
+  font-weight: 600;
+  color: #002B49;
+  line-height: 1.22;
+  margin-bottom: 1.35rem;
+  letter-spacing: -0.01em;
+}
+
+.coastline-main-title span {
+  display: block;
+  font-weight: 400;
+  font-style: normal;
+  font-size: clamp(1.7rem, 2.6vw, 2.3rem);
+  color: #001A2C;
+  margin-top: 0.35rem;
+}
+
+.coastline-lead-text {
+  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: #00243D;
+  margin-bottom: 2rem;
+  font-weight: 500;
+  max-width: 620px;
+}
+
+.coastline-highlights-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 2.25rem;
+}
+
+.coastline-highlight-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: 0.58rem 1.15rem;
+  border-radius: 9999px;
+  font-size: 0.86rem;
+  font-weight: 700;
+  color: #002B49;
+  box-shadow: 0 4px 14px rgba(0, 43, 73, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.98);
+}
+
+.beach-card-actions {
+  display: flex;
+  gap: 0.85rem;
+  align-items: center;
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.btn-beach-view {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: var(--color-gold, #C5A880);
+  color: #002B49;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 0.72rem 1.35rem;
+  border-radius: 9999px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(197, 168, 128, 0.25);
+}
+
+.btn-beach-view:hover {
+  background: #B09267;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(197, 168, 128, 0.4);
+  color: #001A2C;
+}

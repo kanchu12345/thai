@@ -16,7 +16,8 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
 
   <!-- Master Stylesheet (Walkers Tours Luxury Theme) -->
-  <link rel="stylesheet" href="css/style.css?v=20261021_watermark">
+  <link rel="stylesheet" href="css/style.css?v=20261021_watermark_v2">
+  <link rel="stylesheet" href="css/brand-header.css?v=20261021_wide_v2">
 </head>
 
 <body>
@@ -47,9 +48,9 @@
             <li class="walkers-menu-item has-dropdown">
               <a href="sri-lanka-tours.html" class="walkers-menu-link active">Sri Lanka Tours</a>
               <ul class="walkers-submenu">
-                <li><a href="sri-lanka-tours.html#beach">Beach Tours</a></li>
-                <li><a href="sri-lanka-tours.html#cultural">Cultural Tours</a></li>
-                <li><a href="sri-lanka-tours.html#wildlife">Wildlife Tours</a></li>
+                <li><a href="beach-tours.html">Beach Tours</a></li>
+                <li><a href="cultural-tours.html">Cultural Tours</a></li>
+                <li><a href="wildlife-tours.html">Wildlife Tours</a></li>
                 <li><a href="sri-lanka-tours.html#hill-country">Hill Country Tours</a></li>
                 <li><a href="sri-lanka-tours.html#adventure">Adventure Tours</a></li>
                 <li><a href="sri-lanka-tours.html#ayurvedic">Ayurvedic Tours</a></li>
@@ -77,7 +78,7 @@
             </li>
 
             <li class="walkers-menu-item">
-              <a href="index.html#about" class="walkers-menu-link">About Us</a>
+              <a href="about.html" class="walkers-menu-link">About Us</a>
             </li>
 
             <li class="walkers-menu-item">
@@ -201,13 +202,13 @@
   <!-- ==========================================================================
        SECTION 3: FEATURED HIGHLIGHT TOUR CARD (BEACH TOURS)
        ========================================================================== -->
-  <section class="padding-bottom--100" id="beach">
+    <section class="padding-bottom--100" id="beach">
     <div class="wrapper--75">
       <div class="img-content-card">
         <!-- Left Image -->
         <div class="img-content-card__left">
           <img 
-            src="https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?w=720&h=610&fit=crop&q=80" 
+            src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=720&h=610&fit=crop&q=80" 
             alt="Sri Lanka Beach Tours"
             loading="lazy"
           >
@@ -221,14 +222,44 @@
             Beach Tours
           </h3>
           <div class="wysiwig-container" style="margin: 0; text-align: left;">
-            <p>
-              We know the golden sand coastlines, hidden bays, and secret coves for sunbathing, swimming, scuba diving, or surfing to reward you with an unforgettable tropical holiday in paradise.
+            <p style="margin-bottom: 1.25rem;">
+              Sri Lanka’s coast dazzles with golden beaches, turquoise waters, vibrant coral reefs, and bustling fishing villages, offering relaxation, adventure, rich culture, and breathtaking sunsets along its endless tropical shoreline.
             </p>
+
+            <!-- 3 Signature Beach Itineraries -->
+            <div style="display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 1.5rem;">
+              <div style="background: rgba(0, 43, 73, 0.04); border-left: 3px solid #C4984F; padding: 0.75rem 1rem; border-radius: 8px;">
+                <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap;">
+                  <strong style="color: var(--color-dark-blue); font-size: 0.95rem;">Southern Sands Voyage</strong>
+                  <span style="font-size: 0.78rem; font-weight: 600; color: #936B28;">09 Nights &bull; 10 Days</span>
+                </div>
+                <p style="font-size: 0.82rem; color: #64748B; margin: 0.25rem 0 0;">Negombo &bull; Tangalle &bull; Mirissa &bull; Galle &bull; Bentota &bull; Turtle Hatchery</p>
+              </div>
+
+              <div style="background: rgba(0, 43, 73, 0.04); border-left: 3px solid #005B8C; padding: 0.75rem 1rem; border-radius: 8px;">
+                <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap;">
+                  <strong style="color: var(--color-dark-blue); font-size: 0.95rem;">Eastern Blue Bliss</strong>
+                  <span style="font-size: 0.78rem; font-weight: 600; color: #005B8C;">11 Nights &bull; 12 Days</span>
+                </div>
+                <p style="font-size: 0.82rem; color: #64748B; margin: 0.25rem 0 0;">Pigeon Island Reef &bull; Pasikudah &bull; Arugam Bay &bull; Yala Safari &bull; Sigiriya</p>
+              </div>
+
+              <div style="background: rgba(0, 43, 73, 0.04); border-left: 3px solid #224A2A; padding: 0.75rem 1rem; border-radius: 8px;">
+                <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap;">
+                  <strong style="color: var(--color-dark-blue); font-size: 0.95rem;">Sunrise Shores Tour</strong>
+                  <span style="font-size: 0.78rem; font-weight: 600; color: #224A2A;">13 Nights &bull; 14 Days</span>
+                </div>
+                <p style="font-size: 0.82rem; color: #64748B; margin: 0.25rem 0 0;">Kalpitiya Dolphins &bull; Mannar &bull; Jaffna &bull; Trincomalee &bull; Colombo</p>
+              </div>
+            </div>
           </div>
-          <a href="inquiry-detailed.html?category=Beach+Tours" class="next-btn next-btn--blue margin-top--10" style="margin-top: 1.75rem;" title="Explore Beach Tours">
-            <span class="next-btn-circle">➔</span>
-            <span>Explore All</span>
-          </a>
+
+          <div style="display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;">
+            <a href="beach-tours.html" class="next-btn next-btn--blue" title="Explore All Beach Tours">
+              <span class="next-btn-circle">➔</span>
+              <span>Explore Beach Tours &amp; Coastal Map</span>
+            </a>
+          </div>
         </div>
       </div>
     </div>
@@ -656,7 +687,7 @@
             <a href="index.html#bespoke">Tailor-Made</a>
             <a href="index.html#brands">Our Brands</a>
             <a href="index.html#sustainability">Sustainability</a>
-            <a href="index.html#about">About Lotus Ceylon</a>
+            <a href="about.html">About Lotus Ceylon</a>
             <a href="index.html#testimonials">Guest Reviews</a>
             <a href="sri-lanka-tours.html#faq">Travel FAQ</a>
             <a href="inquiry-detailed.html">Detailed Inquiry</a>
