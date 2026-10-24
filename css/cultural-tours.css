@@ -78,20 +78,23 @@
 }
 
 /* Package Grid */
-.beach-grid-cards {
+.beach-grid-cards,
+.cultural-grid-cards {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 2.25rem;
 }
 
 @media (max-width: 900px) {
-  .beach-grid-cards {
+  .beach-grid-cards,
+  .cultural-grid-cards {
     grid-template-columns: 1fr;
     gap: 2rem;
   }
 }
 
-.beach-package-card {
+.beach-package-card,
+.cultural-package-card {
   background: #FFFFFF;
   border-radius: 20px;
   overflow: hidden;
@@ -102,30 +105,35 @@
   transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.beach-package-card:hover {
+.beach-package-card:hover,
+.cultural-package-card:hover {
   transform: translateY(-8px);
   box-shadow: 0 20px 40px rgba(0, 43, 73, 0.14);
 }
 
-.beach-card-img-wrap {
+.beach-card-img-wrap,
+.cultural-card-img-wrap {
   position: relative;
   height: 270px;
   overflow: hidden;
   background: #E2E8F0;
 }
 
-.beach-card-img-wrap img {
+.beach-card-img-wrap img,
+.cultural-card-img-wrap img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.beach-package-card:hover .beach-card-img-wrap img {
+.beach-package-card:hover .beach-card-img-wrap img,
+.cultural-package-card:hover .cultural-card-img-wrap img {
   transform: scale(1.06);
 }
 
-.beach-tag-badge {
+.beach-tag-badge,
+.cultural-tag-badge {
   position: absolute;
   top: 16px;
   left: 16px;
@@ -141,7 +149,8 @@
   z-index: 2;
 }
 
-.beach-duration-pill {
+.beach-duration-pill,
+.cultural-duration-pill {
   position: absolute;
   bottom: 16px;
   right: 16px;
@@ -157,14 +166,16 @@
   z-index: 2;
 }
 
-.beach-card-body {
+.beach-card-body,
+.cultural-card-body {
   padding: 1.85rem 2rem 2rem;
   display: flex;
   flex-direction: column;
   flex-grow: 1;
 }
 
-.beach-card-category {
+.beach-card-category,
+.cultural-card-category {
   font-size: 0.75rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -174,7 +185,8 @@
   display: inline-block;
 }
 
-.beach-card-title {
+.beach-card-title,
+.cultural-card-title {
   font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-size: 1.45rem;
   font-weight: 600;
@@ -183,7 +195,8 @@
   margin-bottom: 0.65rem;
 }
 
-.beach-card-route {
+.beach-card-route,
+.cultural-card-route {
   font-size: 0.88rem;
   color: #64748B;
   padding-bottom: 0.85rem;
@@ -192,19 +205,22 @@
   line-height: 1.5;
 }
 
-.beach-card-route strong {
+.beach-card-route strong,
+.cultural-card-route strong {
   color: #1E293B;
   font-weight: 600;
 }
 
-.beach-card-desc {
+.beach-card-desc,
+.cultural-card-desc {
   font-size: 0.92rem;
   color: #475569;
   line-height: 1.65;
   margin-bottom: 1.25rem;
 }
 
-.beach-card-highlights {
+.beach-card-highlights,
+.cultural-card-highlights {
   list-style: none;
   padding: 0;
   margin: 0 0 1.5rem;
@@ -219,7 +235,8 @@
   border-left: 3px solid var(--color-gold, #C4984F);
 }
 
-.beach-card-highlights li {
+.beach-card-highlights li,
+.cultural-card-highlights li {
   line-height: 1.45;
 }
 
@@ -231,7 +248,8 @@
   justify-content: flex-end;
 }
 
-.btn-beach-inquire {
+.btn-beach-inquire,
+.btn-cultural-inquire {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
@@ -247,7 +265,8 @@
   box-shadow: 0 4px 14px rgba(0, 43, 73, 0.15);
 }
 
-.btn-beach-inquire:hover {
+.btn-beach-inquire:hover,
+.btn-cultural-inquire:hover {
   background: var(--color-gold, #C4984F);
   color: #1C1B1F !important;
   transform: translateX(3px);
@@ -813,7 +832,8 @@
   border: 1px solid rgba(255, 255, 255, 0.98);
 }
 
-.beach-card-actions {
+.beach-card-actions,
+.cultural-card-actions {
   display: flex;
   gap: 0.85rem;
   align-items: center;
@@ -821,7 +841,8 @@
   flex-wrap: wrap;
 }
 
-.btn-beach-view {
+.btn-beach-view,
+.btn-cultural-view {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -839,7 +860,8 @@
   box-shadow: 0 4px 12px rgba(197, 168, 128, 0.25);
 }
 
-.btn-beach-view:hover {
+.btn-beach-view:hover,
+.btn-cultural-view:hover {
   background: #B09267;
   transform: translateY(-2px);
   box-shadow: 0 6px 18px rgba(197, 168, 128, 0.4);
