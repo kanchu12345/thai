@@ -318,7 +318,14 @@
               <h2>Tour Packages</h2>
               <p>Manage signature tours, itineraries, pricing and highlights</p>
             </div>
-            <div style="display: flex; gap: 10px;">
+            <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
+              <span id="firebaseStatusBadge" class="badge" style="background:#E2E8F0; color:#475569; padding: 6px 12px; border-radius: 20px; font-size: 0.82rem; font-weight: 600;">☁️ Firebase: Initializing...</span>
+              <button class="btn btn-secondary" onclick="AdminApp.syncToFirebase()" title="Upload and sync current packages to Firebase Firestore">
+                <span>☁️ Seed to Firebase</span>
+              </button>
+              <button class="btn btn-secondary" onclick="AdminApp.fetchFromFirebase()" title="Fetch live packages from Firebase Firestore">
+                <span>🔄 Fetch from Firebase</span>
+              </button>
               <button class="btn btn-secondary" onclick="AdminApp.exportPackagesJson()" title="Export updated data/packages.json file">
                 <span>📥 Export packages.json</span>
               </button>
@@ -830,6 +837,7 @@
   <!-- Scripts -->
   <script src="../js/config.js?v=20261021_cms1"></script>
   <script src="../js/supabase-client.js?v=20261021_cms1"></script>
+  <script src="../js/firebase-tour-sync.js"></script>
   <script src="js/admin-app.js?v=20261021_cms1"></script>
 </body>
 </html>

@@ -61,9 +61,14 @@
         }
 
         const dataPath = this.options.dataPath || 'data/packages.json';
-        const res = await fetch(dataPath);
-        if (!res.ok) throw new Error(`HTTP error ${res.status}`);
-        const data = await res.json();
+        let data;
+        if (window.LotusFirebase && typeof window.LotusFirebase.getCatalog === 'function') {
+          data = await window.LotusFirebase.getCatalog(dataPath);
+        } else {
+          const res = await fetch(dataPath);
+          if (!res.ok) throw new Error(`HTTP error ${res.status}`);
+          data = await res.json();
+        }
         
         const allPackages = data.packages || [];
         if (this.packageId) {

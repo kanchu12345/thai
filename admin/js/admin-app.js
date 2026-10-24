@@ -355,6 +355,9 @@
       }
 
       this.renderDashboard();
+        if (window.LotusFirebase) {
+          this.updateFirebaseBadge('Firebase Ready', '#3B82F6');
+        }
       this.renderInquiries();
       this.renderPackages();
       this.renderCategories();
@@ -963,6 +966,57 @@
     /**
      * Export updated data/packages.json
      */
+    async syncToFirebase() {
+      if (!window.LotusFirebase) {
+        this.showToast('LotusFirebase service not loaded', 'error');
+        return;
+      }
+      this.showToast('Connecting to Firebase Firestore...', 'info');
+      try {
+        const pkgRes = await fetch('../data/packages.json');
+        if (!pkgRes.ok) throw new Error('Could not load packages.json');
+        const pkgData = await pkgRes.json();
+        const count = await window.LotusFirebase.seedFirestore(pkgData);
+        this.updateFirebaseBadge(`Connected (${count} Tours Synced)`, '#10B981');
+        this.showToast(`Successfully synced ${count} tour packages to Firebase Firestore!`, 'success');
+      } catch (err) {
+        console.error('Firebase sync error:', err);
+        this.updateFirebaseBadge('Firebase Offline / Error', '#EF4444');
+        this.showToast('Firebase sync failed: ' + err.message, 'error');
+      }
+    },
+
+    async fetchFromFirebase() {
+      if (!window.LotusFirebase) {
+        this.showToast('LotusFirebase service not loaded', 'error');
+        return;
+      }
+      this.showToast('Fetching live packages from Firebase Firestore...', 'info');
+      try {
+        const liveCatalog = await window.LotusFirebase.fetchFirestoreCatalog();
+        if (liveCatalog && liveCatalog.packages && liveCatalog.packages.length > 0) {
+          this.packages = liveCatalog.packages;
+          this.renderPackages();
+          this.updateFirebaseBadge(`Live (${this.packages.length} Tours)`, '#10B981');
+          this.showToast(`Fetched ${this.packages.length} live packages from Firestore!`, 'success');
+        } else {
+          this.showToast('No packages found in Firestore. Click "Seed to Firebase" first.', 'warning');
+        }
+      } catch (err) {
+        console.error('Firebase fetch error:', err);
+        this.showToast('Failed to fetch from Firestore: ' + err.message, 'error');
+      }
+    },
+
+    updateFirebaseBadge(text, color) {
+      const badge = document.getElementById('firebaseStatusBadge');
+      if (badge) {
+        badge.textContent = '☁️ ' + text;
+        badge.style.background = color ? color + '20' : '#E2E8F0';
+        badge.style.color = color || '#475569';
+      }
+    },
+
     exportPackagesJson() {
       try {
         const exportData = {

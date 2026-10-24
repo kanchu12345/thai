@@ -43,14 +43,16 @@ function initFormEngine() {
 function handleUrlPrefill() {
   const urlParams = new URLSearchParams(window.location.search);
   const pkg = urlParams.get("package");
+  const cat = urlParams.get("category");
   const style = urlParams.get("style");
   const duration = urlParams.get("duration");
   const month = urlParams.get("month");
 
   const otherReq = document.getElementById("otherRequirements");
-  if (otherReq && (pkg || style || duration || month)) {
+  if (otherReq && (pkg || cat || style || duration || month)) {
     const prefillNote = [];
     if (pkg) prefillNote.push(`Interested in Package: ${pkg}`);
+    if (cat) prefillNote.push(`Tour Theme / Category: ${cat}`);
     if (style && style !== "All") prefillNote.push(`Preferred Style: ${style}`);
     if (duration) prefillNote.push(`Target Duration: ${duration}`);
     if (month && month !== "Flexible") prefillNote.push(`Estimated Season: ${month}`);
@@ -61,6 +63,25 @@ function handleUrlPrefill() {
       const counter = document.getElementById("charCountDisplay");
       if (counter) counter.textContent = `${otherReq.value.length} / 1000`;
     }
+  }
+
+  // Pre-check interests if category or style matches
+  const matchTerm = cat || style;
+  if (matchTerm) {
+    const interestCbs = document.querySelectorAll('input[name="interests"]');
+    interestCbs.forEach((cb) => {
+      const termLower = matchTerm.toLowerCase();
+      const valLower = cb.value.toLowerCase();
+      if (
+        (termLower.includes("beach") && valLower.includes("beach")) ||
+        (termLower.includes("cultur") && valLower.includes("cultur")) ||
+        (termLower.includes("wildlife") && valLower.includes("wildlife")) ||
+        (termLower.includes("adventure") && valLower.includes("adventure")) ||
+        (termLower.includes("nature") && valLower.includes("nature"))
+      ) {
+        cb.checked = true;
+      }
+    });
   }
 
   // Pre-check interests if style matches
