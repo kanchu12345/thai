@@ -201,6 +201,8 @@
     .map-lightbox-content { max-width: 90vw; max-height: 90vh; object-fit: contain; border-radius: 8px; }
     .map-lightbox-close { position: absolute; top: 25px; right: 35px; color: #fff; font-size: 40px; cursor: pointer; }
   </style>
+  <link rel="stylesheet" href="../vendor/leaflet/leaflet.css">
+  <link rel="stylesheet" href="../css/tours-map.css?v=20261024_osm_v4">
 </head>
 <body class="page-tour-detail">
 
@@ -544,11 +546,7 @@
     </div>
   </section>
 
-  <!-- Map Lightbox Modal -->
-  <div class="map-lightbox-modal" id="mapLightbox" onclick="closeMapLightbox()">
-    <span class="map-lightbox-close">&times;</span>
-    <img src="../assets/images/sri-lanka-tourist-map.jpg" alt="Enlarged Sri Lanka Tourist Map" class="map-lightbox-content">
-  </div>
+  
 
 <footer class="site-footer-walkers" id="contact">
     <div class="wrapper--80">
@@ -761,24 +759,21 @@
         // Route Map
         const mapBox = document.getElementById('routeMapContainer');
         if (mapBox) {
-          if (pkg.category === 'beach') {
-            mapBox.innerHTML = `
-              <div class="detail-map-card" style="background:#fff; border:1px solid #E2E8F0; border-radius:12px; padding:24px;">
-                <h3 style="font-size:1.2rem; color:#002B49; margin-bottom:10px;">The Coastal Journey Route</h3>
-                <p style="color:#64748B; font-size:0.92rem; margin-bottom:15px;">Follow your private coastal route along secluded southern bays. Click below to view enlarged tourist map.</p>
-                <div style="cursor:pointer; border-radius:8px; overflow:hidden;" onclick="openMapLightbox()">
-                  <img src="../assets/images/sri-lanka-tourist-map.jpg" alt="Sri Lanka Tourist Map" style="width:100%; display:block;">
-                </div>
-              </div>
-            `;
-          } else {
-            mapBox.innerHTML = `
-              <div style="background:#F8FAFC; border:1px dashed #CBD5E1; border-radius:12px; padding:30px; text-align:center;">
-                <div style="font-size:2rem; margin-bottom:8px;">🗺️</div>
-                <h4 style="color:#002B49; font-size:1.1rem; margin-bottom:6px;">Route Map Coming Soon</h4>
-                <p style="color:#64748B; font-size:0.88rem;">Our cartographers are finalizing illustrated route maps for this tour.</p>
-              </div>
-            `;
+          mapBox.innerHTML = `
+            <div class="section-watermark-header" style="margin-top: 2.5rem; margin-bottom: 1rem;">
+              <p class="watermark-heading" style="color: #EEDBE2;">ROUTE MAP</p>
+              <h2 class="section-header-title">Curated Itinerary Route</h2>
+            </div>
+            <div id="dynamic-leaflet-map" 
+                 class="lotus-street-map-frame js-lotus-route-map" 
+                 data-package-id="${pkg.id}" 
+                 data-data-path="../data/packages.json"
+                 role="region" 
+                 aria-label="Interactive Route Map for ${pkg.title}">
+            </div>
+          `;
+          if (window.LotusTourMap) {
+            setTimeout(() => window.LotusTourMap.init(), 60);
           }
         }
 
@@ -806,17 +801,12 @@
       }
     }
 
-    function openMapLightbox() {
-      const m = document.getElementById('mapLightbox');
-      if (m) m.classList.add('active');
-    }
-    function closeMapLightbox() {
-      const m = document.getElementById('mapLightbox');
-      if (m) m.classList.remove('active');
-    }
+    
 
     window.addEventListener('DOMContentLoaded', loadTourDetail);
   </script>
 
+  <script src="../vendor/leaflet/leaflet.js"></script>
+  <script src="../js/leaflet-tour-map.js?v=20261024_osm_v4"></script>
 </body>
 </html>

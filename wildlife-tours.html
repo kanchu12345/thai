@@ -33,7 +33,8 @@
     }
   </style>
 
-  <link rel="stylesheet" href="css/tours-map.css?v=20261024_compact_table_v2">
+  <link rel="stylesheet" href="css/tours-map.css?v=20261024_osm_v4">
+  <link rel="stylesheet" href="vendor/leaflet/leaflet.css">
 </head>
 <body class="page-wildlife-tours">
 
@@ -489,30 +490,39 @@
     <!-- ==========================================================================
        SECTION: WALKERS-STYLE COMPACT TOUR PACKAGE COMPARISON TABLE
        ========================================================================== -->
+  
+
+  <!-- ==========================================================================
+       SECTION: ROUTE MAP & REGIONAL EXPEDITIONS (2-COLUMN EDITORIAL + LIGHTBOX)
+       ========================================================================== -->
+    <!-- ==========================================================================
+       SECTION: WALKERS-STYLE COMPACT TOUR PACKAGE COMPARISON TABLE
+       ========================================================================== -->
   <section class="walkers-comparison-section" id="package-comparison">
     <div class="comparison-compact-wrapper">
       <div class="comparison-intro-header text-center">
         <span class="comparison-eyebrow">✦ SIDE-BY-SIDE ITINERARY COMPARISON</span>
         <h2 class="comparison-title">Compare Destinations &amp; Sights</h2>
         <p class="comparison-subtitle">
-          Review how each tour traverses Sri Lanka’s iconic destinations, cultural landmarks, and nature reserves.
+          Review how each Wildlife tour traverses Sri Lanka’s iconic destinations, cultural landmarks, and nature reserves.
         </p>
       </div>
 
-      <div class="walkers-table-responsive">
+      <div class="walkers-table-responsive" tabindex="0" role="region" aria-label="Wildlife Package Comparison Table">
         <table class="walkers-comparison-table">
+          <caption class="visually-hidden">Comparison of Sri Lanka Wildlife Tour Packages by Destination and Highlights</caption>
           <thead>
             <tr>
-              <th class="dest-col-header">Destinations &amp; Key Sights</th>
-              <th class="comparison-pkg-header">
+              <th scope="col" class="dest-col-header">Destinations &amp; Key Sights</th>
+              <th scope="col" class="comparison-pkg-header">
           <a href="tours/wildlife/wild-ceylon-predator-elephant-trail/index.html" class="comparison-pkg-link">Wild Ceylon Predator & Elephant Trail</a>
           <span class="comparison-pkg-nights">7N &amp; 8D</span>
         </th>
-            <th class="comparison-pkg-header">
+            <th scope="col" class="comparison-pkg-header">
           <a href="tours/wildlife/the-sri-lanka-big-five-expedition/index.html" class="comparison-pkg-link">The Sri Lanka Big Five Expedition</a>
           <span class="comparison-pkg-nights">13N &amp; 14D</span>
         </th>
-            <th class="comparison-pkg-header">
+            <th scope="col" class="comparison-pkg-header">
           <a href="tours/wildlife/untamed-biosphere-rainforest-odyssey/index.html" class="comparison-pkg-link">Untamed Biosphere & Rainforest Odyssey</a>
           <span class="comparison-pkg-nights">16N &amp; 17D</span>
         </th>
@@ -521,221 +531,269 @@
           <tbody>
         <!-- Destination Header Row -->
         <tr class="destination-row">
-          <td class="destination-name-cell"><strong>Negombo</strong></td>
-          <td class="comparison-cell check-cell">✓</td>
-          <td class="comparison-cell check-cell">✓</td>
-          <td class="comparison-cell check-cell">✓</td>
+          <th scope="row" class="destination-name-cell"><strong>Negombo</strong></th>
+          <td class="comparison-cell check-cell" aria-label="Included">✓</td>
+          <td class="comparison-cell check-cell" aria-label="Included">✓</td>
+          <td class="comparison-cell check-cell" aria-label="Included">✓</td>
         </tr>
         <tr class="activity-subrow">
-          <td class="activity-name-cell">Coastal Gateway</td>
-          <td class="comparison-cell check-cell sub-check">✓</td>
-          <td class="comparison-cell check-cell sub-check">✓</td>
-          <td class="comparison-cell check-cell sub-check">✓</td>
+          <td class="activity-name-cell">Lagoon catamaran sailing</td>
+          <td class="comparison-cell check-cell sub-check" aria-label="Included">✓</td>
+          <td class="comparison-cell check-cell sub-check" aria-label="Included">✓</td>
+          <td class="comparison-cell check-cell sub-check" aria-label="Included">✓</td>
         </tr>
         <tr class="activity-subrow">
-          <td class="activity-name-cell">Coastline Gateway</td>
-          <td class="comparison-cell check-cell sub-check">✓</td>
-          <td class="comparison-cell check-cell sub-check">✓</td>
-          <td class="comparison-cell check-cell sub-check">✓</td>
+          <td class="activity-name-cell">Dutch canal sunset cruise</td>
+          <td class="comparison-cell check-cell sub-check" aria-label="Included">✓</td>
+          <td class="comparison-cell check-cell sub-check" aria-label="Included">✓</td>
+          <td class="comparison-cell check-cell sub-check" aria-label="Included">✓</td>
         </tr>
         <!-- Destination Header Row -->
         <tr class="destination-row">
-          <td class="destination-name-cell"><strong>Wilpattu National Park</strong></td>
-          <td class="comparison-cell check-cell">✓</td>
-          <td class="comparison-cell empty-cell"></td>
-          <td class="comparison-cell empty-cell"></td>
+          <th scope="row" class="destination-name-cell"><strong>Wilpattu National Park</strong></th>
+          <td class="comparison-cell check-cell" aria-label="Included">✓</td>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
         </tr>
         <tr class="activity-subrow">
-          <td class="activity-name-cell">Natural Villus & Sloth Bears</td>
-          <td class="comparison-cell check-cell sub-check">✓</td>
-          <td class="comparison-cell empty-cell"></td>
-          <td class="comparison-cell empty-cell"></td>
+          <td class="activity-name-cell">Villus lake system game drive</td>
+          <td class="comparison-cell check-cell sub-check" aria-label="Included">✓</td>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
+        </tr>
+        <tr class="activity-subrow">
+          <td class="activity-name-cell">Leopard & sloth bear tracking</td>
+          <td class="comparison-cell check-cell sub-check" aria-label="Included">✓</td>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
         </tr>
         <!-- Destination Header Row -->
         <tr class="destination-row">
-          <td class="destination-name-cell"><strong>Minneriya National Park</strong></td>
-          <td class="comparison-cell check-cell">✓</td>
-          <td class="comparison-cell empty-cell"></td>
-          <td class="comparison-cell empty-cell"></td>
+          <th scope="row" class="destination-name-cell"><strong>Minneriya National Park</strong></th>
+          <td class="comparison-cell check-cell" aria-label="Included">✓</td>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
+        </tr>
+        <tr class="activity-subrow">
+          <td class="activity-name-cell">The Great Elephant Gathering safari</td>
+          <td class="comparison-cell check-cell sub-check" aria-label="Included">✓</td>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
+        </tr>
+        <tr class="activity-subrow">
+          <td class="activity-name-cell">Ancient Minneriya Tank wetland birding</td>
+          <td class="comparison-cell check-cell sub-check" aria-label="Included">✓</td>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
         </tr>
         <!-- Destination Header Row -->
         <tr class="destination-row">
-          <td class="destination-name-cell"><strong>Yala National Park</strong></td>
-          <td class="comparison-cell check-cell">✓</td>
-          <td class="comparison-cell empty-cell"></td>
-          <td class="comparison-cell empty-cell"></td>
+          <th scope="row" class="destination-name-cell"><strong>Yala National Park</strong></th>
+          <td class="comparison-cell check-cell" aria-label="Included">✓</td>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
         </tr>
         <tr class="activity-subrow">
-          <td class="activity-name-cell">Highland Edge Transit toward Yala National Park</td>
-          <td class="comparison-cell check-cell sub-check">✓</td>
-          <td class="comparison-cell empty-cell"></td>
-          <td class="comparison-cell empty-cell"></td>
+          <td class="activity-name-cell">Block 1 apex leopard safari</td>
+          <td class="comparison-cell check-cell sub-check" aria-label="Included">✓</td>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
+        </tr>
+        <tr class="activity-subrow">
+          <td class="activity-name-cell">Sloth bear & spotted deer sightings</td>
+          <td class="comparison-cell check-cell sub-check" aria-label="Included">✓</td>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
         </tr>
         <!-- Destination Header Row -->
         <tr class="destination-row">
-          <td class="destination-name-cell"><strong>Colombo</strong></td>
-          <td class="comparison-cell check-cell">✓</td>
-          <td class="comparison-cell check-cell">✓</td>
-          <td class="comparison-cell check-cell">✓</td>
+          <th scope="row" class="destination-name-cell"><strong>Colombo</strong></th>
+          <td class="comparison-cell check-cell" aria-label="Included">✓</td>
+          <td class="comparison-cell check-cell" aria-label="Included">✓</td>
+          <td class="comparison-cell check-cell" aria-label="Included">✓</td>
         </tr>
         <tr class="activity-subrow">
-          <td class="activity-name-cell">Bundala Wetland Birding Sanctuary & Colombo</td>
-          <td class="comparison-cell check-cell sub-check">✓</td>
-          <td class="comparison-cell check-cell sub-check">✓</td>
-          <td class="comparison-cell check-cell sub-check">✓</td>
+          <td class="activity-name-cell">National Museum private tour</td>
+          <td class="comparison-cell check-cell sub-check" aria-label="Included">✓</td>
+          <td class="comparison-cell check-cell sub-check" aria-label="Included">✓</td>
+          <td class="comparison-cell check-cell sub-check" aria-label="Included">✓</td>
         </tr>
         <tr class="activity-subrow">
-          <td class="activity-name-cell">Farewell Dinner</td>
-          <td class="comparison-cell check-cell sub-check">✓</td>
-          <td class="comparison-cell check-cell sub-check">✓</td>
-          <td class="comparison-cell check-cell sub-check">✓</td>
+          <td class="activity-name-cell">Galle Face Green evening stroll</td>
+          <td class="comparison-cell check-cell sub-check" aria-label="Included">✓</td>
+          <td class="comparison-cell check-cell sub-check" aria-label="Included">✓</td>
+          <td class="comparison-cell check-cell sub-check" aria-label="Included">✓</td>
         </tr>
         <!-- Destination Header Row -->
         <tr class="destination-row">
-          <td class="destination-name-cell"><strong>Wilpattu</strong></td>
-          <td class="comparison-cell empty-cell"></td>
-          <td class="comparison-cell check-cell">✓</td>
-          <td class="comparison-cell check-cell">✓</td>
+          <th scope="row" class="destination-name-cell"><strong>Wilpattu</strong></th>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
+          <td class="comparison-cell check-cell" aria-label="Included">✓</td>
+          <td class="comparison-cell check-cell" aria-label="Included">✓</td>
         </tr>
         <tr class="activity-subrow">
-          <td class="activity-name-cell">Tracking the Sloth Bear & Leopard</td>
-          <td class="comparison-cell empty-cell"></td>
-          <td class="comparison-cell check-cell sub-check">✓</td>
-          <td class="comparison-cell check-cell sub-check">✓</td>
+          <td class="activity-name-cell">Natural villus safari</td>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
+          <td class="comparison-cell check-cell sub-check" aria-label="Included">✓</td>
+          <td class="comparison-cell check-cell sub-check" aria-label="Included">✓</td>
         </tr>
         <tr class="activity-subrow">
-          <td class="activity-name-cell">Full-Day Wilpattu Deep Wilderness Drive</td>
-          <td class="comparison-cell empty-cell"></td>
-          <td class="comparison-cell check-cell sub-check">✓</td>
-          <td class="comparison-cell check-cell sub-check">✓</td>
+          <td class="activity-name-cell">Sri Lankan leopard tracking</td>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
+          <td class="comparison-cell check-cell sub-check" aria-label="Included">✓</td>
+          <td class="comparison-cell check-cell sub-check" aria-label="Included">✓</td>
         </tr>
         <!-- Destination Header Row -->
         <tr class="destination-row">
-          <td class="destination-name-cell"><strong>Habarana</strong></td>
-          <td class="comparison-cell empty-cell"></td>
-          <td class="comparison-cell check-cell">✓</td>
-          <td class="comparison-cell empty-cell"></td>
+          <th scope="row" class="destination-name-cell"><strong>Habarana</strong></th>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
+          <td class="comparison-cell check-cell" aria-label="Included">✓</td>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
         </tr>
         <tr class="activity-subrow">
-          <td class="activity-name-cell">Minneriya Elephant Gathering</td>
-          <td class="comparison-cell empty-cell"></td>
-          <td class="comparison-cell check-cell sub-check">✓</td>
-          <td class="comparison-cell empty-cell"></td>
+          <td class="activity-name-cell">Traditional village bullock cart ride</td>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
+          <td class="comparison-cell check-cell sub-check" aria-label="Included">✓</td>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
+        </tr>
+        <tr class="activity-subrow">
+          <td class="activity-name-cell">Hiriwadunna lake catamaran ferry</td>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
+          <td class="comparison-cell check-cell sub-check" aria-label="Included">✓</td>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
         </tr>
         <!-- Destination Header Row -->
         <tr class="destination-row">
-          <td class="destination-name-cell"><strong>Udawalawe</strong></td>
-          <td class="comparison-cell empty-cell"></td>
-          <td class="comparison-cell check-cell">✓</td>
-          <td class="comparison-cell empty-cell"></td>
+          <th scope="row" class="destination-name-cell"><strong>Udawalawe</strong></th>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
+          <td class="comparison-cell check-cell" aria-label="Included">✓</td>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
         </tr>
         <tr class="activity-subrow">
-          <td class="activity-name-cell">Scenic Route to Udawalawe National Park</td>
-          <td class="comparison-cell empty-cell"></td>
-          <td class="comparison-cell check-cell sub-check">✓</td>
-          <td class="comparison-cell empty-cell"></td>
+          <td class="activity-name-cell">Elephant nursery visit</td>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
+          <td class="comparison-cell check-cell sub-check" aria-label="Included">✓</td>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
         </tr>
         <tr class="activity-subrow">
-          <td class="activity-name-cell">Elephant Transit Home & Udawalawe Reservoir Safari</td>
-          <td class="comparison-cell empty-cell"></td>
-          <td class="comparison-cell check-cell sub-check">✓</td>
-          <td class="comparison-cell empty-cell"></td>
+          <td class="activity-name-cell">Open grassland 4x4 game drive</td>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
+          <td class="comparison-cell check-cell sub-check" aria-label="Included">✓</td>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
         </tr>
         <!-- Destination Header Row -->
         <tr class="destination-row">
-          <td class="destination-name-cell"><strong>Yala</strong></td>
-          <td class="comparison-cell empty-cell"></td>
-          <td class="comparison-cell check-cell">✓</td>
-          <td class="comparison-cell check-cell">✓</td>
+          <th scope="row" class="destination-name-cell"><strong>Yala</strong></th>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
+          <td class="comparison-cell check-cell" aria-label="Included">✓</td>
+          <td class="comparison-cell check-cell" aria-label="Included">✓</td>
         </tr>
         <tr class="activity-subrow">
-          <td class="activity-name-cell">Transit to Yala National Park</td>
-          <td class="comparison-cell empty-cell"></td>
-          <td class="comparison-cell check-cell sub-check">✓</td>
-          <td class="comparison-cell check-cell sub-check">✓</td>
+          <td class="activity-name-cell">Private naturalist-escorted game drive</td>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
+          <td class="comparison-cell check-cell sub-check" aria-label="Included">✓</td>
+          <td class="comparison-cell check-cell sub-check" aria-label="Included">✓</td>
         </tr>
         <tr class="activity-subrow">
-          <td class="activity-name-cell">Yala Block 1 & Block 5 Leopard Safaris</td>
-          <td class="comparison-cell empty-cell"></td>
-          <td class="comparison-cell check-cell sub-check">✓</td>
-          <td class="comparison-cell check-cell sub-check">✓</td>
+          <td class="activity-name-cell">High leopard density tracking</td>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
+          <td class="comparison-cell check-cell sub-check" aria-label="Included">✓</td>
+          <td class="comparison-cell check-cell sub-check" aria-label="Included">✓</td>
         </tr>
         <!-- Destination Header Row -->
         <tr class="destination-row">
-          <td class="destination-name-cell"><strong>Mirissa</strong></td>
-          <td class="comparison-cell empty-cell"></td>
-          <td class="comparison-cell check-cell">✓</td>
-          <td class="comparison-cell empty-cell"></td>
+          <th scope="row" class="destination-name-cell"><strong>Mirissa</strong></th>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
+          <td class="comparison-cell check-cell" aria-label="Included">✓</td>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
         </tr>
         <tr class="activity-subrow">
-          <td class="activity-name-cell">Coastal Route to Mirissa Whale Sanctuary</td>
-          <td class="comparison-cell empty-cell"></td>
-          <td class="comparison-cell check-cell sub-check">✓</td>
-          <td class="comparison-cell empty-cell"></td>
+          <td class="activity-name-cell">Dawn deep-sea whale & dolphin safari</td>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
+          <td class="comparison-cell check-cell sub-check" aria-label="Included">✓</td>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
+        </tr>
+        <tr class="activity-subrow">
+          <td class="activity-name-cell">Coconut Tree Hill photography</td>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
+          <td class="comparison-cell check-cell sub-check" aria-label="Included">✓</td>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
         </tr>
         <!-- Destination Header Row -->
         <tr class="destination-row">
-          <td class="destination-name-cell"><strong>Minneriya</strong></td>
-          <td class="comparison-cell empty-cell"></td>
-          <td class="comparison-cell empty-cell"></td>
-          <td class="comparison-cell check-cell">✓</td>
+          <th scope="row" class="destination-name-cell"><strong>Minneriya</strong></th>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
+          <td class="comparison-cell check-cell" aria-label="Included">✓</td>
         </tr>
         <tr class="activity-subrow">
-          <td class="activity-name-cell">Habarana & Minneriya Elephant Gathering</td>
-          <td class="comparison-cell empty-cell"></td>
-          <td class="comparison-cell empty-cell"></td>
-          <td class="comparison-cell check-cell sub-check">✓</td>
+          <td class="activity-name-cell">Wild elephant herd observation</td>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
+          <td class="comparison-cell check-cell sub-check" aria-label="Included">✓</td>
+        </tr>
+        <tr class="activity-subrow">
+          <td class="activity-name-cell">Dry-zone birding</td>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
+          <td class="comparison-cell check-cell sub-check" aria-label="Included">✓</td>
         </tr>
         <!-- Destination Header Row -->
         <tr class="destination-row">
-          <td class="destination-name-cell"><strong>Gal Oya</strong></td>
-          <td class="comparison-cell empty-cell"></td>
-          <td class="comparison-cell empty-cell"></td>
-          <td class="comparison-cell check-cell">✓</td>
+          <th scope="row" class="destination-name-cell"><strong>Gal Oya</strong></th>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
+          <td class="comparison-cell check-cell" aria-label="Included">✓</td>
         </tr>
         <tr class="activity-subrow">
-          <td class="activity-name-cell">The Untamed East</td>
-          <td class="comparison-cell empty-cell"></td>
-          <td class="comparison-cell empty-cell"></td>
-          <td class="comparison-cell check-cell sub-check">✓</td>
+          <td class="activity-name-cell">Boat safari on Senanayake Samudra</td>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
+          <td class="comparison-cell check-cell sub-check" aria-label="Included">✓</td>
+        </tr>
+        <tr class="activity-subrow">
+          <td class="activity-name-cell">Swimming wild elephants observation</td>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
+          <td class="comparison-cell check-cell sub-check" aria-label="Included">✓</td>
         </tr>
         <!-- Destination Header Row -->
         <tr class="destination-row">
-          <td class="destination-name-cell"><strong>Kumana</strong></td>
-          <td class="comparison-cell empty-cell"></td>
-          <td class="comparison-cell empty-cell"></td>
-          <td class="comparison-cell check-cell">✓</td>
+          <th scope="row" class="destination-name-cell"><strong>Kumana</strong></th>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
+          <td class="comparison-cell check-cell" aria-label="Included">✓</td>
         </tr>
         <tr class="activity-subrow">
-          <td class="activity-name-cell">Scenic Route to Kumana National Park</td>
-          <td class="comparison-cell empty-cell"></td>
-          <td class="comparison-cell empty-cell"></td>
-          <td class="comparison-cell check-cell sub-check">✓</td>
+          <td class="activity-name-cell">Mangrove bird nesting sanctuaries</td>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
+          <td class="comparison-cell check-cell sub-check" aria-label="Included">✓</td>
         </tr>
         <tr class="activity-subrow">
-          <td class="activity-name-cell">Kumana Wetland Safari & Leopard Dunes</td>
-          <td class="comparison-cell empty-cell"></td>
-          <td class="comparison-cell empty-cell"></td>
-          <td class="comparison-cell check-cell sub-check">✓</td>
+          <td class="activity-name-cell">Rare black-necked stork spotting</td>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
+          <td class="comparison-cell check-cell sub-check" aria-label="Included">✓</td>
         </tr>
         <!-- Destination Header Row -->
         <tr class="destination-row">
-          <td class="destination-name-cell"><strong>Sinharaja</strong></td>
-          <td class="comparison-cell empty-cell"></td>
-          <td class="comparison-cell empty-cell"></td>
-          <td class="comparison-cell check-cell">✓</td>
+          <th scope="row" class="destination-name-cell"><strong>Sinharaja</strong></th>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
+          <td class="comparison-cell check-cell" aria-label="Included">✓</td>
         </tr>
         <tr class="activity-subrow">
-          <td class="activity-name-cell">Ascent into UNESCO Sinharaja Rainforest</td>
-          <td class="comparison-cell empty-cell"></td>
-          <td class="comparison-cell empty-cell"></td>
-          <td class="comparison-cell check-cell sub-check">✓</td>
+          <td class="activity-name-cell">UNESCO virgin lowland rainforest trek</td>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
+          <td class="comparison-cell check-cell sub-check" aria-label="Included">✓</td>
         </tr>
         <tr class="activity-subrow">
-          <td class="activity-name-cell">Sinharaja Endemic Bird & Frog Trekking</td>
-          <td class="comparison-cell empty-cell"></td>
-          <td class="comparison-cell empty-cell"></td>
-          <td class="comparison-cell check-cell sub-check">✓</td>
+          <td class="activity-name-cell">Endemic mixed bird feeding flocks</td>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
+          <td class="comparison-cell check-cell sub-check" aria-label="Included">✓</td>
         </tr>
           </tbody>
         </table>
@@ -744,26 +802,20 @@
   </section>
 
   <!-- ==========================================================================
-       SECTION: ROUTE MAP & REGIONAL EXPEDITIONS (2-COLUMN EDITORIAL + LIGHTBOX)
+       SECTION: ROUTE MAP & REGIONAL EXPEDITIONS (LEAFLET + OPENSTREETMAP 2-COLUMN)
        ========================================================================== -->
   <section class="coastline-map-section" id="wildlife-map">
     <div class="wrapper--85">
       <div class="coastline-map-wrapper">
         
-        <!-- Left: Luxury Route Map Container -->
+        <!-- Left: OpenStreetMap & Leaflet Interactive Street Map -->
         <div class="coastline-map-figure">
-          <div class="lotus-map-placeholder">
-            <div class="lotus-map-placeholder-icon">🗺️</div>
-            <h3 class="lotus-map-placeholder-title">Official Route Map</h3>
-            <p class="lotus-map-placeholder-sub">
-              Our bespoke interactive route cartography for Wildlife is being meticulously drafted by our expedition team.
-            </p>
-            <div class="lotus-map-placeholder-badge">
-              <span>✦ Route Map Coming Soon</span>
-            </div>
-            <button type="button" class="btn-beach-view js-open-map-modal" style="margin-top: 1.5rem; font-size: 0.82rem; padding: 0.6rem 1.25rem; border: none; cursor: pointer;" aria-label="View Official National Road Atlas">
-              <span>🗺️ View National Route Map</span>
-            </button>
+          <div id="wildlife-leaflet-map" 
+               class="lotus-street-map-frame js-lotus-route-map" 
+               data-category="wildlife" 
+               data-data-path="data/packages.json"
+               role="region" 
+               aria-label="Interactive Sri Lanka Tour Route Map for Wildlife">
           </div>
         </div>
 
@@ -840,41 +892,13 @@
     </div>
   </section>
 
-  <!-- Interactive Map Lightbox Modal -->
-  <div class="lotus-map-modal" id="lotusMapModal" role="dialog" aria-modal="true" aria-label="Official Sri Lanka Tourist Map Full View">
-    <div class="lotus-map-modal-dialog">
-      <button type="button" class="lotus-map-modal-close" id="closeMapModal" aria-label="Close Map View">&times;</button>
-      <img src="assets/images/sri-lanka-tourist-map.jpg" alt="Official Sri Lanka Tourist Map High Resolution" class="lotus-map-modal-img">
-      <div class="lotus-map-modal-caption">Official Sri Lanka Tourist Map &amp; National Road Network • High Resolution View</div>
-    </div>
-  </div>
+  
 
-  <!-- Interactive Map Lightbox Modal -->
-  <div class="lotus-map-modal" id="lotusMapModal" role="dialog" aria-modal="true" aria-label="Official Sri Lanka Tourist Map Full View">
-    <div class="lotus-map-modal-dialog">
-      <button type="button" class="lotus-map-modal-close" id="closeMapModal" aria-label="Close Map View">&times;</button>
-      <img src="assets/images/sri-lanka-tourist-map.jpg" alt="Official Sri Lanka Tourist Map High Resolution" class="lotus-map-modal-img">
-      <div class="lotus-map-modal-caption">Official Sri Lanka Tourist Map &amp; National Road Network • High Resolution View</div>
-    </div>
-  </div>
+  
 
-  <!-- Interactive Map Lightbox Modal -->
-  <div class="lotus-map-modal" id="lotusMapModal" role="dialog" aria-modal="true" aria-label="Official Sri Lanka Tourist Map Full View">
-    <div class="lotus-map-modal-dialog">
-      <button type="button" class="lotus-map-modal-close" id="closeMapModal" aria-label="Close Map View">&times;</button>
-      <img src="assets/images/sri-lanka-tourist-map.jpg" alt="Official Sri Lanka Tourist Map High Resolution" class="lotus-map-modal-img">
-      <div class="lotus-map-modal-caption">Official Sri Lanka Tourist Map &amp; National Road Network • High Resolution View</div>
-    </div>
-  </div>
+  
 
-  <!-- Interactive Map Lightbox Modal -->
-  <div class="lotus-map-modal" id="lotusMapModal" role="dialog" aria-modal="true" aria-label="Official Sri Lanka Tourist Map Full View">
-    <div class="lotus-map-modal-dialog">
-      <button type="button" class="lotus-map-modal-close" id="closeMapModal" aria-label="Close Map View">&times;</button>
-      <img src="assets/images/sri-lanka-tourist-map.jpg" alt="Official Sri Lanka Tourist Map High Resolution" class="lotus-map-modal-img">
-      <div class="lotus-map-modal-caption">Official Sri Lanka Tourist Map &amp; National Road Network • High Resolution View</div>
-    </div>
-  </div>
+  
 
   <!-- ==========================================================================
        SECTION 5: SRI LANKA WILDLIFE SEASONS GUIDE (MIGRATION & SPOTTING)
@@ -1284,6 +1308,7 @@
       });
     });
   </script>
-  <script src="js/tours-map.js?v=20261024_map_v1"></script>
+    <script src="vendor/leaflet/leaflet.js"></script>
+  <script src="js/leaflet-tour-map.js?v=20261024_osm_v4"></script>
 </body>
 </html>

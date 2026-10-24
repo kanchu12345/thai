@@ -224,6 +224,8 @@
     .map-lightbox-content { max-width: 90vw; max-height: 90vh; object-fit: contain; border-radius: 8px; }
     .map-lightbox-close { position: absolute; top: 25px; right: 35px; color: #fff; font-size: 40px; font-weight: 300; cursor: pointer; }
   </style>
+  <link rel="stylesheet" href="../../../vendor/leaflet/leaflet.css">
+  <link rel="stylesheet" href="../../../css/tours-map.css?v=20261024_osm_v4">
 </head>
 <body class="page-tour-detail">
 
@@ -667,19 +669,22 @@
           </div>
 
           
-        <div class="detail-map-card">
-          <div class="section-watermark-header" style="margin-bottom: 1.5rem;">
-            <p class="watermark-heading" style="color: #EEDBE2;">ROUTE MAP</p>
-            <h2 class="section-header-title">The Coastal Journey Route</h2>
+        <div id="turquoise-eastern-sanctuary-leaflet-map" 
+               class="lotus-street-map-frame js-lotus-route-map" 
+               data-package-id="pkg-beach-02" 
+               data-data-path="../../../data/packages.json"
+               role="region" 
+               aria-label="Interactive Route Map for Turquoise Eastern Sanctuary">
           </div>
           <p style="color: #475569; font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.5rem;">
             Follow your private coastal route along secluded southern bays, historic Dutch ramparts, and sapphire reef sanctuaries. Click the map to open high-resolution zoom.
           </p>
-          <div class="map-preview-wrap" style="position: relative; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.08); cursor: pointer;" onclick="openMapLightbox()">
-            <img src="../../../assets/images/sri-lanka-tourist-map.jpg" alt="Sri Lanka Tourist Map" style="width: 100%; display: block; transition: transform 0.4s ease;">
-            <div class="map-hover-hint" style="position: absolute; bottom: 15px; right: 15px; background: rgba(0,43,73,0.85); color: #fff; padding: 6px 14px; border-radius: 20px; font-size: 0.8rem; font-weight: 600; display: flex; align-items: center; gap: 6px;">
-              <span>🔍 Click to Zoom Map</span>
-            </div>
+          <div id="turquoise-eastern-sanctuary-leaflet-map" 
+               class="lotus-street-map-frame js-lotus-route-map" 
+               data-package-id="pkg-beach-02" 
+               data-data-path="../../../data/packages.json"
+               role="region" 
+               aria-label="Interactive Route Map for Turquoise Eastern Sanctuary">
           </div>
         </div>
         
@@ -777,10 +782,7 @@
     </div>
   </section>
 
-  <div class="map-lightbox-modal" id="mapLightbox" onclick="closeMapLightbox()">
-    <span class="map-lightbox-close">&times;</span>
-    <img src="../../../assets/images/sri-lanka-tourist-map.jpg" alt="Enlarged Sri Lanka Tourist Map" class="map-lightbox-content">
-  </div>
+  
 
 <footer class="site-footer-walkers" id="contact">
     <div class="wrapper--80">
@@ -901,16 +903,9 @@
     </div>
   </footer>
 
-<script>
-  function openMapLightbox() {
-    const modal = document.getElementById('mapLightbox');
-    if (modal) modal.classList.add('active');
-  }
-  function closeMapLightbox() {
-    const modal = document.getElementById('mapLightbox');
-    if (modal) modal.classList.remove('active');
-  }
-</script>
 
+
+  <script src="../../../vendor/leaflet/leaflet.js"></script>
+  <script src="../../../js/leaflet-tour-map.js?v=20261024_osm_v4"></script>
 </body>
 </html>

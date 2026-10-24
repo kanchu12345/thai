@@ -33,7 +33,8 @@
     }
   </style>
 
-  <link rel="stylesheet" href="css/tours-map.css?v=20261024_compact_table_v2">
+  <link rel="stylesheet" href="css/tours-map.css?v=20261024_osm_v4">
+  <link rel="stylesheet" href="vendor/leaflet/leaflet.css">
 </head>
 <body class="page-beach-tours">
 
@@ -492,30 +493,39 @@
     <!-- ==========================================================================
        SECTION: WALKERS-STYLE COMPACT TOUR PACKAGE COMPARISON TABLE
        ========================================================================== -->
+  
+
+  <!-- ==========================================================================
+       SECTION: ROUTE MAP & REGIONAL EXPEDITIONS (2-COLUMN EDITORIAL + LIGHTBOX)
+       ========================================================================== -->
+    <!-- ==========================================================================
+       SECTION: WALKERS-STYLE COMPACT TOUR PACKAGE COMPARISON TABLE
+       ========================================================================== -->
   <section class="walkers-comparison-section" id="package-comparison">
     <div class="comparison-compact-wrapper">
       <div class="comparison-intro-header text-center">
         <span class="comparison-eyebrow">✦ SIDE-BY-SIDE ITINERARY COMPARISON</span>
         <h2 class="comparison-title">Compare Destinations &amp; Sights</h2>
         <p class="comparison-subtitle">
-          Review how each tour traverses Sri Lanka’s iconic destinations, cultural landmarks, and nature reserves.
+          Review how each Beach tour traverses Sri Lanka’s iconic destinations, cultural landmarks, and nature reserves.
         </p>
       </div>
 
-      <div class="walkers-table-responsive">
+      <div class="walkers-table-responsive" tabindex="0" role="region" aria-label="Beach Package Comparison Table">
         <table class="walkers-comparison-table">
+          <caption class="visually-hidden">Comparison of Sri Lanka Beach Tour Packages by Destination and Highlights</caption>
           <thead>
             <tr>
-              <th class="dest-col-header">Destinations &amp; Key Sights</th>
-              <th class="comparison-pkg-header">
+              <th scope="col" class="dest-col-header">Destinations &amp; Key Sights</th>
+              <th scope="col" class="comparison-pkg-header">
           <a href="tours/beach/southern-sands-serenade/index.html" class="comparison-pkg-link">Southern Sands Serenade</a>
           <span class="comparison-pkg-nights">9N &amp; 10D</span>
         </th>
-            <th class="comparison-pkg-header">
+            <th scope="col" class="comparison-pkg-header">
           <a href="tours/beach/turquoise-eastern-sanctuary/index.html" class="comparison-pkg-link">Turquoise Eastern Sanctuary</a>
           <span class="comparison-pkg-nights">11N &amp; 12D</span>
         </th>
-            <th class="comparison-pkg-header">
+            <th scope="col" class="comparison-pkg-header">
           <a href="tours/beach/pristine-seaboard-odyssey/index.html" class="comparison-pkg-link">Pristine Seaboard Odyssey</a>
           <span class="comparison-pkg-nights">13N &amp; 14D</span>
         </th>
@@ -524,216 +534,288 @@
           <tbody>
         <!-- Destination Header Row -->
         <tr class="destination-row">
-          <td class="destination-name-cell"><strong>Negombo</strong></td>
-          <td class="comparison-cell check-cell">✓</td>
-          <td class="comparison-cell check-cell">✓</td>
-          <td class="comparison-cell check-cell">✓</td>
+          <th scope="row" class="destination-name-cell"><strong>Negombo</strong></th>
+          <td class="comparison-cell check-cell" aria-label="Included">✓</td>
+          <td class="comparison-cell check-cell" aria-label="Included">✓</td>
+          <td class="comparison-cell check-cell" aria-label="Included">✓</td>
         </tr>
         <tr class="activity-subrow">
-          <td class="activity-name-cell">Tropical Warmth in Negombo</td>
-          <td class="comparison-cell check-cell sub-check">✓</td>
-          <td class="comparison-cell check-cell sub-check">✓</td>
-          <td class="comparison-cell check-cell sub-check">✓</td>
+          <td class="activity-name-cell">Lagoon catamaran sailing</td>
+          <td class="comparison-cell check-cell sub-check" aria-label="Included">✓</td>
+          <td class="comparison-cell check-cell sub-check" aria-label="Included">✓</td>
+          <td class="comparison-cell check-cell sub-check" aria-label="Included">✓</td>
         </tr>
         <tr class="activity-subrow">
-          <td class="activity-name-cell">Gateway to Ceylon</td>
-          <td class="comparison-cell check-cell sub-check">✓</td>
-          <td class="comparison-cell check-cell sub-check">✓</td>
-          <td class="comparison-cell check-cell sub-check">✓</td>
+          <td class="activity-name-cell">Dutch canal sunset cruise</td>
+          <td class="comparison-cell check-cell sub-check" aria-label="Included">✓</td>
+          <td class="comparison-cell check-cell sub-check" aria-label="Included">✓</td>
+          <td class="comparison-cell check-cell sub-check" aria-label="Included">✓</td>
         </tr>
         <!-- Destination Header Row -->
         <tr class="destination-row">
-          <td class="destination-name-cell"><strong>Tangalle</strong></td>
-          <td class="comparison-cell check-cell">✓</td>
-          <td class="comparison-cell empty-cell"></td>
-          <td class="comparison-cell empty-cell"></td>
+          <th scope="row" class="destination-name-cell"><strong>Tangalle</strong></th>
+          <td class="comparison-cell check-cell" aria-label="Included">✓</td>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
         </tr>
         <tr class="activity-subrow">
-          <td class="activity-name-cell">Tangalle’s Secluded Bays</td>
-          <td class="comparison-cell check-cell sub-check">✓</td>
-          <td class="comparison-cell empty-cell"></td>
-          <td class="comparison-cell empty-cell"></td>
+          <td class="activity-name-cell">Kalametiya bird sanctuary boat tour</td>
+          <td class="comparison-cell check-cell sub-check" aria-label="Included">✓</td>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
+        </tr>
+        <tr class="activity-subrow">
+          <td class="activity-name-cell">Silent beach private dinner</td>
+          <td class="comparison-cell check-cell sub-check" aria-label="Included">✓</td>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
         </tr>
         <!-- Destination Header Row -->
         <tr class="destination-row">
-          <td class="destination-name-cell"><strong>Mirissa</strong></td>
-          <td class="comparison-cell check-cell">✓</td>
-          <td class="comparison-cell empty-cell"></td>
-          <td class="comparison-cell empty-cell"></td>
+          <th scope="row" class="destination-name-cell"><strong>Mirissa</strong></th>
+          <td class="comparison-cell check-cell" aria-label="Included">✓</td>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
         </tr>
         <tr class="activity-subrow">
-          <td class="activity-name-cell">Sunset at Coconut Tree Hill</td>
-          <td class="comparison-cell check-cell sub-check">✓</td>
-          <td class="comparison-cell empty-cell"></td>
-          <td class="comparison-cell empty-cell"></td>
+          <td class="activity-name-cell">Dawn deep-sea whale & dolphin safari</td>
+          <td class="comparison-cell check-cell sub-check" aria-label="Included">✓</td>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
+        </tr>
+        <tr class="activity-subrow">
+          <td class="activity-name-cell">Coconut Tree Hill photography</td>
+          <td class="comparison-cell check-cell sub-check" aria-label="Included">✓</td>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
         </tr>
         <!-- Destination Header Row -->
         <tr class="destination-row">
-          <td class="destination-name-cell"><strong>Unawatuna</strong></td>
-          <td class="comparison-cell check-cell">✓</td>
-          <td class="comparison-cell empty-cell"></td>
-          <td class="comparison-cell empty-cell"></td>
+          <th scope="row" class="destination-name-cell"><strong>Unawatuna</strong></th>
+          <td class="comparison-cell check-cell" aria-label="Included">✓</td>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
         </tr>
         <tr class="activity-subrow">
-          <td class="activity-name-cell">Unawatuna Bay & Living Heritage of UNESCO Galle Fort</td>
-          <td class="comparison-cell check-cell sub-check">✓</td>
-          <td class="comparison-cell empty-cell"></td>
-          <td class="comparison-cell empty-cell"></td>
+          <td class="activity-name-cell">Jungle Beach coastal trek</td>
+          <td class="comparison-cell check-cell sub-check" aria-label="Included">✓</td>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
+        </tr>
+        <tr class="activity-subrow">
+          <td class="activity-name-cell">Japanese Peace Pagoda</td>
+          <td class="comparison-cell check-cell sub-check" aria-label="Included">✓</td>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
         </tr>
         <!-- Destination Header Row -->
         <tr class="destination-row">
-          <td class="destination-name-cell"><strong>Galle Fort</strong></td>
-          <td class="comparison-cell check-cell">✓</td>
-          <td class="comparison-cell empty-cell"></td>
-          <td class="comparison-cell empty-cell"></td>
+          <th scope="row" class="destination-name-cell"><strong>Galle Fort</strong></th>
+          <td class="comparison-cell check-cell" aria-label="Included">✓</td>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
+        </tr>
+        <tr class="activity-subrow">
+          <td class="activity-name-cell">UNESCO ramparts private heritage walk</td>
+          <td class="comparison-cell check-cell sub-check" aria-label="Included">✓</td>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
+        </tr>
+        <tr class="activity-subrow">
+          <td class="activity-name-cell">Lighthouse sunset viewing</td>
+          <td class="comparison-cell check-cell sub-check" aria-label="Included">✓</td>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
         </tr>
         <!-- Destination Header Row -->
         <tr class="destination-row">
-          <td class="destination-name-cell"><strong>Bentota</strong></td>
-          <td class="comparison-cell check-cell">✓</td>
-          <td class="comparison-cell empty-cell"></td>
-          <td class="comparison-cell empty-cell"></td>
+          <th scope="row" class="destination-name-cell"><strong>Bentota</strong></th>
+          <td class="comparison-cell check-cell" aria-label="Included">✓</td>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
         </tr>
         <tr class="activity-subrow">
-          <td class="activity-name-cell">Madu River Boat Safari</td>
-          <td class="comparison-cell check-cell sub-check">✓</td>
-          <td class="comparison-cell empty-cell"></td>
-          <td class="comparison-cell empty-cell"></td>
+          <td class="activity-name-cell">Madu Ganga river boat safari</td>
+          <td class="comparison-cell check-cell sub-check" aria-label="Included">✓</td>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
+        </tr>
+        <tr class="activity-subrow">
+          <td class="activity-name-cell">Brief Garden by Bevis Bawa</td>
+          <td class="comparison-cell check-cell sub-check" aria-label="Included">✓</td>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
         </tr>
         <!-- Destination Header Row -->
         <tr class="destination-row">
-          <td class="destination-name-cell"><strong>Colombo</strong></td>
-          <td class="comparison-cell check-cell">✓</td>
-          <td class="comparison-cell check-cell">✓</td>
-          <td class="comparison-cell check-cell">✓</td>
+          <th scope="row" class="destination-name-cell"><strong>Colombo</strong></th>
+          <td class="comparison-cell check-cell" aria-label="Included">✓</td>
+          <td class="comparison-cell check-cell" aria-label="Included">✓</td>
+          <td class="comparison-cell check-cell" aria-label="Included">✓</td>
         </tr>
         <tr class="activity-subrow">
-          <td class="activity-name-cell">Farewell to Ceylon</td>
-          <td class="comparison-cell check-cell sub-check">✓</td>
-          <td class="comparison-cell check-cell sub-check">✓</td>
-          <td class="comparison-cell check-cell sub-check">✓</td>
+          <td class="activity-name-cell">National Museum private tour</td>
+          <td class="comparison-cell check-cell sub-check" aria-label="Included">✓</td>
+          <td class="comparison-cell check-cell sub-check" aria-label="Included">✓</td>
+          <td class="comparison-cell check-cell sub-check" aria-label="Included">✓</td>
         </tr>
         <tr class="activity-subrow">
-          <td class="activity-name-cell">Colonial Colombo Cosmopolitan Evening</td>
-          <td class="comparison-cell check-cell sub-check">✓</td>
-          <td class="comparison-cell check-cell sub-check">✓</td>
-          <td class="comparison-cell check-cell sub-check">✓</td>
+          <td class="activity-name-cell">Galle Face Green evening stroll</td>
+          <td class="comparison-cell check-cell sub-check" aria-label="Included">✓</td>
+          <td class="comparison-cell check-cell sub-check" aria-label="Included">✓</td>
+          <td class="comparison-cell check-cell sub-check" aria-label="Included">✓</td>
         </tr>
         <!-- Destination Header Row -->
         <tr class="destination-row">
-          <td class="destination-name-cell"><strong>Trincomalee</strong></td>
-          <td class="comparison-cell empty-cell"></td>
-          <td class="comparison-cell check-cell">✓</td>
-          <td class="comparison-cell check-cell">✓</td>
+          <th scope="row" class="destination-name-cell"><strong>Trincomalee</strong></th>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
+          <td class="comparison-cell check-cell" aria-label="Included">✓</td>
+          <td class="comparison-cell check-cell" aria-label="Included">✓</td>
         </tr>
         <tr class="activity-subrow">
-          <td class="activity-name-cell">Cross-Island Journey to Trincomalee</td>
-          <td class="comparison-cell empty-cell"></td>
-          <td class="comparison-cell check-cell sub-check">✓</td>
-          <td class="comparison-cell check-cell sub-check">✓</td>
+          <td class="activity-name-cell">Koneswaram Shiva Temple cliff walk</td>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
+          <td class="comparison-cell check-cell sub-check" aria-label="Included">✓</td>
+          <td class="comparison-cell check-cell sub-check" aria-label="Included">✓</td>
         </tr>
         <tr class="activity-subrow">
-          <td class="activity-name-cell">Coast-to-Coast Drive to Trincomalee</td>
-          <td class="comparison-cell empty-cell"></td>
-          <td class="comparison-cell check-cell sub-check">✓</td>
-          <td class="comparison-cell check-cell sub-check">✓</td>
+          <td class="activity-name-cell">Fort Frederick deer sanctuary</td>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
+          <td class="comparison-cell check-cell sub-check" aria-label="Included">✓</td>
+          <td class="comparison-cell check-cell sub-check" aria-label="Included">✓</td>
         </tr>
         <!-- Destination Header Row -->
         <tr class="destination-row">
-          <td class="destination-name-cell"><strong>Nilaveli</strong></td>
-          <td class="comparison-cell empty-cell"></td>
-          <td class="comparison-cell check-cell">✓</td>
-          <td class="comparison-cell empty-cell"></td>
+          <th scope="row" class="destination-name-cell"><strong>Nilaveli</strong></th>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
+          <td class="comparison-cell check-cell" aria-label="Included">✓</td>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
+        </tr>
+        <tr class="activity-subrow">
+          <td class="activity-name-cell">Pristine white sand relaxation</td>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
+          <td class="comparison-cell check-cell sub-check" aria-label="Included">✓</td>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
+        </tr>
+        <tr class="activity-subrow">
+          <td class="activity-name-cell">Private coastal catamaran sail</td>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
+          <td class="comparison-cell check-cell sub-check" aria-label="Included">✓</td>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
         </tr>
         <!-- Destination Header Row -->
         <tr class="destination-row">
-          <td class="destination-name-cell"><strong>Pigeon Island</strong></td>
-          <td class="comparison-cell empty-cell"></td>
-          <td class="comparison-cell check-cell">✓</td>
-          <td class="comparison-cell empty-cell"></td>
+          <th scope="row" class="destination-name-cell"><strong>Pigeon Island</strong></th>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
+          <td class="comparison-cell check-cell" aria-label="Included">✓</td>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
         </tr>
         <tr class="activity-subrow">
-          <td class="activity-name-cell">Pigeon Island Marine Sanctuary Snorkeling Expedition</td>
-          <td class="comparison-cell empty-cell"></td>
-          <td class="comparison-cell check-cell sub-check">✓</td>
-          <td class="comparison-cell empty-cell"></td>
+          <td class="activity-name-cell">National Park marine coral snorkeling</td>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
+          <td class="comparison-cell check-cell sub-check" aria-label="Included">✓</td>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
+        </tr>
+        <tr class="activity-subrow">
+          <td class="activity-name-cell">Blacktip reef shark observation</td>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
+          <td class="comparison-cell check-cell sub-check" aria-label="Included">✓</td>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
         </tr>
         <!-- Destination Header Row -->
         <tr class="destination-row">
-          <td class="destination-name-cell"><strong>Pasikudah</strong></td>
-          <td class="comparison-cell empty-cell"></td>
-          <td class="comparison-cell check-cell">✓</td>
-          <td class="comparison-cell check-cell">✓</td>
+          <th scope="row" class="destination-name-cell"><strong>Pasikudah</strong></th>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
+          <td class="comparison-cell check-cell" aria-label="Included">✓</td>
+          <td class="comparison-cell check-cell" aria-label="Included">✓</td>
         </tr>
         <tr class="activity-subrow">
-          <td class="activity-name-cell">Coastal Route to the Shallows of Pasikudah</td>
-          <td class="comparison-cell empty-cell"></td>
-          <td class="comparison-cell check-cell sub-check">✓</td>
-          <td class="comparison-cell check-cell sub-check">✓</td>
+          <td class="activity-name-cell">Calm shallow bay swimming</td>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
+          <td class="comparison-cell check-cell sub-check" aria-label="Included">✓</td>
+          <td class="comparison-cell check-cell sub-check" aria-label="Included">✓</td>
         </tr>
         <tr class="activity-subrow">
-          <td class="activity-name-cell">The Infinite Shallow Horizon</td>
-          <td class="comparison-cell empty-cell"></td>
-          <td class="comparison-cell check-cell sub-check">✓</td>
-          <td class="comparison-cell check-cell sub-check">✓</td>
+          <td class="activity-name-cell">Coral garden glass-bottom boat tour</td>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
+          <td class="comparison-cell check-cell sub-check" aria-label="Included">✓</td>
+          <td class="comparison-cell check-cell sub-check" aria-label="Included">✓</td>
         </tr>
         <!-- Destination Header Row -->
         <tr class="destination-row">
-          <td class="destination-name-cell"><strong>Arugam Bay</strong></td>
-          <td class="comparison-cell empty-cell"></td>
-          <td class="comparison-cell check-cell">✓</td>
-          <td class="comparison-cell empty-cell"></td>
+          <th scope="row" class="destination-name-cell"><strong>Arugam Bay</strong></th>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
+          <td class="comparison-cell check-cell" aria-label="Included">✓</td>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
         </tr>
         <tr class="activity-subrow">
-          <td class="activity-name-cell">The Surfing Capital</td>
-          <td class="comparison-cell empty-cell"></td>
-          <td class="comparison-cell check-cell sub-check">✓</td>
-          <td class="comparison-cell empty-cell"></td>
+          <td class="activity-name-cell">Point break world-class surfing</td>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
+          <td class="comparison-cell check-cell sub-check" aria-label="Included">✓</td>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
+        </tr>
+        <tr class="activity-subrow">
+          <td class="activity-name-cell">Kudumbigala monastery forest climb</td>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
+          <td class="comparison-cell check-cell sub-check" aria-label="Included">✓</td>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
         </tr>
         <!-- Destination Header Row -->
         <tr class="destination-row">
-          <td class="destination-name-cell"><strong>Kalpitiya</strong></td>
-          <td class="comparison-cell empty-cell"></td>
-          <td class="comparison-cell empty-cell"></td>
-          <td class="comparison-cell check-cell">✓</td>
+          <th scope="row" class="destination-name-cell"><strong>Kalpitiya</strong></th>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
+          <td class="comparison-cell check-cell" aria-label="Included">✓</td>
         </tr>
         <tr class="activity-subrow">
-          <td class="activity-name-cell">Coastal Highway to Kalpitiya</td>
-          <td class="comparison-cell empty-cell"></td>
-          <td class="comparison-cell empty-cell"></td>
-          <td class="comparison-cell check-cell sub-check">✓</td>
+          <td class="activity-name-cell">Dolphin pod boat expedition</td>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
+          <td class="comparison-cell check-cell sub-check" aria-label="Included">✓</td>
         </tr>
         <tr class="activity-subrow">
-          <td class="activity-name-cell">Kalpitiya Dolphin Pod Cruise & Coral Bar</td>
-          <td class="comparison-cell empty-cell"></td>
-          <td class="comparison-cell empty-cell"></td>
-          <td class="comparison-cell check-cell sub-check">✓</td>
+          <td class="activity-name-cell">Kite surfing lagoon clinic</td>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
+          <td class="comparison-cell check-cell sub-check" aria-label="Included">✓</td>
         </tr>
         <!-- Destination Header Row -->
         <tr class="destination-row">
-          <td class="destination-name-cell"><strong>Mannar Island</strong></td>
-          <td class="comparison-cell empty-cell"></td>
-          <td class="comparison-cell empty-cell"></td>
-          <td class="comparison-cell check-cell">✓</td>
+          <th scope="row" class="destination-name-cell"><strong>Mannar Island</strong></th>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
+          <td class="comparison-cell check-cell" aria-label="Included">✓</td>
         </tr>
         <tr class="activity-subrow">
-          <td class="activity-name-cell">Ancient Baobab Trees</td>
-          <td class="comparison-cell empty-cell"></td>
-          <td class="comparison-cell empty-cell"></td>
-          <td class="comparison-cell check-cell sub-check">✓</td>
+          <td class="activity-name-cell">Adam's Bridge sandbank expedition</td>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
+          <td class="comparison-cell check-cell sub-check" aria-label="Included">✓</td>
+        </tr>
+        <tr class="activity-subrow">
+          <td class="activity-name-cell">Ancient Baobab tree visit</td>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
+          <td class="comparison-cell check-cell sub-check" aria-label="Included">✓</td>
         </tr>
         <!-- Destination Header Row -->
         <tr class="destination-row">
-          <td class="destination-name-cell"><strong>Jaffna</strong></td>
-          <td class="comparison-cell empty-cell"></td>
-          <td class="comparison-cell empty-cell"></td>
-          <td class="comparison-cell check-cell">✓</td>
+          <th scope="row" class="destination-name-cell"><strong>Jaffna</strong></th>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
+          <td class="comparison-cell check-cell" aria-label="Included">✓</td>
         </tr>
         <tr class="activity-subrow">
-          <td class="activity-name-cell">Crossing into Northern Jaffna Peninsula</td>
-          <td class="comparison-cell empty-cell"></td>
-          <td class="comparison-cell empty-cell"></td>
-          <td class="comparison-cell check-cell sub-check">✓</td>
+          <td class="activity-name-cell">Nallur Kandaswamy Kovil puja</td>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
+          <td class="comparison-cell check-cell sub-check" aria-label="Included">✓</td>
+        </tr>
+        <tr class="activity-subrow">
+          <td class="activity-name-cell">Jaffna Fort ramparts walk</td>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
+          <td class="comparison-cell empty-cell" aria-label="Not included"></td>
+          <td class="comparison-cell check-cell sub-check" aria-label="Included">✓</td>
         </tr>
           </tbody>
         </table>
@@ -742,27 +824,20 @@
   </section>
 
   <!-- ==========================================================================
-       SECTION: ROUTE MAP & REGIONAL EXPEDITIONS (2-COLUMN EDITORIAL + LIGHTBOX)
+       SECTION: ROUTE MAP & REGIONAL EXPEDITIONS (LEAFLET + OPENSTREETMAP 2-COLUMN)
        ========================================================================== -->
   <section class="coastline-map-section" id="beach-map">
     <div class="wrapper--85">
       <div class="coastline-map-wrapper">
         
-        <!-- Left: Official Sri Lanka Tourist Map in Framed Showcase -->
+        <!-- Left: OpenStreetMap & Leaflet Interactive Street Map -->
         <div class="coastline-map-figure">
-          <div class="coastline-map-frame js-open-map-modal" id="openMapLightbox" role="button" tabindex="0" aria-label="Open high-resolution Sri Lanka Route Map">
-            <img 
-              src="assets/images/sri-lanka-tourist-map.jpg" 
-              alt="Official Sri Lanka Tourist Map - Roads, Districts &amp; Coastal Destinations" 
-              class="coastline-map-img"
-              loading="lazy"
-            >
-            <div class="map-zoom-badge">
-              <span>🔍 Click to Enlarge Map</span>
-            </div>
-            <div class="coastline-map-tag">
-              <span>🗺️ Official Sri Lanka Tourist Map</span>
-            </div>
+          <div id="beach-leaflet-map" 
+               class="lotus-street-map-frame js-lotus-route-map" 
+               data-category="beach" 
+               data-data-path="data/packages.json"
+               role="region" 
+               aria-label="Interactive Sri Lanka Tour Route Map for Beach">
           </div>
         </div>
 
@@ -839,50 +914,15 @@
     </div>
   </section>
 
-  <!-- Interactive Map Lightbox Modal -->
-  <div class="lotus-map-modal" id="lotusMapModal" role="dialog" aria-modal="true" aria-label="Official Sri Lanka Tourist Map Full View">
-    <div class="lotus-map-modal-dialog">
-      <button type="button" class="lotus-map-modal-close" id="closeMapModal" aria-label="Close Map View">&times;</button>
-      <img src="assets/images/sri-lanka-tourist-map.jpg" alt="Official Sri Lanka Tourist Map High Resolution" class="lotus-map-modal-img">
-      <div class="lotus-map-modal-caption">Official Sri Lanka Tourist Map &amp; National Road Network • High Resolution View</div>
-    </div>
-  </div>
+  
 
-  <!-- Interactive Map Lightbox Modal -->
-  <div class="lotus-map-modal" id="lotusMapModal" role="dialog" aria-modal="true" aria-label="Official Sri Lanka Tourist Map Full View">
-    <div class="lotus-map-modal-dialog">
-      <button type="button" class="lotus-map-modal-close" id="closeMapModal" aria-label="Close Map View">&times;</button>
-      <img src="assets/images/sri-lanka-tourist-map.jpg" alt="Official Sri Lanka Tourist Map High Resolution" class="lotus-map-modal-img">
-      <div class="lotus-map-modal-caption">Official Sri Lanka Tourist Map &amp; National Road Network • High Resolution View</div>
-    </div>
-  </div>
+  
 
-  <!-- Interactive Map Lightbox Modal -->
-  <div class="lotus-map-modal" id="lotusMapModal" role="dialog" aria-modal="true" aria-label="Official Sri Lanka Tourist Map Full View">
-    <div class="lotus-map-modal-dialog">
-      <button type="button" class="lotus-map-modal-close" id="closeMapModal" aria-label="Close Map View">&times;</button>
-      <img src="assets/images/sri-lanka-tourist-map.jpg" alt="Official Sri Lanka Tourist Map High Resolution" class="lotus-map-modal-img">
-      <div class="lotus-map-modal-caption">Official Sri Lanka Tourist Map &amp; National Road Network • High Resolution View</div>
-    </div>
-  </div>
+  
 
-  <!-- Interactive Map Lightbox Modal -->
-  <div class="lotus-map-modal" id="lotusMapModal" role="dialog" aria-modal="true" aria-label="Official Sri Lanka Tourist Map Full View">
-    <div class="lotus-map-modal-dialog">
-      <button type="button" class="lotus-map-modal-close" id="closeMapModal" aria-label="Close Map View">&times;</button>
-      <img src="assets/images/sri-lanka-tourist-map.jpg" alt="Official Sri Lanka Tourist Map High Resolution" class="lotus-map-modal-img">
-      <div class="lotus-map-modal-caption">Official Sri Lanka Tourist Map &amp; National Road Network • High Resolution View</div>
-    </div>
-  </div>
+  
 
-  <!-- Interactive Map Lightbox Modal -->
-  <div class="lotus-map-modal" id="lotusMapModal" role="dialog" aria-modal="true" aria-label="Official Sri Lanka Tourist Map Full View">
-    <div class="lotus-map-modal-dialog">
-      <button type="button" class="lotus-map-modal-close" id="closeMapModal" aria-label="Close Map View">&times;</button>
-      <img src="assets/images/sri-lanka-tourist-map.jpg" alt="Official Sri Lanka Tourist Map High Resolution" class="lotus-map-modal-img">
-      <div class="lotus-map-modal-caption">Official Sri Lanka Tourist Map &amp; National Road Network • High Resolution View</div>
-    </div>
-  </div>
+  
 
   <!-- ==========================================================================
        SECTION 4: SRI LANKA COASTAL SEASONS GUIDE (WEST/SOUTH VS EAST)
@@ -1302,6 +1342,7 @@
       });
     });
   </script>
-  <script src="js/tours-map.js?v=20261024_map_v1"></script>
+    <script src="vendor/leaflet/leaflet.js"></script>
+  <script src="js/leaflet-tour-map.js?v=20261024_osm_v4"></script>
 </body>
 </html>

@@ -224,6 +224,8 @@
     .map-lightbox-content { max-width: 90vw; max-height: 90vh; object-fit: contain; border-radius: 8px; }
     .map-lightbox-close { position: absolute; top: 25px; right: 35px; color: #fff; font-size: 40px; font-weight: 300; cursor: pointer; }
   </style>
+  <link rel="stylesheet" href="../../../vendor/leaflet/leaflet.css">
+  <link rel="stylesheet" href="../../../css/tours-map.css?v=20261024_osm_v4">
 </head>
 <body class="page-tour-detail">
 
@@ -602,19 +604,17 @@
           </div>
 
           
-        <div class="detail-map-card" style="background: #F8FAFC; border: 1px dashed #CBD5E1; border-radius: 12px; padding: 40px 20px; text-align: center; margin-top: 40px;">
-          <div class="section-watermark-header" style="margin-bottom: 1rem;">
-            <p class="watermark-heading" style="color: #EEDBE2;">ROUTE MAP</p>
-            <h2 class="section-header-title">Curated Itinerary Route</h2>
-          </div>
-          <div style="font-size: 2.5rem; margin-bottom: 10px;">🗺️</div>
-          <h4 style="color: #002B49; font-size: 1.15rem; font-weight: 600; margin-bottom: 8px;">Route Map Coming Soon</h4>
-          <p style="color: #64748B; font-size: 0.9rem; max-width: 480px; margin: 0 auto;">
-            Our cartographers and travel designers are preparing high-resolution illustrated route vector maps for this sacred itinerary.
-          </p>
+                <div class="section-watermark-header" style="margin-top: 2.5rem; margin-bottom: 1rem;">
+          <p class="watermark-heading" style="color: #EEDBE2;">ROUTE MAP</p>
+          <h2 class="section-header-title">Curated Itinerary Route</h2>
         </div>
-        
 
+        <div id="the-royal-ceylon-fairways-tour-leaflet-map" 
+             class="lotus-street-map-frame js-lotus-route-map" 
+             data-package-id="pkg-the-royal-ceylon-fairways-tour" 
+             data-data-path="../../../data/packages.json"
+             role="region" 
+             aria-label="Interactive Route Map for The Royal Ceylon Fairways Tour">
         </div>
 
         <aside class="tour-sidebar">
@@ -708,10 +708,7 @@
     </div>
   </section>
 
-  <div class="map-lightbox-modal" id="mapLightbox" onclick="closeMapLightbox()">
-    <span class="map-lightbox-close">&times;</span>
-    <img src="../../../assets/images/sri-lanka-tourist-map.jpg" alt="Enlarged Sri Lanka Tourist Map" class="map-lightbox-content">
-  </div>
+  
 
 <footer class="site-footer-walkers" id="contact">
     <div class="wrapper--80">
@@ -832,16 +829,9 @@
     </div>
   </footer>
 
-<script>
-  function openMapLightbox() {
-    const modal = document.getElementById('mapLightbox');
-    if (modal) modal.classList.add('active');
-  }
-  function closeMapLightbox() {
-    const modal = document.getElementById('mapLightbox');
-    if (modal) modal.classList.remove('active');
-  }
-</script>
 
+
+  <script src="../../../vendor/leaflet/leaflet.js"></script>
+  <script src="../../../js/leaflet-tour-map.js?v=20261024_osm_v4"></script>
 </body>
 </html>

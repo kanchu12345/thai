@@ -208,6 +208,7 @@
   </style>
   <link rel="stylesheet" href="../../css/tours-map.css?v=20261024_compact_table_v2">
   <link rel="stylesheet" href="../../css/beach-tours.css?v=20261022_official_tourist_map_v9">
+  <link rel="stylesheet" href="../../vendor/leaflet/leaflet.css">
 </head>
 
 <body>
@@ -756,18 +757,12 @@
         
         <!-- Left: Luxury Route Map Container -->
         <div class="coastline-map-figure">
-          <div class="lotus-map-placeholder">
-            <div class="lotus-map-placeholder-icon">🗺️</div>
-            <h3 class="lotus-map-placeholder-title">Official Route Map</h3>
-            <p class="lotus-map-placeholder-sub">
-              Our bespoke interactive route cartography for Hill Country is being meticulously drafted by our expedition team.
-            </p>
-            <div class="lotus-map-placeholder-badge">
-              <span>✦ Route Map Coming Soon</span>
-            </div>
-            <button type="button" class="btn-beach-view js-open-map-modal" style="margin-top: 1.5rem; font-size: 0.82rem; padding: 0.6rem 1.25rem; border: none; cursor: pointer;" aria-label="View Official National Road Atlas">
-              <span>🗺️ View National Route Map</span>
-            </button>
+          <div id="hill-country-leaflet-map" 
+               class="lotus-street-map-frame js-lotus-route-map" 
+               data-category="hill-country" 
+               data-data-path="../../data/packages.json"
+               role="region" 
+               aria-label="Interactive Sri Lanka Tour Route Map for Hill Country">
           </div>
         </div>
 
@@ -843,40 +838,16 @@
   </section>
 
   <!-- Interactive Map Lightbox Modal -->
-  <div class="lotus-map-modal" id="lotusMapModal" role="dialog" aria-modal="true" aria-label="Official Sri Lanka Tourist Map Full View">
-    <div class="lotus-map-modal-dialog">
-      <button type="button" class="lotus-map-modal-close" id="closeMapModal" aria-label="Close Map View">&times;</button>
-      <img src="../../assets/images/sri-lanka-tourist-map.jpg" alt="Official Sri Lanka Tourist Map High Resolution" class="lotus-map-modal-img">
-      <div class="lotus-map-modal-caption">Official Sri Lanka Tourist Map &amp; National Road Network • High Resolution View</div>
-    </div>
-  </div>
+  
 
   <!-- Interactive Map Lightbox Modal -->
-  <div class="lotus-map-modal" id="lotusMapModal" role="dialog" aria-modal="true" aria-label="Official Sri Lanka Tourist Map Full View">
-    <div class="lotus-map-modal-dialog">
-      <button type="button" class="lotus-map-modal-close" id="closeMapModal" aria-label="Close Map View">&times;</button>
-      <img src="../../assets/images/sri-lanka-tourist-map.jpg" alt="Official Sri Lanka Tourist Map High Resolution" class="lotus-map-modal-img">
-      <div class="lotus-map-modal-caption">Official Sri Lanka Tourist Map &amp; National Road Network • High Resolution View</div>
-    </div>
-  </div>
+  
 
   <!-- Interactive Map Lightbox Modal -->
-  <div class="lotus-map-modal" id="lotusMapModal" role="dialog" aria-modal="true" aria-label="Official Sri Lanka Tourist Map Full View">
-    <div class="lotus-map-modal-dialog">
-      <button type="button" class="lotus-map-modal-close" id="closeMapModal" aria-label="Close Map View">&times;</button>
-      <img src="../../assets/images/sri-lanka-tourist-map.jpg" alt="Official Sri Lanka Tourist Map High Resolution" class="lotus-map-modal-img">
-      <div class="lotus-map-modal-caption">Official Sri Lanka Tourist Map &amp; National Road Network • High Resolution View</div>
-    </div>
-  </div>
+  
 
   <!-- Interactive Map Lightbox Modal -->
-  <div class="lotus-map-modal" id="lotusMapModal" role="dialog" aria-modal="true" aria-label="Official Sri Lanka Tourist Map Full View">
-    <div class="lotus-map-modal-dialog">
-      <button type="button" class="lotus-map-modal-close" id="closeMapModal" aria-label="Close Map View">&times;</button>
-      <img src="../../assets/images/sri-lanka-tourist-map.jpg" alt="Official Sri Lanka Tourist Map High Resolution" class="lotus-map-modal-img">
-      <div class="lotus-map-modal-caption">Official Sri Lanka Tourist Map &amp; National Road Network • High Resolution View</div>
-    </div>
-  </div>
+  
 
   <!-- SECTION 6: BOTTOM CTA BANNER -->
   <section class="banner-bottom-cta padding-top--80 padding-bottom--80" style="background: linear-gradient(135deg, #001A2C 0%, #002B49 100%); color: #FFFFFF; text-align: center;">
@@ -1018,5 +989,7 @@
   <a href="https://wa.me/94715422384" target="_blank" rel="noopener" class="floating-whatsapp-btn" title="Chat on WhatsApp (+94 71 54 22 384)" aria-label="Chat on WhatsApp">
     <svg viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.698.077-1.11-.059-.441-.144-1.025-.338-1.776-.816-1.579-1.004-2.613-2.616-2.695-2.726-.082-.11-1.082-1.442-1.082-2.75 0-1.309.684-1.954.928-2.222.244-.268.531-.334.708-.334.177 0 .354.002.508.01.164.008.385-.062.602.459.223.535.759 1.854.825 1.99.066.136.111.297.022.474-.088.177-.133.287-.266.442-.133.155-.28.347-.399.465-.133.133-.271.277-.117.542.155.266.689 1.134 1.477 1.835 1.014.903 1.87 1.182 2.136 1.315.266.133.421.111.576-.066.155-.177.664-.774.841-1.039.177-.266.354-.222.597-.133.244.089 1.549.73 1.815.863.266.133.443.2.509.311.066.11.066.643-.078 1.048z"/></svg>
   </a>
+  <script src="../../vendor/leaflet/leaflet.js"></script>
+  <script src="../../js/leaflet-tour-map.js?v=20261024_osm_v4"></script>
 </body>
 </html>
