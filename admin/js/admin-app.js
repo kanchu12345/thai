@@ -1335,6 +1335,57 @@
     },
 
     /**
+     * Cloudinary Direct Upload Integration
+     */
+    cloudinaryConfig: {
+      cloudName: 'qmukrbh6',
+      uploadPreset: 'lotus_tours_unsigned',
+      folder: 'lotus/tours'
+    },
+
+    openCloudinaryWidget(callback) {
+      if (!window.cloudinary) {
+        this.showToast('Cloudinary widget SDK is loading or blocked by browser. Please check connection.', 'warning');
+        return;
+      }
+      const myWidget = window.cloudinary.createUploadWidget({
+        cloudName: this.cloudinaryConfig.cloudName,
+        uploadPreset: this.cloudinaryConfig.uploadPreset,
+        folder: this.cloudinaryConfig.folder,
+        sources: ['local', 'url', 'camera', 'unsplash'],
+        multiple: true,
+        maxFileSize: 10000000,
+        clientAllowedFormats: ['png', 'jpg', 'jpeg', 'webp', 'avif'],
+        theme: 'minimal'
+      }, (error, result) => {
+        if (!error && result && result.event === "success") {
+          const secureUrl = result.info.secure_url;
+          const fileName = result.info.original_filename || 'Cloudinary Image';
+          this.mediaFiles.unshift({
+            name: fileName,
+            url: secureUrl,
+            size: `${Math.round(result.info.bytes / 1024)} KB`
+          });
+          this.renderMediaLibrary();
+          if (typeof callback === 'function') {
+            callback(secureUrl);
+          }
+          this.showToast(`Uploaded ${fileName} to Cloudinary!`, 'success');
+        }
+      });
+      myWidget.open();
+    },
+
+    openCloudinaryWidgetForInput(inputId) {
+      this.openCloudinaryWidget((url) => {
+        const el = document.getElementById(inputId);
+        if (el) {
+          el.value = url;
+        }
+      });
+    },
+
+    /**
      * 6. USERS & ROLES
      */
     renderUsers() {

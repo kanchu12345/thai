@@ -1037,3 +1037,715 @@
   border-color: #F59E0B;
   color: #92400E;
 }
+
+
+/* ==========================================================================
+   9. SIDE-BY-SIDE PACKAGE COMPARATOR (DOCK & MODAL)
+   ========================================================================== */
+.lotus-compare-dock {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%) translateY(100px);
+  background: #002B49;
+  color: #FFFFFF;
+  padding: 0.75rem 1.5rem;
+  border-radius: 50px;
+  box-shadow: 0 10px 30px rgba(0, 43, 73, 0.4), 0 0 0 1px rgba(201, 150, 43, 0.4);
+  z-index: 9990;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.lotus-compare-dock.is-visible {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.dock-content {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.dock-icon {
+  font-size: 1.25rem;
+}
+
+.dock-text {
+  font-size: 0.88rem;
+  font-weight: 500;
+}
+
+.btn-dock-compare {
+  background: linear-gradient(135deg, #C9962B 0%, #A6751B 100%);
+  color: #FFFFFF;
+  border: none;
+  padding: 0.5rem 1.25rem;
+  border-radius: 24px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  letter-spacing: 0.03em;
+  transition: all 0.2s ease;
+}
+
+.btn-dock-compare:hover {
+  filter: brightness(1.1);
+  transform: scale(1.02);
+}
+
+.btn-dock-clear {
+  background: transparent;
+  color: #94A3B8;
+  border: none;
+  font-size: 1.25rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0 4px;
+  transition: color 0.2s ease;
+}
+
+.btn-dock-clear:hover {
+  color: #FFFFFF;
+}
+
+.compare-modal-card {
+  max-width: 960px !important;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.compare-selectors-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 1.5rem 0;
+  padding: 1rem;
+  background: #F8FAFC;
+  border-radius: 12px;
+  border: 1px solid #E2E8F0;
+}
+
+.selector-box {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.selector-box label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #64748B;
+}
+
+.compare-dropdown {
+  width: 100%;
+  padding: 0.65rem 0.85rem;
+  border: 1px solid #CBD5E1;
+  border-radius: 8px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #002B49;
+  background: #FFFFFF;
+  cursor: pointer;
+}
+
+.compare-vs-badge {
+  font-weight: 900;
+  font-size: 0.95rem;
+  color: #C9962B;
+  background: #FEF3C7;
+  padding: 0.4rem 0.75rem;
+  border-radius: 8px;
+}
+
+.compare-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.compare-col {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 16px;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+}
+
+.compare-card-top {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.compare-hero-img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 0.75rem;
+}
+
+.compare-cat-badge {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: #C9962B;
+  background: rgba(201, 150, 43, 0.1);
+  padding: 0.25rem 0.65rem;
+  border-radius: 20px;
+  margin-bottom: 0.35rem;
+}
+
+.compare-pkg-title {
+  font-family: 'Cinzel', serif;
+  font-size: 1.15rem;
+  color: #002B49;
+  margin: 0.25rem 0 0.5rem;
+  line-height: 1.35;
+}
+
+.compare-dur-pill {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #64748B;
+}
+
+.compare-specs-list {
+  border-top: 1px solid #F1F5F9;
+  border-bottom: 1px solid #F1F5F9;
+  padding: 0.75rem 0;
+  margin: 0.75rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.spec-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+}
+
+.spec-label {
+  color: #64748B;
+  font-weight: 500;
+}
+
+.spec-val {
+  font-weight: 700;
+  color: #002B49;
+  text-align: right;
+}
+
+.compare-highlights-block {
+  flex: 1;
+  margin-bottom: 1.25rem;
+}
+
+.highlights-heading {
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #002B49;
+  margin: 0 0 0.5rem;
+}
+
+.compare-hl-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.compare-hl-list li {
+  font-size: 0.82rem;
+  color: #475569;
+  line-height: 1.4;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.4rem;
+}
+
+.check-icon {
+  color: #10B981;
+  font-weight: 900;
+}
+
+.compare-col-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: auto;
+}
+
+.btn-compare-inquire {
+  display: block;
+  text-align: center;
+  background: #002B49;
+  color: #FFFFFF;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.btn-compare-inquire:hover {
+  background: #C9962B;
+  color: #FFFFFF;
+}
+
+.link-compare-view {
+  display: block;
+  text-align: center;
+  color: #64748B;
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.link-compare-view:hover {
+  color: #002B49;
+}
+
+/* ==========================================================================
+   10. BEST-TIME-TO-VISIT 12-MONTH STRIP
+   ========================================================================== */
+.lotus-season-strip-box {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 16px;
+  padding: 1.5rem;
+  margin: 2rem 0;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+}
+
+.season-strip-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid #F1F5F9;
+}
+
+.season-strip-title {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.season-icon {
+  font-size: 1.5rem;
+}
+
+.season-strip-title h4 {
+  font-family: 'Cinzel', serif;
+  font-size: 1.1rem;
+  color: #002B49;
+  margin: 0;
+}
+
+.season-strip-title h4 span {
+  color: #C9962B;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.season-legend {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 0.8rem;
+  color: #64748B;
+}
+
+.legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.legend-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.legend-dot.peak { background: #10B981; }
+.legend-dot.good { background: #F59E0B; }
+.legend-dot.moderate { background: #94A3B8; }
+
+.season-months-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 6px;
+  margin-bottom: 1rem;
+}
+
+.season-month-cell {
+  background: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  border-radius: 8px;
+  padding: 0.65rem 0.25rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  transition: all 0.2s ease;
+}
+
+.season-month-cell:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+.month-name {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: #002B49;
+}
+
+.season-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.season-badge {
+  font-size: 0.65rem;
+  font-weight: 600;
+  line-height: 1;
+}
+
+/* Status variants */
+.season-month-cell.season-peak {
+  background: #ECFDF5;
+  border-color: #A7F3D0;
+}
+.season-month-cell.season-peak .season-dot { background: #10B981; }
+.season-month-cell.season-peak .season-badge { color: #047857; }
+
+.season-month-cell.season-good {
+  background: #FFFBEB;
+  border-color: #FDE68A;
+}
+.season-month-cell.season-good .season-dot { background: #F59E0B; }
+.season-month-cell.season-good .season-badge { color: #B45309; }
+
+.season-month-cell.season-moderate {
+  background: #F8FAFC;
+  border-color: #E2E8F0;
+}
+.season-month-cell.season-moderate .season-dot { background: #94A3B8; }
+.season-month-cell.season-moderate .season-badge { color: #64748B; }
+
+.season-strip-footer {
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px dashed #E2E8F0;
+}
+
+.season-microclimate-note {
+  font-size: 0.82rem;
+  color: #64748B;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* ==========================================================================
+   11. FAQ ACCORDION SECTION
+   ========================================================================== */
+.lotus-faq-section {
+  padding: 5rem 0;
+  background: #FAF8F5;
+  border-top: 1px solid rgba(197, 168, 128, 0.2);
+}
+
+.lotus-faq-inner {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.faq-header-wrap {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.faq-eyebrow {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  color: #C9962B;
+  margin-bottom: 0.5rem;
+}
+
+.faq-main-title {
+  font-family: 'Cinzel', serif;
+  font-size: 2rem;
+  color: #002B49;
+  margin: 0 0 0.75rem;
+}
+
+.faq-subtitle {
+  font-size: 0.95rem;
+  color: #64748B;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.5;
+}
+
+.lotus-faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.lotus-faq-item {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.25s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+}
+
+.lotus-faq-item[open] {
+  border-color: #C9962B;
+  box-shadow: 0 6px 20px rgba(0, 43, 73, 0.06);
+}
+
+.lotus-faq-question {
+  padding: 1.25rem 1.5rem;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 1.02rem;
+  font-weight: 700;
+  color: #002B49;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  list-style: none;
+  user-select: none;
+}
+
+.lotus-faq-question::-webkit-details-marker {
+  display: none;
+}
+
+.faq-chevron {
+  font-size: 1.2rem;
+  color: #C9962B;
+  transition: transform 0.25s ease;
+}
+
+.lotus-faq-item[open] .faq-chevron {
+  transform: rotate(180deg);
+}
+
+.lotus-faq-answer {
+  padding: 0 1.5rem 1.25rem;
+  font-size: 0.92rem;
+  color: #475569;
+  line-height: 1.65;
+  border-top: 1px solid #F1F5F9;
+  padding-top: 0.85rem;
+}
+
+.lotus-faq-answer p {
+  margin: 0;
+}
+
+/* ==========================================================================
+   12. "WHY TRAVEL WITH LOTUS" TRUST STRIP
+   ========================================================================== */
+.lotus-why-section {
+  padding: 5rem 0;
+  background: #FFFFFF;
+  border-top: 1px solid rgba(197, 168, 128, 0.2);
+}
+
+.lotus-why-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.why-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.why-eyebrow {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  color: #C9962B;
+  margin-bottom: 0.5rem;
+}
+
+.why-title {
+  font-family: 'Cinzel', serif;
+  font-size: 2.2rem;
+  color: #002B49;
+  margin: 0 0 0.75rem;
+}
+
+.why-sub {
+  font-size: 0.98rem;
+  color: #64748B;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.why-pillars-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+.why-pillar-card {
+  background: #FAF8F5;
+  border: 1px solid #E2E8F0;
+  border-radius: 16px;
+  padding: 1.75rem 1.25rem;
+  text-align: center;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.why-pillar-card:hover {
+  transform: translateY(-4px);
+  border-color: #C9962B;
+  box-shadow: 0 10px 25px rgba(0, 43, 73, 0.08);
+}
+
+.why-icon-wrap {
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+}
+
+.why-card-title {
+  font-family: 'Cinzel', serif;
+  font-size: 1.05rem;
+  color: #002B49;
+  margin: 0 0 0.6rem;
+}
+
+.why-card-desc {
+  font-size: 0.85rem;
+  color: #64748B;
+  line-height: 1.55;
+  margin: 0;
+}
+
+/* ==========================================================================
+   13. MOBILE STICKY BOTTOM BAR
+   ========================================================================== */
+.lotus-mobile-sticky-bar {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .lotus-mobile-sticky-bar {
+    display: block;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: #FFFFFF;
+    border-top: 1px solid #E2E8F0;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.08);
+    padding: 0.6rem 1rem calc(0.6rem + env(safe-area-inset-bottom, 0px));
+    z-index: 9998;
+  }
+
+  .mobile-sticky-inner {
+    display: flex;
+    gap: 0.75rem;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  .btn-sticky-wa {
+    flex: 1;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    background: #25D366;
+    color: #FFFFFF;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-decoration: none;
+    padding: 0.75rem 0.5rem;
+    white-space: nowrap;
+    transition: background 0.2s ease;
+  }
+
+  .btn-sticky-inquire {
+    flex: 2;
+    background: #002B49;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    padding: 0.75rem 0.5rem;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background 0.2s ease;
+  }
+
+  .btn-sticky-inquire:hover {
+    background: #C9962B;
+  }
+
+  .season-months-grid {
+    grid-template-columns: repeat(6, 1fr);
+    gap: 4px;
+  }
+
+  .why-pillars-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .compare-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .compare-selectors-row {
+    flex-direction: column;
+  }
+}
