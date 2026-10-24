@@ -370,10 +370,56 @@
      */
     async loadLocalFallbackData() {
       try {
+        // 1. Load tour catalog from data/packages.json
+        try {
+          const pkgRes = await fetch('../data/packages.json');
+          if (pkgRes.ok) {
+            const pkgData = await pkgRes.json();
+            if (pkgData.packages && pkgData.packages.length) {
+              this.packages = pkgData.packages.map(p => ({
+                id: p.id,
+                slug: p.slug,
+                title: p.title,
+                category_slug: p.category,
+                nights: p.nights,
+                days: p.days,
+                price_from: 0,
+                hero_image: (p.images && p.images[0]) || `assets/tours/${p.category}/hero.jpg`,
+                overview: p.tagline,
+                itinerary: (p.itinerary || []).map(it => ({
+                  title: it.title,
+                  desc: it.description,
+                  stay: it.stay || ''
+                })),
+                highlights: p.highlights || [],
+                inclusions: p.inclusions || [],
+                exclusions: p.exclusions || [],
+                season: p.bestSeason || 'Year-Round',
+                is_popular: (p.tags && p.tags.includes('Popular')) || false,
+                is_published: true
+              }));
+            }
+            if (pkgData.categories) {
+              this.categories = Object.values(pkgData.categories).map((c, idx) => ({
+                id: c.id,
+                name: c.title,
+                slug: c.slug,
+                tagline: c.tagline,
+                sort_order: idx + 1,
+                is_published: true,
+                map_image: c.mapImage || ''
+              }));
+            }
+          }
+        } catch (pkgErr) {
+          console.warn('[AdminApp] Could not load packages.json:', pkgErr);
+        }
+
+        // 2. Load reviews and settings from default-content.json
         const res = await fetch('../data/default-content.json');
         const data = await res.json();
-        this.packages = data.tours || [];
-        this.categories = data.tour_categories || [];
+        if (!this.packages.length) this.packages = data.tours || [];
+        if (!this.categories.length) this.categories = data.tour_categories || [];
         this.reviews = data.reviews || [];
         this.settings = data.site_settings || {};
         
@@ -912,6 +958,69 @@
         this.renderPackages();
         this.renderDashboard();
       });
+    },
+
+    /**
+     * Export updated data/packages.json
+     */
+    exportPackagesJson() {
+      try {
+        const exportData = {
+          categories: {},
+          packages: this.packages.map(p => ({
+            id: p.id || ('pkg-' + p.slug),
+            slug: p.slug,
+            category: p.category_slug || p.category || 'beach',
+            title: p.title,
+            tagline: p.overview || p.tagline || '',
+            nights: p.nights || 9,
+            days: p.days || 10,
+            tags: p.is_popular ? ['Popular', 'Private Tour'] : ['Private Tour'],
+            destinations: p.destinations || [],
+            highlights: p.highlights || [],
+            itinerary: (p.itinerary || []).map((it, idx) => ({
+              day: String(idx + 1).padStart(2, '0'),
+              title: it.title || '',
+              description: it.desc || it.description || '',
+              meals: it.meals || 'Breakfast',
+              stay: it.stay || ''
+            })),
+            inclusions: p.inclusions || [],
+            exclusions: p.exclusions || [],
+            bestSeason: p.season || p.bestSeason || 'Year-Round',
+            priceNote: 'Price on request',
+            images: [p.hero_image || 'assets/images/cultural-triangle.jpg'],
+            seoTitle: `${p.title} | Lotus Ceylon Luxury Tours`,
+            seoDescription: p.overview || p.tagline || ''
+          }))
+        };
+
+        this.categories.forEach(c => {
+          exportData.categories[c.slug] = {
+            id: c.id || ('cat-' + c.slug),
+            slug: c.slug,
+            title: c.name || c.title,
+            tagline: c.tagline || '',
+            heroImage: `assets/tours/${c.slug}/hero.jpg`,
+            mapImage: c.map_image || (c.slug === 'beach' ? 'assets/images/sri-lanka-tourist-map.jpg' : '')
+          };
+        });
+
+        const jsonStr = JSON.stringify(exportData, null, 2);
+        const blob = new Blob([jsonStr], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'packages.json';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+        this.showToast('Downloaded packages.json successfully!', 'success');
+      } catch (err) {
+        console.error('Export error:', err);
+        this.showToast('Failed to export: ' + err.message, 'error');
+      }
     },
 
     /**

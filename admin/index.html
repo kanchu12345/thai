@@ -318,9 +318,14 @@
               <h2>Tour Packages</h2>
               <p>Manage signature tours, itineraries, pricing and highlights</p>
             </div>
-            <button class="btn btn-primary" onclick="AdminApp.openPackageModal()">
-              <span>+ Add Tour Package</span>
-            </button>
+            <div style="display: flex; gap: 10px;">
+              <button class="btn btn-secondary" onclick="AdminApp.exportPackagesJson()" title="Export updated data/packages.json file">
+                <span>📥 Export packages.json</span>
+              </button>
+              <button class="btn btn-primary" onclick="AdminApp.openPackageModal()">
+                <span>+ Add Tour Package</span>
+              </button>
+            </div>
           </div>
 
           <div class="table-card">

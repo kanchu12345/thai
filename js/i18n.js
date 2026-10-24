@@ -1195,3 +1195,45 @@ class I18nEngine {
 
 // Global instance
 window.lotusI18n = new I18nEngine();
+
+// ==========================================================================
+// Tour Category Localization Additions (Purely Additive)
+// ==========================================================================
+window.TOUR_CATEGORY_I18N = {
+  beach: {
+    en: "Beach & Coastal Tours",
+    fr: "Circuits Côtiers et Plages",
+    de: "Strand- und Küstentouren",
+    it: "Tour delle Spiagge e Coste",
+    zh: "斯里兰卡海滩定制游",
+    ja: "スリランカ ビーチ＆リゾートツアー",
+    ru: "Пляжные и прибрежные туры",
+    ar: "جولات الشواطئ والسواحل",
+    es: "Tours de Playa y Costa",
+    hi: "समुद्र तट और तटीय यात्राएं"
+  },
+  cultural: {
+    en: "Cultural & Heritage Expeditions",
+    fr: "Expéditions Culturelles et Patrimoniales",
+    de: "Kultur- und Welterbetouren",
+    it: "Spedizioni Culturali e del Patrimonio",
+    zh: "世界文化遗产探索之旅",
+    ja: "世界遺産＆文化探訪ツアー",
+    ru: "Культурные и исторические туры",
+    ar: "رحلات التراث والثقافة",
+    es: "Expediciones Culturales y de Patrimonio",
+    hi: "सांस्कृतिक और विरासत यात्राएं"
+  },
+  wildlife: {
+    en: "Wildlife Safaris & Wilderness",
+    fr: "Safaris et Faune Sauvage",
+    de: "Wildtier- und Safari-Expeditionen",
+    it: "Safari e Fauna Selvatica",
+    zh: "野性斯里兰卡野生动物摄影游",
+    ja: "サファリ＆野生動物探検ツアー",
+    ru: "Сафари и дикая природа",
+    ar: "سفاري الحياة البرية",
+    es: "Safaris de Vida Silvestre",
+    hi: "वन्यजीव सफारी और जंगल यात्राएं"
+  }
+};

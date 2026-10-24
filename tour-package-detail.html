@@ -1367,6 +1367,20 @@
     function renderTour() {
       const params = new URLSearchParams(window.location.search);
       let tourKey = params.get('tour') || 'southern-sands';
+      
+      const ALIASES = {
+        'southern-sands-serenade': 'southern-sands',
+        'turquoise-eastern-sanctuary': 'eastern-blue',
+        'pristine-seaboard-odyssey': 'northern-seaboard',
+        'royal-kingdoms-sacred-temples': 'historical-journey',
+        'the-sacred-lotus-triangle': 'cultural-odyssey',
+        'three-millennia-of-living-heritage': 'ultimate-legacy',
+        'wild-ceylon-predator-elephant-trail': 'wild-ceylon-safari',
+        'the-sri-lanka-big-five-expedition': 'big-five-expedition',
+        'untamed-biosphere-rainforest-odyssey': 'untamed-wilderness'
+      };
+      if (ALIASES[tourKey]) tourKey = ALIASES[tourKey];
+
       if (!TOURS_DATA[tourKey]) tourKey = 'southern-sands';
 
       const data = TOURS_DATA[tourKey];
