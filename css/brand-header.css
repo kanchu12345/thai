@@ -14,22 +14,22 @@
   text-decoration: none !important;
 }
 
-/* 3D Golden & Royal Navy Medallion Logo - High Visibility 76px Lockup */
+/* Original 3D Golden Emblem Logo - High Visibility 80px Lockup */
 .header-brand-logo {
-  height: 76px !important;
-  width: 76px !important;
-  max-width: 76px !important;
+  height: 80px !important;
+  width: auto !important;
+  max-width: 105px !important;
   object-fit: contain !important;
-  border-radius: 50% !important;
-  filter: drop-shadow(0 4px 14px rgba(0, 0, 0, 0.85)) drop-shadow(0 0 20px rgba(247, 202, 104, 0.55)) !important;
+  border-radius: 0 !important;
+  filter: drop-shadow(0 4px 14px rgba(0, 0, 0, 0.85)) drop-shadow(0 0 18px rgba(247, 202, 104, 0.55)) !important;
   transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1), 
               filter 300ms cubic-bezier(0.4, 0, 0.2, 1), 
-              height 300ms ease, width 300ms ease !important;
+              height 300ms ease !important;
 }
 
 .header-brand:hover .header-brand-logo {
-  transform: scale(1.06) rotate(1deg) !important;
-  filter: drop-shadow(0 6px 20px rgba(0, 0, 0, 0.95)) drop-shadow(0 0 26px rgba(247, 202, 104, 0.85)) !important;
+  transform: scale(1.05) !important;
+  filter: drop-shadow(0 6px 20px rgba(0, 0, 0, 0.95)) drop-shadow(0 0 24px rgba(247, 202, 104, 0.75)) !important;
 }
 
 /* Brand Text Container */
@@ -40,15 +40,15 @@
   line-height: 1.15 !important;
 }
 
-/* Primary Brand Title: Lotus Ceylon
- * Signature Luxury Serif Typography matching the official 3D Gold Seal */
+/* Primary Brand Title: LOTUS CEYLON
+ * Signature Luxury Roman Serif Typography with High Visibility */
 .header-brand-name,
 .walkers-brand-title {
-  font-family: 'Playfair Display', 'Cinzel', Georgia, serif !important;
+  font-family: 'Cinzel', 'Playfair Display', Georgia, serif !important;
   font-weight: 700 !important;
-  font-size: 1.68rem !important;
-  letter-spacing: 0.035em !important;
-  text-transform: none !important;
+  font-size: 1.62rem !important;
+  letter-spacing: 0.06em !important;
+  text-transform: uppercase !important;
   line-height: 1.08 !important;
   display: flex !important;
   align-items: baseline !important;
@@ -98,8 +98,9 @@
 /* When Scrolled (Header transitions to solid ivory #FBF7F0) */
 .site-header-walkers.is-scrolled .header-brand-logo {
   height: 56px !important;
-  width: 56px !important;
-  filter: drop-shadow(0 3px 10px rgba(0, 0, 0, 0.25)) !important;
+  width: auto !important;
+  border-radius: 0 !important;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.2)) !important;
 }
 
 .site-header-walkers.is-scrolled .header-brand-name,
