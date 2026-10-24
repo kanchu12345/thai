@@ -58,19 +58,14 @@
   transition: all 300ms ease !important;
 }
 
-/* "LOTUS" - Brilliant Pure White */
-.brand-name-lotus {
-  color: #FFFFFF !important;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.95), 0 0 16px rgba(255, 255, 255, 0.35) !important;
-}
-
-/* "CEYLON" - Illuminated Crisp White with Soft Golden Glow or Warm Sun Gold */
+/* "LOTUS" & "CEYLON" - Pure Uniform Brilliant White (Walkers Tours Razor-Sharp Clarity) */
+.brand-name-lotus,
 .brand-name-ceylon {
   color: #FFFFFF !important;
-  background: linear-gradient(135deg, #FFFFFF 0%, #FFFFFF 50%, #FFE9BA 100%) !important;
-  -webkit-background-clip: text !important;
-  -webkit-text-fill-color: transparent !important;
-  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.95)) drop-shadow(0 0 12px rgba(247, 202, 104, 0.5)) !important;
+  background: none !important;
+  -webkit-text-fill-color: initial !important;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.95), 0 1px 3px rgba(0, 0, 0, 0.9) !important;
+  filter: none !important;
 }
 
 /* Subtitle: "INTERNATIONAL TOURS & SERVICES"
