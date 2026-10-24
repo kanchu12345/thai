@@ -1,0 +1,688 @@
+/* ==========================================================================
+   LOTUS CEYLON - LUXURY ROUTE MAP & EDITORIAL SHOWCASE (2-COLUMN)
+   ========================================================================== */
+.coastline-map-section,
+.coastal-map-section,
+.lotus-route-map-section {
+  padding: 5.5rem 0 6rem;
+  background: linear-gradient(180deg, #FAF8F5 0%, #F5F1EA 50%, #FAF8F5 100%);
+  position: relative;
+  overflow: hidden;
+  border-top: 1px solid rgba(197, 168, 128, 0.25);
+  border-bottom: 1px solid rgba(197, 168, 128, 0.25);
+}
+
+.coastline-map-section::before,
+.coastal-map-section::before,
+.lotus-route-map-section::before {
+  content: '';
+  position: absolute;
+  top: -120px;
+  right: -100px;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(197, 168, 128, 0.08) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.coastline-map-wrapper,
+.coastal-map-wrapper,
+.lotus-route-map-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: 4.25rem;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 1024px) {
+  .coastline-map-wrapper,
+  .coastal-map-wrapper,
+  .lotus-route-map-wrapper {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+}
+
+/* LEFT COLUMN: Map Showcase */
+.coastline-map-figure,
+.coastal-map-figure,
+.lotus-map-figure {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.coastline-map-frame,
+.coastal-map-frame,
+.lotus-map-frame {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  border-radius: 20px;
+  background: #FFFFFF;
+  padding: 10px;
+  box-shadow: 0 20px 45px rgba(0, 43, 73, 0.12), 0 4px 16px rgba(197, 168, 128, 0.15);
+  border: 1px solid rgba(197, 168, 128, 0.35);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+  overflow: hidden;
+  cursor: pointer;
+  text-decoration: none;
+  display: block;
+}
+
+.coastline-map-frame:hover,
+.coastal-map-frame:hover,
+.lotus-map-frame:hover {
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: 0 28px 55px rgba(0, 43, 73, 0.18), 0 8px 24px rgba(197, 168, 128, 0.25);
+}
+
+.coastline-map-img,
+.coastal-map-img,
+.lotus-map-img {
+  width: 100%;
+  height: auto;
+  max-height: 640px;
+  object-fit: contain;
+  border-radius: 12px;
+  display: block;
+  background: #FFFFFF;
+}
+
+/* Floating interactive zoom badge */
+.map-zoom-badge {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: rgba(0, 26, 44, 0.88);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #FFFFFF;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 0.42rem 0.95rem;
+  border-radius: 9999px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(197, 168, 128, 0.4);
+  transition: background 0.3s ease, transform 0.2s ease, color 0.3s ease;
+  pointer-events: none;
+}
+
+.coastline-map-frame:hover .map-zoom-badge,
+.coastal-map-frame:hover .map-zoom-badge,
+.lotus-map-frame:hover .map-zoom-badge {
+  background: #C5A880;
+  color: #002B49;
+  transform: scale(1.04);
+}
+
+/* Floating status tag at bottom */
+.coastline-map-tag,
+.coastal-map-tag,
+.lotus-map-tag {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #002B49;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.4rem 0.9rem;
+  border-radius: 9999px;
+  box-shadow: 0 4px 14px rgba(0, 43, 73, 0.1);
+  border: 1px solid rgba(197, 168, 128, 0.3);
+  pointer-events: none;
+}
+
+/* Luxury Map Placeholder (Coming Soon) */
+.lotus-map-placeholder {
+  width: 100%;
+  max-width: 500px;
+  min-height: 440px;
+  border-radius: 20px;
+  background: linear-gradient(145deg, #FFFFFF 0%, #FAF8F5 100%);
+  border: 2px dashed rgba(197, 168, 128, 0.5);
+  box-shadow: 0 16px 40px rgba(0, 43, 73, 0.08);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2.5rem 2rem;
+  text-align: center;
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.lotus-map-placeholder:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 22px 48px rgba(0, 43, 73, 0.12);
+  border-color: #C5A880;
+}
+
+.lotus-map-placeholder-icon {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: rgba(197, 168, 128, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.2rem;
+  margin-bottom: 1.25rem;
+  color: #8C6D3F;
+}
+
+.lotus-map-placeholder-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: #002B49;
+  margin-bottom: 0.5rem;
+}
+
+.lotus-map-placeholder-sub {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.88rem;
+  color: #64748B;
+  line-height: 1.6;
+  max-width: 320px;
+  margin-bottom: 1.25rem;
+}
+
+.lotus-map-placeholder-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: #002B49;
+  color: #FFFFFF;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.4rem 0.95rem;
+  border-radius: 9999px;
+}
+
+/* RIGHT COLUMN: Rich Editorial & Inspirational Quote */
+.coastline-content-col,
+.coastal-content-col,
+.lotus-map-content-col {
+  padding-right: 0.5rem;
+}
+
+.route-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #8C6D3F;
+  background: rgba(197, 168, 128, 0.16);
+  padding: 0.35rem 0.95rem;
+  border-radius: 9999px;
+  margin-bottom: 1.35rem;
+}
+
+/* Inspirational Category Quote */
+.route-quote-card {
+  position: relative;
+  background: #FFFFFF;
+  border-left: 4px solid #C5A880;
+  padding: 1.35rem 1.65rem 1.35rem 1.5rem;
+  border-radius: 0 16px 16px 0;
+  margin-bottom: 1.65rem;
+  box-shadow: 0 8px 24px rgba(0, 43, 73, 0.05);
+}
+
+.route-quote-text {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-style: italic;
+  font-size: clamp(1.15rem, 1.8vw, 1.35rem);
+  line-height: 1.6;
+  color: #002B49;
+  margin: 0;
+}
+
+.route-quote-caption {
+  display: block;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #8C6D3F;
+  margin-top: 0.65rem;
+}
+
+.coastline-main-title,
+.coastal-main-title,
+.lotus-route-main-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(1.85rem, 2.7vw, 2.45rem);
+  font-weight: 700;
+  color: #002B49;
+  line-height: 1.25;
+  margin-bottom: 1.15rem;
+}
+
+.coastline-main-title span,
+.coastal-main-title span,
+.lotus-route-main-title span {
+  display: block;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: clamp(1.15rem, 1.7vw, 1.5rem);
+  font-weight: 400;
+  color: #4A5568;
+  margin-top: 0.35rem;
+}
+
+.coastline-lead-text,
+.coastal-lead-text,
+.lotus-route-lead-text {
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 1.02rem;
+  line-height: 1.8;
+  color: #2D3748;
+  margin-bottom: 1.5rem;
+}
+
+/* Route Sequence Ribbon (Signature Circuit) */
+.route-circuit-ribbon {
+  background: #FFFFFF;
+  border: 1px solid rgba(197, 168, 128, 0.35);
+  border-radius: 12px;
+  padding: 0.95rem 1.25rem;
+  margin-bottom: 1.65rem;
+  box-shadow: 0 4px 12px rgba(0, 43, 73, 0.04);
+}
+
+.route-circuit-label {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #8C6D3F;
+  margin-bottom: 0.45rem;
+  display: block;
+}
+
+.route-circuit-stops {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem 0.55rem;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.84rem;
+  color: #002B49;
+}
+
+.route-stop-pill {
+  font-weight: 700;
+  color: #002B49;
+}
+
+.route-stop-arrow {
+  color: #C5A880;
+  font-weight: 800;
+  font-size: 0.78rem;
+}
+
+/* Highlights Grid */
+.coastline-highlights-row,
+.coastal-highlights-row,
+.lotus-route-highlights {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+}
+
+@media (max-width: 576px) {
+  .coastline-highlights-row,
+  .coastal-highlights-row,
+  .lotus-route-highlights {
+    grid-template-columns: 1fr;
+  }
+}
+
+.coastline-highlight-item,
+.coastal-highlight-item,
+.lotus-route-highlight-item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: #FFFFFF;
+  padding: 0.65rem 1rem;
+  border-radius: 10px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #002B49;
+  box-shadow: 0 3px 10px rgba(0, 43, 73, 0.05);
+  border: 1px solid rgba(197, 168, 128, 0.25);
+}
+
+/* CTAs Row */
+.route-actions-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.btn-route-inquire {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  background: #C5A880;
+  color: #002B49 !important;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.94rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  padding: 0.95rem 2rem;
+  border-radius: 9999px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 20px rgba(197, 168, 128, 0.35);
+}
+
+.btn-route-inquire:hover {
+  background: #B09267;
+  color: #001A2C !important;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 26px rgba(197, 168, 128, 0.45);
+}
+
+.btn-route-whatsapp {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  background: #25D366;
+  color: #FFFFFF !important;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.94rem;
+  font-weight: 700;
+  padding: 0.95rem 1.6rem;
+  border-radius: 9999px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 20px rgba(37, 211, 102, 0.28);
+}
+
+.btn-route-whatsapp:hover {
+  background: #1EBE5D;
+  color: #FFFFFF !important;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px rgba(37, 211, 102, 0.38);
+}
+
+/* ==========================================================================
+   IN-PAGE LIGHTBOX MODAL FOR MAP (ACCESSIBLE & MOBILE-FRIENDLY)
+   ========================================================================== */
+.lotus-map-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: rgba(0, 18, 32, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.lotus-map-modal.active {
+  display: flex;
+  opacity: 1;
+}
+
+.lotus-map-modal-dialog {
+  position: relative;
+  max-width: 92vw;
+  max-height: 92vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.lotus-map-modal-img {
+  max-width: 90vw;
+  max-height: 85vh;
+  object-fit: contain;
+  border-radius: 12px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
+  border: 4px solid #FFFFFF;
+  background: #FFFFFF;
+}
+
+.lotus-map-modal-close {
+  position: absolute;
+  top: -45px;
+  right: 0;
+  background: transparent;
+  border: none;
+  color: #FFFFFF;
+  font-size: 2.4rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0.25rem 0.6rem;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.lotus-map-modal-close:hover {
+  color: #C5A880;
+  transform: scale(1.15);
+}
+
+.lotus-map-modal-caption {
+  margin-top: 12px;
+  color: #E2E8F0;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.88rem;
+  letter-spacing: 0.04em;
+  text-align: center;
+}
+
+/* ==========================================================================
+   WALKERS-STYLE COMPACT TOUR PACKAGE COMPARISON TABLE
+   ========================================================================== */
+.walkers-comparison-section {
+  padding: 5rem 0 5.5rem;
+  background: #FFFFFF;
+  border-top: 1px solid #E2E8F0;
+  border-bottom: 1px solid #E2E8F0;
+}
+
+.comparison-compact-wrapper {
+  width: 90%;
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.comparison-intro-header {
+  margin-bottom: 2.25rem;
+}
+
+.comparison-eyebrow {
+  display: inline-block;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #8C6D3F;
+  background: rgba(197, 168, 128, 0.14);
+  padding: 0.32rem 0.85rem;
+  border-radius: 9999px;
+  margin-bottom: 0.85rem;
+}
+
+.comparison-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(1.85rem, 2.8vw, 2.4rem);
+  font-weight: 700;
+  color: #002B49;
+  margin-bottom: 0.65rem;
+}
+
+.comparison-subtitle {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.94rem;
+  color: #64748B;
+  max-width: 580px;
+  margin: 0 auto;
+  line-height: 1.55;
+}
+
+.walkers-table-responsive {
+  width: 100%;
+  max-width: 860px;
+  margin: 0 auto;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  background: #FFFFFF;
+  border-radius: 16px;
+  border: 1px solid #E2E8F0;
+  box-shadow: 0 10px 30px rgba(0, 43, 73, 0.05);
+}
+
+.walkers-comparison-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.86rem;
+}
+
+.walkers-comparison-table thead th {
+  background: #F8FAFC;
+  padding: 0.95rem 1.15rem;
+  font-weight: 700;
+  color: #002B49;
+  border-bottom: 2px solid #CBD5E1;
+  vertical-align: bottom;
+}
+
+.walkers-comparison-table thead th.dest-col-header {
+  width: 38%;
+  font-size: 0.88rem;
+  color: #002B49;
+  padding-left: 1.25rem;
+}
+
+.walkers-comparison-table thead th.comparison-pkg-header {
+  text-align: center;
+  min-width: 110px;
+  max-width: 165px;
+  padding: 0.95rem 0.75rem;
+}
+
+.comparison-pkg-link {
+  display: block;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #002B49;
+  text-decoration: none;
+  transition: color 0.2s ease;
+  line-height: 1.25;
+  margin-bottom: 0.25rem;
+}
+
+.comparison-pkg-link:hover {
+  color: #C5A880;
+}
+
+.comparison-pkg-nights {
+  display: block;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #8C6D3F;
+  letter-spacing: 0.04em;
+}
+
+.walkers-comparison-table tbody tr {
+  border-bottom: 1px solid #EDF2F7;
+  transition: background-color 0.2s ease;
+}
+
+.walkers-comparison-table tbody tr:hover {
+  background-color: #F8FAFC;
+}
+
+.walkers-comparison-table tbody tr.destination-row {
+  background: #FAF8F5;
+}
+
+.destination-name-cell {
+  padding: 0.72rem 1.25rem;
+  font-size: 0.88rem;
+  color: #002B49;
+}
+
+.activity-subrow {
+  background: #FFFFFF;
+}
+
+.activity-name-cell {
+  padding: 0.48rem 1.25rem 0.48rem 2.1rem;
+  font-size: 0.8rem;
+  color: #4A5568;
+  position: relative;
+}
+
+.activity-name-cell::before {
+  content: '•';
+  position: absolute;
+  left: 1.35rem;
+  color: #C5A880;
+  font-size: 0.95rem;
+}
+
+.comparison-cell {
+  text-align: center;
+  vertical-align: middle;
+  padding: 0.52rem 0.65rem;
+}
+
+.check-cell {
+  color: #10B981;
+  font-size: 1.15rem;
+  font-weight: 800;
+}
+
+.check-cell.sub-check {
+  color: #059669;
+  font-size: 1.02rem;
+}
+
+.empty-cell {
+  color: #E2E8F0;
+}
