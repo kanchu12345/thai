@@ -230,7 +230,7 @@
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
   font-size: clamp(52px, 8.8vw, 128px) !important;
   font-weight: 700 !important;
-  color: #E2E8F0 !important; /* Neutral Soft Silver Gray matching Walkers Tours */
+  color: var(--watermark-shadow-pink, #EEDBE2) !important; /* Luxury Lotus Shadow Pink tint */
   text-align: center !important;
   text-transform: lowercase !important;
   line-height: 1 !important;
@@ -1159,7 +1159,7 @@
 }
 
 #packages .watermark-heading {
-  color: #E2E8F0 !important;
+  color: rgba(201, 84, 81, 0.18) !important;
 }
 
 #packages .section-header-title {
