@@ -3,43 +3,61 @@ service cloud.firestore {
   match /databases/{database}/documents {
     
     // =========================================================================
-    // LOTUS CEYLON - FIRESTORE SECURITY RULES
+    // LOTUS CEYLON - FIRESTORE SECURITY RULES (WCAG / GDPR Hardened)
     // =========================================================================
     
+    // Strict Admin check: authenticated user with document in 'admins' collection or admin claim
     function isAdmin() {
-      return request.auth != null;
+      return request.auth != null && (
+        exists(/databases/$(database)/documents/admins/$(request.auth.uid)) ||
+        request.auth.token.admin == true
+      );
     }
 
+    // Admins Collection: Read & write strictly restricted to verified administrators
+    match /admins/{adminId} {
+      allow read, write: if isAdmin();
+    }
+
+    // Tour Packages: Public read; admin write
     match /packages/{packageId} {
       allow read: if true;
       allow write: if isAdmin();
     }
 
+    // Tour Categories: Public read; admin write
     match /categories/{categoryId} {
       allow read: if true;
       allow write: if isAdmin();
     }
 
+    // Destinations: Public read; admin write
     match /destinations/{destinationId} {
       allow read: if true;
       allow write: if isAdmin();
     }
 
-    // Quick Inquiries: Public can create; admin only read, update, delete
+    // CMS Page Content (10 Languages): Public read; admin write
+    match /cms_pages/{docId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // Quick Inquiries: Public create-only with honeypot validation; admin read/update/delete
     match /inquiries_quick/{inquiryId} {
       allow create: if request.resource.data.hp_website_lotus == null || request.resource.data.hp_website_lotus == '';
       allow read, update, delete: if isAdmin();
     }
 
-    // Detailed Inquiries: Public can create; admin only read, update, delete
+    // Detailed Inquiries: Public create-only with honeypot validation; admin read/update/delete
     match /inquiries_detailed/{inquiryId} {
       allow create: if request.resource.data.hp_website_lotus == null || request.resource.data.hp_website_lotus == '';
       allow read, update, delete: if isAdmin();
     }
 
-    // Legacy Inquiries (kept for backward compatibility)
+    // Legacy Inquiries (kept for backward compatibility with honeypot check)
     match /inquiries/{inquiryId} {
-      allow create: if true;
+      allow create: if request.resource.data.hp_website_lotus == null || request.resource.data.hp_website_lotus == '';
       allow read, update, delete: if isAdmin();
     }
 
@@ -51,6 +69,12 @@ service cloud.firestore {
 
     // Reviews & Testimonials: Publicly readable; admin moderated
     match /reviews/{reviewId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // Site Settings: Public read; admin write
+    match /settings/{settingId} {
       allow read: if true;
       allow write: if isAdmin();
     }

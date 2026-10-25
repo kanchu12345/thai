@@ -8,7 +8,8 @@ const TRANSLATIONS = {
   en: {
     langName: "English",
     dir: "ltr",
-    tours:     "tour_comparator_dock": "Packages Selected for Comparison",
+    tours: {
+      "tour_comparator_dock": "Packages Selected for Comparison",
       "tour_comparator_btn": "Compare Side-by-Side",
       "tour_season_best": "Best Time to Visit",
       "tour_season_peak": "Peak Sunshine & Calm Seas",
@@ -131,7 +132,8 @@ const TRANSLATIONS = {
   hi: {
     langName: "हिन्दी",
     dir: "ltr",
-    tours:     "tour_comparator_dock": "तुलना के लिए पैकेज चुने गए",
+    tours: {
+      "tour_comparator_dock": "तुलना के लिए पैकेज चुने गए",
       "tour_comparator_btn": "पैकेज की तुलना करें",
       "tour_season_best": "यात्रा का सर्वोत्तम समय",
       "tour_season_peak": "उत्तम धूप और शांत समुद्र",
@@ -250,7 +252,8 @@ const TRANSLATIONS = {
   fr: {
     langName: "Français",
     dir: "ltr",
-    tours:     "tour_comparator_dock": "Itinéraires sélectionnés pour comparaison",
+    tours: {
+      "tour_comparator_dock": "Itinéraires sélectionnés pour comparaison",
       "tour_comparator_btn": "Comparer côte à côte",
       "tour_season_best": "Meilleure période de visite",
       "tour_season_peak": "Ensoleillement idéal & Mer calme",
@@ -369,7 +372,8 @@ const TRANSLATIONS = {
   it: {
     langName: "Italiano",
     dir: "ltr",
-    tours:     "tour_comparator_dock": "Pacchetti selezionati per il confronto",
+    tours: {
+      "tour_comparator_dock": "Pacchetti selezionati per il confronto",
       "tour_comparator_btn": "Confronta dettagli",
       "tour_season_best": "Periodo migliore per viaggiare",
       "tour_season_peak": "Sole splendente e mare calmo",
@@ -488,7 +492,8 @@ const TRANSLATIONS = {
   zh: {
     langName: "中文",
     dir: "ltr",
-    tours:     "tour_comparator_dock": "已选择行程进行对比",
+    tours: {
+      "tour_comparator_dock": "已选择行程进行对比",
       "tour_comparator_btn": "并排比较行程",
       "tour_season_best": "最佳旅行季节",
       "tour_season_peak": "黄金艳阳与风平浪静",
@@ -607,7 +612,8 @@ const TRANSLATIONS = {
   ja: {
     langName: "日本語",
     dir: "ltr",
-    tours:     "tour_comparator_dock": "比較するツアーを選択済み",
+    tours: {
+      "tour_comparator_dock": "比較するツアーを選択済み",
       "tour_comparator_btn": "ツアーを並べて比較",
       "tour_season_best": "ベストシーズン",
       "tour_season_peak": "晴天と穏やかな海のベストシーズン",
@@ -726,7 +732,8 @@ const TRANSLATIONS = {
   ar: {
     langName: "العربية",
     dir: "rtl",
-    tours:     "tour_comparator_dock": "تم اختيار رحلات للمقارنة",
+    tours: {
+      "tour_comparator_dock": "تم اختيار رحلات للمقارنة",
       "tour_comparator_btn": "مقارنة جنباً إلى جنب",
       "tour_season_best": "أفضل وقت للزيارة",
       "tour_season_peak": "أجواء مشمسة وبحر هادئ",
@@ -845,7 +852,8 @@ const TRANSLATIONS = {
   de: {
     langName: "Deutsch",
     dir: "ltr",
-    tours:     "tour_comparator_dock": "Reisen zum Vergleich ausgewählt",
+    tours: {
+      "tour_comparator_dock": "Reisen zum Vergleich ausgewählt",
       "tour_comparator_btn": "Direkt vergleichen",
       "tour_season_best": "Beste Reisezeit",
       "tour_season_peak": "Sonnenschein & Ruhige See",
@@ -964,7 +972,8 @@ const TRANSLATIONS = {
   es: {
     langName: "Español",
     dir: "ltr",
-    tours:     "tour_comparator_dock": "Itinerarios seleccionados para comparar",
+    tours: {
+      "tour_comparator_dock": "Itinerarios seleccionados para comparar",
       "tour_comparator_btn": "Comparar frente a frente",
       "tour_season_best": "Mejor época para visitar",
       "tour_season_peak": "Sol radiante y aguas tranquilas",
@@ -1083,7 +1092,8 @@ const TRANSLATIONS = {
   ru: {
     langName: "Русский",
     dir: "ltr",
-    tours:     "tour_comparator_dock": "Туры выбраны для сравнения",
+    tours: {
+      "tour_comparator_dock": "Туры выбраны для сравнения",
       "tour_comparator_btn": "Сравнить маршруты",
       "tour_season_best": "Лучшее время для поездки",
       "tour_season_peak": "Идеальное солнце и спокойный океан",

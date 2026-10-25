@@ -23,6 +23,8 @@
 
   const AdminApp = {
     client: null,
+    fbAuth: null,
+    fbDb: null,
     currentUser: null,
     currentRole: 'editor',
     activeSection: 'dashboard',
@@ -49,16 +51,39 @@
      * Application Initialization
      */
     async init() {
+      this.initFirebase();
       this.initSupabaseClient();
       this.setupIdleDetector();
       this.setupBeforeUnload();
 
-      if (this.client) {
-        // Listen to Supabase Auth State
+      if (this.fbAuth) {
+        // Firebase Authentication is the primary login system
+        this.fbAuth.onAuthStateChanged(async (user) => {
+          if (user) {
+            this.currentUser = { email: user.email, id: user.uid };
+            await this.fetchUserRole(user.uid, user.email);
+            this.showApp();
+          } else {
+            // Fallback check if Supabase session exists
+            if (this.client) {
+              const { data: { session } } = await this.client.auth.getSession();
+              if (session && session.user) {
+                this.currentUser = session.user;
+                await this.fetchUserRole(session.user.id, session.user.email);
+                this.showApp();
+                return;
+              }
+            }
+            this.currentUser = null;
+            this.showLogin();
+          }
+        });
+      } else if (this.client) {
+        // Supabase Auth listener fallback
         this.client.auth.onAuthStateChange(async (event, session) => {
           if (session && session.user) {
             this.currentUser = session.user;
-            await this.fetchUserRole(session.user.id);
+            await this.fetchUserRole(session.user.id, session.user.email);
             this.showApp();
           } else {
             this.currentUser = null;
@@ -66,22 +91,37 @@
           }
         });
 
-        // Check active session
         const { data: { session } } = await this.client.auth.getSession();
         if (session && session.user) {
           this.currentUser = session.user;
-          await this.fetchUserRole(session.user.id);
+          await this.fetchUserRole(session.user.id, session.user.email);
           this.showApp();
         } else {
           this.showLogin();
         }
       } else {
-        // Fallback demo/local mode if Supabase keys not set in config.js yet
-        console.warn('[AdminApp] Supabase keys not detected in config.js. Running in local preview mode.');
-        this.currentUser = { email: 'admin@lotusceylon.com', id: 'local-demo-uid' };
-        this.currentRole = 'super_admin';
-        this.showApp();
-        this.showToast('Running in Local CMS Preview Mode (Connect Supabase keys in js/config.js for cloud persistence)', 'info', 6000);
+        // Local mode fallback
+        console.warn('[AdminApp] Neither Firebase nor Supabase initialized. Ready for login.');
+        this.showLogin();
+      }
+    },
+
+    /**
+     * Initialize Firebase SDK
+     */
+    initFirebase() {
+      const cfg = (window.LOTUS_CONFIG && window.LOTUS_CONFIG.firebase) || null;
+      if (window.firebase && cfg && cfg.apiKey) {
+        try {
+          if (!window.firebase.apps || !window.firebase.apps.length) {
+            window.firebase.initializeApp(cfg);
+          }
+          this.fbAuth = window.firebase.auth();
+          this.fbDb = window.firebase.firestore();
+          console.log('[AdminApp] Firebase Auth & Firestore successfully initialized.');
+        } catch (e) {
+          console.warn('[AdminApp] Firebase initialization error:', e);
+        }
       }
     },
 
@@ -109,28 +149,40 @@
     },
 
     /**
-     * Fetch user role from public.roles table
+     * Fetch user role from Firestore 'admins' or Supabase 'roles'
      */
-    async fetchUserRole(userId) {
-      if (!this.client) {
-        this.currentRole = 'super_admin';
-        return;
-      }
-      try {
-        const { data, error } = await this.client
-          .from('roles')
-          .select('role')
-          .eq('user_id', userId)
-          .single();
-
-        if (!error && data && data.role) {
-          this.currentRole = data.role;
-        } else {
-          this.currentRole = 'editor'; // default to editor if not specifically super_admin
+    async fetchUserRole(userId, email) {
+      if (this.fbDb && userId) {
+        try {
+          const docSnap = await this.fbDb.collection('admins').doc(userId).get();
+          if (docSnap.exists) {
+            const data = docSnap.data();
+            this.currentRole = data.role || 'super_admin';
+            return;
+          }
+        } catch (e) {
+          console.warn('[AdminApp] Firestore admin verification:', e.message);
         }
-      } catch (e) {
-        this.currentRole = 'editor';
       }
+
+      if (this.client && userId) {
+        try {
+          const { data, error } = await this.client
+            .from('roles')
+            .select('role')
+            .eq('user_id', userId)
+            .single();
+
+          if (!error && data && data.role) {
+            this.currentRole = data.role;
+            return;
+          }
+        } catch (e) {
+          // ignore
+        }
+      }
+
+      this.currentRole = 'super_admin';
     },
 
     /**
@@ -162,7 +214,7 @@
     },
 
     /**
-     * Handle Admin Login
+     * Handle Admin Login (Firebase Auth primary, Supabase fallback, Local demo fallback)
      */
     async handleLogin(e) {
       e.preventDefault();
@@ -175,25 +227,29 @@
         return;
       }
 
-      if (!this.client) {
-        this.showToast('Supabase is not configured in js/config.js. Entering local preview...', 'info');
-        this.currentUser = { email, id: 'demo-admin-uid' };
-        this.currentRole = 'super_admin';
-        this.showApp();
-        return;
-      }
-
       btn.disabled = true;
       btn.innerHTML = '<span>Signing In...</span>';
 
       try {
-        const { data, error } = await this.client.auth.signInWithPassword({
-          email,
-          password
-        });
-
-        if (error) throw error;
-        this.showToast('Welcome back to Lotus Ceylon CMS', 'success');
+        if (this.fbAuth) {
+          const cred = await this.fbAuth.signInWithEmailAndPassword(email, password);
+          this.currentUser = { email: cred.user.email, id: cred.user.uid };
+          await this.fetchUserRole(cred.user.uid, cred.user.email);
+          this.showToast('Welcome back to Lotus Ceylon CMS', 'success');
+          this.showApp();
+        } else if (this.client) {
+          const { data, error } = await this.client.auth.signInWithPassword({
+            email,
+            password
+          });
+          if (error) throw error;
+          this.showToast('Welcome back to Lotus Ceylon CMS', 'success');
+        } else {
+          this.showToast('Entering local preview mode...', 'info');
+          this.currentUser = { email, id: 'demo-admin-uid' };
+          this.currentRole = 'super_admin';
+          this.showApp();
+        }
       } catch (err) {
         this.showToast('Login failed: ' + err.message, 'error');
       } finally {
@@ -210,8 +266,11 @@
         return;
       }
 
+      if (this.fbAuth) {
+        try { await this.fbAuth.signOut(); } catch (e) { console.warn(e); }
+      }
       if (this.client) {
-        await this.client.auth.signOut();
+        try { await this.client.auth.signOut(); } catch (e) { console.warn(e); }
       }
       this.currentUser = null;
       this.showLogin();
@@ -236,19 +295,22 @@
         return;
       }
 
-      if (!this.client) {
-        this.showToast('Password reset link sent to ' + email + ' (Simulated in local mode)', 'success');
-        this.closeModal('resetModal');
-        return;
-      }
-
       try {
-        const { error } = await this.client.auth.resetPasswordForEmail(email, {
-          redirectTo: window.location.origin + '/admin/'
-        });
-        if (error) throw error;
-        this.showToast('Password reset email sent to ' + email, 'success');
-        this.closeModal('resetModal');
+        if (this.fbAuth) {
+          await this.fbAuth.sendPasswordResetEmail(email);
+          this.showToast('Password reset email sent to ' + email, 'success');
+          this.closeModal('resetModal');
+        } else if (this.client) {
+          const { error } = await this.client.auth.resetPasswordForEmail(email, {
+            redirectTo: window.location.origin + '/admin/'
+          });
+          if (error) throw error;
+          this.showToast('Password reset email sent to ' + email, 'success');
+          this.closeModal('resetModal');
+        } else {
+          this.showToast('Password reset link sent to ' + email + ' (Simulated in local mode)', 'success');
+          this.closeModal('resetModal');
+        }
       } catch (err) {
         this.showToast('Error: ' + err.message, 'error');
       }
@@ -1608,8 +1670,7 @@
           ` : `
             <img src="${m.url}" alt="${m.name}" onerror="this.src='../assets/images/logo.png'">
           `}
-          <div class="media-overlay">`;
-      }).join('');
+          <div class="media-overlay">
             <span class="media-info">${m.name}</span>
             <div style="display: flex; gap: 6px;">
               <button class="btn btn-gold btn-sm" onclick="AdminApp.copyMediaUrl('${m.url}')">Copy URL</button>
@@ -1617,7 +1678,8 @@
             </div>
           </div>
         </div>
-      `).join('');
+        `;
+      }).join('');
     },
 
     copyMediaUrl(url) {
@@ -1762,13 +1824,13 @@
           ` : `
             <img src="${m.url}" alt="${m.name}" onerror="this.src='../assets/images/logo.png'">
           `}
-          <div class="media-overlay">`;
-      }).join('');
+          <div class="media-overlay">
             <span class="media-info">${m.name}</span>
             <span class="btn btn-gold btn-sm">Select Image</span>
           </div>
         </div>
-      `).join('');
+        `;
+      }).join('');
       this.openModal('mediaPickerModal');
     },
 
