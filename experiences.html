@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Curated Experiences &amp; Travel Brands | Lotus Ceylon</title>
+  <meta name="description" content="Discover Lotus Ceylon's signature travel brands and curated experiences: Lotus Artisan Heritage, Lotus Ayu Holistic Wellness, and Lotus Nature Odyssey.">
+  <link rel="icon" type="image/png" href="logo.png?v=20261021_step1">
+
+  <!-- Master Stylesheets -->
+  <link rel="stylesheet" href="css/style.css?v=20261025_footer_fix">
+  <link rel="stylesheet" href="css/brand-header.css?v=20261025_dest_fix">
+
+  <style>
+    .exp-hero {
+      position: relative;
+      min-height: 500px;
+      display: flex;
+      align-items: center;
+      background: linear-gradient(180deg, rgba(0, 43, 73, 0.75) 0%, rgba(0, 43, 73, 0.92) 100%), 
+                  url('assets/images/temple-culture.jpg') center/cover no-repeat;
+      color: #ffffff;
+      padding: 160px 0 100px;
+      text-align: center;
+    }}
+    .brand-pillar-card {
+      background: #FFFFFF;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 43, 73, 0.06);
+      border: 1px solid rgba(0, 43, 73, 0.08);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      margin-bottom: 3.5rem;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }}
+    .brand-pillar-card:hover {
+      box-shadow: 0 16px 40px rgba(0, 43, 73, 0.12);
+      border-color: rgba(201, 162, 75, 0.45);
+    }}
+    @media (max-width: 991px) {
+      .brand-pillar-card {
+        grid-template-columns: 1fr;
+      }
+    }
+    .brand-pillar-media {
+      position: relative;
+      min-height: 380px;
+      background: #E2E8F0;
+      overflow: hidden;
+    }}
+    .brand-pillar-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s ease;
+    }}
+    .brand-pillar-card:hover .brand-pillar-media img {
+      transform: scale(1.05);
+    }}
+    .brand-pillar-body {
+      padding: 3.5rem 3rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }}
+    @media (max-width: 768px) {
+      .brand-pillar-body {
+        padding: 2.25rem 1.5rem;
+      }
+    }
+    .exp-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }}
+    @media (max-width: 1100px) {
+      .exp-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (max-width: 640px) {
+      .exp-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    .exp-item-card {
+      background: #FFFFFF;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0, 43, 73, 0.06);
+      border: 1px solid rgba(0, 43, 73, 0.08);
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }}
+    .exp-item-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 30px rgba(0, 43, 73, 0.12);
+    }}
+    .exp-item-media {
+      position: relative;
+      height: 230px;
+      overflow: hidden;
+      background: #E2E8F0;
+    }}
+    .exp-item-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }}
+    .exp-item-card:hover .exp-item-media img {
+      transform: scale(1.06);
+    }}
+    .exp-item-body {
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }}
+    .exp-filter-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 0.65rem;
+      flex-wrap: wrap;
+      margin-bottom: 3rem;
+    }}
+  </style>
+</head>
+<body style="background-color: var(--ivory, #FBF6EC); color: var(--color-ink, #2A1D17);">
+
+  <!-- Master Site Header (Walkers Tours Luxury Style) -->
+  <header class="site-header-walkers" id="siteHeader">
+    <div class="wrapper--95">
+      <div class="header-top-row">
+        
+        <!-- Brand Logo & Title -->
+        <a href="index.html" class="header-brand" title="Lotus Ceylon International Tours &amp; Services">
+          <img src="logo.png?v=20261021_step1" alt="Lotus Ceylon Emblem" class="header-brand-logo">
+          <div class="header-brand-text">
+            <span class="header-brand-name"><span class="brand-name-lotus">Lotus</span> <span class="brand-name-ceylon">Ceylon</span></span>
+            <span class="header-brand-sub">INTERNATIONAL TOURS &amp; SERVICES</span>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation Menu -->
+        <nav aria-label="Main Navigation">
+          <ul class="walkers-menu" id="primaryNav">
+            <li class="walkers-menu-item">
+              <a href="index.html" class="walkers-menu-link">Home</a>
+            </li>
+
+            <!-- Tours with Mega Dropdown (10 Categories) -->
+            <li class="walkers-menu-item">
+              <a href="sri-lanka-tours.html" class="walkers-menu-link">
+                <span>Tours</span>
+                <svg class="walkers-caret" viewBox="0 0 10 6"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" fill="none"/></svg>
+              </a>
+              <div class="walkers-megamenu">
+                <div class="megamenu-header">
+                  <span class="megamenu-header-title">Curated Ceylon Tour Categories</span>
+                  <a href="sri-lanka-tours.html" class="megamenu-view-all">All Tours ➔</a>
+                </div>
+                <div class="megamenu-grid-10">
+                  <a href="cultural-tours.html" class="megamenu-cat-card">
+                    <span class="megamenu-cat-icon">🏛️</span>
+                    <div class="megamenu-cat-text">
+                      <span class="megamenu-cat-name">Cultural</span>
+                      <span class="megamenu-cat-desc">Ancient kingdoms &amp; rock temples</span>
+                    </div>
+                  </a>
+                  <a href="cultural-tours.html" class="megamenu-cat-card">
+                    <span class="megamenu-cat-icon">☸️</span>
+                    <div class="megamenu-cat-text">
+                      <span class="megamenu-cat-name">Buddhist Heritage</span>
+                      <span class="megamenu-cat-desc">Sacred stupas &amp; monastic pilgrimages</span>
+                    </div>
+                  </a>
+                  <a href="wildlife-tours.html" class="megamenu-cat-card">
+                    <span class="megamenu-cat-icon">🐆</span>
+                    <div class="megamenu-cat-text">
+                      <span class="megamenu-cat-name">Wildlife</span>
+                      <span class="megamenu-cat-desc">Yala leopards &amp; elephant gathering</span>
+                    </div>
+                  </a>
+                  <a href="beach-tours.html" class="megamenu-cat-card">
+                    <span class="megamenu-cat-icon">🏖️</span>
+                    <div class="megamenu-cat-text">
+                      <span class="megamenu-cat-name">Beach</span>
+                      <span class="megamenu-cat-desc">Golden palms &amp; private bays</span>
+                    </div>
+                  </a>
+                  <a href="hill-country-tours.html" class="megamenu-cat-card">
+                    <span class="megamenu-cat-icon">⛰️</span>
+                    <div class="megamenu-cat-text">
+                      <span class="megamenu-cat-name">Hill Country</span>
+                      <span class="megamenu-cat-desc">Misty tea peaks &amp; scenic rail</span>
+                    </div>
+                  </a>
+                  <a href="ayurvedic-tours.html" class="megamenu-cat-card">
+                    <span class="megamenu-cat-icon">🌿</span>
+                    <div class="megamenu-cat-text">
+                      <span class="megamenu-cat-name">Ayurveda</span>
+                      <span class="megamenu-cat-desc">Herbal sanctuaries &amp; wellness</span>
+                    </div>
+                  </a>
+                  <a href="honeymoon-tours.html" class="megamenu-cat-card">
+                    <span class="megamenu-cat-icon">💍</span>
+                    <div class="megamenu-cat-text">
+                      <span class="megamenu-cat-name">Honeymoon</span>
+                      <span class="megamenu-cat-desc">Bespoke luxury for couples</span>
+                    </div>
+                  </a>
+                  <a href="family-tours.html" class="megamenu-cat-card">
+                    <span class="megamenu-cat-icon">👨‍👩‍👧‍👦</span>
+                    <div class="megamenu-cat-text">
+                      <span class="megamenu-cat-name">Family</span>
+                      <span class="megamenu-cat-desc">Safe journeys for all generations</span>
+                    </div>
+                  </a>
+                  <a href="adventure-tours.html" class="megamenu-cat-card">
+                    <span class="megamenu-cat-icon">🧗‍♂️</span>
+                    <div class="megamenu-cat-text">
+                      <span class="megamenu-cat-name">Adventure</span>
+                      <span class="megamenu-cat-desc">Trekking, surfing &amp; waterfalls</span>
+                    </div>
+                  </a>
+                  <a href="ramayana-tours.html" class="megamenu-cat-card">
+                    <span class="megamenu-cat-icon">🏹</span>
+                    <div class="megamenu-cat-text">
+                      <span class="megamenu-cat-name">Ramayana</span>
+                      <span class="megamenu-cat-desc">Epic legendary sacred trail</span>
+                    </div>
+                  </a>
+                </div>
+              </div>
+            </li>
+
+            <li class="walkers-menu-item">
+              <a href="destinations.html" class="walkers-menu-link">Destinations</a>
+            </li>
+            <li class="walkers-menu-item">
+              <a href="experiences.html" class="walkers-menu-link active" style="color: var(--color-gold, #C9A84C); font-weight: 700;">Experiences</a>
+            </li>
+            <li class="walkers-menu-item">
+              <a href="about.html" class="walkers-menu-link">About Us</a>
+            </li>
+            <li class="walkers-menu-item">
+              <a href="index.html#gallery" class="walkers-menu-link">Gallery</a>
+            </li>
+            <li class="walkers-menu-item">
+              <a href="index.html#reviews" class="walkers-menu-link">Reviews</a>
+            </li>
+            <li class="walkers-menu-item">
+              <a href="blog.html" class="walkers-menu-link">Blog</a>
+            </li>
+            <li class="walkers-menu-item">
+              <a href="contact.html" class="walkers-menu-link">Contact</a>
+            </li>
+          </ul>
+        </nav>
+
+        <!-- Right Header Tools: 10-Slot Language Switcher & Gold Inquire Button -->
+        <div class="header-tools">
+          
+          <!-- 10-Slot Language Switcher -->
+          <div class="custom-lang-pill">
+            <button type="button" class="lang-pill-btn" id="langPillToggle" title="Select Language (10 Languages)">
+              <span id="currentLangLabel">EN</span>
+              <svg class="walkers-caret" viewBox="0 0 10 6"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" fill="none"/></svg>
+            </button>
+            <div class="lang-pill-dropdown" id="langPillMenu">
+              <button type="button" data-lang="en" class="is-active">🇬🇧 English</button>
+              <button type="button" data-lang="zh">🇨🇳 中文 (Chinese)</button>
+              <button type="button" data-lang="de">🇩🇪 Deutsch</button>
+              <button type="button" data-lang="fr">🇫🇷 Français</button>
+              <button type="button" data-lang="ru">🇷🇺 Русский</button>
+              <button type="button" data-lang="es">🇪🇸 Español</button>
+              <button type="button" data-lang="it">🇮🇹 Italiano</button>
+              <button type="button" data-lang="ja">🇯🇵 日本語</button>
+              <button type="button" data-lang="ar">🇦🇪 العربية</button>
+              <button type="button" data-lang="hi">🇮🇳 हिन्दी</button>
+            </div>
+          </div>
+
+          <!-- Gold Inquire Button with Hover Fill-Slide Effect -->
+          <a href="inquiry-detailed.html" class="gold-inquire-btn" title="Inquire Now">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 20 20" fill="none">
+              <path d="M16.5909 5.02051H16.1522V8.43079C16.1522 10.9574 14.0966 13.013 11.57 13.013H5.02148V13.4518C5.02148 15.3322 6.55138 16.862 8.43177 16.862H15.4373L19.0401 19.8644C19.1474 19.9538 19.2808 20.0002 19.4154 20.0002C19.7375 20.0002 20.0012 19.7388 20.0012 19.4142V8.43079C20.0012 6.5475 18.4775 5.02051 16.5909 5.02051Z"/>
+              <path d="M14.9797 8.43118V3.41029C14.9797 1.52363 13.4528 0 11.5694 0H3.41029C1.52363 0 0 1.52684 0 3.41029V14.3937C0 14.7181 0.26368 14.9797 0.585802 14.9797C0.720388 14.9797 0.853754 14.9333 0.961027 14.8437L4.56388 11.8415H11.5694C13.4498 11.8415 14.9797 10.3117 14.9797 8.43118Z"/>
+            </svg>
+            <span>Inquire</span>
+          </a>
+
+          <!-- Mobile Hamburger Toggle -->
+          <button type="button" class="walkers-ham" id="mobileHamToggle" aria-label="Toggle Mobile Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- Full-Screen Slide-in Mobile Navigation Menu -->
+  <div class="mobile-nav-fullscreen" id="mobileNavFullscreen">
+    <div class="mobile-nav-header">
+      <a href="index.html" class="header-brand">
+        <img src="logo.png?v=20261021_step1" alt="Lotus Ceylon Logo" style="height: 48px; width: auto;">
+        <span class="header-brand-name" style="color: var(--ink); font-size: 1.25rem;"><span style="color: var(--ink);">Lotus</span> <span style="color: var(--lotus-primary);">Ceylon</span></span>
+      </a>
+      <button type="button" class="mobile-nav-close" id="mobileNavClose" aria-label="Close menu">&times;</button>
+    </div>
+    <ul class="mobile-nav-list">
+      <li class="mobile-nav-item"><a href="index.html" class="mobile-nav-link">Home</a></li>
+      <li class="mobile-nav-item"><a href="sri-lanka-tours.html" class="mobile-nav-link">Tours</a></li>
+      <li class="mobile-nav-item"><a href="destinations.html" class="mobile-nav-link">Destinations</a></li>
+      <li class="mobile-nav-item"><a href="experiences.html" class="mobile-nav-link active">Experiences</a></li>
+      <li class="mobile-nav-item"><a href="about.html" class="mobile-nav-link">About Us</a></li>
+      <li class="mobile-nav-item"><a href="blog.html" class="mobile-nav-link">Blog</a></li>
+      <li class="mobile-nav-item"><a href="contact.html" class="mobile-nav-link">Contact</a></li>
+    </ul>
+    <div style="margin-top: auto; padding-top: 1.5rem; border-top: 1px solid var(--mist); display: flex; flex-direction: column; gap: 0.85rem;">
+      <a href="https://wa.me/94715422384" target="_blank" rel="noopener" style="background: #25D366; color: #FFFFFF; padding: 0.75rem 1.25rem; border-radius: 9999px; text-align: center; text-decoration: none; font-weight: 700; font-size: 0.88rem;">💬 WhatsApp (+94 71 54 22 384)</a>
+      <a href="inquiry-detailed.html" class="gold-inquire-btn" style="justify-content: center;">Plan My Bespoke Journey</a>
+    </div>
+  </div>
+
+  <main id="mainContent">
+    <!-- Hero Section -->
+    <section class="exp-hero">
+      <div class="wrapper--80" style="max-width: 900px; margin: 0 auto;">
+        <div class="sacred-badge-tag" style="margin-bottom: 0.85rem; background: rgba(201, 84, 81, 0.35); border-color: rgba(248, 229, 221, 0.45); color: #F8E5DD;">
+          <span class="sacred-icon">🌸</span> ✦ CURATED ENCOUNTERS &amp; SIGNATURE BRANDS ✦ <span class="sacred-icon">🌸</span>
+        </div>
+        <h1 class="heading--60" style="color: #FFFFFF; margin-bottom: 1rem;">
+          <span>Moments of Pure Wonder</span><br>Handcrafted Ceylon Encounters
+        </h1>
+        <p class="paragraph--20" style="color: #E2E8F0; line-height: 1.75;">
+          Beyond standard sightseeing lies the true soul of Ceylon. Discover our three specialized travel pillars and handcrafted cultural, wellness, and wildlife encounters across the sacred island.
+        </p>
+      </div>
+    </section>
+
+    <!-- SECTION 1: THREE SIGNATURE TRAVEL PILLARS (Inspired by Walkers Brands) -->
+    <section class="padding-top--100 padding-bottom--80" id="brandsPillars">
+      <div class="wrapper--90">
+        
+        <div style="text-align: center; max-width: 760px; margin: 0 auto 3.5rem;">
+          <span style="color: var(--color-lotus-pink); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.14em;">Our Specialized Travel Pillars</span>
+          <h2 class="heading--48 font-color--dark-blue" style="margin-top: 0.5rem;">Three Dedicated Signature Brands</h2>
+          <p style="color: #64748B; font-size: 1.05rem; line-height: 1.7; margin-top: 0.75rem;">
+            Whether your journey is centered on ancient sacred pilgrimages, deep holistic Ayurvedic rejuvenation, or thrilling wildlife expeditions, our specialized divisions design every moment with mastery.
+          </p>
+        </div>
+
+        <!-- Brand Pillar 1: Lotus Artisan & Sacred Heritage (Inspired by Art Travele) -->
+        <article class="brand-pillar-card" id="artisan-heritage">
+          <div class="brand-pillar-media">
+            <img src="assets/images/sigiriya.jpg" alt="Lotus Artisan Sacred Heritage Sri Lanka" loading="lazy">
+          </div>
+          <div class="brand-pillar-body">
+            <div style="display: flex; gap: 0.5rem; align-items: center; margin-bottom: 0.5rem;">
+              <span style="font-size: 1.3rem;">🏛️</span>
+              <span style="color: var(--color-lotus-pink); font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em;">Artisan &amp; Cultural Heritage</span>
+            </div>
+            <h3 style="font-family: var(--font-serif, 'Playfair Display', Georgia, serif); font-size: 2rem; color: var(--color-dark-blue); font-weight: 700; margin: 0 0 1rem; line-height: 1.2;">
+              Lotus Artisan Travel
+            </h3>
+            <p style="color: #475569; font-size: 1.05rem; line-height: 1.75; margin-bottom: 1.5rem;">
+              Crafted for discerning travelers and cultural connoisseurs. Delve into Sri Lanka's 3,000-year living Buddhist chronicles, UNESCO rock citadels, private temple chanting ceremonies, Geoffrey Bawa architectural masterworks, and intimate masterclasses with heritage artisans.
+            </p>
+            <div style="display: flex; gap: 0.65rem; flex-wrap: wrap; margin-bottom: 2rem;">
+              <span style="background: rgba(0,43,73,0.06); padding: 4px 12px; border-radius: 20px; font-size: 0.82rem; font-weight: 600; color: var(--color-dark-blue);">✦ Private Temple Rituals</span>
+              <span style="background: rgba(0,43,73,0.06); padding: 4px 12px; border-radius: 20px; font-size: 0.82rem; font-weight: 600; color: var(--color-dark-blue);">✦ Bawa Architecture Trails</span>
+              <span style="background: rgba(0,43,73,0.06); padding: 4px 12px; border-radius: 20px; font-size: 0.82rem; font-weight: 600; color: var(--color-dark-blue);">✦ Living Artisan Guilds</span>
+            </div>
+            <div>
+              <a href="cultural-tours.html" class="next-btn next-btn--blue">
+                <span class="next-btn-circle">➔</span>
+                <span>Explore Cultural Journeys</span>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Brand Pillar 2: Lotus Ayu Holistic Wellness (Inspired by Ayu by Walkers) -->
+        <article class="brand-pillar-card" id="lotus-ayu" style="direction: rtl;">
+          <div class="brand-pillar-media" style="direction: ltr;">
+            <img src="assets/images/couple-travel.jpg" alt="Lotus Ayu Holistic Ayurveda Sri Lanka" loading="lazy">
+          </div>
+          <div class="brand-pillar-body" style="direction: ltr;">
+            <div style="display: flex; gap: 0.5rem; align-items: center; margin-bottom: 0.5rem;">
+              <span style="font-size: 1.3rem;">🌿</span>
+              <span style="color: var(--color-gold, #C9A84C); font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em;">Ayurveda &amp; Healing</span>
+            </div>
+            <h3 style="font-family: var(--font-serif, 'Playfair Display', Georgia, serif); font-size: 2rem; color: var(--color-dark-blue); font-weight: 700; margin: 0 0 1rem; line-height: 1.2;">
+              Lotus Ayu Wellness
+            </h3>
+            <p style="color: #475569; font-size: 1.05rem; line-height: 1.75; margin-bottom: 1.5rem;">
+              Rooted in centuries-old Ceylon Ayurvedic wisdom. Each bespoke retreat is curated under the direction of licensed Ayurvedic physicians (Vaidyas), offering traditional Panchakarma detoxification, custom herbal elixir treatments, silent forest meditation, and organic restorative nutrition.
+            </p>
+            <div style="display: flex; gap: 0.65rem; flex-wrap: wrap; margin-bottom: 2rem;">
+              <span style="background: rgba(0,43,73,0.06); padding: 4px 12px; border-radius: 20px; font-size: 0.82rem; font-weight: 600; color: var(--color-dark-blue);">✦ Physician-Led Panchakarma</span>
+              <span style="background: rgba(0,43,73,0.06); padding: 4px 12px; border-radius: 20px; font-size: 0.82rem; font-weight: 600; color: var(--color-dark-blue);">✦ Forest Hermitage Meditation</span>
+              <span style="background: rgba(0,43,73,0.06); padding: 4px 12px; border-radius: 20px; font-size: 0.82rem; font-weight: 600; color: var(--color-dark-blue);">✦ Restorative Herbal Sanctuaries</span>
+            </div>
+            <div>
+              <a href="ayurvedic-tours.html" class="next-btn next-btn--blue">
+                <span class="next-btn-circle">➔</span>
+                <span>Explore Wellness Retreats</span>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Brand Pillar 3: Lotus Nature Odyssey (Inspired by Nature Odyssey) -->
+        <article class="brand-pillar-card" id="nature-odyssey">
+          <div class="brand-pillar-media">
+            <img src="assets/images/wildlife.jpg" alt="Lotus Nature Odyssey Wildlife Safari Sri Lanka" loading="lazy">
+          </div>
+          <div class="brand-pillar-body">
+            <div style="display: flex; gap: 0.5rem; align-items: center; margin-bottom: 0.5rem;">
+              <span style="font-size: 1.3rem;">🐆</span>
+              <span style="color: #0284C7; font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em;">Wildlife &amp; Eco-Expeditions</span>
+            </div>
+            <h3 style="font-family: var(--font-serif, 'Playfair Display', Georgia, serif); font-size: 2rem; color: var(--color-dark-blue); font-weight: 700; margin: 0 0 1rem; line-height: 1.2;">
+              Lotus Nature Odyssey
+            </h3>
+            <p style="color: #475569; font-size: 1.05rem; line-height: 1.75; margin-bottom: 1.5rem;">
+              Sri Lanka is an extraordinary biodiversity sanctuary. From tracking leopards and sloth bears in Yala to witnessing the world's largest gathering of Asian elephants in Minneriya, ethical Blue Whale catamaran sailings, and Sinharaja primary rainforest treks with senior field naturalists.
+            </p>
+            <div style="display: flex; gap: 0.65rem; flex-wrap: wrap; margin-bottom: 2rem;">
+              <span style="background: rgba(0,43,73,0.06); padding: 4px 12px; border-radius: 20px; font-size: 0.82rem; font-weight: 600; color: var(--color-dark-blue);">✦ Leopard &amp; Sloth Bear Safaris</span>
+              <span style="background: rgba(0,43,73,0.06); padding: 4px 12px; border-radius: 20px; font-size: 0.82rem; font-weight: 600; color: var(--color-dark-blue);">✦ Ethical Whale Watching</span>
+              <span style="background: rgba(0,43,73,0.06); padding: 4px 12px; border-radius: 20px; font-size: 0.82rem; font-weight: 600; color: var(--color-dark-blue);">✦ Sinharaja Rainforest Biodiversity</span>
+            </div>
+            <div>
+              <a href="wildlife-tours.html" class="next-btn next-btn--blue">
+                <span class="next-btn-circle">➔</span>
+                <span>Explore Nature Expeditions</span>
+              </a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- SECTION 2: 12 CURATED SIGNATURE ENCOUNTERS (INTERACTIVE GRID) -->
+    <section class="padding-top--80 padding-bottom--100" style="background: rgba(0,43,73,0.02); border-top: 1px solid rgba(0,43,73,0.06);">
+      <div class="wrapper--90">
+        
+        <div style="text-align: center; max-width: 760px; margin: 0 auto 3rem;">
+          <span style="color: var(--color-gold); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.14em;">Handcrafted Island Moments</span>
+          <h2 class="heading--48 font-color--dark-blue" style="margin-top: 0.5rem;">12 Unforgettable Ceylon Encounters</h2>
+          <p style="color: #64748B; font-size: 1.05rem; margin-top: 0.75rem;">
+            Filter through our most sought-after private experiences, each seamlessly woven into your personalized itinerary.
+          </p>
+        </div>
+
+        <!-- Filter Tabs -->
+        <div class="exp-filter-tabs" role="tablist">
+          <button type="button" class="dest-filter-btn is-active" data-cat="all">All Experiences (12)</button>
+          <button type="button" class="dest-filter-btn" data-cat="cultural">Sacred &amp; Cultural (4)</button>
+          <button type="button" class="dest-filter-btn" data-cat="wellness">Wellness &amp; Healing (3)</button>
+          <button type="button" class="dest-filter-btn" data-cat="wildlife">Wildlife &amp; Marine (3)</button>
+          <button type="button" class="dest-filter-btn" data-cat="highlands">Highlands &amp; Vistas (2)</button>
+        </div>
+
+        <!-- 12 Experience Cards Grid -->
+        <div class="exp-grid" id="expGrid">
+          
+          <!-- Exp 1 -->
+          <article class="exp-item-card" data-cat="cultural">
+            <div class="exp-item-media">
+              <img src="assets/tours/cultural/royal-kingdoms-1.jpg" alt="Evening Chanting at Temple of the Tooth" loading="lazy">
+              <span class="dest-card-region">Sacred &amp; Cultural</span>
+            </div>
+            <div class="exp-item-body">
+              <h3 class="dest-card-title">Evening Chanting &amp; Oil Lamps</h3>
+              <p class="dest-card-desc">Attend the reverent evening Tevava drum offering and light earthen lamps amidst the golden roof of Sri Dalada Maligawa in Kandy.</p>
+              <div style="font-size: 0.8rem; font-weight: 700; color: var(--color-gold); margin-top: auto;">Location: Kandy &middot; Duration: 2.5 Hours</div>
+            </div>
+          </article>
+
+          <!-- Exp 2 -->
+          <article class="exp-item-card" data-cat="cultural">
+            <div class="exp-item-media">
+              <img src="assets/images/temple-culture.jpg" alt="Dawn Meditation at Jaya Sri Maha Bodhi" loading="lazy">
+              <span class="dest-card-region">Sacred &amp; Cultural</span>
+            </div>
+            <div class="exp-item-body">
+              <h3 class="dest-card-title">Dawn Bodhi Tree Meditation</h3>
+              <p class="dest-card-desc">Experience profound morning stillness under the world's oldest historical tree, surrounded by silent pilgrims in white offering fresh lotus blossoms.</p>
+              <div style="font-size: 0.8rem; font-weight: 700; color: var(--color-gold); margin-top: auto;">Location: Anuradhapura &middot; Duration: 2 Hours</div>
+            </div>
+          </article>
+
+          <!-- Exp 3 -->
+          <article class="exp-item-card" data-cat="wildlife">
+            <div class="exp-item-media">
+              <img src="assets/tours/wildlife/big-five-1.jpg" alt="Private Leopard Tracking in Yala" loading="lazy">
+              <span class="dest-card-region">Wildlife &amp; Safari</span>
+            </div>
+            <div class="exp-item-body">
+              <h3 class="dest-card-title">Private Leopard Tracking Safari</h3>
+              <p class="dest-card-desc">Custom luxury 4x4 safari with senior field naturalist into Yala's premier blocks, tracking apex leopards, sloth bears, and crocodiles at dawn.</p>
+              <div style="font-size: 0.8rem; font-weight: 700; color: var(--color-gold); margin-top: auto;">Location: Yala National Park &middot; Duration: Half Day</div>
+            </div>
+          </article>
+
+          <!-- Exp 4 -->
+          <article class="exp-item-card" data-cat="wildlife">
+            <div class="exp-item-media">
+              <img src="assets/tours/wildlife/predator-trail-1.jpg" alt="The Great Elephant Gathering" loading="lazy">
+              <span class="dest-card-region">Wildlife &amp; Safari</span>
+            </div>
+            <div class="exp-item-body">
+              <h3 class="dest-card-title">The Great Elephant Gathering</h3>
+              <p class="dest-card-desc">Witness up to 300 Asian elephants congregate on the receding shores of the ancient Minneriya tank during the dry season—a world spectacle.</p>
+              <div style="font-size: 0.8rem; font-weight: 700; color: var(--color-gold); margin-top: auto;">Location: Minneriya / Kaudulla &middot; Duration: 3.5 Hours</div>
+            </div>
+          </article>
+
+          <!-- Exp 5 -->
+          <article class="exp-item-card" data-cat="wellness">
+            <div class="exp-item-media">
+              <img src="assets/tours/cultural/three-millennia-1.jpg" alt="Vaidya Ayurvedic Consultation" loading="lazy">
+              <span class="dest-card-region">Wellness &amp; Healing</span>
+            </div>
+            <div class="exp-item-body">
+              <h3 class="dest-card-title">Physician Consultation &amp; Shirodhara</h3>
+              <p class="dest-card-desc">Personal pulse diagnosis by an Ayurvedic doctor, followed by warm rhythmic herbal oil Shirodhara therapy to quiet mental chatter and restore balance.</p>
+              <div style="font-size: 0.8rem; font-weight: 700; color: var(--color-gold); margin-top: auto;">Location: Dedicated Retreats &middot; Duration: Half Day</div>
+            </div>
+          </article>
+
+          <!-- Exp 6 -->
+          <article class="exp-item-card" data-cat="highlands">
+            <div class="exp-item-media">
+              <img src="assets/images/hero-nine-arches.jpg" alt="Demodara Nine Arch Bridge Scenic Train" loading="lazy">
+              <span class="dest-card-region">Highlands &amp; Vistas</span>
+            </div>
+            <div class="exp-item-body">
+              <h3 class="dest-card-title">Nine Arch Bridge Observation Train</h3>
+              <p class="dest-card-desc">Ride Sri Lanka's famous hill-country railway through mist-wrapped pine forests, tea estates, and over the dramatic colonial brick viaduct in Ella.</p>
+              <div style="font-size: 0.8rem; font-weight: 700; color: var(--color-gold); margin-top: auto;">Location: Kandy to Ella &middot; Duration: Half Day</div>
+            </div>
+          </article>
+
+          <!-- Exp 7 -->
+          <article class="exp-item-card" data-cat="highlands">
+            <div class="exp-item-media">
+              <img src="assets/images/tea-country.jpg" alt="Highland Tea Tasting Experience" loading="lazy">
+              <span class="dest-card-region">Highlands &amp; Vistas</span>
+            </div>
+            <div class="exp-item-body">
+              <h3 class="dest-card-title">Master Tea Taster Immersion</h3>
+              <p class="dest-card-desc">Stroll private estate tea rows with resident tea pluckers, followed by an artisanal tasting session of Silver Tips and Broken Orange Pekoe in Nuwara Eliya.</p>
+              <div style="font-size: 0.8rem; font-weight: 700; color: var(--color-gold); margin-top: auto;">Location: Nuwara Eliya &middot; Duration: 2.5 Hours</div>
+            </div>
+          </article>
+
+          <!-- Exp 8 -->
+          <article class="exp-item-card" data-cat="wildlife">
+            <div class="exp-item-media">
+              <img src="assets/images/sunset-mirissa.jpg" alt="Blue Whale Watching in Mirissa" loading="lazy">
+              <span class="dest-card-region">Coastal &amp; Marine</span>
+            </div>
+            <div class="exp-item-body">
+              <h3 class="dest-card-title">Private Catamaran Whale Watching</h3>
+              <p class="dest-card-desc">Sail off the south coast with a marine naturalist to respectfully observe the planet's largest creatures—Blue Whales and Spinner Dolphins.</p>
+              <div style="font-size: 0.8rem; font-weight: 700; color: var(--color-gold); margin-top: auto;">Location: Mirissa &middot; Duration: 4 Hours</div>
+            </div>
+          </article>
+
+          <!-- Exp 9 -->
+          <article class="exp-item-card" data-cat="cultural">
+            <div class="exp-item-media">
+              <img src="assets/images/beach-galle.jpg" alt="Geoffrey Bawa Lunuganga Estate" loading="lazy">
+              <span class="dest-card-region">Sacred &amp; Cultural</span>
+            </div>
+            <div class="exp-item-body">
+              <h3 class="dest-card-title">Geoffrey Bawa Lunuganga Estate</h3>
+              <p class="dest-card-desc">Walk the private country estate of legendary tropical modernist Geoffrey Bawa, exploring fifty years of garden design and tranquil lakeside courtyards.</p>
+              <div style="font-size: 0.8rem; font-weight: 700; color: var(--color-gold); margin-top: auto;">Location: Bentota &middot; Duration: 2.5 Hours</div>
+            </div>
+          </article>
+
+          <!-- Exp 10 -->
+          <article class="exp-item-card" data-cat="cultural">
+            <div class="exp-item-media">
+              <img src="assets/tours/cultural/sacred-triangle-1.jpg" alt="Traditional Mask Carving Guild" loading="lazy">
+              <span class="dest-card-region">Sacred &amp; Cultural</span>
+            </div>
+            <div class="exp-item-body">
+              <h3 class="dest-card-title">Traditional Artisan Guild Immersion</h3>
+              <p class="dest-card-desc">Meet 5th-generation master carvers shaping sacred Kaduru-wood masks and handloom weavers preserving ancient motifs along the south-west coast.</p>
+              <div style="font-size: 0.8rem; font-weight: 700; color: var(--color-gold); margin-top: auto;">Location: Ambalangoda &middot; Duration: 2 Hours</div>
+            </div>
+          </article>
+
+          <!-- Exp 11 -->
+          <article class="exp-item-card" data-cat="wellness">
+            <div class="exp-item-media">
+              <img src="assets/tours/wildlife/rainforest-1.jpg" alt="Ritigala Forest Meditation Walk" loading="lazy">
+              <span class="dest-card-region">Wellness &amp; Healing</span>
+            </div>
+            <div class="exp-item-body">
+              <h3 class="dest-card-title">Ritigala Ancient Hermitage Walk</h3>
+              <p class="dest-card-desc">A guided silent walk through the ancient 1st-century BC strict monastery ruins of Ritigala, enveloped in cool evergreen canopy and medicinal herbs.</p>
+              <div style="font-size: 0.8rem; font-weight: 700; color: var(--color-gold); margin-top: auto;">Location: Ritigala Sanctuary &middot; Duration: 3 Hours</div>
+            </div>
+          </article>
+
+          <!-- Exp 12 -->
+          <article class="exp-item-card" data-cat="wellness">
+            <div class="exp-item-media">
+              <img src="assets/tours/beach/southern-sands-1.jpg" alt="Madu Ganga River Cinnamon Island Safari" loading="lazy">
+              <span class="dest-card-region">Coastal &amp; Marine</span>
+            </div>
+            <div class="exp-item-body">
+              <h3 class="dest-card-title">Madu River &amp; Cinnamon Island</h3>
+              <p class="dest-card-desc">Boat journey through 64 mangrove islands, visiting an ancient temple island and witnessing true Ceylon cinnamon peeling by generational growers.</p>
+              <div style="font-size: 0.8rem; font-weight: 700; color: var(--color-gold); margin-top: auto;">Location: Balapitiya &middot; Duration: 2.5 Hours</div>
+            </div>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Custom Bespoke Journey CTA -->
+    <section class="padding-top--80 padding-bottom--80" style="background: linear-gradient(135deg, rgba(248, 229, 221, 0.4) 0%, rgba(253, 251, 247, 1) 100%); text-align: center; border-top: 1px solid rgba(0, 43, 73, 0.08);">
+      <div class="wrapper--80" style="max-width: 800px; margin: 0 auto;">
+        <span style="color: var(--color-lotus-pink); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.14em;">Artisanal Itinerary Planning</span>
+        <h2 class="heading--48 font-color--dark-blue" style="margin: 0.75rem 0 1rem;">
+          Weave These Encounters Into Your Private Tour
+        </h2>
+        <p style="font-size: 1.1rem; color: #475569; line-height: 1.7; margin-bottom: 2rem;">
+          Every Lotus Ceylon itinerary is crafted from scratch. Let us know which moments of wonder speak to your heart, and our travel designers will arrange private access and chauffeured ease.
+        </p>
+        <div style="display: flex; gap: 1.25rem; justify-content: center; flex-wrap: wrap;">
+          <a href="inquiry-detailed.html" class="next-btn next-btn--blue">
+            <span class="next-btn-circle">➔</span>
+            <span>Design Custom Journey</span>
+          </a>
+          <a href="https://wa.me/94715422384" target="_blank" rel="noopener" class="next-btn next-btn--white" style="border: 1px solid #25D366; color: #075E54;">
+            <span class="next-btn-circle" style="background: #25D366; color: #ffffff;">💬</span>
+            <span>Chat on WhatsApp</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Master Walkers Luxury Dark Footer -->
+  <footer class="site-footer-walkers" id="contact">
+    <div class="wrapper--80">
+      
+      <div class="footer-top-grid">
+        <!-- Col 1: Contact Information & Global Desks -->
+        <div>
+          <a href="index.html" class="footer-brand" style="text-decoration: none; display: flex; align-items: center; gap: 12px; margin-bottom: 1.5rem;">
+            <img src="logo.png?v=20261021_step1" alt="Lotus Ceylon Emblem" style="height: 54px; width: auto; max-width: 75px; object-fit: contain;">
+            <div>
+              <span style="font-family: var(--font-serif, 'Playfair Display', Georgia, serif); font-size: 1.45rem; font-weight: 700; letter-spacing: 0.05em; color: #FFFFFF; display: block; line-height: 1.1;">
+                <span style="color: #FFFFFF;">Lotus</span> <span style="color: var(--color-gold, #D4A359);">Ceylon</span>
+              </span>
+              <span style="font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase; color: #CBD5E1; display: block; margin-top: 2px;">
+                INTERNATIONAL TOURS &amp; SERVICES
+              </span>
+            </div>
+          </a>
+          <p class="footer-col-title" style="margin-top: 0.5rem;">Address &amp; Headquarters</p>
+          <div class="footer-contact-list">
+            <div class="footer-contact-item">
+              <p>
+                <strong>LOTUS CEYLON INTERNATIONAL TOURS &amp; SERVICES (PRIVATE) LIMITED</strong><br>
+                286/C, Niwandama South,<br>
+                Ja-Ela, Sri Lanka &ndash; 11350
+              </p>
+            </div>
+            <div class="footer-contact-item">
+              <p style="margin-bottom: 0.25rem; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-gold);">Phone / WhatsApp Hotline</p>
+              <a href="tel:+94715422384" style="color: #FFFFFF; font-weight: 700; font-size: 1.05rem;">+94 71 54 22 384</a>
+            </div>
+            <div class="footer-contact-item">
+              <p style="margin-bottom: 0.25rem; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-gold);">Email Inquiries</p>
+              <a href="mailto:paliforbuddhism@gmail.com" style="color: #CBD5E1;">paliforbuddhism@gmail.com</a>
+            </div>
+            <div class="footer-contact-item">
+              <p style="margin-bottom: 0.35rem; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-gold);">WeChat &amp; LINE Concierge</p>
+              <p style="font-size: 0.88rem; line-height: 1.6; color: #E2E8F0;">
+                <span style="color: var(--color-gold); font-weight: 600;">WeChat ID:</span> FGUTaiwan90 (+9471 54 22 384)<br>
+                <span style="color: var(--color-gold); font-weight: 600;">LINE ID:</span> dpbs2024 (Line Phone: +886 958 561 954)
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Col 2: Quick Links -->
+        <div>
+          <p class="footer-col-title">Quick Links</p>
+          <div class="footer-links-grid">
+            <a href="index.html">Home</a>
+            <a href="sri-lanka-tours.html">Sri Lanka Tours</a>
+            <a href="destinations.html">All Destinations</a>
+            <a href="experiences.html">Experiences &amp; Brands</a>
+            <a href="about.html">About Lotus Ceylon</a>
+            <a href="index.html#reviews">Guest Reviews</a>
+            <a href="blog.html">Travel Blog</a>
+            <a href="inquiry-detailed.html">Detailed Inquiry</a>
+            <a href="inquiry-quick.html">Quick Inquiry</a>
+            <a href="contact.html">Contact Us</a>
+          </div>
+        </div>
+
+        <!-- Col 3: Newsletter, QR Codes & Payment Partners -->
+        <div>
+          <div class="newsletter-box">
+            <p class="footer-col-title">Stay Inspired</p>
+            <p>Subscribe to receive curated Sri Lanka holiday inspiration and early-booking privileges.</p>
+            <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Thank you for subscribing to Lotus Ceylon!'); this.reset();">
+              <input type="email" placeholder="Enter your email address" required aria-label="Email address for newsletter">
+              <button type="submit" aria-label="Subscribe">➔</button>
+            </form>
+          </div>
+
+          <!-- Instant Chat QR Codes -->
+          <div style="margin: 1.5rem 0 1.25rem;">
+            <p style="font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.12em; color: #FFFFFF; font-weight: 700; margin-bottom: 0.65rem;">Scan &amp; Chat Instantly</p>
+            <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+              <a href="https://wa.me/94715422384" target="_blank" rel="noopener" style="background: rgba(255,255,255,0.08); padding: 0.5rem; border-radius: 6px; text-align: center; text-decoration: none; border: 1px solid rgba(255,255,255,0.12); width: 85px;">
+                <img src="assets/qr/whatsapp-qr.png" alt="WhatsApp QR" style="width: 70px; height: 70px; border-radius: 4px; display: block; margin: 0 auto 0.25rem; object-fit: contain;">
+                <span style="font-size: 0.72rem; color: #E2E8F0; display: block; font-weight: 600;">WhatsApp</span>
+              </a>
+              <div style="background: rgba(255,255,255,0.08); padding: 0.5rem; border-radius: 6px; text-align: center; border: 1px solid rgba(255,255,255,0.12); width: 85px;">
+                <img src="assets/qr/wechat-qr.png" alt="WeChat QR" style="width: 70px; height: 70px; border-radius: 4px; display: block; margin: 0 auto 0.25rem; object-fit: contain;">
+                <span style="font-size: 0.72rem; color: #E2E8F0; display: block; font-weight: 600;">WeChat</span>
+              </div>
+              <div style="background: rgba(255,255,255,0.08); padding: 0.5rem; border-radius: 6px; text-align: center; border: 1px solid rgba(255,255,255,0.12); width: 85px;">
+                <img src="assets/qr/line-qr.png" alt="LINE QR" style="width: 70px; height: 70px; border-radius: 4px; display: block; margin: 0 auto 0.25rem; object-fit: contain;">
+                <span style="font-size: 0.72rem; color: #E2E8F0; display: block; font-weight: 600;">LINE</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom-row">
+        <div>
+          &copy; 2026 LOTUS CEYLON INTERNATIONAL TOURS &amp; SERVICES (PRIVATE) LIMITED. All Rights Reserved. Since 2014.
+        </div>
+        <div>
+          Designed &amp; Developed by <a href="https://infiniteweb.dev/" target="_blank" rel="noopener" style="color: var(--color-gold); text-decoration: none; font-weight: 600;">Infinite Design</a> &middot; Reg: PV 00374439
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp Hotline -->
+  <a href="https://wa.me/94715422384" target="_blank" rel="noopener" class="floating-whatsapp-btn" aria-label="Chat on WhatsApp" style="position: fixed; bottom: 25px; right: 25px; z-index: 999; width: 56px; height: 56px; border-radius: 50%; background: #25D366; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 20px rgba(37, 211, 102, 0.45); text-decoration: none;">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="#FFFFFF">
+      <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.698.077-1.11-.059-.441-.144-1.025-.338-1.776-.816-1.579-1.004-2.613-2.616-2.695-2.726-.082-.11-1.082-1.442-1.082-2.75 0-1.309.684-1.954.928-2.222.244-.268.531-.334.708-.334.177 0 .354.002.508.01.164.008.385-.062.602.459.223.535.759 1.854.825 1.99.066.136.111.297.022.474-.088.177-.133.287-.266.442-.133.155-.28.347-.399.465-.133.133-.271.277-.117.542.155.266.689 1.134 1.477 1.835 1.014.903 1.87 1.182 2.136 1.315.266.133.443.2.509.311.066.11.066.643-.078 1.048z"/>
+    </svg>
+  </a>
+
+  <!-- Header, Mobile Drawer & Interactive Filter Scripts -->
+  <script>
+    const siteHeader = document.getElementById('siteHeader');
+    function updateHeaderOnScroll() {
+      if (window.scrollY > 40) siteHeader.classList.add('is-scrolled');
+      else siteHeader.classList.remove('is-scrolled');
+    }
+    window.addEventListener('scroll', updateHeaderOnScroll, { passive: true });
+    updateHeaderOnScroll();
+
+    const langPillToggle = document.getElementById('langPillToggle');
+    const langPillMenu = document.getElementById('langPillMenu');
+    const currentLangLabel = document.getElementById('currentLangLabel');
+    if (langPillToggle && langPillMenu) {
+      langPillToggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        langPillMenu.classList.toggle('is-active');
+      });
+      document.addEventListener('click', (e) => {
+        if (!langPillToggle.contains(e.target) && !langPillMenu.contains(e.target)) {
+          langPillMenu.classList.remove('is-active');
+        }
+      });
+      langPillMenu.querySelectorAll('button').forEach(btn => {
+        btn.addEventListener('click', () => {
+          langPillMenu.querySelectorAll('button').forEach(b => b.classList.remove('is-active'));
+          btn.classList.add('is-active');
+          const code = btn.getAttribute('data-lang').toUpperCase();
+          if (currentLangLabel) currentLangLabel.textContent = code;
+          langPillMenu.classList.remove('is-active');
+        });
+      });
+    }
+
+    const mobileHamToggle = document.getElementById('mobileHamToggle');
+    const mobileNavClose = document.getElementById('mobileNavClose');
+    const mobileNavFullscreen = document.getElementById('mobileNavFullscreen');
+    if (mobileHamToggle && mobileNavFullscreen) {
+      mobileHamToggle.addEventListener('click', () => {
+        mobileNavFullscreen.classList.add('is-open');
+        document.body.style.overflow = 'hidden';
+      });
+      if (mobileNavClose) {
+        mobileNavClose.addEventListener('click', () => {
+          mobileNavFullscreen.classList.remove('is-open');
+          document.body.style.overflow = '';
+        });
+      }
+      mobileNavFullscreen.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          mobileNavFullscreen.classList.remove('is-open');
+          document.body.style.overflow = '';
+        });
+      });
+    }
+
+    // Filter Experiences Script
+    document.addEventListener('DOMContentLoaded', () => {
+      const filterBtns = document.querySelectorAll('.exp-filter-tabs .dest-filter-btn');
+      const cards = document.querySelectorAll('.exp-item-card');
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          filterBtns.forEach(b => b.classList.remove('is-active'));
+          btn.classList.add('is-active');
+          const cat = btn.getAttribute('data-cat');
+          cards.forEach(card => {
+            if (cat === 'all' || card.getAttribute('data-cat') === cat) {
+              card.style.display = 'flex';
+            } else {
+              card.style.display = 'none';
+            }
+          });
+        });
+      });
+    });
+  </script>
+</body>
+</html>
