@@ -34,13 +34,11 @@
     'hi': { label: 'HI', name: 'हिन्दी', flag: '🇮🇳', dir: 'ltr' }
   };
 
-  // Helper to read cookie value
   function getCookie(name) {
     const match = document.cookie.match(new RegExp('(^|;\\s*)' + name + '=([^;]*)'));
     return match ? decodeURIComponent(match[2]) : null;
   }
 
-  // Get current active language
   function getStoredLang() {
     const saved = localStorage.getItem('lotus_lang') || localStorage.getItem('lotus_preferred_lang');
     if (saved && LANG_CONFIG[saved]) return saved;
@@ -54,7 +52,6 @@
     return 'en';
   }
 
-  // Set or clear the googtrans cookie for automatic whole-page translation
   function setGoogleTranslateCookie(lang) {
     const host = window.location.hostname;
     const isDomain = host && host.indexOf('.') !== -1 && host !== 'localhost';
@@ -76,7 +73,6 @@
     }
   }
 
-  // Update header pill label, active classes, and RTL direction
   function updatePillUI(lang) {
     const config = LANG_CONFIG[lang] || LANG_CONFIG['en'];
     const currentLangLabel = document.getElementById('currentLangLabel');
@@ -84,7 +80,6 @@
       currentLangLabel.textContent = config.label;
     }
 
-    // Set document lang & text direction
     document.documentElement.lang = lang;
     document.documentElement.dir = config.dir;
     if (config.dir === 'rtl') {
@@ -95,7 +90,6 @@
       if (document.body) document.body.classList.remove('is-rtl');
     }
 
-    // Highlight active item in all language menus on the page
     document.querySelectorAll('#langPillMenu, .lang-pill-dropdown').forEach(menu => {
       menu.querySelectorAll('button').forEach(btn => {
         const btnLang = btn.getAttribute('data-lang');
@@ -110,7 +104,16 @@
     });
   }
 
-  // Apply Language and trigger whole-page translation
+  function triggerCombo(lang) {
+    const teCombo = document.querySelector('.goog-te-combo');
+    if (teCombo) {
+      teCombo.value = (lang === 'en' ? '' : lang);
+      teCombo.dispatchEvent(new Event('change'));
+      return true;
+    }
+    return false;
+  }
+
   function applyLanguage(lang) {
     if (!LANG_CONFIG[lang]) lang = 'en';
 
@@ -119,7 +122,7 @@
     setGoogleTranslateCookie(lang);
     updatePillUI(lang);
 
-    // Call custom dictionary i18n engine if present
+    // Call custom i18n engine if present
     if (window.lotusI18n && typeof window.lotusI18n.setLanguage === 'function') {
       const dictKey = lang === 'zh-CN' ? 'zh' : (lang === 'zh-TW' ? 'zh' : lang);
       try {
@@ -130,37 +133,37 @@
     }
 
     if (lang === 'en') {
-      // Return to original crisp English copy
-      window.location.reload();
+      triggerCombo('');
+      setTimeout(() => {
+        window.location.reload();
+      }, 150);
       return;
     }
 
-    // Trigger Google Translate Combo
-    const teCombo = document.querySelector('.goog-te-combo');
-    if (teCombo) {
-      teCombo.value = lang;
-      teCombo.dispatchEvent(new Event('change'));
-    } else {
-      // Retry or reload to trigger translation from cookie
-      setTimeout(() => {
-        const retryCombo = document.querySelector('.goog-te-combo');
-        if (retryCombo) {
-          retryCombo.value = lang;
-          retryCombo.dispatchEvent(new Event('change'));
-        } else {
-          window.location.reload();
+    const success = triggerCombo(lang);
+    if (!success) {
+      // Retry for combo after script loads
+      let retries = 0;
+      const interval = setInterval(() => {
+        retries++;
+        if (triggerCombo(lang) || retries > 10) {
+          clearInterval(interval);
+          if (retries > 10 && !document.querySelector('.goog-te-combo')) {
+            window.location.reload();
+          }
         }
-      }, 350);
+      }, 300);
     }
   }
 
-  // Inject Google Translate script and hidden element
   function injectGoogleTranslateScript() {
-    if (!document.getElementById('google_translate_element')) {
-      const div = document.createElement('div');
-      div.id = 'google_translate_element';
-      div.style.cssText = 'position:absolute;top:-9999px;left:-9999px;width:1px;height:1px;overflow:hidden;visibility:hidden;pointer-events:none;';
-      document.body.appendChild(div);
+    let container = document.getElementById('google_translate_element');
+    if (!container) {
+      container = document.createElement('div');
+      container.id = 'google_translate_element';
+      // Crucial: Must be technically rendered in layout so Google Translate script runs
+      container.style.cssText = 'position:fixed;bottom:0;left:0;width:1px;height:1px;opacity:0.001;pointer-events:none;z-index:-9999;overflow:hidden;';
+      document.body.appendChild(container);
     }
 
     window.googleTranslateElementInit = function () {
@@ -174,16 +177,11 @@
         console.warn('[Google Translate Init]:', err);
       }
 
-      // Check if a non-English language was previously active
       const current = getStoredLang();
       if (current && current !== 'en') {
         setTimeout(() => {
-          const combo = document.querySelector('.goog-te-combo');
-          if (combo) {
-            combo.value = current;
-            combo.dispatchEvent(new Event('change'));
-          }
-        }, 500);
+          triggerCombo(current);
+        }, 600);
       }
     };
 
@@ -196,24 +194,26 @@
     }
   }
 
-  // High-Priority Capturing Event Delegation for Toggle and Selection
   function setupEventDelegation() {
-    // 1. Language Button Click (Capture phase to take precedence over legacy inline handlers)
     document.addEventListener('click', function (e) {
+      // 1. Language Button Click
       const btn = e.target.closest('#langPillMenu button, .lang-pill-dropdown button');
       if (btn) {
         e.preventDefault();
         e.stopImmediatePropagation();
         const targetLang = btn.getAttribute('data-lang');
         const menu = btn.closest('.lang-pill-dropdown, #langPillMenu');
-        if (menu) menu.classList.remove('is-active');
+        if (menu) {
+          menu.classList.remove('is-active');
+          menu.classList.remove('show');
+        }
         if (targetLang) {
           applyLanguage(targetLang);
         }
         return;
       }
 
-      // 2. Pill Toggle Click
+      // 2. Dropdown Pill Toggle Click
       const toggle = e.target.closest('#langPillToggle, .lang-pill-btn');
       if (toggle) {
         e.preventDefault();
@@ -221,19 +221,20 @@
         const menu = document.getElementById('langPillMenu') || toggle.parentElement.querySelector('.lang-pill-dropdown');
         if (menu) {
           menu.classList.toggle('is-active');
+          menu.classList.toggle('show');
         }
         return;
       }
 
-      // 3. Outside Click Closes Dropdowns
-      const openMenu = document.querySelector('.lang-pill-dropdown.is-active, #langPillMenu.is-active');
+      // 3. Outside Click
+      const openMenu = document.querySelector('.lang-pill-dropdown.is-active, #langPillMenu.is-active, .lang-pill-dropdown.show, #langPillMenu.show');
       if (openMenu && !openMenu.contains(e.target)) {
         openMenu.classList.remove('is-active');
+        openMenu.classList.remove('show');
       }
-    }, true); // Use capture phase!
+    }, true);
   }
 
-  // Initialize
   function init() {
     setupEventDelegation();
     injectGoogleTranslateScript();
@@ -247,7 +248,6 @@
     init();
   }
 
-  // Expose Global API
   window.LotusSiteTranslator = {
     setLanguage: applyLanguage,
     getLanguage: getStoredLang,
