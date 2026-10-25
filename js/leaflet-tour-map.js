@@ -73,10 +73,18 @@
         const allPackages = data.packages || [];
         if (this.packageId) {
           this.packagesData = allPackages.filter(p => p.id === this.packageId || p.slug === this.packageId);
-        } else if (this.category) {
+        } else if (this.category && this.category !== 'all') {
           this.packagesData = allPackages.filter(p => p.category === this.category);
         } else {
-          this.packagesData = allPackages.slice(0, 3);
+          // Signature geographic overview: 4 diverse regional flagship circuits
+          const signatureSlugs = [
+            'southern-sands-serenade',
+            'royal-kingdoms-sacred-temples',
+            'wild-ceylon-predator-elephant-trail',
+            'ceylon-tea-trails-colonial-grandeur'
+          ];
+          const flagship = allPackages.filter(p => signatureSlugs.includes(p.slug) || signatureSlugs.includes(p.id));
+          this.packagesData = flagship.length > 0 ? flagship : allPackages.slice(0, 4);
         }
 
         this.renderMap();

@@ -1056,7 +1056,7 @@
             title: c.name || c.title,
             tagline: c.tagline || '',
             heroImage: `assets/tours/${c.slug}/hero.jpg`,
-            mapImage: c.map_image || (c.slug === 'beach' ? 'assets/images/sri-lanka-tourist-map.jpg' : '')
+            mapImage: c.map_image || ''
           };
         });
 

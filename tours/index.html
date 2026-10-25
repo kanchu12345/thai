@@ -171,6 +171,9 @@
     }
   </style>
   <link rel="stylesheet" href="../css/tours-map.css">
+  <!-- Leaflet & Tours Map Stylesheets -->
+  <link rel="stylesheet" href="../css/tours-map.css?v=20261024_osm_v4">
+  <link rel="stylesheet" href="../vendor/leaflet/leaflet.css">
 </head>
 
 <body>
@@ -702,7 +705,97 @@
     </div>
   </main>
 
-  <section class="banner-bottom-cta padding-top--80 padding-bottom--80" style="background: linear-gradient(135deg, #001A2C 0%, #002B49 100%); color: #FFFFFF; text-align: center;">
+    <!-- ==========================================================================
+       SECTION: ALL-ISLAND INTERACTIVE ROUTE MAP (LEAFLET + OPENSTREETMAP)
+       ========================================================================== -->
+  <section class="coastline-map-section" id="tours-island-route-map">
+    <div class="wrapper--85">
+      <div class="coastline-map-wrapper">
+        
+        <!-- Left: OpenStreetMap & Leaflet Interactive Street Map -->
+        <div class="coastline-map-figure">
+          <div id="tours-hub-leaflet-map" 
+               class="lotus-street-map-frame js-lotus-route-map" 
+               data-category="all" 
+               data-data-path="../data/packages.json"
+               role="region" 
+               aria-label="Interactive Sri Lanka Island-Wide Tour Route Map">
+          </div>
+        </div>
+
+        <!-- Right: Island Route Overview, Curated Regional Highlights -->
+        <div class="coastline-content-col">
+          <div class="route-eyebrow">✦ ALL-ISLAND PRIVATE JOURNEYS &amp; EXPEDITIONS</div>
+
+          <div class="route-quote-card">
+            <blockquote class="route-quote-text">
+              “From mist-veiled highland peaks to sacred temple citadels and turquoise coastlines — explore Ceylon through thoughtfully paced private circuits.”
+            </blockquote>
+            <span class="route-quote-caption">Lotus Ceylon Signature Journeys</span>
+          </div>
+
+          <h2 class="coastline-main-title">
+            Explore Sri Lanka by Region:
+            <span>Four Distinct Circuits, Infinite Discoveries</span>
+          </h2>
+
+          <p class="coastline-lead-text">
+            Every Lotus Ceylon journey is individually tailored with dedicated private chauffeur-guides, hand-selected boutique retreats, and seamless inter-provincial transfers. Click through our signature routes on the interactive map to preview waypoint stops across Ceylon’s cultural triangle, central tea valleys, southern beaches, and untamed national parks.
+          </p>
+
+          <!-- Signature Island Route Circuit Ribbon -->
+          <div class="route-circuit-ribbon">
+            <span class="route-circuit-label">Key Island Hubs:</span>
+            <div class="route-circuit-stops">
+              <span class="route-stop-pill">Colombo</span>
+              <span class="route-stop-arrow">➔</span>
+              <span class="route-stop-pill">Sigiriya</span>
+              <span class="route-stop-arrow">➔</span>
+              <span class="route-stop-pill">Kandy</span>
+              <span class="route-stop-arrow">➔</span>
+              <span class="route-stop-pill">Hatton &amp; Ella</span>
+              <span class="route-stop-arrow">➔</span>
+              <span class="route-stop-pill">Yala</span>
+              <span class="route-stop-arrow">➔</span>
+              <span class="route-stop-pill">Galle</span>
+            </div>
+          </div>
+
+          <div class="coastline-highlights-row">
+            <div class="coastline-highlight-item">
+              <span>🏛️</span>
+              <span>8 UNESCO World Heritage Sites</span>
+            </div>
+            <div class="coastline-highlight-item">
+              <span>🌿</span>
+              <span>26 National Wildlife Parks</span>
+            </div>
+            <div class="coastline-highlight-item">
+              <span>🚗</span>
+              <span>Private Chauffeur Transfers</span>
+            </div>
+          </div>
+
+          <div class="route-cta-box">
+            <p class="route-cta-text">Looking for a personalized route combining coastal stays and highland trails?</p>
+            <div class="route-cta-actions">
+              <a href="../inquiry-detailed.html" class="next-btn next-btn--blue">
+                <span class="next-btn-circle">➔</span>
+                <span>Craft Your Custom Circuit</span>
+              </a>
+              <a href="https://wa.me/94715422384" target="_blank" rel="noopener" class="next-btn next-btn--white" style="border: 1px solid #C9962B; color: #002B49;">
+                <span class="next-btn-circle">💬</span>
+                <span>Speak with a Travel Specialist</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+<section class="banner-bottom-cta padding-top--80 padding-bottom--80" style="background: linear-gradient(135deg, #001A2C 0%, #002B49 100%); color: #FFFFFF; text-align: center;">
     <div class="wrapper--70">
       <span style="color: #C5A880; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase;">BESPOKE PRIVATE TRAVEL DESIGN</span>
       <h2 style="font-family: 'Playfair Display', serif; font-size: 2.6rem; margin: 1rem 0; color: #FFFFFF;">Have a Custom Route in Mind?</h2>
@@ -863,5 +956,8 @@
 </script>
 
   <script src="../js/tour-interactive.js"></script>
+  <!-- Leaflet & Interactive Tour Map Scripts -->
+  <script src="../vendor/leaflet/leaflet.js"></script>
+  <script src="../js/leaflet-tour-map.js?v=20261024_osm_v4"></script>
 </body>
 </html>

@@ -5,6 +5,41 @@ The project adheres to strict phase gates, top international tour operator quali
 
 ---
 
+## [Phase 3] - 2026-10-25: Interactive Leaflet Route Map & Sights Showcase
+
+### Added
+- **100% Leaflet Route Map Coverage across All 49 Tour Pages**:
+  - Integrated interactive Leaflet & OpenStreetMap tour route map sections into `sri-lanka-tours.html` and `tours/index.html`.
+  - Added responsive CSS (`css/tours-map.css`) and vendored Leaflet (`vendor/leaflet/leaflet.css`, `vendor/leaflet/leaflet.js`) references to both files.
+  - Linked all map containers with `.js-lotus-route-map` for automatic initialization via `js/leaflet-tour-map.js`.
+- **Curated Multi-Route All-Island Showcase**:
+  - Configured `js/leaflet-tour-map.js` when `data-category="all"` or overview mode is active to display 4 distinct regional circuits:
+    1. *Southern Sands Serenade* (Beach & Coast)
+    2. *Royal Kingdoms & Sacred Temples* (Cultural Triangle)
+    3. *Wild Ceylon Predator & Elephant Trail* (Wildlife Sanctuaries)
+    4. *Ceylon Tea Trails & Colonial Grandeur* (Highlands & Tea Valleys)
+  - Color-coded each circuit with custom luxury hues (Gold, Teal, Navy, Brown), smooth polylines, and numbered waypoint marker pins with accessible popups.
+
+### Changed
+- **Removed Static Map References from Application Code & Catalog**:
+  - Removed fallback string reference to `sri-lanka-tourist-map.jpg` from `admin/js/admin-app.js`.
+  - Cleared `categories.beach.mapImage` in `data/packages.json` to prevent legacy static map display.
+  - Ensured all 49 tour files display live interactive Leaflet maps with zero external API dependencies or paid keys.
+
+### Preserved (Pending User Review for Deletion)
+- **8 Unused Legacy Map Image Files in `assets/images/`**:
+  - `sri-lanka-tourist-map.jpg` (2.4 MB)
+  - `sri-lanka-tourist-map-illustrated.jpg` (1.8 MB)
+  - `sri-lanka-official-tourist-map.jpg` (2.1 MB)
+  - `sri-lanka-illustrated-travel-map.jpg` (1.9 MB)
+  - `sri-lanka-coastal-watercolor-map.jpg` (1.5 MB)
+  - `sri-lanka-coastal-illustrated-map.jpg` (1.7 MB)
+  - `sri-lanka-3d-relief-illustrated-map.jpg` (2.2 MB)
+  - `sri-lanka-3d-coastal-relief-map.jpg` (2.0 MB)
+  *(Preserved in place per Global Rules until explicit user instruction)*
+
+---
+
 ## [Phase 2] - 2026-10-25: Home Page Tour Sections & Category Page Overhaul
 
 ### Added
