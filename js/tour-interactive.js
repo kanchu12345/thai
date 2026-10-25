@@ -687,10 +687,50 @@
   }
 
   // =========================================================================
+  // =========================================================================
+  // 9. Sri Lanka Travel Authority & Information Hub Tabs (Phase 6)
+  // =========================================================================
+  function initTravelHubTabs() {
+    const tabs = document.querySelectorAll('.travel-hub-tab-btn');
+    if (!tabs.length) return;
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        const targetId = tab.getAttribute('aria-controls');
+        if (!targetId) return;
+
+        // Deselect all tabs
+        tabs.forEach(t => {
+          t.classList.remove('active');
+          t.setAttribute('aria-selected', 'false');
+        });
+
+        // Hide all panels
+        const panels = document.querySelectorAll('.travel-hub-panel');
+        panels.forEach(p => {
+          p.classList.remove('active');
+          p.hidden = true;
+        });
+
+        // Activate clicked tab
+        tab.classList.add('active');
+        tab.setAttribute('aria-selected', 'true');
+
+        // Show target panel
+        const targetPanel = document.getElementById(targetId);
+        if (targetPanel) {
+          targetPanel.classList.add('active');
+          targetPanel.hidden = false;
+        }
+      });
+    });
+  }
+
   // Auto-Initialization
   // =========================================================================
   document.addEventListener('DOMContentLoaded', async () => {
     initBloomingLotusTimeline();
+    initTravelHubTabs();
     initPackageComparator();
 
     // Auto-detect package detail page context
@@ -744,7 +784,8 @@
     renderSeasonStrip,
     renderFAQSection,
     renderWhyLotusStrip,
-    renderMobileStickyBar
+    renderMobileStickyBar,
+    initTravelHubTabs
   };
 
 })();

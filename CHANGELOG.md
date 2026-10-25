@@ -5,6 +5,26 @@ The project adheres to strict phase gates, top international tour operator quali
 
 ---
 
+## [Phase 6] - 2026-10-25: Travel Information Hub & Authority Content
+
+### Added
+- **Sri Lanka Travel Authority & Preparation Guide (`#travel-info-hub`)**:
+  - Embedded an interactive, 5-topic travel hub into `sri-lanka-tours.html` and `tours/index.html`.
+  - Topics covered:
+    1. 🌦️ **Dual-Monsoon Climate Guide**: Detailed breakdown of Southwest (Yala) vs Northeast (Maha) seasons and why Sri Lanka offers 365 days of tropical beach weather across alternating coasts.
+    2. 🛂 **Visa & ETA Requirements**: Step-by-step instructions for 30-day tourist Electronic Travel Authorizations (ETA), 6-month passport validity rules, and official government portal verification.
+    3. 🛕 **Sacred & Cultural Etiquette**: Temple guidelines covering modest attire (shoulders and knees covered, white clothing tradition), removal of footwear/hats, clockwise stupa circumambulation, and zero posing/selfies with backs to Buddha statues.
+    4. 🐘 **Lotus Ceylon Wildlife Charter**: Strict animal welfare ethics prohibiting elephant riding or chaining, enforcing 20m buffer distances, silent engine protocols at waterholes, and ethical dolphin/whale watching standards.
+    5. 🎒 **Curated Ceylon Packing Checklist**: Layered clothing advice for tropical beaches and cool mountain tea valleys, slip-on shoes, reef-safe sunscreen, rain gear, and UK Type G plug adapters.
+- **Accessible Interactive Tab System (`js/tour-interactive.js`)**:
+  - Added `initTravelHubTabs()` supporting keyboard navigation, `role="tab"`, `role="tabpanel"`, and `aria-selected` toggling.
+- **Travel Hub Responsive Styling (`css/tours-map.css`)**:
+  - Added luxury gold/navy card styles, 2-column feature subgrids, and custom tip callout banners.
+- **Deep Links from All 26 Package Detail Pages**:
+  - Added direct links in the sidebar assistance box of all 26 package pages connecting prospective guests directly to the Travel Preparation Guide.
+
+---
+
 ## [Phase 5] - 2026-10-25: Package Detail Pages Deep Dive & Mobile Sticky Inquiry Bar
 
 ### Added
