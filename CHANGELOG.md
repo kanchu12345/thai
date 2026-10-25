@@ -5,6 +5,30 @@ The project adheres to strict phase gates, top international tour operator quali
 
 ---
 
+## [Phase 2] - 2026-10-25: Home Page Tour Sections & Category Page Overhaul
+
+### Added
+- **Full 10-Theme Tour Categories Carousel (`index.html`)**:
+  - Rebuilt Section 3 to present all 10 signature holiday categories: Beach, Cultural, Wildlife, Hill Country, Adventure, Ayurvedic, Honeymoon, Family, Ramayana, and Championship Golf.
+  - Linked each card directly to its dedicated canonical category page (`beach-tours.html`, `cultural-tours.html`, etc.).
+  - Replaced all external Unsplash URLs with local responsive assets in `assets/images/`.
+- **Curated Private Journeys Showcase (`index.html`)**:
+  - Rebuilt Section 4 with 6 signature itineraries from `data/packages.json`: *Three Millennia of Living Heritage*, *The Sri Lanka Big Five Expedition*, *Southern Sands Serenade*, *Ceylon Tea Trails & Colonial Grandeur*, *Lotus Ayu Holistic Rejuvenation*, and *Pure Serenade Coastal & Highland Romance*.
+  - Configured each card slider with local photography, verified durations, luxury category badges, and relative package page routing.
+- **Local Fallback Tour Asset Pipeline**:
+  - Populated `assets/tours/beach/`, `assets/tours/cultural/`, and `assets/tours/wildlife/` with high-resolution local photography fallbacks.
+
+### Changed
+- **Tour Category Package Cards (`beach-tours.html`, `cultural-tours.html`, `wildlife-tours.html`, `tours/*/index.html`)**:
+  - Synchronized package card titles and subtitles with official `titleMain` & `titleAccent` definitions.
+  - Removed remaining external Unsplash URLs in favor of local assets with auto-responsive media scaling.
+- **Category Navigation (`sri-lanka-tours.html`, `tours.html`)**:
+  - Converted internal anchor stubs (`#hill-country`, `#adventure`, `#ayurvedic`, `#honeymoon`, `#family`, `#ramayana`) into direct links to their dedicated category pages.
+- **Link Integrity**:
+  - Re-crawled 3,390 internal links across 64 HTML files, achieving **0 broken static links**.
+
+---
+
 ## [Phase 1] - 2026-10-25: Hero Heading Overhaul & Site-Wide Audit
 
 ### Added

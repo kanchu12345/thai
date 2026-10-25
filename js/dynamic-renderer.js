@@ -201,7 +201,7 @@
 
       catContainer.innerHTML = this.data.categories.map(cat => `
         <a href="category.html?slug=${cat.slug}" class="hover-box">
-          <img src="${cat.image_url || 'assets/images/cultural-triangle.jpg'}" class="hover-box__img" alt="${this.t('name', cat)}" loading="lazy" onerror="this.src='assets/images/cultural-triangle.jpg'">
+          <img src="${cat.image_url || 'assets/images/sigiriya.jpg'}" class="hover-box__img" alt="${this.t('name', cat)}" loading="lazy" onerror="this.src='assets/images/sigiriya.jpg'">
           <div class="hover-box__overlay"></div>
           <div class="hover-box__details">
             <div class="hover-box__details_visible">
@@ -229,7 +229,7 @@
           <div class="package-card-item">
             <div class="pkg-card" style="background: var(--white); border-radius: 12px; overflow: hidden; border: 1px solid rgba(28,27,31,0.08); box-shadow: 0 4px 14px rgba(0,0,0,0.05); transition: transform 0.3s ease, box-shadow 0.3s ease; display: flex; flex-direction: column; height: 100%;">
               <div class="pkg-card-media" style="position: relative; height: 240px; overflow: hidden;">
-                <img src="${pkg.hero_image || 'assets/images/cultural-triangle.jpg'}" alt="${this.t('title', pkg)}" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;" onerror="this.src='assets/images/cultural-triangle.jpg'">
+                <img src="${pkg.hero_image || 'assets/images/sigiriya.jpg'}" alt="${this.t('title', pkg)}" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;" onerror="this.src='assets/images/sigiriya.jpg'">
                 ${pkg.is_popular ? '<span class="pkg-popular-badge" style="position: absolute; top: 12px; left: 12px; background: var(--lotus-primary); color: #fff; padding: 4px 10px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase;">Most Popular</span>' : ''}
                 <span class="pkg-duration-badge" style="position: absolute; bottom: 12px; right: 12px; background: rgba(0,0,0,0.7); backdrop-filter: blur(4px); color: #fff; padding: 4px 10px; border-radius: 20px; font-size: 0.78rem; font-weight: 600;">${pkg.nights}N / ${pkg.days}D</span>
               </div>
@@ -410,7 +410,7 @@
       document.title = `${this.t('title', pkg)} | Lotus Ceylon Tours`;
 
       const markup = `
-        <section class="tour-hero-section" style="position: relative; min-height: 55vh; display: flex; align-items: flex-end; background: url('${pkg.hero_image || 'assets/images/cultural-triangle.jpg'}') center/cover no-repeat; padding: 60px 0;">
+        <section class="tour-hero-section" style="position: relative; min-height: 55vh; display: flex; align-items: flex-end; background: url('${pkg.hero_image || 'assets/images/sigiriya.jpg'}') center/cover no-repeat; padding: 60px 0;">
           <div style="position: absolute; inset: 0; background: linear-gradient(0deg, rgba(28,27,31,0.85) 0%, rgba(28,27,31,0.3) 100%);"></div>
           <div class="wrapper--80" style="position: relative; z-index: 2; color: #fff;">
             <span style="background: var(--sacred-gold); color: var(--ink); padding: 4px 12px; border-radius: 20px; font-weight: 700; font-size: 0.8rem; text-transform: uppercase;">${pkg.category_slug || 'Signature Tour'}</span>
@@ -501,7 +501,7 @@
         }
         container.innerHTML = matchingTours.map(pkg => `
           <div class="pkg-card" style="background: var(--white); border-radius: 12px; overflow: hidden; border: 1px solid rgba(28,27,31,0.08); box-shadow: 0 4px 14px rgba(0,0,0,0.05); display: flex; flex-direction: column;">
-            <img src="${pkg.hero_image || 'assets/images/cultural-triangle.jpg'}" alt="${pkg.title}" style="height: 220px; object-fit: cover;">
+            <img src="${pkg.hero_image || 'assets/images/sigiriya.jpg'}" alt="${pkg.title}" style="height: 220px; object-fit: cover;">
             <div style="padding: 20px; flex: 1; display: flex; flex-direction: column;">
               <h3 style="font-family: 'Playfair Display', serif; font-size: 1.25rem;"><a href="tours.html?slug=${pkg.slug}" style="color: var(--ink);">${this.t('title', pkg)}</a></h3>
               <p style="color: var(--ink-light); font-size: 0.88rem; margin: 10px 0 16px; flex: 1;">${(this.t('overview', pkg) || '').slice(0, 100)}...</p>
@@ -526,7 +526,7 @@
           <span style="color: var(--lotus-primary); font-weight: 700; text-transform: uppercase; font-size: 0.8rem;">Lotus Ceylon Travel Insights</span>
           <h1 style="font-family: 'Playfair Display', serif; font-size: 2.4rem; margin: 12px 0 16px;">The Sacred Essence of Ancient Ceylon</h1>
           <p style="color: var(--ink-muted); font-size: 0.85rem; margin-bottom: 24px;">Published by Lotus Ceylon Editorial &bull; 8 min read</p>
-          <img src="assets/images/cultural-triangle.jpg" alt="Ancient Ceylon" style="width: 100%; border-radius: 12px; margin-bottom: 30px;">
+          <img src="assets/images/sigiriya.jpg" alt="Ancient Ceylon" style="width: 100%; border-radius: 12px; margin-bottom: 30px;">
           <p style="font-size: 1.1rem; line-height: 1.8; color: var(--ink-light); margin-bottom: 20px;">From the sacred peaks of Adam’s Peak to the ancient monastic city of Anuradhapura, Sri Lanka has remained a beacon of Buddhist heritage, tranquil healing, and untouched natural beauty for millennia.</p>
         </div>
       `;

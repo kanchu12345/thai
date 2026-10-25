@@ -332,7 +332,7 @@
     }
 
     function renderColumn(pkg) {
-      const hero = pkg.heroImage ? (pkg.heroImage.startsWith('http') ? pkg.heroImage : `${prefix}${pkg.heroImage}`) : `${prefix}assets/images/cultural-triangle.jpg`;
+      const hero = pkg.heroImage ? (pkg.heroImage.startsWith('http') ? pkg.heroImage : `${prefix}${pkg.heroImage}`) : `${prefix}assets/images/sigiriya.jpg`;
       const url = `${prefix}tours/${pkg.category}/${pkg.slug}/index.html`;
       const inqUrl = `${prefix}inquiry-detailed.html?package=${encodeURIComponent(pkg.title)}&category=${pkg.category}`;
 
