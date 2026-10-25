@@ -407,7 +407,9 @@
       "difficulty": "Easy",
       "groupSize": "Private Chauffeur Tour (1-8 Guests)",
       "childFriendly": true,
-      "accessibilityNotes": "Accessible rooms and private ground-floor transport arranged upon advance request."
+      "accessibilityNotes": "Accessible rooms and private ground-floor transport arranged upon advance request.",
+      "titleMain": "Southern Sands Serenade",
+      "titleAccent": "Sun-Kissed Bays & Blue Whales"
     },
     {
       "id": "pkg-beach-02",
@@ -665,7 +667,9 @@
       "difficulty": "Easy",
       "groupSize": "Private Chauffeur Tour (1-8 Guests)",
       "childFriendly": true,
-      "accessibilityNotes": "Accessible rooms and private ground-floor transport arranged upon advance request."
+      "accessibilityNotes": "Accessible rooms and private ground-floor transport arranged upon advance request.",
+      "titleMain": "Turquoise Eastern Sanctuary",
+      "titleAccent": "Coral Lagoons & Coastal Shrines"
     },
     {
       "id": "pkg-beach-03",
@@ -945,7 +949,9 @@
       "difficulty": "Easy",
       "groupSize": "Private Chauffeur Tour (1-8 Guests)",
       "childFriendly": true,
-      "accessibilityNotes": "Accessible rooms and private ground-floor transport arranged upon advance request."
+      "accessibilityNotes": "Accessible rooms and private ground-floor transport arranged upon advance request.",
+      "titleMain": "Pristine Seaboard Odyssey",
+      "titleAccent": "Dolphins, Dunes & Northern Islands"
     },
     {
       "id": "pkg-cultural-01",
@@ -1116,7 +1122,9 @@
       "difficulty": "Easy",
       "groupSize": "Private Chauffeur Tour (1-8 Guests)",
       "childFriendly": true,
-      "accessibilityNotes": "Accessible rooms and private ground-floor transport arranged upon advance request."
+      "accessibilityNotes": "Accessible rooms and private ground-floor transport arranged upon advance request.",
+      "titleMain": "Royal Kingdoms & Sacred Temples",
+      "titleAccent": "Citadels of the Sacred Triangle"
     },
     {
       "id": "pkg-cultural-02",
@@ -1341,7 +1349,9 @@
       "difficulty": "Easy",
       "groupSize": "Private Chauffeur Tour (1-8 Guests)",
       "childFriendly": true,
-      "accessibilityNotes": "Accessible rooms and private ground-floor transport arranged upon advance request."
+      "accessibilityNotes": "Accessible rooms and private ground-floor transport arranged upon advance request.",
+      "titleMain": "The Sacred Lotus Triangle",
+      "titleAccent": "Living UNESCO Heritage & Ancient Capitals"
     },
     {
       "id": "pkg-cultural-03",
@@ -1662,7 +1672,9 @@
       "difficulty": "Easy",
       "groupSize": "Private Chauffeur Tour (1-8 Guests)",
       "childFriendly": true,
-      "accessibilityNotes": "Accessible rooms and private ground-floor transport arranged upon advance request."
+      "accessibilityNotes": "Accessible rooms and private ground-floor transport arranged upon advance request.",
+      "titleMain": "Three Millennia of Living Heritage",
+      "titleAccent": "Chronicles of Faith & Ancient Stone"
     },
     {
       "id": "pkg-wildlife-01",
@@ -1855,7 +1867,9 @@
       "difficulty": "Easy",
       "groupSize": "Private Chauffeur Tour (1-8 Guests)",
       "childFriendly": true,
-      "accessibilityNotes": "Accessible rooms and private ground-floor transport arranged upon advance request."
+      "accessibilityNotes": "Accessible rooms and private ground-floor transport arranged upon advance request.",
+      "titleMain": "Wild Ceylon Predator & Elephant Trail",
+      "titleAccent": "Leopards, Sloth Bears & Great Gatherings"
     },
     {
       "id": "pkg-wildlife-02",
@@ -2135,7 +2149,9 @@
       "difficulty": "Easy",
       "groupSize": "Private Chauffeur Tour (1-8 Guests)",
       "childFriendly": true,
-      "accessibilityNotes": "Accessible rooms and private ground-floor transport arranged upon advance request."
+      "accessibilityNotes": "Accessible rooms and private ground-floor transport arranged upon advance request.",
+      "titleMain": "The Sri Lanka Big Five Expedition",
+      "titleAccent": "Whales, Leopards & Giant Tuskers"
     },
     {
       "id": "pkg-wildlife-03",
@@ -2458,7 +2474,9 @@
       "difficulty": "Easy",
       "groupSize": "Private Chauffeur Tour (1-8 Guests)",
       "childFriendly": true,
-      "accessibilityNotes": "Accessible rooms and private ground-floor transport arranged upon advance request."
+      "accessibilityNotes": "Accessible rooms and private ground-floor transport arranged upon advance request.",
+      "titleMain": "Untamed Biosphere & Rainforest Odyssey",
+      "titleAccent": "Primary Canopies & River Sanctuaries"
     },
     {
       "id": "pkg-ceylon-tea-trails-colonial-grandeur",
@@ -2631,7 +2649,9 @@
       "difficulty": "Easy",
       "groupSize": "Private (2-8 guests)",
       "childFriendly": "Yes (Ages 6+)",
-      "accessibilityNotes": "Bungalows have ground-floor suites; station platform assistance arranged."
+      "accessibilityNotes": "Bungalows have ground-floor suites; station platform assistance arranged.",
+      "titleMain": "Ceylon Tea Trails & Colonial Grandeur",
+      "titleAccent": "Planter Bungalows & Misty Valleys"
     },
     {
       "id": "pkg-misty-peaks-scenic-railways-expedition",
@@ -2842,7 +2862,9 @@
       "difficulty": "Easy to Moderate",
       "groupSize": "Private (2-8 guests)",
       "childFriendly": "Yes (All ages)",
-      "accessibilityNotes": "Reserved train compartments with porter service for all luggage."
+      "accessibilityNotes": "Reserved train compartments with porter service for all luggage.",
+      "titleMain": "Misty Peaks & Scenic Railways",
+      "titleAccent": "Nine Arch Bridges & High Cloud Forests"
     },
     {
       "id": "pkg-highland-wilderness-cascading-waterfalls",
@@ -3082,7 +3104,9 @@
       "difficulty": "Moderate",
       "groupSize": "Private (2-6 guests)",
       "childFriendly": "Recommended 10+",
-      "accessibilityNotes": "Involves moderate hiking trails in Horton Plains and waterfall paths."
+      "accessibilityNotes": "Involves moderate hiking trails in Horton Plains and waterfall paths.",
+      "titleMain": "Highland Wilderness & Cascading Waterfalls",
+      "titleAccent": "World's End Vistas & Roaring Cataracts"
     },
     {
       "id": "pkg-island-adrenaline-rapids-expedition",
@@ -3262,7 +3286,9 @@
       "difficulty": "Challenging",
       "groupSize": "Private (2-8 guests)",
       "childFriendly": "Recommended 12+",
-      "accessibilityNotes": "Water sports and steep hikes require good physical fitness and mobility."
+      "accessibilityNotes": "Water sports and steep hikes require good physical fitness and mobility.",
+      "titleMain": "Island Adrenaline & Rapids Expedition",
+      "titleAccent": "Whitewater Canyons & High Peaks"
     },
     {
       "id": "pkg-wild-peaks-trails-surf-safari",
@@ -3472,7 +3498,9 @@
       "difficulty": "Moderate to Strenuous",
       "groupSize": "Private (2-8 guests)",
       "childFriendly": "Recommended 12+",
-      "accessibilityNotes": "Rainforest trails can be uneven and wet; surf coaching tailored to skill."
+      "accessibilityNotes": "Rainforest trails can be uneven and wet; surf coaching tailored to skill.",
+      "titleMain": "Wild Peaks, Trails & Surf Safari",
+      "titleAccent": "Virgin Rainforests & Ocean Point Breaks"
     },
     {
       "id": "pkg-lotus-ayu-holistic-rejuvenation",
@@ -3663,7 +3691,9 @@
       "difficulty": "Gentle",
       "groupSize": "Private / Couple",
       "childFriendly": "Adults recommended (16+)",
-      "accessibilityNotes": "Resorts are fully accessible with step-free treatment pavilions and gardens."
+      "accessibilityNotes": "Resorts are fully accessible with step-free treatment pavilions and gardens.",
+      "titleMain": "Lotus Ayu Holistic Rejuvenation",
+      "titleAccent": "Authentic Panchakarma & Sacred Healing"
     },
     {
       "id": "pkg-sacred-serenity-forest-meditation-retreat",
@@ -3893,7 +3923,9 @@
       "difficulty": "Gentle",
       "groupSize": "Private / Couple",
       "childFriendly": "Adults recommended",
-      "accessibilityNotes": "Monastery steps require moderate walking; transport arranged to meditation halls."
+      "accessibilityNotes": "Monastery steps require moderate walking; transport arranged to meditation halls.",
+      "titleMain": "Sacred Serenity & Forest Meditation",
+      "titleAccent": "Silent Monasteries & Herbal Sanctuaries"
     },
     {
       "id": "pkg-enchanted-ceylon-romantic-hideaway",
@@ -4084,7 +4116,9 @@
       "difficulty": "Easy",
       "groupSize": "Private Couple Exclusive",
       "childFriendly": "Adults only",
-      "accessibilityNotes": "Luxury villas feature step-free private pool access and dedicated butler service."
+      "accessibilityNotes": "Luxury villas feature step-free private pool access and dedicated butler service.",
+      "titleMain": "Enchanted Ceylon Romantic Hideaway",
+      "titleAccent": "Private Plunge Pools & Sunset Ramparts"
     },
     {
       "id": "pkg-pure-serenade-coastal-highland-romance",
@@ -4305,7 +4339,9 @@
       "difficulty": "Easy",
       "groupSize": "Private Couple Exclusive",
       "childFriendly": "Adults only",
-      "accessibilityNotes": "Accessible luxury tented glamping suites and ocean villas throughout."
+      "accessibilityNotes": "Accessible luxury tented glamping suites and ocean villas throughout.",
+      "titleMain": "Pure Serenade Coastal & Highland Romance",
+      "titleAccent": "Bespoke Glamping & Turquoise Horizons"
     },
     {
       "id": "pkg-island-wonder-multi-gen-family-discovery",
@@ -4515,7 +4551,9 @@
       "difficulty": "Easy",
       "groupSize": "Family / Multi-Gen (3-12 guests)",
       "childFriendly": "Yes (All ages 0-99)",
-      "accessibilityNotes": "Spacious high-roof air-conditioned passenger van; step-free options prioritized."
+      "accessibilityNotes": "Spacious high-roof air-conditioned passenger van; step-free options prioritized.",
+      "titleMain": "Island Wonder Multi-Gen Family Discovery",
+      "titleAccent": "Gentle Safaris, Turtle Bays & Scenic Rail"
     },
     {
       "id": "pkg-wild-safari-coastal-family-holiday",
@@ -4755,7 +4793,9 @@
       "difficulty": "Easy",
       "groupSize": "Family (3-10 guests)",
       "childFriendly": "Yes (All ages)",
-      "accessibilityNotes": "Private customized safari jeeps with padded seating; beach resorts with children pools."
+      "accessibilityNotes": "Private customized safari jeeps with padded seating; beach resorts with children pools.",
+      "titleMain": "Wild Safari & Coastal Family Holiday",
+      "titleAccent": "Elephant Gatherings & Calm Ocean Waters"
     },
     {
       "id": "pkg-the-grand-ceylon-family-adventure",
@@ -5005,7 +5045,9 @@
       "difficulty": "Easy to Moderate",
       "groupSize": "Family (3-12 guests)",
       "childFriendly": "Yes (All ages)",
-      "accessibilityNotes": "Paced with two-night stays at key hubs to avoid packing fatigue for families."
+      "accessibilityNotes": "Paced with two-night stays at key hubs to avoid packing fatigue for families.",
+      "titleMain": "The Grand Ceylon Family Adventure",
+      "titleAccent": "Ancient Citadels, Wilderness & Coastal Play"
     },
     {
       "id": "pkg-sacred-ramayana-heritage-trail",
@@ -5165,7 +5207,9 @@
       "difficulty": "Easy to Moderate",
       "groupSize": "Private (2-10 pilgrims)",
       "childFriendly": "Yes (All ages)",
-      "accessibilityNotes": "Temple courtyards require shoe removal; wheelchair assistance arranged at major shrines."
+      "accessibilityNotes": "Temple courtyards require shoe removal; wheelchair assistance arranged at major shrines.",
+      "titleMain": "Sacred Ramayana Heritage Trail",
+      "titleAccent": "Seetha Amman, Ashoka Vatika & Sacred Legends"
     },
     {
       "id": "pkg-the-epic-ramayana-chronicle-pilgrimage",
@@ -5385,7 +5429,9 @@
       "difficulty": "Moderate",
       "groupSize": "Private (2-12 pilgrims)",
       "childFriendly": "Yes (All ages)",
-      "accessibilityNotes": "Cave and mountain shrines involve climbing steps; road journeys arranged on smooth expressways."
+      "accessibilityNotes": "Cave and mountain shrines involve climbing steps; road journeys arranged on smooth expressways.",
+      "titleMain": "The Epic Ramayana Chronicle Pilgrimage",
+      "titleAccent": "Ancient Temples, Ravana Caves & Sacred Fire"
     },
     {
       "id": "pkg-the-royal-ceylon-fairways-tour",
@@ -5525,7 +5571,9 @@
       "difficulty": "Moderate",
       "groupSize": "Private (1-8 golfers)",
       "childFriendly": "Yes (Junior golfers welcome)",
-      "accessibilityNotes": "Golf buggies and senior caddies available at both championship venues."
+      "accessibilityNotes": "Golf buggies and senior caddies available at both championship venues.",
+      "titleMain": "The Royal Ceylon Fairways Tour",
+      "titleAccent": "Historic RCGC & Victoria Highland Links"
     },
     {
       "id": "pkg-highland-greens-coastal-links-championship",
@@ -5715,7 +5763,9 @@
       "difficulty": "Challenging",
       "groupSize": "Private (1-8 golfers)",
       "childFriendly": "Yes (All golfer levels)",
-      "accessibilityNotes": "Club storage and dedicated transfer van for golf bags across the 4 resorts."
+      "accessibilityNotes": "Club storage and dedicated transfer van for golf bags across the 4 resorts.",
+      "titleMain": "Highland Greens & Coastal Links",
+      "titleAccent": "Alpine Fairways & Oceanfront Greens"
     },
     {
       "id": "pkg-the-grand-ceylon-masters-golf-odyssey",
@@ -5935,7 +5985,9 @@
       "difficulty": "Challenging",
       "groupSize": "Private (1-8 golfers)",
       "childFriendly": "Yes",
-      "accessibilityNotes": "VIP clubhouse access, dedicated luxury van with extra golf bag compartment, buggy throughout."
+      "accessibilityNotes": "VIP clubhouse access, dedicated luxury van with extra golf bag compartment, buggy throughout.",
+      "titleMain": "The Grand Ceylon Masters Golf Odyssey",
+      "titleAccent": "Four Championship Courses & 5-Star Stays"
     }
   ]
 }

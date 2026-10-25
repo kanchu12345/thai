@@ -601,3 +601,20 @@ body.page-tour-detail {
   font-size: 0.95rem;
   margin-bottom: 0.25rem;
 }
+
+/* Unified Hero Sub-elements */
+.tour-hero-title .hero-title-main {
+  color: #FFFFFF !important;
+  font-weight: 600 !important;
+  display: block !important;
+  font-style: normal !important;
+  font-feature-settings: "swsh" 0, "dlig" 0 !important;
+}
+.tour-hero-title .hero-title-accent {
+  color: #C9962B !important;
+  font-weight: 500 !important;
+  display: block !important;
+  font-style: italic !important;
+  font-feature-settings: "swsh" 0, "dlig" 0 !important;
+  margin-top: 0.35rem !important;
+}

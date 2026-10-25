@@ -403,7 +403,10 @@
           <span class="tour-badge-pill tour-badge-glass">★ 5.0 Private Chauffeur Guided</span>
         </div>
 
-        <h1 class="tour-hero-title" id="heroTitle">Tour Package</h1>
+        <h1 class="tour-hero-title" id="heroTitle">
+          <span class="hero-title-main">Tour Package</span>
+          <span class="hero-title-accent">Curated Itinerary</span>
+        </h1>
         <p class="tour-hero-tagline" id="heroTagline">Loading bespoke luxury itinerary...</p>
 
         <div class="tour-hero-actions">
@@ -712,7 +715,11 @@
         // Hero
         document.getElementById('bcCategory').textContent = cat.title || pkg.category;
         document.getElementById('bcTitle').textContent = pkg.title;
-        document.getElementById('heroTitle').textContent = pkg.title;
+        if (pkg.titleMain && pkg.titleAccent) {
+          document.getElementById('heroTitle').innerHTML = `<span class="hero-title-main">${pkg.titleMain}</span><span class="hero-title-accent">${pkg.titleAccent}</span>`;
+        } else {
+          document.getElementById('heroTitle').textContent = pkg.title;
+        }
         document.getElementById('heroTagline').textContent = pkg.tagline || '';
         document.getElementById('heroDuration').textContent = `${pkg.nights} Nights • ${pkg.days} Days`;
         document.getElementById('heroCategory').textContent = cat.title || pkg.category;

@@ -1749,3 +1749,106 @@
     flex-direction: column;
   }
 }
+
+/* ==========================================================================
+   UNIFIED HERO HEADING & BANNER ARCHITECTURE (Phase 1)
+   ========================================================================== */
+.beach-hero-banner,
+.wildlife-hero-banner,
+.tour-hero-section,
+.tours-hero-section,
+.banner-section-inner.tours-hero-banner {
+  padding: 140px 48px 80px !important;
+  box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  .beach-hero-banner,
+  .wildlife-hero-banner,
+  .tour-hero-section,
+  .tours-hero-section,
+  .banner-section-inner.tours-hero-banner {
+    padding: 110px 24px 60px !important;
+  }
+}
+
+.beach-hero-title,
+.wildlife-hero-title,
+.tour-hero-title,
+.tours-hero-title,
+.hero-title {
+  font-family: 'Playfair Display', Georgia, serif !important;
+  font-size: clamp(1.75rem, 4.5vw, 3.75rem) !important;
+  overflow-wrap: break-word;
+  word-break: normal;
+  line-height: 1.15 !important;
+  text-wrap: balance !important;
+  max-width: 22ch !important;
+  margin-bottom: 1.25rem !important;
+  font-feature-settings: "swsh" 0, "dlig" 0 !important;
+  font-variant-ligatures: normal !important;
+}
+
+.beach-hero-content .beach-hero-title,
+.banner-section-inner .tours-hero-title {
+  margin-left: auto !important;
+  margin-right: auto !important;
+  text-align: center !important;
+}
+
+.hero-title-main {
+  color: #FFFFFF !important;
+  font-weight: 600 !important;
+  display: block !important;
+  font-style: normal !important;
+  font-feature-settings: "swsh" 0, "dlig" 0 !important;
+}
+
+.hero-title-accent {
+  color: #C9962B !important;
+  font-weight: 500 !important;
+  display: block !important;
+  font-style: italic !important;
+  font-feature-settings: "swsh" 0, "dlig" 0 !important;
+  margin-top: 0.35rem !important;
+}
+
+.beach-hero-lead,
+.wildlife-hero-lead,
+.tour-hero-tagline,
+.tours-hero-lead,
+.banner-section-inner p.hero-lead {
+  max-width: 62ch !important;
+  margin-bottom: 2rem !important;
+  font-size: clamp(1rem, 1.2vw, 1.15rem) !important;
+  line-height: 1.7 !important;
+  color: #E2E8F0 !important;
+  text-wrap: pretty !important;
+}
+
+.beach-hero-content .beach-hero-lead,
+.banner-section-inner p.hero-lead {
+  margin-left: auto !important;
+  margin-right: auto !important;
+  text-align: center !important;
+}
+
+@media (max-width: 768px) {
+  .tour-hero-content {
+    text-align: center !important;
+  }
+  .tour-hero-title {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    text-align: center !important;
+  }
+  .tour-hero-tagline {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    text-align: center !important;
+  }
+  .tour-hero-badges,
+  .tour-hero-actions {
+    justify-content: center !important;
+  }
+}
