@@ -5236,3 +5236,293 @@ figure.video iframe,
     height: 340px !important;
   }
 }
+
+
+/* ==============================================================================
+ * SACRED BUDDHIST PILGRIMAGE & CEYLON HERITAGE CARD SYSTEM
+ * Rich, vibrant color elevation across all cards, badges, and CTAs
+ * ============================================================================== */
+
+/* 1. Destination Cards (Home & destinations.html) */
+.dest-card {
+  background: #FFFDF8 !important;
+  border-radius: 14px !important;
+  overflow: hidden !important;
+  box-shadow: 0 8px 24px rgba(74, 22, 32, 0.06) !important;
+  border: 1px solid rgba(201, 162, 75, 0.35) !important;
+  border-top: 4px solid var(--saffron, #D9822B) !important;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.35s ease !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.dest-card:hover {
+  transform: translateY(-7px) !important;
+  box-shadow: 0 18px 40px rgba(74, 22, 32, 0.14) !important;
+  border-color: #D9822B !important;
+  border-top-color: #C9A24B !important;
+}
+
+.dest-card-body {
+  padding: 1.4rem 1.3rem !important;
+  background: #FFFDF8 !important;
+}
+
+.dest-card-title {
+  color: #4A1620 !important;
+  font-family: var(--font-serif, 'Playfair Display', Georgia, serif) !important;
+  font-size: 1.35rem !important;
+  font-weight: 700 !important;
+  margin-bottom: 0.4rem !important;
+  transition: color 0.25s ease !important;
+}
+
+.dest-card:hover .dest-card-title {
+  color: #A8530E !important;
+}
+
+.dest-card-desc {
+  color: #55443B !important;
+  font-size: 0.92rem !important;
+  line-height: 1.65 !important;
+  margin-bottom: 1.25rem !important;
+}
+
+.dest-card-cta {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  margin-top: auto !important;
+  padding-top: 0.85rem !important;
+  border-top: 1px solid rgba(201, 162, 75, 0.22) !important;
+  font-size: 0.88rem !important;
+  font-weight: 700 !important;
+  color: #A8530E !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+}
+
+.dest-cta-arrow {
+  width: 28px !important;
+  height: 28px !important;
+  border-radius: 50% !important;
+  background: linear-gradient(135deg, #D9822B 0%, #B86214 100%) !important;
+  color: #FFFFFF !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 0.85rem !important;
+  box-shadow: 0 2px 8px rgba(217, 130, 43, 0.35) !important;
+  transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+.dest-card:hover .dest-cta-arrow {
+  transform: translateX(4px) scale(1.08) !important;
+  box-shadow: 0 4px 14px rgba(217, 130, 43, 0.5) !important;
+}
+
+/* 2. Color-Coded Region & Category Badges */
+.dest-card-region {
+  position: absolute !important;
+  top: 12px !important;
+  left: 12px !important;
+  font-size: 0.72rem !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.1em !important;
+  padding: 5px 12px !important;
+  border-radius: 20px !important;
+  backdrop-filter: blur(8px) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25) !important;
+  z-index: 2 !important;
+}
+
+.dest-card[data-region="sacred-sites"] .dest-card-region,
+.dest-card-region.sacred,
+.badge-sacred {
+  background: #4A1620 !important;
+  color: #FBF6EC !important;
+  border: 1px solid #C9A24B !important;
+}
+
+.dest-card[data-region="cultural-triangle"] .dest-card-region,
+.dest-card-region.cultural,
+.badge-cultural {
+  background: #872E1B !important;
+  color: #FBF6EC !important;
+  border: 1px solid #E2BA5F !important;
+}
+
+.dest-card[data-region="hill-country"] .dest-card-region,
+.dest-card-region.highlands,
+.badge-highlands {
+  background: #2D5A3C !important;
+  color: #FBF6EC !important;
+  border: 1px solid #A3C9A8 !important;
+}
+
+.dest-card[data-region="south-coast"] .dest-card-region,
+.dest-card[data-region="east-coast"] .dest-card-region,
+.dest-card-region.coastal,
+.badge-coastal {
+  background: #0E7490 !important;
+  color: #FBF6EC !important;
+  border: 1px solid #67E8F9 !important;
+}
+
+/* 3. Three Specialized Travel Pillars (#brands) */
+.brand-card-item {
+  background-color: #FFFDF8 !important;
+  border-radius: 16px !important;
+  overflow: hidden !important;
+  box-shadow: 0 10px 30px rgba(74, 22, 32, 0.07) !important;
+  border: 1px solid rgba(201, 162, 75, 0.35) !important;
+  border-top: 4px solid #C9A24B !important;
+  transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease !important;
+}
+
+.brand-card-item:nth-child(1) {
+  border-top: 4px solid #4A1620 !important;
+}
+.brand-card-item:nth-child(2) {
+  border-top: 4px solid #2D5A3C !important;
+}
+.brand-card-item:nth-child(3) {
+  border-top: 4px solid #115E59 !important;
+}
+
+.brand-card-item:hover {
+  transform: translateY(-8px) !important;
+  box-shadow: 0 20px 45px rgba(74, 22, 32, 0.15) !important;
+  border-color: #D9822B !important;
+}
+
+.brand-card-body {
+  padding: 2.25rem 2rem !important;
+  background: #FFFDF8 !important;
+}
+
+.brand-card-title {
+  color: #4A1620 !important;
+}
+
+.brand-card-title span {
+  color: #A8530E !important;
+}
+
+.brand-card-tag {
+  color: #D9822B !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.12em !important;
+}
+
+/* 4. Testimonial Cards on Home */
+.testimonial-card {
+  background: #FFFDF8 !important;
+  border: 1px solid rgba(201, 162, 75, 0.32) !important;
+  border-top: 4px solid #C9A24B !important;
+  border-radius: 16px !important;
+  padding: 2.25rem 2rem !important;
+  box-shadow: 0 8px 24px rgba(74, 22, 32, 0.05) !important;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease !important;
+}
+
+.testimonial-card:hover {
+  background: #FFFDF8 !important;
+  box-shadow: 0 16px 36px rgba(74, 22, 32, 0.12) !important;
+  border-color: #D9822B !important;
+  transform: translateY(-6px) !important;
+}
+
+.testimonial-stars {
+  color: #D9822B !important;
+  font-size: 1.25rem !important;
+  letter-spacing: 3px !important;
+  margin-bottom: 0.85rem !important;
+}
+
+.testimonial-quote-title {
+  color: #4A1620 !important;
+  font-family: var(--font-serif, 'Playfair Display', Georgia, serif) !important;
+  font-size: 1.25rem !important;
+}
+
+.testimonial-text {
+  color: #4A3B32 !important;
+  line-height: 1.75 !important;
+  font-style: italic !important;
+}
+
+.testimonial-author {
+  color: #4A1620 !important;
+  font-weight: 700 !important;
+  border-top: 1px solid rgba(201, 162, 75, 0.25) !important;
+}
+
+.testimonial-location {
+  color: #A8530E !important;
+  font-weight: 600 !important;
+}
+
+/* 5. Tour Packages & Category Hover Cards Overlay */
+.hover-box__overlay {
+  background: linear-gradient(180deg, rgba(74, 22, 32, 0.2) 0%, rgba(42, 12, 18, 0.88) 100%) !important;
+  transition: background 0.4s ease !important;
+}
+
+.hover-box:hover .hover-box__overlay {
+  background: linear-gradient(180deg, rgba(74, 22, 32, 0.35) 0%, rgba(42, 12, 18, 0.94) 100%) !important;
+}
+
+.walker-card-line {
+  background: #C9A24B !important;
+  height: 3px !important;
+}
+
+.hover-box:hover .walker-hover-explore {
+  background: #D9822B !important;
+  border-color: #E2BA5F !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 4px 14px rgba(217, 130, 43, 0.5) !important;
+}
+
+.featured-ribbon {
+  background: linear-gradient(135deg, #D9822B 0%, #A8530E 100%) !important;
+  color: #FFFFFF !important;
+  border: 1px solid #E2BA5F !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.1em !important;
+  box-shadow: 0 4px 12px rgba(217, 130, 43, 0.4) !important;
+}
+
+/* 6. Section Background Rhythms */
+.padding-top--100.padding-bottom--100.package-sec {
+  background: #F4EBD9 !important;
+  border-top: 1px solid rgba(201, 162, 75, 0.3) !important;
+  border-bottom: 1px solid rgba(201, 162, 75, 0.3) !important;
+}
+
+.destinations-section {
+  background: #FBF6EC !important;
+}
+
+/* 7. Next-Btn Elegance */
+.next-btn.next-btn--blue,
+.next-btn.next-btn--primary {
+  background: linear-gradient(135deg, #D9822B 0%, #A8530E 100%) !important;
+  color: #FFFFFF !important;
+  border: 1px solid #E2BA5F !important;
+  box-shadow: 0 4px 14px rgba(217, 130, 43, 0.3) !important;
+}
+
+.next-btn.next-btn--blue:hover,
+.next-btn.next-btn--primary:hover {
+  background: linear-gradient(135deg, #B86214 0%, #873E06 100%) !important;
+  box-shadow: 0 6px 20px rgba(217, 130, 43, 0.5) !important;
+  transform: translateY(-2px) !important;
+}
+
+.next-btn--blue .next-btn-circle {
+  background: #FFFFFF !important;
+  color: #A8530E !important;
+}
