@@ -2365,3 +2365,71 @@ figure.video iframe,
   line-height: 1.6;
   margin: 0;
 }
+
+/* ==========================================================================
+   PHASE 7: RTL (RIGHT-TO-LEFT) ARABIC & MULTILINGUAL SUPPORT
+   ========================================================================== */
+[dir="rtl"] {
+  text-align: right;
+  direction: rtl;
+}
+
+[dir="rtl"] .itinerary-item {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .itinerary-meta-tags {
+  justify-content: flex-start;
+}
+
+[dir="rtl"] .tour-breadcrumb {
+  direction: rtl;
+}
+
+[dir="rtl"] .lotus-comparison-table {
+  text-align: right;
+}
+
+[dir="rtl"] .dest-col-header,
+[dir="rtl"] .destination-name-cell,
+[dir="rtl"] .activity-name-cell {
+  text-align: right;
+  padding-right: 1.25rem;
+  padding-left: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  [dir="rtl"] .lotus-comparison-table th.dest-col-header,
+  [dir="rtl"] .lotus-comparison-table td.destination-name-cell,
+  [dir="rtl"] .lotus-comparison-table th.destination-name-cell,
+  [dir="rtl"] .lotus-comparison-table td.activity-name-cell {
+    right: 0 !important;
+    left: auto !important;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.05) !important;
+  }
+}
+
+[dir="rtl"] .activity-name-cell::before {
+  right: 1.35rem;
+  left: auto;
+}
+
+[dir="rtl"] .hub-tip-banner {
+  border-left: none;
+  border-right: 3.5px solid #C9962B;
+  border-radius: 10px 0 0 10px;
+}
+
+[dir="rtl"] .hub-check-list li {
+  padding-left: 0;
+  padding-right: 1.4rem;
+}
+
+[dir="rtl"] .hub-check-list li::before {
+  left: auto;
+  right: 0;
+}
+
+[dir="rtl"] .mobile-sticky-inner {
+  flex-direction: row-reverse;
+}

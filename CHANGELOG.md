@@ -5,6 +5,23 @@ The project adheres to strict phase gates, top international tour operator quali
 
 ---
 
+## [Phase 7] - 2026-10-25: SEO, Schema Markup, OpenGraph & Multilingual/RTL Verification
+
+### Added
+- **Structured Data (JSON-LD) across All 49 Tour Pages**:
+  - **26 Package Detail Pages**: Injected Google-recommended `TouristTrip` schema containing full day-by-day `itinerary` steps, `offers` (tailor-made pricing in USD), `touristType`, and official `TravelAgency` provider metadata.
+  - **Category Pages**: Injected `CollectionPage` schema with structured `ItemList` linking each package in the category with individual descriptions and canonical URLs.
+  - **Tours Hubs (`sri-lanka-tours.html` & `tours/index.html`)**: Injected structured `TravelAgency` and rich snippet `FAQPage` schema.
+- **OpenGraph & Twitter Card Metadata**:
+  - Injected complete OpenGraph (`og:title`, `og:description`, `og:type`, `og:site_name`, `og:url`, `og:image`) and Twitter Card (`twitter:card`, `twitter:title`, `twitter:description`, `twitter:image`) metadata across all tour files.
+  - Added self-referential canonical URLs matching live GitHub Pages routing (`https://kanchu12345.github.io/thai/...`).
+- **Multilingual & RTL (Arabic) Support**:
+  - Added comprehensive Right-to-Left (`[dir="rtl"]`) CSS rules in `css/tours-map.css`.
+  - Mirrored itinerary timelines, metadata pills, sticky table headers on mobile, breadcrumb directions, and mobile sticky inquiry bars for clean Arabic rendering.
+  - Verified 10-language header switcher displays genuine language flags/names without any draft "Slot N" labels.
+
+---
+
 ## [Phase 6] - 2026-10-25: Travel Information Hub & Authority Content
 
 ### Added
