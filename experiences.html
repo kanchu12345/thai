@@ -22,7 +22,7 @@
       color: #ffffff;
       padding: 160px 0 100px;
       text-align: center;
-    }}
+    }
     .brand-pillar-card {
       background: #FFFFFF;
       border-radius: 16px;
@@ -33,38 +33,63 @@
       grid-template-columns: 1fr 1fr;
       margin-bottom: 3.5rem;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }}
+      scroll-margin-top: 110px;
+    }
     .brand-pillar-card:hover {
       box-shadow: 0 16px 40px rgba(0, 43, 73, 0.12);
       border-color: rgba(201, 162, 75, 0.45);
-    }}
+    }
+    .brand-pillar-card.is-reversed .brand-pillar-media {
+      order: 2;
+    }
+    .brand-pillar-card.is-reversed .brand-pillar-body {
+      order: 1;
+    }
     @media (max-width: 991px) {
       .brand-pillar-card {
         grid-template-columns: 1fr;
       }
+      .brand-pillar-card.is-reversed .brand-pillar-media {
+        order: 1;
+      }
+      .brand-pillar-card.is-reversed .brand-pillar-body {
+        order: 2;
+      }
     }
     .brand-pillar-media {
       position: relative;
-      min-height: 380px;
+      min-height: 420px;
+      height: 100%;
       background: #E2E8F0;
       overflow: hidden;
-    }}
+    }
     .brand-pillar-media img {
+      position: absolute;
+      top: 0;
+      left: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;
+      object-position: center bottom;
       display: block;
       transition: transform 0.6s ease;
-    }}
+    }
     .brand-pillar-card:hover .brand-pillar-media img {
       transform: scale(1.05);
-    }}
+    }
+    @media (max-width: 991px) {
+      .brand-pillar-media {
+        position: relative;
+        height: 320px;
+        min-height: 320px;
+      }
+    }
     .brand-pillar-body {
       padding: 3.5rem 3rem;
       display: flex;
       flex-direction: column;
       justify-content: center;
-    }}
+    }
     @media (max-width: 768px) {
       .brand-pillar-body {
         padding: 2.25rem 1.5rem;
@@ -74,7 +99,7 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 2rem;
-    }}
+    }
     @media (max-width: 1100px) {
       .exp-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -94,40 +119,40 @@
       display: flex;
       flex-direction: column;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }}
+    }
     .exp-item-card:hover {
       transform: translateY(-5px);
       box-shadow: 0 12px 30px rgba(0, 43, 73, 0.12);
-    }}
+    }
     .exp-item-media {
       position: relative;
       height: 230px;
       overflow: hidden;
       background: #E2E8F0;
-    }}
+    }
     .exp-item-media img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       display: block;
       transition: transform 0.5s ease;
-    }}
+    }
     .exp-item-card:hover .exp-item-media img {
       transform: scale(1.06);
-    }}
+    }
     .exp-item-body {
       padding: 1.5rem;
       display: flex;
       flex-direction: column;
       flex-grow: 1;
-    }}
+    }
     .exp-filter-tabs {
       display: flex;
       justify-content: center;
       gap: 0.65rem;
       flex-wrap: wrap;
       margin-bottom: 3rem;
-    }}
+    }
   </style>
 </head>
 <body style="background-color: var(--ivory, #FBF6EC); color: var(--color-ink, #2A1D17);">
@@ -390,11 +415,11 @@
         </article>
 
         <!-- Brand Pillar 2: Lotus Ayu Holistic Wellness (Inspired by Ayu by Walkers) -->
-        <article class="brand-pillar-card" id="lotus-ayu" style="direction: rtl;">
-          <div class="brand-pillar-media" style="direction: ltr;">
+        <article class="brand-pillar-card is-reversed" id="lotus-ayu">
+          <div class="brand-pillar-media">
             <img src="assets/images/couple-travel.jpg" alt="Lotus Ayu Holistic Ayurveda Sri Lanka" loading="lazy">
           </div>
-          <div class="brand-pillar-body" style="direction: ltr;">
+          <div class="brand-pillar-body">
             <div style="display: flex; gap: 0.5rem; align-items: center; margin-bottom: 0.5rem;">
               <span style="font-size: 1.3rem;">🌿</span>
               <span style="color: var(--color-gold, #C9A84C); font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em;">Ayurveda &amp; Healing</span>
