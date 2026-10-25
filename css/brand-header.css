@@ -2093,3 +2093,78 @@ html {
   background: #FFFFFF !important;
   color: #A8530E !important;
 }
+
+/* ==============================================================================
+ * AUTOMATIC TRANSLATOR & MULTI-LANGUAGE PILL STYLING
+ * ============================================================================== */
+
+/* Stealth hiding of third-party Google Translate top banners and frames */
+#google_translate_element,
+.goog-te-banner-frame.skiptranslate,
+.goog-te-banner-frame,
+iframe.goog-te-banner-frame {
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  width: 0 !important;
+  opacity: 0 !important;
+}
+
+body {
+  top: 0px !important;
+  position: static !important;
+}
+
+.goog-tooltip,
+.goog-tooltip:hover,
+#goog-gt-tt,
+.goog-te-balloon-frame {
+  display: none !important;
+}
+
+.goog-text-highlight {
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* Custom Language Switcher Pill Dropdown */
+.lang-pill-dropdown {
+  width: 235px !important;
+  max-height: 380px !important;
+  overflow-y: auto !important;
+  background: #FFFDF8 !important;
+  border: 1px solid rgba(201, 162, 75, 0.4) !important;
+  border-radius: 12px !important;
+  box-shadow: 0 14px 35px rgba(74, 22, 32, 0.16) !important;
+  padding: 6px 0 !important;
+  z-index: 1000 !important;
+}
+
+.lang-pill-dropdown button {
+  width: 100% !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  padding: 8px 14px !important;
+  background: none !important;
+  border: none !important;
+  color: #2A1D17 !important;
+  font-size: 0.86rem !important;
+  font-weight: 500 !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  text-align: left !important;
+}
+
+.lang-pill-dropdown button:hover {
+  background-color: #F4EBD9 !important;
+  color: #A8530E !important;
+}
+
+.lang-pill-dropdown button.is-active {
+  background-color: #F1E6D3 !important;
+  color: #4A1620 !important;
+  font-weight: 700 !important;
+  border-left: 3px solid #D9822B !important;
+}
