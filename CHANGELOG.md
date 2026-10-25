@@ -5,6 +5,29 @@ The project adheres to strict phase gates, top international tour operator quali
 
 ---
 
+## [Phase 4] - 2026-10-25: Dynamic Comparison Matrix & Competitor Clean-Up
+
+### Added
+- **Dynamic Tour Package Comparison Component (`js/tour-comparison.js`)**:
+  - Implemented dynamic, data-driven comparison engine matching packages strictly from `data/packages.json`.
+  - Generates rows structured as **Real Destinations (Bold)** with specific activities and sights as sub-rows in geographical Ceylon route order.
+  - Ticks (✓) and inclusion statuses match package itineraries with 100% data fidelity.
+  - Fully accessible table markup with `role="region"`, `tabindex="0"`, `aria-label`, and screen reader descriptions for each tick and empty cell.
+- **Mobile Responsive Matrix Styles (`css/tours-map.css`)**:
+  - Added `.lotus-comparison-section`, `.lotus-table-responsive`, and `.lotus-comparison-table`.
+  - Added sticky first column on mobile devices (`@media (max-width: 768px)`) so destination and activity labels remain anchored during horizontal scrolling.
+  - Retained backwards-compatible styling hooks.
+
+### Changed
+- **Removed Hardcoded Walkers Comparison Blocks**:
+  - Replaced hard-coded, competitor-adapted comparison tables across all 10 root category pages (`*-tours.html`) and all 10 subfolder category pages (`tours/*/index.html`).
+  - Completely purged all occurrences of `walkers-comparison-section`, `walkers-table-responsive`, and `WALKERS-STYLE` comment blocks from the codebase.
+- **Copywriting Contradictions & Unverified Claims Resolved**:
+  - Corrected transport contradiction in `sri-lanka-tours.html` from "executive cars or luxury coaches" to "private air-conditioned luxury vehicles with experienced English-speaking or multilingual chauffeur guides".
+  - Replaced unverified "within 24 hours" promises across all category pages with verified wording: "craft your personalized itinerary tailored to your travel dates and pace".
+
+---
+
 ## [Phase 3] - 2026-10-25: Interactive Leaflet Route Map & Sights Showcase
 
 ### Added
