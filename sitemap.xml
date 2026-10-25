@@ -841,4 +841,89 @@
     <xhtml:link rel="alternate" hreflang="zh" href="https://lotusceylon.com/tours/golf/the-grand-ceylon-masters-golf-odyssey/?lang=zh"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://lotusceylon.com/tours/golf/the-grand-ceylon-masters-golf-odyssey/"/>
   </url>
+  <url>
+    <loc>https://lotusceylon.com/contact.html</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.80</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lotusceylon.com/contact.html?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://lotusceylon.com/contact.html?lang=ar"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://lotusceylon.com/contact.html?lang=de"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://lotusceylon.com/contact.html?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://lotusceylon.com/contact.html?lang=fr"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://lotusceylon.com/contact.html?lang=hi"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://lotusceylon.com/contact.html?lang=it"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://lotusceylon.com/contact.html?lang=ja"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://lotusceylon.com/contact.html?lang=ru"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://lotusceylon.com/contact.html?lang=zh"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lotusceylon.com/contact.html"/>
+  </url>
+  <url>
+    <loc>https://lotusceylon.com/terms-conditions.html</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.50</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lotusceylon.com/terms-conditions.html?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://lotusceylon.com/terms-conditions.html?lang=ar"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://lotusceylon.com/terms-conditions.html?lang=de"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://lotusceylon.com/terms-conditions.html?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://lotusceylon.com/terms-conditions.html?lang=fr"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://lotusceylon.com/terms-conditions.html?lang=hi"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://lotusceylon.com/terms-conditions.html?lang=it"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://lotusceylon.com/terms-conditions.html?lang=ja"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://lotusceylon.com/terms-conditions.html?lang=ru"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://lotusceylon.com/terms-conditions.html?lang=zh"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lotusceylon.com/terms-conditions.html"/>
+  </url>
+  <url>
+    <loc>https://lotusceylon.com/privacy-policy.html</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.50</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lotusceylon.com/privacy-policy.html?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://lotusceylon.com/privacy-policy.html?lang=ar"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://lotusceylon.com/privacy-policy.html?lang=de"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://lotusceylon.com/privacy-policy.html?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://lotusceylon.com/privacy-policy.html?lang=fr"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://lotusceylon.com/privacy-policy.html?lang=hi"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://lotusceylon.com/privacy-policy.html?lang=it"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://lotusceylon.com/privacy-policy.html?lang=ja"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://lotusceylon.com/privacy-policy.html?lang=ru"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://lotusceylon.com/privacy-policy.html?lang=zh"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lotusceylon.com/privacy-policy.html"/>
+  </url>
+  <url>
+    <loc>https://lotusceylon.com/cancellation-policy.html</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.50</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lotusceylon.com/cancellation-policy.html?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://lotusceylon.com/cancellation-policy.html?lang=ar"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://lotusceylon.com/cancellation-policy.html?lang=de"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://lotusceylon.com/cancellation-policy.html?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://lotusceylon.com/cancellation-policy.html?lang=fr"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://lotusceylon.com/cancellation-policy.html?lang=hi"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://lotusceylon.com/cancellation-policy.html?lang=it"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://lotusceylon.com/cancellation-policy.html?lang=ja"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://lotusceylon.com/cancellation-policy.html?lang=ru"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://lotusceylon.com/cancellation-policy.html?lang=zh"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lotusceylon.com/cancellation-policy.html"/>
+  </url>
+  <url>
+    <loc>https://lotusceylon.com/cookie-policy.html</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.40</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lotusceylon.com/cookie-policy.html?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://lotusceylon.com/cookie-policy.html?lang=ar"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://lotusceylon.com/cookie-policy.html?lang=de"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://lotusceylon.com/cookie-policy.html?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://lotusceylon.com/cookie-policy.html?lang=fr"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://lotusceylon.com/cookie-policy.html?lang=hi"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://lotusceylon.com/cookie-policy.html?lang=it"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://lotusceylon.com/cookie-policy.html?lang=ja"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://lotusceylon.com/cookie-policy.html?lang=ru"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://lotusceylon.com/cookie-policy.html?lang=zh"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lotusceylon.com/cookie-policy.html"/>
+  </url>
 </urlset>

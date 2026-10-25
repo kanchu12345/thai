@@ -1146,13 +1146,36 @@
           <td>${r.country || 'International'}</td>
           <td style="color: #F57F17;">${'★'.repeat(r.rating || 5)}</td>
           <td><small>${r.tour_taken || 'Custom Tour'}</small></td>
-          <td><small style="color: var(--ink-light);">${(r.review_text || '').slice(0, 60)}...</small></td>
-          <td><span class="badge ${r.is_published ? 'badge-success' : 'badge-warning'}">${r.is_published ? 'Published' : 'Pending'}</span></td>
+          <td><small style="color: var(--ink-light);">${r.review_text ? (r.review_text.slice(0, 50) + '...') : '<em style="color:#94a3b8;">Empty placeholder</em>'}</small></td>
+          <td>
+            ${r.permission_received 
+              ? '<span class="badge badge-success">✓ Permission Verified</span>' 
+              : '<span class="badge badge-danger" style="background:#FEE2E2;color:#991B1B;">✗ No Permission</span>'}
+          </td>
+          <td>
+            <span class="badge ${r.is_published && r.permission_received ? 'badge-success' : 'badge-warning'}">
+              ${r.is_published && r.permission_received ? 'Published' : 'Hidden'}
+            </span>
+          </td>
           <td style="text-align: right;">
-            <button class="btn btn-outline btn-sm" onclick="AdminApp.showToast('Review approved', 'success')">Approve</button>
+            <button class="btn btn-outline btn-sm" onclick="AdminApp.toggleReviewPublish('${r.id}')">
+              ${r.is_published && r.permission_received ? 'Unpublish' : 'Verify & Publish'}
+            </button>
           </td>
         </tr>
       `).join('');
+    },
+
+    toggleReviewPublish(reviewId) {
+      const r = this.reviews.find(item => item.id === reviewId);
+      if (!r) return;
+      if (!r.permission_received) {
+        this.showToast('Safety Guardrail: Review cannot be published without guest permission checkbox ticked.', 'error', 4500);
+        return;
+      }
+      r.is_published = !r.is_published;
+      this.renderReviews();
+      this.showToast(`Review ${r.is_published ? 'published' : 'hidden'}.`, 'success');
     },
 
     openReviewModal() {

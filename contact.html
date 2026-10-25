@@ -1,0 +1,676 @@
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Lotus Ceylon | Island Headquarters & Direct Concierge</title>
+  <meta name="description" content="Reach Lotus Ceylon International Tours & Services (Pvt) Ltd. Headquarters in Ja-Ela, Sri Lanka. Direct phone, WhatsApp, WeChat, LINE, and email assistance.">
+  <link rel="icon" type="image/png" href="logo.png?v=20261021_step1">
+
+  <!-- Master Stylesheets -->
+  <link rel="stylesheet" href="css/style.css?v=20261021_wide_v1">
+  <link rel="stylesheet" href="css/brand-header.css?v=20261021_wide_v3">
+  
+  <!-- Leaflet CSS for Map -->
+  <link rel="stylesheet" href="vendor/leaflet/leaflet.css">
+  <style>
+    .contact-hero {
+      position: relative;
+      min-height: 420px;
+      display: flex;
+      align-items: center;
+      background: linear-gradient(180deg, rgba(0, 43, 73, 0.75) 0%, rgba(0, 43, 73, 0.9) 100%), 
+                  url('https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=1920&q=80') center/cover no-repeat;
+      color: #ffffff;
+      padding: 140px 0 70px;
+    }
+    .contact-hero-content {
+      max-width: 860px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .contact-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(201, 150, 43, 0.25);
+      border: 1px solid rgba(201, 150, 43, 0.45);
+      color: #F7D59A;
+      padding: 6px 18px;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 1.25rem;
+    }
+    .contact-hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.2rem, 4.5vw, 3.4rem);
+      color: #ffffff;
+      margin: 0 0 1rem;
+    }
+    .contact-main {
+      padding: 80px 0 100px;
+      background: #FAF8F5;
+    }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3.5rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .contact-info-card {
+      background: #FFFFFF;
+      border: 1px solid #E2E8F0;
+      border-radius: 16px;
+      padding: 2.5rem;
+      box-shadow: 0 4px 20px rgba(0, 43, 73, 0.04);
+    }
+    .contact-info-card h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      color: #002B49;
+      margin-bottom: 0.5rem;
+    }
+    .contact-info-sub {
+      color: #64748B;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin-bottom: 2rem;
+    }
+    .contact-details-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .contact-detail-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+    .contact-icon-box {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      background: #F1F5F9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      flex-shrink: 0;
+      color: #002B49;
+    }
+    .contact-detail-text h4 {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #C9962B;
+      margin: 0 0 0.2rem;
+      font-weight: 700;
+    }
+    .contact-detail-text p, .contact-detail-text a {
+      font-size: 1rem;
+      color: #002B49;
+      font-weight: 600;
+      text-decoration: none;
+      line-height: 1.5;
+      margin: 0;
+    }
+    .contact-detail-text a:hover {
+      color: #C9962B;
+    }
+    .chat-channel-pills {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      margin-top: 1.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #F1F5F9;
+    }
+    .chat-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.65rem 1.25rem;
+      border-radius: 24px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+    .chat-pill--wa {
+      background: #25D366;
+      color: #FFFFFF;
+    }
+    .chat-pill--wechat {
+      background: #07C160;
+      color: #FFFFFF;
+    }
+    .chat-pill--line {
+      background: #00C300;
+      color: #FFFFFF;
+    }
+    .chat-pill:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+    .contact-map-wrap {
+      margin-top: 2rem;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid #E2E8F0;
+      height: 220px;
+    }
+    #contactMap {
+      width: 100%;
+      height: 100%;
+    }
+    .contact-form-card {
+      background: #FFFFFF;
+      border: 1px solid #E2E8F0;
+      border-radius: 16px;
+      padding: 2.5rem;
+      box-shadow: 0 4px 20px rgba(0, 43, 73, 0.04);
+    }
+    .contact-form-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      color: #002B49;
+      margin-bottom: 0.5rem;
+    }
+    .contact-form-card p {
+      color: #64748B;
+      font-size: 0.95rem;
+      margin-bottom: 1.5rem;
+    }
+    .form-group-item {
+      margin-bottom: 1.25rem;
+    }
+    .form-group-item label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #002B49;
+      margin-bottom: 0.4rem;
+    }
+    .form-input-field {
+      width: 100%;
+      padding: 0.8rem 1rem;
+      border: 1px solid #CBD5E1;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-family: inherit;
+      color: #002B49;
+      transition: border 0.2s ease;
+      background: #F8FAFC;
+    }
+    .form-input-field:focus {
+      outline: none;
+      border-color: #002B49;
+      background: #FFFFFF;
+    }
+    .btn-submit-contact {
+      width: 100%;
+      background: #002B49;
+      color: #FFFFFF;
+      border: none;
+      border-radius: 8px;
+      padding: 1rem;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+    .btn-submit-contact:hover {
+      background: #C9962B;
+    }
+    @media (max-width: 900px) {
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+    }
+  </style>
+
+</head>
+<body>
+
+<header class="site-header-walkers" id="siteHeader">
+    <div class="wrapper--95">
+      <div class="header-top-row">
+        
+        <!-- Brand Logo & Title -->
+        <a href="index.html" class="header-brand" title="Lotus Ceylon International Tours &amp; Services">
+          <img src="logo.png?v=20261021_step1" alt="Lotus Ceylon Emblem" class="header-brand-logo">
+          <div class="header-brand-text">
+            <span class="header-brand-name"><span class="brand-name-lotus">Lotus</span> <span class="brand-name-ceylon">Ceylon</span></span>
+            <span class="header-brand-sub">INTERNATIONAL TOURS &amp; SERVICES</span>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation Menu -->
+        <nav aria-label="Main Navigation">
+          <ul class="walkers-menu" id="primaryNav">
+            <li class="walkers-menu-item">
+              <a href="index.html" class="walkers-menu-link">Home</a>
+            </li>
+
+            <!-- Tours with Mega Dropdown -->
+            <li class="walkers-menu-item">
+              <a href="tours.html" class="walkers-menu-link">
+                <span>Tours</span>
+                <svg class="walkers-caret" viewBox="0 0 10 6"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" fill="none"/></svg>
+              </a>
+              <div class="walkers-megamenu">
+                <div class="megamenu-header">
+                  <span class="megamenu-header-title">Curated Ceylon Tour Categories</span>
+                  <a href="tours/" class="megamenu-view-all">All Tours ➔</a>
+                </div>
+                <div class="megamenu-grid-10">
+                  <a href="tours/cultural/" class="megamenu-cat-card">
+                    <span class="megamenu-cat-icon">🏛️</span>
+                    <div class="megamenu-cat-text">
+                      <span class="megamenu-cat-name">Cultural</span>
+                      <span class="megamenu-cat-desc">Ancient UNESCO heritage cities</span>
+                    </div>
+                  </a>
+                  <a href="tours/cultural/" class="megamenu-cat-card">
+                    <span class="megamenu-cat-icon">☸️</span>
+                    <div class="megamenu-cat-text">
+                      <span class="megamenu-cat-name">Buddhist</span>
+                      <span class="megamenu-cat-desc">Sacred Tooth &amp; Stupas Pilgrimage</span>
+                    </div>
+                  </a>
+                  <a href="tours/wildlife/" class="megamenu-cat-card">
+                    <span class="megamenu-cat-icon">🐆</span>
+                    <div class="megamenu-cat-text">
+                      <span class="megamenu-cat-name">Wildlife</span>
+                      <span class="megamenu-cat-desc">Leopards, elephants &amp; whales</span>
+                    </div>
+                  </a>
+                  <a href="tours/beach/" class="megamenu-cat-card">
+                    <span class="megamenu-cat-icon">🏖️</span>
+                    <div class="megamenu-cat-text">
+                      <span class="megamenu-cat-name">Beach</span>
+                      <span class="megamenu-cat-desc">Bentota, Mirissa &amp; Trincomalee</span>
+                    </div>
+                  </a>
+                  <a href="tours/hill-country/" class="megamenu-cat-card">
+                    <span class="megamenu-cat-icon">⛰️</span>
+                    <div class="megamenu-cat-text">
+                      <span class="megamenu-cat-name">Hill Country</span>
+                      <span class="megamenu-cat-desc">Ella, Nuwara Eliya &amp; tea hills</span>
+                    </div>
+                  </a>
+                  <a href="tours/ayurvedic/" class="megamenu-cat-card">
+                    <span class="megamenu-cat-icon">🌿</span>
+                    <div class="megamenu-cat-text">
+                      <span class="megamenu-cat-name">Ayurveda</span>
+                      <span class="megamenu-cat-desc">Holistic healing &amp; wellness</span>
+                    </div>
+                  </a>
+                  <a href="tours/honeymoon/" class="megamenu-cat-card">
+                    <span class="megamenu-cat-icon">💍</span>
+                    <div class="megamenu-cat-text">
+                      <span class="megamenu-cat-name">Honeymoon</span>
+                      <span class="megamenu-cat-desc">Romantic bespoke private stays</span>
+                    </div>
+                  </a>
+                  <a href="tours/family/" class="megamenu-cat-card">
+                    <span class="megamenu-cat-icon">👨‍👩‍👧‍👦</span>
+                    <div class="megamenu-cat-text">
+                      <span class="megamenu-cat-name">Family</span>
+                      <span class="megamenu-cat-desc">Safe journeys for all generations</span>
+                    </div>
+                  </a>
+                  <a href="tours/adventure/" class="megamenu-cat-card">
+                    <span class="megamenu-cat-icon">🧗‍♂️</span>
+                    <div class="megamenu-cat-text">
+                      <span class="megamenu-cat-name">Adventure</span>
+                      <span class="megamenu-cat-desc">Trekking, surfing &amp; waterfalls</span>
+                    </div>
+                  </a>
+                  <a href="tours/ramayana/" class="megamenu-cat-card">
+                    <span class="megamenu-cat-icon">🏹</span>
+                    <div class="megamenu-cat-text">
+                      <span class="megamenu-cat-name">Ramayana</span>
+                      <span class="megamenu-cat-desc">Epic legendary sacred trail</span>
+                    </div>
+                  </a>
+                </div>
+              </div>
+            </li>
+
+            <li class="walkers-menu-item">
+              <a href="index.html#destinations" class="walkers-menu-link">Destinations</a>
+            </li>
+            <li class="walkers-menu-item">
+              <a href="index.html#experiences" class="walkers-menu-link">Experiences</a>
+            </li>
+            <li class="walkers-menu-item">
+              <a href="about.html" class="walkers-menu-link active">About Us</a>
+            </li>
+            <li class="walkers-menu-item">
+              <a href="index.html#gallery" class="walkers-menu-link">Gallery</a>
+            </li>
+            <li class="walkers-menu-item">
+              <a href="index.html#reviews" class="walkers-menu-link">Reviews</a>
+            </li>
+            <li class="walkers-menu-item">
+              <a href="blog.html" class="walkers-menu-link">Blog</a>
+            </li>
+            <li class="walkers-menu-item">
+              <a href="index.html#contact" class="walkers-menu-link">Contact</a>
+            </li>
+          </ul>
+        </nav>
+
+        <!-- Right Header Tools -->
+        <div class="header-tools">
+          
+          <!-- 10-Slot Language Switcher -->
+          <div class="custom-lang-pill">
+            <button type="button" class="lang-pill-btn" id="langPillToggle" title="Select Language">
+              <span id="currentLangLabel">EN</span>
+              <svg class="walkers-caret" viewBox="0 0 10 6"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" fill="none"/></svg>
+            </button>
+            <div class="lang-pill-dropdown" id="langPillMenu">
+              <button type="button" data-lang="en" class="is-active">🇬🇧 English</button>
+              <button type="button" data-lang="zh">🇨🇳 中文 (Chinese)</button>
+              <button type="button" data-lang="de">🇩🇪 Deutsch</button>
+              <button type="button" data-lang="fr">🇫🇷 Français</button>
+              <button type="button" data-lang="ru">🇷🇺 Русский</button>
+              <button type="button" data-lang="es">🇪🇸 Español</button>
+              <button type="button" data-lang="it">🇮🇹 Italiano</button>
+              <button type="button" data-lang="ja">🇯🇵 日本語</button>
+              <button type="button" data-lang="ar">🇦🇪 العربية</button>
+              <button type="button" data-lang="hi">🇮🇳 हिन्दी</button>
+            </div>
+          </div>
+
+          <!-- Gold Inquire Button -->
+          <a href="inquiry-detailed.html" class="gold-inquire-btn" title="Inquire Now">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 20 20" fill="none">
+              <path d="M17.5 17.5L14.5 14.5M16 9C16 12.866 12.866 16 9 16C5.13401 16 2 12.866 2 9C2 5.13401 5.13401 2 9 2C12.866 2 16 5.13401 16 9Z" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            <span>Inquire Now</span>
+          </a>
+
+          <!-- Mobile Hamburger Toggle -->
+          <button type="button" class="mobile-ham-btn" id="mobileHamToggle" aria-label="Open mobile navigation menu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <section class="contact-hero">
+    <div class="wrapper--90">
+      <div class="contact-hero-content">
+        <span class="contact-badge">✦ CONNECT WITH US ✦</span>
+        <h1>Speak With Our Ceylon Specialists</h1>
+        <p>Whether you seek advice on seasonal weather, bespoke routing, or unique cultural sanctuaries, our dedicated concierge awaits your message.</p>
+      </div>
+    </div>
+  </section>
+
+  <main class="contact-main">
+    <div class="wrapper--90">
+      <div class="contact-grid">
+        
+        <!-- Left Column: Official Headquarters Information -->
+        <div class="contact-info-card">
+          <h2>Island Headquarters</h2>
+          <p class="contact-info-sub">Lotus Ceylon International Tours &amp; Services (Private) Limited operates from our registered executive office in Ja-Ela, conveniently situated near Colombo Bandaranaike International Airport.</p>
+          
+          <div class="contact-details-list">
+            
+            <div class="contact-detail-item">
+              <div class="contact-icon-box">📍</div>
+              <div class="contact-detail-text">
+                <h4>Registered Office</h4>
+                <p>286/C, Niwandama South, Ja-Ela, Sri Lanka – 11350</p>
+              </div>
+            </div>
+
+            <div class="contact-detail-item">
+              <div class="contact-icon-box">📞</div>
+              <div class="contact-detail-text">
+                <h4>Voice Telephone</h4>
+                <p><a href="tel:+94715422384">+94 71 54 22 384</a></p>
+              </div>
+            </div>
+
+            <div class="contact-detail-item">
+              <div class="contact-icon-box">✉️</div>
+              <div class="contact-detail-text">
+                <h4>Official Correspondence</h4>
+                <p><a href="mailto:inquiry@lotusceylon.com">inquiry@lotusceylon.com</a></p>
+                <p style="font-size: 0.88rem; color: #64748B; font-weight: 500;">Secondary: lotusceylontours@gmail.com</p>
+              </div>
+            </div>
+
+            <div class="contact-detail-item">
+              <div class="contact-icon-box">⏱️</div>
+              <div class="contact-detail-text">
+                <h4>Hours &amp; Time Zone</h4>
+                <p>Monday &ndash; Saturday: 08:30 &ndash; 18:30</p>
+                <p style="font-size: 0.88rem; color: #64748B; font-weight: 500;">Sri Lanka Standard Time (GMT / UTC +5:30) &bull; 24/7 dedicated assistance for active in-travel guests</p>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Instant Messaging Direct Access -->
+          <div class="chat-channel-pills">
+            <a href="https://wa.me/94715422384?text=Hello%20Lotus%20Ceylon!%20I%20would%20like%20to%20inquire%20about%20a%20private%20tour." target="_blank" rel="noopener noreferrer" class="chat-pill chat-pill--wa">
+              <span>💬 WhatsApp</span>
+            </a>
+            <span class="chat-pill chat-pill--wechat" title="WeChat ID: LotusCeylonTours">
+              <span>🌿 WeChat: LotusCeylonTours</span>
+            </span>
+            <span class="chat-pill chat-pill--line" title="LINE ID: @lotusceylon">
+              <span>🟢 LINE: @lotusceylon</span>
+            </span>
+          </div>
+
+          <!-- Interactive Map -->
+          <div class="contact-map-wrap" id="contactMap"></div>
+        </div>
+
+        <!-- Right Column: Direct Contact & Inquiry Form -->
+        <div class="contact-form-card">
+          <h3>Send Us a Direct Message</h3>
+          <p>Share your intended travel window, party size, or questions. Our senior destination designers will respond with thoughtful guidance.</p>
+
+          <form action="inquiry-detailed.html" method="GET">
+            
+            <div class="form-group-item">
+              <label for="cName">Your Full Name *</label>
+              <input type="text" id="cName" name="fullName" required class="form-input-field" placeholder="e.g. Eleanor Vance">
+            </div>
+
+            <div class="form-group-item">
+              <label for="cEmail">Email Address *</label>
+              <input type="email" id="cEmail" name="email" required class="form-input-field" placeholder="e.g. eleanor@example.com">
+            </div>
+
+            <div class="form-group-item">
+              <label for="cPhone">Mobile / WhatsApp Number</label>
+              <input type="tel" id="cPhone" name="phone" class="form-input-field" placeholder="e.g. +44 7911 123456">
+            </div>
+
+            <div class="form-group-item">
+              <label for="cSubject">Interested Travel Theme</label>
+              <select id="cSubject" name="category" class="form-input-field">
+                <option value="Cultural">Cultural &amp; Ancient Kingdoms</option>
+                <option value="Wildlife">Wildlife &amp; Leopard Safaris</option>
+                <option value="Beach">Coastal Serenity &amp; Beaches</option>
+                <option value="Hill Country">Highlands &amp; Ceylon Tea Trails</option>
+                <option value="Ayurvedic">Ayurvedic Healing &amp; Wellness</option>
+                <option value="Honeymoon">Romantic Escapes &amp; Honeymoon</option>
+                <option value="Family">Family Adventures</option>
+                <option value="Bespoke">100% Tailor-Made Custom Journey</option>
+              </select>
+            </div>
+
+            <div class="form-group-item">
+              <label for="cMessage">Your Travel Wishes &amp; Approximate Dates *</label>
+              <textarea id="cMessage" name="notes" rows="4" required class="form-input-field" placeholder="Tell us about your preferred travel window, duration, pace, or special interests..."></textarea>
+            </div>
+
+            <button type="submit" class="btn-submit-contact">
+              <span>Send Message to Concierge ➔</span>
+            </button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+<footer class="footer-walkers" id="contact">
+    <div class="wrapper--90">
+      <div class="footer-walkers-grid">
+        
+        <!-- Col 1: Brand Info & Contact -->
+        <div>
+          <a href="index.html" class="footer-brand-link" title="Lotus Ceylon">
+            <img src="logo.png?v=20261021_step1" alt="Lotus Ceylon Emblem" class="footer-brand-logo">
+            <div class="footer-brand-text">
+              <span class="footer-brand-title">Lotus Ceylon</span>
+              <span class="footer-brand-sub">INTERNATIONAL TOURS &amp; SERVICES</span>
+            </div>
+          </a>
+          <p class="footer-tagline">
+            Pure Journeys &amp; Sacred Experiences across the timeless island of Sri Lanka. Registered Inbound Tour Operator (PV 00374439).
+          </p>
+
+          <div class="footer-contact-info">
+            <div class="footer-contact-item">
+              <p style="margin-bottom: 0.35rem; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-gold);">Registered Office &amp; HQ</p>
+              <p style="font-size: 0.88rem; line-height: 1.6; color: #E2E8F0;">
+                No. 124/B, Galle Road, Colombo 03, Sri Lanka.<br>
+                Director: Mallawa Arachchige Dhushanthа Gihan Mallawaarachchi
+              </p>
+            </div>
+            <div class="footer-contact-item">
+              <p style="margin-bottom: 0.35rem; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-gold);">24/7 Guest Care Hotline</p>
+              <p style="font-size: 0.88rem; line-height: 1.6; color: #E2E8F0;">
+                Hotline / WhatsApp: <a href="https://wa.me/94715422384" style="color: var(--color-gold); font-weight: 600;">+94 71 54 22 384</a><br>
+                Email: <a href="mailto:info@lotusceylon.com" style="color: #E2E8F0;">info@lotusceylon.com</a>
+              </p>
+            </div>
+            <div class="footer-contact-item">
+              <p style="margin-bottom: 0.35rem; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-gold);">WeChat &amp; LINE Concierge</p>
+              <p style="font-size: 0.88rem; line-height: 1.6; color: #E2E8F0;">
+                <span style="color: var(--color-gold); font-weight: 600;">WeChat ID:</span> FGUTaiwan90 (+9471 54 22 384)<br>
+                <span style="color: var(--color-gold); font-weight: 600;">LINE ID:</span> dpbs2024 (Line Phone: +886 958 561 954)
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Col 2: Quick Links -->
+        <div>
+          <p class="footer-col-title">Quick Links</p>
+          <div class="footer-links-grid">
+            <a href="index.html">Home</a>
+            <a href="sri-lanka-tours.html">Sri Lanka Tours</a>
+            <a href="tours.html">Tour Packages</a>
+            <a href="about.html">About Lotus Ceylon</a>
+            <a href="index.html#destinations">Destinations</a>
+            <a href="index.html#experiences">Experiences</a>
+            <a href="index.html#gallery">Gallery</a>
+            <a href="index.html#reviews">Guest Reviews</a>
+            <a href="blog.html">Travel Blog</a>
+            <a href="inquiry-detailed.html">Detailed Inquiry</a>
+            <a href="inquiry-quick.html">Quick Inquiry</a>
+          </div>
+        </div>
+
+        <!-- Col 3: Newsletter & Instant Chat QR Codes -->
+        <div>
+          <div class="newsletter-box">
+            <p class="footer-col-title">Stay Inspired</p>
+            <p>Subscribe to receive curated Sri Lanka holiday inspiration and early-booking privileges.</p>
+            <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Thank you for subscribing to Lotus Ceylon!'); this.reset();">
+              <input type="email" placeholder="Enter your email address" required>
+              <button type="submit" aria-label="Subscribe">➔</button>
+            </form>
+          </div>
+
+          <!-- Instant Chat QR Codes -->
+          <div style="margin: 1.5rem 0 1.25rem;">
+            <p style="font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.12em; color: #FFFFFF; font-weight: 700; margin-bottom: 0.65rem;">Scan &amp; Chat Instantly</p>
+            <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+              <a href="https://wa.me/94715422384" target="_blank" rel="noopener" style="background: rgba(255,255,255,0.08); padding: 0.5rem; border-radius: 6px; text-align: center; text-decoration: none; border: 1px solid rgba(255,255,255,0.12); width: 85px;">
+                <img src="assets/qr/whatsapp-qr.png" alt="WhatsApp QR" style="width: 70px; height: 70px; border-radius: 4px; display: block; margin: 0 auto 0.25rem; object-fit: contain;">
+                <span style="font-size: 0.72rem; color: #E2E8F0; display: block; font-weight: 600;">WhatsApp</span>
+              </a>
+              <div style="background: rgba(255,255,255,0.08); padding: 0.5rem; border-radius: 6px; text-align: center; border: 1px solid rgba(255,255,255,0.12); width: 85px;">
+                <img src="assets/qr/wechat-qr.png" alt="WeChat QR" style="width: 70px; height: 70px; border-radius: 4px; display: block; margin: 0 auto 0.25rem; object-fit: contain;">
+                <span style="font-size: 0.72rem; color: #E2E8F0; display: block; font-weight: 600;">WeChat</span>
+              </div>
+              <div style="background: rgba(255,255,255,0.08); padding: 0.5rem; border-radius: 6px; text-align: center; border: 1px solid rgba(255,255,255,0.12); width: 85px;">
+                <img src="assets/qr/line-qr.png" alt="LINE QR" style="width: 70px; height: 70px; border-radius: 4px; display: block; margin: 0 auto 0.25rem; object-fit: contain;">
+                <span style="font-size: 0.72rem; color: #E2E8F0; display: block; font-weight: 600;">LINE</span>
+              </div>
+            </div>
+          </div>
+
+          <p style="font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.12em; color: #FFFFFF; font-weight: 700; margin-bottom: 0.5rem;">Accepted Payment Partners</p>
+          <div class="payment-badges-row" style="display: none;">
+            <span class="payment-badge-pill">VISA</span>
+            <span class="payment-badge-pill">Mastercard</span>
+            <span class="payment-badge-pill">AMEX</span>
+            <span class="payment-badge-pill">UnionPay</span>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom-row">
+        <div>
+          &copy; 2026 LOTUS CEYLON INTERNATIONAL TOURS &amp; SERVICES (PRIVATE) LIMITED. All Rights Reserved. Since 2014.
+        </div>
+        <div>
+          Designed &amp; Developed by <a href="https://infiniteweb.dev/" target="_blank" rel="noopener" style="color: var(--color-gold); text-decoration: none; font-weight: 600;">Infinite Design</a> &middot; Reg: PV 00374439
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Leaflet Scripts for Headquarters Map -->
+  <script src="vendor/leaflet/leaflet.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      try {
+        // Headquarters Coordinates: Ja-Ela (7.0785, 79.8913)
+        var map = L.map('contactMap', {
+          center: [7.0785, 79.8913],
+          zoom: 12,
+          scrollWheelZoom: false
+        });
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        var lotusMarker = L.marker([7.0785, 79.8913]).addTo(map);
+        lotusMarker.bindPopup('<strong>Lotus Ceylon International Tours</strong><br>286/C, Niwandama South, Ja-Ela').openPopup();
+      } catch(e) {
+        console.warn('Map initialization:', e);
+      }
+    });
+  </script>
+</body>
+</html>

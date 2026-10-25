@@ -15,7 +15,15 @@
     "hero": {
       "headline": "PURE JOURNEYS. SACRED EXPERIENCES.",
       "intro": "Handcrafted luxury, cultural immersion, and timeless heritage across the pearl of the Indian Ocean with Lotus Ceylon Tours since 2014."
-    }
+    },
+    "sltda_license": "",
+    "tripadvisor_url": "",
+    "google_reviews_url": "",
+    "association_memberships": "",
+    "counter_founded": "2014",
+    "counter_countries": "10",
+    "counter_private_pct": "100",
+    "counter_chat_channels": "3"
   },
   "tour_categories": [
     {
@@ -110,7 +118,12 @@
       "is_popular": true,
       "hero_image": "assets/images/cultural-triangle.jpg",
       "overview": "A definitive voyage through Sri Lanka’s UNESCO world heritage wonders, misty highlands, and untamed leopard territory.",
-      "highlights": ["Sigiriya Rock Fortress sunrise climb", "Private Yala National Park jeep safari", "Scenic Kandy to Ella mountain train ride", "Temple of the Sacred Tooth Relic visit"],
+      "highlights": [
+        "Sigiriya Rock Fortress sunrise climb",
+        "Private Yala National Park jeep safari",
+        "Scenic Kandy to Ella mountain train ride",
+        "Temple of the Sacred Tooth Relic visit"
+      ],
       "is_published": true
     },
     {
@@ -123,7 +136,12 @@
       "is_popular": false,
       "hero_image": "assets/images/kandy.jpg",
       "overview": "Immerse in peaceful ancient monastic ruins, sacred stupas, and guided meditation with venerable monks.",
-      "highlights": ["Anuradhapura Sacred Bodhi Tree", "Dambulla Golden Cave Temple", "Mihintale cradle of Buddhism", "Kandy evening Thewawa ceremony"],
+      "highlights": [
+        "Anuradhapura Sacred Bodhi Tree",
+        "Dambulla Golden Cave Temple",
+        "Mihintale cradle of Buddhism",
+        "Kandy evening Thewawa ceremony"
+      ],
       "is_published": true
     },
     {
@@ -136,28 +154,54 @@
       "is_popular": false,
       "hero_image": "assets/images/yala.jpg",
       "overview": "Experience the majestic ocean giants of Mirissa combined with high-density leopard trails in Yala and golden sunsets.",
-      "highlights": ["Blue whale watching expedition", "2 game drives in Yala Block 1", "Galle Dutch Fort walking tour", "Private beachfront dinner in Mirissa"],
+      "highlights": [
+        "Blue whale watching expedition",
+        "2 game drives in Yala Block 1",
+        "Galle Dutch Fort walking tour",
+        "Private beachfront dinner in Mirissa"
+      ],
       "is_published": true
     }
   ],
   "reviews": [
     {
-      "guest_name": "David & Sarah Jenkins",
-      "country": "United Kingdom",
+      "id": "rev-slot-01",
+      "guest_name": "Review Slot 1 (Awaiting verified guest feedback)",
+      "country": "",
       "rating": 5,
-      "review_text": "Lotus Ceylon made our 10-day tour utterly magical. The chauffeur-guide was exceptionally knowledgeable and every hotel exceeded our expectations.",
-      "tour_taken": "Grand Ceylon Heritage",
-      "date_traveled": "February 2026",
-      "is_published": true
+      "review_text": "",
+      "tour_taken": "",
+      "photo_url": "",
+      "date_traveled": "",
+      "source_link": "",
+      "permission_received": false,
+      "is_published": false
     },
     {
-      "guest_name": "Li Wei & Family",
-      "country": "China",
+      "id": "rev-slot-02",
+      "guest_name": "Review Slot 2 (Awaiting verified guest feedback)",
+      "country": "",
       "rating": 5,
-      "review_text": "Very professional service, punctual luxury transport, and child-friendly itinerary. We loved the tea plantation and elephant gathering!",
-      "tour_taken": "Family Escapes",
-      "date_traveled": "January 2026",
-      "is_published": true
+      "review_text": "",
+      "tour_taken": "",
+      "photo_url": "",
+      "date_traveled": "",
+      "source_link": "",
+      "permission_received": false,
+      "is_published": false
+    },
+    {
+      "id": "rev-slot-03",
+      "guest_name": "Review Slot 3 (Awaiting verified guest feedback)",
+      "country": "",
+      "rating": 5,
+      "review_text": "",
+      "tour_taken": "",
+      "photo_url": "",
+      "date_traveled": "",
+      "source_link": "",
+      "permission_received": false,
+      "is_published": false
     }
   ]
 }
