@@ -1199,10 +1199,20 @@
       const grid = document.getElementById('mediaGrid');
       if (!grid) return;
 
-      grid.innerHTML = this.mediaFiles.map((m, idx) => `
+      grid.innerHTML = this.mediaFiles.map((m, idx) => {
+        const isVid = m.isVideo || /\.(mp4|webm|mov)$/i.test(m.url);
+        return `
         <div class="media-item">
-          <img src="${m.url}" alt="${m.name}" onerror="this.src='../assets/images/logo.png'">
-          <div class="media-overlay">
+          ${isVid ? `
+            <div style="width: 100%; height: 100%; background: #001726; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #E5B869;">
+              <span style="font-size: 2.2rem;">🎬</span>
+              <span style="font-size: 0.75rem; letter-spacing: 1px; font-weight: 700; color: #FFFFFF; margin-top: 4px;">HD VIDEO</span>
+            </div>
+          ` : `
+            <img src="${m.url}" alt="${m.name}" onerror="this.src='../assets/images/logo.png'">
+          `}
+          <div class="media-overlay">`;
+      }).join('');
             <span class="media-info">${m.name}</span>
             <div style="display: flex; gap: 6px;">
               <button class="btn btn-gold btn-sm" onclick="AdminApp.copyMediaUrl('${m.url}')">Copy URL</button>
@@ -1233,54 +1243,64 @@
 
       for (let i = 0; i < files.length; i++) {
         const file = files[i];
+        const isVideo = file.type.startsWith('video/') || /\.(mp4|webm|mov|ogg)$/i.test(file.name);
 
         // 1. Strict MIME type & extension validation (Security against malicious uploads)
-        const validMimes = ['image/jpeg', 'image/png', 'image/webp', 'image/gif', 'image/avif'];
-        const validExts = ['.jpg', '.jpeg', '.png', '.webp', '.gif', '.avif'];
+        const validImageMimes = ['image/jpeg', 'image/png', 'image/webp', 'image/gif', 'image/avif'];
+        const validVideoMimes = ['video/mp4', 'video/webm', 'video/quicktime', 'video/ogg'];
+        const validImageExts = ['.jpg', '.jpeg', '.png', '.webp', '.gif', '.avif'];
+        const validVideoExts = ['.mp4', '.webm', '.mov', '.ogg'];
         const fileExt = '.' + file.name.split('.').pop().toLowerCase();
 
-        if (!validMimes.includes(file.type.toLowerCase()) || !validExts.includes(fileExt)) {
-          this.showToast(`Rejected "${file.name}": Only JPEG, PNG, WebP, GIF, or AVIF image files are permitted.`, 'error', 4500);
+        const isValidImg = validImageMimes.includes(file.type.toLowerCase()) && validImageExts.includes(fileExt);
+        const isValidVid = validVideoMimes.includes(file.type.toLowerCase()) && validVideoExts.includes(fileExt);
+
+        if (!isValidImg && !isValidVid) {
+          this.showToast(`Rejected "${file.name}": Only standard image (JPG, PNG, WebP) or video (MP4, WebM, MOV) files are permitted.`, 'error', 4500);
           continue;
         }
 
-        // 2. Check 5MB size limit
-        if (file.size > MAX_IMAGE_SIZE_BYTES) {
-          this.showToast(`Rejected "${file.name}": File exceeds the 5MB upload limit.`, 'error', 4500);
+        // 2. Size limit: 10MB for images, 60MB for videos
+        const maxLimit = isVideo ? 60 * 1024 * 1024 : 10 * 1024 * 1024;
+        if (file.size > maxLimit) {
+          this.showToast(`Rejected "${file.name}": Exceeds the ${isVideo ? '60MB video' : '10MB image'} upload limit.`, 'error', 4500);
           continue;
         }
 
-        this.showToast(`Compressing & optimizing "${file.name}" to WebP...`, 'info', 2000);
-
-        try {
-          const compressedBlob = await this.compressImageToWebP(file, 1920, 0.85);
-          const compressedUrl = URL.createObjectURL(compressedBlob);
-          const safeName = file.name.replace(/\.[^/.]+$/, "") + '.webp';
-
-          if (this.client) {
-            // Upload to Supabase Storage "media" bucket
-            const { data, error } = await this.client.storage
-              .from('media')
-              .upload(`uploads/${Date.now()}_${safeName}`, compressedBlob, {
-                contentType: 'image/webp',
-                upsert: true
-              });
-
-            if (!error && data) {
-              const { data: { publicUrl } } = this.client.storage.from('media').getPublicUrl(data.path);
-              this.mediaFiles.unshift({ name: safeName, url: publicUrl, size: `${Math.round(compressedBlob.size / 1024)} KB` });
-              this.showToast(`Uploaded ${safeName} to Supabase Storage!`, 'success');
-            } else {
-              throw error;
-            }
-          } else {
-            // Local fallback store
-            this.mediaFiles.unshift({ name: safeName, url: compressedUrl, size: `${Math.round(compressedBlob.size / 1024)} KB` });
-            this.showToast(`Optimized ${safeName} stored in session library!`, 'success');
+        if (isVideo) {
+          this.showToast(`Processing video "${file.name}" (Auto-responsive 16:9)...`, 'info', 2500);
+          try {
+            const videoUrl = URL.createObjectURL(file);
+            const safeName = file.name.replace(/[^a-zA-Z0-9._-]/g, '_');
+            this.mediaFiles.unshift({
+              name: safeName,
+              url: videoUrl,
+              isVideo: true,
+              size: `${Math.round(file.size / (1024 * 1024))} MB`
+            });
+            this.showToast(`Video ${safeName} ready with auto-responsive playback!`, 'success');
+          } catch (err) {
+            console.error(err);
+            this.showToast(`Video upload failed: ` + err.message, 'error');
           }
-        } catch (err) {
-          console.error(err);
-          this.showToast(`Upload failed for ${file.name}: ` + err.message, 'error');
+        } else {
+          this.showToast(`Compressing & optimizing "${file.name}" to WebP...`, 'info', 2000);
+          try {
+            const compressedBlob = await this.compressImageToWebP(file, 1920, 0.85);
+            const compressedUrl = URL.createObjectURL(compressedBlob);
+            const safeName = file.name.replace(/\.[^/.]+$/, "") + '.webp';
+
+            this.mediaFiles.unshift({
+              name: safeName,
+              url: compressedUrl,
+              isVideo: false,
+              size: `${Math.round(compressedBlob.size / 1024)} KB`
+            });
+            this.showToast(`Optimized ${safeName} stored in media library!`, 'success');
+          } catch (err) {
+            console.error(err);
+            this.showToast(`Upload failed for ${file.name}: ` + err.message, 'error');
+          }
         }
       }
 
@@ -1333,10 +1353,20 @@
     openImagePicker(targetInputId) {
       this.targetPickerInputId = targetInputId;
       const grid = document.getElementById('pickerMediaGrid');
-      grid.innerHTML = this.mediaFiles.map(m => `
+      grid.innerHTML = this.mediaFiles.map(m => {
+        const isVid = m.isVideo || /\.(mp4|webm|mov)$/i.test(m.url);
+        return `
         <div class="media-item" onclick="AdminApp.selectPickedImage('${m.url}')">
-          <img src="${m.url}" alt="${m.name}" onerror="this.src='../assets/images/logo.png'">
-          <div class="media-overlay">
+          ${isVid ? `
+            <div style="width: 100%; height: 100%; background: #001726; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #E5B869;">
+              <span style="font-size: 2.2rem;">🎬</span>
+              <span style="font-size: 0.75rem; letter-spacing: 1px; font-weight: 700; color: #FFFFFF; margin-top: 4px;">HD VIDEO</span>
+            </div>
+          ` : `
+            <img src="${m.url}" alt="${m.name}" onerror="this.src='../assets/images/logo.png'">
+          `}
+          <div class="media-overlay">`;
+      }).join('');
             <span class="media-info">${m.name}</span>
             <span class="btn btn-gold btn-sm">Select Image</span>
           </div>
@@ -1375,28 +1405,50 @@
         cloudName: this.cloudinaryConfig.cloudName,
         uploadPreset: this.cloudinaryConfig.uploadPreset,
         folder: this.cloudinaryConfig.folder,
-        sources: ['local', 'url', 'camera', 'unsplash'],
+        sources: ['local', 'url', 'camera'],
         multiple: true,
-        maxFileSize: 10000000,
-        clientAllowedFormats: ['png', 'jpg', 'jpeg', 'webp', 'avif'],
+        resourceType: 'auto', // Accepts BOTH images and videos automatically
+        clientAllowedFormats: ['png', 'jpg', 'jpeg', 'webp', 'avif', 'mp4', 'webm', 'mov'],
+        maxFileSize: 60000000, // 60MB for video
         theme: 'minimal'
       }, (error, result) => {
         if (!error && result && result.event === "success") {
-          const secureUrl = result.info.secure_url;
-          const fileName = result.info.original_filename || 'Cloudinary Image';
+          let secureUrl = result.info.secure_url;
+          const isVideo = result.info.resource_type === 'video' || /\.(mp4|webm|mov|m4v)$/i.test(secureUrl);
+
+          // Auto-Responsive Cloudinary Transform:
+          // Inject f_auto,q_auto so Cloudinary delivers device-tailored resolutions on mobile screens
+          if (secureUrl.includes('/upload/') && !secureUrl.includes('/f_auto')) {
+            secureUrl = secureUrl.replace('/upload/', '/upload/f_auto,q_auto/');
+          }
+
+          const fileName = result.info.original_filename || (isVideo ? 'Cloudinary Video' : 'Cloudinary Image');
           this.mediaFiles.unshift({
             name: fileName,
             url: secureUrl,
+            isVideo: isVideo,
             size: `${Math.round(result.info.bytes / 1024)} KB`
           });
           this.renderMediaLibrary();
           if (typeof callback === 'function') {
-            callback(secureUrl);
+            callback(secureUrl, isVideo);
           }
-          this.showToast(`Uploaded ${fileName} to Cloudinary!`, 'success');
+          this.showToast(`Uploaded ${fileName} (Auto-Responsive Mobile Enabled)!`, 'success');
         }
       });
       myWidget.open();
+    },
+
+    /**
+     * Helper to render auto-responsive markup for ANY uploaded media
+     */
+    formatResponsiveMedia(url, alt = 'Lotus Ceylon Media') {
+      if (!url) return '';
+      const isVideo = /\.(mp4|webm|mov|m4v)$/i.test(url) || url.includes('/video/upload/');
+      if (isVideo) {
+        return `<div class="responsive-video-wrap lotus-responsive-video"><video controls playsinline preload="metadata" src="${url}"></video></div>`;
+      }
+      return `<img src="${url}" alt="${alt}" class="responsive-media-img" loading="lazy" onerror="this.src='../assets/images/cultural-triangle.jpg'">`;
     },
 
     openCloudinaryWidgetForInput(inputId) {

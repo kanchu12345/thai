@@ -1852,3 +1852,269 @@
     justify-content: center !important;
   }
 }
+
+
+/* ==========================================================================
+   UNIVERSAL MOBILE RESPONSIVE MEDIA ARCHITECTURE (Phase 2 Enhancement)
+   Guarantees 100% fluid responsiveness for all existing & future admin-uploaded
+   images, videos, banners, cards, and embedded media across all viewports.
+   ========================================================================== */
+
+/* 1. Universal Element Fluidity */
+img,
+picture,
+svg,
+video,
+canvas,
+audio,
+iframe,
+embed,
+object {
+  max-width: 100% !important;
+  box-sizing: border-box;
+}
+
+/* 2. Global Image Display & Containment */
+img {
+  height: auto;
+  display: block;
+}
+
+/* Fluid Responsive Image Class (Admin & Dynamic) */
+.responsive-media-img,
+.lotus-responsive-img {
+  width: 100% !important;
+  max-width: 100% !important;
+  height: auto !important;
+  object-fit: cover !important;
+  display: block;
+  border-radius: var(--radius-md, 10px);
+}
+
+/* 3. Card & Gallery Aspect-Ratio Uniformity */
+.hover-box__img,
+.tour-card img,
+.package-card img,
+.category-card img,
+.related-tour-card img,
+.compare-hero-img,
+.beach-card-img-wrap img,
+.cultural-card-img-wrap img,
+.wildlife-card-img-wrap img,
+.day-card-img,
+.table-thumb,
+.media-item img {
+  width: 100% !important;
+  max-width: 100% !important;
+  object-fit: cover !important;
+  display: block;
+}
+
+/* 4. Universal Video Responsiveness */
+video {
+  max-width: 100% !important;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+/* 5. Universal 16:9 Video Embed Wrapper (Cloudinary, MP4, YouTube, Vimeo) */
+.responsive-video-wrap,
+.video-responsive,
+.video-container,
+figure.video,
+.tour-video-wrap,
+.lotus-responsive-video {
+  position: relative !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  aspect-ratio: 16 / 9 !important;
+  overflow: hidden !important;
+  border-radius: var(--radius-md, 12px) !important;
+  background-color: #001726 !important;
+  margin: 1.25rem 0 !important;
+}
+
+.responsive-video-wrap video,
+.responsive-video-wrap iframe,
+.video-responsive video,
+.video-responsive iframe,
+.video-container video,
+.video-container iframe,
+figure.video video,
+figure.video iframe,
+.tour-video-wrap video,
+.tour-video-wrap iframe,
+.lotus-responsive-video video,
+.lotus-responsive-video iframe {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  border: 0 !important;
+  object-fit: cover !important;
+}
+
+/* 6. Background Video Banner Fluidity */
+.video-banner-slide {
+  position: relative !important;
+  width: 100% !important;
+  height: 100% !important;
+  overflow: hidden !important;
+}
+
+.video-banner-video {
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  min-width: 100% !important;
+  min-height: 100% !important;
+  width: 100% !important;
+  height: 100% !important;
+  transform: translate(-50%, -50%) !important;
+  object-fit: cover !important;
+  z-index: 1 !important;
+}
+
+/* 7. Mobile Viewport Refinements (<= 768px) */
+@media (max-width: 768px) {
+  /* Hero Video Banner on Tablets & Mobile */
+  .banner-section {
+    min-height: 500px !important;
+    height: 78vh !important;
+    max-height: 720px !important;
+  }
+
+  /* Prevent iOS Safari background-attachment fixed zoom bug */
+  .banner-section,
+  .tour-hero-section,
+  .beach-hero-banner,
+  .wildlife-hero-banner,
+  .banner-section-inner {
+    background-attachment: scroll !important;
+    background-size: cover !important;
+    background-position: center center !important;
+  }
+
+  /* Section Featured & Story Images */
+  .intro-img-card img,
+  .about-img-main,
+  .about-img-main img,
+  .mice-image-wrap img,
+  .faq-featured-image img,
+  .sustain-img-card img {
+    height: 290px !important;
+    max-height: 52vw !important;
+    width: 100% !important;
+    object-fit: cover !important;
+  }
+
+  /* Overlapping Secondary Image on Mobile */
+  .intro-img-overlap,
+  .about-img-overlap {
+    width: 48% !important;
+    height: 48% !important;
+    border-width: 3px !important;
+  }
+
+  /* Card Image Wrappers */
+  .brand-card-img-wrap,
+  .beach-card-img-wrap,
+  .cultural-card-img-wrap,
+  .wildlife-card-img-wrap {
+    height: 230px !important;
+  }
+
+  /* Itinerary & Day-by-day Images */
+  .day-card-img {
+    height: 200px !important;
+    max-height: 48vw !important;
+  }
+
+  /* Split Content Cards */
+  .img-content-card {
+    flex-direction: column !important;
+  }
+
+  .img-content-card__left,
+  .img-content-card__right {
+    flex: 1 1 100% !important;
+    width: 100% !important;
+  }
+
+  .img-content-card__left {
+    min-height: 260px !important;
+    max-height: 320px !important;
+  }
+
+  .img-content-card__right {
+    padding: 2rem 1.5rem !important;
+  }
+
+  /* Route & Tourist Map Responsive Frames */
+  .coastline-map-img,
+  .coastal-map-img,
+  .cultural-map-img,
+  .wildlife-map-img,
+  .lotus-map-img {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    max-height: 450px !important;
+    object-fit: contain !important;
+  }
+
+  .leaflet-tour-map,
+  .walkers-leaflet-map,
+  .osm-tour-map-container,
+  #touristMap,
+  #leafletTourMap {
+    min-height: 360px !important;
+    height: 380px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
+
+/* 8. Small Mobile Viewport Refinements (<= 480px) */
+@media (max-width: 480px) {
+  .banner-section {
+    min-height: 440px !important;
+    height: 72vh !important;
+  }
+
+  .intro-img-card img,
+  .about-img-main,
+  .about-img-main img,
+  .mice-image-wrap img,
+  .faq-featured-image img,
+  .sustain-img-card img {
+    height: 230px !important;
+    max-height: 60vw !important;
+  }
+
+  .brand-card-img-wrap,
+  .beach-card-img-wrap,
+  .cultural-card-img-wrap,
+  .wildlife-card-img-wrap {
+    height: 200px !important;
+  }
+
+  .day-card-img {
+    height: 180px !important;
+  }
+
+  .img-content-card__left {
+    min-height: 210px !important;
+  }
+
+  .leaflet-tour-map,
+  .walkers-leaflet-map,
+  .osm-tour-map-container,
+  #touristMap,
+  #leafletTourMap {
+    min-height: 320px !important;
+    height: 340px !important;
+  }
+}

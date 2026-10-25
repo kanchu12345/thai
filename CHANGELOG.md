@@ -8,6 +8,18 @@ The project adheres to strict phase gates, top international tour operator quali
 ## [Phase 1] - 2026-10-25: Hero Heading Overhaul & Site-Wide Audit
 
 ### Added
+### Added — Universal Auto-Responsive Media Architecture (Images & Videos)
+- **Universal Mobile Media Responsiveness**:
+  - Implemented across `css/style.css`, `css/tours-map.css`, `css/tour-package-detail.css`, `css/beach-tours.css`, `css/cultural-tours.css`, and `css/wildlife-tours.css`.
+  - Global `img, picture, svg, video, iframe, embed, object` constrained with `max-width: 100% !important; height: auto;`.
+  - Universal 16:9 responsive wrapper `.responsive-video-wrap` / `.lotus-responsive-video` ensuring all embedded and uploaded videos (MP4, WebM, YouTube, Vimeo) automatically scale without horizontal overflow or aspect distortion.
+  - Scaled mobile image containers on $\le 768\text{px}$ and $\le 480\text{px}$ (cards, featured story blocks, itinerary days, split image-content cards).
+  - Resolved mobile iOS Safari `background-attachment: fixed` bug by enforcing `background-attachment: scroll !important` on all hero and banner containers.
+- **Admin Panel Auto-Responsive Media Pipeline (`admin/js/admin-app.js`, `admin/index.html`)**:
+  - Extended file upload and Cloudinary widget to accept both **Images** (JPEG, PNG, WebP, AVIF) and **Videos** (MP4, WebM, MOV) up to 60MB.
+  - Automatically injects Cloudinary dynamic optimization `/f_auto,q_auto/` into all uploaded media URLs to serve device-tailored resolutions on mobile screens.
+  - Added `formatResponsiveMedia(url, alt)` helper to guarantee any media inserted via admin is automatically wrapped in fluid, responsive markup.
+  - Enhanced admin Media Library and Image Picker modals with dedicated video preview thumbnails and badges.
 - **`titleMain` and `titleAccent` attributes** added to all 26 packages in `data/packages.json`:
   - Concise primary title (`titleMain`) in white roman font.
   - Evocative subtitle (`titleAccent`) in gold italic font.
