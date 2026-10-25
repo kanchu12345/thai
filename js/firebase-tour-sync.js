@@ -217,6 +217,164 @@
         return null;
       }
     }
+
+    /**
+     * Submit an inquiry to Firestore collection: inquiries_quick or inquiries_detailed
+     */
+    async submitInquiry(data, isQuick = false) {
+      if (!this.initialized) await this.init();
+      const colName = isQuick ? 'inquiries_quick' : 'inquiries_detailed';
+      const payload = {
+        ...data,
+        createdAt: new Date().toISOString(),
+        status: 'new'
+      };
+
+      if (this.db && this.db.collection) {
+        const docRef = await this.db.collection(colName).add(payload);
+        return { id: docRef.id, ...payload };
+      } else if (this.db) {
+        const { collection, addDoc } = await import('https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js');
+        const docRef = await addDoc(collection(this.db, colName), payload);
+        return { id: docRef.id, ...payload };
+      }
+      return { id: data.referenceId || 'LOCAL-' + Date.now(), ...payload };
+    }
+
+    /**
+     * Fetch inquiries from collection inquiries_quick or inquiries_detailed
+     */
+    async fetchInquiries(collectionName = 'inquiries_detailed') {
+      if (!this.initialized) await this.init();
+      const list = [];
+      if (!this.db) return list;
+
+      try {
+        if (this.db.collection) {
+          const snapshot = await this.db.collection(collectionName).orderBy('createdAt', 'desc').get();
+          snapshot.forEach(doc => list.push({ id: doc.id, ...doc.data() }));
+        } else {
+          const { collection, getDocs, query, orderBy } = await import('https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js');
+          const q = query(collection(this.db, collectionName), orderBy('createdAt', 'desc'));
+          const snapshot = await getDocs(q);
+          snapshot.forEach(doc => list.push({ id: doc.id, ...doc.data() }));
+        }
+      } catch (err) {
+        console.warn(`[LotusFirebase] Fetch ${collectionName} error:`, err.message);
+      }
+      return list;
+    }
+
+    /**
+     * Update inquiry status in Firestore
+     */
+    async updateInquiryStatus(collectionName, docId, status) {
+      if (!this.initialized) await this.init();
+      if (!this.db) return false;
+
+      try {
+        if (this.db.collection) {
+          await this.db.collection(collectionName).doc(docId).update({ status: status, updatedAt: new Date().toISOString() });
+        } else {
+          const { doc, updateDoc } = await import('https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js');
+          await updateDoc(doc(this.db, collectionName, docId), { status: status, updatedAt: new Date().toISOString() });
+        }
+        return true;
+      } catch (err) {
+        console.error(`[LotusFirebase] Update inquiry status error:`, err);
+        return false;
+      }
+    }
+
+    /**
+     * Delete inquiry from Firestore
+     */
+    async deleteInquiry(collectionName, docId) {
+      if (!this.initialized) await this.init();
+      if (!this.db) return false;
+
+      try {
+        if (this.db.collection) {
+          await this.db.collection(collectionName).doc(docId).delete();
+        } else {
+          const { doc, deleteDoc } = await import('https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js');
+          await deleteDoc(doc(this.db, collectionName, docId));
+        }
+        return true;
+      } catch (err) {
+        console.error(`[LotusFirebase] Delete inquiry error:`, err);
+        return false;
+      }
+    }
+
+    /**
+     * Fetch Team members (Firestore -> local data/team.json fallback)
+     */
+    async fetchTeam(fallbackJsonPath = 'data/team.json') {
+      if (!this.initialized) await this.init();
+      const list = [];
+      if (this.db && navigator.onLine) {
+        try {
+          if (this.db.collection) {
+            const snap = await this.db.collection('team').orderBy('sortOrder', 'asc').get();
+            snap.forEach(doc => list.push({ id: doc.id, ...doc.data() }));
+          } else {
+            const { collection, getDocs, query, orderBy } = await import('https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js');
+            const q = query(collection(this.db, 'team'), orderBy('sortOrder', 'asc'));
+            const snap = await getDocs(q);
+            snap.forEach(doc => list.push({ id: doc.id, ...doc.data() }));
+          }
+          if (list.length > 0) return list;
+        } catch (e) {
+          console.warn('[LotusFirebase] Firestore team fetch failed, using fallback:', e.message);
+        }
+      }
+
+      // Fallback to static JSON
+      try {
+        const res = await fetch(fallbackJsonPath);
+        if (res.ok) {
+          return await res.json();
+        }
+      } catch (err) {
+        console.warn('[LotusFirebase] Could not load static team JSON:', err.message);
+      }
+      return [];
+    }
+
+    /**
+     * Save/Update Team Member
+     */
+    async saveTeamMember(memberData) {
+      if (!this.initialized) await this.init();
+      if (!this.db) return null;
+      const memberId = memberData.id || 'team-' + Date.now();
+      const payload = { ...memberData, id: memberId, updatedAt: new Date().toISOString() };
+
+      if (this.db.collection) {
+        await this.db.collection('team').doc(memberId).set(payload, { merge: true });
+      } else {
+        const { doc, setDoc } = await import('https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js');
+        await setDoc(doc(this.db, 'team', memberId), payload, { merge: true });
+      }
+      return payload;
+    }
+
+    /**
+     * Delete Team Member
+     */
+    async deleteTeamMember(memberId) {
+      if (!this.initialized) await this.init();
+      if (!this.db) return false;
+
+      if (this.db.collection) {
+        await this.db.collection('team').doc(memberId).delete();
+      } else {
+        const { doc, deleteDoc } = await import('https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js');
+        await deleteDoc(doc(this.db, 'team', memberId));
+      }
+      return true;
+    }
   }
 
   window.LotusFirebase = new LotusTourService();

@@ -12,6 +12,7 @@ const LOTUS_CONFIG = {
   shortName: "Lotus Ceylon Tours",
   slogan: "PURE JOURNEYS. SACRED EXPERIENCES.",
   foundedYear: 2014,
+  responseTimeHours: 2, // Editable response commitment setting
 
   // Contact details
   phone: "+94 71 54 22 384",

@@ -5,6 +5,30 @@ The project adheres to strict phase gates, top international tour operator quali
 
 ---
 
+## [Phase 9] - 2026-10-25: Inquiry Forms (Detailed & Quick) Overhaul, Dual Sheets & About Us Team Section
+
+### Added
+- **Detailed Inquiry Form Modernization (`inquiry-detailed.html`)**:
+  - Replaced legacy green bar header and footer with the unified luxury floating header (`css/brand-header.css`) and master footer with 10-language selector.
+  - Aligned fields to wireframe: Name, Country (with search & UK alias), Email, WhatsApp (+94 dial picker), Arrival & Departure dates, No. Pax (Adults 1-15, Children 0-10, max 20 cap with warning), Hotel Category (multi-select + synchronized star dropdown), Rooms, Meal Plan, Interests (7 categories with SVG icons), Targeted Budget (optional), Other Requirements, and Privacy Consent checkbox.
+  - Added response commitment note: *"We reply within 2 hours, Sri Lanka time (GMT+5:30)"*.
+- **Quick Inquiry Form Alignment (`inquiry-quick.html`)**:
+  - Replaced legacy header and footer with master luxury header and footer.
+  - Implemented wireframe sequence: Name, Country, Email, WhatsApp (+94 dial picker), Arrival, Departure, Pax (1-15 / 0-10, max 20), Hotel Category, Privacy Consent checkbox, Human Verification, and Submit button with editable response note.
+- **Two Separate Sheets for Inquiries (Option B)**:
+  - Configured Firebase Firestore collections `inquiries_quick` and `inquiries_detailed` with dedicated security rules in `firestore.rules`.
+  - Added dual sheet tabs in Admin Panel (`admin/index.html`) with live counts for Quick and Detailed inquiries.
+  - Implemented tab-specific search, status filtering, status update dropdowns, individual deletion, and customized CSV export (`Quick_Inquiries_Lotus_Ceylon.csv` / `Detailed_Inquiries_Lotus_Ceylon.csv`).
+- **About Us "Our People" & Team Section (`about.html`)**:
+  - Inserted "Our People & Global Representatives" section after Corporate Governance, introducing verified facts: founded 2014, private tailor-made journeys, ~10 countries representatives, WhatsApp, WeChat, and LINE concierge.
+  - Added data-driven person cards for Director Mallawa Arachchige Dhushantha Gihan Mallawaarachchi and Bhutan Representative Mr. Kuenga Yarpel with Cloudinary face-centering and fallback.
+  - Created data store `data/team.json` and integrated full Team Management CRUD into Admin Panel.
+- **Claims Verification**:
+  - Softened unverified satisfaction ratings and country counts on `about.html` into authentic, verified statements.
+  - Purged all hardcoded "within 24 hours" statements across all platform pages in favor of verified 2-hour response commitments.
+
+---
+
 ## [Phase 8] - 2026-10-25: Final Polish, Performance & Verification
 
 ### Added

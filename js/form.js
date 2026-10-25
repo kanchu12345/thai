@@ -1,7 +1,8 @@
 /**
  * Lotus Ceylon Form Controller
- * Handles validation, date bounds, dynamic pax calculation,
- * searchable country & dial code pickers, submission & WhatsApp integration.
+ * Handles validation, date bounds, dynamic pax calculation (max 20),
+ * searchable country & dial code pickers with UK aliases, dual submission (Firebase Firestore & Supabase),
+ * and WhatsApp concierge hand-off.
  */
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -12,7 +13,7 @@ function initFormEngine() {
   const form = document.getElementById("inquiryForm");
   if (!form) return;
 
-  const isQuickForm = form.classList.contains("quick-form");
+  const isQuickForm = form.classList.contains("quick-form") || window.location.pathname.includes("inquiry-quick");
 
   // Populate dynamic elements
   setupCountrySelect();
@@ -20,10 +21,12 @@ function initFormEngine() {
   setupDatePickers();
   setupPaxCalculator();
   setupHotelCategoryCards();
+  setupResponseTimeDisplay();
+  handleUrlPrefill(isQuickForm);
+
   if (!isQuickForm) {
     setupCurrencySelect();
     setupCharacterCounter();
-    handleUrlPrefill();
   }
   setupHumanVerification();
 
@@ -38,35 +41,53 @@ function initFormEngine() {
 }
 
 /**
- * Handle URL Search Parameters (e.g. from Home Page Tour Packages or Trip Finder)
+ * Display editable response commitment note
  */
-function handleUrlPrefill() {
+function setupResponseTimeDisplay() {
+  const hours = (window.LOTUS_CONFIG && window.LOTUS_CONFIG.responseTimeHours) ? window.LOTUS_CONFIG.responseTimeHours : 2;
+  const text = `We reply within ${hours} hours, Sri Lanka time (GMT+5:30)`;
+  
+  const el = document.getElementById("responseTimeNote");
+  if (el) el.textContent = text;
+
+  const modalMsg = document.getElementById("modalResponseTimeMsg");
+  if (modalMsg) {
+    modalMsg.textContent = `Thank you! Our dedicated Sri Lanka travel specialists will contact you within ${hours} hours, Sri Lanka time (GMT+5:30) with a bespoke itinerary.`;
+  }
+}
+
+/**
+ * Handle URL Search Parameters (e.g. ?package=, ?category=, ?style=, ?duration=, ?month=, ?offer=)
+ */
+function handleUrlPrefill(isQuickForm) {
   const urlParams = new URLSearchParams(window.location.search);
   const pkg = urlParams.get("package");
   const cat = urlParams.get("category");
   const style = urlParams.get("style");
   const duration = urlParams.get("duration");
   const month = urlParams.get("month");
+  const offer = urlParams.get("offer");
 
   const otherReq = document.getElementById("otherRequirements");
-  if (otherReq && (pkg || cat || style || duration || month)) {
+  if (otherReq && (pkg || cat || style || duration || month || offer)) {
     const prefillNote = [];
     if (pkg) prefillNote.push(`Interested in Package: ${pkg}`);
     if (cat) prefillNote.push(`Tour Theme / Category: ${cat}`);
+    if (offer) prefillNote.push(`Special Offer / Promotion: ${offer}`);
     if (style && style !== "All") prefillNote.push(`Preferred Style: ${style}`);
     if (duration) prefillNote.push(`Target Duration: ${duration}`);
     if (month && month !== "Flexible") prefillNote.push(`Estimated Season: ${month}`);
 
     if (prefillNote.length > 0) {
       const current = otherReq.value.trim();
-      otherReq.value = (current ? current + "\n\n" : "") + `[Inquiry Context from Home Page]\n` + prefillNote.join("\n") + "\n";
+      otherReq.value = (current ? current + "\n\n" : "") + `[Inquiry Context]\n` + prefillNote.join("\n") + "\n";
       const counter = document.getElementById("charCountDisplay");
       if (counter) counter.textContent = `${otherReq.value.length} / 1000`;
     }
   }
 
-  // Pre-check interests if category or style matches
-  const matchTerm = cat || style;
+  // Pre-check interests if category, style or offer matches
+  const matchTerm = cat || style || offer;
   if (matchTerm) {
     const interestCbs = document.querySelectorAll('input[name="interests"]');
     interestCbs.forEach((cb) => {
@@ -83,36 +104,28 @@ function handleUrlPrefill() {
       }
     });
   }
-
-  // Pre-check interests if style matches
-  if (style) {
-    const interestCbs = document.querySelectorAll('input[name="interests"]');
-    interestCbs.forEach(cb => {
-      if (style.includes("Cultural") && cb.value.includes("Culture")) cb.checked = true;
-      if (style.includes("Wildlife") && cb.value.includes("Wildlife")) cb.checked = true;
-      if (style.includes("Hill") && cb.value.includes("Nature")) cb.checked = true;
-      if (style.includes("Romantic") && cb.value.includes("Beach")) cb.checked = true;
-    });
-  }
 }
 
 /**
- * 1. Searchable Country Picker
+ * 1. Searchable Country Picker with UK & aliases support
  */
 function setupCountrySelect() {
   const wrapper = document.getElementById("countryPickerWrapper");
   const input = document.getElementById("countrySearchInput");
   const hiddenInput = document.getElementById("selectedCountry");
   const list = document.getElementById("countryOptionsList");
-  if (!wrapper || !input || !hiddenInput || !list) return;
+  if (!wrapper || !input || !hiddenInput || !list || typeof COUNTRIES_DATA === "undefined") return;
 
-  // Render options
   function renderOptions(filter = "") {
     list.innerHTML = "";
     const filterLower = filter.toLowerCase().trim();
-    const filtered = COUNTRIES_DATA.filter(c => 
-      c.name.toLowerCase().includes(filterLower) || c.code.toLowerCase().includes(filterLower)
-    );
+    const filtered = COUNTRIES_DATA.filter(c => {
+      if (c.name.toLowerCase().includes(filterLower)) return true;
+      if (c.code.toLowerCase().includes(filterLower)) return true;
+      if (filterLower === "uk" && c.code === "GB") return true;
+      if (c.aliases && c.aliases.some(a => a.toLowerCase().includes(filterLower))) return true;
+      return false;
+    });
 
     if (filtered.length === 0) {
       const emptyItem = document.createElement("li");
@@ -149,7 +162,7 @@ function setupCountrySelect() {
     wrapper.classList.remove("open");
     input.setAttribute("aria-expanded", "false");
     
-    // Auto-sync WhatsApp dial code if dial code is empty or default
+    // Auto-sync WhatsApp dial code if not customized
     const dialInput = document.getElementById("whatsappDialCode");
     const dialDisplay = document.getElementById("whatsappDialDisplay");
     if (dialInput && dialDisplay && (!dialInput.value || dialInput.dataset.userTouched !== "true")) {
@@ -157,11 +170,9 @@ function setupCountrySelect() {
       dialDisplay.innerHTML = `<span class="flag-icon">${country.flag}</span> <span class="dial-num">${country.dial_code}</span>`;
     }
 
-    // Trigger validation
     validateField(hiddenInput);
   }
 
-  // Toggle list on input click/focus
   input.addEventListener("focus", () => {
     wrapper.classList.add("open");
     input.setAttribute("aria-expanded", "true");
@@ -173,26 +184,23 @@ function setupCountrySelect() {
     renderOptions(e.target.value);
   });
 
-  // Keyboard navigation
   input.addEventListener("keydown", (e) => {
     if (e.key === "Escape") {
       wrapper.classList.remove("open");
+      input.setAttribute("aria-expanded", "false");
     }
   });
 
-  // Close on outside click
   document.addEventListener("click", (e) => {
     if (!wrapper.contains(e.target)) {
       wrapper.classList.remove("open");
       input.setAttribute("aria-expanded", "false");
-      // If user typed something but didn't pick from list, restore or check
       if (!hiddenInput.value && input.value) {
         input.value = "";
       }
     }
   });
 
-  // Initial render
   renderOptions();
 }
 
@@ -206,7 +214,7 @@ function setupWhatsAppDialSelect() {
   const hiddenInput = document.getElementById("whatsappDialCode");
   const list = document.getElementById("dialOptionsList");
   const searchInput = document.getElementById("dialSearchInput");
-  if (!wrapper || !button || !display || !hiddenInput || !list) return;
+  if (!wrapper || !button || !display || !hiddenInput || !list || typeof COUNTRIES_DATA === "undefined") return;
 
   function renderDialOptions(filter = "") {
     list.innerHTML = "";
@@ -214,7 +222,8 @@ function setupWhatsAppDialSelect() {
     const filtered = COUNTRIES_DATA.filter(c => 
       c.name.toLowerCase().includes(filterLower) || 
       c.dial_code.includes(filterLower) ||
-      c.code.toLowerCase().includes(filterLower)
+      c.code.toLowerCase().includes(filterLower) ||
+      (filterLower === "uk" && c.code === "GB")
     );
 
     filtered.forEach(c => {
@@ -273,7 +282,6 @@ function setupDatePickers() {
   const departureInput = document.getElementById("departureDate");
   if (!arrivalInput || !departureInput) return;
 
-  // Set today as minimum arrival date (cannot be in the past)
   const today = new Date();
   const yyyy = today.getFullYear();
   const mm = String(today.getMonth() + 1).padStart(2, "0");
@@ -284,7 +292,6 @@ function setupDatePickers() {
 
   arrivalInput.addEventListener("change", () => {
     if (arrivalInput.value) {
-      // Calculate next day as minimum departure date
       const arrivalDate = new Date(arrivalInput.value);
       const nextDay = new Date(arrivalDate);
       nextDay.setDate(nextDay.getDate() + 1);
@@ -296,7 +303,6 @@ function setupDatePickers() {
 
       departureInput.setAttribute("min", minDepartureStr);
 
-      // If departure is already chosen and is before or equal to arrival, reset or increment
       if (departureInput.value && new Date(departureInput.value) <= arrivalDate) {
         departureInput.value = minDepartureStr;
       }
@@ -311,13 +317,14 @@ function setupDatePickers() {
 }
 
 /**
- * 4. Number of Pax Auto-Calculator
+ * 4. Number of Pax Auto-Calculator (Max 20 total)
  */
 function setupPaxCalculator() {
   const adultsSelect = document.getElementById("adultsPax");
   const childrenSelect = document.getElementById("childrenPax");
   const totalDisplay = document.getElementById("totalPaxCount");
   const hiddenTotalInput = document.getElementById("totalPax");
+  const paxWarning = document.getElementById("paxMaxWarning");
 
   if (!adultsSelect || !childrenSelect || !totalDisplay) return;
 
@@ -337,6 +344,20 @@ function setupPaxCalculator() {
       const childLabel = children === 0 ? "No Children" : children === 1 ? "1 Child" : `${children} Children`;
       paxSummary.textContent = `(${adultLabel}, ${childLabel})`;
     }
+
+    if (total > 20) {
+      if (paxWarning) {
+        paxWarning.textContent = "Maximum online booking is 20 pax. For larger groups, please chat directly with our concierge via WhatsApp.";
+        paxWarning.style.display = "block";
+      }
+      totalDisplay.style.color = "#DC2626";
+    } else {
+      if (paxWarning) {
+        paxWarning.textContent = "";
+        paxWarning.style.display = "none";
+      }
+      totalDisplay.style.color = "";
+    }
   }
 
   adultsSelect.addEventListener("change", calculatePax);
@@ -345,7 +366,7 @@ function setupPaxCalculator() {
 }
 
 /**
- * 5. Hotel Category Selectable Cards & Optional Star Dropdown Sync
+ * 5. Hotel Category Selectable Cards & Star Dropdown Sync
  */
 function setupHotelCategoryCards() {
   const checkboxes = document.querySelectorAll('input[name="hotelCategory"]');
@@ -365,7 +386,6 @@ function setupHotelCategoryCards() {
     });
   });
 
-  // If user prefers the star-rating dropdown, sync it with checkboxes
   if (starDropdown) {
     starDropdown.addEventListener("change", () => {
       const val = starDropdown.value;
@@ -405,10 +425,10 @@ function validateHotelCategory() {
  */
 function setupCurrencySelect() {
   const select = document.getElementById("budgetCurrency");
-  if (!select || !LOTUS_CONFIG.currencies) return;
+  if (!select || !window.LOTUS_CONFIG || !window.LOTUS_CONFIG.currencies) return;
 
   select.innerHTML = "";
-  LOTUS_CONFIG.currencies.forEach(curr => {
+  window.LOTUS_CONFIG.currencies.forEach(curr => {
     const option = document.createElement("option");
     option.value = curr.code;
     option.textContent = `${curr.code} (${curr.symbol})`;
@@ -464,7 +484,6 @@ function setupLiveValidation(form) {
     });
 
     field.addEventListener("input", () => {
-      // Clear error immediately when typing
       const errorEl = document.getElementById(`${field.id}Error`);
       if (errorEl && errorEl.style.display === "block") {
         validateField(field);
@@ -524,7 +543,7 @@ function validateField(field) {
       errorMsg = reqMsg;
     } else if (rawNum.length < 6 || rawNum.length > 15) {
       isValid = false;
-      errorMsg = i18n ? i18n.getTranslation("validation.invalidPhone") : "Please enter a valid phone number.";
+      errorMsg = i18n ? i18n.getTranslation("validation.invalidPhone") : "Please enter a valid phone number (6–15 digits).";
     }
   }
 
@@ -560,14 +579,22 @@ function validateField(field) {
     }
   }
 
-  // Targeted Budget (Detailed form only)
+  // Targeted Budget: OPTIONAL per wireframe
   if (id === "packageBudget") {
-    if (!field.value.trim()) {
+    if (field.value.trim() !== "") {
+      const cleaned = field.value.replace(/,/g, "").trim();
+      if (isNaN(cleaned) || Number(cleaned) <= 0) {
+        isValid = false;
+        errorMsg = i18n ? i18n.getTranslation("validation.invalidBudget") : "Please enter a valid numeric budget amount.";
+      }
+    }
+  }
+
+  // Privacy Consent
+  if (id === "privacyConsent") {
+    if (!field.checked) {
       isValid = false;
-      errorMsg = reqMsg;
-    } else if (isNaN(field.value.replace(/,/g, "")) || Number(field.value.replace(/,/g, "")) <= 0) {
-      isValid = false;
-      errorMsg = i18n ? i18n.getTranslation("validation.invalidBudget") : "Please enter a valid budget amount.";
+      errorMsg = "Please consent to the processing of your inquiry details to continue.";
     }
   }
 
@@ -590,10 +617,10 @@ function validateField(field) {
  * 10. Submission Handler
  */
 async function handleFormSubmit(form, isQuickForm) {
-  // Honeypot spam check: if hidden field is filled, silently stop bots
+  // Honeypot spam check
   const honeypot = document.getElementById("hp_website_lotus");
   if (honeypot && honeypot.value.trim() !== "") {
-    console.warn("Spam bot submission intercepted by honeypot.");
+    console.warn("Bot submission neutralized by honeypot.");
     showThankYouModal({ fullName: "Traveler", referenceId: "LC-" + Math.floor(100000 + Math.random() * 900000) });
     return;
   }
@@ -611,7 +638,21 @@ async function handleFormSubmit(form, isQuickForm) {
     return;
   }
 
-  // Validate all fields
+  // Privacy consent check
+  const privacyConsent = document.getElementById("privacyConsent");
+  if (privacyConsent && !validateField(privacyConsent)) {
+    privacyConsent.focus();
+    return;
+  }
+
+  // Total pax check (max 20)
+  const totalPaxInput = document.getElementById("totalPax");
+  if (totalPaxInput && parseInt(totalPaxInput.value, 10) > 20) {
+    alert("Maximum group size for direct online inquiries is 20 guests. For larger groups, please contact our concierge directly via WhatsApp (+94 71 54 22 384).");
+    return;
+  }
+
+  // Validate all required fields
   let isAllValid = true;
   const requiredInputs = form.querySelectorAll("input[required], select[required]");
   requiredInputs.forEach(input => {
@@ -634,7 +675,6 @@ async function handleFormSubmit(form, isQuickForm) {
   }
 
   if (!isAllValid) {
-    // Scroll to first error
     const firstError = form.querySelector(".input-error, .error-message[style*='block']");
     if (firstError) {
       firstError.scrollIntoView({ behavior: "smooth", block: "center" });
@@ -642,15 +682,7 @@ async function handleFormSubmit(form, isQuickForm) {
     return;
   }
 
-  // 1. Honeypot Anti-Spam Verification
-  const hpField = form.querySelector('#hp_website_lotus') || form.querySelector('[name="b_hp_field"]') || form.querySelector('#hp_field');
-  if (hpField && hpField.value.trim() !== "") {
-    console.warn("[Lotus Security] Spam bot detected by honeypot trap. Request neutralized.");
-    form.reset();
-    return;
-  }
-
-  // 2. Client-Side Rate Limiting (10s cooldown, max 3 inquiries per 10 mins)
+  // Client-side rate limiting (10s cooldown, max 3 inquiries per 10 mins)
   const now = Date.now();
   const lastSubTime = parseInt(localStorage.getItem('lotus_last_sub_time') || '0', 10);
   if (now - lastSubTime < 10000) {
@@ -663,14 +695,13 @@ async function handleFormSubmit(form, isQuickForm) {
     subTimestamps = JSON.parse(localStorage.getItem('lotus_sub_history') || '[]');
   } catch (e) { subTimestamps = []; }
 
-  // Filter timestamps within the past 10 minutes (600,000 ms)
   subTimestamps = subTimestamps.filter(ts => (now - ts) < 600000);
   if (subTimestamps.length >= 3) {
     alert("You have reached the maximum number of inquiries allowed in 10 minutes. Please connect directly via WhatsApp: +94 71 54 22 384");
     return;
   }
 
-  // Collect data
+  // Collect form data
   const formData = extractFormData(form, isQuickForm);
 
   // Set loading state on submit button
@@ -680,25 +711,20 @@ async function handleFormSubmit(form, isQuickForm) {
   submitBtn.classList.add("loading");
   submitBtn.innerHTML = `
     <span class="spinner-lotus" aria-hidden="true"></span>
-    <span data-i18n="form.submitting">${window.lotusI18n ? window.lotusI18n.getTranslation("form.submitting") : "Preparing your sacred journey..."}</span>
+    <span data-i18n="form.submitting">${window.lotusI18n ? window.lotusI18n.getTranslation("form.submitting") : "Preparing your bespoke journey..."}</span>
   `;
 
   try {
-    // Send to chosen backend endpoint
     await submitToService(formData);
 
-    // Save inquiry to localStorage for reference
     saveInquiryLocally(formData);
 
-    // Record rate-limiting timestamps
     subTimestamps.push(now);
     localStorage.setItem('lotus_sub_history', JSON.stringify(subTimestamps));
     localStorage.setItem('lotus_last_sub_time', now.toString());
 
-    // Show Thank-You Modal with WhatsApp action
     showThankYouModal(formData);
 
-    // Reset form
     form.reset();
     document.querySelectorAll(".selectable-card.selected").forEach(card => card.classList.remove("selected"));
     const countrySearch = document.getElementById("countrySearchInput");
@@ -708,8 +734,7 @@ async function handleFormSubmit(form, isQuickForm) {
     setupPaxCalculator();
 
   } catch (error) {
-    console.error("Submission failed, continuing to thank-you fallback:", error);
-    // Even if external fetch fails (e.g. adblocker or no internet connection), don't lose the lead!
+    console.error("Submission error, saving offline copy:", error);
     saveInquiryLocally(formData);
     showThankYouModal(formData);
   } finally {
@@ -725,19 +750,16 @@ async function handleFormSubmit(form, isQuickForm) {
 function extractFormData(form, isQuickForm) {
   const refId = "LC-" + new Date().getFullYear() + "-" + Math.floor(100000 + Math.random() * 900000);
   
-  // Selected hotel categories
   const hotelCategories = [];
   form.querySelectorAll('input[name="hotelCategory"]:checked').forEach(cb => {
     hotelCategories.push(cb.value);
   });
 
-  // Meal plans (detailed)
   const mealPlans = [];
   form.querySelectorAll('input[name="mealPlan"]:checked').forEach(cb => {
     mealPlans.push(cb.value);
   });
 
-  // Interests (detailed)
   const interests = [];
   form.querySelectorAll('input[name="interests"]:checked').forEach(cb => {
     interests.push(cb.value);
@@ -745,12 +767,13 @@ function extractFormData(form, isQuickForm) {
 
   const dialCode = document.getElementById("whatsappDialCode") ? document.getElementById("whatsappDialCode").value : "+94";
   const rawPhone = document.getElementById("whatsappNumber") ? document.getElementById("whatsappNumber").value.trim() : "";
-  const fullWhatsApp = `${dialCode} ${rawPhone}`;
+  const fullWhatsApp = rawPhone ? `${dialCode} ${rawPhone}` : "";
 
   return {
     referenceId: refId,
     timestamp: new Date().toISOString(),
     isQuickForm: isQuickForm,
+    formType: isQuickForm ? 'quick' : 'detailed',
     fullName: form.querySelector("#fullName") ? form.querySelector("#fullName").value.trim() : "",
     country: form.querySelector("#selectedCountry") ? form.querySelector("#selectedCountry").value.trim() : "",
     emailAddress: form.querySelector("#emailAddress") ? form.querySelector("#emailAddress").value.trim() : "",
@@ -762,19 +785,31 @@ function extractFormData(form, isQuickForm) {
     totalPax: form.querySelector("#totalPax") ? form.querySelector("#totalPax").value : "2",
     hotelCategory: hotelCategories.join(", "),
     roomsRequired: form.querySelector("#roomsRequired") ? form.querySelector("#roomsRequired").value : "1",
-    mealPlan: mealPlans.join(", ") || "Standard",
-    interests: interests.join(", ") || "General Sightseeing",
+    mealPlan: mealPlans.join(", ") || (isQuickForm ? "" : "BB"),
+    interests: interests.join(", ") || (isQuickForm ? "" : "Culture & Heritage"),
     currency: form.querySelector("#budgetCurrency") ? form.querySelector("#budgetCurrency").value : "USD",
-    packageBudget: form.querySelector("#packageBudget") ? form.querySelector("#packageBudget").value.trim() : "Custom",
-    otherRequirements: form.querySelector("#otherRequirements") ? form.querySelector("#otherRequirements").value.trim() : "None specified."
+    packageBudget: form.querySelector("#packageBudget") && form.querySelector("#packageBudget").value.trim() ? form.querySelector("#packageBudget").value.trim() : "Custom",
+    otherRequirements: form.querySelector("#otherRequirements") ? form.querySelector("#otherRequirements").value.trim() : ""
   };
 }
 
 /**
- * Submit to backend (Supabase / Formspree / EmailJS / Custom API)
+ * Submit to backend (Firebase Firestore collections: inquiries_quick / inquiries_detailed)
  */
 async function submitToService(data) {
-  // 1. Direct Supabase Inquiries Table Insert with RLS Protection
+  // 1. Firebase Firestore dual collection submission (Option B)
+  if (window.LotusFirebase && typeof window.LotusFirebase.submitInquiry === "function") {
+    try {
+      const res = await window.LotusFirebase.submitInquiry(data, data.isQuickForm);
+      if (res && res.id) {
+        data.firestoreDocId = res.id;
+      }
+    } catch (e) {
+      console.warn("[Lotus CMS] Firebase Firestore insert notice:", e.message);
+    }
+  }
+
+  // 2. Secondary Supabase Inquiries Table Insert (backward compatibility)
   if (window.LotusSupabase && typeof window.LotusSupabase.submitInquiry === "function") {
     try {
       const supaPayload = {
@@ -786,46 +821,16 @@ async function submitToService(data) {
         travel_dates: `${data.arrivalDate || ''} to ${data.departureDate || ''}`,
         travelers_count: parseInt(data.totalPax) || 2,
         package_type: data.interests || (data.isQuickForm ? 'Quick Inquiry' : 'Custom Tour Inquiry'),
-        budget_range: `${data.currency || 'USD'} ${data.packageBudget || ''}`,
+        budget_range: data.packageBudget !== "Custom" ? `${data.currency || 'USD'} ${data.packageBudget}` : 'Custom',
         special_notes: `Hotels: ${data.hotelCategory || 'N/A'}\nRooms: ${data.roomsRequired || '1'}\nMeal Plan: ${data.mealPlan || 'N/A'}\nNotes: ${data.otherRequirements || ''}`
       };
-      const result = await window.LotusSupabase.submitInquiry(supaPayload);
-      if (result && result.referenceNo) {
-        data.referenceId = result.referenceNo;
-      }
-      console.info("[Lotus CMS] Inquiry recorded in Supabase:", data.referenceId);
+      await window.LotusSupabase.submitInquiry(supaPayload);
     } catch (e) {
-      console.warn("[Lotus CMS] Supabase insert warning:", e);
+      console.warn("[Lotus CMS] Supabase backup notice:", e.message);
     }
   }
 
-  const provider = LOTUS_CONFIG.submission ? LOTUS_CONFIG.submission.provider : null;
-
-  if (provider === "formspree" && LOTUS_CONFIG.submission.formspreeEndpoint) {
-    const response = await fetch(LOTUS_CONFIG.submission.formspreeEndpoint, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Accept": "application/json"
-      },
-      body: JSON.stringify(data)
-    });
-    return response.json();
-  }
-
-  if (provider === "custom_api" && LOTUS_CONFIG.submission.customApiEndpoint) {
-    const response = await fetch(LOTUS_CONFIG.submission.customApiEndpoint, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(data)
-    });
-    return response.json();
-  }
-
-  // Fallback simulator for GitHub Pages static hosting
-  return new Promise((resolve) => setTimeout(resolve, 600));
+  return new Promise((resolve) => setTimeout(resolve, 500));
 }
 
 /**
@@ -848,19 +853,15 @@ function showThankYouModal(data) {
   const modal = document.getElementById("thankYouModal");
   if (!modal) return;
 
-  // Set reference
   const refDisplay = document.getElementById("modalRefId");
   if (refDisplay) refDisplay.textContent = data.referenceId;
-
-  const clientName = document.getElementById("modalClientName");
-  if (clientName) clientName.textContent = data.fullName;
 
   // Build WhatsApp pre-filled message
   const waBtn = document.getElementById("modalWhatsAppBtn");
   if (waBtn) {
     const msg = formatWhatsAppMessage(data);
     const encoded = encodeURIComponent(msg);
-    waBtn.href = `https://wa.me/${LOTUS_CONFIG.phoneRaw}?text=${encoded}`;
+    waBtn.href = `https://wa.me/94715422384?text=${encoded}`;
   }
 
   // Populate preview summary list
@@ -870,7 +871,7 @@ function showThankYouModal(data) {
       <li><strong>Dates:</strong> ${data.arrivalDate || 'TBD'} to ${data.departureDate || 'TBD'}</li>
       <li><strong>Travelers:</strong> ${data.totalPax || '2'} Pax (${data.adults || '2'} Adults, ${data.children || '0'} Children)</li>
       <li><strong>Hotels:</strong> ${data.hotelCategory || 'Not selected'}</li>
-      ${!data.isQuickForm ? `<li><strong>Budget:</strong> ${data.currency} ${data.packageBudget}</li>` : ''}
+      ${!data.isQuickForm && data.packageBudget !== 'Custom' ? `<li><strong>Budget:</strong> ${data.currency} ${data.packageBudget}</li>` : ''}
     `;
   }
 
@@ -878,7 +879,6 @@ function showThankYouModal(data) {
   modal.setAttribute("aria-hidden", "false");
   document.body.classList.add("modal-open");
 
-  // Close handlers
   const closeBtns = modal.querySelectorAll("[data-close-modal]");
   closeBtns.forEach(btn => {
     btn.addEventListener("click", () => {
@@ -886,7 +886,6 @@ function showThankYouModal(data) {
     });
   });
 
-  // Download / Save copy handler
   const saveBtn = document.getElementById("modalDownloadBtn");
   if (saveBtn) {
     saveBtn.onclick = () => {
@@ -917,13 +916,9 @@ function formatWhatsAppMessage(data) {
 🛫 *Departure Date:* ${data.departureDate}
 👥 *Total Pax:* ${data.totalPax} (${data.adults} Adults, ${data.children} Children)
 🏨 *Hotel Preferences:* ${data.hotelCategory}
-🛏️ *Rooms Required:* ${data.roomsRequired || '1'}
-🍽️ *Meal Plan:* ${data.mealPlan || 'BB'}
-🎯 *Interests:* ${data.interests || 'Scenic Tour'}
-💰 *Budget:* ${data.currency} ${data.packageBudget}
-━━━━━━━━━━━━━━━━━━━━
+${data.roomsRequired ? `🛏️ *Rooms Required:* ${data.roomsRequired}\n` : ''}${data.mealPlan ? `🍽️ *Meal Plan:* ${data.mealPlan}\n` : ''}${data.interests ? `🎯 *Interests:* ${data.interests}\n` : ''}${data.packageBudget && data.packageBudget !== 'Custom' ? `💰 *Budget:* ${data.currency} ${data.packageBudget}\n` : ''}━━━━━━━━━━━━━━━━━━━━
 📝 *Other Requirements:*
-${data.otherRequirements || 'None'}
+${data.otherRequirements || 'None specified.'}
 ━━━━━━━━━━━━━━━━━━━━
 _Submitted via Lotus Ceylon Official Website_`;
 }

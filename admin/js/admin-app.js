@@ -31,6 +31,10 @@
     
     // In-memory data store
     inquiries: [],
+    activeInquiryTab: 'quick',
+    quickInquiries: [],
+    detailedInquiries: [],
+    team: [],
     packages: [],
     categories: [],
     destinations: [],
@@ -313,7 +317,8 @@
         reviews: 'Guest Reviews & Testimonials',
         media: 'Media Library',
         users: 'User Roles & Access',
-        settings: 'Global Settings'
+        settings: 'Global Settings',
+        team: 'Our People & Global Representatives'
       };
       const titleEl = document.getElementById('pageTitle');
       if (titleEl) titleEl.textContent = titleMap[sectionId] || 'Admin';
@@ -358,7 +363,10 @@
         if (window.LotusFirebase) {
           this.updateFirebaseBadge('Firebase Ready', '#3B82F6');
         }
+      await this.loadDualInquiries();
+      await this.loadTeamData();
       this.renderInquiries();
+      this.renderTeam();
       this.renderPackages();
       this.renderCategories();
       this.renderDestinations();
@@ -521,6 +529,100 @@
     /**
      * 2. INQUIRIES MANAGEMENT
      */
+    async loadDualInquiries() {
+      // 1. Try Firebase Firestore
+      if (window.LotusFirebase && typeof window.LotusFirebase.fetchInquiries === 'function') {
+        try {
+          const quickList = await window.LotusFirebase.fetchInquiries('inquiries_quick');
+          const detailedList = await window.LotusFirebase.fetchInquiries('inquiries_detailed');
+          if (quickList.length > 0 || detailedList.length > 0) {
+            this.quickInquiries = quickList;
+            this.detailedInquiries = detailedList;
+          }
+        } catch (e) {
+          console.warn('[AdminApp] Firebase inquiries fetch notice:', e.message);
+        }
+      }
+
+      // 2. Check localStorage backups
+      try {
+        const localList = JSON.parse(localStorage.getItem('lotus_inquiries') || '[]');
+        localList.forEach(item => {
+          const ref = item.referenceId || item.reference_no;
+          if (item.isQuickForm || item.formType === 'quick') {
+            if (!this.quickInquiries.some(q => (q.referenceId || q.reference_no) === ref)) {
+              this.quickInquiries.push(item);
+            }
+          } else {
+            if (!this.detailedInquiries.some(d => (d.referenceId || d.reference_no) === ref)) {
+              this.detailedInquiries.push(item);
+            }
+          }
+        });
+      } catch (e) {}
+
+      // 3. Fallback to Supabase inquiries if empty
+      if (this.quickInquiries.length === 0 && this.detailedInquiries.length === 0 && this.inquiries.length > 0) {
+        this.inquiries.forEach(inq => {
+          if ((inq.package_type && inq.package_type.toLowerCase().includes('quick')) || inq.is_quick) {
+            this.quickInquiries.push(inq);
+          } else {
+            this.detailedInquiries.push(inq);
+          }
+        });
+      }
+
+      // Update counters
+      const countQ = document.getElementById('countQuickInquiries');
+      if (countQ) countQ.textContent = this.quickInquiries.length;
+      const countD = document.getElementById('countDetailedInquiries');
+      if (countD) countD.textContent = this.detailedInquiries.length;
+    },
+
+    switchInquiryTab(tab) {
+      this.activeInquiryTab = tab;
+      const btnQ = document.getElementById('btnTabQuickInquiries');
+      const btnD = document.getElementById('btnTabDetailedInquiries');
+      if (btnQ && btnD) {
+        btnQ.classList.toggle('active', tab === 'quick');
+        btnD.classList.toggle('active', tab === 'detailed');
+      }
+
+      const thead = document.getElementById('inquiriesTableHead');
+      if (thead) {
+        if (tab === 'quick') {
+          thead.innerHTML = `
+            <tr>
+              <th>Ref #</th>
+              <th>Guest Details</th>
+              <th>Country</th>
+              <th>Travel Dates</th>
+              <th>Pax</th>
+              <th>Status</th>
+              <th>Received</th>
+              <th>Actions</th>
+            </tr>
+          `;
+        } else {
+          thead.innerHTML = `
+            <tr>
+              <th>Ref #</th>
+              <th>Guest Details</th>
+              <th>Country</th>
+              <th>Travel Dates</th>
+              <th>Pax & Rooms</th>
+              <th>Hotels & Budget</th>
+              <th>Status</th>
+              <th>Received</th>
+              <th>Actions</th>
+            </tr>
+          `;
+        }
+      }
+
+      this.filterInquiries();
+    },
+
     renderInquiries() {
       this.filterInquiries();
     },
@@ -529,59 +631,118 @@
       const search = (document.getElementById('inquirySearchInput')?.value || '').toLowerCase();
       const statusFilter = document.getElementById('inquiryStatusFilter')?.value || 'all';
 
-      let list = this.inquiries;
+      const isQuick = this.activeInquiryTab === 'quick';
+      let list = isQuick ? [...this.quickInquiries] : [...this.detailedInquiries];
+
       if (statusFilter !== 'all') {
-        list = list.filter(i => i.status === statusFilter);
+        list = list.filter(i => (i.status || 'new') === statusFilter);
       }
+
       if (search) {
-        list = list.filter(i => 
-          (i.full_name && i.full_name.toLowerCase().includes(search)) ||
-          (i.email && i.email.toLowerCase().includes(search)) ||
-          (i.reference_no && i.reference_no.toLowerCase().includes(search)) ||
-          (i.country && i.country.toLowerCase().includes(search))
-        );
+        list = list.filter(i => {
+          const name = (i.fullName || i.full_name || '').toLowerCase();
+          const email = (i.emailAddress || i.email || '').toLowerCase();
+          const ref = (i.referenceId || i.reference_no || '').toLowerCase();
+          const country = (i.country || '').toLowerCase();
+          return name.includes(search) || email.includes(search) || ref.includes(search) || country.includes(search);
+        });
       }
 
       const tbody = document.getElementById('inquiriesTableBody');
       if (!tbody) return;
 
+      const colCount = isQuick ? 8 : 9;
       if (list.length === 0) {
-        tbody.innerHTML = '<tr><td colspan="8" style="text-align: center; color: var(--ink-muted); padding: 30px;">No inquiries found matching criteria.</td></tr>';
+        tbody.innerHTML = `<tr><td colspan="${colCount}" style="text-align: center; color: var(--ink-muted); padding: 30px;">No ${isQuick ? 'quick' : 'detailed'} inquiries found matching criteria.</td></tr>`;
         return;
       }
 
-      tbody.innerHTML = list.map(inq => `
-        <tr>
-          <td><strong style="color: var(--lotus-primary); font-size: 0.82rem;">${inq.reference_no}</strong></td>
-          <td>
-            <strong>${inq.full_name}</strong><br>
-            <small style="color: var(--ink-muted);">${inq.email} | ${inq.phone || ''}</small>
-          </td>
-          <td>${inq.country || 'N/A'}</td>
-          <td>${inq.travel_dates || 'Flexible'}</td>
-          <td>${inq.travelers_count || 2} Pax</td>
-          <td>
-            <select class="filter-select" style="padding: 3px 6px; font-size: 0.78rem;" onchange="AdminApp.updateInquiryStatus('${inq.reference_no}', this.value)">
-              <option value="new" ${inq.status === 'new' ? 'selected' : ''}>New</option>
-              <option value="contacted" ${inq.status === 'contacted' ? 'selected' : ''}>Contacted</option>
-              <option value="customizing" ${inq.status === 'customizing' ? 'selected' : ''}>Customizing</option>
-              <option value="confirmed" ${inq.status === 'confirmed' ? 'selected' : ''}>Confirmed</option>
-              <option value="archived" ${inq.status === 'archived' ? 'selected' : ''}>Archived</option>
-            </select>
-          </td>
-          <td><small style="color: var(--ink-muted);">${this.formatDate(inq.created_at)}</small></td>
-          <td>
-            <div class="action-btns">
-              <button class="btn-icon" title="View Details" onclick="AdminApp.viewInquiry('${inq.reference_no}')">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
-              </button>
-              <button class="btn-icon delete" title="Delete Inquiry" onclick="AdminApp.deleteInquiry('${inq.reference_no}')">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg>
-              </button>
-            </div>
-          </td>
-        </tr>
-      `).join('');
+      tbody.innerHTML = list.map(inq => {
+        const refNo = inq.referenceId || inq.reference_no || inq.id || 'N/A';
+        const name = inq.fullName || inq.full_name || 'Guest';
+        const email = inq.emailAddress || inq.email || '';
+        const phone = inq.whatsapp || inq.phone || '';
+        const country = inq.country || 'N/A';
+        const dates = (inq.arrivalDate && inq.departureDate) ? `${inq.arrivalDate} to ${inq.departureDate}` : (inq.travel_dates || 'Flexible');
+        const pax = `${inq.totalPax || inq.travelers_count || 2} Pax`;
+        const rooms = inq.roomsRequired ? `${inq.roomsRequired} Rm` : '';
+        const hotels = inq.hotelCategory || 'N/A';
+        const budget = inq.packageBudget && inq.packageBudget !== 'Custom' ? `${inq.currency || 'USD'} ${inq.packageBudget}` : (inq.budget_range || 'Custom');
+        const status = inq.status || 'new';
+        const dateReceived = this.formatDate(inq.createdAt || inq.timestamp || inq.created_at);
+
+        if (isQuick) {
+          return `
+            <tr>
+              <td><strong style="color: var(--lotus-primary); font-size: 0.82rem;">${refNo}</strong></td>
+              <td>
+                <strong>${name}</strong><br>
+                <small style="color: var(--ink-muted);">${email} ${phone ? `| ${phone}` : ''}</small>
+              </td>
+              <td>${country}</td>
+              <td>${dates}</td>
+              <td>${pax}</td>
+              <td>
+                <select class="filter-select" style="padding: 3px 6px; font-size: 0.78rem;" onchange="AdminApp.updateInquiryStatus('${refNo}', this.value)">
+                  <option value="new" ${status === 'new' ? 'selected' : ''}>New</option>
+                  <option value="contacted" ${status === 'contacted' ? 'selected' : ''}>Contacted</option>
+                  <option value="customizing" ${status === 'customizing' ? 'selected' : ''}>Customizing</option>
+                  <option value="confirmed" ${status === 'confirmed' ? 'selected' : ''}>Confirmed</option>
+                  <option value="archived" ${status === 'archived' ? 'selected' : ''}>Archived</option>
+                </select>
+              </td>
+              <td><small style="color: var(--ink-muted);">${dateReceived}</small></td>
+              <td>
+                <div class="action-btns">
+                  <button class="btn-icon" title="View Details" onclick="AdminApp.viewInquiry('${refNo}')">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+                  </button>
+                  <button class="btn-icon delete" title="Delete Inquiry" onclick="AdminApp.deleteInquiry('${refNo}')">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          `;
+        } else {
+          return `
+            <tr>
+              <td><strong style="color: var(--lotus-primary); font-size: 0.82rem;">${refNo}</strong></td>
+              <td>
+                <strong>${name}</strong><br>
+                <small style="color: var(--ink-muted);">${email} ${phone ? `| ${phone}` : ''}</small>
+              </td>
+              <td>${country}</td>
+              <td>${dates}</td>
+              <td>${pax} ${rooms ? `<br><small style="color: var(--ink-muted);">${rooms}</small>` : ''}</td>
+              <td>
+                <small><strong>Hotels:</strong> ${hotels}</small><br>
+                <small style="color: var(--sacred-gold);"><strong>Budget:</strong> ${budget}</small>
+              </td>
+              <td>
+                <select class="filter-select" style="padding: 3px 6px; font-size: 0.78rem;" onchange="AdminApp.updateInquiryStatus('${refNo}', this.value)">
+                  <option value="new" ${status === 'new' ? 'selected' : ''}>New</option>
+                  <option value="contacted" ${status === 'contacted' ? 'selected' : ''}>Contacted</option>
+                  <option value="customizing" ${status === 'customizing' ? 'selected' : ''}>Customizing</option>
+                  <option value="confirmed" ${status === 'confirmed' ? 'selected' : ''}>Confirmed</option>
+                  <option value="archived" ${status === 'archived' ? 'selected' : ''}>Archived</option>
+                </select>
+              </td>
+              <td><small style="color: var(--ink-muted);">${dateReceived}</small></td>
+              <td>
+                <div class="action-btns">
+                  <button class="btn-icon" title="View Details" onclick="AdminApp.viewInquiry('${refNo}')">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+                  </button>
+                  <button class="btn-icon delete" title="Delete Inquiry" onclick="AdminApp.deleteInquiry('${refNo}')">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          `;
+        }
+      }).join('');
     },
 
     async updateInquiryStatus(refNo, newStatus) {
@@ -658,35 +819,271 @@
     },
 
     exportInquiriesCSV() {
-      if (this.inquiries.length === 0) {
-        this.showToast('No inquiries available to export', 'error');
+      const isQuick = this.activeInquiryTab === 'quick';
+      const list = isQuick ? this.quickInquiries : this.detailedInquiries;
+      const sheetName = isQuick ? 'Lotus_Ceylon_Quick_Inquiries' : 'Lotus_Ceylon_Detailed_Inquiries';
+
+      if (list.length === 0) {
+        this.showToast(`No ${isQuick ? 'quick' : 'detailed'} inquiries available to export`, 'error');
         return;
       }
-      const headers = ['Reference No', 'Guest Name', 'Email', 'Phone', 'Country', 'Travel Dates', 'Pax', 'Tour Package', 'Budget', 'Special Notes', 'Status', 'Date Received'];
-      const rows = this.inquiries.map(i => [
-        `"${i.reference_no || ''}"`,
-        `"${(i.full_name || '').replace(/"/g, '""')}"`,
-        `"${i.email || ''}"`,
-        `"${i.phone || ''}"`,
-        `"${i.country || ''}"`,
-        `"${i.travel_dates || ''}"`,
-        i.travelers_count || 2,
-        `"${(i.package_type || '').replace(/"/g, '""')}"`,
-        `"${i.budget_range || ''}"`,
-        `"${(i.special_notes || '').replace(/"/g, '""')}"`,
-        `"${i.status || 'new'}"`,
-        `"${i.created_at || ''}"`
-      ]);
+
+      let headers = [];
+      let rows = [];
+
+      if (isQuick) {
+        headers = ['Reference No', 'Guest Name', 'Email', 'WhatsApp Phone', 'Country', 'Arrival Date', 'Departure Date', 'Total Pax', 'Adults', 'Children', 'Hotel Style', 'Status', 'Date Received'];
+        rows = list.map(i => [
+          `"${i.referenceId || i.reference_no || ''}"`,
+          `"${(i.fullName || i.full_name || '').replace(/"/g, '""')}"`,
+          `"${i.emailAddress || i.email || ''}"`,
+          `"${i.whatsapp || i.phone || ''}"`,
+          `"${i.country || ''}"`,
+          `"${i.arrivalDate || ''}"`,
+          `"${i.departureDate || ''}"`,
+          i.totalPax || i.travelers_count || 2,
+          i.adults || 2,
+          i.children || 0,
+          `"${(i.hotelCategory || '').replace(/"/g, '""')}"`,
+          `"${i.status || 'new'}"`,
+          `"${i.createdAt || i.timestamp || i.created_at || ''}"`
+        ]);
+      } else {
+        headers = ['Reference No', 'Guest Name', 'Email', 'WhatsApp Phone', 'Country', 'Arrival Date', 'Departure Date', 'Total Pax', 'Adults', 'Children', 'Rooms', 'Hotels', 'Meal Plan', 'Interests', 'Currency', 'Budget', 'Special Notes', 'Status', 'Date Received'];
+        rows = list.map(i => [
+          `"${i.referenceId || i.reference_no || ''}"`,
+          `"${(i.fullName || i.full_name || '').replace(/"/g, '""')}"`,
+          `"${i.emailAddress || i.email || ''}"`,
+          `"${i.whatsapp || i.phone || ''}"`,
+          `"${i.country || ''}"`,
+          `"${i.arrivalDate || ''}"`,
+          `"${i.departureDate || ''}"`,
+          i.totalPax || i.travelers_count || 2,
+          i.adults || 2,
+          i.children || 0,
+          i.roomsRequired || 1,
+          `"${(i.hotelCategory || '').replace(/"/g, '""')}"`,
+          `"${(i.mealPlan || '').replace(/"/g, '""')}"`,
+          `"${(i.interests || '').replace(/"/g, '""')}"`,
+          `"${i.currency || 'USD'}"`,
+          `"${i.packageBudget || ''}"`,
+          `"${(i.otherRequirements || i.special_notes || '').replace(/"/g, '""')}"`,
+          `"${i.status || 'new'}"`,
+          `"${i.createdAt || i.timestamp || i.created_at || ''}"`
+        ]);
+      }
 
       const csvContent = 'data:text/csv;charset=utf-8,' + [headers.join(','), ...rows.map(r => r.join(','))].join('\n');
       const encodedUri = encodeURI(csvContent);
       const link = document.createElement('a');
       link.setAttribute('href', encodedUri);
-      link.setAttribute('download', `lotus_ceylon_inquiries_${new Date().toISOString().slice(0, 10)}.csv`);
+      link.setAttribute('download', `${sheetName}_${new Date().toISOString().slice(0, 10)}.csv`);
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
-      this.showToast('CSV Export generated successfully', 'success');
+      this.showToast(`Exported ${list.length} inquiries to CSV successfully!`, 'success');
+    },
+
+    // =========================================================================
+    // TEAM & GLOBAL REPRESENTATIVES (DATA-DRIVEN)
+    // =========================================================================
+    async loadTeamData() {
+      if (window.LotusFirebase && typeof window.LotusFirebase.fetchTeam === 'function') {
+        try {
+          const list = await window.LotusFirebase.fetchTeam('../data/team.json');
+          if (list && list.length > 0) {
+            this.team = list;
+          }
+        } catch (e) {
+          console.warn('[AdminApp] Team fetch error, using local fallback:', e);
+        }
+      }
+
+      if (this.team.length === 0) {
+        try {
+          const res = await fetch('../data/team.json');
+          if (res.ok) this.team = await res.json();
+        } catch (e) {}
+      }
+    },
+
+    renderTeam() {
+      const tbody = document.getElementById('teamTableBody');
+      if (!tbody) return;
+
+      if (!this.team || this.team.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="7" style="text-align: center; color: var(--ink-muted); padding: 30px;">No representatives found. Click "+ Add Representative" to create one.</td></tr>';
+        return;
+      }
+
+      this.team.sort((a, b) => (a.sortOrder || 1) - (b.sortOrder || 1));
+
+      tbody.innerHTML = this.team.map(member => {
+        const photoUrl = member.photo ? (member.photo.url || member.photo.secure_url || '') : '';
+        const flag = member.flag || '🌐';
+        return `
+          <tr>
+            <td>
+              ${photoUrl ? `<img src="${photoUrl}" alt="${member.name}" class="team-avatar-cell">` : `<div class="team-avatar-cell" style="background:#E2E8F0; display:flex; align-items:center; justify-content:center; font-size:1.4rem;">${flag}</div>`}
+            </td>
+            <td><strong>${member.name}</strong></td>
+            <td>${member.role}</td>
+            <td><span>${flag}</span> ${member.country}</td>
+            <td>${member.sortOrder || 1}</td>
+            <td>
+              <span class="badge ${member.published ? 'badge-success' : 'badge-secondary'}" style="cursor:pointer;" onclick="AdminApp.toggleTeamPublished('${member.id}')">
+                ${member.published ? 'Published' : 'Draft'}
+              </span>
+            </td>
+            <td>
+              <div class="action-btns">
+                <button class="btn-icon" title="Edit" onclick="AdminApp.openTeamModal('${member.id}')">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>
+                </button>
+                <button class="btn-icon delete" title="Delete" onclick="AdminApp.deleteTeamMember('${member.id}')">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg>
+                </button>
+              </div>
+            </td>
+          </tr>
+        `;
+      }).join('');
+    },
+
+    openTeamModal(memberId = null) {
+      const modal = document.getElementById('teamModal');
+      const title = document.getElementById('teamModalTitle');
+      const form = document.getElementById('teamMemberForm');
+      if (!modal || !form) return;
+
+      form.reset();
+
+      if (memberId) {
+        const member = this.team.find(m => m.id === memberId);
+        if (member) {
+          title.textContent = 'Edit Representative';
+          document.getElementById('teamMemberId').value = member.id;
+          document.getElementById('teamName').value = member.name || '';
+          document.getElementById('teamFlag').value = member.flag || '';
+          document.getElementById('teamRole').value = member.role || '';
+          document.getElementById('teamCountry').value = member.country || '';
+          document.getElementById('teamPhotoUrl').value = member.photo ? (member.photo.url || '') : '';
+          document.getElementById('teamBio').value = member.bio || '';
+          document.getElementById('teamSortOrder').value = member.sortOrder || 1;
+          document.getElementById('teamPublished').checked = member.published !== false;
+        }
+      } else {
+        title.textContent = 'Add Representative';
+        document.getElementById('teamMemberId').value = '';
+        document.getElementById('teamSortOrder').value = (this.team.length + 1);
+        document.getElementById('teamPublished').checked = true;
+      }
+
+      this.openModal('teamModal');
+    },
+
+    openCloudinaryForTeam() {
+      if (!window.cloudinary) {
+        this.showToast('Cloudinary widget not loaded', 'error');
+        return;
+      }
+
+      const widget = window.cloudinary.createUploadWidget({
+        cloudName: LOTUS_CONFIG.cloudinary.cloudName,
+        uploadPreset: LOTUS_CONFIG.cloudinary.uploadPreset,
+        folder: 'lotus/team',
+        cropping: true,
+        croppingAspectRatio: 0.8,
+        gravity: 'face',
+        sources: ['local', 'url', 'camera'],
+        multiple: false
+      }, (error, result) => {
+        if (!error && result && result.event === 'success') {
+          const optimizedUrl = result.info.secure_url.replace('/upload/', '/upload/c_fill,g_face,q_auto,f_auto/');
+          const input = document.getElementById('teamPhotoUrl');
+          if (input) input.value = optimizedUrl;
+          this.showToast('Photo uploaded & face-centered successfully!', 'success');
+        }
+      });
+      widget.open();
+    },
+
+    async saveTeamMember(e) {
+      e.preventDefault();
+      const id = document.getElementById('teamMemberId').value || ('rep-' + Date.now());
+      const name = document.getElementById('teamName').value.trim();
+      const flag = document.getElementById('teamFlag').value.trim() || '🌐';
+      const role = document.getElementById('teamRole').value.trim();
+      const country = document.getElementById('teamCountry').value.trim();
+      const photoUrl = document.getElementById('teamPhotoUrl').value.trim();
+      const bio = document.getElementById('teamBio').value.trim() || 'Introduction coming soon';
+      const sortOrder = parseInt(document.getElementById('teamSortOrder').value, 10) || 1;
+      const published = document.getElementById('teamPublished').checked;
+
+      const memberData = {
+        id: id,
+        name: name,
+        flag: flag,
+        role: role,
+        country: country,
+        photo: {
+          url: photoUrl,
+          alt: `${name}, ${role}`,
+          cloudinaryPublicId: photoUrl.includes('cloudinary') ? photoUrl.split('/').pop().split('.')[0] : ''
+        },
+        bio: bio,
+        sortOrder: sortOrder,
+        published: published
+      };
+
+      if (window.LotusFirebase && typeof window.LotusFirebase.saveTeamMember === 'function') {
+        try {
+          await window.LotusFirebase.saveTeamMember(memberData);
+        } catch (err) {
+          console.warn('[AdminApp] Firebase team save error:', err);
+        }
+      }
+
+      const idx = this.team.findIndex(m => m.id === id);
+      if (idx !== -1) {
+        this.team[idx] = memberData;
+      } else {
+        this.team.push(memberData);
+      }
+
+      this.closeModal('teamModal');
+      this.renderTeam();
+      this.showToast(`Saved representative: ${name}`, 'success');
+    },
+
+    async deleteTeamMember(memberId) {
+      const member = this.team.find(m => m.id === memberId);
+      const name = member ? member.name : 'this representative';
+      if (!confirm(`Are you sure you want to delete ${name}?`)) return;
+
+      if (window.LotusFirebase && typeof window.LotusFirebase.deleteTeamMember === 'function') {
+        try {
+          await window.LotusFirebase.deleteTeamMember(memberId);
+        } catch (err) {
+          console.warn('[AdminApp] Firebase team delete error:', err);
+        }
+      }
+
+      this.team = this.team.filter(m => m.id !== memberId);
+      this.renderTeam();
+      this.showToast(`Deleted ${name}`, 'info');
+    },
+
+    async toggleTeamPublished(memberId) {
+      const member = this.team.find(m => m.id === memberId);
+      if (!member) return;
+
+      member.published = !member.published;
+      if (window.LotusFirebase && typeof window.LotusFirebase.saveTeamMember === 'function') {
+        await window.LotusFirebase.saveTeamMember(member);
+      }
+      this.renderTeam();
+      this.showToast(`${member.name} is now ${member.published ? 'Published' : 'Draft'}`, 'success');
     },
 
     /**

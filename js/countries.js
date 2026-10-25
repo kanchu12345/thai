@@ -5,8 +5,8 @@
 
 const COUNTRIES_DATA = [
   { code: "LK", name: "Sri Lanka", dial_code: "+94", flag: "🇱🇰" },
-  { code: "US", name: "United States", dial_code: "+1", flag: "🇺🇸" },
-  { code: "GB", name: "United Kingdom", dial_code: "+44", flag: "🇬🇧" },
+  { code: "US", name: "United States", dial_code: "+1", flag: "🇺🇸", aliases: ["USA", "America"] },
+  { code: "GB", name: "United Kingdom", dial_code: "+44", flag: "🇬🇧", aliases: ["UK", "Britain", "Great Britain", "England", "Scotland", "Wales"] },
   { code: "AU", name: "Australia", dial_code: "+61", flag: "🇦🇺" },
   { code: "IN", name: "India", dial_code: "+91", flag: "🇮🇳" },
   { code: "DE", name: "Germany", dial_code: "+49", flag: "🇩🇪" },

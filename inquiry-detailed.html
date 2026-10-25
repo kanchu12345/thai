@@ -7,78 +7,257 @@
   <meta name="description" content="Plan your tailor-made holiday to Sri Lanka with Lotus Ceylon. Pure journeys, sacred experiences, luxury villas, wildlife safaris, and cultural tours.">
   <link rel="icon" type="image/png" href="logo.png?v=20261021_step1">
 
-  <!-- Master Stylesheet -->
+  <!-- Master Stylesheets -->
   <link rel="stylesheet" href="css/style.css?v=20261021_watermark">
+  <link rel="stylesheet" href="css/brand-header.css?v=20261021_wide_v3">
+  <style>
+    .privacy-consent-box {
+      margin: 1.5rem 0 1rem;
+      padding: 1.1rem 1.25rem;
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
+      border-radius: 8px;
+    }
+    .consent-label {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      color: #334155;
+      line-height: 1.5;
+    }
+    .consent-label input[type="checkbox"] {
+      width: 19px;
+      height: 19px;
+      margin-top: 2px;
+      flex-shrink: 0;
+      accent-color: var(--color-gold, #C9A84C);
+      cursor: pointer;
+    }
+    .pax-warning-msg {
+      display: none;
+      color: #DC2626;
+      font-size: 0.84rem;
+      font-weight: 600;
+      margin-top: 0.5rem;
+    }
+  </style>
 </head>
 <body>
 
-  <!-- ==========================================
-       HEADER & NAVIGATION
-       ========================================== -->
-  <header class="site-header">
-    <div class="container">
-      <!-- Brand Logo & Name -->
-      <a href="index.html" class="brand-link" aria-label="Lotus Ceylon Home">
-        <img src="logo.png?v=20261021_step1" alt="Lotus Ceylon Logo" class="brand-logo-img">
-        <div class="brand-text">
-          <span class="brand-title">Lotus Ceylon</span>
-          <span class="brand-slogan">INTERNATIONAL TOURS &amp; SERVICES</span>
-        </div>
-      </a>
-
-      <!-- Desktop & Mobile Navigation Links -->
-      <nav aria-label="Main Navigation">
-        <ul class="nav-menu" id="primaryNav">
-          <li><a href="index.html#home" class="nav-link" data-i18n="nav.home">Home</a></li>
-          <li><a href="sri-lanka-tours.html" class="nav-link" data-i18n="nav.tours">Tours</a></li>
-          <li><a href="about.html" class="nav-link" data-i18n="nav.about">About</a></li>
-          <li><a href="index.html#contact" class="nav-link" data-i18n="nav.contact">Contact</a></li>
-          <li><a href="inquiry-detailed.html" class="nav-link active" data-i18n="nav.inquiry">Detailed Inquiry</a></li>
-          <li><a href="inquiry-quick.html" class="nav-link" data-i18n="nav.quickInquiry">Quick Inquiry</a></li>
-        </ul>
-      </nav>
-
-      <!-- Language Selector & Mobile Nav Toggle -->
-      <div class="header-actions">
-        <!-- Language Switcher Dropdown (10 languages) -->
-        <div class="lang-dropdown-wrapper">
-          <button type="button" class="lang-toggle-btn" id="langToggleBtn" aria-haspopup="true" aria-expanded="false" title="Change Language">
-            <span class="lang-globe-icon" aria-hidden="true">🌐</span>
-            <span id="currentLangDisplay">EN</span>
-            <svg class="nav-caret-svg" width="9" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </button>
-          <div class="lang-menu" id="langDropdownMenu" role="menu">
-            <button type="button" class="lang-item active" data-lang="en">🇬🇧 English</button>
-            <button type="button" class="lang-item" data-lang="hi">🇮🇳 हिन्दी</button>
-            <button type="button" class="lang-item" data-lang="fr">🇫🇷 Français</button>
-            <button type="button" class="lang-item" data-lang="it">🇮🇹 Italiano</button>
-            <button type="button" class="lang-item" data-lang="zh">🇨🇳 中文</button>
-            <button type="button" class="lang-item" data-lang="ja">🇯🇵 日本語</button>
-            <button type="button" class="lang-item" data-lang="ar">🇦🇪 العربية (RTL)</button>
-            <button type="button" class="lang-item" data-lang="de">🇩🇪 Deutsch</button>
-            <button type="button" class="lang-item" data-lang="es">🇪🇸 Español</button>
-            <button type="button" class="lang-item" data-lang="ru">🇷🇺 Русский</button>
+  <!-- ==========================================================================
+       HEADER & NAVIGATION (WALKERS TOURS GLASS FLOATING STYLE)
+       ========================================================================== -->
+  <header class="site-header-walkers" id="siteHeader">
+    <div class="wrapper--95">
+      <div class="header-top-row">
+        
+        <!-- Brand Logo & Title -->
+        <a href="index.html" class="header-brand" title="Lotus Ceylon International Tours &amp; Services">
+          <img src="logo.png?v=20261021_step1" alt="Lotus Ceylon Emblem" class="header-brand-logo">
+          <div class="header-brand-text">
+            <span class="header-brand-name"><span class="brand-name-lotus">Lotus</span> <span class="brand-name-ceylon">Ceylon</span></span>
+            <span class="header-brand-sub">INTERNATIONAL TOURS &amp; SERVICES</span>
           </div>
+        </a>
+
+        <!-- Desktop Navigation Menu -->
+        <nav aria-label="Main Navigation">
+          <ul class="walkers-menu" id="primaryNav">
+            <li class="walkers-menu-item">
+              <a href="index.html" class="walkers-menu-link">Home</a>
+            </li>
+
+            <!-- Tours with Mega Dropdown -->
+            <li class="walkers-menu-item">
+              <a href="tours.html" class="walkers-menu-link">
+                <span>Tours</span>
+                <svg class="walkers-caret" viewBox="0 0 10 6"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" fill="none"/></svg>
+              </a>
+              <div class="walkers-megamenu">
+                <div class="megamenu-header">
+                  <span class="megamenu-header-title">Curated Ceylon Tour Categories</span>
+                  <a href="tours/" class="megamenu-view-all">All Tours ➔</a>
+                </div>
+                <div class="megamenu-grid-10">
+                  <a href="tours/cultural/" class="megamenu-cat-card">
+                    <span class="megamenu-cat-icon">🏛️</span>
+                    <div class="megamenu-cat-text">
+                      <span class="megamenu-cat-name">Cultural</span>
+                      <span class="megamenu-cat-desc">Ancient UNESCO heritage cities</span>
+                    </div>
+                  </a>
+                  <a href="tours/cultural/" class="megamenu-cat-card">
+                    <span class="megamenu-cat-icon">☸️</span>
+                    <div class="megamenu-cat-text">
+                      <span class="megamenu-cat-name">Buddhist</span>
+                      <span class="megamenu-cat-desc">Sacred Tooth &amp; Stupas Pilgrimage</span>
+                    </div>
+                  </a>
+                  <a href="tours/wildlife/" class="megamenu-cat-card">
+                    <span class="megamenu-cat-icon">🐘</span>
+                    <div class="megamenu-cat-text">
+                      <span class="megamenu-cat-name">Wildlife</span>
+                      <span class="megamenu-cat-desc">Leopards, elephants &amp; whales</span>
+                    </div>
+                  </a>
+                  <a href="tours/beach/" class="megamenu-cat-card">
+                    <span class="megamenu-cat-icon">🏖️</span>
+                    <div class="megamenu-cat-text">
+                      <span class="megamenu-cat-name">Beach</span>
+                      <span class="megamenu-cat-desc">Bentota, Mirissa &amp; Trincomalee</span>
+                    </div>
+                  </a>
+                  <a href="tours/hill-country/" class="megamenu-cat-card">
+                    <span class="megamenu-cat-icon">⛰️</span>
+                    <div class="megamenu-cat-text">
+                      <span class="megamenu-cat-name">Hill Country</span>
+                      <span class="megamenu-cat-desc">Ella, Nuwara Eliya &amp; tea hills</span>
+                    </div>
+                  </a>
+                  <a href="tours/ayurvedic/" class="megamenu-cat-card">
+                    <span class="megamenu-cat-icon">🌿</span>
+                    <div class="megamenu-cat-text">
+                      <span class="megamenu-cat-name">Ayurveda</span>
+                      <span class="megamenu-cat-desc">Holistic healing &amp; wellness</span>
+                    </div>
+                  </a>
+                  <a href="tours/honeymoon/" class="megamenu-cat-card">
+                    <span class="megamenu-cat-icon">💍</span>
+                    <div class="megamenu-cat-text">
+                      <span class="megamenu-cat-name">Honeymoon</span>
+                      <span class="megamenu-cat-desc">Romantic bespoke private stays</span>
+                    </div>
+                  </a>
+                  <a href="tours/family/" class="megamenu-cat-card">
+                    <span class="megamenu-cat-icon">👨‍👩‍👧‍👦</span>
+                    <div class="megamenu-cat-text">
+                      <span class="megamenu-cat-name">Family</span>
+                      <span class="megamenu-cat-desc">Safe journeys for all generations</span>
+                    </div>
+                  </a>
+                  <a href="tours/adventure/" class="megamenu-cat-card">
+                    <span class="megamenu-cat-icon">🧗‍♂️</span>
+                    <div class="megamenu-cat-text">
+                      <span class="megamenu-cat-name">Adventure</span>
+                      <span class="megamenu-cat-desc">Trekking, surfing &amp; waterfalls</span>
+                    </div>
+                  </a>
+                  <a href="tours/ramayana/" class="megamenu-cat-card">
+                    <span class="megamenu-cat-icon">🏹</span>
+                    <div class="megamenu-cat-text">
+                      <span class="megamenu-cat-name">Ramayana</span>
+                      <span class="megamenu-cat-desc">Epic legendary sacred trail</span>
+                    </div>
+                  </a>
+                </div>
+              </div>
+            </li>
+
+            <li class="walkers-menu-item">
+              <a href="index.html#destinations" class="walkers-menu-link">Destinations</a>
+            </li>
+            <li class="walkers-menu-item">
+              <a href="index.html#experiences" class="walkers-menu-link">Experiences</a>
+            </li>
+            <li class="walkers-menu-item">
+              <a href="about.html" class="walkers-menu-link">About Us</a>
+            </li>
+            <li class="walkers-menu-item">
+              <a href="index.html#gallery" class="walkers-menu-link">Gallery</a>
+            </li>
+            <li class="walkers-menu-item">
+              <a href="index.html#reviews" class="walkers-menu-link">Reviews</a>
+            </li>
+            <li class="walkers-menu-item">
+              <a href="blog.html" class="walkers-menu-link">Blog</a>
+            </li>
+            <li class="walkers-menu-item">
+              <a href="contact.html" class="walkers-menu-link">Contact</a>
+            </li>
+          </ul>
+        </nav>
+
+        <!-- Right Header Tools -->
+        <div class="header-tools">
+          
+          <!-- 10-Slot Language Switcher -->
+          <div class="custom-lang-pill">
+            <button type="button" class="lang-pill-btn" id="langPillToggle" title="Select Language">
+              <span id="currentLangLabel">EN</span>
+              <svg class="walkers-caret" viewBox="0 0 10 6"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" fill="none"/></svg>
+            </button>
+            <div class="lang-pill-dropdown" id="langPillMenu">
+              <button type="button" data-lang="en" class="is-active">🇬🇧  English</button>
+              <button type="button" data-lang="zh">🇨🇳 中文 (Chinese)</button>
+              <button type="button" data-lang="de">🇩🇪 Deutsch</button>
+              <button type="button" data-lang="fr">🇫🇷 Français</button>
+              <button type="button" data-lang="ru">🇷🇺 Русский</button>
+              <button type="button" data-lang="es">🇪🇸 Español</button>
+              <button type="button" data-lang="it">🇮🇹 Italiano</button>
+              <button type="button" data-lang="ja">🇯🇵 日本語</button>
+              <button type="button" data-lang="ar">🇦🇪 العربية</button>
+              <button type="button" data-lang="hi">🇮🇳 हिन्दी</button>
+            </div>
+          </div>
+
+          <!-- Gold Inquire Button -->
+          <a href="inquiry-detailed.html" class="gold-inquire-btn" title="Inquire Now">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 20 20" fill="none">
+              <path d="M17.5 17.5L14.5 14.5M16 9C16 12.866 12.866 16 9 16C5.13401 16 2 12.866 2 9C2 5.13401 5.13401 2 9 2C12.866 2 16 5.13401 16 9Z" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            <span>Inquire Now</span>
+          </a>
+
+          <!-- Mobile Hamburger Toggle -->
+          <button type="button" class="mobile-ham-btn" id="mobileHamToggle" aria-label="Open mobile navigation menu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
         </div>
 
-        <!-- Mobile Navigation Menu Toggle -->
-        <button type="button" class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Toggle navigation menu">
-          ☰
-        </button>
       </div>
     </div>
   </header>
 
+  <!-- Mobile Fullscreen Drawer -->
+  <div class="mobile-nav-fullscreen" id="mobileNavFullscreen">
+    <div class="mobile-nav-header">
+      <a href="index.html" class="header-brand">
+        <img src="logo.png?v=20261021_step1" alt="Lotus Ceylon Logo" style="height: 48px; width: auto;">
+        <span class="header-brand-name" style="color: var(--ink); font-size: 1.25rem;"><span style="color: var(--ink);">Lotus</span> <span style="color: var(--lotus-primary);">Ceylon</span></span>
+      </a>
+      <button type="button" class="mobile-nav-close" id="mobileNavClose" aria-label="Close menu">&times;</button>
+    </div>
+    <ul class="mobile-nav-list">
+      <li class="mobile-nav-item"><a href="index.html" class="mobile-nav-link">Home</a></li>
+      <li class="mobile-nav-item"><a href="tours.html" class="mobile-nav-link">Tours</a></li>
+      <li class="mobile-nav-item"><a href="index.html#destinations" class="mobile-nav-link">Destinations</a></li>
+      <li class="mobile-nav-item"><a href="index.html#experiences" class="mobile-nav-link">Experiences</a></li>
+      <li class="mobile-nav-item"><a href="about.html" class="mobile-nav-link">About Us</a></li>
+      <li class="mobile-nav-item"><a href="index.html#gallery" class="mobile-nav-link">Gallery</a></li>
+      <li class="mobile-nav-item"><a href="index.html#reviews" class="mobile-nav-link">Reviews</a></li>
+      <li class="mobile-nav-item"><a href="blog.html" class="mobile-nav-link">Blog</a></li>
+      <li class="mobile-nav-item"><a href="contact.html" class="mobile-nav-link">Contact</a></li>
+      <li class="mobile-nav-item"><a href="inquiry-detailed.html" class="mobile-nav-link active">Detailed Inquiry</a></li>
+      <li class="mobile-nav-item"><a href="inquiry-quick.html" class="mobile-nav-link">Quick Inquiry</a></li>
+    </ul>
+    <div style="margin-top: auto; padding-top: 1.5rem; border-top: 1px solid var(--mist); display: flex; flex-direction: column; gap: 0.85rem;">
+      <a href="https://wa.me/94715422384" target="_blank" rel="noopener" style="background: #25D366; color: #FFFFFF; padding: 0.75rem 1.25rem; border-radius: 9999px; text-align: center; text-decoration: none; font-weight: 700; font-size: 0.88rem;">💬 WhatsApp (+94 71 54 22 384)</a>
+      <a href="inquiry-quick.html" style="background: var(--lotus-primary); color: #FFFFFF; padding: 0.75rem 1.25rem; border-radius: 9999px; text-align: center; text-decoration: none; font-weight: 700; font-size: 0.88rem;">Quick Inquiry Form</a>
+    </div>
+  </div>
+
   <!-- ==========================================
-       HERO BANNER (Nine Arches Bridge Ella)
+       HERO BANNER
        ========================================== -->
-  <section class="hero-banner" id="home">
+  <section class="hero-banner" id="home" style="padding-top: 140px;">
     <div class="hero-overlay-motif"></div>
     <div class="hero-content">
       <div class="hero-badge">
-        <svg class="hero-lotus-icon" viewBox="0 0 24 24">
+        <svg class="hero-lotus-icon" viewBox="0 0 24 24" aria-hidden="true">
           <path d="M12 2C13.5 6 17 8 17 11C17 14 14.5 16.5 12 16.5C9.5 16.5 7 14 7 11C7 8 10.5 6 12 2Z"/>
           <path d="M12 5C8.5 8 5 10 5 13.5C5 17 8 19 12 19C16 19 19 17 19 13.5C19 10 15.5 8 12 5Z" opacity="0.6"/>
         </svg>
@@ -104,9 +283,9 @@
               <path d="M50 30 C32 45 18 55 22 70 C25 80 40 85 50 85 C60 85 75 80 78 70 C82 55 68 45 50 30 Z" opacity="0.7"/>
             </svg>
           </div>
-          <h2 class="form-card-title" data-i18n="form.cardTitle">Travel Inquiry Form</h2>
+          <h2 class="form-card-title" data-i18n="form.cardTitle">Detailed Travel Inquiry</h2>
           <p class="form-intro-text" data-i18n="form.intro">
-            Inspired by the lotus, a symbol of purity, sacredness and resilience, tell us about your dream trip and we will craft it for you.
+            Inspired by the lotus, a symbol of purity, sacredness and resilience, share your holiday wishes and we will craft a bespoke itinerary tailored to your travel dates and pace.
           </p>
 
           <!-- Banner switch to Quick Inquiry Form -->
@@ -120,7 +299,7 @@
         <form id="inquiryForm" class="inquiry-form" novalidate>
 
           <!-- SPAM HONEYPOT (Invisible to legitimate human users) -->
-          <div class="lotus-hp-field" aria-hidden="true">
+          <div class="lotus-hp-field" aria-hidden="true" style="display:none;">
             <label for="hp_website_lotus">Do not fill this field</label>
             <input type="text" id="hp_website_lotus" name="hp_website_lotus" tabindex="-1" autocomplete="off">
           </div>
@@ -160,7 +339,7 @@
                     type="text" 
                     id="countrySearchInput" 
                     class="form-input" 
-                    placeholder="Search and select your country..."
+                    placeholder="Search country (e.g. UK, USA, Australia)..."
                     data-i18n-placeholder="form.countryPlaceholder"
                     autocomplete="off"
                     aria-expanded="false"
@@ -236,7 +415,7 @@
                   autocomplete="tel"
                 >
               </div>
-              <span class="form-hint" data-i18n="form.whatsappHint">Include your active WhatsApp number for quick tour itinerary updates.</span>
+              <span class="form-hint" data-i18n="form.whatsappHint">Active WhatsApp number for swift itinerary proposals and direct coordination.</span>
               <span class="error-message" id="whatsappNumberError" role="alert"></span>
             </div>
           </div>
@@ -279,7 +458,7 @@
           </div>
 
           <!-- ====================================================
-               FIELD 7: No. of Pax (Adults, Children, Auto-Calculate)
+               FIELD 7: No. of Pax (Adults 1-15, Children 0-10, Max 20 Total)
                ==================================================== -->
           <div class="form-group">
             <label class="form-label">
@@ -314,7 +493,7 @@
                 <div>
                   <label for="childrenPax" class="form-label" style="font-size:0.84rem;" data-i18n="form.childrenLabel">Children (6–12 yrs)</label>
                   <select id="childrenPax" name="childrenPax" class="form-select">
-                    <option value="0" selected>0 Children</option>
+                    <option value="0" selected>0 Children (None)</option>
                     <option value="1">1 Child</option>
                     <option value="2">2 Children</option>
                     <option value="3">3 Children</option>
@@ -336,6 +515,7 @@
                 </div>
               </div>
               <p class="pax-summary-caption" id="paxSummaryText">(2 Adults, No Children)</p>
+              <div id="paxMaxWarning" class="pax-warning-msg" role="alert"></div>
             </div>
           </div>
 
@@ -349,16 +529,16 @@
                 <span class="required-star">*</span>
               </label>
 
-              <!-- Optional Star-rating Dropdown alternative -->
+              <!-- Star-rating Dropdown alternative -->
               <div class="hotel-dropdown-alternative">
                 <span data-i18n="form.hotelDropdownToggle">Or select a Star-Rating dropdown</span>
                 <select id="hotelStarDropdown" class="form-select" style="width: auto;">
                   <option value="" data-i18n="form.hotelDropdownPrompt">Choose Star Category...</option>
-                  <option value="5-Star">⭐⭐⭐⭐⭐ 5-Star</option>
-                  <option value="4-Star">⭐⭐⭐⭐ 4-Star</option>
-                  <option value="3-Star">⭐⭐⭐ 3-Star</option>
-                  <option value="Boutique">👑 Boutique</option>
-                  <option value="Budget">🌿 Budget</option>
+                  <option value="5-Star">★★★★★ 5-Star</option>
+                  <option value="4-Star">★★★★ 4-Star</option>
+                  <option value="3-Star">★★★ 3-Star</option>
+                  <option value="Boutique">🏰 Boutique</option>
+                  <option value="Budget">🏡 Budget</option>
                 </select>
               </div>
             </div>
@@ -372,7 +552,7 @@
               <label class="selectable-card">
                 <input type="checkbox" name="hotelCategory" value="Boutique">
                 <span class="card-checkmark">✓</span>
-                <span class="card-icon">👑</span>
+                <span class="card-icon">🏰</span>
                 <span class="card-title" data-i18n="form.hotelBoutique">Boutique / Heritage Villa</span>
               </label>
 
@@ -380,7 +560,7 @@
               <label class="selectable-card selected">
                 <input type="checkbox" name="hotelCategory" value="5-Star" checked>
                 <span class="card-checkmark">✓</span>
-                <span class="card-icon">🏨</span>
+                <span class="card-icon">👑</span>
                 <span class="card-title" data-i18n="form.hotel5Star">5-Star Luxury</span>
                 <span class="card-stars">★★★★★</span>
               </label>
@@ -407,7 +587,7 @@
               <label class="selectable-card">
                 <input type="checkbox" name="hotelCategory" value="Budget">
                 <span class="card-checkmark">✓</span>
-                <span class="card-icon">🌿</span>
+                <span class="card-icon">🏡</span>
                 <span class="card-title" data-i18n="form.hotelBudget">Budget / Eco Stays</span>
               </label>
             </div>
@@ -470,7 +650,7 @@
               <!-- Culture & Heritage -->
               <label class="interest-tile">
                 <input type="checkbox" name="interests" value="Culture & Heritage" checked>
-                <svg class="interest-icon-svg" viewBox="0 0 24 24">
+                <svg class="interest-icon-svg" viewBox="0 0 24 24" aria-hidden="true">
                   <path d="M12 2L2 9H22L12 2ZM4 11V19H7V11H4ZM10 11V19H14V11H10ZM17 11V19H20V11H17ZM2 21H22V23H2V21Z"/>
                 </svg>
                 <span class="interest-name" data-i18n="form.interestCulture">Culture & Heritage</span>
@@ -479,7 +659,7 @@
               <!-- Nature -->
               <label class="interest-tile">
                 <input type="checkbox" name="interests" value="Nature">
-                <svg class="interest-icon-svg" viewBox="0 0 24 24">
+                <svg class="interest-icon-svg" viewBox="0 0 24 24" aria-hidden="true">
                   <path d="M14 6L10.5 11L13 11L9 17L15 17L12 21H18L14 6ZM12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2Z"/>
                 </svg>
                 <span class="interest-name" data-i18n="form.interestNature">Nature</span>
@@ -488,7 +668,7 @@
               <!-- Ancient & Archaeology -->
               <label class="interest-tile">
                 <input type="checkbox" name="interests" value="Ancient & Archaeology">
-                <svg class="interest-icon-svg" viewBox="0 0 24 24">
+                <svg class="interest-icon-svg" viewBox="0 0 24 24" aria-hidden="true">
                   <path d="M12 3L1 9L12 15L21 10.09V17H23V9M5 13.18V17.18L12 21L19 17.18V13.18L12 17L5 13.18Z"/>
                 </svg>
                 <span class="interest-name" data-i18n="form.interestArchaeology">Ancient & Archaeology</span>
@@ -497,7 +677,7 @@
               <!-- Wildlife -->
               <label class="interest-tile">
                 <input type="checkbox" name="interests" value="Wildlife" checked>
-                <svg class="interest-icon-svg" viewBox="0 0 24 24">
+                <svg class="interest-icon-svg" viewBox="0 0 24 24" aria-hidden="true">
                   <path d="M4.5 10.5C3.67 10.5 3 11.17 3 12S3.67 13.5 4.5 13.5 6 12.83 6 12 5.33 10.5 4.5 10.5M7.5 7.5C6.67 7.5 6 8.17 6 9S6.67 10.5 7.5 10.5 9 9.83 9 9 8.33 7.5 7.5 7.5M16.5 7.5C15.67 7.5 15 8.17 15 9S15.67 10.5 16.5 10.5 18 9.83 18 9 17.33 7.5 16.5 7.5M19.5 10.5C18.67 10.5 18 11.17 18 12S18.67 13.5 19.5 13.5 21 12.83 21 12 20.33 10.5 19.5 10.5M12 14C9.5 14 7.5 15.79 7.5 18C7.5 19.5 8.67 20.75 10.15 21.28C10.74 21.49 11.37 21.6 12 21.6S13.26 21.49 13.85 21.28C15.33 20.75 16.5 19.5 16.5 18C16.5 15.79 14.5 14 12 14Z"/>
                 </svg>
                 <span class="interest-name" data-i18n="form.interestWildlife">Wildlife</span>
@@ -506,7 +686,7 @@
               <!-- Adventure -->
               <label class="interest-tile">
                 <input type="checkbox" name="interests" value="Adventure">
-                <svg class="interest-icon-svg" viewBox="0 0 24 24">
+                <svg class="interest-icon-svg" viewBox="0 0 24 24" aria-hidden="true">
                   <path d="M14 6L10.5 11L13 11L9 17L15 17L12 21H18L14 6ZM13.5 5.5C14.6 5.5 15.5 4.6 15.5 3.5S14.6 1.5 13.5 1.5 11.5 2.4 11.5 3.5 12.4 5.5 13.5 5.5ZM9.8 8.9L7 23H9.1L10.8 14.8L13 17V23H15V15.5L12.8 13.3L13.5 9.8C14.7 11.2 16.4 12 18.5 12V10C16.8 10 15.3 9.1 14.5 7.8L13.6 6.3C13.2 5.7 12.6 5.3 11.8 5.3C11.5 5.3 11.1 5.4 10.8 5.5L6 7.5V12H8V9L9.8 8.9Z"/>
                 </svg>
                 <span class="interest-name" data-i18n="form.interestAdventure">Adventure</span>
@@ -515,7 +695,7 @@
               <!-- Beach -->
               <label class="interest-tile">
                 <input type="checkbox" name="interests" value="Beach">
-                <svg class="interest-icon-svg" viewBox="0 0 24 24">
+                <svg class="interest-icon-svg" viewBox="0 0 24 24" aria-hidden="true">
                   <path d="M13.5 16C13.5 14.5 12 13 10.5 13S7.5 14.5 7.5 16H13.5M6 19C6 17.5 7.5 16 9 16S12 17.5 12 19H6M13.1 8.8C12.4 8.3 11.5 8 10.5 8S8.6 8.3 7.9 8.8L5.5 4.5L7.2 3.5L9.3 7.2C9.7 7.1 10.1 7 10.5 7S11.3 7.1 11.7 7.2L13.8 3.5L15.5 4.5L13.1 8.8M21 16H16.5C16.5 14.5 15 13 13.5 13V11C16.3 11 18.5 13.2 18.5 16H21V19H15C15 17.5 13.5 16 12 16V14C14.8 14 17 16.2 17 19H21V16Z"/>
                 </svg>
                 <span class="interest-name" data-i18n="form.interestBeach">Beach</span>
@@ -524,8 +704,8 @@
               <!-- Shopping -->
               <label class="interest-tile">
                 <input type="checkbox" name="interests" value="Shopping">
-                <svg class="interest-icon-svg" viewBox="0 0 24 24">
-                  <path d="M19 6H16.5C16.5 4 15 2 12 2C9 2 7.5 4 7.5 6H5C3.9 6 3 6.9 3 8V20C3 21.1 3.9 22 5 22H19C20.1 22 21 21.1 21 20V8C21 6.9 20.1 6 19 6ZM12 4C13.7 4 14.5 5.1 14.5 6H9.5C9.5 5.1 10.3 4 12 4ZM19 20H5V8H7.5V10C7.5 10.6 7.9 11 8.5 11C9.1 11 9.5 10.6 9.5 10V8H14.5V10C14.5 10.6 14.9 11 15.5 11C16.1 11 16.5 10.6 16.5 10V8H19V20Z"/>
+                <svg class="interest-icon-svg" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M19 6H16C16 3.79 14.21 2 12 2C9.79 2 8 3.79 8 6H5C3.9 6 3 6.9 3 8V20C3 21.1 3.9 22 5 22H19C20.1 22 21 21.1 21 20V8C21 6.9 20.1 6 19 6ZM12 4C13.1 4 14 4.9 14 6H10C10 4.9 10.9 4 12 4ZM19 20H5V8H8V10C8 10.6 8.4 11 9 11C9.6 11 10 10.6 10 10V8H14V10C14 10.6 14.4 11 15 11C15.6 11 16 10.6 16 10V8H19V20Z"/>
                 </svg>
                 <span class="interest-name" data-i18n="form.interestShopping">Shopping</span>
               </label>
@@ -533,16 +713,14 @@
           </div>
 
           <!-- ====================================================
-               FIELD 12: Targeted Package Budget (Currency + Amount)
+               FIELD 12: Targeted Package Budget (Optional)
                ==================================================== -->
           <div class="form-group">
             <label for="packageBudget" class="form-label">
-              <span data-i18n="form.budgetLabel">Targeted Package Budget</span>
-              <span class="required-star">*</span>
+              <span data-i18n="form.budgetLabel">Targeted Package Budget (Optional)</span>
             </label>
             <div class="budget-input-group">
               <select id="budgetCurrency" name="budgetCurrency" class="form-select budget-currency-select" aria-label="Select Budget Currency">
-                <!-- Populated dynamically via config.js -->
                 <option value="USD" selected>USD ($)</option>
               </select>
               <input 
@@ -552,10 +730,9 @@
                 class="form-input" 
                 placeholder="e.g. 2,500 (per person or total)" 
                 data-i18n-placeholder="form.budgetPlaceholder"
-                required
               >
             </div>
-            <span class="form-hint" data-i18n="form.budgetHint">Gives us a benchmark to select ideal hotels and exclusive experiences.</span>
+            <span class="form-hint" data-i18n="form.budgetHint">Helps us select the ideal hotels and bespoke inclusions.</span>
             <span class="error-message" id="packageBudgetError" role="alert"></span>
           </div>
 
@@ -579,7 +756,18 @@
           </div>
 
           <!-- ====================================================
-               SPAM PROTECTION: Human Verification reCAPTCHA Placeholder
+               PRIVACY CONSENT CHECKBOX
+               ==================================================== -->
+          <div class="privacy-consent-box">
+            <label class="consent-label" for="privacyConsent">
+              <input type="checkbox" id="privacyConsent" name="privacyConsent" required>
+              <span>I consent to Lotus Ceylon collecting and processing my contact details and travel preferences to prepare my tailor-made itinerary. We respect your privacy and never sell or share personal data.</span>
+            </label>
+            <span class="error-message" id="privacyConsentError" role="alert" style="display:none; color: #DC2626; font-size: 0.82rem; margin-top: 0.4rem;"></span>
+          </div>
+
+          <!-- ====================================================
+               SPAM PROTECTION: Human Verification
                ==================================================== -->
           <div class="security-verification-card">
             <label class="security-check-label">
@@ -594,15 +782,15 @@
           <span class="error-message" id="humanCheckError" role="alert" style="margin-top:-0.5rem;"></span>
 
           <!-- ====================================================
-               FIELD 14: Submit Button
+               FIELD 14: Submit Button & Response Commitment Note
                ==================================================== -->
           <div class="submit-btn-wrapper">
             <button type="submit" id="submitInquiryBtn" class="btn-primary-gold">
               <span data-i18n="form.submitButton">Submit Inquiry</span>
               <span aria-hidden="true">➔</span>
             </button>
-            <p class="submit-guarantee-note">
-              <span>🔒 100% Privacy Guaranteed &middot; No Obligation &middot; Custom Tailored</span>
+            <p class="submit-guarantee-note" style="margin-top: 0.85rem; text-align: center; font-size: 0.88rem; color: #64748B;">
+              <span id="responseTimeNote">We reply within 2 hours, Sri Lanka time (GMT+5:30)</span> &middot; <span>100% Privacy Guaranteed &middot; Zero Obligation</span>
             </p>
           </div>
 
@@ -611,118 +799,113 @@
     </div>
   </main>
 
-  <!-- ==========================================
-       FOOTER
-       ========================================== -->
-  <footer class="site-footer" id="contact">
-    <div class="container">
-      <div class="footer-grid">
+  <!-- ==========================================================================
+       SITE FOOTER (WALKERS TOURS STYLE NAVY & GOLD)
+       ========================================================================== -->
+  <footer class="footer-walkers" id="contact">
+    <div class="wrapper--95">
+      <div class="footer-grid-3">
 
-        <!-- Column 1: Brand & Slogan -->
-        <div class="footer-col">
-          <h3 class="footer-col-title" data-i18n="footer.aboutTitle">Lotus Ceylon</h3>
-          <p class="footer-about-text" data-i18n="footer.aboutDesc">
-            Crafting bespoke, transformative travel experiences across the sacred island of Sri Lanka with hospitality rooted in authentic Ceylon warmth.
+        <!-- Col 1: Brand & Credentials -->
+        <div>
+          <a href="index.html" class="footer-brand" style="text-decoration: none; display: flex; align-items: center; gap: 12px; margin-bottom: 1.25rem;">
+            <img src="logo.png?v=20261021_step1" alt="Lotus Ceylon Emblem" style="height: 52px; width: auto; object-fit: contain;">
+            <div>
+              <span style="font-family: var(--font-serif, 'Playfair Display', Georgia, serif); font-size: 1.45rem; font-weight: 700; letter-spacing: 0.05em; color: #FFFFFF; display: block; line-height: 1.1;">
+                <span style="color: #FFFFFF;">Lotus</span> <span style="color: var(--color-lotus-pink, #C95451);">Ceylon</span>
+              </span>
+              <span style="font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--color-gold, #C9A84C); display: block; margin-top: 2px;">
+                INTERNATIONAL TOURS &amp; SERVICES
+              </span>
+            </div>
+          </a>
+          <p class="footer-tagline">
+            Pure Journeys &amp; Sacred Experiences across the timeless island of Sri Lanka. Registered Inbound Tour Operator (PV 00374439).
           </p>
-          <span class="footer-since-badge">Since 2014</span>
-        </div>
 
-        <!-- Column 2: Quick Links -->
-        <div class="footer-col">
-          <h3 class="footer-col-title" data-i18n="footer.quickLinks">Quick Navigation</h3>
-          <ul class="footer-links-list">
-            <li><a href="index.html#home" class="footer-link" data-i18n="nav.home">Home</a></li>
-            <li><a href="sri-lanka-tours.html" class="footer-link" data-i18n="nav.tours">Tours</a></li>
-            <li><a href="about.html" class="footer-link" data-i18n="nav.about">About</a></li>
-            <li><a href="inquiry-detailed.html" class="footer-link" data-i18n="nav.inquiry">Detailed Inquiry</a></li>
-            <li><a href="inquiry-quick.html" class="footer-link" data-i18n="nav.quickInquiry">Quick Inquiry</a></li>
-          </ul>
-        </div>
-
-        <!-- Column 3: Contact & Address -->
-        <div class="footer-col">
-          <h3 class="footer-col-title" data-i18n="footer.contactTitle">Get in Touch</h3>
-          <div class="footer-contact-items">
-            <div class="contact-item-row">
-              <span class="contact-icon">📍</span>
-              <span>286/C, Niwandama South, Ja-Ela, Sri Lanka – 11350</span>
+          <div class="footer-contact-info">
+            <div class="footer-contact-item">
+              <p style="margin-bottom: 0.35rem; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-gold);">Registered Office &amp; HQ</p>
+              <p style="font-size: 0.88rem; line-height: 1.6; color: #E2E8F0;">
+                286/C, Niwandama South, Ja-Ela, Sri Lanka – 11350.<br>
+                Director: Mallawa Arachchige Dhushantha Gihan Mallawaarachchi
+              </p>
             </div>
-            <div class="contact-item-row">
-              <span class="contact-icon">💬</span>
-              <span>WhatsApp: <a href="https://wa.me/94715422384" target="_blank" rel="noopener">+94 71 54 22 384</a></span>
+            <div class="footer-contact-item">
+              <p style="margin-bottom: 0.35rem; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-gold);">24/7 Guest Care Hotline</p>
+              <p style="font-size: 0.88rem; line-height: 1.6; color: #E2E8F0;">
+                Hotline / WhatsApp: <a href="https://wa.me/94715422384" style="color: var(--color-gold); font-weight: 600;">+94 71 54 22 384</a><br>
+                Email: <a href="mailto:inquiry@lotusceylon.com" style="color: #E2E8F0;">inquiry@lotusceylon.com</a>
+              </p>
             </div>
-            <div class="contact-item-row">
-              <span class="contact-icon">✉️</span>
-              <span>Email: <a href="mailto:paliforbuddhism@gmail.com">paliforbuddhism@gmail.com</a></span>
+            <div class="footer-contact-item">
+              <p style="margin-bottom: 0.35rem; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-gold);">WeChat &amp; LINE Concierge</p>
+              <p style="font-size: 0.88rem; line-height: 1.6; color: #E2E8F0;">
+                <span style="color: var(--color-gold); font-weight: 600;">WeChat ID:</span> FGUTaiwan90 (+9471 54 22 384)<br>
+                <span style="color: var(--color-gold); font-weight: 600;">LINE ID:</span> dpbs2024 (Line Phone: +886 958 561 954)
+              </p>
             </div>
           </div>
         </div>
 
-        <!-- Column 4: WhatsApp, WeChat & LINE QR Codes -->
-        <div class="footer-col">
-          <h3 class="footer-col-title" data-i18n="footer.connectTitle">Instant Chat QR Codes</h3>
-          <p class="footer-about-text" style="font-size:0.82rem;" data-i18n="footer.connectDesc">Scan to chat directly with our travel designers:</p>
-          <div class="qr-codes-grid">
-            <!-- WhatsApp QR -->
-            <a href="https://wa.me/94715422384" target="_blank" rel="noopener" class="qr-card" title="Open WhatsApp Chat">
-              <img src="assets/qr/whatsapp-qr.png" alt="WhatsApp QR Code" class="qr-image" loading="lazy">
-              <span class="qr-card-title">WhatsApp</span>
-              <span class="qr-card-handle">+94 71 54 22 384</span>
-            </a>
-            <!-- WeChat QR -->
-            <div class="qr-card" title="WeChat ID: FGUTaiwan90 (+9471 54 22 384)">
-              <img src="assets/qr/wechat-qr.png" alt="WeChat QR Code" class="qr-image" loading="lazy">
-              <span class="qr-card-title">WeChat</span>
-              <span class="qr-card-handle">FGUTaiwan90</span>
-            </div>
-            <!-- LINE QR -->
-            <div class="qr-card" title="LINE ID: dpbs2024 (Line Phone: +886 958 561 954)">
-              <img src="assets/qr/line-qr.png" alt="LINE QR Code" class="qr-image" loading="lazy">
-              <span class="qr-card-title">LINE</span>
-              <span class="qr-card-handle">dpbs2024</span>
+        <!-- Col 2: Quick Links -->
+        <div>
+          <p class="footer-col-title">Quick Links</p>
+          <div class="footer-links-grid">
+            <a href="index.html">Home</a>
+            <a href="sri-lanka-tours.html">Sri Lanka Tours</a>
+            <a href="tours.html">Tour Packages</a>
+            <a href="about.html">About Lotus Ceylon</a>
+            <a href="index.html#destinations">Destinations</a>
+            <a href="index.html#experiences">Experiences</a>
+            <a href="index.html#gallery">Gallery</a>
+            <a href="index.html#reviews">Guest Reviews</a>
+            <a href="blog.html">Travel Blog</a>
+            <a href="inquiry-detailed.html">Detailed Inquiry</a>
+            <a href="inquiry-quick.html">Quick Inquiry</a>
+            <a href="contact.html">Contact Us</a>
+          </div>
+        </div>
+
+        <!-- Col 3: Newsletter & Instant Chat QR Codes -->
+        <div>
+          <div class="newsletter-box">
+            <p class="footer-col-title">Stay Inspired</p>
+            <p>Subscribe to receive curated Sri Lanka holiday inspiration and early-booking privileges.</p>
+            <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Thank you for subscribing to Lotus Ceylon!'); this.reset();">
+              <input type="email" placeholder="Enter your email address" required aria-label="Email address for newsletter">
+              <button type="submit" aria-label="Subscribe">➔</button>
+            </form>
+          </div>
+
+          <!-- Instant Chat QR Codes -->
+          <div style="margin: 1.5rem 0 1.25rem;">
+            <p style="font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.12em; color: #FFFFFF; font-weight: 700; margin-bottom: 0.65rem;">Scan &amp; Chat Instantly</p>
+            <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+              <a href="https://wa.me/94715422384" target="_blank" rel="noopener" style="background: rgba(255,255,255,0.08); padding: 0.5rem; border-radius: 6px; text-align: center; text-decoration: none; border: 1px solid rgba(255,255,255,0.12); width: 85px;">
+                <img src="assets/qr/whatsapp-qr.png" alt="WhatsApp QR" style="width: 70px; height: 70px; border-radius: 4px; display: block; margin: 0 auto 0.25rem; object-fit: contain;">
+                <span style="font-size: 0.72rem; color: #E2E8F0; display: block; font-weight: 600;">WhatsApp</span>
+              </a>
+              <div style="background: rgba(255,255,255,0.08); padding: 0.5rem; border-radius: 6px; text-align: center; border: 1px solid rgba(255,255,255,0.12); width: 85px;">
+                <img src="assets/qr/wechat-qr.png" alt="WeChat QR" style="width: 70px; height: 70px; border-radius: 4px; display: block; margin: 0 auto 0.25rem; object-fit: contain;">
+                <span style="font-size: 0.72rem; color: #E2E8F0; display: block; font-weight: 600;">WeChat</span>
+              </div>
+              <div style="background: rgba(255,255,255,0.08); padding: 0.5rem; border-radius: 6px; text-align: center; border: 1px solid rgba(255,255,255,0.12); width: 85px;">
+                <img src="assets/qr/line-qr.png" alt="LINE QR" style="width: 70px; height: 70px; border-radius: 4px; display: block; margin: 0 auto 0.25rem; object-fit: contain;">
+                <span style="font-size: 0.72rem; color: #E2E8F0; display: block; font-weight: 600;">LINE</span>
+              </div>
             </div>
           </div>
         </div>
 
       </div>
 
-      <!-- Google Map Embed Placeholder (Ja-Ela, Sri Lanka) -->
-      <div class="map-embed-wrapper">
-        <iframe 
-          title="Lotus Ceylon Location Map"
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3959.988898150334!2d79.89745!3d7.07062!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae2fb37648f5729%3A0x7d25e01b4c73a11b!2sJa-Ela%2C%20Sri%20Lanka!5e0!3m2!1sen!2slk!4v1700000000000!5m2!1sen!2slk" 
-          allowfullscreen="" 
-          loading="lazy" 
-          referrerpolicy="no-referrer-when-downgrade">
-        </iframe>
-      </div>
-
-      <!-- Social Media Icons Row -->
-      <div class="footer-social-row">
-        <a href="https://www.facebook.com/lotusceylontours" target="_blank" rel="noopener" class="social-circle-btn" aria-label="Facebook">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95z"/></svg>
-        </a>
-        <a href="https://www.instagram.com/lotusceylontours" target="_blank" rel="noopener" class="social-circle-btn" aria-label="Instagram">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-        </a>
-        <a href="https://www.youtube.com/@lotusceylontours" target="_blank" rel="noopener" class="social-circle-btn" aria-label="YouTube">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-        </a>
-        <a href="https://www.tripadvisor.com" target="_blank" rel="noopener" class="social-circle-btn" aria-label="TripAdvisor">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-5 13.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5zm10 0c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-        </a>
-        <a href="https://twitter.com/lotusceylon" target="_blank" rel="noopener" class="social-circle-btn" aria-label="Twitter">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-        </a>
-      </div>
-
-      <!-- Bottom Bar -->
-      <div class="footer-bottom-bar">
+      <div class="footer-bottom-row">
         <div>
           &copy; <span id="currentYear">2026</span> LOTUS CEYLON INTERNATIONAL TOURS &amp; SERVICES (PRIVATE) LIMITED. All Rights Reserved. Since 2014.
         </div>
         <div>
-          Designed &amp; Developed by <a href="https://infiniteweb.dev/" target="_blank" rel="noopener" style="color: var(--color-gold); text-decoration: none; font-weight: 600; transition: color 0.25s ease;" onmouseover="this.style.color='var(--color-lotus-pink)'" onmouseout="this.style.color='var(--color-gold)'">Infinite Design</a> &middot; Reg: PV 00374439
+          Designed &amp; Developed by <a href="https://infiniteweb.dev/" target="_blank" rel="noopener" style="color: var(--color-gold); text-decoration: none; font-weight: 600;">Infinite Design</a> &middot; Reg: PV 00374439
         </div>
       </div>
 
@@ -730,11 +913,11 @@
   </footer>
 
   <!-- ==========================================
-       FLOATING WHATSAPP BUTTON (wa.me/94715422384)
+       FLOATING WHATSAPP BUTTON
        ========================================== -->
   <a href="https://wa.me/94715422384" class="floating-whatsapp" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
     <span class="wa-pulse-dot"></span>
-    <svg class="wa-icon-svg" viewBox="0 0 24 24">
+    <svg class="wa-icon-svg" viewBox="0 0 24 24" aria-hidden="true">
       <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.196 8.196 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24m4.52 11.66c-.25-.13-1.47-.72-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.13-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.39-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.08-.17.04-.32-.02-.45-.06-.13-.56-1.35-.77-1.85-.2-.49-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.13.17 1.78 2.72 4.31 3.81.6.26 1.07.41 1.44.53.61.19 1.16.17 1.6.1.49-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.06-.1-.23-.17-.48-.29z"/>
     </svg>
     <span>WhatsApp Us</span>
@@ -748,14 +931,14 @@
       <button type="button" class="modal-close-x" data-close-modal aria-label="Close modal">&times;</button>
       
       <div class="modal-lotus-badge">
-        <svg viewBox="0 0 24 24">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
           <path d="M12 2C13.5 6 17 8 17 11C17 14 14.5 16.5 12 16.5C9.5 16.5 7 14 7 11C7 8 10.5 6 12 2Z"/>
         </svg>
       </div>
 
       <h3 class="modal-title" id="modalTitle" data-i18n="modal.title">Inquiry Received with Lotus Grace</h3>
-      <p class="modal-body-text" data-i18n="modal.message">
-        Thank you! Our dedicated Sri Lanka travel specialists will contact you within 24 hours with a personalized itinerary.
+      <p class="modal-body-text" id="modalResponseTimeMsg" data-i18n="modal.message">
+        Thank you! Our dedicated Sri Lanka travel specialists will contact you within 2 hours, Sri Lanka time (GMT+5:30) with a bespoke itinerary.
       </p>
 
       <div class="modal-ref-card">
@@ -771,7 +954,7 @@
 
       <div class="modal-actions-row">
         <a href="#" id="modalWhatsAppBtn" target="_blank" rel="noopener" class="btn-whatsapp-action">
-          <svg class="wa-icon-svg" viewBox="0 0 24 24" style="width:20px;height:20px;">
+          <svg class="wa-icon-svg" viewBox="0 0 24 24" style="width:20px;height:20px;" aria-hidden="true">
             <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.196 8.196 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24m4.52 11.66c-.25-.13-1.47-.72-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.13-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.39-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.08-.17.04-.32-.02-.45-.06-.13-.56-1.35-.77-1.85-.2-.49-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.13.17 1.78 2.72 4.31 3.81.6.26 1.07.41 1.44.53.61.19 1.16.17 1.6.1.49-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.06-.1-.23-.17-.48-.29z"/>
           </svg>
           <span data-i18n="modal.whatsappAction">Chat on WhatsApp Now</span>
@@ -787,20 +970,61 @@
   <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="js/config.js"></script>
+  <script src="js/firebase-tour-sync.js"></script>
   <script src="js/supabase-client.js"></script>
   <script src="js/countries.js"></script>
   <script src="js/i18n.js"></script>
   <script src="js/form.js"></script>
   <script>
     document.getElementById("currentYear").textContent = new Date().getFullYear();
-    const navToggle = document.getElementById("mobileNavToggle");
-    const primaryNav = document.getElementById("primaryNav");
-    if (navToggle && primaryNav) {
-      navToggle.addEventListener("click", () => {
-        primaryNav.classList.toggle("show-mobile");
+
+    // Mobile Navigation Fullscreen Drawer
+    const mobileHamToggle = document.getElementById('mobileHamToggle');
+    const mobileNavFullscreen = document.getElementById('mobileNavFullscreen');
+    const mobileNavClose = document.getElementById('mobileNavClose');
+    if (mobileHamToggle && mobileNavFullscreen) {
+      mobileHamToggle.addEventListener('click', () => {
+        mobileNavFullscreen.classList.add('is-open');
+        document.body.style.overflow = 'hidden';
+      });
+      if (mobileNavClose) {
+        mobileNavClose.addEventListener('click', () => {
+          mobileNavFullscreen.classList.remove('is-open');
+          document.body.style.overflow = '';
+        });
+      }
+      mobileNavFullscreen.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          mobileNavFullscreen.classList.remove('is-open');
+          document.body.style.overflow = '';
+        });
       });
     }
-    window.lotusI18n.init();
+
+    // Language Dropdown
+    const langPillToggle = document.getElementById('langPillToggle');
+    const langPillMenu = document.getElementById('langPillMenu');
+    const currentLangLabel = document.getElementById('currentLangLabel');
+    if (langPillToggle && langPillMenu) {
+      langPillToggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        langPillMenu.classList.toggle('is-active');
+      });
+      document.addEventListener('click', (e) => {
+        if (!langPillToggle.contains(e.target) && !langPillMenu.contains(e.target)) {
+          langPillMenu.classList.remove('is-active');
+        }
+      });
+      langPillMenu.querySelectorAll('button').forEach(btn => {
+        btn.addEventListener('click', () => {
+          langPillMenu.querySelectorAll('button').forEach(b => b.classList.remove('is-active'));
+          btn.classList.add('is-active');
+          const code = btn.getAttribute('data-lang').toUpperCase();
+          if (currentLangLabel) currentLangLabel.textContent = code;
+          langPillMenu.classList.remove('is-active');
+        });
+      });
+    }
   </script>
 </body>
 </html>

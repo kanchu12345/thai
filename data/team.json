@@ -1,0 +1,32 @@
+[
+  {
+    "id": "dhushantha-gihan-mallawaarachchi",
+    "name": "Mallawa Arachchige Dhushantha Gihan Mallawaarachchi",
+    "role": "Director",
+    "country": "Sri Lanka",
+    "flag": "🇱🇰",
+    "photo": {
+      "cloudinaryPublicId": "lotus-ceylon/team/dhushantha-gihan",
+      "alt": "Director Mallawa Arachchige Dhushantha Gihan Mallawaarachchi",
+      "url": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=640&h=640&fit=crop&crop=faces&q=80"
+    },
+    "bio": "Introduction coming soon",
+    "sortOrder": 1,
+    "published": true
+  },
+  {
+    "id": "kuenga-yarpel",
+    "name": "Mr. Kuenga Yarpel",
+    "role": "The Lotus Representative, Bhutan",
+    "country": "Bhutan",
+    "flag": "🇧🇹",
+    "photo": {
+      "cloudinaryPublicId": "lotus-ceylon/team/kuenga-yarpel",
+      "alt": "Mr. Kuenga Yarpel, The Lotus Representative, Bhutan",
+      "url": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=413&h=531&fit=crop&crop=faces&q=80"
+    },
+    "bio": "Introduction coming soon",
+    "sortOrder": 2,
+    "published": true
+  }
+]

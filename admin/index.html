@@ -99,6 +99,11 @@
           <span>Destinations</span>
         </a>
 
+        <a class="nav-link" data-section="team" onclick="AdminApp.switchSection('team')">
+          <svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+          <span>Our People / Team</span>
+        </a>
+
         <a class="nav-link" data-section="reviews" onclick="AdminApp.switchSection('reviews')">
           <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
           <span>Guest Reviews</span>
@@ -250,20 +255,30 @@
 
 
         <!-- ========================================== -->
-        <!-- SECTION 2: INQUIRIES                       -->
+        <!-- SECTION 2: INQUIRIES (TWO SEPARATE SHEETS) -->
         <!-- ========================================== -->
         <section id="section-inquiries" class="content-section">
           <div class="section-header">
             <div class="section-title-wrap">
               <h2>Customer Inquiries</h2>
-              <p>Manage incoming bespoke and package booking requests</p>
+              <p>Manage incoming Quick and Detailed booking requests across Firebase Firestore collections</p>
             </div>
             <div style="display: flex; gap: 10px;">
               <button class="btn btn-outline" onclick="AdminApp.exportInquiriesCSV()">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
-                <span>Export CSV</span>
+                <span id="exportCsvBtnText">Export Active Sheet (CSV)</span>
               </button>
             </div>
+          </div>
+
+          <!-- Dual Sheet Navigation Tabs -->
+          <div class="inquiry-tab-bar">
+            <button type="button" class="inquiry-tab-btn active" id="btnTabQuickInquiries" onclick="AdminApp.switchInquiryTab('quick')">
+              ⚡ Quick Inquiries (<span id="countQuickInquiries">0</span>)
+            </button>
+            <button type="button" class="inquiry-tab-btn" id="btnTabDetailedInquiries" onclick="AdminApp.switchInquiryTab('detailed')">
+              📋 Detailed Inquiries (<span id="countDetailedInquiries">0</span>)
+            </button>
           </div>
 
           <div class="table-card">
@@ -288,7 +303,7 @@
 
             <div class="data-table-wrap">
               <table class="data-table">
-                <thead>
+                <thead id="inquiriesTableHead">
                   <tr>
                     <th>Ref #</th>
                     <th>Guest Details</th>
@@ -672,6 +687,45 @@
           </div>
         </section>
 
+      
+        <!-- ========================================== -->
+        <!-- SECTION 8: OUR PEOPLE / TEAM               -->
+        <!-- ========================================== -->
+        <section id="section-team" class="content-section">
+          <div class="section-header">
+            <div class="section-title-wrap">
+              <h2>Our People &amp; Global Representatives</h2>
+              <p>Manage leadership profiles and international country representatives (~10 countries)</p>
+            </div>
+            <div style="display: flex; gap: 10px;">
+              <button class="btn btn-primary" onclick="AdminApp.openTeamModal()">
+                <span>+ Add Representative</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="table-card">
+            <div class="data-table-wrap">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Photo</th>
+                    <th>Name</th>
+                    <th>Role / Title</th>
+                    <th>Country / Flag</th>
+                    <th>Order</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="teamTableBody">
+                  <tr><td colspan="7" style="text-align: center; color: var(--ink-muted);">Loading team members...</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
       </main>
     </div>
   </div>
@@ -883,6 +937,75 @@
     </div>
   </div>
 
+
+  
+  <!-- TEAM MEMBER MODAL -->
+  <div class="modal-overlay" id="teamModal">
+    <div class="modal-dialog" style="max-width: 600px;">
+      <div class="modal-header">
+        <h3 id="teamModalTitle">Add Representative</h3>
+        <button class="modal-close" onclick="AdminApp.closeModal('teamModal')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form id="teamMemberForm" onsubmit="AdminApp.saveTeamMember(event)">
+          <input type="hidden" id="teamMemberId">
+
+          <div class="form-row">
+            <div class="form-group" style="flex: 2;">
+              <label for="teamName">Full Name *</label>
+              <input type="text" id="teamName" class="form-control" required placeholder="e.g. Mr. Kuenga Yarpel">
+            </div>
+            <div class="form-group" style="flex: 1;">
+              <label for="teamFlag">Flag Emoji</label>
+              <input type="text" id="teamFlag" class="form-control" placeholder="e.g. 🇧🇹" maxlength="8">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group" style="flex: 1;">
+              <label for="teamRole">Role / Title *</label>
+              <input type="text" id="teamRole" class="form-control" required placeholder="e.g. The Lotus Representative, Bhutan">
+            </div>
+            <div class="form-group" style="flex: 1;">
+              <label for="teamCountry">Country *</label>
+              <input type="text" id="teamCountry" class="form-control" required placeholder="e.g. Bhutan">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="teamPhotoUrl">Photo URL (Cloudinary or local image)</label>
+            <div style="display: flex; gap: 8px;">
+              <input type="url" id="teamPhotoUrl" class="form-control" placeholder="https://res.cloudinary.com/..." style="flex: 1;">
+              <button type="button" class="btn btn-outline btn-sm" onclick="AdminApp.openCloudinaryForTeam()">Upload Photo</button>
+            </div>
+            <small style="color: var(--ink-muted); font-size: 0.78rem;">Upload portrait or square photo. Face will be centered automatically via Cloudinary.</small>
+          </div>
+
+          <div class="form-group">
+            <label for="teamBio">Short Description / Biography</label>
+            <textarea id="teamBio" class="form-control" rows="3" placeholder="Leave empty for 'Introduction coming soon' or enter text written by owner."></textarea>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group" style="flex: 1;">
+              <label for="teamSortOrder">Display Sort Order</label>
+              <input type="number" id="teamSortOrder" class="form-control" value="1" min="1" max="99">
+            </div>
+            <div class="form-group" style="flex: 1; display: flex; align-items: center; margin-top: 25px;">
+              <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                <input type="checkbox" id="teamPublished" checked> Published on website
+              </label>
+            </div>
+          </div>
+
+          <div class="modal-footer" style="padding: 16px 0 0; margin-top: 16px;">
+            <button type="button" class="btn btn-outline" onclick="AdminApp.closeModal('teamModal')">Cancel</button>
+            <button type="submit" class="btn btn-primary" id="saveTeamBtn">Save Representative</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
 
   <!-- TOAST NOTIFICATIONS CONTAINER -->
   <div class="toast-container" id="toastContainer"></div>
