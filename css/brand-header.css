@@ -1525,3 +1525,97 @@
   right: -18px !important;
 }
 
+
+
+/* ==============================================================================
+ * WALKERS TOURS LUXURY FOOTER BRAND & EMBLEM SYSTEM
+ * Guarantees footer brand emblem stays perfectly 54px and footer stays navy.
+ * ============================================================================== */
+.site-footer-walkers,
+.footer-walkers {
+  background-color: var(--color-dark-blue, #002B49) !important;
+  color: #FFFFFF !important;
+  padding-top: 5rem !important;
+  padding-bottom: 2.5rem !important;
+  position: relative !important;
+  display: block !important;
+  width: 100% !important;
+  clear: both !important;
+}
+
+.footer-top-grid,
+.footer-walkers-grid,
+.footer-grid-3 {
+  display: grid !important;
+  grid-template-columns: 1.25fr 1fr 1.25fr !important;
+  gap: 3.5rem !important;
+  padding-bottom: 3.5rem !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12) !important;
+}
+
+@media (max-width: 991px) {
+  .footer-top-grid,
+  .footer-walkers-grid,
+  .footer-grid-3 {
+    grid-template-columns: 1fr !important;
+    gap: 2.5rem !important;
+  }
+}
+
+.footer-brand-link,
+.footer-brand {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 1rem !important;
+  text-decoration: none !important;
+  margin-bottom: 1.25rem !important;
+}
+
+.footer-brand-logo,
+.footer-brand img,
+.footer-brand-link img {
+  height: 54px !important;
+  width: auto !important;
+  max-width: 75px !important;
+  max-height: 54px !important;
+  object-fit: contain !important;
+  display: block !important;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.45)) !important;
+}
+
+.footer-brand-text {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  line-height: 1.15 !important;
+}
+
+.footer-brand-title {
+  font-family: var(--font-serif, 'Playfair Display', Georgia, serif) !important;
+  font-size: 1.35rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.05em !important;
+  color: #FFFFFF !important;
+  text-transform: uppercase !important;
+  display: block !important;
+  line-height: 1.1 !important;
+}
+
+.footer-brand-sub {
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif !important;
+  font-size: 0.65rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.22em !important;
+  text-transform: uppercase !important;
+  color: var(--color-gold, #C9A84C) !important;
+  display: block !important;
+  margin-top: 3px !important;
+}
+
+.footer-tagline {
+  color: #CBD5E1 !important;
+  font-size: 0.92rem !important;
+  line-height: 1.65 !important;
+  margin: 0 0 1.75rem 0 !important;
+  max-width: 420px !important;
+}
