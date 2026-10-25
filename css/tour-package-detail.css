@@ -884,3 +884,158 @@ figure.video iframe,
     height: 340px !important;
   }
 }
+
+/* ==========================================================================
+   PHASE 5: ITINERARY META TAGS & MOBILE STICKY INQUIRY BAR
+   ========================================================================== */
+
+/* Itinerary Daily Metadata Pills (Overnight, Meals, Driving Time) */
+.itinerary-meta-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.85rem;
+}
+
+.itinerary-meta-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: #002B49;
+  background: rgba(0, 43, 73, 0.05);
+  border: 1px solid rgba(0, 43, 73, 0.1);
+  padding: 0.3rem 0.75rem;
+  border-radius: 9999px;
+  line-height: 1.35;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.itinerary-meta-pill:hover {
+  background: rgba(201, 150, 43, 0.12);
+  border-color: rgba(201, 150, 43, 0.35);
+}
+
+.itinerary-meta-pill span.pill-icon {
+  font-size: 0.9rem;
+}
+
+/* Mobile Sticky Bottom Inquiry & WhatsApp Bar */
+.lotus-mobile-sticky-bar {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 998;
+  background: rgba(0, 26, 44, 0.96);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-top: 1px solid rgba(201, 150, 43, 0.4);
+  box-shadow: 0 -8px 25px rgba(0, 0, 0, 0.3);
+  padding: 0.65rem 1rem calc(0.65rem + env(safe-area-inset-bottom));
+  animation: slideUpBar 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes slideUpBar {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+
+@media (max-width: 991px) {
+  .lotus-mobile-sticky-bar {
+    display: block !important;
+  }
+  body.has-mobile-sticky-bar {
+    padding-bottom: 74px !important;
+  }
+}
+
+.mobile-sticky-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.mobile-sticky-info {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  flex: 1;
+}
+
+.mobile-sticky-label {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #C9962B;
+}
+
+.mobile-sticky-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mobile-sticky-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.btn-sticky-wa {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #25D366;
+  color: #FFFFFF;
+  text-decoration: none;
+  font-size: 1.15rem;
+  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.35);
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.btn-sticky-wa:hover {
+  transform: scale(1.06);
+  opacity: 0.95;
+}
+
+.btn-sticky-inquire {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #C9962B 0%, #F2C14E 100%);
+  color: #002B49 !important;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 800;
+  font-size: 0.82rem;
+  padding: 0.6rem 1.1rem;
+  border-radius: 9999px;
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(201, 150, 43, 0.4);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.btn-sticky-inquire:hover {
+  opacity: 0.95;
+  transform: translateY(-1px);
+}

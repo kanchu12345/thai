@@ -665,18 +665,25 @@
     const title = packageTitle || document.querySelector('h1')?.textContent?.trim() || 'Sri Lanka Tour';
     const prefix = getPrefix();
     const inqUrl = `${prefix}inquiry-detailed.html?package=${encodeURIComponent(title)}`;
-    const waUrl = `https://wa.me/94777123456?text=${encodeURIComponent(`Hello Lotus Ceylon! I would like to inquire about "${title}".`)}`;
+    const waUrl = `https://wa.me/94715422384?text=${encodeURIComponent(`Hello Lotus Ceylon! I would like to inquire about "${title}".`)}`;
 
     bar.innerHTML = `
       <div class="mobile-sticky-inner">
-        <a href="${waUrl}" target="_blank" rel="noopener noreferrer" class="btn-sticky-wa">
-          <span>💬 WhatsApp</span>
-        </a>
-        <button type="button" class="btn-sticky-inquire" onclick="window.LotusInteractive.openMakeItYoursModal('${title.replace(/'/g, "\\'")}')">
-          <span>Tailor / Inquire ➔</span>
-        </button>
+        <div class="mobile-sticky-info">
+          <span class="mobile-sticky-label">Pure Ceylon Private Journey</span>
+          <span class="mobile-sticky-title">${title}</span>
+        </div>
+        <div class="mobile-sticky-actions">
+          <a href="${waUrl}" target="_blank" rel="noopener noreferrer" class="btn-sticky-wa" aria-label="Chat on WhatsApp">
+            <span>💬</span>
+          </a>
+          <a href="${inqUrl}" class="btn-sticky-inquire">
+            <span>Tailor Journey ➔</span>
+          </a>
+        </div>
       </div>
     `;
+    document.body.classList.add('has-mobile-sticky-bar');
   }
 
   // =========================================================================

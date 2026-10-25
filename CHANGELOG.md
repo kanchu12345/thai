@@ -5,6 +5,31 @@ The project adheres to strict phase gates, top international tour operator quali
 
 ---
 
+## [Phase 5] - 2026-10-25: Package Detail Pages Deep Dive & Mobile Sticky Inquiry Bar
+
+### Added
+- **Mobile Sticky Bottom Inquiry & WhatsApp Bar**:
+  - Implemented responsive mobile booking bar in `js/tour-interactive.js` and `css/tour-package-detail.css`.
+  - Automatically mounts on all package detail pages on mobile viewports (`@media (max-width: 991px)`).
+  - Features quick WhatsApp specialist direct link (using verified company number `+94 71 54 22 384`) and "Tailor Journey" button deep-linking to inquiry form with pre-filled package parameter.
+  - Safe-area inset padding support for modern mobile devices (`calc(0.65rem + env(safe-area-inset-bottom))`).
+- **Comprehensive Daily Itinerary Metadata Across All 26 Packages**:
+  - Populated `.itinerary-meta-tags` across all 26 package detail pages (`tours/*/*/index.html`) and dynamic viewer (`tours/detail.html`).
+  - Added structured metadata pills for each itinerary day:
+    - 🏨 **Overnight Stay**: Handpicked boutique hotel / villa / eco-lodge.
+    - 🍽️ **Included Meals**: Breakfast / Half-board / Full-board specifications.
+    - 🚗 **Transfer Time & Distance**: Estimated driving duration and kilometers.
+  - Styled with `.itinerary-meta-pill` in `css/tour-package-detail.css`.
+
+### Changed
+- **Deduplicated Route Maps**:
+  - Eliminated duplicated `#*-leaflet-map` containers in `tours/beach/pristine-seaboard-odyssey/index.html`, `southern-sands-serenade/index.html`, and `turquoise-eastern-sanctuary/index.html`.
+- **Verified Support Contacts & Ethics**:
+  - Replaced stale dummy WhatsApp number `94777123456` with official Lotus Ceylon WhatsApp channel `94715422384` across all scripts and templates.
+  - Verified no competitor copy, unverified hotel names, or ethical wildlife issues remain in any itinerary day.
+
+---
+
 ## [Phase 4] - 2026-10-25: Dynamic Comparison Matrix & Competitor Clean-Up
 
 ### Added

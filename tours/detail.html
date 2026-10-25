@@ -742,8 +742,9 @@
                 <h3 class="itinerary-day-title">${item.title}</h3>
                 <p class="itinerary-day-desc">${item.description}</p>
                 <div class="itinerary-meta-tags">
-                  ${item.meals ? `<span class="itinerary-tag">🍽️ Meals: ${item.meals}</span>` : ''}
-                  ${item.stay ? `<span class="itinerary-tag">🏨 Stay: ${item.stay}</span>` : ''}
+                  ${item.overnight || item.stay ? `<span class="itinerary-meta-pill"><span class="pill-icon">🏨</span> Overnight: ${item.overnight || item.stay}</span>` : ''}
+                  ${item.meals ? `<span class="itinerary-meta-pill"><span class="pill-icon">🍽️</span> ${item.meals}</span>` : ''}
+                  ${item.drivingTime ? `<span class="itinerary-meta-pill"><span class="pill-icon">🚗</span> ${item.drivingTime}${item.distanceKm ? ` (${item.distanceKm} km)` : ''}</span>` : ''}
                 </div>
               </div>
             </div>
