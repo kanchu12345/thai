@@ -17,22 +17,22 @@
       min-height: 500px;
       display: flex;
       align-items: center;
-      background: linear-gradient(180deg, rgba(0, 43, 73, 0.75) 0%, rgba(0, 43, 73, 0.92) 100%), 
+      background: linear-gradient(180deg, rgba(74, 22, 32, 0.84) 0%, rgba(42, 12, 18, 0.95) 100%), 
                   url('assets/images/temple-culture.jpg') center/cover no-repeat;
       color: #ffffff;
       padding: 160px 0 100px;
       text-align: center;
     }
     .brand-pillar-card {
-      background: #FFFFFF;
+      background: #FFFDF8;
       border-radius: 16px;
       overflow: hidden;
-      box-shadow: 0 10px 30px rgba(0, 43, 73, 0.06);
-      border: 1px solid rgba(0, 43, 73, 0.08);
+      box-shadow: 0 12px 35px rgba(74, 22, 32, 0.06);
+      border: 1px solid rgba(201, 162, 75, 0.3);
       display: grid;
       grid-template-columns: 1fr 1fr;
       margin-bottom: 3.5rem;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
       scroll-margin-top: 110px;
     }
     .brand-pillar-card:hover {
@@ -111,14 +111,14 @@
       }
     }
     .exp-item-card {
-      background: #FFFFFF;
+      background: #FFFDF8;
       border-radius: 14px;
       overflow: hidden;
-      box-shadow: 0 4px 20px rgba(0, 43, 73, 0.06);
-      border: 1px solid rgba(0, 43, 73, 0.08);
+      box-shadow: 0 8px 24px rgba(74, 22, 32, 0.06);
+      border: 1px solid rgba(201, 162, 75, 0.28);
       display: flex;
       flex-direction: column;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
     }
     .exp-item-card:hover {
       transform: translateY(-5px);
@@ -149,9 +149,32 @@
     .exp-filter-tabs {
       display: flex;
       justify-content: center;
-      gap: 0.65rem;
+      gap: 0.75rem;
       flex-wrap: wrap;
       margin-bottom: 3rem;
+    }
+    .dest-filter-btn {
+      background: #FFFDF8;
+      color: #4A1620;
+      border: 1px solid rgba(201, 162, 75, 0.4);
+      padding: 8px 18px;
+      border-radius: 9999px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      box-shadow: 0 2px 6px rgba(74, 22, 32, 0.04);
+    }
+    .dest-filter-btn:hover {
+      background: #F5ECDD;
+      border-color: #C9A24B;
+      color: #2A1D17;
+    }
+    .dest-filter-btn.is-active {
+      background: #4A1620 !important;
+      color: #FBF6EC !important;
+      border-color: #C9A24B !important;
+      box-shadow: 0 4px 14px rgba(74, 22, 32, 0.25);
     }
   </style>
 </head>
@@ -373,7 +396,7 @@
     </section>
 
     <!-- SECTION 1: THREE SIGNATURE TRAVEL PILLARS (Inspired by Walkers Brands) -->
-    <section class="padding-top--100 padding-bottom--80" id="brandsPillars">
+    <section class="padding-top--100 padding-bottom--80" id="brandsPillars" style="background: linear-gradient(180deg, #FBF6EC 0%, #F5ECDD 100%);">
       <div class="wrapper--90">
         
         <div style="text-align: center; max-width: 760px; margin: 0 auto 3.5rem;">
@@ -478,7 +501,7 @@
     </section>
 
     <!-- SECTION 2: 12 CURATED SIGNATURE ENCOUNTERS (INTERACTIVE GRID) -->
-    <section class="padding-top--80 padding-bottom--100" style="background: rgba(0,43,73,0.02); border-top: 1px solid rgba(0,43,73,0.06);">
+    <section class="padding-top--80 padding-bottom--100" id="encountersGrid" style="background: #EFE4D0; border-top: 1px solid rgba(201, 162, 75, 0.35); border-bottom: 1px solid rgba(201, 162, 75, 0.35);">
       <div class="wrapper--90">
         
         <div style="text-align: center; max-width: 760px; margin: 0 auto 3rem;">
@@ -505,7 +528,7 @@
           <article class="exp-item-card" data-cat="cultural">
             <div class="exp-item-media">
               <img src="assets/tours/cultural/royal-kingdoms-1.jpg" alt="Evening Chanting at Temple of the Tooth" loading="lazy">
-              <span class="dest-card-region">Sacred &amp; Cultural</span>
+              <span class="dest-card-region" style="background: #4A1620; color: #FBF6EC; border: 1px solid #C9A24B;">☸ Sacred &amp; Cultural</span>
             </div>
             <div class="exp-item-body">
               <h3 class="dest-card-title">Evening Chanting &amp; Oil Lamps</h3>
@@ -518,7 +541,7 @@
           <article class="exp-item-card" data-cat="cultural">
             <div class="exp-item-media">
               <img src="assets/images/temple-culture.jpg" alt="Dawn Meditation at Jaya Sri Maha Bodhi" loading="lazy">
-              <span class="dest-card-region">Sacred &amp; Cultural</span>
+              <span class="dest-card-region" style="background: #4A1620; color: #FBF6EC; border: 1px solid #C9A24B;">☸ Sacred &amp; Cultural</span>
             </div>
             <div class="exp-item-body">
               <h3 class="dest-card-title">Dawn Bodhi Tree Meditation</h3>
@@ -531,7 +554,7 @@
           <article class="exp-item-card" data-cat="wildlife">
             <div class="exp-item-media">
               <img src="assets/tours/wildlife/big-five-1.jpg" alt="Private Leopard Tracking in Yala" loading="lazy">
-              <span class="dest-card-region">Wildlife &amp; Safari</span>
+              <span class="dest-card-region" style="background: #1E5D57; color: #FBF6EC; border: 1px solid rgba(201, 162, 75, 0.4);">🐆 Wildlife &amp; Marine</span>
             </div>
             <div class="exp-item-body">
               <h3 class="dest-card-title">Private Leopard Tracking Safari</h3>
@@ -544,7 +567,7 @@
           <article class="exp-item-card" data-cat="wildlife">
             <div class="exp-item-media">
               <img src="assets/tours/wildlife/predator-trail-1.jpg" alt="The Great Elephant Gathering" loading="lazy">
-              <span class="dest-card-region">Wildlife &amp; Safari</span>
+              <span class="dest-card-region" style="background: #1E5D57; color: #FBF6EC; border: 1px solid rgba(201, 162, 75, 0.4);">🐆 Wildlife &amp; Marine</span>
             </div>
             <div class="exp-item-body">
               <h3 class="dest-card-title">The Great Elephant Gathering</h3>
@@ -557,7 +580,7 @@
           <article class="exp-item-card" data-cat="wellness">
             <div class="exp-item-media">
               <img src="assets/tours/cultural/three-millennia-1.jpg" alt="Vaidya Ayurvedic Consultation" loading="lazy">
-              <span class="dest-card-region">Wellness &amp; Healing</span>
+              <span class="dest-card-region" style="background: #3F6B4A; color: #FBF6EC; border: 1px solid rgba(201, 162, 75, 0.4);">🌿 Wellness &amp; Healing</span>
             </div>
             <div class="exp-item-body">
               <h3 class="dest-card-title">Physician Consultation &amp; Shirodhara</h3>
@@ -596,7 +619,7 @@
           <article class="exp-item-card" data-cat="wildlife">
             <div class="exp-item-media">
               <img src="assets/images/sunset-mirissa.jpg" alt="Blue Whale Watching in Mirissa" loading="lazy">
-              <span class="dest-card-region">Coastal &amp; Marine</span>
+              <span class="dest-card-region" style="background: #1B4965; color: #FBF6EC; border: 1px solid rgba(201, 162, 75, 0.4);">🌊 Coastal Sanctuary</span>
             </div>
             <div class="exp-item-body">
               <h3 class="dest-card-title">Private Catamaran Whale Watching</h3>
@@ -609,7 +632,7 @@
           <article class="exp-item-card" data-cat="cultural">
             <div class="exp-item-media">
               <img src="assets/images/beach-galle.jpg" alt="Geoffrey Bawa Lunuganga Estate" loading="lazy">
-              <span class="dest-card-region">Sacred &amp; Cultural</span>
+              <span class="dest-card-region" style="background: #4A1620; color: #FBF6EC; border: 1px solid #C9A24B;">☸ Sacred &amp; Cultural</span>
             </div>
             <div class="exp-item-body">
               <h3 class="dest-card-title">Geoffrey Bawa Lunuganga Estate</h3>
@@ -622,7 +645,7 @@
           <article class="exp-item-card" data-cat="cultural">
             <div class="exp-item-media">
               <img src="assets/tours/cultural/sacred-triangle-1.jpg" alt="Traditional Mask Carving Guild" loading="lazy">
-              <span class="dest-card-region">Sacred &amp; Cultural</span>
+              <span class="dest-card-region" style="background: #4A1620; color: #FBF6EC; border: 1px solid #C9A24B;">☸ Sacred &amp; Cultural</span>
             </div>
             <div class="exp-item-body">
               <h3 class="dest-card-title">Traditional Artisan Guild Immersion</h3>
@@ -635,7 +658,7 @@
           <article class="exp-item-card" data-cat="wellness">
             <div class="exp-item-media">
               <img src="assets/tours/wildlife/rainforest-1.jpg" alt="Ritigala Forest Meditation Walk" loading="lazy">
-              <span class="dest-card-region">Wellness &amp; Healing</span>
+              <span class="dest-card-region" style="background: #3F6B4A; color: #FBF6EC; border: 1px solid rgba(201, 162, 75, 0.4);">🌿 Wellness &amp; Healing</span>
             </div>
             <div class="exp-item-body">
               <h3 class="dest-card-title">Ritigala Ancient Hermitage Walk</h3>
@@ -648,7 +671,7 @@
           <article class="exp-item-card" data-cat="wellness">
             <div class="exp-item-media">
               <img src="assets/tours/beach/southern-sands-1.jpg" alt="Madu Ganga River Cinnamon Island Safari" loading="lazy">
-              <span class="dest-card-region">Coastal &amp; Marine</span>
+              <span class="dest-card-region" style="background: #1B4965; color: #FBF6EC; border: 1px solid rgba(201, 162, 75, 0.4);">🌊 Coastal Sanctuary</span>
             </div>
             <div class="exp-item-body">
               <h3 class="dest-card-title">Madu River &amp; Cinnamon Island</h3>
@@ -663,7 +686,7 @@
     </section>
 
     <!-- Custom Bespoke Journey CTA -->
-    <section class="padding-top--80 padding-bottom--80" style="background: linear-gradient(135deg, rgba(248, 229, 221, 0.4) 0%, rgba(253, 251, 247, 1) 100%); text-align: center; border-top: 1px solid rgba(0, 43, 73, 0.08);">
+    <section class="padding-top--80 padding-bottom--80" style="background: linear-gradient(135deg, #F5ECDD 0%, #FBF6EC 100%); text-align: center; border-top: 1px solid rgba(201, 162, 75, 0.3);">
       <div class="wrapper--80" style="max-width: 800px; margin: 0 auto;">
         <span style="color: var(--color-lotus-pink); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.14em;">Artisanal Itinerary Planning</span>
         <h2 class="heading--48 font-color--dark-blue" style="margin: 0.75rem 0 1rem;">
