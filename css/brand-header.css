@@ -1535,21 +1535,29 @@
 .footer-walkers {
   background-color: var(--color-dark-blue, #002B49) !important;
   color: #FFFFFF !important;
-  padding-top: 5rem !important;
-  padding-bottom: 2.5rem !important;
+  padding-top: 2rem !important;
+  padding-bottom: 1.25rem !important;
   position: relative !important;
   display: block !important;
   width: 100% !important;
   clear: both !important;
 }
 
+/* Compact Luxury Footer Width & Proportions */
+.site-footer-walkers .wrapper--80,
+.footer-walkers .wrapper--80 {
+  max-width: 1080px !important;
+  width: 90% !important;
+  margin: 0 auto !important;
+}
+
 .footer-top-grid,
 .footer-walkers-grid,
 .footer-grid-3 {
   display: grid !important;
-  grid-template-columns: 1.25fr 1fr 1.25fr !important;
-  gap: 3.5rem !important;
-  padding-bottom: 3.5rem !important;
+  grid-template-columns: 1fr 1fr 1.1fr !important;
+  gap: 2rem !important;
+  padding-bottom: 1.5rem !important;
   border-bottom: 1px solid rgba(255, 255, 255, 0.12) !important;
 }
 
