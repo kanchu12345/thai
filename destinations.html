@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sri Lanka Destinations &amp; Sacred Sites | Lotus Ceylon</title>
+  <meta name="description" content="Discover Sri Lanka's most revered Buddhist sacred pilgrimage sites and iconic tourist destinations: Anuradhapura, Kandy, Sigiriya, Ella, Galle, Yala, and pristine coasts.">
+  <link rel="icon" type="image/png" href="logo.png?v=20261021_step1">
+
+  <!-- Master Stylesheet -->
+  <link rel="stylesheet" href="css/style.css?v=20261025_footer_fix">
+  <link rel="stylesheet" href="css/brand-header.css?v=20261025_dest_fix">
+
+  <style>
+    .dest-hero {
+      position: relative;
+      min-height: 480px;
+      display: flex;
+      align-items: center;
+      background: linear-gradient(180deg, rgba(0, 43, 73, 0.75) 0%, rgba(0, 43, 73, 0.90) 100%), 
+                  url('assets/images/temple-culture.jpg') center/cover no-repeat;
+      color: #ffffff;
+      padding: 150px 0 90px;
+      text-align: center;
+    }
+    .dest-search-bar {
+      max-width: 580px;
+      margin: 2.25rem auto 0;
+      position: relative;
+    }
+    .dest-search-input {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.95);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      padding: 0.95rem 1.5rem;
+      border-radius: 9999px;
+      font-size: 1rem;
+      color: #0F172A;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+      outline: none;
+      transition: all 0.3s ease;
+    }
+    .dest-search-input:focus {
+      background: #FFFFFF;
+      box-shadow: 0 12px 35px rgba(201, 162, 75, 0.35);
+      border-color: var(--color-gold, #C9A84C);
+    }
+    .dest-filter-container {
+      display: flex;
+      justify-content: center;
+      gap: 0.65rem;
+      flex-wrap: wrap;
+      margin: 3.5rem 0 3rem;
+    }
+  </style>
+</head>
+<body style="background-color: var(--ivory, #FBF6EC); color: var(--color-ink, #2A1D17);">
+
+  <!-- Master Site Header (Walkers Tours Luxury Style) -->
+  <header class="site-header-walkers" id="siteHeader">
+    <div class="walkers-header-container">
+      <a href="index.html" class="header-brand" title="Lotus Ceylon Home">
+        <img src="logo.png?v=20261021_step1" alt="Lotus Ceylon Emblem" class="header-brand-logo">
+        <div class="header-brand-text">
+          <div class="header-brand-name">
+            <span class="brand-name-lotus">Lotus</span>
+            <span class="brand-name-ceylon">Ceylon</span>
+          </div>
+          <span class="header-brand-sub">INTERNATIONAL TOURS &amp; SERVICES</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="walkers-nav-menu" aria-label="Main Navigation">
+        <a href="index.html" class="walkers-menu-link">Home</a>
+        <a href="sri-lanka-tours.html" class="walkers-menu-link">Tours</a>
+        <a href="destinations.html" class="walkers-menu-link is-active" style="color: var(--color-gold, #C9A84C); font-weight: 700;">Destinations</a>
+        <a href="index.html#experiences" class="walkers-menu-link">Experiences</a>
+        <a href="about.html" class="walkers-menu-link">About Us</a>
+        <a href="blog.html" class="walkers-menu-link">Blog</a>
+        <a href="contact.html" class="walkers-menu-link">Contact</a>
+      </nav>
+
+      <!-- Language & CTA Actions -->
+      <div class="walkers-header-actions">
+        <div class="lang-pill-wrap" style="position: relative;">
+          <button class="lang-pill-btn" id="langPillToggle" aria-label="Select Language">
+            <span class="lang-globe-icon">🌐</span>
+            <span class="lang-current-code" id="currentLangLabel">EN</span>
+            <span class="lang-arrow">▼</span>
+          </button>
+          <div class="lang-pill-dropdown" id="langPillMenu">
+            <button type="button" data-lang="en" class="is-active">English (EN)</button>
+            <button type="button" data-lang="zh">繁體中文 (ZH)</button>
+            <button type="button" data-lang="de">Deutsch (DE)</button>
+            <button type="button" data-lang="fr">Français (FR)</button>
+            <button type="button" data-lang="es">Español (ES)</button>
+            <button type="button" data-lang="it">Italiano (IT)</button>
+            <button type="button" data-lang="ru">Русский (RU)</button>
+            <button type="button" data-lang="ja">日本語 (JA)</button>
+            <button type="button" data-lang="ar">العربية (AR)</button>
+            <button type="button" data-lang="hi">हिन्दी (HI)</button>
+          </div>
+        </div>
+
+        <a href="inquiry-detailed.html" class="walkers-cta-inquire">
+          <span class="cta-sparkle">✦</span>
+          <span>Inquire Now</span>
+        </a>
+
+        <!-- Mobile Hamburger Toggle -->
+        <button class="walkers-ham-btn" id="mobileHamToggle" aria-label="Open Navigation Menu">
+          <span class="ham-line"></span>
+          <span class="ham-line"></span>
+          <span class="ham-line"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Fullscreen Navigation -->
+  <div class="mobile-nav-fullscreen" id="mobileNavFullscreen">
+    <div class="mobile-nav-inner">
+      <button class="mobile-nav-close" id="mobileNavClose" aria-label="Close Navigation Menu">&times;</button>
+      <ul class="mobile-nav-list">
+        <li class="mobile-nav-item"><a href="index.html" class="mobile-nav-link">Home</a></li>
+        <li class="mobile-nav-item"><a href="sri-lanka-tours.html" class="mobile-nav-link">Tours</a></li>
+        <li class="mobile-nav-item"><a href="destinations.html" class="mobile-nav-link is-active">Destinations</a></li>
+        <li class="mobile-nav-item"><a href="index.html#experiences" class="mobile-nav-link">Experiences</a></li>
+        <li class="mobile-nav-item"><a href="about.html" class="mobile-nav-link">About Us</a></li>
+        <li class="mobile-nav-item"><a href="blog.html" class="mobile-nav-link">Blog</a></li>
+        <li class="mobile-nav-item"><a href="contact.html" class="mobile-nav-link">Contact</a></li>
+        <li class="mobile-nav-item" style="margin-top: 1.5rem;">
+          <a href="inquiry-detailed.html" class="walkers-cta-inquire" style="width: 100%; justify-content: center;">
+            <span>Plan Your Journey</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <main id="mainContent">
+    <!-- Hero Section -->
+    <section class="dest-hero">
+      <div class="wrapper--80" style="max-width: 900px; margin: 0 auto;">
+        <div class="sacred-badge-tag" style="margin-bottom: 0.85rem; background: rgba(201, 84, 81, 0.35); border-color: rgba(248, 229, 221, 0.45); color: #F8E5DD;">
+          <span class="sacred-icon">🌸</span> ✦ SACRED PILGRIMAGE &amp; ICONIC WONDERS ✦ <span class="sacred-icon">🌸</span>
+        </div>
+        <h1 class="heading--60" style="color: #FFFFFF; margin-bottom: 1rem;">
+          <span>Explore Sri Lanka's</span><br>Sacred Sites &amp; Famous Destinations
+        </h1>
+        <p class="paragraph--20" style="color: #E2E8F0; line-height: 1.75;">
+          From the two-thousand-year-old sacred stupas of Anuradhapura and the golden temple of Kandy to mist-wrapped tea hills, wild leopard sanctuaries, and sun-drenched coastal forts. Discover every iconic destination across Ceylon.
+        </p>
+
+        <!-- Search Bar -->
+        <div class="dest-search-bar">
+          <input type="text" id="destSearchInput" class="dest-search-input" placeholder="Search by destination name, region, or attraction..." aria-label="Search destinations">
+        </div>
+      </div>
+    </section>
+
+    <!-- Filter & Grid Section -->
+    <section class="padding-top--70 padding-bottom--100">
+      <div class="wrapper--90">
+        
+        <!-- Filter Tabs -->
+        <div class="dest-filter-container" role="tablist" aria-label="Destinations Category Filter">
+          <button type="button" class="dest-filter-btn is-active" data-region="all" role="tab" aria-selected="true">All Destinations (24)</button>
+          <button type="button" class="dest-filter-btn" data-region="sacred-sites" role="tab" aria-selected="false">Sacred Pilgrimage (8)</button>
+          <button type="button" class="dest-filter-btn" data-region="cultural-heritage" role="tab" aria-selected="false">Cultural Heritage (3)</button>
+          <button type="button" class="dest-filter-btn" data-region="hill-country" role="tab" aria-selected="false">Highland Tea &amp; Waterfalls (4)</button>
+          <button type="button" class="dest-filter-btn" data-region="wildlife" role="tab" aria-selected="false">Wildlife &amp; Safaris (4)</button>
+          <button type="button" class="dest-filter-btn" data-region="beaches" role="tab" aria-selected="false">Pristine Coasts (5)</button>
+        </div>
+
+        <!-- 24 Destination Cards Grid -->
+        <div class="destinations-grid" id="allDestinationsGrid">
+          
+        <!-- Anuradhapura -->
+        <article class="dest-card" data-region="sacred-sites">
+          <a href="tours/cultural/the-sacred-lotus-triangle/index.html" class="dest-card-link" aria-label="Explore Anuradhapura">
+            <div class="dest-card-media">
+              <img src="assets/images/temple-culture.jpg" alt="Anuradhapura Sri Lanka" loading="lazy" class="dest-card-img">
+              <span class="dest-card-region">Sacred Pilgrimage</span>
+            </div>
+            <div class="dest-card-body">
+              <h3 class="dest-card-title">Anuradhapura</h3>
+              <p class="dest-card-desc">Foundational Buddhist capital with towering white stupas (Ruwanwelisaya, Thuparamaya) and the sacred Jaya Sri Maha Bodhi tree planted in 288 BC.</p>
+              <div class="dest-card-highlights" style="font-size: 0.78rem; color: var(--color-gold, #C9A84C); font-weight: 600; margin-bottom: 1.1rem; line-height: 1.4;">
+                ✦ Jaya Sri Maha Bodhi · Ruwanwelisaya · Jetavanaramaya
+              </div>
+              <div class="dest-card-cta">
+                <span>View Related Journeys</span>
+                <span class="dest-cta-arrow">➔</span>
+              </div>
+            </div>
+          </a>
+        </article>
+        <!-- Mihintale -->
+        <article class="dest-card" data-region="sacred-sites">
+          <a href="cultural-tours.html" class="dest-card-link" aria-label="Explore Mihintale">
+            <div class="dest-card-media">
+              <img src="assets/tours/cultural/sacred-triangle-1.jpg" alt="Mihintale Sri Lanka" loading="lazy" class="dest-card-img">
+              <span class="dest-card-region">Sacred Pilgrimage</span>
+            </div>
+            <div class="dest-card-body">
+              <h3 class="dest-card-title">Mihintale</h3>
+              <p class="dest-card-desc">The venerated mountain sanctuary where Arahat Mahinda brought the message of Buddhism to King Devanampiyatissa in the 3rd century BC.</p>
+              <div class="dest-card-highlights" style="font-size: 0.78rem; color: var(--color-gold, #C9A84C); font-weight: 600; margin-bottom: 1.1rem; line-height: 1.4;">
+                ✦ Sacred Staircase · Ambhasthala Stupa · Aradhana Gala
+              </div>
+              <div class="dest-card-cta">
+                <span>View Related Journeys</span>
+                <span class="dest-cta-arrow">➔</span>
+              </div>
+            </div>
+          </a>
+        </article>
+        <!-- Kandy (Temple of the Tooth) -->
+        <article class="dest-card" data-region="sacred-sites">
+          <a href="tours/cultural/the-sacred-lotus-triangle/index.html" class="dest-card-link" aria-label="Explore Kandy (Temple of the Tooth)">
+            <div class="dest-card-media">
+              <img src="assets/tours/cultural/royal-kingdoms-1.jpg" alt="Kandy (Temple of the Tooth) Sri Lanka" loading="lazy" class="dest-card-img">
+              <span class="dest-card-region">Sacred Pilgrimage</span>
+            </div>
+            <div class="dest-card-body">
+              <h3 class="dest-card-title">Kandy (Temple of the Tooth)</h3>
+              <p class="dest-card-desc">The hill capital honoring Sri Dalada Maligawa, enshrining the Sacred Tooth Relic of the Lord Buddha amidst royal lake waters and daily drum rituals.</p>
+              <div class="dest-card-highlights" style="font-size: 0.78rem; color: var(--color-gold, #C9A84C); font-weight: 600; margin-bottom: 1.1rem; line-height: 1.4;">
+                ✦ Sri Dalada Maligawa · Royal Botanical Gardens · Kandy Lake
+              </div>
+              <div class="dest-card-cta">
+                <span>View Related Journeys</span>
+                <span class="dest-cta-arrow">➔</span>
+              </div>
+            </div>
+          </a>
+        </article>
+        <!-- Dambulla -->
+        <article class="dest-card" data-region="sacred-sites">
+          <a href="tours/cultural/the-sacred-lotus-triangle/index.html" class="dest-card-link" aria-label="Explore Dambulla">
+            <div class="dest-card-media">
+              <img src="assets/tours/cultural/three-millennia-1.jpg" alt="Dambulla Sri Lanka" loading="lazy" class="dest-card-img">
+              <span class="dest-card-region">Sacred Pilgrimage</span>
+            </div>
+            <div class="dest-card-body">
+              <h3 class="dest-card-title">Dambulla</h3>
+              <p class="dest-card-desc">Magnificent UNESCO cave temple complex housing 153 Buddha statues and 2,100 square meters of sacred ceiling murals dating from the 1st century BC.</p>
+              <div class="dest-card-highlights" style="font-size: 0.78rem; color: var(--color-gold, #C9A84C); font-weight: 600; margin-bottom: 1.1rem; line-height: 1.4;">
+                ✦ 5 Sacred Caves · Golden Temple · Ancient Rock Murals
+              </div>
+              <div class="dest-card-cta">
+                <span>View Related Journeys</span>
+                <span class="dest-cta-arrow">➔</span>
+              </div>
+            </div>
+          </a>
+        </article>
+        <!-- Polonnaruwa -->
+        <article class="dest-card" data-region="sacred-sites">
+          <a href="tours/cultural/the-sacred-lotus-triangle/index.html" class="dest-card-link" aria-label="Explore Polonnaruwa">
+            <div class="dest-card-media">
+              <img src="assets/images/polonnaruwa.jpg" alt="Polonnaruwa Sri Lanka" loading="lazy" class="dest-card-img">
+              <span class="dest-card-region">Sacred Pilgrimage</span>
+            </div>
+            <div class="dest-card-body">
+              <h3 class="dest-card-title">Polonnaruwa</h3>
+              <p class="dest-card-desc">Medieval royal capital famed for the Gal Vihara, where four sublime Buddha images are masterfully carved from a single granite rock face.</p>
+              <div class="dest-card-highlights" style="font-size: 0.78rem; color: var(--color-gold, #C9A84C); font-weight: 600; margin-bottom: 1.1rem; line-height: 1.4;">
+                ✦ Gal Vihara · Vatadage · Parakrama Samudra
+              </div>
+              <div class="dest-card-cta">
+                <span>View Related Journeys</span>
+                <span class="dest-cta-arrow">➔</span>
+              </div>
+            </div>
+          </a>
+        </article>
+        <!-- Kelaniya -->
+        <article class="dest-card" data-region="sacred-sites">
+          <a href="cultural-tours.html" class="dest-card-link" aria-label="Explore Kelaniya">
+            <div class="dest-card-media">
+              <img src="assets/tours/cultural/hero.jpg" alt="Kelaniya Sri Lanka" loading="lazy" class="dest-card-img">
+              <span class="dest-card-region">Sacred Pilgrimage</span>
+            </div>
+            <div class="dest-card-body">
+              <h3 class="dest-card-title">Kelaniya</h3>
+              <p class="dest-card-desc">Revered riverside temple near Colombo, sanctified according to tradition by the Lord Buddha on his third visit to Sri Lanka.</p>
+              <div class="dest-card-highlights" style="font-size: 0.78rem; color: var(--color-gold, #C9A84C); font-weight: 600; margin-bottom: 1.1rem; line-height: 1.4;">
+                ✦ Kelaniya Raja Maha Vihara · Solias Mendis Murals · Duruthu Perahera
+              </div>
+              <div class="dest-card-cta">
+                <span>View Related Journeys</span>
+                <span class="dest-cta-arrow">➔</span>
+              </div>
+            </div>
+          </a>
+        </article>
+        <!-- Sri Pada (Adam's Peak) -->
+        <article class="dest-card" data-region="sacred-sites">
+          <a href="tours/hill-country/ceylon-tea-trails-colonial-grandeur/index.html" class="dest-card-link" aria-label="Explore Sri Pada (Adam's Peak)">
+            <div class="dest-card-media">
+              <img src="assets/images/tea-country.jpg" alt="Sri Pada (Adam's Peak) Sri Lanka" loading="lazy" class="dest-card-img">
+              <span class="dest-card-region">Sacred Pilgrimage</span>
+            </div>
+            <div class="dest-card-body">
+              <h3 class="dest-card-title">Sri Pada (Adam's Peak)</h3>
+              <p class="dest-card-desc">The sacred 2,243m conical mountain crowned by the Sacred Footprint, climbed through night lantern trails for an unforgettable sunrise above the clouds.</p>
+              <div class="dest-card-highlights" style="font-size: 0.78rem; color: var(--color-gold, #C9A84C); font-weight: 600; margin-bottom: 1.1rem; line-height: 1.4;">
+                ✦ Sacred Footprint · Sunrise Shadow · Mountain Lantern Trail
+              </div>
+              <div class="dest-card-cta">
+                <span>View Related Journeys</span>
+                <span class="dest-cta-arrow">➔</span>
+              </div>
+            </div>
+          </a>
+        </article>
+        <!-- Kataragama -->
+        <article class="dest-card" data-region="sacred-sites">
+          <a href="cultural-tours.html" class="dest-card-link" aria-label="Explore Kataragama">
+            <div class="dest-card-media">
+              <img src="assets/tours/cultural/royal-kingdoms-1.jpg" alt="Kataragama Sri Lanka" loading="lazy" class="dest-card-img">
+              <span class="dest-card-region">Sacred Pilgrimage</span>
+            </div>
+            <div class="dest-card-body">
+              <h3 class="dest-card-title">Kataragama</h3>
+              <p class="dest-card-desc">Sacred forest shrine complex venerated for millennia by Buddhists, Hindus, and indigenous Vedda communities beside the Menik Ganga.</p>
+              <div class="dest-card-highlights" style="font-size: 0.78rem; color: var(--color-gold, #C9A84C); font-weight: 600; margin-bottom: 1.1rem; line-height: 1.4;">
+                ✦ Maha Devale · Kiri Vehera · Menik Ganga River
+              </div>
+              <div class="dest-card-cta">
+                <span>View Related Journeys</span>
+                <span class="dest-cta-arrow">➔</span>
+              </div>
+            </div>
+          </a>
+        </article>
+        <!-- Sigiriya Rock Citadel -->
+        <article class="dest-card" data-region="cultural-heritage">
+          <a href="tours/cultural/the-sacred-lotus-triangle/index.html" class="dest-card-link" aria-label="Explore Sigiriya Rock Citadel">
+            <div class="dest-card-media">
+              <img src="assets/images/sigiriya.jpg" alt="Sigiriya Rock Citadel Sri Lanka" loading="lazy" class="dest-card-img">
+              <span class="dest-card-region">Cultural Heritage</span>
+            </div>
+            <div class="dest-card-body">
+              <h3 class="dest-card-title">Sigiriya Rock Citadel</h3>
+              <p class="dest-card-desc">The world-famous 'Lion Rock'—a 5th-century palace fortress towering 200m above the jungle, featuring the Mirror Wall and celestial maiden frescoes.</p>
+              <div class="dest-card-highlights" style="font-size: 0.78rem; color: var(--color-gold, #C9A84C); font-weight: 600; margin-bottom: 1.1rem; line-height: 1.4;">
+                ✦ Lion Paw Terrace · Mirror Wall · Water Gardens
+              </div>
+              <div class="dest-card-cta">
+                <span>View Related Journeys</span>
+                <span class="dest-cta-arrow">➔</span>
+              </div>
+            </div>
+          </a>
+        </article>
+        <!-- Galle Dutch Fort -->
+        <article class="dest-card" data-region="cultural-heritage">
+          <a href="beach-tours.html" class="dest-card-link" aria-label="Explore Galle Dutch Fort">
+            <div class="dest-card-media">
+              <img src="assets/images/beach-galle.jpg" alt="Galle Dutch Fort Sri Lanka" loading="lazy" class="dest-card-img">
+              <span class="dest-card-region">Cultural Heritage</span>
+            </div>
+            <div class="dest-card-body">
+              <h3 class="dest-card-title">Galle Dutch Fort</h3>
+              <p class="dest-card-desc">300-year-old living UNESCO seaside fort with Dutch colonial architecture, boutique cafes, ocean ramparts, and historic lighthouse walks.</p>
+              <div class="dest-card-highlights" style="font-size: 0.78rem; color: var(--color-gold, #C9A84C); font-weight: 600; margin-bottom: 1.1rem; line-height: 1.4;">
+                ✦ Fort Ramparts · Galle Lighthouse · Dutch Hospital Precinct
+              </div>
+              <div class="dest-card-cta">
+                <span>View Related Journeys</span>
+                <span class="dest-cta-arrow">➔</span>
+              </div>
+            </div>
+          </a>
+        </article>
+        <!-- Colombo & Kelani Valley -->
+        <article class="dest-card" data-region="cultural-heritage">
+          <a href="sri-lanka-tours.html" class="dest-card-link" aria-label="Explore Colombo & Kelani Valley">
+            <div class="dest-card-media">
+              <img src="assets/images/avatar-1.jpg" alt="Colombo & Kelani Valley Sri Lanka" loading="lazy" class="dest-card-img">
+              <span class="dest-card-region">Cultural Heritage</span>
+            </div>
+            <div class="dest-card-body">
+              <h3 class="dest-card-title">Colombo & Kelani Valley</h3>
+              <p class="dest-card-desc">Vibrant commercial and cultural hub blending colonial heritage at Fort, Galle Face Green sunsets, National Museum treasures, and modern culinary flair.</p>
+              <div class="dest-card-highlights" style="font-size: 0.78rem; color: var(--color-gold, #C9A84C); font-weight: 600; margin-bottom: 1.1rem; line-height: 1.4;">
+                ✦ Gangaramaya Temple · Galle Face Green · National Museum
+              </div>
+              <div class="dest-card-cta">
+                <span>View Related Journeys</span>
+                <span class="dest-cta-arrow">➔</span>
+              </div>
+            </div>
+          </a>
+        </article>
+        <!-- Nuwara Eliya ('Little England') -->
+        <article class="dest-card" data-region="hill-country">
+          <a href="tours/hill-country/ceylon-tea-trails-colonial-grandeur/index.html" class="dest-card-link" aria-label="Explore Nuwara Eliya ('Little England')">
+            <div class="dest-card-media">
+              <img src="assets/images/tea-country.jpg" alt="Nuwara Eliya ('Little England') Sri Lanka" loading="lazy" class="dest-card-img">
+              <span class="dest-card-region">Highland Tea</span>
+            </div>
+            <div class="dest-card-body">
+              <h3 class="dest-card-title">Nuwara Eliya ('Little England')</h3>
+              <p class="dest-card-desc">Cool mountain retreat surrounded by rolling Ceylon tea estates, Lake Gregory, colonial country clubs, and mist-veiled waterfalls.</p>
+              <div class="dest-card-highlights" style="font-size: 0.78rem; color: var(--color-gold, #C9A84C); font-weight: 600; margin-bottom: 1.1rem; line-height: 1.4;">
+                ✦ Tea Factory Experiences · Lake Gregory · Hakgala Gardens
+              </div>
+              <div class="dest-card-cta">
+                <span>View Related Journeys</span>
+                <span class="dest-cta-arrow">➔</span>
+              </div>
+            </div>
+          </a>
+        </article>
+        <!-- Ella & Demodara -->
+        <article class="dest-card" data-region="hill-country">
+          <a href="tours/hill-country/ceylon-tea-trails-colonial-grandeur/index.html" class="dest-card-link" aria-label="Explore Ella & Demodara">
+            <div class="dest-card-media">
+              <img src="assets/images/hero-nine-arches.jpg" alt="Ella & Demodara Sri Lanka" loading="lazy" class="dest-card-img">
+              <span class="dest-card-region">Highland Tea</span>
+            </div>
+            <div class="dest-card-body">
+              <h3 class="dest-card-title">Ella & Demodara</h3>
+              <p class="dest-card-desc">Sri Lanka's beloved mountain village famed for the iconic Nine Arch Bridge railway, Little Adam's Peak hikes, and panoramic gap views.</p>
+              <div class="dest-card-highlights" style="font-size: 0.78rem; color: var(--color-gold, #C9A84C); font-weight: 600; margin-bottom: 1.1rem; line-height: 1.4;">
+                ✦ Nine Arch Bridge · Little Adam's Peak · Ravana Falls
+              </div>
+              <div class="dest-card-cta">
+                <span>View Related Journeys</span>
+                <span class="dest-cta-arrow">➔</span>
+              </div>
+            </div>
+          </a>
+        </article>
+        <!-- Horton Plains & World's End -->
+        <article class="dest-card" data-region="hill-country">
+          <a href="tours/hill-country/ceylon-tea-trails-colonial-grandeur/index.html" class="dest-card-link" aria-label="Explore Horton Plains & World's End">
+            <div class="dest-card-media">
+              <img src="assets/tours/wildlife/rainforest-1.jpg" alt="Horton Plains & World's End Sri Lanka" loading="lazy" class="dest-card-img">
+              <span class="dest-card-region">Highland Tea</span>
+            </div>
+            <div class="dest-card-body">
+              <h3 class="dest-card-title">Horton Plains & World's End</h3>
+              <p class="dest-card-desc">Dramatic cloud forest plateau at 2,100m altitude ending abruptly at World's End sheer precipice, home to endemic Sambar deer and Baker's Falls.</p>
+              <div class="dest-card-highlights" style="font-size: 0.78rem; color: var(--color-gold, #C9A84C); font-weight: 600; margin-bottom: 1.1rem; line-height: 1.4;">
+                ✦ World's End Sheer Drop · Baker's Falls · Chiming Cloud Forests
+              </div>
+              <div class="dest-card-cta">
+                <span>View Related Journeys</span>
+                <span class="dest-cta-arrow">➔</span>
+              </div>
+            </div>
+          </a>
+        </article>
+        <!-- Haputale & Lipton's Seat -->
+        <article class="dest-card" data-region="hill-country">
+          <a href="tours/hill-country/ceylon-tea-trails-colonial-grandeur/index.html" class="dest-card-link" aria-label="Explore Haputale & Lipton's Seat">
+            <div class="dest-card-media">
+              <img src="assets/images/tea-country.jpg" alt="Haputale & Lipton's Seat Sri Lanka" loading="lazy" class="dest-card-img">
+              <span class="dest-card-region">Highland Tea</span>
+            </div>
+            <div class="dest-card-body">
+              <h3 class="dest-card-title">Haputale & Lipton's Seat</h3>
+              <p class="dest-card-desc">The dramatic cliffside viewpoint where Sir Thomas Lipton surveyed his tea empire, offering 360-degree vistas across seven southern provinces.</p>
+              <div class="dest-card-highlights" style="font-size: 0.78rem; color: var(--color-gold, #C9A84C); font-weight: 600; margin-bottom: 1.1rem; line-height: 1.4;">
+                ✦ Lipton's Seat · Dambatenne Tea Factory · Adisham Monastery
+              </div>
+              <div class="dest-card-cta">
+                <span>View Related Journeys</span>
+                <span class="dest-cta-arrow">➔</span>
+              </div>
+            </div>
+          </a>
+        </article>
+        <!-- Yala National Park -->
+        <article class="dest-card" data-region="wildlife">
+          <a href="wildlife-tours.html" class="dest-card-link" aria-label="Explore Yala National Park">
+            <div class="dest-card-media">
+              <img src="assets/images/wildlife.jpg" alt="Yala National Park Sri Lanka" loading="lazy" class="dest-card-img">
+              <span class="dest-card-region">Wildlife Safari</span>
+            </div>
+            <div class="dest-card-body">
+              <h3 class="dest-card-title">Yala National Park</h3>
+              <p class="dest-card-desc">Sri Lanka's premier wildlife park boasting one of the world's highest leopard densities, plus sloth bears, elephant herds, and coastal lagoons.</p>
+              <div class="dest-card-highlights" style="font-size: 0.78rem; color: var(--color-gold, #C9A84C); font-weight: 600; margin-bottom: 1.1rem; line-height: 1.4;">
+                ✦ Leopard Safaris · Sloth Bear Trackers · Elephant Waterholes
+              </div>
+              <div class="dest-card-cta">
+                <span>View Related Journeys</span>
+                <span class="dest-cta-arrow">➔</span>
+              </div>
+            </div>
+          </a>
+        </article>
+        <!-- Minneriya National Park -->
+        <article class="dest-card" data-region="wildlife">
+          <a href="wildlife-tours.html" class="dest-card-link" aria-label="Explore Minneriya National Park">
+            <div class="dest-card-media">
+              <img src="assets/tours/wildlife/predator-trail-1.jpg" alt="Minneriya National Park Sri Lanka" loading="lazy" class="dest-card-img">
+              <span class="dest-card-region">Wildlife Safari</span>
+            </div>
+            <div class="dest-card-body">
+              <h3 class="dest-card-title">Minneriya National Park</h3>
+              <p class="dest-card-desc">Site of 'The Gathering'—the world's largest recurring congregation of Asian wild elephants around the ancient Minneriya reservoir each dry season.</p>
+              <div class="dest-card-highlights" style="font-size: 0.78rem; color: var(--color-gold, #C9A84C); font-weight: 600; margin-bottom: 1.1rem; line-height: 1.4;">
+                ✦ The Elephant Gathering · Reservoir Sunsets · Bird Watching
+              </div>
+              <div class="dest-card-cta">
+                <span>View Related Journeys</span>
+                <span class="dest-cta-arrow">➔</span>
+              </div>
+            </div>
+          </a>
+        </article>
+        <!-- Udawalawe National Park -->
+        <article class="dest-card" data-region="wildlife">
+          <a href="wildlife-tours.html" class="dest-card-link" aria-label="Explore Udawalawe National Park">
+            <div class="dest-card-media">
+              <img src="assets/tours/wildlife/hero.jpg" alt="Udawalawe National Park Sri Lanka" loading="lazy" class="dest-card-img">
+              <span class="dest-card-region">Wildlife Safari</span>
+            </div>
+            <div class="dest-card-body">
+              <h3 class="dest-card-title">Udawalawe National Park</h3>
+              <p class="dest-card-desc">Renowned for year-round wild elephant sightings across open grasslands resembling East African savannahs, plus the Elephant Transit Home.</p>
+              <div class="dest-card-highlights" style="font-size: 0.78rem; color: var(--color-gold, #C9A84C); font-weight: 600; margin-bottom: 1.1rem; line-height: 1.4;">
+                ✦ Open Plains Safaris · Elephant Transit Home · Water Birds
+              </div>
+              <div class="dest-card-cta">
+                <span>View Related Journeys</span>
+                <span class="dest-cta-arrow">➔</span>
+              </div>
+            </div>
+          </a>
+        </article>
+        <!-- Wilpattu National Park -->
+        <article class="dest-card" data-region="wildlife">
+          <a href="wildlife-tours.html" class="dest-card-link" aria-label="Explore Wilpattu National Park">
+            <div class="dest-card-media">
+              <img src="assets/tours/wildlife/big-five-1.jpg" alt="Wilpattu National Park Sri Lanka" loading="lazy" class="dest-card-img">
+              <span class="dest-card-region">Wildlife Safari</span>
+            </div>
+            <div class="dest-card-body">
+              <h3 class="dest-card-title">Wilpattu National Park</h3>
+              <p class="dest-card-desc">Sri Lanka's largest and oldest national park, characterized by serene natural sand-rimmed water basins ('Villus') and elusive leopards.</p>
+              <div class="dest-card-highlights" style="font-size: 0.78rem; color: var(--color-gold, #C9A84C); font-weight: 600; margin-bottom: 1.1rem; line-height: 1.4;">
+                ✦ Natural Villu Lakes · Solitary Leopards · Dense Jungle Trails
+              </div>
+              <div class="dest-card-cta">
+                <span>View Related Journeys</span>
+                <span class="dest-cta-arrow">➔</span>
+              </div>
+            </div>
+          </a>
+        </article>
+        <!-- Mirissa & Weligama -->
+        <article class="dest-card" data-region="beaches">
+          <a href="beach-tours.html" class="dest-card-link" aria-label="Explore Mirissa & Weligama">
+            <div class="dest-card-media">
+              <img src="assets/images/sunset-mirissa.jpg" alt="Mirissa & Weligama Sri Lanka" loading="lazy" class="dest-card-img">
+              <span class="dest-card-region">Pristine Coasts</span>
+            </div>
+            <div class="dest-card-body">
+              <h3 class="dest-card-title">Mirissa & Weligama</h3>
+              <p class="dest-card-desc">Crescent golden beach world-renowned for ethical Blue Whale and Dolphin watching boat excursions, coconut hills, and surf breaks.</p>
+              <div class="dest-card-highlights" style="font-size: 0.78rem; color: var(--color-gold, #C9A84C); font-weight: 600; margin-bottom: 1.1rem; line-height: 1.4;">
+                ✦ Blue Whale Excursions · Coconut Tree Hill · Sunset Plunge Pools
+              </div>
+              <div class="dest-card-cta">
+                <span>View Related Journeys</span>
+                <span class="dest-cta-arrow">➔</span>
+              </div>
+            </div>
+          </a>
+        </article>
+        <!-- Bentota & Beruwala -->
+        <article class="dest-card" data-region="beaches">
+          <a href="beach-tours.html" class="dest-card-link" aria-label="Explore Bentota & Beruwala">
+            <div class="dest-card-media">
+              <img src="assets/tours/beach/southern-sands-1.jpg" alt="Bentota & Beruwala Sri Lanka" loading="lazy" class="dest-card-img">
+              <span class="dest-card-region">Pristine Coasts</span>
+            </div>
+            <div class="dest-card-body">
+              <h3 class="dest-card-title">Bentota & Beruwala</h3>
+              <p class="dest-card-desc">Sri Lanka's luxury coastal capital featuring calm golden ribbons of beach, lagoon water sports, luxury boutique resorts, and Geoffrey Bawa gardens.</p>
+              <div class="dest-card-highlights" style="font-size: 0.78rem; color: var(--color-gold, #C9A84C); font-weight: 600; margin-bottom: 1.1rem; line-height: 1.4;">
+                ✦ Madu River Boat Safari · Lunuganga Estate · Water Sports
+              </div>
+              <div class="dest-card-cta">
+                <span>View Related Journeys</span>
+                <span class="dest-cta-arrow">➔</span>
+              </div>
+            </div>
+          </a>
+        </article>
+        <!-- Trincomalee & Nilaveli -->
+        <article class="dest-card" data-region="beaches">
+          <a href="beach-tours.html" class="dest-card-link" aria-label="Explore Trincomalee & Nilaveli">
+            <div class="dest-card-media">
+              <img src="assets/tours/beach/eastern-sanctuary-1.jpg" alt="Trincomalee & Nilaveli Sri Lanka" loading="lazy" class="dest-card-img">
+              <span class="dest-card-region">Pristine Coasts</span>
+            </div>
+            <div class="dest-card-body">
+              <h3 class="dest-card-title">Trincomalee & Nilaveli</h3>
+              <p class="dest-card-desc">East coast sanctuary of powdery white sands, turquoise waters, Pigeon Island coral reef snorkeling, and the cliffside Koneswaram Temple.</p>
+              <div class="dest-card-highlights" style="font-size: 0.78rem; color: var(--color-gold, #C9A84C); font-weight: 600; margin-bottom: 1.1rem; line-height: 1.4;">
+                ✦ Pigeon Island Snorkeling · Koneswaram Temple · Nilaveli Beach
+              </div>
+              <div class="dest-card-cta">
+                <span>View Related Journeys</span>
+                <span class="dest-cta-arrow">➔</span>
+              </div>
+            </div>
+          </a>
+        </article>
+        <!-- Arugam Bay -->
+        <article class="dest-card" data-region="beaches">
+          <a href="beach-tours.html" class="dest-card-link" aria-label="Explore Arugam Bay">
+            <div class="dest-card-media">
+              <img src="assets/images/adventure.jpg" alt="Arugam Bay Sri Lanka" loading="lazy" class="dest-card-img">
+              <span class="dest-card-region">Pristine Coasts</span>
+            </div>
+            <div class="dest-card-body">
+              <h3 class="dest-card-title">Arugam Bay</h3>
+              <p class="dest-card-desc">World-class right-hand surf point, relaxed coastal vibe, and doorstep access to Kumana National Park's pristine lagoon bird sanctuaries.</p>
+              <div class="dest-card-highlights" style="font-size: 0.78rem; color: var(--color-gold, #C9A84C); font-weight: 600; margin-bottom: 1.1rem; line-height: 1.4;">
+                ✦ Main Point Surf Break · Kumana Bird Safari · Lagoon Sunsets
+              </div>
+              <div class="dest-card-cta">
+                <span>View Related Journeys</span>
+                <span class="dest-cta-arrow">➔</span>
+              </div>
+            </div>
+          </a>
+        </article>
+        <!-- Negombo Beach & Lagoon -->
+        <article class="dest-card" data-region="beaches">
+          <a href="beach-tours.html" class="dest-card-link" aria-label="Explore Negombo Beach & Lagoon">
+            <div class="dest-card-media">
+              <img src="assets/tours/beach/hero.jpg" alt="Negombo Beach & Lagoon Sri Lanka" loading="lazy" class="dest-card-img">
+              <span class="dest-card-region">Pristine Coasts</span>
+            </div>
+            <div class="dest-card-body">
+              <h3 class="dest-card-title">Negombo Beach & Lagoon</h3>
+              <p class="dest-card-desc">Convenient coastal starting haven located just 20 minutes from the international airport, famous for catamarans, canals, and fresh seafood.</p>
+              <div class="dest-card-highlights" style="font-size: 0.78rem; color: var(--color-gold, #C9A84C); font-weight: 600; margin-bottom: 1.1rem; line-height: 1.4;">
+                ✦ Catamaran Sailing · Dutch Canal · Airport Gateway Repose
+              </div>
+              <div class="dest-card-cta">
+                <span>View Related Journeys</span>
+                <span class="dest-cta-arrow">➔</span>
+              </div>
+            </div>
+          </a>
+        </article>
+        </div>
+
+        <!-- No Results Fallback -->
+        <div id="noDestResults" style="display: none; text-align: center; padding: 4rem 1rem;">
+          <p style="font-size: 1.3rem; color: #64748B; font-weight: 600;">No destinations found matching your search.</p>
+          <button type="button" class="dest-filter-btn" style="margin-top: 1rem;" onclick="document.getElementById('destSearchInput').value=''; document.querySelector('[data-region=all]').click();">Reset Search</button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Custom Bespoke Journey CTA -->
+    <section class="padding-top--80 padding-bottom--80" style="background: linear-gradient(135deg, rgba(248, 229, 221, 0.4) 0%, rgba(253, 251, 247, 1) 100%); text-align: center; border-top: 1px solid rgba(0, 43, 73, 0.08);">
+      <div class="wrapper--80" style="max-width: 800px; margin: 0 auto;">
+        <span style="color: var(--color-lotus-pink); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.14em;">Combine Multiple Destinations</span>
+        <h2 class="heading--48 font-color--dark-blue" style="margin: 0.75rem 0 1rem;">
+          Tailor-Make Your Personal Island Journey
+        </h2>
+        <p style="font-size: 1.1rem; color: #475569; line-height: 1.7; margin-bottom: 2rem;">
+          Looking to combine sacred Buddhist temple veneration with cool tea highlands and a private wildlife safari? Our senior travel designers handcraft your custom itinerary with private chauffeur transport.
+        </p>
+        <div style="display: flex; gap: 1.25rem; justify-content: center; flex-wrap: wrap;">
+          <a href="inquiry-detailed.html" class="next-btn next-btn--blue">
+            <span class="next-btn-circle">➔</span>
+            <span>Design Custom Journey</span>
+          </a>
+          <a href="https://wa.me/94715422384" target="_blank" rel="noopener" class="next-btn next-btn--white" style="border: 1px solid #25D366; color: #075E54;">
+            <span class="next-btn-circle" style="background: #25D366; color: #ffffff;">💬</span>
+            <span>Chat on WhatsApp</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Master Walkers Luxury Dark Footer -->
+  <footer class="site-footer-walkers footer-walkers" id="contact">
+    <div class="wrapper--90">
+      <div class="footer-walkers-grid">
+        
+        <!-- Col 1: Brand Info & Contact -->
+        <div>
+          <a href="index.html" class="footer-brand-link" title="Lotus Ceylon">
+            <img src="logo.png?v=20261021_step1" alt="Lotus Ceylon Emblem" class="footer-brand-logo" style="height: 54px; width: auto; max-width: 75px; max-height: 54px; object-fit: contain; display: block;">
+            <div class="footer-brand-text">
+              <span class="footer-brand-title">Lotus Ceylon</span>
+              <span class="footer-brand-sub">INTERNATIONAL TOURS &amp; SERVICES</span>
+            </div>
+          </a>
+          <p class="footer-tagline">
+            Pure Journeys &amp; Sacred Experiences across the timeless island of Sri Lanka. Registered Inbound Tour Operator (PV 00374439).
+          </p>
+
+          <div class="footer-contact-info">
+            <div class="footer-contact-item">
+              <p style="margin-bottom: 0.35rem; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-gold);">Registered Office &amp; HQ</p>
+              <p style="font-size: 0.88rem; line-height: 1.6; color: #E2E8F0;">
+                No. 124/B, Galle Road, Colombo 03, Sri Lanka.<br>
+                Director: Mallawa Arachchige Dhushanthа Gihan Mallawaarachchi
+              </p>
+            </div>
+            <div class="footer-contact-item">
+              <p style="margin-bottom: 0.35rem; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-gold);">24/7 Guest Care Hotline</p>
+              <p style="font-size: 0.88rem; line-height: 1.6; color: #E2E8F0;">
+                Hotline / WhatsApp: <a href="https://wa.me/94715422384" style="color: var(--color-gold); font-weight: 600;">+94 71 54 22 384</a><br>
+                Email: <a href="mailto:info@lotusceylon.com" style="color: #E2E8F0;">info@lotusceylon.com</a>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Col 2: Quick Links -->
+        <div>
+          <p class="footer-col-title">Quick Links</p>
+          <div class="footer-links-grid">
+            <a href="index.html">Home</a>
+            <a href="sri-lanka-tours.html">Sri Lanka Tours</a>
+            <a href="destinations.html">All Destinations</a>
+            <a href="about.html">About Lotus Ceylon</a>
+            <a href="index.html#experiences">Experiences</a>
+            <a href="index.html#reviews">Guest Reviews</a>
+            <a href="blog.html">Travel Blog</a>
+            <a href="inquiry-detailed.html">Detailed Inquiry</a>
+            <a href="inquiry-quick.html">Quick Inquiry</a>
+          </div>
+        </div>
+
+        <!-- Col 3: Newsletter & Instant Chat QR Codes -->
+        <div>
+          <div class="newsletter-box">
+            <p class="footer-col-title">Stay Inspired</p>
+            <p>Subscribe to receive curated Sri Lanka holiday inspiration and early-booking privileges.</p>
+            <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Thank you for subscribing to Lotus Ceylon!'); this.reset();">
+              <input type="email" placeholder="Enter your email address" required aria-label="Email address for newsletter">
+              <button type="submit" aria-label="Subscribe">➔</button>
+            </form>
+          </div>
+
+          <!-- Instant Chat QR Codes -->
+          <div style="margin: 1.5rem 0 1.25rem;">
+            <p style="font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.12em; color: #FFFFFF; font-weight: 700; margin-bottom: 0.65rem;">Scan &amp; Chat Instantly</p>
+            <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+              <a href="https://wa.me/94715422384" target="_blank" rel="noopener" style="background: rgba(255,255,255,0.08); padding: 0.5rem; border-radius: 6px; text-align: center; text-decoration: none; border: 1px solid rgba(255,255,255,0.12); width: 85px;">
+                <img src="assets/qr/whatsapp-qr.png" alt="WhatsApp QR" style="width: 70px; height: 70px; border-radius: 4px; display: block; margin: 0 auto 0.25rem; object-fit: contain;">
+                <span style="font-size: 0.72rem; color: #E2E8F0; display: block; font-weight: 600;">WhatsApp</span>
+              </a>
+              <div style="background: rgba(255,255,255,0.08); padding: 0.5rem; border-radius: 6px; text-align: center; border: 1px solid rgba(255,255,255,0.12); width: 85px;">
+                <img src="assets/qr/wechat-qr.png" alt="WeChat QR" style="width: 70px; height: 70px; border-radius: 4px; display: block; margin: 0 auto 0.25rem; object-fit: contain;">
+                <span style="font-size: 0.72rem; color: #E2E8F0; display: block; font-weight: 600;">WeChat</span>
+              </div>
+              <div style="background: rgba(255,255,255,0.08); padding: 0.5rem; border-radius: 6px; text-align: center; border: 1px solid rgba(255,255,255,0.12); width: 85px;">
+                <img src="assets/qr/line-qr.png" alt="LINE QR" style="width: 70px; height: 70px; border-radius: 4px; display: block; margin: 0 auto 0.25rem; object-fit: contain;">
+                <span style="font-size: 0.72rem; color: #E2E8F0; display: block; font-weight: 600;">LINE</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom-row">
+        <div>
+          &copy; 2026 LOTUS CEYLON INTERNATIONAL TOURS &amp; SERVICES (PRIVATE) LIMITED. All Rights Reserved. Since 2014.
+        </div>
+        <div>
+          Designed &amp; Developed by <a href="https://infiniteweb.dev/" target="_blank" rel="noopener" style="color: var(--color-gold); text-decoration: none; font-weight: 600;">Infinite Design</a> &middot; Reg: PV 00374439
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp Hotline -->
+  <a href="https://wa.me/94715422384" target="_blank" rel="noopener" class="floating-whatsapp-btn" aria-label="Chat on WhatsApp" style="position: fixed; bottom: 25px; right: 25px; z-index: 999; width: 56px; height: 56px; border-radius: 50%; background: #25D366; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 20px rgba(37, 211, 102, 0.45); text-decoration: none;">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="#FFFFFF">
+      <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.698.077-1.11-.059-.441-.144-1.025-.338-1.776-.816-1.579-1.004-2.613-2.616-2.695-2.726-.082-.11-1.082-1.442-1.082-2.75 0-1.309.684-1.954.928-2.222.244-.268.531-.334.708-.334.177 0 .354.002.508.01.164.008.385-.062.602.459.223.535.759 1.854.825 1.99.066.136.111.297.022.474-.088.177-.133.287-.266.442-.133.155-.28.347-.399.465-.133.133-.271.277-.117.542.155.266.689 1.134 1.477 1.835 1.014.903 1.87 1.182 2.136 1.315.266.133.421.111.576-.066.155-.177.664-.774.841-1.039.177-.266.354-.222.597-.133.244.089 1.549.73 1.815.863.266.133.443.2.509.311.066.11.066.643-.078 1.048z"/>
+    </svg>
+  </a>
+
+  <!-- Interactive Scripts (Header, Drawer, Search & Filter) -->
+  <script>
+    // Header Scroll
+    const siteHeader = document.getElementById('siteHeader');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) siteHeader.classList.add('is-scrolled');
+      else siteHeader.classList.remove('is-scrolled');
+    });
+
+    // Mobile Hamburger
+    const mobileHamToggle = document.getElementById('mobileHamToggle');
+    const mobileNavClose = document.getElementById('mobileNavClose');
+    const mobileNavFullscreen = document.getElementById('mobileNavFullscreen');
+    if (mobileHamToggle && mobileNavFullscreen) {
+      mobileHamToggle.addEventListener('click', () => {
+        mobileNavFullscreen.classList.add('is-open');
+        document.body.style.overflow = 'hidden';
+      });
+      if (mobileNavClose) {
+        mobileNavClose.addEventListener('click', () => {
+          mobileNavFullscreen.classList.remove('is-open');
+          document.body.style.overflow = '';
+        });
+      }
+    }
+
+    // Client-side Search and Filter for 24 Destinations
+    document.addEventListener('DOMContentLoaded', () => {
+      const filterBtns = document.querySelectorAll('.dest-filter-btn');
+      const cards = document.querySelectorAll('.dest-card');
+      const searchInput = document.getElementById('destSearchInput');
+      const noResults = document.getElementById('noDestResults');
+
+      let currentRegion = 'all';
+      let currentQuery = '';
+
+      function applyFilterAndSearch() {
+        let visibleCount = 0;
+        cards.forEach(card => {
+          const cardRegion = card.getAttribute('data-region');
+          const title = card.querySelector('.dest-card-title').textContent.toLowerCase();
+          const desc = card.querySelector('.dest-card-desc').textContent.toLowerCase();
+
+          const matchesRegion = (currentRegion === 'all' || cardRegion === currentRegion);
+          const matchesQuery = (!currentQuery || title.includes(currentQuery) || desc.includes(currentQuery));
+
+          if (matchesRegion && matchesQuery) {
+            card.style.display = 'flex';
+            visibleCount++;
+          } else {
+            card.style.display = 'none';
+          }
+        });
+
+        if (noResults) {
+          noResults.style.display = visibleCount === 0 ? 'block' : 'none';
+        }
+      }
+
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          filterBtns.forEach(b => {
+            b.classList.remove('is-active');
+            b.setAttribute('aria-selected', 'false');
+          });
+          btn.classList.add('is-active');
+          btn.setAttribute('aria-selected', 'true');
+          currentRegion = btn.getAttribute('data-region');
+          applyFilterAndSearch();
+        });
+      });
+
+      if (searchInput) {
+        searchInput.addEventListener('input', (e) => {
+          currentQuery = e.target.value.trim().toLowerCase();
+          applyFilterAndSearch();
+        });
+      }
+    });
+  </script>
+</body>
+</html>
