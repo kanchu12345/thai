@@ -1619,3 +1619,179 @@
   margin: 0 0 1.75rem 0 !important;
   max-width: 420px !important;
 }
+
+
+/* ==============================================================================
+ * SECTION 3.5: SACRED DESTINATIONS & ANCHOR SCROLL OFFSET SYSTEM
+ * ============================================================================== */
+html {
+  scroll-behavior: smooth;
+}
+
+#destinations,
+#categories,
+#packages,
+#bespoke,
+#brands,
+#experiences,
+#testimonials,
+#reviews,
+#sustainability,
+#faq,
+#news,
+#contact {
+  scroll-margin-top: 105px !important;
+}
+
+.destinations-section {
+  position: relative;
+  background-color: var(--color-page-bg, #FBF6EC);
+}
+
+.destinations-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+@media (max-width: 1200px) {
+  .destinations-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .destinations-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.dest-card {
+  background: #FFFFFF;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 43, 73, 0.06);
+  border: 1px solid rgba(0, 43, 73, 0.08);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+}
+
+.dest-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 32px rgba(0, 43, 73, 0.12);
+  border-color: rgba(201, 162, 75, 0.45);
+}
+
+.dest-card-link {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.dest-card-link:focus-visible {
+  outline: 2px solid var(--color-gold, #C9A84C);
+  outline-offset: 3px;
+}
+
+.dest-card-media {
+  position: relative;
+  width: 100%;
+  height: 220px;
+  overflow: hidden;
+  background: #E2E8F0;
+}
+
+.dest-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+  display: block;
+}
+
+.dest-card:hover .dest-card-img {
+  transform: scale(1.06);
+}
+
+.dest-card-region {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: rgba(0, 43, 73, 0.85);
+  color: #FFFFFF;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 4px 10px;
+  border-radius: 20px;
+  backdrop-filter: blur(4px);
+}
+
+.dest-card-body {
+  padding: 1.35rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.dest-card-title {
+  font-family: var(--font-serif, 'Playfair Display', Georgia, serif);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--color-dark-blue, #002B49);
+  margin: 0 0 0.5rem;
+  line-height: 1.2;
+}
+
+.dest-card-desc {
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: #475569;
+  margin: 0 0 1.25rem;
+  flex-grow: 1;
+}
+
+.dest-card-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-lotus-pink, #C95451);
+  transition: gap 0.2s ease;
+}
+
+.dest-card:hover .dest-card-cta {
+  gap: 0.65rem;
+}
+
+.dest-filter-btn {
+  background: #FFFFFF;
+  border: 1px solid rgba(0, 43, 73, 0.15);
+  color: #334155;
+  font-family: inherit;
+  font-size: 0.88rem;
+  font-weight: 600;
+  padding: 0.5rem 1.25rem;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.dest-filter-btn:hover {
+  border-color: var(--color-gold, #C9A84C);
+  color: var(--color-dark-blue, #002B49);
+}
+
+.dest-filter-btn.is-active {
+  background: var(--color-dark-blue, #002B49);
+  color: #FFFFFF;
+  border-color: var(--color-dark-blue, #002B49);
+  box-shadow: 0 4px 12px rgba(0, 43, 73, 0.18);
+}

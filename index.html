@@ -694,7 +694,196 @@
     <div class="categories-carousel-dots" id="catDots"></div>
   </section>
 
-  <!-- ==========================================================================
+    <!-- ==========================================================================
+       SECTION 3.5: SACRED DESTINATIONS (FEATURED CEYLON LANDSCAPES)
+       ========================================================================== -->
+  <section class="padding-top--100 padding-bottom--100 destinations-section" id="destinations" style="scroll-margin-top: 105px; position: relative;">
+    <div class="wrapper--80">
+      
+      <!-- Section Watermark Header -->
+      <div class="section-watermark-header">
+        <p class="watermark-heading">sacred destinations</p>
+        <div class="sacred-badge-tag" style="margin-bottom: 0.6rem;">
+          <span class="sacred-icon">🌸</span> ✦ SACRED DESTINATIONS ✦ <span class="sacred-icon">🌸</span>
+        </div>
+        <h2 class="section-header-title">Sacred Footsteps &amp; Living Landscapes</h2>
+      </div>
+
+      <div style="max-width: 780px; margin: 0.75rem auto 2.25rem; text-align: center; position: relative; z-index: 2;">
+        <p class="paragraph--20" style="color: var(--color-light-black, #3E454F); line-height: 1.75;">
+          Sri Lanka has been a place of pilgrimage for more than two thousand years. Walk beneath the Sri Maha Bodhi tree in Anuradhapura, climb the hill at Mihintale where, according to tradition, Buddhism first reached the island, and visit the Temple of the Sacred Tooth Relic in Kandy. Between these holy places, lakes, tea hills and quiet coasts give you room to rest.
+        </p>
+      </div>
+
+      <!-- Region Filter Tabs -->
+      <div class="destination-filter-tabs" role="tablist" aria-label="Destination region filter" style="display: flex; justify-content: center; gap: 0.65rem; margin-bottom: 2.75rem; flex-wrap: wrap;">
+        <button type="button" class="dest-filter-btn is-active" data-region="all" role="tab" aria-selected="true">All</button>
+        <button type="button" class="dest-filter-btn" data-region="sacred-sites" role="tab" aria-selected="false">Sacred Sites</button>
+        <button type="button" class="dest-filter-btn" data-region="cultural-triangle" role="tab" aria-selected="false">Cultural Triangle</button>
+        <button type="button" class="dest-filter-btn" data-region="hill-country" role="tab" aria-selected="false">Hill Country</button>
+      </div>
+
+      <!-- 8 Curated Destination Cards Grid -->
+      <div class="destinations-grid" id="destinationsGrid">
+        
+        <!-- Card 1: Anuradhapura -->
+        <article class="dest-card" data-region="sacred-sites">
+          <a href="tours/cultural/the-sacred-lotus-triangle/index.html" class="dest-card-link" aria-label="Explore Anuradhapura">
+            <div class="dest-card-media">
+              <img src="assets/images/temple-culture.jpg" alt="Anuradhapura Sacred Stupas and Bodhi Tree" loading="lazy" class="dest-card-img">
+              <span class="dest-card-region">Sacred Sites</span>
+            </div>
+            <div class="dest-card-body">
+              <h3 class="dest-card-title">Anuradhapura</h3>
+              <p class="dest-card-desc">Ancient capital of great stupas and the revered Sri Maha Bodhi tree.</p>
+              <div class="dest-card-cta">
+                <span>Explore Journey</span>
+                <span class="dest-cta-arrow">➔</span>
+              </div>
+            </div>
+          </a>
+        </article>
+
+        <!-- Card 2: Mihintale -->
+        <article class="dest-card" data-region="sacred-sites">
+          <a href="cultural-tours.html" class="dest-card-link" aria-label="Explore Mihintale">
+            <div class="dest-card-media">
+              <img src="assets/tours/cultural/sacred-triangle-1.jpg" alt="Mihintale Sacred Sanctuary Peak" loading="lazy" class="dest-card-img">
+              <span class="dest-card-region">Sacred Sites</span>
+            </div>
+            <div class="dest-card-body">
+              <h3 class="dest-card-title">Mihintale</h3>
+              <p class="dest-card-desc">The hill where, tradition says, Buddhism first reached the island.</p>
+              <div class="dest-card-cta">
+                <span>Explore Journey</span>
+                <span class="dest-cta-arrow">➔</span>
+              </div>
+            </div>
+          </a>
+        </article>
+
+        <!-- Card 3: Polonnaruwa -->
+        <article class="dest-card" data-region="cultural-triangle">
+          <a href="tours/cultural/the-sacred-lotus-triangle/index.html" class="dest-card-link" aria-label="Explore Polonnaruwa">
+            <div class="dest-card-media">
+              <img src="assets/images/polonnaruwa.jpg" alt="Polonnaruwa Medieval Stone Carvings" loading="lazy" class="dest-card-img">
+              <span class="dest-card-region">Cultural Triangle</span>
+            </div>
+            <div class="dest-card-body">
+              <h3 class="dest-card-title">Polonnaruwa</h3>
+              <p class="dest-card-desc">A medieval city of serene rock-carved Buddha figures.</p>
+              <div class="dest-card-cta">
+                <span>Explore Journey</span>
+                <span class="dest-cta-arrow">➔</span>
+              </div>
+            </div>
+          </a>
+        </article>
+
+        <!-- Card 4: Dambulla -->
+        <article class="dest-card" data-region="cultural-triangle">
+          <a href="tours/cultural/the-sacred-lotus-triangle/index.html" class="dest-card-link" aria-label="Explore Dambulla">
+            <div class="dest-card-media">
+              <img src="assets/tours/cultural/three-millennia-1.jpg" alt="Dambulla Cave Temples and Ancient Murals" loading="lazy" class="dest-card-img">
+              <span class="dest-card-region">Cultural Triangle</span>
+            </div>
+            <div class="dest-card-body">
+              <h3 class="dest-card-title">Dambulla</h3>
+              <p class="dest-card-desc">Cave temples with centuries of painted murals.</p>
+              <div class="dest-card-cta">
+                <span>Explore Journey</span>
+                <span class="dest-cta-arrow">➔</span>
+              </div>
+            </div>
+          </a>
+        </article>
+
+        <!-- Card 5: Sigiriya -->
+        <article class="dest-card" data-region="cultural-triangle">
+          <a href="tours/cultural/the-sacred-lotus-triangle/index.html" class="dest-card-link" aria-label="Explore Sigiriya">
+            <div class="dest-card-media">
+              <img src="assets/images/sigiriya.jpg" alt="Sigiriya Fifth-Century Rock Citadel" loading="lazy" class="dest-card-img">
+              <span class="dest-card-region">Cultural Triangle</span>
+            </div>
+            <div class="dest-card-body">
+              <h3 class="dest-card-title">Sigiriya</h3>
+              <p class="dest-card-desc">A fifth-century rock citadel with a monastic past.</p>
+              <div class="dest-card-cta">
+                <span>Explore Journey</span>
+                <span class="dest-cta-arrow">➔</span>
+              </div>
+            </div>
+          </a>
+        </article>
+
+        <!-- Card 6: Kandy -->
+        <article class="dest-card" data-region="sacred-sites">
+          <a href="tours/cultural/the-sacred-lotus-triangle/index.html" class="dest-card-link" aria-label="Explore Kandy">
+            <div class="dest-card-media">
+              <img src="assets/tours/cultural/royal-kingdoms-1.jpg" alt="Temple of the Sacred Tooth Relic Kandy" loading="lazy" class="dest-card-img">
+              <span class="dest-card-region">Sacred Sites</span>
+            </div>
+            <div class="dest-card-body">
+              <h3 class="dest-card-title">Kandy</h3>
+              <p class="dest-card-desc">Home of the Temple of the Sacred Tooth Relic.</p>
+              <div class="dest-card-cta">
+                <span>Explore Journey</span>
+                <span class="dest-cta-arrow">➔</span>
+              </div>
+            </div>
+          </a>
+        </article>
+
+        <!-- Card 7: Nuwara Eliya -->
+        <article class="dest-card" data-region="hill-country">
+          <a href="tours/hill-country/ceylon-tea-trails-colonial-grandeur/index.html" class="dest-card-link" aria-label="Explore Nuwara Eliya">
+            <div class="dest-card-media">
+              <img src="assets/images/tea-country.jpg" alt="Nuwara Eliya Misty Tea Highlands" loading="lazy" class="dest-card-img">
+              <span class="dest-card-region">Hill Country</span>
+            </div>
+            <div class="dest-card-body">
+              <h3 class="dest-card-title">Nuwara Eliya</h3>
+              <p class="dest-card-desc">Cool tea country with Ramayana connections.</p>
+              <div class="dest-card-cta">
+                <span>Explore Journey</span>
+                <span class="dest-cta-arrow">➔</span>
+              </div>
+            </div>
+          </a>
+        </article>
+
+        <!-- Card 8: Ella -->
+        <article class="dest-card" data-region="hill-country">
+          <a href="tours/hill-country/ceylon-tea-trails-colonial-grandeur/index.html" class="dest-card-link" aria-label="Explore Ella">
+            <div class="dest-card-media">
+              <img src="assets/images/hero-nine-arches.jpg" alt="Ella Demodara Nine Arches and Scenic Ridges" loading="lazy" class="dest-card-img">
+              <span class="dest-card-region">Hill Country</span>
+            </div>
+            <div class="dest-card-body">
+              <h3 class="dest-card-title">Ella</h3>
+              <p class="dest-card-desc">Misty ridges, waterfalls and the scenic railway.</p>
+              <div class="dest-card-cta">
+                <span>Explore Journey</span>
+                <span class="dest-cta-arrow">➔</span>
+              </div>
+            </div>
+          </a>
+        </article>
+
+      </div>
+
+      <!-- Action Button: Explore All Tours -->
+      <div style="text-align: center; margin-top: 3.5rem;">
+        <a href="sri-lanka-tours.html" class="btn-editorial-primary" title="Explore All Tours" style="display: inline-flex; align-items: center; gap: 0.75rem;">
+          <span>Explore All Tours</span>
+          <span class="btn-arrow-circle">➔</span>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+<!-- ==========================================================================
        SECTION 4: UNFORGETTABLE TOUR PACKAGES
        ========================================================================== -->
   <section class="padding-top--100 padding-bottom--100 package-sec" id="packages">
@@ -911,7 +1100,10 @@
   <!-- ==========================================================================
        SECTION 6: EXCLUSIVE BRANDS & EXPERIENCES
        ========================================================================== -->
-  <section class="padding-top--100 padding-bottom--100" id="brands">
+  <section class="padding-top--100 padding-bottom--100" id="brands" style="scroll-margin-top: 105px; position: relative;">
+    <!-- Anchor Aliases for Header and Nav Links -->
+    <span id="experiences" style="position: absolute; top: -105px; left: 0; display: block; visibility: hidden; pointer-events: none;"></span>
+    <span id="gallery" style="position: absolute; top: -105px; left: 0; display: block; visibility: hidden; pointer-events: none;"></span>
     <div class="wrapper--50 text-center" style="text-align: center; position: relative;">
       <div class="section-watermark-header">
         <p class="watermark-heading">experiences</p>
@@ -980,7 +1172,9 @@
   <!-- ==========================================================================
        SECTION 8: REAL EXPERIENCES / GUEST REVIEWS
        ========================================================================== -->
-  <section class="padding-top--100 padding-bottom--100 review-sec" id="testimonials" style="display: none;">
+  <section class="padding-top--100 padding-bottom--100 review-sec" id="testimonials" style="scroll-margin-top: 105px; position: relative;">
+    <!-- Anchor Alias for Header Reviews Link -->
+    <span id="reviews" style="position: absolute; top: -105px; left: 0; display: block; visibility: hidden; pointer-events: none;"></span>
     <div class="wrapper--80">
       <div class="section-watermark-header">
         <p class="watermark-heading">real stories</p>
@@ -1722,6 +1916,33 @@
       parentCard.addEventListener('mouseleave', () => { isPaused = false; });
 
       setTimeout(startSlider, staggerDelay);
+    });
+  </script>
+  <!-- Destinations Client-Side Filter Script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const destFilterBtns = document.querySelectorAll('.dest-filter-btn');
+      const destCards = document.querySelectorAll('.dest-card');
+      if (destFilterBtns.length && destCards.length) {
+        destFilterBtns.forEach(btn => {
+          btn.addEventListener('click', () => {
+            destFilterBtns.forEach(b => {
+              b.classList.remove('is-active');
+              b.setAttribute('aria-selected', 'false');
+            });
+            btn.classList.add('is-active');
+            btn.setAttribute('aria-selected', 'true');
+            const region = btn.getAttribute('data-region');
+            destCards.forEach(card => {
+              if (region === 'all' || card.getAttribute('data-region') === region) {
+                card.style.display = 'flex';
+              } else {
+                card.style.display = 'none';
+              }
+            });
+          });
+        });
+      }
     });
   </script>
 </body>
