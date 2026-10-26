@@ -1,0 +1,42 @@
+[
+  {
+    "name": "Home (index.html)",
+    "url": "http://localhost:8089/index.html",
+    "fcp": 1868,
+    "lcp": 1868,
+    "cls": 0.0123,
+    "loadTime": 5697
+  },
+  {
+    "name": "About Us (about.html)",
+    "url": "http://localhost:8089/about.html",
+    "fcp": 620,
+    "lcp": 668,
+    "cls": 0.0173,
+    "loadTime": 2088
+  },
+  {
+    "name": "Destinations (destinations.html)",
+    "url": "http://localhost:8089/destinations.html",
+    "fcp": 576,
+    "lcp": 576,
+    "cls": 0.0034,
+    "loadTime": 1350
+  },
+  {
+    "name": "Category Beach (tours/beach/index.html)",
+    "url": "http://localhost:8089/tours/beach/index.html",
+    "fcp": 664,
+    "lcp": 664,
+    "cls": 0.0431,
+    "loadTime": 1041
+  },
+  {
+    "name": "Package Southern Sands",
+    "url": "http://localhost:8089/tours/beach/southern-sands-serenade/index.html",
+    "fcp": 600,
+    "lcp": 600,
+    "cls": 0.0534,
+    "loadTime": 950
+  }
+]
