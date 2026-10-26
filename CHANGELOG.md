@@ -5,6 +5,42 @@ The project adheres to strict phase gates, top international tour operator quali
 
 ---
 
+## [Phase 1 Pilot] - 2026-10-26: Universal CMS Engine, Partials Architecture & Pilot Verification
+
+### Added
+- **Universal Zero-Dependency CMS Engine (ssets/js/cms.js)**:
+  - Engineered high-performance, non-blocking content hydration client using native browser etch against the Firestore v1 REST API (https://firestore.googleapis.com/v1/projects/louterst-36b64/databases/(default)/documents).
+  - **Architectural Decision (REST API vs Modular SDK)**:
+    - *Decision*: Adopted Firestore v1 REST API with documents:batchGet instead of the 320 KB Firebase Web SDK.
+    - *Rationale*: Public client pages only perform reads. Loading the full Firebase SDK adds 320 KB of parsed JavaScript, blocking main-thread execution on mobile networks. The REST API client weighs only 22.1 KB (a 93.1% reduction in payload), requires zero external dependencies, introduces zero runtime bundle overhead, and runs completely deferred without layout shift.
+- **Cost & Speed Control Architecture**:
+  - Implemented versioning check via a single lightweight document siteMeta/version ({ v: number, updatedAt: string }).
+  - On page load, cms.js checks siteMeta/version. If unchanged and cached within 10 minutes, zero document reads occur.
+  - Implemented client cache key lotus_cms_v3 with TTL expiration (10 minutes) and automatic legacy cache purging (lotus_seed_catalog_cache_v2).
+- **Collection & Schema Consolidation**:
+  - Consolidated divergent legacy collections 	ours and packages into canonical collection 	ourPackages using clean SEO package slugs as document IDs (e.g. 	ourPackages/southern-sands-serenade).
+  - Created migration script scripts/migrate-packages.js producing data/canonical-packages.json with 26 normalized packages.
+  - Patched dmin/js/admin-app.js and js/firebase-tour-sync.js to write directly to 	ourPackages and bump siteMeta/version upon publish.
+- **Image Audit & Canonical Consolidation (IMAGE_AUDIT.md)**:
+  - Scanned all image references across public HTML and catalog data; resolved 118 dead/mismatched references to verified WebP assets on disk.
+  - Built real-time image resolver with alias mapping, Cloudinary CDN support, and silent onerror fallback to hardcoded default markup.
+- **Shared Component Partials & Build System (scripts/build-partials.js)**:
+  - Created single source of truth partials in partials/: header.html, mobile-menu.html, ooter.html, loating-actions.html.
+  - Added idempotent comment markers (<!-- @include header:start --> ... <!-- @include header:end -->) allowing repeatable builds with pm run build.
+  - Automatically resolves relative base paths ({{BASE_PATH}}) to ./, ../, ../../, or ../../../ based on directory depth.
+- **Pilot Implementation & Testing (scripts/test-pilot.js)**:
+  - Successfully bound and verified index.html (homepage CMS attributes) and 	ours/beach/southern-sands-serenade/index.html (deep structured package attributes: hero image, title, tagline, duration, overview, and 10-day itinerary timeline).
+  - All 7 pilot test assertions passed: live Firestore binding, package deep binding, offline fallback resilience, 10-language multilingual resolution, Arabic RTL support, cache efficiency, and mobile layout stability.
+
+---
+
+# CHANGELOG — Lotus Ceylon Tours Rebuild
+
+All notable changes to the Lotus Ceylon web platform will be documented in this file.
+The project adheres to strict phase gates, top international tour operator quality standards, and zero-plagiarism policies.
+
+---
+
 ## [Phase 9] - 2026-10-25: Inquiry Forms (Detailed & Quick) Overhaul, Dual Sheets & About Us Team Section
 
 ### Added

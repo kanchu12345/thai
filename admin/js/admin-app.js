@@ -2700,12 +2700,12 @@ resolveImg(url) {
 
       if (this.fbDb) {
         try {
-          await this.fbDb.collection('tours').doc(pkgId).set(payload, { merge: true });
-          await this.fbDb.collection('packages').doc(pkgId).set(payload, { merge: true });
-          if (pkgId !== slug) {
-            await this.fbDb.collection('tours').doc(slug).set(payload, { merge: true });
-            await this.fbDb.collection('packages').doc(slug).set(payload, { merge: true });
-          }
+          const canonicalDocId = slug || pkgId;
+          await this.fbDb.collection('tourPackages').doc(canonicalDocId).set(payload, { merge: true });
+          await this.fbDb.collection('siteMeta').doc('version').set({
+            v: Date.now(),
+            updatedAt: new Date().toISOString()
+          }, { merge: true });
         } catch (e) {
           console.warn('[AdminApp] Direct Firestore doc save:', e.message);
         }

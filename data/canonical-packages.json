@@ -1,0 +1,3498 @@
+{
+  "tourPackages": [
+    {
+      "id": "southern-sands-serenade",
+      "slug": "southern-sands-serenade",
+      "title": "Southern Sands Serenade",
+      "subtitle": "Sun-Kissed Bays, Blue Whales & Dutch Ramparts",
+      "category": "beach",
+      "nights": 9,
+      "days": 10,
+      "price_from": 0,
+      "hero_image": "assets/images/beach/mirissa-1.webp",
+      "gallery": [
+        "assets/images/beach/mirissa-1.webp",
+        "assets/images/beach/arugam-bay-4.webp",
+        "assets/images/beach/arugam-bay-4.webp"
+      ],
+      "video": "",
+      "itinerary": [
+        {
+          "day": 1,
+          "title": "Arrival in Paradise • Tropical Warmth in Negombo",
+          "description": "Arrive at Bandaranaike International Airport where your private Lotus Ceylon chauffeur guide warmly welcomes you with fresh lotus blooms. Transfer to your seaside boutique hotel in Negombo to unwind by the pool and enjoy your first authentic coastal sunset.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Gourmet Dinner",
+          "image": "assets/images/beach/arugam-bay-4.webp"
+        },
+        {
+          "day": 2,
+          "title": "Scenic Southern Highway • Tangalle’s Secluded Bays",
+          "description": "Journey south along the scenic expressway towards Tangalle, famed for its untouched golden beaches and whispering palms. Check into your luxury oceanfront pavilion. Afternoon at leisure listening to the rhythm of the Indian Ocean.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Gourmet Dinner",
+          "image": "assets/images/beach/arugam-bay-4.webp"
+        },
+        {
+          "day": 3,
+          "title": "Hummanaya Natural Geyser & Mulgirigala Monastic Rock",
+          "description": "Witness the dramatic Hummanaya natural sea blowhole sending spray 30 meters skyward. Later, explore the tranquil 2,000-year-old Mulgirigala rock monastery tucked into lush coconut forests.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Gourmet Dinner",
+          "image": "assets/images/beach/arugam-bay-4.webp"
+        },
+        {
+          "day": 4,
+          "title": "Coastal Drive to Mirissa • Sunset at Coconut Tree Hill",
+          "description": "Drive west along the picturesque coastline to Mirissa. In the late afternoon, take a gentle walk up Coconut Tree Hill for an iconic panoramic view of the turquoise bay framed by slender palms.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Gourmet Dinner",
+          "image": "assets/images/beach/arugam-bay-4.webp"
+        },
+        {
+          "day": 5,
+          "title": "Gentle Ocean Giants • Blue Whale Marine Safari",
+          "description": "Board a private chartered boat at sunrise into the deep oceanic trench off Mirissa. Accompanied by our marine naturalist, encounter the world's largest mammal—the magnificent blue whale—along with pods of playful spinner dolphins.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Gourmet Dinner",
+          "image": "assets/images/beach/arugam-bay-4.webp"
+        },
+        {
+          "day": 6,
+          "title": "Unawatuna Bay & Living Heritage of UNESCO Galle Fort",
+          "description": "Travel to historic Galle. In the afternoon, embark on an insider's walking tour of the 17th-century Dutch Fort with a local heritage historian, strolling cobblestone alleys lined with artisan jewelers, colonial mansions, and bastions overlooking the ocean.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Gourmet Dinner",
+          "image": "assets/images/beach/arugam-bay-4.webp"
+        },
+        {
+          "day": 7,
+          "title": "Stilt Fishermen of Koggala & Coastal Artisan Ateliers",
+          "description": "Witness the timeless practice of stilt fishermen balancing skillfully above the coastal breakers at Koggala. Visit an intimate cinnamon peeling plantation and traditional lace-weaving ateliers.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Gourmet Dinner",
+          "image": "assets/images/beach/arugam-bay-4.webp"
+        },
+        {
+          "day": 8,
+          "title": "Bentota Coastal Sanctuary • Madu River Boat Safari",
+          "description": "Head northward to Bentota's golden ribbon of beach. Enjoy a peaceful motorized boat cruise along the mangrove canopies of the Madu River wetland, visiting a quiet cinnamon island and bird sanctuaries.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Gourmet Dinner",
+          "image": "assets/images/beach/arugam-bay-4.webp"
+        },
+        {
+          "day": 9,
+          "title": "Kosgoda Sea Turtle Sanctuary & Beachfront Leisure",
+          "description": "Visit the renowned Kosgoda Sea Turtle Conservation Project to learn about protecting endangered sea turtles. Spend your final coastal evening with a private candlelit seafood dinner served under the palms right beside the waves.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Gourmet Dinner",
+          "image": "assets/images/beach/arugam-bay-4.webp"
+        },
+        {
+          "day": 10,
+          "title": "Colombo Heritage Drive • Farewell to Ceylon",
+          "description": "Enjoy a leisurely morning swim followed by a scenic transfer to Colombo for light shopping and colonial sightseeing before arriving at the airport for your onward journey with unforgettable memories.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Gourmet Dinner",
+          "image": "assets/images/beach/arugam-bay-4.webp"
+        }
+      ],
+      "highlights": [
+        "Private ocean safari off Mirissa tracking colossal blue whales & spinner dolphins",
+        "Walk along the secluded crescent beaches and coconut palm hills of Tangalle",
+        "Private guided sunset walking tour along the 17th-century ramparts of UNESCO Galle Dutch Fort",
+        "Visit Kosgoda sea turtle conservation project and release baby hatchlings at dusk",
+        "Luxury beachfront relaxation with Ayurvedic spa therapies and private beach dining"
+      ],
+      "inclusions": [
+        "Private luxury air-conditioned vehicle with dedicated licensed chauffeur guide",
+        "9 Nights luxury accommodation in handpicked 4★/5★ beachfront boutique resorts",
+        "Daily gourmet breakfast and select coastal dinners",
+        "Private Mirissa blue whale & dolphin watching boat charter with lifejackets & refreshments",
+        "Private guided walking tour of UNESCO Galle Dutch Fort with heritage host",
+        "Madu River mangrove boat safari and Kosgoda Sea Turtle Sanctuary entrance permits",
+        "All road tolls, fuel, parking fees, and chauffeur accommodation/meals",
+        "Complimentary high-speed in-vehicle Wi-Fi, chilled bottled mineral water, and fresh king coconuts"
+      ],
+      "exclusions": [
+        "International flight tickets and entry visa fees (ETA)",
+        "Lunch and alcoholic beverages (unless specified)",
+        "Optional water sports activities (jet ski, surfing lessons)",
+        "Personal expenses, laundry, and discretionary tipping for guide and drivers"
+      ],
+      "faqs": [],
+      "seo": {
+        "title": "Southern Sands Serenade 10-Day Beach Tour | Lotus Ceylon",
+        "description": "Experience 10 days of barefoot luxury on Sri Lanka's south coast. Mirissa blue whales, UNESCO Galle Dutch Fort, and secluded beachfront villas.",
+        "og_image": "assets/images/beach/mirissa-1.webp"
+      },
+      "status": "published",
+      "sortOrder": 1,
+      "featured": false,
+      "updatedAt": "2026-10-26T08:42:24.779Z"
+    },
+    {
+      "id": "turquoise-eastern-sanctuary",
+      "slug": "turquoise-eastern-sanctuary",
+      "title": "Turquoise Eastern Sanctuary",
+      "subtitle": "Crystal Coral Lagoons, Surfing & Cliffside Shrines",
+      "category": "beach",
+      "nights": 11,
+      "days": 12,
+      "price_from": 0,
+      "hero_image": "assets/images/beach/pasikudah-5.webp",
+      "gallery": [
+        "assets/images/beach/pasikudah-5.webp",
+        "assets/images/beach/arugam-bay-4.webp",
+        "assets/images/beach/arugam-bay-4.webp"
+      ],
+      "video": "",
+      "itinerary": [
+        {
+          "day": 1,
+          "title": "Arrival in Negombo • Gateway to Ceylon",
+          "description": "Touch down in Sri Lanka and transfer to a serene seaside retreat in Negombo. Rest and prepare for your trans-island expedition toward the sunrise coasts.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Gourmet Dinner",
+          "image": "assets/images/beach/arugam-bay-4.webp"
+        },
+        {
+          "day": 2,
+          "title": "Cross-Island Journey to Trincomalee",
+          "description": "Drive across the lush central dry plains toward the historic naval harbor city of Trincomalee on the northeast coast. Arrive at Nilaveli Beach where powdery white sands meet turquoise waters.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Gourmet Dinner",
+          "image": "assets/images/beach/arugam-bay-4.webp"
+        },
+        {
+          "day": 3,
+          "title": "Pigeon Island Marine Sanctuary Snorkeling Expedition",
+          "description": "Take a short speedboat ride to Pigeon Island National Park. Put on your snorkel to marvel at vibrant staghorn corals, sea turtles, and docile reef sharks swimming in crystalline warm water.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Gourmet Dinner",
+          "image": "assets/images/beach/arugam-bay-4.webp"
+        },
+        {
+          "day": 4,
+          "title": "Koneswaram Cliff Temple & Fort Frederick",
+          "description": "Visit historic Fort Frederick and the sacred Koneswaram Kovil perched high on Swami Rock, revered as the 'Temple of a Thousand Pillars' with dizzying ocean drop-offs.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Gourmet Dinner",
+          "image": "assets/images/beach/arugam-bay-4.webp"
+        },
+        {
+          "day": 5,
+          "title": "Coastal Route to the Shallows of Pasikudah",
+          "description": "Follow the eastern coastline south to Pasikudah, renowned for having one of the longest shallow coastline stretches in the world, sheltered by a natural reef barrier.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Gourmet Dinner",
+          "image": "assets/images/beach/arugam-bay-4.webp"
+        },
+        {
+          "day": 6,
+          "title": "Barefoot Lagoon Relaxation & Water Sports",
+          "description": "Spend a peaceful day swimming in calm glass-like waters, paddle-boarding, or indulging in signature coconut oil Ayurvedic massages by the sea.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Gourmet Dinner",
+          "image": "assets/images/beach/arugam-bay-4.webp"
+        },
+        {
+          "day": 7,
+          "title": "Journey to Arugam Bay • The Surfing Capital",
+          "description": "Travel southward along scenic rural roads to Arugam Bay, consistently ranked among the world's top ten surf destinations, surrounded by wild lagoons and peaceful village life.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Gourmet Dinner",
+          "image": "assets/images/beach/arugam-bay-4.webp"
+        },
+        {
+          "day": 8,
+          "title": "Dawn Waves & Elephant Lagoon Safari at Pottuvil",
+          "description": "Catch early morning waves at Main Point or Baby Point with a licensed instructor. In the late afternoon, embark on an authentic lagoon canoe safari through Pottuvil Lagoon to spot wild elephants bathing on the banks.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Gourmet Dinner",
+          "image": "assets/images/beach/arugam-bay-4.webp"
+        },
+        {
+          "day": 9,
+          "title": "Kudumbigala Forest Hermitage & Panama Dunes",
+          "description": "Visit the ancient rock monastery of Kudumbigala rising high above the jungle canopy, followed by an evening walk along the dramatic, windswept sand dunes of Panama.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Gourmet Dinner",
+          "image": "assets/images/beach/arugam-bay-4.webp"
+        },
+        {
+          "day": 10,
+          "title": "Highland Foothills Transit toward Central Country",
+          "description": "Begin the return journey with a scenic inland drive through the foothills of the central highlands, enjoying majestic waterfall views and cool mountain breezes.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Gourmet Dinner",
+          "image": "assets/images/beach/arugam-bay-4.webp"
+        },
+        {
+          "day": 11,
+          "title": "Colonial Colombo Cosmopolitan Evening",
+          "description": "Descend to vibrant Colombo. Enjoy an evening walk through the historic Old Dutch Hospital precinct and sunset drinks overlooking Galle Face Green.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Gourmet Dinner",
+          "image": "assets/images/beach/arugam-bay-4.webp"
+        },
+        {
+          "day": 12,
+          "title": "Farewell to Sri Lanka • Airport Departure",
+          "description": "Following breakfast and final souvenir shopping for premium Ceylon tea and handcrafted treasures, transfer comfortably to the airport for your flight home.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Gourmet Dinner",
+          "image": "assets/images/beach/arugam-bay-4.webp"
+        }
+      ],
+      "highlights": [
+        "Snorkel through kaleidoscopic coral reefs and swim with harmless blacktip reef sharks at Pigeon Island",
+        "Walk out hundreds of meters into the waist-deep, transparent turquoise waters of Pasikudah Bay",
+        "Visit the sacred cliffside Koneswaram Temple perched dramatically above the world's deepest natural harbor",
+        "Experience the legendary surf vibes and golden dune sunsets of world-famous Arugam Bay",
+        "Private chauffeur-guided scenic transit through emerald countryside and wild elephant corridors"
+      ],
+      "inclusions": [
+        "Private luxury vehicle with professional licensed chauffeur guide throughout",
+        "11 Nights premium accommodation in luxury boutique beachfront resorts and lodges",
+        "Daily breakfast and select dinners",
+        "Speedboat transfers and full snorkeling equipment at Pigeon Island National Park",
+        "Pottuvil Lagoon canoe safari with local wildlife boatman",
+        "All conservation fees, temple entrance tickets, and road tolls",
+        "24/7 Lotus Ceylon concierge support, cold bottled water, and seasonal fruits in vehicle"
+      ],
+      "exclusions": [
+        "International flights and visa fees",
+        "Surfboard rentals or advanced surf lessons (available on request)",
+        "Lunches, snacks, and personal beverages",
+        "Gratuities and personal insurance"
+      ],
+      "faqs": [],
+      "seo": {
+        "title": "Turquoise Eastern Sanctuary 12-Day Tour | Lotus Ceylon",
+        "description": "Discover Sri Lanka's East Coast: Pigeon Island coral snorkeling, Pasikudah calm shallow bays, and Arugam Bay surfing luxury.",
+        "og_image": "assets/images/beach/pasikudah-5.webp"
+      },
+      "status": "published",
+      "sortOrder": 2,
+      "featured": false,
+      "updatedAt": "2026-10-26T08:42:24.782Z"
+    },
+    {
+      "id": "pristine-seaboard-odyssey",
+      "slug": "pristine-seaboard-odyssey",
+      "title": "Pristine Seaboard Odyssey",
+      "subtitle": "Dolphins, Dunes & Untouched Northern Islands",
+      "category": "beach",
+      "nights": 13,
+      "days": 14,
+      "price_from": 0,
+      "hero_image": "assets/images/beach/unawatuna-2.webp",
+      "gallery": [
+        "assets/images/beach/unawatuna-2.webp",
+        "assets/images/beach/arugam-bay-4.webp",
+        "assets/images/beach/arugam-bay-4.webp"
+      ],
+      "video": "",
+      "itinerary": [
+        {
+          "day": 1,
+          "title": "Arrival in Colombo • Coastal Highway to Kalpitiya",
+          "description": "Meet your private chauffeur guide at the airport and head north to the wild, windswept peninsula of Kalpitiya, bounded by the sea and a tranquil lagoon.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Gourmet Dinner",
+          "image": "assets/images/beach/arugam-bay-4.webp"
+        },
+        {
+          "day": 2,
+          "title": "Kalpitiya Dolphin Pod Cruise & Coral Bar",
+          "description": "Embark at sunrise on a thrilling ocean cruise. Watch in awe as hundreds of acrobatic spinner dolphins leap beside your boat across pristine waters.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Gourmet Dinner",
+          "image": "assets/images/beach/arugam-bay-4.webp"
+        },
+        {
+          "day": 3,
+          "title": "Historic Mannar Island • Ancient Baobab Trees",
+          "description": "Journey north into the fascinating landscape of Mannar. Marvel at ancient baobab trees planted by Arab seafaring traders centuries ago and explore Dutch colonial ramparts.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Gourmet Dinner",
+          "image": "assets/images/beach/arugam-bay-4.webp"
+        },
+        {
+          "day": 4,
+          "title": "Adam’s Bridge Mythical Sandbanks",
+          "description": "Drive out to the western tip of Mannar Island to view the mythical limestone shoals of Rama Sethu (Adam’s Bridge) connecting Sri Lanka toward India.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Gourmet Dinner",
+          "image": "assets/images/beach/arugam-bay-4.webp"
+        },
+        {
+          "day": 5,
+          "title": "Crossing into Northern Jaffna Peninsula",
+          "description": "Cross the historic Elephant Pass causeway into the vibrant cultural landscape of Jaffna. Check into your heritage boutique hotel and enjoy authentic northern crab curry.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Gourmet Dinner",
+          "image": "assets/images/beach/arugam-bay-4.webp"
+        },
+        {
+          "day": 6,
+          "title": "Casuarina Beach & Sacred Keerimalai Natural Springs",
+          "description": "Unwind on the silky soft white sands of Casuarina Beach on Karainagar Island, followed by a visit to the natural mineral water springs of Keerimalai by the ocean.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Gourmet Dinner",
+          "image": "assets/images/beach/arugam-bay-4.webp"
+        },
+        {
+          "day": 7,
+          "title": "Nagadeepa Island Temple Boat Crossing",
+          "description": "Take a short ferry ride to sacred Nagadeepa Island, visited by the Buddha, and admire the vibrant, soaring gopurams of the ancient Nagapooshani Amman Kovil.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Gourmet Dinner",
+          "image": "assets/images/beach/arugam-bay-4.webp"
+        },
+        {
+          "day": 8,
+          "title": "Coast-to-Coast Drive to Trincomalee",
+          "description": "Travel across to the tranquil eastern shores of Trincomalee. Unpack at a private beachfront villa on Nilaveli Beach.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Gourmet Dinner",
+          "image": "assets/images/beach/arugam-bay-4.webp"
+        },
+        {
+          "day": 9,
+          "title": "Snorkeling Pigeon Island Coral Sanctuaries",
+          "description": "Spend the morning snorkeling above protected marine reefs teeming with tropical sea life, followed by a relaxed afternoon sipping fresh coconuts.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Gourmet Dinner",
+          "image": "assets/images/beach/arugam-bay-4.webp"
+        },
+        {
+          "day": 10,
+          "title": "Pasikudah Bay • The Infinite Shallow Horizon",
+          "description": "Head south to Pasikudah's tranquil bay. Enjoy barefoot strolls along the calm shoreline and dip in the warm, wave-free sea.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Gourmet Dinner",
+          "image": "assets/images/beach/arugam-bay-4.webp"
+        },
+        {
+          "day": 11,
+          "title": "Pure Beachfront Serenity in Pasikudah",
+          "description": "A full day dedicated to rejuvenation. Enjoy personalized wellness spa therapies, fresh seafood dinners, and undisturbed ocean views.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Gourmet Dinner",
+          "image": "assets/images/beach/arugam-bay-4.webp"
+        },
+        {
+          "day": 12,
+          "title": "Inland Cultural Transition to Sigiriya Foothills",
+          "description": "Drive inland toward the majestic cultural triangle for an overnight stay in an eco-luxury pavilion overlooking ancient reservoir lakes.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Gourmet Dinner",
+          "image": "assets/images/beach/arugam-bay-4.webp"
+        },
+        {
+          "day": 13,
+          "title": "Negombo Farewell Evening",
+          "description": "Return westward to Negombo for a celebratory farewell dinner beside the ocean with your private chauffeur guide.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Gourmet Dinner",
+          "image": "assets/images/beach/arugam-bay-4.webp"
+        },
+        {
+          "day": 14,
+          "title": "Departure from Paradise",
+          "description": "Transfer to the international airport for your homeward flight, carrying the peace and purity of Ceylon's untamed coastlines.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Gourmet Dinner",
+          "image": "assets/images/beach/arugam-bay-4.webp"
+        }
+      ],
+      "highlights": [
+        "Boat safari into Kalpitiya waters amidst mega-pods of thousands of spinner dolphins",
+        "Stand on the mythical sandbanks of Adam's Bridge stretching toward the Indian sub-continent",
+        "Walk the tranquil shores of Casuarina Beach in Jaffna and bathe in sacred Keerimalai springs",
+        "Explore centuries of untouched northern maritime culture, colonial fortresses, and seafood feasts",
+        "Seamless trans-coastal loop linking the remote northwest, deep north, and eastern coastlines"
+      ],
+      "inclusions": [
+        "Private luxury vehicle with dedicated licensed chauffeur guide throughout 14 days",
+        "13 Nights luxury boutique and 5★ accommodation across remote and iconic coastlines",
+        "Daily breakfast and select gourmet regional dinners",
+        "Private dolphin watching boat expedition in Kalpitiya",
+        "Ferry tickets to Nagadeepa Island and boat transfers to Pigeon Island",
+        "All national park permits, community fees, road tolls, and parking taxes",
+        "24/7 dedicated concierge assistance, complimentary Wi-Fi, and refreshments on board"
+      ],
+      "exclusions": [
+        "International flights and ETA visa fees",
+        "Personal expenses, laundry, and discretionary tipping",
+        "Optional water sports and kite-surfing lessons in Kalpitiya",
+        "Travel and medical insurance"
+      ],
+      "faqs": [],
+      "seo": {
+        "title": "Pristine Seaboard Odyssey 14-Day Tour | Lotus Ceylon",
+        "description": "The ultimate 14-day coastal voyage of Sri Lanka: Kalpitiya dolphins, Adam's Bridge in Mannar, Jaffna islands, and Pasikudah shallows.",
+        "og_image": "assets/images/beach/unawatuna-2.webp"
+      },
+      "status": "published",
+      "sortOrder": 3,
+      "featured": false,
+      "updatedAt": "2026-10-26T08:42:24.783Z"
+    },
+    {
+      "id": "royal-kingdoms-sacred-temples",
+      "slug": "royal-kingdoms-sacred-temples",
+      "title": "Royal Kingdoms & Sacred Temples",
+      "subtitle": "The Essential UNESCO Heritage Triangle",
+      "category": "cultural",
+      "nights": 5,
+      "days": 6,
+      "price_from": 0,
+      "hero_image": "assets/images/cultural/sigiriya-1.webp",
+      "gallery": [
+        "assets/images/cultural/sigiriya-1.webp",
+        "assets/images/cultural/dambulla-cave-temple-2.webp",
+        "assets/images/cultural/dambulla-cave-temple-2.webp"
+      ],
+      "video": "",
+      "itinerary": [
+        {
+          "day": 1,
+          "title": "Arrival in Negombo • Welcome to Ancient Ceylon",
+          "description": "Arrive at the airport and receive a warm traditional welcome with fragrant lotus flowers from your private Lotus Ceylon chauffeur guide. Transfer to your serene Negombo hotel to rest and acclimate.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Gourmet Dinner",
+          "image": "assets/images/cultural/dambulla-cave-temple-2.webp"
+        },
+        {
+          "day": 2,
+          "title": "Dambulla Cave Frescoes & Habarana Sanctuary",
+          "description": "Drive into the Cultural Triangle. Ascend the gentle granite slopes of Dambulla to explore five sacred cave shrines filled with masterfully painted Buddhist frescoes. Continue to your forest boutique resort.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Gourmet Dinner",
+          "image": "assets/images/cultural/dambulla-cave-temple-2.webp"
+        },
+        {
+          "day": 3,
+          "title": "Sigiriya 5th-Century Sky Fortress & Village Immersion",
+          "description": "At dawn, climb King Kasyapa's 5th-century Sigiriya Rock Fortress before the morning sun warms the stone. Pass the famous Cloud Maidens frescoes and the colossal Lion's Paw terrace. In the afternoon, enjoy an authentic wooden catamaran ride and clay-pot lunch in rural Hiriwadunna.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Gourmet Dinner",
+          "image": "assets/images/cultural/dambulla-cave-temple-2.webp"
+        },
+        {
+          "day": 4,
+          "title": "Spice Gardens of Matale & Highland Royal Capital of Kandy",
+          "description": "Travel southward into the mist-draped hills of Kandy, stopping at an organic herbal spice garden in Matale. In Kandy, check into your boutique hotel overlooking the royal lake. At sunset, attend the resonant evening drumming puja inside the Temple of the Sacred Tooth Relic.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Gourmet Dinner",
+          "image": "assets/images/cultural/dambulla-cave-temple-2.webp"
+        },
+        {
+          "day": 5,
+          "title": "Peradeniya Royal Botanical Gardens & Colombo",
+          "description": "Stroll beneath towering Royal Palms and giant Java Fig trees in Peradeniya Botanical Gardens, once reserved exclusively for Kandyan royalty. Drive down to Colombo for colonial sightseeing and an exquisite farewell dinner.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Gourmet Dinner",
+          "image": "assets/images/cultural/dambulla-cave-temple-2.webp"
+        },
+        {
+          "day": 6,
+          "title": "Farewell to Ceylon • Airport Transfer",
+          "description": "Following breakfast and time for souvenir shopping at high-end artisan craft markets, your private guide escorts you to the airport for your departure.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Gourmet Dinner",
+          "image": "assets/images/cultural/dambulla-cave-temple-2.webp"
+        }
+      ],
+      "highlights": [
+        "Early dawn ascent of the 5th-century Sigiriya Rock Fortress with panoramic 360° summit views",
+        "Marvel at 150+ gilded Buddha statues and 2,000-year-old murals in Dambulla Cave Temples",
+        "Participate in the sacred evening drumming puja at Kandy's Temple of the Sacred Tooth Relic",
+        "Traditional catamaran ride across lily-covered village lakes followed by an authentic clay pot lunch",
+        "Stroll among 4,000 species of exotic flora in the historic Peradeniya Royal Botanical Gardens"
+      ],
+      "inclusions": [
+        "Private luxury air-conditioned vehicle with dedicated licensed chauffeur guide throughout",
+        "5 Nights accommodation in premier 4★/5★ heritage boutique hotels",
+        "Daily gourmet breakfast and authentic dining experiences",
+        "Priority entrance tickets to Sigiriya Rock Fortress, Dambulla Cave Temples, and Kandy Temple of the Tooth",
+        "Traditional catamaran village excursion with private local culinary lunch",
+        "Entrance permits to Peradeniya Royal Botanical Gardens",
+        "All road tolls, driver accommodation, and complimentary chilled bottled water"
+      ],
+      "exclusions": [
+        "International flights and entry visas",
+        "Personal expenses, camera permits where applicable, and discretionary gratuities",
+        "Travel insurance"
+      ],
+      "faqs": [],
+      "seo": {
+        "title": "Royal Kingdoms & Sacred Temples 6-Day Cultural Tour | Lotus Ceylon",
+        "description": "Explore Sri Lanka's cultural highlights in 6 days: Sigiriya Lion Rock, Dambulla Cave Temple, Kandy Temple of the Tooth, and Peradeniya Gardens.",
+        "og_image": "assets/images/cultural/sigiriya-1.webp"
+      },
+      "status": "published",
+      "sortOrder": 4,
+      "featured": false,
+      "updatedAt": "2026-10-26T08:42:24.784Z"
+    },
+    {
+      "id": "the-sacred-lotus-triangle",
+      "slug": "the-sacred-lotus-triangle",
+      "title": "The Sacred Lotus Triangle",
+      "subtitle": "Living UNESCO Heritage Across Three Ancient Capitals",
+      "category": "cultural",
+      "nights": 8,
+      "days": 9,
+      "price_from": 0,
+      "hero_image": "assets/images/cultural/dambulla-cave-temple-2.webp",
+      "gallery": [
+        "assets/images/cultural/dambulla-cave-temple-2.webp",
+        "assets/images/cultural/dambulla-cave-temple-2.webp",
+        "assets/images/cultural/dambulla-cave-temple-2.webp"
+      ],
+      "video": "",
+      "itinerary": [
+        {
+          "day": 1,
+          "title": "Arrival in Negombo • Coastal Sanctuary",
+          "description": "Receive a private VIP airport greeting and transfer to your peaceful beachfront resort in Negombo. Relax with a fresh tropical fruit drink and acclimate to the island's rhythm.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Gourmet Dinner",
+          "image": "assets/images/cultural/dambulla-cave-temple-2.webp"
+        },
+        {
+          "day": 2,
+          "title": "Pilgrimage to First Royal Capital: Anuradhapura",
+          "description": "Drive northward to Anuradhapura, Ceylon's sacred capital for over a millennium. Pay homage to the sacred Jaya Sri Maha Bodhi and stand in awe beneath the towering white dome of Ruwanwelisaya Stupa.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Gourmet Dinner",
+          "image": "assets/images/cultural/dambulla-cave-temple-2.webp"
+        },
+        {
+          "day": 3,
+          "title": "Monastic Sanctuaries & Mihintale Cradle of Buddhism",
+          "description": "Explore the peaceful monastic ruins of Jetavanarama and the serene stone guardstones of Ratnaprasada. In the afternoon, climb the rock stairway of Mihintale, revered as the sacred birthplace of Buddhism in Sri Lanka.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Gourmet Dinner",
+          "image": "assets/images/cultural/dambulla-cave-temple-2.webp"
+        },
+        {
+          "day": 4,
+          "title": "Mystic Ritigala Forest Hermitage & Sigiriya",
+          "description": "Journey south through dense forests to the enigmatic ruins of Ritigala Strict Nature Reserve, where ancient monastic walking paths wind past silent meditation platforms. Continue to your luxury resort overlooking Sigiriya.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Gourmet Dinner",
+          "image": "assets/images/cultural/dambulla-cave-temple-2.webp"
+        },
+        {
+          "day": 5,
+          "title": "Sigiriya Dawn Fortress Ascent & Village Catamaran Safari",
+          "description": "Ascend Sigiriya Rock Fortress at sunrise, admiring the mirror wall and dramatic cloud maidens frescoes. Afternoon at leisure followed by an authentic village catamaran ride and rural dining.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Gourmet Dinner",
+          "image": "assets/images/cultural/dambulla-cave-temple-2.webp"
+        },
+        {
+          "day": 6,
+          "title": "Medieval Splendor of Polonnaruwa by Bicycle",
+          "description": "Cycle along tree-lined shaded avenues through the 12th-century medieval capital of Polonnaruwa. Gaze at the masterfully carved granite Buddha statues of Gal Vihara and the Royal Palace of King Parakramabahu.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Gourmet Dinner",
+          "image": "assets/images/cultural/dambulla-cave-temple-2.webp"
+        },
+        {
+          "day": 7,
+          "title": "Dambulla Golden Caves to Royal Mountain Capital Kandy",
+          "description": "Explore Dambulla's cave temple sanctuaries before winding into the misty hills of Kandy. In the evening, observe sacred drumming rituals during the public veneration at the Temple of the Sacred Tooth Relic.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Gourmet Dinner",
+          "image": "assets/images/cultural/dambulla-cave-temple-2.webp"
+        },
+        {
+          "day": 8,
+          "title": "Peradeniya Royal Gardens & Scenic Transit to Colombo",
+          "description": "Stroll through the world-renowned Peradeniya Botanical Gardens with its famed orchid pavilion. Transfer to Colombo for an evening heritage driving tour and fine dining.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Gourmet Dinner",
+          "image": "assets/images/cultural/dambulla-cave-temple-2.webp"
+        },
+        {
+          "day": 9,
+          "title": "Farewell to Sacred Ceylon",
+          "description": "Enjoy breakfast, last-minute artisanal shopping, and a comfortable private transfer to the international airport for your flight home.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Gourmet Dinner",
+          "image": "assets/images/cultural/dambulla-cave-temple-2.webp"
+        }
+      ],
+      "highlights": [
+        "Blessing at the world’s oldest documented planted tree—the sacred Jaya Sri Maha Bodhi in Anuradhapura",
+        "Cycle through the majestic ruins of medieval Polonnaruwa, marveling at the colossal Gal Vihara stone Buddhas",
+        "Climb both the iconic Sigiriya Rock and the sacred forest hermitage of Ritigala",
+        "Experience candlelit evening pujas and sacred chanting in the Temple of the Sacred Tooth Relic",
+        "Stay in eco-luxury pavilions nestled among ancient trees and serene reservoir waters"
+      ],
+      "inclusions": [
+        "Private luxury vehicle with dedicated English-speaking licensed chauffeur guide",
+        "8 Nights luxury accommodation in boutique heritage hotels",
+        "Daily gourmet breakfast and selected local culinary feasts",
+        "All entrance permits to Anuradhapura, Mihintale, Ritigala, Sigiriya, Polonnaruwa, Dambulla, and Kandy Tooth Relic",
+        "Bicycle rentals in Polonnaruwa and village catamaran experience",
+        "All tolls, parking, fuel, and round-the-clock concierge support"
+      ],
+      "exclusions": [
+        "International air tickets and visa fees",
+        "Lunches, beverages, and personal expenses",
+        "Optional hot air balloon flight over Sigiriya (available Dec–Apr)",
+        "Discretionary tipping and personal travel insurance"
+      ],
+      "faqs": [],
+      "seo": {
+        "title": "The Sacred Lotus Triangle 9-Day Tour | Lotus Ceylon",
+        "description": "Immerse in Anuradhapura, Polonnaruwa, Sigiriya, and Kandy on a private 9-day luxury cultural tour of Sri Lanka.",
+        "og_image": "assets/images/cultural/dambulla-cave-temple-2.webp"
+      },
+      "status": "published",
+      "sortOrder": 5,
+      "featured": false,
+      "updatedAt": "2026-10-26T08:42:24.784Z"
+    },
+    {
+      "id": "three-millennia-of-living-heritage",
+      "slug": "three-millennia-of-living-heritage",
+      "title": "Three Millennia of Living Heritage",
+      "subtitle": "The Grand North-to-South Cultural & Historical Odyssey",
+      "category": "cultural",
+      "nights": 14,
+      "days": 15,
+      "price_from": 0,
+      "hero_image": "assets/images/cultural/polonnaruwa-gal-vihara-3.webp",
+      "gallery": [
+        "assets/images/cultural/polonnaruwa-gal-vihara-3.webp",
+        "assets/images/cultural/dambulla-cave-temple-2.webp",
+        "assets/images/cultural/dambulla-cave-temple-2.webp"
+      ],
+      "video": "",
+      "itinerary": [
+        {
+          "day": 1,
+          "title": "Arrival in Negombo • Coastal Sanctuary",
+          "description": "Warm arrival reception by your Lotus Ceylon private chauffeur guide. Transfer to your luxury Negombo boutique stay.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Gourmet Dinner",
+          "image": "assets/images/cultural/dambulla-cave-temple-2.webp"
+        },
+        {
+          "day": 2,
+          "title": "Wilpattu Sacred Monasteries & Anuradhapura",
+          "description": "Drive northward toward Anuradhapura, visiting tranquil forest hermitages along the border of Wilpattu. Check into your heritage sanctuary.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Gourmet Dinner",
+          "image": "assets/images/cultural/dambulla-cave-temple-2.webp"
+        },
+        {
+          "day": 3,
+          "title": "The First Kingdom: Sacred Anuradhapura & Mihintale",
+          "description": "Full day dedicated to the sacred stupas of Ruwanwelisaya, Abhayagiri, and the sacred Jaya Sri Maha Bodhi. Sunset ascent of Mihintale.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Gourmet Dinner",
+          "image": "assets/images/cultural/dambulla-cave-temple-2.webp"
+        },
+        {
+          "day": 4,
+          "title": "Journey into the Deep North • Jaffna Peninsula",
+          "description": "Cross the Elephant Pass causeway into the vibrant northern cultural capital of Jaffna. Visit the monumental Nallur Kandaswamy Kovil.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Gourmet Dinner",
+          "image": "assets/images/cultural/dambulla-cave-temple-2.webp"
+        },
+        {
+          "day": 5,
+          "title": "Jaffna Dutch Fort & Nagadeepa Sacred Island",
+          "description": "Explore the star-shaped Jaffna Dutch Fort and take a wooden ferry to sacred Nagadeepa Purana Viharaya and Nagapooshani Amman Temple.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Gourmet Dinner",
+          "image": "assets/images/cultural/dambulla-cave-temple-2.webp"
+        },
+        {
+          "day": 6,
+          "title": "Southward to the Cultural Triangle • Sigiriya",
+          "description": "Descend southward to Sigiriya. Relax in luxury eco-villas surrounded by peaceful nature and paddy fields.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Gourmet Dinner",
+          "image": "assets/images/cultural/dambulla-cave-temple-2.webp"
+        },
+        {
+          "day": 7,
+          "title": "Sigiriya Dawn Sky Citadel & Rural Village Life",
+          "description": "Early morning climb of Sigiriya Lion Rock Fortress. Afternoon village catamaran ride and authentic clay pot meal in Hiriwadunna.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Gourmet Dinner",
+          "image": "assets/images/cultural/dambulla-cave-temple-2.webp"
+        },
+        {
+          "day": 8,
+          "title": "Polonnaruwa Medieval Capital Ruins by Bicycle",
+          "description": "Cycle among the ancient stone wonders of Polonnaruwa, marveling at Gal Vihara and the lotus-shaped baths.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Gourmet Dinner",
+          "image": "assets/images/cultural/dambulla-cave-temple-2.webp"
+        },
+        {
+          "day": 9,
+          "title": "Dambulla Cave Temples to Royal Hill Capital Kandy",
+          "description": "Explore the five painted caves of Dambulla, then journey into the misty mountains of Kandy. Attend the evening Tooth Relic puja.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Gourmet Dinner",
+          "image": "assets/images/cultural/dambulla-cave-temple-2.webp"
+        },
+        {
+          "day": 10,
+          "title": "Peradeniya Botanic Gardens & Three Ancient Temples",
+          "description": "Discover the 14th-century Gadaladeniya, Embekke (famous for intricate wood carvings), and Lankatilaka temples, followed by the Royal Botanic Gardens.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Gourmet Dinner",
+          "image": "assets/images/cultural/dambulla-cave-temple-2.webp"
+        },
+        {
+          "day": 11,
+          "title": "Colonial Highlands of Nuwara Eliya & Tea Estates",
+          "description": "Wind through emerald tea-carpeted mountains to 'Little England'. Tour a heritage tea factory and sip pure Ceylon single-estate tea.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Gourmet Dinner",
+          "image": "assets/images/cultural/dambulla-cave-temple-2.webp"
+        },
+        {
+          "day": 12,
+          "title": "Scenic Mountain Descent to UNESCO Galle Dutch Fort",
+          "description": "Descend through tea valleys and cascading waterfalls to the historic southern coastline and Galle Dutch Fort.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Gourmet Dinner",
+          "image": "assets/images/cultural/dambulla-cave-temple-2.webp"
+        },
+        {
+          "day": 13,
+          "title": "Ramparts, Bastions & Living Maritime History of Galle",
+          "description": "Full day soaking in the ambiance of Galle Fort: visit the Dutch Reformed Church, maritime museum, and enjoy sunset drinks along Flag Rock Bastion.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Gourmet Dinner",
+          "image": "assets/images/cultural/dambulla-cave-temple-2.webp"
+        },
+        {
+          "day": 14,
+          "title": "Colombo Metropolitan Heritage Drive",
+          "description": "Travel to Colombo along the southern expressway. Tour the historic Pettah markets, Old Parliament, and National Museum before your farewell dinner.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Gourmet Dinner",
+          "image": "assets/images/cultural/dambulla-cave-temple-2.webp"
+        },
+        {
+          "day": 15,
+          "title": "Departure from Sri Lanka",
+          "description": "Bid farewell to Ceylon as your private chauffeur guide escorts you to the airport for your return flight.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Gourmet Dinner",
+          "image": "assets/images/cultural/dambulla-cave-temple-2.webp"
+        }
+      ],
+      "highlights": [
+        "Traverse the full cultural breadth of Ceylon from ancient northern Tamil kingdoms to southern colonial ramparts",
+        "Discover the sacred islands, towering kovils, and colonial libraries of Jaffna",
+        "Pay homage at the sacred Bodhi Tree in Anuradhapura and climb Sigiriya Rock Citadel",
+        "Experience highland colonial tea estates, scenic mountain railways, and sacred mountain temples",
+        "Walk the 400-year-old cobblestone lanes and ocean ramparts of UNESCO Galle Dutch Fort"
+      ],
+      "inclusions": [
+        "Private luxury vehicle with dedicated licensed chauffeur guide for all 15 days",
+        "14 Nights luxury boutique and 5★ heritage accommodation across all regions",
+        "Daily gourmet breakfast and curated dining experiences",
+        "All monument and site entrance fees across Anuradhapura, Jaffna, Sigiriya, Polonnaruwa, Dambulla, Kandy, and Galle",
+        "Bicycle hire in Polonnaruwa and private boat crossing to Nagadeepa",
+        "Tea factory private VIP tasting experience",
+        "All tolls, parking, fuel, and 24/7 Lotus Ceylon concierge support"
+      ],
+      "exclusions": [
+        "International airfare and Sri Lanka ETA visa fees",
+        "Lunches and alcoholic drinks",
+        "Optional hot air ballooning or scenic helicopter charters",
+        "Personal gratuities and travel insurance"
+      ],
+      "faqs": [],
+      "seo": {
+        "title": "Three Millennia of Living Heritage 15-Day Tour | Lotus Ceylon",
+        "description": "The definitive 15-day cultural odyssey of Sri Lanka: Jaffna, Anuradhapura, Sigiriya, Kandy, and Galle Fort with private luxury chauffeur guide.",
+        "og_image": "assets/images/cultural/polonnaruwa-gal-vihara-3.webp"
+      },
+      "status": "published",
+      "sortOrder": 6,
+      "featured": false,
+      "updatedAt": "2026-10-26T08:42:24.785Z"
+    },
+    {
+      "id": "wild-ceylon-predator-elephant-trail",
+      "slug": "wild-ceylon-predator-elephant-trail",
+      "title": "Wild Ceylon Predator & Elephant Trail",
+      "subtitle": "Big Cats, Sloth Bears & The Great Elephant Gathering",
+      "category": "wildlife",
+      "nights": 7,
+      "days": 8,
+      "price_from": 0,
+      "hero_image": "assets/images/wildlife/minneriya-elephant-gathering-2.webp",
+      "gallery": [
+        "assets/images/wildlife/minneriya-elephant-gathering-2.webp",
+        "assets/images/wildlife/minneriya-elephant-gathering-2.webp",
+        "assets/images/wildlife/minneriya-elephant-gathering-2.webp"
+      ],
+      "video": "",
+      "itinerary": [
+        {
+          "day": 1,
+          "title": "Arrival in Negombo • Coastal Gateway",
+          "description": "Warm welcome at the airport by your Lotus Ceylon safari chauffeur guide. Transfer to your boutique seaside resort in Negombo to relax before heading into the wild.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Gourmet Dinner",
+          "image": "assets/images/wildlife/minneriya-elephant-gathering-2.webp"
+        },
+        {
+          "day": 2,
+          "title": "Wilpattu National Park • Natural Villus & Sloth Bears",
+          "description": "Drive northward to Wilpattu, Sri Lanka’s largest and oldest national park. Board a custom 4x4 safari jeep for an afternoon game drive tracking sloth bears, leopards, and barking deer around natural rainwater basins (villus).",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Gourmet Dinner",
+          "image": "assets/images/wildlife/minneriya-elephant-gathering-2.webp"
+        },
+        {
+          "day": 3,
+          "title": "Dawn Game Drive & Transit to the Elephant Heartlands",
+          "description": "Set off on a misty dawn game drive in Wilpattu when predators are most active. Later, journey to Habarana, the heart of the wild elephant corridor.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Gourmet Dinner",
+          "image": "assets/images/wildlife/minneriya-elephant-gathering-2.webp"
+        },
+        {
+          "day": 4,
+          "title": "The Great Minneriya Elephant Gathering Safari",
+          "description": "In the afternoon, enter Minneriya National Park in an open-top 4x4 jeep to witness the world-renowned 'Gathering'—hundreds of wild elephants grazing, bathing, and playing with their young calves along the reservoir.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Gourmet Dinner",
+          "image": "assets/images/wildlife/minneriya-elephant-gathering-2.webp"
+        },
+        {
+          "day": 5,
+          "title": "Highland Edge Transit toward Yala National Park",
+          "description": "Travel southward along scenic routes toward Yala on the southeast coast, passing rural villages and mountain backdrops. Check into your luxury wilderness lodge or tented camp bordering the park.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Gourmet Dinner",
+          "image": "assets/images/wildlife/minneriya-elephant-gathering-2.webp"
+        },
+        {
+          "day": 6,
+          "title": "Full-Day Yala Leopard & Sloth Bear Tracking",
+          "description": "Experience dawn and late-afternoon private game drives in Yala Block 1 with our expert tracker. Search for the elusive Sri Lankan Leopard, sloth bears, wild boars, and saltwater crocodiles basking along coastal lagoons.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Gourmet Dinner",
+          "image": "assets/images/wildlife/minneriya-elephant-gathering-2.webp"
+        },
+        {
+          "day": 7,
+          "title": "Bundala Wetland Birding Sanctuary & Colombo",
+          "description": "Morning safari at Bundala National Park, a UNESCO Ramsar wetland home to thousands of migratory flamingos, pelicans, and waterbirds. Drive comfortably along the southern highway to Colombo.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Gourmet Dinner",
+          "image": "assets/images/wildlife/minneriya-elephant-gathering-2.webp"
+        },
+        {
+          "day": 8,
+          "title": "Departure from Sri Lanka",
+          "description": "Enjoy breakfast and a city drive before your private chauffeur guide transfers you to the airport for your onward flight.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Gourmet Dinner",
+          "image": "assets/images/wildlife/minneriya-elephant-gathering-2.webp"
+        }
+      ],
+      "highlights": [
+        "Track leopards and sloth bears around the tranquil natural villu lakes of Wilpattu National Park",
+        "Witness up to 300 wild Asian elephants gather along the dry bed of Minneriya reservoir",
+        "Embark on private dawn and dusk 4x4 game drives in Yala Block 1, earth’s densest leopard habitat",
+        "Stay in luxury safari tented camps and eco-lodges with private naturalists and campfire storytelling",
+        "Encounter exotic hornbills, painted storks, mugger crocodiles, and spotted deer in pristine wilderness"
+      ],
+      "inclusions": [
+        "Private luxury vehicle with dedicated licensed safari chauffeur guide throughout",
+        "7 Nights luxury accommodation in premier safari lodges and tented wilderness camps",
+        "Daily breakfast and select safari camp bush dinners",
+        "Private 4x4 custom safari jeeps with experienced wildlife trackers in Wilpattu, Minneriya, and Yala",
+        "All national park entry tickets, conservation fees, and wildlife department taxes",
+        "Complimentary high-speed Wi-Fi, binoculars, chilled bottled water, and seasonal fruits in vehicle"
+      ],
+      "exclusions": [
+        "International air tickets and Sri Lanka ETA visa fees",
+        "Lunches and alcoholic drinks",
+        "Camera permits where applicable and personal gear",
+        "Discretionary tipping for safari jeep drivers and trackers, personal travel insurance"
+      ],
+      "faqs": [],
+      "seo": {
+        "title": "Wild Ceylon Predator & Elephant Trail 8-Day Safari | Lotus Ceylon",
+        "description": "Experience 8 days tracking leopards in Yala and Wilpattu, and witnessing the Minneriya elephant gathering on a private luxury safari in Sri Lanka.",
+        "og_image": "assets/images/wildlife/minneriya-elephant-gathering-2.webp"
+      },
+      "status": "published",
+      "sortOrder": 7,
+      "featured": false,
+      "updatedAt": "2026-10-26T08:42:24.786Z"
+    },
+    {
+      "id": "the-sri-lanka-big-five-expedition",
+      "slug": "the-sri-lanka-big-five-expedition",
+      "title": "The Sri Lanka Big Five Expedition",
+      "subtitle": "Leopard, Elephant, Sloth Bear, Blue Whale & Sperm Whale",
+      "category": "wildlife",
+      "nights": 13,
+      "days": 14,
+      "price_from": 0,
+      "hero_image": "assets/images/wildlife/yala-leopard-1.webp",
+      "gallery": [
+        "assets/images/wildlife/yala-leopard-1.webp",
+        "assets/images/wildlife/minneriya-elephant-gathering-2.webp",
+        "assets/images/wildlife/minneriya-elephant-gathering-2.webp"
+      ],
+      "video": "",
+      "itinerary": [
+        {
+          "day": 1,
+          "title": "Arrival in Negombo • Coastline Gateway",
+          "description": "Receive an authentic VIP welcome by your Lotus Ceylon safari host. Transfer to your boutique seaside resort in Negombo to relax before your expedition.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Gourmet Dinner",
+          "image": "assets/images/wildlife/minneriya-elephant-gathering-2.webp"
+        },
+        {
+          "day": 2,
+          "title": "Wilpattu National Park • Tracking the Sloth Bear & Leopard",
+          "description": "Drive northward to Wilpattu National Park. Afternoon 4x4 safari traversing sand trails and scenic villus to spot sloth bears and leopards.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Gourmet Dinner",
+          "image": "assets/images/wildlife/minneriya-elephant-gathering-2.webp"
+        },
+        {
+          "day": 3,
+          "title": "Full-Day Wilpattu Deep Wilderness Drive",
+          "description": "Spend an entire day immersed in Wilpattu’s untouched wilderness with packed bush breakfast and lunch under shaded mahogany trees.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Gourmet Dinner",
+          "image": "assets/images/wildlife/minneriya-elephant-gathering-2.webp"
+        },
+        {
+          "day": 4,
+          "title": "Transit to Habarana • Minneriya Elephant Gathering",
+          "description": "Drive to Habarana. In the late afternoon, embark on an open 4x4 safari at Minneriya or Kaudulla to witness hundreds of wild elephants.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Gourmet Dinner",
+          "image": "assets/images/wildlife/minneriya-elephant-gathering-2.webp"
+        },
+        {
+          "day": 5,
+          "title": "Minneriya / Hurulu Eco-Park Safari & Night Jungle Walk",
+          "description": "Morning at leisure at your jungle resort. Afternoon safari in Hurulu Eco Park. Evening guided night walk to spot the rare Grey Slender Loris.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Gourmet Dinner",
+          "image": "assets/images/wildlife/minneriya-elephant-gathering-2.webp"
+        },
+        {
+          "day": 6,
+          "title": "Scenic Route to Udawalawe National Park",
+          "description": "Travel southward toward the dry-zone plains of Udawalawe, home to dense resident herds of wild elephants.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Gourmet Dinner",
+          "image": "assets/images/wildlife/minneriya-elephant-gathering-2.webp"
+        },
+        {
+          "day": 7,
+          "title": "Elephant Transit Home & Udawalawe Reservoir Safari",
+          "description": "Visit the Born Free-supported Elephant Transit Home during morning feeding. Afternoon 4x4 safari across Udawalawe’s open grasslands.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Gourmet Dinner",
+          "image": "assets/images/wildlife/minneriya-elephant-gathering-2.webp"
+        },
+        {
+          "day": 8,
+          "title": "Transit to Yala National Park",
+          "description": "Drive to Yala on the southeast coast. Check into your luxury glamping camp. Sunset game drive across Yala’s coastal scrublands.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Gourmet Dinner",
+          "image": "assets/images/wildlife/minneriya-elephant-gathering-2.webp"
+        },
+        {
+          "day": 9,
+          "title": "Yala Block 1 & Block 5 Leopard Safaris",
+          "description": "Morning and afternoon game drives in Yala tracking leopards, jackals, sambar deer, and marsh crocodiles.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Gourmet Dinner",
+          "image": "assets/images/wildlife/minneriya-elephant-gathering-2.webp"
+        },
+        {
+          "day": 10,
+          "title": "Coastal Route to Mirissa Whale Sanctuary",
+          "description": "Drive along the southern coastline to Mirissa. Relax on golden beaches and enjoy fresh seafood dining under coconut palms.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Gourmet Dinner",
+          "image": "assets/images/wildlife/minneriya-elephant-gathering-2.webp"
+        },
+        {
+          "day": 11,
+          "title": "Blue Whale & Sperm Whale Oceanic Safari",
+          "description": "Private sunrise boat charter into the deep submarine canyon off Mirissa, tracking blue whales, sperm whales, and leaping dolphin super-pods.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Gourmet Dinner",
+          "image": "assets/images/wildlife/minneriya-elephant-gathering-2.webp"
+        },
+        {
+          "day": 12,
+          "title": "UNESCO Galle Fort Ramparts & Coastal Relaxation",
+          "description": "Leisurely morning followed by an afternoon walking tour of historic Galle Dutch Fort and sunset drinks overlooking the Indian Ocean.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Gourmet Dinner",
+          "image": "assets/images/wildlife/minneriya-elephant-gathering-2.webp"
+        },
+        {
+          "day": 13,
+          "title": "Return to Colombo • Farewell Dinner",
+          "description": "Drive along the southern highway to Colombo. Evening celebration dinner with your private guide.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Gourmet Dinner",
+          "image": "assets/images/wildlife/minneriya-elephant-gathering-2.webp"
+        },
+        {
+          "day": 14,
+          "title": "Departure from Sri Lanka",
+          "description": "Transfer to the international airport for your homeward journey with extraordinary wildlife memories.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Gourmet Dinner",
+          "image": "assets/images/wildlife/minneriya-elephant-gathering-2.webp"
+        }
+      ],
+      "highlights": [
+        "The complete Sri Lankan Big Five: Leopard, Asian Elephant, Sloth Bear, Blue Whale, and Sperm Whale",
+        "Private boat safari off Mirissa tracking colossal blue whales feeding along deep underwater trenches",
+        "Visit the renowned Udawalawe Elephant Transit Home to watch rehabilitated orphaned elephant calves being fed",
+        "Multiple private game drives across both Wilpattu and Yala national parks with master naturalists",
+        "Luxury wilderness camps, starlit campfire dining, and private beachfront relaxation"
+      ],
+      "inclusions": [
+        "Private luxury vehicle with dedicated licensed safari chauffeur guide throughout 14 days",
+        "13 Nights luxury accommodation in safari tented camps, eco-lodges, and beachfront villas",
+        "Daily breakfast and select gourmet dining experiences",
+        "All private 4x4 safari jeeps and entry permits for Wilpattu, Minneriya, Udawalawe, and Yala",
+        "Private chartered whale watching boat expedition off Mirissa with marine naturalist",
+        "Entrance permits to Udawalawe Elephant Transit Home and Galle Dutch Fort",
+        "All road tolls, fuel, chauffeur fees, and round-the-clock concierge support"
+      ],
+      "exclusions": [
+        "International flights and ETA visa fees",
+        "Lunches and alcoholic drinks",
+        "Personal expenses, camera permits, and discretionary tipping",
+        "Travel insurance"
+      ],
+      "faqs": [],
+      "seo": {
+        "title": "The Sri Lanka Big Five Expedition 14-Day Safari | Lotus Ceylon",
+        "description": "The definitive 14-day wildlife safari: track leopards, elephants, sloth bears, blue whales, and sperm whales with private luxury guides in Sri Lanka.",
+        "og_image": "assets/images/wildlife/yala-leopard-1.webp"
+      },
+      "status": "published",
+      "sortOrder": 8,
+      "featured": false,
+      "updatedAt": "2026-10-26T08:42:24.788Z"
+    },
+    {
+      "id": "untamed-biosphere-rainforest-odyssey",
+      "slug": "untamed-biosphere-rainforest-odyssey",
+      "title": "Untamed Biosphere & Rainforest Odyssey",
+      "subtitle": "From Primary Cloud Forests to Wetland Corridors",
+      "category": "wildlife",
+      "nights": 16,
+      "days": 17,
+      "price_from": 0,
+      "hero_image": "assets/images/wildlife/udawalawe-3.webp",
+      "gallery": [
+        "assets/images/wildlife/udawalawe-3.webp",
+        "assets/images/wildlife/minneriya-elephant-gathering-2.webp",
+        "assets/images/wildlife/minneriya-elephant-gathering-2.webp"
+      ],
+      "video": "",
+      "itinerary": [
+        {
+          "day": 1,
+          "title": "Arrival in Negombo • Gateway to Paradise",
+          "description": "Warm traditional welcome at the airport. Transfer to your boutique seaside resort in Negombo.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Gourmet Dinner",
+          "image": "assets/images/wildlife/minneriya-elephant-gathering-2.webp"
+        },
+        {
+          "day": 2,
+          "title": "Wilpattu National Park Safari",
+          "description": "Drive to Wilpattu. Afternoon 4x4 game drive tracking leopards around natural lakes.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Gourmet Dinner",
+          "image": "assets/images/wildlife/minneriya-elephant-gathering-2.webp"
+        },
+        {
+          "day": 3,
+          "title": "Full-Day Wilpattu Naturalist Exploration",
+          "description": "A full day of tracking sloth bears, spotted deer, and raptors in Wilpattu’s deep forest.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Gourmet Dinner",
+          "image": "assets/images/wildlife/minneriya-elephant-gathering-2.webp"
+        },
+        {
+          "day": 4,
+          "title": "Habarana & Minneriya Elephant Gathering",
+          "description": "Drive across the central plains to Habarana. Afternoon 4x4 safari among hundreds of wild elephants.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Gourmet Dinner",
+          "image": "assets/images/wildlife/minneriya-elephant-gathering-2.webp"
+        },
+        {
+          "day": 5,
+          "title": "Journey to Gal Oya • The Untamed East",
+          "description": "Travel off the beaten path to Gal Oya National Park, Sri Lanka's least visited and most tranquil wilderness.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Gourmet Dinner",
+          "image": "assets/images/wildlife/minneriya-elephant-gathering-2.webp"
+        },
+        {
+          "day": 6,
+          "title": "Boat Safari with Swimming Elephants & Vedda Tribe Walk",
+          "description": "Boat safari on the vast Senanayake Samudra lake to watch elephants swim between islands. Afternoon forest walk with indigenous Vedda chiefs.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Gourmet Dinner",
+          "image": "assets/images/wildlife/minneriya-elephant-gathering-2.webp"
+        },
+        {
+          "day": 7,
+          "title": "Scenic Route to Kumana National Park",
+          "description": "Head south toward Kumana (Yala East), famous for vast mangrove swamps and bird nesting grounds.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Gourmet Dinner",
+          "image": "assets/images/wildlife/minneriya-elephant-gathering-2.webp"
+        },
+        {
+          "day": 8,
+          "title": "Kumana Wetland Safari & Leopard Dunes",
+          "description": "Full-day safari in Kumana exploring Kumana Villu wetland, spotting black-necked storks, spoonbills, and resident leopards.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Gourmet Dinner",
+          "image": "assets/images/wildlife/minneriya-elephant-gathering-2.webp"
+        },
+        {
+          "day": 9,
+          "title": "Transit to Yala National Park",
+          "description": "Drive to Yala. Afternoon safari drive exploring the rocky scrublands of Yala Block 1.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Gourmet Dinner",
+          "image": "assets/images/wildlife/minneriya-elephant-gathering-2.webp"
+        },
+        {
+          "day": 10,
+          "title": "Full-Day Yala Game Drives",
+          "description": "Dawn and afternoon safaris tracking leopards, sloth bears, and wild elephants.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Gourmet Dinner",
+          "image": "assets/images/wildlife/minneriya-elephant-gathering-2.webp"
+        },
+        {
+          "day": 11,
+          "title": "Udawalawe National Park & Elephant Transit Home",
+          "description": "Drive to Udawalawe. Visit the elephant transit home and embark on an afternoon grassland safari.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Gourmet Dinner",
+          "image": "assets/images/wildlife/minneriya-elephant-gathering-2.webp"
+        },
+        {
+          "day": 12,
+          "title": "Ascent into UNESCO Sinharaja Rainforest",
+          "description": "Travel into the lush rainforest canopy of Sinharaja, a UNESCO World Heritage Biosphere Reserve.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Gourmet Dinner",
+          "image": "assets/images/wildlife/minneriya-elephant-gathering-2.webp"
+        },
+        {
+          "day": 13,
+          "title": "Sinharaja Endemic Bird & Frog Trekking",
+          "description": "Guided trek through primary virgin rainforest with an ornithologist, discovering mixed feeding bird flocks and rare orchids.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Gourmet Dinner",
+          "image": "assets/images/wildlife/minneriya-elephant-gathering-2.webp"
+        },
+        {
+          "day": 14,
+          "title": "Highland Tea Cascades to Galle Coastline",
+          "description": "Descend from the rainforest toward the historic coastal town of Galle.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Gourmet Dinner",
+          "image": "assets/images/wildlife/minneriya-elephant-gathering-2.webp"
+        },
+        {
+          "day": 15,
+          "title": "UNESCO Galle Fort Ramparts & Coastal Leisure",
+          "description": "Walking tour of Galle Fort's 17th-century ramparts and ocean bastions.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Gourmet Dinner",
+          "image": "assets/images/wildlife/minneriya-elephant-gathering-2.webp"
+        },
+        {
+          "day": 16,
+          "title": "Colombo Cosmopolitan Evening",
+          "description": "Expressway drive to Colombo. City heritage tour and celebratory farewell dinner.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Gourmet Dinner",
+          "image": "assets/images/wildlife/minneriya-elephant-gathering-2.webp"
+        },
+        {
+          "day": 17,
+          "title": "Departure from Sri Lanka",
+          "description": "Private transfer to the airport for your onward journey.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Gourmet Dinner",
+          "image": "assets/images/wildlife/minneriya-elephant-gathering-2.webp"
+        }
+      ],
+      "highlights": [
+        "Boat safari in Gal Oya National Park watching wild elephants swim between islands in Senanayake Samudra",
+        "Trek through UNESCO Sinharaja Biosphere Reserve seeking rare mixed-species bird feeding flocks and tree frogs",
+        "Explore the untouched birding wilderness of Kumana National Park and coastal mangrove wetlands",
+        "Multi-park safaris in Wilpattu and Yala targeting leopards, sloth bears, and mugger crocodiles",
+        "Stay in premier sustainable luxury eco-lodges and luxury wilderness tented camps"
+      ],
+      "inclusions": [
+        "Private luxury vehicle with dedicated licensed safari chauffeur guide for 17 days",
+        "16 Nights luxury accommodation across premier eco-lodges and luxury safari camps",
+        "Daily breakfast and select gourmet dining experiences",
+        "All private 4x4 safaris in Wilpattu, Minneriya, Kumana, Yala, and Udawalawe",
+        "Unique boat safari in Gal Oya National Park and walk with indigenous Vedda guides",
+        "Guided biodiversity trekking in UNESCO Sinharaja Rainforest with senior naturalist",
+        "All national park permits, community fees, road tolls, and 24/7 concierge support"
+      ],
+      "exclusions": [
+        "International flights and Sri Lanka ETA visa fees",
+        "Lunches, beverages, and personal expenses",
+        "Specialist camera permits and tips for trackers",
+        "Personal travel insurance"
+      ],
+      "faqs": [],
+      "seo": {
+        "title": "Untamed Biosphere & Rainforest Odyssey 17-Day Safari | Lotus Ceylon",
+        "description": "A grand 17-day wildlife expedition across Sri Lanka: Gal Oya swimming elephants, Sinharaja rainforest, Yala leopards, and Kumana wetlands.",
+        "og_image": "assets/images/wildlife/udawalawe-3.webp"
+      },
+      "status": "published",
+      "sortOrder": 9,
+      "featured": false,
+      "updatedAt": "2026-10-26T08:42:24.789Z"
+    },
+    {
+      "id": "ceylon-tea-trails-colonial-grandeur",
+      "slug": "ceylon-tea-trails-colonial-grandeur",
+      "title": "Ceylon Tea Trails & Colonial Grandeur",
+      "subtitle": "A refined highland journey through colonial planter estates, manicured tea gardens, and misty valleys.",
+      "category": "hill-country",
+      "nights": 7,
+      "days": 8,
+      "price_from": 0,
+      "hero_image": "assets/images/tea-country.jpg",
+      "gallery": [
+        "assets/images/tea-country.jpg"
+      ],
+      "video": "",
+      "itinerary": [
+        {
+          "day": "01",
+          "title": "Ayubowan & Transfer to the Royal Hill Capital of Kandy",
+          "description": "Meet your private chauffeur guide at Bandaranaike International Airport (CMB) with a fragrant frangipani welcome. Drive through scenic lowlands into the verdant Kandyan hills. Check into your boutique mountain sanctuary overlooking Mahaweli River.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Dinner Included",
+          "image": "assets/images/hill-country/ella-rock-3.webp"
+        },
+        {
+          "day": "02",
+          "title": "Sacred Temple of the Tooth & Peradeniya Royal Botanic Gardens",
+          "description": "Morning private scholarly tour of the Sacred Relic Temple of the Tooth (Sri Dalada Maligawa). In the afternoon, stroll beneath towering Royal Palms and giant bamboo groves in the historic Royal Botanic Gardens Peradeniya.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Dinner",
+          "image": "assets/images/hill-country/ella-rock-3.webp"
+        },
+        {
+          "day": "03",
+          "title": "Scenic Mountain Railway to Nuwara Eliya (Little England)",
+          "description": "Board the legendary blue train in first-class reserved carriage. Gaze in awe as the train winds past cascading St. Clair's and Devon Falls. Arrive in Nuwara Eliya, renowned for Tudor-style colonial architecture.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Dinner",
+          "image": "assets/images/hill-country/ella-rock-3.webp"
+        },
+        {
+          "day": "04",
+          "title": "Pedro Tea Estate Plucking & Connoisseur Tea Tasting",
+          "description": "Put on a traditional woven tea basket and join local estate pluckers on misty slopes to harvest two leaves and a bud. Experience the rolling, drying, and grading process inside an operating 1885 factory followed by master tasting.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast, High Tea & Dinner",
+          "image": "assets/images/hill-country/ella-rock-3.webp"
+        },
+        {
+          "day": "05",
+          "title": "Horton Plains National Park & Sunrise at World's End",
+          "description": "Pre-dawn drive to Horton Plains plateau. Trek through cloud forests, encounter endemic sambar deer, and stand at World’s End cliff face plunging 880 meters straight down into southern plains.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Dinner",
+          "image": "assets/images/hill-country/ella-rock-3.webp"
+        },
+        {
+          "day": "06",
+          "title": "Picturesque Transfer to Ella & Nine Arches Bridge Walk",
+          "description": "Scenic drive winding through tea terraces to the laid-back mountain hub of Ella. Stroll through eucalyptus woods to photograph the magnificent brick Nine Arches Viaduct Bridge as the afternoon train chugs across.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Dinner",
+          "image": "assets/images/hill-country/ella-rock-3.webp"
+        },
+        {
+          "day": "07",
+          "title": "Little Adam’s Peak Sunrise & Ravana Falls Gorge",
+          "description": "Gentle dawn hike to Little Adam’s Peak summit for 360-degree panoramic views across Ella Gap. Visit the thunderous multi-tiered Ravana Falls cascading down jagged limestone crags.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Dinner",
+          "image": "assets/images/hill-country/ella-rock-3.webp"
+        },
+        {
+          "day": "08",
+          "title": "Descent to Colombo & International Departure",
+          "description": "After a champagne breakfast on your private mountain terrace, enjoy a scenic highway transfer back to Colombo or CMB airport for your onward flight, carrying the aroma of Ceylon highlands.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast Included",
+          "image": "assets/images/hill-country/ella-rock-3.webp"
+        }
+      ],
+      "highlights": [
+        "Stay in historic restored colonial tea planter bungalows",
+        "First-Class reserved seats on Kandy to Nuwara Eliya scenic railway",
+        "Private guided tea factory tour & sensory connoisseur tea tasting",
+        "Sunset cocktail overlooking Nine Arches Viaduct Bridge",
+        "High tea on the manicured lawn of The Grand Hotel Nuwara Eliya"
+      ],
+      "inclusions": [
+        "7 Nights in luxury colonial tea bungalows & mountain boutique resorts",
+        "Daily breakfast, gourmet dinners, and traditional afternoon high tea",
+        "Private luxury air-conditioned vehicle with dedicated mountain chauffeur",
+        "Reserved first-class seats on Kandy to Nuwara Eliya scenic train",
+        "Private guided factory tour and master tea tasting at Pedro Estate",
+        "All national park permits, entrance tickets and conservation taxes",
+        "24/7 Lotus Ceylon dedicated concierge support"
+      ],
+      "exclusions": [
+        "International flight tickets & Sri Lanka visa (ETA)",
+        "Lunches and alcoholic beverages not specified",
+        "Personal tipping and porterage",
+        "Travel insurance"
+      ],
+      "faqs": [],
+      "seo": {
+        "title": "Ceylon Tea Trails & Colonial Grandeur 8-Day Tour | Lotus Ceylon",
+        "description": "Discover the romance of Sri Lanka's tea country with Lotus Ceylon. Colonial planter bungalows, scenic train rides, and misty Nuwara Eliya hills.",
+        "og_image": "assets/images/tea-country.jpg"
+      },
+      "status": "published",
+      "sortOrder": 10,
+      "featured": false,
+      "updatedAt": "2026-10-26T08:42:24.790Z"
+    },
+    {
+      "id": "misty-peaks-scenic-railways-expedition",
+      "slug": "misty-peaks-scenic-railways-expedition",
+      "title": "Misty Peaks & Scenic Railways Expedition",
+      "subtitle": "The definitive highland railway odyssey across dramatic bridges, cloud forests, and tea valleys.",
+      "category": "hill-country",
+      "nights": 9,
+      "days": 10,
+      "price_from": 0,
+      "hero_image": "assets/images/hero-nine-arches.jpg",
+      "gallery": [
+        "assets/images/hero-nine-arches.jpg"
+      ],
+      "video": "",
+      "itinerary": [
+        {
+          "day": "01",
+          "title": "Arrival in Tropical Negombo Coastal Haven",
+          "description": "Arrive at CMB airport and enjoy a private 20-minute transfer to your coastal hotel. Relax after your flight with sea breezes.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Dinner Included",
+          "image": "assets/images/hill-country/ella-rock-3.webp"
+        },
+        {
+          "day": "02",
+          "title": "Ascent to Sacred Kandy & Cultural Heritage Evening",
+          "description": "Drive past lush pineapple plantations into Kandy. Evening cultural drum performance followed by a private temple blessing.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Dinner",
+          "image": "assets/images/hill-country/ella-rock-3.webp"
+        },
+        {
+          "day": "03",
+          "title": "Train Stage 1: Kandy to Hatton Tea Country",
+          "description": "Board the observation saloon train climbing through steep mountain bends into Hatton, the golden heart of Ceylon black tea.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Dinner",
+          "image": "assets/images/hill-country/ella-rock-3.webp"
+        },
+        {
+          "day": "04",
+          "title": "Castlereagh Reservoir Cruise & High Mountain Tea Plucking",
+          "description": "Gentle morning boat excursion on the mirror-like waters of Castlereagh lake. Private afternoon walk through working tea fields.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast, Lunch & Dinner",
+          "image": "assets/images/hill-country/ella-rock-3.webp"
+        },
+        {
+          "day": "05",
+          "title": "Train Stage 2: Hatton to Nanu Oya (Nuwara Eliya)",
+          "description": "Board the train for the scenic climb through Great Western mountain pass to Nanu Oya station. Transfer into Nuwara Eliya.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Dinner",
+          "image": "assets/images/hill-country/ella-rock-3.webp"
+        },
+        {
+          "day": "06",
+          "title": "Horton Plains Plateau & Baker’s Falls Cloud Forest",
+          "description": "Explore the windswept misty moorlands of Horton Plains. Walk along Baker’s Falls trail surrounded by giant rhododendrons.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Dinner",
+          "image": "assets/images/hill-country/ella-rock-3.webp"
+        },
+        {
+          "day": "07",
+          "title": "Train Stage 3: Nanu Oya to Ella Over Demodara Loop",
+          "description": "The most dramatic train journey in Asia. Experience the spiral rail engineering wonder of Demodara Loop and Nine Arches.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Dinner",
+          "image": "assets/images/hill-country/ella-rock-3.webp"
+        },
+        {
+          "day": "08",
+          "title": "Ella Rock Trek & Ravana Gorge Adventure",
+          "description": "Hike through pine forests and mountain ridges to the peak of Ella Rock, gazing over southern plains stretching to the ocean.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Dinner",
+          "image": "assets/images/hill-country/ella-rock-3.webp"
+        },
+        {
+          "day": "09",
+          "title": "Bandarawela Colonial Heritage & Dowa Rock Temple",
+          "description": "Visit the 2,000-year-old rock-hewn Buddha of Dowa. Enjoy afternoon high tea on the colonial terrace of Bandarawela Hotel.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Dinner",
+          "image": "assets/images/hill-country/ella-rock-3.webp"
+        },
+        {
+          "day": "10",
+          "title": "Scenic Highway Descent to Colombo & Departure",
+          "description": "Private chauffeur transfer through scenic southern highway to Colombo or CMB airport for your flight home.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast Included",
+          "image": "assets/images/hill-country/ella-rock-3.webp"
+        }
+      ],
+      "highlights": [
+        "Comprehensive 3-stage scenic railway traversal of the Central Highlands",
+        "Exclusive stay overlooking Castlereagh Lake in Hatton",
+        "Private morning birdwatching walk in Horton Plains cloud forest",
+        "Ella Rock summit hike with private wilderness mountain guide",
+        "Traditional colonial afternoon tea at the historic Bandarawela Hotel"
+      ],
+      "inclusions": [
+        "9 Nights in luxury boutique mountain hotels and restored planter bungalows",
+        "Daily breakfast and 3-course gourmet dinners",
+        "First-class reserved tickets for 3 scenic railway segments",
+        "Dedicated private chauffeur guide and private mountain vehicle",
+        "All national park and excursion entrance permits",
+        "24/7 on-ground travel designer support"
+      ],
+      "exclusions": [
+        "International flights & visas",
+        "Lunches not specified",
+        "Personal expenses"
+      ],
+      "faqs": [],
+      "seo": {
+        "title": "Misty Peaks & Scenic Railways Expedition 10-Day Tour | Lotus Ceylon",
+        "description": "Experience Sri Lanka's world-famous scenic train journeys through Kandy, Hatton, Nuwara Eliya, and Ella with Lotus Ceylon.",
+        "og_image": "assets/images/hero-nine-arches.jpg"
+      },
+      "status": "published",
+      "sortOrder": 11,
+      "featured": false,
+      "updatedAt": "2026-10-26T08:42:24.791Z"
+    },
+    {
+      "id": "highland-wilderness-cascading-waterfalls",
+      "slug": "highland-wilderness-cascading-waterfalls",
+      "title": "Highland Wilderness & Cascading Waterfalls",
+      "subtitle": "A majestic exploration of Sri Lanka's alpine wilderness, roaring cataracts, and sacred mountain peaks.",
+      "category": "hill-country",
+      "nights": 11,
+      "days": 12,
+      "price_from": 0,
+      "hero_image": "assets/images/tea-country.jpg",
+      "gallery": [
+        "assets/images/tea-country.jpg"
+      ],
+      "video": "",
+      "itinerary": [
+        {
+          "day": "01",
+          "title": "Arrival in Colombo & Transfer to Kelani River Valley",
+          "description": "Meet your private chauffeur guide and drive into the rainforest valley of Kitulgala, backdrop to 'The Bridge on the River Kwai'.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Dinner Included",
+          "image": "assets/images/hill-country/ella-rock-3.webp"
+        },
+        {
+          "day": "02",
+          "title": "Rainforest Waterfalls & Secret Canyon Pools",
+          "description": "Morning trek through riverine rainforest to hidden waterfalls. Enjoy a refreshing natural rock pool dip surrounded by emerald forest.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Dinner",
+          "image": "assets/images/hill-country/ella-rock-3.webp"
+        },
+        {
+          "day": "03",
+          "title": "Aberdeen & Laxapana Twin Cataracts Route",
+          "description": "Scenic drive visiting Aberdeen Falls and the roaring 126-meter Laxapana cataract. Ascend to Nuwara Eliya.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Dinner",
+          "image": "assets/images/hill-country/ella-rock-3.webp"
+        },
+        {
+          "day": "04",
+          "title": "St. Clair’s & Devon Falls Panoramic Circuit",
+          "description": "Visit 'Little Niagara of Sri Lanka' St. Clair's Falls. Taste artisanal Ceylon teas overlooking rolling tea valleys.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Dinner",
+          "image": "assets/images/hill-country/ella-rock-3.webp"
+        },
+        {
+          "day": "05",
+          "title": "Horton Plains Wilderness & World’s End",
+          "description": "Hike the 9.5 km loop of Horton Plains. Marvel at misty Baker's Falls cascading over dark volcanic stone.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Dinner",
+          "image": "assets/images/hill-country/ella-rock-3.webp"
+        },
+        {
+          "day": "06",
+          "title": "Transfer to Misty Haputale & High Tea",
+          "description": "Drive along cliff-hugging mountain roads to Haputale, perched on the razor-edge of the southern highland ridge.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Dinner",
+          "image": "assets/images/hill-country/ella-rock-3.webp"
+        },
+        {
+          "day": "07",
+          "title": "Lipton’s Seat Sunrise & Dambatenne Tea Estate",
+          "description": "Dawn drive to Sir Thomas Lipton’s favorite vantage point. Gaze over 5 provinces bathed in morning golden light.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Dinner",
+          "image": "assets/images/hill-country/ella-rock-3.webp"
+        },
+        {
+          "day": "08",
+          "title": "Bambarakanda & Diyaluma Waterfall Adventures",
+          "description": "Stand beneath Sri Lanka's tallest waterfall, Bambarakanda (263m), and trek to the natural infinity pools atop Diyaluma Falls.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Dinner",
+          "image": "assets/images/hill-country/ella-rock-3.webp"
+        },
+        {
+          "day": "09",
+          "title": "Ella Gap & Nine Arches Bridge Walk",
+          "description": "Explore the vibrant cafes, spice gardens, and historic railway viaduct of picturesque Ella valley.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Dinner",
+          "image": "assets/images/hill-country/ella-rock-3.webp"
+        },
+        {
+          "day": "10",
+          "title": "Adam’s Peak Wilderness Foothills / Sri Pada Trail",
+          "description": "Transfer to the sacred foothills of Adam's Peak. Prepare for the evening pilgrimage trail or relax in cloud-forest nature.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Dinner",
+          "image": "assets/images/hill-country/ella-rock-3.webp"
+        },
+        {
+          "day": "11",
+          "title": "Sacred Sunrise Over Adam’s Peak Summit",
+          "description": "Experience the shadow of the sacred peak projected onto the morning cloud blanket. Return for a well-deserved rest.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Dinner",
+          "image": "assets/images/hill-country/ella-rock-3.webp"
+        },
+        {
+          "day": "12",
+          "title": "Descent to Colombo & Departure",
+          "description": "Enjoy a leisurely morning breakfast before private chauffeur transfer to Colombo or CMB airport.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast Included",
+          "image": "assets/images/hill-country/ella-rock-3.webp"
+        }
+      ],
+      "highlights": [
+        "Witness 8 of Sri Lanka's most majestic waterfalls including Diyaluma & Bambarakanda",
+        "Stargazing and sunrise from Lipton’s Seat in Haputale",
+        "Private night ascent option of sacred Adam's Peak (Sri Pada)",
+        "Hidden waterfall plunge pool swim at secret mountain cascading stream",
+        "Highland forest trail walk with a certified botanist"
+      ],
+      "inclusions": [
+        "11 Nights in boutique mountain lodges and luxury ridge-top villas",
+        "Daily breakfast and dinner throughout",
+        "Private luxury vehicle with seasoned highland chauffeur guide",
+        "All waterfall conservation zone permits and guide fees",
+        "Horton Plains National Park trek and Lipton's Seat excursion"
+      ],
+      "exclusions": [
+        "International flights",
+        "Visas",
+        "Lunches not stated"
+      ],
+      "faqs": [],
+      "seo": {
+        "title": "Highland Wilderness & Waterfalls 12-Day Tour | Lotus Ceylon",
+        "description": "Explore Sri Lanka's tallest waterfalls, misty peaks, Horton Plains, and Lipton's Seat with Lotus Ceylon.",
+        "og_image": "assets/images/tea-country.jpg"
+      },
+      "status": "published",
+      "sortOrder": 12,
+      "featured": false,
+      "updatedAt": "2026-10-26T08:42:24.791Z"
+    },
+    {
+      "id": "island-adrenaline-rapids-expedition",
+      "slug": "island-adrenaline-rapids-expedition",
+      "title": "Island Adrenaline & Rapids Expedition",
+      "subtitle": "Grade III white water rapids, jungle canyoning, Knuckles cloud trekking, and southern ocean surf.",
+      "category": "adventure",
+      "nights": 7,
+      "days": 8,
+      "price_from": 0,
+      "hero_image": "assets/images/adventure.jpg",
+      "gallery": [
+        "assets/images/adventure.jpg"
+      ],
+      "video": "",
+      "itinerary": [
+        {
+          "day": "01",
+          "title": "Arrival in Colombo & Direct Expedition Transfer to Kitulgala",
+          "description": "Meet your adventure chauffeur guide. Drive to Kitulgala river canyon basecamp. Safety briefing and gear fitting.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Dinner Included",
+          "image": "assets/images/adventure/adams-peak-2.webp"
+        },
+        {
+          "day": "02",
+          "title": "White Water Rafting & Confidence Waterfall Jump",
+          "description": "Conquer Head Chopper, Virgin's Breast, and Butter Crunch Grade III/IV rapids. Afternoon river canyoning and natural rock sliding.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast, BBQ Lunch & Dinner",
+          "image": "assets/images/adventure/adams-peak-2.webp"
+        },
+        {
+          "day": "03",
+          "title": "Ascent to Knuckles UNESCO Wilderness Range",
+          "description": "Transfer to the rugged Knuckles mountain massif. Trek past isolated cardamom villages and crystal mountain streams.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Dinner",
+          "image": "assets/images/adventure/adams-peak-2.webp"
+        },
+        {
+          "day": "04",
+          "title": "Knuckles Ridge Cloud Forest Summit Trek",
+          "description": "Full day 16km trek across mist-shrouded knife-edge ridges and endemic pygmy forests with certified naturalists.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast, Trail Lunch & Dinner",
+          "image": "assets/images/adventure/adams-peak-2.webp"
+        },
+        {
+          "day": "05",
+          "title": "Transfer to Ella & Flying Ravana Mega Zip-Line",
+          "description": "Scenic mountain drive to Ella. Strap in for Sri Lanka’s fastest mega zip-line flying at 80 km/h over tea valleys.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Dinner",
+          "image": "assets/images/adventure/adams-peak-2.webp"
+        },
+        {
+          "day": "06",
+          "title": "Ella Rock Scramble & Descent to South Coast Surf",
+          "description": "Morning off-trail rock scramble up Ella Rock. Afternoon highway transfer to Weligama Bay surf sanctuary.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Dinner",
+          "image": "assets/images/adventure/adams-peak-2.webp"
+        },
+        {
+          "day": "07",
+          "title": "Private Surf Coaching & Sunset Ocean Cruise",
+          "description": "Private morning surf session tailored to your skill level. Afternoon coastal speedboat cruise searching for marine life.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Dinner",
+          "image": "assets/images/adventure/adams-peak-2.webp"
+        },
+        {
+          "day": "08",
+          "title": "Express Highway Transfer to Colombo & Departure",
+          "description": "Final morning beach dip followed by private highway transfer to CMB airport for onward journey.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast Included",
+          "image": "assets/images/adventure/adams-peak-2.webp"
+        }
+      ],
+      "highlights": [
+        "Grade III & IV white water rafting down the surging Kelani River",
+        "Knuckles Mountain Range cloud forest trek with wilderness survival guide",
+        "Flying Ravana mega zip-line & abseiling in Ella",
+        "Private morning surf lesson with ISA-certified instructor in Weligama Bay",
+        "Night jungle walk searching for nocturnal slender loris"
+      ],
+      "inclusions": [
+        "7 Nights in adventure eco-lodges, wilderness camps and boutique surf villas",
+        "All adventure gear (helmets, CE lifejackets, harnesses, surfboards)",
+        "Certified river guides, trekking naturalists and surf instructors",
+        "All national park permits, river fees, and activity insurances",
+        "Private 4WD AC vehicle and dedicated driver-guide"
+      ],
+      "exclusions": [
+        "International flights",
+        "Visas",
+        "Alcoholic drinks"
+      ],
+      "faqs": [],
+      "seo": {
+        "title": "Island Adrenaline & Rapids Expedition 8-Day Tour | Lotus Ceylon",
+        "description": "Conquer Sri Lanka's wildest outdoor thrills: white water rafting, Knuckles trekking, Ella zip-line, and surfing with Lotus Ceylon.",
+        "og_image": "assets/images/adventure.jpg"
+      },
+      "status": "published",
+      "sortOrder": 13,
+      "featured": false,
+      "updatedAt": "2026-10-26T08:42:24.792Z"
+    },
+    {
+      "id": "wild-peaks-trails-surf-safari",
+      "slug": "wild-peaks-trails-surf-safari",
+      "title": "Wild Peaks, Trails & Surf Safari",
+      "subtitle": "From the deep virgin canopy of Sinharaja to high-altitude peaks and legendary eastern point breaks.",
+      "category": "adventure",
+      "nights": 10,
+      "days": 11,
+      "price_from": 0,
+      "hero_image": "assets/images/adventure.jpg",
+      "gallery": [
+        "assets/images/adventure.jpg"
+      ],
+      "video": "",
+      "itinerary": [
+        {
+          "day": "01",
+          "title": "Arrival & Coastal Transition in Negombo",
+          "description": "Meet your private adventure guide. Rest and refresh overlooking the ocean.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Dinner Included",
+          "image": "assets/images/adventure/adams-peak-2.webp"
+        },
+        {
+          "day": "02",
+          "title": "Into the Deep UNESCO Sinharaja Rainforest",
+          "description": "Drive to the borders of Sinharaja. Trek under towering rainforest canopy with leech socks and certified biodiversity tracker.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Dinner",
+          "image": "assets/images/adventure/adams-peak-2.webp"
+        },
+        {
+          "day": "03",
+          "title": "Sinharaja Bird Waves & Hidden Waterfall Rappel",
+          "description": "Witness the world's largest mixed-species bird feeding flocks. Enjoy controlled waterfall abseiling in dense jungle.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Dinner",
+          "image": "assets/images/adventure/adams-peak-2.webp"
+        },
+        {
+          "day": "04",
+          "title": "Ascent to Ella High Ridges",
+          "description": "Drive into the central highlands. Hike through tea terraces to Little Adam’s Peak and explore Ravana’s Cave.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Dinner",
+          "image": "assets/images/adventure/adams-peak-2.webp"
+        },
+        {
+          "day": "05",
+          "title": "Descent to Arugam Bay Surf Mecca",
+          "description": "Cross the dramatic transition from misty tea highlands to arid eastern coastline and world-renowned surf bays.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Dinner",
+          "image": "assets/images/adventure/adams-peak-2.webp"
+        },
+        {
+          "day": "06",
+          "title": "Dawn Surf Session & Lagoon Wildlife Kayak",
+          "description": "Catch golden dawn waves at Main Point. Afternoon kayak safari through Pottuvil lagoon watching wild elephants and crocodiles.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Dinner",
+          "image": "assets/images/adventure/adams-peak-2.webp"
+        },
+        {
+          "day": "07",
+          "title": "Secret Point Surfing & Kudumbigala Monastery Trek",
+          "description": "Trek through scrub jungles to ancient rock monastery of Kudumbigala with sweeping 360-degree views across untamed wilderness.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Dinner",
+          "image": "assets/images/adventure/adams-peak-2.webp"
+        },
+        {
+          "day": "08",
+          "title": "Kumana (Yala East) National Park Off-Road Safari",
+          "description": "Full-day 4WD expedition in Kumana tracking elusive coastal leopards, sloth bears, and massive aquatic bird breeding colonies.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast, Safari Lunch & Dinner",
+          "image": "assets/images/adventure/adams-peak-2.webp"
+        },
+        {
+          "day": "09",
+          "title": "Southern Coastline Transition to Galle Ramparts",
+          "description": "Drive along scenic southern shoreline. Evening craft beer walk along historic cobblestone Dutch streets of Galle Fort.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Dinner",
+          "image": "assets/images/adventure/adams-peak-2.webp"
+        },
+        {
+          "day": "10",
+          "title": "Ocean Jet-Ski & Mangrove Lagoon Jet Exploration",
+          "description": "Morning coastal watersports followed by relaxed heritage walking tour and sunset cocktails on the lighthouse ramparts.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Dinner",
+          "image": "assets/images/adventure/adams-peak-2.webp"
+        },
+        {
+          "day": "11",
+          "title": "Express Highway Transfer & Departure",
+          "description": "Private chauffeur transfer via southern expressway directly to CMB airport.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast Included",
+          "image": "assets/images/adventure/adams-peak-2.webp"
+        }
+      ],
+      "highlights": [
+        "Deep virgin trek through UNESCO Sinharaja Biosphere Reserve",
+        "Camping under equatorial stars in Arugam Bay surf lagoons",
+        "Surfing the iconic right-hand point breaks of Arugam Bay and Whiskey Point",
+        "Rugged 4x4 off-road safari tracking leopards in Yala East (Kumana)",
+        "Private evening beach campfire with freshly caught grilled seafood"
+      ],
+      "inclusions": [
+        "10 Nights in boutique rainforest lodges, surf retreats, and tented safari camps",
+        "Private custom expedition 4WD vehicle and adventure chauffeur",
+        "Sinharaja expert tracking naturalist and Kumana 4x4 safari drives",
+        "Lagoon kayak expedition and surf coaching gear",
+        "All national park permits and conservation tickets"
+      ],
+      "exclusions": [
+        "International flights",
+        "Visas",
+        "Personal extras"
+      ],
+      "faqs": [],
+      "seo": {
+        "title": "Wild Peaks, Trails & Surf Safari 11-Day Tour | Lotus Ceylon",
+        "description": "The ultimate adventure: Sinharaja rainforest, Ella hiking, Arugam Bay surfing, and Kumana safari with Lotus Ceylon.",
+        "og_image": "assets/images/adventure.jpg"
+      },
+      "status": "published",
+      "sortOrder": 14,
+      "featured": false,
+      "updatedAt": "2026-10-26T08:42:24.792Z"
+    },
+    {
+      "id": "lotus-ayu-holistic-rejuvenation",
+      "slug": "lotus-ayu-holistic-rejuvenation",
+      "title": "Lotus Ayu Holistic Rejuvenation",
+      "subtitle": "A restorative sanctuary escape dedicated to authentic physician-led panchakarma and tranquil rejuvenation.",
+      "category": "ayurvedic",
+      "nights": 9,
+      "days": 10,
+      "price_from": 0,
+      "hero_image": "assets/images/temple-culture.jpg",
+      "gallery": [
+        "assets/images/temple-culture.jpg"
+      ],
+      "video": "",
+      "itinerary": [
+        {
+          "day": "01",
+          "title": "Ayubowan & Welcome to Ayurvedic Beachfront Sanctuary",
+          "description": "Peaceful arrival transfer to your dedicated Ayurvedic coastal sanctuary in Wadduwa. Welcome herbal infusion and tranquil check-in.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Sattvic Dinner",
+          "image": "assets/images/home/hero-sigiriya-aerial-1.webp"
+        },
+        {
+          "day": "02",
+          "title": "Physician Consultation & Initial Dosha Diagnosis",
+          "description": "In-depth pulse analysis (Nadi Pariksha) by our resident Ayurvedic physician. Your personalized therapy and diet plan begins.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Ayurvedic Full Board",
+          "image": "assets/images/home/hero-sigiriya-aerial-1.webp"
+        },
+        {
+          "day": "03",
+          "title": "Panchakarma Phase 1: Deep Herbal Snehana (Oleation)",
+          "description": "Synchronized full-body warm herbal oil massage (Abhyanga) followed by steam herbal bath (Swedana) to release accumulated toxins.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Ayurvedic Full Board",
+          "image": "assets/images/home/hero-sigiriya-aerial-1.webp"
+        },
+        {
+          "day": "04",
+          "title": "The Art of Shirodhara & Nervous System Restoration",
+          "description": "Experience continuous stream of warm medicinal oil over the third eye chakra (Shirodhara), releasing stress and insomnia.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Ayurvedic Full Board",
+          "image": "assets/images/home/hero-sigiriya-aerial-1.webp"
+        },
+        {
+          "day": "05",
+          "title": "Herbal Steam Bath & Organic Botanical Garden Walk",
+          "description": "Guided walking tour through our medicinal botanical gardens identifying sacred neem, gotu kola, and ashwagandha plants.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Ayurvedic Full Board",
+          "image": "assets/images/home/hero-sigiriya-aerial-1.webp"
+        },
+        {
+          "day": "06",
+          "title": "Pinda Sweda (Medicinal Rice & Herbal Bolus Therapy)",
+          "description": "Warm herbal poultice massage deeply rejuvenating joints and muscle tissues. Sunset meditation on the beach.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Ayurvedic Full Board",
+          "image": "assets/images/home/hero-sigiriya-aerial-1.webp"
+        },
+        {
+          "day": "07",
+          "title": "Lagoon Mindfulness & Silent Sunset Reflection",
+          "description": "Gentle boat ride through peaceful mangrove lagoon waters. Silent mindful walking meditation under ancient banyan trees.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Ayurvedic Full Board",
+          "image": "assets/images/home/hero-sigiriya-aerial-1.webp"
+        },
+        {
+          "day": "08",
+          "title": "Ayurvedic Cooking Workshop & Nutrition Principles",
+          "description": "Interactive culinary masterclass learning to use indigenous spices (turmeric, cinnamon, cardamon) for optimal digestion (Agni).",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Ayurvedic Full Board",
+          "image": "assets/images/home/hero-sigiriya-aerial-1.webp"
+        },
+        {
+          "day": "09",
+          "title": "Final Physician Evaluation & Home Wellness Protocol",
+          "description": "Post-treatment assessment with your doctor. Receive tailored herbal prescriptions and daily routine (Dinacharya) advice.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Ayurvedic Full Board",
+          "image": "assets/images/home/hero-sigiriya-aerial-1.webp"
+        },
+        {
+          "day": "10",
+          "title": "Revitalized Departure Transfer to Colombo Airport",
+          "description": "Enjoy a final dawn yoga session and fresh herbal tonic before private chauffeur transfer to CMB airport.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast Included",
+          "image": "assets/images/home/hero-sigiriya-aerial-1.webp"
+        }
+      ],
+      "highlights": [
+        "Private initial pulse diagnosis & dosha consultation with senior Vaidya physician",
+        "Daily bespoke 2.5-hour Ayurvedic treatments (Shirodhara, Abhyanga, Pinda Sweda)",
+        "Sunrise yoga and pranayama breathwork overlooking calm Indian Ocean",
+        "Individualized sattvic organic meal plan prepared according to your dosha",
+        "Herbal garden tour and traditional Ayurvedic medicine preparation workshop"
+      ],
+      "inclusions": [
+        "9 Nights in dedicated oceanfront Ayurvedic wellness resort",
+        "Complete Ayurvedic full-board organic dining tailored to individual doshas",
+        "Daily doctor consultations and personalized daily 2.5-hour therapies",
+        "Daily morning yoga, pranayama, and evening guided meditation",
+        "All herbal medicines, tonics, and customized treatment oils",
+        "Private airport chauffeur transfers in quiet air-conditioned vehicle"
+      ],
+      "exclusions": [
+        "International flights",
+        "Entry visa",
+        "Personal non-wellness expenses"
+      ],
+      "faqs": [],
+      "seo": {
+        "title": "Lotus Ayu Holistic Rejuvenation 10-Day Retreat | Lotus Ceylon",
+        "description": "Authentic physician-guided Ayurvedic panchakarma retreat in Sri Lanka. Shirodhara, daily yoga, and organic sattvic dining.",
+        "og_image": "assets/images/temple-culture.jpg"
+      },
+      "status": "published",
+      "sortOrder": 15,
+      "featured": false,
+      "updatedAt": "2026-10-26T08:42:24.793Z"
+    },
+    {
+      "id": "sacred-serenity-forest-meditation-retreat",
+      "slug": "sacred-serenity-forest-meditation-retreat",
+      "title": "Sacred Serenity & Forest Meditation Retreat",
+      "subtitle": "Combine ancient Buddhist meditation, forest monasteries, and Ayurvedic restorative healing.",
+      "category": "ayurvedic",
+      "nights": 13,
+      "days": 14,
+      "price_from": 0,
+      "hero_image": "assets/images/temple-culture.jpg",
+      "gallery": [
+        "assets/images/temple-culture.jpg"
+      ],
+      "video": "",
+      "itinerary": [
+        {
+          "day": "01",
+          "title": "Arrival & Gentle Transfer to Cultural Forest Haven",
+          "description": "Arrival at CMB airport. Private transfer to a serene forest hermitage retreat near Dambulla surrounded by birdsong.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Dinner Included",
+          "image": "assets/images/home/hero-sigiriya-aerial-1.webp"
+        },
+        {
+          "day": "02",
+          "title": "Dambulla Sacred Rock Caves & Vipassana Introduction",
+          "description": "Morning silent walk through the five sacred cave sanctuaries of Dambulla. Introduction to mindfulness breathing (Anapanasati).",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Dinner",
+          "image": "assets/images/home/hero-sigiriya-aerial-1.webp"
+        },
+        {
+          "day": "03",
+          "title": "Forest Hermitage Meditation & Monastic Audience",
+          "description": "Visit an active Buddhist forest monastery (Aranya Senasanaya). Experience seated meditation under ancient canopy trees.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Vegetarian Lunch",
+          "image": "assets/images/home/hero-sigiriya-aerial-1.webp"
+        },
+        {
+          "day": "04",
+          "title": "Ritigala Strict Nature Reserve & Meditative Ruins",
+          "description": "Explore the stone monastic bridges and meditation platforms of 1st-century BCE Ritigala monastery secluded deep in nature.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Dinner",
+          "image": "assets/images/home/hero-sigiriya-aerial-1.webp"
+        },
+        {
+          "day": "05",
+          "title": "Transfer to Kandy & Evening Temple Puja Drums",
+          "description": "Drive into the hills of Kandy. Participate in evening oil lamp offering and meditative drumming puja at the Temple of the Tooth.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Dinner",
+          "image": "assets/images/home/hero-sigiriya-aerial-1.webp"
+        },
+        {
+          "day": "06",
+          "title": "Embekke Woodcarving Shrines & Meditation Walk",
+          "description": "Visit the 14th-century Gadaladeniya and Embekke temples. Mindful walking along historic rural village pathways.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Dinner",
+          "image": "assets/images/home/hero-sigiriya-aerial-1.webp"
+        },
+        {
+          "day": "07",
+          "title": "Descent to Secluded South Coast Ayurvedic Sanctuary",
+          "description": "Drive down to your peaceful oceanfront Ayurvedic hospital-retreat in Bentota. Settle into total tranquility.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Ayurvedic Dinner",
+          "image": "assets/images/home/hero-sigiriya-aerial-1.webp"
+        },
+        {
+          "day": "08",
+          "title": "Doctor Consultation & Panchakarma Commences",
+          "description": "Comprehensive doctor assessment. Begin tailored daily detox therapies, warm herbal oil massage, and herbal steam baths.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Ayurvedic Full Board",
+          "image": "assets/images/home/hero-sigiriya-aerial-1.webp"
+        },
+        {
+          "day": "09",
+          "title": "Shirodhara & Sound Frequency Healing",
+          "description": "Deep restorative Shirodhara oil flow over the forehead complemented by Tibetan singing bowl acoustic frequency balancing.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Ayurvedic Full Board",
+          "image": "assets/images/home/hero-sigiriya-aerial-1.webp"
+        },
+        {
+          "day": "10",
+          "title": "Herbal Facial & Body Rejuvenation Protocols",
+          "description": "Facial herbal treatments using sandalwood and saffron masks. Daily yoga, pranayama breathing, and peaceful ocean reflection.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Ayurvedic Full Board",
+          "image": "assets/images/home/hero-sigiriya-aerial-1.webp"
+        },
+        {
+          "day": "11",
+          "title": "Pinda Sweda & Botanical Garden Healing",
+          "description": "Medicinal poultice therapies for joint mobility. Walking meditation in lush herb gardens smelling medicinal cinnamon leaves.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Ayurvedic Full Board",
+          "image": "assets/images/home/hero-sigiriya-aerial-1.webp"
+        },
+        {
+          "day": "12",
+          "title": "Internal Purification & Mindful Stillness",
+          "description": "Gentle detoxification day supported by physician-prescribed herbal decoctions and quiet contemplative reading.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Ayurvedic Full Board",
+          "image": "assets/images/home/hero-sigiriya-aerial-1.webp"
+        },
+        {
+          "day": "13",
+          "title": "Closing Puja & Life Integration Consultation",
+          "description": "Final medical consultation. Traditional blessing cord ceremony by Buddhist monks wishing health, peace, and longevity.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Ayurvedic Full Board",
+          "image": "assets/images/home/hero-sigiriya-aerial-1.webp"
+        },
+        {
+          "day": "14",
+          "title": "Departure in Complete Renewed Harmony",
+          "description": "Private chauffeur transfer to CMB airport, completely revitalized in body, clarity, and spirit.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast Included",
+          "image": "assets/images/home/hero-sigiriya-aerial-1.webp"
+        }
+      ],
+      "highlights": [
+        "Silent morning walking meditation in ancient forest monastery caves",
+        "Private audience and Dhamma discussion with senior Buddhist monastic scholar",
+        "7 Days of restorative authentic Ayurvedic therapies at a secluded coastal sanctuary",
+        "Sound bowl healing session and oil lamp blessing ceremony",
+        "Mindful vegetarian dining inspired by sacred temple traditions"
+      ],
+      "inclusions": [
+        "13 Nights in monastic eco-retreats and premier oceanfront Ayurvedic sanctuary",
+        "All Ayurvedic therapies, doctor consultations, medicines, and daily yoga",
+        "Full board dining during Ayurvedic stay and half board in cultural sanctuaries",
+        "Private scholarly Buddhist guide for temple and forest hermitage visits",
+        "Private luxury air-conditioned chauffeur throughout"
+      ],
+      "exclusions": [
+        "International flights",
+        "Visas",
+        "Personal extras"
+      ],
+      "faqs": [],
+      "seo": {
+        "title": "Sacred Serenity & Forest Meditation 14-Day Retreat | Lotus Ceylon",
+        "description": "Discover inner tranquility with Buddhist forest meditation and authentic Ayurveda wellness in Sri Lanka.",
+        "og_image": "assets/images/temple-culture.jpg"
+      },
+      "status": "published",
+      "sortOrder": 16,
+      "featured": false,
+      "updatedAt": "2026-10-26T08:42:24.793Z"
+    },
+    {
+      "id": "enchanted-ceylon-romantic-hideaway",
+      "slug": "enchanted-ceylon-romantic-hideaway",
+      "title": "Enchanted Ceylon Romantic Hideaway",
+      "subtitle": "Private plunge pool villas, misty tea trails, candlelit rampart dining, and secluded southern bays.",
+      "category": "honeymoon",
+      "nights": 8,
+      "days": 9,
+      "price_from": 0,
+      "hero_image": "assets/images/couple-travel.jpg",
+      "gallery": [
+        "assets/images/couple-travel.jpg"
+      ],
+      "video": "",
+      "itinerary": [
+        {
+          "day": "01",
+          "title": "Ayubowan & Welcome to Your Private Coastal Hideaway",
+          "description": "Arrive at CMB airport where your private chauffeur welcomes you with twin orchids. Transfer to a romantic boutique beachfront suite.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Dinner & Welcome Champagne",
+          "image": "assets/images/honeymoon/mirissa-sunset-2.webp"
+        },
+        {
+          "day": "02",
+          "title": "Ascent to the Royal Hills of Kandy",
+          "description": "Scenic drive to Kandy. Visit the sacred Temple of the Tooth and enjoy an intimate dinner overlooking candlelit valley lights.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Dinner",
+          "image": "assets/images/honeymoon/mirissa-sunset-2.webp"
+        },
+        {
+          "day": "03",
+          "title": "Journey into Colonial Ceylon Tea Trails",
+          "description": "Winding drive through misty tea hills to your restored luxury colonial planter bungalow. Unwind beside your fireplace with fine wine.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "All-Inclusive Luxury Dining",
+          "image": "assets/images/honeymoon/mirissa-sunset-2.webp"
+        },
+        {
+          "day": "04",
+          "title": "Romantic Lakeside Picnics & Tea Plantation Strolls",
+          "description": "Delight in a private gourmet picnic hamper set up beside Castlereagh Lake. Hand-in-hand stroll through emerald tea slopes.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "All-Inclusive Luxury Dining",
+          "image": "assets/images/honeymoon/mirissa-sunset-2.webp"
+        },
+        {
+          "day": "05",
+          "title": "Descent to Galle Fort & Sunset Ramparts Walk",
+          "description": "Drive down to the UNESCO World Heritage Galle Fort. Check into a historic 17th-century merchant mansion suite with private butler.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Dinner",
+          "image": "assets/images/honeymoon/mirissa-sunset-2.webp"
+        },
+        {
+          "day": "06",
+          "title": "Private Candlelight Rampart Dinner for Two",
+          "description": "Explore cobblestone alleys, artisan gem boutiques, and perfumed spice courtyards. In the evening, savor a private 5-course dinner under stars.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Romantic Dinner",
+          "image": "assets/images/honeymoon/mirissa-sunset-2.webp"
+        },
+        {
+          "day": "07",
+          "title": "Transfer to Tangalle Secluded Ocean Coves",
+          "description": "Drive to the secluded golden bays of Tangalle. Check into your private ocean plunge pool villa hidden among coconut palms.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Dinner",
+          "image": "assets/images/honeymoon/mirissa-sunset-2.webp"
+        },
+        {
+          "day": "08",
+          "title": "Couples Spa Ritual & Sunset Beach Stroll",
+          "description": "Indulge in a 2-hour synchronized couples massage. Sip chilled Prosecco as the equatorial sunset turns the Indian Ocean to gold.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Dinner",
+          "image": "assets/images/honeymoon/mirissa-sunset-2.webp"
+        },
+        {
+          "day": "09",
+          "title": "Champagne Breakfast & Departure Transfer",
+          "description": "Leisurely in-villa champagne breakfast before your private chauffeur transfers you via southern expressway to CMB airport.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast Included",
+          "image": "assets/images/honeymoon/mirissa-sunset-2.webp"
+        }
+      ],
+      "highlights": [
+        "Handpicked secluded private pool villas throughout the journey",
+        "Private champagne high tea overlooking emerald valleys in Ceylon Tea Trails",
+        "Romantic 5-course candlelight dinner on the historic ramparts of Galle Dutch Fort",
+        "Couples signature aromatherapy spa ritual with warm virgin coconut oil",
+        "Sunset catamaran sailing excursion along secluded southern coves"
+      ],
+      "inclusions": [
+        "8 Nights in premier boutique villas, Tea Trails bungalows and private pool suites",
+        "All gourmet dining, welcome champagne, and private candlelight dinner",
+        "Couples signature 2-hour Ayurvedic spa massage ritual",
+        "Private luxury air-conditioned vehicle with discreet executive chauffeur",
+        "All private monument permits, boat charters, and romantic surprises",
+        "24/7 personalized Lotus Ceylon concierge on call"
+      ],
+      "exclusions": [
+        "International flights",
+        "Visas",
+        "Discretionary staff gratuities"
+      ],
+      "faqs": [],
+      "seo": {
+        "title": "Enchanted Ceylon Romantic Hideaway 9-Day Honeymoon | Lotus Ceylon",
+        "description": "The ultimate luxury honeymoon in Sri Lanka. Tea Trails bungalows, Galle Fort candlelit dinners, and private plunge pool ocean villas.",
+        "og_image": "assets/images/couple-travel.jpg"
+      },
+      "status": "published",
+      "sortOrder": 17,
+      "featured": false,
+      "updatedAt": "2026-10-26T08:42:24.793Z"
+    },
+    {
+      "id": "pure-serenade-coastal-highland-romance",
+      "slug": "pure-serenade-coastal-highland-romance",
+      "title": "Pure Serenade Coastal & Highland Romance",
+      "subtitle": "An intimate grand tour uniting ancient water gardens, mist-clad peaks, wild safari glamping, and turquoise oceans.",
+      "category": "honeymoon",
+      "nights": 11,
+      "days": 12,
+      "price_from": 0,
+      "hero_image": "assets/images/couple-travel.jpg",
+      "gallery": [
+        "assets/images/couple-travel.jpg"
+      ],
+      "video": "",
+      "itinerary": [
+        {
+          "day": "01",
+          "title": "Arrival in Colombo & Transfer to Cultural Oasis",
+          "description": "Warm welcome at CMB airport. Transfer to an eco-luxury water pavilion resort in the Cultural Triangle.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Dinner & Champagne",
+          "image": "assets/images/honeymoon/mirissa-sunset-2.webp"
+        },
+        {
+          "day": "02",
+          "title": "Sigiriya Rock Palace at Golden Hour",
+          "description": "Morning at leisure by your private pool. In the late afternoon, ascend Sigiriya rock fortress as the sun casts long golden shadows.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Dinner",
+          "image": "assets/images/honeymoon/mirissa-sunset-2.webp"
+        },
+        {
+          "day": "03",
+          "title": "Bicycle Ride Through Ancient Royal Monasteries",
+          "description": "Leisurely cycling through shaded ruins of Polonnaruwa royal capital. Private sunset boat ride on ancient Minneriya lake.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Dinner",
+          "image": "assets/images/honeymoon/mirissa-sunset-2.webp"
+        },
+        {
+          "day": "04",
+          "title": "Ascent to Nuwara Eliya Mountain Retreat",
+          "description": "Drive past Dambulla into misty tea country. Check into a colonial manor surrounded by manicured rose gardens.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Dinner",
+          "image": "assets/images/honeymoon/mirissa-sunset-2.webp"
+        },
+        {
+          "day": "05",
+          "title": "Scenic Mountain Train & Nine Arches Viaduct",
+          "description": "Scenic rail journey through tea-clad cliffs to Ella. Stroll along Nine Arches Bridge and enjoy sunset cocktails.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Dinner",
+          "image": "assets/images/honeymoon/mirissa-sunset-2.webp"
+        },
+        {
+          "day": "06",
+          "title": "Descent to Yala Safari Wilderness Glamping",
+          "description": "Drive to Yala. Check into your ultra-luxury cocoon safari tent featuring teak decks, four-poster bed, and private plunge pool.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "All-Inclusive Luxury Dining",
+          "image": "assets/images/honeymoon/mirissa-sunset-2.webp"
+        },
+        {
+          "day": "07",
+          "title": "Private Leopard Safari & Bush Sundowners",
+          "description": "Morning and afternoon private jeep drives tracking leopards and sloth bears with senior naturalist. Sunset champagne in the bush.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "All-Inclusive Luxury Dining",
+          "image": "assets/images/honeymoon/mirissa-sunset-2.webp"
+        },
+        {
+          "day": "08",
+          "title": "Coastal Transfer to Mirissa Beachfront Sanctuary",
+          "description": "Scenic drive along golden southern shores to your private beachfront boutique villa in Mirissa.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Dinner",
+          "image": "assets/images/honeymoon/mirissa-sunset-2.webp"
+        },
+        {
+          "day": "09",
+          "title": "Private Blue Whale Watching Catamaran Charter",
+          "description": "Private morning boat charter sailing into deep waters. Spot colossal blue whales and spinner dolphins in complete seclusion.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Dinner",
+          "image": "assets/images/honeymoon/mirissa-sunset-2.webp"
+        },
+        {
+          "day": "10",
+          "title": "Couples Spa Day & Galle Fort Sunset Ramble",
+          "description": "Indulgent couples Ayurvedic herbal massage. Evening walk along Galle's ramparts followed by an intimate dining experience.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Dinner",
+          "image": "assets/images/honeymoon/mirissa-sunset-2.webp"
+        },
+        {
+          "day": "11",
+          "title": "Barefoot Luxury & Private Beach Barbecue",
+          "description": "A day entirely at leisure to soak up the sun, swim in turquoise waters, and savor a lantern-lit seafood dinner on the sand.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Private Beach BBQ",
+          "image": "assets/images/honeymoon/mirissa-sunset-2.webp"
+        },
+        {
+          "day": "12",
+          "title": "Highway Transfer to Colombo & Departure",
+          "description": "Private luxury chauffeur transfer via expressway to CMB airport for onward romantic journey.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast Included",
+          "image": "assets/images/honeymoon/mirissa-sunset-2.webp"
+        }
+      ],
+      "highlights": [
+        "Private sunset champagne climb of Sigiriya Rock Fortress",
+        "Luxury tented safari glamping in Yala with private plunge pool",
+        "Scenic first-class railway ride through tea-carpeted mountains",
+        "Private sunrise whale watching catamaran charter in Mirissa",
+        "Romantic seafood barbecue dinner directly on secluded private beach"
+      ],
+      "inclusions": [
+        "11 Nights in premier boutique hotels, luxury glamping tents, and pool villas",
+        "All gourmet dinners including private beach BBQ and champagne sundowners",
+        "Exclusive private whale watching charter boat in Mirissa",
+        "Private 4x4 custom safari drives in Yala with dedicated naturalist",
+        "Private luxury vehicle with executive chauffeur guide",
+        "All park permits, monument entrances, and government taxes"
+      ],
+      "exclusions": [
+        "International flights",
+        "Visas",
+        "Personal extras"
+      ],
+      "faqs": [],
+      "seo": {
+        "title": "Pure Serenade Coastal & Highland 12-Day Honeymoon | Lotus Ceylon",
+        "description": "Experience the ultimate Sri Lanka honeymoon: Sigiriya luxury pavilions, Yala safari glamping, and private beachfront villas.",
+        "og_image": "assets/images/couple-travel.jpg"
+      },
+      "status": "published",
+      "sortOrder": 18,
+      "featured": false,
+      "updatedAt": "2026-10-26T08:42:24.794Z"
+    },
+    {
+      "id": "island-wonder-multi-gen-family-discovery",
+      "slug": "island-wonder-multi-gen-family-discovery",
+      "title": "Island Wonder Multi-Gen Family Discovery",
+      "subtitle": "Safe, gentle, and deeply engaging exploration for grandparents, parents, and children alike.",
+      "category": "family",
+      "nights": 9,
+      "days": 10,
+      "price_from": 0,
+      "hero_image": "assets/images/hero-nine-arches.jpg",
+      "gallery": [
+        "assets/images/hero-nine-arches.jpg"
+      ],
+      "video": "",
+      "itinerary": [
+        {
+          "day": "01",
+          "title": "Arrival in Colombo & Child-Friendly Coastal Check-In",
+          "description": "Meet your family-friendly chauffeur guide at CMB airport. Short 20-minute drive to Negombo beach resort with warm swimming pools.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Dinner Included",
+          "image": "assets/images/family/calm-beach-3.webp"
+        },
+        {
+          "day": "02",
+          "title": "Pinnawala Elephants & Transfer to Sigiriya Forest Resort",
+          "description": "Watch majestic elephant herds bathing in Ma Oya river. Drive into Cultural Triangle to a spacious eco-resort with gardens.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Dinner",
+          "image": "assets/images/family/calm-beach-3.webp"
+        },
+        {
+          "day": "03",
+          "title": "Sigiriya Water Gardens & Traditional Village Expedition",
+          "description": "Explore the ancient water gardens at the base of Sigiriya rock (easy walking for all generations). Traditional catamaran ride.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast, Village Lunch & Dinner",
+          "image": "assets/images/family/calm-beach-3.webp"
+        },
+        {
+          "day": "04",
+          "title": "Minneriya Wild Elephant Gathering Safari",
+          "description": "Afternoon open-top jeep safari into Minneriya National Park to observe large herds of wild elephants with playful calves.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Dinner",
+          "image": "assets/images/family/calm-beach-3.webp"
+        },
+        {
+          "day": "05",
+          "title": "Spices of Matale & Ascent to Kandy Royal City",
+          "description": "Visit an aromatic spice garden where kids touch cinnamon bark and vanilla pods. Evening traditional cultural dance show in Kandy.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Dinner",
+          "image": "assets/images/family/calm-beach-3.webp"
+        },
+        {
+          "day": "06",
+          "title": "Peradeniya Royal Botanic Gardens & Scenic Train",
+          "description": "Walk among giant Javanese fig trees and vibrant orchids. Board the scenic train for a gentle ride into tea hills.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Dinner",
+          "image": "assets/images/family/calm-beach-3.webp"
+        },
+        {
+          "day": "07",
+          "title": "Pedro Tea Estate & Gregory Lake Pedal Boats",
+          "description": "Kids pick tea leaves with mini baskets. Afternoon pedal-boating and pony rides along the scenic banks of Lake Gregory.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Dinner",
+          "image": "assets/images/family/calm-beach-3.webp"
+        },
+        {
+          "day": "08",
+          "title": "Descent to Bentota Golden Beach Resort",
+          "description": "Scenic highway drive to the golden shores of Bentota. Relax by the ocean and enjoy calm swimming waters.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Dinner",
+          "image": "assets/images/family/calm-beach-3.webp"
+        },
+        {
+          "day": "09",
+          "title": "Kosgoda Sea Turtle Hatchery & Baby Turtle Release",
+          "description": "Visit the sea turtle conservation centre. Children hold baby turtles and release healthy hatchlings directly into the ocean at dusk.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Dinner",
+          "image": "assets/images/family/calm-beach-3.webp"
+        },
+        {
+          "day": "10",
+          "title": "Express Highway Transfer to Colombo & Farewell",
+          "description": "Enjoy a final family swim and tropical fruit breakfast before private transfer to CMB airport for your flight home.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast Included",
+          "image": "assets/images/family/calm-beach-3.webp"
+        }
+      ],
+      "highlights": [
+        "Spacious private luxury air-conditioned passenger van with family-specialist driver",
+        "Gentle elephant bath viewing at Pinnawala Elephant Orphanage",
+        "Interactive village bullock cart ride and Sri Lankan bread-making class",
+        "Kosgoda Sea Turtle Hatchery where kids release newborn hatchlings into the ocean",
+        "Calm, shallow beach resort in Bentota with kids pool and family interconnecting suites"
+      ],
+      "inclusions": [
+        "9 Nights in spacious family-friendly resorts with interconnecting rooms / family suites",
+        "Spacious luxury air-conditioned van with professional family chauffeur",
+        "Minneriya National Park private family safari jeep and entrance permits",
+        "Kosgoda sea turtle hatchery and baby turtle release program",
+        "All monument entrances, village boat rides, and daily breakfasts & dinners"
+      ],
+      "exclusions": [
+        "International flights",
+        "Visas",
+        "Lunches not stated"
+      ],
+      "faqs": [],
+      "seo": {
+        "title": "Island Wonder Multi-Gen Family 10-Day Tour | Lotus Ceylon",
+        "description": "The perfect family holiday in Sri Lanka: gentle elephant safaris, turtle hatcheries, scenic train rides, and safe beach resorts.",
+        "og_image": "assets/images/hero-nine-arches.jpg"
+      },
+      "status": "published",
+      "sortOrder": 19,
+      "featured": false,
+      "updatedAt": "2026-10-26T08:42:24.795Z"
+    },
+    {
+      "id": "wild-safari-coastal-family-holiday",
+      "slug": "wild-safari-coastal-family-holiday",
+      "title": "Wild Safari & Coastal Family Holiday",
+      "subtitle": "The ideal blend of exciting animal encounters, rainforest wonders, and warm golden beach relaxation.",
+      "category": "family",
+      "nights": 11,
+      "days": 12,
+      "price_from": 0,
+      "hero_image": "assets/images/wildlife.jpg",
+      "gallery": [
+        "assets/images/wildlife.jpg"
+      ],
+      "video": "",
+      "itinerary": [
+        {
+          "day": "01",
+          "title": "Arrival & Leisurely Recovery in Negombo Lagoon Resort",
+          "description": "Meet your private chauffeur. Check into a calm lagoon resort to recover from long flights with swimming pools.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Dinner Included",
+          "image": "assets/images/family/calm-beach-3.webp"
+        },
+        {
+          "day": "02",
+          "title": "Drive to Minneriya Elephant Country",
+          "description": "Drive into the north-central dry zone. Check into a spacious nature lodge with treehouse balconies.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Dinner",
+          "image": "assets/images/family/calm-beach-3.webp"
+        },
+        {
+          "day": "03",
+          "title": "Minneriya Great Elephant Gathering Safari",
+          "description": "Afternoon private 4x4 open-top jeep safari watching herds of wild elephants drinking and playing in ancient reservoir waters.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Dinner",
+          "image": "assets/images/family/calm-beach-3.webp"
+        },
+        {
+          "day": "04",
+          "title": "Sigiriya Lion Rock Morning Exploration",
+          "description": "Morning visit to the dramatic 5th-century palace citadel. Children love the giant lion paws carved into the stone.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Dinner",
+          "image": "assets/images/family/calm-beach-3.webp"
+        },
+        {
+          "day": "05",
+          "title": "Transfer to Hill Country Kandy & Temple Walk",
+          "description": "Scenic drive into Kandy. Visit the historic lakeside temple and witness colorful traditional fire-dancing shows.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Dinner",
+          "image": "assets/images/family/calm-beach-3.webp"
+        },
+        {
+          "day": "06",
+          "title": "Scenic Train to Ella & Nine Arches Bridge",
+          "description": "Experience the famous mountain rail journey over viaduct bridges. Walk through tea estates to view Nine Arches Bridge.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Dinner",
+          "image": "assets/images/family/calm-beach-3.webp"
+        },
+        {
+          "day": "07",
+          "title": "Udawalawe Elephant Transit Home & Baby Milk Feeding",
+          "description": "Watch orphaned baby elephants rush out for their bottle-feeding at the transit rehabilitation center before transfer to Yala.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Dinner",
+          "image": "assets/images/family/calm-beach-3.webp"
+        },
+        {
+          "day": "08",
+          "title": "Yala National Park Wildlife Safari",
+          "description": "Thrilling morning safari drive in search of leopards, sloth bears, spotted deer, wild boar, and peacock displays.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Dinner",
+          "image": "assets/images/family/calm-beach-3.webp"
+        },
+        {
+          "day": "09",
+          "title": "Transfer to Mirissa Beach & Weligama Bay",
+          "description": "Drive along the southern coast. Settle into a beachfront resort with calm family swimming pools and sandy beaches.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Dinner",
+          "image": "assets/images/family/calm-beach-3.webp"
+        },
+        {
+          "day": "10",
+          "title": "Mirissa Whale Safari & Galle Fort Gelato Walk",
+          "description": "Morning boat excursion to spot blue whales. Afternoon exploration of Galle Fort with artisan Italian gelato stops.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Dinner",
+          "image": "assets/images/family/calm-beach-3.webp"
+        },
+        {
+          "day": "11",
+          "title": "Beachfront Leisure & Sea Turtle Conservation",
+          "description": "A completely relaxed day for sandcastle building, snorkeling in shallow bays, and visiting a turtle nursery.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Dinner",
+          "image": "assets/images/family/calm-beach-3.webp"
+        },
+        {
+          "day": "12",
+          "title": "Southern Expressway to Colombo Airport & Departure",
+          "description": "Private transfer via highway to CMB airport for your flight home, with wonderful family stories to tell.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast Included",
+          "image": "assets/images/family/calm-beach-3.webp"
+        }
+      ],
+      "highlights": [
+        "Witness wild elephant herds of 150+ in Minneriya National Park",
+        "Visit the Udawalawe Elephant Transit Home during baby milk feeding time",
+        "Yala National Park jeep safari tracking leopards, sloth bears, and crocodiles",
+        "Walk the historic 17th-century ramparts of Galle Fort and enjoy artisanal gelato",
+        "Mirissa whale and dolphin ocean safari suitable for older children"
+      ],
+      "inclusions": [
+        "11 Nights in premium family-friendly hotels and safari lodges",
+        "Private spacious air-conditioned vehicle with patient family driver",
+        "Minneriya & Yala National Park safari jeeps, park rangers, and fees",
+        "Udawalawe Elephant Transit Home and Kosgoda turtle hatchery tickets",
+        "First-class train tickets and daily breakfast and dinner"
+      ],
+      "exclusions": [
+        "International airfare",
+        "Visas",
+        "Optional water sports"
+      ],
+      "faqs": [],
+      "seo": {
+        "title": "Wild Safari & Coastal Family Holiday 12-Day Tour | Lotus Ceylon",
+        "description": "An unforgettable family journey through Sri Lanka: wild elephant gatherings, baby elephant transit home, Yala safari, and Mirissa beaches.",
+        "og_image": "assets/images/wildlife.jpg"
+      },
+      "status": "published",
+      "sortOrder": 20,
+      "featured": false,
+      "updatedAt": "2026-10-26T08:42:24.795Z"
+    },
+    {
+      "id": "the-grand-ceylon-family-adventure",
+      "slug": "the-grand-ceylon-family-adventure",
+      "title": "The Grand Ceylon Family Adventure",
+      "subtitle": "Two magical weeks covering ancient wonders, wild national parks, scenic rail, and coastal water sports.",
+      "category": "family",
+      "nights": 13,
+      "days": 14,
+      "price_from": 0,
+      "hero_image": "assets/images/hero-nine-arches.jpg",
+      "gallery": [
+        "assets/images/hero-nine-arches.jpg"
+      ],
+      "video": "",
+      "itinerary": [
+        {
+          "day": "01",
+          "title": "Welcome to Ceylon & Coastal Relaxation in Negombo",
+          "description": "Arrival at CMB airport. Private transfer to a family resort with swimming pool and lush tropical gardens.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Dinner Included",
+          "image": "assets/images/family/calm-beach-3.webp"
+        },
+        {
+          "day": "02",
+          "title": "Drive North to Wilpattu National Park Border",
+          "description": "Journey through scenic coconut estates to the borders of Wilpattu, Sri Lanka's largest and oldest national park.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Dinner",
+          "image": "assets/images/family/calm-beach-3.webp"
+        },
+        {
+          "day": "03",
+          "title": "Wilpattu Safari & Sandstone Ruins of Anuradhapura",
+          "description": "Morning jeep safari around natural sand-rimmed water basins (Villus). Afternoon visit to the ancient sacred city of Anuradhapura.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Dinner",
+          "image": "assets/images/family/calm-beach-3.webp"
+        },
+        {
+          "day": "04",
+          "title": "Sacred Bodhi Tree & Transfer to Sigiriya",
+          "description": "Visit the 2,300-year-old Jaya Sri Maha Bodhi tree. Drive south to a beautiful resort in Sigiriya with outdoor pool.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Dinner",
+          "image": "assets/images/family/calm-beach-3.webp"
+        },
+        {
+          "day": "05",
+          "title": "Sigiriya Rock Palace & Chena Farm Village Lunch",
+          "description": "Morning ascent of Sigiriya Rock Fortress. Enjoy an authentic rural lunch cooked in clay pots over coconut husks.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast, Farm Lunch & Dinner",
+          "image": "assets/images/family/calm-beach-3.webp"
+        },
+        {
+          "day": "06",
+          "title": "Dambulla Golden Caves & Matale Spice Gardens",
+          "description": "Visit the majestic painted cave temple of Dambulla. Touch fresh cinnamon and cocoa pods in Matale spice groves.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Dinner",
+          "image": "assets/images/family/calm-beach-3.webp"
+        },
+        {
+          "day": "07",
+          "title": "Kandy Sacred Temple & Royal Botanic Gardens",
+          "description": "Explore the Temple of the Tooth and stroll through the immense bamboo forests of Peradeniya Botanic Gardens.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Dinner",
+          "image": "assets/images/family/calm-beach-3.webp"
+        },
+        {
+          "day": "08",
+          "title": "Scenic Mountain Train Ride to Nuwara Eliya",
+          "description": "Board the famous hill country train. Kids delight in mountain tunnels and cascading waterfalls visible from windows.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Dinner",
+          "image": "assets/images/family/calm-beach-3.webp"
+        },
+        {
+          "day": "09",
+          "title": "Pedro Tea Plantation & Gregory Lake Family Fun",
+          "description": "Learn how tea is made from leaf to cup. Afternoon pedal boating and cycling along Lake Gregory promenade.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Dinner",
+          "image": "assets/images/family/calm-beach-3.webp"
+        },
+        {
+          "day": "10",
+          "title": "Descent Past Waterfalls to Bentota Golden Coast",
+          "description": "Scenic drive winding past Devon and St. Clair's waterfalls, descending to the warm golden beaches of Bentota.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Dinner",
+          "image": "assets/images/family/calm-beach-3.webp"
+        },
+        {
+          "day": "11",
+          "title": "Madu River Mangrove Boat Safari & Fish Therapy",
+          "description": "Speedboat safari through 64 mangrove islands. Visit a cinnamon-peeling island and watch birds in their natural sanctuary.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Dinner",
+          "image": "assets/images/family/calm-beach-3.webp"
+        },
+        {
+          "day": "12",
+          "title": "Kosgoda Sea Turtle Hatchery & Baby Release",
+          "description": "Hands-on conservation experience learning about sea turtles and releasing newly-hatched baby turtles into the sea.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Dinner",
+          "image": "assets/images/family/calm-beach-3.webp"
+        },
+        {
+          "day": "13",
+          "title": "Bentota Water Sports & Farewell Family Beach Dinner",
+          "description": "Exciting banana boat and tube rides on Bentota lagoon. In the evening, gather for a special private farewell seafood beach dinner.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Special Dinner",
+          "image": "assets/images/family/calm-beach-3.webp"
+        },
+        {
+          "day": "14",
+          "title": "Express Highway Transfer to Colombo Airport & Departure",
+          "description": "After breakfast, enjoy a smooth private highway transfer to CMB airport for your flight home.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast Included",
+          "image": "assets/images/family/calm-beach-3.webp"
+        }
+      ],
+      "highlights": [
+        "Wilpattu National Park safari with natural lake (Villu) landscapes",
+        "Sigiriya rock fortress and traditional chena village cooking experience",
+        "Kandy to Ella scenic mountain railway journey in first-class seats",
+        "Bentota watersports: banana boat, gentle jet-ski, and river mangrove safari",
+        "Spacious luxury air-conditioned coaster/van with dedicated kid-friendly amenities"
+      ],
+      "inclusions": [
+        "13 Nights in luxury family-friendly resorts with interconnecting rooms",
+        "Private spacious air-conditioned vehicle with experienced family chauffeur",
+        "Wilpattu National Park safari jeep, guide, and entrance permits",
+        "Madu Ganga river boat safari and Kosgoda turtle hatchery tickets",
+        "All national monument tickets and daily breakfast and dinner"
+      ],
+      "exclusions": [
+        "International flights",
+        "Visas",
+        "Personal expenses"
+      ],
+      "faqs": [],
+      "seo": {
+        "title": "The Grand Ceylon Family Adventure 14-Day Tour | Lotus Ceylon",
+        "description": "The ultimate two-week family tour of Sri Lanka: Wilpattu safaris, ancient royal cities, scenic mountain trains, and Bentota beaches.",
+        "og_image": "assets/images/hero-nine-arches.jpg"
+      },
+      "status": "published",
+      "sortOrder": 21,
+      "featured": false,
+      "updatedAt": "2026-10-26T08:42:24.796Z"
+    },
+    {
+      "id": "sacred-ramayana-heritage-trail",
+      "slug": "sacred-ramayana-heritage-trail",
+      "title": "Sacred Ramayana Heritage Trail",
+      "subtitle": "Follow the legendary epic through Munneswaram, Manavari, Seetha Amman Temple, and Ashoka Vatika.",
+      "category": "ramayana",
+      "nights": 6,
+      "days": 7,
+      "price_from": 0,
+      "hero_image": "assets/images/polonnaruwa.jpg",
+      "gallery": [
+        "assets/images/polonnaruwa.jpg"
+      ],
+      "video": "",
+      "itinerary": [
+        {
+          "day": "01",
+          "title": "Ayubowan & Arrival in Colombo",
+          "description": "Warm welcome by your scholarly chauffeur guide. Transfer to your comfortable hotel in Colombo or Negombo.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Dinner Included",
+          "image": "assets/images/ramayana/hakgala-gardens-4.webp"
+        },
+        {
+          "day": "02",
+          "title": "Munneswaram & Manavari Temples (Lord Rama’s Sins Cleansed)",
+          "description": "Drive north to Chilaw. Visit Munneswaram Shiva Temple where Lord Rama prayed to Lord Shiva after slaying Ravana. Visit Manavari Temple to venerate the sacred Ramalingam.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Vegetarian Dinner",
+          "image": "assets/images/ramayana/hakgala-gardens-4.webp"
+        },
+        {
+          "day": "03",
+          "title": "Kandy Royal City & Sri Bhakta Hanuman Temple (Ramboda)",
+          "description": "Ascend into the misty hills. Stop at Ramboda to visit the 16-foot granite deity at Sri Bhakta Hanuman Temple built by Chinmaya Mission.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Vegetarian Dinner",
+          "image": "assets/images/ramayana/hakgala-gardens-4.webp"
+        },
+        {
+          "day": "04",
+          "title": "Seetha Amman Temple & Ashoka Vatika (Hakgala)",
+          "description": "Visit the world’s only Seetha Amman Temple where Sita Devi was held captive. See the footmarks of Lord Hanuman in the stream bed. Stroll through Ashoka Vatika gardens.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Vegetarian Dinner",
+          "image": "assets/images/ramayana/hakgala-gardens-4.webp"
+        },
+        {
+          "day": "05",
+          "title": "Divurumpola (Agni Pariksha) & Gayathri Peedam",
+          "description": "Visit Divurumpola Temple, where Sita Devi underwent the Agni Pariksha to prove her chastity. Visit Gayathri Peedam, where King Ravana’s son Meghanath performed penance.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Vegetarian Dinner",
+          "image": "assets/images/ramayana/hakgala-gardens-4.webp"
+        },
+        {
+          "day": "06",
+          "title": "Kelaniya Vibhishana Temple & Return to Colombo",
+          "description": "Drive down to Colombo. Visit the historic Kelaniya Raja Maha Vihara, where Vibhishana was crowned King of Lanka by Lakshmana after Ravana's defeat.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Vegetarian Dinner",
+          "image": "assets/images/ramayana/hakgala-gardens-4.webp"
+        },
+        {
+          "day": "07",
+          "title": "Panchamuga Anjaneyar Temple & Departure",
+          "description": "Visit Sri Anjaneyar Temple in Dehiwala housing the five-faced Hanuman. Transfer to CMB airport for onward devotional journey.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast Included",
+          "image": "assets/images/ramayana/hakgala-gardens-4.webp"
+        }
+      ],
+      "highlights": [
+        "Special puja blessing at Munneswaram Temple, one of the five ancient Ishwarams",
+        "Visit Manavari Temple where Lord Rama installed the first Shiva Lingam (Ramalingam)",
+        "Devotional morning darshan at Seetha Amman Temple in Seetha Eliya",
+        "Walk through Hakgala Botanical Gardens, the legendary Ashoka Vatika pleasure gardens",
+        "Visit Divurumpola Temple, the revered site of Sita Devi's Agni Pariksha"
+      ],
+      "inclusions": [
+        "6 Nights in carefully selected hotels with vegetarian / sattvic dining options",
+        "Private dedicated air-conditioned vehicle with Ramayana-knowledgeable chauffeur guide",
+        "All temple special puja offerings, coconuts, and entrance permits",
+        "Hakgala Botanical Gardens (Ashoka Vatika) entrance tickets",
+        "Daily vegetarian breakfast and dinner throughout"
+      ],
+      "exclusions": [
+        "International airfare",
+        "Visas",
+        "Personal dakshina / donations"
+      ],
+      "faqs": [],
+      "seo": {
+        "title": "Sacred Ramayana Heritage Trail 7-Day Tour | Lotus Ceylon",
+        "description": "Walk the holy Ramayana trail in Sri Lanka. Visit Munneswaram, Seetha Amman Temple, Ashoka Vatika, and Kelaniya with Lotus Ceylon.",
+        "og_image": "assets/images/polonnaruwa.jpg"
+      },
+      "status": "published",
+      "sortOrder": 22,
+      "featured": false,
+      "updatedAt": "2026-10-26T08:42:24.796Z"
+    },
+    {
+      "id": "the-epic-ramayana-chronicle-pilgrimage",
+      "slug": "the-epic-ramayana-chronicle-pilgrimage",
+      "title": "The Epic Ramayana Chronicle Pilgrimage",
+      "subtitle": "The ultimate 10-day cross-island pilgrimage tracing sacred shrines from Mannar to Nuwara Eliya and Ella.",
+      "category": "ramayana",
+      "nights": 9,
+      "days": 10,
+      "price_from": 0,
+      "hero_image": "assets/images/polonnaruwa.jpg",
+      "gallery": [
+        "assets/images/polonnaruwa.jpg"
+      ],
+      "video": "",
+      "itinerary": [
+        {
+          "day": "01",
+          "title": "Arrival in Colombo & Coastal Journey to Chilaw",
+          "description": "Meet your private scholarly guide. Drive north to Chilaw. Evening puja at Munneswaram and Manavari temples.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Vegetarian Dinner",
+          "image": "assets/images/ramayana/hakgala-gardens-4.webp"
+        },
+        {
+          "day": "02",
+          "title": "Mannar Island, Thiruketheeswaram & Rama Setu (Adam's Bridge)",
+          "description": "Drive across Mannar causeway. Visit ancient Thiruketheeswaram Shiva temple. Stand at the sandbar vantage point of Rama Setu.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Dinner",
+          "image": "assets/images/ramayana/hakgala-gardens-4.webp"
+        },
+        {
+          "day": "03",
+          "title": "Naguleswaram Temple & Jaffna Cultural Heritage",
+          "description": "Visit Naguleswaram temple and sacred Keerimalai springs where sage Nagula Muni bathed. Tour historic Nallur Kandaswamy Kovil.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Dinner",
+          "image": "assets/images/ramayana/hakgala-gardens-4.webp"
+        },
+        {
+          "day": "04",
+          "title": "Trincomalee Koneswaram Temple & Kanniya Hot Springs",
+          "description": "Cross to the east coast. Visit Koneswaram Temple perched atop Swami Rock cliff face. Visit the 7 sacred Kanniya hot wells.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Dinner",
+          "image": "assets/images/ramayana/hakgala-gardens-4.webp"
+        },
+        {
+          "day": "05",
+          "title": "Ascent to Hill Capital of Kandy",
+          "description": "Scenic drive into central highlands. Evening cultural drum offering and blessings at the sacred Temple of the Tooth.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Dinner",
+          "image": "assets/images/ramayana/hakgala-gardens-4.webp"
+        },
+        {
+          "day": "06",
+          "title": "Sri Bhakta Hanuman Temple & Seetha Amman Temple",
+          "description": "Visit the 16ft Hanuman statue in Ramboda. Continue to Seetha Eliya to venerate Seetha Amman Temple and see Hanuman footprints.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Dinner",
+          "image": "assets/images/ramayana/hakgala-gardens-4.webp"
+        },
+        {
+          "day": "07",
+          "title": "Ashoka Vatika (Hakgala) & Divurumpola Agni Pariksha",
+          "description": "Walk through Hakgala Botanical Gardens (Ashoka Vatika). Visit Divurumpola Temple where Sita Devi underwent the trial of fire.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Dinner",
+          "image": "assets/images/ramayana/hakgala-gardens-4.webp"
+        },
+        {
+          "day": "08",
+          "title": "Ravana Falls, Ravana Cave & Ella Mountain Valley",
+          "description": "Explore the cascading Ravana Falls and trek to Ravana Cave where King Ravana hid Sita Devi. Enjoy breathtaking Ella Gap views.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Dinner",
+          "image": "assets/images/ramayana/hakgala-gardens-4.webp"
+        },
+        {
+          "day": "09",
+          "title": "Kelaniya Temple & Colombo Capital Pilgrimage",
+          "description": "Scenic highway drive to Colombo. Visit Kelaniya Raja Maha Vihara and Sri Anjaneyar Temple in Dehiwala.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Dinner",
+          "image": "assets/images/ramayana/hakgala-gardens-4.webp"
+        },
+        {
+          "day": "10",
+          "title": "Final Blessings & Departure Transfer",
+          "description": "Conclude your comprehensive sacred pilgrimage with private chauffeur transfer to CMB airport.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast Included",
+          "image": "assets/images/ramayana/hakgala-gardens-4.webp"
+        }
+      ],
+      "highlights": [
+        "Visit Thiruketheeswaram Temple and Adam's Bridge (Rama Setu) in Mannar",
+        "Koneswaram Temple (Dakshina Kailasam) built on Swami Rock overlooking Trincomalee",
+        "Kanniya Hot Springs created by King Ravana with his sword",
+        "Seetha Amman Temple, Ashoka Vatika, and Divurumpola in the central highlands",
+        "Explore Ravana Ella Falls and the subterranean Ravana Cave in Ella"
+      ],
+      "inclusions": [
+        "9 Nights in handpicked hotels with authentic vegetarian dining options",
+        "Dedicated private air-conditioned vehicle with Ramayana-specialist chauffeur guide",
+        "All temple puja offerings, entry permits, and sacred site access",
+        "Daily vegetarian breakfast and dinner throughout",
+        "24/7 Lotus Ceylon concierge and pilgrim support"
+      ],
+      "exclusions": [
+        "International flights",
+        "Visas",
+        "Personal donations"
+      ],
+      "faqs": [],
+      "seo": {
+        "title": "The Epic Ramayana Chronicle 10-Day Pilgrimage | Lotus Ceylon",
+        "description": "Cross-island sacred Ramayana pilgrimage: Rama Setu Mannar, Koneswaram, Seetha Amman Temple, and Ravana Falls.",
+        "og_image": "assets/images/polonnaruwa.jpg"
+      },
+      "status": "published",
+      "sortOrder": 23,
+      "featured": false,
+      "updatedAt": "2026-10-26T08:42:24.797Z"
+    },
+    {
+      "id": "the-royal-ceylon-fairways-tour",
+      "slug": "the-royal-ceylon-fairways-tour",
+      "title": "The Royal Ceylon Fairways Tour",
+      "subtitle": "Tee off at Asia’s oldest golf clubs: Royal Colombo and Donald Steel’s spectacular Victoria Golf Resort.",
+      "category": "golf",
+      "nights": 6,
+      "days": 7,
+      "price_from": 0,
+      "hero_image": "assets/images/tea-country.jpg",
+      "gallery": [
+        "assets/images/tea-country.jpg"
+      ],
+      "video": "",
+      "itinerary": [
+        {
+          "day": "01",
+          "title": "Arrival in Colombo & Welcome to The Galle Face Hotel",
+          "description": "Meet your private chauffeur guide at CMB airport. Transfer to Colombo's iconic colonial hotel. Unpack your clubs and enjoy sunset drinks.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Dinner Included",
+          "image": "assets/images/home/hero-sigiriya-aerial-1.webp"
+        },
+        {
+          "day": "02",
+          "title": "Round 1: 18 Holes at Royal Colombo Golf Club (RCGC)",
+          "description": "Tee off on the historic tree-lined fairways of the 145-year-old RCGC. Watch the historic Kelani Valley commuter train pass through the course.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Clubhouse Lunch",
+          "image": "assets/images/home/hero-sigiriya-aerial-1.webp"
+        },
+        {
+          "day": "03",
+          "title": "Scenic Transfer to Victoria Golf Resort Kandy",
+          "description": "Drive through lush tropical scenery into the Kandyan hills. Check into your fairway villa overlooking the turquoise Victoria reservoir.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Dinner",
+          "image": "assets/images/home/hero-sigiriya-aerial-1.webp"
+        },
+        {
+          "day": "04",
+          "title": "Round 2: 18 Holes at Donald Steel’s Victoria Championship Course",
+          "description": "Play Donald Steel's award-winning 73-par masterpiece flanked by majestic tamarind trees, rolling ridges, and lake vistas.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Dinner",
+          "image": "assets/images/home/hero-sigiriya-aerial-1.webp"
+        },
+        {
+          "day": "05",
+          "title": "Kandy Heritage Exploration & Rest Day / Twilight 9 Holes",
+          "description": "Morning private tour of the sacred Temple of the Tooth and Peradeniya Botanic Gardens. Optional twilight 9-hole putting or driving range.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Dinner",
+          "image": "assets/images/home/hero-sigiriya-aerial-1.webp"
+        },
+        {
+          "day": "06",
+          "title": "Round 3: 18 Holes Championship Re-Match at Victoria",
+          "description": "Second full 18-hole round mastering the dramatic elevated tee shots and undulating greens of Victoria course.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Dinner",
+          "image": "assets/images/home/hero-sigiriya-aerial-1.webp"
+        },
+        {
+          "day": "07",
+          "title": "Scenic Highway Return to Colombo & Departure",
+          "description": "Enjoy a relaxed breakfast overlooking the reservoir before your private chauffeur transfers you and your gear to CMB airport.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast Included",
+          "image": "assets/images/home/hero-sigiriya-aerial-1.webp"
+        }
+      ],
+      "highlights": [
+        "18 Holes at Royal Colombo Golf Club (Founded 1879, second oldest outside the UK)",
+        "36 Holes at Victoria Golf Resort in Kandy, ranked among the world’s top 100 most scenic courses",
+        "Pre-booked guaranteed prime morning tee times with private caddies and golf carts",
+        "Stay in luxury fairway villas overlooking Victoria reservoir",
+        "Private chauffeur and dedicated vehicle with ample luggage capacity for golf bags"
+      ],
+      "inclusions": [
+        "6 Nights in 5-star colonial heritage hotels and fairway resort chalets",
+        "Green fees, private caddies, and shared golf carts for 3 full 18-hole rounds",
+        "Pre-reserved prime morning tee times",
+        "Spacious private air-conditioned vehicle accommodating all passenger golf bags",
+        "Daily breakfast and fine dining dinners throughout"
+      ],
+      "exclusions": [
+        "Club rental fees (available on request)",
+        "International airfare",
+        "Visas"
+      ],
+      "faqs": [],
+      "seo": {
+        "title": "The Royal Ceylon Fairways 7-Day Golf Tour | Lotus Ceylon",
+        "description": "Play golf at Royal Colombo Golf Club and Donald Steel's scenic Victoria Golf Resort in Kandy with Lotus Ceylon.",
+        "og_image": "assets/images/tea-country.jpg"
+      },
+      "status": "published",
+      "sortOrder": 24,
+      "featured": false,
+      "updatedAt": "2026-10-26T08:42:24.797Z"
+    },
+    {
+      "id": "highland-greens-coastal-links-championship",
+      "slug": "highland-greens-coastal-links-championship",
+      "title": "Highland Greens & Coastal Links Championship",
+      "subtitle": "The complete golf circuit: colonial fairways, highland pine greens, and oceanfront coastal links.",
+      "category": "golf",
+      "nights": 9,
+      "days": 10,
+      "price_from": 0,
+      "hero_image": "assets/images/tea-country.jpg",
+      "gallery": [
+        "assets/images/tea-country.jpg"
+      ],
+      "video": "",
+      "itinerary": [
+        {
+          "day": "01",
+          "title": "Arrival in Colombo & Royal Colombo Clubhouse Welcome",
+          "description": "Chauffeur meet & greet at CMB airport. Transfer to luxury 5-star hotel in Colombo. Evening drink at the historic RCGC clubhouse.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Dinner Included",
+          "image": "assets/images/home/hero-sigiriya-aerial-1.webp"
+        },
+        {
+          "day": "02",
+          "title": "Round 1: 18 Holes at Royal Colombo Golf Club",
+          "description": "Tee off at the historic RCGC. Experience classic parkland golf in the heart of the capital with private caddy.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Dinner",
+          "image": "assets/images/home/hero-sigiriya-aerial-1.webp"
+        },
+        {
+          "day": "03",
+          "title": "Transfer to Victoria Golf Resort Kandy",
+          "description": "Drive past spice hills to Victoria Golf Resort. Practice on the driving range overlooking the reservoir.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Dinner",
+          "image": "assets/images/home/hero-sigiriya-aerial-1.webp"
+        },
+        {
+          "day": "04",
+          "title": "Round 2: 18 Holes at Victoria Championship Course",
+          "description": "Conquer Donald Steel’s spectacular course with elevation drops and breathtaking mountain water hazards.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Dinner",
+          "image": "assets/images/home/hero-sigiriya-aerial-1.webp"
+        },
+        {
+          "day": "05",
+          "title": "Ascent to Nuwara Eliya & Round 3: 18 Holes at NEGC",
+          "description": "Drive up to 'Little England'. Play the historic 1889 Nuwara Eliya Golf Club lined with towering pines and British colonial charm.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Dinner",
+          "image": "assets/images/home/hero-sigiriya-aerial-1.webp"
+        },
+        {
+          "day": "06",
+          "title": "Highland Tea Tasting & Scenic Descent to Southern Coast",
+          "description": "Morning tea factory connoisseur tasting. Descend through Ella Gap to Shangri-La Hambantota Golf Resort.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Dinner",
+          "image": "assets/images/home/hero-sigiriya-aerial-1.webp"
+        },
+        {
+          "day": "07",
+          "title": "Round 4: 18 Holes at Shangri-La Coastal Links",
+          "description": "Tee off on Rodney Wright's championship eco-links course running alongside sand dunes, salt pans, and ocean breezes.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Dinner",
+          "image": "assets/images/home/hero-sigiriya-aerial-1.webp"
+        },
+        {
+          "day": "08",
+          "title": "Morning Yala Safari Drive & Afternoon Re-Play",
+          "description": "Dawn 4x4 safari drive tracking leopards in Yala. Afternoon relaxing golf round or luxury Chi Spa treatment.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Dinner",
+          "image": "assets/images/home/hero-sigiriya-aerial-1.webp"
+        },
+        {
+          "day": "09",
+          "title": "Coastal Expressway Drive to Galle Fort",
+          "description": "Drive along southern shores to historic Galle Fort. Sunset walk along Dutch ramparts and celebratory farewell dinner.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Special Dinner",
+          "image": "assets/images/home/hero-sigiriya-aerial-1.webp"
+        },
+        {
+          "day": "10",
+          "title": "Expressway Transfer to Colombo Airport & Departure",
+          "description": "Direct highway transfer to CMB airport with golf clubs safely packed.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast Included",
+          "image": "assets/images/home/hero-sigiriya-aerial-1.webp"
+        }
+      ],
+      "highlights": [
+        "Play 4 premier courses: Royal Colombo, Victoria Kandy, Nuwara Eliya Golf Club, and Shangri-La Hambantota",
+        "Tee off at 1,890 meters altitude in Nuwara Eliya’s 1889 colonial pine-lined fairways",
+        "18-hole coastal links play with ocean breezes at Shangri-La Golf Resort",
+        "Non-golfing partner luxury spa packages and cultural excursions included",
+        "Dedicated luxury van ensuring seamless transit of clubs and luggage"
+      ],
+      "inclusions": [
+        "9 Nights in 5-star luxury hotels, golf resorts, and colonial manors",
+        "Green fees, caddies, and carts for 4 championship 18-hole rounds",
+        "Guaranteed morning tee times at all 4 courses",
+        "Private luxury air-conditioned van with dedicated golf luggage rack",
+        "Daily breakfast and gourmet dinners throughout"
+      ],
+      "exclusions": [
+        "International flights",
+        "Visas",
+        "Club rentals"
+      ],
+      "faqs": [],
+      "seo": {
+        "title": "Highland Greens & Coastal Links 10-Day Golf Tour | Lotus Ceylon",
+        "description": "Play Sri Lanka's 4 best golf courses: Royal Colombo, Victoria Kandy, Nuwara Eliya, and Shangri-La Hambantota.",
+        "og_image": "assets/images/tea-country.jpg"
+      },
+      "status": "published",
+      "sortOrder": 25,
+      "featured": false,
+      "updatedAt": "2026-10-26T08:42:24.797Z"
+    },
+    {
+      "id": "the-grand-ceylon-masters-golf-odyssey",
+      "slug": "the-grand-ceylon-masters-golf-odyssey",
+      "title": "The Grand Ceylon Masters Golf Odyssey",
+      "subtitle": "The ultimate luxury golfing journey: 6 rounds across championship courses with 5★ boutique hospitality.",
+      "category": "golf",
+      "nights": 11,
+      "days": 12,
+      "price_from": 0,
+      "hero_image": "assets/images/tea-country.jpg",
+      "gallery": [
+        "assets/images/tea-country.jpg"
+      ],
+      "video": "",
+      "itinerary": [
+        {
+          "day": "01",
+          "title": "VIP Airport Arrival & The Kingsbury Colombo Check-In",
+          "description": "VIP expedited arrival at CMB airport. Check into your ocean-facing luxury suite. Unpack and inspect golf gear.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Dinner & Welcome Cocktails",
+          "image": "assets/images/home/hero-sigiriya-aerial-1.webp"
+        },
+        {
+          "day": "02",
+          "title": "Round 1: 18 Holes at Royal Colombo Golf Club",
+          "description": "Morning 18-hole championship round on historic colonial parkland fairways.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Clubhouse Lunch",
+          "image": "assets/images/home/hero-sigiriya-aerial-1.webp"
+        },
+        {
+          "day": "03",
+          "title": "Transfer to Victoria Golf Resort Kandy",
+          "description": "Private luxury transfer into the central hills. Afternoon practice round on Victoria's undulating greens.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Dinner",
+          "image": "assets/images/home/hero-sigiriya-aerial-1.webp"
+        },
+        {
+          "day": "04",
+          "title": "Round 2: 18 Holes at Victoria Championship Course",
+          "description": "First competitive 18 holes on Donald Steel’s spectacular lake-bordered fairways.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Dinner",
+          "image": "assets/images/home/hero-sigiriya-aerial-1.webp"
+        },
+        {
+          "day": "05",
+          "title": "Round 3: 18 Holes Victoria Re-Match & Temple Visit",
+          "description": "Second full 18-hole round at Victoria. Evening private cultural blessing at the Temple of the Tooth.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Dinner",
+          "image": "assets/images/home/hero-sigiriya-aerial-1.webp"
+        },
+        {
+          "day": "06",
+          "title": "Scenic Ascent to Nuwara Eliya Alpine Highlands",
+          "description": "Drive past Devon Falls to Nuwara Eliya. Check into the historic Grand Hotel.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Dinner",
+          "image": "assets/images/home/hero-sigiriya-aerial-1.webp"
+        },
+        {
+          "day": "07",
+          "title": "Round 4: 18 Holes at Nuwara Eliya Golf Club (NEGC)",
+          "description": "Tee off amidst crisp mountain air and towering pines at the 135-year-old NEGC course.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Dinner",
+          "image": "assets/images/home/hero-sigiriya-aerial-1.webp"
+        },
+        {
+          "day": "08",
+          "title": "Scenic Descent to Shangri-La Hambantota Golf Links",
+          "description": "Scenic highway drive to the southern coast. Relax in oceanfront resort pools.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Dinner",
+          "image": "assets/images/home/hero-sigiriya-aerial-1.webp"
+        },
+        {
+          "day": "09",
+          "title": "Round 5: 18 Holes at Shangri-La Coastal Links",
+          "description": "Play Rodney Wright's coastal course through former sapphire mines and coastal lagoons.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Dinner",
+          "image": "assets/images/home/hero-sigiriya-aerial-1.webp"
+        },
+        {
+          "day": "10",
+          "title": "Round 6: 18 Holes Championship Finale at Shangri-La",
+          "description": "Final 18-hole championship finale round with trophy presentation dinner.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Awards Dinner",
+          "image": "assets/images/home/hero-sigiriya-aerial-1.webp"
+        },
+        {
+          "day": "11",
+          "title": "Coastal Transfer to Galle Fort & Lighthouse Walk",
+          "description": "Drive to Galle. Relax with luxury spa massages and sunset stroll along the ramparts.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast & Dinner",
+          "image": "assets/images/home/hero-sigiriya-aerial-1.webp"
+        },
+        {
+          "day": "12",
+          "title": "Express Highway Transfer to Colombo Airport & Departure",
+          "description": "Private chauffeur transfer directly to CMB airport for onward journey.",
+          "hotel": "Luxury Boutique Resort / 5-Star Hotel",
+          "meals": "Breakfast Included",
+          "image": "assets/images/home/hero-sigiriya-aerial-1.webp"
+        }
+      ],
+      "highlights": [
+        "6 Full 18-hole championship rounds across Sri Lanka’s premier golf resorts",
+        "Exclusive VIP tournament-level caddy allocation and pre-booked tee times",
+        "Luxury private helicopter transfer option between Colombo and Kandy",
+        "Unlimited driving range balls and complimentary club tune-up",
+        "Gourmet culinary experiences and champagne sundowners on fairway terraces"
+      ],
+      "inclusions": [
+        "11 Nights in 5-star luxury hotels, golf villas, and colonial manors",
+        "Green fees, private senior caddies, and carts for 6 championship 18-hole rounds",
+        "Guaranteed prime morning tee times and unlimited practice range balls",
+        "Spacious private luxury executive van for players, companions, and all golf bags",
+        "Daily breakfast, gourmet clubhouse lunches, and fine dining dinners"
+      ],
+      "exclusions": [
+        "International airfare",
+        "Visas",
+        "Club rentals"
+      ],
+      "faqs": [],
+      "seo": {
+        "title": "The Grand Ceylon Masters Golf Odyssey 12-Day Tour | Lotus Ceylon",
+        "description": "The definitive Sri Lanka golf tour: 6 championship rounds at Royal Colombo, Victoria Kandy, Nuwara Eliya, and Shangri-La.",
+        "og_image": "assets/images/tea-country.jpg"
+      },
+      "status": "published",
+      "sortOrder": 26,
+      "featured": false,
+      "updatedAt": "2026-10-26T08:42:24.798Z"
+    }
+  ]
+}

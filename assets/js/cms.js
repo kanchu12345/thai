@@ -1,364 +1,642 @@
 /**
- * Lotus Ceylon - Master CMS Loader & Dynamic Hydration Engine (Phase 3)
- * Provides instantaneous cache-first rendering, live Firestore sync,
- * multi-language switching, and client-side 301 redirects.
+ * Lotus Ceylon Universal CMS Engine (Phase 1)
+ * 
+ * High-performance, zero-dependency, non-blocking client that reads live content
+ * from Firestore REST API, binds data-cms attributes, manages 10-language translations,
+ * and maintains resilient local caching.
  */
 
-(function (window) {
+(function (window, document) {
   'use strict';
 
-  const CACHE_KEY = 'lotus_seed_catalog_cache_v2';
+  const CACHE_KEY = 'lotus_cms_v3';
+  const CACHE_TTL_MS = 10 * 60 * 1000; // 10 minutes
+  const LEGACY_CACHE_KEYS = ['lotus_seed_catalog_cache_v2', 'lotus_seed_catalog_cache'];
+
+  // Legacy Image Alias Mapping
+  const IMAGE_ALIAS_MAP = {
+    'assets/tours/beach/southern-sands-1.jpg': 'assets/images/beach/mirissa-1.webp',
+    'assets/tours/beach/seaboard-odyssey-1.jpg': 'assets/images/beach/unawatuna-2.webp',
+    'assets/tours/beach/eastern-sanctuary-1.jpg': 'assets/images/beach/pasikudah-5.webp',
+    'assets/tours/cultural/royal-kingdoms-1.jpg': 'assets/images/cultural/sigiriya-1.webp',
+    'assets/tours/cultural/sacred-triangle-1.jpg': 'assets/images/cultural/dambulla-cave-temple-2.webp',
+    'assets/tours/cultural/three-millennia-1.jpg': 'assets/images/cultural/polonnaruwa-gal-vihara-3.webp',
+    'assets/tours/wildlife/big-five-1.jpg': 'assets/images/wildlife/yala-leopard-1.webp',
+    'assets/tours/wildlife/rainforest-1.jpg': 'assets/images/wildlife/sinharaja-rainforest-5.webp',
+    'assets/tours/wildlife/predator-trail-1.jpg': 'assets/images/wildlife/minneriya-elephant-gathering-2.webp',
+    'assets/tours/wildlife/biosphere-odyssey-1.jpg': 'assets/images/wildlife/udawalawe-3.webp'
+  };
+
+  function getProjectId() {
+    return (window.LOTUS_CONFIG && window.LOTUS_CONFIG.firebase && window.LOTUS_CONFIG.firebase.projectId) || 'louterst-36b64';
+  }
+
+  function getFirestoreRestBase() {
+    return 'https://firestore.googleapis.com/v1/projects/' + getProjectId() + '/databases/(default)/documents';
+  }
 
   function getRelativePrefix() {
     const path = window.location.pathname.replace(/\\/g, '/');
-    if (path.includes('/tours/')) {
-      const parts = path.split('/tours/')[1].split('/').filter(function(p) { return p && !p.endsWith('.html'); });
-      return '../'.repeat(parts.length + 1);
+    let p = path;
+    if (p.includes('/thai/')) {
+      p = p.split('/thai/')[1] || '';
+    } else {
+      p = p.replace(/^\//, '');
     }
-    if (path.includes('/admin/')) {
-      return '../';
-    }
-    return './';
+    const segments = p.split('/').filter(function (s) {
+      return s && !s.endsWith('.html');
+    });
+    return segments.length === 0 ? './' : '../'.repeat(segments.length);
   }
 
-  function getFallbackUrl() {
-    return getRelativePrefix() + 'data/seed-catalog.json';
+  function resolveImgUrl(url) {
+    if (!url) return '';
+    url = String(url).trim();
+    if (url.startsWith('https://') || url.startsWith('http://') || url.startsWith('data:') || url.startsWith('blob:')) {
+      return url;
+    }
+    const clean = url.replace(/^(\.\.\/)+/, '').replace(/^(\.\/)+/, '').replace(/^\//, '');
+    const aliased = IMAGE_ALIAS_MAP[clean] || clean;
+    return getRelativePrefix() + aliased;
+  }
+
+  function unwrapFirestoreValue(val) {
+    if (!val || typeof val !== 'object') return val;
+    if ('stringValue' in val) return val.stringValue;
+    if ('integerValue' in val) return parseInt(val.integerValue, 10);
+    if ('doubleValue' in val) return parseFloat(val.doubleValue);
+    if ('booleanValue' in val) return val.booleanValue;
+    if ('nullValue' in val) return null;
+    if ('timestampValue' in val) return val.timestampValue;
+    if ('arrayValue' in val) {
+      const arr = val.arrayValue.values || [];
+      return arr.map(unwrapFirestoreValue);
+    }
+    if ('mapValue' in val) {
+      const fields = val.mapValue.fields || {};
+      const res = {};
+      for (const k in fields) {
+        if (fields.hasOwnProperty(k)) {
+          res[k] = unwrapFirestoreValue(fields[k]);
+        }
+      }
+      return res;
+    }
+    return val;
+  }
+
+  function unwrapFirestoreDoc(doc) {
+    if (!doc || !doc.fields) return null;
+    const result = {};
+    for (const key in doc.fields) {
+      if (doc.fields.hasOwnProperty(key)) {
+        result[key] = unwrapFirestoreValue(doc.fields[key]);
+      }
+    }
+    return result;
+  }
+
+  function sanitizeHtml(htmlString) {
+    if (!htmlString || typeof htmlString !== 'string') return '';
+    const temp = document.createElement('div');
+    temp.innerHTML = htmlString;
+    const allowedTags = ['STRONG', 'EM', 'B', 'I', 'BR', 'P', 'SPAN', 'A', 'UL', 'OL', 'LI'];
+
+    function walk(node) {
+      const children = Array.from(node.childNodes);
+      for (const child of children) {
+        if (child.nodeType === Node.ELEMENT_NODE) {
+          if (!allowedTags.includes(child.tagName)) {
+            const textNode = document.createTextNode(child.textContent);
+            node.replaceChild(textNode, child);
+          } else {
+            // Strip unsafe attributes
+            const attrs = Array.from(child.attributes);
+            for (const attr of attrs) {
+              const attrName = attr.name.toLowerCase();
+              if (child.tagName === 'A' && attrName === 'href') {
+                const href = attr.value.trim().toLowerCase();
+                if (href.startsWith('javascript:') || href.startsWith('data:')) {
+                  child.removeAttribute(attr.name);
+                }
+              } else if (child.tagName === 'A' && (attrName === 'target' || attrName === 'rel')) {
+                // Keep target and rel for links
+              } else {
+                child.removeAttribute(attr.name);
+              }
+            }
+            walk(child);
+          }
+        }
+      }
+    }
+
+    walk(temp);
+    return temp.innerHTML;
   }
 
   const CMS = {
-    data: null,
+    data: {
+      siteGlobal: {},
+      page: {}
+    },
     currentLang: 'en',
+    pageKey: '',
     initialized: false,
+    listTemplates: {},
 
-    /**
-     * Multilingual translation helper with English fallback
-     */
-    t(field, lang = null) {
-      if (!field) return '';
-      const targetLang = lang || this.currentLang || 'en';
-      const cleanLang = (targetLang === 'zh-CN' || targetLang === 'zh-TW') ? 'zh' : targetLang;
-
-      if (typeof field === 'string') return field;
-      if (typeof field === 'object') {
-        return field[cleanLang] || field['en'] || Object.values(field)[0] || '';
+    detectLanguage() {
+      const savedLang = window.__LOTUS_LANG ||
+        localStorage.getItem('lotus_lang') ||
+        localStorage.getItem('lotus_preferred_lang') ||
+        document.documentElement.lang ||
+        'en';
+      this.currentLang = savedLang;
+      if (savedLang === 'ar') {
+        document.documentElement.dir = 'rtl';
+      } else {
+        document.documentElement.dir = 'ltr';
       }
-      return String(field);
+      return this.currentLang;
     },
 
-    /**
-     * Resolves image path relative to current page location across root and nested routes
-     */
-    resolveImg(url) {
-      if (!url) return '';
-      url = String(url).trim();
-      if (url.startsWith('http://') || url.startsWith('https://') || url.startsWith('data:') || url.startsWith('blob:')) {
-        return url;
+    resolveI18n(val, lang) {
+      if (val === null || val === undefined) return null;
+      if (typeof val === 'string' || typeof val === 'number' || typeof val === 'boolean') {
+        return val;
       }
-      const cleanUrl = url.replace(/^(\.\.\/)+/, '').replace(/^(\.\/)+/, '').replace(/^\//, '');
-      return getRelativePrefix() + cleanUrl;
+      if (typeof val === 'object') {
+        const targetLang = lang || this.currentLang || 'en';
+        if (val[targetLang] !== undefined) return val[targetLang];
+        if (targetLang === 'zh-TW' && val['zh-Hant'] !== undefined) return val['zh-Hant'];
+        if (targetLang === 'zh-TW' && val['zh'] !== undefined) return val['zh'];
+        if (targetLang === 'zh-CN' && val['zh-Hans'] !== undefined) return val['zh-Hans'];
+        if (targetLang === 'zh-CN' && val['zh'] !== undefined) return val['zh'];
+        if (val['en'] !== undefined) return val['en'];
+        const first = Object.values(val)[0];
+        return first !== undefined ? first : '';
+      }
+      return String(val);
     },
 
-    /**
-     * Initialize CMS on page load
-     */
-    async init() {
-      if (this.initialized) return;
-      this.initialized = true;
+    determinePageKey() {
+      const explicit = document.body ? (document.body.getAttribute('data-cms-page') || document.documentElement.getAttribute('data-cms-page')) : null;
+      if (explicit) return explicit;
 
-      // 1. Determine active language
-      const savedLang = localStorage.getItem('lotus_lang') || localStorage.getItem('lotus_preferred_lang') || document.documentElement.lang || 'en';
-      this.currentLang = (savedLang === 'zh-CN' || savedLang === 'zh-TW') ? 'zh' : savedLang;
+      const path = window.location.pathname.replace(/\\/g, '/');
+      if (path.includes('/tours/')) {
+        const parts = path.split('/tours/')[1].split('/').filter(function (p) {
+          return p && !p.endsWith('.html');
+        });
+        if (parts.length >= 2) {
+          // e.g. tours/beach/southern-sands-serenade
+          const slug = parts[parts.length - 1];
+          return 'tourPackages/' + slug;
+        }
+      }
+      if (path.endsWith('about.html') || path.includes('/about.')) return 'siteContent/about';
+      if (path.endsWith('contact.html') || path.includes('/contact.')) return 'siteContent/contact';
+      if (path.endsWith('destinations.html') || path.includes('/destinations.')) return 'siteContent/destinations';
+      if (path.endsWith('experiences.html') || path.includes('/experiences.')) return 'siteContent/experiences';
+      if (path.endsWith('gallery.html') || path.includes('/gallery.')) return 'siteContent/gallery';
+      if (path.endsWith('reviews.html') || path.includes('/reviews.')) return 'siteContent/reviews';
+      if (path.endsWith('blog.html') || path.includes('/blog.')) return 'siteContent/blog';
+      if (path.endsWith('sri-lanka-tours.html')) return 'siteContent/toursCatalog';
 
-      // 2. Read from Cache first (0ms latency, zero layout shift)
-      this.data = this.readCache();
+      return 'siteContent/home';
+    },
 
-      // 3. Handle 301 Client Redirects if needed
-      this.checkRedirects();
+    getValueByPath(pathStr) {
+      if (!pathStr) return null;
+      const parts = pathStr.split('.');
 
-      // 4. Hydrate DOM from Cache immediately
-      if (this.data) {
-        this.hydrateDOM();
+      // Try from siteGlobal first if path starts with siteGlobal
+      if (parts[0] === 'siteGlobal') {
+        let curr = this.data.siteGlobal;
+        for (let i = 1; i < parts.length; i++) {
+          if (curr === null || curr === undefined) return null;
+          curr = curr[parts[i]];
+        }
+        return curr;
       }
 
-      // 5. Fetch fresh data from Firestore or seed-catalog.json
-      await this.fetchFreshData();
+      // Try from current page document
+      if (this.data.page) {
+        let curr = this.data.page;
+        for (let i = 0; i < parts.length; i++) {
+          if (curr === null || curr === undefined) {
+            curr = null;
+            break;
+          }
+          curr = curr[parts[i]];
+        }
+        if (curr !== null && curr !== undefined) return curr;
+      }
 
-      // 6. Setup Language Mutation Observer
-      this.setupLanguageObserver();
+      // Try root fallback
+      let curr = this.data;
+      for (let i = 0; i < parts.length; i++) {
+        if (curr === null || curr === undefined) return null;
+        curr = curr[parts[i]];
+      }
+      return curr;
+    },
+
+    attachImgErrorHandler(img) {
+      if (img._cmsErrorHandled) return;
+      img._cmsErrorHandled = true;
+      const defaultSrc = img.getAttribute('src');
+      img.addEventListener('error', function () {
+        if (img._hasRetriedDefault) return;
+        img._hasRetriedDefault = true;
+        if (window.location.search.includes('debug=1')) {
+          console.warn('[CMS Image Error] Failed to load:', img.src, 'falling back to:', defaultSrc);
+        }
+        if (defaultSrc && img.src !== defaultSrc) {
+          img.src = defaultSrc;
+        }
+      });
+    },
+
+    bindElements(scope = document) {
+      const lang = this.currentLang;
+
+      // 1. data-cms (textContent or input placeholder)
+      scope.querySelectorAll('[data-cms]').forEach(el => {
+        const key = el.getAttribute('data-cms');
+        const raw = this.getValueByPath(key);
+        const val = this.resolveI18n(raw, lang);
+        if (val !== null && val !== undefined && val !== '') {
+          if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+            el.setAttribute('placeholder', String(val));
+          } else {
+            if (el.textContent !== String(val)) {
+              el.textContent = String(val);
+            }
+          }
+          el.setAttribute('data-translated-by', 'cms');
+        }
+      });
+
+      // 2. data-cms-html (sanitized innerHTML)
+      scope.querySelectorAll('[data-cms-html]').forEach(el => {
+        const key = el.getAttribute('data-cms-html');
+        const raw = this.getValueByPath(key);
+        const val = this.resolveI18n(raw, lang);
+        if (val !== null && val !== undefined && val !== '') {
+          const clean = sanitizeHtml(String(val));
+          if (el.innerHTML !== clean) {
+            el.innerHTML = clean;
+          }
+          el.setAttribute('data-translated-by', 'cms');
+        }
+      });
+
+      // 3. data-cms-img (src)
+      scope.querySelectorAll('[data-cms-img]').forEach(el => {
+        const key = el.getAttribute('data-cms-img');
+        const raw = this.getValueByPath(key);
+        if (raw) {
+          const resolved = resolveImgUrl(raw);
+          if (resolved && el.getAttribute('src') !== resolved) {
+            this.attachImgErrorHandler(el);
+            el.setAttribute('src', resolved);
+          }
+        }
+      });
+
+      // 4. data-cms-alt (alt)
+      scope.querySelectorAll('[data-cms-alt]').forEach(el => {
+        const key = el.getAttribute('data-cms-alt');
+        const raw = this.getValueByPath(key);
+        const val = this.resolveI18n(raw, lang);
+        if (val) {
+          el.setAttribute('alt', String(val));
+        }
+      });
+
+      // 5. data-cms-bg (background-image)
+      scope.querySelectorAll('[data-cms-bg]').forEach(el => {
+        const key = el.getAttribute('data-cms-bg');
+        const raw = this.getValueByPath(key);
+        if (raw) {
+          const resolved = resolveImgUrl(raw);
+          if (resolved) {
+            el.style.backgroundImage = `url("${resolved}")`;
+          }
+        }
+      });
+
+      // 6. data-cms-video (video or source src)
+      scope.querySelectorAll('[data-cms-video]').forEach(el => {
+        const key = el.getAttribute('data-cms-video');
+        const raw = this.getValueByPath(key);
+        if (raw) {
+          const resolved = resolveImgUrl(raw);
+          if (resolved) {
+            if (el.tagName === 'VIDEO') {
+              el.src = resolved;
+            } else if (el.tagName === 'SOURCE') {
+              el.src = resolved;
+              if (el.parentElement && el.parentElement.tagName === 'VIDEO') {
+                el.parentElement.load();
+              }
+            }
+          }
+        }
+      });
+
+      // 7. data-cms-link (href)
+      scope.querySelectorAll('[data-cms-link]').forEach(el => {
+        const key = el.getAttribute('data-cms-link');
+        const raw = this.getValueByPath(key);
+        if (raw && typeof raw === 'string') {
+          el.setAttribute('href', raw);
+        }
+      });
+
+      // 8. data-cms-list (repeatable dynamic items)
+      scope.querySelectorAll('[data-cms-list]').forEach(container => {
+        const listKey = container.getAttribute('data-cms-list');
+        const items = this.getValueByPath(listKey);
+
+        if (!this.listTemplates[listKey]) {
+          this.listTemplates[listKey] = container.innerHTML;
+        }
+
+        if (Array.isArray(items) && items.length > 0) {
+          const templateHtml = this.listTemplates[listKey];
+          const tempParent = document.createElement('div');
+          tempParent.innerHTML = templateHtml;
+          const templateNode = tempParent.firstElementChild;
+
+          if (!templateNode) return;
+
+          container.innerHTML = '';
+
+          items.forEach((item, index) => {
+            const clone = templateNode.cloneNode(true);
+
+            // Bind scalar item or object properties to cloned node
+            if (typeof item === 'string' || typeof item === 'number') {
+              if (clone.hasAttribute('data-cms') && !clone.getAttribute('data-cms')) {
+                clone.textContent = String(item);
+              } else {
+                clone.textContent = String(item);
+              }
+            } else if (typeof item === 'object' && item !== null) {
+              // Bind child elements inside the item
+              clone.querySelectorAll('[data-cms]').forEach(child => {
+                const subKey = child.getAttribute('data-cms').replace(/^\./, '');
+                const rawVal = item[subKey];
+                const resolved = this.resolveI18n(rawVal, lang);
+                if (resolved !== null && resolved !== undefined && resolved !== '') {
+                  child.textContent = String(resolved);
+                  child.setAttribute('data-translated-by', 'cms');
+                }
+              });
+
+              clone.querySelectorAll('[data-cms-html]').forEach(child => {
+                const subKey = child.getAttribute('data-cms-html').replace(/^\./, '');
+                const rawVal = item[subKey];
+                const resolved = this.resolveI18n(rawVal, lang);
+                if (resolved !== null && resolved !== undefined && resolved !== '') {
+                  child.innerHTML = sanitizeHtml(String(resolved));
+                  child.setAttribute('data-translated-by', 'cms');
+                }
+              });
+
+              clone.querySelectorAll('[data-cms-img]').forEach(child => {
+                const subKey = child.getAttribute('data-cms-img').replace(/^\./, '');
+                const rawVal = item[subKey];
+                if (rawVal) {
+                  const resolved = resolveImgUrl(rawVal);
+                  if (resolved) {
+                    this.attachImgErrorHandler(child);
+                    child.setAttribute('src', resolved);
+                  }
+                }
+              });
+            }
+
+            container.appendChild(clone);
+          });
+        }
+      });
+    },
+
+    purgeLegacyCaches() {
+      LEGACY_CACHE_KEYS.forEach(key => {
+        try {
+          localStorage.removeItem(key);
+        } catch (e) {}
+      });
     },
 
     readCache() {
       try {
         const raw = localStorage.getItem(CACHE_KEY);
-        if (raw) return JSON.parse(raw);
-      } catch (e) {}
-      return null;
+        if (!raw) return null;
+        const parsed = JSON.parse(raw);
+        if (!parsed || !parsed.version || !parsed.data) return null;
+        if (Date.now() - parsed.fetchedAt > CACHE_TTL_MS) return null;
+        return parsed;
+      } catch (e) {
+        return null;
+      }
     },
 
-    saveCache(data) {
+    writeCache(version, data) {
       try {
-        localStorage.setItem(CACHE_KEY, JSON.stringify(data));
+        const payload = {
+          version: version,
+          fetchedAt: Date.now(),
+          pageKey: this.pageKey,
+          data: data
+        };
+        localStorage.setItem(CACHE_KEY, JSON.stringify(payload));
       } catch (e) {}
     },
 
-    /**
-     * Check if current page URL is mapped in redirects collection
-     */
-    checkRedirects() {
-      if (!this.data || !this.data.redirects) return;
-      const currentPath = window.location.pathname;
-      const redirects = this.data.redirects;
+    async fetchVersion() {
+      const url = getFirestoreRestBase() + '/siteMeta/version';
+      const res = await fetch(url);
+      if (!res.ok) {
+        if (res.status === 404) return 1;
+        throw new Error('Version fetch HTTP ' + res.status);
+      }
+      const json = await res.json();
+      const unwrapped = unwrapFirestoreDoc(json);
+      return (unwrapped && unwrapped.v) ? unwrapped.v : 1;
+    },
 
-      for (const [from, to] of Object.entries(redirects)) {
-        if (currentPath.endsWith(from) || currentPath === from) {
-          console.log(`[LotusCMS] 301 Redirect: ${from} -> ${to}`);
-          window.location.replace(to);
-          return;
+    async fetchBatchedDocuments(docPaths) {
+      const projectId = getProjectId();
+      const fullDocNames = docPaths.map(p => `projects/${projectId}/databases/(default)/documents/${p}`);
+
+      const res = await fetch(getFirestoreRestBase() + ':batchGet', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ documents: fullDocNames })
+      });
+
+      if (!res.ok) {
+        throw new Error('BatchGet HTTP ' + res.status);
+      }
+
+      const results = await res.json();
+      const mapped = {};
+
+      if (Array.isArray(results)) {
+        results.forEach(entry => {
+          if (entry.found && entry.found.name) {
+            const docName = entry.found.name;
+            const relativePath = docName.split('/databases/(default)/documents/')[1];
+            mapped[relativePath] = unwrapFirestoreDoc(entry.found);
+          }
+        });
+      }
+
+      return mapped;
+    },
+
+    async loadContent() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const isPreview = urlParams.has('preview');
+      this.pageKey = this.determinePageKey();
+
+      if (isPreview) {
+        console.info('[CMS Preview Mode] Active. Cache bypassed.');
+        this.setupPreviewListener();
+      }
+
+      // Check cache if not in preview
+      if (!isPreview) {
+        const cached = this.readCache();
+        if (cached && cached.data && cached.pageKey === this.pageKey) {
+          this.data = cached.data;
+          this.bindElements();
+
+          // Check version asynchronously in background
+          try {
+            const currentVer = await this.fetchVersion();
+            if (currentVer === cached.version) {
+              return; // Cache is current
+            }
+          } catch (e) {
+            return; // Network error, stick with valid cache
+          }
+        }
+      }
+
+      // Fetch fresh data
+      try {
+        let version = 1;
+        try {
+          version = await this.fetchVersion();
+        } catch (e) {}
+
+        const globalDocs = [
+          'siteGlobal/branding',
+          'siteGlobal/header',
+          'siteGlobal/footer',
+          'siteGlobal/contact',
+          'siteGlobal/menu'
+        ];
+
+        const docsToFetch = [...globalDocs, this.pageKey];
+        const docResults = await this.fetchBatchedDocuments(docsToFetch);
+
+        const siteGlobal = {
+          branding: docResults['siteGlobal/branding'] || {},
+          header: docResults['siteGlobal/header'] || {},
+          footer: docResults['siteGlobal/footer'] || {},
+          contact: docResults['siteGlobal/contact'] || {},
+          menu: docResults['siteGlobal/menu'] || {}
+        };
+
+        const pageDoc = docResults[this.pageKey] || {};
+
+        this.data = {
+          siteGlobal: siteGlobal,
+          page: pageDoc
+        };
+
+        this.bindElements();
+
+        if (!isPreview) {
+          this.writeCache(version, this.data);
+        }
+      } catch (err) {
+        if (window.location.search.includes('debug=1')) {
+          console.warn('[CMS] Failed to fetch live content, falling back to hardcoded defaults:', err);
         }
       }
     },
 
-    /**
-     * Fetch fresh catalog data from Firestore or fallback bundle
-     */
-    async fetchFreshData() {
-      let freshData = null;
-
-      // Try Firebase live Firestore if available
-      if (window.LotusFirebase && typeof window.LotusFirebase.fetchFirestoreCatalog === 'function' && navigator.onLine) {
-        try {
-          const liveCatalog = await window.LotusFirebase.fetchFirestoreCatalog();
-          if (liveCatalog && liveCatalog.packages && liveCatalog.packages.length > 0) {
-            freshData = {
-              ...(this.data || {}),
-              packages: liveCatalog.packages,
-              tours: liveCatalog.packages,
-              categories: liveCatalog.categories
-            };
+    setupPreviewListener() {
+      window.addEventListener('message', event => {
+        if (!event.data || typeof event.data !== 'object') return;
+        if (event.data.type === 'lotus:cms-preview') {
+          if (event.data.page) {
+            this.data.page = Object.assign({}, this.data.page, event.data.page);
           }
-        } catch (err) {
-          console.warn('[LotusCMS] Firestore live fetch deferred:', err.message);
-        }
-      }
-
-      // If no live Firestore data, load seed bundle
-      if (!freshData) {
-        try {
-          const res = await fetch(getFallbackUrl());
-          if (res.ok) {
-            freshData = await res.json();
+          if (event.data.siteGlobal) {
+            this.data.siteGlobal = Object.assign({}, this.data.siteGlobal, event.data.siteGlobal);
           }
-        } catch (e) {
-          console.warn('[LotusCMS] Could not load fallback JSON bundle:', e.message);
+          this.bindElements();
         }
-      }
-
-      if (freshData) {
-        this.data = freshData;
-        this.saveCache(freshData);
-        this.hydrateDOM();
-      }
+      });
     },
 
-    /**
-     * Hydrate all DOM elements across the page
-     */
-    hydrateDOM() {
-      if (!this.data) return;
-      const lang = this.currentLang;
-
-      // 1. Hydrate Global Settings (Phone, Email, Address, WhatsApp, Slogan)
-      const settings = (this.data.settings && this.data.settings[0]) || this.data.settings || {};
-      if (settings.phone) {
-        document.querySelectorAll('[data-cms="phone"]').forEach(el => el.textContent = settings.phone);
-        document.querySelectorAll('a[href^="tel:"]').forEach(el => {
-          el.href = 'tel:' + (settings.phoneRaw || settings.phone).replace(/\s+/g, '');
-          if (el.textContent.includes('+94') || el.textContent.includes('71 54 22 384')) {
-            el.textContent = settings.phone;
-          }
-        });
-      }
-      if (settings.email) {
-        document.querySelectorAll('[data-cms="email"]').forEach(el => el.textContent = settings.email);
-        document.querySelectorAll('a[href^="mailto:"]').forEach(el => {
-          el.href = 'mailto:' + settings.email;
-          if (el.textContent.includes('@lotusceylon') || el.textContent.includes('info@')) {
-            el.textContent = settings.email;
-          }
-        });
-      }
-      if (settings.address && settings.address.full) {
-        document.querySelectorAll('[data-cms="address"]').forEach(el => el.textContent = settings.address.full);
-      }
-      if (settings.whatsappLink || settings.phoneRaw) {
-        const waLink = settings.whatsappLink || `https://wa.me/${(settings.phoneRaw || '94715422384').replace(/\D/g, '')}`;
-        document.querySelectorAll('.fab-whatsapp, .cta-wa-btn, .btn-mobile-whatsapp, [data-cms-href="whatsapp"], a[href*="wa.me"]').forEach(el => {
-          el.href = waLink;
-        });
-      }
-      if (settings.slogan) {
-        document.querySelectorAll('[data-cms="slogan"]').forEach(el => el.textContent = this.t(settings.slogan, lang));
-      }
-
-      // 2. Hydrate Tour Package Cards (Auto-detecting from links or data-tour-slug)
-      const tours = this.data.tours || this.data.packages || [];
-      document.querySelectorAll('a[href*="tours/"]').forEach(a => {
-        if (a.closest('.dest-card')) return; // Destination cards have their own hydration
-        const href = a.getAttribute('href') || '';
-        const m = href.match(/(?:^|\/)tours\/[^/]+\/([^/]+)/);
-        if (m && m[1] && !m[1].endsWith('.html')) {
-          const card = a.closest('.package-cards-grid > div, .hover-box, article, .tour-card, .curated-tour-card') || a;
-          if (!card.hasAttribute('data-tour-slug')) {
-            card.setAttribute('data-tour-slug', m[1]);
-          }
-        }
-      });
-
-      document.querySelectorAll('[data-tour-slug]').forEach(card => {
-        const slug = card.getAttribute('data-tour-slug');
-        const tour = tours.find(t => t.slug === slug);
-        if (tour) {
-          const titleEl = card.querySelector('.tour-card-title, [data-cms="tour-title"], .heading--24');
-          if (titleEl) titleEl.textContent = this.t(tour.title, lang);
-
-          const descEl = card.querySelector('.tour-card-desc, [data-cms="tour-desc"], .paragraph--14');
-          if (descEl) descEl.textContent = this.t(tour.tagline || tour.overview, lang);
-
-          const priceEl = card.querySelector('.tour-card-price, [data-cms="tour-price"]');
-          if (priceEl && tour.price_from) priceEl.textContent = '$' + tour.price_from;
-
-          const daysEl = card.querySelector('[data-cms="tour-days"], .paragraph--18');
-          if (daysEl) daysEl.textContent = `${tour.nights || 0} Nights & ${tour.days || 0} Days`;
-
-          const imgEl = card.querySelector('.tour-card-img, [data-cms="tour-img"], .slider-img.active');
-          if (imgEl && tour.hero_image) imgEl.src = this.resolveImg(tour.hero_image);
-        }
-      });
-
-      // 2.5 Hydrate Current Tour Detail Page if on one
-      const path = window.location.pathname.replace(/\\/g, '/');
-      if (path.includes('/tours/') && !path.endsWith('/tours/') && !path.endsWith('/tours/index.html')) {
-        const pathParts = path.split('/').filter(Boolean);
-        const currentTour = tours.find(t => pathParts.includes(t.slug));
-        if (currentTour) {
-          const heroTitleMain = document.querySelector('.hero-title-main');
-          if (heroTitleMain) {
-            heroTitleMain.textContent = this.t(currentTour.title, lang);
+    setupLanguageListeners() {
+      // Custom event for instant in-page updates
+      window.addEventListener('lotus:languageChanged', (e) => {
+        const lang = (e.detail && e.detail.lang) || e.detail;
+        if (lang) {
+          this.currentLang = lang;
+          if (lang === 'ar') {
+            document.documentElement.dir = 'rtl';
           } else {
-            const h1 = document.querySelector('.tour-hero-title');
-            if (h1) h1.textContent = this.t(currentTour.title, lang);
+            document.documentElement.dir = 'ltr';
           }
-
-          const heroTagline = document.querySelector('.tour-hero-tagline');
-          if (heroTagline) heroTagline.textContent = this.t(currentTour.tagline || currentTour.overview, lang);
-
-          const heroBadgeDays = document.querySelector('.tour-badge-gold');
-          if (heroBadgeDays) heroBadgeDays.textContent = `${currentTour.nights || 0} Nights • ${currentTour.days || 0} Days`;
-
-          const heroBg = document.querySelector('.tour-hero-banner, .tour-hero');
-          if (heroBg && currentTour.hero_image) {
-            heroBg.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.7)), url("${this.resolveImg(currentTour.hero_image)}")`;
-          }
-        }
-      }
-
-      // 3. Hydrate Destination Cards (Auto-detecting from titles or data-dest-slug)
-      const destinations = this.data.destinations || [];
-      document.querySelectorAll('.dest-card').forEach(card => {
-        if (!card.hasAttribute('data-dest-slug')) {
-          const title = card.querySelector('.dest-card-title')?.textContent?.trim().toLowerCase();
-          if (title) {
-            const match = destinations.find(d => (d.title && typeof d.title === 'object' && d.title.en.toLowerCase() === title) || d.slug === title);
-            if (match) card.setAttribute('data-dest-slug', match.slug);
-          }
+          this.bindElements();
         }
       });
 
-      document.querySelectorAll('[data-dest-slug]').forEach(card => {
-        const slug = card.getAttribute('data-dest-slug');
-        const dest = destinations.find(d => d.slug === slug);
-        if (dest) {
-          const titleEl = card.querySelector('.dest-card-title, [data-cms="dest-title"]');
-          if (titleEl) titleEl.textContent = this.t(dest.title, lang);
-
-          const descEl = card.querySelector('.dest-card-desc, [data-cms="dest-desc"]');
-          if (descEl) descEl.textContent = this.t(dest.description, lang);
-
-          const imgEl = card.querySelector('.dest-card-img, [data-cms="dest-img"]');
-          if (imgEl && dest.image) imgEl.src = this.resolveImg(dest.image);
-        }
-      });
-
-      // 4. Hydrate Category Elements
-      const categories = this.data.categories || [];
-      const catList = Array.isArray(categories) ? categories : Object.values(categories);
-      document.querySelectorAll('[data-cat-slug]').forEach(card => {
-        const slug = card.getAttribute('data-cat-slug');
-        const cat = catList.find(c => c.slug === slug);
-        if (cat) {
-          const titleEl = card.querySelector('[data-cms="cat-title"]');
-          if (titleEl) titleEl.textContent = this.t(cat.title, lang);
-
-          const taglineEl = card.querySelector('[data-cms="cat-tagline"]');
-          if (taglineEl) taglineEl.textContent = this.t(cat.tagline, lang);
-
-          const descEl = card.querySelector('[data-cms="cat-desc"]');
-          if (descEl) descEl.textContent = this.t(cat.description, lang);
-        }
-      });
-
-      // 5. Hydrate FAQs
-      const faqs = this.data.faqs || [];
-      document.querySelectorAll('[data-faq-id]').forEach(item => {
-        const id = item.getAttribute('data-faq-id');
-        const faq = faqs.find(f => f.id === id);
-        if (faq) {
-          const qEl = item.querySelector('.accordion-header-btn span, [data-cms="faq-q"]');
-          if (qEl) qEl.textContent = this.t(faq.question, lang);
-
-          const aEl = item.querySelector('.accordion-content-box p, [data-cms="faq-a"]');
-          if (aEl) aEl.textContent = this.t(faq.answer, lang);
-        }
-      });
-    },
-
-    /**
-     * Switch active language in real time
-     */
-    setLanguage(langCode) {
-      this.currentLang = (langCode === 'zh-CN' || langCode === 'zh-TW') ? 'zh' : langCode;
-      this.hydrateDOM();
-    },
-
-    /**
-     * Observe language switcher mutations on <html> element
-     */
-    setupLanguageObserver() {
+      // Observer for html lang attribute changes
       const observer = new MutationObserver((mutations) => {
         mutations.forEach((mutation) => {
           if (mutation.type === 'attributes' && mutation.attributeName === 'lang') {
             const newLang = document.documentElement.lang;
-            if (newLang) {
-              this.setLanguage(newLang);
+            if (newLang && newLang !== this.currentLang) {
+              this.currentLang = newLang;
+              this.bindElements();
             }
           }
         });
       });
 
-      observer.observe(document.documentElement, { attributes: true, attributeFilter: ['lang'] });
+      observer.observe(document.documentElement, { attributes: true });
+    },
 
-      window.addEventListener('lotus-lang-changed', (e) => {
-        if (e.detail && e.detail.lang) {
-          this.setLanguage(e.detail.lang);
-        }
-      });
+    init() {
+      if (this.initialized) return;
+      this.initialized = true;
+
+      this.purgeLegacyCaches();
+      this.detectLanguage();
+      this.setupLanguageListeners();
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', () => this.loadContent());
+      } else {
+        this.loadContent();
+      }
     }
   };
 
   window.LotusCMS = CMS;
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => CMS.init());
-  } else {
-    CMS.init();
-  }
-})(window);
+  CMS.init();
+
+})(window, document);

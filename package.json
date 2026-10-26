@@ -1,0 +1,21 @@
+{
+  "name": "lotus-ceylon-website",
+  "version": "1.0.0",
+  "description": "Lotus Ceylon International Tours & Services Official Website & CMS",
+  "private": true,
+  "scripts": {
+    "build": "node scripts/build-partials.js",
+    "build:all": "node scripts/build-partials.js --all",
+    "check:images": "node scripts/check-images.js",
+    "migrate:packages": "node scripts/migrate-packages.js",
+    "pilot:seed": "node scripts/pilot-seed.js"
+  },
+  "keywords": [
+    "lotus-ceylon",
+    "sri-lanka",
+    "luxury-tours",
+    "cms"
+  ],
+  "author": "Lotus Ceylon & Infinite Design",
+  "license": "UNLICENSED"
+}

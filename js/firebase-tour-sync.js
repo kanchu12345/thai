@@ -316,7 +316,10 @@
 
       if (this.db && this.db.collection) {
 
-        let pkgSnap = await this.db.collection('tours').get();
+        let pkgSnap = await this.db.collection('tourPackages').get();
+        if (pkgSnap.empty) {
+          pkgSnap = await this.db.collection('tours').get();
+        }
 
         if (pkgSnap.empty) {
 
@@ -358,7 +361,10 @@
 
       const { collection, getDocs } = await import('https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js');
 
-      let pkgSnap = await getDocs(collection(this.db, 'tours'));
+      let pkgSnap = await getDocs(collection(this.db, 'tourPackages'));
+      if (pkgSnap.empty) {
+        pkgSnap = await getDocs(collection(this.db, 'tours'));
+      }
 
       if (pkgSnap.empty) {
 
@@ -559,36 +565,38 @@
      */
 
     async savePackage(pkg) {
-
       await this.init();
-
       if (!this.db) throw new Error('Firestore is not initialized.');
 
-
-
-      const pkgId = pkg.id || ('pkg-' + (pkg.slug || Date.now()));
-
+      const canonicalDocId = pkg.slug || pkg.id || ('pkg-' + Date.now());
       const payload = {
-
         ...pkg,
-
-        id: pkgId,
-
+        id: canonicalDocId,
+        slug: pkg.slug || canonicalDocId,
         updatedAt: new Date().toISOString()
-
       };
 
-
-
       if (this.db.collection) {
-
-        await this.db.collection('tours').doc(pkgId).set(payload, { merge: true });
-
-        await this.db.collection('packages').doc(pkgId).set(payload, { merge: true });
-
+        await this.db.collection('tourPackages').doc(canonicalDocId).set(payload, { merge: true });
+        try {
+          await this.db.collection('siteMeta').doc('version').set({
+            v: Date.now(),
+            updatedAt: new Date().toISOString()
+          }, { merge: true });
+        } catch (e) {}
         return payload;
-
       }
+
+      const { doc, setDoc } = await import('https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js');
+      await setDoc(doc(this.db, 'tourPackages', canonicalDocId), payload, { merge: true });
+      try {
+        await setDoc(doc(this.db, 'siteMeta', 'version'), {
+          v: Date.now(),
+          updatedAt: new Date().toISOString()
+        }, { merge: true });
+      } catch (e) {}
+      return payload;
+    }
 
 
 
