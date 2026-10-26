@@ -8,3 +8,23 @@ tools/*_results.json
 tools/*backup*
 __pycache__/
 *.pyc
+
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Security & Secrets (Strictly Ignored)
+*.pem
+*.key
+*.p12
+*.keystore
+*service-account*.json
+*serviceAccount*.json
+*firebase-adminsdk*.json
+credentials*.json
+secrets*.json
+.env
+.env.*
+!.env.example

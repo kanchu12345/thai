@@ -1,14 +1,8 @@
 /**
  * scripts/test-pilot.js
- * Verification Test Suite for CMS Pilot (Phase 1)
- * Tests all 7 verification points:
- * a) Live Firestore edit -> Page reflects change
- * b) Tour Package deep binding (Hero + Itinerary)
- * c) Network offline / Firebase down -> Default HTML fallback intact
- * d) Multilingual switching (EN -> FR -> AR) + Arabic RTL
- * e) Cost/speed cache (siteMeta/version check)
- * f) Mobile layout stability
- * g) Performance & payload measurement
+ * Non-destructive verification test suite complying with Step R0:
+ * - NEVER writes test values into live production documents
+ * - Uses test_ prefixed collections or read-only checks on live production docs
  */
 
 const fs = require('fs');
@@ -31,9 +25,28 @@ function httpGet(urlPath) {
   });
 }
 
+function testFirestoreRest(method, docPath, body = null) {
+  return new Promise((resolve) => {
+    const url = `https://firestore.googleapis.com/v1/projects/${PROJECT_ID}/databases/(default)/documents${docPath}?key=AIzaSyD5NyCFaPHeS1cKlsgxZ_WsraswHlYonNA`;
+    const req = https.request(url, {
+      method: method,
+      headers: {
+        'Content-Type': 'application/json',
+        ...(body ? { 'Content-Length': Buffer.byteLength(body) } : {})
+      }
+    }, (res) => {
+      let data = '';
+      res.on('data', c => data += c);
+      res.on('end', () => resolve({ path: docPath, method, status: res.statusCode, body: data }));
+    });
+    if (body) req.write(body);
+    req.end();
+  });
+}
+
 async function runTests() {
   console.log('======================================================');
-  console.log('  LOTUS CEYLON CMS PHASE 1 - PILOT VERIFICATION SUITE ');
+  console.log('  LOTUS CEYLON CMS PILOT SUITE (NON-DESTRUCTIVE R0)   ');
   console.log('======================================================\n');
 
   const results = {
@@ -47,36 +60,20 @@ async function runTests() {
   };
 
   // ----------------------------------------------------------------
-  // Test A: Firestore title update reflects on live page
+  // Test A: Homepage CMS Title Binding (Read-only on production doc)
   // ----------------------------------------------------------------
   console.log('▶ Test A: Homepage CMS Title Binding via Firestore REST...');
   try {
-    const testTitle = 'Sacred Splendour & Pure Journeys [CMS TEST]';
-    await writeDoc('siteContent/home', {
-      hero: {
-        badge: 'Bespoke Luxury Sri Lanka Tours',
-        title: testTitle,
-        subtitle: 'Immerse in timeless heritage, private wildlife safaris, and secluded coastal pavilions curated exclusively for you.'
-      }
-    });
-    await writeDoc('siteMeta/version', { v: 2, updatedAt: new Date().toISOString() });
-
-    // Read index.html from local server
+    // Read production document without modifying it
+    const restRes = await testFirestoreRest('GET', '/siteContent/home');
     const { status, body } = await httpGet('/index.html');
-    if (status === 200 && body.includes('data-cms-html="hero.title"')) {
+    
+    if (restRes.status === 200 && status === 200 && body.includes('data-cms-html="hero.title"')) {
+      console.log('  ✓ Live Firestore siteContent/home is reachable and returns HTTP 200');
       console.log('  ✓ index.html successfully served on port 8089');
-      console.log('  ✓ hero.title element bound with data-cms-html');
+      console.log('  ✓ hero.title element bound with data-cms-html (Zero test data written to production)');
       results.testA = true;
     }
-
-    // Restore clean title
-    await writeDoc('siteContent/home', {
-      hero: {
-        badge: 'Bespoke Luxury Sri Lanka Tours',
-        title: 'Sacred Splendour & Pure Journeys',
-        subtitle: 'Immerse in timeless heritage, private wildlife safaris, and secluded coastal pavilions curated exclusively for you.'
-      }
-    });
   } catch (err) {
     console.error('  ✗ Test A failed:', err.message);
   }
@@ -86,6 +83,7 @@ async function runTests() {
   // ----------------------------------------------------------------
   console.log('\n▶ Test B: Tour Package Deep Binding (Hero Image, Overview & Itinerary)...');
   try {
+    const pkgRes = await testFirestoreRest('GET', '/tourPackages/southern-sands-serenade');
     const tourUrl = '/tours/beach/southern-sands-serenade/index.html';
     const { status, body } = await httpGet(tourUrl);
     const hasHeroBg = body.includes('data-cms-bg="hero_image"');
@@ -93,15 +91,14 @@ async function runTests() {
     const hasItineraryList = body.includes('data-cms-list="itinerary"');
     const hasDayBadge = body.includes('data-cms="dayBadge"');
 
-    if (status === 200 && hasHeroBg && hasTitle && hasItineraryList && hasDayBadge) {
+    if (pkgRes.status === 200 && status === 200 && hasHeroBg && hasTitle && hasItineraryList && hasDayBadge) {
+      console.log('  ✓ Firestore tourPackages/southern-sands-serenade is live (HTTP 200)');
       console.log('  ✓ Tour detail page served HTTP 200');
       console.log('  ✓ data-cms-bg="hero_image" bound on hero');
       console.log('  ✓ data-cms="title" bound on main title');
       console.log('  ✓ data-cms-list="itinerary" bound on timeline container');
-      console.log('  ✓ Child item templates bound: dayBadge, title, description, hotel, meals, travelTime');
+      console.log('  ✓ Child templates bound: dayBadge, title, description, hotel, meals, travelTime');
       results.testB = true;
-    } else {
-      console.warn('  ! Partial missing in Test B:', { hasHeroBg, hasTitle, hasItineraryList, hasDayBadge });
     }
   } catch (err) {
     console.error('  ✗ Test B failed:', err.message);
@@ -115,8 +112,7 @@ async function runTests() {
     const { body: homeBody } = await httpGet('/index.html');
     const { body: tourBody } = await httpGet('/tours/beach/southern-sands-serenade/index.html');
 
-    // Verify default HTML contains readable text
-    const homeHasDefaultText = homeBody.includes('Discover Sri Lanka’s') || homeBody.includes('Discover Sri Lanka');
+    const homeHasDefaultText = homeBody.includes('Discover Sri Lanka');
     const tourHasDefaultText = tourBody.includes('Southern Sands Serenade') && tourBody.includes('Day 1');
 
     if (homeHasDefaultText && tourHasDefaultText) {
@@ -151,7 +147,7 @@ async function runTests() {
   }
 
   // ----------------------------------------------------------------
-  // Test E: Cost/Speed Control (siteMeta/version & localStorage v3)
+  // Test E: Cost/Speed Control (siteMeta/version & Cache v3)
   // ----------------------------------------------------------------
   console.log('\n▶ Test E: Cost / Speed Control (siteMeta/version & Cache v3)...');
   try {
@@ -201,7 +197,7 @@ async function runTests() {
     const cmsPath = path.join(__dirname, '..', 'assets', 'js', 'cms.js');
     const cmsStats = fs.statSync(cmsPath);
     const cmsSizeKb = (cmsStats.size / 1024).toFixed(2);
-    const firebaseSdkSizeKb = 320.0; // Standard Firebase Modular SDK bundle (app + auth + firestore)
+    const firebaseSdkSizeKb = 320.0;
 
     console.log(`  ✓ assets/js/cms.js file size: ${cmsSizeKb} KB`);
     console.log(`  ✓ Firebase JS SDK equivalent: ~${firebaseSdkSizeKb} KB`);
@@ -213,7 +209,7 @@ async function runTests() {
   }
 
   console.log('\n------------------------------------------------------');
-  console.log('  PILOT TEST SUMMARY');
+  console.log('  PILOT TEST SUMMARY (NON-DESTRUCTIVE)');
   console.log('------------------------------------------------------');
   let allPassed = true;
   for (const [t, passed] of Object.entries(results)) {
@@ -221,7 +217,7 @@ async function runTests() {
     if (!passed) allPassed = false;
   }
   console.log('------------------------------------------------------');
-  console.log(`OVERALL RESULT: ${allPassed ? 'ALL PILOT TESTS PASSED! READY FOR USER REVIEW.' : 'SOME TESTS FAILED.'}\n`);
+  console.log(`OVERALL RESULT: ${allPassed ? 'ALL PILOT TESTS PASSED NON-DESTRUCTIVELY!' : 'SOME TESTS FAILED.'}\n`);
 
   return results;
 }
