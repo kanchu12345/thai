@@ -1,0 +1,366 @@
+[
+  {
+    "file": "index.html",
+    "bound": 161,
+    "total": 161,
+    "pct": 100,
+    "status": "PASS ✓"
+  },
+  {
+    "file": "about.html",
+    "bound": 91,
+    "total": 91,
+    "pct": 100,
+    "status": "PASS ✓"
+  },
+  {
+    "file": "contact.html",
+    "bound": 31,
+    "total": 31,
+    "pct": 100,
+    "status": "PASS ✓"
+  },
+  {
+    "file": "destinations.html",
+    "bound": 69,
+    "total": 69,
+    "pct": 100,
+    "status": "PASS ✓"
+  },
+  {
+    "file": "experiences.html",
+    "bound": 96,
+    "total": 96,
+    "pct": 100,
+    "status": "PASS ✓"
+  },
+  {
+    "file": "gallery.html",
+    "bound": 93,
+    "total": 95,
+    "pct": 98,
+    "status": "PASS ✓"
+  },
+  {
+    "file": "reviews.html",
+    "bound": 82,
+    "total": 82,
+    "pct": 100,
+    "status": "PASS ✓"
+  },
+  {
+    "file": "blog.html",
+    "bound": 17,
+    "total": 17,
+    "pct": 100,
+    "status": "PASS ✓"
+  },
+  {
+    "file": "inquiry-detailed.html",
+    "bound": 58,
+    "total": 58,
+    "pct": 100,
+    "status": "PASS ✓"
+  },
+  {
+    "file": "inquiry-quick.html",
+    "bound": 33,
+    "total": 34,
+    "pct": 97,
+    "status": "PASS ✓"
+  },
+  {
+    "file": "privacy-policy.html",
+    "bound": 26,
+    "total": 26,
+    "pct": 100,
+    "status": "PASS ✓"
+  },
+  {
+    "file": "terms-conditions.html",
+    "bound": 21,
+    "total": 21,
+    "pct": 100,
+    "status": "PASS ✓"
+  },
+  {
+    "file": "cancellation-policy.html",
+    "bound": 23,
+    "total": 23,
+    "pct": 100,
+    "status": "PASS ✓"
+  },
+  {
+    "file": "cookie-policy.html",
+    "bound": 17,
+    "total": 17,
+    "pct": 100,
+    "status": "PASS ✓"
+  },
+  {
+    "file": "tours/index.html",
+    "bound": 207,
+    "total": 207,
+    "pct": 100,
+    "status": "PASS ✓"
+  },
+  {
+    "file": "tours/adventure/index.html",
+    "bound": 92,
+    "total": 92,
+    "pct": 100,
+    "status": "PASS ✓"
+  },
+  {
+    "file": "tours/adventure/island-adrenaline-rapids-expedition/index.html",
+    "bound": 83,
+    "total": 85,
+    "pct": 98,
+    "status": "PASS ✓"
+  },
+  {
+    "file": "tours/adventure/wild-peaks-trails-surf-safari/index.html",
+    "bound": 89,
+    "total": 91,
+    "pct": 98,
+    "status": "PASS ✓"
+  },
+  {
+    "file": "tours/ayurvedic/index.html",
+    "bound": 82,
+    "total": 82,
+    "pct": 100,
+    "status": "PASS ✓"
+  },
+  {
+    "file": "tours/ayurvedic/lotus-ayu-holistic-rejuvenation/index.html",
+    "bound": 89,
+    "total": 90,
+    "pct": 99,
+    "status": "PASS ✓"
+  },
+  {
+    "file": "tours/ayurvedic/sacred-serenity-forest-meditation-retreat/index.html",
+    "bound": 95,
+    "total": 97,
+    "pct": 98,
+    "status": "PASS ✓"
+  },
+  {
+    "file": "tours/beach/index.html",
+    "bound": 172,
+    "total": 172,
+    "pct": 100,
+    "status": "PASS ✓"
+  },
+  {
+    "file": "tours/beach/pristine-seaboard-odyssey/index.html",
+    "bound": 102,
+    "total": 103,
+    "pct": 99,
+    "status": "PASS ✓"
+  },
+  {
+    "file": "tours/beach/southern-sands-serenade/index.html",
+    "bound": 100,
+    "total": 101,
+    "pct": 99,
+    "status": "PASS ✓"
+  },
+  {
+    "file": "tours/beach/turquoise-eastern-sanctuary/index.html",
+    "bound": 98,
+    "total": 99,
+    "pct": 99,
+    "status": "PASS ✓"
+  },
+  {
+    "file": "tours/buddhist-heritage/index.html",
+    "bound": 45,
+    "total": 45,
+    "pct": 100,
+    "status": "PASS ✓"
+  },
+  {
+    "file": "tours/cultural/index.html",
+    "bound": 159,
+    "total": 159,
+    "pct": 100,
+    "status": "PASS ✓"
+  },
+  {
+    "file": "tours/cultural/royal-kingdoms-sacred-temples/index.html",
+    "bound": 85,
+    "total": 86,
+    "pct": 99,
+    "status": "PASS ✓"
+  },
+  {
+    "file": "tours/cultural/the-sacred-lotus-triangle/index.html",
+    "bound": 91,
+    "total": 92,
+    "pct": 99,
+    "status": "PASS ✓"
+  },
+  {
+    "file": "tours/cultural/three-millennia-of-living-heritage/index.html",
+    "bound": 104,
+    "total": 105,
+    "pct": 99,
+    "status": "PASS ✓"
+  },
+  {
+    "file": "tours/family/index.html",
+    "bound": 125,
+    "total": 125,
+    "pct": 100,
+    "status": "PASS ✓"
+  },
+  {
+    "file": "tours/family/island-wonder-multi-gen-family-discovery/index.html",
+    "bound": 92,
+    "total": 94,
+    "pct": 98,
+    "status": "PASS ✓"
+  },
+  {
+    "file": "tours/family/the-grand-ceylon-family-adventure/index.html",
+    "bound": 100,
+    "total": 102,
+    "pct": 98,
+    "status": "PASS ✓"
+  },
+  {
+    "file": "tours/family/wild-safari-coastal-family-holiday/index.html",
+    "bound": 96,
+    "total": 98,
+    "pct": 98,
+    "status": "PASS ✓"
+  },
+  {
+    "file": "tours/golf/index.html",
+    "bound": 94,
+    "total": 94,
+    "pct": 100,
+    "status": "PASS ✓"
+  },
+  {
+    "file": "tours/golf/highland-greens-coastal-links-championship/index.html",
+    "bound": 92,
+    "total": 94,
+    "pct": 98,
+    "status": "PASS ✓"
+  },
+  {
+    "file": "tours/golf/the-grand-ceylon-masters-golf-odyssey/index.html",
+    "bound": 96,
+    "total": 98,
+    "pct": 98,
+    "status": "PASS ✓"
+  },
+  {
+    "file": "tours/golf/the-royal-ceylon-fairways-tour/index.html",
+    "bound": 86,
+    "total": 88,
+    "pct": 98,
+    "status": "PASS ✓"
+  },
+  {
+    "file": "tours/hill-country/index.html",
+    "bound": 113,
+    "total": 113,
+    "pct": 100,
+    "status": "PASS ✓"
+  },
+  {
+    "file": "tours/hill-country/ceylon-tea-trails-colonial-grandeur/index.html",
+    "bound": 92,
+    "total": 93,
+    "pct": 99,
+    "status": "PASS ✓"
+  },
+  {
+    "file": "tours/hill-country/highland-wilderness-cascading-waterfalls/index.html",
+    "bound": 96,
+    "total": 98,
+    "pct": 98,
+    "status": "PASS ✓"
+  },
+  {
+    "file": "tours/hill-country/misty-peaks-scenic-railways-expedition/index.html",
+    "bound": 94,
+    "total": 95,
+    "pct": 99,
+    "status": "PASS ✓"
+  },
+  {
+    "file": "tours/honeymoon/index.html",
+    "bound": 94,
+    "total": 94,
+    "pct": 100,
+    "status": "PASS ✓"
+  },
+  {
+    "file": "tours/honeymoon/enchanted-ceylon-romantic-hideaway/index.html",
+    "bound": 86,
+    "total": 88,
+    "pct": 98,
+    "status": "PASS ✓"
+  },
+  {
+    "file": "tours/honeymoon/pure-serenade-coastal-highland-romance/index.html",
+    "bound": 92,
+    "total": 94,
+    "pct": 98,
+    "status": "PASS ✓"
+  },
+  {
+    "file": "tours/ramayana/index.html",
+    "bound": 89,
+    "total": 89,
+    "pct": 100,
+    "status": "PASS ✓"
+  },
+  {
+    "file": "tours/ramayana/sacred-ramayana-heritage-trail/index.html",
+    "bound": 81,
+    "total": 83,
+    "pct": 98,
+    "status": "PASS ✓"
+  },
+  {
+    "file": "tours/ramayana/the-epic-ramayana-chronicle-pilgrimage/index.html",
+    "bound": 87,
+    "total": 89,
+    "pct": 98,
+    "status": "PASS ✓"
+  },
+  {
+    "file": "tours/wildlife/index.html",
+    "bound": 166,
+    "total": 166,
+    "pct": 100,
+    "status": "PASS ✓"
+  },
+  {
+    "file": "tours/wildlife/the-sri-lanka-big-five-expedition/index.html",
+    "bound": 102,
+    "total": 103,
+    "pct": 99,
+    "status": "PASS ✓"
+  },
+  {
+    "file": "tours/wildlife/untamed-biosphere-rainforest-odyssey/index.html",
+    "bound": 108,
+    "total": 109,
+    "pct": 99,
+    "status": "PASS ✓"
+  },
+  {
+    "file": "tours/wildlife/wild-ceylon-predator-elephant-trail/index.html",
+    "bound": 89,
+    "total": 90,
+    "pct": 99,
+    "status": "PASS ✓"
+  }
+]
