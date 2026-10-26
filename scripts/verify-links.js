@@ -31,8 +31,8 @@ function checkFileLinks(filePath) {
 
   const broken = [];
 
-  // Match href="..." and src="..."
-  const linkRegex = /(?:href|src|data-cms-img)=["']([^"'#?]+)(?:[#?][^"']*)?["']/gi;
+  // Match href="..." and src="..." (data-cms-img is a CMS key, not a static URL)
+  const linkRegex = /(?:href|src)=["']([^"'#?]+)(?:[#?][^"']*)?["']/gi;
   let match;
 
   while ((match = linkRegex.exec(content)) !== null) {
