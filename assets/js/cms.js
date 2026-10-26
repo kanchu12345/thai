@@ -337,12 +337,16 @@
         if (raw) {
           const resolved = resolveImgUrl(raw);
           if (resolved) {
-            if (el.tagName === 'VIDEO') {
-              el.src = resolved;
-            } else if (el.tagName === 'SOURCE') {
-              el.src = resolved;
-              if (el.parentElement && el.parentElement.tagName === 'VIDEO') {
-                el.parentElement.load();
+            const currentSrc = el.getAttribute('src');
+            if (currentSrc !== resolved) {
+              el.setAttribute('src', resolved);
+              if (el.tagName === 'VIDEO') {
+                el.src = resolved;
+              } else if (el.tagName === 'SOURCE') {
+                el.src = resolved;
+                if (el.parentElement && el.parentElement.tagName === 'VIDEO' && window.innerWidth >= 993) {
+                  el.parentElement.load();
+                }
               }
             }
           }

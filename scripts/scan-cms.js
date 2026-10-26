@@ -1,7 +1,11 @@
 /**
  * scripts/scan-cms.js
- * Step R4: Scans all HTML files and builds cms-registry.json
- * Mapping page -> section -> fieldKey, type, label, defaultValue, i18n support.
+ * Step R7-1: Production CMS Registry Scanner with Global Deduplication
+ * 
+ * Maps every public page -> section -> fieldKey, type, label, defaultValue, i18n,
+ * and maps every key to an exact concrete Firestore path.
+ * Collects siteGlobal.* keys ONLY ONCE into siteGlobal/{subDoc},
+ * excluding them from per-page counts.
  */
 
 const fs = require('fs');
@@ -31,28 +35,54 @@ function getElementLabel(fieldKey, tagName, innerText) {
   return lastPart.replace(/[-_]/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
 }
 
-function scanFile(relPath) {
+function resolveFirestorePath(pageDocKey, fieldKey) {
+  if (fieldKey.startsWith('siteGlobal.')) {
+    const parts = fieldKey.split('.');
+    // siteGlobal.branding.brandNameLotus -> siteGlobal/branding.brandNameLotus
+    const subDoc = parts[1] || 'branding';
+    const field = parts.slice(2).join('.');
+    return `siteGlobal/${subDoc}.${field}`;
+  }
+  return `${pageDocKey}.${fieldKey}`;
+}
+
+function scanFileRaw(relPath) {
   const fullPath = path.join(ROOT_DIR, relPath);
   const content = fs.readFileSync(fullPath, 'utf8');
 
   const pageDocMatch = content.match(/<body[^>]*data-cms-page=["']([^"']+)["']/i);
-  const pageDocKey = pageDocMatch ? pageDocMatch[1] : (relPath.startsWith('tours/') ? 'tourPackages/' + path.basename(path.dirname(relPath)) : 'siteContent/' + relPath.replace(/\.html$/, ''));
+  let pageDocKey = 'siteContent/home';
+  if (pageDocMatch) {
+    pageDocKey = pageDocMatch[1];
+  } else if (relPath.startsWith('tours/')) {
+    const segments = relPath.split('/');
+    if (segments.length === 2 && segments[1] === 'index.html') {
+      pageDocKey = 'siteContent/toursIndex';
+    } else if (segments.length === 3 && segments[2] === 'index.html') {
+      pageDocKey = 'tourCategories/' + segments[1];
+    } else if (segments.length >= 4) {
+      pageDocKey = 'tourPackages/' + segments[2];
+    }
+  } else {
+    pageDocKey = 'siteContent/' + relPath.replace(/\.html$/, '');
+  }
 
-  const registryEntries = [];
+  const entries = [];
 
   // 1. data-cms (text)
   const textMatches = content.matchAll(/<([a-z0-9]+)([^>]*?)data-cms=["']([^"']+)["']([^>]*)>([\s\S]*?)<\/\1>/gi);
   for (const m of textMatches) {
     const [_, tag, before, key, after, inner] = m;
     const cleanText = inner.replace(/<[^>]+>/g, '').trim();
-    registryEntries.push({
+    entries.push({
       page: pageDocKey,
       file: relPath,
       fieldKey: key,
+      firestorePath: resolveFirestorePath(pageDocKey, key),
       type: 'text',
       label: getElementLabel(key, tag, cleanText),
       defaultValue: cleanText,
-      i18n: true
+      i18n: !key.startsWith('siteGlobal.branding.logo')
     });
   }
 
@@ -60,10 +90,11 @@ function scanFile(relPath) {
   const htmlMatches = content.matchAll(/<([a-z0-9]+)([^>]*?)data-cms-html=["']([^"']+)["']([^>]*)>([\s\S]*?)<\/\1>/gi);
   for (const m of htmlMatches) {
     const [_, tag, before, key, after, inner] = m;
-    registryEntries.push({
+    entries.push({
       page: pageDocKey,
       file: relPath,
       fieldKey: key,
+      firestorePath: resolveFirestorePath(pageDocKey, key),
       type: 'html',
       label: getElementLabel(key, tag, inner),
       defaultValue: inner.trim(),
@@ -75,10 +106,11 @@ function scanFile(relPath) {
   const imgMatches = content.matchAll(/<img([^>]*?)src=["']([^"']+)["']([^>]*?)data-cms-img=["']([^"']+)["']/gi);
   for (const m of imgMatches) {
     const [_, before, src, mid, key] = m;
-    registryEntries.push({
+    entries.push({
       page: pageDocKey,
       file: relPath,
       fieldKey: key,
+      firestorePath: resolveFirestorePath(pageDocKey, key),
       type: 'image',
       label: getElementLabel(key, 'img', src),
       defaultValue: src,
@@ -90,10 +122,11 @@ function scanFile(relPath) {
   const bgMatches = content.matchAll(/<([a-z0-9]+)([^>]*?)style=["'][^"']*url\(['"]?([^"')]+)['"]?\)[^"']*["']([^>]*?)data-cms-bg=["']([^"']+)["']/gi);
   for (const m of bgMatches) {
     const [_, tag, before, url, mid, key] = m;
-    registryEntries.push({
+    entries.push({
       page: pageDocKey,
       file: relPath,
       fieldKey: key,
+      firestorePath: resolveFirestorePath(pageDocKey, key),
       type: 'background',
       label: getElementLabel(key, tag, url),
       defaultValue: url,
@@ -106,10 +139,11 @@ function scanFile(relPath) {
   for (const m of videoMatches) {
     const [_, attrs, key] = m;
     const srcMatch = attrs.match(/src=["']([^"']+)["']/i);
-    registryEntries.push({
+    entries.push({
       page: pageDocKey,
       file: relPath,
       fieldKey: key,
+      firestorePath: resolveFirestorePath(pageDocKey, key),
       type: 'video',
       label: 'Hero Video Source',
       defaultValue: srcMatch ? srcMatch[1] : '',
@@ -121,10 +155,11 @@ function scanFile(relPath) {
   const linkMatches = content.matchAll(/<a([^>]*?)href=["']([^"']+)["']([^>]*?)data-cms-link=["']([^"']+)["']/gi);
   for (const m of linkMatches) {
     const [_, before, href, mid, key] = m;
-    registryEntries.push({
+    entries.push({
       page: pageDocKey,
       file: relPath,
       fieldKey: key,
+      firestorePath: resolveFirestorePath(pageDocKey, key),
       type: 'link',
       label: getElementLabel(key, 'a', href),
       defaultValue: href,
@@ -136,10 +171,11 @@ function scanFile(relPath) {
   const listMatches = content.matchAll(/<([a-z0-9]+)([^>]*?)data-cms-list=["']([^"']+)["']/gi);
   for (const m of listMatches) {
     const [_, tag, attrs, key] = m;
-    registryEntries.push({
+    entries.push({
       page: pageDocKey,
       file: relPath,
       fieldKey: key,
+      firestorePath: resolveFirestorePath(pageDocKey, key),
       type: 'list',
       label: `Dynamic List (${key})`,
       defaultValue: `[dynamic list container: ${key}]`,
@@ -147,27 +183,53 @@ function scanFile(relPath) {
     });
   }
 
-  return registryEntries;
+  return entries;
 }
 
 function run() {
   const pages = getAllCorePages();
-  console.log(`[SCAN CMS] Scanning ${pages.length} pages to build cms-registry.json...`);
+  console.log(`[SCAN CMS] Scanning ${pages.length} pages to build deduplicated cms-registry.json...`);
 
-  let allEntries = [];
+  const globalEntriesMap = new Map();
   const byPage = {};
+  let totalPageSpecificBindings = 0;
 
   for (const p of pages) {
-    const entries = scanFile(p);
-    allEntries = allEntries.concat(entries);
-    byPage[p] = entries;
+    const entries = scanFileRaw(p);
+    const pageSpecific = [];
+
+    for (const e of entries) {
+      if (e.fieldKey.startsWith('siteGlobal.')) {
+        if (!globalEntriesMap.has(e.fieldKey)) {
+          const parts = e.fieldKey.split('.');
+          const subDoc = parts[1] || 'branding';
+          globalEntriesMap.set(e.fieldKey, {
+            ...e,
+            page: `siteGlobal/${subDoc}`
+          });
+        }
+      } else {
+        pageSpecific.push(e);
+      }
+    }
+
+    byPage[p] = pageSpecific;
+    totalPageSpecificBindings += pageSpecific.length;
+  }
+
+  const uniqueGlobalEntries = Array.from(globalEntriesMap.values());
+  const allEntries = [...uniqueGlobalEntries];
+  for (const p of pages) {
+    allEntries.push(...byPage[p]);
   }
 
   const registry = {
-    schemaVersion: '1.0',
+    schemaVersion: '2.0',
     scannedAt: new Date().toISOString(),
     totalPagesScanned: pages.length,
-    totalFieldsBound: allEntries.length,
+    totalUniqueBindings: allEntries.length,
+    totalPageSpecificBindings: totalPageSpecificBindings,
+    totalGlobalBindings: uniqueGlobalEntries.length,
     fieldsByType: {
       text: allEntries.filter(e => e.type === 'text').length,
       html: allEntries.filter(e => e.type === 'html').length,
@@ -177,14 +239,19 @@ function run() {
       link: allEntries.filter(e => e.type === 'link').length,
       list: allEntries.filter(e => e.type === 'list').length
     },
-    entries: allEntries,
-    byPage: byPage
+    siteGlobal: uniqueGlobalEntries,
+    byPage: byPage,
+    entries: allEntries
   };
 
   const outPath = path.join(ROOT_DIR, 'cms-registry.json');
   fs.writeFileSync(outPath, JSON.stringify(registry, null, 2), 'utf8');
 
-  console.log(`✓ Registry generated: ${allEntries.length} field bindings indexed.`);
+  console.log(`✓ Deduplicated Registry Generated:`);
+  console.log(`  - Total Pages Scanned: ${pages.length}`);
+  console.log(`  - Unique Global Keys: ${uniqueGlobalEntries.length}`);
+  console.log(`  - Page-Specific Keys: ${totalPageSpecificBindings}`);
+  console.log(`  - Total Unique Field Bindings: ${allEntries.length}`);
   console.log('Breakdown by Type:');
   console.table(registry.fieldsByType);
 }
@@ -193,4 +260,4 @@ if (require.main === module) {
   run();
 }
 
-module.exports = { scanFile, run };
+module.exports = { scanFileRaw, run };

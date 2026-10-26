@@ -3,170 +3,175 @@ service cloud.firestore {
   match /databases/{database}/documents {
 
     // =========================================================================
-    // LOTUS CEYLON - PRODUCTION FIRESTORE SECURITY RULES (STEP R0)
-    // - Public read ONLY for published catalog & site content
-    // - Zero public read for inquiries, admins, activityLog, drafts
-    // - Strict validation on public inquiry submissions (create-only)
-    // - Writes restricted to authenticated admin / editor accounts
+    // 1. ROLE & IDENTITY VERIFICATION HELPERS
     // =========================================================================
 
-    function isAuthenticated() {
-      return request.auth != null;
-    }
-
-    function isAdminOrEditor() {
-      return isAuthenticated() && (
-        request.auth.token.admin == true ||
-        request.auth.token.editor == true ||
-        (exists(/databases/$(database)/documents/admins/$(request.auth.uid)) &&
-         (get(/databases/$(database)/documents/admins/$(request.auth.uid)).data.role in ['admin', 'super_admin', 'editor']))
+    // Validates whether the authenticated user has an active super_admin or editor document
+    // Supports document lookup by Firebase Auth UID or email string (matching admin-app.js logic)
+    function isAdmin() {
+      return request.auth != null && (
+        (exists(/databases/$(database)/documents/admins/$(request.auth.uid)) && 
+         get(/databases/$(database)/documents/admins/$(request.auth.uid)).data.role in ['super_admin', 'editor', 'admin']) ||
+        (request.auth.token.email != null && 
+         exists(/databases/$(database)/documents/admins/$(request.auth.token.email)) && 
+         get(/databases/$(database)/documents/admins/$(request.auth.token.email)).data.role in ['super_admin', 'editor', 'admin'])
       );
     }
 
-    function isSuperAdmin() {
-      return isAuthenticated() && (
-        request.auth.token.role == 'super_admin' ||
-        request.auth.token.admin == true ||
-        (exists(/databases/$(database)/documents/admins/$(request.auth.uid)) &&
-         get(/databases/$(database)/documents/admins/$(request.auth.uid)).data.role == 'super_admin')
-      );
+    // Published status check for public reads
+    function isPublished() {
+      return resource.data.status == 'published';
     }
 
-    function isPublished(res) {
-      return !('status' in res.data) || res.data.status == 'published' || res.data.is_published == true;
-    }
+    // =========================================================================
+    // 2. INQUIRY FORM VALIDATION HELPER
+    // =========================================================================
 
-    // 1. siteMeta & siteGlobal: public read, admin write
-    match /siteMeta/{docId} {
-      allow read: if true;
-      allow write: if isAdminOrEditor();
-    }
-
-    match /siteGlobal/{docId} {
-      allow read: if true;
-      allow write: if isAdminOrEditor();
-    }
-
-    // 2. siteContent: public read only if published, admin write
-    match /siteContent/{docId} {
-      allow read: if isPublished(resource);
-      allow write: if isAdminOrEditor();
-    }
-
-    // 3. Published Catalog & Public Collections
-    match /tourPackages/{docId} {
-      allow read: if isPublished(resource);
-      allow write: if isAdminOrEditor();
-    }
-
-    match /tourCategories/{docId} {
-      allow read: if isPublished(resource);
-      allow write: if isAdminOrEditor();
-    }
-
-    match /destinations/{docId} {
-      allow read: if isPublished(resource);
-      allow write: if isAdminOrEditor();
-    }
-
-    match /team/{docId} {
-      allow read: if isPublished(resource);
-      allow write: if isAdminOrEditor();
-    }
-
-    match /reviews/{docId} {
-      allow read: if isPublished(resource);
-      allow write: if isAdminOrEditor();
-    }
-
-    match /blogPosts/{docId} {
-      allow read: if isPublished(resource);
-      allow write: if isAdminOrEditor();
-    }
-
-    match /media/{docId} {
-      allow read: if true;
-      allow write: if isAdminOrEditor();
-    }
-
-    // Legacy collections (tours, packages, categories, testimonials)
-    match /tours/{docId} {
-      allow read: if isPublished(resource);
-      allow write: if isAdminOrEditor();
-    }
-
-    match /packages/{docId} {
-      allow read: if isPublished(resource);
-      allow write: if isAdminOrEditor();
-    }
-
-    match /categories/{docId} {
-      allow read: if isPublished(resource);
-      allow write: if isAdminOrEditor();
-    }
-
-    // 4. Inquiries: Public create-only with strict validation; Admin read/update/delete
-    function isValidInquiry(data) {
+    // Strict schema, length, and honeypot validation for public inquiry submissions
+    function isValidInquiry(data, expectedType) {
       let allowedKeys = [
-        'name', 'fullName', 'email', 'phone', 'whatsapp', 'country',
-        'arrivalDate', 'departureDate', 'adults', 'children', 'hotelCategory',
-        'rooms', 'mealPlan', 'interests', 'budget', 'message', 'specialRequests',
-        'notes', 'source', 'type', 'createdAt', 'created_at', 'status',
+        'referenceId', 'formType', 'name', 'country', 'email', 'whatsapp',
+        'arrivalDate', 'departureDate', 'pax', 'adults', 'children', 'totalPax',
+        'hotelCategory', 'rooms', 'mealPlan', 'interests', 'budget',
+        'otherRequirements', 'prefill', 'language', 'timestamp', 'submittedAt',
         'hp_website_lotus'
       ];
-      return data.keys().hasOnly(allowedKeys) &&
-        ('email' in data && data.email is string && data.email.size() >= 3 && data.email.size() <= 120) &&
-        ('name' in data || 'fullName' in data) &&
-        (data.hp_website_lotus == null || data.hp_website_lotus == '');
+
+      return data.keys().hasOnly(allowedKeys)
+        // Honeypot field must be empty or omitted
+        && (!('hp_website_lotus' in data) || data.hp_website_lotus == "")
+        // Required fields
+        && ('email' in data) && data.email is string && data.email.size() >= 5 && data.email.size() <= 100
+        && ('name' in data) && data.name is string && data.name.size() >= 2 && data.name.size() <= 100
+        && ('referenceId' in data) && data.referenceId is string && data.referenceId.size() <= 40
+        // Form type consistency
+        && ('formType' in data) && (expectedType == 'any' || data.formType == expectedType)
+        // Character length & type limits
+        && (!('country' in data) || (data.country is string && data.country.size() <= 100))
+        && (!('whatsapp' in data) || (data.whatsapp is string && data.whatsapp.size() <= 50))
+        && (!('arrivalDate' in data) || (data.arrivalDate is string && data.arrivalDate.size() <= 30))
+        && (!('departureDate' in data) || (data.departureDate is string && data.departureDate.size() <= 30))
+        && (!('totalPax' in data) || (data.totalPax is string && data.totalPax.size() <= 20))
+        && (!('pax' in data) || (data.pax is string && data.pax.size() <= 20))
+        && (!('adults' in data) || (data.adults is string && data.adults.size() <= 20))
+        && (!('children' in data) || (data.children is string && data.children.size() <= 20))
+        && (!('rooms' in data) || (data.rooms is string && data.rooms.size() <= 20))
+        && (!('budget' in data) || (data.budget is string && data.budget.size() <= 50))
+        && (!('prefill' in data) || (data.prefill is string && data.prefill.size() <= 200))
+        && (!('language' in data) || (data.language is string && data.language.size() <= 10))
+        && (!('otherRequirements' in data) || (data.otherRequirements is string && data.otherRequirements.size() <= 2000))
+        && (!('hotelCategory' in data) || (data.hotelCategory is list))
+        && (!('mealPlan' in data) || (data.mealPlan is list))
+        && (!('interests' in data) || (data.interests is list));
     }
 
-    match /inquiries/{docId} {
-      allow create: if isValidInquiry(request.resource.data);
-      allow read, update, delete: if isAdminOrEditor();
-    }
+    // =========================================================================
+    // 3. SITE METADATA & GLOBAL CONFIGURATION
+    // =========================================================================
 
-    match /inquiries_quick/{docId} {
-      allow create: if isValidInquiry(request.resource.data);
-      allow read, update, delete: if isAdminOrEditor();
-    }
-
-    match /inquiries_detailed/{docId} {
-      allow create: if isValidInquiry(request.resource.data);
-      allow read, update, delete: if isAdminOrEditor();
-    }
-
-    // 5. Admin & Internal Collections: strictly private
-    match /admins/{docId} {
-      allow read: if isAuthenticated();
-      allow write: if isSuperAdmin();
-    }
-
-    match /activityLog/{docId} {
-      allow read, write: if isAdminOrEditor();
-    }
-
-    match /users/{docId} {
-      allow read, write: if isAuthenticated() && request.auth.uid == docId;
-    }
-
-    match /drafts/{docId} {
-      allow read, write: if isAdminOrEditor();
-    }
-
-    match /siteDrafts/{docId} {
-      allow read, write: if isAdminOrEditor();
-    }
-
-    // 6. Test sandbox namespace for non-production tests
-    match /test_{collectionName}/{docId} {
+    // Tiny cache-busting document {v: 1, updatedAt} - Public Read, Admin Write Only
+    match /siteMeta/{docId} {
       allow read: if true;
-      allow write: if true;
+      allow write: if isAdmin();
     }
 
-    // 7. Closed default fallback
+    // Global layout tokens (branding, header, footer, contact, menu) - Public Read, Admin Write Only
+    match /siteGlobal/{docId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // =========================================================================
+    // 4. EDITABLE PUBLIC CONTENT
+    // =========================================================================
+
+    // Public pages - Public read ONLY when published, Admins can read drafts
+    match /siteContent/{docId} {
+      allow read: if isPublished() || isAdmin();
+      allow write: if isAdmin();
+    }
+
+    // =========================================================================
+    // 5. TOURS, DESTINATIONS, AND MEDIA CATALOGS
+    // =========================================================================
+
+    match /tourPackages/{packageId} {
+      allow read: if isPublished() || isAdmin();
+      allow write: if isAdmin();
+    }
+
+    match /tourCategories/{categoryId} {
+      allow read: if isPublished() || isAdmin();
+      allow write: if isAdmin();
+    }
+
+    match /destinations/{destinationId} {
+      allow read: if isPublished() || isAdmin();
+      allow write: if isAdmin();
+    }
+
+    match /team/{memberId} {
+      allow read: if isPublished() || isAdmin();
+      allow write: if isAdmin();
+    }
+
+    match /reviews/{reviewId} {
+      allow read: if isPublished() || isAdmin();
+      allow write: if isAdmin();
+    }
+
+    match /blogPosts/{postId} {
+      allow read: if isPublished() || isAdmin();
+      allow write: if isAdmin();
+    }
+
+    match /media/{mediaId} {
+      allow read: if isPublished() || isAdmin();
+      allow write: if isAdmin();
+    }
+
+    // =========================================================================
+    // 6. CUSTOMER INQUIRY PIPELINES (WRITE-ONLY FOR PUBLIC, NO PUBLIC READ)
+    // =========================================================================
+
+    match /inquiries_quick/{inquiryId} {
+      allow get, list, update, delete: if isAdmin();
+      allow create: if isValidInquiry(request.resource.data, 'quick');
+    }
+
+    match /inquiries_detailed/{inquiryId} {
+      allow get, list, update, delete: if isAdmin();
+      allow create: if isValidInquiry(request.resource.data, 'detailed');
+    }
+
+    match /inquiries/{inquiryId} {
+      allow get, list, update, delete: if isAdmin();
+      allow create: if isValidInquiry(request.resource.data, 'any');
+    }
+
+    // =========================================================================
+    // 7. RESTRICTED INTERNAL COLLECTIONS (NO PUBLIC READ OR WRITE)
+    // =========================================================================
+
+    match /admins/{adminId} {
+      allow read, write: if isAdmin();
+    }
+
+    match /activityLog/{logId} {
+      allow read, write: if isAdmin();
+    }
+
+    match /drafts/{draftId} {
+      allow read, write: if isAdmin();
+    }
+
+    match /users/{userId} {
+      allow read, write: if isAdmin();
+    }
+
+    // Global default deny
     match /{document=**} {
-      allow read: if false;
-      allow write: if false;
+      allow read, write: if false;
     }
   }
 }

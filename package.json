@@ -8,7 +8,11 @@
     "build:all": "node scripts/build-partials.js --all",
     "check:images": "node scripts/check-images.js",
     "migrate:packages": "node scripts/migrate-packages.js",
-    "pilot:seed": "node scripts/pilot-seed.js"
+    "pilot:seed": "node scripts/pilot-seed.js",
+    "test:rules": "node tests/firestore.rules.test.js"
+  },
+  "devDependencies": {
+    "@firebase/rules-unit-testing": "^3.0.3"
   },
   "keywords": [
     "lotus-ceylon",
