@@ -1544,29 +1544,47 @@
 }
 
 /* Compact Luxury Footer Width & Proportions */
+.site-footer-walkers .site-container,
 .site-footer-walkers .wrapper--80,
+.footer-walkers .site-container,
 .footer-walkers .wrapper--80 {
-  max-width: 1080px !important;
-  width: 90% !important;
+  max-width: 1180px !important;
+  width: 92% !important;
   margin: 0 auto !important;
 }
 
 .footer-top-grid,
-.footer-walkers-grid,
+.footer-walkers-grid {
+  display: grid !important;
+  grid-template-columns: 1.35fr 1fr 1.05fr 1.15fr !important;
+  gap: 2rem !important;
+  padding-bottom: 1.25rem !important;
+  margin-bottom: 1.25rem !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12) !important;
+}
+
 .footer-grid-3 {
   display: grid !important;
   grid-template-columns: 1fr 1fr 1.1fr !important;
   gap: 2rem !important;
-  padding-bottom: 1.5rem !important;
+  padding-bottom: 1.25rem !important;
   border-bottom: 1px solid rgba(255, 255, 255, 0.12) !important;
 }
 
-@media (max-width: 991px) {
+@media (max-width: 1024px) and (min-width: 641px) {
+  .footer-top-grid,
+  .footer-walkers-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 2rem !important;
+  }
+}
+
+@media (max-width: 640px) {
   .footer-top-grid,
   .footer-walkers-grid,
   .footer-grid-3 {
     grid-template-columns: 1fr !important;
-    gap: 2.5rem !important;
+    gap: 1.75rem !important;
   }
 }
 

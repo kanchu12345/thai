@@ -690,7 +690,7 @@ p:last-child {
   margin: 1.5rem 0;
   display: flex;
   flex-direction: column;
-  gap: 0.65rem;
+  gap: 0.42rem;
 }
 
 .mobile-nav-link {
@@ -1102,17 +1102,25 @@ p:last-child {
 .site-footer-walkers {
   background: var(--forest-deep);
   color: var(--white);
-  padding: 4.5rem 0 2rem;
+  padding: 2.75rem 0 1.5rem;
   border-top: 1px solid rgba(201, 162, 75, 0.3);
   position: relative;
   z-index: 100;
 }
 
+.site-footer-walkers .site-container,
+.site-footer-walkers .wrapper--80 {
+  max-width: 1180px;
+  width: 92%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .footer-top-grid {
   display: grid;
-  grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
-  gap: 2.5rem;
-  margin-bottom: 3.5rem;
+  grid-template-columns: 1.35fr 1fr 1.05fr 1.15fr;
+  gap: 2rem;
+  margin-bottom: 1.5rem;
 }
 
 .footer-col-title {
@@ -1147,7 +1155,7 @@ p:last-child {
 .footer-links-grid {
   display: flex;
   flex-direction: column;
-  gap: 0.65rem;
+  gap: 0.42rem;
 }
 
 .footer-links-grid a {
@@ -1165,9 +1173,9 @@ p:last-child {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-top: 2rem;
+  padding-top: 1.25rem;
   border-top: 1px solid rgba(255, 255, 255, 0.12);
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   color: rgba(255, 255, 255, 0.65);
   flex-wrap: wrap;
   gap: 1rem;
