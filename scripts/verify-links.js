@@ -13,7 +13,7 @@ const ROOT_DIR = path.resolve(__dirname, '..');
 function getHtmlFiles(dir, files = []) {
   const items = fs.readdirSync(dir, { withFileTypes: true });
   for (const item of items) {
-    if (['node_modules', '.git', 'archive', 'vendor'].includes(item.name)) continue;
+    if (['node_modules', '.git', 'archive', 'vendor', 'partials'].includes(item.name)) continue;
     const full = path.join(dir, item.name);
     if (item.isDirectory()) {
       getHtmlFiles(full, files);

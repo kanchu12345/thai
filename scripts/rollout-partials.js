@@ -69,39 +69,44 @@ function prepareFileForPartials(filePath) {
   let content = fs.readFileSync(filePath, 'utf8');
   let changed = false;
 
-  // 1. Replace Header with marker if not already using @include
+  // 1. Header: exact tag match
   if (!content.includes('<!-- @include header')) {
-    const headerRegex = /(?:<!--[\s\S]*?Header[\s\S]*?-->\s*)*<header class="site-header-walkers"[\s\S]*?<\/header>/i;
+    const headerRegex = /<header\s+class=["'][^"']*site-header-walkers[^"']*["'][\s\S]*?<\/header>/i;
     if (headerRegex.test(content)) {
       content = content.replace(headerRegex, '<!-- @include header -->');
       changed = true;
     }
   }
 
-  // 2. Replace Mobile Menu with marker
+  // 2. Mobile Nav: exact tag match
   if (!content.includes('<!-- @include mobile-menu')) {
-    const mobileRegex = /(?:<!--[\s\S]*?Mobile Navigation[\s\S]*?-->\s*)*<div [^>]*id="mobileNavFullscreen"[\s\S]*?<\/ul>[\s\S]*?<\/div>\s*<\/div>\s*(?:<!--[\s\S]*?-->)*/i;
+    const mobileRegex = /<div\s+[^>]*id=["']mobileNavFullscreen["'][\s\S]*?<\/ul>[\s\S]*?<\/div>\s*<\/div>/i;
     if (mobileRegex.test(content)) {
       content = content.replace(mobileRegex, '<!-- @include mobile-menu -->');
       changed = true;
     }
   }
 
-  // 3. Replace Footer with marker
+  // 3. Footer: exact tag match
   if (!content.includes('<!-- @include footer')) {
-    const footerRegex = /(?:<!--[\s\S]*?Footer[\s\S]*?-->\s*)*<footer class="site-footer-walkers"[\s\S]*?<\/footer>/i;
+    const footerRegex = /<footer\s+class=["'][^"']*site-footer-walkers[^"']*["'][\s\S]*?<\/footer>/i;
     if (footerRegex.test(content)) {
       content = content.replace(footerRegex, '<!-- @include footer -->');
       changed = true;
     }
   }
 
-  // 4. Replace Floating Action Group with marker
+  // 4. Floating actions: exact tag match
   if (!content.includes('<!-- @include floating-actions')) {
-    const fabRegex = /(?:<!--[\s\S]*?Floating[\s\S]*?-->\s*)*<div [^>]*id="unifiedFabGroup"[\s\S]*?<\/div>(?:\s*<!--[\s\S]*?-->\s*)*(?:\s*<a class="floating-inquire-tab"[\s\S]*?<\/a>)?/i;
+    const fabRegex = /<div\s+[^>]*id=["']unifiedFabGroup["'][\s\S]*?<\/div>/i;
+    const tabRegex = /<a\s+class=["']floating-inquire-tab["'][\s\S]*?<\/a>/i;
+    
     if (fabRegex.test(content)) {
       content = content.replace(fabRegex, '<!-- @include floating-actions -->');
       changed = true;
+      if (tabRegex.test(content)) {
+        content = content.replace(tabRegex, '');
+      }
     }
   }
 
