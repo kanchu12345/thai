@@ -57,6 +57,9 @@
     }
     const clean = url.replace(/^(\.\.\/)+/, '').replace(/^(\.\/)+/, '').replace(/^\//, '');
     const aliased = IMAGE_ALIAS_MAP[clean] || clean;
+    if (IMAGE_ALIAS_MAP[clean] && window.location.search.includes('debug=1')) {
+      console.warn('[CMS Image Alias Fallback] Legacy image path redirected:', clean, '->', aliased);
+    }
     return getRelativePrefix() + aliased;
   }
 
@@ -513,13 +516,32 @@
       // Check cache if not in preview
       if (!isPreview) {
         const cached = this.readCache();
+        const forceRefresh = urlParams.has('cms_refresh') || urlParams.has('refresh');
+        const SESSION_VER_CHECK_KEY = 'lotus_cms_last_ver_check';
+        const VER_CHECK_INTERVAL_MS = 5 * 60 * 1000; // 5 minutes
+
+        let lastVerCheck = 0;
+        try {
+          lastVerCheck = parseInt(sessionStorage.getItem(SESSION_VER_CHECK_KEY) || '0', 10);
+        } catch (e) {}
+
+        const shouldCheckVersion = forceRefresh || (Date.now() - lastVerCheck > VER_CHECK_INTERVAL_MS);
+
         if (cached && cached.data && cached.pageKey === this.pageKey) {
           this.data = cached.data;
           this.bindElements();
 
+          if (!shouldCheckVersion) {
+            return; // Cache valid and version verified within 5-min session window: zero network calls!
+          }
+
           // Check version asynchronously in background
           try {
             const currentVer = await this.fetchVersion();
+            try {
+              sessionStorage.setItem(SESSION_VER_CHECK_KEY, String(Date.now()));
+            } catch (e) {}
+
             if (currentVer === cached.version) {
               return; // Cache is current
             }
@@ -566,6 +588,9 @@
 
         if (!isPreview) {
           this.writeCache(version, this.data);
+          try {
+            sessionStorage.setItem('lotus_cms_last_ver_check', String(Date.now()));
+          } catch (e) {}
         }
       } catch (err) {
         if (window.location.search.includes('debug=1')) {
