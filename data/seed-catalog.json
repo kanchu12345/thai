@@ -811,9 +811,9 @@
       "nights": 9,
       "days": 10,
       "price_from": 2280,
-      "hero_image": "assets/tours/beach/southern-sands-1.jpg",
+      "hero_image": "assets/images/beach/mirissa-1.webp",
       "images": [
-        "assets/tours/beach/southern-sands-1.jpg",
+        "assets/images/beach/mirissa-1.webp",
         "assets/images/beach/mirissa-1.webp",
         "assets/images/beach/unawatuna-2.webp"
       ],
@@ -1233,9 +1233,9 @@
       "nights": 11,
       "days": 12,
       "price_from": 2520,
-      "hero_image": "assets/tours/beach/eastern-sanctuary-1.jpg",
+      "hero_image": "assets/images/beach/pasikudah-5.webp",
       "images": [
-        "assets/tours/beach/eastern-sanctuary-1.jpg",
+        "assets/images/beach/pasikudah-5.webp",
         "assets/images/beach/mirissa-1.webp",
         "assets/images/beach/unawatuna-2.webp"
       ],
@@ -1710,9 +1710,9 @@
       "nights": 13,
       "days": 14,
       "price_from": 2760,
-      "hero_image": "assets/tours/beach/seaboard-odyssey-1.jpg",
+      "hero_image": "assets/images/beach/unawatuna-2.webp",
       "images": [
-        "assets/tours/beach/seaboard-odyssey-1.jpg",
+        "assets/images/beach/unawatuna-2.webp",
         "assets/images/beach/mirissa-1.webp",
         "assets/images/beach/unawatuna-2.webp"
       ],
@@ -2243,9 +2243,9 @@
       "nights": 5,
       "days": 6,
       "price_from": 1800,
-      "hero_image": "assets/tours/cultural/royal-kingdoms-1.jpg",
+      "hero_image": "assets/images/cultural/sigiriya-1.webp",
       "images": [
-        "assets/tours/cultural/royal-kingdoms-1.jpg",
+        "assets/images/cultural/sigiriya-1.webp",
         "assets/images/cultural/sigiriya-1.webp",
         "assets/images/cultural/kandy-temple-of-tooth-4.webp"
       ],
@@ -2551,9 +2551,9 @@
       "nights": 8,
       "days": 9,
       "price_from": 2160,
-      "hero_image": "assets/tours/cultural/sacred-triangle-1.jpg",
+      "hero_image": "assets/images/cultural/dambulla-cave-temple-2.webp",
       "images": [
-        "assets/tours/cultural/sacred-triangle-1.jpg",
+        "assets/images/cultural/dambulla-cave-temple-2.webp",
         "assets/images/cultural/sigiriya-1.webp",
         "assets/images/cultural/kandy-temple-of-tooth-4.webp"
       ],
@@ -2944,9 +2944,9 @@
       "nights": 14,
       "days": 15,
       "price_from": 2880,
-      "hero_image": "assets/tours/cultural/three-millennia-1.jpg",
+      "hero_image": "assets/images/cultural/polonnaruwa-gal-vihara-3.webp",
       "images": [
-        "assets/tours/cultural/three-millennia-1.jpg",
+        "assets/images/cultural/polonnaruwa-gal-vihara-3.webp",
         "assets/images/cultural/sigiriya-1.webp",
         "assets/images/cultural/kandy-temple-of-tooth-4.webp"
       ],
@@ -3505,9 +3505,9 @@
       "nights": 7,
       "days": 8,
       "price_from": 2040,
-      "hero_image": "assets/tours/wildlife/predator-trail-1.jpg",
+      "hero_image": "assets/images/wildlife/minneriya-elephant-gathering-2.webp",
       "images": [
-        "assets/tours/wildlife/predator-trail-1.jpg",
+        "assets/images/wildlife/minneriya-elephant-gathering-2.webp",
         "assets/images/wildlife/yala-leopard-1.webp",
         "assets/images/wildlife/minneriya-elephant-gathering-2.webp"
       ],
@@ -3869,9 +3869,9 @@
       "nights": 13,
       "days": 14,
       "price_from": 2760,
-      "hero_image": "assets/tours/wildlife/big-five-1.jpg",
+      "hero_image": "assets/images/wildlife/yala-leopard-1.webp",
       "images": [
-        "assets/tours/wildlife/big-five-1.jpg",
+        "assets/images/wildlife/yala-leopard-1.webp",
         "assets/images/wildlife/yala-leopard-1.webp",
         "assets/images/wildlife/minneriya-elephant-gathering-2.webp"
       ],
@@ -4402,9 +4402,9 @@
       "nights": 16,
       "days": 17,
       "price_from": 3120,
-      "hero_image": "assets/tours/wildlife/biosphere-odyssey-1.jpg",
+      "hero_image": "assets/images/wildlife/udawalawe-3.webp",
       "images": [
-        "assets/tours/wildlife/biosphere-odyssey-1.jpg",
+        "assets/images/wildlife/udawalawe-3.webp",
         "assets/images/wildlife/yala-leopard-1.webp",
         "assets/images/wildlife/minneriya-elephant-gathering-2.webp"
       ],
@@ -12285,9 +12285,9 @@
       "nights": 9,
       "days": 10,
       "price_from": 2280,
-      "hero_image": "assets/tours/beach/southern-sands-1.jpg",
+      "hero_image": "assets/images/beach/mirissa-1.webp",
       "images": [
-        "assets/tours/beach/southern-sands-1.jpg",
+        "assets/images/beach/mirissa-1.webp",
         "assets/images/beach/mirissa-1.webp",
         "assets/images/beach/unawatuna-2.webp"
       ],
@@ -12707,9 +12707,9 @@
       "nights": 11,
       "days": 12,
       "price_from": 2520,
-      "hero_image": "assets/tours/beach/eastern-sanctuary-1.jpg",
+      "hero_image": "assets/images/beach/pasikudah-5.webp",
       "images": [
-        "assets/tours/beach/eastern-sanctuary-1.jpg",
+        "assets/images/beach/pasikudah-5.webp",
         "assets/images/beach/mirissa-1.webp",
         "assets/images/beach/unawatuna-2.webp"
       ],
@@ -13184,9 +13184,9 @@
       "nights": 13,
       "days": 14,
       "price_from": 2760,
-      "hero_image": "assets/tours/beach/seaboard-odyssey-1.jpg",
+      "hero_image": "assets/images/beach/unawatuna-2.webp",
       "images": [
-        "assets/tours/beach/seaboard-odyssey-1.jpg",
+        "assets/images/beach/unawatuna-2.webp",
         "assets/images/beach/mirissa-1.webp",
         "assets/images/beach/unawatuna-2.webp"
       ],
@@ -13717,9 +13717,9 @@
       "nights": 5,
       "days": 6,
       "price_from": 1800,
-      "hero_image": "assets/tours/cultural/royal-kingdoms-1.jpg",
+      "hero_image": "assets/images/cultural/sigiriya-1.webp",
       "images": [
-        "assets/tours/cultural/royal-kingdoms-1.jpg",
+        "assets/images/cultural/sigiriya-1.webp",
         "assets/images/cultural/sigiriya-1.webp",
         "assets/images/cultural/kandy-temple-of-tooth-4.webp"
       ],
@@ -14025,9 +14025,9 @@
       "nights": 8,
       "days": 9,
       "price_from": 2160,
-      "hero_image": "assets/tours/cultural/sacred-triangle-1.jpg",
+      "hero_image": "assets/images/cultural/dambulla-cave-temple-2.webp",
       "images": [
-        "assets/tours/cultural/sacred-triangle-1.jpg",
+        "assets/images/cultural/dambulla-cave-temple-2.webp",
         "assets/images/cultural/sigiriya-1.webp",
         "assets/images/cultural/kandy-temple-of-tooth-4.webp"
       ],
@@ -14418,9 +14418,9 @@
       "nights": 14,
       "days": 15,
       "price_from": 2880,
-      "hero_image": "assets/tours/cultural/three-millennia-1.jpg",
+      "hero_image": "assets/images/cultural/polonnaruwa-gal-vihara-3.webp",
       "images": [
-        "assets/tours/cultural/three-millennia-1.jpg",
+        "assets/images/cultural/polonnaruwa-gal-vihara-3.webp",
         "assets/images/cultural/sigiriya-1.webp",
         "assets/images/cultural/kandy-temple-of-tooth-4.webp"
       ],
@@ -14979,9 +14979,9 @@
       "nights": 7,
       "days": 8,
       "price_from": 2040,
-      "hero_image": "assets/tours/wildlife/predator-trail-1.jpg",
+      "hero_image": "assets/images/wildlife/minneriya-elephant-gathering-2.webp",
       "images": [
-        "assets/tours/wildlife/predator-trail-1.jpg",
+        "assets/images/wildlife/minneriya-elephant-gathering-2.webp",
         "assets/images/wildlife/yala-leopard-1.webp",
         "assets/images/wildlife/minneriya-elephant-gathering-2.webp"
       ],
@@ -15343,9 +15343,9 @@
       "nights": 13,
       "days": 14,
       "price_from": 2760,
-      "hero_image": "assets/tours/wildlife/big-five-1.jpg",
+      "hero_image": "assets/images/wildlife/yala-leopard-1.webp",
       "images": [
-        "assets/tours/wildlife/big-five-1.jpg",
+        "assets/images/wildlife/yala-leopard-1.webp",
         "assets/images/wildlife/yala-leopard-1.webp",
         "assets/images/wildlife/minneriya-elephant-gathering-2.webp"
       ],
@@ -15876,9 +15876,9 @@
       "nights": 16,
       "days": 17,
       "price_from": 3120,
-      "hero_image": "assets/tours/wildlife/biosphere-odyssey-1.jpg",
+      "hero_image": "assets/images/wildlife/udawalawe-3.webp",
       "images": [
-        "assets/tours/wildlife/biosphere-odyssey-1.jpg",
+        "assets/images/wildlife/udawalawe-3.webp",
         "assets/images/wildlife/yala-leopard-1.webp",
         "assets/images/wildlife/minneriya-elephant-gathering-2.webp"
       ],
