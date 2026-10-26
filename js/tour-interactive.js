@@ -31,8 +31,12 @@
     if (packageCatalogCache) return packageCatalogCache;
     if (window.LotusFirebase && typeof window.LotusFirebase.getCatalog === 'function') {
       try {
-        packageCatalogCache = await window.LotusFirebase.getCatalog();
-        if (packageCatalogCache && packageCatalogCache.length) return packageCatalogCache;
+        const cat = await window.LotusFirebase.getCatalog();
+        const pkgs = Array.isArray(cat) ? cat : (cat && cat.packages ? cat.packages : []);
+        if (pkgs.length) {
+          packageCatalogCache = pkgs;
+          return packageCatalogCache;
+        }
       } catch(e) {
         console.warn('Firebase catalog fetch failed, falling back to local JSON:', e);
       }

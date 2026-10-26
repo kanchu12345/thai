@@ -1,1517 +1,1415 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+
+<html dir="ltr" lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sri Lanka Tours | Lotus Ceylon Luxury Holidays Official Site</title>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<meta content="#16361D" name="theme-color"/>
+  <!-- Preload Critical LCP Hero Image -->
+  <link rel="preload" as="image" href="./assets/images/home/hero-sigiriya-aerial-portrait.webp" media="(max-width: 768px)" fetchpriority="high"/>
+  <link rel="preload" as="image" href="./assets/images/home/hero-sigiriya-aerial-1.webp" media="(min-width: 769px)" fetchpriority="high"/>
+<title>Sri Lanka Tours | Lotus Ceylon Luxury Holidays Official Site</title>
   <meta name="description" content="Welcome to Lotus Ceylon, Sri Lanka's premier destination management company. Curated luxury travel packages, tailor-made holidays, wildlife safaris, and cultural tours.">
-  <meta name="keywords" content="sri lanka luxury tours, private tailor made travel ceylon, bespoke sri lanka holidays, sacred ceylon experiences, lotus ceylon">
-  <link rel="icon" type="image/png" href="logo.png?v=20261021_step1">
-
-    <!-- Google Fonts: Luxury Modern Typography (Plus Jakarta Sans, Inter, Playfair Display) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..800;1,9..40,300..800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
-
-  <!-- Master Stylesheet (Lotus Ceylon Luxury Style) -->
-  <link rel="stylesheet" href="css/style.css?v=20261022_sleek_btn_v9">
-  <link rel="stylesheet" href="css/brand-header.css?v=20261022_matrix_v1">
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="https://cdn.jsdelivr.net/npm/dompurify@3.1.6/dist/purify.min.js"></script>
-  <script src="js/config.js"></script>
-  <script src="js/supabase-client.js"></script>
-  <script src="js/dynamic-renderer.js"></script>
+  <link rel="canonical" href="https://lotusceylon.com/"/>
+  <!-- Open Graph & Social Sharing -->
+  <meta property="og:type" content="website"/>
+  <meta property="og:site_name" content="Lotus Ceylon International Tours"/>
+  <meta property="og:title" content="Sri Lanka Tours | Lotus Ceylon Luxury Holidays Official Site"/>
+  <meta property="og:description" content="Welcome to Lotus Ceylon, Sri Lanka's premier destination management company. Curated luxury travel packages, tailor-made holidays, wildlife safaris, and cultural tours."/>
+  <meta property="og:url" content="https://lotusceylon.com/"/>
+  <meta property="og:image" content="https://lotusceylon.com/assets/images/hero/sigiriya-rock-fortress-1.webp"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="Sri Lanka Tours | Lotus Ceylon Luxury Holidays Official Site"/>
+  <meta name="twitter:description" content="Welcome to Lotus Ceylon, Sri Lanka's premier destination management company. Curated luxury travel packages, tailor-made holidays, wildlife safaris, and cultural tours."/>
+  <meta name="twitter:image" content="https://lotusceylon.com/assets/images/hero/sigiriya-rock-fortress-1.webp"/>
+<meta content="Welcome to Lotus Ceylon, Sri Lanka's premier destination management company. Curated luxury travel packages, tailor-made holidays, wildlife safaris, and cultural tours." name="description"/>
+<meta content="sri lanka luxury tours, private tailor made travel ceylon, bespoke sri lanka holidays, sacred ceylon experiences, lotus ceylon" name="keywords"/>
+<link href="logo.png?v=20261021_step1" rel="icon" type="image/png"/>
+<!-- Google Fonts: Luxury Modern Typography (Plus Jakarta Sans, Inter, Playfair Display) -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..800;1,9..40,300..800&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;family=Inter:wght@300;400;500;600;700&amp;family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&amp;display=swap" rel="stylesheet"/>
+<!-- Master Stylesheet (Lotus Ceylon Luxury Style) -->
+<link href="css/style.css?v=20261022_sleek_btn_v9" rel="stylesheet"/>
+<link href="css/brand-header.css?v=20261022_matrix_v1" rel="stylesheet"/>
+<script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/dompurify@3.1.6/dist/purify.min.js"></script>
+<script defer src="js/config.js"></script>
+<script defer src="js/supabase-client.js"></script>
+<script defer src="js/dynamic-renderer.js"></script>
+<!-- Master Unified Stylesheet -->
+<link href="./assets/css/site.css" rel="stylesheet"/>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TravelAgency",
+    "name": "Lotus Ceylon International Tours & Services (Private) Limited",
+    "alternateName": "Lotus Ceylon",
+    "url": "https://lotusceylon.com/",
+    "logo": "https://lotusceylon.com/logo.png",
+    "image": "https://lotusceylon.com/assets/images/hero/sigiriya-rock-fortress-1.webp",
+    "description": "Premier Sri Lankan inbound tour operator delivering bespoke journeys, sacred cultural trails, luxury wildlife safaris, and private chauffeur-driven holidays.",
+    "telephone": "+94715422384",
+    "email": "inquiry@lotusceylon.com",
+    "priceRange": "$$$$",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "286/C, Niwandama South",
+      "addressLocality": "Ja-Ela",
+      "postalCode": "11350",
+      "addressCountry": "LK"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 7.0785,
+      "longitude": 79.8913
+    },
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+      "opens": "00:00",
+      "closes": "23:59"
+    },
+    "sameAs": [
+      "https://facebook.com/lotusceylon",
+      "https://instagram.com/lotusceylon",
+      "https://tripadvisor.com/lotusceylon",
+      "https://youtube.com/@lotusceylon"
+    ]
+  }
+  </script>
 </head>
 <body>
-
-  <!-- ==========================================================================
+<a class="skip-to-content-link" href="#mainContent">Skip to main content</a>
+<!-- ==========================================================================
        HEADER & NAVIGATION (LOTUS CEYLON FLOATING STYLE)
        ========================================================================== -->
-  <header class="site-header-walkers" id="siteHeader">
-    <div class="wrapper--95">
-      <div class="header-top-row">
-        
-        <!-- Brand Logo & Title -->
-        <a href="index.html" class="header-brand" title="Lotus Ceylon International Tours &amp; Services">
-          <img src="logo.png?v=20261021_step1" alt="Lotus Ceylon Emblem" class="header-brand-logo">
-          <div class="header-brand-text">
-            <span class="header-brand-name"><span class="brand-name-lotus">Lotus</span> <span class="brand-name-ceylon">Ceylon</span></span>
-            <span class="header-brand-sub">INTERNATIONAL TOURS &amp; SERVICES</span>
-          </div>
-        </a>
-
-        <!-- Desktop Navigation Menu -->
-        <nav aria-label="Main Navigation">
-          <ul class="walkers-menu" id="primaryNav">
-            <li class="walkers-menu-item">
-              <a href="index.html" class="walkers-menu-link active">Home</a>
-            </li>
-
-            <!-- Tours with Mega Dropdown (10 Categories) -->
-            <li class="walkers-menu-item">
-              <a href="#packages" class="walkers-menu-link">
-                <span>Tours</span>
-                <svg class="walkers-caret" viewBox="0 0 10 6"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" fill="none"/></svg>
-              </a>
-              <div class="walkers-megamenu">
-                <div class="megamenu-header">
-                  <span class="megamenu-header-title">Curated Ceylon Tour Categories</span>
-                  <a href="tours/" class="megamenu-view-all">All Tours ➔</a>
-                </div>
-                <div class="megamenu-grid-10">
-                  <a href="tours/cultural/" class="megamenu-cat-card">
-                    <span class="megamenu-cat-icon">🏛️</span>
-                    <div class="megamenu-cat-text">
-                      <span class="megamenu-cat-name">Cultural</span>
-                      <span class="megamenu-cat-desc">Ancient kingdoms & rock temples</span>
-                    </div>
-                  </a>
-                  <a href="tours/cultural/" class="megamenu-cat-card">
-                    <span class="megamenu-cat-icon">☸️</span>
-                    <div class="megamenu-cat-text">
-                      <span class="megamenu-cat-name">Buddhist Heritage</span>
-                      <span class="megamenu-cat-desc">Sacred stupas & monastic pilgrimages</span>
-                    </div>
-                  </a>
-                  <a href="tours/wildlife/" class="megamenu-cat-card">
-                    <span class="megamenu-cat-icon">🐆</span>
-                    <div class="megamenu-cat-text">
-                      <span class="megamenu-cat-name">Wildlife</span>
-                      <span class="megamenu-cat-desc">Yala leopards & elephant gathering</span>
-                    </div>
-                  </a>
-                  <a href="tours/beach/" class="megamenu-cat-card">
-                    <span class="megamenu-cat-icon">🏖️</span>
-                    <div class="megamenu-cat-text">
-                      <span class="megamenu-cat-name">Beach</span>
-                      <span class="megamenu-cat-desc">Golden palms & private bays</span>
-                    </div>
-                  </a>
-                  <a href="tours/hill-country/" class="megamenu-cat-card">
-                    <span class="megamenu-cat-icon">⛰️</span>
-                    <div class="megamenu-cat-text">
-                      <span class="megamenu-cat-name">Hill Country</span>
-                      <span class="megamenu-cat-desc">Misty tea peaks & scenic rail</span>
-                    </div>
-                  </a>
-                  <a href="tours/ayurvedic/" class="megamenu-cat-card">
-                    <span class="megamenu-cat-icon">🌿</span>
-                    <div class="megamenu-cat-text">
-                      <span class="megamenu-cat-name">Ayurveda</span>
-                      <span class="megamenu-cat-desc">Herbal sanctuaries & wellness</span>
-                    </div>
-                  </a>
-                  <a href="tours/honeymoon/" class="megamenu-cat-card">
-                    <span class="megamenu-cat-icon">💍</span>
-                    <div class="megamenu-cat-text">
-                      <span class="megamenu-cat-name">Honeymoon</span>
-                      <span class="megamenu-cat-desc">Bespoke luxury for couples</span>
-                    </div>
-                  </a>
-                  <a href="tours/family/" class="megamenu-cat-card">
-                    <span class="megamenu-cat-icon">👨‍👩‍👧‍👦</span>
-                    <div class="megamenu-cat-text">
-                      <span class="megamenu-cat-name">Family</span>
-                      <span class="megamenu-cat-desc">Safe journeys for all generations</span>
-                    </div>
-                  </a>
-                  <a href="tours/adventure/" class="megamenu-cat-card">
-                    <span class="megamenu-cat-icon">🧗‍♂️</span>
-                    <div class="megamenu-cat-text">
-                      <span class="megamenu-cat-name">Adventure</span>
-                      <span class="megamenu-cat-desc">Trekking, surfing & waterfalls</span>
-                    </div>
-                  </a>
-                  <a href="tours/ramayana/" class="megamenu-cat-card">
-                    <span class="megamenu-cat-icon">🏹</span>
-                    <div class="megamenu-cat-text">
-                      <span class="megamenu-cat-name">Ramayana</span>
-                      <span class="megamenu-cat-desc">Epic legendary sacred trail</span>
-                    </div>
-                  </a>
-                </div>
-              </div>
-            </li>
-
-            <li class="walkers-menu-item">
-              <a href="#destinations" class="walkers-menu-link">Destinations</a>
-            </li>
-            <li class="walkers-menu-item">
-              <a href="experiences.html" class="walkers-menu-link">Experiences</a>
-            </li>
-            <li class="walkers-menu-item">
-              <a href="about.html" class="walkers-menu-link">About Us</a>
-            </li>
-            <li class="walkers-menu-item">
-              <a href="gallery.html" class="walkers-menu-link">Gallery</a>
-            </li>
-            <li class="walkers-menu-item">
-              <a href="reviews.html" class="walkers-menu-link">Reviews</a>
-            </li>
-            <li class="walkers-menu-item">
-              <a href="#news" class="walkers-menu-link">Blog</a>
-            </li>
-            <li class="walkers-menu-item">
-              <a href="#contact" class="walkers-menu-link">Contact</a>
-            </li>
-          </ul>
-        </nav>
-
-        <!-- Right Header Tools: 10-Slot Language Switcher & Gold Inquire Button -->
-        <div class="header-tools">
-          
-          <!-- 10-Slot Language Switcher -->
-          <div class="custom-lang-pill">
-            <button type="button" class="lang-pill-btn" id="langPillToggle" title="Select Language (10 Languages)">
-              <span id="currentLangLabel">EN</span>
-              <svg class="walkers-caret" viewBox="0 0 10 6"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" fill="none"/></svg>
-            </button>
-                        <div class="lang-pill-dropdown" id="langPillMenu">
-              <button type="button" data-lang="en" class="is-active">🇬🇧 English</button>
-              <button type="button" data-lang="zh-TW">🇹🇼 繁體中文 (Taiwan)</button>
-              <button type="button" data-lang="zh-CN">🇨🇳 简体中文 (Modern)</button>
-              <button type="button" data-lang="fr">🇫🇷 Français (French)</button>
-              <button type="button" data-lang="de">🇩🇪 Deutsch (German)</button>
-              <button type="button" data-lang="ru">🇷🇺 Русский</button>
-              <button type="button" data-lang="es">🇪🇸 Español</button>
-              <button type="button" data-lang="it">🇮🇹 Italiano</button>
-              <button type="button" data-lang="ja">🇯🇵 日本語</button>
-              <button type="button" data-lang="ar">🇦🇪 العربية</button>
-              <button type="button" data-lang="hi">🇮🇳 हिन्दी</button>
-            </div>
-          </div>
-
-          <!-- Gold Inquire Button with Hover Fill-Slide Effect -->
-          <a href="inquiry-detailed.html" class="gold-inquire-btn" title="Inquire Now">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 20 20" fill="none">
-              <path d="M16.5909 5.02051H16.1522V8.43079C16.1522 10.9574 14.0966 13.013 11.57 13.013H5.02148V13.4518C5.02148 15.3322 6.55138 16.862 8.43177 16.862H15.4373L19.0401 19.8644C19.1474 19.9538 19.2808 20.0002 19.4154 20.0002C19.7375 20.0002 20.0012 19.7388 20.0012 19.4142V8.43079C20.0012 6.5475 18.4775 5.02051 16.5909 5.02051Z"/>
-              <path d="M14.9797 8.43118V3.41029C14.9797 1.52363 13.4528 0 11.5694 0H3.41029C1.52363 0 0 1.52684 0 3.41029V14.3937C0 14.7181 0.26368 14.9797 0.585802 14.9797C0.720388 14.9797 0.853754 14.9333 0.961027 14.8437L4.56388 11.8415H11.5694C13.4498 11.8415 14.9797 10.3117 14.9797 8.43118Z"/>
-            </svg>
-            <span>Inquire</span>
-          </a>
-
-          <!-- Mobile Hamburger Toggle -->
-          <button type="button" class="walkers-ham" id="mobileHamToggle" aria-label="Toggle Mobile Menu">
-            <span></span>
-            <span></span>
-            <span></span>
-          </button>
-        </div>
-
-      </div>
-    </div>
-  </header>
-
-  <!-- Full-Screen Slide-in Mobile Navigation Menu -->
-  <div class="mobile-nav-fullscreen" id="mobileNavFullscreen">
-    <div class="mobile-nav-header">
-      <a href="index.html" class="header-brand">
-        <img src="logo.png?v=20261021_step1" alt="Lotus Ceylon Logo" style="height: 48px; width: auto;">
-        <span class="header-brand-name" style="color: var(--ink); font-size: 1.25rem;"><span style="color: var(--ink);">Lotus</span> <span style="color: var(--lotus-primary);">Ceylon</span></span>
-      </a>
-      <button type="button" class="mobile-nav-close" id="mobileNavClose" aria-label="Close menu">&times;</button>
-    </div>
-    <ul class="mobile-nav-list">
-      <li class="mobile-nav-item"><a href="index.html" class="mobile-nav-link">Home</a></li>
-      <li class="mobile-nav-item">
-        <a href="#packages" class="mobile-nav-link">Tours</a>
-        <div class="mobile-nav-categories">
-          <a href="tours/cultural/" class="mobile-nav-cat-link">🏛️ Cultural</a>
-          <a href="tours/cultural/" class="mobile-nav-cat-link">☸️ Buddhist Heritage</a>
-          <a href="tours/wildlife/" class="mobile-nav-cat-link">🐆 Wildlife</a>
-          <a href="tours/beach/" class="mobile-nav-cat-link">🏖️ Beach</a>
-          <a href="tours/hill-country/" class="mobile-nav-cat-link">⛰️ Hill Country</a>
-          <a href="tours/ayurvedic/" class="mobile-nav-cat-link">🌿 Ayurveda</a>
-          <a href="tours/honeymoon/" class="mobile-nav-cat-link">💍 Honeymoon</a>
-          <a href="tours/family/" class="mobile-nav-cat-link">👨‍👩‍👧‍👦 Family</a>
-          <a href="tours/adventure/" class="mobile-nav-cat-link">🧗‍♂️ Adventure</a>
-          <a href="tours/ramayana/" class="mobile-nav-cat-link">🏹 Ramayana</a>
-        </div>
-      </li>
-      <li class="mobile-nav-item"><a href="#destinations" class="mobile-nav-link">Destinations</a></li>
-      <li class="mobile-nav-item"><a href="experiences.html" class="mobile-nav-link">Experiences</a></li>
-      <li class="mobile-nav-item"><a href="about.html" class="mobile-nav-link">About Us</a></li>
-      <li class="mobile-nav-item"><a href="gallery.html" class="mobile-nav-link">Gallery</a></li>
-      <li class="mobile-nav-item"><a href="reviews.html" class="mobile-nav-link">Reviews</a></li>
-      <li class="mobile-nav-item"><a href="#news" class="mobile-nav-link">Blog</a></li>
-      <li class="mobile-nav-item"><a href="#contact" class="mobile-nav-link">Contact</a></li>
-    </ul>
-    <div style="margin-top: auto; padding-top: 1.5rem; border-top: 1px solid var(--mist); display: flex; flex-direction: column; gap: 0.85rem;">
-      <a href="https://wa.me/94715422384" target="_blank" rel="noopener" style="background: #25D366; color: #FFFFFF; padding: 0.75rem 1.25rem; border-radius: 9999px; text-align: center; text-decoration: none; font-weight: 700; font-size: 0.88rem;">💬 WhatsApp (+94 71 54 22 384)</a>
-      <a href="inquiry-detailed.html" class="gold-inquire-btn" style="justify-content: center;">Plan My Bespoke Journey</a>
-    </div>
-  </div>
-
-  <!-- ==========================================================================
+<!-- Site Header & Navigation (Unified Walkers Luxury Standard) -->
+<!-- Site Header & Navigation (Unified Master Standard: Mobile Max 64px, Logo Max 40px) -->
+<header class="site-header-walkers" id="siteHeader">
+<div class="header-container">
+<div class="header-top-row">
+<!-- Logo & Brand Badge -->
+<a class="header-brand" href="./index.html" title="Lotus Ceylon Luxury Tours &amp; Pilgrimages">
+<img alt="Lotus Ceylon Official Emblem" class="header-brand-logo" height="40" src="./assets/images/brand/logo-header.png" width="40"/>
+<div class="header-brand-text">
+<span class="header-brand-name"><span class="brand-name-lotus">Lotus</span> <span class="brand-name-ceylon">Ceylon</span></span>
+<span class="header-brand-sub">INTERNATIONAL TOURS &amp; SERVICES</span>
+</div>
+</a>
+<!-- Desktop Navigation Menu (hidden on screens <= 1024px) -->
+<nav aria-label="Main Navigation" class="walkers-nav">
+<ul class="walkers-menu">
+<li class="walkers-menu-item active"><a class="walkers-menu-link" href="./index.html">Home</a></li>
+<li class="walkers-menu-item has-dropdown">
+<a class="walkers-menu-link" href="./sri-lanka-tours.html">
+<span>Tours</span>
+<svg class="walkers-caret" viewbox="0 0 10 6"><path d="M1 1L5 5L9 1" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.8"></path></svg>
+</a>
+<div class="walkers-megamenu">
+<a class="megamenu-link" href="./tours/cultural/"><span class="megamenu-link-icon">🏛️</span> Cultural Heritage</a>
+<a class="megamenu-link" href="./tours/buddhist-heritage/"><span class="megamenu-link-icon">☸️</span> Buddhist Heritage</a>
+<a class="megamenu-link" href="./tours/wildlife/"><span class="megamenu-link-icon">🐆</span> Wildlife Safaris</a>
+<a class="megamenu-link" href="./tours/beach/"><span class="megamenu-link-icon">🏖️</span> Pristine Beaches</a>
+<a class="megamenu-link" href="./tours/hill-country/"><span class="megamenu-link-icon">⛰️</span> Hill Country &amp; Tea</a>
+<a class="megamenu-link" href="./tours/ayurvedic/"><span class="megamenu-link-icon">🌿</span> Ayurvedic Healing</a>
+<a class="megamenu-link" href="./tours/honeymoon/"><span class="megamenu-link-icon">💍</span> Honeymoon Romance</a>
+<a class="megamenu-link" href="./tours/family/"><span class="megamenu-link-icon">👨‍👩‍👧‍👦</span> Family Discovery</a>
+<a class="megamenu-link" href="./tours/adventure/"><span class="megamenu-link-icon">🏄</span> Active Adventure</a>
+<a class="megamenu-link" href="./tours/ramayana/"><span class="megamenu-link-icon">🏹</span> Ramayana Trail</a>
+</div>
+</li>
+<li class="walkers-menu-item"><a class="walkers-menu-link" href="./destinations.html">Destinations</a></li>
+<li class="walkers-menu-item"><a class="walkers-menu-link" href="./experiences.html">Experiences</a></li>
+<li class="walkers-menu-item"><a class="walkers-menu-link" href="./about.html">About Us</a></li>
+<li class="walkers-menu-item"><a class="walkers-menu-link" href="./gallery.html">Gallery</a></li>
+<li class="walkers-menu-item"><a class="walkers-menu-link" href="./reviews.html">Reviews</a></li>
+<li class="walkers-menu-item"><a class="walkers-menu-link" href="./blog.html">Blog</a></li>
+<li class="walkers-menu-item"><a class="walkers-menu-link" href="./contact.html">Contact</a></li>
+</ul>
+</nav>
+<!-- Right Header Tools (Desktop) -->
+<div class="header-tools">
+<div class="custom-lang-pill">
+<button aria-haspopup="true" class="lang-pill-btn" id="langPillToggle" title="Select Language" type="button">
+<span id="currentLangLabel">EN</span>
+<svg class="walkers-caret" viewbox="0 0 10 6"><path d="M1 1L5 5L9 1" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.8"></path></svg>
+</button>
+<div class="lang-pill-dropdown" id="langPillMenu">
+<button class="is-active" data-lang="en" type="button">🇬🇧 English</button>
+<button data-lang="zh-TW" type="button">🇹🇼 繁體中文 (Taiwan)</button>
+<button data-lang="zh-CN" type="button">🇨🇳 简体中文 (Modern)</button>
+<button data-lang="fr" type="button">🇫🇷 Français (French)</button>
+<button data-lang="de" type="button">🇩🇪 Deutsch (German)</button>
+<button data-lang="ru" type="button">🇷🇺 Русский</button>
+<button data-lang="es" type="button">🇪🇸 Español</button>
+<button data-lang="it" type="button">🇮🇹 Italiano</button>
+<button data-lang="ja" type="button">🇯🇵 日本語</button>
+<button data-lang="ar" type="button">🇦🇪 العربية</button>
+<button data-lang="hi" type="button">🇮🇳 हिन्दी</button>
+</div>
+</div>
+<a class="gold-inquire-btn" href="./inquiry-detailed.html" title="Plan Your Bespoke Travel">
+<span>Inquire</span>
+</a>
+</div>
+<!-- Mobile Hamburger Button (Active up to 1024px, 48x48px min tap target) -->
+<button aria-controls="mobileNavFullscreen" aria-expanded="false" aria-label="Open mobile navigation menu" class="walkers-ham" id="mobileHamToggle" type="button">
+<span></span><span></span><span></span>
+</button>
+</div>
+</div>
+</header>
+<!-- Full-Screen Slide-in Mobile Navigation Menu -->
+<div aria-hidden="true" aria-label="Mobile Navigation" class="mobile-nav-fullscreen" id="mobileNavFullscreen" role="dialog">
+<div class="mobile-nav-header">
+<a class="header-brand" href="./index.html">
+<img alt="Lotus Ceylon Official Emblem" class="header-brand-logo" height="38" src="./assets/images/brand/logo-header.png" width="38"/>
+<span class="header-brand-name"><span class="brand-name-lotus">Lotus</span> <span class="brand-name-ceylon">Ceylon</span></span>
+</a>
+<button aria-label="Close navigation menu" class="mobile-nav-close" id="mobileNavClose" type="button">×</button>
+</div>
+<div class="mobile-nav-body">
+<ul class="mobile-nav-list">
+<li class="mobile-nav-item"><a class="mobile-nav-link" href="./index.html">Home</a></li>
+<!-- Accordion Item for Tours -->
+<li class="mobile-nav-item has-accordion">
+<button aria-expanded="false" class="mobile-nav-link accordion-toggle" id="mobileToursToggle" type="button">
+<span>Tours &amp; Packages</span>
+<svg class="accordion-chevron" height="8" viewbox="0 0 10 6" width="12"><path d="M1 1L5 5L9 1" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path></svg>
+</button>
+<div class="mobile-accordion-submenu" id="mobileToursSubmenu">
+<a class="submenu-link" href="./sri-lanka-tours.html"><svg class="submenu-icon" fill="none" height="18" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="18"><rect height="7" width="7" x="3" y="3"></rect><rect height="7" width="7" x="14" y="3"></rect><rect height="7" width="7" x="14" y="14"></rect><rect height="7" width="7" x="3" y="14"></rect></svg><strong>All Tour Packages</strong></a>
+<a class="submenu-link" href="./tours/cultural/"><svg class="submenu-icon" fill="none" height="18" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="18"><path d="M3 21h18M5 21V9M19 21V9M9 21V9M15 21V9M2 9l10-6 10 6"></path></svg>Cultural Heritage</a>
+<a class="submenu-link" href="./tours/buddhist-heritage/"><svg class="submenu-icon" fill="none" height="18" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="18"><circle cx="12" cy="12" r="9"></circle><circle cx="12" cy="12" r="3"></circle><path d="M12 3v6M12 15v6M3 12h6M15 12h6"></path></svg>Buddhist Pilgrimages</a>
+<a class="submenu-link" href="./tours/wildlife/"><svg class="submenu-icon" fill="none" height="18" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="18"><path d="M12 11c-2.5 0-4 1.8-4 4 0 3 4 7 4 7s4-4 4-7c0-2.2-1.5-4-4-4z"></path><circle cx="7" cy="8" r="2"></circle><circle cx="17" cy="8" r="2"></circle><circle cx="12" cy="5" r="2"></circle></svg>Wildlife Safaris</a>
+<a class="submenu-link" href="./tours/beach/"><svg class="submenu-icon" fill="none" height="18" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="18"><path d="M2 12c2.5-1.5 5.5-1.5 8 0s5.5 1.5 8 0 5.5-1.5 8 0M2 16c2.5-1.5 5.5-1.5 8 0s5.5 1.5 8 0M12 2a4 4 0 014 4c0 3-4 5-4 5s-4-2-4-5a4 4 0 014-4z"></path></svg>Pristine Beaches</a>
+<a class="submenu-link" href="./tours/hill-country/"><svg class="submenu-icon" fill="none" height="18" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="18"><path d="M3 20l7-12 5 8 6-10 3 14H3z"></path></svg>Hill Country &amp; Tea</a>
+<a class="submenu-link" href="./tours/ayurvedic/"><svg class="submenu-icon" fill="none" height="18" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="18"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><path d="M12 8v8M8 12h8"></path></svg>Ayurvedic Healing</a>
+<a class="submenu-link" href="./tours/honeymoon/"><svg class="submenu-icon" fill="none" height="18" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="18"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path></svg>Honeymoon Sanctuaries</a>
+<a class="submenu-link" href="./tours/family/"><svg class="submenu-icon" fill="none" height="18" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="18"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"></path></svg>Family Journeys</a>
+<a class="submenu-link" href="./tours/adventure/"><svg class="submenu-icon" fill="none" height="18" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="18"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>Active Adventure</a>
+<a class="submenu-link" href="./tours/ramayana/"><svg class="submenu-icon" fill="none" height="18" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="18"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>Ramayana Trail</a>
+</div>
+</li>
+<li class="mobile-nav-item"><a class="mobile-nav-link" href="./destinations.html">Destinations</a></li>
+<li class="mobile-nav-item"><a class="mobile-nav-link" href="./experiences.html">Experiences</a></li>
+<li class="mobile-nav-item"><a class="mobile-nav-link" href="./about.html">About Us</a></li>
+<li class="mobile-nav-item"><a class="mobile-nav-link" href="./gallery.html">Gallery</a></li>
+<li class="mobile-nav-item"><a class="mobile-nav-link" href="./reviews.html">Reviews</a></li>
+<li class="mobile-nav-item"><a class="mobile-nav-link" href="./blog.html">Blog</a></li>
+<li class="mobile-nav-item"><a class="mobile-nav-link" href="./contact.html">Contact Us</a></li>
+</ul>
+<!-- Mobile Language Selector Section -->
+<div class="mobile-lang-section">
+<p class="mobile-section-label">Select Language</p>
+<div class="mobile-lang-grid" id="mobileLangGrid">
+<button class="mobile-lang-btn is-active" data-lang="en" type="button">🇬🇧 English</button>
+<button class="mobile-lang-btn" data-lang="zh-TW" type="button">🇹🇼 繁體中文</button>
+<button class="mobile-lang-btn" data-lang="zh-CN" type="button">🇨🇳 简体中文</button>
+<button class="mobile-lang-btn" data-lang="fr" type="button">🇫🇷 Français</button>
+<button class="mobile-lang-btn" data-lang="de" type="button">🇩🇪 Deutsch</button>
+<button class="mobile-lang-btn" data-lang="ru" type="button">🇷🇺 Русский</button>
+<button class="mobile-lang-btn" data-lang="es" type="button">🇪🇸 Español</button>
+<button class="mobile-lang-btn" data-lang="it" type="button">🇮🇹 Italiano</button>
+<button class="mobile-lang-btn" data-lang="ja" type="button">🇯🇵 日本語</button>
+<button class="mobile-lang-btn" data-lang="ar" type="button">🇦🇪 العربية</button>
+<button class="mobile-lang-btn" data-lang="hi" type="button">🇮🇳 हिन्दी</button>
+</div>
+</div>
+<!-- Mobile Action Buttons -->
+<div class="mobile-nav-actions">
+<a class="btn-mobile-whatsapp" href="https://wa.me/94715422384?text=Hello%20Lotus%20Ceylon!%20I%20would%20like%20to%20inquire%20about%20a%20private%20tour." rel="noopener noreferrer" target="_blank">
+<span>💬 WhatsApp (+94 71 54 22 384)</span>
+</a>
+<a class="btn-mobile-inquire" href="./inquiry-detailed.html">
+<span>Plan My Bespoke Journey ➔</span>
+</a>
+</div>
+</div>
+</div>
+<!-- Full-Screen Slide-in Mobile Navigation Menu -->
+<!-- Full-Screen Slide-in Mobile Navigation Menu -->
+<!-- ==========================================================================
        OFFCANVAS FULLSCREEN SEARCH DRAWER
        ========================================================================== -->
-  <div class="offcanvas-search" id="offcanvasSearch" aria-modal="true" role="dialog">
-    <button type="button" class="offcanvas-search-close" id="searchCloseBtn" aria-label="Close search">&times;</button>
-    <div class="search-box-inner">
-      <h3>Discover Your Dream Sri Lanka Vacation</h3>
-      <form class="search-input-wrap" action="inquiry-detailed.html" method="get">
-        <input type="search" name="q" placeholder="Search by destination, interest, or tour..." required autofocus>
-        <button type="submit" aria-label="Search">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
-            <path d="M19.209 18.0633L13.6789 12.5332C14.7501 11.21 15.395 9.52873 15.395 7.69754C15.395 3.45337 11.9417 0 7.6975 0C3.45333 0 0 3.45333 0 7.6975C0 11.9417 3.45337 15.395 7.69754 15.395C9.52873 15.395 11.21 14.7501 12.5332 13.6789L18.0633 19.209C18.2213 19.367 18.4287 19.4464 18.6361 19.4464C18.8436 19.4464 19.051 19.367 19.209 19.209C19.5258 18.8922 19.5258 18.3801 19.209 18.0633ZM7.69754 13.7745C4.34627 13.7745 1.62055 11.0488 1.62055 7.6975C1.62055 4.34623 4.34627 1.62051 7.69754 1.62051C11.0488 1.62051 13.7745 4.34623 13.7745 7.6975C13.7745 11.0488 11.0488 13.7745 7.69754 13.7745Z"/>
-          </svg>
-        </button>
-      </form>
-    </div>
-  </div>
-
-  <!-- ==========================================================================
+<div aria-modal="true" class="offcanvas-search" id="offcanvasSearch" role="dialog">
+<button aria-label="Close search" class="offcanvas-search-close" id="searchCloseBtn" type="button">×</button>
+<div class="search-box-inner">
+<h3>Discover Your Dream Sri Lanka Vacation</h3>
+<form action="inquiry-detailed.html" class="search-input-wrap" method="get">
+<input aria-label="Search destination or tour keyword" autofocus="" name="q" placeholder="Search by destination, interest, or tour..." required="" type="search"/>
+<button aria-label="Search" type="submit">
+<svg fill="currentColor" height="20" viewbox="0 0 20 20" width="20" xmlns="http://www.w3.org/2000/svg">
+<path d="M19.209 18.0633L13.6789 12.5332C14.7501 11.21 15.395 9.52873 15.395 7.69754C15.395 3.45337 11.9417 0 7.6975 0C3.45333 0 0 3.45333 0 7.6975C0 11.9417 3.45337 15.395 7.69754 15.395C9.52873 15.395 11.21 14.7501 12.5332 13.6789L18.0633 19.209C18.2213 19.367 18.4287 19.4464 18.6361 19.4464C18.8436 19.4464 19.051 19.367 19.209 19.209C19.5258 18.8922 19.5258 18.3801 19.209 18.0633ZM7.69754 13.7745C4.34627 13.7745 1.62055 11.0488 1.62055 7.6975C1.62055 4.34623 4.34627 1.62051 7.69754 1.62051C11.0488 1.62051 13.7745 4.34623 13.7745 7.6975C13.7745 11.0488 11.0488 13.7745 7.69754 13.7745Z"></path>
+</svg>
+</button>
+</form>
+</div>
+</div>
+<!-- ==========================================================================
        HERO BANNER (LOTUS CEYLON VIDEO BANNER SLIDER)
        ========================================================================== -->
-  <section class="banner-section" id="home">
-    <div class="video-banner-slide">
-      <!-- Full-Width Background Video -->
-      <video class="video-banner-video" autoplay muted loop playsinline webkit-playsinline preload="metadata" poster="assets/images/hero-nine-arches.jpg">
-        <source src="assets/videos/hero-banner.mp4" type="video/mp4">
-      </video>
-      <div class="video-banner-overlay"></div>
-
-      <div class="banner-content-wrap">
-        <div class="wrapper--80">
-          <div class="banner-text-inner">
-            <span class="banner-subtitle-badge">SRI LANKA TAILOR-MADE LUXURY HOLIDAYS</span>
-            <h1 class="banner-main-title">
-              Discover Sri Lanka’s <br><span>Timeless Wonder</span>
-            </h1>
-            <p class="paragraph--20" style="color: #E2EBF1; max-width: 680px; margin-bottom: 2rem;">
+<section class="banner-section" id="home">
+<div class="video-banner-slide">
+<!-- Responsive Hero Background: Mobile Portrait Picture Crop & Desktop Video -->
+<picture class="hero-picture-bg">
+<source media="(max-width: 768px)" srcset="./assets/images/home/hero-sigiriya-aerial-portrait.webp"/>
+<img alt="Sigiriya Ancient Rock Citadel Aerial View" class="hero-img-bg" fetchpriority="high" height="1080" src="./assets/images/home/hero-sigiriya-aerial-1.webp" width="1920"/>
+</picture>
+<video class="video-banner-video desktop-only-video" loop="" muted="" playsinline="" poster="./assets/images/home/hero-sigiriya-aerial-1.webp" preload="none" webkit-playsinline="">
+<source media="(min-width: 993px)" src="./assets/videos/hero-banner.mp4" type="video/mp4"/>
+</video>
+<script>
+if (window.innerWidth >= 993) {
+  var v = document.querySelector('.desktop-only-video');
+  if (v) { v.autoplay = true; v.play().catch(function(){}); }
+}
+</script>
+<div class="video-banner-overlay"></div>
+<div class="banner-content-wrap">
+<div class="wrapper--80">
+<div class="banner-text-inner">
+<span class="banner-subtitle-badge">SRI LANKA TAILOR-MADE LUXURY HOLIDAYS</span>
+<h1 class="banner-main-title">
+              Discover Sri Lanka’s <br/><span>Timeless Wonder</span>
+</h1>
+<p class="paragraph--20" style="color: #E2EBF1; max-width: 680px; margin-bottom: 2rem;">
               Step into an island of extraordinary heritage, misty tea hills, untamed wildlife, and sun-kissed coasts — curated with unmatched luxury and heartfelt devotion.
             </p>
-            <div class="banner-actions">
-              <a href="#packages" class="next-btn next-btn--gold" title="Explore Tour Packages">
-                <span>Explore Packages</span>
-                <span class="next-btn-circle" style="background: rgba(0,0,0,0.15); width: 32px; height: 32px;">➔</span>
-              </a>
-              <a href="inquiry-detailed.html" class="next-btn next-btn--white" title="Plan a Bespoke Trip">
-                <span class="next-btn-circle">➔</span>
-                <span>Tailor Your Journey</span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ==========================================================================
+<div class="banner-actions">
+<a class="next-btn next-btn--gold" href="#packages" title="Explore Tour Packages">
+<span>Explore Tour Packages</span>
+</a>
+<a class="next-btn next-btn--white" href="inquiry-detailed.html" title="Plan a Bespoke Trip">
+<span>Tailor Your Journey</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ==========================================================================
        SECTION 1: INTRO (LOTUS CEYLON STORY & PHILOSOPHY)
        ========================================================================== -->
-  <section class="padding-top--100 padding-bottom--100" id="about">
-    <div class="wrapper--wide" style="text-align: center; margin-bottom: 1.5rem; position: relative;">
-      <div class="section-watermark-header">
-        <p class="watermark-heading">lotus ceylon</p>
-        <h2 class="section-header-title">Pure Journeys &amp; Sacred Experiences <br><span>The Authentic Soul of Sri Lanka</span></h2>
-      </div>
-    </div>
-
-    <div class="wrapper--wide">
-      <div class="about-luxury-split-grid">
-        
-        <!-- Left Column: Layered Luxury Visual Showcase -->
-        <div class="about-visual-composition">
-          <!-- Main Scenic Hero Photo (Sigiriya UNESCO Wonder) -->
-          <div class="about-img-main">
-            <img src="https://images.unsplash.com/photo-1578632767115-351597cf2477?w=1000&h=1200&fit=crop&q=85" alt="Sigiriya Ancient Rock Fortress - Sri Lanka Heritage" loading="lazy">
-            <div class="about-img-caption-glass">
-              <span class="caption-title">Sigiriya Rock Fortress</span>
-              <span class="caption-sub">Ancient 5th Century Citadel</span>
-            </div>
-          </div>
-
-          <!-- Overlapping Floating Secondary Photo (Wildlife & Nature) -->
-          <div class="about-img-floating">
-            <img src="https://images.unsplash.com/photo-1557050543-4d5f4e07ef46?w=600&h=600&fit=crop&q=85" alt="Sri Lanka Wild Asian Elephants Sanctuary" loading="lazy">
-            <div class="floating-badge-pill">
-              <span class="floating-badge-dot"></span>
-              <span>Wild &amp; Pristine</span>
-            </div>
-          </div>
-
-          <!-- Luxury Trust Seal Card -->
-          <div class="about-experience-seal">
-            <span class="seal-icon">✦</span>
-            <div class="seal-text">
-              <strong>Pure Journeys</strong>
-              <span>100% Bespoke Luxury</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Right Column: Editorial Story & Spirit -->
-        <div class="editorial-intro-wrapper">
-          
-          <div class="editorial-tag-pill">
-            <span>🌸</span>
-            <span>The Spirit of Lotus Ceylon</span>
-            <span>✦</span>
-          </div>
-
-          <div class="editorial-quote-card">
-            <span class="editorial-quote-mark">&ldquo;</span>
-            <p class="editorial-quote-text">
+<section class="padding-top--100 padding-bottom--100" id="about">
+<div class="wrapper--wide" style="text-align: center; margin-bottom: 1.5rem; position: relative;">
+<div class="section-watermark-header">
+<p class="watermark-heading">lotus ceylon</p>
+<h2 class="section-header-title">Pure Journeys &amp; Sacred Experiences <br/><span>The Authentic Soul of Sri Lanka</span></h2>
+</div>
+</div>
+<div class="wrapper--wide">
+<div class="about-luxury-split-grid">
+<!-- Left Column: Layered Luxury Visual Showcase -->
+<div class="about-visual-composition">
+<!-- Main Scenic Hero Photo (Sigiriya UNESCO Wonder) -->
+<div class="about-img-main">
+<img alt="Sigiriya Ancient Rock Fortress - Sri Lanka Heritage" loading="lazy" src="./assets/images/home/hero-sigiriya-aerial-1.webp"/ decoding="async">
+<div class="about-img-caption-glass">
+<span class="caption-title">Sigiriya Rock Fortress</span>
+<span class="caption-sub">Ancient 5th Century Citadel</span>
+</div>
+</div>
+<!-- Overlapping Floating Secondary Photo (Wildlife & Nature) -->
+<div class="about-img-floating">
+<img alt="Sri Lanka Wild Asian Elephants Sanctuary" loading="lazy" src="./assets/images/buddhist-heritage/ruwanwelisaya-2.webp"/ decoding="async">
+<div class="floating-badge-pill">
+<span class="floating-badge-dot"></span>
+<span>Wild &amp; Pristine</span>
+</div>
+</div>
+<!-- Luxury Trust Seal Card -->
+<div class="about-experience-seal">
+<span class="seal-icon">✦</span>
+<div class="seal-text">
+<strong>Pure Journeys</strong>
+<span>100% Bespoke Luxury</span>
+</div>
+</div>
+</div>
+<!-- Right Column: Editorial Story & Spirit -->
+<div class="editorial-intro-wrapper">
+<div class="editorial-tag-pill">
+<span>🌸</span>
+<span>The Spirit of Lotus Ceylon</span>
+<span>✦</span>
+</div>
+<div class="editorial-quote-card">
+<span class="editorial-quote-mark">“</span>
+<p class="editorial-quote-text">
               Inspired by the lotus—a symbol of purity, sacredness, resilience and natural beauty—LOTUS invites you to discover Sri Lanka through journeys that connect you with its nature, culture, heritage and spirit.
             </p>
-          </div>
-
-          <p class="editorial-lead-para">
-            <strong>LOTUS CEYLON INTERNATIONAL TOURS &amp; SERVICES (PRIVATE) LIMITED</strong> is a premier Sri Lankan inbound tourism company dedicated to creating authentic, meaningful and memorable travel experiences across Sri Lanka.
+</div>
+<p class="editorial-lead-para">
+<strong>LOTUS CEYLON INTERNATIONAL TOURS &amp; SERVICES (PRIVATE) LIMITED</strong> is a premier Sri Lankan inbound tourism company dedicated to creating authentic, meaningful and memorable travel experiences across Sri Lanka.
           </p>
-
-          <p class="editorial-body-para">
+<p class="editorial-body-para">
             From cultural heritage and sacred Buddhist sites to wildlife, pristine coasts, misty tea mountains, and the world-renowned flavours of Ceylon, we connect travellers with the people, places and experiences that make Sri Lanka unique with deep cultural understanding and genuine Sri Lankan hospitality.
           </p>
-
-          <!-- Essence Highlights -->
-          <div class="editorial-chips-grid">
-            <div class="editorial-chip">
-              <span class="editorial-chip-icon">🏛️</span>
-              <span>UNESCO Sacred Heritage</span>
-            </div>
-            <div class="editorial-chip">
-              <span class="editorial-chip-icon">🚗</span>
-              <span>Private Chauffeur Fleet</span>
-            </div>
-            <div class="editorial-chip">
-              <span class="editorial-chip-icon">✨</span>
-              <span>100% Bespoke Curation</span>
-            </div>
-          </div>
-
-          <!-- Matched Luxury Action Buttons -->
-          <div class="editorial-actions-group">
-            <a href="about.html" class="btn-editorial-primary" title="About Lotus Ceylon">
-              <span>About Us</span>
-              <span class="btn-arrow-circle">➔</span>
-            </a>
-            <a href="inquiry-detailed.html" class="btn-editorial-secondary" title="Plan Your Bespoke Journey">
-              <span>Plan Your Journey</span>
-              <span class="btn-arrow-circle">➔</span>
-            </a>
-          </div>
-
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ==========================================================================
+<!-- Essence Highlights -->
+<div class="editorial-chips-grid">
+<div class="editorial-chip">
+<span class="editorial-chip-icon">🏛️</span>
+<span>UNESCO Sacred Heritage</span>
+</div>
+<div class="editorial-chip">
+<span class="editorial-chip-icon">🚗</span>
+<span>Private Chauffeur Fleet</span>
+</div>
+<div class="editorial-chip">
+<span class="editorial-chip-icon">✨</span>
+<span>100% Bespoke Curation</span>
+</div>
+</div>
+<!-- Matched Luxury Action Buttons -->
+<div class="editorial-actions-group">
+<a class="btn-editorial-primary" href="about.html" title="About Lotus Ceylon">
+<span>About Us</span>
+<span class="btn-arrow-circle">➔</span>
+</a>
+<a class="btn-editorial-secondary" href="inquiry-detailed.html" title="Plan Your Bespoke Journey">
+<span>Plan Your Journey</span>
+<span class="btn-arrow-circle">➔</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ==========================================================================
        SECTION 2: WHY BOOK WITH US + SACRED AURA & LIVE ANIMATED COUNTERS
        ========================================================================== -->
-  <section class="padding-bottom--100 padding-top--70" id="why-us">
-    <div class="wrapper--80">
-      
-      <!-- Sacred Tag & Section Heading -->
-      <div style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 2rem;">
-        <div style="max-width: 520px;">
-          <div class="sacred-badge-tag">
-            <span class="sacred-icon">🌸</span> ✦ THE SACRED TOUCH ✦ <span class="sacred-icon">🌸</span>
-          </div>
-          <h2 class="heading--60">
-            <span>Why Journey With</span><br>Lotus Ceylon
+<section class="padding-bottom--100 padding-top--70" id="why-us">
+<div class="wrapper--80">
+<!-- Sacred Tag & Section Heading -->
+<div style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 2rem;">
+<div style="max-width: 520px;">
+<div class="sacred-badge-tag">
+<span class="sacred-icon">🌸</span> ✦ THE SACRED TOUCH ✦ <span class="sacred-icon">🌸</span>
+</div>
+<h2 class="heading--60">
+<span>Why Journey With</span><br/>Lotus Ceylon
           </h2>
-        </div>
-        <div style="max-width: 550px;">
-          <p class="heading--28 font-color--light-black" style="font-weight: 400; line-height: 1.5;">
+</div>
+<div style="max-width: 550px;">
+<p class="heading--28 font-color--light-black" style="font-weight: 400; line-height: 1.5;">
             Founded in 2014, Lotus Ceylon was created on a single enduring principle: that travel should be unhurried, deeply personal, and spiritually enriching. We craft private voyages that honor the sacred rhythm of our island and the individual spirit of each traveler.
           </p>
-        </div>
-      </div>
-
-      <div class="why-book-split-grid">
-        <!-- 5 Feature Boxes with Jewel Color Themes -->
-        <div class="icon-boxes-list">
-          
-          <!-- Card 1: Lotus Gold -->
-          <div class="icon-box icon-box--gold">
-            <div class="icon-box__left">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a8 8 0 0 0-8 8c0 5.25 8 12 8 12s8-6.75 8-12a8 8 0 0 0-8-8z"/><circle cx="12" cy="10" r="3"/></svg>
-            </div>
-            <div class="icon-box__right">
-              <p><strong>100% Tailor-Made Itineraries:</strong> Every journey is customized to your personal pace, interests, and budget.</p>
-            </div>
-          </div>
-
-          <!-- Card 2: Sacred Lotus Pink -->
-          <div class="icon-box icon-box--lotus">
-            <div class="icon-box__left">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-            </div>
-            <div class="icon-box__right">
-              <p><strong>Sacred Buddhist &amp; Heritage Guidance:</strong> Scholarly access to ancient stupas, sacred relics, and cultural immersion.</p>
-            </div>
-          </div>
-
-          <!-- Card 3: Ocean Sapphire Blue -->
-          <div class="icon-box icon-box--navy icon-box--sapphire">
-            <div class="icon-box__left">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-            </div>
-            <div class="icon-box__right">
-              <p><strong>24/7 Dedicated Trip Concierge:</strong> Seamless airport VIP arrival greeting and around-the-clock coordinator care.</p>
-            </div>
-          </div>
-
-          <!-- Card 4: Ceylon Tropical Emerald -->
-          <div class="icon-box icon-box--emerald">
-            <div class="icon-box__left">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
-            </div>
-            <div class="icon-box__right">
-              <p><strong>Private Luxury Fleet &amp; Chauffeur Guides:</strong> Impeccable air-conditioned vehicles driven by licensed national guides.</p>
-            </div>
-          </div>
-
-          <!-- Card 5: Rose Petal Coral -->
-          <div class="icon-box icon-box--rose icon-box--amber">
-            <div class="icon-box__left">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-            </div>
-            <div class="icon-box__right">
-              <p><strong>Handpicked Eco &amp; Boutique Stays:</strong> Audited heritage tea bungalows, Ayurvedic sanctuaries, and luxury seaside villas.</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- 4 Stat Counters Luxury Navy Jewel Card -->
-        <div class="counter-wrap">
-          <div class="counter-box counter-box--gold">
-            <p class="counter-number">
-              <span class="count-up" data-target="10">0</span>+
+</div>
+</div>
+<div class="why-book-split-grid">
+<!-- 5 Feature Boxes with Jewel Color Themes -->
+<div class="icon-boxes-list">
+<!-- Card 1: Lotus Gold -->
+<div class="icon-box icon-box--gold">
+<div class="icon-box__left">
+<svg fill="none" height="22" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="22"><path d="M12 2a8 8 0 0 0-8 8c0 5.25 8 12 8 12s8-6.75 8-12a8 8 0 0 0-8-8z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+</div>
+<div class="icon-box__right">
+<p><strong>100% Tailor-Made Itineraries:</strong> Every journey is customized to your personal pace, interests, and budget.</p>
+</div>
+</div>
+<!-- Card 2: Sacred Lotus Pink -->
+<div class="icon-box icon-box--lotus">
+<div class="icon-box__left">
+<svg fill="none" height="22" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="22"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+</div>
+<div class="icon-box__right">
+<p><strong>Sacred Buddhist &amp; Heritage Guidance:</strong> Scholarly access to ancient stupas, sacred relics, and cultural immersion.</p>
+</div>
+</div>
+<!-- Card 3: Ocean Sapphire Blue -->
+<div class="icon-box icon-box--navy icon-box--sapphire">
+<div class="icon-box__left">
+<svg fill="none" height="22" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="22"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+</div>
+<div class="icon-box__right">
+<p><strong>24/7 Dedicated Trip Concierge:</strong> Seamless airport VIP arrival greeting and around-the-clock coordinator care.</p>
+</div>
+</div>
+<!-- Card 4: Ceylon Tropical Emerald -->
+<div class="icon-box icon-box--emerald">
+<div class="icon-box__left">
+<svg fill="none" height="22" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="22"><rect height="13" width="15" x="1" y="3"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+</div>
+<div class="icon-box__right">
+<p><strong>Private Luxury Fleet &amp; Chauffeur Guides:</strong> Impeccable air-conditioned vehicles driven by licensed national guides.</p>
+</div>
+</div>
+<!-- Card 5: Rose Petal Coral -->
+<div class="icon-box icon-box--rose icon-box--amber">
+<div class="icon-box__left">
+<svg fill="none" height="22" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="22"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+</div>
+<div class="icon-box__right">
+<p><strong>Handpicked Eco &amp; Boutique Stays:</strong> Audited heritage tea bungalows, Ayurvedic sanctuaries, and luxury seaside villas.</p>
+</div>
+</div>
+</div>
+<!-- 4 Stat Counters Luxury Navy Jewel Card -->
+<div class="counter-wrap">
+<div class="counter-box counter-box--gold">
+<p class="counter-number">
+<span class="count-up" data-target="12">12</span>+
             </p>
-            <p class="counter-label">Years of Inbound Excellence</p>
-          </div>
-          <div class="counter-box counter-box--sapphire">
-            <p class="counter-number">
-              <span class="count-up" data-target="10">0</span>+
+<p class="counter-label">Years of Inbound Excellence</p>
+</div>
+<div class="counter-box counter-box--sapphire">
+<p class="counter-number">
+<span class="count-up" data-target="10">10</span>+
             </p>
-            <p class="counter-label">Global Country Representatives</p>
-          </div>
-          <div class="counter-box counter-box--emerald">
-            <p class="counter-number">
-              <span class="count-up" data-target="100">0</span>%
+<p class="counter-label">Global Country Representatives</p>
+</div>
+<div class="counter-box counter-box--emerald">
+<p class="counter-number">
+<span class="count-up" data-target="100">100</span>%
             </p>
-            <p class="counter-label">Tailor-Made Private Itineraries</p>
-          </div>
-          <div class="counter-box counter-box--lotus">
-            <p class="counter-number">
-              <span class="count-up" data-target="99.8">0.0</span>%
+<p class="counter-label">Tailor-Made Private Itineraries</p>
+</div>
+<div class="counter-box counter-box--lotus">
+<p class="counter-number">
+<span class="count-up" data-target="99.8">99.8</span>%
             </p>
-            <p class="counter-label">5-Star Guest Satisfaction</p>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ==========================================================================
+<p class="counter-label">5-Star Guest Satisfaction</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ==========================================================================
        SECTION 3: TOUR CATEGORIES (LOTUS CEYLON CURATED PATHWAYS)
        ========================================================================== -->
-  <section class="padding-top--100 padding-bottom--100" id="categories">
-    <div class="wrapper--80" style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 2rem;">
-      <div style="max-width: 450px;">
-        <h2 class="heading--60">
-          <span>Tour</span><br>Categories
+<section class="padding-top--100 padding-bottom--100" id="categories">
+<div class="wrapper--80" style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 2rem;">
+<div style="max-width: 450px;">
+<h2 class="heading--60">
+<span>Tour</span><br/>Categories
         </h2>
-      </div>
-      <div style="max-width: 500px;">
-        <p class="paragraph--20">
+</div>
+<div style="max-width: 500px;">
+<p class="paragraph--20">
           As Sri Lanka’s premier luxury travel specialist, we craft private journeys across ten signature holiday themes, from tranquil coastal sanctuaries to ancient UNESCO citadels.
         </p>
-      </div>
-      <div>
-        <a href="sri-lanka-tours.html" class="btn-compact-explore-all" title="Explore All Tour Categories">
-          <span class="btn-plus-symbol">+</span>
-          <span>Explore All</span>
-        </a>
-      </div>
-    </div>
-
-    <div class="wrapper--90 categories-carousel-wrapper">
-      <!-- Previous Arrow -->
-      <button class="categories-nav-btn categories-nav-prev" id="catPrevBtn" aria-label="Previous Categories">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
-      </button>
-
-      <!-- Carousel Viewport & Track (10 Signature Categories) -->
-      <div class="categories-carousel-viewport" id="catViewport">
-        <div class="categories-carousel-track" id="catTrack">
-          
-          <!-- 1. Beach Tours -->
-          <a href="beach-tours.html" class="hover-box">
-            <img src="assets/images/beach-galle.jpg" class="hover-box__img" alt="Sri Lanka Luxury Beach Holidays" loading="lazy">
-            <div class="hover-box__overlay"></div>
-            <div class="hover-box__details">
-              <p class="walker-card-title">Beach Tours <span class="walker-card-line"></span></p>
-              <p class="walker-card-desc">Golden sandy shores, private seaside villas &amp; whale watching</p>
-              <div class="walker-hover-explore">
-                <span class="explore-plus-icon">+</span>
-                <span>Explore</span>
-              </div>
-            </div>
-          </a>
-
-          <!-- 2. Cultural Tours -->
-          <a href="cultural-tours.html" class="hover-box">
-            <img src="assets/images/sigiriya.jpg" class="hover-box__img" alt="Sri Lanka Cultural & Heritage Tours" loading="lazy">
-            <div class="hover-box__overlay"></div>
-            <div class="hover-box__details">
-              <p class="walker-card-title">Cultural Tours <span class="walker-card-line"></span></p>
-              <p class="walker-card-desc">Ancient UNESCO kingdoms, sacred temples &amp; living heritage</p>
-              <div class="walker-hover-explore">
-                <span class="explore-plus-icon">+</span>
-                <span>Explore</span>
-              </div>
-            </div>
-          </a>
-
-          <!-- 3. Wildlife Tours -->
-          <a href="wildlife-tours.html" class="hover-box">
-            <img src="assets/images/wildlife.jpg" class="hover-box__img" alt="Sri Lanka Luxury Wildlife & Safari Tours" loading="lazy">
-            <div class="hover-box__overlay"></div>
-            <div class="hover-box__details">
-              <p class="walker-card-title">Wildlife Tours <span class="walker-card-line"></span></p>
-              <p class="walker-card-desc">Wild leopard safaris, elephant gatherings &amp; untamed wilderness</p>
-              <div class="walker-hover-explore">
-                <span class="explore-plus-icon">+</span>
-                <span>Explore</span>
-              </div>
-            </div>
-          </a>
-
-          <!-- 4. Hill Country Tours -->
-          <a href="hill-country-tours.html" class="hover-box">
-            <img src="assets/images/tea-country.jpg" class="hover-box__img" alt="Sri Lanka Hill Country & Tea Country Tours" loading="lazy">
-            <div class="hover-box__overlay"></div>
-            <div class="hover-box__details">
-              <p class="walker-card-title">Highlands &amp; Tea <span class="walker-card-line"></span></p>
-              <p class="walker-card-desc">Misty emerald tea estates, iconic train railways &amp; waterfalls</p>
-              <div class="walker-hover-explore">
-                <span class="explore-plus-icon">+</span>
-                <span>Explore</span>
-              </div>
-            </div>
-          </a>
-
-          <!-- 5. Adventure Tours -->
-          <a href="adventure-tours.html" class="hover-box">
-            <img src="assets/images/adventure.jpg" class="hover-box__img" alt="Sri Lanka Adventure & Active Expeditions" loading="lazy">
-            <div class="hover-box__overlay"></div>
-            <div class="hover-box__details">
-              <p class="walker-card-title">Adventure Tours <span class="walker-card-line"></span></p>
-              <p class="walker-card-desc">Whitewater rapids, mountain peaks &amp; ocean point breaks</p>
-              <div class="walker-hover-explore">
-                <span class="explore-plus-icon">+</span>
-                <span>Explore</span>
-              </div>
-            </div>
-          </a>
-
-          <!-- 6. Ayurvedic Tours -->
-          <a href="ayurvedic-tours.html" class="hover-box">
-            <img src="assets/images/temple-culture.jpg" class="hover-box__img" alt="Sri Lanka Ayurvedic & Wellness Retreats" loading="lazy">
-            <div class="hover-box__overlay"></div>
-            <div class="hover-box__details">
-              <p class="walker-card-title">Ayurveda Wellness <span class="walker-card-line"></span></p>
-              <p class="walker-card-desc">Physician-led panchakarma, sacred herbs &amp; forest serenity</p>
-              <div class="walker-hover-explore">
-                <span class="explore-plus-icon">+</span>
-                <span>Explore</span>
-              </div>
-            </div>
-          </a>
-
-          <!-- 7. Honeymoon Tours -->
-          <a href="honeymoon-tours.html" class="hover-box">
-            <img src="assets/images/sunset-mirissa.jpg" class="hover-box__img" alt="Sri Lanka Luxury Honeymoon Tours" loading="lazy">
-            <div class="hover-box__overlay"></div>
-            <div class="hover-box__details">
-              <p class="walker-card-title">Romantic Escapes <span class="walker-card-line"></span></p>
-              <p class="walker-card-desc">Private plunge-pool villas, candlelight ramparts &amp; sunsets</p>
-              <div class="walker-hover-explore">
-                <span class="explore-plus-icon">+</span>
-                <span>Explore</span>
-              </div>
-            </div>
-          </a>
-
-          <!-- 8. Family Tours -->
-          <a href="family-tours.html" class="hover-box">
-            <img src="assets/images/hero-nine-arches.jpg" class="hover-box__img" alt="Sri Lanka Family Holiday Packages" loading="lazy">
-            <div class="hover-box__overlay"></div>
-            <div class="hover-box__details">
-              <p class="walker-card-title">Family Journeys <span class="walker-card-line"></span></p>
-              <p class="walker-card-desc">Gentle safaris, turtle hatcheries &amp; multi-gen comfort</p>
-              <div class="walker-hover-explore">
-                <span class="explore-plus-icon">+</span>
-                <span>Explore</span>
-              </div>
-            </div>
-          </a>
-
-          <!-- 9. Ramayana Tours -->
-          <a href="ramayana-tours.html" class="hover-box">
-            <img src="assets/images/polonnaruwa.jpg" class="hover-box__img" alt="Sri Lanka Sacred Ramayana Heritage Tours" loading="lazy">
-            <div class="hover-box__overlay"></div>
-            <div class="hover-box__details">
-              <p class="walker-card-title">Ramayana Trails <span class="walker-card-line"></span></p>
-              <p class="walker-card-desc">Sacred legend shrines, Seetha Amman temple &amp; epic trails</p>
-              <div class="walker-hover-explore">
-                <span class="explore-plus-icon">+</span>
-                <span>Explore</span>
-              </div>
-            </div>
-          </a>
-
-          <!-- 10. Golf Tours -->
-          <a href="golf-tours.html" class="hover-box">
-            <img src="assets/images/tea-country.jpg" class="hover-box__img" alt="Sri Lanka Golf Holidays & Championship Tours" loading="lazy">
-            <div class="hover-box__overlay"></div>
-            <div class="hover-box__details">
-              <p class="walker-card-title">Championship Golf <span class="walker-card-line"></span></p>
-              <p class="walker-card-desc">Asia’s oldest royal courses, highland pine links &amp; resorts</p>
-              <div class="walker-hover-explore">
-                <span class="explore-plus-icon">+</span>
-                <span>Explore</span>
-              </div>
-            </div>
-          </a>
-
-        </div>
-      </div>
-
-      <!-- Next Arrow -->
-      <button class="categories-nav-btn categories-nav-next" id="catNextBtn" aria-label="Next Categories">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
-      </button>
-    </div>
-
-    <!-- Carousel Indicator Dots -->
-    <div class="categories-carousel-dots" id="catDots"></div>
-  </section>
-
-    <!-- ==========================================================================
+</div>
+<div>
+<a class="btn-compact-explore-all" href="sri-lanka-tours.html" title="Explore All Tour Categories">
+<span class="btn-plus-symbol">+</span>
+<span>Explore All</span>
+</a>
+</div>
+</div>
+<div class="wrapper--90 categories-carousel-wrapper">
+<!-- Previous Arrow -->
+<button aria-label="Previous Categories" class="categories-nav-btn categories-nav-prev" id="catPrevBtn">
+<svg fill="none" height="22" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewbox="0 0 24 24" width="22"><polyline points="15 18 9 12 15 6"></polyline></svg>
+</button>
+<!-- Carousel Viewport & Track (10 Signature Categories) -->
+<div class="categories-carousel-viewport" id="catViewport">
+<div class="categories-carousel-track" id="catTrack">
+<!-- 1. Beach Tours -->
+<a class="hover-box" href="beach-tours.html">
+<img alt="Sri Lanka Luxury Beach Holidays" class="hover-box__img" loading="lazy" src="./assets/images/beach/mirissa-1.webp"/ decoding="async">
+<div class="hover-box__overlay"></div>
+<div class="hover-box__details">
+<p class="walker-card-title">Beach Tours <span class="walker-card-line"></span></p>
+<p class="walker-card-desc">Golden sandy shores, private seaside villas &amp; whale watching</p>
+<div class="walker-hover-explore">
+<span class="explore-plus-icon">+</span>
+<span>Explore</span>
+</div>
+</div>
+</a>
+<!-- 2. Cultural Tours -->
+<a class="hover-box" href="cultural-tours.html">
+<img alt="Sri Lanka Cultural &amp; Heritage Tours" class="hover-box__img" loading="lazy" src="./assets/images/cultural/sigiriya-1.webp"/ decoding="async">
+<div class="hover-box__overlay"></div>
+<div class="hover-box__details">
+<p class="walker-card-title">Cultural Tours <span class="walker-card-line"></span></p>
+<p class="walker-card-desc">Ancient UNESCO kingdoms, sacred temples &amp; living heritage</p>
+<div class="walker-hover-explore">
+<span class="explore-plus-icon">+</span>
+<span>Explore</span>
+</div>
+</div>
+</a>
+<!-- 3. Wildlife Tours -->
+<a class="hover-box" href="wildlife-tours.html">
+<img alt="Sri Lanka Luxury Wildlife &amp; Safari Tours" class="hover-box__img" loading="lazy" src="./assets/images/wildlife/yala-leopard-1.webp"/ decoding="async">
+<div class="hover-box__overlay"></div>
+<div class="hover-box__details">
+<p class="walker-card-title">Wildlife Tours <span class="walker-card-line"></span></p>
+<p class="walker-card-desc">Wild leopard safaris, elephant gatherings &amp; untamed wilderness</p>
+<div class="walker-hover-explore">
+<span class="explore-plus-icon">+</span>
+<span>Explore</span>
+</div>
+</div>
+</a>
+<!-- 4. Hill Country Tours -->
+<a class="hover-box" href="hill-country-tours.html">
+<img alt="Sri Lanka Hill Country &amp; Tea Country Tours" class="hover-box__img" loading="lazy" src="./assets/images/hill-country/nuwara-eliya-tea-2.webp"/ decoding="async">
+<div class="hover-box__overlay"></div>
+<div class="hover-box__details">
+<p class="walker-card-title">Highlands &amp; Tea <span class="walker-card-line"></span></p>
+<p class="walker-card-desc">Misty emerald tea estates, iconic train railways &amp; waterfalls</p>
+<div class="walker-hover-explore">
+<span class="explore-plus-icon">+</span>
+<span>Explore</span>
+</div>
+</div>
+</a>
+<!-- 5. Adventure Tours -->
+<a class="hover-box" href="adventure-tours.html">
+<img alt="Sri Lanka Adventure &amp; Active Expeditions" class="hover-box__img" loading="lazy" src="./assets/images/adventure/kitulgala-rafting-1.webp"/ decoding="async">
+<div class="hover-box__overlay"></div>
+<div class="hover-box__details">
+<p class="walker-card-title">Adventure Tours <span class="walker-card-line"></span></p>
+<p class="walker-card-desc">Whitewater rapids, mountain peaks &amp; ocean point breaks</p>
+<div class="walker-hover-explore">
+<span class="explore-plus-icon">+</span>
+<span>Explore</span>
+</div>
+</div>
+</a>
+<!-- 6. Ayurvedic Tours -->
+<a class="hover-box" href="ayurvedic-tours.html">
+<img alt="Sri Lanka Ayurvedic &amp; Wellness Retreats" class="hover-box__img" loading="lazy" src="./assets/images/cultural/kandy-temple-of-tooth-4.webp"/ decoding="async">
+<div class="hover-box__overlay"></div>
+<div class="hover-box__details">
+<p class="walker-card-title">Ayurveda Wellness <span class="walker-card-line"></span></p>
+<p class="walker-card-desc">Physician-led panchakarma, sacred herbs &amp; forest serenity</p>
+<div class="walker-hover-explore">
+<span class="explore-plus-icon">+</span>
+<span>Explore</span>
+</div>
+</div>
+</a>
+<!-- 7. Honeymoon Tours -->
+<a class="hover-box" href="honeymoon-tours.html">
+<img alt="Sri Lanka Luxury Honeymoon Tours" class="hover-box__img" loading="lazy" src="./assets/images/honeymoon/mirissa-sunset-2.webp"/ decoding="async">
+<div class="hover-box__overlay"></div>
+<div class="hover-box__details">
+<p class="walker-card-title">Romantic Escapes <span class="walker-card-line"></span></p>
+<p class="walker-card-desc">Private plunge-pool villas, candlelight ramparts &amp; sunsets</p>
+<div class="walker-hover-explore">
+<span class="explore-plus-icon">+</span>
+<span>Explore</span>
+</div>
+</div>
+</a>
+<!-- 8. Family Tours -->
+<a class="hover-box" href="family-tours.html">
+<img alt="Sri Lanka Family Holiday Packages" class="hover-box__img" loading="lazy" src="./assets/images/hill-country/nine-arches-bridge-1.webp"/ decoding="async">
+<div class="hover-box__overlay"></div>
+<div class="hover-box__details">
+<p class="walker-card-title">Family Journeys <span class="walker-card-line"></span></p>
+<p class="walker-card-desc">Gentle safaris, turtle hatcheries &amp; multi-gen comfort</p>
+<div class="walker-hover-explore">
+<span class="explore-plus-icon">+</span>
+<span>Explore</span>
+</div>
+</div>
+</a>
+<!-- 9. Ramayana Tours -->
+<a class="hover-box" href="ramayana-tours.html">
+<img alt="Sri Lanka Sacred Ramayana Heritage Tours" class="hover-box__img" loading="lazy" src="./assets/images/cultural/polonnaruwa-gal-vihara-3.webp"/ decoding="async">
+<div class="hover-box__overlay"></div>
+<div class="hover-box__details">
+<p class="walker-card-title">Ramayana Trails <span class="walker-card-line"></span></p>
+<p class="walker-card-desc">Sacred legend shrines, Seetha Amman temple &amp; epic trails</p>
+<div class="walker-hover-explore">
+<span class="explore-plus-icon">+</span>
+<span>Explore</span>
+</div>
+</div>
+</a>
+<!-- 10. Golf Tours -->
+<a class="hover-box" href="golf-tours.html">
+<img alt="Sri Lanka Golf Holidays &amp; Championship Tours" class="hover-box__img" loading="lazy" src="./assets/images/hill-country/nuwara-eliya-tea-2.webp"/ decoding="async">
+<div class="hover-box__overlay"></div>
+<div class="hover-box__details">
+<p class="walker-card-title">Championship Golf <span class="walker-card-line"></span></p>
+<p class="walker-card-desc">Asia’s oldest royal courses, highland pine links &amp; resorts</p>
+<div class="walker-hover-explore">
+<span class="explore-plus-icon">+</span>
+<span>Explore</span>
+</div>
+</div>
+</a>
+</div>
+</div>
+<!-- Next Arrow -->
+<button aria-label="Next Categories" class="categories-nav-btn categories-nav-next" id="catNextBtn">
+<svg fill="none" height="22" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewbox="0 0 24 24" width="22"><polyline points="9 18 15 12 9 6"></polyline></svg>
+</button>
+</div>
+<!-- Carousel Indicator Dots -->
+<div class="categories-carousel-dots" id="catDots"></div>
+</section>
+<!-- ==========================================================================
        SECTION 3.5: SACRED DESTINATIONS (FEATURED CEYLON LANDSCAPES)
        ========================================================================== -->
-  <section class="padding-top--100 padding-bottom--100 destinations-section" id="destinations" style="scroll-margin-top: 105px; position: relative;">
-    <div class="wrapper--80">
-      
-      <!-- Section Watermark Header -->
-      <div class="section-watermark-header">
-        <p class="watermark-heading">sacred destinations</p>
-        <div class="sacred-badge-tag" style="margin-bottom: 0.6rem;">
-          <span class="sacred-icon">🌸</span> ✦ SACRED DESTINATIONS ✦ <span class="sacred-icon">🌸</span>
-        </div>
-        <h2 class="section-header-title">Sacred Footsteps &amp; Living Landscapes</h2>
-      </div>
-
-      <div style="max-width: 780px; margin: 0.75rem auto 2.25rem; text-align: center; position: relative; z-index: 2;">
-        <p class="paragraph--20" style="color: var(--color-light-black, #3E454F); line-height: 1.75;">
+<section class="padding-top--100 padding-bottom--100 destinations-section" id="destinations" style="scroll-margin-top: 105px; position: relative;">
+<div class="wrapper--80">
+<!-- Section Watermark Header -->
+<div class="section-watermark-header">
+<p class="watermark-heading">sacred destinations</p>
+<div class="sacred-badge-tag" style="margin-bottom: 0.6rem;">
+<span class="sacred-icon">🌸</span> ✦ SACRED DESTINATIONS ✦ <span class="sacred-icon">🌸</span>
+</div>
+<h2 class="section-header-title">Sacred Footsteps &amp; Living Landscapes</h2>
+</div>
+<div style="max-width: 780px; margin: 0.75rem auto 2.25rem; text-align: center; position: relative; z-index: 2;">
+<p class="paragraph--20" style="color: var(--color-light-black, #3E454F); line-height: 1.75;">
           Sri Lanka has been a place of pilgrimage for more than two thousand years. Walk beneath the Sri Maha Bodhi tree in Anuradhapura, climb the hill at Mihintale where, according to tradition, Buddhism first reached the island, and visit the Temple of the Sacred Tooth Relic in Kandy. Between these holy places, lakes, tea hills and quiet coasts give you room to rest.
         </p>
-      </div>
-
-      <!-- Region Filter Tabs -->
-      <div class="destination-filter-tabs" role="tablist" aria-label="Destination region filter" style="display: flex; justify-content: center; gap: 0.65rem; margin-bottom: 2.75rem; flex-wrap: wrap;">
-        <button type="button" class="dest-filter-btn is-active" data-region="all" role="tab" aria-selected="true">All</button>
-        <button type="button" class="dest-filter-btn" data-region="sacred-sites" role="tab" aria-selected="false">Sacred Sites</button>
-        <button type="button" class="dest-filter-btn" data-region="cultural-triangle" role="tab" aria-selected="false">Cultural Triangle</button>
-        <button type="button" class="dest-filter-btn" data-region="hill-country" role="tab" aria-selected="false">Hill Country</button>
-      </div>
-
-      <!-- 8 Curated Destination Cards Grid -->
-            <!-- 4 Curated Signature Destination Cards for Home -->
-      <div class="destinations-grid" id="destinationsGrid">
-        
-        <!-- Card 1: Anuradhapura (Sacred Foundation) -->
-        <article class="dest-card" data-region="sacred-sites">
-          <a href="tours/cultural/the-sacred-lotus-triangle/index.html" class="dest-card-link" aria-label="Explore Anuradhapura">
-            <div class="dest-card-media">
-              <img src="assets/images/temple-culture.jpg" alt="Anuradhapura Sacred Stupas and Bodhi Tree" loading="lazy" class="dest-card-img">
-              <span class="dest-card-region">Sacred Sites</span>
-            </div>
-            <div class="dest-card-body">
-              <h3 class="dest-card-title">Anuradhapura</h3>
-              <p class="dest-card-desc">Ancient capital of great stupas and the revered Sri Maha Bodhi tree.</p>
-              <div class="dest-card-cta">
-                <span>Explore Destination</span>
-                <span class="dest-cta-arrow">➔</span>
-              </div>
-            </div>
-          </a>
-        </article>
-
-        <!-- Card 2: Kandy (Temple of the Tooth) -->
-        <article class="dest-card" data-region="sacred-sites">
-          <a href="tours/cultural/the-sacred-lotus-triangle/index.html" class="dest-card-link" aria-label="Explore Kandy">
-            <div class="dest-card-media">
-              <img src="assets/tours/cultural/royal-kingdoms-1.jpg" alt="Temple of the Sacred Tooth Relic Kandy" loading="lazy" class="dest-card-img">
-              <span class="dest-card-region">Sacred Sites</span>
-            </div>
-            <div class="dest-card-body">
-              <h3 class="dest-card-title">Kandy</h3>
-              <p class="dest-card-desc">Home of the Sacred Tooth Relic, surrounded by tranquil hills and living traditions.</p>
-              <div class="dest-card-cta">
-                <span>Explore Destination</span>
-                <span class="dest-cta-arrow">➔</span>
-              </div>
-            </div>
-          </a>
-        </article>
-
-        <!-- Card 3: Sigiriya (Ancient Citadel) -->
-        <article class="dest-card" data-region="cultural-triangle">
-          <a href="tours/cultural/the-sacred-lotus-triangle/index.html" class="dest-card-link" aria-label="Explore Sigiriya">
-            <div class="dest-card-media">
-              <img src="assets/images/sigiriya.jpg" alt="Sigiriya Fifth-Century Rock Citadel" loading="lazy" class="dest-card-img">
-              <span class="dest-card-region">Cultural Triangle</span>
-            </div>
-            <div class="dest-card-body">
-              <h3 class="dest-card-title">Sigiriya</h3>
-              <p class="dest-card-desc">Dramatic fifth-century rock citadel rising from the jungle with ancient frescoes and water gardens.</p>
-              <div class="dest-card-cta">
-                <span>Explore Destination</span>
-                <span class="dest-cta-arrow">➔</span>
-              </div>
-            </div>
-          </a>
-        </article>
-
-        <!-- Card 4: Ella & Highlands (Scenic Ridges & Tea) -->
-        <article class="dest-card" data-region="hill-country">
-          <a href="tours/hill-country/ceylon-tea-trails-colonial-grandeur/index.html" class="dest-card-link" aria-label="Explore Ella">
-            <div class="dest-card-media">
-              <img src="assets/images/hero-nine-arches.jpg" alt="Ella Demodara Nine Arches and Scenic Ridges" loading="lazy" class="dest-card-img">
-              <span class="dest-card-region">Hill Country</span>
-            </div>
-            <div class="dest-card-body">
-              <h3 class="dest-card-title">Ella &amp; Highlands</h3>
-              <p class="dest-card-desc">Misty mountain ridges, cascading waterfalls, emerald tea trails and the scenic railway.</p>
-              <div class="dest-card-cta">
-                <span>Explore Destination</span>
-                <span class="dest-cta-arrow">➔</span>
-              </div>
-            </div>
-          </a>
-        </article>
-
-      </div>
-
-      <!-- Action Button: View All Destinations (Links to dedicated destinations.html page) -->
-      <div style="text-align: center; margin-top: 3.5rem;">
-        <a href="destinations.html" class="btn-editorial-primary" title="Explore All Destinations in Sri Lanka" style="display: inline-flex; align-items: center; gap: 0.75rem;">
-          <span>Explore All 20+ Destinations</span>
-          <span class="btn-arrow-circle">➔</span>
-        </a>
-      </div>
-
-    </div>
-  </section>
-
+</div>
+<!-- Region Filter Tabs -->
+<div aria-label="Destination region filter" class="destination-filter-tabs" role="tablist" style="display: flex; justify-content: center; gap: 0.65rem; margin-bottom: 2.75rem; flex-wrap: wrap;">
+<button aria-selected="true" class="dest-filter-btn is-active" data-region="all" role="tab" type="button">All</button>
+<button aria-selected="false" class="dest-filter-btn" data-region="sacred-sites" role="tab" type="button">Sacred Sites</button>
+<button aria-selected="false" class="dest-filter-btn" data-region="cultural-triangle" role="tab" type="button">Cultural Triangle</button>
+<button aria-selected="false" class="dest-filter-btn" data-region="hill-country" role="tab" type="button">Hill Country</button>
+</div>
+<!-- 8 Curated Destination Cards Grid -->
+<!-- 4 Curated Signature Destination Cards for Home -->
+<div class="destinations-grid" id="destinationsGrid">
+<!-- Card 1: Anuradhapura (Sacred Foundation) -->
+<article class="dest-card" data-region="sacred-sites">
+<a aria-label="Explore Anuradhapura" class="dest-card-link" href="tours/cultural/the-sacred-lotus-triangle/index.html">
+<div class="dest-card-media">
+<img alt="Anuradhapura Sacred Stupas and Bodhi Tree" class="dest-card-img" loading="lazy" src="./assets/images/cultural/kandy-temple-of-tooth-4.webp"/ decoding="async">
+<span class="dest-card-region">Sacred Sites</span>
+</div>
+<div class="dest-card-body">
+<h3 class="dest-card-title">Anuradhapura</h3>
+<p class="dest-card-desc">Ancient capital of great stupas and the revered Sri Maha Bodhi tree.</p>
+<div class="dest-card-cta">
+<span>Explore Destination</span>
+<span class="dest-cta-arrow">➔</span>
+</div>
+</div>
+</a>
+</article>
+<!-- Card 2: Kandy (Temple of the Tooth) -->
+<article class="dest-card" data-region="sacred-sites">
+<a aria-label="Explore Kandy" class="dest-card-link" href="tours/cultural/the-sacred-lotus-triangle/index.html">
+<div class="dest-card-media">
+<img alt="Temple of the Sacred Tooth Relic Kandy" class="dest-card-img" loading="lazy" src="assets/tours/cultural/royal-kingdoms-1.jpg"/ decoding="async">
+<span class="dest-card-region">Sacred Sites</span>
+</div>
+<div class="dest-card-body">
+<h3 class="dest-card-title">Kandy</h3>
+<p class="dest-card-desc">Home of the Sacred Tooth Relic, surrounded by tranquil hills and living traditions.</p>
+<div class="dest-card-cta">
+<span>Explore Destination</span>
+<span class="dest-cta-arrow">➔</span>
+</div>
+</div>
+</a>
+</article>
+<!-- Card 3: Sigiriya (Ancient Citadel) -->
+<article class="dest-card" data-region="cultural-triangle">
+<a aria-label="Explore Sigiriya" class="dest-card-link" href="tours/cultural/the-sacred-lotus-triangle/index.html">
+<div class="dest-card-media">
+<img alt="Sigiriya Fifth-Century Rock Citadel" class="dest-card-img" loading="lazy" src="./assets/images/cultural/sigiriya-1.webp"/ decoding="async">
+<span class="dest-card-region">Cultural Triangle</span>
+</div>
+<div class="dest-card-body">
+<h3 class="dest-card-title">Sigiriya</h3>
+<p class="dest-card-desc">Dramatic fifth-century rock citadel rising from the jungle with ancient frescoes and water gardens.</p>
+<div class="dest-card-cta">
+<span>Explore Destination</span>
+<span class="dest-cta-arrow">➔</span>
+</div>
+</div>
+</a>
+</article>
+<!-- Card 4: Ella & Highlands (Scenic Ridges & Tea) -->
+<article class="dest-card" data-region="hill-country">
+<a aria-label="Explore Ella" class="dest-card-link" href="tours/hill-country/ceylon-tea-trails-colonial-grandeur/index.html">
+<div class="dest-card-media">
+<img alt="Ella Demodara Nine Arches and Scenic Ridges" class="dest-card-img" loading="lazy" src="./assets/images/hill-country/nine-arches-bridge-1.webp"/ decoding="async">
+<span class="dest-card-region">Hill Country</span>
+</div>
+<div class="dest-card-body">
+<h3 class="dest-card-title">Ella &amp; Highlands</h3>
+<p class="dest-card-desc">Misty mountain ridges, cascading waterfalls, emerald tea trails and the scenic railway.</p>
+<div class="dest-card-cta">
+<span>Explore Destination</span>
+<span class="dest-cta-arrow">➔</span>
+</div>
+</div>
+</a>
+</article>
+</div>
+<!-- Action Button: View All Destinations (Links to dedicated destinations.html page) -->
+<div style="text-align: center; margin-top: 3.5rem;">
+<a class="btn-editorial-primary" href="destinations.html" style="display: inline-flex; align-items: center; gap: 0.75rem;" title="Explore All Destinations in Sri Lanka">
+<span>Explore All 20+ Destinations</span>
+<span class="btn-arrow-circle">➔</span>
+</a>
+</div>
+</div>
+</section>
 <!-- ==========================================================================
        SECTION 4: UNFORGETTABLE TOUR PACKAGES
        ========================================================================== -->
-  <section class="padding-top--100 padding-bottom--100 package-sec" id="packages">
-    <div class="wrapper--80">
-      <div class="section-watermark-header">
-        <p class="watermark-heading">pure journeys</p>
-        <h2 class="section-header-title">Curated Private Journeys</h2>
-      </div>
-      <div style="max-width: 720px; margin: 0.75rem auto 2.25rem; text-align: center; position: relative; z-index: 2;">
-        <p class="paragraph--20">
+<section class="padding-top--100 padding-bottom--100 package-sec" id="packages">
+<div class="wrapper--80">
+<div class="section-watermark-header">
+<p class="watermark-heading">pure journeys</p>
+<h2 class="section-header-title">Curated Private Journeys</h2>
+</div>
+<div style="max-width: 720px; margin: 0.75rem auto 2.25rem; text-align: center; position: relative; z-index: 2;">
+<p class="paragraph--20">
           Each itinerary presented here is an artisanal starting canvas. Explore our hand-designed routes below, each ready to be customized in duration, boutique stays, and daily experiences to match your exact vision.
         </p>
-      </div>
-
-      <div class="package-cards-grid">
-        
-        <!-- Package 1: Three Millennia of Living Heritage (Featured) -->
-        <div style="position: relative;">
-          <span class="featured-ribbon">Signature Odyssey</span>
-          <a href="tours/cultural/three-millennia-of-living-heritage/index.html" class="hover-box" role="link" tabindex="0" aria-label="View details for Three Millennia of Living Heritage, 14 Nights &amp; 15 Days">
-            <div class="card-image-slider">
-              <img src="assets/images/sigiriya.jpg" class="slider-img active" alt="Sigiriya Citadel" loading="lazy">
-              <img src="assets/images/polonnaruwa.jpg" class="slider-img" alt="Polonnaruwa Vatadage" loading="lazy">
-              <img src="assets/images/temple-culture.jpg" class="slider-img" alt="Sacred Temple Heritage" loading="lazy">
-              <div class="slider-dots">
-                <span class="slider-dot active"></span>
-                <span class="slider-dot"></span>
-                <span class="slider-dot"></span>
-              </div>
-            </div>
-            <div class="hover-box__overlay"></div>
-            <div class="hover-box__details">
-              <div class="hover-box__details_visible">
-                <p class="paragraph--14 font-color--white font-weight--500 all-caps">Cultural &amp; Heritage Triangle</p>
-                <p class="heading--24 font-color--white all-caps para--white-line">Three Millennia of Living Heritage</p>
-                <p class="paragraph--18 font-color--white">14 Nights &amp; 15 Days</p>
-              </div>
-              <div class="next-btn next-btn--white">
-                <span class="next-btn-circle">➔</span>
-                <span>Explore Itinerary</span>
-              </div>
-            </div>
-          </a>
-        </div>
-
-        <!-- Package 2: The Sri Lanka Big Five Expedition -->
-        <a href="tours/wildlife/the-sri-lanka-big-five-expedition/index.html" class="hover-box" role="link" tabindex="0" aria-label="View details for The Sri Lanka Big Five Expedition, 11 Nights &amp; 12 Days">
-          <div class="card-image-slider">
-            <img src="assets/images/wildlife.jpg" class="slider-img active" alt="Yala Wild Leopard &amp; Elephants" loading="lazy">
-            <img src="assets/images/beach-galle.jpg" class="slider-img" alt="Mirissa Whale Watching" loading="lazy">
-            <img src="assets/images/sunset-mirissa.jpg" class="slider-img" alt="Ocean Wildlife Waters" loading="lazy">
-            <div class="slider-dots">
-              <span class="slider-dot active"></span>
-              <span class="slider-dot"></span>
-              <span class="slider-dot"></span>
-            </div>
-          </div>
-          <div class="hover-box__overlay"></div>
-          <div class="hover-box__details">
-            <div class="hover-box__details_visible">
-              <p class="paragraph--14 font-color--white font-weight--500 all-caps">Big Five Wildlife Expedition</p>
-              <p class="heading--24 font-color--white all-caps para--white-line">The Sri Lanka Big Five Expedition</p>
-              <p class="paragraph--18 font-color--white">11 Nights &amp; 12 Days</p>
-            </div>
-            <div class="next-btn next-btn--white">
-              <span class="next-btn-circle">➔</span>
-              <span>Explore Itinerary</span>
-            </div>
-          </div>
-        </a>
-
-        <!-- Package 3: Southern Sands Serenade -->
-        <a href="tours/beach/southern-sands-serenade/index.html" class="hover-box" role="link" tabindex="0" aria-label="View details for Southern Sands Serenade, 09 Nights &amp; 10 Days">
-          <div class="card-image-slider">
-            <img src="assets/images/beach-galle.jpg" class="slider-img active" alt="Southern Sands Beach Luxury" loading="lazy">
-            <img src="assets/images/sunset-mirissa.jpg" class="slider-img" alt="Mirissa Sunset Cove" loading="lazy">
-            <div class="slider-dots">
-              <span class="slider-dot active"></span>
-              <span class="slider-dot"></span>
-            </div>
-          </div>
-          <div class="hover-box__overlay"></div>
-          <div class="hover-box__details">
-            <div class="hover-box__details_visible">
-              <p class="paragraph--14 font-color--white font-weight--500 all-caps">Luxury Coastal Escape</p>
-              <p class="heading--24 font-color--white all-caps para--white-line">Southern Sands Serenade</p>
-              <p class="paragraph--18 font-color--white">09 Nights &amp; 10 Days</p>
-            </div>
-            <div class="next-btn next-btn--white">
-              <span class="next-btn-circle">➔</span>
-              <span>Explore Itinerary</span>
-            </div>
-          </div>
-        </a>
-
-        <!-- Package 4: Ceylon Tea Trails & Colonial Grandeur -->
-        <a href="tours/hill-country/ceylon-tea-trails-colonial-grandeur/index.html" class="hover-box" role="link" tabindex="0" aria-label="View details for Ceylon Tea Trails &amp; Colonial Grandeur, 06 Nights &amp; 07 Days">
-          <div class="card-image-slider">
-            <img src="assets/images/tea-country.jpg" class="slider-img active" alt="Misty Hill Country Tea Estates" loading="lazy">
-            <img src="assets/images/hero-nine-arches.jpg" class="slider-img" alt="Demodara Nine Arch Bridge" loading="lazy">
-            <div class="slider-dots">
-              <span class="slider-dot active"></span>
-              <span class="slider-dot"></span>
-            </div>
-          </div>
-          <div class="hover-box__overlay"></div>
-          <div class="hover-box__details">
-            <div class="hover-box__details_visible">
-              <p class="paragraph--14 font-color--white font-weight--500 all-caps">Highlands &amp; Planter Estates</p>
-              <p class="heading--24 font-color--white all-caps para--white-line">Ceylon Tea Trails &amp; Colonial Grandeur</p>
-              <p class="paragraph--18 font-color--white">06 Nights &amp; 07 Days</p>
-            </div>
-            <div class="next-btn next-btn--white">
-              <span class="next-btn-circle">➔</span>
-              <span>Explore Itinerary</span>
-            </div>
-          </div>
-        </a>
-
-        <!-- Package 5: Lotus Ayu Holistic Rejuvenation -->
-        <a href="tours/ayurvedic/lotus-ayu-holistic-rejuvenation/index.html" class="hover-box" role="link" tabindex="0" aria-label="View details for Lotus Ayu Holistic Rejuvenation, 13 Nights &amp; 14 Days">
-          <div class="card-image-slider">
-            <img src="assets/images/temple-culture.jpg" class="slider-img active" alt="Ayurvedic Restorative Sanctuary" loading="lazy">
-            <img src="assets/images/sigiriya.jpg" class="slider-img" alt="Herbal Gardens &amp; Serenity" loading="lazy">
-            <div class="slider-dots">
-              <span class="slider-dot active"></span>
-              <span class="slider-dot"></span>
-            </div>
-          </div>
-          <div class="hover-box__overlay"></div>
-          <div class="hover-box__details">
-            <div class="hover-box__details_visible">
-              <p class="paragraph--14 font-color--white font-weight--500 all-caps">Sacred Wellness &amp; Panchakarma</p>
-              <p class="heading--24 font-color--white all-caps para--white-line">Lotus Ayu Holistic Rejuvenation</p>
-              <p class="paragraph--18 font-color--white">13 Nights &amp; 14 Days</p>
-            </div>
-            <div class="next-btn next-btn--white">
-              <span class="next-btn-circle">➔</span>
-              <span>Explore Itinerary</span>
-            </div>
-          </div>
-        </a>
-
-        <!-- Package 6: Pure Serenade Coastal & Highland Romance -->
-        <a href="tours/honeymoon/pure-serenade-coastal-highland-romance/index.html" class="hover-box" role="link" tabindex="0" aria-label="View details for Pure Serenade Coastal &amp; Highland Romance, 09 Nights &amp; 10 Days">
-          <div class="card-image-slider">
-            <img src="assets/images/sunset-mirissa.jpg" class="slider-img active" alt="Romantic Plunge Pool Coastal Sunset" loading="lazy">
-            <img src="assets/images/tea-country.jpg" class="slider-img" alt="Highland Boutique Bungalow" loading="lazy">
-            <div class="slider-dots">
-              <span class="slider-dot active"></span>
-              <span class="slider-dot"></span>
-            </div>
-          </div>
-          <div class="hover-box__overlay"></div>
-          <div class="hover-box__details">
-            <div class="hover-box__details_visible">
-              <p class="paragraph--14 font-color--white font-weight--500 all-caps">Luxury Honeymoon Romance</p>
-              <p class="heading--24 font-color--white all-caps para--white-line">Pure Serenade Coastal &amp; Highland Romance</p>
-              <p class="paragraph--18 font-color--white">09 Nights &amp; 10 Days</p>
-            </div>
-            <div class="next-btn next-btn--white">
-              <span class="next-btn-circle">➔</span>
-              <span>Explore Itinerary</span>
-            </div>
-          </div>
-        </a>
-
-      </div>
-
-      <div style="text-align: center; margin-top: 3.5rem;">
-        <a href="sri-lanka-tours.html" class="gold-inquire-btn" style="display: inline-flex; padding: 0.95rem 2.5rem; text-decoration: none; font-size: 0.92rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;">
-          <span>Explore All 26 Tour Packages ➔</span>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ==========================================================================
+</div>
+<div class="package-cards-grid">
+<!-- Package 1: Three Millennia of Living Heritage (Featured) -->
+<div style="position: relative;">
+<span class="featured-ribbon">Signature Odyssey</span>
+<a aria-label="View details for Three Millennia of Living Heritage, 14 Nights &amp; 15 Days" class="hover-box" href="tours/cultural/three-millennia-of-living-heritage/index.html" role="link" tabindex="0">
+<div class="card-image-slider">
+<img alt="Sigiriya Citadel" class="slider-img active" loading="lazy" src="./assets/images/cultural/sigiriya-1.webp"/ decoding="async">
+<img alt="Polonnaruwa Vatadage" class="slider-img" loading="lazy" src="./assets/images/cultural/polonnaruwa-gal-vihara-3.webp"/ decoding="async">
+<img alt="Sacred Temple Heritage" class="slider-img" loading="lazy" src="./assets/images/cultural/kandy-temple-of-tooth-4.webp"/ decoding="async">
+<div class="slider-dots">
+<span class="slider-dot active"></span>
+<span class="slider-dot"></span>
+<span class="slider-dot"></span>
+</div>
+</div>
+<div class="hover-box__overlay"></div>
+<div class="hover-box__details">
+<div class="hover-box__details_visible">
+<p class="paragraph--14 font-color--white font-weight--500 all-caps">Cultural &amp; Heritage Triangle</p>
+<p class="heading--24 font-color--white all-caps para--white-line">Three Millennia of Living Heritage</p>
+<p class="paragraph--18 font-color--white">14 Nights &amp; 15 Days</p>
+</div>
+<div class="next-btn next-btn--white">
+<span class="next-btn-circle">➔</span>
+<span>Explore Itinerary</span>
+</div>
+</div>
+</a>
+</div>
+<!-- Package 2: The Sri Lanka Big Five Expedition -->
+<a aria-label="View details for The Sri Lanka Big Five Expedition, 11 Nights &amp; 12 Days" class="hover-box" href="tours/wildlife/the-sri-lanka-big-five-expedition/index.html" role="link" tabindex="0">
+<div class="card-image-slider">
+<img alt="Yala Wild Leopard &amp; Elephants" class="slider-img active" loading="lazy" src="./assets/images/wildlife/yala-leopard-1.webp"/ decoding="async">
+<img alt="Mirissa Whale Watching" class="slider-img" loading="lazy" src="./assets/images/beach/mirissa-1.webp"/ decoding="async">
+<img alt="Ocean Wildlife Waters" class="slider-img" loading="lazy" src="./assets/images/honeymoon/mirissa-sunset-2.webp"/ decoding="async">
+<div class="slider-dots">
+<span class="slider-dot active"></span>
+<span class="slider-dot"></span>
+<span class="slider-dot"></span>
+</div>
+</div>
+<div class="hover-box__overlay"></div>
+<div class="hover-box__details">
+<div class="hover-box__details_visible">
+<p class="paragraph--14 font-color--white font-weight--500 all-caps">Big Five Wildlife Expedition</p>
+<p class="heading--24 font-color--white all-caps para--white-line">The Sri Lanka Big Five Expedition</p>
+<p class="paragraph--18 font-color--white">11 Nights &amp; 12 Days</p>
+</div>
+<div class="next-btn next-btn--white">
+<span class="next-btn-circle">➔</span>
+<span>Explore Itinerary</span>
+</div>
+</div>
+</a>
+<!-- Package 3: Southern Sands Serenade -->
+<a aria-label="View details for Southern Sands Serenade, 09 Nights &amp; 10 Days" class="hover-box" href="tours/beach/southern-sands-serenade/index.html" role="link" tabindex="0">
+<div class="card-image-slider">
+<img alt="Southern Sands Beach Luxury" class="slider-img active" loading="lazy" src="./assets/images/beach/mirissa-1.webp"/ decoding="async">
+<img alt="Mirissa Sunset Cove" class="slider-img" loading="lazy" src="./assets/images/honeymoon/mirissa-sunset-2.webp"/ decoding="async">
+<div class="slider-dots">
+<span class="slider-dot active"></span>
+<span class="slider-dot"></span>
+</div>
+</div>
+<div class="hover-box__overlay"></div>
+<div class="hover-box__details">
+<div class="hover-box__details_visible">
+<p class="paragraph--14 font-color--white font-weight--500 all-caps">Luxury Coastal Escape</p>
+<p class="heading--24 font-color--white all-caps para--white-line">Southern Sands Serenade</p>
+<p class="paragraph--18 font-color--white">09 Nights &amp; 10 Days</p>
+</div>
+<div class="next-btn next-btn--white">
+<span class="next-btn-circle">➔</span>
+<span>Explore Itinerary</span>
+</div>
+</div>
+</a>
+<!-- Package 4: Ceylon Tea Trails & Colonial Grandeur -->
+<a aria-label="View details for Ceylon Tea Trails &amp; Colonial Grandeur, 06 Nights &amp; 07 Days" class="hover-box" href="tours/hill-country/ceylon-tea-trails-colonial-grandeur/index.html" role="link" tabindex="0">
+<div class="card-image-slider">
+<img alt="Misty Hill Country Tea Estates" class="slider-img active" loading="lazy" src="./assets/images/hill-country/nuwara-eliya-tea-2.webp"/ decoding="async">
+<img alt="Demodara Nine Arch Bridge" class="slider-img" loading="lazy" src="./assets/images/hill-country/nine-arches-bridge-1.webp"/ decoding="async">
+<div class="slider-dots">
+<span class="slider-dot active"></span>
+<span class="slider-dot"></span>
+</div>
+</div>
+<div class="hover-box__overlay"></div>
+<div class="hover-box__details">
+<div class="hover-box__details_visible">
+<p class="paragraph--14 font-color--white font-weight--500 all-caps">Highlands &amp; Planter Estates</p>
+<p class="heading--24 font-color--white all-caps para--white-line">Ceylon Tea Trails &amp; Colonial Grandeur</p>
+<p class="paragraph--18 font-color--white">06 Nights &amp; 07 Days</p>
+</div>
+<div class="next-btn next-btn--white">
+<span class="next-btn-circle">➔</span>
+<span>Explore Itinerary</span>
+</div>
+</div>
+</a>
+<!-- Package 5: Lotus Ayu Holistic Rejuvenation -->
+<a aria-label="View details for Lotus Ayu Holistic Rejuvenation, 13 Nights &amp; 14 Days" class="hover-box" href="tours/ayurvedic/lotus-ayu-holistic-rejuvenation/index.html" role="link" tabindex="0">
+<div class="card-image-slider">
+<img alt="Ayurvedic Restorative Sanctuary" class="slider-img active" loading="lazy" src="./assets/images/cultural/kandy-temple-of-tooth-4.webp"/ decoding="async">
+<img alt="Herbal Gardens &amp; Serenity" class="slider-img" loading="lazy" src="./assets/images/cultural/sigiriya-1.webp"/ decoding="async">
+<div class="slider-dots">
+<span class="slider-dot active"></span>
+<span class="slider-dot"></span>
+</div>
+</div>
+<div class="hover-box__overlay"></div>
+<div class="hover-box__details">
+<div class="hover-box__details_visible">
+<p class="paragraph--14 font-color--white font-weight--500 all-caps">Sacred Wellness &amp; Panchakarma</p>
+<p class="heading--24 font-color--white all-caps para--white-line">Lotus Ayu Holistic Rejuvenation</p>
+<p class="paragraph--18 font-color--white">13 Nights &amp; 14 Days</p>
+</div>
+<div class="next-btn next-btn--white">
+<span class="next-btn-circle">➔</span>
+<span>Explore Itinerary</span>
+</div>
+</div>
+</a>
+<!-- Package 6: Pure Serenade Coastal & Highland Romance -->
+<a aria-label="View details for Pure Serenade Coastal &amp; Highland Romance, 09 Nights &amp; 10 Days" class="hover-box" href="tours/honeymoon/pure-serenade-coastal-highland-romance/index.html" role="link" tabindex="0">
+<div class="card-image-slider">
+<img alt="Romantic Plunge Pool Coastal Sunset" class="slider-img active" loading="lazy" src="./assets/images/honeymoon/mirissa-sunset-2.webp"/ decoding="async">
+<img alt="Highland Boutique Bungalow" class="slider-img" loading="lazy" src="./assets/images/hill-country/nuwara-eliya-tea-2.webp"/ decoding="async">
+<div class="slider-dots">
+<span class="slider-dot active"></span>
+<span class="slider-dot"></span>
+</div>
+</div>
+<div class="hover-box__overlay"></div>
+<div class="hover-box__details">
+<div class="hover-box__details_visible">
+<p class="paragraph--14 font-color--white font-weight--500 all-caps">Luxury Honeymoon Romance</p>
+<p class="heading--24 font-color--white all-caps para--white-line">Pure Serenade Coastal &amp; Highland Romance</p>
+<p class="paragraph--18 font-color--white">09 Nights &amp; 10 Days</p>
+</div>
+<div class="next-btn next-btn--white">
+<span class="next-btn-circle">➔</span>
+<span>Explore Itinerary</span>
+</div>
+</div>
+</a>
+</div>
+<div style="text-align: center; margin-top: 3.5rem;">
+<a class="gold-inquire-btn" href="sri-lanka-tours.html" style="display: inline-flex; padding: 0.95rem 2.5rem; text-decoration: none; font-size: 0.92rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;">
+<span>Explore All 26 Tour Packages ➔</span>
+</a>
+</div>
+</div>
+</section>
+<!-- ==========================================================================
        SECTION 5: TAILOR-MADE BESPOKE TOURS (LOTUS CEYLON ARTISAN STACK)
        ========================================================================== -->
-  <section class="padding-top--100 padding-bottom--100 bg-color--light-blue" id="bespoke">
-    <div class="wrapper--80">
-      <div class="bespoke-split-grid">
-        <!-- Left Editorial Text -->
-        <div>
-          <h2 class="heading--60" style="margin-bottom: 1.5rem;">
-            <span>Tailor-made</span><br>Bespoke Tours
+<section class="padding-top--100 padding-bottom--100 bg-color--light-blue" id="bespoke">
+<div class="wrapper--80">
+<div class="bespoke-split-grid">
+<!-- Left Editorial Text -->
+<div>
+<h2 class="heading--60" style="margin-bottom: 1.5rem;">
+<span>Tailor-made</span><br/>Bespoke Tours
           </h2>
-          <p class="paragraph--20" style="font-weight: 700; color: var(--color-dark-blue); margin-bottom: 1rem;">
+<p class="paragraph--20" style="font-weight: 700; color: var(--color-dark-blue); margin-bottom: 1rem;">
             Create your perfect Sri Lankan adventure with our holiday artisans...
           </p>
-          <p class="paragraph--18" style="margin-bottom: 2rem;">
+<p class="paragraph--18" style="margin-bottom: 2rem;">
             Tailor-made itineraries are our defining hallmark at Lotus Ceylon. For over a decade, we have been crafting fully customized holidays tailored precisely to your family's pace, budget, and travel interests. Our destination experts curate the finest private villas, exclusive culinary stops, and insider excursions.
           </p>
-          <a href="inquiry-detailed.html" class="next-btn next-btn--blue" title="Design Your Bespoke Tour">
-            <span class="next-btn-circle">➔</span>
-            <span>Design Your Trip</span>
-          </a>
-        </div>
-
-        <!-- Right Overlapping Photos Stack -->
-        <div class="bespoke-images-stack">
-          <div class="bespoke-img-main">
-            <img src="assets/images/beach-galle.jpg" alt="Bespoke Luxury Travel Sri Lanka" loading="lazy">
-          </div>
-          <div class="bespoke-img-overlap">
-            <img src="assets/images/tea-country.jpg" alt="Misty Hill Country Tea Trails" loading="lazy">
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ==========================================================================
+<a class="next-btn next-btn--blue" href="inquiry-detailed.html" title="Design Your Bespoke Tour">
+<span class="next-btn-circle">➔</span>
+<span>Design Your Trip</span>
+</a>
+</div>
+<!-- Right Overlapping Photos Stack -->
+<div class="bespoke-images-stack">
+<div class="bespoke-img-main">
+<img alt="Bespoke Luxury Travel Sri Lanka" loading="lazy" src="./assets/images/beach/mirissa-1.webp"/ decoding="async">
+</div>
+<div class="bespoke-img-overlap">
+<img alt="Misty Hill Country Tea Trails" loading="lazy" src="./assets/images/hill-country/nuwara-eliya-tea-2.webp"/ decoding="async">
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ==========================================================================
        SECTION 6: EXCLUSIVE BRANDS & EXPERIENCES
        ========================================================================== -->
-  <section class="padding-top--100 padding-bottom--100" id="brands" style="scroll-margin-top: 105px; position: relative;">
-    <!-- Anchor Aliases for Header and Nav Links -->
-    <span id="experiences" style="position: absolute; top: -105px; left: 0; display: block; visibility: hidden; pointer-events: none;"></span>
-    <span id="gallery" style="position: absolute; top: -105px; left: 0; display: block; visibility: hidden; pointer-events: none;"></span>
-    <div class="wrapper--50 text-center" style="text-align: center; position: relative;">
-      <div class="section-watermark-header">
-        <p class="watermark-heading">experiences</p>
-        <div class="sacred-badge-tag" style="margin-bottom: 0.6rem;">
-          <span class="sacred-icon">🌸</span> ✦ SIGNATURE TRAVEL PILLARS ✦ <span class="sacred-icon">🌸</span>
-        </div>
-        <h2 class="section-header-title">Moments of Pure Wonder: <br><span>Handcrafted Encounters</span></h2>
-      </div>
-      <p class="paragraph--20" style="position: relative; z-index: 2; color: #475569;">
+<section class="padding-top--100 padding-bottom--100" id="brands" style="scroll-margin-top: 105px; position: relative;">
+<!-- Anchor Aliases for Header and Nav Links -->
+<span id="experiences" style="position: absolute; top: -105px; left: 0; display: block; visibility: hidden; pointer-events: none;"></span>
+<span id="gallery" style="position: absolute; top: -105px; left: 0; display: block; visibility: hidden; pointer-events: none;"></span>
+<div class="wrapper--50 text-center" style="text-align: center; position: relative;">
+<div class="section-watermark-header">
+<p class="watermark-heading">experiences</p>
+<div class="sacred-badge-tag" style="margin-bottom: 0.6rem;">
+<span class="sacred-icon">🌸</span> ✦ SIGNATURE TRAVEL PILLARS ✦ <span class="sacred-icon">🌸</span>
+</div>
+<h2 class="section-header-title">Moments of Pure Wonder: <br/><span>Handcrafted Encounters</span></h2>
+</div>
+<p class="paragraph--20" style="position: relative; z-index: 2; color: #475569;">
         Beyond standard sightseeing lies the true soul of Ceylon—intimate moments of stillness, living heritage, authentic Ayurveda, and wild natural encounters.
       </p>
-    </div>
-
-    <div class="wrapper--90">
-      <div class="brands-3col-grid">
-        
-        <!-- Pillar 1: Lotus Artisan & Sacred Heritage (Inspired by Art Travele) -->
-        <div class="brand-card-item">
-          <div class="brand-card-img-wrap">
-            <img src="assets/images/sigiriya.jpg" alt="Lotus Artisan Sacred Heritage Sri Lanka" loading="lazy">
-          </div>
-          <div class="brand-card-body">
-            <span class="brand-card-tag">Heritage &amp; Living Art</span>
-            <h3 class="brand-card-title">Cultural Depth &amp;<br><span>Sacred Sanctuaries</span></h3>
-            <p>Three millennia of living Buddhist heritage, UNESCO rock citadels, private temple rituals, and Geoffrey Bawa architectural journeys.</p>
-            <a href="experiences.html#artisan-heritage" class="next-btn next-btn--blue">
-              <span class="next-btn-circle">➔</span>
-              <span>Explore Heritage Pillar</span>
-            </a>
-          </div>
-        </div>
-
-        <!-- Pillar 2: Lotus Nature Odyssey (Inspired by Nature Odyssey) -->
-        <div class="brand-card-item">
-          <div class="brand-card-img-wrap">
-            <img src="assets/images/wildlife.jpg" alt="Lotus Nature Odyssey Wildlife Safari Sri Lanka" loading="lazy">
-          </div>
-          <div class="brand-card-body">
-            <span class="brand-card-tag">Untamed Nature &amp; Safaris</span>
-            <h3 class="brand-card-title">Wild Encounters &amp;<br><span>Coastal Solitude</span></h3>
-            <p>Private leopard safaris in Yala, the Minneriya elephant gathering, ethical blue whale catamaran excursions, and Sinharaja rainforest expeditions.</p>
-            <a href="experiences.html#nature-odyssey" class="next-btn next-btn--blue">
-              <span class="next-btn-circle">➔</span>
-              <span>Explore Nature Pillar</span>
-            </a>
-          </div>
-        </div>
-
-        <!-- Pillar 3: Lotus Ayu Wellness (Inspired by Ayu by Walkers) -->
-        <div class="brand-card-item">
-          <div class="brand-card-img-wrap">
-            <img src="assets/images/tea-country.jpg" alt="Lotus Ayu Wellness and Highlands Sri Lanka" loading="lazy">
-          </div>
-          <div class="brand-card-body">
-            <span class="brand-card-tag">Holistic Wellness &amp; Healing</span>
-            <h3 class="brand-card-title">Lotus Ayu &amp;<br><span>Highland Serenity</span></h3>
-            <p>Authentic physician-guided Ceylon Ayurveda, Panchakarma restorative retreats, silent forest meditation, and colonial tea country repose.</p>
-            <a href="experiences.html#lotus-ayu" class="next-btn next-btn--blue">
-              <span class="next-btn-circle">➔</span>
-              <span>Explore Wellness Pillar</span>
-            </a>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- Button linking to dedicated experiences.html -->
-      <div style="text-align: center; margin-top: 3.5rem;">
-        <a href="experiences.html" class="btn-editorial-primary" title="Explore All Experiences & Signature Brands" style="display: inline-flex; align-items: center; gap: 0.75rem;">
-          <span>Explore All Experiences &amp; Signature Brands</span>
-          <span class="btn-arrow-circle">➔</span>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ==========================================================================
+</div>
+<div class="wrapper--90">
+<div class="brands-3col-grid">
+<!-- Pillar 1: Lotus Artisan & Sacred Heritage (Inspired by Art Travele) -->
+<div class="brand-card-item">
+<div class="brand-card-img-wrap">
+<img alt="Lotus Artisan Sacred Heritage Sri Lanka" loading="lazy" src="./assets/images/cultural/sigiriya-1.webp"/ decoding="async">
+</div>
+<div class="brand-card-body">
+<span class="brand-card-tag">Heritage &amp; Living Art</span>
+<h3 class="brand-card-title">Cultural Depth &amp;<br/><span>Sacred Sanctuaries</span></h3>
+<p>Three millennia of living Buddhist heritage, UNESCO rock citadels, private temple rituals, and Geoffrey Bawa architectural journeys.</p>
+<a class="next-btn next-btn--blue" href="experiences.html#artisan-heritage">
+<span class="next-btn-circle">➔</span>
+<span>Explore Heritage Pillar</span>
+</a>
+</div>
+</div>
+<!-- Pillar 2: Lotus Nature Odyssey (Inspired by Nature Odyssey) -->
+<div class="brand-card-item">
+<div class="brand-card-img-wrap">
+<img alt="Lotus Nature Odyssey Wildlife Safari Sri Lanka" loading="lazy" src="./assets/images/wildlife/yala-leopard-1.webp"/ decoding="async">
+</div>
+<div class="brand-card-body">
+<span class="brand-card-tag">Untamed Nature &amp; Safaris</span>
+<h3 class="brand-card-title">Wild Encounters &amp;<br/><span>Coastal Solitude</span></h3>
+<p>Private leopard safaris in Yala, the Minneriya elephant gathering, ethical blue whale catamaran excursions, and Sinharaja rainforest expeditions.</p>
+<a class="next-btn next-btn--blue" href="experiences.html#nature-odyssey">
+<span class="next-btn-circle">➔</span>
+<span>Explore Nature Pillar</span>
+</a>
+</div>
+</div>
+<!-- Pillar 3: Lotus Ayu Wellness (Inspired by Ayu by Walkers) -->
+<div class="brand-card-item">
+<div class="brand-card-img-wrap">
+<img alt="Lotus Ayu Wellness and Highlands Sri Lanka" loading="lazy" src="./assets/images/hill-country/nuwara-eliya-tea-2.webp"/ decoding="async">
+</div>
+<div class="brand-card-body">
+<span class="brand-card-tag">Holistic Wellness &amp; Healing</span>
+<h3 class="brand-card-title">Lotus Ayu &amp;<br/><span>Highland Serenity</span></h3>
+<p>Authentic physician-guided Ceylon Ayurveda, Panchakarma restorative retreats, silent forest meditation, and colonial tea country repose.</p>
+<a class="next-btn next-btn--blue" href="experiences.html#lotus-ayu">
+<span class="next-btn-circle">➔</span>
+<span>Explore Wellness Pillar</span>
+</a>
+</div>
+</div>
+</div>
+<!-- Button linking to dedicated experiences.html -->
+<div style="text-align: center; margin-top: 3.5rem;">
+<a class="btn-editorial-primary" href="experiences.html" style="display: inline-flex; align-items: center; gap: 0.75rem;" title="Explore All Experiences &amp; Signature Brands">
+<span>Explore All Experiences &amp; Signature Brands</span>
+<span class="btn-arrow-circle">➔</span>
+</a>
+</div>
+</div>
+</section>
+<!-- ==========================================================================
        SECTION 8: REAL EXPERIENCES / GUEST REVIEWS
        ========================================================================== -->
-  <section class="padding-top--100 padding-bottom--100 review-sec" id="testimonials" style="scroll-margin-top: 105px; position: relative;">
-    <!-- Anchor Alias for Header Reviews Link -->
-    <span id="reviews" style="position: absolute; top: -105px; left: 0; display: block; visibility: hidden; pointer-events: none;"></span>
-    <div class="wrapper--80">
-      <div class="section-watermark-header">
-        <p class="watermark-heading">real stories</p>
-        <h2 class="section-header-title">Real Experiences</h2>
-      </div>
-      <div style="max-width: 650px; margin: 0 auto; text-align: center; position: relative; z-index: 2;">
-        <p class="paragraph--20">
+<section class="padding-top--100 padding-bottom--100 review-sec" id="testimonials" style="scroll-margin-top: 105px; position: relative;">
+<!-- Anchor Alias for Header Reviews Link -->
+<span id="reviews" style="position: absolute; top: -105px; left: 0; display: block; visibility: hidden; pointer-events: none;"></span>
+<div class="wrapper--80">
+<div class="section-watermark-header">
+<p class="watermark-heading">real stories</p>
+<h2 class="section-header-title">Real Experiences</h2>
+</div>
+<div style="max-width: 650px; margin: 0 auto; text-align: center; position: relative; z-index: 2;">
+<p class="paragraph--20">
           Hear from our global guests who experienced the authentic warmth, flawless planning, and sacred memories of Sri Lanka.
         </p>
-      </div>
-
-      <div class="testimonial-cards-grid">
-        <!-- Review 1 -->
-        <div class="testimonial-card">
-          <div class="testimonial-stars">★★★★★</div>
-          <h4 class="testimonial-quote-title">"Wonderful Family Trip to Sri Lanka"</h4>
-          <p class="testimonial-text">
+</div>
+<div class="testimonial-cards-grid">
+<!-- Review 1 -->
+<div class="testimonial-card">
+<div class="testimonial-stars">★★★★★</div>
+<h4 class="testimonial-quote-title">"Wonderful Family Trip to Sri Lanka"</h4>
+<p class="testimonial-text">
             “Wonderful family trip to Sri Lanka. We were a multi-generational group and our Lotus Ceylon guide Sampath was able to navigate our interests seamlessly. He was extremely knowledgeable about the sites and provided great suggestions to enhance our experience all the time!”
           </p>
-          <div class="testimonial-author">
+<div class="testimonial-author">
             Shalini Castelli &amp; Family
-            <span class="testimonial-author-country">United Kingdom &middot; 14 Days Private Tour</span>
-          </div>
-        </div>
-
-        <!-- Review 2 -->
-        <div class="testimonial-card">
-          <div class="testimonial-stars">★★★★★</div>
-          <h4 class="testimonial-quote-title">"A Delightful Stay in Ceylon"</h4>
-          <p class="testimonial-text">
+            <span class="testimonial-author-country">United Kingdom · 14 Days Private Tour</span>
+</div>
+</div>
+<!-- Review 2 -->
+<div class="testimonial-card">
+<div class="testimonial-stars">★★★★★</div>
+<h4 class="testimonial-quote-title">"A Delightful Stay in Ceylon"</h4>
+<p class="testimonial-text">
             “The tour itinerary was customized to perfection. Pick up from Colombo Bandaranaike International Airport in a brand-new luxury SUV. The chauffeur guide shared his deep knowledge of all ancient temples and nature reserves. We felt pampered and safe every moment!”
           </p>
-          <div class="testimonial-author">
+<div class="testimonial-author">
             Joe R. &amp; Katherine
-            <span class="testimonial-author-country">Australia &middot; 10 Days Luxury Odyssey</span>
-          </div>
-        </div>
-
-        <!-- Review 3 -->
-        <div class="testimonial-card">
-          <div class="testimonial-stars">★★★★★</div>
-          <h4 class="testimonial-quote-title">"Fantastic Honeymoon Holiday"</h4>
-          <p class="testimonial-text">
+            <span class="testimonial-author-country">Australia · 10 Days Luxury Odyssey</span>
+</div>
+</div>
+<!-- Review 3 -->
+<div class="testimonial-card">
+<div class="testimonial-stars">★★★★★</div>
+<h4 class="testimonial-quote-title">"Fantastic Honeymoon Holiday"</h4>
+<p class="testimonial-text">
             “Sri Lanka is an utterly magical country, and the honeymoon itinerary put together was perfect for what we wanted. The private pool villas, scenic train in Ella, and leopards in Yala were highlights of our lifetime. Thank you Lotus Ceylon!”
           </p>
-          <div class="testimonial-author">
+<div class="testimonial-author">
             David &amp; Sarah Miller
-            <span class="testimonial-author-country">Germany &middot; 12 Days Honeymoon Escape</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ==========================================================================
+            <span class="testimonial-author-country">Germany · 12 Days Honeymoon Escape</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ==========================================================================
        SECTION 9: SUSTAINABILITY ("TRAVEL SMART, TREAD LIGHTLY")
        ========================================================================== -->
-  <section class="padding-top--100 padding-bottom--100 sustainability-sec" id="sustainability">
-    <div class="wrapper--90">
-      <div class="sustainability-grid">
-        <!-- Editorial & Mission -->
-        <div>
-          <h2 class="heading--60 font-color--white" style="margin-bottom: 1.5rem;">
-            <span>Travel Smart,</span><br>Tread Lightly
+<section class="padding-top--100 padding-bottom--100 sustainability-sec" id="sustainability">
+<div class="wrapper--90">
+<div class="sustainability-grid">
+<!-- Editorial & Mission -->
+<div>
+<h2 class="heading--60 font-color--white" style="margin-bottom: 1.5rem;">
+<span>Travel Smart,</span><br/>Tread Lightly
           </h2>
-          <p class="paragraph--20 font-color--white" style="font-weight: 700; margin-bottom: 1rem;">
+<p class="paragraph--20 font-color--white" style="font-weight: 700; margin-bottom: 1rem;">
             Join us in our responsible journey to give back to mother earth…
           </p>
-          <p class="paragraph--18 font-color--white" style="opacity: 0.9; margin-bottom: 2rem;">
+<p class="paragraph--18 font-color--white" style="opacity: 0.9; margin-bottom: 2rem;">
             With deep reverence for the sacred island, its local communities, and fragile wildlife ecosystems, Lotus Ceylon is committed to carbon-conscious tours, single-use plastic elimination across our fleet, reforestation in the Sinharaja rainforest, and community empowerment.
           </p>
-          <a href="inquiry-detailed.html" class="next-btn next-btn--white" title="Explore Sustainable Travel">
-            <span class="next-btn-circle">➔</span>
-            <span>Explore</span>
-          </a>
-        </div>
-
-        <!-- Sustainability Images Grid -->
-        <div class="sustainability-images-2col">
-          <div class="sustain-img-card">
-            <img src="https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?w=500&h=650&fit=crop&q=80" alt="Sinharaja Rainforest Conservation" loading="lazy">
-          </div>
-          <div class="sustain-img-card">
-            <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?w=500&h=650&fit=crop&q=80" alt="Local Community Empowerment" loading="lazy">
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ==========================================================================
+<a class="next-btn next-btn--white" href="inquiry-detailed.html" title="Explore Sustainable Travel">
+<span class="next-btn-circle">➔</span>
+<span>Explore</span>
+</a>
+</div>
+<!-- Sustainability Images Grid -->
+<div class="sustainability-images-2col">
+<div class="sustain-img-card">
+<img alt="Sinharaja Rainforest Conservation" loading="lazy" src="./assets/images/family/kosgoda-turtle-hatchery-1.webp"/ decoding="async">
+</div>
+<div class="sustain-img-card">
+<img alt="Local Community Empowerment" loading="lazy" src="./assets/images/family/scenic-train-ride-2.webp"/ decoding="async">
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ==========================================================================
        SECTION 10: FAQ ACCORDION ("EVERYTHING YOU NEED TO KNOW")
        ========================================================================== -->
-  <section class="padding-top--100 padding-bottom--100" id="faq">
-    <div class="wrapper--90">
-      <div class="faq-sec-grid">
-        
-        <!-- Left Image Card with Overlay Title -->
-        <div class="faq-featured-image">
-          <img src="https://images.unsplash.com/photo-1586861635167-e5223aadc9fe?w=600&h=700&fit=crop&q=80" alt="Sri Lanka Travel Planning FAQ" loading="lazy">
-          <div class="faq-overlay-box">
-            <h2 class="heading--40 font-color--white" style="margin-bottom: 1.25rem;">
-              <span>Everything</span><br>You Need to Know
+<section class="padding-top--100 padding-bottom--100" id="faq">
+<div class="wrapper--90">
+<div class="faq-sec-grid">
+<!-- Left Image Card with Overlay Title -->
+<div class="faq-featured-image">
+<img alt="Sri Lanka Travel Planning FAQ" loading="lazy" src="./assets/images/about/hospitality-scenes-1.webp"/ decoding="async">
+<div class="faq-overlay-box">
+<h2 class="heading--40 font-color--white" style="margin-bottom: 1.25rem;">
+<span>Everything</span><br/>You Need to Know
             </h2>
-            <a href="inquiry-detailed.html" class="next-btn next-btn--white">
-              <span class="next-btn-circle">➔</span>
-              <span>Ask Our Experts</span>
-            </a>
-          </div>
-        </div>
-
-        <!-- Right Accordion List -->
-        <div class="accordion-list">
-          
-          <!-- Item 1 -->
-          <div class="accordion-item open">
-            <button type="button" class="accordion-header-btn">
-              <span>Best time to visit Sri Lanka?</span>
-              <span class="accordion-icon">+</span>
-            </button>
-            <div class="accordion-body">
+<a class="next-btn next-btn--white" href="inquiry-detailed.html">
+<span class="next-btn-circle">➔</span>
+<span>Ask Our Experts</span>
+</a>
+</div>
+</div>
+<!-- Right Accordion List -->
+<div class="accordion-list">
+<!-- Item 1 -->
+<div class="accordion-item open">
+<button class="accordion-header-btn" type="button">
+<span>Best time to visit Sri Lanka?</span>
+<span class="accordion-icon">+</span>
+</button>
+<div class="accordion-body">
               You can visit Sri Lanka year-round! As a tropical island, Sri Lanka enjoys abundant sunshine and warm temperatures throughout the year. The island experiences two gentle monsoon seasons: the southwest monsoon (May to September) makes the East and North coasts ideal, while the northeast monsoon (November to March) makes the West and South beaches sunny and dry.
             </div>
-          </div>
-
-          <!-- Item 2 -->
-          <div class="accordion-item">
-            <button type="button" class="accordion-header-btn">
-              <span>Is it safe to travel to Sri Lanka?</span>
-              <span class="accordion-icon">+</span>
-            </button>
-            <div class="accordion-body">
+</div>
+<!-- Item 2 -->
+<div class="accordion-item">
+<button class="accordion-header-btn" type="button">
+<span>Is it safe to travel to Sri Lanka?</span>
+<span class="accordion-icon">+</span>
+</button>
+<div class="accordion-body">
               Sri Lanka is one of the world's most welcoming and safe travel destinations. The nation is renowned for its hospitable people, tranquil Buddhist cultural traditions, and safe travel corridors. Lotus Ceylon provides government-licensed National Tourist Guide Lecturers, modern private air-conditioned touring vehicles, and direct coordinator support via WhatsApp, WeChat, and LINE for complete peace of mind.
             </div>
-          </div>
-
-          <!-- Item 3 -->
-          <div class="accordion-item">
-            <button type="button" class="accordion-header-btn">
-              <span>Do I need a visa to enter Sri Lanka?</span>
-              <span class="accordion-icon">+</span>
-            </button>
-            <div class="accordion-body">
+</div>
+<!-- Item 3 -->
+<div class="accordion-item">
+<button class="accordion-header-btn" type="button">
+<span>Do I need a visa to enter Sri Lanka?</span>
+<span class="accordion-icon">+</span>
+</button>
+<div class="accordion-body">
               Yes, most international travelers require an Electronic Travel Authorization (ETA) prior to arrival. Your passport should have at least 6 months of validity from your arrival date. Visas can be easily applied online via the official portal via the official government immigration portal (srilankaevisa.lk), and our team provides visa guidance to all our traveling guests.
             </div>
-          </div>
-
-          <!-- Item 4 -->
-          <div class="accordion-item">
-            <button type="button" class="accordion-header-btn">
-              <span>What should I pack for my trip?</span>
-              <span class="accordion-icon">+</span>
-            </button>
-            <div class="accordion-body">
+</div>
+<!-- Item 4 -->
+<div class="accordion-item">
+<button class="accordion-header-btn" type="button">
+<span>What should I pack for my trip?</span>
+<span class="accordion-icon">+</span>
+</button>
+<div class="accordion-body">
               Lightweight cotton or linen attire is recommended for the warm coastal and cultural regions. When traveling into the central Hill Country (Nuwara Eliya, Ella), pack light sweaters or cardigans as evening temperatures can dip to 12°C. When visiting sacred Buddhist or Hindu temples, shoulders and knees must be respectfully covered.
             </div>
-          </div>
-
-          <!-- Item 5 -->
-          <div class="accordion-item">
-            <button type="button" class="accordion-header-btn">
-              <span>What currency is used &amp; are credit cards accepted?</span>
-              <span class="accordion-icon">+</span>
-            </button>
-            <div class="accordion-body">
+</div>
+<!-- Item 5 -->
+<div class="accordion-item">
+<button class="accordion-header-btn" type="button">
+<span>What currency is used &amp; are credit cards accepted?</span>
+<span class="accordion-icon">+</span>
+</button>
+<div class="accordion-body">
               The Sri Lankan Rupee (LKR) is the local currency. Major international credit cards (Visa, MasterCard, and Amex) are widely accepted at hotels, boutique restaurants, and shopping centers throughout the island. ATMs are readily accessible in all major towns.
             </div>
-          </div>
-
-          <!-- Item 6 -->
-          <div class="accordion-item">
-            <button type="button" class="accordion-header-btn">
-              <span>Why should I book through a professional tour operator?</span>
-              <span class="accordion-icon">+</span>
-            </button>
-            <div class="accordion-body">
+</div>
+<!-- Item 6 -->
+<div class="accordion-item">
+<button class="accordion-header-btn" type="button">
+<span>Why should I book through a professional tour operator?</span>
+<span class="accordion-icon">+</span>
+</button>
+<div class="accordion-body">
               Sri Lanka is an experiential touring destination where local road navigation, VIP ticket access to national parks, train reservations, and vetted boutique hotels require established local connections. Lotus Ceylon eliminates logistic stress, guarantees pre-reserved scenic train seats, and offers dedicated chauffeur guides.
             </div>
-          </div>
-
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ==========================================================================
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ==========================================================================
        SECTION 11: LATEST NEWS & INSIGHTS
        ========================================================================== -->
-  <section class="padding-top--80 padding-bottom--100 bg-color--light-blue" id="news">
-    <div class="wrapper--80" style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 2rem;">
-      <div style="max-width: 450px;">
-        <h2 class="heading--60">
-          <span>The Lotus Journal:</span><br>Chronicles of Ceylon
+<section class="padding-top--80 padding-bottom--100 bg-color--light-blue" id="news">
+<div class="wrapper--80" style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 2rem;">
+<div style="max-width: 450px;">
+<h2 class="heading--60">
+<span>The Lotus Journal:</span><br/>Chronicles of Ceylon
         </h2>
-      </div>
-      <div style="max-width: 500px;">
-        <p class="paragraph--20">
+</div>
+<div style="max-width: 500px;">
+<p class="paragraph--20">
           Thoughtful stories, seasonal travel advice, and cultural perspectives from our Ceylon destination specialists.
         </p>
-      </div>
-      <div>
-        <a href="inquiry-detailed.html" class="next-btn next-btn--blue">
-          <span class="next-btn-circle">➔</span>
-          <span>View All News</span>
-        </a>
-      </div>
-    </div>
-
-    <div class="wrapper--90">
-      <div class="news-grid-layout">
-        
-        <!-- Big Featured News Item -->
-        <a href="inquiry-detailed.html" class="news-card-big" style="overflow: hidden; text-decoration: none; display: block; background: #FFFFFF; border-radius: var(--radius-md); box-shadow: var(--shadow-sm); border: 1px solid #EAF0F4;">
-          <img src="https://images.unsplash.com/photo-1600100397608-f010e423b971?w=800&h=420&fit=crop&q=80" alt="Sacred Buddhist Heritage in Sri Lanka" style="width: 100%; height: 260px; object-fit: cover;">
-          <div class="news-card-big-content" style="padding: 2rem;">
-            <span class="news-date" style="color: var(--color-lotus-pink); font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em;">Sacred Heritage &middot; Lotus Journal</span>
-            <h3 class="heading--24 font-color--dark all-caps" style="margin: 0.5rem 0 1rem; color: var(--color-dark-blue); font-size: 1.35rem; line-height: 1.35;">
+</div>
+<div>
+<a class="next-btn next-btn--blue" href="inquiry-detailed.html">
+<span class="next-btn-circle">➔</span>
+<span>View All News</span>
+</a>
+</div>
+</div>
+<div class="wrapper--90">
+<div class="news-grid-layout">
+<!-- Big Featured News Item -->
+<a class="news-card-big" href="inquiry-detailed.html" style="overflow: hidden; text-decoration: none; display: block; background: #FFFFFF; border-radius: var(--radius-md); box-shadow: var(--shadow-sm); border: 1px solid #EAF0F4;">
+<img alt="Sacred Buddhist Heritage in Sri Lanka" src="./assets/images/adventure/kitulgala-rafting-1.webp" style="width: 100%; height: 260px; object-fit: cover;"/ loading="lazy" decoding="async">
+<div class="news-card-big-content" style="padding: 2rem;">
+<span class="news-date" style="color: var(--color-lotus-pink); font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em;">Sacred Heritage · Lotus Journal</span>
+<h3 class="heading--24 font-color--dark all-caps" style="margin: 0.5rem 0 1rem; color: var(--color-dark-blue); font-size: 1.35rem; line-height: 1.35;">
               Sacred Footsteps: Unlocking Sri Lanka's Ancient Buddhist Kingdoms
             </h3>
-            <p class="paragraph--18" style="color: var(--color-light-black); opacity: 0.9; margin-bottom: 1.5rem; font-size: 0.95rem; line-height: 1.6;">
+<p class="paragraph--18" style="color: var(--color-light-black); opacity: 0.9; margin-bottom: 1.5rem; font-size: 0.95rem; line-height: 1.6;">
               From the soaring stupas of Anuradhapura to the golden cave shrines of Dambulla, explore the living spirituality, meditation sanctuaries, and royal chronicles of Ceylon.
             </p>
-            <div class="next-btn next-btn--blue">
-              <span class="next-btn-circle">➔</span>
-              <span>Read Full Article</span>
-            </div>
-          </div>
-        </a>
-
-        <!-- 3 Side News Items -->
-        <div class="news-side-list">
-          
-          <a href="inquiry-detailed.html" class="news-side-item" style="text-decoration: none; display: flex; gap: 1.25rem; align-items: center; background: #FFFFFF; padding: 1.25rem; border-radius: var(--radius-md); border: 1px solid #EAF0F4; transition: var(--transition);">
-            <img src="https://images.unsplash.com/photo-1557050543-4d5f4e07ef46?w=220&h=180&fit=crop&q=80" alt="Minneriya Wild Elephant Gathering" style="width: 105px; height: 85px; object-fit: cover; border-radius: var(--radius-sm); flex-shrink: 0;">
-            <div class="news-side-item-content">
-              <span class="news-date" style="color: var(--color-gold); font-size: 0.75rem; font-weight: 700; text-transform: uppercase;">Wildlife Journal</span>
-              <h4 class="news-side-title" style="font-size: 1.02rem; font-weight: 600; color: var(--color-dark-blue); margin-top: 0.25rem; line-height: 1.4;">The Great Gathering: Watching Hundreds of Wild Elephants at Minneriya</h4>
-            </div>
-          </a>
-
-          <a href="inquiry-detailed.html" class="news-side-item" style="text-decoration: none; display: flex; gap: 1.25rem; align-items: center; background: #FFFFFF; padding: 1.25rem; border-radius: var(--radius-md); border: 1px solid #EAF0F4; transition: var(--transition);">
-            <img src="https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?w=220&h=180&fit=crop&q=80" alt="Sinharaja Conservation" style="width: 105px; height: 85px; object-fit: cover; border-radius: var(--radius-sm); flex-shrink: 0;">
-            <div class="news-side-item-content">
-              <span class="news-date" style="color: var(--color-gold); font-size: 0.75rem; font-weight: 700; text-transform: uppercase;">Eco Reverence</span>
-              <h4 class="news-side-title" style="font-size: 1.02rem; font-weight: 600; color: var(--color-dark-blue); margin-top: 0.25rem; line-height: 1.4;">Growing a Greener Future: Volunteer Reforestation in the Sinharaja Canopy</h4>
-            </div>
-          </a>
-
-          <a href="inquiry-detailed.html" class="news-side-item" style="text-decoration: none; display: flex; gap: 1.25rem; align-items: center; background: #FFFFFF; padding: 1.25rem; border-radius: var(--radius-md); border: 1px solid #EAF0F4; transition: var(--transition);">
-            <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=220&h=180&fit=crop&q=80" alt="Traditional Ayurveda Healing" style="width: 105px; height: 85px; object-fit: cover; border-radius: var(--radius-sm); flex-shrink: 0;">
-            <div class="news-side-item-content">
-              <span class="news-date" style="color: var(--color-gold); font-size: 0.75rem; font-weight: 700; text-transform: uppercase;">Holistic Wellness</span>
-              <h4 class="news-side-title" style="font-size: 1.02rem; font-weight: 600; color: var(--color-dark-blue); margin-top: 0.25rem; line-height: 1.4;">Living Healing: The Ancient Art and Science of Traditional Ceylon Ayurveda</h4>
-            </div>
-          </a>
-
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ==========================================================================
+<div class="next-btn next-btn--blue">
+<span class="next-btn-circle">➔</span>
+<span>Read Full Article</span>
+</div>
+</div>
+</a>
+<!-- 3 Side News Items -->
+<div class="news-side-list">
+<a class="news-side-item" href="inquiry-detailed.html" style="text-decoration: none; display: flex; gap: 1.25rem; align-items: center; background: #FFFFFF; padding: 1.25rem; border-radius: var(--radius-md); border: 1px solid #EAF0F4; transition: var(--transition);">
+<img alt="Minneriya Wild Elephant Gathering" src="./assets/images/buddhist-heritage/ruwanwelisaya-2.webp" style="width: 105px; height: 85px; object-fit: cover; border-radius: var(--radius-sm); flex-shrink: 0;"/ loading="lazy" decoding="async">
+<div class="news-side-item-content">
+<span class="news-date" style="color: var(--color-gold); font-size: 0.75rem; font-weight: 700; text-transform: uppercase;">Wildlife Journal</span>
+<h4 class="news-side-title" style="font-size: 1.02rem; font-weight: 600; color: var(--color-dark-blue); margin-top: 0.25rem; line-height: 1.4;">The Great Gathering: Watching Hundreds of Wild Elephants at Minneriya</h4>
+</div>
+</a>
+<a class="news-side-item" href="inquiry-detailed.html" style="text-decoration: none; display: flex; gap: 1.25rem; align-items: center; background: #FFFFFF; padding: 1.25rem; border-radius: var(--radius-md); border: 1px solid #EAF0F4; transition: var(--transition);">
+<img alt="Sinharaja Conservation" src="./assets/images/family/kosgoda-turtle-hatchery-1.webp" style="width: 105px; height: 85px; object-fit: cover; border-radius: var(--radius-sm); flex-shrink: 0;"/ loading="lazy" decoding="async">
+<div class="news-side-item-content">
+<span class="news-date" style="color: var(--color-gold); font-size: 0.75rem; font-weight: 700; text-transform: uppercase;">Eco Reverence</span>
+<h4 class="news-side-title" style="font-size: 1.02rem; font-weight: 600; color: var(--color-dark-blue); margin-top: 0.25rem; line-height: 1.4;">Growing a Greener Future: Volunteer Reforestation in the Sinharaja Canopy</h4>
+</div>
+</a>
+<a class="news-side-item" href="inquiry-detailed.html" style="text-decoration: none; display: flex; gap: 1.25rem; align-items: center; background: #FFFFFF; padding: 1.25rem; border-radius: var(--radius-md); border: 1px solid #EAF0F4; transition: var(--transition);">
+<img alt="Traditional Ayurveda Healing" src="./assets/images/ayurveda/herbal-treatment-1.webp" style="width: 105px; height: 85px; object-fit: cover; border-radius: var(--radius-sm); flex-shrink: 0;"/ loading="lazy" decoding="async">
+<div class="news-side-item-content">
+<span class="news-date" style="color: var(--color-gold); font-size: 0.75rem; font-weight: 700; text-transform: uppercase;">Holistic Wellness</span>
+<h4 class="news-side-title" style="font-size: 1.02rem; font-weight: 600; color: var(--color-dark-blue); margin-top: 0.25rem; line-height: 1.4;">Living Healing: The Ancient Art and Science of Traditional Ceylon Ayurveda</h4>
+</div>
+</a>
+</div>
+</div>
+</div>
+</section>
+<!-- ==========================================================================
        SECTION 13: LUXURY DARK FOOTER (LOTUS CEYLON HERITAGE STYLE)
        ========================================================================== -->
-  <footer class="site-footer-walkers" id="contact">
-    <div class="wrapper--80">
-      
-      <div class="footer-top-grid">
-        <!-- Col 1: Contact Information & Global Desks -->
-        <div>
-          <p style="color: #CBD5E1; font-size: 0.92rem; line-height: 1.65; margin: 0.85rem 0 1.25rem; max-width: 330px;">
+<!-- Sacred Ceylon CTA Band (Unified Standard) -->
+<!-- Sacred Ceylon CTA Band (Unified Standard) -->
+<section class="sacred-cta-banner">
+<div aria-hidden="true" class="cta-motif"></div>
+<div class="cta-content">
+<h2 class="cta-title">Ready to Begin Your Sacred Ceylon Journey?</h2>
+<p class="cta-desc">Speak directly with our senior destination specialists in Ja-Ela or connect via WhatsApp for an immediate bespoke itinerary proposal tailored to your rhythm.</p>
+<div class="cta-btn-group">
+<a class="btn-primary-gold" href="./inquiry-detailed.html">
+<span>Plan My Bespoke Journey</span>
+<span aria-hidden="true">➔</span>
+</a>
+<a class="cta-wa-btn" href="https://wa.me/94715422384?text=Hello%20Lotus%20Ceylon!%20I%20would%20like%20to%20inquire%20about%20a%20private%20tour." rel="noopener noreferrer" target="_blank">
+<span>💬 Chat on WhatsApp</span>
+</a>
+</div>
+</div>
+</section>
+<!-- Site Footer (Unified Walkers Standard with Single Source of Truth Coordinates) -->
+<!-- Site Footer (Unified Walkers Standard with Single Source of Truth Coordinates) -->
+<footer class="site-footer-walkers" id="siteFooter">
+<div class="site-container">
+<div class="footer-top-grid">
+<!-- Col 1: About & 24/7 Concierge Hotline -->
+<div>
+<p class="footer-col-title">Lotus Ceylon Luxury Tours</p>
+<p style="color: rgba(255, 255, 255, 0.78); font-size: 0.92rem; line-height: 1.65; margin: 0.85rem 0 1.25rem; max-width: 330px;">
             Crafting bespoke, transformative travel experiences across sacred Ceylon with authentic warmth since 2014.
           </p>
-          <div class="footer-contact-list">
-            <div class="footer-contact-item" style="margin-bottom: 0.65rem;">
-              <p style="margin-bottom: 0.2rem; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-gold);">24/7 Travel Concierge Hotline</p>
-              <a href="tel:+94715422384" style="color: #FFFFFF; font-weight: 700; font-size: 1.05rem; text-decoration: none;">+94 71 54 22 384</a>
-            </div>
-            <div class="footer-contact-item" style="margin-bottom: 0.65rem;">
-              <p style="margin-bottom: 0.2rem; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-gold);">Email Inquiries</p>
-              <a href="mailto:paliforbuddhism@gmail.com" style="color: #CBD5E1; text-decoration: none;">paliforbuddhism@gmail.com</a>
-            </div>
-            <div class="footer-contact-item" style="margin-top: 1rem;">
-              <a href="about.html#headquarters" style="color: var(--color-gold); font-size: 0.85rem; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 6px;">
-                <span>Registered Office &amp; Headquarters Details</span> <span>➔</span>
-              </a>
-            </div>
-          </div>
+<div class="footer-contact-list">
+<div class="footer-contact-item">
+<p>24/7 Travel Concierge Hotline</p>
+<a href="tel:+94715422384" style="color: #FFFFFF; font-weight: 700; font-size: 1.05rem;">+94 71 54 22 384</a>
+</div>
+<div class="footer-contact-item">
+<p>Email Inquiries</p>
+<a href="mailto:paliforbuddhism@gmail.com">paliforbuddhism@gmail.com</a>
+</div>
+<div class="footer-contact-item" style="margin-top: 0.85rem;">
+<a href="./about.html#headquarters" style="color: var(--sacred-gold); font-size: 0.85rem; font-weight: 600; display: inline-flex; align-items: center; gap: 6px;">
+<span>Registered Office &amp; Headquarters Details</span> <span>➔</span>
+</a>
+</div>
+</div>
+</div>
+<!-- Col 2: Quick Links -->
+<div>
+<p class="footer-col-title">Quick Links</p>
+<div class="footer-links-grid">
+<a href="./index.html">Home</a>
+<a href="./sri-lanka-tours.html">Sri Lanka Tours</a>
+<a href="./destinations.html">Destinations</a>
+<a href="./experiences.html">Curated Experiences</a>
+<a href="./about.html">About Us</a>
+<a href="./gallery.html">Visual Gallery</a>
+<a href="./reviews.html">Guest Reviews</a>
+<a href="./blog.html">Travel Blog</a>
+<a href="./contact.html">Contact Us</a>
+<a href="./inquiry-quick.html">Quick Inquiry Form</a>
+<a href="./inquiry-detailed.html">Detailed Travel Inquiry</a>
+</div>
+</div>
+<!-- Col 3: Tour Categories -->
+<div>
+<p class="footer-col-title">Signature Themes</p>
+<div class="footer-links-grid">
+<a href="./tours/cultural/">Cultural Heritage</a>
+<a href="./tours/buddhist-heritage/">Buddhist Pilgrimage</a>
+<a href="./tours/wildlife/">Wildlife &amp; Safari</a>
+<a href="./tours/beach/">Coast &amp; Beaches</a>
+<a href="./tours/hill-country/">Highlands &amp; Tea</a>
+<a href="./tours/ayurvedic/">Ayurvedic Wellness</a>
+<a href="./tours/honeymoon/">Honeymoon Sanctuaries</a>
+<a href="./tours/family/">Family Journeys</a>
+<a href="./tours/adventure/">Active Adventure</a>
+<a href="./tours/ramayana/">Ramayana Heritage</a>
+</div>
+</div>
+<!-- Col 4: Registered Office & Legal -->
+<div>
+<p class="footer-col-title">Island Headquarters</p>
+<p style="color: rgba(255, 255, 255, 0.78); font-size: 0.9rem; line-height: 1.6; margin-bottom: 1rem;">
+            286/C, Niwandama South, Ja-Ela, Sri Lanka – 11350
+          </p>
+<p style="font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--sacred-gold); margin-bottom: 0.4rem;">Direct Messaging</p>
+<p style="color: #FFFFFF; font-size: 0.9rem; margin-bottom: 1.25rem;">
+            WhatsApp: +94 71 54 22 384<br/>
+            WeChat: LotusCeylonTours<br/>
+            LINE: @lotusceylon
+          </p>
+<div class="footer-links-grid" style="font-size: 0.85rem;">
+<a href="./privacy-policy.html">Privacy Policy</a>
+<a href="./terms-conditions.html">Terms &amp; Conditions</a>
+<a href="./cancellation-policy.html">Cancellation Policy</a>
+<a href="./cookie-policy.html">Cookie Policy</a>
+</div>
+</div>
+</div>
+<!-- Footer Bottom Row -->
+<div class="footer-bottom-row">
+<div>
+          © <span id="currentYear">2026</span> Lotus Ceylon International Tours &amp; Services (Private) Limited. All Rights Reserved.
         </div>
-
-        <!-- Col 2: Quick Links -->
-        <div>
-          <p class="footer-col-title">Quick Links</p>
-          <div class="footer-links-grid">
-            <a href="index.html">Home</a>
-            <a href="sri-lanka-tours.html">Sri Lanka Tours</a>
-            <a href="#bespoke">Tailor-Made</a>
-            <a href="#brands">Our Brands</a>
-            <a href="#sustainability">Sustainability</a>
-            <a href="about.html">About Lotus Ceylon</a>
-            <a href="#testimonials">Guest Reviews</a>
-            <a href="#faq">Travel FAQ</a>
-            <a href="inquiry-detailed.html">Detailed Inquiry</a>
-            <a href="inquiry-quick.html">Quick Inquiry</a>
-            <a href="#contact">Contact Us</a>
-          </div>
-        </div>
-
-        <!-- Col 3: Newsletter, QR Codes & Payment Partners -->
-        <div>
-          <div class="newsletter-box">
-            <p class="footer-col-title">Stay Inspired</p>
-            <p>Subscribe to receive curated Sri Lanka holiday inspiration and early-booking privileges.</p>
-            <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Thank you for subscribing to Lotus Ceylon!'); this.reset();">
-              <input type="email" placeholder="Enter your email address" required>
-              <button type="submit" aria-label="Subscribe">➔</button>
-            </form>
-          </div>
-
-          <!-- Instant Chat QR Codes -->
-          <div style="margin: 1.5rem 0 1.25rem;">
-            <p style="font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.12em; color: #FFFFFF; font-weight: 700; margin-bottom: 0.65rem;">Scan &amp; Chat Instantly</p>
-            <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
-              <a href="https://wa.me/94715422384" target="_blank" rel="noopener" style="background: rgba(255,255,255,0.08); padding: 0.5rem; border-radius: 6px; text-align: center; text-decoration: none; border: 1px solid rgba(255,255,255,0.12); width: 85px;">
-                <img src="assets/qr/whatsapp-qr.png" alt="WhatsApp QR" style="width: 70px; height: 70px; border-radius: 4px; display: block; margin: 0 auto 0.25rem; object-fit: contain;">
-                <span style="font-size: 0.72rem; color: #E2E8F0; display: block; font-weight: 600;">WhatsApp</span>
-              </a>
-              <div style="background: rgba(255,255,255,0.08); padding: 0.5rem; border-radius: 6px; text-align: center; border: 1px solid rgba(255,255,255,0.12); width: 85px;">
-                <img src="assets/qr/wechat-qr.png" alt="WeChat QR" style="width: 70px; height: 70px; border-radius: 4px; display: block; margin: 0 auto 0.25rem; object-fit: contain;">
-                <span style="font-size: 0.72rem; color: #E2E8F0; display: block; font-weight: 600;">WeChat</span>
-              </div>
-              <div style="background: rgba(255,255,255,0.08); padding: 0.5rem; border-radius: 6px; text-align: center; border: 1px solid rgba(255,255,255,0.12); width: 85px;">
-                <img src="assets/qr/line-qr.png" alt="LINE QR" style="width: 70px; height: 70px; border-radius: 4px; display: block; margin: 0 auto 0.25rem; object-fit: contain;">
-                <span style="font-size: 0.72rem; color: #E2E8F0; display: block; font-weight: 600;">LINE</span>
-              </div>
-            </div>
-          </div>
-
-          <p style="font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.12em; color: #FFFFFF; font-weight: 700; margin-bottom: 0.5rem;">Accepted Payment Partners</p>
-          <div class="payment-badges-row" style="display: none;">
-            <span class="payment-badge-pill">VISA</span>
-            <span class="payment-badge-pill">Mastercard</span>
-            <span class="payment-badge-pill">AMEX</span>
-            <span class="payment-badge-pill">UnionPay</span>
-          </div>
-
-          <div class="footer-social-row">
-            <a href="https://wa.me/94715422384" target="_blank" rel="noopener" class="social-icon-btn" title="WhatsApp">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.698.077-1.11-.059-.441-.144-1.025-.338-1.776-.816-1.579-1.004-2.613-2.616-2.695-2.726-.082-.11-1.082-1.442-1.082-2.75 0-1.309.684-1.954.928-2.222.244-.268.531-.334.708-.334.177 0 .354.002.508.01.164.008.385-.062.602.459.223.535.759 1.854.825 1.99.066.136.111.297.022.474-.088.177-.133.287-.266.442-.133.155-.28.347-.399.465-.133.133-.271.277-.117.542.155.266.689 1.134 1.477 1.835 1.014.903 1.87 1.182 2.136 1.315.266.133.421.111.576-.066.155-.177.664-.774.841-1.039.177-.266.354-.222.597-.133.244.089 1.549.73 1.815.863.266.133.443.2.509.311.066.11.066.643-.078 1.048z"/></svg>
-            </a>
-            <a href="https://facebook.com" style="display: none;" target="_blank" rel="noopener" class="social-icon-btn" title="Facebook">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"/></svg>
-            </a>
-            <a href="https://instagram.com" style="display: none;" target="_blank" rel="noopener" class="social-icon-btn" title="Instagram">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-            </a>
-            <a href="https://linkedin.com" style="display: none;" target="_blank" rel="noopener" class="social-icon-btn" title="LinkedIn">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-            </a>
-          </div>
-        </div>
-
-      </div>
-
-      <div class="footer-bottom-row">
-        <div>
-          &copy; 2026 LOTUS CEYLON INTERNATIONAL TOURS &amp; SERVICES (PRIVATE) LIMITED. All Rights Reserved. Since 2014.
-        </div>
-        <div>
-          Designed &amp; Developed by <a href="https://infiniteweb.dev/" target="_blank" rel="noopener" style="color: var(--color-gold); text-decoration: none; font-weight: 600; transition: color 0.25s ease;" onmouseover="this.style.color='var(--color-lotus-pink)'" onmouseout="this.style.color='var(--color-gold)'">Infinite Design</a>
-        </div>
-      </div>
-
-    </div>
-  </footer>
-
-  <!-- ==========================================================================
+<div>
+          SLTDA Registered Inbound Tour Operator • Designed &amp; Developed by <a href="https://infiniteweb.dev/" rel="noopener" style="color: var(--sacred-gold); font-weight: 600;" target="_blank">Infinite Design</a>
+</div>
+</div>
+</div>
+</footer>
+<!-- Unified Mobile-First Floating Action Group (WhatsApp + Back to Top) -->
+<div aria-label="Quick Actions" class="unified-fab-group" id="unifiedFabGroup">
+<button aria-label="Scroll to top" class="fab-btn fab-top" id="fabBackToTop" title="Back to Top" type="button">
+<svg fill="currentColor" height="20" viewbox="0 0 24 24" width="20"><path d="M12 4l-8 8h5v8h6v-8h5z"></path></svg>
+</button>
+<a aria-label="Chat on WhatsApp" class="fab-btn fab-whatsapp" href="https://wa.me/94715422384?text=Hello%20Lotus%20Ceylon!%20I%20would%20like%20to%20inquire%20about%20a%20private%20tour." rel="noopener noreferrer" target="_blank" title="Chat on WhatsApp">
+<svg fill="currentColor" height="24" viewbox="0 0 24 24" width="24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.698.077-1.11-.059-.441-.144-1.025-.338-1.776-.816-1.579-1.004-2.613-2.616-2.695-2.726-.082-.11-1.082-1.442-1.082-2.75 0-1.309.684-1.954.928-2.222.244-.268.531-.334.708-.334.177 0 .354.002.508.01.164.008.385-.062.602.459.223.535.759 1.854.825 1.99.066.136.111.297.022.474-.088.177-.133.287-.266.442-.133.155-.28.347-.399.465-.133.133-.271.277-.117.542.155.266.689 1.134 1.477 1.835 1.014.903 1.87 1.182 2.136 1.315.266.133.421.111.576-.066.155-.177.664-.774.841-1.039.177-.266.354-.222.597-.133.244.089 1.549.73 1.815.863.266.133.443.2.509.311.066.11.066.643-.078 1.048z"></path></svg>
+</a>
+</div>
+<!-- Persistent Floating WhatsApp Concierge -->
+<!-- ==========================================================================
        STEP 1 FLOATING ACTIONS: WHATSAPP (+94 71 54 22 384) & 6S PULSING INQUIRE TAB
        ========================================================================== -->
-  <!-- Floating WhatsApp Hotline (+94 71 54 22 384) -->
-  <a href="https://wa.me/94715422384" target="_blank" rel="noopener" class="floating-whatsapp-btn" title="Chat on WhatsApp (+94 71 54 22 384)" aria-label="Chat on WhatsApp">
-    <svg viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.698.077-1.11-.059-.441-.144-1.025-.338-1.776-.816-1.579-1.004-2.613-2.616-2.695-2.726-.082-.11-1.082-1.442-1.082-2.75 0-1.309.684-1.954.928-2.222.244-.268.531-.334.708-.334.177 0 .354.002.508.01.164.008.385-.062.602.459.223.535.759 1.854.825 1.99.066.136.111.297.022.474-.088.177-.133.287-.266.442-.133.155-.28.347-.399.465-.133.133-.271.277-.117.542.155.266.689 1.134 1.477 1.835 1.014.903 1.87 1.182 2.136 1.315.266.133.421.111.576-.066.155-.177.664-.774.841-1.039.177-.266.354-.222.597-.133.244.089 1.549.73 1.815.863.266.133.443.2.509.311.066.11.066.643-.078 1.048z"/></svg>
-  </a>
-
-  <!-- Floating Inquire Tab with 6s Pulse Ring -->
-  <a href="inquiry-detailed.html" class="floating-inquire-tab" title="Inquire Now">
-    <svg viewBox="0 0 20 20"><path d="M16.5909 5.02051H16.1522V8.43079C16.1522 10.9574 14.0966 13.013 11.57 13.013H5.02148V13.4518C5.02148 15.3322 6.55138 16.862 8.43177 16.862H15.4373L19.0401 19.8644C19.1474 19.9538 19.2808 20.0002 19.4154 20.0002C19.7375 20.0002 20.0012 19.7388 20.0012 19.4142V8.43079C20.0012 6.5475 18.4775 5.02051 16.5909 5.02051Z"/><path d="M14.9797 8.43118V3.41029C14.9797 1.52363 13.4528 0 11.5694 0H3.41029C1.52363 0 0 1.52684 0 3.41029V14.3937C0 14.7181 0.26368 14.9797 0.585802 14.9797C0.720388 14.9797 0.853754 14.9333 0.961027 14.8437L4.56388 11.8415H11.5694C13.4498 11.8415 14.9797 10.3117 14.9797 8.43118Z"/></svg>
-    <span>Inquire</span>
-  </a>
-
-  <!-- ==========================================================================
+<!-- Floating WhatsApp Hotline (+94 71 54 22 384) -->
+<!-- Floating Inquire Tab with 6s Pulse Ring -->
+<a class="floating-inquire-tab" href="inquiry-detailed.html" title="Inquire Now">
+<svg viewbox="0 0 20 20"><path d="M16.5909 5.02051H16.1522V8.43079C16.1522 10.9574 14.0966 13.013 11.57 13.013H5.02148V13.4518C5.02148 15.3322 6.55138 16.862 8.43177 16.862H15.4373L19.0401 19.8644C19.1474 19.9538 19.2808 20.0002 19.4154 20.0002C19.7375 20.0002 20.0012 19.7388 20.0012 19.4142V8.43079C20.0012 6.5475 18.4775 5.02051 16.5909 5.02051Z"></path><path d="M14.9797 8.43118V3.41029C14.9797 1.52363 13.4528 0 11.5694 0H3.41029C1.52363 0 0 1.52684 0 3.41029V14.3937C0 14.7181 0.26368 14.9797 0.585802 14.9797C0.720388 14.9797 0.853754 14.9333 0.961027 14.8437L4.56388 11.8415H11.5694C13.4498 11.8415 14.9797 10.3117 14.9797 8.43118Z"></path></svg>
+<span>Inquire</span>
+</a>
+<!-- ==========================================================================
        JAVASCRIPT LOGIC (STICKY HEADER, STAT COUNTERS, FAQ ACCORDION, OFFCANVAS)
        ========================================================================== -->
-  <script>
+<script>
     // 1. Sticky Header Transparency Transition on Scroll
     const siteHeader = document.getElementById('siteHeader');
     function updateHeaderOnScroll() {
@@ -1550,28 +1448,7 @@
       });
     }
 
-    // 3. Mobile Navigation Fullscreen Drawer
-    const mobileHamToggle = document.getElementById('mobileHamToggle');
-    const mobileNavClose = document.getElementById('mobileNavClose');
-    const mobileNavFullscreen = document.getElementById('mobileNavFullscreen');
-    if (mobileHamToggle && mobileNavFullscreen) {
-      mobileHamToggle.addEventListener('click', () => {
-        mobileNavFullscreen.classList.add('is-open');
-        document.body.style.overflow = 'hidden';
-      });
-      if (mobileNavClose) {
-        mobileNavClose.addEventListener('click', () => {
-          mobileNavFullscreen.classList.remove('is-open');
-          document.body.style.overflow = '';
-        });
-      }
-      mobileNavFullscreen.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-          mobileNavFullscreen.classList.remove('is-open');
-          document.body.style.overflow = '';
-        });
-      });
-    }
+    // Mobile Navigation managed by assets/js/mobile-nav.js
 
     // 4. Offcanvas Search Modal Toggle
     const searchTrigger = document.getElementById('searchTriggerBtn');
@@ -1852,8 +1729,8 @@
       setTimeout(startSlider, staggerDelay);
     });
   </script>
-  <!-- Destinations Client-Side Filter Script -->
-  <script>
+<!-- Destinations Client-Side Filter Script -->
+<script>
     document.addEventListener('DOMContentLoaded', () => {
       const destFilterBtns = document.querySelectorAll('.dest-filter-btn');
       const destCards = document.querySelectorAll('.dest-card');
@@ -1879,6 +1756,9 @@
       }
     });
   </script>
-  <script src="js/site-translator.js"></script>
+<script defer src="js/site-translator.js"></script>
+<script defer src="./assets/js/config.js"></script>
+<script defer src="./assets/js/mobile-nav.js"></script>
+<script defer src="./assets/js/cms.js"></script>
 </body>
 </html>

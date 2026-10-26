@@ -1,87 +1,237 @@
 rules_version = '2';
+
 service cloud.firestore {
+
   match /databases/{database}/documents {
+
     
+
     // =========================================================================
-    // LOTUS CEYLON - FIRESTORE SECURITY RULES (WCAG / GDPR Hardened)
+
+    // LOTUS CEYLON - PRODUCTION FIRESTORE SECURITY RULES
+
+    // Allows public read of published catalog data so the website & admin
+
+    // never get permission errors on collection queries.
+
+    // Restricts ALL write/update/delete operations to authenticated admins.
+
     // =========================================================================
-    
-    // Strict Admin check: authenticated user with document in 'admins' collection or admin claim
+
+
+
+    function isAuthenticated() {
+
+      return request.auth != null;
+
+    }
+
+
+
     function isAdmin() {
-      return request.auth != null && (
+
+      return isAuthenticated() && (
+
         exists(/databases/$(database)/documents/admins/$(request.auth.uid)) ||
+
+        request.auth.token.admin == true
+
+      );
+
+    }
+
+    function isSuperAdmin() {
+      return isAuthenticated() && (
+        (exists(/databases/$(database)/documents/admins/$(request.auth.uid)) &&
+         get(/databases/$(database)/documents/admins/$(request.auth.uid)).data.role == 'super_admin') ||
+        request.auth.token.role == 'super_admin' ||
         request.auth.token.admin == true
       );
     }
 
-    // Admins Collection: Read & write strictly restricted to verified administrators
-    match /admins/{adminId} {
-      allow read, write: if isAdmin();
-    }
 
-    // Tour Packages: Public read; admin write
-    match /packages/{packageId} {
+
+    // 1. Public Content Collections (Read-only for public site, Write for verified Admin)
+
+    match /settings/{docId} {
+
       allow read: if true;
+
       allow write: if isAdmin();
+
     }
 
-    // Tour Categories: Public read; admin write
-    match /categories/{categoryId} {
+    match /navigation/{docId} {
+
       allow read: if true;
+
       allow write: if isAdmin();
+
     }
 
-    // Destinations: Public read; admin write
-    match /destinations/{destinationId} {
+    match /pages/{docId} {
+
       allow read: if true;
+
       allow write: if isAdmin();
+
     }
 
-    // CMS Page Content (10 Languages): Public read; admin write
     match /cms_pages/{docId} {
+
       allow read: if true;
+
       allow write: if isAdmin();
+
     }
 
-    // Quick Inquiries: Public create-only with honeypot validation; admin read/update/delete
-    match /inquiries_quick/{inquiryId} {
+    match /destinations/{docId} {
+
+      allow read: if true;
+
+      allow write: if isAdmin();
+
+    }
+
+    match /categories/{docId} {
+
+      allow read: if true;
+
+      allow write: if isAdmin();
+
+    }
+
+    match /tours/{docId} {
+
+      allow read: if true;
+
+      allow write: if isAdmin();
+
+    }
+
+    match /packages/{docId} {
+
+      allow read: if true;
+
+      allow write: if isAdmin();
+
+    }
+
+    match /posts/{docId} {
+
+      allow read: if true;
+
+      allow write: if isAdmin();
+
+    }
+
+    match /testimonials/{docId} {
+
+      allow read: if true;
+
+      allow write: if isAdmin();
+
+    }
+
+    match /reviews/{docId} {
+
+      allow read: if true;
+
+      allow write: if isAdmin();
+
+    }
+
+    match /team/{docId} {
+
+      allow read: if true;
+
+      allow write: if isAdmin();
+
+    }
+
+    match /faqs/{docId} {
+
+      allow read: if true;
+
+      allow write: if isAdmin();
+
+    }
+
+    match /formDefinitions/{docId} {
+
+      allow read: if true;
+
+      allow write: if isAdmin();
+
+    }
+
+    match /redirects/{docId} {
+
+      allow read: if true;
+
+      allow write: if isAdmin();
+
+    }
+
+
+
+    // 2. Inquiries: Public create-only with honeypot; Admin read/update/delete
+
+    match /inquiries/{docId} {
+
       allow create: if request.resource.data.hp_website_lotus == null || request.resource.data.hp_website_lotus == '';
+
       allow read, update, delete: if isAdmin();
+
     }
 
-    // Detailed Inquiries: Public create-only with honeypot validation; admin read/update/delete
-    match /inquiries_detailed/{inquiryId} {
+    match /inquiries_quick/{docId} {
+
       allow create: if request.resource.data.hp_website_lotus == null || request.resource.data.hp_website_lotus == '';
+
       allow read, update, delete: if isAdmin();
+
     }
 
-    // Legacy Inquiries (kept for backward compatibility with honeypot check)
-    match /inquiries/{inquiryId} {
+    match /inquiries_detailed/{docId} {
+
       allow create: if request.resource.data.hp_website_lotus == null || request.resource.data.hp_website_lotus == '';
+
       allow read, update, delete: if isAdmin();
+
     }
 
-    // Team & Representatives: Public read; admin write
-    match /team/{memberId} {
-      allow read: if true;
-      allow write: if isAdmin();
-    }
 
-    // Reviews & Testimonials: Publicly readable; admin moderated
-    match /reviews/{reviewId} {
-      allow read: if true;
-      allow write: if isAdmin();
-    }
 
-    // Site Settings: Public read; admin write
-    match /settings/{settingId} {
-      allow read: if true;
-      allow write: if isAdmin();
-    }
+    // 3. Admin & Audit Collections: Authenticated Admins only
 
-    // Admin & system collection fallback
-    match /{document=**} {
+    match /activityLog/{docId} {
+
       allow read, write: if isAdmin();
+
     }
+
+    match /admins/{docId} {
+
+      allow read: if isAuthenticated();
+
+      allow write: if isSuperAdmin();
+
+    }
+
+
+
+    // 4. Default Fallback: Closed by default
+
+    match /{document=**} {
+
+      allow read: if false;
+
+      allow write: if false;
+
+    }
+
   }
+
 }
+

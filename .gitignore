@@ -1,3 +1,10 @@
 scratch/
 .DS_Store
 Thumbs.db
+
+archive/
+*.zip
+tools/*_results.json
+tools/*backup*
+__pycache__/
+*.pyc

@@ -1085,15 +1085,107 @@ input:checked + .slider:before {
 @media (max-width: 992px) {
   .admin-sidebar {
     transform: translateX(-100%);
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 1000;
   }
   .admin-sidebar.open {
     transform: translateX(0);
   }
   .admin-main {
-    margin-left: 0;
+    margin-left: 0 !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    overflow-x: hidden !important;
   }
   .menu-toggle-btn {
-    display: block;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .admin-topbar {
+    padding: 0 12px !important;
+    height: auto !important;
+    min-height: 56px !important;
+    flex-wrap: wrap !important;
+    gap: 8px !important;
+  }
+  .topbar-left {
+    gap: 8px !important;
+  }
+  .page-breadcrumb {
+    font-size: 0.92rem !important;
+    max-width: 130px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .topbar-right {
+    gap: 8px !important;
+    margin-left: auto;
+  }
+  .topbar-right .session-indicator {
+    display: none !important;
+  }
+  .topbar-right #currentUserEmail {
+    display: none !important;
+  }
+  .topbar-btn {
+    padding: 6px 10px !important;
+    font-size: 0.78rem !important;
+  }
+  .admin-content {
+    padding: 14px 10px !important;
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+  }
+  .stats-grid {
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)) !important;
+    gap: 10px !important;
+  }
+  .section-header {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 10px !important;
+  }
+  .table-card {
+    padding: 10px !important;
+    border-radius: 8px !important;
+    max-width: 100% !important;
+  }
+  .data-table-wrap {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+  .data-table {
+    min-width: 580px !important;
+  }
+  .modal-dialog {
+    width: 95% !important;
+    margin: 10px auto !important;
+    max-height: 90vh !important;
+    overflow-y: auto !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .page-breadcrumb {
+    display: none !important;
+  }
+  .inquiry-tab-bar {
+    flex-wrap: wrap !important;
+    gap: 6px !important;
+  }
+  .inquiry-tab-btn {
+    padding: 6px 12px !important;
+    font-size: 0.8rem !important;
   }
 }
 
@@ -1130,4 +1222,175 @@ input:checked + .slider:before {
   border-radius: 8px;
   object-fit: cover;
   display: block;
+}
+
+/* ==============================================================================
+ * LIVE IMAGE PREVIEW CARDS & CONTROLS (CMS MODALS & MEDIA)
+ * ============================================================================== */
+.image-preview-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 10px;
+  padding: 12px 14px;
+  background: #F8F9FA;
+  border: 1px solid #E2E8F0;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.image-preview-card:hover {
+  border-color: var(--sacred-gold, #C59A45);
+  background: #FCFBF9;
+}
+
+.image-preview-thumb-wrap {
+  position: relative;
+  width: 96px;
+  height: 64px;
+  border-radius: 6px;
+  overflow: hidden;
+  background: #E2E8F0;
+  flex-shrink: 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.image-preview-thumb {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.image-preview-info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.image-preview-title {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #0F172A;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.image-preview-url {
+  font-size: 0.75rem;
+  color: #64748B;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+.image-preview-badge {
+  display: inline-block;
+  padding: 2px 7px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  border-radius: 4px;
+  background: #E0E7FF;
+  color: #3730A3;
+}
+
+.image-preview-badge.cdn {
+  background: #DCFCE7;
+  color: #166534;
+}
+
+.image-preview-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.btn-upload-direct {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #F1F5F9;
+  color: #0F172A;
+  border: 1px solid #CBD5E1;
+  padding: 8px 14px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.btn-upload-direct:hover {
+  background: #E2E8F0;
+  border-color: #94A3B8;
+}
+
+.seeder-banner {
+  background: linear-gradient(135deg, #002B49 0%, #001726 100%);
+  color: #FFFFFF;
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 24px;
+  border: 1px solid #C59A45;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+}
+
+.seeder-banner h3 {
+  color: #E5B869;
+  font-size: 1.25rem;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.seeder-banner p {
+  color: #CBD5E1;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin-bottom: 16px;
+}
+
+.seeder-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.seeder-stat-pill {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(229, 184, 105, 0.3);
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.82rem;
+  color: #F8FAFC;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.seeder-progress-wrap {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  height: 8px;
+  overflow: hidden;
+  margin-top: 14px;
+  display: none;
+}
+
+.seeder-progress-bar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #E5B869, #10B981);
+  transition: width 0.25s ease;
 }

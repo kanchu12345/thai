@@ -1,0 +1,393 @@
+{
+  "findings": [
+    {
+      "id": "SEO-NO-CANONICAL",
+      "severity": "Medium",
+      "file": "404.html",
+      "detail": "Missing rel='canonical' tag"
+    },
+    {
+      "id": "SEO-NO-CANONICAL",
+      "severity": "Medium",
+      "file": "about.html",
+      "detail": "Missing rel='canonical' tag"
+    },
+    {
+      "id": "SEO-NO-DESC",
+      "severity": "Low",
+      "file": "adventure-tours.html",
+      "detail": "Missing or empty meta description"
+    },
+    {
+      "id": "RESP-NO-VIEWPORT",
+      "severity": "Critical",
+      "file": "adventure-tours.html",
+      "detail": "Missing viewport meta tag"
+    },
+    {
+      "id": "SEO-NO-DESC",
+      "severity": "Low",
+      "file": "ayurvedic-tours.html",
+      "detail": "Missing or empty meta description"
+    },
+    {
+      "id": "RESP-NO-VIEWPORT",
+      "severity": "Critical",
+      "file": "ayurvedic-tours.html",
+      "detail": "Missing viewport meta tag"
+    },
+    {
+      "id": "SEO-NO-DESC",
+      "severity": "Low",
+      "file": "beach-tours.html",
+      "detail": "Missing or empty meta description"
+    },
+    {
+      "id": "RESP-NO-VIEWPORT",
+      "severity": "Critical",
+      "file": "beach-tours.html",
+      "detail": "Missing viewport meta tag"
+    },
+    {
+      "id": "SEO-NO-DESC",
+      "severity": "Low",
+      "file": "blog.html",
+      "detail": "Missing or empty meta description"
+    },
+    {
+      "id": "SEO-NO-CANONICAL",
+      "severity": "Medium",
+      "file": "blog.html",
+      "detail": "Missing rel='canonical' tag"
+    },
+    {
+      "id": "SEO-NO-DESC",
+      "severity": "Low",
+      "file": "buddhist-heritage-tours.html",
+      "detail": "Missing or empty meta description"
+    },
+    {
+      "id": "RESP-NO-VIEWPORT",
+      "severity": "Critical",
+      "file": "buddhist-heritage-tours.html",
+      "detail": "Missing viewport meta tag"
+    },
+    {
+      "id": "SEO-NO-CANONICAL",
+      "severity": "Medium",
+      "file": "cancellation-policy.html",
+      "detail": "Missing rel='canonical' tag"
+    },
+    {
+      "id": "SEO-NO-DESC",
+      "severity": "Low",
+      "file": "category.html",
+      "detail": "Missing or empty meta description"
+    },
+    {
+      "id": "RESP-NO-VIEWPORT",
+      "severity": "Critical",
+      "file": "category.html",
+      "detail": "Missing viewport meta tag"
+    },
+    {
+      "id": "SEO-NO-CANONICAL",
+      "severity": "Medium",
+      "file": "contact.html",
+      "detail": "Missing rel='canonical' tag"
+    },
+    {
+      "id": "SEO-NO-CANONICAL",
+      "severity": "Medium",
+      "file": "cookie-policy.html",
+      "detail": "Missing rel='canonical' tag"
+    },
+    {
+      "id": "SEO-NO-DESC",
+      "severity": "Low",
+      "file": "cultural-tours.html",
+      "detail": "Missing or empty meta description"
+    },
+    {
+      "id": "RESP-NO-VIEWPORT",
+      "severity": "Critical",
+      "file": "cultural-tours.html",
+      "detail": "Missing viewport meta tag"
+    },
+    {
+      "id": "SEO-NO-CANONICAL",
+      "severity": "Medium",
+      "file": "destinations.html",
+      "detail": "Missing rel='canonical' tag"
+    },
+    {
+      "id": "SEO-NO-CANONICAL",
+      "severity": "Medium",
+      "file": "experiences.html",
+      "detail": "Missing rel='canonical' tag"
+    },
+    {
+      "id": "SEO-NO-DESC",
+      "severity": "Low",
+      "file": "family-tours.html",
+      "detail": "Missing or empty meta description"
+    },
+    {
+      "id": "RESP-NO-VIEWPORT",
+      "severity": "Critical",
+      "file": "family-tours.html",
+      "detail": "Missing viewport meta tag"
+    },
+    {
+      "id": "SEO-NO-CANONICAL",
+      "severity": "Medium",
+      "file": "gallery.html",
+      "detail": "Missing rel='canonical' tag"
+    },
+    {
+      "id": "SEO-NO-DESC",
+      "severity": "Low",
+      "file": "golf-tours.html",
+      "detail": "Missing or empty meta description"
+    },
+    {
+      "id": "RESP-NO-VIEWPORT",
+      "severity": "Critical",
+      "file": "golf-tours.html",
+      "detail": "Missing viewport meta tag"
+    },
+    {
+      "id": "SEO-NO-DESC",
+      "severity": "Low",
+      "file": "hill-country-tours.html",
+      "detail": "Missing or empty meta description"
+    },
+    {
+      "id": "RESP-NO-VIEWPORT",
+      "severity": "Critical",
+      "file": "hill-country-tours.html",
+      "detail": "Missing viewport meta tag"
+    },
+    {
+      "id": "SEO-NO-DESC",
+      "severity": "Low",
+      "file": "honeymoon-tours.html",
+      "detail": "Missing or empty meta description"
+    },
+    {
+      "id": "RESP-NO-VIEWPORT",
+      "severity": "Critical",
+      "file": "honeymoon-tours.html",
+      "detail": "Missing viewport meta tag"
+    },
+    {
+      "id": "SEO-NO-CANONICAL",
+      "severity": "Medium",
+      "file": "index.html",
+      "detail": "Missing rel='canonical' tag"
+    },
+    {
+      "id": "SEO-NO-CANONICAL",
+      "severity": "Medium",
+      "file": "inquiry-detailed.html",
+      "detail": "Missing rel='canonical' tag"
+    },
+    {
+      "id": "SEO-NO-CANONICAL",
+      "severity": "Medium",
+      "file": "inquiry-quick.html",
+      "detail": "Missing rel='canonical' tag"
+    },
+    {
+      "id": "SEO-NO-CANONICAL",
+      "severity": "Medium",
+      "file": "privacy-policy.html",
+      "detail": "Missing rel='canonical' tag"
+    },
+    {
+      "id": "SEO-NO-DESC",
+      "severity": "Low",
+      "file": "ramayana-tours.html",
+      "detail": "Missing or empty meta description"
+    },
+    {
+      "id": "RESP-NO-VIEWPORT",
+      "severity": "Critical",
+      "file": "ramayana-tours.html",
+      "detail": "Missing viewport meta tag"
+    },
+    {
+      "id": "SEO-NO-CANONICAL",
+      "severity": "Medium",
+      "file": "reviews.html",
+      "detail": "Missing rel='canonical' tag"
+    },
+    {
+      "id": "SEO-NO-CANONICAL",
+      "severity": "Medium",
+      "file": "terms-conditions.html",
+      "detail": "Missing rel='canonical' tag"
+    },
+    {
+      "id": "SEO-NO-DESC",
+      "severity": "Low",
+      "file": "tour-package-detail.html",
+      "detail": "Missing or empty meta description"
+    },
+    {
+      "id": "RESP-NO-VIEWPORT",
+      "severity": "Critical",
+      "file": "tour-package-detail.html",
+      "detail": "Missing viewport meta tag"
+    },
+    {
+      "id": "SEO-NO-DESC",
+      "severity": "Low",
+      "file": "tours.html",
+      "detail": "Missing or empty meta description"
+    },
+    {
+      "id": "RESP-NO-VIEWPORT",
+      "severity": "Critical",
+      "file": "tours.html",
+      "detail": "Missing viewport meta tag"
+    },
+    {
+      "id": "SEO-NO-DESC",
+      "severity": "Low",
+      "file": "wildlife-tours.html",
+      "detail": "Missing or empty meta description"
+    },
+    {
+      "id": "RESP-NO-VIEWPORT",
+      "severity": "Critical",
+      "file": "wildlife-tours.html",
+      "detail": "Missing viewport meta tag"
+    },
+    {
+      "id": "SEO-NO-DESC",
+      "severity": "Low",
+      "file": "admin\\index.html",
+      "detail": "Missing or empty meta description"
+    },
+    {
+      "id": "SEO-NO-DESC",
+      "severity": "Low",
+      "file": "tours\\detail.html",
+      "detail": "Missing or empty meta description"
+    },
+    {
+      "id": "RESP-NO-VIEWPORT",
+      "severity": "Critical",
+      "file": "tours\\detail.html",
+      "detail": "Missing viewport meta tag"
+    },
+    {
+      "id": "SEO-NO-CANONICAL",
+      "severity": "Medium",
+      "file": "tours\\buddhist-heritage\\index.html",
+      "detail": "Missing rel='canonical' tag"
+    }
+  ],
+  "broken_links": [],
+  "missing_assets": [
+    [
+      "about.html",
+      "img",
+      "${photoUrl}",
+      "${photoUrl}"
+    ]
+  ],
+  "forms": [
+    {
+      "file": "contact.html",
+      "id": "unnamed",
+      "action": "inquiry-detailed.html",
+      "method": "GET"
+    },
+    {
+      "file": "index.html",
+      "id": "unnamed",
+      "action": "inquiry-detailed.html",
+      "method": "get"
+    },
+    {
+      "file": "inquiry-detailed.html",
+      "id": "inquiryForm",
+      "action": "",
+      "method": "GET"
+    },
+    {
+      "file": "inquiry-quick.html",
+      "id": "inquiryForm",
+      "action": "",
+      "method": "GET"
+    },
+    {
+      "file": "sri-lanka-tours.html",
+      "id": "unnamed",
+      "action": "sri-lanka-tours.html",
+      "method": "get"
+    },
+    {
+      "file": "admin\\index.html",
+      "id": "loginForm",
+      "action": "",
+      "method": "GET"
+    },
+    {
+      "file": "admin\\index.html",
+      "id": "packageForm",
+      "action": "",
+      "method": "GET"
+    },
+    {
+      "file": "admin\\index.html",
+      "id": "teamMemberForm",
+      "action": "",
+      "method": "GET"
+    },
+    {
+      "file": "admin\\index.html",
+      "id": "categoryForm",
+      "action": "",
+      "method": "GET"
+    },
+    {
+      "file": "admin\\index.html",
+      "id": "destinationForm",
+      "action": "",
+      "method": "GET"
+    },
+    {
+      "file": "admin\\index.html",
+      "id": "reviewForm",
+      "action": "",
+      "method": "GET"
+    },
+    {
+      "file": "tours\\index.html",
+      "id": "findJourneyQuiz",
+      "action": "",
+      "method": "GET"
+    },
+    {
+      "file": "tours\\beach\\index.html",
+      "id": "unnamed",
+      "action": "inquiry-detailed.html",
+      "method": "get"
+    },
+    {
+      "file": "tours\\cultural\\index.html",
+      "id": "unnamed",
+      "action": "inquiry-detailed.html",
+      "method": "get"
+    },
+    {
+      "file": "tours\\wildlife\\index.html",
+      "id": "unnamed",
+      "action": "inquiry-detailed.html",
+      "method": "get"
+    }
+  ]
+}

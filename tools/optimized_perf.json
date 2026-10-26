@@ -1,0 +1,369 @@
+[
+  {
+    "page": "Home",
+    "viewport": "Desktop (1440px)",
+    "is_mobile": false,
+    "metrics": {
+      "fcp": 1228,
+      "lcp": 1228,
+      "lcpElement": "IMG.hero-img-bg",
+      "cls": 0.0071,
+      "domContentLoaded": 1302,
+      "loadTime": 2726,
+      "totalImages": 47,
+      "imagesMissingLazy": 1,
+      "imagesMissingDimensions": 42,
+      "oversizedImages": [
+        {
+          "src": "hero-sigiriya-aerial-1.webp",
+          "naturalWidth": 1920,
+          "renderedWidth": 578,
+          "ratio": "3.3"
+        }
+      ],
+      "renderBlockingScripts": [
+        "m=el_main"
+      ],
+      "videos": [
+        {
+          "src": "http://localhost:8089/assets/videos/hero-banner.mp4",
+          "preload": "none",
+          "poster": "./assets/images/home/hero-sigiriya-aerial-1.webp",
+          "muted": true,
+          "playsinline": true
+        }
+      ]
+    },
+    "total_requests": 58,
+    "total_kb": 22529.5,
+    "bytes_by_type_kb": {
+      "document": 91.6,
+      "image": 3692.0,
+      "stylesheet": 358.7,
+      "script": 632.3,
+      "font": 219.3,
+      "fetch": 1987.4,
+      "media": 15452.4,
+      "other": 95.8
+    }
+  },
+  {
+    "page": "Home",
+    "viewport": "Android Mobile (390px)",
+    "is_mobile": true,
+    "metrics": {
+      "fcp": 568,
+      "lcp": 568,
+      "lcpElement": "IMG.hero-img-bg",
+      "cls": 0.1211,
+      "domContentLoaded": 1284,
+      "loadTime": 2289,
+      "totalImages": 47,
+      "imagesMissingLazy": 1,
+      "imagesMissingDimensions": 42,
+      "oversizedImages": [
+        {
+          "src": "hero-sigiriya-aerial-1.webp",
+          "naturalWidth": 1920,
+          "renderedWidth": 358,
+          "ratio": "5.4"
+        }
+      ],
+      "renderBlockingScripts": [
+        "m=el_main"
+      ],
+      "videos": [
+        {
+          "src": "http://localhost:8089/assets/videos/hero-banner.mp4",
+          "preload": "none",
+          "poster": "./assets/images/home/hero-sigiriya-aerial-1.webp",
+          "muted": true,
+          "playsinline": true
+        }
+      ]
+    },
+    "total_requests": 57,
+    "total_kb": 7096.8,
+    "bytes_by_type_kb": {
+      "document": 91.6,
+      "image": 3771.8,
+      "stylesheet": 359.6,
+      "script": 632.3,
+      "font": 158.2,
+      "fetch": 1987.4,
+      "other": 95.8
+    }
+  },
+  {
+    "page": "Tours Catalog",
+    "viewport": "Desktop (1440px)",
+    "is_mobile": false,
+    "metrics": {
+      "fcp": 1252,
+      "lcp": 1252,
+      "lcpElement": "IMG.banner-img",
+      "cls": 0.0106,
+      "domContentLoaded": 1298,
+      "loadTime": 2453,
+      "totalImages": 26,
+      "imagesMissingLazy": 10,
+      "imagesMissingDimensions": 22,
+      "oversizedImages": [
+        {
+          "src": "hero-sigiriya-aerial-1.webp",
+          "naturalWidth": 1920,
+          "renderedWidth": 425,
+          "ratio": "4.5"
+        }
+      ],
+      "renderBlockingScripts": [
+        "m=el_main"
+      ],
+      "videos": []
+    },
+    "total_requests": 55,
+    "total_kb": 5793.1,
+    "bytes_by_type_kb": {
+      "document": 71.4,
+      "stylesheet": 450.4,
+      "image": 2180.7,
+      "script": 537.4,
+      "fetch": 2238.1,
+      "font": 219.3,
+      "other": 95.8
+    }
+  },
+  {
+    "page": "Tours Catalog",
+    "viewport": "Android Mobile (390px)",
+    "is_mobile": true,
+    "metrics": {
+      "fcp": 1608,
+      "lcp": 1608,
+      "lcpElement": "IMG.banner-img",
+      "cls": 0.0121,
+      "domContentLoaded": 1569,
+      "loadTime": 2849,
+      "totalImages": 26,
+      "imagesMissingLazy": 10,
+      "imagesMissingDimensions": 22,
+      "oversizedImages": [
+        {
+          "src": "hero-sigiriya-aerial-1.webp",
+          "naturalWidth": 1920,
+          "renderedWidth": 359,
+          "ratio": "5.3"
+        }
+      ],
+      "renderBlockingScripts": [
+        "m=el_main"
+      ],
+      "videos": []
+    },
+    "total_requests": 54,
+    "total_kb": 5732.6,
+    "bytes_by_type_kb": {
+      "document": 71.4,
+      "stylesheet": 451.0,
+      "image": 2180.7,
+      "script": 537.4,
+      "fetch": 2238.1,
+      "font": 158.2,
+      "other": 95.8
+    }
+  },
+  {
+    "page": "Tour Detail",
+    "viewport": "Desktop (1440px)",
+    "is_mobile": false,
+    "metrics": {
+      "fcp": 1180,
+      "lcp": 1232,
+      "lcpElement": "SECTION.tour-hero-section#tourHero",
+      "cls": 0.0207,
+      "domContentLoaded": 1124,
+      "loadTime": 2511,
+      "totalImages": 18,
+      "imagesMissingLazy": 13,
+      "imagesMissingDimensions": 14,
+      "oversizedImages": [],
+      "renderBlockingScripts": [
+        "m=el_main"
+      ],
+      "videos": []
+    },
+    "total_requests": 50,
+    "total_kb": 5025.2,
+    "bytes_by_type_kb": {
+      "document": 54.0,
+      "stylesheet": 448.7,
+      "image": 1154.1,
+      "script": 537.4,
+      "fetch": 2515.9,
+      "font": 219.3,
+      "other": 95.8
+    }
+  },
+  {
+    "page": "Tour Detail",
+    "viewport": "Android Mobile (390px)",
+    "is_mobile": true,
+    "metrics": {
+      "fcp": 1676,
+      "lcp": 1792,
+      "lcpElement": "SECTION.tour-hero-section#tourHero",
+      "cls": 0.1854,
+      "domContentLoaded": 1636,
+      "loadTime": 5087,
+      "totalImages": 15,
+      "imagesMissingLazy": 10,
+      "imagesMissingDimensions": 11,
+      "oversizedImages": [],
+      "renderBlockingScripts": [
+        "m=el_main"
+      ],
+      "videos": []
+    },
+    "total_requests": 46,
+    "total_kb": 4847.0,
+    "bytes_by_type_kb": {
+      "document": 54.0,
+      "stylesheet": 449.6,
+      "image": 1036.1,
+      "script": 537.4,
+      "fetch": 2515.9,
+      "font": 158.2,
+      "other": 95.8
+    }
+  },
+  {
+    "page": "Destinations",
+    "viewport": "Desktop (1440px)",
+    "is_mobile": false,
+    "metrics": {
+      "fcp": 1076,
+      "lcp": 1076,
+      "lcpElement": "SECTION.dest-hero",
+      "cls": 0.0058,
+      "domContentLoaded": 949,
+      "loadTime": 2844,
+      "totalImages": 28,
+      "imagesMissingLazy": 1,
+      "imagesMissingDimensions": 24,
+      "oversizedImages": [],
+      "renderBlockingScripts": [
+        "m=el_main"
+      ],
+      "videos": []
+    },
+    "total_requests": 48,
+    "total_kb": 8297.1,
+    "bytes_by_type_kb": {
+      "document": 63.0,
+      "stylesheet": 328.7,
+      "image": 5266.2,
+      "script": 385.2,
+      "fetch": 1960.4,
+      "font": 197.9,
+      "other": 95.8
+    }
+  },
+  {
+    "page": "Destinations",
+    "viewport": "Android Mobile (390px)",
+    "is_mobile": true,
+    "metrics": {
+      "fcp": 864,
+      "lcp": 864,
+      "lcpElement": "SECTION.dest-hero",
+      "cls": 0.0237,
+      "domContentLoaded": 808,
+      "loadTime": 2001,
+      "totalImages": 28,
+      "imagesMissingLazy": 1,
+      "imagesMissingDimensions": 24,
+      "oversizedImages": [],
+      "renderBlockingScripts": [
+        "m=el_main"
+      ],
+      "videos": []
+    },
+    "total_requests": 44,
+    "total_kb": 7990.8,
+    "bytes_by_type_kb": {
+      "document": 63.0,
+      "stylesheet": 329.2,
+      "image": 5102.9,
+      "script": 350.0,
+      "fetch": 1960.4,
+      "font": 89.5,
+      "other": 95.8
+    }
+  },
+  {
+    "page": "About",
+    "viewport": "Desktop (1440px)",
+    "is_mobile": false,
+    "metrics": {
+      "fcp": 1568,
+      "lcp": 1584,
+      "lcpElement": "SECTION.about-hero",
+      "cls": 0.0233,
+      "domContentLoaded": 1524,
+      "loadTime": 2908,
+      "totalImages": 7,
+      "imagesMissingLazy": 1,
+      "imagesMissingDimensions": 1,
+      "oversizedImages": [],
+      "renderBlockingScripts": [
+        "m=el_main"
+      ],
+      "videos": []
+    },
+    "total_requests": 48,
+    "total_kb": 2638.1,
+    "bytes_by_type_kb": {
+      "document": 61.7,
+      "stylesheet": 328.7,
+      "image": 516.1,
+      "script": 1371.2,
+      "fetch": 27.1,
+      "font": 237.6,
+      "other": 95.8
+    }
+  },
+  {
+    "page": "About",
+    "viewport": "Android Mobile (390px)",
+    "is_mobile": true,
+    "metrics": {
+      "fcp": 992,
+      "lcp": 1040,
+      "lcpElement": "SECTION.about-hero",
+      "cls": 0.0239,
+      "domContentLoaded": 991,
+      "loadTime": 3591,
+      "totalImages": 7,
+      "imagesMissingLazy": 1,
+      "imagesMissingDimensions": 1,
+      "oversizedImages": [],
+      "renderBlockingScripts": [
+        "m=el_main",
+        "api.js?onload=__iframefcb980427"
+      ],
+      "videos": []
+    },
+    "total_requests": 51,
+    "total_kb": 2897.4,
+    "bytes_by_type_kb": {
+      "document": 62.1,
+      "stylesheet": 329.2,
+      "image": 516.1,
+      "script": 1737.8,
+      "fetch": 27.1,
+      "font": 129.2,
+      "other": 95.8,
+      "xhr": 0.1
+    }
+  }
+]

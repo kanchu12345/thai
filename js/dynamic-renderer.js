@@ -71,16 +71,37 @@
      */
     t(field, obj) {
       if (!obj) return '';
+      const lang = this.currentLang || 'en';
+      const cleanLang = (lang === 'zh-CN' || lang === 'zh-TW') ? 'zh' : lang;
+
       // Check translations JSON dictionary if available
-      if (obj.translations && obj.translations[this.currentLang] && obj.translations[this.currentLang][field]) {
-        return obj.translations[this.currentLang][field];
+      if (obj.translations && obj.translations[cleanLang] && obj.translations[cleanLang][field]) {
+        return obj.translations[cleanLang][field];
       }
       // Check language-specific keys (e.g., title_zh, title_fr)
-      const langKey = `${field}_${this.currentLang}`;
+      const langKey = field + '_' + cleanLang;
       if (obj[langKey]) return obj[langKey];
 
-      // Fallback to English / default field
-      return obj[field] || '';
+      const val = obj[field];
+      if (val && typeof val === 'object') {
+        return val[cleanLang] || val['en'] || Object.values(val)[0] || '';
+      }
+      return val || '';
+    },
+
+    resolveImg(url) {
+      if (!url) return 'assets/images/sigiriya.jpg';
+      url = String(url).trim();
+      if (url.startsWith('http://') || url.startsWith('https://') || url.startsWith('data:') || url.startsWith('blob:')) {
+        return url;
+      }
+      const clean = url.replace(/^(\.\.\/)+/, '').replace(/^(\.\/)+/, '').replace(/^\//, '');
+      const path = window.location.pathname.replace(/\\/g, '/');
+      if (path.includes('/tours/')) {
+        const parts = path.split('/tours/')[1].split('/').filter(p => p && !p.endsWith('.html'));
+        return '../'.repeat(parts.length + 1) + clean;
+      }
+      return './' + clean;
     },
 
     /**
@@ -201,7 +222,7 @@
 
       catContainer.innerHTML = this.data.categories.map(cat => `
         <a href="category.html?slug=${cat.slug}" class="hover-box">
-          <img src="${cat.image_url || 'assets/images/sigiriya.jpg'}" class="hover-box__img" alt="${this.t('name', cat)}" loading="lazy" onerror="this.src='assets/images/sigiriya.jpg'">
+          <img src="${this.resolveImg(cat.image_url)}" class="hover-box__img" alt="${this.t('name', cat)}" loading="lazy" onerror="this.src='assets/images/sigiriya.jpg'">
           <div class="hover-box__overlay"></div>
           <div class="hover-box__details">
             <div class="hover-box__details_visible">
@@ -222,14 +243,20 @@
      */
     renderPackagesSlider() {
       const pkgContainers = document.querySelectorAll('.packages-slider-track, #packagesTrack, .packages-grid');
-      if (pkgContainers.length === 0 || this.data.tours.length === 0) return;
+      if (pkgContainers.length === 0) return;
+      if (!this.data.tours || this.data.tours.length === 0) {
+        pkgContainers.forEach(container => {
+          container.innerHTML = '<div style="text-align: center; padding: 40px 20px; color: var(--ink-muted); width: 100%;"><p>Custom private journeys are available for every destination in Sri Lanka. Contact our concierge to curate your itinerary.</p></div>';
+        });
+        return;
+      }
 
       pkgContainers.forEach(container => {
         container.innerHTML = this.data.tours.map(pkg => `
           <div class="package-card-item">
             <div class="pkg-card" style="background: var(--white); border-radius: 12px; overflow: hidden; border: 1px solid rgba(28,27,31,0.08); box-shadow: 0 4px 14px rgba(0,0,0,0.05); transition: transform 0.3s ease, box-shadow 0.3s ease; display: flex; flex-direction: column; height: 100%;">
               <div class="pkg-card-media" style="position: relative; height: 240px; overflow: hidden;">
-                <img src="${pkg.hero_image || 'assets/images/sigiriya.jpg'}" alt="${this.t('title', pkg)}" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;" onerror="this.src='assets/images/sigiriya.jpg'">
+                <img src="${this.resolveImg(pkg.hero_image)}" alt="${this.t('title', pkg)}" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;" onerror="this.src='assets/images/sigiriya.jpg'">
                 ${pkg.is_popular ? '<span class="pkg-popular-badge" style="position: absolute; top: 12px; left: 12px; background: var(--lotus-primary); color: #fff; padding: 4px 10px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase;">Most Popular</span>' : ''}
                 <span class="pkg-duration-badge" style="position: absolute; bottom: 12px; right: 12px; background: rgba(0,0,0,0.7); backdrop-filter: blur(4px); color: #fff; padding: 4px 10px; border-radius: 20px; font-size: 0.78rem; font-weight: 600;">${pkg.nights}N / ${pkg.days}D</span>
               </div>
@@ -402,7 +429,11 @@
     renderSingleTourPage(slug) {
       const pkg = this.data.tours.find(t => t.slug === slug);
       const container = document.getElementById('singleTourContainer');
-      if (!container || !pkg) return;
+      if (!container) return;
+      if (!pkg) {
+        container.innerHTML = '<div style="max-width: 800px; margin: 80px auto; text-align: center; padding: 40px 20px;"><h2 style="font-family: Playfair Display, serif; font-size: 2rem; margin-bottom: 14px;">Journey Not Found</h2><p style="color: var(--ink-muted); margin-bottom: 24px;">We could not locate the requested tour package. It may have been updated or moved.</p><a href="sri-lanka-tours.html" class="gold-inquire-btn">Browse All Journeys</a></div>';
+        return;
+      }
 
       const catalog = document.getElementById('toursCatalogWrapper');
       if (catalog) catalog.style.display = 'none';
@@ -501,7 +532,7 @@
         }
         container.innerHTML = matchingTours.map(pkg => `
           <div class="pkg-card" style="background: var(--white); border-radius: 12px; overflow: hidden; border: 1px solid rgba(28,27,31,0.08); box-shadow: 0 4px 14px rgba(0,0,0,0.05); display: flex; flex-direction: column;">
-            <img src="${pkg.hero_image || 'assets/images/sigiriya.jpg'}" alt="${pkg.title}" style="height: 220px; object-fit: cover;">
+            <img src="${this.resolveImg(pkg.hero_image)}" alt="${pkg.title}" style="height: 220px; object-fit: cover;">
             <div style="padding: 20px; flex: 1; display: flex; flex-direction: column;">
               <h3 style="font-family: 'Playfair Display', serif; font-size: 1.25rem;"><a href="tours.html?slug=${pkg.slug}" style="color: var(--ink);">${this.t('title', pkg)}</a></h3>
               <p style="color: var(--ink-light); font-size: 0.88rem; margin: 10px 0 16px; flex: 1;">${(this.t('overview', pkg) || '').slice(0, 100)}...</p>

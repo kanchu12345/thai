@@ -13,6 +13,20 @@
   'use strict';
 
   const CACHE_TTL_MS = 10 * 60 * 1000; // 10 minutes cache
+
+  function resolveFallbackPath(relPath) {
+    if (!relPath || relPath.startsWith('http://') || relPath.startsWith('https://') || relPath.startsWith('/')) {
+      return relPath;
+    }
+    const clean = relPath.replace(/^(\.\/)+/, '');
+    const path = window.location.pathname.replace(/\\/g, '/');
+    if (path.includes('/tours/')) {
+      const after = path.split('/tours/')[1].split('/').filter(p => p && !p.endsWith('.html'));
+      return '../'.repeat(after.length + 1) + clean;
+    }
+    return './' + clean;
+  }
+
   const FALLBACK_DATA_URL = 'data/default-content.json';
 
   class LotusSupabaseClient {
@@ -46,6 +60,7 @@
       } else {
         // Not configured yet or Supabase SDK not loaded on this page
         this.client = null;
+        console.info('[Lotus CMS] Supabase client unconfigured; using local & Firestore-bridged fallback data.');
       }
     }
 
@@ -61,9 +76,28 @@
      */
     async getFallbackData() {
       if (this.fallbackData) return this.fallbackData;
+      // 1. Check local seed cache populated from live Firestore sync or Admin updates
       try {
-        const res = await fetch(FALLBACK_DATA_URL);
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const cachedRaw = localStorage.getItem('lotus_seed_catalog_cache_v2');
+        if (cachedRaw) {
+          const parsed = JSON.parse(cachedRaw);
+          if (parsed && (parsed.packages || parsed.tours)) {
+            const rawCats = parsed.categories || [];
+            this.fallbackData = {
+              site_settings: parsed.settings ? (Array.isArray(parsed.settings) ? parsed.settings[0] : parsed.settings) : {},
+              tour_categories: Array.isArray(rawCats) ? rawCats : Object.values(rawCats),
+              tours: parsed.packages || parsed.tours || [],
+              reviews: parsed.reviews || parsed.testimonials || []
+            };
+            return this.fallbackData;
+          }
+        }
+      } catch (e) {}
+
+      // 2. Bundled JSON fallback
+      try {
+        const res = await fetch(resolveFallbackPath(FALLBACK_DATA_URL));
+        if (!res.ok) throw new Error(HTTP );
         this.fallbackData = await res.json();
         return this.fallbackData;
       } catch (err) {

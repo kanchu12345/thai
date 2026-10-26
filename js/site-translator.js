@@ -102,6 +102,17 @@
         }
       });
     });
+
+    document.querySelectorAll('#mobileLangGrid button, .mobile-lang-btn').forEach(btn => {
+      const btnLang = btn.getAttribute('data-lang');
+      if (btnLang === lang || (btnLang === 'zh' && lang === 'zh-CN')) {
+        btn.classList.add('is-active');
+        btn.setAttribute('aria-selected', 'true');
+      } else {
+        btn.classList.remove('is-active');
+        btn.setAttribute('aria-selected', 'false');
+      }
+    });
   }
 
   function triggerCombo(lang) {
@@ -177,6 +188,16 @@
         console.warn('[Google Translate Init]:', err);
       }
 
+      // Accessibility hardening: label third-party Google Translate voting inputs
+      setTimeout(function() {
+        document.querySelectorAll('input[id^="goog-gt-"], #goog-gt-tt input').forEach(function(inp) {
+          if (!inp.getAttribute('aria-label')) {
+            inp.setAttribute('aria-label', 'Google Translate Internal Input');
+            inp.setAttribute('tabindex', '-1');
+          }
+        });
+      }, 500);
+
       const current = getStoredLang();
       if (current && current !== 'en') {
         setTimeout(() => {
@@ -196,8 +217,8 @@
 
   function setupEventDelegation() {
     document.addEventListener('click', function (e) {
-      // 1. Language Button Click
-      const btn = e.target.closest('#langPillMenu button, .lang-pill-dropdown button');
+      // 1. Language Button Click (Desktop Pill + Mobile Drawer Grid)
+      const btn = e.target.closest('#langPillMenu button, .lang-pill-dropdown button, #mobileLangGrid button, .mobile-lang-btn');
       if (btn) {
         e.preventDefault();
         e.stopImmediatePropagation();

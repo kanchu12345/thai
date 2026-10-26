@@ -1,0 +1,982 @@
+[
+  {
+    "name": "hero-sigiriya-aerial-1.webp",
+    "url": "assets/images/home/hero-sigiriya-aerial-1.webp",
+    "topic": "Sigiriya aerial view",
+    "alt": "Aerial panoramic view of Sigiriya ancient rock fortress in Sri Lanka surrounded by lush green forests",
+    "size": "194 KB"
+  },
+  {
+    "name": "sigiriya-1.webp",
+    "url": "assets/images/cultural/sigiriya-1.webp",
+    "topic": "Sigiriya ancient rock fortress",
+    "alt": "Majestic Sigiriya ancient rock fortress citadel rising above landscaped water gardens in Sri Lanka",
+    "size": "135 KB"
+  },
+  {
+    "name": "dambulla-cave-temple-2.webp",
+    "url": "assets/images/cultural/dambulla-cave-temple-2.webp",
+    "topic": "Dambulla cave temple",
+    "alt": "Sacred rock cave shrine and golden statues at Dambulla Cave Temple in Sri Lanka",
+    "size": "194 KB"
+  },
+  {
+    "name": "polonnaruwa-gal-vihara-3.webp",
+    "url": "assets/images/cultural/polonnaruwa-gal-vihara-3.webp",
+    "topic": "Polonnaruwa Gal Vihara",
+    "alt": "Colossal rock-hewn standing and reclining Buddha statues at Gal Vihara, Polonnaruwa, Sri Lanka",
+    "size": "131 KB"
+  },
+  {
+    "name": "kandy-temple-of-tooth-4.webp",
+    "url": "assets/images/cultural/kandy-temple-of-tooth-4.webp",
+    "topic": "Kandy Temple of the Tooth (Sri Dalada Maligawa)",
+    "alt": "Golden roof of the sacred Temple of the Tooth Relic overlooking Kandy lake in Sri Lanka",
+    "size": "135 KB"
+  },
+  {
+    "name": "galle-fort-5.webp",
+    "url": "assets/images/cultural/galle-fort-5.webp",
+    "topic": "Galle Fort ramparts and lighthouse",
+    "alt": "Historic Dutch colonial ramparts and lighthouse overlooking the Indian Ocean at Galle Fort in Sri Lanka",
+    "size": "155 KB"
+  },
+  {
+    "name": "jaya-sri-maha-bodhi-1.webp",
+    "url": "assets/images/buddhist-heritage/jaya-sri-maha-bodhi-1.webp",
+    "topic": "Jaya Sri Maha Bodhi Anuradhapura",
+    "alt": "Sacred Jaya Sri Maha Bodhi tree sanctuary surrounded by golden railings in Anuradhapura, Sri Lanka",
+    "size": "194 KB"
+  },
+  {
+    "name": "ruwanwelisaya-2.webp",
+    "url": "assets/images/buddhist-heritage/ruwanwelisaya-2.webp",
+    "topic": "Ruwanwelisaya stupa Anuradhapura",
+    "alt": "Gleaming white dome of Ruwanwelisaya stupa with elephant wall in Anuradhapura, Sri Lanka",
+    "size": "131 KB"
+  },
+  {
+    "name": "mihintale-3.webp",
+    "url": "assets/images/buddhist-heritage/mihintale-3.webp",
+    "topic": "Mihintale sacred mountain cradle of Buddhism",
+    "alt": "Grand stone stairway and white summit stupa at sacred Mihintale mountain in Sri Lanka",
+    "size": "135 KB"
+  },
+  {
+    "name": "temple-of-the-tooth-4.webp",
+    "url": "assets/images/buddhist-heritage/temple-of-the-tooth-4.webp",
+    "topic": "Temple of the Tooth inner sanctum",
+    "alt": "Sacred carved wooden sanctum of Sri Dalada Maligawa Temple of the Tooth in Kandy, Sri Lanka",
+    "size": "135 KB"
+  },
+  {
+    "name": "yala-leopard-1.webp",
+    "url": "assets/images/wildlife/yala-leopard-1.webp",
+    "topic": "Yala Sri Lankan leopard",
+    "alt": "Wild Sri Lankan leopard resting on a rock outcrop in Yala National Park, Sri Lanka",
+    "size": "216 KB"
+  },
+  {
+    "name": "minneriya-elephant-gathering-2.webp",
+    "url": "assets/images/wildlife/minneriya-elephant-gathering-2.webp",
+    "topic": "Minneriya elephant gathering",
+    "alt": "Herds of wild Asian elephants grazing along the reservoir banks in Minneriya National Park, Sri Lanka",
+    "size": "216 KB"
+  },
+  {
+    "name": "udawalawe-3.webp",
+    "url": "assets/images/wildlife/udawalawe-3.webp",
+    "topic": "Udawalawe wild elephants",
+    "alt": "Wild elephant herd grazing peacefully under the dramatic mountain backdrop of Udawalawe, Sri Lanka",
+    "size": "216 KB"
+  },
+  {
+    "name": "mirissa-blue-whale-4.webp",
+    "url": "assets/images/wildlife/mirissa-blue-whale-4.webp",
+    "topic": "Mirissa blue whale watching",
+    "alt": "Majestic blue whale fluke diving in the azure waters off the coast of Mirissa, Sri Lanka",
+    "size": "59 KB"
+  },
+  {
+    "name": "sinharaja-rainforest-5.webp",
+    "url": "assets/images/wildlife/sinharaja-rainforest-5.webp",
+    "topic": "Sinharaja virgin rainforest",
+    "alt": "Pristine tropical rainforest canopy and biodiversity at UNESCO World Heritage Sinharaja Forest Reserve, Sri Lanka",
+    "size": "216 KB"
+  },
+  {
+    "name": "mirissa-1.webp",
+    "url": "assets/images/beach/mirissa-1.webp",
+    "topic": "Mirissa palm fringe beach",
+    "alt": "Crescent shaped golden sand bay and swaying coconut palms at Mirissa beach, Sri Lanka",
+    "size": "59 KB"
+  },
+  {
+    "name": "unawatuna-2.webp",
+    "url": "assets/images/beach/unawatuna-2.webp",
+    "topic": "Unawatuna turquoise bay",
+    "alt": "Sheltered turquoise waters and golden coral sands of Unawatuna bay in southern Sri Lanka",
+    "size": "155 KB"
+  },
+  {
+    "name": "bentota-3.webp",
+    "url": "assets/images/beach/bentota-3.webp",
+    "topic": "Bentota beach and lagoon",
+    "alt": "Broad golden shoreline and warm tropical waters of Bentota beach in southwestern Sri Lanka",
+    "size": "155 KB"
+  },
+  {
+    "name": "arugam-bay-4.webp",
+    "url": "assets/images/beach/arugam-bay-4.webp",
+    "topic": "Arugam Bay surf coast",
+    "alt": "Legendary right-hand point surf break and laid-back coastline at Arugam Bay, Sri Lanka",
+    "size": "155 KB"
+  },
+  {
+    "name": "pasikudah-5.webp",
+    "url": "assets/images/beach/pasikudah-5.webp",
+    "topic": "Pasikudah calm shallow bay",
+    "alt": "Crystal clear calm shallow waters ideal for wading and swimming at Pasikudah bay in Sri Lanka",
+    "size": "59 KB"
+  },
+  {
+    "name": "nilaveli-6.webp",
+    "url": "assets/images/beach/nilaveli-6.webp",
+    "topic": "Nilaveli beach Trincomalee",
+    "alt": "Pristine white sand beach and coral waters stretching towards Pigeon Island at Nilaveli, Trincomalee",
+    "size": "155 KB"
+  },
+  {
+    "name": "nine-arches-bridge-1.webp",
+    "url": "assets/images/hill-country/nine-arches-bridge-1.webp",
+    "topic": "Nine Arches Bridge Ella",
+    "alt": "Historic stone viaduct Nine Arches Bridge surrounded by lush tea bushes in Ella, Sri Lanka",
+    "size": "144 KB"
+  },
+  {
+    "name": "nuwara-eliya-tea-2.webp",
+    "url": "assets/images/hill-country/nuwara-eliya-tea-2.webp",
+    "topic": "Nuwara Eliya rolling tea estates",
+    "alt": "Misty emerald green tea plantations terraced across the rolling highlands of Nuwara Eliya, Sri Lanka",
+    "size": "195 KB"
+  },
+  {
+    "name": "ella-rock-3.webp",
+    "url": "assets/images/hill-country/ella-rock-3.webp",
+    "topic": "Ella Rock viewpoint",
+    "alt": "Panoramic summit vista overlooking the southern plains from Ella Rock in Sri Lanka",
+    "size": "144 KB"
+  },
+  {
+    "name": "ramboda-falls-4.webp",
+    "url": "assets/images/hill-country/ramboda-falls-4.webp",
+    "topic": "Ramboda Falls cascade",
+    "alt": "Dramatic multi-tier cascading waterfall surrounded by tropical forest at Ramboda Falls, Sri Lanka",
+    "size": "195 KB"
+  },
+  {
+    "name": "kandy-ella-train-5.webp",
+    "url": "assets/images/hill-country/kandy-ella-train-5.webp",
+    "topic": "Kandy to Ella scenic blue train",
+    "alt": "Famous blue highland train winding along scenic tea estate mountainsides between Kandy and Ella",
+    "size": "144 KB"
+  },
+  {
+    "name": "herbal-treatment-1.webp",
+    "url": "assets/images/ayurveda/herbal-treatment-1.webp",
+    "topic": "Traditional Ayurvedic oil shirodhara treatment",
+    "alt": "Authentic holistic Ayurvedic Shirodhara warm herbal oil wellness ritual in a Sri Lankan sanctuary",
+    "size": "194 KB"
+  },
+  {
+    "name": "matale-spice-garden-2.webp",
+    "url": "assets/images/ayurveda/matale-spice-garden-2.webp",
+    "topic": "Matale spice garden",
+    "alt": "Fresh healing cinnamon, cardamom and medicinal flora cultivated in a traditional Matale spice garden, Sri Lanka",
+    "size": "195 KB"
+  },
+  {
+    "name": "sri-lanka-yoga-3.webp",
+    "url": "assets/images/ayurveda/sri-lanka-yoga-3.webp",
+    "topic": "Yoga and meditation in Sri Lankan nature",
+    "alt": "Serene outdoor morning yoga and mindfulness practice pavilion overlooking lush Sri Lankan tropical palms",
+    "size": "194 KB"
+  },
+  {
+    "name": "seaside-villa-1.webp",
+    "url": "assets/images/honeymoon/seaside-villa-1.webp",
+    "topic": "Private luxury seaside villa",
+    "alt": "Private luxury beachfront boutique pool villa overlooking the Indian Ocean in Sri Lanka",
+    "size": "158 KB"
+  },
+  {
+    "name": "mirissa-sunset-2.webp",
+    "url": "assets/images/honeymoon/mirissa-sunset-2.webp",
+    "topic": "Mirissa romantic coastal sunset",
+    "alt": "Romantic golden sunset silhouettes over Coconut Tree Hill and ocean waters in Mirissa, Sri Lanka",
+    "size": "59 KB"
+  },
+  {
+    "name": "tea-bungalow-3.webp",
+    "url": "assets/images/honeymoon/tea-bungalow-3.webp",
+    "topic": "Colonial tea estate planters bungalow",
+    "alt": "Heritage colonial tea planter estate bungalow nestled in misty mountain valleys of Sri Lanka",
+    "size": "195 KB"
+  },
+  {
+    "name": "kosgoda-turtle-hatchery-1.webp",
+    "url": "assets/images/family/kosgoda-turtle-hatchery-1.webp",
+    "topic": "Kosgoda sea turtle conservation",
+    "alt": "Baby green sea turtles being carefully cared for at Kosgoda Sea Turtle Conservation project in Sri Lanka",
+    "size": "155 KB"
+  },
+  {
+    "name": "scenic-train-ride-2.webp",
+    "url": "assets/images/family/scenic-train-ride-2.webp",
+    "topic": "Family scenic train ride through tea hills",
+    "alt": "Delighted family travelers enjoying fresh mountain air from the scenic highland train in Sri Lanka",
+    "size": "144 KB"
+  },
+  {
+    "name": "calm-beach-3.webp",
+    "url": "assets/images/family/calm-beach-3.webp",
+    "topic": "Child-safe calm family beach",
+    "alt": "Gentle shallow turquoise waves and safe swimming waters for families along a serene southern Sri Lankan shore",
+    "size": "155 KB"
+  },
+  {
+    "name": "kitulgala-rafting-1.webp",
+    "url": "assets/images/adventure/kitulgala-rafting-1.webp",
+    "topic": "Kitulgala white water rafting",
+    "alt": "Adrenaline-fueled white water rafting team navigating Grade 3 rapids along Kelani River in Kitulgala, Sri Lanka",
+    "size": "213 KB"
+  },
+  {
+    "name": "adams-peak-2.webp",
+    "url": "assets/images/adventure/adams-peak-2.webp",
+    "topic": "Adam's Peak (Sri Pada) sacred pilgrimage climb",
+    "alt": "Dramatic triangular shadow cast by sacred Adam's Peak (Sri Pada) at sunrise over the clouds in Sri Lanka",
+    "size": "135 KB"
+  },
+  {
+    "name": "weligama-surfing-3.webp",
+    "url": "assets/images/adventure/weligama-surfing-3.webp",
+    "topic": "Weligama bay surfing waves",
+    "alt": "Surfers catching gentle rolling ocean waves along the sandy shore of Weligama bay, Sri Lanka",
+    "size": "213 KB"
+  },
+  {
+    "name": "knuckles-trek-4.webp",
+    "url": "assets/images/adventure/knuckles-trek-4.webp",
+    "topic": "Knuckles Mountain Range cloud forest trek",
+    "alt": "Hikers trekking across misty wilderness ridge trails in the UNESCO-listed Knuckles Mountain Range, Sri Lanka",
+    "size": "216 KB"
+  },
+  {
+    "name": "seetha-amman-temple-1.webp",
+    "url": "assets/images/ramayana/seetha-amman-temple-1.webp",
+    "topic": "Seetha Amman Temple Seetha Eliya",
+    "alt": "Vibrant carved Hindu temple sculptures at sacred Seetha Amman Kovil beside the mountain stream in Seetha Eliya, Sri Lanka",
+    "size": "194 KB"
+  },
+  {
+    "name": "ravana-falls-2.webp",
+    "url": "assets/images/ramayana/ravana-falls-2.webp",
+    "topic": "Ravana Falls Ella",
+    "alt": "Thundering torrents of Ravana Falls cascading over dark rock cliffs near Ravana Cave in Ella, Sri Lanka",
+    "size": "144 KB"
+  },
+  {
+    "name": "munneswaram-3.webp",
+    "url": "assets/images/ramayana/munneswaram-3.webp",
+    "topic": "Munneswaram Temple Chilaw",
+    "alt": "Ancient and historic Shiva kovil Munneswaram Temple complex revered in the Ramayana trail, Chilaw, Sri Lanka",
+    "size": "131 KB"
+  },
+  {
+    "name": "hakgala-gardens-4.webp",
+    "url": "assets/images/ramayana/hakgala-gardens-4.webp",
+    "topic": "Hakgala Botanical Gardens (Ashoka Vatika)",
+    "alt": "Lush temperate mountain flora and rose gardens under the imposing Hakgala rock cliff, Nuwara Eliya",
+    "size": "195 KB"
+  },
+  {
+    "name": "hospitality-scenes-1.webp",
+    "url": "assets/images/about/hospitality-scenes-1.webp",
+    "topic": "Sri Lankan warm hospitality and lotus greeting",
+    "alt": "Warm and gracious Sri Lankan traditional Ayubowan palm greeting welcoming international travelers",
+    "size": "194 KB"
+  },
+  {
+    "name": "negombo-lagoon-1.webp",
+    "url": "assets/images/contact/negombo-lagoon-1.webp",
+    "topic": "Serene Negombo coastal lagoon waters",
+    "alt": "Tranquil evening reflections and traditional catamaran outrigger boats on Negombo lagoon near Ja-Ela, Sri Lanka",
+    "size": "155 KB"
+  },
+  {
+    "name": "adventure.jpg",
+    "url": "assets\\images\\adventure.jpg",
+    "topic": "Adventure",
+    "alt": "Adventure",
+    "size": "149 KB"
+  },
+  {
+    "name": "avatar-1.jpg",
+    "url": "assets\\images\\avatar-1.jpg",
+    "topic": "Avatar 1",
+    "alt": "Avatar 1",
+    "size": "13 KB"
+  },
+  {
+    "name": "avatar-2.jpg",
+    "url": "assets\\images\\avatar-2.jpg",
+    "topic": "Avatar 2",
+    "alt": "Avatar 2",
+    "size": "12 KB"
+  },
+  {
+    "name": "beach-galle.jpg",
+    "url": "assets\\images\\beach-galle.jpg",
+    "topic": "Beach Galle",
+    "alt": "Beach Galle",
+    "size": "210 KB"
+  },
+  {
+    "name": "couple-travel.jpg",
+    "url": "assets\\images\\couple-travel.jpg",
+    "topic": "Couple Travel",
+    "alt": "Couple Travel",
+    "size": "128 KB"
+  },
+  {
+    "name": "hero-nine-arches.jpg",
+    "url": "assets\\images\\hero-nine-arches.jpg",
+    "topic": "Hero Nine Arches",
+    "alt": "Hero Nine Arches",
+    "size": "752 KB"
+  },
+  {
+    "name": "logo-emblem-hd.png",
+    "url": "assets\\images\\logo-emblem-hd.png",
+    "topic": "Logo Emblem Hd",
+    "alt": "Logo Emblem Hd",
+    "size": "604 KB"
+  },
+  {
+    "name": "logo-generated-3d-transparent.png",
+    "url": "assets\\images\\logo-generated-3d-transparent.png",
+    "topic": "Logo Generated 3D Transparent",
+    "alt": "Logo Generated 3D Transparent",
+    "size": "639 KB"
+  },
+  {
+    "name": "logo.png",
+    "url": "assets\\images\\logo.png",
+    "topic": "Logo",
+    "alt": "Logo",
+    "size": "604 KB"
+  },
+  {
+    "name": "logo_circular_navy.jpg",
+    "url": "assets\\images\\logo_circular_navy.jpg",
+    "topic": "Logo_Circular_Navy",
+    "alt": "Logo_Circular_Navy",
+    "size": "294 KB"
+  },
+  {
+    "name": "logo_circular_navy_transparent.png",
+    "url": "assets\\images\\logo_circular_navy_transparent.png",
+    "topic": "Logo_Circular_Navy_Transparent",
+    "alt": "Logo_Circular_Navy_Transparent",
+    "size": "1625 KB"
+  },
+  {
+    "name": "logo_icon_only.png",
+    "url": "assets\\images\\logo_icon_only.png",
+    "topic": "Logo_Icon_Only",
+    "alt": "Logo_Icon_Only",
+    "size": "833 KB"
+  },
+  {
+    "name": "logo_luxury_dark.jpg",
+    "url": "assets\\images\\logo_luxury_dark.jpg",
+    "topic": "Logo_Luxury_Dark",
+    "alt": "Logo_Luxury_Dark",
+    "size": "237 KB"
+  },
+  {
+    "name": "logo_luxury_emblem.jpg",
+    "url": "assets\\images\\logo_luxury_emblem.jpg",
+    "topic": "Logo_Luxury_Emblem",
+    "alt": "Logo_Luxury_Emblem",
+    "size": "554 KB"
+  },
+  {
+    "name": "logo_luxury_transparent.png",
+    "url": "assets\\images\\logo_luxury_transparent.png",
+    "topic": "Logo_Luxury_Transparent",
+    "alt": "Logo_Luxury_Transparent",
+    "size": "1112 KB"
+  },
+  {
+    "name": "logo_transparent.png",
+    "url": "assets\\images\\logo_transparent.png",
+    "topic": "Logo_Transparent",
+    "alt": "Logo_Transparent",
+    "size": "1524 KB"
+  },
+  {
+    "name": "lotus-emblem-icon.png",
+    "url": "assets\\images\\lotus-emblem-icon.png",
+    "topic": "Lotus Emblem Icon",
+    "alt": "Lotus Emblem Icon",
+    "size": "168 KB"
+  },
+  {
+    "name": "original_logo_dark_navy.png",
+    "url": "assets\\images\\original_logo_dark_navy.png",
+    "topic": "Original_Logo_Dark_Navy",
+    "alt": "Original_Logo_Dark_Navy",
+    "size": "1479 KB"
+  },
+  {
+    "name": "original_logo_transparent.png",
+    "url": "assets\\images\\original_logo_transparent.png",
+    "topic": "Original_Logo_Transparent",
+    "alt": "Original_Logo_Transparent",
+    "size": "2483 KB"
+  },
+  {
+    "name": "polonnaruwa.jpg",
+    "url": "assets\\images\\polonnaruwa.jpg",
+    "topic": "Polonnaruwa",
+    "alt": "Polonnaruwa",
+    "size": "104 KB"
+  },
+  {
+    "name": "sigiriya.jpg",
+    "url": "assets\\images\\sigiriya.jpg",
+    "topic": "Sigiriya",
+    "alt": "Sigiriya",
+    "size": "341 KB"
+  },
+  {
+    "name": "sri-lanka-3d-coastal-relief-map.jpg",
+    "url": "assets\\images\\sri-lanka-3d-coastal-relief-map.jpg",
+    "topic": "Sri Lanka 3D Coastal Relief Map",
+    "alt": "Sri Lanka 3D Coastal Relief Map",
+    "size": "714 KB"
+  },
+  {
+    "name": "sri-lanka-3d-relief-illustrated-map.jpg",
+    "url": "assets\\images\\sri-lanka-3d-relief-illustrated-map.jpg",
+    "topic": "Sri Lanka 3D Relief Illustrated Map",
+    "alt": "Sri Lanka 3D Relief Illustrated Map",
+    "size": "222 KB"
+  },
+  {
+    "name": "sri-lanka-coastal-illustrated-map.jpg",
+    "url": "assets\\images\\sri-lanka-coastal-illustrated-map.jpg",
+    "topic": "Sri Lanka Coastal Illustrated Map",
+    "alt": "Sri Lanka Coastal Illustrated Map",
+    "size": "151 KB"
+  },
+  {
+    "name": "sri-lanka-coastal-watercolor-map.jpg",
+    "url": "assets\\images\\sri-lanka-coastal-watercolor-map.jpg",
+    "topic": "Sri Lanka Coastal Watercolor Map",
+    "alt": "Sri Lanka Coastal Watercolor Map",
+    "size": "218 KB"
+  },
+  {
+    "name": "sri-lanka-illustrated-travel-map.jpg",
+    "url": "assets\\images\\sri-lanka-illustrated-travel-map.jpg",
+    "topic": "Sri Lanka Illustrated Travel Map",
+    "alt": "Sri Lanka Illustrated Travel Map",
+    "size": "363 KB"
+  },
+  {
+    "name": "sri-lanka-official-tourist-map.jpg",
+    "url": "assets\\images\\sri-lanka-official-tourist-map.jpg",
+    "topic": "Sri Lanka Official Tourist Map",
+    "alt": "Sri Lanka Official Tourist Map",
+    "size": "381 KB"
+  },
+  {
+    "name": "sri-lanka-tourist-map-illustrated.jpg",
+    "url": "assets\\images\\sri-lanka-tourist-map-illustrated.jpg",
+    "topic": "Sri Lanka Tourist Map Illustrated",
+    "alt": "Sri Lanka Tourist Map Illustrated",
+    "size": "320 KB"
+  },
+  {
+    "name": "sri-lanka-tourist-map.jpg",
+    "url": "assets\\images\\sri-lanka-tourist-map.jpg",
+    "topic": "Sri Lanka Tourist Map",
+    "alt": "Sri Lanka Tourist Map",
+    "size": "381 KB"
+  },
+  {
+    "name": "sunset-mirissa.jpg",
+    "url": "assets\\images\\sunset-mirissa.jpg",
+    "topic": "Sunset Mirissa",
+    "alt": "Sunset Mirissa",
+    "size": "64 KB"
+  },
+  {
+    "name": "tea-country.jpg",
+    "url": "assets\\images\\tea-country.jpg",
+    "topic": "Tea Country",
+    "alt": "Tea Country",
+    "size": "250 KB"
+  },
+  {
+    "name": "temple-culture.jpg",
+    "url": "assets\\images\\temple-culture.jpg",
+    "topic": "Temple Culture",
+    "alt": "Temple Culture",
+    "size": "230 KB"
+  },
+  {
+    "name": "wildlife.jpg",
+    "url": "assets\\images\\wildlife.jpg",
+    "topic": "Wildlife",
+    "alt": "Wildlife",
+    "size": "430 KB"
+  },
+  {
+    "name": "hospitality-scenes-1.webp",
+    "url": "assets\\images\\about\\hospitality-scenes-1.webp",
+    "topic": "Hospitality Scenes 1",
+    "alt": "Hospitality Scenes 1",
+    "size": "194 KB"
+  },
+  {
+    "name": "adams-peak-2.webp",
+    "url": "assets\\images\\adventure\\adams-peak-2.webp",
+    "topic": "Adams Peak 2",
+    "alt": "Adams Peak 2",
+    "size": "135 KB"
+  },
+  {
+    "name": "kitulgala-rafting-1.webp",
+    "url": "assets\\images\\adventure\\kitulgala-rafting-1.webp",
+    "topic": "Kitulgala Rafting 1",
+    "alt": "Kitulgala Rafting 1",
+    "size": "213 KB"
+  },
+  {
+    "name": "knuckles-trek-4.webp",
+    "url": "assets\\images\\adventure\\knuckles-trek-4.webp",
+    "topic": "Knuckles Trek 4",
+    "alt": "Knuckles Trek 4",
+    "size": "216 KB"
+  },
+  {
+    "name": "weligama-surfing-3.webp",
+    "url": "assets\\images\\adventure\\weligama-surfing-3.webp",
+    "topic": "Weligama Surfing 3",
+    "alt": "Weligama Surfing 3",
+    "size": "213 KB"
+  },
+  {
+    "name": "herbal-treatment-1.webp",
+    "url": "assets\\images\\ayurveda\\herbal-treatment-1.webp",
+    "topic": "Herbal Treatment 1",
+    "alt": "Herbal Treatment 1",
+    "size": "194 KB"
+  },
+  {
+    "name": "matale-spice-garden-2.webp",
+    "url": "assets\\images\\ayurveda\\matale-spice-garden-2.webp",
+    "topic": "Matale Spice Garden 2",
+    "alt": "Matale Spice Garden 2",
+    "size": "195 KB"
+  },
+  {
+    "name": "sri-lanka-yoga-3.webp",
+    "url": "assets\\images\\ayurveda\\sri-lanka-yoga-3.webp",
+    "topic": "Sri Lanka Yoga 3",
+    "alt": "Sri Lanka Yoga 3",
+    "size": "194 KB"
+  },
+  {
+    "name": "arugam-bay-4.webp",
+    "url": "assets\\images\\beach\\arugam-bay-4.webp",
+    "topic": "Arugam Bay 4",
+    "alt": "Arugam Bay 4",
+    "size": "155 KB"
+  },
+  {
+    "name": "bentota-3.webp",
+    "url": "assets\\images\\beach\\bentota-3.webp",
+    "topic": "Bentota 3",
+    "alt": "Bentota 3",
+    "size": "155 KB"
+  },
+  {
+    "name": "mirissa-1.webp",
+    "url": "assets\\images\\beach\\mirissa-1.webp",
+    "topic": "Mirissa 1",
+    "alt": "Mirissa 1",
+    "size": "59 KB"
+  },
+  {
+    "name": "nilaveli-6.webp",
+    "url": "assets\\images\\beach\\nilaveli-6.webp",
+    "topic": "Nilaveli 6",
+    "alt": "Nilaveli 6",
+    "size": "155 KB"
+  },
+  {
+    "name": "pasikudah-5.webp",
+    "url": "assets\\images\\beach\\pasikudah-5.webp",
+    "topic": "Pasikudah 5",
+    "alt": "Pasikudah 5",
+    "size": "59 KB"
+  },
+  {
+    "name": "unawatuna-2.webp",
+    "url": "assets\\images\\beach\\unawatuna-2.webp",
+    "topic": "Unawatuna 2",
+    "alt": "Unawatuna 2",
+    "size": "155 KB"
+  },
+  {
+    "name": "jaya-sri-maha-bodhi-1.webp",
+    "url": "assets\\images\\buddhist-heritage\\jaya-sri-maha-bodhi-1.webp",
+    "topic": "Jaya Sri Maha Bodhi 1",
+    "alt": "Jaya Sri Maha Bodhi 1",
+    "size": "194 KB"
+  },
+  {
+    "name": "mihintale-3.webp",
+    "url": "assets\\images\\buddhist-heritage\\mihintale-3.webp",
+    "topic": "Mihintale 3",
+    "alt": "Mihintale 3",
+    "size": "135 KB"
+  },
+  {
+    "name": "ruwanwelisaya-2.webp",
+    "url": "assets\\images\\buddhist-heritage\\ruwanwelisaya-2.webp",
+    "topic": "Ruwanwelisaya 2",
+    "alt": "Ruwanwelisaya 2",
+    "size": "131 KB"
+  },
+  {
+    "name": "temple-of-the-tooth-4.webp",
+    "url": "assets\\images\\buddhist-heritage\\temple-of-the-tooth-4.webp",
+    "topic": "Temple Of The Tooth 4",
+    "alt": "Temple Of The Tooth 4",
+    "size": "135 KB"
+  },
+  {
+    "name": "negombo-lagoon-1.webp",
+    "url": "assets\\images\\contact\\negombo-lagoon-1.webp",
+    "topic": "Negombo Lagoon 1",
+    "alt": "Negombo Lagoon 1",
+    "size": "155 KB"
+  },
+  {
+    "name": "dambulla-cave-temple-2.webp",
+    "url": "assets\\images\\cultural\\dambulla-cave-temple-2.webp",
+    "topic": "Dambulla Cave Temple 2",
+    "alt": "Dambulla Cave Temple 2",
+    "size": "194 KB"
+  },
+  {
+    "name": "galle-fort-5.webp",
+    "url": "assets\\images\\cultural\\galle-fort-5.webp",
+    "topic": "Galle Fort 5",
+    "alt": "Galle Fort 5",
+    "size": "155 KB"
+  },
+  {
+    "name": "kandy-temple-of-tooth-4.webp",
+    "url": "assets\\images\\cultural\\kandy-temple-of-tooth-4.webp",
+    "topic": "Kandy Temple Of Tooth 4",
+    "alt": "Kandy Temple Of Tooth 4",
+    "size": "135 KB"
+  },
+  {
+    "name": "polonnaruwa-gal-vihara-3.webp",
+    "url": "assets\\images\\cultural\\polonnaruwa-gal-vihara-3.webp",
+    "topic": "Polonnaruwa Gal Vihara 3",
+    "alt": "Polonnaruwa Gal Vihara 3",
+    "size": "131 KB"
+  },
+  {
+    "name": "sigiriya-1.webp",
+    "url": "assets\\images\\cultural\\sigiriya-1.webp",
+    "topic": "Sigiriya 1",
+    "alt": "Sigiriya 1",
+    "size": "135 KB"
+  },
+  {
+    "name": "calm-beach-3.webp",
+    "url": "assets\\images\\family\\calm-beach-3.webp",
+    "topic": "Calm Beach 3",
+    "alt": "Calm Beach 3",
+    "size": "155 KB"
+  },
+  {
+    "name": "kosgoda-turtle-hatchery-1.webp",
+    "url": "assets\\images\\family\\kosgoda-turtle-hatchery-1.webp",
+    "topic": "Kosgoda Turtle Hatchery 1",
+    "alt": "Kosgoda Turtle Hatchery 1",
+    "size": "155 KB"
+  },
+  {
+    "name": "scenic-train-ride-2.webp",
+    "url": "assets\\images\\family\\scenic-train-ride-2.webp",
+    "topic": "Scenic Train Ride 2",
+    "alt": "Scenic Train Ride 2",
+    "size": "144 KB"
+  },
+  {
+    "name": "ella-rock-3.webp",
+    "url": "assets\\images\\hill-country\\ella-rock-3.webp",
+    "topic": "Ella Rock 3",
+    "alt": "Ella Rock 3",
+    "size": "144 KB"
+  },
+  {
+    "name": "kandy-ella-train-5.webp",
+    "url": "assets\\images\\hill-country\\kandy-ella-train-5.webp",
+    "topic": "Kandy Ella Train 5",
+    "alt": "Kandy Ella Train 5",
+    "size": "144 KB"
+  },
+  {
+    "name": "nine-arches-bridge-1.webp",
+    "url": "assets\\images\\hill-country\\nine-arches-bridge-1.webp",
+    "topic": "Nine Arches Bridge 1",
+    "alt": "Nine Arches Bridge 1",
+    "size": "144 KB"
+  },
+  {
+    "name": "nuwara-eliya-tea-2.webp",
+    "url": "assets\\images\\hill-country\\nuwara-eliya-tea-2.webp",
+    "topic": "Nuwara Eliya Tea 2",
+    "alt": "Nuwara Eliya Tea 2",
+    "size": "195 KB"
+  },
+  {
+    "name": "ramboda-falls-4.webp",
+    "url": "assets\\images\\hill-country\\ramboda-falls-4.webp",
+    "topic": "Ramboda Falls 4",
+    "alt": "Ramboda Falls 4",
+    "size": "195 KB"
+  },
+  {
+    "name": "hero-sigiriya-aerial-1.webp",
+    "url": "assets\\images\\home\\hero-sigiriya-aerial-1.webp",
+    "topic": "Hero Sigiriya Aerial 1",
+    "alt": "Hero Sigiriya Aerial 1",
+    "size": "194 KB"
+  },
+  {
+    "name": "hero-sigiriya-aerial-portrait.webp",
+    "url": "assets\\images\\home\\hero-sigiriya-aerial-portrait.webp",
+    "topic": "Hero Sigiriya Aerial Portrait",
+    "alt": "Hero Sigiriya Aerial Portrait",
+    "size": "80 KB"
+  },
+  {
+    "name": "mirissa-sunset-2.webp",
+    "url": "assets\\images\\honeymoon\\mirissa-sunset-2.webp",
+    "topic": "Mirissa Sunset 2",
+    "alt": "Mirissa Sunset 2",
+    "size": "59 KB"
+  },
+  {
+    "name": "seaside-villa-1.webp",
+    "url": "assets\\images\\honeymoon\\seaside-villa-1.webp",
+    "topic": "Seaside Villa 1",
+    "alt": "Seaside Villa 1",
+    "size": "158 KB"
+  },
+  {
+    "name": "tea-bungalow-3.webp",
+    "url": "assets\\images\\honeymoon\\tea-bungalow-3.webp",
+    "topic": "Tea Bungalow 3",
+    "alt": "Tea Bungalow 3",
+    "size": "195 KB"
+  },
+  {
+    "name": "hakgala-gardens-4.webp",
+    "url": "assets\\images\\ramayana\\hakgala-gardens-4.webp",
+    "topic": "Hakgala Gardens 4",
+    "alt": "Hakgala Gardens 4",
+    "size": "195 KB"
+  },
+  {
+    "name": "munneswaram-3.webp",
+    "url": "assets\\images\\ramayana\\munneswaram-3.webp",
+    "topic": "Munneswaram 3",
+    "alt": "Munneswaram 3",
+    "size": "131 KB"
+  },
+  {
+    "name": "ravana-falls-2.webp",
+    "url": "assets\\images\\ramayana\\ravana-falls-2.webp",
+    "topic": "Ravana Falls 2",
+    "alt": "Ravana Falls 2",
+    "size": "144 KB"
+  },
+  {
+    "name": "seetha-amman-temple-1.webp",
+    "url": "assets\\images\\ramayana\\seetha-amman-temple-1.webp",
+    "topic": "Seetha Amman Temple 1",
+    "alt": "Seetha Amman Temple 1",
+    "size": "194 KB"
+  },
+  {
+    "name": "minneriya-elephant-gathering-2.webp",
+    "url": "assets\\images\\wildlife\\minneriya-elephant-gathering-2.webp",
+    "topic": "Minneriya Elephant Gathering 2",
+    "alt": "Minneriya Elephant Gathering 2",
+    "size": "216 KB"
+  },
+  {
+    "name": "mirissa-blue-whale-4.webp",
+    "url": "assets\\images\\wildlife\\mirissa-blue-whale-4.webp",
+    "topic": "Mirissa Blue Whale 4",
+    "alt": "Mirissa Blue Whale 4",
+    "size": "59 KB"
+  },
+  {
+    "name": "sinharaja-rainforest-5.webp",
+    "url": "assets\\images\\wildlife\\sinharaja-rainforest-5.webp",
+    "topic": "Sinharaja Rainforest 5",
+    "alt": "Sinharaja Rainforest 5",
+    "size": "216 KB"
+  },
+  {
+    "name": "udawalawe-3.webp",
+    "url": "assets\\images\\wildlife\\udawalawe-3.webp",
+    "topic": "Udawalawe 3",
+    "alt": "Udawalawe 3",
+    "size": "216 KB"
+  },
+  {
+    "name": "yala-leopard-1.webp",
+    "url": "assets\\images\\wildlife\\yala-leopard-1.webp",
+    "topic": "Yala Leopard 1",
+    "alt": "Yala Leopard 1",
+    "size": "216 KB"
+  },
+  {
+    "name": "line-qr.png",
+    "url": "assets\\qr\\line-qr.png",
+    "topic": "Line Qr",
+    "alt": "Line Qr",
+    "size": "1 KB"
+  },
+  {
+    "name": "wechat-qr.png",
+    "url": "assets\\qr\\wechat-qr.png",
+    "topic": "Wechat Qr",
+    "alt": "Wechat Qr",
+    "size": "1 KB"
+  },
+  {
+    "name": "whatsapp-qr.png",
+    "url": "assets\\qr\\whatsapp-qr.png",
+    "topic": "Whatsapp Qr",
+    "alt": "Whatsapp Qr",
+    "size": "0 KB"
+  },
+  {
+    "name": "eastern-sanctuary-1.jpg",
+    "url": "assets\\tours\\beach\\eastern-sanctuary-1.jpg",
+    "topic": "Eastern Sanctuary 1",
+    "alt": "Eastern Sanctuary 1",
+    "size": "64 KB"
+  },
+  {
+    "name": "hero.jpg",
+    "url": "assets\\tours\\beach\\hero.jpg",
+    "topic": "Hero",
+    "alt": "Hero",
+    "size": "210 KB"
+  },
+  {
+    "name": "seaboard-odyssey-1.jpg",
+    "url": "assets\\tours\\beach\\seaboard-odyssey-1.jpg",
+    "topic": "Seaboard Odyssey 1",
+    "alt": "Seaboard Odyssey 1",
+    "size": "210 KB"
+  },
+  {
+    "name": "southern-sands-1.jpg",
+    "url": "assets\\tours\\beach\\southern-sands-1.jpg",
+    "topic": "Southern Sands 1",
+    "alt": "Southern Sands 1",
+    "size": "210 KB"
+  },
+  {
+    "name": "hero.jpg",
+    "url": "assets\\tours\\cultural\\hero.jpg",
+    "topic": "Hero",
+    "alt": "Hero",
+    "size": "341 KB"
+  },
+  {
+    "name": "royal-kingdoms-1.jpg",
+    "url": "assets\\tours\\cultural\\royal-kingdoms-1.jpg",
+    "topic": "Royal Kingdoms 1",
+    "alt": "Royal Kingdoms 1",
+    "size": "341 KB"
+  },
+  {
+    "name": "sacred-triangle-1.jpg",
+    "url": "assets\\tours\\cultural\\sacred-triangle-1.jpg",
+    "topic": "Sacred Triangle 1",
+    "alt": "Sacred Triangle 1",
+    "size": "341 KB"
+  },
+  {
+    "name": "three-millennia-1.jpg",
+    "url": "assets\\tours\\cultural\\three-millennia-1.jpg",
+    "topic": "Three Millennia 1",
+    "alt": "Three Millennia 1",
+    "size": "104 KB"
+  },
+  {
+    "name": "big-five-1.jpg",
+    "url": "assets\\tours\\wildlife\\big-five-1.jpg",
+    "topic": "Big Five 1",
+    "alt": "Big Five 1",
+    "size": "430 KB"
+  },
+  {
+    "name": "biosphere-odyssey-1.jpg",
+    "url": "assets\\tours\\wildlife\\biosphere-odyssey-1.jpg",
+    "topic": "Biosphere Odyssey 1",
+    "alt": "Biosphere Odyssey 1",
+    "size": "430 KB"
+  },
+  {
+    "name": "hero.jpg",
+    "url": "assets\\tours\\wildlife\\hero.jpg",
+    "topic": "Hero",
+    "alt": "Hero",
+    "size": "430 KB"
+  },
+  {
+    "name": "predator-trail-1.jpg",
+    "url": "assets\\tours\\wildlife\\predator-trail-1.jpg",
+    "topic": "Predator Trail 1",
+    "alt": "Predator Trail 1",
+    "size": "430 KB"
+  },
+  {
+    "name": "rainforest-1.jpg",
+    "url": "assets\\tours\\wildlife\\rainforest-1.jpg",
+    "topic": "Rainforest 1",
+    "alt": "Rainforest 1",
+    "size": "430 KB"
+  }
+]

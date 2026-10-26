@@ -1,1024 +1,1182 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="robots" content="noindex, nofollow">
-  <title>CMS Admin Panel — LOTUS Ceylon International Tours</title>
-  <link rel="icon" type="image/png" href="../assets/images/logo.png">
-  <link rel="stylesheet" href="css/admin.css?v=20261021_cms1">
-  <!-- Supabase JS SDK CDN -->
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <!-- DOMPurify for XSS Protection -->
-  <script src="https://cdn.jsdelivr.net/npm/dompurify@3.1.6/dist/purify.min.js"></script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="noindex, nofollow" name="robots"/>
+<title>CMS Admin Panel — LOTUS Ceylon International Tours</title>
+<link href="../assets/images/logo.png" rel="icon" type="image/png"/>
+<link href="css/admin.css?v=20261021_cms1" rel="stylesheet"/>
+<!-- Supabase JS SDK CDN -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<!-- DOMPurify for XSS Protection -->
+<script src="https://cdn.jsdelivr.net/npm/dompurify@3.1.6/dist/purify.min.js"></script>
 </head>
 <body>
-
-  <!-- ==============================================================================
+<!-- ==============================================================================
    * 1. AUTHENTICATION VIEW (LOGIN & PASSWORD RESET)
    * ============================================================================== -->
-  <div id="authScreen" class="auth-wrapper">
-    <div class="auth-card">
-      <div class="auth-brand">
-        <img src="../assets/images/logo.png" alt="Lotus Ceylon" onerror="this.src='../logo.png'">
-        <h1 class="serif">LOTUS Ceylon</h1>
-        <p>Admin Portal</p>
-      </div>
-
-      <form id="loginForm" onsubmit="AdminApp.handleLogin(event)">
-        <div class="form-group">
-          <label for="loginEmail">Email Address</label>
-          <input type="email" id="loginEmail" class="form-control" placeholder="admin@lotusceylon.com" required autocomplete="email">
-        </div>
-
-        <div class="form-group">
-          <label for="loginPassword">Password</label>
-          <input type="password" id="loginPassword" class="form-control" placeholder="••••••••••••" required autocomplete="current-password">
-        </div>
-
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-          <label style="display: flex; align-items: center; gap: 8px; font-size: 0.82rem; cursor: pointer;">
-            <input type="checkbox" id="rememberMe"> Remember me
+<div class="auth-wrapper" id="authScreen">
+<div class="auth-card">
+<div class="auth-brand">
+<img alt="Lotus Ceylon" onerror="this.src='../logo.png'" src="../assets/images/logo.png"/>
+<h1 class="serif">LOTUS Ceylon</h1>
+<p>Admin Portal</p>
+</div>
+<form id="loginForm" onsubmit="AdminApp.handleLogin(event)">
+<div class="form-group">
+<label for="loginEmail">Email Address</label>
+<input autocomplete="email" class="form-control" id="loginEmail" placeholder="admin@lotusceylon.com" required="" type="email"/>
+</div>
+<div class="form-group">
+<label for="loginPassword">Password</label>
+<input autocomplete="current-password" class="form-control" id="loginPassword" placeholder="••••••••••••" required="" type="password"/>
+</div>
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+<label style="display: flex; align-items: center; gap: 8px; font-size: 0.82rem; cursor: pointer;">
+<input id="rememberMe" type="checkbox"/> Remember me
           </label>
-          <a href="#" onclick="AdminApp.showResetModal(event)" style="font-size: 0.82rem;">Forgot password?</a>
-        </div>
-
-        <button type="submit" id="loginBtn" class="btn btn-primary btn-block">
-          <span>Sign In to Dashboard</span>
-        </button>
-      </form>
-
-      <div class="auth-footer">
-        <a href="../index.html" target="_blank">← Back to Public Website</a>
-      </div>
-    </div>
-  </div>
-
-
-  <!-- ==============================================================================
+<a href="#" onclick="AdminApp.showResetModal(event)" style="font-size: 0.82rem;">Forgot password?</a>
+</div>
+<button class="btn btn-primary btn-block" id="loginBtn" type="submit">
+<span>Sign In to Dashboard</span>
+</button>
+</form>
+<div class="auth-footer">
+<a href="../index.html" target="_blank">← Back to Public Website</a>
+</div>
+</div>
+</div>
+<!-- ==============================================================================
    * 2. MAIN ADMIN APP SHELL
    * ============================================================================== -->
-  <div id="adminApp" style="display: none;">
-    
-    <!-- SIDEBAR -->
-    <aside class="admin-sidebar" id="sidebar">
-      <div class="sidebar-header">
-        <img src="../assets/images/logo.png" alt="Emblem" class="sidebar-logo" onerror="this.src='../logo.png'">
-        <div class="sidebar-title">
-          <span class="brand-name">Lotus Ceylon</span>
-          <span class="brand-sub">Tours & Services</span>
-        </div>
-      </div>
-
-      <nav class="sidebar-nav">
-        <div class="nav-section-title">Main</div>
-        <a class="nav-link active" data-section="dashboard" onclick="AdminApp.switchSection('dashboard')">
-          <svg viewBox="0 0 24 24"><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/></svg>
-          <span>Dashboard</span>
-        </a>
-
-        <a class="nav-link" data-section="inquiries" onclick="AdminApp.switchSection('inquiries')">
-          <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-          <span>Inquiries</span>
-          <span class="nav-badge" id="unreadInquiriesBadge">0</span>
-        </a>
-
-        <div class="nav-section-title">Content & Tours</div>
-        <a class="nav-link" data-section="packages" onclick="AdminApp.switchSection('packages')">
-          <svg viewBox="0 0 24 24"><path d="M21 5c-1.11-.35-2.33-.5-3.5-.5-1.95 0-4.05.4-5.5 1.5-1.45-1.1-3.55-1.5-5.5-1.5S2.45 4.9 1 6v14.65c0 .25.25.5.5.5.1 0 .15-.05.25-.05C3.1 20.45 5.05 20 6.5 20c1.95 0 4.05.4 5.5 1.5 1.35-.85 3.8-1.5 5.5-1.5 1.65 0 3.35.3 4.75 1.05.1.05.15.05.25.05.25 0 .5-.25.5-.5V6c-.6-.45-1.25-.75-2-1zm0 13.5c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5V8c1.35-.85 3.8-1.5 5.5-1.5 1.2 0 2.4.15 3.5.5v11.5z"/></svg>
-          <span>Tour Packages</span>
-        </a>
-
-        <a class="nav-link" data-section="categories" onclick="AdminApp.switchSection('categories')">
-          <svg viewBox="0 0 24 24"><path d="M10 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z"/></svg>
-          <span>Categories</span>
-        </a>
-
-        <a class="nav-link" data-section="destinations" onclick="AdminApp.switchSection('destinations')">
-          <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-          <span>Destinations</span>
-        </a>
-
-        <a class="nav-link" data-section="team" onclick="AdminApp.switchSection('team')">
-          <svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
-          <span>Our People / Team</span>
-        </a>
-
-        <a class="nav-link" data-section="reviews" onclick="AdminApp.switchSection('reviews')">
-          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-          <span>Guest Reviews</span>
-        </a>
-
-        <div class="nav-section-title">Assets & System</div>
-        <a class="nav-link" data-section="media" onclick="AdminApp.switchSection('media')">
-          <svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
-          <span>Media Library</span>
-        </a>
-
-        <a class="nav-link" data-section="users" onclick="AdminApp.switchSection('users')">
-          <svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
-          <span>Users & Roles</span>
-        </a>
-
-        <a class="nav-link" data-section="settings" onclick="AdminApp.switchSection('settings')">
-          <svg viewBox="0 0 24 24"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg>
-          <span>Settings</span>
-        </a>
-      </nav>
-
-      <div class="sidebar-footer">
-        <span id="cmsVersion">v1.0 • Supabase</span>
-        <a href="../index.html" target="_blank" style="color: var(--sacred-gold);">Preview Site ↗</a>
-      </div>
-    </aside>
-
-    <!-- MAIN WRAPPER -->
-    <div class="admin-main">
-      
-      <!-- TOPBAR -->
-      <header class="admin-topbar">
-        <div class="topbar-left">
-          <button class="menu-toggle-btn" onclick="AdminApp.toggleSidebar()">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
-          </button>
-          <div class="page-breadcrumb" id="pageTitle">Dashboard</div>
-        </div>
-
-        <div class="topbar-right">
-          <div class="session-indicator" title="Active Admin Session">
-            <span class="session-dot"></span>
-            <span id="sessionTimer">Live</span>
-          </div>
-
-          <span class="role-badge" id="currentUserRole">SUPER ADMIN</span>
-
-          <span id="currentUserEmail" style="font-weight: 500; font-size: 0.85rem; color: var(--ink-light);">admin</span>
-
-          <button class="topbar-btn" onclick="AdminApp.handleLogout()">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M10.09 15.59L11.5 17l5-5-5-5-1.41 1.41L12.67 11H3v2h9.67l-2.58 2.59zM19 3H5c-1.11 0-2 .9-2 2v4h2V5h14v14H5v-4H3v4c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"/></svg>
-            <span>Sign Out</span>
-          </button>
-        </div>
-      </header>
-
-      <!-- CONTENT BODY -->
-      <main class="admin-content">
-
-        <!-- ========================================== -->
-        <!-- SECTION 1: DASHBOARD                       -->
-        <!-- ========================================== -->
-        <section id="section-dashboard" class="content-section active">
-          <div class="section-header">
-            <div class="section-title-wrap">
-              <h2>Dashboard Overview</h2>
-              <p>Welcome back to Lotus Ceylon Tour Operations & Content Management</p>
-            </div>
-            <div style="display: flex; gap: 10px;">
-              <button class="btn btn-gold" onclick="AdminApp.openPackageModal()">
-                <span>+ Add Package</span>
-              </button>
-              <button class="btn btn-outline" onclick="AdminApp.switchSection('inquiries')">
-                <span>View Inquiries</span>
-              </button>
-            </div>
-          </div>
-
-          <!-- Stats Grid -->
-          <div class="stats-grid">
-            <div class="stat-card primary">
-              <div class="stat-icon">
-                <svg viewBox="0 0 24 24"><path d="M21 5c-1.11-.35-2.33-.5-3.5-.5-1.95 0-4.05.4-5.5 1.5-1.45-1.1-3.55-1.5-5.5-1.5S2.45 4.9 1 6v14.65c0 .25.25.5.5.5.1 0 .15-.05.25-.05C3.1 20.45 5.05 20 6.5 20c1.95 0 4.05.4 5.5 1.5 1.35-.85 3.8-1.5 5.5-1.5 1.65 0 3.35.3 4.75 1.05.1.05.15.05.25.05.25 0 .5-.25.5-.5V6c-.6-.45-1.25-.75-2-1zm0 13.5c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5V8c1.35-.85 3.8-1.5 5.5-1.5 1.2 0 2.4.15 3.5.5v11.5z"/></svg>
-              </div>
-              <div class="stat-info">
-                <h4>Active Packages</h4>
-                <div class="stat-number" id="statPackagesCount">0</div>
-              </div>
-            </div>
-
-            <div class="stat-card">
-              <div class="stat-icon">
-                <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-              </div>
-              <div class="stat-info">
-                <h4>New Inquiries</h4>
-                <div class="stat-number" id="statNewInquiriesCount">0</div>
-              </div>
-            </div>
-
-            <div class="stat-card green">
-              <div class="stat-icon">
-                <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6z"/></svg>
-              </div>
-              <div class="stat-info">
-                <h4>Inquiries (This Month)</h4>
-                <div class="stat-number" id="statMonthInquiriesCount">0</div>
-              </div>
-            </div>
-
-            <div class="stat-card">
-              <div class="stat-icon">
-                <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-              </div>
-              <div class="stat-info">
-                <h4>Guest Reviews</h4>
-                <div class="stat-number" id="statReviewsCount">0</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Recent Inquiries Table -->
-          <div class="table-card">
-            <div class="table-toolbar">
-              <h3 style="font-size: 1.05rem;">Recent Inquiries</h3>
-              <button class="btn btn-outline btn-sm" onclick="AdminApp.switchSection('inquiries')">View All Inquiries →</button>
-            </div>
-            <div class="data-table-wrap">
-              <table class="data-table">
-                <thead>
-                  <tr>
-                    <th>Ref #</th>
-                    <th>Guest Name</th>
-                    <th>Email / Phone</th>
-                    <th>Dates / Travelers</th>
-                    <th>Status</th>
-                    <th>Received</th>
-                    <th>Action</th>
-                  </tr>
-                </thead>
-                <tbody id="dashboardInquiriesTbody">
-                  <tr><td colspan="7" style="text-align: center; color: var(--ink-muted);">Loading recent inquiries...</td></tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </section>
-
-
-        <!-- ========================================== -->
-        <!-- SECTION 2: INQUIRIES (TWO SEPARATE SHEETS) -->
-        <!-- ========================================== -->
-        <section id="section-inquiries" class="content-section">
-          <div class="section-header">
-            <div class="section-title-wrap">
-              <h2>Customer Inquiries</h2>
-              <p>Manage incoming Quick and Detailed booking requests across Firebase Firestore collections</p>
-            </div>
-            <div style="display: flex; gap: 10px;">
-              <button class="btn btn-outline" onclick="AdminApp.exportInquiriesCSV()">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
-                <span id="exportCsvBtnText">Export Active Sheet (CSV)</span>
-              </button>
-            </div>
-          </div>
-
-          <!-- Dual Sheet Navigation Tabs -->
-          <div class="inquiry-tab-bar">
-            <button type="button" class="inquiry-tab-btn active" id="btnTabQuickInquiries" onclick="AdminApp.switchInquiryTab('quick')">
+<div id="adminApp" style="display: none;">
+<!-- SIDEBAR -->
+<aside class="admin-sidebar" id="sidebar">
+<div class="sidebar-header">
+<img alt="Emblem" class="sidebar-logo" onerror="this.src='../logo.png'" src="../assets/images/logo.png"/>
+<div class="sidebar-title">
+<span class="brand-name">Lotus Ceylon</span>
+<span class="brand-sub">Tours &amp; Services</span>
+</div>
+</div>
+<nav class="sidebar-nav">
+<div class="nav-section-title">Main</div>
+<a class="nav-link active" data-section="dashboard" onclick="AdminApp.switchSection('dashboard')">
+<svg viewbox="0 0 24 24"><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"></path></svg>
+<span>Dashboard</span>
+</a>
+<a class="nav-link" data-section="inquiries" onclick="AdminApp.switchSection('inquiries')">
+<svg viewbox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"></path></svg>
+<span>Inquiries</span>
+<span class="nav-badge" id="unreadInquiriesBadge">0</span>
+</a>
+<div class="nav-section-title">Content &amp; Tours</div>
+<a class="nav-link" data-section="packages" onclick="AdminApp.switchSection('packages')">
+<svg viewbox="0 0 24 24"><path d="M21 5c-1.11-.35-2.33-.5-3.5-.5-1.95 0-4.05.4-5.5 1.5-1.45-1.1-3.55-1.5-5.5-1.5S2.45 4.9 1 6v14.65c0 .25.25.5.5.5.1 0 .15-.05.25-.05C3.1 20.45 5.05 20 6.5 20c1.95 0 4.05.4 5.5 1.5 1.35-.85 3.8-1.5 5.5-1.5 1.65 0 3.35.3 4.75 1.05.1.05.15.05.25.05.25 0 .5-.25.5-.5V6c-.6-.45-1.25-.75-2-1zm0 13.5c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5V8c1.35-.85 3.8-1.5 5.5-1.5 1.2 0 2.4.15 3.5.5v11.5z"></path></svg>
+<span>Tour Packages</span>
+</a>
+<a class="nav-link" data-section="categories" onclick="AdminApp.switchSection('categories')">
+<svg viewbox="0 0 24 24"><path d="M10 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z"></path></svg>
+<span>Categories</span>
+</a>
+<a class="nav-link" data-section="destinations" onclick="AdminApp.switchSection('destinations')">
+<svg viewbox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"></path></svg>
+<span>Destinations</span>
+</a>
+<a class="nav-link" data-section="team" onclick="AdminApp.switchSection('team')">
+<svg viewbox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"></path></svg>
+<span>Our People / Team</span>
+</a>
+<a class="nav-link" data-section="reviews" onclick="AdminApp.switchSection('reviews')">
+<svg viewbox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path></svg>
+<span>Guest Reviews</span>
+</a>
+<div class="nav-section-title">Assets &amp; System</div>
+<a class="nav-link" data-section="media" onclick="AdminApp.switchSection('media')">
+<svg viewbox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"></path></svg>
+<span>Media Library</span>
+</a>
+<a class="nav-link" data-section="users" onclick="AdminApp.switchSection('users')">
+<svg viewbox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"></path></svg>
+<span>Users &amp; Roles</span>
+</a>
+<a class="nav-link" data-section="settings" onclick="AdminApp.switchSection('settings')">
+<svg viewbox="0 0 24 24"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"></path></svg>
+<span>Settings</span>
+</a>
+</nav>
+<div class="sidebar-footer">
+<span id="cmsVersion">v1.0 • Supabase</span>
+<a href="../index.html" style="color: var(--sacred-gold);" target="_blank">Preview Site ↗</a>
+</div>
+</aside>
+<!-- MAIN WRAPPER -->
+<div class="admin-main">
+<!-- TOPBAR -->
+<header class="admin-topbar">
+<div class="topbar-left">
+<button class="menu-toggle-btn" onclick="AdminApp.toggleSidebar()">
+<svg fill="currentColor" height="24" viewbox="0 0 24 24" width="24"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path></svg>
+</button>
+<div class="page-breadcrumb" id="pageTitle">Dashboard</div>
+</div>
+<div class="topbar-right">
+<div class="session-indicator" title="Active Admin Session">
+<span class="session-dot"></span>
+<span id="sessionTimer">Live</span>
+</div>
+<span class="role-badge" id="currentUserRole">SUPER ADMIN</span>
+<span id="currentUserEmail" style="font-weight: 500; font-size: 0.85rem; color: var(--ink-light);">admin</span>
+<button class="topbar-btn" onclick="AdminApp.handleLogout()">
+<svg fill="currentColor" height="16" viewbox="0 0 24 24" width="16"><path d="M10.09 15.59L11.5 17l5-5-5-5-1.41 1.41L12.67 11H3v2h9.67l-2.58 2.59zM19 3H5c-1.11 0-2 .9-2 2v4h2V5h14v14H5v-4H3v4c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"></path></svg>
+<span>Sign Out</span>
+</button>
+</div>
+</header>
+<!-- CONTENT BODY -->
+<main class="admin-content">
+<!-- ========================================== -->
+<!-- SECTION 1: DASHBOARD                       -->
+<!-- ========================================== -->
+<section class="content-section active" id="section-dashboard">
+<div class="section-header">
+<div class="section-title-wrap">
+<h2>Dashboard Overview</h2>
+<p>Welcome back to Lotus Ceylon Tour Operations &amp; Content Management</p>
+</div>
+<div style="display: flex; gap: 10px;">
+<button class="btn btn-gold" onclick="AdminApp.openPackageModal()">
+<span>+ Add Package</span>
+</button>
+<button class="btn btn-outline" onclick="AdminApp.switchSection('inquiries')">
+<span>View Inquiries</span>
+</button>
+</div>
+</div>
+<!-- Stats Grid -->
+<div class="stats-grid">
+<div class="stat-card primary">
+<div class="stat-icon">
+<svg viewbox="0 0 24 24"><path d="M21 5c-1.11-.35-2.33-.5-3.5-.5-1.95 0-4.05.4-5.5 1.5-1.45-1.1-3.55-1.5-5.5-1.5S2.45 4.9 1 6v14.65c0 .25.25.5.5.5.1 0 .15-.05.25-.05C3.1 20.45 5.05 20 6.5 20c1.95 0 4.05.4 5.5 1.5 1.35-.85 3.8-1.5 5.5-1.5 1.65 0 3.35.3 4.75 1.05.1.05.15.05.25.05.25 0 .5-.25.5-.5V6c-.6-.45-1.25-.75-2-1zm0 13.5c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5V8c1.35-.85 3.8-1.5 5.5-1.5 1.2 0 2.4.15 3.5.5v11.5z"></path></svg>
+</div>
+<div class="stat-info">
+<h4>Active Packages</h4>
+<div class="stat-number" id="statPackagesCount">0</div>
+</div>
+</div>
+<div class="stat-card">
+<div class="stat-icon">
+<svg viewbox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"></path></svg>
+</div>
+<div class="stat-info">
+<h4>New Inquiries</h4>
+<div class="stat-number" id="statNewInquiriesCount">0</div>
+</div>
+</div>
+<div class="stat-card green">
+<div class="stat-icon">
+<svg viewbox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6z"></path></svg>
+</div>
+<div class="stat-info">
+<h4>Inquiries (This Month)</h4>
+<div class="stat-number" id="statMonthInquiriesCount">0</div>
+</div>
+</div>
+<div class="stat-card">
+<div class="stat-icon">
+<svg viewbox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path></svg>
+</div>
+<div class="stat-info">
+<h4>Guest Reviews</h4>
+<div class="stat-number" id="statReviewsCount">0</div>
+</div>
+</div>
+</div>
+<!-- Recent Inquiries Table -->
+<div class="table-card">
+<div class="table-toolbar">
+<h3 style="font-size: 1.05rem;">Recent Inquiries</h3>
+<button class="btn btn-outline btn-sm" onclick="AdminApp.switchSection('inquiries')">View All Inquiries →</button>
+</div>
+<div class="data-table-wrap">
+<table class="data-table">
+<thead>
+<tr>
+<th>Ref #</th>
+<th>Guest Name</th>
+<th>Email / Phone</th>
+<th>Dates / Travelers</th>
+<th>Status</th>
+<th>Received</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody id="dashboardInquiriesTbody">
+<tr><td colspan="7" style="text-align: center; color: var(--ink-muted);">Loading recent inquiries...</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<!-- ========================================== -->
+<!-- SECTION 2: INQUIRIES (TWO SEPARATE SHEETS) -->
+<!-- ========================================== -->
+<section class="content-section" id="section-inquiries">
+<div class="section-header">
+<div class="section-title-wrap">
+<h2>Customer Inquiries</h2>
+<p>Manage incoming Quick and Detailed booking requests across Firebase Firestore collections</p>
+</div>
+<div style="display: flex; gap: 10px;">
+<button class="btn btn-outline" onclick="AdminApp.exportInquiriesCSV()">
+<svg fill="currentColor" height="16" viewbox="0 0 24 24" width="16"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"></path></svg>
+<span id="exportCsvBtnText">Export Active Sheet (CSV)</span>
+</button>
+</div>
+</div>
+<!-- Dual Sheet Navigation Tabs -->
+<div class="inquiry-tab-bar">
+<button class="inquiry-tab-btn active" id="btnTabQuickInquiries" onclick="AdminApp.switchInquiryTab('quick')" type="button">
               ⚡ Quick Inquiries (<span id="countQuickInquiries">0</span>)
             </button>
-            <button type="button" class="inquiry-tab-btn" id="btnTabDetailedInquiries" onclick="AdminApp.switchInquiryTab('detailed')">
+<button class="inquiry-tab-btn" id="btnTabDetailedInquiries" onclick="AdminApp.switchInquiryTab('detailed')" type="button">
               📋 Detailed Inquiries (<span id="countDetailedInquiries">0</span>)
             </button>
-          </div>
-
-          <div class="table-card">
-            <div class="table-toolbar">
-              <div class="search-box">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
-                <input type="text" id="inquirySearchInput" placeholder="Search inquiries by name, email, ref..." oninput="AdminApp.filterInquiries()">
-              </div>
-
-              <div class="filter-group">
-                <label style="font-size: 0.85rem; color: var(--ink-muted);">Status:</label>
-                <select id="inquiryStatusFilter" class="filter-select" onchange="AdminApp.filterInquiries()">
-                  <option value="all">All Inquiries</option>
-                  <option value="new">New</option>
-                  <option value="contacted">Contacted</option>
-                  <option value="customizing">Customizing</option>
-                  <option value="confirmed">Confirmed</option>
-                  <option value="archived">Archived</option>
-                </select>
-              </div>
-            </div>
-
-            <div class="data-table-wrap">
-              <table class="data-table">
-                <thead id="inquiriesTableHead">
-                  <tr>
-                    <th>Ref #</th>
-                    <th>Guest Details</th>
-                    <th>Country</th>
-                    <th>Travel Dates</th>
-                    <th>Pax</th>
-                    <th>Status</th>
-                    <th>Received</th>
-                    <th>Actions</th>
-                  </tr>
-                </thead>
-                <tbody id="inquiriesTableBody">
-                  <tr><td colspan="8" style="text-align: center; color: var(--ink-muted);">Loading inquiries...</td></tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </section>
-
-
-        <!-- ========================================== -->
-        <!-- SECTION 3: TOUR PACKAGES                   -->
-        <!-- ========================================== -->
-        <section id="section-packages" class="content-section">
-          <div class="section-header">
-            <div class="section-title-wrap">
-              <h2>Tour Packages</h2>
-              <p>Manage signature tours, itineraries, pricing and highlights</p>
-            </div>
-            <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
-              <span id="firebaseStatusBadge" class="badge" style="background:#E2E8F0; color:#475569; padding: 6px 12px; border-radius: 20px; font-size: 0.82rem; font-weight: 600;">☁️ Firebase: Initializing...</span>
-              <button class="btn btn-secondary" onclick="AdminApp.syncToFirebase()" title="Upload and sync current packages to Firebase Firestore">
-                <span>☁️ Seed to Firebase</span>
-              </button>
-              <button class="btn btn-secondary" onclick="AdminApp.fetchFromFirebase()" title="Fetch live packages from Firebase Firestore">
-                <span>🔄 Fetch from Firebase</span>
-              </button>
-              <button class="btn btn-secondary" onclick="AdminApp.exportPackagesJson()" title="Export updated data/packages.json file">
-                <span>📥 Export packages.json</span>
-              </button>
-              <button class="btn btn-primary" onclick="AdminApp.openPackageModal()">
-                <span>+ Add Tour Package</span>
-              </button>
-            </div>
-          </div>
-
-          <div class="table-card">
-            <div class="table-toolbar">
-              <div class="search-box">
-                <input type="text" id="packageSearchInput" placeholder="Search tours..." oninput="AdminApp.filterPackages()">
-              </div>
-              <div class="filter-group">
-                <select id="packageCategoryFilter" class="filter-select" onchange="AdminApp.filterPackages()">
-                  <option value="all">All Categories</option>
-                </select>
-              </div>
-            </div>
-
-            <div class="data-table-wrap">
-              <table class="data-table">
-                <thead>
-                  <tr>
-                    <th style="width: 60px;">Image</th>
-                    <th>Package Title</th>
-                    <th>Category</th>
-                    <th>Duration</th>
-                    <th>From (USD)</th>
-                    <th>Popular</th>
-                    <th>Published</th>
-                    <th style="text-align: right;">Actions</th>
-                  </tr>
-                </thead>
-                <tbody id="packagesTableBody">
-                  <tr><td colspan="8" style="text-align: center; color: var(--ink-muted);">Loading tour packages...</td></tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </section>
-
-
-        <!-- ========================================== -->
-        <!-- SECTION 4: CATEGORIES                      -->
-        <!-- ========================================== -->
-        <section id="section-categories" class="content-section">
-          <div class="section-header">
-            <div class="section-title-wrap">
-              <h2>Tour Categories</h2>
-              <p>10 core travel themes and categories</p>
-            </div>
-            <button class="btn btn-primary" onclick="AdminApp.openCategoryModal()">
-              <span>+ Add Category</span>
-            </button>
-          </div>
-
-          <div class="table-card">
-            <div class="data-table-wrap">
-              <table class="data-table">
-                <thead>
-                  <tr>
-                    <th>Order</th>
-                    <th>Category Name</th>
-                    <th>Slug</th>
-                    <th>Tagline</th>
-                    <th>Published</th>
-                    <th style="text-align: right;">Actions</th>
-                  </tr>
-                </thead>
-                <tbody id="categoriesTableBody">
-                  <tr><td colspan="6" style="text-align: center; color: var(--ink-muted);">Loading categories...</td></tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </section>
-
-
-        <!-- ========================================== -->
-        <!-- SECTION 5: DESTINATIONS                    -->
-        <!-- ========================================== -->
-        <section id="section-destinations" class="content-section">
-          <div class="section-header">
-            <div class="section-title-wrap">
-              <h2>Destinations</h2>
-              <p>Iconic Sri Lankan cities, heritage sites, and coastal escapes</p>
-            </div>
-            <button class="btn btn-primary" onclick="AdminApp.openDestinationModal()">
-              <span>+ Add Destination</span>
-            </button>
-          </div>
-
-          <div class="table-card">
-            <div class="data-table-wrap">
-              <table class="data-table">
-                <thead>
-                  <tr>
-                    <th>Image</th>
-                    <th>Title</th>
-                    <th>Region</th>
-                    <th>Slug</th>
-                    <th>Published</th>
-                    <th style="text-align: right;">Actions</th>
-                  </tr>
-                </thead>
-                <tbody id="destinationsTableBody">
-                  <tr><td colspan="6" style="text-align: center; color: var(--ink-muted);">Loading destinations...</td></tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </section>
-
-
-        <!-- ========================================== -->
-        <!-- SECTION 6: GUEST REVIEWS                   -->
-        <!-- ========================================== -->
-        <section id="section-reviews" class="content-section">
-          <div class="section-header">
-            <div class="section-title-wrap">
-              <h2>Guest Reviews & Testimonials</h2>
-              <p>Curate approved traveler feedback</p>
-            </div>
-            <button class="btn btn-primary" onclick="AdminApp.openReviewModal()">
-              <span>+ Add Review</span>
-            </button>
-          </div>
-
-          <div class="table-card">
-            <div class="data-table-wrap">
-              <table class="data-table">
-                <thead>
-                  <tr>
-                    <th>Guest Name</th>
-                    <th>Country</th>
-                    <th>Rating</th>
-                    <th>Tour Taken</th>
-                    <th>Review Snippet</th>
-                    <th>Published</th>
-                    <th style="text-align: right;">Actions</th>
-                  </tr>
-                </thead>
-                <tbody id="reviewsTableBody">
-                  <tr><td colspan="7" style="text-align: center; color: var(--ink-muted);">Loading reviews...</td></tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </section>
-
-
-        <!-- ========================================== -->
-        <!-- SECTION 7: MEDIA LIBRARY                   -->
-        <!-- ========================================== -->
-        <section id="section-media" class="content-section">
-          <div class="section-header" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
-            <div class="section-title-wrap">
-              <h2>Media Library</h2>
-              <p>Upload and manage high-resolution imagery (Auto-compressed to WebP or via Cloudinary CDN)</p>
-            </div>
-            <button class="btn btn-primary" onclick="AdminApp.openCloudinaryWidget()" style="display: inline-flex; align-items: center; gap: 8px;">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM14 13v4h-4v-4H7l5-5 5 5h-3z"/></svg>
-              <span>Upload to Cloudinary</span>
-            </button>
-          </div>
-
-          <!-- Dropzone -->
-          <div class="dropzone" id="mediaDropzone" onclick="document.getElementById('mediaFileInput').click()">
-            <div class="dropzone-icon">☁️</div>
-            <h3 style="font-size: 1.1rem; margin-bottom: 4px;">Drag and drop image files here, or click to browse</h3>
-            <p style="color: var(--ink-muted); font-size: 0.85rem;">Max 5 MB per image. Automatically converted and compressed to WebP for lightning-fast delivery.</p>
-            <input type="file" id="mediaFileInput" accept="image/*,video/*" multiple style="display: none;" onchange="AdminApp.handleMediaUpload(this.files)">
-          </div>
-
-          <!-- Media Grid -->
-          <div class="media-grid" id="mediaGrid">
-            <!-- Media items will render here -->
-          </div>
-        </section>
-
-
-        <!-- ========================================== -->
-        <!-- SECTION 8: USERS & ROLES                   -->
-        <!-- ========================================== -->
-        <section id="section-users" class="content-section">
-          <div class="section-header">
-            <div class="section-title-wrap">
-              <h2>User Access & Permissions</h2>
-              <p>Manage role permissions (Super Admin vs Editor)</p>
-            </div>
-          </div>
-
-          <div class="table-card">
-            <div class="data-table-wrap">
-              <table class="data-table">
-                <thead>
-                  <tr>
-                    <th>User ID / Email</th>
-                    <th>Assigned Role</th>
-                    <th>Permissions</th>
-                    <th>Status</th>
-                  </tr>
-                </thead>
-                <tbody id="usersTableBody">
-                  <!-- Populated via script -->
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </section>
-
-
-        <!-- ========================================== -->
-        <!-- SECTION 9: SETTINGS                        -->
-        <!-- ========================================== -->
-        <section id="section-settings" class="content-section">
-          <div class="section-header">
-            <div class="section-title-wrap">
-              <h2>Global Site & Brand Settings</h2>
-              <p>Configure phone numbers, addresses, social channels, and QR codes</p>
-            </div>
-            <button class="btn btn-primary" onclick="AdminApp.saveSettings()">
-              <span>Save Changes</span>
-            </button>
-          </div>
-
-          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 24px;">
-            
-            <!-- Contact Card -->
-            <div class="table-card" style="padding: 24px;">
-              <h3 style="margin-bottom: 16px;">Contact Information</h3>
-              
-              <div class="form-group">
-                <label>Company Display Name</label>
-                <input type="text" id="settingCompanyName" class="form-control">
-              </div>
-
-              <div class="form-group">
-                <label>Tagline / Slogan</label>
-                <input type="text" id="settingSlogan" class="form-control">
-              </div>
-
-              <div class="form-group">
-                <label>Phone Number (Display)</label>
-                <input type="text" id="settingPhone" class="form-control">
-              </div>
-
-              <div class="form-group">
-                <label>Inquiry Email</label>
-                <input type="email" id="settingEmail" class="form-control">
-              </div>
-
-              <div class="form-group">
-                <label>Physical Office Address</label>
-                <textarea id="settingAddress" class="form-control" rows="2"></textarea>
-              </div>
-            </div>
-
-                        <!-- Trust, Accreditations & Counters Card -->
-            <div class="table-card" style="padding: 24px;">
-              <h3 style="margin-bottom: 16px;">Trust, Accreditations &amp; Counters</h3>
-
-              <div class="form-group">
-                <label>SLTDA Registration Number (Sri Lanka Tourism)</label>
-                <input type="text" id="settingSltdaLicense" class="form-control" placeholder="e.g. SLTDA/SQA/PRO/01234">
-                <small style="color: var(--ink-muted);">Leave empty to hide badge on public site until confirmed.</small>
-              </div>
-
-              <div class="form-group">
-                <label>TripAdvisor Certificate / Review URL</label>
-                <input type="url" id="settingTripadvisorReviews" class="form-control" placeholder="https://www.tripadvisor.com/...">
-              </div>
-
-              <div class="form-group">
-                <label>Google Business Review URL</label>
-                <input type="url" id="settingGoogleReviews" class="form-control" placeholder="https://g.page/r/...">
-              </div>
-
-              <div class="form-group">
-                <label>Tourism Association Memberships (SLAITO / THASL)</label>
-                <input type="text" id="settingAssociations" class="form-control" placeholder="e.g. SLAITO Accredited Operator">
-              </div>
-
-              <div style="border-top: 1px solid #E2E8F0; padding-top: 16px; margin-top: 16px;">
-                <h4 style="font-size: 0.95rem; margin-bottom: 12px; color: var(--ink);">Home Page Verified Counters</h4>
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
-                  <div class="form-group">
-                    <label>Founded Year</label>
-                    <input type="text" id="settingCounterFounded" class="form-control" value="2014">
-                  </div>
-                  <div class="form-group">
-                    <label>Global Rep Countries</label>
-                    <input type="text" id="settingCounterCountries" class="form-control" value="10">
-                  </div>
-                  <div class="form-group">
-                    <label>Private % Ratio</label>
-                    <input type="text" id="settingCounterPrivate" class="form-control" value="100">
-                  </div>
-                  <div class="form-group">
-                    <label>Direct Chat Channels</label>
-                    <input type="text" id="settingCounterChannels" class="form-control" value="3">
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- WhatsApp & Messaging Card -->
-            <div class="table-card" style="padding: 24px;">
-              <h3 style="margin-bottom: 16px;">Messaging & Social Channels</h3>
-
-              <div class="form-group">
-                <label>WhatsApp Number (+94 ...)</label>
-                <input type="text" id="settingWhatsApp" class="form-control">
-              </div>
-
-              <div class="form-group">
-                <label>Facebook Page URL</label>
-                <input type="url" id="settingFacebook" class="form-control">
-              </div>
-
-              <div class="form-group">
-                <label>Instagram URL</label>
-                <input type="url" id="settingInstagram" class="form-control">
-              </div>
-
-              <div class="form-group">
-                <label>TripAdvisor URL</label>
-                <input type="url" id="settingTripadvisor" class="form-control">
-              </div>
-
-              <div class="form-group">
-                <label>Designer Credit Link (Infinite Design)</label>
-                <input type="url" id="settingDesignerUrl" class="form-control">
-              </div>
-
-              <div class="form-group">
-                <label>Designer Facebook Page Link</label>
-                <input type="url" id="settingDesignerFb" class="form-control">
-              </div>
-            </div>
-
-          </div>
-        </section>
-
-      
-        <!-- ========================================== -->
-        <!-- SECTION 8: OUR PEOPLE / TEAM               -->
-        <!-- ========================================== -->
-        <section id="section-team" class="content-section">
-          <div class="section-header">
-            <div class="section-title-wrap">
-              <h2>Our People &amp; Global Representatives</h2>
-              <p>Manage leadership profiles and international country representatives (~10 countries)</p>
-            </div>
-            <div style="display: flex; gap: 10px;">
-              <button class="btn btn-primary" onclick="AdminApp.openTeamModal()">
-                <span>+ Add Representative</span>
-              </button>
-            </div>
-          </div>
-
-          <div class="table-card">
-            <div class="data-table-wrap">
-              <table class="data-table">
-                <thead>
-                  <tr>
-                    <th>Photo</th>
-                    <th>Name</th>
-                    <th>Role / Title</th>
-                    <th>Country / Flag</th>
-                    <th>Order</th>
-                    <th>Status</th>
-                    <th>Actions</th>
-                  </tr>
-                </thead>
-                <tbody id="teamTableBody">
-                  <tr><td colspan="7" style="text-align: center; color: var(--ink-muted);">Loading team members...</td></tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </section>
-
-      </main>
-    </div>
-  </div>
-
-
-  <!-- ==============================================================================
+</div>
+<div class="table-card">
+<div class="table-toolbar">
+<div class="search-box">
+<svg fill="currentColor" height="16" viewbox="0 0 24 24" width="16"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path></svg>
+<input aria-label="Search customer inquiries" id="inquirySearchInput" oninput="AdminApp.filterInquiries()" placeholder="Search inquiries by name, email, ref..." type="text"/>
+</div>
+<div class="filter-group">
+<label style="font-size: 0.85rem; color: var(--ink-muted);">Status:</label>
+<select aria-label="Filter inquiries by status" class="filter-select" id="inquiryStatusFilter" onchange="AdminApp.filterInquiries()">
+<option value="all">All Inquiries</option>
+<option value="new">New</option>
+<option value="contacted">Contacted</option>
+<option value="customizing">Customizing</option>
+<option value="confirmed">Confirmed</option>
+<option value="archived">Archived</option>
+</select>
+</div>
+</div>
+<div class="data-table-wrap">
+<table class="data-table">
+<thead id="inquiriesTableHead">
+<tr>
+<th>Ref #</th>
+<th>Guest Details</th>
+<th>Country</th>
+<th>Travel Dates</th>
+<th>Pax</th>
+<th>Status</th>
+<th>Received</th>
+<th>Actions</th>
+</tr>
+</thead>
+<tbody id="inquiriesTableBody">
+<tr><td colspan="8" style="text-align: center; color: var(--ink-muted);">Loading inquiries...</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<!-- ========================================== -->
+<!-- SECTION 3: TOUR PACKAGES                   -->
+<!-- ========================================== -->
+<section class="content-section" id="section-packages">
+<div class="section-header">
+<div class="section-title-wrap">
+<h2>Tour Packages</h2>
+<p>Manage signature tours, itineraries, pricing and highlights</p>
+</div>
+<div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
+<span class="badge" id="firebaseStatusBadge" style="background:#E2E8F0; color:#475569; padding: 6px 12px; border-radius: 20px; font-size: 0.82rem; font-weight: 600;">☁️ Firebase: Initializing...</span>
+<button class="btn btn-secondary" onclick="AdminApp.syncToFirebase()" title="Upload and sync current packages to Firebase Firestore">
+<span>☁️ Seed to Firebase</span>
+</button>
+<button class="btn btn-secondary" onclick="AdminApp.fetchFromFirebase()" title="Fetch live packages from Firebase Firestore">
+<span>🔄 Fetch from Firebase</span>
+</button>
+<button class="btn btn-secondary" onclick="AdminApp.exportPackagesJson()" title="Export updated data/packages.json file">
+<span>📥 Export packages.json</span>
+</button>
+<button class="btn btn-primary" onclick="AdminApp.openPackageModal()">
+<span>+ Add Tour Package</span>
+</button>
+</div>
+</div>
+<div class="table-card">
+<div class="table-toolbar">
+<div class="search-box">
+<input aria-label="Search tour packages" id="packageSearchInput" oninput="AdminApp.filterPackages()" placeholder="Search tours..." type="text"/>
+</div>
+<div class="filter-group">
+<select aria-label="Filter packages by category" class="filter-select" id="packageCategoryFilter" onchange="AdminApp.filterPackages()">
+<option value="all">All Categories</option>
+</select>
+</div>
+</div>
+<div class="data-table-wrap">
+<table class="data-table">
+<thead>
+<tr>
+<th style="width: 60px;">Image</th>
+<th>Package Title</th>
+<th>Category</th>
+<th>Duration</th>
+<th>From (USD)</th>
+<th>Popular</th>
+<th>Published</th>
+<th style="text-align: right;">Actions</th>
+</tr>
+</thead>
+<tbody id="packagesTableBody">
+<tr><td colspan="8" style="text-align: center; color: var(--ink-muted);">Loading tour packages...</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<!-- ========================================== -->
+<!-- SECTION 4: CATEGORIES                      -->
+<!-- ========================================== -->
+<section class="content-section" id="section-categories">
+<div class="section-header">
+<div class="section-title-wrap">
+<h2>Tour Categories</h2>
+<p>10 core travel themes and categories</p>
+</div>
+<button class="btn btn-primary" onclick="AdminApp.openCategoryModal()">
+<span>+ Add Category</span>
+</button>
+</div>
+<div class="table-card">
+<div class="data-table-wrap">
+<table class="data-table">
+<thead>
+<tr>
+<th>Order</th>
+<th>Category Name</th>
+<th>Slug</th>
+<th>Tagline</th>
+<th>Published</th>
+<th style="text-align: right;">Actions</th>
+</tr>
+</thead>
+<tbody id="categoriesTableBody">
+<tr><td colspan="6" style="text-align: center; color: var(--ink-muted);">Loading categories...</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<!-- ========================================== -->
+<!-- SECTION 5: DESTINATIONS                    -->
+<!-- ========================================== -->
+<section class="content-section" id="section-destinations">
+<div class="section-header">
+<div class="section-title-wrap">
+<h2>Destinations</h2>
+<p>Iconic Sri Lankan cities, heritage sites, and coastal escapes</p>
+</div>
+<button class="btn btn-primary" onclick="AdminApp.openDestinationModal()">
+<span>+ Add Destination</span>
+</button>
+</div>
+<div class="table-card">
+<div class="data-table-wrap">
+<table class="data-table">
+<thead>
+<tr>
+<th>Image</th>
+<th>Title</th>
+<th>Region</th>
+<th>Slug</th>
+<th>Published</th>
+<th style="text-align: right;">Actions</th>
+</tr>
+</thead>
+<tbody id="destinationsTableBody">
+<tr><td colspan="6" style="text-align: center; color: var(--ink-muted);">Loading destinations...</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<!-- ========================================== -->
+<!-- SECTION 6: GUEST REVIEWS                   -->
+<!-- ========================================== -->
+<section class="content-section" id="section-reviews">
+<div class="section-header">
+<div class="section-title-wrap">
+<h2>Guest Reviews &amp; Testimonials</h2>
+<p>Curate approved traveler feedback</p>
+</div>
+<button class="btn btn-primary" onclick="AdminApp.openReviewModal()">
+<span>+ Add Review</span>
+</button>
+</div>
+<div class="table-card">
+<div class="data-table-wrap">
+<table class="data-table">
+<thead>
+<tr>
+<th>Guest Name</th>
+<th>Country</th>
+<th>Rating</th>
+<th>Tour Taken</th>
+<th>Review Snippet</th>
+<th>Published</th>
+<th style="text-align: right;">Actions</th>
+</tr>
+</thead>
+<tbody id="reviewsTableBody">
+<tr><td colspan="7" style="text-align: center; color: var(--ink-muted);">Loading reviews...</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<!-- ========================================== -->
+<!-- SECTION 7: MEDIA LIBRARY                   -->
+<!-- ========================================== -->
+<section class="content-section" id="section-media">
+<div class="section-header" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
+<div class="section-title-wrap">
+<h2>Media Library</h2>
+<p>Upload and manage high-resolution imagery (Auto-compressed to WebP or via Cloudinary CDN)</p>
+</div>
+<button class="btn btn-primary" onclick="AdminApp.openCloudinaryWidget()" style="display: inline-flex; align-items: center; gap: 8px;">
+<svg fill="currentColor" height="18" viewbox="0 0 24 24" width="18"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM14 13v4h-4v-4H7l5-5 5 5h-3z"></path></svg>
+<span>Upload to Cloudinary</span>
+</button>
+</div>
+<!-- Dropzone -->
+<div class="dropzone" id="mediaDropzone" onclick="document.getElementById('mediaFileInput').click()">
+<div class="dropzone-icon">☁️</div>
+<h3 style="font-size: 1.1rem; margin-bottom: 4px;">Drag and drop image files here, or click to browse</h3>
+<p style="color: var(--ink-muted); font-size: 0.85rem;">Max 5 MB per image. Automatically converted and compressed to WebP for lightning-fast delivery.</p>
+<input accept="image/*,video/*" aria-label="Upload image or video files" id="mediaFileInput" multiple="" onchange="AdminApp.handleMediaUpload(this.files)" style="display: none;" type="file"/>
+</div>
+<!-- Media Grid -->
+<div class="media-grid" id="mediaGrid">
+<!-- Media items will render here -->
+</div>
+</section>
+<!-- ========================================== -->
+<!-- SECTION 8: USERS & ROLES                   -->
+<!-- ========================================== -->
+<section class="content-section" id="section-users">
+<div class="section-header">
+<div class="section-title-wrap">
+<h2>User Access &amp; Permissions</h2>
+<p>Manage role permissions (Super Admin vs Editor)</p>
+</div>
+</div>
+<div class="table-card">
+<div class="data-table-wrap">
+<table class="data-table">
+<thead>
+<tr>
+<th>User ID / Email</th>
+<th>Assigned Role</th>
+<th>Permissions</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody id="usersTableBody">
+<!-- Populated via script -->
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<!-- ========================================== -->
+<!-- SECTION 9: SETTINGS                        -->
+<!-- ========================================== -->
+<section class="content-section" id="section-settings">
+<div class="section-header">
+<div class="section-title-wrap">
+<h2>Global Site &amp; Brand Settings</h2>
+<p>Configure phone numbers, addresses, social channels, and QR codes</p>
+</div>
+<button class="btn btn-primary" onclick="AdminApp.saveSettings()">
+<span>Save Changes</span>
+</button>
+</div>
+<!-- Master Seeder Banner (Job 5) -->
+<div class="seeder-banner">
+<h3><span>⚡</span> Master Firestore Synchronizer &amp; Content Seeder</h3>
+<p>Seed, sync, and persist all 14 site collections to Firebase Firestore with a single click. Populates all 26 tour packages, 10 categories, 10 destinations, reviews, team, faqs, settings, and 140 self-hosted media assets across 10 supported languages.</p>
+<div class="seeder-stats">
+<span class="seeder-stat-pill"><strong>26</strong> Tour Packages</span>
+<span class="seeder-stat-pill"><strong>10</strong> Travel Categories</span>
+<span class="seeder-stat-pill"><strong>10</strong> Sacred Destinations</span>
+<span class="seeder-stat-pill"><strong>140</strong> Media Assets</span>
+<span class="seeder-stat-pill"><strong>10</strong> Languages</span>
+<span class="seeder-stat-pill"><strong>3</strong> Inquiry Forms</span>
+</div>
+<div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
+<button class="btn btn-gold" id="btnMasterSeed" onclick="AdminApp.seedAllToFirestore()" style="padding: 10px 22px; font-weight: 700; font-size: 0.95rem;" type="button">
+<span>🚀 Seed All 14 Collections to Firebase</span>
+</button>
+<button class="btn btn-secondary" onclick="AdminApp.fetchFromFirebase()" style="padding: 10px 18px;" type="button">
+<span>🔄 Refresh from Firestore</span>
+</button>
+<button class="btn btn-secondary" onclick="AdminApp.exportCompleteBackup()" title="Download full JSON database snapshot" type="button">
+<span>📥 Full Backup (.json)</span>
+</button>
+<label class="btn btn-secondary" style="cursor: pointer; margin: 0; padding: 10px 18px; display: inline-flex; align-items: center; gap: 6px;" title="Restore entire database from a JSON backup">
+<span>📤 Restore Backup</span>
+<input accept=".json" onchange="AdminApp.restoreBackup(this.files[0])" style="display: none;" type="file"/>
+</label>
+<span id="seederStatusText" style="font-size: 0.88rem; color: #E5B869; font-weight: 600;">Ready to seed</span>
+</div>
+<div class="seeder-progress-wrap" id="seederProgressWrap">
+<div class="seeder-progress-bar" id="seederProgressBar"></div>
+</div>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 24px;">
+<!-- Contact Card -->
+<div class="table-card" style="padding: 24px;">
+<h3 style="margin-bottom: 16px;">Contact Information</h3>
+<div class="form-group">
+<label>Company Display Name</label>
+<input class="form-control" id="settingCompanyName" type="text"/>
+</div>
+<div class="form-group">
+<label>Tagline / Slogan</label>
+<input class="form-control" id="settingSlogan" type="text"/>
+</div>
+<div class="form-group">
+<label>Phone Number (Display)</label>
+<input class="form-control" id="settingPhone" type="text"/>
+</div>
+<div class="form-group">
+<label>Inquiry Email</label>
+<input class="form-control" id="settingEmail" type="email"/>
+</div>
+<div class="form-group">
+<label>Physical Office Address</label>
+<textarea class="form-control" id="settingAddress" rows="2"></textarea>
+</div>
+</div>
+<!-- Trust, Accreditations & Counters Card -->
+<div class="table-card" style="padding: 24px;">
+<h3 style="margin-bottom: 16px;">Trust, Accreditations &amp; Counters</h3>
+<div class="form-group">
+<label>SLTDA Registration Number (Sri Lanka Tourism)</label>
+<input class="form-control" id="settingSltdaLicense" placeholder="e.g. SLTDA/SQA/PRO/01234" type="text"/>
+<small style="color: var(--ink-muted);">Leave empty to hide badge on public site until confirmed.</small>
+</div>
+<div class="form-group">
+<label>TripAdvisor Certificate / Review URL</label>
+<input class="form-control" id="settingTripadvisorReviews" placeholder="https://www.tripadvisor.com/..." type="url"/>
+</div>
+<div class="form-group">
+<label>Google Business Review URL</label>
+<input class="form-control" id="settingGoogleReviews" placeholder="https://g.page/r/..." type="url"/>
+</div>
+<div class="form-group">
+<label>Tourism Association Memberships (SLAITO / THASL)</label>
+<input class="form-control" id="settingAssociations" placeholder="e.g. SLAITO Accredited Operator" type="text"/>
+</div>
+<div style="border-top: 1px solid #E2E8F0; padding-top: 16px; margin-top: 16px;">
+<h4 style="font-size: 0.95rem; margin-bottom: 12px; color: var(--ink);">Home Page Verified Counters</h4>
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+<div class="form-group">
+<label>Founded Year</label>
+<input class="form-control" id="settingCounterFounded" type="text" value="2014"/>
+</div>
+<div class="form-group">
+<label>Global Rep Countries</label>
+<input class="form-control" id="settingCounterCountries" type="text" value="10"/>
+</div>
+<div class="form-group">
+<label>Private % Ratio</label>
+<input class="form-control" id="settingCounterPrivate" type="text" value="100"/>
+</div>
+<div class="form-group">
+<label>Direct Chat Channels</label>
+<input class="form-control" id="settingCounterChannels" type="text" value="3"/>
+</div>
+</div>
+</div>
+</div>
+<!-- WhatsApp & Messaging Card -->
+<div class="table-card" style="padding: 24px;">
+<h3 style="margin-bottom: 16px;">Messaging &amp; Social Channels</h3>
+<div class="form-group">
+<label>WhatsApp Number (+94 ...)</label>
+<input class="form-control" id="settingWhatsApp" type="text"/>
+</div>
+<div class="form-group">
+<label>Facebook Page URL</label>
+<input class="form-control" id="settingFacebook" type="url"/>
+</div>
+<div class="form-group">
+<label>Instagram URL</label>
+<input class="form-control" id="settingInstagram" type="url"/>
+</div>
+<div class="form-group">
+<label>TripAdvisor URL</label>
+<input class="form-control" id="settingTripadvisor" type="url"/>
+</div>
+<div class="form-group">
+<label>Designer Credit Link (Infinite Design)</label>
+<input class="form-control" id="settingDesignerUrl" type="url"/>
+</div>
+<div class="form-group">
+<label>Designer Facebook Page Link</label>
+<input class="form-control" id="settingDesignerFb" type="url"/>
+</div>
+</div>
+</div>
+</section>
+<!-- ========================================== -->
+<!-- SECTION 8: OUR PEOPLE / TEAM               -->
+<!-- ========================================== -->
+<section class="content-section" id="section-team">
+<div class="section-header">
+<div class="section-title-wrap">
+<h2>Our People &amp; Global Representatives</h2>
+<p>Manage leadership profiles and international country representatives (~10 countries)</p>
+</div>
+<div style="display: flex; gap: 10px;">
+<button class="btn btn-primary" onclick="AdminApp.openTeamModal()">
+<span>+ Add Representative</span>
+</button>
+</div>
+</div>
+<div class="table-card">
+<div class="data-table-wrap">
+<table class="data-table">
+<thead>
+<tr>
+<th>Photo</th>
+<th>Name</th>
+<th>Role / Title</th>
+<th>Country / Flag</th>
+<th>Order</th>
+<th>Status</th>
+<th>Actions</th>
+</tr>
+</thead>
+<tbody id="teamTableBody">
+<tr><td colspan="7" style="text-align: center; color: var(--ink-muted);">Loading team members...</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+</main>
+</div>
+</div>
+<!-- ==============================================================================
    * 3. REUSABLE MODALS & DRAWERS
    * ============================================================================== -->
-
-  <!-- PACKAGE EDIT MODAL -->
-  <div class="modal-overlay" id="packageModal">
-    <div class="modal-dialog large">
-      <div class="modal-header">
-        <h3 id="packageModalTitle">Add Tour Package</h3>
-        <button class="modal-close" onclick="AdminApp.closeModal('packageModal')">&times;</button>
-      </div>
-
-      <div class="modal-body">
-        <form id="packageForm">
-          <input type="hidden" id="pkgId">
-
-          <!-- Multi-language tabs -->
-          <div class="lang-tabs">
-            <button type="button" class="lang-tab-btn active" onclick="AdminApp.switchLangTab(this, 'en')">English (EN)</button>
-            <button type="button" class="lang-tab-btn" onclick="AdminApp.switchLangTab(this, 'zh')">中文 (Chinese)</button>
-          </div>
-
-          <!-- EN TAB -->
-          <div class="lang-tab-pane active" id="pkgTab-en">
-            <div class="form-group">
-              <label>Package Title (EN) *</label>
-              <input type="text" id="pkgTitle" class="form-control" required placeholder="Grand Ceylon Heritage & Wildlife Odyssey">
-            </div>
-
-            <div class="form-group">
-              <label>Overview & Experience (EN)</label>
-              <textarea id="pkgOverview" class="form-control" rows="4" placeholder="Detailed narrative of this journey..."></textarea>
-            </div>
-          </div>
-
-          <!-- ZH TAB -->
-          <div class="lang-tab-pane" id="pkgTab-zh">
-            <div class="form-group">
-              <label>Package Title (中文)</label>
-              <input type="text" id="pkgTitleZh" class="form-control" placeholder="斯里兰卡经典文化遗产与野生动物探险之旅">
-            </div>
-
-            <div class="form-group">
-              <label>Overview (中文)</label>
-              <textarea id="pkgOverviewZh" class="form-control" rows="4" placeholder="斯里兰卡深度定制体验..."></textarea>
-            </div>
-          </div>
-
-          <!-- Common Fields -->
-          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-top: 16px;">
-            <div class="form-group">
-              <label>URL Slug *</label>
-              <input type="text" id="pkgSlug" class="form-control" required placeholder="grand-ceylon-heritage">
-            </div>
-
-            <div class="form-group">
-              <label>Category *</label>
-              <select id="pkgCategory" class="form-control" required>
-                <!-- Filled dynamically -->
-              </select>
-            </div>
-
-            <div class="form-group">
-              <label>Nights / Days</label>
-              <div style="display: flex; gap: 8px;">
-                <input type="number" id="pkgNights" class="form-control" placeholder="Nights" min="1" value="7">
-                <input type="number" id="pkgDays" class="form-control" placeholder="Days" min="1" value="8">
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label>Starting Price (USD)</label>
-              <input type="number" id="pkgPrice" class="form-control" placeholder="1250" min="0">
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label>Hero Featured Image</label>
-            <div style="display: flex; gap: 8px; flex-wrap: wrap;">
-              <input type="text" id="pkgHeroImage" class="form-control" style="flex: 1; min-width: 220px;" placeholder="assets/images/cultural-triangle.jpg or Cloudinary URL">
-              <button type="button" class="btn btn-secondary" onclick="AdminApp.openCloudinaryWidgetForInput('pkgHeroImage')" title="Direct unsigned upload to Cloudinary preset">☁️ Upload Cloudinary</button>
-              <button type="button" class="btn btn-outline" onclick="AdminApp.openImagePicker('pkgHeroImage')">Browse Media</button>
-            </div>
-          </div>
-
-          <!-- Itinerary Repeater -->
-          <div class="form-group">
-            <div style="display: flex; justify-content: space-between; align-items: center;">
-              <label style="font-weight: 600;">Day-by-Day Itinerary</label>
-              <button type="button" class="btn btn-sm btn-outline" onclick="AdminApp.addItineraryDay()">+ Add Day</button>
-            </div>
-            <div class="repeater-wrap" id="itineraryContainer">
-              <!-- Itinerary items dynamically added -->
-            </div>
-          </div>
-
-          <!-- Highlights Repeater -->
-          <div class="form-group">
-            <div style="display: flex; justify-content: space-between; align-items: center;">
-              <label style="font-weight: 600;">Tour Highlights</label>
-              <button type="button" class="btn btn-sm btn-outline" onclick="AdminApp.addHighlightItem()">+ Add Highlight</button>
-            </div>
-            <div class="repeater-wrap" id="highlightsContainer">
-              <!-- Highlights items dynamically added -->
-            </div>
-          </div>
-
-          <!-- Toggles -->
-          <div style="display: flex; gap: 24px; margin-top: 16px;">
-            <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
-              <input type="checkbox" id="pkgIsPopular"> Mark as "Most Popular"
+<!-- PACKAGE EDIT MODAL -->
+<div class="modal-overlay" id="packageModal">
+<div class="modal-dialog large">
+<div class="modal-header">
+<h3 id="packageModalTitle">Add Tour Package</h3>
+<button class="modal-close" onclick="AdminApp.closeModal('packageModal')">×</button>
+</div>
+<div class="modal-body">
+<form id="packageForm">
+<input id="pkgId" type="hidden"/>
+<!-- Multi-language tabs -->
+<div class="lang-tabs">
+<button class="lang-tab-btn active" onclick="AdminApp.switchLangTab(this, 'en')" type="button">English (EN)</button>
+<button class="lang-tab-btn" onclick="AdminApp.switchLangTab(this, 'zh')" type="button">中文 (Chinese)</button>
+</div>
+<!-- EN TAB -->
+<div class="lang-tab-pane active" id="pkgTab-en">
+<div class="form-group">
+<label>Package Title (EN) *</label>
+<input class="form-control" id="pkgTitle" placeholder="Grand Ceylon Heritage &amp; Wildlife Odyssey" required="" type="text"/>
+</div>
+<div class="form-group">
+<label>Overview &amp; Experience (EN)</label>
+<textarea class="form-control" id="pkgOverview" placeholder="Detailed narrative of this journey..." rows="4"></textarea>
+</div>
+</div>
+<!-- ZH TAB -->
+<div class="lang-tab-pane" id="pkgTab-zh">
+<div class="form-group">
+<label>Package Title (中文)</label>
+<input class="form-control" id="pkgTitleZh" placeholder="斯里兰卡经典文化遗产与野生动物探险之旅" type="text"/>
+</div>
+<div class="form-group">
+<label>Overview (中文)</label>
+<textarea class="form-control" id="pkgOverviewZh" placeholder="斯里兰卡深度定制体验..." rows="4"></textarea>
+</div>
+</div>
+<!-- Common Fields -->
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-top: 16px;">
+<div class="form-group">
+<label>URL Slug *</label>
+<input class="form-control" id="pkgSlug" placeholder="grand-ceylon-heritage" required="" type="text"/>
+</div>
+<div class="form-group">
+<label>Category *</label>
+<select class="form-control" id="pkgCategory" required="">
+<!-- Filled dynamically -->
+</select>
+</div>
+<div class="form-group">
+<label>Nights / Days</label>
+<div style="display: flex; gap: 8px;">
+<input class="form-control" id="pkgNights" min="1" placeholder="Nights" type="number" value="7"/>
+<input class="form-control" id="pkgDays" min="1" placeholder="Days" type="number" value="8"/>
+</div>
+</div>
+<div class="form-group">
+<label>Starting Price (USD)</label>
+<input class="form-control" id="pkgPrice" min="0" placeholder="1250" type="number"/>
+</div>
+</div>
+<div class="form-group">
+<label>Hero Featured Image *</label>
+<div style="display: flex; gap: 8px; flex-wrap: wrap;">
+<input class="form-control" id="pkgHeroImage" oninput="AdminApp.updateImagePreview('pkgHeroImage', 'pkgHeroImagePreview', 'pkgHeroPreviewCard')" placeholder="assets/images/cultural/sigiriya-1.webp or Cloudinary URL" style="flex: 1; min-width: 220px;" type="text"/>
+<button class="btn btn-secondary" onclick="AdminApp.openCloudinaryWidgetForInput('pkgHeroImage', 'pkgHeroImagePreview', 'pkgHeroPreviewCard')" title="Direct unsigned upload to Cloudinary preset" type="button">☁️ Upload Cloudinary</button>
+<button class="btn btn-outline" onclick="AdminApp.openImagePicker('pkgHeroImage', 'pkgHeroImagePreview', 'pkgHeroPreviewCard')" type="button">Browse Media</button>
+<label class="btn-upload-direct" title="Upload local WebP/JPG directly">
+<span>📁 Local Upload</span>
+<input accept="image/*" onchange="AdminApp.handleDirectImageUpload(this.files[0], 'pkgHeroImage', 'pkgHeroImagePreview', 'pkgHeroPreviewCard')" style="display: none;" type="file"/>
+</label>
+</div>
+<!-- Live Image Preview Card -->
+<div class="image-preview-card" id="pkgHeroPreviewCard" style="display: none;">
+<div class="image-preview-thumb-wrap">
+<img alt="Hero Image Preview" class="image-preview-thumb" id="pkgHeroImagePreview" onerror="if(window.AdminApp)AdminApp.handlePreviewError(this)" src=""/>
+</div>
+<div class="image-preview-info">
+<span class="image-preview-title">Hero Featured Image <span class="image-preview-badge" id="pkgHeroBadge">Image Preview</span></span>
+<span class="image-preview-url" id="pkgHeroPreviewUrl"></span>
+</div>
+<div class="image-preview-actions">
+<button class="btn btn-sm btn-outline" onclick="AdminApp.clearImageField('pkgHeroImage', 'pkgHeroImagePreview', 'pkgHeroPreviewCard')" type="button">Remove</button>
+</div>
+</div>
+</div>
+<!-- Itinerary Repeater -->
+<div class="form-group">
+<div style="display: flex; justify-content: space-between; align-items: center;">
+<label style="font-weight: 600;">Day-by-Day Itinerary</label>
+<button class="btn btn-sm btn-outline" onclick="AdminApp.addItineraryDay()" type="button">+ Add Day</button>
+</div>
+<div class="repeater-wrap" id="itineraryContainer">
+<!-- Itinerary items dynamically added -->
+</div>
+</div>
+<!-- Highlights Repeater -->
+<div class="form-group">
+<div style="display: flex; justify-content: space-between; align-items: center;">
+<label style="font-weight: 600;">Tour Highlights</label>
+<button class="btn btn-sm btn-outline" onclick="AdminApp.addHighlightItem()" type="button">+ Add Highlight</button>
+</div>
+<div class="repeater-wrap" id="highlightsContainer">
+<!-- Highlights items dynamically added -->
+</div>
+</div>
+<!-- Toggles -->
+<div style="display: flex; gap: 24px; margin-top: 16px;">
+<label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+<input id="pkgIsPopular" type="checkbox"/> Mark as "Most Popular"
             </label>
-
-            <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
-              <input type="checkbox" id="pkgIsPublished" checked> Published on Website
+<label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+<input checked="" id="pkgIsPublished" type="checkbox"/> Published on Website
             </label>
-          </div>
-        </form>
-      </div>
-
-      <div class="modal-footer">
-        <button type="button" class="btn btn-outline" onclick="AdminApp.closeModal('packageModal')">Cancel</button>
-        <button type="button" class="btn btn-primary" onclick="AdminApp.savePackage()">Save Package</button>
-      </div>
-    </div>
-  </div>
-
-
-  <!-- INQUIRY DETAILS MODAL -->
-  <div class="modal-overlay" id="inquiryModal">
-    <div class="modal-dialog">
-      <div class="modal-header">
-        <h3 id="inquiryModalRef">Inquiry Details</h3>
-        <button class="modal-close" onclick="AdminApp.closeModal('inquiryModal')">&times;</button>
-      </div>
-      <div class="modal-body" id="inquiryModalBody">
-        <!-- Rendered dynamically -->
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-outline" onclick="AdminApp.closeModal('inquiryModal')">Close</button>
-        <button type="button" class="btn btn-gold" id="inquiryWhatsAppBtn">Reply via WhatsApp</button>
-      </div>
-    </div>
-  </div>
-
-
-  <!-- MEDIA PICKER MODAL -->
-  <div class="modal-overlay" id="mediaPickerModal">
-    <div class="modal-dialog large">
-      <div class="modal-header">
-        <h3>Select an Image from Media Library</h3>
-        <button class="modal-close" onclick="AdminApp.closeModal('mediaPickerModal')">&times;</button>
-      </div>
-      <div class="modal-body">
-        <div class="media-grid" id="pickerMediaGrid">
-          <!-- Rendered dynamically -->
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-outline" onclick="AdminApp.closeModal('mediaPickerModal')">Cancel</button>
-      </div>
-    </div>
-  </div>
-
-
-  <!-- RESET PASSWORD MODAL -->
-  <div class="modal-overlay" id="resetModal">
-    <div class="modal-dialog" style="max-width: 420px;">
-      <div class="modal-header">
-        <h3>Reset Password</h3>
-        <button class="modal-close" onclick="AdminApp.closeModal('resetModal')">&times;</button>
-      </div>
-      <div class="modal-body">
-        <p style="color: var(--ink-muted); margin-bottom: 16px; font-size: 0.88rem;">
+</div>
+</form>
+</div>
+<div class="modal-footer">
+<button class="btn btn-outline" onclick="AdminApp.closeModal('packageModal')" type="button">Cancel</button>
+<button class="btn btn-primary" onclick="AdminApp.savePackage()" type="button">Save Package</button>
+</div>
+</div>
+</div>
+<!-- INQUIRY DETAILS MODAL -->
+<div class="modal-overlay" id="inquiryModal">
+<div class="modal-dialog">
+<div class="modal-header">
+<h3 id="inquiryModalRef">Inquiry Details</h3>
+<button class="modal-close" onclick="AdminApp.closeModal('inquiryModal')">×</button>
+</div>
+<div class="modal-body" id="inquiryModalBody">
+<!-- Rendered dynamically -->
+</div>
+<div class="modal-footer">
+<button class="btn btn-outline" onclick="AdminApp.closeModal('inquiryModal')" type="button">Close</button>
+<button class="btn btn-gold" id="inquiryWhatsAppBtn" type="button">Reply via WhatsApp</button>
+</div>
+</div>
+</div>
+<!-- MEDIA PICKER MODAL -->
+<div class="modal-overlay" id="mediaPickerModal">
+<div class="modal-dialog large">
+<div class="modal-header">
+<h3>Select an Image from Media Library</h3>
+<button class="modal-close" onclick="AdminApp.closeModal('mediaPickerModal')">×</button>
+</div>
+<div class="modal-body">
+<div class="media-grid" id="pickerMediaGrid">
+<!-- Rendered dynamically -->
+</div>
+</div>
+<div class="modal-footer">
+<button class="btn btn-outline" onclick="AdminApp.closeModal('mediaPickerModal')" type="button">Cancel</button>
+</div>
+</div>
+</div>
+<!-- RESET PASSWORD MODAL -->
+<div class="modal-overlay" id="resetModal">
+<div class="modal-dialog" style="max-width: 420px;">
+<div class="modal-header">
+<h3>Reset Password</h3>
+<button class="modal-close" onclick="AdminApp.closeModal('resetModal')">×</button>
+</div>
+<div class="modal-body">
+<p style="color: var(--ink-muted); margin-bottom: 16px; font-size: 0.88rem;">
           Enter your registered admin email address. A password reset link will be sent to your inbox.
         </p>
-        <div class="form-group">
-          <label>Email Address</label>
-          <input type="email" id="resetEmail" class="form-control" required placeholder="admin@lotusceylon.com">
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-outline" onclick="AdminApp.closeModal('resetModal')">Cancel</button>
-        <button type="button" class="btn btn-primary" onclick="AdminApp.sendPasswordReset()">Send Reset Link</button>
-      </div>
-    </div>
-  </div>
-
-
-  <!-- CONFIRM DELETE MODAL -->
-  <div class="modal-overlay" id="confirmDeleteModal">
-    <div class="modal-dialog" style="max-width: 400px;">
-      <div class="modal-header">
-        <h3>Confirm Deletion</h3>
-        <button class="modal-close" onclick="AdminApp.closeModal('confirmDeleteModal')">&times;</button>
-      </div>
-      <div class="modal-body">
-        <p id="deleteConfirmMessage" style="font-size: 0.95rem; color: var(--ink);">Are you sure you want to delete this item? This action cannot be undone.</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-outline" onclick="AdminApp.closeModal('confirmDeleteModal')">Cancel</button>
-        <button type="button" class="btn btn-danger" id="confirmDeleteBtn">Delete</button>
-      </div>
-    </div>
-  </div>
-
-
-  
-  <!-- TEAM MEMBER MODAL -->
-  <div class="modal-overlay" id="teamModal">
-    <div class="modal-dialog" style="max-width: 600px;">
-      <div class="modal-header">
-        <h3 id="teamModalTitle">Add Representative</h3>
-        <button class="modal-close" onclick="AdminApp.closeModal('teamModal')">&times;</button>
-      </div>
-      <div class="modal-body">
-        <form id="teamMemberForm" onsubmit="AdminApp.saveTeamMember(event)">
-          <input type="hidden" id="teamMemberId">
-
-          <div class="form-row">
-            <div class="form-group" style="flex: 2;">
-              <label for="teamName">Full Name *</label>
-              <input type="text" id="teamName" class="form-control" required placeholder="e.g. Mr. Kuenga Yarpel">
-            </div>
-            <div class="form-group" style="flex: 1;">
-              <label for="teamFlag">Flag Emoji</label>
-              <input type="text" id="teamFlag" class="form-control" placeholder="e.g. 🇧🇹" maxlength="8">
-            </div>
-          </div>
-
-          <div class="form-row">
-            <div class="form-group" style="flex: 1;">
-              <label for="teamRole">Role / Title *</label>
-              <input type="text" id="teamRole" class="form-control" required placeholder="e.g. The Lotus Representative, Bhutan">
-            </div>
-            <div class="form-group" style="flex: 1;">
-              <label for="teamCountry">Country *</label>
-              <input type="text" id="teamCountry" class="form-control" required placeholder="e.g. Bhutan">
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label for="teamPhotoUrl">Photo URL (Cloudinary or local image)</label>
-            <div style="display: flex; gap: 8px;">
-              <input type="url" id="teamPhotoUrl" class="form-control" placeholder="https://res.cloudinary.com/..." style="flex: 1;">
-              <button type="button" class="btn btn-outline btn-sm" onclick="AdminApp.openCloudinaryForTeam()">Upload Photo</button>
-            </div>
-            <small style="color: var(--ink-muted); font-size: 0.78rem;">Upload portrait or square photo. Face will be centered automatically via Cloudinary.</small>
-          </div>
-
-          <div class="form-group">
-            <label for="teamBio">Short Description / Biography</label>
-            <textarea id="teamBio" class="form-control" rows="3" placeholder="Leave empty for 'Introduction coming soon' or enter text written by owner."></textarea>
-          </div>
-
-          <div class="form-row">
-            <div class="form-group" style="flex: 1;">
-              <label for="teamSortOrder">Display Sort Order</label>
-              <input type="number" id="teamSortOrder" class="form-control" value="1" min="1" max="99">
-            </div>
-            <div class="form-group" style="flex: 1; display: flex; align-items: center; margin-top: 25px;">
-              <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
-                <input type="checkbox" id="teamPublished" checked> Published on website
+<div class="form-group">
+<label>Email Address</label>
+<input class="form-control" id="resetEmail" placeholder="admin@lotusceylon.com" required="" type="email"/>
+</div>
+</div>
+<div class="modal-footer">
+<button class="btn btn-outline" onclick="AdminApp.closeModal('resetModal')" type="button">Cancel</button>
+<button class="btn btn-primary" onclick="AdminApp.sendPasswordReset()" type="button">Send Reset Link</button>
+</div>
+</div>
+</div>
+<!-- CONFIRM DELETE MODAL -->
+<div class="modal-overlay" id="confirmDeleteModal">
+<div class="modal-dialog" style="max-width: 400px;">
+<div class="modal-header">
+<h3>Confirm Deletion</h3>
+<button class="modal-close" onclick="AdminApp.closeModal('confirmDeleteModal')">×</button>
+</div>
+<div class="modal-body">
+<p id="deleteConfirmMessage" style="font-size: 0.95rem; color: var(--ink);">Are you sure you want to delete this item? This action cannot be undone.</p>
+</div>
+<div class="modal-footer">
+<button class="btn btn-outline" onclick="AdminApp.closeModal('confirmDeleteModal')" type="button">Cancel</button>
+<button class="btn btn-danger" id="confirmDeleteBtn" type="button">Delete</button>
+</div>
+</div>
+</div>
+<!-- TEAM MEMBER MODAL -->
+<div class="modal-overlay" id="teamModal">
+<div class="modal-dialog" style="max-width: 600px;">
+<div class="modal-header">
+<h3 id="teamModalTitle">Add Representative</h3>
+<button class="modal-close" onclick="AdminApp.closeModal('teamModal')">×</button>
+</div>
+<div class="modal-body">
+<form id="teamMemberForm" onsubmit="AdminApp.saveTeamMember(event)">
+<input id="teamMemberId" type="hidden"/>
+<div class="form-row">
+<div class="form-group" style="flex: 2;">
+<label for="teamName">Full Name *</label>
+<input class="form-control" id="teamName" placeholder="e.g. Mr. Kuenga Yarpel" required="" type="text"/>
+</div>
+<div class="form-group" style="flex: 1;">
+<label for="teamFlag">Flag Emoji</label>
+<input class="form-control" id="teamFlag" maxlength="8" placeholder="e.g. 🇧🇹" type="text"/>
+</div>
+</div>
+<div class="form-row">
+<div class="form-group" style="flex: 1;">
+<label for="teamRole">Role / Title *</label>
+<input class="form-control" id="teamRole" placeholder="e.g. The Lotus Representative, Bhutan" required="" type="text"/>
+</div>
+<div class="form-group" style="flex: 1;">
+<label for="teamCountry">Country *</label>
+<input class="form-control" id="teamCountry" placeholder="e.g. Bhutan" required="" type="text"/>
+</div>
+</div>
+<div class="form-group">
+<label for="teamPhotoUrl">Photo URL (Cloudinary or local image)</label>
+<div style="display: flex; gap: 8px; flex-wrap: wrap;">
+<input class="form-control" id="teamPhotoUrl" oninput="AdminApp.updateImagePreview('teamPhotoUrl', 'teamPhotoPreview', 'teamPhotoPreviewCard')" placeholder="https://res.cloudinary.com/..." style="flex: 1; min-width: 200px;" type="url"/>
+<button class="btn btn-outline btn-sm" onclick="AdminApp.openCloudinaryForTeam()" type="button">Upload Photo</button>
+<button class="btn btn-outline btn-sm" onclick="AdminApp.openImagePicker('teamPhotoUrl', 'teamPhotoPreview', 'teamPhotoPreviewCard')" type="button">Browse Media</button>
+</div>
+<!-- Live Image Preview Card -->
+<div class="image-preview-card" id="teamPhotoPreviewCard" style="display: none;">
+<div class="image-preview-thumb-wrap">
+<img alt="Representative Photo" class="image-preview-thumb" id="teamPhotoPreview" onerror="if(window.AdminApp)AdminApp.handlePreviewError(this)" src=""/>
+</div>
+<div class="image-preview-info">
+<span class="image-preview-title">Representative Photo</span>
+<span class="image-preview-url" id="teamPhotoPreviewUrl"></span>
+</div>
+<div class="image-preview-actions">
+<button class="btn btn-sm btn-outline" onclick="AdminApp.clearImageField('teamPhotoUrl', 'teamPhotoPreview', 'teamPhotoPreviewCard')" type="button">Remove</button>
+</div>
+</div>
+<small style="color: var(--ink-muted); font-size: 0.78rem;">Upload portrait or square photo. Face will be centered automatically via Cloudinary.</small>
+</div>
+<div class="form-group">
+<label for="teamBio">Short Description / Biography</label>
+<textarea class="form-control" id="teamBio" placeholder="Leave empty for 'Introduction coming soon' or enter text written by owner." rows="3"></textarea>
+</div>
+<div class="form-row">
+<div class="form-group" style="flex: 1;">
+<label for="teamSortOrder">Display Sort Order</label>
+<input class="form-control" id="teamSortOrder" max="99" min="1" type="number" value="1"/>
+</div>
+<div class="form-group" style="flex: 1; display: flex; align-items: center; margin-top: 25px;">
+<label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+<input checked="" id="teamPublished" type="checkbox"/> Published on website
               </label>
-            </div>
-          </div>
-
-          <div class="modal-footer" style="padding: 16px 0 0; margin-top: 16px;">
-            <button type="button" class="btn btn-outline" onclick="AdminApp.closeModal('teamModal')">Cancel</button>
-            <button type="submit" class="btn btn-primary" id="saveTeamBtn">Save Representative</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-
-  <!-- TOAST NOTIFICATIONS CONTAINER -->
-  <div class="toast-container" id="toastContainer"></div>
-
-  <!-- Scripts -->
-  <script src="../js/config.js?v=20261021_cms1"></script>
-  <!-- Firebase Compat SDKs -->
-  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
-  <script src="../js/supabase-client.js?v=20261021_cms1"></script>
-  <script src="../js/firebase-tour-sync.js"></script>
-  <script src="https://upload-widget.cloudinary.com/global/all.js" type="text/javascript"></script>
-  <script src="js/admin-app.js?v=20261021_cms1"></script>
+</div>
+</div>
+<div class="modal-footer" style="padding: 16px 0 0; margin-top: 16px;">
+<button class="btn btn-outline" onclick="AdminApp.closeModal('teamModal')" type="button">Cancel</button>
+<button class="btn btn-primary" id="saveTeamBtn" type="submit">Save Representative</button>
+</div>
+</form>
+</div>
+</div>
+</div>
+<!-- CATEGORY EDIT MODAL -->
+<div class="modal-overlay" id="categoryModal">
+<div class="modal-dialog">
+<div class="modal-header">
+<h3 id="categoryModalTitle">Edit Category</h3>
+<button class="modal-close" onclick="AdminApp.closeModal('categoryModal')">×</button>
+</div>
+<div class="modal-body">
+<form id="categoryForm" onsubmit="AdminApp.saveCategory(event)">
+<input id="catId" type="hidden"/>
+<div class="form-group">
+<label>Category Title (EN) *</label>
+<input class="form-control" id="catTitle" placeholder="Cultural Triangle &amp; Heritage" required="" type="text"/>
+</div>
+<div class="form-group">
+<label>Category Title (中文)</label>
+<input class="form-control" id="catTitleZh" placeholder="文化三角洲与世界遗产" type="text"/>
+</div>
+<div class="form-row">
+<div class="form-group" style="flex: 1;">
+<label>Slug *</label>
+<input class="form-control" id="catSlug" placeholder="cultural" required="" type="text"/>
+</div>
+<div class="form-group" style="flex: 1;">
+<label>Display Sort Order</label>
+<input class="form-control" id="catOrder" max="99" min="1" type="number" value="1"/>
+</div>
+</div>
+<div class="form-group">
+<label>Tagline</label>
+<input class="form-control" id="catTagline" placeholder="SACRED KINGDOMS · UNESCO LIVING HERITAGE" type="text"/>
+</div>
+<div class="form-group">
+<label>Description &amp; Overview</label>
+<textarea class="form-control" id="catDescription" placeholder="Overview of this travel category..." rows="3"></textarea>
+</div>
+<div class="form-group">
+<label>Category Hero Image</label>
+<div style="display: flex; gap: 8px; flex-wrap: wrap;">
+<input class="form-control" id="catHeroImage" oninput="AdminApp.updateImagePreview('catHeroImage', 'catHeroPreview', 'catHeroPreviewCard')" placeholder="assets/tours/cultural/hero.jpg" style="flex: 1; min-width: 200px;" type="text"/>
+<button class="btn btn-secondary" onclick="AdminApp.openCloudinaryWidgetForInput('catHeroImage', 'catHeroPreview', 'catHeroPreviewCard')" type="button">☁️ Cloudinary</button>
+<button class="btn btn-outline" onclick="AdminApp.openImagePicker('catHeroImage', 'catHeroPreview', 'catHeroPreviewCard')" type="button">Browse Media</button>
+</div>
+<div class="image-preview-card" id="catHeroPreviewCard" style="display: none;">
+<div class="image-preview-thumb-wrap">
+<img alt="Category Hero Preview" class="image-preview-thumb" id="catHeroPreview" onerror="if(window.AdminApp)AdminApp.handlePreviewError(this)" src=""/>
+</div>
+<div class="image-preview-info">
+<span class="image-preview-title">Category Hero Image</span>
+<span class="image-preview-url" id="catHeroPreviewUrl"></span>
+</div>
+<div class="image-preview-actions">
+<button class="btn btn-sm btn-outline" onclick="AdminApp.clearImageField('catHeroImage', 'catHeroPreview', 'catHeroPreviewCard')" type="button">Remove</button>
+</div>
+</div>
+</div>
+<div class="form-group" style="margin-top: 15px;">
+<label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+<input checked="" id="catPublished" type="checkbox"/> Published on Website
+            </label>
+</div>
+<div class="modal-footer" style="padding: 16px 0 0; margin-top: 16px;">
+<button class="btn btn-outline" onclick="AdminApp.closeModal('categoryModal')" type="button">Cancel</button>
+<button class="btn btn-primary" type="submit">Save Category</button>
+</div>
+</form>
+</div>
+</div>
+</div>
+<!-- DESTINATION EDIT MODAL -->
+<div class="modal-overlay" id="destinationModal">
+<div class="modal-dialog">
+<div class="modal-header">
+<h3 id="destinationModalTitle">Edit Destination</h3>
+<button class="modal-close" onclick="AdminApp.closeModal('destinationModal')">×</button>
+</div>
+<div class="modal-body">
+<form id="destinationForm" onsubmit="AdminApp.saveDestination(event)">
+<input id="destId" type="hidden"/>
+<div class="form-group">
+<label>Destination Name (EN) *</label>
+<input class="form-control" id="destTitle" placeholder="Sigiriya Rock Fortress" required="" type="text"/>
+</div>
+<div class="form-group">
+<label>Destination Name (中文)</label>
+<input class="form-control" id="destTitleZh" placeholder="狮子岩空中宫殿" type="text"/>
+</div>
+<div class="form-row">
+<div class="form-group" style="flex: 1;">
+<label>Region *</label>
+<select class="form-control" id="destRegion">
+<option value="Cultural Triangle">Cultural Triangle</option>
+<option value="Sacred Sites">Sacred Sites</option>
+<option value="Hill Country">Hill Country</option>
+<option value="Wildlife Parks">Wildlife Parks</option>
+<option value="Southern Coast">Southern Coast</option>
+<option value="Beach &amp; Ocean">Beach &amp; Ocean</option>
+</select>
+</div>
+<div class="form-group" style="flex: 1;">
+<label>Slug *</label>
+<input class="form-control" id="destSlug" placeholder="sigiriya" required="" type="text"/>
+</div>
+<div class="form-group" style="flex: 1;">
+<label>Order</label>
+<input class="form-control" id="destOrder" max="99" min="1" type="number" value="1"/>
+</div>
+</div>
+<div class="form-group">
+<label>Description (EN)</label>
+<textarea class="form-control" id="destDescription" placeholder="Dramatic fifth-century rock citadel rising from the jungle..." rows="3"></textarea>
+</div>
+<div class="form-group">
+<label>Destination Card Image</label>
+<div style="display: flex; gap: 8px; flex-wrap: wrap;">
+<input class="form-control" id="destImage" oninput="AdminApp.updateImagePreview('destImage', 'destImagePreview', 'destImagePreviewCard')" placeholder="assets/images/cultural/sigiriya-1.webp" style="flex: 1; min-width: 200px;" type="text"/>
+<button class="btn btn-secondary" onclick="AdminApp.openCloudinaryWidgetForInput('destImage', 'destImagePreview', 'destImagePreviewCard')" type="button">☁️ Cloudinary</button>
+<button class="btn btn-outline" onclick="AdminApp.openImagePicker('destImage', 'destImagePreview', 'destImagePreviewCard')" type="button">Browse Media</button>
+</div>
+<div class="image-preview-card" id="destImagePreviewCard" style="display: none;">
+<div class="image-preview-thumb-wrap">
+<img alt="Destination Preview" class="image-preview-thumb" id="destImagePreview" onerror="if(window.AdminApp)AdminApp.handlePreviewError(this)" src=""/>
+</div>
+<div class="image-preview-info">
+<span class="image-preview-title">Card Image</span>
+<span class="image-preview-url" id="destImagePreviewUrl"></span>
+</div>
+<div class="image-preview-actions">
+<button class="btn btn-sm btn-outline" onclick="AdminApp.clearImageField('destImage', 'destImagePreview', 'destImagePreviewCard')" type="button">Remove</button>
+</div>
+</div>
+</div>
+<div class="form-group" style="margin-top: 15px;">
+<label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+<input checked="" id="destPublished" type="checkbox"/> Published on Website
+            </label>
+</div>
+<div class="modal-footer" style="padding: 16px 0 0; margin-top: 16px;">
+<button class="btn btn-outline" onclick="AdminApp.closeModal('destinationModal')" type="button">Cancel</button>
+<button class="btn btn-primary" type="submit">Save Destination</button>
+</div>
+</form>
+</div>
+</div>
+</div>
+<!-- REVIEW EDIT MODAL -->
+<div class="modal-overlay" id="reviewModal">
+<div class="modal-dialog">
+<div class="modal-header">
+<h3 id="reviewModalTitle">Add Guest Review</h3>
+<button class="modal-close" onclick="AdminApp.closeModal('reviewModal')">×</button>
+</div>
+<div class="modal-body">
+<form id="reviewForm" onsubmit="AdminApp.saveReview(event)">
+<input id="revId" type="hidden"/>
+<div class="form-row">
+<div class="form-group" style="flex: 2;">
+<label>Guest Name *</label>
+<input class="form-control" id="revGuestName" placeholder="Dr. David &amp; Sarah Jenkins" required="" type="text"/>
+</div>
+<div class="form-group" style="flex: 1;">
+<label>Country *</label>
+<input class="form-control" id="revCountry" placeholder="United Kingdom" required="" type="text"/>
+</div>
+<div class="form-group" style="flex: 1;">
+<label>Rating (Stars) *</label>
+<select class="form-control" id="revRating">
+<option value="5">★★★★★ (5 Stars)</option>
+<option value="4">★★★★☆ (4 Stars)</option>
+<option value="3">★★★☆☆ (3 Stars)</option>
+</select>
+</div>
+</div>
+<div class="form-group">
+<label>Tour Taken</label>
+<input class="form-control" id="revTourTaken" placeholder="14-Day Grand Ceylon Heritage &amp; Leopard Safari" type="text"/>
+</div>
+<div class="form-group">
+<label>Review Narrative (EN) *</label>
+<textarea class="form-control" id="revText" placeholder="Detailed guest testimonial feedback..." required="" rows="4"></textarea>
+</div>
+<div class="form-group">
+<label>Review Narrative (中文)</label>
+<textarea class="form-control" id="revTextZh" placeholder="中文翻译..." rows="3"></textarea>
+</div>
+<div class="form-group">
+<label>Guest Avatar Photo</label>
+<div style="display: flex; gap: 8px; flex-wrap: wrap;">
+<input class="form-control" id="revAvatar" oninput="AdminApp.updateImagePreview('revAvatar', 'revAvatarPreview', 'revAvatarPreviewCard')" placeholder="assets/images/avatar-1.jpg" style="flex: 1; min-width: 200px;" type="text"/>
+<button class="btn btn-secondary" onclick="AdminApp.openCloudinaryWidgetForInput('revAvatar', 'revAvatarPreview', 'revAvatarPreviewCard')" type="button">☁️ Cloudinary</button>
+<button class="btn btn-outline" onclick="AdminApp.openImagePicker('revAvatar', 'revAvatarPreview', 'revAvatarPreviewCard')" type="button">Browse Media</button>
+</div>
+<div class="image-preview-card" id="revAvatarPreviewCard" style="display: none;">
+<div class="image-preview-thumb-wrap">
+<img alt="Avatar Preview" class="image-preview-thumb" id="revAvatarPreview" onerror="if(window.AdminApp)AdminApp.handlePreviewError(this)" src=""/>
+</div>
+<div class="image-preview-info">
+<span class="image-preview-title">Guest Avatar</span>
+<span class="image-preview-url" id="revAvatarPreviewUrl"></span>
+</div>
+<div class="image-preview-actions">
+<button class="btn btn-sm btn-outline" onclick="AdminApp.clearImageField('revAvatar', 'revAvatarPreview', 'revAvatarPreviewCard')" type="button">Remove</button>
+</div>
+</div>
+</div>
+<div class="form-group" style="margin-top: 15px;">
+<label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+<input checked="" id="revPublished" type="checkbox"/> Published on Website
+            </label>
+</div>
+<div class="modal-footer" style="padding: 16px 0 0; margin-top: 16px;">
+<button class="btn btn-outline" onclick="AdminApp.closeModal('reviewModal')" type="button">Cancel</button>
+<button class="btn btn-primary" type="submit">Save Review</button>
+</div>
+</form>
+</div>
+</div>
+</div>
+<!-- TOAST NOTIFICATIONS CONTAINER -->
+<div class="toast-container" id="toastContainer"></div>
+<!-- Scripts -->
+<script src="../js/config.js?v=20261021_cms1"></script>
+<!-- Firebase Compat SDKs -->
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
+<script src="../js/supabase-client.js?v=20261021_cms1"></script>
+<script src="../js/firebase-tour-sync.js"></script>
+<script src="https://upload-widget.cloudinary.com/global/all.js" type="text/javascript"></script>
+<script src="js/admin-app.js?v=20261021_cms1"></script>
 </body>
 </html>
