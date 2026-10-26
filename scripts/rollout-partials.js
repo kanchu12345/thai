@@ -80,7 +80,7 @@ function prepareFileForPartials(filePath) {
 
   // 2. Mobile Nav: exact tag match
   if (!content.includes('<!-- @include mobile-menu')) {
-    const mobileRegex = /<div\s+[^>]*id=["']mobileNavFullscreen["'][\s\S]*?<\/ul>[\s\S]*?<\/div>\s*<\/div>/i;
+    const mobileRegex = /<div[^>]*id=["']mobileNavFullscreen["'][\s\S]*?class=["']mobile-nav-actions["'][\s\S]*?<\/div>\s*<\/div>\s*<\/div>/i;
     if (mobileRegex.test(content)) {
       content = content.replace(mobileRegex, '<!-- @include mobile-menu -->');
       changed = true;

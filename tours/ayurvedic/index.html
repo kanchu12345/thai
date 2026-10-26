@@ -8,6 +8,962 @@
   <meta name="description" content="Rejuvenate your soul with authentic Ayurveda wellness holidays in Sri Lanka. Physician consultations, herbal panchakarma, and lakeside yoga.">
   <link rel="icon" type="image/png" href="../../logo.png?v=20261021_step1">
 
+  <!-- Google Fonts: DM Sans & Playfair Display -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+  <!-- Master Stylesheets -->
+  <link rel="stylesheet" href="../../css/style.css?v=20261021_watermark_v2">
+  <link rel="stylesheet" href="../../css/brand-header.css?v=20261021_wide_v2">
+
+  <style>
+    :root {
+      --watermark-shadow-pink: #EEDBE2;
+    }
+    .watermark-heading, .section-watermark-header .watermark-heading {
+      color: #EEDBE2 !important;
+      -webkit-text-stroke: 1px rgba(201, 84, 81, 0.18) !important;
+    }
+    .beach-packages-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 32px;
+      margin-top: 40px;
+    }
+    .beach-package-card {
+      background: #FFFFFF;
+      border: 1px solid #E2E8F0;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+      display: flex;
+      flex-direction: column;
+      transition: all 0.35s ease;
+    }
+    .beach-package-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 16px 32px rgba(0,43,73,0.1);
+      border-color: #C5A880;
+    }
+    .beach-card-img-wrap {
+      position: relative;
+      height: 230px;
+      overflow: hidden;
+    }
+    .beach-card-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .beach-package-card:hover .beach-card-img-wrap img {
+      transform: scale(1.05);
+    }
+    .beach-tag-badge {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      background: rgba(0, 43, 73, 0.88);
+      color: #C5A880;
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .beach-duration-pill {
+      position: absolute;
+      bottom: 14px;
+      right: 14px;
+      background: rgba(255, 255, 255, 0.95);
+      color: #002B49;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.78rem;
+      font-weight: 700;
+    }
+    .beach-card-body {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+    .beach-card-category {
+      font-size: 0.8rem;
+      color: #C5A880;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .beach-card-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.35rem;
+      color: #002B49;
+      margin-bottom: 8px;
+    }
+    .beach-card-route {
+      font-size: 0.84rem;
+      color: #64748B;
+      margin-bottom: 12px;
+      line-height: 1.5;
+    }
+    .beach-card-desc {
+      color: #475569;
+      font-size: 0.9rem;
+      line-height: 1.6;
+      margin-bottom: 16px;
+      flex-grow: 1;
+    }
+    .beach-card-highlights {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 20px 0;
+      border-top: 1px dashed #E2E8F0;
+      padding-top: 14px;
+    }
+    .beach-card-highlights li {
+      font-size: 0.85rem;
+      color: #1E293B;
+      padding: 4px 0;
+    }
+    .beach-card-actions {
+      display: flex;
+      gap: 10px;
+      margin-top: auto;
+    }
+    .btn-beach-view {
+      flex: 1;
+      background: #002B49;
+      color: #FFFFFF;
+      text-decoration: none;
+      padding: 10px 14px;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: background 0.2s;
+    }
+    .btn-beach-view:hover {
+      background: #C5A880;
+      color: #002B49;
+    }
+    .btn-beach-inquire {
+      background: transparent;
+      border: 1px solid #002B49;
+      color: #002B49;
+      text-decoration: none;
+      padding: 10px 18px;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+    }
+    .btn-beach-inquire:hover {
+      background: #002B49;
+      color: #FFFFFF;
+    }
+    .comparison-table-wrap {
+      background: #FFFFFF;
+      border: 1px solid #E2E8F0;
+      border-radius: 12px;
+      overflow-x: auto;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.03);
+      margin-top: 30px;
+    }
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+    .comparison-table th, .comparison-table td {
+      padding: 16px 20px;
+      border-bottom: 1px solid #F1F5F9;
+    }
+    .comparison-table th {
+      background: #002B49;
+      color: #FFFFFF;
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+    }
+    .comparison-table tr:hover {
+      background: #F8FAFC;
+    }
+    .comp-check {
+      color: #10B981;
+      font-weight: 800;
+      font-size: 1.1rem;
+    }
+    .comp-cross {
+      color: #CBD5E1;
+      font-size: 1.1rem;
+    }
+  </style>
+  <link rel="stylesheet" href="../../css/tours-map.css?v=20261024_compact_table_v2">
+  <link rel="stylesheet" href="../../css/beach-tours.css?v=20261022_official_tourist_map_v9">
+  <link rel="stylesheet" href="../../vendor/leaflet/leaflet.css">
+  <!-- Canonical & OpenGraph SEO (Phase 7) -->
+  <link rel="canonical" href="https://lotusceylon.com/tours/ayurvedic/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Lotus Ceylon International Tours">
+  <meta property="og:title" content="Sri Lanka Ayurvedic & Holistic Wellness Retreats | Lotus Ceylon Pure Journeys">
+  <meta property="og:description" content="Restore harmony of body, mind, and spirit with 3,000-year-old indigenous Ayurveda. Certified physician consultations, bespoke herbal oil therapies, lakeside dawn meditation, and nourishing sattvic cuisine.">
+  <meta property="og:url" content="https://lotusceylon.com/tours/ayurvedic/">
+  <meta property="og:image" content="https://lotusceylon.com/../../assets/images/cultural/kandy-temple-of-tooth-4.webp">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Sri Lanka Ayurvedic & Holistic Wellness Retreats | Lotus Ceylon">
+  <meta name="twitter:description" content="Restore harmony of body, mind, and spirit with 3,000-year-old indigenous Ayurveda. Certified physician consultations, bespoke herbal oil therapies, lakeside dawn meditation, and nourishing sattvic cuisine.">
+  <meta name="twitter:image" content="https://lotusceylon.com/../../assets/images/cultural/kandy-temple-of-tooth-4.webp">
+
+  <!-- Structured Data: CollectionPage Schema -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "Sri Lanka Ayurvedic & Holistic Wellness Retreats | Lotus Ceylon",
+  "description": "Restore harmony of body, mind, and spirit with 3,000-year-old indigenous Ayurveda. Certified physician consultations, bespoke herbal oil therapies, lakeside dawn meditation, and nourishing sattvic cuisine.",
+  "url": "https://lotusceylon.com/tours/ayurvedic/index.html",
+  "provider": {
+    "@type": "TravelAgency",
+    "name": "Lotus Ceylon International Tours & Services (Private) Limited",
+    "url": "https://lotusceylon.com/",
+    "telephone": "+94715422384"
+  },
+  "mainEntity": {
+    "@type": "ItemList",
+    "numberOfItems": 2,
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "url": "https://lotusceylon.com/tours/ayurvedic/lotus-ayu-holistic-rejuvenation/index.html",
+        "name": "Lotus Ayu Holistic Rejuvenation",
+        "description": "Authentic physician-guided Ayurvedic panchakarma retreat in Sri Lanka. Shirodhara, daily yoga, and organic sattvic dining."
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "url": "https://lotusceylon.com/tours/ayurvedic/sacred-serenity-forest-meditation-retreat/index.html",
+        "name": "Sacred Serenity & Forest Meditation Retreat",
+        "description": "Discover inner tranquility with Buddhist forest meditation and authentic Ayurveda wellness in Sri Lanka."
+      }
+    ]
+  }
+}
+  </script>
+  <!-- Master Unified Stylesheet -->
+  <link rel="stylesheet" href="../../assets/css/site.css">
+</head>
+
+<body>
+
+  <!-- Site Header & Navigation (Unified Walkers Luxury Standard) -->
+    <!-- Site Header & Navigation (Unified Master Standard: Mobile Max 64px, Logo Max 40px) -->
+  <!-- @include header:start -->
+<!-- Site Header & Navigation (Unified Master Standard Driven by siteGlobal) -->
+<header class="site-header-walkers" id="siteHeader">
+<div class="header-container">
+<div class="header-top-row">
+<!-- Logo & Brand Badge -->
+<a class="header-brand" href="../../index.html" title="Lotus Ceylon Luxury Tours &amp; Pilgrimages">
+<img alt="Lotus Ceylon Official Emblem" class="header-brand-logo" height="40" src="../../assets/images/brand/logo-header.png" width="40" data-cms-img="siteGlobal.branding.logo" data-cms-alt="siteGlobal.branding.companyName"/>
+<div class="header-brand-text">
+<span class="header-brand-name"><span class="brand-name-lotus" data-cms="siteGlobal.branding.brandNameLotus">Lotus</span> <span class="brand-name-ceylon" data-cms="siteGlobal.branding.brandNameCeylon">Ceylon</span></span>
+<span class="header-brand-sub" data-cms="siteGlobal.branding.tagline">INTERNATIONAL TOURS &amp; SERVICES</span>
+</div>
+</a>
+<!-- Desktop Navigation Menu (hidden on screens <= 1024px) -->
+<nav aria-label="Main Navigation" class="walkers-nav">
+<ul class="walkers-menu">
+<li class="walkers-menu-item"><a class="walkers-menu-link" href="../../index.html" data-cms="siteGlobal.menu.home">Home</a></li>
+<li class="walkers-menu-item has-dropdown">
+<a class="walkers-menu-link" href="../../tours/">
+<span data-cms="siteGlobal.menu.tours">Tours</span>
+<svg class="walkers-caret" viewbox="0 0 10 6"><path d="M1 1L5 5L9 1" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.8"></path></svg>
+</a>
+<div class="walkers-megamenu">
+<a class="megamenu-link" href="../../tours/cultural/"><span class="megamenu-link-icon">🏛️</span> Cultural Heritage</a>
+<a class="megamenu-link" href="../../tours/buddhist-heritage/"><span class="megamenu-link-icon">☸️</span> Buddhist Heritage</a>
+<a class="megamenu-link" href="../../tours/wildlife/"><span class="megamenu-link-icon">🐆</span> Wildlife Safaris</a>
+<a class="megamenu-link" href="../../tours/beach/"><span class="megamenu-link-icon">🏖️</span> Pristine Beaches</a>
+<a class="megamenu-link" href="../../tours/hill-country/"><span class="megamenu-link-icon">⛰️</span> Hill Country &amp; Tea</a>
+<a class="megamenu-link" href="../../tours/ayurvedic/"><span class="megamenu-link-icon">🌿</span> Ayurvedic Healing</a>
+<a class="megamenu-link" href="../../tours/honeymoon/"><span class="megamenu-link-icon">💍</span> Honeymoon Romance</a>
+<a class="megamenu-link" href="../../tours/family/"><span class="megamenu-link-icon">👨‍👩‍👧‍👦</span> Family Discovery</a>
+<a class="megamenu-link" href="../../tours/adventure/"><span class="megamenu-link-icon">🏄</span> Active Adventure</a>
+<a class="megamenu-link" href="../../tours/golf/"><span class="megamenu-link-icon">⛳</span> Championship Golf</a>
+<a class="megamenu-link" href="../../tours/ramayana/"><span class="megamenu-link-icon">🏹</span> Ramayana Trail</a>
+</div>
+</li>
+<li class="walkers-menu-item"><a class="walkers-menu-link" href="../../destinations.html" data-cms="siteGlobal.menu.destinations">Destinations</a></li>
+<li class="walkers-menu-item"><a class="walkers-menu-link" href="../../experiences.html" data-cms="siteGlobal.menu.experiences">Experiences</a></li>
+<li class="walkers-menu-item"><a class="walkers-menu-link" href="../../about.html" data-cms="siteGlobal.menu.about">About Us</a></li>
+<li class="walkers-menu-item"><a class="walkers-menu-link" href="../../gallery.html" data-cms="siteGlobal.menu.gallery">Gallery</a></li>
+<li class="walkers-menu-item"><a class="walkers-menu-link" href="../../reviews.html" data-cms="siteGlobal.menu.reviews">Reviews</a></li>
+<li class="walkers-menu-item"><a class="walkers-menu-link" href="../../blog.html" data-cms="siteGlobal.menu.blog">Blog</a></li>
+<li class="walkers-menu-item"><a class="walkers-menu-link" href="../../contact.html" data-cms="siteGlobal.menu.contact">Contact</a></li>
+</ul>
+</nav>
+<!-- Right Header Tools (Desktop) -->
+<div class="header-tools">
+<div class="custom-lang-pill">
+<button aria-haspopup="true" class="lang-pill-btn" id="langPillToggle" title="Select Language" type="button">
+<span id="currentLangLabel">EN</span>
+<svg class="walkers-caret" viewbox="0 0 10 6"><path d="M1 1L5 5L9 1" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.8"></path></svg>
+</button>
+<div class="lang-pill-dropdown" id="langPillMenu">
+<button class="is-active" data-lang="en" type="button">🇬🇧 English</button>
+<button data-lang="zh-TW" type="button">🇹🇼 繁體中文 (Taiwan)</button>
+<button data-lang="zh-CN" type="button">🇨🇳 简体中文 (Modern)</button>
+<button data-lang="fr" type="button">🇫🇷 Français (French)</button>
+<button data-lang="de" type="button">🇩🇪 Deutsch (German)</button>
+<button data-lang="ru" type="button">🇷🇺 Русский</button>
+<button data-lang="es" type="button">🇪🇸 Español</button>
+<button data-lang="it" type="button">🇮🇹 Italiano</button>
+<button data-lang="ja" type="button">🇯🇵 日本語</button>
+<button data-lang="ar" type="button">🇦🇪 العربية</button>
+<button data-lang="hi" type="button">🇮🇳 हिन्दी</button>
+</div>
+</div>
+<a class="gold-inquire-btn" href="../../inquiry-detailed.html" title="Plan Your Bespoke Travel">
+<span data-cms="siteGlobal.branding.inquireButtonText">Inquire</span>
+</a>
+</div>
+<!-- Mobile Hamburger Button (Active up to 1024px, 48x48px min tap target) -->
+<button aria-controls="mobileNavFullscreen" aria-expanded="false" aria-label="Open mobile navigation menu" class="walkers-ham" id="mobileHamToggle" type="button">
+<span></span><span></span><span></span>
+</button>
+</div>
+</div>
+</header>
+<!-- @include header:end -->
+
+  <!-- Full-Screen Slide-in Mobile Navigation Menu -->
+  <!-- @include mobile-menu:start -->
+<!-- Full-Screen Slide-in Mobile Navigation Menu -->
+<div aria-hidden="true" aria-label="Mobile Navigation" class="mobile-nav-fullscreen" id="mobileNavFullscreen" role="dialog">
+<div class="mobile-nav-header">
+<a class="header-brand" href="../../index.html">
+<img alt="Lotus Ceylon Official Emblem" class="header-brand-logo" height="38" src="../../assets/images/brand/logo-header.png" width="38" data-cms-img="siteGlobal.branding.logo"/>
+<span class="header-brand-name"><span class="brand-name-lotus" data-cms="siteGlobal.branding.brandNameLotus">Lotus</span> <span class="brand-name-ceylon" data-cms="siteGlobal.branding.brandNameCeylon">Ceylon</span></span>
+</a>
+<button aria-label="Close navigation menu" class="mobile-nav-close" id="mobileNavClose" type="button">×</button>
+</div>
+<div class="mobile-nav-body">
+<ul class="mobile-nav-list">
+<li class="mobile-nav-item"><a class="mobile-nav-link" href="../../index.html" data-cms="siteGlobal.menu.home">Home</a></li>
+<!-- Accordion Item for Tours -->
+<li class="mobile-nav-item has-accordion">
+<button aria-expanded="false" class="mobile-nav-link accordion-toggle" id="mobileToursToggle" type="button">
+<span data-cms="siteGlobal.menu.tours">Tours &amp; Packages</span>
+<svg class="accordion-arrow" fill="none" height="16" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="16"><polyline points="6 9 12 15 18 9"></polyline></svg>
+</button>
+<div class="mobile-accordion-submenu" id="mobileToursSubmenu">
+<a class="submenu-link" href="../../tours/"><svg class="submenu-icon" fill="none" height="18" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="18"><rect height="7" width="7" x="3" y="3"></rect><rect height="7" width="7" x="14" y="3"></rect><rect height="7" width="7" x="14" y="14"></rect><rect height="7" width="7" x="3" y="14"></rect></svg><strong>All Tour Packages</strong></a>
+<a class="submenu-link" href="../../tours/cultural/"><span class="submenu-icon">🏛️</span>Cultural Heritage</a>
+<a class="submenu-link" href="../../tours/buddhist-heritage/"><span class="submenu-icon">☸️</span>Buddhist Heritage</a>
+<a class="submenu-link" href="../../tours/wildlife/"><span class="submenu-icon">🐆</span>Wildlife Safaris</a>
+<a class="submenu-link" href="../../tours/beach/"><span class="submenu-icon">🏖️</span>Pristine Beaches</a>
+<a class="submenu-link" href="../../tours/hill-country/"><span class="submenu-icon">⛰️</span>Hill Country &amp; Tea</a>
+<a class="submenu-link" href="../../tours/ayurvedic/"><span class="submenu-icon">🌿</span>Ayurvedic Healing</a>
+<a class="submenu-link" href="../../tours/honeymoon/"><span class="submenu-icon">💍</span>Honeymoon Romance</a>
+<a class="submenu-link" href="../../tours/family/"><span class="submenu-icon">👨‍👩‍👧‍👦</span>Family Discovery</a>
+<a class="submenu-link" href="../../tours/adventure/"><span class="submenu-icon">🏄</span>Active Adventure</a>
+<a class="submenu-link" href="../../tours/golf/"><span class="submenu-icon">⛳</span>Championship Golf</a>
+<a class="submenu-link" href="../../tours/ramayana/"><span class="submenu-icon">🏹</span>Ramayana Trail</a>
+</div>
+</li>
+<li class="mobile-nav-item"><a class="mobile-nav-link" href="../../destinations.html" data-cms="siteGlobal.menu.destinations">Destinations</a></li>
+<li class="mobile-nav-item"><a class="mobile-nav-link" href="../../experiences.html" data-cms="siteGlobal.menu.experiences">Experiences</a></li>
+<li class="mobile-nav-item"><a class="mobile-nav-link" href="../../about.html" data-cms="siteGlobal.menu.about">About Us</a></li>
+<li class="mobile-nav-item"><a class="mobile-nav-link" href="../../gallery.html" data-cms="siteGlobal.menu.gallery">Gallery</a></li>
+<li class="mobile-nav-item"><a class="mobile-nav-link" href="../../reviews.html" data-cms="siteGlobal.menu.reviews">Reviews</a></li>
+<li class="mobile-nav-item"><a class="mobile-nav-link" href="../../blog.html" data-cms="siteGlobal.menu.blog">Blog</a></li>
+<li class="mobile-nav-item"><a class="mobile-nav-link" href="../../contact.html" data-cms="siteGlobal.menu.contact">Contact Us</a></li>
+</ul>
+<!-- Mobile Language Selector Section -->
+<div class="mobile-lang-section">
+<p class="mobile-section-label">Select Language</p>
+<div class="mobile-lang-grid" id="mobileLangGrid">
+<button class="mobile-lang-btn is-active" data-lang="en" type="button">🇬🇧 English</button>
+<button class="mobile-lang-btn" data-lang="zh-TW" type="button">🇹🇼 繁體中文</button>
+<button class="mobile-lang-btn" data-lang="zh-CN" type="button">🇨🇳 简体中文</button>
+<button class="mobile-lang-btn" data-lang="fr" type="button">🇫🇷 Français</button>
+<button class="mobile-lang-btn" data-lang="de" type="button">🇩🇪 Deutsch</button>
+<button class="mobile-lang-btn" data-lang="ru" type="button">🇷🇺 Русский</button>
+<button class="mobile-lang-btn" data-lang="es" type="button">🇪🇸 Español</button>
+<button class="mobile-lang-btn" data-lang="it" type="button">🇮🇹 Italiano</button>
+<button class="mobile-lang-btn" data-lang="ja" type="button">🇯🇵 日本語</button>
+<button class="mobile-lang-btn" data-lang="ar" type="button">🇦🇪 العربية</button>
+<button class="mobile-lang-btn" data-lang="hi" type="button">🇮🇳 हिन्दी</button>
+</div>
+</div>
+<!-- Mobile Action Buttons -->
+<div class="mobile-nav-actions">
+<a class="btn-mobile-whatsapp" href="https://wa.me/94715422384?text=Hello%20Lotus%20Ceylon!%20I%20would%20like%20to%20inquire%20about%20a%20private%20tour." rel="noopener noreferrer" target="_blank" data-cms-link="siteGlobal.contact.whatsappUrl">
+<span>💬 WhatsApp (+94 71 54 22 384)</span>
+</a>
+<a class="btn-mobile-inquire" href="../../inquiry-detailed.html">
+<span data-cms="siteGlobal.branding.planJourneyBtnText">Plan My Bespoke Journey ➔</span>
+</a>
+</div>
+</div>
+</div>
+<!-- @include mobile-menu:end -->
+
+  <!-- Full-Screen Slide-in Mobile Navigation Menu -->
+  
+
+  <!-- SECTION 1: HERO BANNER -->
+  <section class="banner-section-inner position-relative overflow-hidden" style="background: linear-gradient(135deg, rgba(0,26,44,0.82) 0%, rgba(0,43,73,0.88) 100%), url('../../assets/images/cultural/kandy-temple-of-tooth-4.webp') center/cover no-repeat; padding: 130px 0 90px; text-align: center; color: #FFFFFF;">
+    <div class="wrapper--90">
+      <div class="tours-breadcrumbs" style="margin-bottom: 1.25rem; font-size: 0.85rem; letter-spacing: 0.05em; text-transform: uppercase; color: rgba(255,255,255,0.75);">
+        <a href="../../index.html" style="color: #FFFFFF; text-decoration: none;">Home</a>
+        <span class="sep" style="margin: 0 0.5rem;">/</span>
+        <a href="../../tours/index.html" style="color: #FFFFFF; text-decoration: none;">Tours</a>
+        <span class="sep" style="margin: 0 0.5rem;">/</span>
+        <span>Sri Lanka Ayurvedic & Holistic Wellness Retreats</span>
+      </div>
+      <h1 class="beach-hero-title">
+        <span class="hero-title-main">Sri Lanka Ayurvedic & Wellness Retreats</span>
+        <span class="hero-title-accent">Sacred Healing & Holistic Rejuvenation</span>
+      </h1>
+      <p style="max-width: 720px; margin: 0 auto; color: rgba(255,255,255,0.88); font-size: 1.15rem; line-height: 1.6;">
+        Restore harmony of body, mind, and spirit with 3,000-year-old indigenous Ayurveda. Certified physician consultations, bespoke herbal oil therapies, lakeside dawn meditation, and nourishing sattvic cuisine.
+      </p>
+    </div>
+  </section>
+
+  <!-- SECTION 2: EDITORIAL INTRO -->
+  <section class="padding-top--70 padding-bottom--50">
+    <div class="wrapper--80 text-center">
+      <div class="section-watermark-header" style="margin-bottom: 1.5rem;">
+        <p class="watermark-heading">HOLISTIC HARMONY</p>
+        <h2 class="section-header-title">Ancient Botanical Wisdom & Deep Restorative Solace</h2>
+      </div>
+      <p style="max-width: 780px; margin: 0 auto; color: #475569; font-size: 1.05rem; line-height: 1.75;">
+        Ayurveda in Sri Lanka is a living sacred science refined over millennia. In our peaceful coastal and lakeside wellness sanctuaries, skilled Ayurvedic physicians design personalized panchakarma and rejuvenation protocols.
+      </p>
+    </div>
+  </section>
+
+  <!-- SECTION 3: SIGNATURE PACKAGES CARDS -->
+  <section class="padding-bottom--70">
+    <div class="wrapper--90">
+      <div class="beach-packages-grid">
+        
+        <!-- Package Card: Lotus Ayu Holistic Rejuvenation -->
+        <article class="beach-package-card">
+          <div class="beach-card-img-wrap">
+            <img src="../../assets/images/cultural/kandy-temple-of-tooth-4.webp" alt="Lotus Ayu Holistic Rejuvenation" loading="lazy">
+            <span class="beach-tag-badge">Wellness</span>
+            <span class="beach-duration-pill">9 Nights &bull; 10 Days</span>
+          </div>
+
+          <div class="beach-card-body">
+            <span class="beach-card-category">SACRED BOTANICAL HEALING • MINDFULNESS • YOGA RETREATS</span>
+            <h3 class="beach-card-title">Lotus Ayu Holistic Rejuvenation</h3>
+            <p class="beach-card-route">
+              <strong>Route:</strong> Negombo &bull; Wadduwa &bull; Bentota &bull; Colombo
+            </p>
+            <p class="beach-card-desc">
+              A restorative sanctuary escape dedicated to authentic physician-led panchakarma and tranquil rejuvenation.
+            </p>
+
+            <ul class="beach-card-highlights">
+              <li>✓ Private initial pulse diagnosis & dosha consultation with senior Vaidya physician</li><li>✓ Daily bespoke 2.5-hour Ayurvedic treatments (Shirodhara, Abhyanga, Pinda Sweda)</li><li>✓ Sunrise yoga and pranayama breathwork overlooking calm Indian Ocean</li><li>✓ Individualized sattvic organic meal plan prepared according to your dosha</li>
+            </ul>
+
+            <div class="beach-card-actions">
+              <a href="lotus-ayu-holistic-rejuvenation/index.html" class="btn-beach-view">
+                <span>View Full Itinerary</span>
+                <span>➔</span>
+              </a>
+              <a href="../../inquiry-detailed.html?package=Lotus+Ayu+Holistic+Rejuvenation" class="btn-beach-inquire">
+                <span>Inquire</span>
+              </a>
+            </div>
+          </div>
+        </article>
+        
+
+        <!-- Package Card: Sacred Serenity & Forest Meditation Retreat -->
+        <article class="beach-package-card">
+          <div class="beach-card-img-wrap">
+            <img src="../../assets/images/cultural/kandy-temple-of-tooth-4.webp" alt="Sacred Serenity & Forest Meditation Retreat" loading="lazy">
+            <span class="beach-tag-badge">Meditation</span>
+            <span class="beach-duration-pill">13 Nights &bull; 14 Days</span>
+          </div>
+
+          <div class="beach-card-body">
+            <span class="beach-card-category">SACRED BOTANICAL HEALING • MINDFULNESS • YOGA RETREATS</span>
+            <h3 class="beach-card-title">Sacred Serenity & Forest Meditation Retreat</h3>
+            <p class="beach-card-route">
+              <strong>Route:</strong> Colombo &bull; Dambulla &bull; Kandy &bull; Bentota
+            </p>
+            <p class="beach-card-desc">
+              Combine ancient Buddhist meditation, forest monasteries, and Ayurvedic restorative healing.
+            </p>
+
+            <ul class="beach-card-highlights">
+              <li>✓ Silent morning walking meditation in ancient forest monastery caves</li><li>✓ Private audience and Dhamma discussion with senior Buddhist monastic scholar</li><li>✓ 7 Days of restorative authentic Ayurvedic therapies at a secluded coastal sanctuary</li><li>✓ Sound bowl healing session and oil lamp blessing ceremony</li>
+            </ul>
+
+            <div class="beach-card-actions">
+              <a href="sacred-serenity-forest-meditation-retreat/index.html" class="btn-beach-view">
+                <span>View Full Itinerary</span>
+                <span>➔</span>
+              </a>
+              <a href="../../inquiry-detailed.html?package=Sacred+Serenity+%26+Forest+Meditation+Retreat" class="btn-beach-inquire">
+                <span>Inquire</span>
+              </a>
+            </div>
+          </div>
+        </article>
+        
+      </div>
+    </div>
+  </section>
+
+  
+
+  <!-- ==========================================================================
+       SECTION: ROUTE MAP & REGIONAL EXPEDITIONS (2-COLUMN EDITORIAL + LIGHTBOX)
+       ========================================================================== -->
+  
+
+  <!-- ==========================================================================
+       SECTION: ROUTE MAP & REGIONAL EXPEDITIONS (2-COLUMN EDITORIAL + LIGHTBOX)
+       ========================================================================== -->
+  
+
+  <!-- ==========================================================================
+       SECTION: ROUTE MAP & REGIONAL EXPEDITIONS (2-COLUMN EDITORIAL + LIGHTBOX)
+       ========================================================================== -->
+    <!-- ==========================================================================
+       SECTION: DYNAMIC TOUR PACKAGE COMPARISON MATRIX (100% BESPOKE LOTUS CEYLON)
+       ========================================================================== -->
+  <section class="lotus-comparison-section js-lotus-comparison" id="package-comparison" data-category="ayurvedic" data-data-path="../../data/packages.json" data-subfolder="true">
+    <div class="comparison-compact-wrapper">
+      <div class="comparison-intro-header text-center">
+        <span class="comparison-eyebrow">✦ SIDE-BY-SIDE ITINERARY COMPARISON</span>
+        <h2 class="comparison-title">Compare Destinations &amp; Sights</h2>
+        <p class="comparison-subtitle">
+          Review how each Ayurvedic itinerary traverses Sri Lanka’s iconic destinations, cultural landmarks, and nature reserves.
+        </p>
+      </div>
+
+      <div class="lotus-table-responsive" tabindex="0" role="region" aria-label="Ayurvedic Package Comparison Table">
+        <table class="lotus-comparison-table">
+          <caption class="visually-hidden">Comparison of Sri Lanka Ayurvedic Tour Packages by Destination and Highlights</caption>
+          <thead>
+            <tr>
+              <th scope="col" class="dest-col-header">Destinations &amp; Key Sights</th>
+              <th scope="col" class="comparison-pkg-header">
+                <a href="lotus-ayu-holistic-rejuvenation/index.html" class="comparison-pkg-link">Lotus Ayu Holistic Rejuvenation</a>
+                <span class="comparison-pkg-nights">9N &amp; 10D</span>
+              </th>
+              <th scope="col" class="comparison-pkg-header">
+                <a href="sacred-serenity-forest-meditation-retreat/index.html" class="comparison-pkg-link">Sacred Serenity & Forest Meditation Retreat</a>
+                <span class="comparison-pkg-nights">13N &amp; 14D</span>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Destination: Colombo -->
+            <tr class="destination-row">
+              <th scope="row" class="destination-name-cell"><strong>Colombo</strong></th>
+              <td class="comparison-cell check-cell" aria-label="Included in Lotus Ayu Holistic Rejuvenation (Colombo)">✓</td>
+              <td class="comparison-cell check-cell" aria-label="Included in Sacred Serenity & Forest Meditation Retreat (Colombo)">✓</td>
+            </tr>
+            <tr class="activity-subrow">
+              <td class="activity-name-cell">Pettah herbal apothecary market walk</td>
+              <td class="comparison-cell check-cell sub-check" aria-label="Included in Lotus Ayu Holistic Rejuvenation: Pettah herbal apothecary market walk">✓</td>
+              <td class="comparison-cell check-cell sub-check" aria-label="Included in Sacred Serenity & Forest Meditation Retreat: Pettah herbal apothecary market walk">✓</td>
+            </tr>
+            <tr class="activity-subrow">
+              <td class="activity-name-cell">Lotus Ceylon flagship spa consult</td>
+              <td class="comparison-cell check-cell sub-check" aria-label="Included in Lotus Ayu Holistic Rejuvenation: Lotus Ceylon flagship spa consult">✓</td>
+              <td class="comparison-cell check-cell sub-check" aria-label="Included in Sacred Serenity & Forest Meditation Retreat: Lotus Ceylon flagship spa consult">✓</td>
+            </tr>
+            <tr class="activity-subrow">
+              <td class="activity-name-cell">Galle Face sunset mindfulness</td>
+              <td class="comparison-cell check-cell sub-check" aria-label="Included in Lotus Ayu Holistic Rejuvenation: Galle Face sunset mindfulness">✓</td>
+              <td class="comparison-cell check-cell sub-check" aria-label="Included in Sacred Serenity & Forest Meditation Retreat: Galle Face sunset mindfulness">✓</td>
+            </tr>
+            <!-- Destination: Negombo -->
+            <tr class="destination-row">
+              <th scope="row" class="destination-name-cell"><strong>Negombo</strong></th>
+              <td class="comparison-cell check-cell" aria-label="Included in Lotus Ayu Holistic Rejuvenation (Negombo)">✓</td>
+              <td class="comparison-cell empty-cell" aria-label="Not included in Sacred Serenity & Forest Meditation Retreat (Negombo)"></td>
+            </tr>
+            <tr class="activity-subrow">
+              <td class="activity-name-cell">Arrival relaxation & herbal tea welcome</td>
+              <td class="comparison-cell check-cell sub-check" aria-label="Included in Lotus Ayu Holistic Rejuvenation: Arrival relaxation & herbal tea welcome">✓</td>
+              <td class="comparison-cell empty-cell" aria-label="Not included in Sacred Serenity & Forest Meditation Retreat: Arrival relaxation & herbal tea welcome"></td>
+            </tr>
+            <tr class="activity-subrow">
+              <td class="activity-name-cell">Seaside breathing exercises</td>
+              <td class="comparison-cell check-cell sub-check" aria-label="Included in Lotus Ayu Holistic Rejuvenation: Seaside breathing exercises">✓</td>
+              <td class="comparison-cell empty-cell" aria-label="Not included in Sacred Serenity & Forest Meditation Retreat: Seaside breathing exercises"></td>
+            </tr>
+            <tr class="activity-subrow">
+              <td class="activity-name-cell">Ayurvedic physician introductory consultation</td>
+              <td class="comparison-cell check-cell sub-check" aria-label="Included in Lotus Ayu Holistic Rejuvenation: Ayurvedic physician introductory consultation">✓</td>
+              <td class="comparison-cell empty-cell" aria-label="Not included in Sacred Serenity & Forest Meditation Retreat: Ayurvedic physician introductory consultation"></td>
+            </tr>
+            <!-- Destination: Dambulla -->
+            <tr class="destination-row">
+              <th scope="row" class="destination-name-cell"><strong>Dambulla</strong></th>
+              <td class="comparison-cell empty-cell" aria-label="Not included in Lotus Ayu Holistic Rejuvenation (Dambulla)"></td>
+              <td class="comparison-cell check-cell" aria-label="Included in Sacred Serenity & Forest Meditation Retreat (Dambulla)">✓</td>
+            </tr>
+            <tr class="activity-subrow">
+              <td class="activity-name-cell">Cave temple silent walking meditation</td>
+              <td class="comparison-cell empty-cell" aria-label="Not included in Lotus Ayu Holistic Rejuvenation: Cave temple silent walking meditation"></td>
+              <td class="comparison-cell check-cell sub-check" aria-label="Included in Sacred Serenity & Forest Meditation Retreat: Cave temple silent walking meditation">✓</td>
+            </tr>
+            <tr class="activity-subrow">
+              <td class="activity-name-cell">Forest hermitage chanting & mindfulness</td>
+              <td class="comparison-cell empty-cell" aria-label="Not included in Lotus Ayu Holistic Rejuvenation: Forest hermitage chanting & mindfulness"></td>
+              <td class="comparison-cell check-cell sub-check" aria-label="Included in Sacred Serenity & Forest Meditation Retreat: Forest hermitage chanting & mindfulness">✓</td>
+            </tr>
+            <tr class="activity-subrow">
+              <td class="activity-name-cell">Organic herbal garden walkthrough</td>
+              <td class="comparison-cell empty-cell" aria-label="Not included in Lotus Ayu Holistic Rejuvenation: Organic herbal garden walkthrough"></td>
+              <td class="comparison-cell check-cell sub-check" aria-label="Included in Sacred Serenity & Forest Meditation Retreat: Organic herbal garden walkthrough">✓</td>
+            </tr>
+            <!-- Destination: Kandy -->
+            <tr class="destination-row">
+              <th scope="row" class="destination-name-cell"><strong>Kandy</strong></th>
+              <td class="comparison-cell empty-cell" aria-label="Not included in Lotus Ayu Holistic Rejuvenation (Kandy)"></td>
+              <td class="comparison-cell check-cell" aria-label="Included in Sacred Serenity & Forest Meditation Retreat (Kandy)">✓</td>
+            </tr>
+            <tr class="activity-subrow">
+              <td class="activity-name-cell">Sacred Tooth Relic mindful evening offering</td>
+              <td class="comparison-cell empty-cell" aria-label="Not included in Lotus Ayu Holistic Rejuvenation: Sacred Tooth Relic mindful evening offering"></td>
+              <td class="comparison-cell check-cell sub-check" aria-label="Included in Sacred Serenity & Forest Meditation Retreat: Sacred Tooth Relic mindful evening offering">✓</td>
+            </tr>
+            <tr class="activity-subrow">
+              <td class="activity-name-cell">Udawattakele royal forest sanctuary walk</td>
+              <td class="comparison-cell empty-cell" aria-label="Not included in Lotus Ayu Holistic Rejuvenation: Udawattakele royal forest sanctuary walk"></td>
+              <td class="comparison-cell check-cell sub-check" aria-label="Included in Sacred Serenity & Forest Meditation Retreat: Udawattakele royal forest sanctuary walk">✓</td>
+            </tr>
+            <tr class="activity-subrow">
+              <td class="activity-name-cell">Ayurvedic doctor pulse consultation</td>
+              <td class="comparison-cell empty-cell" aria-label="Not included in Lotus Ayu Holistic Rejuvenation: Ayurvedic doctor pulse consultation"></td>
+              <td class="comparison-cell check-cell sub-check" aria-label="Included in Sacred Serenity & Forest Meditation Retreat: Ayurvedic doctor pulse consultation">✓</td>
+            </tr>
+            <!-- Destination: Bentota -->
+            <tr class="destination-row">
+              <th scope="row" class="destination-name-cell"><strong>Bentota</strong></th>
+              <td class="comparison-cell check-cell" aria-label="Included in Lotus Ayu Holistic Rejuvenation (Bentota)">✓</td>
+              <td class="comparison-cell check-cell" aria-label="Included in Sacred Serenity & Forest Meditation Retreat (Bentota)">✓</td>
+            </tr>
+            <tr class="activity-subrow">
+              <td class="activity-name-cell">Daily sunrise yoga on quiet sands</td>
+              <td class="comparison-cell check-cell sub-check" aria-label="Included in Lotus Ayu Holistic Rejuvenation: Daily sunrise yoga on quiet sands">✓</td>
+              <td class="comparison-cell check-cell sub-check" aria-label="Included in Sacred Serenity & Forest Meditation Retreat: Daily sunrise yoga on quiet sands">✓</td>
+            </tr>
+            <tr class="activity-subrow">
+              <td class="activity-name-cell">Pinda Sweda warm herbal pouch therapy</td>
+              <td class="comparison-cell check-cell sub-check" aria-label="Included in Lotus Ayu Holistic Rejuvenation: Pinda Sweda warm herbal pouch therapy">✓</td>
+              <td class="comparison-cell check-cell sub-check" aria-label="Included in Sacred Serenity & Forest Meditation Retreat: Pinda Sweda warm herbal pouch therapy">✓</td>
+            </tr>
+            <tr class="activity-subrow">
+              <td class="activity-name-cell">Herbal steam bath & holistic meditation</td>
+              <td class="comparison-cell check-cell sub-check" aria-label="Included in Lotus Ayu Holistic Rejuvenation: Herbal steam bath & holistic meditation">✓</td>
+              <td class="comparison-cell check-cell sub-check" aria-label="Included in Sacred Serenity & Forest Meditation Retreat: Herbal steam bath & holistic meditation">✓</td>
+            </tr>
+            <!-- Destination: Wadduwa -->
+            <tr class="destination-row">
+              <th scope="row" class="destination-name-cell"><strong>Wadduwa</strong></th>
+              <td class="comparison-cell check-cell" aria-label="Included in Lotus Ayu Holistic Rejuvenation (Wadduwa)">✓</td>
+              <td class="comparison-cell empty-cell" aria-label="Not included in Sacred Serenity & Forest Meditation Retreat (Wadduwa)"></td>
+            </tr>
+            <tr class="activity-subrow">
+              <td class="activity-name-cell">Full-body herbal Abhyanga massage</td>
+              <td class="comparison-cell check-cell sub-check" aria-label="Included in Lotus Ayu Holistic Rejuvenation: Full-body herbal Abhyanga massage">✓</td>
+              <td class="comparison-cell empty-cell" aria-label="Not included in Sacred Serenity & Forest Meditation Retreat: Full-body herbal Abhyanga massage"></td>
+            </tr>
+            <tr class="activity-subrow">
+              <td class="activity-name-cell">Shirodhara warm herbal oil forehead flow</td>
+              <td class="comparison-cell check-cell sub-check" aria-label="Included in Lotus Ayu Holistic Rejuvenation: Shirodhara warm herbal oil forehead flow">✓</td>
+              <td class="comparison-cell empty-cell" aria-label="Not included in Sacred Serenity & Forest Meditation Retreat: Shirodhara warm herbal oil forehead flow"></td>
+            </tr>
+            <tr class="activity-subrow">
+              <td class="activity-name-cell">Doctor-formulated tri-dosha gourmet dining</td>
+              <td class="comparison-cell check-cell sub-check" aria-label="Included in Lotus Ayu Holistic Rejuvenation: Doctor-formulated tri-dosha gourmet dining">✓</td>
+              <td class="comparison-cell empty-cell" aria-label="Not included in Sacred Serenity & Forest Meditation Retreat: Doctor-formulated tri-dosha gourmet dining"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION: ROUTE MAP & REGIONAL EXPEDITIONS (2-COLUMN EDITORIAL + LIGHTBOX)
+       ========================================================================== -->
+  <section class="coastline-map-section" id="ayurvedic-map">
+    <div class="wrapper--85">
+      <div class="coastline-map-wrapper">
+        
+        <!-- Left: Luxury Route Map Container -->
+        <div class="coastline-map-figure">
+          <div id="ayurvedic-leaflet-map" 
+               class="lotus-street-map-frame js-lotus-route-map" 
+               data-category="ayurvedic" 
+               data-data-path="../../data/packages.json"
+               role="region" 
+               aria-label="Interactive Sri Lanka Tour Route Map for Ayurvedic">
+          </div>
+        </div>
+
+        <!-- Right: Category Headline, Inspirational Quote & Editorial -->
+        <div class="coastline-content-col">
+          <div class="route-eyebrow">✦ HOLISTIC AYURVEDIC SANCTUARIES & VEDIC HEALING</div>
+
+          <div class="route-quote-card">
+            <blockquote class="route-quote-text">
+              “Ancient healing wisdom whispered through medicinal forests, restorative herbal therapies, and deep serenity for mind, body, and spirit.”
+            </blockquote>
+            <span class="route-quote-caption">Lotus Ceylon Wellness Journeys</span>
+          </div>
+
+          <h2 class="coastline-main-title">
+            Discover Sri Lanka’s Holistic Sanctuary Routes:
+            <span>Authentic Panchakarma, Herbal Gardens & Ocean Serenity</span>
+          </h2>
+
+          <p class="coastline-lead-text">
+            Rooted in over 5,000 years of unbroken Vedic and Hela-Veda traditions, our wellness journeys offer profound physical and spiritual rejuvenation. Stay in secluded forest retreats and coastal wellness sanctuaries where resident Ayurvedic doctors (Vaidyas) prescribe custom daily therapies, including warm herbal oil Shirodhara, restorative steam baths, guided dawn yoga, and farm-to-table organic Ayurvedic nutrition.
+          </p>
+
+          <!-- Signature Route Circuit Ribbon -->
+          <div class="route-circuit-ribbon">
+            <span class="route-circuit-label">Signature Wellness Circuit:</span>
+            <div class="route-circuit-stops">
+              <span class="route-stop-pill">Negombo Wellness Coast</span>
+              <span class="route-stop-arrow">➔</span>
+              <span class="route-stop-pill">Sigiriya Forest Sanctuaries</span>
+              <span class="route-stop-arrow">➔</span>
+              <span class="route-stop-pill">Kandy Herbal Valleys</span>
+              <span class="route-stop-arrow">➔</span>
+              <span class="route-stop-pill">Southern Ocean Healing Pavilions</span>
+            </div>
+          </div>
+
+          <div class="coastline-highlights-row">
+            <div class="coastline-highlight-item">
+              <span>🌿</span>
+              <span>Resident Ayurvedic Vaidya Doctors</span>
+            </div>
+            <div class="coastline-highlight-item">
+              <span>🧘‍♂️</span>
+              <span>Daily Custom Panchakarma Therapies</span>
+            </div>
+            <div class="coastline-highlight-item">
+              <span>🌅</span>
+              <span>Dawn Meditation & Forest Bathing</span>
+            </div>
+            <div class="coastline-highlight-item">
+              <span>🍲</span>
+              <span>Tridoshic Farm-to-Table Cuisine</span>
+            </div>
+          </div>
+
+          <div class="route-actions-row">
+            <a href="../../inquiry-detailed.html?category=Ayurvedic+Tours" class="btn-route-inquire">
+              <span>Plan Your Custom Tour ➔</span>
+            </a>
+            <a href="https://wa.me/94715422384?text=Hello%20Lotus%20Ceylon!%20I%20would%20like%20to%20inquire%20about%20a%20custom%20Ayurvedic+Tours%20package." target="_blank" rel="noopener" class="btn-route-whatsapp">
+              <span>💬 Chat on WhatsApp</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Map Lightbox Modal -->
+  
+
+  <!-- Interactive Map Lightbox Modal -->
+  
+
+  <!-- Interactive Map Lightbox Modal -->
+  
+
+  <!-- Interactive Map Lightbox Modal -->
+  
+
+  <!-- SECTION 6: BOTTOM CTA BANNER -->
+  <section class="banner-bottom-cta padding-top--80 padding-bottom--80" style="background: linear-gradient(135deg, #001A2C 0%, #002B49 100%); color: #FFFFFF; text-align: center;">
+    <div class="wrapper--70">
+      <span style="color: #C5A880; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase;">PURE JOURNEYS &bull; SACRED EXPERIENCES</span>
+      <h2 style="font-family: 'Playfair Display', serif; font-size: 2.6rem; margin: 1rem 0; color: #FFFFFF;">Ready to Plan Your Sri Lanka Ayurvedic & Holistic Wellness Retreats?</h2>
+      <p style="color: rgba(255,255,255,0.85); font-size: 1.1rem; max-width: 680px; margin: 0 auto 2rem; line-height: 1.65;">
+        Every single day, boutique stay, and transfer is customized entirely around you. Our destination experts craft your personalized itinerary tailored to your travel dates and pace.
+      </p>
+      <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+        <a href="../../inquiry-detailed.html?category=ayurvedic" class="gold-inquire-btn" style="text-decoration: none; padding: 14px 30px; font-weight: 700;">Design Your Custom Journey</a>
+        <a href="https://wa.me/94715422384" target="_blank" rel="noopener" class="gold-inquire-btn" style="background: transparent; border: 2px solid #C5A880; color: #C5A880; text-decoration: none; padding: 12px 26px; font-weight: 700;">WhatsApp Specialist (+94 71 54 22 384)</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       WHY TRAVEL WITH LOTUS & FREQUENTLY ASKED QUESTIONS
+       ========================================================================== -->
+  <section class="lotus-why-section" id="why-lotus">
+    <div id="lotusWhyContainer"></div>
+  </section>
+
+  <section class="lotus-faq-section" id="faqs">
+    <div id="lotusFaqContainer"></div>
+  </section>
+
+    <!-- Sacred Ceylon CTA Band (Unified Standard) -->
+    <!-- Sacred Ceylon CTA Band (Unified Standard) -->
+  <section class="sacred-cta-banner">
+    <div class="cta-motif" aria-hidden="true"></div>
+    <div class="cta-content">
+      <h2 class="cta-title">Ready to Begin Your Sacred Ceylon Journey?</h2>
+      <p class="cta-desc">Speak directly with our senior destination specialists in Ja-Ela or connect via WhatsApp for an immediate bespoke itinerary proposal tailored to your rhythm.</p>
+      <div class="cta-btn-group">
+        <a href="../../inquiry-detailed.html" class="btn-primary-gold">
+          <span>Plan My Bespoke Journey</span>
+          <span aria-hidden="true">➔</span>
+        </a>
+        <a href="https://wa.me/94715422384?text=Hello%20Lotus%20Ceylon!%20I%20would%20like%20to%20inquire%20about%20a%20private%20tour." target="_blank" rel="noopener noreferrer" class="cta-wa-btn">
+          <span>💬 Chat on WhatsApp</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+    <!-- Site Footer (Unified Walkers Standard with Single Source of Truth Coordinates) -->
+    <!-- Site Footer (Unified Walkers Standard with Single Source of Truth Coordinates) -->
+  <!-- @include footer:start -->
+<!-- Site Footer (Unified Walkers Standard with Single Source of Truth Coordinates) -->
+<footer class="site-footer-walkers" id="siteFooter">
+<div class="site-container">
+<div class="footer-top-grid">
+<!-- Col 1: About & 24/7 Concierge Hotline -->
+<div>
+<p class="footer-col-title" data-cms="siteGlobal.branding.companyName">Lotus Ceylon Luxury Tours</p>
+<p style="color: rgba(255, 255, 255, 0.78); font-size: 0.92rem; line-height: 1.65; margin: 0.85rem 0 1.25rem; max-width: 330px;" data-cms="siteGlobal.footer.aboutText">
+Crafting bespoke, transformative travel experiences across sacred Ceylon with authentic warmth since 2014.
+</p>
+<div class="footer-contact-list">
+<div class="footer-contact-item">
+<p data-cms="siteGlobal.contact.hotlineLabel">24/7 Travel Concierge Hotline</p>
+<a href="tel:+94715422384" style="color: #FFFFFF; font-weight: 700; font-size: 1.05rem;" data-cms="siteGlobal.contact.phone" data-cms-link="siteGlobal.contact.phoneTel">+94 71 54 22 384</a>
+</div>
+<div class="footer-contact-item">
+<p data-cms="siteGlobal.contact.emailLabel">Email Inquiries</p>
+<a href="mailto:inquiry@lotusceylon.com" data-cms="siteGlobal.contact.email" data-cms-link="siteGlobal.contact.emailMailto">inquiry@lotusceylon.com</a>
+</div>
+<div class="footer-contact-item" style="margin-top: 0.85rem;">
+<a href="../../about.html#headquarters" style="color: var(--sacred-gold); font-size: 0.85rem; font-weight: 600; display: inline-flex; align-items: center; gap: 6px;">
+<span data-cms="siteGlobal.footer.headquartersLinkText">Registered Office &amp; Headquarters Details</span> <span>➔</span>
+</a>
+</div>
+</div>
+<!-- Social Channels (Curated, hidden if empty) -->
+<div class="footer-social-row" id="footerSocialRow" style="display: flex; gap: 14px; margin-top: 1.25rem; align-items: center;">
+<a href="https://facebook.com/lotusceylontours" target="_blank" rel="noopener noreferrer" aria-label="Facebook" data-cms-link="siteGlobal.social.facebook" style="color: var(--sacred-gold); font-size: 1.1rem; display: inline-flex;">
+<svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/></svg>
+</a>
+<a href="https://instagram.com/lotusceylontours" target="_blank" rel="noopener noreferrer" aria-label="Instagram" data-cms-link="siteGlobal.social.instagram" style="color: var(--sacred-gold); font-size: 1.1rem; display: inline-flex;">
+<svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+</a>
+<a href="https://youtube.com/@lotusceylontours" target="_blank" rel="noopener noreferrer" aria-label="YouTube" data-cms-link="siteGlobal.social.youtube" style="color: var(--sacred-gold); font-size: 1.1rem; display: inline-flex;">
+<svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+</a>
+<a href="https://tripadvisor.com" target="_blank" rel="noopener noreferrer" aria-label="TripAdvisor" data-cms-link="siteGlobal.social.tripadvisor" style="color: var(--sacred-gold); font-size: 1.1rem; display: inline-flex;">
+<svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12c0 5.523 4.477 10 10 10s10-4.477 10-10c0-5.523-4.477-10-10-10zm-3.5 13.5a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7zm7 0a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7z"/></svg>
+</a>
+</div>
+</div>
+<!-- Col 2: Quick Links -->
+<div>
+<p class="footer-col-title" data-cms="siteGlobal.footer.quickLinksTitle">Quick Links</p>
+<div class="footer-links-grid">
+<a href="../../index.html" data-cms="siteGlobal.menu.home">Home</a>
+<a href="../../tours/" data-cms="siteGlobal.menu.tours">All Tour Packages</a>
+<a href="../../destinations.html" data-cms="siteGlobal.menu.destinations">Destinations</a>
+<a href="../../experiences.html" data-cms="siteGlobal.menu.experiences">Curated Experiences</a>
+<a href="../../about.html" data-cms="siteGlobal.menu.about">About Us</a>
+<a href="../../gallery.html" data-cms="siteGlobal.menu.gallery">Visual Gallery</a>
+<a href="../../reviews.html" data-cms="siteGlobal.menu.reviews">Guest Reviews</a>
+<a href="../../blog.html" data-cms="siteGlobal.menu.blog">Travel Blog</a>
+<a href="../../contact.html" data-cms="siteGlobal.menu.contact">Contact Us</a>
+<a href="../../inquiry-quick.html">Quick Inquiry Form</a>
+<a href="../../inquiry-detailed.html">Detailed Travel Inquiry</a>
+</div>
+</div>
+<!-- Col 3: Tour Categories -->
+<div>
+<p class="footer-col-title" data-cms="siteGlobal.footer.signatureThemesTitle">Signature Themes</p>
+<div class="footer-links-grid">
+<a href="../../tours/cultural/">Cultural Heritage</a>
+<a href="../../tours/buddhist-heritage/">Buddhist Pilgrimage</a>
+<a href="../../tours/wildlife/">Wildlife &amp; Safari</a>
+<a href="../../tours/beach/">Coast &amp; Beaches</a>
+<a href="../../tours/hill-country/">Highlands &amp; Tea</a>
+<a href="../../tours/ayurvedic/">Ayurvedic Wellness</a>
+<a href="../../tours/honeymoon/">Honeymoon Sanctuaries</a>
+<a href="../../tours/family/">Family Journeys</a>
+<a href="../../tours/adventure/">Active Adventure</a>
+<a href="../../tours/golf/">Championship Golf</a>
+<a href="../../tours/ramayana/">Ramayana Heritage</a>
+</div>
+</div>
+<!-- Col 4: Registered Office & Legal -->
+<div>
+<p class="footer-col-title" data-cms="siteGlobal.footer.hqTitle">Island Headquarters</p>
+<p style="color: rgba(255, 255, 255, 0.78); font-size: 0.9rem; line-height: 1.6; margin-bottom: 1rem;" data-cms="siteGlobal.contact.address">
+286/C, Niwandama South, Ja-Ela, Sri Lanka – 11350
+</p>
+<p style="font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--sacred-gold); margin-bottom: 0.4rem;" data-cms="siteGlobal.contact.directMessagingLabel">Direct Messaging</p>
+<p style="color: #FFFFFF; font-size: 0.9rem; margin-bottom: 1.25rem;">
+WhatsApp: <span data-cms="siteGlobal.contact.phone">+94 71 54 22 384</span><br/>
+WeChat: <span data-cms="siteGlobal.contact.wechat">LotusCeylonTours</span><br/>
+LINE: <span data-cms="siteGlobal.contact.line">@lotusceylon</span>
+</p>
+<div class="footer-links-grid" style="font-size: 0.85rem;">
+<a href="../../privacy-policy.html">Privacy Policy</a>
+<a href="../../terms-conditions.html">Terms &amp; Conditions</a>
+<a href="../../cancellation-policy.html">Cancellation Policy</a>
+<a href="../../cookie-policy.html">Cookie Policy</a>
+</div>
+</div>
+</div>
+<!-- Footer Bottom Row -->
+<div class="footer-bottom-row">
+<div>
+© <span id="currentYear">2026</span> <span data-cms="siteGlobal.branding.companyLegalName">Lotus Ceylon International Tours &amp; Services (Private) Limited</span>. All Rights Reserved.
+</div>
+<div>
+Designed &amp; Developed by <a href="https://infiniteweb.dev/" rel="noopener" target="_blank" data-cms-link="siteGlobal.branding.developerUrl" style="color: var(--sacred-gold); font-weight: 600;">Infinite Design</a> (<a href="https://facebook.com/infinitedesign" rel="noopener" target="_blank" data-cms-link="siteGlobal.branding.developerFbUrl" style="color: var(--sacred-gold);">Facebook</a>)
+</div>
+</div>
+</div>
+</footer>
+<!-- @include footer:end -->
+
+  <!-- Unified Mobile-First Floating Action Group (WhatsApp + Back to Top) -->
   <!-- @include floating-actions:start -->
 <!-- Unified Mobile-First Floating Action Group (WhatsApp + Back to Top) -->
 <div aria-label="Quick Actions" class="unified-fab-group" id="unifiedFabGroup">
@@ -24,7 +980,12 @@
 <svg viewbox="0 0 20 20"><path d="M16.5909 5.02051H16.1522V8.43079C16.1522 10.9574 14.0966 13.013 11.57 13.013H5.02148V13.4518C5.02148 15.3322 6.55138 16.862 8.43177 16.862H15.4373L19.0401 19.8644C19.1474 19.9538 19.2808 20.0002 19.4154 20.0002C19.7375 20.0002 20.0012 19.7388 20.0012 19.4142V8.43079C20.0012 6.5475 18.4775 5.02051 16.5909 5.02051Z"></path><path d="M14.9797 8.43118V3.41029C14.9797 1.52363 13.4528 0 11.5694 0H3.41029C1.52363 0 0 1.52684 0 3.41029V14.3937C0 14.7181 0.26368 14.9797 0.585802 14.9797C0.720388 14.9797 0.853754 14.9333 0.961027 14.8437L4.56388 11.8415H11.5694C13.4498 11.8415 14.9797 10.3117 14.9797 8.43118Z"></path></svg>
 <span data-cms="siteGlobal.branding.inquireButtonText">Inquire</span>
 </a>
-<!-- @include floating-actions:end --><script src="../../js/tours-map.js?v=20261024_map_v1"></script>
+<!-- @include floating-actions:end -->
+
+  <!-- Persistent Floating WhatsApp Concierge -->
+  
+
+  <script src="../../js/tours-map.js?v=20261024_map_v1"></script>
 
   <!-- Floating WhatsApp Hotline (+94 71 54 22 384) -->
   
