@@ -11,10 +11,13 @@ service cloud.firestore {
     function isAdmin() {
       return request.auth != null && (
         (exists(/databases/$(database)/documents/admins/$(request.auth.uid)) && 
-         get(/databases/$(database)/documents/admins/$(request.auth.uid)).data.role in ['super_admin', 'editor', 'admin']) ||
+         get(/databases/$(database)/documents/admins/$(request.auth.uid)).data.role in ['super_admin', 'editor', 'admin', 'owner']) ||
         (request.auth.token.email != null && 
          exists(/databases/$(database)/documents/admins/$(request.auth.token.email)) && 
-         get(/databases/$(database)/documents/admins/$(request.auth.token.email)).data.role in ['super_admin', 'editor', 'admin'])
+         get(/databases/$(database)/documents/admins/$(request.auth.token.email)).data.role in ['super_admin', 'editor', 'admin', 'owner']) ||
+        (request.auth.token.email == 'gamhewak@gmail.com' &&
+         exists(/databases/$(database)/documents/admins/super_admin_gamhewak) &&
+         get(/databases/$(database)/documents/admins/super_admin_gamhewak).data.role in ['super_admin', 'editor', 'admin', 'owner'])
       );
     }
 
@@ -167,6 +170,7 @@ service cloud.firestore {
       allow get: if request.auth != null && (
         request.auth.uid == adminId || 
         (request.auth.token.email != null && request.auth.token.email.lower() == adminId.lower()) || 
+        (request.auth.token.email == 'gamhewak@gmail.com' && adminId == 'super_admin_gamhewak') ||
         isAdmin()
       );
       allow list, write: if isAdmin();

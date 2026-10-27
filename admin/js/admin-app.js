@@ -399,23 +399,31 @@ resolveImg(url) {
       try {
         if (this.fbDb) {
           let doc = null;
-          if (uid) {
-            try {
-              doc = await this.fbDb.collection('admins').doc(uid).get();
-            } catch (e) {
-              doc = null;
-            }
+          const candidateDocIds = [];
+          if (uid) candidateDocIds.push(uid);
+          if (email) {
+            const cleanEmail = email.toLowerCase().trim();
+            const username = cleanEmail.split('@')[0];
+            candidateDocIds.push(cleanEmail);
+            candidateDocIds.push(super_admin_);
+            candidateDocIds.push(dmin_);
+            candidateDocIds.push(username);
           }
-          if ((!doc || !doc.exists) && email) {
+          for (const docId of candidateDocIds) {
             try {
-              doc = await this.fbDb.collection('admins').doc(email.toLowerCase()).get();
+              const snap = await this.fbDb.collection('admins').doc(docId).get();
+              if (snap && snap.exists) {
+                doc = snap;
+                break;
+              }
             } catch (e) {
-              doc = null;
+              // try next candidate
             }
           }
           if (doc && doc.exists) {
             const data = doc.data() || {};
-            this.currentRole = data.role === 'super_admin' ? 'super_admin' : 'editor';
+            const r = (data.role || '').toLowerCase();
+            this.currentRole = (r === 'super_admin' || r === 'owner' || r === 'admin') ? 'super_admin' : 'editor';
             return true;
           }
           return false;
