@@ -405,8 +405,8 @@ resolveImg(url) {
             const cleanEmail = email.toLowerCase().trim();
             const username = cleanEmail.split('@')[0];
             candidateDocIds.push(cleanEmail);
-            candidateDocIds.push(super_admin_);
-            candidateDocIds.push(dmin_);
+            candidateDocIds.push('super_admin_' + username);
+            candidateDocIds.push('admin_' + username);
             candidateDocIds.push(username);
           }
           for (const docId of candidateDocIds) {
@@ -503,6 +503,19 @@ resolveImg(url) {
         }
       } else {
         this.showLogin();
+      }
+    },
+
+    togglePasswordVisibility() {
+      const input = document.getElementById('loginPassword');
+      const icon = document.getElementById('togglePasswordIcon');
+      if (!input) return;
+      if (input.type === 'password') {
+        input.type = 'text';
+        if (icon) icon.textContent = '🙈';
+      } else {
+        input.type = 'password';
+        if (icon) icon.textContent = '👁️';
       }
     },
 
