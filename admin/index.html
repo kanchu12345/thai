@@ -738,23 +738,116 @@
 <!-- ========================================== -->
 <!-- SECTION 9: UNIVERSAL PAGE EDITOR           -->
 <!-- ========================================== -->
-<section class="content-section" id="section-page-editor">
-  <div class="page-editor-topbar">
-    <div class="page-editor-meta-left">
-      <h2 id="pageEditorTitle">📄 Page Content Editor</h2>
-      <small id="pageEditorFile">Source: /index.html • Firestore: siteContent/home</small>
+<section class="content-section" id="section-page-editor" style="padding: 0; margin: 0; max-width: 100%; height: calc(100vh - 60px); display: flex; flex-direction: column;">
+  <!-- VISUAL EDITOR TOPBAR -->
+  <div class="visual-topbar">
+    <div class="visual-topbar-left">
+      <!-- Page Selector -->
+      <div class="visual-page-selector">
+        <label for="visualPageDropdown">Page:</label>
+        <select id="visualPageDropdown" class="form-control" onchange="PageEditor.handlePageSelectChange(this.value)">
+          <optgroup label="Main Website Pages">
+            <option value="siteContent/home|index.html" selected>🏠 Home Page</option>
+            <option value="siteContent/about|about.html">🏛️ About Us</option>
+            <option value="siteContent/contact|contact.html">📞 Contact & Concierge</option>
+            <option value="siteContent/destinations|destinations.html">📍 Destinations</option>
+            <option value="siteContent/experiences|experiences.html">✨ Experiences</option>
+            <option value="siteContent/gallery|gallery.html">🖼️ Gallery</option>
+            <option value="siteContent/reviews|reviews.html">✍️ Reviews & Guestbook</option>
+            <option value="siteContent/blog|blog.html">📰 Blog & Editorial</option>
+            <option value="siteContent/toursIndex|tours/index.html">🗺️ All Tours Index</option>
+            <option value="siteContent/inquiry-detailed|inquiry-detailed.html">📋 Bespoke Inquiry</option>
+            <option value="siteContent/inquiry-quick|inquiry-quick.html">⚡ Quick Consultation</option>
+          </optgroup>
+          <optgroup label="Tour Categories">
+            <option value="tourCategories/cultural|tours/cultural/index.html">🏛️ Cultural Triangle</option>
+            <option value="tourCategories/wildlife|tours/wildlife/index.html">🐆 Wildlife Safari</option>
+            <option value="tourCategories/beach|tours/beach/index.html">🏖️ Pristine Beaches</option>
+            <option value="tourCategories/hill-country|tours/hill-country/index.html">⛰️ Hill Country & Tea</option>
+            <option value="tourCategories/ayurvedic|tours/ayurvedic/index.html">🌿 Authentic Ayurveda</option>
+            <option value="tourCategories/honeymoon|tours/honeymoon/index.html">💍 Romantic Honeymoon</option>
+            <option value="tourCategories/family|tours/family/index.html">👨‍👩‍👧‍👦 Family Escapes</option>
+            <option value="tourCategories/adventure|tours/adventure/index.html">🧗‍♂️ Adventure & Trekking</option>
+            <option value="tourCategories/golf|tours/golf/index.html">⛳ Ceylon Golf Masters</option>
+            <option value="tourCategories/buddhist-heritage|tours/buddhist-heritage/index.html">☸️ Buddhist Heritage</option>
+            <option value="tourCategories/ramayana|tours/ramayana/index.html">🏹 Sacred Ramayana Trail</option>
+          </optgroup>
+          <optgroup label="Legal & Policies">
+            <option value="siteContent/privacy-policy|privacy-policy.html">🔒 Privacy Policy</option>
+            <option value="siteContent/terms-conditions|terms-conditions.html">📜 Terms & Conditions</option>
+            <option value="siteContent/cancellation-policy|cancellation-policy.html">⚖️ Cancellation Policy</option>
+            <option value="siteContent/cookie-policy|cookie-policy.html">🍪 Cookie Policy</option>
+          </optgroup>
+        </select>
+      </div>
+
+      <!-- Single Global Language Selector -->
+      <div class="visual-lang-selector">
+        <label for="visualLangSelect">Language:</label>
+        <select id="visualLangSelect" class="form-control" onchange="PageEditor.handleLangChange(this.value)">
+          <option value="en" selected>🇬🇧 English</option>
+          <option value="fr">🇫🇷 Français</option>
+          <option value="de">🇩🇪 Deutsch</option>
+          <option value="zh-CN">🇨🇳 简体中文</option>
+          <option value="zh-TW">🇹🇼 繁體中文</option>
+          <option value="ja">🇯🇵 日本語</option>
+          <option value="ar">🇦🇪 العربية (RTL)</option>
+          <option value="hi">🇮🇳 हिन्दी</option>
+          <option value="it">🇮🇹 Italiano</option>
+          <option value="ru">🇷🇺 Русский</option>
+          <option value="es">🇪🇸 Español</option>
+        </select>
+      </div>
+
+      <!-- Desktop / Mobile Viewport Toggle -->
+      <div class="visual-viewport-toggle">
+        <button type="button" class="viewport-btn active" id="btnViewDesktop" onclick="PageEditor.setViewport('desktop')" title="Desktop View">🖥️ Desktop</button>
+        <button type="button" class="viewport-btn" id="btnViewMobile" onclick="PageEditor.setViewport('mobile')" title="Mobile View (390px)">📱 Mobile</button>
+      </div>
     </div>
-    <div class="page-editor-actions">
-      <input type="text" class="form-control page-editor-search-box" id="pageEditorSearch" placeholder="🔍 Search fields by key/label...">
-      <span class="badge badge-secondary" id="pageEditorFieldCount">0 editable fields</span>
-      <button type="button" class="btn btn-outline btn-sm" onclick="PageEditor.resetAllDefaults()" title="Reset all fields to hardcoded HTML defaults">↺ Reset All</button>
-      <button type="button" class="btn btn-secondary btn-sm" onclick="PageEditor.openLivePreview()" title="Open live preview with ?preview=1">Live Preview ↗</button>
-      <button type="button" class="btn btn-outline btn-sm" id="pageEditorSaveBtn" onclick="PageEditor.saveDraft()">Save Draft</button>
-      <button type="button" class="btn btn-gold btn-sm" id="pageEditorPublishBtn" onclick="PageEditor.publish()">🚀 Publish Live</button>
+
+    <div class="visual-topbar-right">
+      <!-- Status Indicator -->
+      <div class="visual-status-indicator" id="visualSaveStatus">
+        <span class="status-dot"></span>
+        <span id="visualStatusText">All changes saved</span>
+      </div>
+
+      <button type="button" class="btn btn-outline btn-sm" onclick="PageEditor.openSeoModal()" title="Edit Page Title, Meta Description & Social Share Image">⚙️ Page SEO</button>
+      <button type="button" class="btn btn-outline btn-sm" onclick="PageEditor.resetCurrentPage()" title="Reset page to default values">↺ Reset</button>
+      <button type="button" class="btn btn-outline btn-sm" id="visualSaveDraftBtn" onclick="PageEditor.saveDraft()">💾 Save Draft</button>
+      <button type="button" class="btn btn-gold btn-sm" id="visualPublishBtn" onclick="PageEditor.publish()">🚀 Publish Live</button>
     </div>
   </div>
-  <div id="pageEditorFieldsContainer">
-    <!-- Populated dynamically from cms-registry.json -->
+
+  <!-- VISUAL SPLIT WORKSPACE (70% Preview Iframe | 30% Edit Panel) -->
+  <div class="visual-split-workspace" id="visualWorkspace">
+    <!-- LEFT: PREVIEW IFRAME VIEWPORT -->
+    <div class="visual-preview-container" id="visualPreviewContainer">
+      <div class="visual-iframe-wrapper desktop" id="visualIframeWrapper">
+        <iframe id="visualCmsIframe" src="../index.html?edit=1" title="Visual Page Editor Preview"></iframe>
+      </div>
+      <div class="visual-iframe-hint">
+        <span>💡 Click any highlighted text, image, or button in the preview to edit. Changes appear live instantly.</span>
+      </div>
+    </div>
+
+    <!-- RIGHT: EDIT INSPECTOR PANEL (Bottom sheet on mobile) -->
+    <div class="visual-inspector-panel" id="visualInspectorPanel">
+      <div class="inspector-header">
+        <div class="inspector-breadcrumb" id="inspectorBreadcrumb">
+          <span class="sec-badge" id="inspectorSectionBadge">🎯 Live Click-to-Edit</span>
+          <strong id="inspectorTitle">Select an Element</strong>
+        </div>
+        <div class="inspector-header-actions">
+          <button type="button" class="inspector-close-btn" onclick="PageEditor.clearSelectedElement()" title="Deselect">✕</button>
+        </div>
+      </div>
+
+      <div class="inspector-body" id="inspectorBody">
+        <!-- Rendered dynamically by PageEditor -->
+      </div>
+    </div>
   </div>
 </section>
 

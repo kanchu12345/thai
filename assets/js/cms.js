@@ -649,6 +649,166 @@
       observer.observe(document.documentElement, { attributes: true });
     },
 
+  
+    setupVisualEditMode() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const isEditMode = urlParams.has('edit') || (window.self !== window.top && urlParams.has('preview'));
+      if (!isEditMode) return;
+
+      console.info('[LotusCMS] Visual Edit Mode activated (?edit=1)');
+
+      // 1. Inject Visual Edit Styles
+      const style = document.createElement('style');
+      style.id = 'lotus-cms-edit-styles';
+      style.textContent = `
+        [data-cms], [data-cms-html], [data-cms-img], [data-cms-bg], [data-cms-video], [data-cms-link], [data-cms-list] {
+          cursor: pointer !important;
+          transition: outline 0.15s ease, box-shadow 0.15s ease !important;
+        }
+        [data-cms]:hover, [data-cms-html]:hover, [data-cms-img]:hover, [data-cms-bg]:hover, [data-cms-video]:hover, [data-cms-link]:hover, [data-cms-list]:hover {
+          outline: 2px dashed #D4A373 !important;
+          outline-offset: 3px !important;
+        }
+        .lotus-cms-selected-element {
+          outline: 3px solid #008080 !important;
+          outline-offset: 4px !important;
+          box-shadow: 0 0 16px rgba(0, 128, 128, 0.45) !important;
+          position: relative !important;
+        }
+        body.cms-edit-active a {
+          cursor: pointer !important;
+        }
+      `;
+      document.head.appendChild(style);
+      document.body.classList.add('cms-edit-active');
+
+      // 2. Click-to-edit interceptor
+      let activeEl = null;
+
+      document.addEventListener('click', (e) => {
+        const target = e.target.closest('[data-cms], [data-cms-html], [data-cms-img], [data-cms-bg], [data-cms-video], [data-cms-link], [data-cms-list]');
+        if (target) {
+          e.preventDefault();
+          e.stopPropagation();
+
+          if (activeEl) activeEl.classList.remove('lotus-cms-selected-element');
+          activeEl = target;
+          activeEl.classList.add('lotus-cms-selected-element');
+
+          const attrType = target.hasAttribute('data-cms-html') ? 'html' :
+                           target.hasAttribute('data-cms-img') ? 'image' :
+                           target.hasAttribute('data-cms-bg') ? 'bg-image' :
+                           target.hasAttribute('data-cms-video') ? 'video' :
+                           target.hasAttribute('data-cms-link') ? 'link' :
+                           target.hasAttribute('data-cms-list') ? 'list' : 'text';
+
+          const key = target.getAttribute('data-cms') ||
+                      target.getAttribute('data-cms-html') ||
+                      target.getAttribute('data-cms-img') ||
+                      target.getAttribute('data-cms-bg') ||
+                      target.getAttribute('data-cms-video') ||
+                      target.getAttribute('data-cms-link') ||
+                      target.getAttribute('data-cms-list');
+
+          let currentVal = '';
+          if (attrType === 'image') {
+            currentVal = target.getAttribute('src') || '';
+          } else if (attrType === 'bg-image') {
+            currentVal = target.style.backgroundImage || '';
+            currentVal = currentVal.replace(/^url\(["']?/, '').replace(/["']?\)$/, '');
+          } else if (attrType === 'video') {
+            const srcNode = target.querySelector('source') || target;
+            currentVal = srcNode.getAttribute('src') || srcNode.src || '';
+          } else if (attrType === 'link') {
+            currentVal = target.getAttribute('href') || '';
+          } else if (attrType === 'html') {
+            currentVal = target.innerHTML || '';
+          } else {
+            currentVal = target.textContent || '';
+          }
+
+          const section = target.closest('section, header, footer');
+          const sectionId = section ? (section.id || section.className || 'Page Section') : 'General Content';
+
+          // Notify parent frame
+          if (window.parent && window.parent !== window) {
+            window.parent.postMessage({
+              type: 'lotus:element-selected',
+              key: key,
+              attrType: attrType,
+              currentVal: (currentVal || '').trim(),
+              tagName: target.tagName.toLowerCase(),
+              sectionId: sectionId
+            }, '*');
+          }
+        }
+      }, true);
+
+      // 3. Parent-to-Iframe Message Listener
+      window.addEventListener('message', (event) => {
+        if (!event.data || typeof event.data !== 'object') return;
+
+        // Instant Field Update
+        if (event.data.type === 'lotus:update-field') {
+          const { key, val, attrType, lang } = event.data;
+          this.applyLiveUpdate(key, val, attrType, lang);
+        }
+
+        // Language Switcher
+        if (event.data.type === 'lotus:switch-language') {
+          const { lang } = event.data;
+          this.currentLang = lang;
+          document.documentElement.lang = lang;
+          if (lang === 'ar') document.documentElement.dir = 'rtl';
+          else document.documentElement.dir = 'ltr';
+          this.bindElements();
+        }
+
+        // Scroll to Element
+        if (event.data.type === 'lotus:scroll-to-key') {
+          const { key } = event.data;
+          const el = document.querySelector(`[data-cms="${key}"], [data-cms-html="${key}"], [data-cms-img="${key}"], [data-cms-bg="${key}"], [data-cms-video="${key}"], [data-cms-link="${key}"]`);
+          if (el) {
+            if (activeEl) activeEl.classList.remove('lotus-cms-selected-element');
+            activeEl = el;
+            activeEl.classList.add('lotus-cms-selected-element');
+            el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }
+        }
+      });
+    },
+
+    applyLiveUpdate(key, val, attrType, lang) {
+      const elements = document.querySelectorAll(
+        `[data-cms="${key}"], [data-cms-html="${key}"], [data-cms-img="${key}"], [data-cms-bg="${key}"], [data-cms-video="${key}"], [data-cms-link="${key}"]`
+      );
+
+      elements.forEach(el => {
+        if (el.hasAttribute('data-cms-img')) {
+          el.setAttribute('src', val);
+        } else if (el.hasAttribute('data-cms-bg')) {
+          el.style.backgroundImage = `url("${val}")`;
+        } else if (el.hasAttribute('data-cms-video')) {
+          const src = el.querySelector('source') || el;
+          src.setAttribute('src', val);
+          if (el.tagName === 'VIDEO') {
+            el.src = val;
+            el.load();
+          }
+        } else if (el.hasAttribute('data-cms-link')) {
+          el.setAttribute('href', val);
+        } else if (el.hasAttribute('data-cms-html')) {
+          el.innerHTML = sanitizeHtml(val);
+        } else if (el.hasAttribute('data-cms')) {
+          if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+            el.setAttribute('placeholder', val);
+          } else {
+            el.textContent = val;
+          }
+        }
+      });
+    },
+
     init() {
       if (this.initialized) return;
       this.initialized = true;
@@ -656,6 +816,7 @@
       this.purgeLegacyCaches();
       this.detectLanguage();
       this.setupLanguageListeners();
+      this.setupVisualEditMode();
 
       if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', () => this.loadContent());

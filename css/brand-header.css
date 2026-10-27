@@ -2091,13 +2091,20 @@ html {
   background: #FBF6EC !important;
 }
 
-/* 7. Next-Btn Elegance */
+/* 7. Next-Btn Elegance (Luxury Pill Rounded Corners) */
+.next-btn,
 .next-btn.next-btn--blue,
 .next-btn.next-btn--primary {
   background: linear-gradient(135deg, #D9822B 0%, #A8530E 100%) !important;
   color: #FFFFFF !important;
   border: 1px solid #E2BA5F !important;
   box-shadow: 0 4px 14px rgba(217, 130, 43, 0.3) !important;
+  border-radius: 9999px !important;
+  padding: 6px 24px 6px 6px !important;
+  gap: 0.85rem !important;
+  text-decoration: none !important;
+  display: inline-flex !important;
+  align-items: center !important;
 }
 
 .next-btn.next-btn--blue:hover,
@@ -2110,6 +2117,13 @@ html {
 .next-btn--blue .next-btn-circle {
   background: #FFFFFF !important;
   color: #A8530E !important;
+  width: 40px !important;
+  height: 40px !important;
+  border-radius: 50% !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-shrink: 0 !important;
 }
 
 /* ==============================================================================
