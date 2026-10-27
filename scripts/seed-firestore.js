@@ -21,8 +21,74 @@
 
 const fs = require('fs');
 const path = require('path');
+const https = require('https');
 
 const ROOT_DIR = path.resolve(__dirname, '..');
+
+const PROJECT_ID = 'louterst-36b64';
+const API_KEY = 'AIzaSyD5NyCFaPHeS1cKlsgxZ_WsraswHlYonNA';
+const FIRESTORE_BASE = `https://firestore.googleapis.com/v1/projects/${PROJECT_ID}/databases/(default)/documents`;
+
+function wrapFirestoreValue(val) {
+  if (val === null || val === undefined) return { nullValue: null };
+  if (typeof val === 'string') return { stringValue: val };
+  if (typeof val === 'number') {
+    return Number.isInteger(val) ? { integerValue: String(val) } : { doubleValue: val };
+  }
+  if (typeof val === 'boolean') return { booleanValue: val };
+  if (Array.isArray(val)) {
+    return {
+      arrayValue: {
+        values: val.map(wrapFirestoreValue)
+      }
+    };
+  }
+  if (typeof val === 'object') {
+    const fields = {};
+    for (const [k, v] of Object.entries(val)) {
+      fields[k] = wrapFirestoreValue(v);
+    }
+    return { mapValue: { fields } };
+  }
+  return { stringValue: String(val) };
+}
+
+function wrapFirestoreDoc(obj) {
+  const fields = {};
+  for (const [k, v] of Object.entries(obj)) {
+    fields[k] = wrapFirestoreValue(v);
+  }
+  return { fields };
+}
+
+function writeDoc(docPath, data) {
+  return new Promise((resolve, reject) => {
+    const payload = JSON.stringify(wrapFirestoreDoc(data));
+    const url = `${FIRESTORE_BASE}/${docPath}?key=${API_KEY}`;
+
+    const req = https.request(url, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        'Content-Length': Buffer.byteLength(payload)
+      }
+    }, (res) => {
+      let body = '';
+      res.on('data', chunk => body += chunk);
+      res.on('end', () => {
+        if (res.statusCode >= 200 && res.statusCode < 300) {
+          resolve({ status: res.statusCode, path: docPath });
+        } else {
+          reject(new Error(`HTTP ${res.statusCode}: ${body.slice(0, 100)}`));
+        }
+      });
+    });
+
+    req.on('error', reject);
+    req.write(payload);
+    req.end();
+  });
+}
 
 function loadRegistry() {
   const regPath = path.join(ROOT_DIR, 'cms-registry.json');
@@ -568,7 +634,7 @@ function buildPlan() {
   };
 }
 
-function run() {
+async function run() {
   const isLive = process.argv.includes('--live');
   const plan = buildPlan();
 
@@ -604,12 +670,49 @@ function run() {
     console.log('✓ All public documents marked status: "published" and assigned sortOrder.');
     console.log('------------------------------------------------------');
     console.log('STATUS: DRY RUN COMPLETE. 0 documents written to Firestore.');
-    console.log('Awaiting explicit user approval before executing --live.');
+    console.log('Run with --live to execute live write.');
     console.log('------------------------------------------------------');
     return;
   }
 
-  console.log('\n[LIVE SEED] Live write executing is blocked until user approval.');
+  console.log('\n[LIVE SEED] Connecting to Firestore (louterst-36b64)...');
+  const allDocs = {
+    ...plan.siteMeta,
+    ...plan.globalDocs,
+    ...plan.contentDocs,
+    ...plan.catDocs,
+    ...plan.pkgDocs,
+    ...plan.destDocs,
+    ...plan.teamDocs,
+    ...plan.blogDocs,
+    ...plan.galleryDocs,
+    ...plan.formDocs
+  };
+
+  const entries = Object.entries(allDocs);
+  console.log(`Writing ${entries.length} documents to Firestore via REST API...`);
+
+  let successCount = 0;
+  let failCount = 0;
+
+  for (let i = 0; i < entries.length; i++) {
+    const [docPath, docData] = entries[i];
+    try {
+      await writeDoc(docPath, docData);
+      successCount++;
+      process.stdout.write(`\r[${i + 1}/${entries.length}] Written: ${docPath}`.padEnd(65));
+    } catch (err) {
+      failCount++;
+      console.error(`\nFailed ${docPath}: ${err.message}`);
+    }
+    if (i % 6 === 0) {
+      await new Promise(r => setTimeout(r, 60));
+    }
+  }
+
+  console.log(`\n\n======================================================`);
+  console.log(`  LIVE SEED COMPLETED: ${successCount} written, ${failCount} failed`);
+  console.log(`======================================================`);
 }
 
 if (require.main === module) {
