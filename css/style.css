@@ -86,6 +86,8 @@ html {
   font-size: 16px;
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  max-width: 100%;
 }
 
 body {
@@ -94,6 +96,7 @@ body {
   color: var(--color-light-black);
   line-height: 1.6;
   overflow-x: hidden;
+  max-width: 100%;
 }
 
 img, video, svg, picture {
@@ -134,6 +137,27 @@ ul, ol {
   width: 90%;
   max-width: 1440px;
   margin: 0 auto;
+}
+
+.wrapper--85 {
+  width: 88%;
+  max-width: 1360px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+@media (max-width: 1024px) {
+  .wrapper--85 {
+    width: 92%;
+    padding: 0 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .wrapper--85 {
+    width: 100%;
+    padding: 0 1rem;
+  }
 }
 
 .wrapper--80 {
@@ -4980,14 +5004,34 @@ ul, ol {
   fill: currentColor;
 }
 
-@media (max-width: 1024px) {
+.site-header-walkers .header-container {
+  max-width: 1440px;
+  width: 94%;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+  box-sizing: border-box;
+}
+
+@media (min-width: 1181px) and (max-width: 1366px) {
+  .walkers-menu {
+    gap: 0.85rem !important;
+  }
+  .walkers-menu-link {
+    font-size: 0.86rem !important;
+  }
+  .header-tools {
+    gap: 0.65rem !important;
+  }
+}
+
+@media (max-width: 1180px) {
   .walkers-menu,
   .custom-lang-pill,
   .header-tools .gold-inquire-btn {
-    display: none;
+    display: none !important;
   }
   .walkers-ham {
-    display: flex;
+    display: flex !important;
   }
 }
 

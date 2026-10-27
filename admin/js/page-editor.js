@@ -588,18 +588,36 @@
         payload.updatedAt = new Date().toISOString();
         payload.updatedBy = (window.AdminApp && window.AdminApp.currentUser && window.AdminApp.currentUser.email) || 'admin';
 
-        // Merge current field values
+        // Merge current field values with dual-key mapping (both "img_1" and "destinations.img_1")
+        const docName = this.activePageKey.split('/').pop() || '';
         for (const lang in this.currentFieldValues) {
           for (const key in this.currentFieldValues[lang]) {
             const val = this.currentFieldValues[lang][key];
+            const cleanKey = key.includes('.') ? key.split('.').pop() : key;
+            const prefixedKey = docName ? (docName + '.' + cleanKey) : cleanKey;
+
             if (lang === 'en') {
+              payload[cleanKey] = val;
+              payload[prefixedKey] = val;
               payload[key] = val;
             } else {
               if (!payload.translations) payload.translations = {};
               if (!payload.translations[lang]) payload.translations[lang] = {};
+              payload.translations[lang][cleanKey] = val;
+              payload.translations[lang][prefixedKey] = val;
               payload.translations[lang][key] = val;
             }
           }
+        }
+
+        // Store instant published document in localStorage for immediate cross-tab sync
+        if (status === 'published') {
+          try {
+            localStorage.setItem('lotus_cms_published_' + this.activePageKey, JSON.stringify(payload));
+            localStorage.setItem('lotus_cms_last_published', String(Date.now()));
+            // Clear cached bundle
+            localStorage.removeItem('lotus_cms_v3');
+          } catch (e) {}
         }
 
         // Save to Firestore

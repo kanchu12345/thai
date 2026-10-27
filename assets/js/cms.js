@@ -10,7 +10,7 @@
   'use strict';
 
   const CACHE_KEY = 'lotus_cms_v3';
-  const CACHE_TTL_MS = 10 * 60 * 1000; // 10 minutes
+  const CACHE_TTL_MS = 30 * 1000; // 10 minutes
   const LEGACY_CACHE_KEYS = ['lotus_seed_catalog_cache_v2', 'lotus_seed_catalog_cache'];
 
   // Legacy Image Alias Mapping
@@ -211,10 +211,10 @@
 
     getValueByPath(pathStr) {
       if (!pathStr) return null;
-      const parts = pathStr.split('.');
 
-      // Try from siteGlobal first if path starts with siteGlobal
-      if (parts[0] === 'siteGlobal') {
+      // 1. Try from siteGlobal first if path starts with siteGlobal
+      if (pathStr.startsWith('siteGlobal.')) {
+        const parts = pathStr.split('.');
         let curr = this.data.siteGlobal;
         for (let i = 1; i < parts.length; i++) {
           if (curr === null || curr === undefined) return null;
@@ -223,21 +223,62 @@
         return curr;
       }
 
-      // Try from current page document
+      // 2. Try from current page document
       if (this.data.page) {
+        // A. Direct literal key check (e.g. "destinations.img_1" or "img_1")
+        if (this.data.page[pathStr] !== undefined && this.data.page[pathStr] !== null) {
+          return this.data.page[pathStr];
+        }
+
+        // B. Subkey check (strip prefix: "destinations.img_1" -> "img_1")
+        const dotIdx = pathStr.indexOf('.');
+        if (dotIdx !== -1) {
+          const subKey = pathStr.substring(dotIdx + 1);
+          if (this.data.page[subKey] !== undefined && this.data.page[subKey] !== null) {
+            return this.data.page[subKey];
+          }
+
+          // Nested object access with subKey
+          const subParts = subKey.split('.');
+          let subCurr = this.data.page;
+          let subFound = true;
+          for (let i = 0; i < subParts.length; i++) {
+            if (subCurr === null || subCurr === undefined || subCurr[subParts[i]] === undefined) {
+              subFound = false;
+              break;
+            }
+            subCurr = subCurr[subParts[i]];
+          }
+          if (subFound && subCurr !== null && subCurr !== undefined) return subCurr;
+        }
+
+        // C. Add docId prefix if missing (e.g. "img_1" -> "destinations.img_1")
+        const docName = (this.pageKey || '').split('/').pop();
+        if (docName) {
+          const prefixedKey = docName + '.' + pathStr;
+          if (this.data.page[prefixedKey] !== undefined && this.data.page[prefixedKey] !== null) {
+            return this.data.page[prefixedKey];
+          }
+        }
+
+        // D. Nested traversal on page
+        const parts = pathStr.split('.');
         let curr = this.data.page;
+        let found = true;
         for (let i = 0; i < parts.length; i++) {
-          if (curr === null || curr === undefined) {
-            curr = null;
+          if (curr === null || curr === undefined || curr[parts[i]] === undefined) {
+            found = false;
             break;
           }
           curr = curr[parts[i]];
         }
-        if (curr !== null && curr !== undefined) return curr;
+        if (found && curr !== null && curr !== undefined) return curr;
       }
 
-      // Try root fallback
+      // 3. Try root fallback
       let curr = this.data;
+      if (curr && curr[pathStr] !== undefined) return curr[pathStr];
+      const parts = pathStr.split('.');
       for (let i = 0; i < parts.length; i++) {
         if (curr === null || curr === undefined) return null;
         curr = curr[parts[i]];
@@ -512,6 +553,17 @@
       const isPreview = urlParams.has('preview');
       this.pageKey = this.determinePageKey();
 
+      // Check instant local storage sync across tabs
+      try {
+        const instantPublished = localStorage.getItem('lotus_cms_published_' + this.pageKey);
+        if (instantPublished) {
+          const parsedPub = JSON.parse(instantPublished);
+          if (parsedPub) {
+            this.data.page = Object.assign({}, this.data.page || {}, parsedPub);
+          }
+        }
+      } catch (e) {}
+
       if (isPreview) {
         console.info('[CMS Preview Mode] Active. Cache bypassed.');
         this.setupPreviewListener();
@@ -522,7 +574,7 @@
         const cached = this.readCache();
         const forceRefresh = urlParams.has('cms_refresh') || urlParams.has('refresh');
         const SESSION_VER_CHECK_KEY = 'lotus_cms_last_ver_check';
-        const VER_CHECK_INTERVAL_MS = 5 * 60 * 1000; // 5 minutes
+        const VER_CHECK_INTERVAL_MS = 10 * 1000; // 5 minutes
 
         let lastVerCheck = 0;
         try {
