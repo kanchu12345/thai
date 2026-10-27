@@ -4746,111 +4746,128 @@ resolveImg(url) {
 
      */
 
+        /**
+     * Direct Unsigned Cloudinary Upload Engine (No External iframe widget required)
+     * Solves the infinite loading spinner on local file:/// or blocked iframe cross-origin environments.
+     */
     cloudinaryConfig: {
-
       cloudName: 'qmukrbh6',
-
       uploadPreset: 'lotus_tours_unsigned',
-
       folder: 'lotus/tours'
-
     },
 
+    triggerDirectCloudinaryUpload(options = {}) {
+      const fileInput = document.createElement('input');
+      fileInput.type = 'file';
+      fileInput.accept = options.accept || 'image/*,video/*';
+      fileInput.style.display = 'none';
+      document.body.appendChild(fileInput);
 
-
-    openCloudinaryWidget(callback) {
-
-      if (!window.cloudinary) {
-
-        this.showToast('Cloudinary widget SDK is loading or blocked by browser. Please check connection.', 'warning');
-
-        return;
-
-      }
-
-      const myWidget = window.cloudinary.createUploadWidget({
-
-        cloudName: this.cloudinaryConfig.cloudName,
-
-        uploadPreset: this.cloudinaryConfig.uploadPreset,
-
-        folder: this.cloudinaryConfig.folder,
-
-        sources: ['local', 'url', 'camera'],
-
-        multiple: true,
-
-        resourceType: 'auto', // Accepts BOTH images and videos automatically
-
-        clientAllowedFormats: ['png', 'jpg', 'jpeg', 'webp', 'avif', 'mp4', 'webm', 'mov'],
-
-        maxFileSize: 60000000, // 60MB for video
-
-        theme: 'minimal'
-
-      }, (error, result) => {
-
-        if (!error && result && result.event === "success") {
-
-          let secureUrl = result.info.secure_url;
-
-          const isVideo = result.info.resource_type === 'video' || /\.(mp4|webm|mov|m4v)$/i.test(secureUrl);
-
-
-
-          // Auto-Responsive Cloudinary Transform:
-
-          // Inject f_auto,q_auto so Cloudinary delivers device-tailored resolutions on mobile screens
-
-          if (secureUrl.includes('/upload/') && !secureUrl.includes('/f_auto')) {
-
-            secureUrl = secureUrl.replace('/upload/', '/upload/f_auto,q_auto/');
-
-          }
-
-
-
-          const fileName = result.info.original_filename || (isVideo ? 'Cloudinary Video' : 'Cloudinary Image');
-
-          this.mediaFiles.unshift({
-
-            name: fileName,
-
-            url: secureUrl,
-
-            isVideo: isVideo,
-
-            size: `${Math.round(result.info.bytes / 1024)} KB`
-
-          });
-
-          this.renderMediaLibrary();
-
-          if (typeof callback === 'function') {
-
-            callback(secureUrl, isVideo);
-
-          }
-
-          this.showToast(`Uploaded ${fileName} (Auto-Responsive Mobile Enabled)!`, 'success');
-
+      fileInput.onchange = async () => {
+        const file = fileInput.files && fileInput.files[0];
+        if (!file) {
+          if (fileInput.parentNode) fileInput.remove();
+          return;
         }
 
-      });
+        const isVideo = file.type.startsWith('video/') || /\.(mp4|webm|mov|m4v|ogg)$/i.test(file.name);
+        const resourceType = isVideo ? 'video' : 'auto';
+        const config = (window.LOTUS_CONFIG && window.LOTUS_CONFIG.cloudinary) || this.cloudinaryConfig || {};
+        const cloudName = config.cloudName || 'qmukrbh6';
+        const uploadPreset = config.uploadPreset || 'lotus_tours_unsigned';
+        const folder = options.folder || config.folder || 'lotus/tours';
 
-      myWidget.open();
+        this.showToast(`Uploading "${file.name}" to Cloudinary CDN...`, 'info', 6000);
 
+        try {
+          const formData = new FormData();
+          formData.append('file', file);
+          formData.append('upload_preset', uploadPreset);
+          formData.append('folder', folder);
+
+          const res = await fetch(`https://api.cloudinary.com/v1_1/${cloudName}/${resourceType}/upload`, {
+            method: 'POST',
+            body: formData
+          });
+
+          if (!res.ok) {
+            const errData = await res.json().catch(() => ({}));
+            throw new Error((errData.error && errData.error.message) || `HTTP status ${res.status}`);
+          }
+
+          const data = await res.json();
+          let secureUrl = data.secure_url || data.url;
+
+          // Responsive transformation for images
+          if (!isVideo && secureUrl.includes('/upload/') && !secureUrl.includes('/f_auto')) {
+            secureUrl = secureUrl.replace('/upload/', '/upload/f_auto,q_auto/');
+          }
+
+          // 1. Update target input field and trigger input event for live preview / reactivity
+          if (options.inputId) {
+            const inputEl = document.getElementById(options.inputId);
+            if (inputEl) {
+              inputEl.value = secureUrl;
+              inputEl.dispatchEvent(new Event('input', { bubbles: true }));
+              inputEl.dispatchEvent(new Event('change', { bubbles: true }));
+            }
+          }
+
+          // 2. Update preview image / video thumbnail
+          if (options.previewImgId) {
+            const previewEl = document.getElementById(options.previewImgId);
+            if (previewEl) {
+              if (previewEl.tagName === 'IMG') {
+                previewEl.src = secureUrl;
+              } else if (previewEl.tagName === 'VIDEO') {
+                previewEl.src = secureUrl;
+                previewEl.load();
+              }
+            }
+          }
+          if (options.cardId) {
+            const cardEl = document.getElementById(options.cardId);
+            if (cardEl) cardEl.style.display = 'block';
+          }
+
+          // 3. Add to media files collection
+          this.mediaFiles = this.mediaFiles || [];
+          this.mediaFiles.unshift({
+            name: file.name,
+            url: secureUrl,
+            isVideo: isVideo,
+            size: `${Math.round((data.bytes || file.size) / 1024)} KB`
+          });
+          if (typeof this.renderMediaLibrary === 'function') {
+            this.renderMediaLibrary();
+          }
+
+          // 4. Fire custom callback
+          if (typeof options.callback === 'function') {
+            options.callback(secureUrl, isVideo, file.name);
+          }
+
+          this.showToast(`"${file.name}" uploaded to Cloudinary CDN successfully!`, 'success', 4000);
+        } catch (uploadErr) {
+          console.error('[Cloudinary Direct Upload]', uploadErr);
+          this.showToast(`Upload failed: ${uploadErr.message}. Check network connection.`, 'error', 6000);
+        } finally {
+          if (fileInput.parentNode) fileInput.remove();
+        }
+      };
+
+      fileInput.click();
     },
 
+    openCloudinaryWidget(callback) {
+      // Direct native upload: Never hangs on file:/// and works cross-platform
+      this.triggerDirectCloudinaryUpload({
+        accept: 'image/*,video/*',
+        callback: callback
+      });
+    },
 
-
-    /**
-
-     * Helper to render auto-responsive markup for ANY uploaded media
-
-     */
-
-    formatResponsiveMedia(url, alt = 'Lotus Ceylon Media') {
+formatResponsiveMedia(url, alt = 'Lotus Ceylon Media') {
 
       if (!url) return '';
 
@@ -4868,36 +4885,18 @@ resolveImg(url) {
 
 
 
-    openCloudinaryWidgetForInput(inputId, previewImgId = null, cardId = null) {
-
-      this.openCloudinaryWidget((url) => {
-
-        const el = document.getElementById(inputId);
-
-        if (el) {
-
-          el.value = url;
-
-        }
-
-        if (previewImgId && cardId) {
-
-          this.updateImagePreview(inputId, previewImgId, cardId);
-
-        }
-
+        openCloudinaryWidgetForInput(inputId, previewImgId = null, cardId = null) {
+      this.triggerDirectCloudinaryUpload({
+        accept: 'image/*,video/*',
+        inputId: inputId,
+        previewImgId: previewImgId,
+        cardId: cardId
       });
-
     },
 
-
-
     /**
-
      * 6. USERS & ROLES
-
      */
-
     renderUsers() {
 
       const tbody = document.getElementById('usersTableBody');

@@ -233,6 +233,7 @@
             <div style="display: flex; gap: 8px;">
               <input type="text" class="form-control" id="fieldInput_${item.key}" value="${this.escapeAttr(videoSrc)}" placeholder="assets/videos/... or Cloudinary URL" oninput="PageEditor.handleLiveInput('${item.key}', this.value, 'video')"/>
               <button type="button" class="btn btn-outline btn-sm" onclick="PageEditor.openMediaPicker('${item.key}')">📁 Browse</button>
+              <button type="button" class="btn btn-secondary btn-sm" onclick="PageEditor.openCloudinaryForField('${item.key}', 'video')">☁️ Upload Video</button>
             </div>
             
             <div style="display: flex; gap: 14px; margin-top: 12px;">
@@ -668,8 +669,17 @@
       }
     },
 
-    openCloudinaryForField(fieldKey) {
-      if (window.AdminApp && typeof window.AdminApp.openCloudinaryWidgetForInput === 'function') {
+    openCloudinaryForField(fieldKey, mediaType = 'image') {
+      if (window.AdminApp && typeof window.AdminApp.triggerDirectCloudinaryUpload === 'function') {
+        window.AdminApp.triggerDirectCloudinaryUpload({
+          accept: mediaType === 'video' ? 'video/*' : 'image/*',
+          inputId: `fieldInput_${fieldKey}`,
+          previewImgId: 'inspectorThumb',
+          callback: (url, isVideo) => {
+            this.handleLiveInput(fieldKey, url, isVideo ? 'video' : 'image');
+          }
+        });
+      } else if (window.AdminApp && typeof window.AdminApp.openCloudinaryWidgetForInput === 'function') {
         window.AdminApp.openCloudinaryWidgetForInput(`fieldInput_${fieldKey}`, 'inspectorThumb');
       }
     },
