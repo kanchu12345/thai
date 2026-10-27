@@ -655,9 +655,23 @@
   }
 
   // =========================================================================
-  // 8. Mobile Sticky Bottom Inquire & WhatsApp Bar
+  // 8. Mobile Sticky Bottom Inquire & WhatsApp Bar (Package Detail Pages Only)
   // =========================================================================
   function renderMobileStickyBar(packageTitle) {
+    // Strict guard: Never mount on category indexes, homepage, or general pages
+    const cleanPath = window.location.pathname.replace(/\/index\.html$/, '').replace(/\/$/, '');
+    const segments = cleanPath.split('/').filter(Boolean);
+    const toursIdx = segments.indexOf('tours');
+    const hasPackageMarkers = Boolean(document.querySelector('.tour-booking-card') || document.querySelector('.itinerary-timeline'));
+    const isPackagePage = hasPackageMarkers || (toursIdx !== -1 && segments.length >= (toursIdx + 3));
+
+    if (!isPackagePage) {
+      const existingBar = document.getElementById('lotusMobileStickyBar');
+      if (existingBar) existingBar.remove();
+      document.body.classList.remove('has-mobile-sticky-bar');
+      return;
+    }
+
     let bar = document.getElementById('lotusMobileStickyBar');
     if (!bar) {
       bar = document.createElement('div');
@@ -666,16 +680,22 @@
       document.body.appendChild(bar);
     }
 
-    const title = packageTitle || document.querySelector('h1')?.textContent?.trim() || 'Sri Lanka Tour';
+    const fullTitle = packageTitle || document.querySelector('h1')?.textContent?.trim() || 'Sri Lanka Tour';
+    let displayTitle = fullTitle;
+    if (displayTitle.length > 32) {
+      displayTitle = displayTitle.split(/[•|–-]/)[0].trim();
+      if (displayTitle.length > 32) displayTitle = displayTitle.slice(0, 30) + '...';
+    }
+
     const prefix = getPrefix();
-    const inqUrl = `${prefix}inquiry-detailed.html?package=${encodeURIComponent(title)}`;
-    const waUrl = `https://wa.me/94715422384?text=${encodeURIComponent(`Hello Lotus Ceylon! I would like to inquire about "${title}".`)}`;
+    const inqUrl = `${prefix}inquiry-detailed.html?package=${encodeURIComponent(fullTitle)}`;
+    const waUrl = `https://wa.me/94715422384?text=${encodeURIComponent(`Hello Lotus Ceylon! I would like to inquire about "${fullTitle}".`)}`;
 
     bar.innerHTML = `
       <div class="mobile-sticky-inner">
         <div class="mobile-sticky-info">
           <span class="mobile-sticky-label">Pure Ceylon Private Journey</span>
-          <span class="mobile-sticky-title">${title}</span>
+          <span class="mobile-sticky-title">${displayTitle}</span>
         </div>
         <div class="mobile-sticky-actions">
           <a href="${waUrl}" target="_blank" rel="noopener noreferrer" class="btn-sticky-wa" aria-label="Chat on WhatsApp">
@@ -738,7 +758,11 @@
     initPackageComparator();
 
     // Auto-detect package detail page context
-    const isPackagePage = window.location.pathname.includes('/tours/') && (window.location.pathname.match(/\//g) || []).length >= 4;
+    const cleanPath = window.location.pathname.replace(/\/index\.html$/, '').replace(/\/$/, '');
+    const segments = cleanPath.split('/').filter(Boolean);
+    const toursIdx = segments.indexOf('tours');
+    const hasPackageMarkers = Boolean(document.querySelector('.tour-booking-card') || document.querySelector('.itinerary-timeline'));
+    const isPackagePage = hasPackageMarkers || (toursIdx !== -1 && segments.length >= (toursIdx + 3));
     
     // Auto-mount Season Strip if container exists or on package pages
     const seasonContainer = document.getElementById('lotusSeasonStripContainer') || document.querySelector('.season-strip-mount');

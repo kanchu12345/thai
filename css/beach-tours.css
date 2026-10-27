@@ -79,28 +79,36 @@
   flex-wrap: wrap;
 }
 
-/* Package Grid */
+/* Package Grid - Luxury Responsive Standard (1 col < 640px, 2 col 640-1023px, 3 col 1024px+) */
 .beach-grid-cards,
 .beach-packages-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 2.25rem;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
   align-items: stretch;
 }
 
-@media (max-width: 991px) {
+@media (min-width: 1024px) {
   .beach-grid-cards,
   .beach-packages-grid {
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.75rem;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 24px !important;
   }
 }
 
-@media (max-width: 640px) {
+@media (min-width: 640px) and (max-width: 1023px) {
   .beach-grid-cards,
   .beach-packages-grid {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 20px !important;
+  }
+}
+
+@media (max-width: 639px) {
+  .beach-grid-cards,
+  .beach-packages-grid {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
   }
 }
 
@@ -1503,5 +1511,120 @@ figure.video iframe,
   #leafletTourMap {
     min-height: 320px !important;
     height: 340px !important;
+  }
+}
+
+/* ==============================================================================
+   MOBILE CARDS & TYPOGRAPHY STANDARDIZATION (Lotus Mobile QA)
+   ============================================================================== */
+.beach-package-card {
+  min-width: 0;
+  width: 100%;
+}
+
+@media (max-width: 639px) {
+  .beach-package-card {
+    border-radius: 16px !important;
+  }
+
+  .beach-card-img-wrap {
+    height: auto !important;
+    aspect-ratio: 4 / 3 !important;
+    width: 100% !important;
+    position: relative !important;
+    overflow: hidden !important;
+  }
+
+  .beach-tag-badge {
+    top: 12px !important;
+    left: 12px !important;
+    right: auto !important;
+    font-size: 0.68rem !important;
+    padding: 0.32rem 0.65rem !important;
+    max-width: calc(100% - 24px) !important;
+    white-space: normal !important;
+    line-height: 1.25 !important;
+    border-radius: 6px !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25) !important;
+    z-index: 2 !important;
+  }
+
+  .beach-duration-pill {
+    bottom: 12px !important;
+    left: 12px !important;
+    right: auto !important;
+    font-size: 0.72rem !important;
+    padding: 0.32rem 0.7rem !important;
+    border-radius: 6px !important;
+    background: rgba(0, 31, 53, 0.88) !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25) !important;
+    z-index: 2 !important;
+  }
+
+  .beach-card-body {
+    padding: 18px 20px 20px !important;
+    overflow-wrap: normal !important;
+    word-break: normal !important;
+    hyphens: manual !important;
+  }
+
+  .beach-card-category {
+    font-size: 0.72rem !important;
+    margin-bottom: 0.35rem !important;
+    letter-spacing: 0.08em !important;
+    overflow-wrap: normal !important;
+    word-break: normal !important;
+  }
+
+  .beach-card-title {
+    font-size: clamp(1.2rem, 4vw, 1.45rem) !important;
+    line-height: 1.35 !important;
+    margin-bottom: 0.65rem !important;
+    overflow-wrap: normal !important;
+    word-break: normal !important;
+    hyphens: manual !important;
+  }
+
+  .beach-card-route {
+    font-size: 0.82rem !important;
+    line-height: 1.45 !important;
+    margin-bottom: 0.75rem !important;
+    padding-bottom: 0.75rem !important;
+    overflow-wrap: normal !important;
+    word-break: normal !important;
+  }
+
+  .beach-card-desc {
+    font-size: 0.88rem !important;
+    line-height: 1.55 !important;
+    margin-bottom: 1rem !important;
+    overflow-wrap: normal !important;
+    word-break: normal !important;
+  }
+
+  .beach-card-highlights {
+    font-size: 0.82rem !important;
+    padding: 0.85rem 1rem !important;
+    margin-bottom: 1.25rem !important;
+  }
+
+  .beach-card-actions {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 0.65rem !important;
+    align-items: center !important;
+  }
+
+  .btn-beach-view {
+    flex: 2 !important;
+    padding: 0.75rem 1rem !important;
+    font-size: 0.85rem !important;
+  }
+
+  .btn-beach-inquire {
+    flex: 1 !important;
+    padding: 0.75rem 1rem !important;
+    font-size: 0.85rem !important;
+    text-align: center !important;
   }
 }

@@ -1685,66 +1685,11 @@
 }
 
 /* ==========================================================================
-   13. MOBILE STICKY BOTTOM BAR
+   13. MOBILE STICKY BOTTOM BAR (Deferred to tour-package-detail.css)
    ========================================================================== */
 .lotus-mobile-sticky-bar {
   display: none;
 }
-
-@media (max-width: 768px) {
-  .lotus-mobile-sticky-bar {
-    display: block;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background: #FFFFFF;
-    border-top: 1px solid #E2E8F0;
-    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.08);
-    padding: 0.6rem 1rem calc(0.6rem + env(safe-area-inset-bottom, 0px));
-    z-index: 9998;
-  }
-
-  .mobile-sticky-inner {
-    display: flex;
-    gap: 0.75rem;
-    max-width: 500px;
-    margin: 0 auto;
-  }
-
-  .btn-sticky-wa {
-    flex: 1;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    background: #25D366;
-    color: #FFFFFF;
-    border-radius: 8px;
-    font-size: 0.85rem;
-    font-weight: 700;
-    text-decoration: none;
-    padding: 0.75rem 0.5rem;
-    white-space: nowrap;
-    transition: background 0.2s ease;
-  }
-
-  .btn-sticky-inquire {
-    flex: 2;
-    background: #002B49;
-    color: #FFFFFF;
-    border: none;
-    border-radius: 8px;
-    font-size: 0.85rem;
-    font-weight: 700;
-    padding: 0.75rem 0.5rem;
-    cursor: pointer;
-    white-space: nowrap;
-    transition: background 0.2s ease;
-  }
-
-  .btn-sticky-inquire:hover {
-    background: #C9962B;
-  }
 
   .season-months-grid {
     grid-template-columns: repeat(6, 1fr);

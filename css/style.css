@@ -1602,13 +1602,13 @@ ul, ol {
 }
 
 /* ==========================================================================
-   SECTION 4: UNFORGETTABLE TOUR PACKAGES
+   SECTION 4: UNFORGETTABLE TOUR PACKAGES (Luxury Ivory/Cream Brand Standard)
    ========================================================================== */
 .package-sec {
   position: relative;
-  background: linear-gradient(180deg, #FDECEF 0%, #F9E5EA 50%, #FAF0F3 100%);
-  border-top: 1px solid rgba(201, 84, 81, 0.12);
-  border-bottom: 1px solid rgba(201, 84, 81, 0.12);
+  background: linear-gradient(180deg, #FAF8F5 0%, #F5F2EB 100%);
+  border-top: 1px solid rgba(201, 150, 43, 0.16);
+  border-bottom: 1px solid rgba(201, 150, 43, 0.16);
 }
 
 .package-cards-grid {

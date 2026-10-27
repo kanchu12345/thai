@@ -2729,3 +2729,85 @@ textarea:focus-visible {
   aspect-ratio: 1 / 1;
   object-fit: contain;
 }
+
+/* ==============================================================================
+   UNIVERSAL MOBILE RESPONSIVE CARDS & FLOATING ACTIONS (Lotus Standard)
+   ============================================================================== */
+@media (min-width: 1024px) {
+  .beach-grid-cards,
+  .beach-packages-grid,
+  .cards-grid-3,
+  .package-cards-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 24px !important;
+  }
+}
+
+@media (min-width: 640px) and (max-width: 1023px) {
+  .beach-grid-cards,
+  .beach-packages-grid,
+  .cards-grid-3,
+  .package-cards-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 20px !important;
+  }
+}
+
+@media (max-width: 639px) {
+  .beach-grid-cards,
+  .beach-packages-grid,
+  .cards-grid-3,
+  .package-cards-grid {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+
+  .beach-package-card,
+  .package-card,
+  .dest-card {
+    min-width: 0 !important;
+    width: 100% !important;
+    overflow-wrap: normal !important;
+    word-break: normal !important;
+    hyphens: manual !important;
+  }
+
+  /* Floating WhatsApp Concierge Button on Mobile */
+  .unified-fab-group {
+    position: fixed !important;
+    bottom: calc(16px + env(safe-area-inset-bottom, 0px)) !important;
+    right: 16px !important;
+    z-index: 9999 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 10px !important;
+    align-items: center !important;
+  }
+
+  .unified-fab-group .fab-whatsapp {
+    width: 52px !important;
+    height: 52px !important;
+    border-radius: 50% !important;
+    background: #25D366 !important;
+    color: #FFFFFF !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.28) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  /* Prevent floating-inquire-tab collision on small mobile */
+  .floating-inquire-tab {
+    display: none !important;
+  }
+
+  /* Category package sections: ensure clean ivory theme */
+  .beach-packages-section {
+    background: #FAF8F5 !important;
+  }
+
+  /* Ensure page content is never hidden behind floating buttons */
+  body {
+    padding-bottom: 70px !important;
+  }
+}
