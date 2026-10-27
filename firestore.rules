@@ -130,6 +130,16 @@ service cloud.firestore {
       allow write: if isAdmin();
     }
 
+    match /gallery/{galleryId} {
+      allow read: if isPublished() || isAdmin();
+      allow write: if isAdmin();
+    }
+
+    match /forms/{formId} {
+      allow read: if isPublished() || isAdmin();
+      allow write: if isAdmin();
+    }
+
     // =========================================================================
     // 6. CUSTOMER INQUIRY PIPELINES (WRITE-ONLY FOR PUBLIC, NO PUBLIC READ)
     // =========================================================================
