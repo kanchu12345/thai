@@ -164,7 +164,12 @@ service cloud.firestore {
     // =========================================================================
 
     match /admins/{adminId} {
-      allow read, write: if isAdmin();
+      allow get: if request.auth != null && (
+        request.auth.uid == adminId || 
+        (request.auth.token.email != null && request.auth.token.email.lower() == adminId.lower()) || 
+        isAdmin()
+      );
+      allow list, write: if isAdmin();
     }
 
     match /activityLog/{logId} {
