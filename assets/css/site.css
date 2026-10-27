@@ -2048,7 +2048,10 @@ img, video, iframe, table {
 
 @media (max-width: 480px) {
   .header-brand-sub {
-    display: none !important; /* Cleanly hidden under 480px */
+    display: block !important;
+    font-size: clamp(0.46rem, 2vw, 0.54rem) !important;
+    letter-spacing: 0.08em !important;
+    white-space: nowrap !important;
   }
 }
 
@@ -2810,4 +2813,10 @@ textarea:focus-visible {
   body {
     padding-bottom: 70px !important;
   }
+}
+
+
+/* Safety guard: never display mobile action buttons outside the mobile drawer */
+.mobile-nav-actions:not(.mobile-nav-fullscreen .mobile-nav-actions) {
+  display: none !important;
 }

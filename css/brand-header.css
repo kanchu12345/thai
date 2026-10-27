@@ -21,7 +21,7 @@
   max-width: 105px !important;
   object-fit: contain !important;
   border-radius: 0 !important;
-  filter: drop-shadow(0 4px 14px rgba(0, 0, 0, 0.85)) drop-shadow(0 0 18px rgba(247, 202, 104, 0.55)) !important;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.25)) !important;
   transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1), 
               filter 300ms cubic-bezier(0.4, 0, 0.2, 1), 
               height 300ms ease !important;
@@ -29,7 +29,7 @@
 
 .header-brand:hover .header-brand-logo {
   transform: scale(1.05) !important;
-  filter: drop-shadow(0 6px 20px rgba(0, 0, 0, 0.95)) drop-shadow(0 0 24px rgba(247, 202, 104, 0.75)) !important;
+  filter: drop-shadow(0 3px 8px rgba(0, 0, 0, 0.35)) !important;
 }
 
 /* Brand Text Container */
@@ -55,7 +55,7 @@
   gap: 0.38rem !important;
   margin: 0 !important;
   color: #FFFFFF !important;
-  filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.95)) !important;
+  filter: drop-shadow(0 1px 4px rgba(0, 0, 0, 0.25)) !important;
   transition: all 300ms ease !important;
 }
 
@@ -64,7 +64,7 @@
   color: #FFFFFF !important;
   background: none !important;
   -webkit-text-fill-color: initial !important;
-  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.95), 0 1px 3px rgba(0, 0, 0, 0.9) !important;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.35) !important;
   filter: none !important;
 }
 
@@ -73,7 +73,7 @@
   color: #F7CA68 !important;
   background: none !important;
   -webkit-text-fill-color: initial !important;
-  text-shadow: 0 2px 14px rgba(247, 202, 104, 0.5), 0 2px 8px rgba(0, 0, 0, 0.95) !important;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.35) !important;
   filter: none !important;
 }
 
@@ -90,7 +90,7 @@
   color: #FFFFFF !important;
   margin-top: 4px !important;
   display: block !important;
-  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.95), 0 2px 8px rgba(0, 0, 0, 0.85) !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4) !important;
   opacity: 0.96 !important;
   transition: color 300ms ease, text-shadow 300ms ease, opacity 300ms ease !important;
 }
@@ -2222,4 +2222,78 @@ body {
   color: #4A1620 !important;
   font-weight: 700 !important;
   border-left: 3px solid #D9822B !important;
+}
+
+
+/* ==============================================================================
+ * MOBILE HEADER CLEAN BRAND VISIBILITY (Zero Blur, Crisp Subtitle, No Dark Halos)
+ * ============================================================================== */
+@media (max-width: 1024px) {
+  .site-header-walkers .header-brand-logo,
+  .header-brand-logo {
+    height: 42px !important;
+    max-height: 44px !important;
+    width: auto !important;
+    filter: none !important;
+  }
+
+  .site-header-walkers .header-brand-name,
+  .site-header-walkers .walkers-brand-title,
+  .header-brand-name,
+  .walkers-brand-title {
+    filter: none !important;
+    font-size: clamp(1.15rem, 4vw, 1.35rem) !important;
+    gap: 0.3rem !important;
+  }
+
+  .site-header-walkers .brand-name-lotus,
+  .brand-name-lotus {
+    color: #002B49 !important; /* Deep Luxury Navy */
+    -webkit-text-fill-color: #002B49 !important;
+    text-shadow: none !important;
+    filter: none !important;
+  }
+
+  .site-header-walkers .brand-name-ceylon,
+  .brand-name-ceylon {
+    color: #B38744 !important; /* Warm Royal Gold */
+    -webkit-text-fill-color: #B38744 !important;
+    text-shadow: none !important;
+    filter: none !important;
+  }
+
+  .site-header-walkers .header-brand-sub,
+  .site-header-walkers .walkers-brand-sub,
+  .site-header-walkers .brand-slogan,
+  .header-brand-sub,
+  .walkers-brand-sub,
+  .brand-slogan {
+    display: block !important;
+    visibility: visible !important;
+    color: #475569 !important; /* Elegant Slate Gray - High Contrast */
+    text-shadow: none !important;
+    filter: none !important;
+    opacity: 1 !important;
+    font-size: clamp(0.5rem, 2.1vw, 0.58rem) !important;
+    letter-spacing: 0.12em !important;
+    font-weight: 700 !important;
+    line-height: 1.15 !important;
+    margin-top: 2px !important;
+    white-space: nowrap !important;
+  }
+}
+
+/* Scrolled Header on Desktop Clean Text */
+.site-header-walkers.is-scrolled .header-brand-logo {
+  filter: none !important;
+}
+.site-header-walkers.is-scrolled .brand-name-lotus {
+  color: #002B49 !important;
+  -webkit-text-fill-color: #002B49 !important;
+  text-shadow: none !important;
+}
+.site-header-walkers.is-scrolled .brand-name-ceylon {
+  color: #B38744 !important;
+  -webkit-text-fill-color: #B38744 !important;
+  text-shadow: none !important;
 }
