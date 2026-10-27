@@ -143,23 +143,27 @@
       return secureUrl;
     },
 resolveImg(url) {
-
-      if (!url) return '../assets/images/logo.png';
-
+      if (!url) return "../assets/images/logo.png";
       url = String(url).trim();
-
-      if (url.startsWith('http://') || url.startsWith('https://') || url.startsWith('data:') || url.startsWith('blob:')) {
-
-        return url;
-
+      const LEGACY_MAP = {
+        "assets/tours/beach/southern-sands-1.jpg": "assets/images/beach-galle.jpg",
+        "assets/tours/wildlife/wild-ceylon-1.jpg": "assets/images/wildlife.jpg",
+        "assets/tours/cultural/heritage-1.jpg": "assets/images/sigiriya.jpg",
+        "assets/tours/wellness/ayurveda-1.jpg": "assets/images/temple-culture.jpg",
+        "assets/tours/honeymoon/romance-1.jpg": "assets/images/couple-travel.jpg",
+        "assets/tours/luxury/private-island-1.jpg": "assets/images/sunset-mirissa.jpg",
+        "assets/tours/scenic/hill-country-1.jpg": "assets/images/tea-country.jpg"
+      };
+      const clean = url.replace(/^(\.\.\/)+/, "").replace(/^\//, "");
+      if (LEGACY_MAP[clean]) {
+        return "../" + LEGACY_MAP[clean];
       }
-
-      if (url.startsWith('../')) return url;
-
-      if (url.startsWith('/')) return '..' + url;
-
-      return '../' + url;
-
+      if (url.startsWith("http://") || url.startsWith("https://") || url.startsWith("data:") || url.startsWith("blob:")) {
+        return url;
+      }
+      if (url.startsWith("../")) return url;
+      if (url.startsWith("/")) return ".." + url;
+      return "../" + url;
     },
 
 
@@ -822,7 +826,10 @@ resolveImg(url) {
 
         settings: 'Global Settings',
 
-        team: 'Our People & Global Representatives'
+        team: 'Our People & Global Representatives',
+        'page-editor': 'Page Content Editor',
+        'forms-editor': 'Form Definitions & Dynamic Schemas',
+        'blog-posts': 'Blog Posts & Editorial Stories'
 
       };
 
@@ -2499,6 +2506,17 @@ resolveImg(url) {
         document.getElementById('pkgPrice').value = pkg.price_from || 0;
 
         document.getElementById('pkgHeroImage').value = pkg.hero_image || '';
+        if (document.getElementById('pkgRoute')) document.getElementById('pkgRoute').value = pkg.route || '';
+        if (document.getElementById('pkgPromoVideo')) document.getElementById('pkgPromoVideo').value = pkg.promo_video || pkg.promoVideo || '';
+        if (document.getElementById('pkgMetaTitle')) document.getElementById('pkgMetaTitle').value = pkg.metaTitle || pkg.meta_title || '';
+        if (document.getElementById('pkgMetaDescription')) document.getElementById('pkgMetaDescription').value = pkg.metaDescription || pkg.meta_description || '';
+        const faqBox = document.getElementById('faqsContainer');
+        if (faqBox) {
+          faqBox.innerHTML = '';
+          if (Array.isArray(pkg.faqs)) {
+            pkg.faqs.forEach(f => this.addFaqItem(f.q || f.question, f.a || f.answer));
+          }
+        }
 
         document.getElementById('pkgIsPopular').checked = Boolean(pkg.is_popular);
 
@@ -2537,6 +2555,15 @@ resolveImg(url) {
         this.addItineraryDay('Day 1: Arrival & Coastal Welcome', 'Airport greeting by personal tour executive. Transfer to hotel.', 'Negombo / Colombo');
 
         this.addHighlightItem('Private air-conditioned luxury transport');
+        if (document.getElementById('pkgRoute')) document.getElementById('pkgRoute').value = '';
+        if (document.getElementById('pkgPromoVideo')) document.getElementById('pkgPromoVideo').value = '';
+        if (document.getElementById('pkgMetaTitle')) document.getElementById('pkgMetaTitle').value = '';
+        if (document.getElementById('pkgMetaDescription')) document.getElementById('pkgMetaDescription').value = '';
+        const faqBox = document.getElementById('faqsContainer');
+        if (faqBox) {
+          faqBox.innerHTML = '';
+          this.addFaqItem('What is included in the bespoke package?', 'Luxury private vehicle with dedicated chauffeur-guide, boutique stays, permits, and concierge support.');
+        }
 
       }
 
@@ -2597,6 +2624,17 @@ resolveImg(url) {
       container.appendChild(dayDiv);
 
     },
+    addFaqItem(q = "", a = "") {
+      const container = document.getElementById("faqsContainer");
+      if (!container) return;
+      const qStr = typeof q === "object" ? (q.en || "") : (q || "");
+      const aStr = typeof a === "object" ? (a.en || "") : (a || "");
+      const itemDiv = document.createElement("div");
+      itemDiv.className = "faq-repeater-item";
+      itemDiv.innerHTML = "<div class=\"faq-repeater-header\"><strong style=\"font-size: 0.82rem; color: var(--ink-light);\">FAQ Item</strong><button type=\"button\" class=\"btn-icon delete\" title=\"Remove FAQ\" onclick=\"this.closest('.faq-repeater-item').remove()\">×</button></div><input type=\"text\" class=\"form-control faq-question\" placeholder=\"Question...\" value=\"" + qStr + "\"><textarea class=\"form-control faq-answer\" rows=\"2\" placeholder=\"Answer...\">" + aStr + "</textarea>";
+      container.appendChild(itemDiv);
+    },
+
 
 
 
@@ -2651,6 +2689,21 @@ resolveImg(url) {
         });
       });
 
+      // Collect FAQs
+      const faqs = [];
+      document.querySelectorAll("#faqsContainer .faq-repeater-item").forEach(item => {
+        const q = item.querySelector(".faq-question") ? item.querySelector(".faq-question").value.trim() : "";
+        const a = item.querySelector(".faq-answer") ? item.querySelector(".faq-answer").value.trim() : "";
+        if (q) faqs.push({ q, a: a || "" });
+      });
+
+      const route = document.getElementById("pkgRoute") ? document.getElementById("pkgRoute").value.trim() : "";
+      const promoVideo = document.getElementById("pkgPromoVideo") ? document.getElementById("pkgPromoVideo").value.trim() : "";
+      const metaTitle = document.getElementById("pkgMetaTitle") ? document.getElementById("pkgMetaTitle").value.trim() : "";
+      const metaDescription = document.getElementById("pkgMetaDescription") ? document.getElementById("pkgMetaDescription").value.trim() : "";
+      const rawPrice = parseFloat(document.getElementById("pkgPrice").value) || 0;
+      const priceFormatted = rawPrice > 0 ? ("$" + rawPrice.toLocaleString()) : "Price on request";
+
       // Collect highlights
       const highlights = [];
       document.querySelectorAll('#highlightsContainer .highlight-text').forEach(input => {
@@ -2678,7 +2731,14 @@ resolveImg(url) {
         category: document.getElementById('pkgCategory').value,
         nights: parseInt(document.getElementById('pkgNights').value) || 1,
         days: parseInt(document.getElementById('pkgDays').value) || 2,
-        price_from: parseFloat(document.getElementById('pkgPrice').value) || 0,
+        price_from: rawPrice,
+        price_formatted: priceFormatted,
+        route: route,
+        promo_video: promoVideo,
+        promoVideo: promoVideo,
+        faqs: faqs,
+        metaTitle: metaTitle,
+        metaDescription: metaDescription,
         hero_image: document.getElementById('pkgHeroImage').value.trim() || existing.hero_image || 'assets/images/cultural-triangle.jpg',
         itinerary: itinerary.length > 0 ? itinerary : (existing.itinerary || []),
         highlights: highlights.length > 0 ? highlights : (existing.highlights || []),
@@ -4639,29 +4699,22 @@ resolveImg(url) {
 
 
     selectPickedImage(url) {
-
       if (this.targetPickerInputId) {
-
         const target = document.getElementById(this.targetPickerInputId);
-
         if (target) {
-
-          target.value = url.replace('../', '');
-
+          target.value = url.replace("../", "");
+          target.dispatchEvent(new Event("change", { bubbles: true }));
+          target.dispatchEvent(new Event("input", { bubbles: true }));
           if (this.targetPickerPreviewId && this.targetPickerCardId) {
-
             this.updateImagePreview(this.targetPickerInputId, this.targetPickerPreviewId, this.targetPickerCardId);
-
+          } else if (this.targetPickerPreviewId) {
+            const p = document.getElementById(this.targetPickerPreviewId);
+            if (p) p.src = this.resolveImg(url);
           }
-
         }
-
       }
-
-      this.closeModal('mediaPickerModal');
-
-      this.showToast('Image selected and preview updated!', 'success');
-
+      this.closeModal("mediaPickerModal");
+      this.showToast("Image selected and preview updated!", "success");
     },
 
 

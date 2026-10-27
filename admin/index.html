@@ -72,7 +72,50 @@
 <span>Inquiries</span>
 <span class="nav-badge" id="unreadInquiriesBadge">0</span>
 </a>
-<div class="nav-section-title">Content &amp; Tours</div>
+
+<!-- PAGES GROUP (15 CORE SHELLS) -->
+<div class="nav-collapsible-group is-open" id="navGroupPages">
+<div class="nav-section-title nav-collapsible-header" onclick="this.parentElement.classList.toggle('is-open')">
+<span>Website Pages (15)</span>
+<span class="nav-toggle-icon">▼</span>
+</div>
+<div class="nav-collapsible-body">
+<a class="nav-link nav-sub-link" data-section="page-editor" data-page-doc="siteContent/home" onclick="PageEditor.openPage('siteContent/home', 'index.html')"><span>🏠 Home Page</span></a>
+<a class="nav-link nav-sub-link" data-section="page-editor" data-page-doc="siteContent/about" onclick="PageEditor.openPage('siteContent/about', 'about.html')"><span>🏛️ About Us</span></a>
+<a class="nav-link nav-sub-link" data-section="page-editor" data-page-doc="siteContent/contact" onclick="PageEditor.openPage('siteContent/contact', 'contact.html')"><span>📞 Contact</span></a>
+<a class="nav-link nav-sub-link" data-section="page-editor" data-page-doc="siteContent/destinations" onclick="PageEditor.openPage('siteContent/destinations', 'destinations.html')"><span>📍 Destinations</span></a>
+<a class="nav-link nav-sub-link" data-section="page-editor" data-page-doc="siteContent/experiences" onclick="PageEditor.openPage('siteContent/experiences', 'experiences.html')"><span>✨ Experiences</span></a>
+<a class="nav-link nav-sub-link" data-section="page-editor" data-page-doc="siteContent/gallery" onclick="PageEditor.openPage('siteContent/gallery', 'gallery.html')"><span>🖼️ Gallery</span></a>
+<a class="nav-link nav-sub-link" data-section="page-editor" data-page-doc="siteContent/reviews" onclick="PageEditor.openPage('siteContent/reviews', 'reviews.html')"><span>✍️ Reviews &amp; Guestbook</span></a>
+<a class="nav-link nav-sub-link" data-section="page-editor" data-page-doc="siteContent/blog" onclick="PageEditor.openPage('siteContent/blog', 'blog.html')"><span>📰 Blog &amp; Editorial</span></a>
+<a class="nav-link nav-sub-link" data-section="page-editor" data-page-doc="siteContent/inquiry-detailed" onclick="PageEditor.openPage('siteContent/inquiry-detailed', 'inquiry-detailed.html')"><span>📋 Bespoke Inquiry</span></a>
+<a class="nav-link nav-sub-link" data-section="page-editor" data-page-doc="siteContent/inquiry-quick" onclick="PageEditor.openPage('siteContent/inquiry-quick', 'inquiry-quick.html')"><span>⚡ Quick Consultation</span></a>
+<a class="nav-link nav-sub-link" data-section="page-editor" data-page-doc="siteContent/toursIndex" onclick="PageEditor.openPage('siteContent/toursIndex', 'tours/index.html')"><span>🗺️ All Tours Index</span></a>
+<a class="nav-link nav-sub-link" data-section="page-editor" data-page-doc="siteContent/privacy-policy" onclick="PageEditor.openPage('siteContent/privacy-policy', 'privacy-policy.html')"><span>🔒 Privacy Policy</span></a>
+<a class="nav-link nav-sub-link" data-section="page-editor" data-page-doc="siteContent/terms-conditions" onclick="PageEditor.openPage('siteContent/terms-conditions', 'terms-conditions.html')"><span>📜 Terms &amp; Conditions</span></a>
+<a class="nav-link nav-sub-link" data-section="page-editor" data-page-doc="siteContent/cancellation-policy" onclick="PageEditor.openPage('siteContent/cancellation-policy', 'cancellation-policy.html')"><span>⚖️ Cancellation Policy</span></a>
+<a class="nav-link nav-sub-link" data-section="page-editor" data-page-doc="siteContent/cookie-policy" onclick="PageEditor.openPage('siteContent/cookie-policy', 'cookie-policy.html')"><span>🍪 Cookie Policy</span></a>
+</div>
+</div>
+
+<!-- GLOBAL COMPONENTS GROUP -->
+<div class="nav-collapsible-group is-open" id="navGroupGlobal">
+<div class="nav-section-title nav-collapsible-header" onclick="this.parentElement.classList.toggle('is-open')">
+<span>Global Components (6)</span>
+<span class="nav-toggle-icon">▼</span>
+</div>
+<div class="nav-collapsible-body">
+<a class="nav-link nav-sub-link" data-section="page-editor" data-page-doc="siteGlobal/branding" onclick="PageEditor.openGlobalDoc('siteGlobal/branding', 'Branding &amp; Identity')"><span>🌸 Branding &amp; Identity</span></a>
+<a class="nav-link nav-sub-link" data-section="page-editor" data-page-doc="siteGlobal/header" onclick="PageEditor.openGlobalDoc('siteGlobal/header', 'Header &amp; Topbar')"><span>🔝 Header &amp; Topbar</span></a>
+<a class="nav-link nav-sub-link" data-section="page-editor" data-page-doc="siteGlobal/footer" onclick="PageEditor.openGlobalDoc('siteGlobal/footer', 'Footer &amp; Copyright')"><span>🔻 Footer &amp; Copyright</span></a>
+<a class="nav-link nav-sub-link" data-section="page-editor" data-page-doc="siteGlobal/contact" onclick="PageEditor.openGlobalDoc('siteGlobal/contact', 'Concierge &amp; Contact')"><span>💬 Concierge &amp; Direct</span></a>
+<a class="nav-link nav-sub-link" data-section="page-editor" data-page-doc="siteGlobal/menu" onclick="PageEditor.openGlobalDoc('siteGlobal/menu', 'Navigation Menu')"><span>🧭 Navigation Menu</span></a>
+<a class="nav-link nav-sub-link" data-section="page-editor" data-page-doc="siteGlobal/social" onclick="PageEditor.openGlobalDoc('siteGlobal/social', 'Social Channels')"><span>🌐 Social Media Links</span></a>
+</div>
+</div>
+
+<!-- CONTENT COLLECTIONS -->
+<div class="nav-section-title">Content Collections</div>
 <a class="nav-link" data-section="packages" onclick="AdminApp.switchSection('packages')">
 <svg viewbox="0 0 24 24"><path d="M21 5c-1.11-.35-2.33-.5-3.5-.5-1.95 0-4.05.4-5.5 1.5-1.45-1.1-3.55-1.5-5.5-1.5S2.45 4.9 1 6v14.65c0 .25.25.5.5.5.1 0 .15-.05.25-.05C3.1 20.45 5.05 20 6.5 20c1.95 0 4.05.4 5.5 1.5 1.35-.85 3.8-1.5 5.5-1.5 1.65 0 3.35.3 4.75 1.05.1.05.15.05.25.05.25 0 .5-.25.5-.5V6c-.6-.45-1.25-.75-2-1zm0 13.5c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5V8c1.35-.85 3.8-1.5 5.5-1.5 1.2 0 2.4.15 3.5.5v11.5z"></path></svg>
 <span>Tour Packages</span>
@@ -89,10 +132,23 @@
 <svg viewbox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"></path></svg>
 <span>Our People / Team</span>
 </a>
+<a class="nav-link" data-section="blog-posts" onclick="PageEditor.openBlogSection()">
+<svg viewbox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"></path></svg>
+<span>Blog Posts</span>
+</a>
 <a class="nav-link" data-section="reviews" onclick="AdminApp.switchSection('reviews')">
 <svg viewbox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path></svg>
 <span>Guest Reviews</span>
 </a>
+
+<!-- FORMS GROUP -->
+<div class="nav-section-title">Forms &amp; Inquiries</div>
+<a class="nav-link" data-section="forms-editor" onclick="PageEditor.openFormEditor('inquiry_quick')">
+<svg viewbox="0 0 24 24"><path d="M19 3h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm2 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"></path></svg>
+<span>Form Configurations</span>
+</a>
+
+<!-- ASSETS & SYSTEM -->
 <div class="nav-section-title">Assets &amp; System</div>
 <a class="nav-link" data-section="media" onclick="AdminApp.switchSection('media')">
 <svg viewbox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"></path></svg>
@@ -673,6 +729,111 @@
 </div>
 </div>
 </section>
+
+<!-- ========================================== -->
+<!-- SECTION 9: UNIVERSAL PAGE EDITOR           -->
+<!-- ========================================== -->
+<section class="content-section" id="section-page-editor">
+  <div class="page-editor-topbar">
+    <div class="page-editor-meta-left">
+      <h2 id="pageEditorTitle">📄 Page Content Editor</h2>
+      <small id="pageEditorFile">Source: /index.html • Firestore: siteContent/home</small>
+    </div>
+    <div class="page-editor-actions">
+      <input type="text" class="form-control page-editor-search-box" id="pageEditorSearch" placeholder="🔍 Search fields by key/label...">
+      <span class="badge badge-secondary" id="pageEditorFieldCount">0 editable fields</span>
+      <button type="button" class="btn btn-outline btn-sm" onclick="PageEditor.resetAllDefaults()" title="Reset all fields to hardcoded HTML defaults">↺ Reset All</button>
+      <button type="button" class="btn btn-secondary btn-sm" onclick="PageEditor.openLivePreview()" title="Open live preview with ?preview=1">Live Preview ↗</button>
+      <button type="button" class="btn btn-outline btn-sm" id="pageEditorSaveBtn" onclick="PageEditor.saveDraft()">Save Draft</button>
+      <button type="button" class="btn btn-gold btn-sm" id="pageEditorPublishBtn" onclick="PageEditor.publish()">🚀 Publish Live</button>
+    </div>
+  </div>
+  <div id="pageEditorFieldsContainer">
+    <!-- Populated dynamically from cms-registry.json -->
+  </div>
+</section>
+
+<!-- ========================================== -->
+<!-- SECTION 10: FORMS & SCHEMAS EDITOR         -->
+<!-- ========================================== -->
+<section class="content-section" id="section-forms-editor">
+  <div class="section-header">
+    <div class="section-title-wrap">
+      <h2>Form Configurations &amp; Dynamic Schemas</h2>
+      <p>Configure inquiry options, destinations list, email dispatch targets, and spam protection</p>
+    </div>
+    <div style="display: flex; gap: 8px;">
+      <button type="button" class="btn btn-outline" onclick="PageEditor.openFormEditor('inquiry_quick')">Quick Consultation Form</button>
+      <button type="button" class="btn btn-gold" onclick="PageEditor.openFormEditor('inquiry_detailed')">Bespoke Inquiry Form</button>
+    </div>
+  </div>
+  <div class="card" style="padding: 24px;">
+    <h3 id="formEditorActiveTitle" style="font-family: 'Playfair Display', serif; margin-top: 0;">Bespoke Inquiry Form (inquiry-detailed.html)</h3>
+    <form id="cmsFormEditor" onsubmit="event.preventDefault(); PageEditor.saveActiveForm();">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-bottom: 16px;">
+        <div class="form-group">
+          <label>Notification Recipient Email *</label>
+          <input type="email" class="form-control" id="formRecipientEmail" value="info@lotusceylon.com" required>
+        </div>
+        <div class="form-group">
+          <label>Confirmation Email Subject</label>
+          <input type="text" class="form-control" id="formEmailSubject" value="We received your bespoke Sri Lanka journey inquiry - Lotus Ceylon">
+        </div>
+        <div class="form-group">
+          <label>Spam Protection (Honeypot Shield)</label>
+          <select class="form-control" id="formHoneypotEnabled">
+            <option value="true" selected>Enabled (Strict Bot Filtering)</option>
+            <option value="false">Disabled</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Available Destinations (Comma-separated)</label>
+        <textarea class="form-control" id="formDestinationsList" rows="3">Cultural Triangle (Sigiriya/Polonnaruwa), Hill Country (Kandy/Nuwara Eliya/Ella), Wildlife & Safari (Yala/Wilpattu), Southern Coast (Galle/Mirissa/Tangalle), East Coast (Trincomalee/Pasikudah), Jaffna & Northern Province</textarea>
+      </div>
+      <div class="form-group">
+        <label>Travel Styles (Comma-separated)</label>
+        <textarea class="form-control" id="formTravelStylesList" rows="3">Luxury Boutique & Heritage, Wildlife Safari & Nature, Cultural Immersion & Ancient Cities, Romantic Honeymoon, Wellness & Ayurveda Retreat, Scenic Train & Tea Country</textarea>
+      </div>
+      <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 20px;">
+        <button type="submit" class="btn btn-primary">Save Form Configuration</button>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- ========================================== -->
+<!-- SECTION 11: BLOG POSTS COLLECTION          -->
+<!-- ========================================== -->
+<section class="content-section" id="section-blog-posts">
+  <div class="section-header">
+    <div class="section-title-wrap">
+      <h2>Blog Posts &amp; Editorial Stories</h2>
+      <p>Manage travel guides, cultural essays, and destination spotlights published on blog.html</p>
+    </div>
+    <button type="button" class="btn btn-gold" onclick="PageEditor.openBlogPostModal()">+ New Blog Post</button>
+  </div>
+  <div class="table-card">
+    <div class="table-responsive">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Cover</th>
+            <th>Title</th>
+            <th>Category</th>
+            <th>Publish Date</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="blogPostsTableBody">
+          <tr><td colspan="6" style="text-align: center; color: var(--ink-muted);">Loading editorial stories...</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
 </main>
 </div>
 </div>
@@ -738,6 +899,17 @@
 <div class="form-group">
 <label>Starting Price (USD)</label>
 <input class="form-control" id="pkgPrice" min="0" placeholder="1250" type="number"/>
+<small style="color: var(--ink-muted); margin-top: 4px; display: block;">Enter 0 or leave empty for "Price on request".</small>
+</div>
+</div>
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 14px;">
+<div class="form-group">
+<label>Journey Route / Route Summary</label>
+<input class="form-control" id="pkgRoute" placeholder="Colombo → Sigiriya → Kandy → Nuwara Eliya → Yala → Galle" type="text"/>
+</div>
+<div class="form-group">
+<label>Promo Video URL (MP4 / Cloudinary / Stream)</label>
+<input class="form-control" id="pkgPromoVideo" placeholder="assets/videos/sigiriya-aerial.mp4 or Cloudinary URL" type="text"/>
 </div>
 </div>
 <div class="form-group">
@@ -783,6 +955,27 @@
 </div>
 <div class="repeater-wrap" id="highlightsContainer">
 <!-- Highlights items dynamically added -->
+</div>
+</div>
+<!-- FAQs Repeater -->
+<div class="form-group">
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+<label style="font-weight: 600;">Package FAQs</label>
+<button class="btn btn-sm btn-outline" onclick="AdminApp.addFaqItem()" type="button">+ Add FAQ</button>
+</div>
+<div class="repeater-wrap" id="faqsContainer">
+<!-- FAQ items dynamically added -->
+</div>
+</div>
+<!-- SEO Metadata -->
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 16px; margin-bottom: 16px; background: #FAFAFA; padding: 14px; border-radius: var(--radius-sm); border: 1px solid var(--border-color);">
+<div class="form-group" style="margin: 0;">
+<label style="font-weight: 600;">SEO Meta Title</label>
+<input class="form-control" id="pkgMetaTitle" placeholder="Custom package page title tag..." type="text"/>
+</div>
+<div class="form-group" style="margin: 0;">
+<label style="font-weight: 600;">SEO Meta Description</label>
+<input class="form-control" id="pkgMetaDescription" placeholder="150-160 character meta description..." type="text"/>
 </div>
 </div>
 <!-- Toggles -->
@@ -1167,6 +1360,72 @@
 </div>
 </div>
 <!-- TOAST NOTIFICATIONS CONTAINER -->
+
+<!-- ========================================== -->
+<!-- BLOG POST MODAL                            -->
+<!-- ========================================== -->
+<div class="modal" id="blogPostModal">
+  <div class="modal-dialog large">
+    <div class="modal-header">
+      <h3 id="blogPostModalTitle">Add Blog Post</h3>
+      <button class="modal-close" onclick="AdminApp.closeModal('blogPostModal')">×</button>
+    </div>
+    <div class="modal-body">
+      <form id="blogPostForm" onsubmit="event.preventDefault(); PageEditor.saveActiveBlogPost();">
+        <input id="blogPostId" type="hidden"/>
+        <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 16px;">
+          <div class="form-group">
+            <label>Article Title *</label>
+            <input class="form-control" id="blogTitle" required placeholder="The Definitive Guide to Ceylon's Sacred High Country" type="text"/>
+          </div>
+          <div class="form-group">
+            <label>URL Slug *</label>
+            <input class="form-control" id="blogSlug" required placeholder="guide-to-ceylon-high-country" type="text"/>
+          </div>
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px;">
+          <div class="form-group">
+            <label>Category</label>
+            <input class="form-control" id="blogCategory" placeholder="Heritage &amp; Culture" type="text"/>
+          </div>
+          <div class="form-group">
+            <label>Author</label>
+            <input class="form-control" id="blogAuthor" placeholder="Editorial Team" type="text"/>
+          </div>
+          <div class="form-group">
+            <label>Publish Date</label>
+            <input class="form-control" id="blogDate" type="date"/>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Cover Image *</label>
+          <div style="display: flex; gap: 8px;">
+            <input class="form-control" id="blogCoverImage" placeholder="assets/images/sigiriya.jpg" required type="text"/>
+            <button class="btn btn-outline" onclick="AdminApp.openImagePicker('blogCoverImage')" type="button">Browse Media</button>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Summary / Excerpt</label>
+          <textarea class="form-control" id="blogExcerpt" rows="2" placeholder="Brief 2-sentence summary for previews..."></textarea>
+        </div>
+        <div class="form-group">
+          <label>Full Article Content (HTML / Rich Text)</label>
+          <textarea class="form-control" id="blogContent" rows="8" placeholder="<p>Article body paragraphs...</p>"></textarea>
+        </div>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 16px;">
+          <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+            <input id="blogIsPublished" type="checkbox" checked/> Published on Website
+          </label>
+          <div style="display: flex; gap: 8px;">
+            <button class="btn btn-outline" onclick="AdminApp.closeModal('blogPostModal')" type="button">Cancel</button>
+            <button class="btn btn-primary" type="submit">Save Article</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
 <div class="toast-container" id="toastContainer"></div>
 <!-- Scripts -->
 <script src="../js/config.js?v=20261021_cms1"></script>
@@ -1178,5 +1437,6 @@
 <script src="../js/firebase-tour-sync.js"></script>
 <script src="https://upload-widget.cloudinary.com/global/all.js" type="text/javascript"></script>
 <script src="js/admin-app.js?v=20261021_cms1"></script>
+<script src="js/page-editor.js?v=20261026_phase3"></script>
 </body>
 </html>

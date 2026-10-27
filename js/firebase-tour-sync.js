@@ -600,18 +600,6 @@
 
 
 
-      const { doc, setDoc } = await import('https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js');
-
-      await setDoc(doc(this.db, 'tours', pkgId), payload, { merge: true });
-
-      await setDoc(doc(this.db, 'packages', pkgId), payload, { merge: true });
-
-      return payload;
-
-    }
-
-
-
     /**
 
      * Admin: Save Category

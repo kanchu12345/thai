@@ -1394,3 +1394,377 @@ input:checked + .slider:before {
   background: linear-gradient(90deg, #E5B869, #10B981);
   transition: width 0.25s ease;
 }
+
+
+/* ==============================================================================
+ * Phase 3: Page-by-Page CMS Editor Styles
+ * ============================================================================== */
+
+.sidebar-accordion {
+  margin-bottom: 6px;
+}
+
+.sidebar-accordion-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 10px 14px;
+  background: none;
+  border: none;
+  color: var(--ink-light);
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+  border-radius: var(--radius-sm);
+  transition: var(--transition);
+}
+
+.sidebar-accordion-toggle:hover {
+  background: rgba(28, 27, 31, 0.04);
+  color: var(--ink);
+}
+
+.sidebar-accordion-chevron {
+  font-size: 0.7rem;
+  transition: transform 0.2s ease;
+}
+
+.sidebar-accordion.is-open .sidebar-accordion-chevron {
+  transform: rotate(90deg);
+}
+
+.sidebar-sub-nav {
+  padding-left: 12px;
+  margin-top: 4px;
+}
+
+.sidebar-sub-nav .nav-link {
+  padding: 7px 12px;
+  font-size: 0.82rem;
+  color: var(--ink-light);
+  border-radius: var(--radius-sm);
+}
+
+.sidebar-sub-nav .nav-link:hover {
+  background: rgba(201, 84, 81, 0.08);
+  color: var(--lotus-primary);
+}
+
+.sidebar-sub-nav .nav-link.active {
+  background: rgba(201, 84, 81, 0.15);
+  color: var(--lotus-primary-dark);
+  font-weight: 600;
+}
+
+/* Accordion Section Cards */
+.cms-accordion-card {
+  background: var(--white);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  margin-bottom: 14px;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+  overflow: hidden;
+}
+
+.cms-accordion-card:hover {
+  border-color: rgba(212, 163, 89, 0.4);
+}
+
+.cms-accordion-card.is-open {
+  border-color: var(--sacred-gold);
+}
+
+.cms-accordion-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  background: #FCFAF7;
+  cursor: pointer;
+  user-select: none;
+}
+
+.cms-accordion-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1rem;
+  color: var(--ink);
+}
+
+.cms-accordion-chevron {
+  font-size: 0.8rem;
+  color: var(--sacred-gold);
+}
+
+.cms-accordion-body {
+  padding: 20px;
+  border-top: 1px solid var(--border-color);
+  background: var(--white);
+}
+
+.cms-fields-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  gap: 20px;
+}
+
+.cms-field-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: #FDFDFD;
+  padding: 14px;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(28, 27, 31, 0.06);
+}
+
+.cms-field-wrap.cms-field-wide {
+  grid-column: 1 / -1;
+}
+
+.cms-field-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.cms-field-label {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-weight: 600;
+  font-size: 0.88rem;
+  color: var(--ink);
+}
+
+.cms-field-meta {
+  font-family: monospace;
+  font-size: 0.72rem;
+  color: var(--ink-muted);
+}
+
+.btn-text-sm {
+  background: none;
+  border: none;
+  color: var(--lotus-primary);
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 2px 6px;
+  border-radius: 4px;
+  transition: var(--transition);
+}
+
+.btn-text-sm:hover {
+  background: rgba(201, 84, 81, 0.08);
+  color: var(--lotus-primary-dark);
+}
+
+/* 10-Language Tabs */
+.cms-lang-tabs-wrapper {
+  margin-top: 4px;
+}
+
+.cms-lang-pill-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-bottom: 8px;
+}
+
+.cms-lang-tab-pill {
+  border: 1px solid var(--border-color);
+  background: #F8FAFC;
+  color: var(--ink-light);
+  font-size: 0.72rem;
+  font-weight: 500;
+  padding: 3px 8px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.cms-lang-tab-pill:hover {
+  background: #EEF2F6;
+  border-color: #CBD5E1;
+}
+
+.cms-lang-tab-pill.is-active {
+  background: var(--lotus-primary);
+  color: #FFFFFF;
+  border-color: var(--lotus-primary);
+  font-weight: 600;
+}
+
+.cms-lang-pane-footer {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 4px;
+}
+
+/* Image Controls */
+.cms-image-picker-box {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+}
+
+.cms-image-preview-slot {
+  width: 90px;
+  height: 65px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-color);
+  overflow: hidden;
+  background: #F1E9E1;
+  flex-shrink: 0;
+}
+
+.cms-image-preview-slot img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cms-image-controls {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.cms-image-btn-group {
+  display: flex;
+  gap: 8px;
+}
+
+
+/* ==============================================================================
+ * PHASE 3: SIDEBAR COLLAPSIBLE NAVIGATION & PAGE EDITOR EXTENSIONS
+ * ============================================================================== */
+.nav-collapsible-group {
+  margin-bottom: 4px;
+}
+
+.nav-collapsible-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  user-select: none;
+  transition: var(--transition);
+}
+
+.nav-collapsible-header:hover {
+  color: var(--sacred-gold-hover);
+}
+
+.nav-toggle-icon {
+  font-size: 0.65rem;
+  transition: transform 0.2s ease;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.nav-collapsible-group.is-open .nav-toggle-icon {
+  transform: rotate(180deg);
+}
+
+.nav-collapsible-group:not(.is-open) .nav-collapsible-body {
+  display: none;
+}
+
+.nav-collapsible-body {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding-left: 6px;
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+  margin-left: 14px;
+  margin-top: 2px;
+  margin-bottom: 4px;
+}
+
+.nav-sub-link {
+  font-size: 0.82rem !important;
+  padding: 6px 10px !important;
+  color: rgba(255, 255, 255, 0.7) !important;
+  border-radius: 4px;
+}
+
+.nav-sub-link:hover {
+  background-color: rgba(255, 255, 255, 0.08) !important;
+  color: #FFFFFF !important;
+}
+
+.nav-sub-link.active {
+  background-color: var(--lotus-primary) !important;
+  color: #FFFFFF !important;
+}
+
+/* Page Editor Topbar Actions */
+.page-editor-topbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  background: #FFFFFF;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 14px 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+}
+
+.page-editor-meta-left {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.page-editor-meta-left h2 {
+  margin: 0;
+  font-size: 1.25rem;
+  font-family: 'Playfair Display', serif;
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.page-editor-meta-left small {
+  color: var(--ink-muted);
+  font-size: 0.8rem;
+}
+
+.page-editor-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.page-editor-search-box {
+  min-width: 240px;
+}
+
+/* FAQ Repeater in Tour Packages */
+.faq-repeater-item {
+  background: #FAFAFA;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: 12px;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.faq-repeater-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
