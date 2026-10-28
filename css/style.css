@@ -2526,7 +2526,7 @@ ul, ol {
    ========================================================================== */
 .whatsapp-floating-walkers {
   position: fixed;
-  bottom: 25px;
+  bottom: calc(25px + env(safe-area-inset-bottom, 0px));
   right: 25px;
   z-index: 999;
   width: 56px;
@@ -5980,4 +5980,20 @@ p, li {
 a.next-btn,
 div.next-btn {
   border-radius: 9999px !important;
+}
+
+/* Mobile Viewport Floating Action Button Offsets */
+@media (max-width: 768px) {
+  .whatsapp-floating-walkers {
+    bottom: calc(85px + env(safe-area-inset-bottom, 0px)) !important;
+    right: 18px !important;
+    width: 50px !important;
+    height: 50px !important;
+  }
+  .inquire-floating-walkers {
+    bottom: calc(145px + env(safe-area-inset-bottom, 0px)) !important;
+    right: 18px !important;
+    width: 50px !important;
+    height: 50px !important;
+  }
 }
