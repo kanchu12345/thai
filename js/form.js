@@ -1396,6 +1396,24 @@ async function handleFormSubmit(form, isQuickForm) {
 
 
 
+    
+    // Initialize Firebase for Inquiries if loaded
+    if (window.firebase && (!window.firebase.apps || window.firebase.apps.length === 0)) {
+      const fbConfig = (window.LOTUS_CONFIG && window.LOTUS_CONFIG.firebase) || {
+        apiKey: "AIzaSyD5NyCFaPHeS1cKlsgxZ_WsraswHlYonNA",
+        authDomain: "louterst-36b64.firebaseapp.com",
+        projectId: "louterst-36b64",
+        storageBucket: "louterst-36b64.firebasestorage.app",
+        messagingSenderId: "416036235757",
+        appId: "1:416036235757:web:544c89abdb74b41a585fe4"
+      };
+      try {
+        window.firebase.initializeApp(fbConfig);
+      } catch (e) {
+        console.warn('[Form] Firebase init check:', e.message);
+      }
+    }
+
     // Optional Firestore direct write if Firebase is active
 
     if (window.firebase && typeof window.firebase.firestore === "function") {
@@ -1405,8 +1423,16 @@ async function handleFormSubmit(form, isQuickForm) {
         const db = window.firebase.firestore();
 
         const collectionName = isQuickForm ? "inquiries_quick" : "inquiries_detailed";
+        const inqDocPayload = {
+          ...payload,
+          formType: isQuickForm ? 'quick' : 'detailed',
+          hp_website_lotus: "",
+          submittedAt: new Date().toISOString()
+        };
 
-        await db.collection(collectionName).add({
+        await db.collection(collectionName).add(inqDocPayload);
+        await db.collection("inquiries").add(inqDocPayload);
+        if (false) await db.collection(collectionName).add({
 
           ...payload,
 
@@ -1426,27 +1452,7 @@ async function handleFormSubmit(form, isQuickForm) {
 
     }
 
-    // Optional Supabase direct write if live client is active
-    if (window.LotusSupabase && typeof window.LotusSupabase.submitInquiry === "function" && window.LotusSupabase.isLive()) {
-      try {
-        const supaRes = await window.LotusSupabase.submitInquiry({
-          reference_no: payload.referenceId,
-          full_name: payload.fullName,
-          email: payload.email,
-          phone: payload.phone,
-          country: payload.country,
-          travel_dates: payload.arrivalDate ? `${payload.arrivalDate} to ${payload.departureDate || ''}` : '',
-          travelers_count: payload.totalPax || 2,
-          tour_slug: payload.tourSlug || '',
-          special_notes: payload.notes || payload.otherRequirements || ''
-        });
-        if (supaRes && supaRes.success) {
-          transmitted = true;
-        }
-      } catch (supaErr) {
-        console.warn("[Lotus Inquiries] Supabase insert deferred:", supaErr);
-      }
-    }
+    
 
 
 

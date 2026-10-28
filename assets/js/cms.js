@@ -507,8 +507,8 @@
     },
 
     async fetchVersion() {
-      const url = getFirestoreRestBase() + '/siteMeta/version';
-      const res = await fetch(url);
+      const url = getFirestoreRestBase() + '/siteMeta/version?cb=' + Date.now();
+      const res = await fetch(url, { cache: 'no-store' });
       if (!res.ok) {
         if (res.status === 404) return 1;
         throw new Error('Version fetch HTTP ' + res.status);
@@ -522,7 +522,8 @@
       const projectId = getProjectId();
       const fullDocNames = docPaths.map(p => `projects/${projectId}/databases/(default)/documents/${p}`);
 
-      const res = await fetch(getFirestoreRestBase() + ':batchGet', {
+      const res = await fetch(getFirestoreRestBase() + ':batchGet?cb=' + Date.now(), {
+        cache: 'no-store',
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ documents: fullDocNames })

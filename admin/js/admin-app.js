@@ -1700,28 +1700,7 @@ resolveImg(url) {
       }
       let loadedFromLive = false;
 
-      // 1. Check Supabase if configured
-      if (this.client) {
-        try {
-          const [inqRes, pkgRes, catRes, revRes] = await Promise.all([
-            this.client.from('inquiries').select('*').order('created_at', { ascending: false }),
-            this.client.from('tours').select('*').order('sort_order', { ascending: true }),
-            this.client.from('tour_categories').select('*').order('sort_order', { ascending: true }),
-            this.client.from('reviews').select('*').order('created_at', { ascending: false })
-          ]);
-          if (pkgRes.data && pkgRes.data.length > 0) {
-            this.inquiries = inqRes.data || [];
-            this.packages = pkgRes.data || [];
-            this.categories = catRes.data || [];
-            this.reviews = revRes.data || [];
-            loadedFromLive = true;
-          }
-        } catch (e) {
-          console.warn('[AdminApp] Supabase fetch error:', e);
-        }
-      }
-
-      // 2. If Supabase is unconfigured/offline, check Firebase Firestore live
+      // 1. Fetch from Firebase Firestore live
       if (!loadedFromLive && window.LotusFirebase && navigator.onLine) {
         try {
           const [liveCatalog, liveDests, liveRevs] = await Promise.all([
@@ -1744,9 +1723,23 @@ resolveImg(url) {
         }
       }
 
-      // 3. Fallback to bundled seed bundle if neither live source returned data
+      // 2. Fallback to bundled seed bundle if live source returned empty
       if (!loadedFromLive) {
         await this.loadLocalFallbackData();
+        // Auto-seed to Firestore so live site and admin are immediately populated
+        if (this.fbDb && this.packages && this.packages.length > 0) {
+          try {
+            console.log('[AdminApp] Auto-seeding default catalog to Firestore...');
+            if (window.LotusFirebase && typeof window.LotusFirebase.seedFirestore === 'function') {
+              window.LotusFirebase.seedFirestore({
+                packages: this.packages,
+                categories: this.categories,
+                destinations: this.destinations,
+                reviews: this.reviews
+              }).catch(e => console.warn('[Auto-seed]', e));
+            }
+          } catch (e) {}
+        }
       }
 
       this.renderDashboard();
@@ -3610,13 +3603,7 @@ resolveImg(url) {
         }
       }
 
-      if (this.client) {
-        try {
-          await this.client.from('tours').upsert([payload], { onConflict: 'slug' });
-        } catch (e) {
-          console.warn('[AdminApp] Supabase upsert tours:', e.message);
-        }
-      }
+      
 
       // 2. Update in-memory state
       const existingIndex = this.packages.findIndex(p => p.slug === slug || (pkgId && p.id === pkgId));
@@ -4834,89 +4821,81 @@ resolveImg(url) {
 
 
     async saveDestination(e) {
-
       if (e) e.preventDefault();
 
       const slug = document.getElementById('destSlug').value.trim();
-
       const id = document.getElementById('destId').value || ('dest-' + slug);
-
       const titleEn = document.getElementById('destTitle').value.trim();
-
       const titleZh = document.getElementById('destTitleZh').value.trim();
-
       const region = document.getElementById('destRegion').value;
-
       const order = parseInt(document.getElementById('destOrder').value, 10) || 1;
-
       const descEn = document.getElementById('destDescription').value.trim();
-
       const image = document.getElementById('destImage').value.trim();
-
       const is_published = document.getElementById('destPublished').checked;
 
-
-
       const payload = {
-
         id,
-
         slug,
-
         order,
-
         region,
-
         title: { en: titleEn, zh: titleZh || titleEn },
-
         description: { en: descEn, zh: descEn },
-
         image,
-
         status: is_published ? 'published' : 'draft',
-
         updatedAt: new Date().toISOString()
-
       };
 
-
-
       if (window.LotusFirebase && typeof window.LotusFirebase.saveDestination === 'function') {
-
         try {
-
           await window.LotusFirebase.saveDestination(payload);
-
         } catch (err) {
-
           console.warn('[AdminApp] Firebase saveDestination error:', err);
-
         }
-
       }
 
+      if (this.fbDb) {
+        try {
+          await this.fbDb.collection('destinations').doc(id).set(payload, { merge: true });
 
+          // Bidirectional sync: update siteContent/destinations card
+          const destIndex = parseInt(order, 10) || 1;
+          const updates = {};
+          updates[`img_${destIndex}`] = image;
+          updates[`destinations.img_${destIndex}`] = image;
+          updates[`heading_${destIndex + 1}`] = titleEn;
+          updates[`destinations.heading_${destIndex + 1}`] = titleEn;
+          updates[`p_${destIndex + 2}`] = descEn;
+          updates[`destinations.p_${destIndex + 2}`] = descEn;
+          if (region) {
+            updates[`span_${5 + (2 * destIndex)}`] = region;
+            updates[`destinations.span_${5 + (2 * destIndex)}`] = region;
+          }
+          await this.fbDb.collection('siteContent').doc('destinations').set(updates, { merge: true });
+
+          // Bump siteMeta version
+          await this.fbDb.collection('siteMeta').doc('version').set({
+            v: Date.now(),
+            updatedAt: new Date().toISOString()
+          }, { merge: true });
+        } catch (fbErr) {
+          console.warn('[AdminApp] Firebase saveDestination direct error:', fbErr);
+        }
+      }
+
+      try {
+        localStorage.removeItem('lotus_cms_v3');
+      } catch (e) {}
 
       const idx = this.destinations.findIndex(d => d.slug === slug || d.id === id);
-
       if (idx !== -1) {
-
         this.destinations[idx] = { ...this.destinations[idx], ...payload };
-
       } else {
-
         this.destinations.push(payload);
-
       }
 
-
-
       this.closeModal('destinationModal');
-
       this.renderDestinations();
-
-      this.showToast(`Destination "${titleEn}" saved successfully!`, 'success');
-
+      this.showToast(`Destination "${titleEn}" saved & synchronized live!`, 'success');
     },
 
 
@@ -5690,48 +5669,33 @@ formatResponsiveMedia(url, alt = 'Lotus Ceylon Media') {
 
       // If client exists, update site_settings table in Supabase
 
-      if (this.client) {
-
+      if (this.fbDb) {
         try {
+          await this.fbDb.collection('settings').doc('general').set({
+            companyName: document.getElementById('settingCompanyName').value,
+            slogan: document.getElementById('settingSlogan').value,
+            phone: document.getElementById('settingPhone').value,
+            email: document.getElementById('settingEmail').value,
+            address: document.getElementById('settingAddress').value,
+            whatsapp: document.getElementById('settingWhatsApp').value,
+            updatedAt: new Date().toISOString()
+          }, { merge: true });
 
-          await this.client.from('site_settings').upsert([
+          await this.fbDb.collection('siteMeta').doc('version').set({
+            v: Date.now(),
+            updatedAt: new Date().toISOString()
+          }, { merge: true });
 
-            {
+          try {
+            localStorage.removeItem('lotus_cms_v3');
+          } catch (e) {}
 
-              key: 'general',
-
-              value: {
-
-                companyName: document.getElementById('settingCompanyName').value,
-
-                slogan: document.getElementById('settingSlogan').value,
-
-                phone: document.getElementById('settingPhone').value,
-
-                email: document.getElementById('settingEmail').value,
-
-                address: document.getElementById('settingAddress').value,
-
-                whatsapp: document.getElementById('settingWhatsApp').value
-
-              }
-
-            }
-
-          ]);
-
-          this.showToast('Settings saved to database!', 'success');
-
+          this.showToast('Settings saved to Firebase Firestore & live published!', 'success');
         } catch (e) {
-
           this.showToast('Failed to save settings: ' + e.message, 'error');
-
         }
-
       } else {
-
         this.showToast('Settings saved for this session (Local mode)', 'success');
-
       }
 
     },
