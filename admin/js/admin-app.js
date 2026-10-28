@@ -1,3 +1,298 @@
+
+/**
+ * =========================================================================
+ * CENTRAL CLOUDINARY CONFIGURATION & REUSABLE UPLOADER MODULE
+ * =========================================================================
+ * Cloudinary Unsigned Direct Client Upload for Images and Videos
+ */
+const CLOUDINARY_CONFIG = {
+  cloudName: 'qmukrbh6',
+  uploadPreset: 'lotus_tours_unsigned',
+  folder: 'lotus/tours'
+};
+window.CLOUDINARY_CONFIG = CLOUDINARY_CONFIG;
+
+/**
+ * Image & Video URL Delivery Optimizer
+ * - Inserts f_auto,q_auto for Cloudinary images and videos
+ * - For video thumbnails, generates a poster frame at 0 seconds with .jpg extension
+ */
+function optimizeMediaUrl(url, options = {}) {
+  if (!url) return '';
+  url = String(url).trim();
+  if (!url.includes('cloudinary.com') || !url.includes('/upload/')) {
+    return url;
+  }
+  const isThumb = !!options.isThumb;
+  const isVideo = options.isVideo !== undefined 
+    ? options.isVideo 
+    : (/\.(mp4|webm|mov|m4v)$/i.test(url) || url.includes('/video/upload/'));
+
+  if (isVideo && isThumb) {
+    let thumbUrl = url.replace(/\.(mp4|webm|mov|m4v)(\?.*)?$/i, '.jpg$2');
+    if (!thumbUrl.includes('/so_0')) {
+      thumbUrl = thumbUrl.replace(/\/upload\/(?:[^\/]+\/)?/, '/upload/so_0,f_auto,q_auto/');
+    }
+    return thumbUrl;
+  }
+
+  if (!url.includes('f_auto,q_auto') && !url.includes('f_auto')) {
+    return url.replace(/\/upload\//, '/upload/f_auto,q_auto/');
+  }
+  return url;
+}
+window.optimizeMediaUrl = optimizeMediaUrl;
+
+/**
+ * Central Reusable Cloudinary Upload Function
+ * Used by every upload button in the admin (Media Library, Tours, Categories,
+ * Destinations, Reviews, Team, Blog, Branding, Gallery, Click-to-edit).
+ * 
+ * @param {File|Blob} file - File or Blob to upload
+ * @param {Object} options - { onProgress, tags, isCompressedBlob }
+ * @returns {Promise<{ url, secureUrl, publicId, resourceType, format, bytes, width, height, duration }>}
+ */
+async function uploadToCloudinary(file, options = {}) {
+  if (!file) throw new Error('No file provided for upload.');
+
+  // 1. Resolve Cloudinary Configuration (Settings > LOTUS_CONFIG > CLOUDINARY_CONFIG defaults)
+  const appConfig = (window.AdminApp && window.AdminApp.cloudinaryConfig) || {};
+  const globalConfig = (window.LOTUS_CONFIG && window.LOTUS_CONFIG.cloudinary) || {};
+  const cloudName = (appConfig.cloudName || globalConfig.cloudName || CLOUDINARY_CONFIG.cloudName || 'qmukrbh6').trim();
+  const uploadPreset = (appConfig.uploadPreset || globalConfig.uploadPreset || CLOUDINARY_CONFIG.uploadPreset || 'lotus_tours_unsigned').trim();
+
+  // 2. File Type & Extension Validation
+  const fileName = file.name || 'upload.bin';
+  const fileExt = (fileName.includes('.') ? '.' + fileName.split('.').pop() : '').toLowerCase();
+  const fileType = (file.type || '').toLowerCase();
+
+  const validImageExts = ['.jpg', '.jpeg', '.png', '.webp', '.gif', '.svg'];
+  const validVideoExts = ['.mp4', '.webm', '.mov', '.m4v'];
+
+  const isImage = fileType.startsWith('image/') || validImageExts.includes(fileExt);
+  const isVideo = fileType.startsWith('video/') || validVideoExts.includes(fileExt);
+
+  if (!isImage && !isVideo) {
+    const msg = 'Rejected "' + fileName + '": Invalid format. Only Images (JPG, PNG, WebP, GIF, SVG) and Videos (MP4, WebM, MOV) are accepted.';
+    if (window.AdminApp) window.AdminApp.showToast(msg, 'error', 6000);
+    console.error('[Upload Validation Error]', msg);
+    throw new Error(msg);
+  }
+
+  let fileToUpload = file;
+  let finalSafeName = fileName.replace(/[^a-zA-Z0-9._-]/g, '_');
+
+  // 3. Size Limits & Client-Side Auto-Compression
+  // Images: max 10MB; Videos: max 100MB
+  const MAX_IMAGE_BYTES = 10 * 1024 * 1024; // 10 MB
+  const MAX_VIDEO_BYTES = 100 * 1024 * 1024; // 100 MB
+
+  if (isVideo && file.size > MAX_VIDEO_BYTES) {
+    const msg = 'Rejected "' + fileName + '": Video size (' + (file.size / (1024 * 1024)).toFixed(1) + ' MB) exceeds the 100 MB maximum limit.';
+    if (window.AdminApp) window.AdminApp.showToast(msg, 'error', 6000);
+    console.error('[Upload Size Error]', msg);
+    throw new Error(msg);
+  }
+
+  if (isImage && file.size > MAX_IMAGE_BYTES && !options.isCompressedBlob) {
+    if (window.AdminApp) {
+      window.AdminApp.showToast('Image "' + fileName + '" exceeds 10 MB. Compressing to WebP (max 2400px)...', 'info', 4000);
+    }
+    try {
+      if (window.AdminApp && typeof window.AdminApp.compressImageToWebP === 'function') {
+        const compressedBlob = await window.AdminApp.compressImageToWebP(file, 2400, 0.85);
+        if (compressedBlob && compressedBlob.size <= MAX_IMAGE_BYTES) {
+          fileToUpload = compressedBlob;
+          finalSafeName = fileName.replace(/\.[^/.]+$/, "") + '.webp';
+          if (window.AdminApp) {
+            window.AdminApp.showToast('Compressed to ' + Math.round(compressedBlob.size / 1024) + ' KB WebP. Uploading to Cloudinary CDN...', 'info', 3000);
+          }
+        }
+      }
+    } catch (compressErr) {
+      console.warn('[Upload Compression Warning]', compressErr);
+    }
+
+    if (fileToUpload.size > MAX_IMAGE_BYTES) {
+      const msg = 'Rejected "' + fileName + '": Image size exceeds 10 MB limit after compression.';
+      if (window.AdminApp) window.AdminApp.showToast(msg, 'error', 6000);
+      throw new Error(msg);
+    }
+  }
+
+  // 4. UI Progress & Save Buttons Guard
+  const progressBanner = document.getElementById('adminUploadProgressBanner');
+  const progressBar = document.getElementById('adminUploadProgressBar');
+  const progressPercent = document.getElementById('adminUploadPercent');
+  const progressName = document.getElementById('adminUploadFileName');
+
+  if (progressBanner) {
+    progressBanner.style.display = 'block';
+    if (progressBar) progressBar.style.width = '0%';
+    if (progressPercent) progressPercent.textContent = '0%';
+    if (progressName) progressName.textContent = finalSafeName;
+  }
+
+  const saveButtons = Array.from(document.querySelectorAll('button[type="submit"], .btn-primary, .modal-footer .btn'));
+  saveButtons.forEach(btn => {
+    btn.setAttribute('data-prev-disabled', btn.disabled ? '1' : '0');
+    btn.disabled = true;
+  });
+
+  function cleanupUI() {
+    if (progressBanner) progressBanner.style.display = 'none';
+    saveButtons.forEach(btn => {
+      if (btn.getAttribute('data-prev-disabled') !== '1') {
+        btn.disabled = false;
+      }
+      btn.removeAttribute('data-prev-disabled');
+    });
+  }
+
+  // 5. Direct Unsigned XMLHttpRequest Upload to /auto/upload
+  return new Promise((resolve, reject) => {
+    const xhr = new XMLHttpRequest();
+    const uploadUrl = 'https://api.cloudinary.com/v1_1/' + encodeURIComponent(cloudName) + '/auto/upload';
+
+    xhr.open('POST', uploadUrl, true);
+    xhr.timeout = 180000; // 3 minutes timeout for videos
+
+    xhr.upload.onprogress = (e) => {
+      if (e.lengthComputable) {
+        const percent = Math.min(100, Math.round((e.loaded / e.total) * 100));
+        if (progressBar) progressBar.style.width = percent + '%';
+        if (progressPercent) progressPercent.textContent = percent + '%';
+        if (typeof options.onProgress === 'function') {
+          options.onProgress(percent, e.loaded, e.total);
+        }
+      }
+    };
+
+    xhr.onload = async () => {
+      cleanupUI();
+      if (xhr.status >= 200 && xhr.status < 300) {
+        try {
+          const res = JSON.parse(xhr.responseText);
+          let secureUrl = res.secure_url || res.url || '';
+
+          const resType = res.resource_type || (isVideo ? 'video' : 'image');
+          if (secureUrl && secureUrl.includes('/upload/') && !secureUrl.includes('/f_auto')) {
+            secureUrl = secureUrl.replace('/upload/', '/upload/f_auto,q_auto/');
+          }
+
+          const result = {
+            url: secureUrl,
+            secureUrl: secureUrl,
+            publicId: res.public_id || '',
+            resourceType: resType,
+            format: res.format || (isVideo ? 'mp4' : 'webp'),
+            bytes: res.bytes || fileToUpload.size,
+            width: res.width || null,
+            height: res.height || null,
+            duration: res.duration || null,
+            originalName: fileName
+          };
+
+          // 6. Record upload in Firestore collection "media"
+          if (window.AdminApp && window.AdminApp.fbDb) {
+            try {
+              const mediaDoc = {
+                url: result.secureUrl,
+                publicId: result.publicId,
+                resourceType: result.resourceType,
+                format: result.format,
+                bytes: result.bytes,
+                width: result.width,
+                height: result.height,
+                duration: result.duration,
+                originalName: result.originalName,
+                uploadedBy: (window.AdminApp.currentUser && window.AdminApp.currentUser.email) || 'admin',
+                createdAt: (window.firebase && window.firebase.firestore && window.firebase.firestore.FieldValue)
+                  ? window.firebase.firestore.FieldValue.serverTimestamp()
+                  : new Date().toISOString()
+              };
+              const ref = await window.AdminApp.fbDb.collection('media').add(mediaDoc);
+              result.id = ref.id;
+            } catch (fsErr) {
+              console.warn('[AdminApp] Could not save media doc to Firestore:', fsErr);
+            }
+          }
+
+          // Add to local media library array for immediate display
+          if (window.AdminApp) {
+            window.AdminApp.mediaFiles = window.AdminApp.mediaFiles || [];
+            window.AdminApp.mediaFiles.unshift({
+              id: result.id || ('media-' + Date.now()),
+              name: finalSafeName,
+              url: result.secureUrl,
+              isVideo: isVideo || result.resourceType === 'video',
+              resourceType: result.resourceType,
+              size: Math.round(result.bytes / 1024) + ' KB'
+            });
+            if (typeof window.AdminApp.renderMediaLibrary === 'function') {
+              window.AdminApp.renderMediaLibrary();
+            }
+          }
+
+          if (window.AdminApp) {
+            window.AdminApp.showToast('"' + finalSafeName + '" uploaded to Cloudinary CDN successfully!', 'success', 4000);
+          }
+
+          resolve(result);
+        } catch (parseErr) {
+          console.error('[Cloudinary Response Parse Error]', parseErr, xhr.responseText);
+          const err = new Error('Invalid response from Cloudinary API');
+          if (window.AdminApp) window.AdminApp.showToast(err.message, 'error', 5000);
+          reject(err);
+        }
+      } else {
+        let errorMsg = 'Cloudinary Upload Error (HTTP ' + xhr.status + ')';
+        try {
+          const errJson = JSON.parse(xhr.responseText);
+          if (errJson && errJson.error && errJson.error.message) {
+            errorMsg = errJson.error.message;
+          }
+        } catch (_) {}
+        console.error('[Cloudinary Upload Error]', xhr.status, xhr.responseText);
+        if (window.AdminApp) window.AdminApp.showToast(errorMsg, 'error', 6000);
+        reject(new Error(errorMsg));
+      }
+    };
+
+    xhr.onerror = (e) => {
+      cleanupUI();
+      const msg = 'Network error during upload to Cloudinary. Please check your internet connection.';
+      console.error('[Cloudinary Network Error]', e);
+      if (window.AdminApp) window.AdminApp.showToast(msg, 'error', 6000);
+      reject(new Error(msg));
+    };
+
+    xhr.ontimeout = () => {
+      cleanupUI();
+      const msg = 'Upload timed out after 3 minutes. Please use a smaller file or faster network.';
+      console.error('[Cloudinary Timeout]');
+      if (window.AdminApp) window.AdminApp.showToast(msg, 'error', 6000);
+      reject(new Error(msg));
+    };
+
+    xhr.onabort = () => {
+      cleanupUI();
+      const msg = 'Upload was cancelled.';
+      console.warn('[Cloudinary Aborted]');
+      if (window.AdminApp) window.AdminApp.showToast(msg, 'info', 3000);
+      reject(new Error(msg));
+    };
+
+    const formData = new FormData();
+    formData.append('file', fileToUpload, finalSafeName);
+    formData.append('upload_preset', uploadPreset);
+    if (options.tags) formData.append('tags', options.tags);
+
+    xhr.send(formData);
+  });
+}
+window.uploadToCloudinary = uploadToCloudinary;
+
 /**
 
  * LOTUS CEYLON International Tours & Services (Pvt) Ltd
@@ -8,7 +303,7 @@
 
  * Features:
 
- * - Supabase Authentication & Role Verification (super_admin vs editor)
+ * - Firebase Firestore Authentication & Role Verification (super_admin vs editor)
 
  * - Automatic Session Idle Timeout (30 mins)
 
@@ -16,7 +311,7 @@
 
  * - Client-side Image Compression (HTML5 Canvas to WebP max 1920px, 5MB limit)
 
- * - Drag-drop upload to Supabase Storage "media" bucket
+ * - Cloudinary CDN Media Storage & Firestore Catalog
 
  * - Reusable Image Picker Modal
 
@@ -45,6 +340,599 @@
 
 
   const AdminApp = {
+
+    // Cloudinary Config stored on AdminApp
+    cloudinaryConfig: {
+      cloudName: 'qmukrbh6',
+      uploadPreset: 'lotus_tours_unsigned',
+      folder: 'lotus/tours'
+    },
+    activePackageGallery: [],
+    mediaFilter: 'all',
+    mediaSearchQuery: '',
+    pickerFilter: 'all',
+    pickerSearchQuery: '',
+
+    /**
+     * Verify Live Firebase Connection on Init
+     */
+    async verifyFirebaseConnection() {
+      const badge = document.getElementById('firebaseStatusBadge');
+      if (!this.fbDb) {
+        this.updateFirebaseBadge('Firebase: SDK Not Loaded', '#EF4444');
+        return false;
+      }
+      try {
+        const snap = await this.fbDb.collection('tourPackages').limit(5).get();
+        const count = snap.size || (this.packages ? this.packages.length : 0);
+        this.updateFirebaseBadge('Connected (Firestore Live: ' + count + ' Tours)', '#10B981');
+        return true;
+      } catch (err) {
+        console.warn('[AdminApp] Firebase connection check:', err);
+        const reason = err.code || err.message || 'Offline';
+        this.updateFirebaseBadge('Firebase: ' + reason, '#EF4444');
+        return false;
+      }
+    },
+
+    /**
+     * Universal Upload Trigger for Any Form Field
+     */
+    triggerUploadForInput(inputId, previewImgId = null, cardId = null, options = {}) {
+      const fileInput = document.createElement('input');
+      fileInput.type = 'file';
+      const isVid = options.resourceType === 'video';
+      fileInput.accept = isVid 
+        ? 'video/mp4,video/webm,video/quicktime,.mp4,.webm,.mov' 
+        : 'image/jpeg,image/png,image/webp,image/gif,image/svg+xml,.jpg,.jpeg,.png,.webp,.gif,.svg';
+      fileInput.style.display = 'none';
+      document.body.appendChild(fileInput);
+
+      fileInput.onchange = async () => {
+        const file = fileInput.files && fileInput.files[0];
+        if (!file) {
+          if (fileInput.parentNode) fileInput.remove();
+          return;
+        }
+
+        try {
+          const result = await uploadToCloudinary(file, options);
+          const secureUrl = result.secureUrl;
+
+          // 1. Update target input value
+          if (inputId) {
+            const inputEl = document.getElementById(inputId);
+            if (inputEl) {
+              inputEl.value = secureUrl;
+              inputEl.dispatchEvent(new Event('input', { bubbles: true }));
+              inputEl.dispatchEvent(new Event('change', { bubbles: true }));
+            }
+          }
+
+          // 2. Update preview
+          if (isVid || result.resourceType === 'video') {
+            this.updateVideoPreview(inputId, previewImgId, cardId);
+          } else {
+            this.updateImagePreview(inputId, previewImgId, cardId);
+          }
+
+          if (typeof options.callback === 'function') {
+            options.callback(secureUrl, result.resourceType === 'video', file.name);
+          }
+        } catch (uploadErr) {
+          console.error('[Upload Failed]', uploadErr);
+        } finally {
+          if (fileInput.parentNode) fileInput.remove();
+        }
+      };
+
+      fileInput.click();
+    },
+
+    /**
+     * Backward-compatible Direct Upload method used across PageEditor and widgets
+     */
+    triggerDirectCloudinaryUpload(options = {}) {
+      this.triggerUploadForInput(options.inputId, options.previewImgId, options.cardId, options);
+    },
+
+    openCloudinaryWidget(callback) {
+      this.triggerDirectCloudinaryUpload({
+        accept: 'image/*,video/*',
+        callback: callback
+      });
+    },
+
+    openCloudinaryWidgetForInput(inputId, previewImgId = null, cardId = null) {
+      this.triggerUploadForInput(inputId, previewImgId, cardId);
+    },
+
+    openCloudinaryForTeam() {
+      this.triggerUploadForInput('teamPhotoUrl', 'teamPhotoPreview', 'teamPhotoPreviewCard');
+    },
+
+    /**
+     * Video Live Preview Handler
+     */
+    updateVideoPreview(inputId, previewVideoId, cardId) {
+      const input = document.getElementById(inputId);
+      const video = document.getElementById(previewVideoId);
+      const card = document.getElementById(cardId);
+      const urlDisplay = document.getElementById(cardId ? cardId.replace('Card', 'Url') : null);
+
+      if (!input || !video || !card) return;
+      const val = input.value.trim();
+      if (!val) {
+        card.style.display = 'none';
+        video.src = '';
+        return;
+      }
+
+      video.src = val;
+      video.load();
+      card.style.display = 'flex';
+      if (urlDisplay) urlDisplay.textContent = val;
+    },
+
+    clearVideoField(inputId, previewVideoId, cardId) {
+      const input = document.getElementById(inputId);
+      const video = document.getElementById(previewVideoId);
+      const card = document.getElementById(cardId);
+      if (input) input.value = '';
+      if (video) {
+        video.pause();
+        video.src = '';
+      }
+      if (card) card.style.display = 'none';
+      this.showToast('Video removed', 'info');
+    },
+
+    /**
+     * Package Gallery Handlers
+     */
+    triggerGalleryUpload() {
+      const fileInput = document.createElement('input');
+      fileInput.type = 'file';
+      fileInput.multiple = true;
+      fileInput.accept = 'image/jpeg,image/png,image/webp,image/gif,.jpg,.jpeg,.png,.webp,.gif';
+      fileInput.style.display = 'none';
+      document.body.appendChild(fileInput);
+
+      fileInput.onchange = async () => {
+        const files = Array.from(fileInput.files || []);
+        if (files.length === 0) {
+          if (fileInput.parentNode) fileInput.remove();
+          return;
+        }
+
+        this.showToast('Uploading ' + files.length + ' gallery images to Cloudinary...', 'info', 4000);
+        for (const file of files) {
+          try {
+            const res = await uploadToCloudinary(file);
+            this.activePackageGallery = this.activePackageGallery || [];
+            this.activePackageGallery.push(res.secureUrl);
+            this.renderPackageGalleryGrid();
+          } catch (e) {
+            console.error('[Gallery Image Upload Error]', e);
+          }
+        }
+        if (fileInput.parentNode) fileInput.remove();
+      };
+
+      fileInput.click();
+    },
+
+    openGalleryMediaPicker() {
+      this.openImagePicker(null, null, null, {
+        filter: 'image',
+        onSelect: (url) => {
+          this.activePackageGallery = this.activePackageGallery || [];
+          this.activePackageGallery.push(url);
+          this.renderPackageGalleryGrid();
+        }
+      });
+    },
+
+    removeGalleryItem(index) {
+      if (!this.activePackageGallery) return;
+      this.activePackageGallery.splice(index, 1);
+      this.renderPackageGalleryGrid();
+      this.showToast('Gallery image removed', 'info');
+    },
+
+    renderPackageGalleryGrid() {
+      const container = document.getElementById('pkgGalleryGrid');
+      if (!container) return;
+      const list = this.activePackageGallery || [];
+      if (list.length === 0) {
+        container.innerHTML = '<span style="color: var(--ink-muted); font-size: 0.82rem;">No gallery images added yet. Click Upload or Browse to add photos.</span>';
+        return;
+      }
+
+      container.innerHTML = list.map((url, idx) => {
+        const optUrl = optimizeMediaUrl(url);
+        return `
+          <div class="pkg-gallery-thumb-item">
+            <img src="${optUrl}" alt="Gallery image ${idx + 1}" onerror="this.src='../assets/images/sigiriya.jpg'"/>
+            <button type="button" class="btn-remove-thumb" onclick="AdminApp.removeGalleryItem(${idx})" title="Remove image">✕</button>
+          </div>
+        `;
+      }).join('');
+    },
+
+    /**
+     * Rich-Text Blog Article Inline Image Inserter
+     */
+    insertImageIntoBlog() {
+      this.openImagePicker(null, null, null, {
+        filter: 'image',
+        onSelect: (url) => {
+          const textarea = document.getElementById('blogContent');
+          if (!textarea) return;
+          const optUrl = optimizeMediaUrl(url);
+          const imgTag = '\n<p><img src="' + optUrl + '" alt="Article image" style="max-width: 100%; border-radius: 8px; margin: 16px 0;"/></p>\n';
+          
+          const start = textarea.selectionStart;
+          const end = textarea.selectionEnd;
+          if (start !== undefined && end !== undefined) {
+            textarea.value = textarea.value.substring(0, start) + imgTag + textarea.value.substring(end);
+          } else {
+            textarea.value += imgTag;
+          }
+          textarea.dispatchEvent(new Event('input', { bubbles: true }));
+          this.showToast('Image inserted into blog content!', 'success');
+        }
+      });
+    },
+
+    /**
+     * Media Library Filters & Search
+     */
+    setMediaFilter(type) {
+      this.mediaFilter = type;
+      ['All', 'Images', 'Videos'].forEach(t => {
+        const btn = document.getElementById('mediaFilter' + t);
+        if (btn) {
+          const isMatch = (t === 'All' && type === 'all') || 
+                          (t === 'Images' && type === 'image') || 
+                          (t === 'Videos' && type === 'video');
+          btn.className = isMatch ? 'btn btn-sm btn-gold' : 'btn btn-sm btn-outline';
+        }
+      });
+      this.renderMediaLibrary();
+    },
+
+    filterMediaLibrary(query) {
+      this.mediaSearchQuery = (query || '').toLowerCase().trim();
+      this.renderMediaLibrary();
+    },
+
+    /**
+     * Upgraded Firestore-backed Media Library
+     */
+    async renderMediaLibrary() {
+      // 1. Fetch from Firestore "media" collection if connected
+      if (this.fbDb && (!this.mediaFiles || this.mediaFiles.length <= 4)) {
+        try {
+          const snap = await this.fbDb.collection('media').orderBy('createdAt', 'desc').limit(200).get();
+          if (snap && !snap.empty) {
+            const list = [];
+            snap.forEach(doc => {
+              const d = doc.data();
+              list.push({
+                id: doc.id,
+                name: d.originalName || d.name || 'media-item',
+                url: d.url || d.secureUrl,
+                isVideo: d.resourceType === 'video' || /\.(mp4|webm|mov)$/i.test(d.url || ''),
+                resourceType: d.resourceType || 'image',
+                size: d.bytes ? (Math.round(d.bytes / 1024) + ' KB') : 'Optimized'
+              });
+            });
+            this.mediaFiles = list;
+          }
+        } catch (fsErr) {
+          console.warn('[AdminApp] Firestore media fetch warning:', fsErr);
+        }
+      }
+
+      // 2. If mediaFiles is empty, seed/load the 140 self-hosted assets from media-manifest.json
+      if (!this.mediaFiles || this.mediaFiles.length === 0) {
+        try {
+          const res = await fetch('../data/media-manifest.json');
+          if (res.ok) {
+            const data = await res.json();
+            if (Array.isArray(data) && data.length) {
+              this.mediaFiles = data.map(item => ({
+                id: 'manifest-' + item.name,
+                name: item.name,
+                url: item.url,
+                isVideo: /\.(mp4|webm|mov)$/i.test(item.url),
+                resourceType: /\.(mp4|webm|mov)$/i.test(item.url) ? 'video' : 'image',
+                size: item.size || 'Local WebP'
+              }));
+
+              // Background auto-seed to Firestore "media" collection if user is authenticated
+              if (this.fbDb && this.currentUser) {
+                setTimeout(async () => {
+                  try {
+                    const check = await this.fbDb.collection('media').limit(1).get();
+                    if (check.empty) {
+                      const batch = this.fbDb.batch();
+                      data.slice(0, 100).forEach(m => {
+                        const ref = this.fbDb.collection('media').doc();
+                        batch.set(ref, {
+                          url: m.url,
+                          originalName: m.name,
+                          resourceType: 'image',
+                          format: 'webp',
+                          bytes: 150000,
+                          uploadedBy: 'system-seed',
+                          createdAt: (window.firebase && window.firebase.firestore && window.firebase.firestore.FieldValue)
+                            ? window.firebase.firestore.FieldValue.serverTimestamp()
+                            : new Date().toISOString()
+                        });
+                      });
+                      await batch.commit();
+                      console.log('[AdminApp] Auto-seeded self-hosted assets to Firestore media collection.');
+                    }
+                  } catch (seedErr) {
+                    console.warn('[AdminApp] Media background seed:', seedErr);
+                  }
+                }, 1000);
+              }
+            }
+          }
+        } catch (e) {}
+      }
+
+      const grid = document.getElementById('mediaGrid');
+      if (!grid) return;
+
+      const filter = this.mediaFilter || 'all';
+      const search = this.mediaSearchQuery || '';
+
+      const itemsToRender = (this.mediaFiles || []).filter(m => {
+        const isVid = m.isVideo || m.resourceType === 'video' || /\.(mp4|webm|mov)$/i.test(m.url);
+        if (filter === 'image' && isVid) return false;
+        if (filter === 'video' && !isVid) return false;
+        if (search) {
+          const matchName = (m.name || '').toLowerCase().includes(search);
+          const matchUrl = (m.url || '').toLowerCase().includes(search);
+          return matchName || matchUrl;
+        }
+        return true;
+      });
+
+      if (itemsToRender.length === 0) {
+        grid.innerHTML = '<div style="grid-column: 1 / -1; padding: 40px; text-align: center; color: var(--ink-muted);">No media items match your filter criteria.</div>';
+        return;
+      }
+
+      grid.innerHTML = itemsToRender.map((m, idx) => {
+        const isVid = m.isVideo || m.resourceType === 'video' || /\.(mp4|webm|mov)$/i.test(m.url);
+        const resolved = this.resolveImg(m.url);
+        const thumbUrl = optimizeMediaUrl(resolved, { isThumb: true, isVideo: isVid });
+
+        return `
+          <div class="media-item ${isVid ? 'is-video' : ''}">
+            ${isVid ? `
+              <span class="media-video-badge">🎬 HD VIDEO</span>
+              <img src="${thumbUrl}" alt="${this.escapeAttr(m.name)}" loading="lazy" onerror="this.src='../assets/images/sigiriya.jpg'"/>
+              <div class="media-video-play-center">▶</div>
+            ` : `
+              <img src="${thumbUrl}" alt="${this.escapeAttr(m.name)}" loading="lazy" onerror="this.src='../assets/images/logo.png'"/>
+            `}
+            <div class="media-overlay">
+              <span class="media-info">${this.escapeHtml(m.name)}</span>
+              <div style="display: flex; gap: 6px;">
+                <button class="btn btn-gold btn-sm" onclick="AdminApp.copyMediaUrl('${m.url}')" type="button">Copy URL</button>
+                <button class="btn btn-danger btn-sm" onclick="AdminApp.deleteMedia(${idx}, '${m.id || ''}')" title="Remove from catalog" type="button">✕</button>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    },
+
+    deleteMedia(index, docId) {
+      const item = this.mediaFiles && this.mediaFiles[index];
+      const itemName = item ? item.name : 'this item';
+      if (!confirm('Remove "' + itemName + '" from the Media Library catalog?\n\nNote: Cloudinary unsigned presets retain hosted assets on CDN; this action removes the record from your site catalog.')) {
+        return;
+      }
+
+      if (docId && this.fbDb) {
+        this.fbDb.collection('media').doc(docId).delete().catch(err => {
+          console.warn('[AdminApp] Delete media doc from Firestore:', err);
+        });
+      }
+
+      this.mediaFiles.splice(index, 1);
+      this.renderMediaLibrary();
+      this.showToast('Media entry removed from library catalog.', 'info');
+    },
+
+    /**
+     * Enhanced Media Picker Modal
+     */
+    openImagePicker(targetInputId, previewImgId = null, cardId = null, options = {}) {
+      this.targetPickerInputId = targetInputId;
+      this.targetPickerPreviewId = previewImgId;
+      this.targetPickerCardId = cardId;
+      this.pickerOptions = options || {};
+      this.pickerFilter = options.filter || 'all';
+      this.pickerSearchQuery = '';
+
+      // Update filter tabs inside picker modal
+      ['All', 'Images', 'Videos'].forEach(t => {
+        const btn = document.getElementById('pickerFilter' + t);
+        if (btn) {
+          const isMatch = (t === 'All' && this.pickerFilter === 'all') || 
+                          (t === 'Images' && this.pickerFilter === 'image') || 
+                          (t === 'Videos' && this.pickerFilter === 'video');
+          btn.className = isMatch ? 'btn btn-sm btn-gold' : 'btn btn-sm btn-outline';
+        }
+      });
+
+      this.renderPickerMediaGrid();
+      this.openModal('mediaPickerModal');
+    },
+
+    setPickerFilter(type) {
+      this.pickerFilter = type;
+      ['All', 'Images', 'Videos'].forEach(t => {
+        const btn = document.getElementById('pickerFilter' + t);
+        if (btn) {
+          const isMatch = (t === 'All' && type === 'all') || 
+                          (t === 'Images' && type === 'image') || 
+                          (t === 'Videos' && type === 'video');
+          btn.className = isMatch ? 'btn btn-sm btn-gold' : 'btn btn-sm btn-outline';
+        }
+      });
+      this.renderPickerMediaGrid();
+    },
+
+    filterPickerMedia(val) {
+      this.pickerSearchQuery = (val || '').toLowerCase().trim();
+      this.renderPickerMediaGrid();
+    },
+
+    renderPickerMediaGrid() {
+      const grid = document.getElementById('pickerMediaGrid');
+      if (!grid) return;
+
+      if (!this.mediaFiles || this.mediaFiles.length === 0) {
+        this.renderMediaLibrary();
+      }
+
+      const filter = this.pickerFilter || 'all';
+      const search = this.pickerSearchQuery || '';
+
+      const items = (this.mediaFiles || []).filter(m => {
+        const isVid = m.isVideo || m.resourceType === 'video' || /\.(mp4|webm|mov)$/i.test(m.url);
+        if (filter === 'image' && isVid) return false;
+        if (filter === 'video' && !isVid) return false;
+        if (search) {
+          return (m.name || '').toLowerCase().includes(search) || (m.url || '').toLowerCase().includes(search);
+        }
+        return true;
+      });
+
+      if (items.length === 0) {
+        grid.innerHTML = '<div style="grid-column: 1 / -1; padding: 30px; text-align: center; color: var(--ink-muted);">No media items found. Click "Upload New" above to upload now.</div>';
+        return;
+      }
+
+      grid.innerHTML = items.map(m => {
+        const isVid = m.isVideo || m.resourceType === 'video' || /\.(mp4|webm|mov)$/i.test(m.url);
+        const resolved = this.resolveImg(m.url);
+        const thumbUrl = optimizeMediaUrl(resolved, { isThumb: true, isVideo: isVid });
+
+        return `
+          <div class="media-item ${isVid ? 'is-video' : ''}" onclick="AdminApp.selectPickedImage('${m.url}', ${isVid})" title="${this.escapeAttr(m.name)}">
+            ${isVid ? `
+              <span class="media-video-badge">🎬 VIDEO</span>
+              <img src="${thumbUrl}" alt="${this.escapeAttr(m.name)}" loading="lazy" onerror="this.src='../assets/images/sigiriya.jpg'"/>
+              <div class="media-video-play-center">▶</div>
+            ` : `
+              <img src="${thumbUrl}" alt="${this.escapeAttr(m.name)}" loading="lazy" onerror="this.src='../assets/images/logo.png'"/>
+            `}
+            <div class="media-overlay">
+              <span class="media-info">${this.escapeHtml(m.name)}</span>
+              <span class="btn btn-gold btn-sm">Select Media</span>
+            </div>
+          </div>
+        `;
+      }).join('');
+    },
+
+    selectPickedImage(url, isVideo = false) {
+      const cleanUrl = url.replace('../', '');
+
+      if (this.targetPickerInputId) {
+        const target = document.getElementById(this.targetPickerInputId);
+        if (target) {
+          target.value = cleanUrl;
+          target.dispatchEvent(new Event('input', { bubbles: true }));
+          target.dispatchEvent(new Event('change', { bubbles: true }));
+          
+          if (isVideo || this.targetPickerInputId.toLowerCase().includes('video')) {
+            this.updateVideoPreview(this.targetPickerInputId, this.targetPickerPreviewId, this.targetPickerCardId);
+          } else {
+            this.updateImagePreview(this.targetPickerInputId, this.targetPickerPreviewId, this.targetPickerCardId);
+          }
+        }
+      }
+
+      if (this.pickerOptions && typeof this.pickerOptions.onSelect === 'function') {
+        this.pickerOptions.onSelect(cleanUrl, isVideo);
+      }
+
+      this.closeModal('mediaPickerModal');
+      this.showToast('Media selected and preview updated!', 'success');
+    },
+
+    triggerUploadFromPicker() {
+      const isVid = this.pickerFilter === 'video';
+      this.triggerUploadForInput(this.targetPickerInputId, this.targetPickerPreviewId, this.targetPickerCardId, {
+        resourceType: isVid ? 'video' : 'auto',
+        callback: (url, isVideo) => {
+          if (this.pickerOptions && typeof this.pickerOptions.onSelect === 'function') {
+            this.pickerOptions.onSelect(url, isVideo);
+          }
+          this.closeModal('mediaPickerModal');
+        }
+      });
+    },
+
+    /**
+     * Cloudinary 1x1 Self-Test in Settings
+     */
+    async runCloudinarySelfTest() {
+      const statusEl = document.getElementById('cloudinaryTestStatus');
+      const detailsEl = document.getElementById('cloudinaryTestDetails');
+      if (statusEl) {
+        statusEl.textContent = '⏳ Uploading 1x1 test image to Cloudinary CDN...';
+        statusEl.style.color = '#3B82F6';
+      }
+      if (detailsEl) detailsEl.style.display = 'none';
+
+      try {
+        const canvas = document.createElement('canvas');
+        canvas.width = 1;
+        canvas.height = 1;
+        const ctx = canvas.getContext('2d');
+        ctx.fillStyle = '#E5B869';
+        ctx.fillRect(0, 0, 1, 1);
+
+        const blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/png'));
+        const testFile = new File([blob], 'test-self-check.png', { type: 'image/png' });
+
+        const result = await uploadToCloudinary(testFile, { tags: 'admin_test' });
+
+        if (statusEl) {
+          statusEl.textContent = '✅ Cloudinary Direct Upload Working: HTTP 200 OK!';
+          statusEl.style.color = '#10B981';
+        }
+        if (detailsEl) {
+          detailsEl.style.display = 'block';
+          detailsEl.innerHTML = '<strong>Status:</strong> HTTP 200 OK<br><strong>Public ID:</strong> ' + result.publicId + '<br><strong>CDN URL:</strong> <a href="' + result.secureUrl + '" target="_blank" style="color: #FDE047;">' + result.secureUrl + '</a>';
+        }
+        this.showToast('Cloudinary self-test passed! CDN upload is active.', 'success', 5000);
+      } catch (err) {
+        console.error('[Cloudinary Self Test Error]', err);
+        if (statusEl) {
+          statusEl.textContent = '❌ Test Failed: ' + err.message;
+          statusEl.style.color = '#EF4444';
+        }
+        if (detailsEl) {
+          detailsEl.style.display = 'block';
+          detailsEl.innerHTML = '<strong>Error:</strong> ' + err.message + '<br><small>Ensure preset "lotus_tours_unsigned" is set to Unsigned in Cloudinary Console.</small>';
+        }
+        this.showToast('Cloudinary self-test failed: ' + err.message, 'error', 6000);
+      }
+    },
+
 
     client: null,
 
@@ -348,24 +1236,12 @@ resolveImg(url) {
       }
     },
 
-    initSupabaseClient() {
-      if (window.LotusSupabase && window.LotusSupabase.client) {
-        this.client = window.LotusSupabase.client;
-      } else if (window.supabase && typeof window.supabase.createClient === 'function') {
-        const config = (window.LOTUS_CONFIG && window.LOTUS_CONFIG.supabase) || {};
-        if (config.url && config.anonKey) {
-          try {
-            this.client = window.supabase.createClient(config.url, config.anonKey);
-          } catch (e) {
-            this.client = null;
-          }
-        }
-      }
-    },
+    /* Supabase removed in favor of Firebase Firestore */
 
     async init() {
+      this.verifyFirebaseConnection();
       this.initFirebase();
-      this.initSupabaseClient();
+      // Firebase only
       this.setupIdleDetector();
       this.setupBeforeUnload();
       await this.initAuth();
@@ -586,7 +1462,7 @@ resolveImg(url) {
           this.showToast('Welcome back to Lotus Ceylon CMS', 'success');
           this.showApp();
         } else {
-          throw new Error('No authentication provider (Firebase / Supabase) configured or online. Access denied.');
+          throw new Error('Firebase Authentication is offline or not configured. Access denied.');
         }
       } catch (err) {
         this.showToast('Login failed: ' + err.message, 'error');
@@ -887,6 +1763,22 @@ resolveImg(url) {
      */
 
     async loadAllData() {
+      if (this.fbDb) {
+        try {
+          const cloudDoc = await this.fbDb.collection('settings').doc('cloudinary').get();
+          if (cloudDoc && cloudDoc.exists) {
+            const cd = cloudDoc.data();
+            if (cd.cloudName) this.cloudinaryConfig.cloudName = cd.cloudName;
+            if (cd.uploadPreset) this.cloudinaryConfig.uploadPreset = cd.uploadPreset;
+            if (window.CLOUDINARY_CONFIG) {
+              if (cd.cloudName) window.CLOUDINARY_CONFIG.cloudName = cd.cloudName;
+              if (cd.uploadPreset) window.CLOUDINARY_CONFIG.uploadPreset = cd.uploadPreset;
+            }
+            if (document.getElementById('settingCloudName')) document.getElementById('settingCloudName').value = cd.cloudName;
+            if (document.getElementById('settingUploadPreset')) document.getElementById('settingUploadPreset').value = cd.uploadPreset;
+          }
+        } catch (e) {}
+      }
       let loadedFromLive = false;
 
       // 1. Check Supabase if configured
@@ -2528,6 +3420,11 @@ resolveImg(url) {
 
         document.getElementById('pkgHeroImage').value = pkg.hero_image || '';
         if (document.getElementById('pkgRoute')) document.getElementById('pkgRoute').value = pkg.route || '';
+        const promoVal = pkg.promo_video || '';
+        document.getElementById('pkgPromoVideo').value = promoVal;
+        this.updateVideoPreview('pkgPromoVideo', 'pkgPromoVideoPreview', 'pkgPromoPreviewCard');
+        this.activePackageGallery = (pkg.gallery_images || pkg.gallery || []).slice();
+        this.renderPackageGalleryGrid();
         if (document.getElementById('pkgPromoVideo')) document.getElementById('pkgPromoVideo').value = pkg.promo_video || pkg.promoVideo || '';
         if (document.getElementById('pkgMetaTitle')) document.getElementById('pkgMetaTitle').value = pkg.metaTitle || pkg.meta_title || '';
         if (document.getElementById('pkgMetaDescription')) document.getElementById('pkgMetaDescription').value = pkg.metaDescription || pkg.meta_description || '';
@@ -2760,6 +3657,8 @@ resolveImg(url) {
         faqs: faqs,
         metaTitle: metaTitle,
         metaDescription: metaDescription,
+        promo_video: (document.getElementById('pkgPromoVideo') ? document.getElementById('pkgPromoVideo').value.trim() : '') || existing.promo_video || '',
+        gallery_images: this.activePackageGallery || existing.gallery_images || existing.gallery || [],
         hero_image: document.getElementById('pkgHeroImage').value.trim() || existing.hero_image || 'assets/images/cultural-triangle.jpg',
         itinerary: itinerary.length > 0 ? itinerary : (existing.itinerary || []),
         highlights: highlights.length > 0 ? highlights : (existing.highlights || []),
@@ -4960,6 +5859,18 @@ formatResponsiveMedia(url, alt = 'Lotus Ceylon Media') {
 
 
     async saveSettings() {
+      // Sync Cloudinary settings
+      const cName = document.getElementById('settingCloudName') ? document.getElementById('settingCloudName').value.trim() : '';
+      const cPreset = document.getElementById('settingUploadPreset') ? document.getElementById('settingUploadPreset').value.trim() : '';
+      if (cName) this.cloudinaryConfig.cloudName = cName;
+      if (cPreset) this.cloudinaryConfig.uploadPreset = cPreset;
+      if (window.CLOUDINARY_CONFIG) {
+        if (cName) window.CLOUDINARY_CONFIG.cloudName = cName;
+        if (cPreset) window.CLOUDINARY_CONFIG.uploadPreset = cPreset;
+      }
+      if (this.fbDb) {
+        this.fbDb.collection('settings').doc('cloudinary').set(this.cloudinaryConfig, { merge: true }).catch(e => console.warn(e));
+      }
 
       this.showToast('Saving site configurations...', 'info');
 

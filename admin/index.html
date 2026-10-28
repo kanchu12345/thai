@@ -8,8 +8,6 @@
 <title>CMS Admin Panel — LOTUS Ceylon International Tours</title>
 <link href="../assets/images/logo.png" rel="icon" type="image/png"/>
 <link href="css/admin.css?v=20261021_cms1" rel="stylesheet"/>
-<!-- Supabase JS SDK CDN -->
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <!-- DOMPurify for XSS Protection -->
 <script src="https://cdn.jsdelivr.net/npm/dompurify@3.1.6/dist/purify.min.js"></script>
 </head>
@@ -169,7 +167,7 @@
 </a>
 </nav>
 <div class="sidebar-footer">
-<span id="cmsVersion">v1.0 • Supabase</span>
+<span id="cmsVersion">v2.0 • Firebase</span>
 <a href="../index.html" style="color: var(--sacred-gold);" target="_blank">Preview Site ↗</a>
 </div>
 </aside>
@@ -198,6 +196,17 @@
 </header>
 <!-- CONTENT BODY -->
 <main class="admin-content">
+<!-- GLOBAL MEDIA UPLOAD PROGRESS BANNER -->
+<div id="adminUploadProgressBanner" class="admin-upload-progress-banner" style="display: none;">
+  <div class="progress-info">
+    <span class="progress-filename">☁️ <span id="adminUploadFileName">Uploading media...</span></span>
+    <span id="adminUploadPercent" class="progress-percent">0%</span>
+  </div>
+  <div class="progress-bar-track">
+    <div id="adminUploadProgressBar" class="progress-bar-fill" style="width: 0%;"></div>
+  </div>
+</div>
+
 <!-- ========================================== -->
 <!-- SECTION 1: DASHBOARD                       -->
 <!-- ========================================== -->
@@ -517,11 +526,27 @@
 </button>
 </div>
 <!-- Dropzone -->
+<!-- Storage Notice -->
+<div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-left: 4px solid var(--sacred-gold); padding: 10px 16px; border-radius: 6px; font-size: 0.84rem; color: #475569; margin-bottom: 16px;">
+  ℹ️ <strong>Cloudinary CDN Storage:</strong> Media files are stored permanently on Cloudinary CDN. Deleting an item removes its catalog entry from Firestore.
+</div>
+<!-- Dropzone -->
 <div class="dropzone" id="mediaDropzone" onclick="document.getElementById('mediaFileInput').click()">
 <div class="dropzone-icon">☁️</div>
-<h3 style="font-size: 1.1rem; margin-bottom: 4px;">Drag and drop image files here, or click to browse</h3>
-<p style="color: var(--ink-muted); font-size: 0.85rem;">Max 5 MB per image. Automatically converted and compressed to WebP for lightning-fast delivery.</p>
-<input accept="image/*,video/*" aria-label="Upload image or video files" id="mediaFileInput" multiple="" onchange="AdminApp.handleMediaUpload(this.files)" style="display: none;" type="file"/>
+<h3 style="font-size: 1.1rem; margin-bottom: 4px;">Drag &amp; drop images or videos here, or click to browse</h3>
+<p style="color: var(--ink-muted); font-size: 0.85rem;">Images up to 10 MB (JPG, PNG, WebP, GIF, SVG). Videos up to 100 MB (MP4, WebM, MOV). Automatic client-side compression for large images.</p>
+<input accept="image/jpeg,image/png,image/webp,image/gif,image/svg+xml,video/mp4,video/webm,video/quicktime,.jpg,.jpeg,.png,.webp,.gif,.svg,.mp4,.webm,.mov" aria-label="Upload image or video files" id="mediaFileInput" multiple="" onchange="AdminApp.handleMediaUpload(this.files)" style="display: none;" type="file"/>
+</div>
+<!-- Filter & Search Toolbar -->
+<div style="display: flex; justify-content: space-between; align-items: center; margin: 18px 0 14px; gap: 12px; flex-wrap: wrap;">
+  <div style="display: flex; gap: 8px;">
+    <button class="btn btn-sm btn-gold" id="mediaFilterAll" onclick="AdminApp.setMediaFilter('all')" type="button">All Media</button>
+    <button class="btn btn-sm btn-outline" id="mediaFilterImages" onclick="AdminApp.setMediaFilter('image')" type="button">Images Only</button>
+    <button class="btn btn-sm btn-outline" id="mediaFilterVideos" onclick="AdminApp.setMediaFilter('video')" type="button">Videos Only</button>
+  </div>
+  <div style="max-width: 280px; flex: 1;">
+    <input type="text" class="form-control" id="mediaSearchInput" placeholder="Search media by name..." oninput="AdminApp.filterMediaLibrary(this.value)"/>
+  </div>
 </div>
 <!-- Media Grid -->
 <div class="media-grid" id="mediaGrid">
@@ -602,6 +627,30 @@
 </div>
 </div>
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 24px;">
+
+<!-- Cloudinary CDN Settings Card -->
+<div class="table-card" style="padding: 24px;">
+<h3 style="margin-bottom: 16px;">Cloudinary CDN &amp; Media Storage</h3>
+<p style="color: var(--ink-muted); font-size: 0.84rem; margin-bottom: 16px;">Unsigned direct client uploads for images (up to 10 MB) and videos (up to 100 MB). Saved in Firestore.</p>
+<div class="form-group">
+<label>Cloud Name</label>
+<input class="form-control" id="settingCloudName" placeholder="qmukrbh6" type="text" value="qmukrbh6"/>
+</div>
+<div class="form-group">
+<label>Upload Preset (Unsigned)</label>
+<input class="form-control" id="settingUploadPreset" placeholder="lotus_tours_unsigned" type="text" value="lotus_tours_unsigned"/>
+</div>
+<div class="form-group">
+<label>Default Asset Folder (Configured in Cloudinary Preset)</label>
+<input class="form-control" id="settingCloudFolder" placeholder="lotus/tours" readonly style="background: #F8FAFC; color: #64748B;" type="text" value="lotus/tours"/>
+</div>
+<div style="margin-top: 16px; display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
+<button class="btn btn-outline" id="btnTestCloudinary" onclick="AdminApp.runCloudinarySelfTest()" type="button">🧪 Test Upload (1x1 PNG)</button>
+<span id="cloudinaryTestStatus" style="font-size: 0.85rem; font-weight: 600;"></span>
+</div>
+<div id="cloudinaryTestDetails" style="display: none; margin-top: 10px; padding: 12px; background: #0F172A; color: #38BDF8; border-radius: 6px; font-family: monospace; font-size: 0.78rem; word-break: break-all;"></div>
+</div>
+
 <!-- Contact Card -->
 <div class="table-card" style="padding: 24px;">
 <h3 style="margin-bottom: 16px;">Contact Information</h3>
@@ -1006,8 +1055,25 @@
 <input class="form-control" id="pkgRoute" placeholder="Colombo → Sigiriya → Kandy → Nuwara Eliya → Yala → Galle" type="text"/>
 </div>
 <div class="form-group">
-<label>Promo Video URL (MP4 / Cloudinary / Stream)</label>
-<input class="form-control" id="pkgPromoVideo" placeholder="assets/videos/sigiriya-aerial.mp4 or Cloudinary URL" type="text"/>
+<label>Promo Video (MP4 / WebM / Cloudinary)</label>
+<div style="display: flex; gap: 8px; flex-wrap: wrap;">
+  <input class="form-control" id="pkgPromoVideo" oninput="AdminApp.updateVideoPreview('pkgPromoVideo', 'pkgPromoVideoPreview', 'pkgPromoPreviewCard')" placeholder="assets/videos/sigiriya-aerial.mp4 or Cloudinary URL" style="flex: 1; min-width: 200px;" type="text"/>
+  <button class="btn btn-secondary" onclick="AdminApp.triggerUploadForInput('pkgPromoVideo', 'pkgPromoVideoPreview', 'pkgPromoPreviewCard', { resourceType: 'video' })" type="button">🎬 Upload Video</button>
+  <button class="btn btn-outline" onclick="AdminApp.openImagePicker('pkgPromoVideo', 'pkgPromoVideoPreview', 'pkgPromoPreviewCard', { filter: 'video' })" type="button">Browse Media</button>
+</div>
+<!-- Live Video Preview Card -->
+<div class="image-preview-card" id="pkgPromoPreviewCard" style="display: none; margin-top: 8px;">
+  <div class="image-preview-thumb-wrap" style="width: 140px; height: 90px; background: #000;">
+    <video class="image-preview-thumb" id="pkgPromoVideoPreview" controls playsinline preload="metadata" style="width: 100%; height: 100%; object-fit: cover;"></video>
+  </div>
+  <div class="image-preview-info">
+    <span class="image-preview-title">Promo Video Preview <span class="image-preview-badge cdn">Video</span></span>
+    <span class="image-preview-url" id="pkgPromoPreviewUrl"></span>
+  </div>
+  <div class="image-preview-actions">
+    <button class="btn btn-sm btn-outline" onclick="AdminApp.clearVideoField('pkgPromoVideo', 'pkgPromoVideoPreview', 'pkgPromoPreviewCard')" type="button">Remove</button>
+  </div>
+</div>
 </div>
 </div>
 <div class="form-group">
@@ -1016,10 +1082,7 @@
 <input class="form-control" id="pkgHeroImage" oninput="AdminApp.updateImagePreview('pkgHeroImage', 'pkgHeroImagePreview', 'pkgHeroPreviewCard')" placeholder="assets/images/cultural/sigiriya-1.webp or Cloudinary URL" style="flex: 1; min-width: 220px;" type="text"/>
 <button class="btn btn-secondary" onclick="AdminApp.openCloudinaryWidgetForInput('pkgHeroImage', 'pkgHeroImagePreview', 'pkgHeroPreviewCard')" title="Direct unsigned upload to Cloudinary preset" type="button">☁️ Upload Cloudinary</button>
 <button class="btn btn-outline" onclick="AdminApp.openImagePicker('pkgHeroImage', 'pkgHeroImagePreview', 'pkgHeroPreviewCard')" type="button">Browse Media</button>
-<label class="btn-upload-direct" title="Upload local WebP/JPG directly">
-<span>📁 Local Upload</span>
-<input accept="image/*" onchange="AdminApp.handleDirectImageUpload(this.files[0], 'pkgHeroImage', 'pkgHeroImagePreview', 'pkgHeroPreviewCard')" style="display: none;" type="file"/>
-</label>
+
 </div>
 <!-- Live Image Preview Card -->
 <div class="image-preview-card" id="pkgHeroPreviewCard" style="display: none;">
@@ -1035,6 +1098,19 @@
 </div>
 </div>
 </div>
+
+<!-- Tour Package Gallery Images -->
+<div class="form-group" style="margin-top: 14px;">
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+    <label style="font-weight: 600;">Tour Gallery Images</label>
+    <div style="display: flex; gap: 8px;">
+      <button class="btn btn-sm btn-secondary" onclick="AdminApp.triggerGalleryUpload()" type="button">☁️ Upload Images</button>
+      <button class="btn btn-sm btn-outline" onclick="AdminApp.openGalleryMediaPicker()" type="button">Browse Media</button>
+    </div>
+  </div>
+  <div class="package-gallery-grid" id="pkgGalleryGrid"></div>
+</div>
+
 <!-- Itinerary Repeater -->
 <div class="form-group">
 <div style="display: flex; justify-content: space-between; align-items: center;">
@@ -1117,6 +1193,17 @@
 <button class="modal-close" onclick="AdminApp.closeModal('mediaPickerModal')">×</button>
 </div>
 <div class="modal-body">
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; gap: 10px; flex-wrap: wrap;">
+  <div style="display: flex; gap: 6px;">
+    <button class="btn btn-sm btn-gold" id="pickerFilterAll" onclick="AdminApp.setPickerFilter('all')" type="button">All</button>
+    <button class="btn btn-sm btn-outline" id="pickerFilterImages" onclick="AdminApp.setPickerFilter('image')" type="button">Images</button>
+    <button class="btn btn-sm btn-outline" id="pickerFilterVideos" onclick="AdminApp.setPickerFilter('video')" type="button">Videos</button>
+  </div>
+  <div style="display: flex; gap: 8px; flex: 1; max-width: 320px;">
+    <input type="text" class="form-control form-control-sm" id="pickerSearchInput" placeholder="Search media..." oninput="AdminApp.filterPickerMedia(this.value)"/>
+    <button class="btn btn-sm btn-secondary" onclick="AdminApp.triggerUploadFromPicker()" type="button" style="white-space: nowrap;">☁️ Upload New</button>
+  </div>
+</div>
 <div class="media-grid" id="pickerMediaGrid">
 <!-- Rendered dynamically -->
 </div>
@@ -1497,9 +1584,22 @@
         </div>
         <div class="form-group">
           <label>Cover Image *</label>
-          <div style="display: flex; gap: 8px;">
-            <input class="form-control" id="blogCoverImage" placeholder="assets/images/sigiriya.jpg" required type="text"/>
-            <button class="btn btn-outline" onclick="AdminApp.openImagePicker('blogCoverImage')" type="button">Browse Media</button>
+          <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+            <input class="form-control" id="blogCoverImage" oninput="AdminApp.updateImagePreview('blogCoverImage', 'blogCoverPreview', 'blogCoverPreviewCard')" placeholder="assets/images/sigiriya.jpg" required type="text" style="flex: 1; min-width: 200px;"/>
+            <button class="btn btn-secondary" onclick="AdminApp.triggerUploadForInput('blogCoverImage', 'blogCoverPreview', 'blogCoverPreviewCard')" type="button">☁️ Upload Cloudinary</button>
+            <button class="btn btn-outline" onclick="AdminApp.openImagePicker('blogCoverImage', 'blogCoverPreview', 'blogCoverPreviewCard')" type="button">Browse Media</button>
+          </div>
+          <div class="image-preview-card" id="blogCoverPreviewCard" style="display: none; margin-top: 8px;">
+            <div class="image-preview-thumb-wrap">
+              <img alt="Blog Cover" class="image-preview-thumb" id="blogCoverPreview" onerror="if(window.AdminApp)AdminApp.handlePreviewError(this)" src=""/>
+            </div>
+            <div class="image-preview-info">
+              <span class="image-preview-title">Cover Image</span>
+              <span class="image-preview-url" id="blogCoverPreviewUrl"></span>
+            </div>
+            <div class="image-preview-actions">
+              <button class="btn btn-sm btn-outline" onclick="AdminApp.clearImageField('blogCoverImage', 'blogCoverPreview', 'blogCoverPreviewCard')" type="button">Remove</button>
+            </div>
           </div>
         </div>
         <div class="form-group">
@@ -1507,7 +1607,10 @@
           <textarea class="form-control" id="blogExcerpt" rows="2" placeholder="Brief 2-sentence summary for previews..."></textarea>
         </div>
         <div class="form-group">
-          <label>Full Article Content (HTML / Rich Text)</label>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+            <label style="margin: 0;">Full Article Content (HTML / Rich Text)</label>
+            <button class="btn btn-sm btn-outline" onclick="AdminApp.insertImageIntoBlog()" type="button">🖼️ + Insert Image from Media</button>
+          </div>
           <textarea class="form-control" id="blogContent" rows="8" placeholder="<p>Article body paragraphs...</p>"></textarea>
         </div>
         <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 16px;">
@@ -1531,7 +1634,6 @@
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
-<script src="../js/supabase-client.js?v=20261021_cms1"></script>
 <script src="../js/firebase-tour-sync.js"></script>
 <script src="https://upload-widget.cloudinary.com/global/all.js" type="text/javascript"></script>
 <script src="js/admin-app.js?v=20261021_cms1"></script>

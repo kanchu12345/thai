@@ -688,17 +688,120 @@
     },
 
     openCloudinaryForField(fieldKey, mediaType = 'image') {
-      if (window.AdminApp && typeof window.AdminApp.triggerDirectCloudinaryUpload === 'function') {
-        window.AdminApp.triggerDirectCloudinaryUpload({
-          accept: mediaType === 'video' ? 'video/*' : 'image/*',
-          inputId: `fieldInput_${fieldKey}`,
-          previewImgId: 'inspectorThumb',
-          callback: (url, isVideo) => {
-            this.handleLiveInput(fieldKey, url, isVideo ? 'video' : 'image');
+      const isVid = mediaType === 'video';
+      const fileInput = document.createElement('input');
+      fileInput.type = 'file';
+      fileInput.accept = isVid 
+        ? 'video/mp4,video/webm,video/quicktime,.mp4,.webm,.mov' 
+        : 'image/jpeg,image/png,image/webp,image/gif,image/svg+xml,.jpg,.jpeg,.png,.webp,.gif,.svg';
+      fileInput.style.display = 'none';
+      document.body.appendChild(fileInput);
+
+      fileInput.onchange = async () => {
+        const file = fileInput.files && fileInput.files[0];
+        if (!file) {
+          if (fileInput.parentNode) fileInput.remove();
+          return;
+        }
+
+        try {
+          const uploader = window.uploadToCloudinary || (window.AdminApp && window.AdminApp.uploadToCloudinary);
+          if (!uploader) throw new Error('Cloudinary uploader module is not available.');
+          
+          const result = await uploader(file, { resourceType: isVid ? 'video' : 'auto' });
+          const targetInput = document.getElementById('fieldInput_' + fieldKey);
+          if (targetInput) {
+            targetInput.value = result.secureUrl;
+            targetInput.dispatchEvent(new Event('input', { bubbles: true }));
+            targetInput.dispatchEvent(new Event('change', { bubbles: true }));
           }
-        });
-      } else if (window.AdminApp && typeof window.AdminApp.openCloudinaryWidgetForInput === 'function') {
-        window.AdminApp.openCloudinaryWidgetForInput(`fieldInput_${fieldKey}`, 'inspectorThumb');
+          this.handleLiveInput(fieldKey, result.secureUrl, isVid ? 'video' : 'image');
+          const thumb = document.getElementById('inspectorThumb');
+          if (thumb) thumb.src = result.secureUrl;
+        } catch (err) {
+          console.error('[PageEditor Upload Error]', err);
+        } finally {
+          if (fileInput.parentNode) fileInput.remove();
+        }
+      };
+
+      fileInput.click();
+    },
+
+    openGlobalDoc(docKey, label) {
+      this.activePageKey = docKey;
+      this.activePageFile = 'index.html';
+      this.selectedElement = null;
+      this.currentFieldValues = {};
+
+      if (window.AdminApp) {
+        window.AdminApp.switchSection('page-editor');
+      }
+
+      const iframe = document.getElementById('visualCmsIframe');
+      if (iframe) {
+        iframe.src = '../index.html?edit=1';
+      }
+
+      this.fetchPageDoc(docKey).then(data => {
+        this.activeDocData = data || {};
+        this.renderGlobalInspector(docKey, label);
+        this.markSaved();
+      });
+    },
+
+    renderGlobalInspector(docKey, label) {
+      const panel = document.getElementById('inspectorBody');
+      if (!panel) return;
+
+      if (docKey === 'siteGlobal/branding') {
+        const logoSrc = (this.activeDocData && this.activeDocData['siteGlobal.branding.logo']) || 'assets/images/brand/logo-header.png';
+        const heroVideoSrc = (this.activeDocData && this.activeDocData['home.hero_video']) || 'assets/videos/sigiriya-aerial.mp4';
+        const heroBgSrc = (this.activeDocData && this.activeDocData['home.hero_bg']) || 'assets/images/home/hero-sigiriya-aerial-1.webp';
+
+        panel.innerHTML = `
+          <div class="inspector-card">
+            <h4 style="font-size: 1.05rem; margin-bottom: 8px;">🌸 Branding & Global Media</h4>
+            <p style="color: #64748B; font-size: 0.82rem; margin-bottom: 16px;">Configure brand logos, emblems, hero video and global background assets across all pages.</p>
+            
+            <div class="inspector-field-group">
+              <label>Header Brand Logo / Emblem</label>
+              <img src="${this.resolvePreviewUrl(logoSrc)}" class="inspector-thumb-preview" id="preview_branding_logo" style="max-height: 80px; object-fit: contain; background: #0B132B; padding: 6px; border-radius: 4px;"/>
+              <div style="display: flex; gap: 8px; margin-top: 8px;">
+                <input type="text" class="form-control" id="fieldInput_siteGlobal.branding.logo" value="${this.escapeAttr(logoSrc)}" oninput="PageEditor.handleLiveInput('siteGlobal.branding.logo', this.value, 'image')"/>
+                <button type="button" class="btn btn-outline btn-sm" onclick="PageEditor.openMediaPicker('siteGlobal.branding.logo')">📁 Browse</button>
+                <button type="button" class="btn btn-secondary btn-sm" onclick="PageEditor.openCloudinaryForField('siteGlobal.branding.logo')">☁️ Upload</button>
+              </div>
+            </div>
+
+            <div class="inspector-field-group" style="margin-top: 16px;">
+              <label>Home Hero Background Video (MP4 / WebM)</label>
+              <video src="${this.resolvePreviewUrl(heroVideoSrc)}" class="inspector-video-preview" controls muted autoplay loop style="max-height: 140px; width: 100%; border-radius: 6px;"></video>
+              <div style="display: flex; gap: 8px; margin-top: 8px;">
+                <input type="text" class="form-control" id="fieldInput_home.hero_video" value="${this.escapeAttr(heroVideoSrc)}" oninput="PageEditor.handleLiveInput('home.hero_video', this.value, 'video')"/>
+                <button type="button" class="btn btn-outline btn-sm" onclick="PageEditor.openMediaPicker('home.hero_video')">📁 Browse</button>
+                <button type="button" class="btn btn-secondary btn-sm" onclick="PageEditor.openCloudinaryForField('home.hero_video', 'video')">🎬 Upload Video</button>
+              </div>
+            </div>
+
+            <div class="inspector-field-group" style="margin-top: 16px;">
+              <label>Home Hero Background Image (Fallback / Poster)</label>
+              <img src="${this.resolvePreviewUrl(heroBgSrc)}" class="inspector-thumb-preview" id="preview_hero_bg" style="max-height: 120px;"/>
+              <div style="display: flex; gap: 8px; margin-top: 8px;">
+                <input type="text" class="form-control" id="fieldInput_home.hero_bg" value="${this.escapeAttr(heroBgSrc)}" oninput="PageEditor.handleLiveInput('home.hero_bg', this.value, 'bg-image')"/>
+                <button type="button" class="btn btn-outline btn-sm" onclick="PageEditor.openMediaPicker('home.hero_bg')">📁 Browse</button>
+                <button type="button" class="btn btn-secondary btn-sm" onclick="PageEditor.openCloudinaryForField('home.hero_bg')">☁️ Upload</button>
+              </div>
+            </div>
+          </div>
+        `;
+      } else {
+        panel.innerHTML = `
+          <div class="inspector-card">
+            <h4>${label}</h4>
+            <p style="color: #64748B; font-size: 0.85rem;">Global document components are editable via the live preview on the left. Click any element on the page with a dashed outline to edit its text, link, or media.</p>
+          </div>
+        `;
       }
     },
 
