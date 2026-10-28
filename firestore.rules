@@ -84,6 +84,11 @@ service cloud.firestore {
       allow write: if isAdmin();
     }
 
+    match /settings/{settingId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
     // =========================================================================
     // 4. EDITABLE PUBLIC CONTENT
     // =========================================================================
