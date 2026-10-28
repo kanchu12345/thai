@@ -342,49 +342,21 @@ window.uploadToCloudinary = uploadToCloudinary;
   const AdminApp = {
 
     // Cloudinary Config stored on AdminApp
-    cloudinaryConfig: {
-      cloudName: 'qmukrbh6',
-      uploadPreset: 'lotus_tours_unsigned',
-      folder: 'lotus/tours'
-    },
-    activePackageGallery: [],
-    mediaFilter: 'all',
-    mediaSearchQuery: '',
-    pickerFilter: 'all',
-    pickerSearchQuery: '',
-
-    /**
-     * Verify Live Firebase Connection on Init
-     */
-    async verifyFirebaseConnection() {
-      const badge = document.getElementById('firebaseStatusBadge');
-      if (!this.fbDb) {
-        this.updateFirebaseBadge('Firebase: SDK Not Loaded', '#EF4444');
-        return false;
-      }
-      try {
-        const snap = await this.fbDb.collection('tourPackages').limit(5).get();
-        const count = snap.size || (this.packages ? this.packages.length : 0);
-        this.updateFirebaseBadge('Connected (Firestore Live: ' + count + ' Tours)', '#10B981');
-        return true;
-      } catch (err) {
-        console.warn('[AdminApp] Firebase connection check:', err);
-        const reason = err.code || err.message || 'Offline';
-        this.updateFirebaseBadge('Firebase: ' + reason, '#EF4444');
-        return false;
-      }
+    triggerDirectCloudinaryUpload(options = {}) {
+      return this.triggerUploadForInput(options.inputId, options.previewImgId, options.cardId, options);
     },
 
+    
     /**
      * Universal Upload Trigger for Any Form Field
      */
     triggerUploadForInput(inputId, previewImgId = null, cardId = null, options = {}) {
       const fileInput = document.createElement('input');
       fileInput.type = 'file';
-      const isVid = options.resourceType === 'video';
-      fileInput.accept = isVid 
+      const isVid = options.resourceType === 'video' || (options.accept && options.accept.includes('video') && !options.accept.includes('image'));
+      fileInput.accept = options.accept || (isVid 
         ? 'video/mp4,video/webm,video/quicktime,.mp4,.webm,.mov' 
-        : 'image/jpeg,image/png,image/webp,image/gif,image/svg+xml,.jpg,.jpeg,.png,.webp,.gif,.svg';
+        : 'image/jpeg,image/png,image/webp,image/gif,image/svg+xml,.jpg,.jpeg,.png,.webp,.gif,.svg');
       fileInput.style.display = 'none';
       document.body.appendChild(fileInput);
 
@@ -427,20 +399,6 @@ window.uploadToCloudinary = uploadToCloudinary;
       };
 
       fileInput.click();
-    },
-
-    /**
-     * Backward-compatible Direct Upload method used across PageEditor and widgets
-     */
-    triggerDirectCloudinaryUpload(options = {}) {
-      this.triggerUploadForInput(options.inputId, options.previewImgId, options.cardId, options);
-    },
-
-    openCloudinaryWidget(callback) {
-      this.triggerDirectCloudinaryUpload({
-        accept: 'image/*,video/*',
-        callback: callback
-      });
     },
 
     openCloudinaryWidgetForInput(inputId, previewImgId = null, cardId = null) {
@@ -505,18 +463,21 @@ window.uploadToCloudinary = uploadToCloudinary;
           return;
         }
 
-        this.showToast('Uploading ' + files.length + ' gallery images to Cloudinary...', 'info', 4000);
+        this.showToast(`Uploading ${files.length} gallery image(s) to Cloudinary...`, 'info', 4000);
+        let successCount = 0;
         for (const file of files) {
           try {
-            const res = await uploadToCloudinary(file);
+            const res = await uploadToCloudinary(file, { resourceType: 'image' });
             this.activePackageGallery = this.activePackageGallery || [];
             this.activePackageGallery.push(res.secureUrl);
             this.renderPackageGalleryGrid();
+            successCount++;
           } catch (e) {
-            console.error('[Gallery Image Upload Error]', e);
+            console.error('[Gallery Upload Error]', e);
           }
         }
         if (fileInput.parentNode) fileInput.remove();
+        this.showToast(`${successCount} of ${files.length} gallery image(s) uploaded successfully!`, 'success');
       };
 
       fileInput.click();
@@ -1003,32 +964,8 @@ window.uploadToCloudinary = uploadToCloudinary;
      * Direct Unsigned Upload to Cloudinary CDN
      */
     async uploadBlobToCloudinary(blob, originalFilename = 'image.webp') {
-      const config = (window.LOTUS_CONFIG && window.LOTUS_CONFIG.cloudinary) || {};
-      const cloudName = config.cloudName || 'qmukrbh6';
-      const uploadPreset = config.uploadPreset || 'lotus_tours_unsigned';
-      const folder = config.folder || 'lotus/tours';
-
-      const formData = new FormData();
-      formData.append('file', blob, originalFilename);
-      formData.append('upload_preset', uploadPreset);
-      formData.append('folder', folder);
-
-      const res = await fetch(`https://api.cloudinary.com/v1_1/${cloudName}/image/upload`, {
-        method: 'POST',
-        body: formData
-      });
-
-      if (!res.ok) {
-        const errJson = await res.json().catch(() => ({}));
-        throw new Error((errJson.error && errJson.error.message) || `Upload failed with HTTP ${res.status}`);
-      }
-
-      const data = await res.json();
-      let secureUrl = data.secure_url;
-      if (secureUrl.includes('/upload/') && !secureUrl.includes('/f_auto')) {
-        secureUrl = secureUrl.replace('/upload/', '/upload/f_auto,q_auto/');
-      }
-      return secureUrl;
+      const res = await uploadToCloudinary(blob, { originalName: originalFilename });
+      return res.secureUrl;
     },
 resolveImg(url) {
       if (!url) return "../assets/images/logo.png";
@@ -1180,41 +1117,23 @@ resolveImg(url) {
 
     async handleDirectImageUpload(file, inputId, previewImgId, cardId) {
       if (!file) return;
-      if (!file.type.startsWith('image/')) {
-        this.showToast('Please select a valid image file', 'error');
-        return;
-      }
-      const safeName = file.name.replace(/\.[^/.]+$/, "") + '.webp';
-      this.showToast(`Compressing & uploading "${file.name}" to Cloudinary CDN...`, 'info', 3000);
-
       try {
-        const compressedBlob = await this.compressImageToWebP(file, 1920, 0.85);
-        let permanentUrl = '';
-        try {
-          permanentUrl = await this.uploadBlobToCloudinary(compressedBlob, safeName);
-        } catch (cloudErr) {
-          console.warn('[AdminApp] Cloudinary direct upload failed, using local blob:', cloudErr.message);
-          permanentUrl = URL.createObjectURL(compressedBlob);
-        }
-
+        const res = await uploadToCloudinary(file);
+        const permanentUrl = res.secureUrl;
         const input = document.getElementById(inputId);
-        if (input) input.value = permanentUrl;
+        if (input) {
+          input.value = permanentUrl;
+          input.dispatchEvent(new Event('input', { bubbles: true }));
+          input.dispatchEvent(new Event('change', { bubbles: true }));
+        }
         this.updateImagePreview(inputId, previewImgId, cardId);
-
-        this.mediaFiles.unshift({
-          name: safeName,
-          url: permanentUrl,
-          isVideo: false,
-          size: `${Math.round(compressedBlob.size / 1024)} KB`
-        });
         this.renderMediaLibrary();
-        this.showToast(`Image "${safeName}" uploaded to Cloudinary CDN with live preview!`, 'success');
+        this.showToast(`"${file.name}" uploaded to Cloudinary successfully!`, 'success');
       } catch (err) {
-        console.error('[AdminApp] Upload error:', err);
-        this.showToast('Upload error: ' + err.message, 'error');
+        console.error('[AdminApp] handleDirectImageUpload failed:', err);
+        this.showToast(`Upload failed: ${err.message}`, 'error');
       }
     },
-
 
 
     initFirebase() {
@@ -5649,113 +5568,8 @@ resolveImg(url) {
      * Direct Unsigned Cloudinary Upload Engine (No External iframe widget required)
      * Solves the infinite loading spinner on local file:/// or blocked iframe cross-origin environments.
      */
-    cloudinaryConfig: {
-      cloudName: 'qmukrbh6',
-      uploadPreset: 'lotus_tours_unsigned',
-      folder: 'lotus/tours'
-    },
-
     triggerDirectCloudinaryUpload(options = {}) {
-      const fileInput = document.createElement('input');
-      fileInput.type = 'file';
-      fileInput.accept = options.accept || 'image/*,video/*';
-      fileInput.style.display = 'none';
-      document.body.appendChild(fileInput);
-
-      fileInput.onchange = async () => {
-        const file = fileInput.files && fileInput.files[0];
-        if (!file) {
-          if (fileInput.parentNode) fileInput.remove();
-          return;
-        }
-
-        const isVideo = file.type.startsWith('video/') || /\.(mp4|webm|mov|m4v|ogg)$/i.test(file.name);
-        const resourceType = isVideo ? 'video' : 'auto';
-        const config = (window.LOTUS_CONFIG && window.LOTUS_CONFIG.cloudinary) || this.cloudinaryConfig || {};
-        const cloudName = config.cloudName || 'qmukrbh6';
-        const uploadPreset = config.uploadPreset || 'lotus_tours_unsigned';
-        const folder = options.folder || config.folder || 'lotus/tours';
-
-        this.showToast(`Uploading "${file.name}" to Cloudinary CDN...`, 'info', 6000);
-
-        try {
-          const formData = new FormData();
-          formData.append('file', file);
-          formData.append('upload_preset', uploadPreset);
-          formData.append('folder', folder);
-
-          const res = await fetch(`https://api.cloudinary.com/v1_1/${cloudName}/${resourceType}/upload`, {
-            method: 'POST',
-            body: formData
-          });
-
-          if (!res.ok) {
-            const errData = await res.json().catch(() => ({}));
-            throw new Error((errData.error && errData.error.message) || `HTTP status ${res.status}`);
-          }
-
-          const data = await res.json();
-          let secureUrl = data.secure_url || data.url;
-
-          // Responsive transformation for images
-          if (!isVideo && secureUrl.includes('/upload/') && !secureUrl.includes('/f_auto')) {
-            secureUrl = secureUrl.replace('/upload/', '/upload/f_auto,q_auto/');
-          }
-
-          // 1. Update target input field and trigger input event for live preview / reactivity
-          if (options.inputId) {
-            const inputEl = document.getElementById(options.inputId);
-            if (inputEl) {
-              inputEl.value = secureUrl;
-              inputEl.dispatchEvent(new Event('input', { bubbles: true }));
-              inputEl.dispatchEvent(new Event('change', { bubbles: true }));
-            }
-          }
-
-          // 2. Update preview image / video thumbnail
-          if (options.previewImgId) {
-            const previewEl = document.getElementById(options.previewImgId);
-            if (previewEl) {
-              if (previewEl.tagName === 'IMG') {
-                previewEl.src = secureUrl;
-              } else if (previewEl.tagName === 'VIDEO') {
-                previewEl.src = secureUrl;
-                previewEl.load();
-              }
-            }
-          }
-          if (options.cardId) {
-            const cardEl = document.getElementById(options.cardId);
-            if (cardEl) cardEl.style.display = 'block';
-          }
-
-          // 3. Add to media files collection
-          this.mediaFiles = this.mediaFiles || [];
-          this.mediaFiles.unshift({
-            name: file.name,
-            url: secureUrl,
-            isVideo: isVideo,
-            size: `${Math.round((data.bytes || file.size) / 1024)} KB`
-          });
-          if (typeof this.renderMediaLibrary === 'function') {
-            this.renderMediaLibrary();
-          }
-
-          // 4. Fire custom callback
-          if (typeof options.callback === 'function') {
-            options.callback(secureUrl, isVideo, file.name);
-          }
-
-          this.showToast(`"${file.name}" uploaded to Cloudinary CDN successfully!`, 'success', 4000);
-        } catch (uploadErr) {
-          console.error('[Cloudinary Direct Upload]', uploadErr);
-          this.showToast(`Upload failed: ${uploadErr.message}. Check network connection.`, 'error', 6000);
-        } finally {
-          if (fileInput.parentNode) fileInput.remove();
-        }
-      };
-
-      fileInput.click();
+      return this.triggerUploadForInput(options.inputId, options.previewImgId, options.cardId, options);
     },
 
     openCloudinaryWidget(callback) {
