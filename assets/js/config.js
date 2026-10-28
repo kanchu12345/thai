@@ -1,3 +1,7 @@
+
+window.SITE_URL = (typeof window !== 'undefined' && window.location.hostname.includes('github.io'))
+  ? 'https://kanchu12345.github.io/thai/'
+  : 'https://kanchu12345.github.io/thai/';
 /**
  * Lotus Ceylon International Tours & Services (Pvt) Ltd
  * Global Single Source of Truth Configuration File (assets/js/config.js)

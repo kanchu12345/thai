@@ -1,3 +1,8 @@
+
+// Universal Site URL Configuration (Custom Domain Ready)
+window.SITE_URL = (typeof window !== 'undefined' && window.location.hostname.includes('github.io'))
+  ? 'https://kanchu12345.github.io/thai/'
+  : (typeof window !== 'undefined' ? (window.location.origin + (window.location.pathname.startsWith('/thai') ? '/thai/' : '/')) : 'https://kanchu12345.github.io/thai/');
 /**
  * LOTUS CEYLON International Tours & Services (Pvt) Ltd
  * Global Single Source of Truth Website & Inquiry Configuration
