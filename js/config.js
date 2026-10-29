@@ -37,13 +37,13 @@ var LOTUS_CONFIG = window.LOTUS_CONFIG || {};
     },
 
     // Corporate Email
-    email: "inquiry@lotusceylon.com",
-    secondaryEmail: "lotusceylontours@gmail.com",
+    email: "paliforbuddhism@gmail.com",
+    secondaryEmail: "paliforbuddhism@gmail.com",
     emailConfig: {
-      primary: "inquiry@lotusceylon.com",
-      secondary: "lotusceylontours@gmail.com",
+      primary: "paliforbuddhism@gmail.com",
+      secondary: "paliforbuddhism@gmail.com",
       label: "Email Inquiries",
-      mailto: "mailto:inquiry@lotusceylon.com"
+      mailto: "mailto:paliforbuddhism@gmail.com"
     },
     
     // Physical office address (Ja-Ela Headquarters)

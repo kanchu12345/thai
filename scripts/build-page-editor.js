@@ -747,7 +747,7 @@ const code = `/**
       const styleArea = document.getElementById('formTravelStylesList');
 
       const payload = {
-        recipientEmail: emailInput ? emailInput.value.trim() : 'info@lotusceylon.com',
+        recipientEmail: emailInput ? emailInput.value.trim() : 'paliforbuddhism@gmail.com',
         emailSubject: subjectInput ? subjectInput.value.trim() : 'New Journey Inquiry',
         honeypotEnabled: honeypotSelect ? honeypotSelect.value === 'true' : true,
         destinations: destArea ? destArea.value.split(',').map(s => s.trim()).filter(Boolean) : [],

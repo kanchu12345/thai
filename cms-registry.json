@@ -5329,7 +5329,7 @@
         "firestorePath": "siteContent/contact.contact.p_6",
         "type": "text",
         "label": "Paragraph Text (p_6)",
-        "defaultValue": "inquiry@lotusceylon.com",
+        "defaultValue": "paliforbuddhism@gmail.com",
         "i18n": true
       },
       {
@@ -5339,7 +5339,7 @@
         "firestorePath": "siteContent/contact.contact.p_7",
         "type": "text",
         "label": "Paragraph Text (p_7)",
-        "defaultValue": "Secondary: lotusceylontours@gmail.com",
+        "defaultValue": "Secondary: paliforbuddhism@gmail.com",
         "i18n": true
       },
       {
@@ -14725,7 +14725,7 @@
         "firestorePath": "siteContent/privacy-policy.privacy-policy.p_7",
         "type": "text",
         "label": "Paragraph Text (p_7)",
-        "defaultValue": "You have the right to request access to your personal data, request corrections, or request complete deletion of your records from our systems following the completion of your journey. Inquiries may be addressed to: inquiry@lotusceylon.com.",
+        "defaultValue": "You have the right to request access to your personal data, request corrections, or request complete deletion of your records from our systems following the completion of your journey. Inquiries may be addressed to: paliforbuddhism@gmail.com.",
         "i18n": true
       },
       {
@@ -83640,7 +83640,7 @@
       "firestorePath": "siteContent/contact.contact.p_6",
       "type": "text",
       "label": "Paragraph Text (p_6)",
-      "defaultValue": "inquiry@lotusceylon.com",
+      "defaultValue": "paliforbuddhism@gmail.com",
       "i18n": true
     },
     {
@@ -83650,7 +83650,7 @@
       "firestorePath": "siteContent/contact.contact.p_7",
       "type": "text",
       "label": "Paragraph Text (p_7)",
-      "defaultValue": "Secondary: lotusceylontours@gmail.com",
+      "defaultValue": "Secondary: paliforbuddhism@gmail.com",
       "i18n": true
     },
     {
@@ -93020,7 +93020,7 @@
       "firestorePath": "siteContent/privacy-policy.privacy-policy.p_7",
       "type": "text",
       "label": "Paragraph Text (p_7)",
-      "defaultValue": "You have the right to request access to your personal data, request corrections, or request complete deletion of your records from our systems following the completion of your journey. Inquiries may be addressed to: inquiry@lotusceylon.com.",
+      "defaultValue": "You have the right to request access to your personal data, request corrections, or request complete deletion of your records from our systems following the completion of your journey. Inquiries may be addressed to: paliforbuddhism@gmail.com.",
       "i18n": true
     },
     {
