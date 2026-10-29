@@ -511,7 +511,7 @@
           <h3 data-cms="contact.heading_7">Send Us a Direct Message</h3>
           <p data-cms="contact.p_10">Share your intended travel window, party size, or questions. Our senior destination designers will respond with thoughtful guidance.</p>
 
-          <form action="inquiry-detailed.html" method="GET">
+          <form id="contactForm" onsubmit="handleContactSubmit(event)">
             
             <div class="form-group-item">
               <label for="cName">Your Full Name *</label>
@@ -815,5 +815,87 @@ Designed &amp; Developed by <a href="https://infiniteweb.dev/" rel="noopener" ta
 <script defer src="assets/js/site-data.js"></script>
   <script defer src="./assets/js/mobile-nav.js"></script>
   <script defer src="./assets/js/cms.js?v=20261029_fix3"></script>
+
+  <script>
+    async function handleContactSubmit(e) {
+      e.preventDefault();
+      const form = e.target;
+      const submitBtn = form.querySelector('button[type="submit"]');
+      const name = document.getElementById('cName').value.trim();
+      const email = document.getElementById('cEmail').value.trim();
+      const phone = document.getElementById('cPhone').value.trim();
+      const subject = document.getElementById('cSubject').value;
+      const message = document.getElementById('cMessage').value.trim();
+
+      if (!name || !email || !message) return;
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Transmitting Message...';
+
+      const year = new Date().getFullYear();
+      const randomSix = Math.floor(100000 + Math.random() * 900000);
+      const refId = 'LC-' + year + '-' + randomSix;
+
+      try {
+        const restBase = 'https://firestore.googleapis.com/v1/projects/louterst-36b64/databases/(default)/documents';
+        
+        // 1. Save to inquiries collection
+        await fetch(restBase + '/inquiries', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            fields: {
+              referenceId: { stringValue: refId },
+              formType: { stringValue: 'contact' },
+              name: { stringValue: name },
+              email: { stringValue: email },
+              whatsapp: { stringValue: phone || '' },
+              theme: { stringValue: subject },
+              notes: { stringValue: message },
+              status: { stringValue: 'new' },
+              createdAt: { stringValue: new Date().toISOString() }
+            }
+          })
+        });
+
+        // 2. Trigger Email notification document
+        await fetch(restBase + '/mail', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            fields: {
+              to: { arrayValue: { values: [{ stringValue: 'paliforbuddhism@gmail.com' }] } },
+              message: {
+                mapValue: {
+                  fields: {
+                    subject: { stringValue: '[Lotus Ceylon Contact] ' + refId + ' - ' + name },
+                    html: { stringValue: '<p><strong>Ref:</strong> ' + refId + '</p><p><strong>Name:</strong> ' + name + '</p><p><strong>Email:</strong> ' + email + '</p><p><strong>Phone:</strong> ' + phone + '</p><p><strong>Theme:</strong> ' + subject + '</p><p><strong>Message:</strong> ' + message + '</p>' }
+                  }
+                }
+              }
+            }
+          })
+        }).catch(() => {});
+
+        form.innerHTML = `
+          <div style="background: #F0FDF4; border: 1.5px solid #86EFAC; border-radius: 12px; padding: 2rem; text-align: center;">
+            <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">✓</div>
+            <h4 style="color: #166534; font-size: 1.35rem; margin-bottom: 0.5rem; font-weight: 700;">Message Received with Gratitude</h4>
+            <p style="color: #15803D; font-size: 0.95rem; margin-bottom: 1.25rem;">
+              Your inquiry reference is <strong>${refId}</strong>. Our senior destination concierge will reply within 24 hours.
+            </p>
+            <a href="https://wa.me/94715422384?text=Hello%20Lotus%20Ceylon!%20I%20sent%20message%20${refId}%20for%20${encodeURIComponent(name)}" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 8px; background: #25D366; color: #fff; padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: 700; font-size: 0.9rem;">
+              💬 Immediate WhatsApp Follow-up
+            </a>
+          </div>
+        `;
+      } catch (err) {
+        console.warn('Contact form error fallback:', err);
+        const waMsg = 'Hello Lotus Ceylon! Name: ' + name + ', Email: ' + email + ', Message: ' + message;
+        window.open('https://wa.me/94715422384?text=' + encodeURIComponent(waMsg), '_blank');
+      }
+    }
+  </script>
+
 </body>
 </html>
