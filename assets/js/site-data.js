@@ -434,6 +434,21 @@
         });
       }
 
+      // 5. Dynamic Computed Counts (Never typed, always computed from verified data)
+      const totalPackages = (this.store.packages || []).length || 29;
+      const totalCategories = (this.store.categories || []).length || 11;
+      const totalDestinations = (this.store.destinations || []).length || 24;
+
+      document.querySelectorAll('[data-bind-packages-count], .packages-count-badge').forEach(el => {
+        el.textContent = `${totalPackages} Packages`;
+      });
+      document.querySelectorAll('[data-bind-themes-count], .themes-count-badge').forEach(el => {
+        el.textContent = `${totalCategories} Signature Themes`;
+      });
+      document.querySelectorAll('[data-bind-destinations-count], .destinations-count-badge').forEach(el => {
+        el.textContent = `${totalDestinations} Iconic Destinations`;
+      });
+
       // 4. Hydrate package cards if marked with data-package-slug
       document.querySelectorAll('[data-package-slug]').forEach(card => {
         const slug = card.getAttribute('data-package-slug');

@@ -12243,6 +12243,350 @@
       ],
       "is_popular": false,
       "is_published": true
+    },
+    {
+      "id": "pkg-the-sacred-bodhi-ancient-kingdoms",
+      "slug": "the-sacred-bodhi-ancient-kingdoms",
+      "title": {
+        "en": "The Sacred Bodhi & Ancient Kingdoms",
+        "zh": "神圣菩提与古代王朝朝圣之旅"
+      },
+      "subtitle": "Chronicles of the Living Dhamma & Sacred Relics",
+      "category_slug": "buddhist-heritage",
+      "category": "buddhist-heritage",
+      "nights": 7,
+      "days": 8,
+      "price_from": 1450,
+      "price_formatted": "$1,450",
+      "route": "Negombo • Anuradhapura • Mihintale • Polonnaruwa • Dambulla • Kandy • Colombo",
+      "hero_image": "assets/images/buddhist-heritage/jaya-sri-maha-bodhi-1.webp",
+      "gallery_images": [
+        "assets/images/buddhist-heritage/jaya-sri-maha-bodhi-1.webp",
+        "assets/images/buddhist-heritage/temple-of-the-tooth-4.webp",
+        "assets/images/buddhist-heritage/mihintale-3.webp"
+      ],
+      "overview": {
+        "en": "Experience morning puja offerings at the oldest living human-planted tree in recorded history (Jaya Sri Maha Bodhi), circumambulate the great Ruwanwelisaya, and meditate beneath Mihintale’s granite peak.",
+        "zh": "在有记载的人类种植历史中最古老的活树（圣菩提树）前体验清晨礼拜，绕行神圣的鲁万维利萨亚大佛塔，并在米欣特莱山峰下冥想。"
+      },
+      "highlights": [
+        "Private sacred morning blessing at Jaya Sri Maha Bodhi in Anuradhapura",
+        "Circumambulation and oil-lamp offering at Ruwanwelisaya Maha Stupa",
+        "Sunset meditation ascent at the sacred mountain cradle of Mihintale",
+        "Marvel at the four rock-hewn granite colossi of Gal Vihara in Polonnaruwa",
+        "VIP evening Tevava ceremony attendance at the Temple of the Sacred Tooth in Kandy"
+      ],
+      "itinerary": [
+        {
+          "day": 1,
+          "title": "Arrival & Sacred Welcome at Negombo Seaboard",
+          "desc": "Arrive at airport and receive a traditional lotus greeting. Transfer to coastal hotel.",
+          "stay": "Negombo"
+        },
+        {
+          "day": 2,
+          "title": "Journey North to Anuradhapura & Jaya Sri Maha Bodhi",
+          "desc": "Travel to ancient Rajarata heartland and visit sacred Bodhi precinct.",
+          "stay": "Anuradhapura"
+        },
+        {
+          "day": 3,
+          "title": "The Great Stupas: Ruwanwelisaya, Jetavanaramaya & Abhayagiri",
+          "desc": "Barefoot pilgrimage around the great relic-enshrining stupas.",
+          "stay": "Anuradhapura"
+        },
+        {
+          "day": 4,
+          "title": "Mihintale Mountain Sanctuary & Ritigala Forest Monastery",
+          "desc": "Ascend sacred mountain cradle of Buddhism and forest ruins.",
+          "stay": "Habarana"
+        },
+        {
+          "day": 5,
+          "title": "Medieval Royal Sanctuary of Polonnaruwa & Gal Vihara",
+          "desc": "Meditate before the serene granite Buddhas of Gal Vihara.",
+          "stay": "Habarana"
+        },
+        {
+          "day": 6,
+          "title": "Dambulla Rock Cave Temples & Transfer to Hill Capital Kandy",
+          "desc": "Explore ancient cave murals and ascend into the misty hills.",
+          "stay": "Kandy"
+        },
+        {
+          "day": 7,
+          "title": "Sri Dalada Maligawa Tevava Ceremony & Asgiriya Maha Vihara",
+          "desc": "Attend reverent daily offering ceremony at Temple of the Tooth.",
+          "stay": "Kandy"
+        },
+        {
+          "day": 8,
+          "title": "Peradeniya Botanical Gardens & Chauffeur Transfer to Airport",
+          "desc": "Morning walk among royal palms and private transfer for departure.",
+          "stay": "Departure"
+        }
+      ],
+      "inclusions": [
+        "Private luxury chauffeur-driven transport",
+        "All entrance fees and sacred site permits",
+        "Daily breakfast & authentic dinner",
+        "Specialized Buddhist pilgrimage guide"
+      ],
+      "exclusions": [
+        "International flights and visa fees",
+        "Personal travel insurance",
+        "Discretionary gratuities"
+      ],
+      "faqs": [
+        {
+          "q": "What dress code is required at sacred Buddhist temples?",
+          "a": "White or light-colored attire covering shoulders and knees is strictly observed. Shoes and hats must be removed before entering holy precincts."
+        },
+        {
+          "q": "Is this pilgrimage suitable for all ages?",
+          "a": "Yes, all sites have easy access paths and our private chauffeur accommodates your comfortable pace."
+        }
+      ],
+      "is_popular": true,
+      "is_published": true
+    },
+    {
+      "id": "pkg-the-sacred-tooth-monastic-sanctuaries",
+      "slug": "the-sacred-tooth-monastic-sanctuaries",
+      "title": {
+        "en": "The Sacred Tooth & Monastic Sanctuaries",
+        "zh": "佛牙圣地与僧院探索之旅"
+      },
+      "subtitle": "Royal Reliquaries, Rock Temples & Living Sangha",
+      "category_slug": "buddhist-heritage",
+      "category": "buddhist-heritage",
+      "nights": 9,
+      "days": 10,
+      "price_from": 1890,
+      "price_formatted": "$1,890",
+      "route": "Negombo • Kurunegala • Anuradhapura • Sigiriya • Dambulla • Matale • Kandy • Nuwara Eliya • Colombo",
+      "hero_image": "assets/images/buddhist-heritage/temple-of-the-tooth-4.webp",
+      "gallery_images": [
+        "assets/images/buddhist-heritage/temple-of-the-tooth-4.webp",
+        "assets/images/buddhist-heritage/jaya-sri-maha-bodhi-1.webp",
+        "assets/images/buddhist-heritage/mihintale-3.webp"
+      ],
+      "overview": {
+        "en": "Witness the rhythmic drumming and evening Tevava ceremony at Sri Dalada Maligawa in Kandy, discover the ancient rock cave murals of Dambulla, and explore living monastic traditions.",
+        "zh": "见证康提佛牙寺的鼓乐与晚祷礼拜，探索丹布勒古老石窟壁画，感受生生不息的僧团修行传承。"
+      },
+      "highlights": [
+        "Evening Tevava puja offering at Sri Dalada Maligawa (Temple of the Sacred Tooth)",
+        "Exploration of Aluvihara Rock Cave Temple where the Tipitaka was first written",
+        "Barefoot circumambulation of the great white stupas of Anuradhapura",
+        "Scenic highland tea country pilgrimage through misty mountain passes"
+      ],
+      "itinerary": [
+        {
+          "day": 1,
+          "title": "Arrival & Transfer to Negombo",
+          "desc": "Traditional welcome at the airport. Private transfer to your hotel.",
+          "stay": "Negombo"
+        },
+        {
+          "day": 2,
+          "title": "Kurunegala Monasteries to Anuradhapura",
+          "desc": "Drive past rock temples into ancient sacred capital.",
+          "stay": "Anuradhapura"
+        },
+        {
+          "day": 3,
+          "title": "Jaya Sri Maha Bodhi & The Atamasthana",
+          "desc": "Whole-day pilgrimage across sacred shrines.",
+          "stay": "Anuradhapura"
+        },
+        {
+          "day": 4,
+          "title": "Mihintale Sacred Ascent & Dambulla Foothills",
+          "desc": "Ascend Mihintale peak for morning meditation.",
+          "stay": "Dambulla"
+        },
+        {
+          "day": 5,
+          "title": "Sigiriya Ancient Fortress & Golden Cave Temple",
+          "desc": "Sigiriya rock citadel and Dambulla cave murals.",
+          "stay": "Dambulla"
+        },
+        {
+          "day": 6,
+          "title": "Aluvihara Rock Temple & Spiritual Ascent to Kandy",
+          "desc": "Visit Tipitaka writing site and drive to Kandy.",
+          "stay": "Kandy"
+        },
+        {
+          "day": 7,
+          "title": "Sri Dalada Maligawa Morning Tevava & Malwatta Chapter",
+          "desc": "Inner shrine ceremony and lake monastery visit.",
+          "stay": "Kandy"
+        },
+        {
+          "day": 8,
+          "title": "Highland Scenic Drive to Nuwara Eliya",
+          "desc": "Scenic mountain drive through misty tea country.",
+          "stay": "Nuwara Eliya"
+        },
+        {
+          "day": 9,
+          "title": "Seetha Eliya & Descent to Colombo Seaboard",
+          "desc": "Descend to oceanfront capital of Colombo.",
+          "stay": "Colombo"
+        },
+        {
+          "day": 10,
+          "title": "Kelaniya Raja Maha Vihara & Airport Departure",
+          "desc": "Homage at Kelaniya stupa and flight transfer.",
+          "stay": "Departure"
+        }
+      ],
+      "inclusions": [
+        "Private luxury chauffeur-driven transport",
+        "All entrance fees and sacred site permits",
+        "Daily breakfast & dinner",
+        "Dhamma specialist tour guide"
+      ],
+      "exclusions": [
+        "International airfare",
+        "Travel insurance",
+        "Personal expenses"
+      ],
+      "faqs": [
+        {
+          "q": "Can we arrange a private blessing with a resident monk?",
+          "a": "Yes, we arrange private Pirith blessings and Dhamma discussions at select monasteries."
+        }
+      ],
+      "is_popular": false,
+      "is_published": true
+    },
+    {
+      "id": "pkg-forest-hermitages-mindful-ceylon",
+      "slug": "forest-hermitages-mindful-ceylon",
+      "title": {
+        "en": "Forest Hermitages & Mindful Ceylon",
+        "zh": "森林禅院与正念静心之旅"
+      },
+      "subtitle": "Vipassana Meditation, Silent Sanctuaries & Forest Monks",
+      "category_slug": "buddhist-heritage",
+      "category": "buddhist-heritage",
+      "nights": 11,
+      "days": 12,
+      "price_from": 2250,
+      "price_formatted": "$2,250",
+      "route": "Negombo • Ritigala Forest • Nilgala • Dambulla • Kandy • Knuckles Range • Colombo",
+      "hero_image": "assets/images/buddhist-heritage/mihintale-3.webp",
+      "gallery_images": [
+        "assets/images/buddhist-heritage/mihintale-3.webp",
+        "assets/images/buddhist-heritage/temple-of-the-tooth-4.webp",
+        "assets/images/buddhist-heritage/jaya-sri-maha-bodhi-1.webp"
+      ],
+      "overview": {
+        "en": "Step into ancient forest meditation monasteries hidden in the jungle at Ritigala, practice guided Vipassana with senior Buddhist monks, and stay in serene eco-villas.",
+        "zh": "走进隐于原始密林中的利蒂加拉古老森林修道院，在资深禅师指导下体验内观冥想，沉浸于自然的静谧与祥和。"
+      },
+      "highlights": [
+        "Guided silent forest walking meditation in the sacred Ritigala Strict Nature Reserve",
+        "Daily morning mindfulness and Vipassana meditation sessions with certified instructors",
+        "Stay in secluded nature sanctuaries, eco-luxury forest lodges, and peaceful tea bungalows",
+        "Wholesome organic vegetarian dining prepared in accordance with Buddhist principles"
+      ],
+      "itinerary": [
+        {
+          "day": 1,
+          "title": "Arrival & Mindful Welcome in Negombo",
+          "desc": "Arrival greeting with herbal tea. Acclimatize by the ocean.",
+          "stay": "Negombo"
+        },
+        {
+          "day": 2,
+          "title": "Journey to the Sacred Forest Foothills of Ritigala",
+          "desc": "Travel to untouched jungle foothills. Evening orientation.",
+          "stay": "Ritigala"
+        },
+        {
+          "day": 3,
+          "title": "Ritigala Monastic Ruins & Walking Meditation",
+          "desc": "Walk mindfully along ancient stone-paved canopy paths.",
+          "stay": "Ritigala"
+        },
+        {
+          "day": 4,
+          "title": "Pilgrimage to Jaya Sri Maha Bodhi for Dawn Chanting",
+          "desc": "Dawn chanting ceremony at the Sacred Bo Tree.",
+          "stay": "Anuradhapura"
+        },
+        {
+          "day": 5,
+          "title": "Mihintale Peak Contemplation & Forest Caves",
+          "desc": "Monastic cave exploration and meditation.",
+          "stay": "Habarana"
+        },
+        {
+          "day": 6,
+          "title": "Dambulla Rock Sanctuaries & Herbal Gardens",
+          "desc": "Dawn visit to sacred caves before public hours.",
+          "stay": "Dambulla"
+        },
+        {
+          "day": 7,
+          "title": "Ascent to Kandy & Forest Hermitage of Udawattakele",
+          "desc": "Silent walking retreat through royal sanctuary.",
+          "stay": "Kandy"
+        },
+        {
+          "day": 8,
+          "title": "Sri Dalada Maligawa & Meditation with Senior Monk",
+          "desc": "Riverside meditation and tooth relic ceremony.",
+          "stay": "Kandy"
+        },
+        {
+          "day": 9,
+          "title": "Mountain Wilderness of Knuckles Range Sanctuary",
+          "desc": "Walking meditation among mist-shrouded cloud forests.",
+          "stay": "Knuckles Range"
+        },
+        {
+          "day": 10,
+          "title": "Silent Day of Nature, Yoga & Vipassana",
+          "desc": "Full day of silent contemplation overlooking valley vistas.",
+          "stay": "Knuckles Range"
+        },
+        {
+          "day": 11,
+          "title": "Descent to Colombo & Ocean Sunset Reflection",
+          "desc": "Ocean sunset reflection and farewell dinner.",
+          "stay": "Colombo"
+        },
+        {
+          "day": 12,
+          "title": "Mindful Departure & Airport Transfer",
+          "desc": "Closing blessing ceremony and transfer for departure.",
+          "stay": "Departure"
+        }
+      ],
+      "inclusions": [
+        "All luxury eco-lodge and heritage villa stays",
+        "Private chauffeured hybrid/electric luxury vehicle",
+        "Organic vegetarian meal plan",
+        "Experienced meditation teacher and Dhamma guide"
+      ],
+      "exclusions": [
+        "International flights",
+        "Personal expenses",
+        "Optional spa treatments"
+      ],
+      "faqs": [
+        {
+          "q": "Is prior meditation experience required?",
+          "a": "No, beginners and experienced practitioners alike are gently guided at their own pace."
+        }
+      ],
+      "is_popular": true,
+      "is_published": true
     }
   ],
   "packages": [
@@ -23716,6 +24060,350 @@
         "VIP Golf"
       ],
       "is_popular": false,
+      "is_published": true
+    },
+    {
+      "id": "pkg-the-sacred-bodhi-ancient-kingdoms",
+      "slug": "the-sacred-bodhi-ancient-kingdoms",
+      "title": {
+        "en": "The Sacred Bodhi & Ancient Kingdoms",
+        "zh": "神圣菩提与古代王朝朝圣之旅"
+      },
+      "subtitle": "Chronicles of the Living Dhamma & Sacred Relics",
+      "category_slug": "buddhist-heritage",
+      "category": "buddhist-heritage",
+      "nights": 7,
+      "days": 8,
+      "price_from": 1450,
+      "price_formatted": "$1,450",
+      "route": "Negombo • Anuradhapura • Mihintale • Polonnaruwa • Dambulla • Kandy • Colombo",
+      "hero_image": "assets/images/buddhist-heritage/jaya-sri-maha-bodhi-1.webp",
+      "gallery_images": [
+        "assets/images/buddhist-heritage/jaya-sri-maha-bodhi-1.webp",
+        "assets/images/buddhist-heritage/temple-of-the-tooth-4.webp",
+        "assets/images/buddhist-heritage/mihintale-3.webp"
+      ],
+      "overview": {
+        "en": "Experience morning puja offerings at the oldest living human-planted tree in recorded history (Jaya Sri Maha Bodhi), circumambulate the great Ruwanwelisaya, and meditate beneath Mihintale’s granite peak.",
+        "zh": "在有记载的人类种植历史中最古老的活树（圣菩提树）前体验清晨礼拜，绕行神圣的鲁万维利萨亚大佛塔，并在米欣特莱山峰下冥想。"
+      },
+      "highlights": [
+        "Private sacred morning blessing at Jaya Sri Maha Bodhi in Anuradhapura",
+        "Circumambulation and oil-lamp offering at Ruwanwelisaya Maha Stupa",
+        "Sunset meditation ascent at the sacred mountain cradle of Mihintale",
+        "Marvel at the four rock-hewn granite colossi of Gal Vihara in Polonnaruwa",
+        "VIP evening Tevava ceremony attendance at the Temple of the Sacred Tooth in Kandy"
+      ],
+      "itinerary": [
+        {
+          "day": 1,
+          "title": "Arrival & Sacred Welcome at Negombo Seaboard",
+          "desc": "Arrive at airport and receive a traditional lotus greeting. Transfer to coastal hotel.",
+          "stay": "Negombo"
+        },
+        {
+          "day": 2,
+          "title": "Journey North to Anuradhapura & Jaya Sri Maha Bodhi",
+          "desc": "Travel to ancient Rajarata heartland and visit sacred Bodhi precinct.",
+          "stay": "Anuradhapura"
+        },
+        {
+          "day": 3,
+          "title": "The Great Stupas: Ruwanwelisaya, Jetavanaramaya & Abhayagiri",
+          "desc": "Barefoot pilgrimage around the great relic-enshrining stupas.",
+          "stay": "Anuradhapura"
+        },
+        {
+          "day": 4,
+          "title": "Mihintale Mountain Sanctuary & Ritigala Forest Monastery",
+          "desc": "Ascend sacred mountain cradle of Buddhism and forest ruins.",
+          "stay": "Habarana"
+        },
+        {
+          "day": 5,
+          "title": "Medieval Royal Sanctuary of Polonnaruwa & Gal Vihara",
+          "desc": "Meditate before the serene granite Buddhas of Gal Vihara.",
+          "stay": "Habarana"
+        },
+        {
+          "day": 6,
+          "title": "Dambulla Rock Cave Temples & Transfer to Hill Capital Kandy",
+          "desc": "Explore ancient cave murals and ascend into the misty hills.",
+          "stay": "Kandy"
+        },
+        {
+          "day": 7,
+          "title": "Sri Dalada Maligawa Tevava Ceremony & Asgiriya Maha Vihara",
+          "desc": "Attend reverent daily offering ceremony at Temple of the Tooth.",
+          "stay": "Kandy"
+        },
+        {
+          "day": 8,
+          "title": "Peradeniya Botanical Gardens & Chauffeur Transfer to Airport",
+          "desc": "Morning walk among royal palms and private transfer for departure.",
+          "stay": "Departure"
+        }
+      ],
+      "inclusions": [
+        "Private luxury chauffeur-driven transport",
+        "All entrance fees and sacred site permits",
+        "Daily breakfast & authentic dinner",
+        "Specialized Buddhist pilgrimage guide"
+      ],
+      "exclusions": [
+        "International flights and visa fees",
+        "Personal travel insurance",
+        "Discretionary gratuities"
+      ],
+      "faqs": [
+        {
+          "q": "What dress code is required at sacred Buddhist temples?",
+          "a": "White or light-colored attire covering shoulders and knees is strictly observed. Shoes and hats must be removed before entering holy precincts."
+        },
+        {
+          "q": "Is this pilgrimage suitable for all ages?",
+          "a": "Yes, all sites have easy access paths and our private chauffeur accommodates your comfortable pace."
+        }
+      ],
+      "is_popular": true,
+      "is_published": true
+    },
+    {
+      "id": "pkg-the-sacred-tooth-monastic-sanctuaries",
+      "slug": "the-sacred-tooth-monastic-sanctuaries",
+      "title": {
+        "en": "The Sacred Tooth & Monastic Sanctuaries",
+        "zh": "佛牙圣地与僧院探索之旅"
+      },
+      "subtitle": "Royal Reliquaries, Rock Temples & Living Sangha",
+      "category_slug": "buddhist-heritage",
+      "category": "buddhist-heritage",
+      "nights": 9,
+      "days": 10,
+      "price_from": 1890,
+      "price_formatted": "$1,890",
+      "route": "Negombo • Kurunegala • Anuradhapura • Sigiriya • Dambulla • Matale • Kandy • Nuwara Eliya • Colombo",
+      "hero_image": "assets/images/buddhist-heritage/temple-of-the-tooth-4.webp",
+      "gallery_images": [
+        "assets/images/buddhist-heritage/temple-of-the-tooth-4.webp",
+        "assets/images/buddhist-heritage/jaya-sri-maha-bodhi-1.webp",
+        "assets/images/buddhist-heritage/mihintale-3.webp"
+      ],
+      "overview": {
+        "en": "Witness the rhythmic drumming and evening Tevava ceremony at Sri Dalada Maligawa in Kandy, discover the ancient rock cave murals of Dambulla, and explore living monastic traditions.",
+        "zh": "见证康提佛牙寺的鼓乐与晚祷礼拜，探索丹布勒古老石窟壁画，感受生生不息的僧团修行传承。"
+      },
+      "highlights": [
+        "Evening Tevava puja offering at Sri Dalada Maligawa (Temple of the Sacred Tooth)",
+        "Exploration of Aluvihara Rock Cave Temple where the Tipitaka was first written",
+        "Barefoot circumambulation of the great white stupas of Anuradhapura",
+        "Scenic highland tea country pilgrimage through misty mountain passes"
+      ],
+      "itinerary": [
+        {
+          "day": 1,
+          "title": "Arrival & Transfer to Negombo",
+          "desc": "Traditional welcome at the airport. Private transfer to your hotel.",
+          "stay": "Negombo"
+        },
+        {
+          "day": 2,
+          "title": "Kurunegala Monasteries to Anuradhapura",
+          "desc": "Drive past rock temples into ancient sacred capital.",
+          "stay": "Anuradhapura"
+        },
+        {
+          "day": 3,
+          "title": "Jaya Sri Maha Bodhi & The Atamasthana",
+          "desc": "Whole-day pilgrimage across sacred shrines.",
+          "stay": "Anuradhapura"
+        },
+        {
+          "day": 4,
+          "title": "Mihintale Sacred Ascent & Dambulla Foothills",
+          "desc": "Ascend Mihintale peak for morning meditation.",
+          "stay": "Dambulla"
+        },
+        {
+          "day": 5,
+          "title": "Sigiriya Ancient Fortress & Golden Cave Temple",
+          "desc": "Sigiriya rock citadel and Dambulla cave murals.",
+          "stay": "Dambulla"
+        },
+        {
+          "day": 6,
+          "title": "Aluvihara Rock Temple & Spiritual Ascent to Kandy",
+          "desc": "Visit Tipitaka writing site and drive to Kandy.",
+          "stay": "Kandy"
+        },
+        {
+          "day": 7,
+          "title": "Sri Dalada Maligawa Morning Tevava & Malwatta Chapter",
+          "desc": "Inner shrine ceremony and lake monastery visit.",
+          "stay": "Kandy"
+        },
+        {
+          "day": 8,
+          "title": "Highland Scenic Drive to Nuwara Eliya",
+          "desc": "Scenic mountain drive through misty tea country.",
+          "stay": "Nuwara Eliya"
+        },
+        {
+          "day": 9,
+          "title": "Seetha Eliya & Descent to Colombo Seaboard",
+          "desc": "Descend to oceanfront capital of Colombo.",
+          "stay": "Colombo"
+        },
+        {
+          "day": 10,
+          "title": "Kelaniya Raja Maha Vihara & Airport Departure",
+          "desc": "Homage at Kelaniya stupa and flight transfer.",
+          "stay": "Departure"
+        }
+      ],
+      "inclusions": [
+        "Private luxury chauffeur-driven transport",
+        "All entrance fees and sacred site permits",
+        "Daily breakfast & dinner",
+        "Dhamma specialist tour guide"
+      ],
+      "exclusions": [
+        "International airfare",
+        "Travel insurance",
+        "Personal expenses"
+      ],
+      "faqs": [
+        {
+          "q": "Can we arrange a private blessing with a resident monk?",
+          "a": "Yes, we arrange private Pirith blessings and Dhamma discussions at select monasteries."
+        }
+      ],
+      "is_popular": false,
+      "is_published": true
+    },
+    {
+      "id": "pkg-forest-hermitages-mindful-ceylon",
+      "slug": "forest-hermitages-mindful-ceylon",
+      "title": {
+        "en": "Forest Hermitages & Mindful Ceylon",
+        "zh": "森林禅院与正念静心之旅"
+      },
+      "subtitle": "Vipassana Meditation, Silent Sanctuaries & Forest Monks",
+      "category_slug": "buddhist-heritage",
+      "category": "buddhist-heritage",
+      "nights": 11,
+      "days": 12,
+      "price_from": 2250,
+      "price_formatted": "$2,250",
+      "route": "Negombo • Ritigala Forest • Nilgala • Dambulla • Kandy • Knuckles Range • Colombo",
+      "hero_image": "assets/images/buddhist-heritage/mihintale-3.webp",
+      "gallery_images": [
+        "assets/images/buddhist-heritage/mihintale-3.webp",
+        "assets/images/buddhist-heritage/temple-of-the-tooth-4.webp",
+        "assets/images/buddhist-heritage/jaya-sri-maha-bodhi-1.webp"
+      ],
+      "overview": {
+        "en": "Step into ancient forest meditation monasteries hidden in the jungle at Ritigala, practice guided Vipassana with senior Buddhist monks, and stay in serene eco-villas.",
+        "zh": "走进隐于原始密林中的利蒂加拉古老森林修道院，在资深禅师指导下体验内观冥想，沉浸于自然的静谧与祥和。"
+      },
+      "highlights": [
+        "Guided silent forest walking meditation in the sacred Ritigala Strict Nature Reserve",
+        "Daily morning mindfulness and Vipassana meditation sessions with certified instructors",
+        "Stay in secluded nature sanctuaries, eco-luxury forest lodges, and peaceful tea bungalows",
+        "Wholesome organic vegetarian dining prepared in accordance with Buddhist principles"
+      ],
+      "itinerary": [
+        {
+          "day": 1,
+          "title": "Arrival & Mindful Welcome in Negombo",
+          "desc": "Arrival greeting with herbal tea. Acclimatize by the ocean.",
+          "stay": "Negombo"
+        },
+        {
+          "day": 2,
+          "title": "Journey to the Sacred Forest Foothills of Ritigala",
+          "desc": "Travel to untouched jungle foothills. Evening orientation.",
+          "stay": "Ritigala"
+        },
+        {
+          "day": 3,
+          "title": "Ritigala Monastic Ruins & Walking Meditation",
+          "desc": "Walk mindfully along ancient stone-paved canopy paths.",
+          "stay": "Ritigala"
+        },
+        {
+          "day": 4,
+          "title": "Pilgrimage to Jaya Sri Maha Bodhi for Dawn Chanting",
+          "desc": "Dawn chanting ceremony at the Sacred Bo Tree.",
+          "stay": "Anuradhapura"
+        },
+        {
+          "day": 5,
+          "title": "Mihintale Peak Contemplation & Forest Caves",
+          "desc": "Monastic cave exploration and meditation.",
+          "stay": "Habarana"
+        },
+        {
+          "day": 6,
+          "title": "Dambulla Rock Sanctuaries & Herbal Gardens",
+          "desc": "Dawn visit to sacred caves before public hours.",
+          "stay": "Dambulla"
+        },
+        {
+          "day": 7,
+          "title": "Ascent to Kandy & Forest Hermitage of Udawattakele",
+          "desc": "Silent walking retreat through royal sanctuary.",
+          "stay": "Kandy"
+        },
+        {
+          "day": 8,
+          "title": "Sri Dalada Maligawa & Meditation with Senior Monk",
+          "desc": "Riverside meditation and tooth relic ceremony.",
+          "stay": "Kandy"
+        },
+        {
+          "day": 9,
+          "title": "Mountain Wilderness of Knuckles Range Sanctuary",
+          "desc": "Walking meditation among mist-shrouded cloud forests.",
+          "stay": "Knuckles Range"
+        },
+        {
+          "day": 10,
+          "title": "Silent Day of Nature, Yoga & Vipassana",
+          "desc": "Full day of silent contemplation overlooking valley vistas.",
+          "stay": "Knuckles Range"
+        },
+        {
+          "day": 11,
+          "title": "Descent to Colombo & Ocean Sunset Reflection",
+          "desc": "Ocean sunset reflection and farewell dinner.",
+          "stay": "Colombo"
+        },
+        {
+          "day": 12,
+          "title": "Mindful Departure & Airport Transfer",
+          "desc": "Closing blessing ceremony and transfer for departure.",
+          "stay": "Departure"
+        }
+      ],
+      "inclusions": [
+        "All luxury eco-lodge and heritage villa stays",
+        "Private chauffeured hybrid/electric luxury vehicle",
+        "Organic vegetarian meal plan",
+        "Experienced meditation teacher and Dhamma guide"
+      ],
+      "exclusions": [
+        "International flights",
+        "Personal expenses",
+        "Optional spa treatments"
+      ],
+      "faqs": [
+        {
+          "q": "Is prior meditation experience required?",
+          "a": "No, beginners and experienced practitioners alike are gently guided at their own pace."
+        }
+      ],
+      "is_popular": true,
       "is_published": true
     }
   ],
