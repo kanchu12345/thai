@@ -112,6 +112,18 @@
 
     selectElement(item) {
       this.selectedElement = item;
+      this.activeSliderIndex = 0;
+
+      // Auto-detect slider images if not passed via postMessage
+      if (!item.sliderImages || item.sliderImages.length === 0) {
+        item.sliderImages = this.detectSliderImagesForItem(item);
+      }
+
+      if (item.sliderImages && item.sliderImages.length > 0) {
+        const cleanKey = item.key && item.key.includes('.') ? item.key.split('.').pop() : item.key;
+        const foundIdx = item.sliderImages.findIndex(s => s.key === item.key || (s.key && s.key.split('.').pop() === cleanKey));
+        this.activeSliderIndex = foundIdx >= 0 ? foundIdx : 0;
+      }
 
       // Update Breadcrumb & Header
       const badge = document.getElementById('inspectorSectionBadge');
@@ -124,6 +136,132 @@
 
       // Render Dynamic Field Form
       this.renderElementForm(item);
+    },
+
+    detectSliderImagesForItem(item) {
+      if (!item || !item.key) return null;
+
+      const HOME_SLIDERS = [
+        {
+          keys: ['home.img_17', 'home.img_18', 'home.img_19'],
+          alts: ['Sigiriya Citadel', 'Polonnaruwa Vatadage', 'Sacred Temple Heritage'],
+          defaults: ['assets/images/cultural/sigiriya-1.webp', 'assets/images/cultural/polonnaruwa-gal-vihara-3.webp', 'assets/images/cultural/kandy-temple-of-tooth-4.webp']
+        },
+        {
+          keys: ['home.img_20', 'home.img_21', 'home.img_22'],
+          alts: ['Yala Wild Leopard & Elephants', 'Mirissa Whale Watching', 'Ocean Wildlife Waters'],
+          defaults: ['assets/images/wildlife/yala-leopard-1.webp', 'assets/images/beach/mirissa-1.webp', 'assets/images/honeymoon/mirissa-sunset-2.webp']
+        },
+        {
+          keys: ['home.img_23', 'home.img_24'],
+          alts: ['Southern Sands Beach Luxury', 'Mirissa Sunset Cove'],
+          defaults: ['assets/images/beach/mirissa-1.webp', 'assets/images/honeymoon/mirissa-sunset-2.webp']
+        },
+        {
+          keys: ['home.img_25', 'home.img_26'],
+          alts: ['Misty Hill Country Tea Estates', 'Demodara Nine Arch Bridge'],
+          defaults: ['assets/images/hill-country/nuwara-eliya-tea-2.webp', 'assets/images/hill-country/nine-arches-bridge-1.webp']
+        },
+        {
+          keys: ['home.img_27', 'home.img_28'],
+          alts: ['Ayurvedic Restorative Sanctuary', 'Herbal Gardens & Serenity'],
+          defaults: ['assets/images/cultural/kandy-temple-of-tooth-4.webp', 'assets/images/cultural/sigiriya-1.webp']
+        },
+        {
+          keys: ['home.img_29', 'home.img_30'],
+          alts: ['Romantic Plunge Pool Coastal Sunset', 'Highland Boutique Bungalow'],
+          defaults: ['assets/images/honeymoon/mirissa-sunset-2.webp', 'assets/images/hill-country/nuwara-eliya-tea-2.webp']
+        }
+      ];
+
+      // 1. Try DOM query into iframe if available
+      try {
+        const iframe = document.getElementById('visualCmsIframe');
+        if (iframe && iframe.contentDocument) {
+          const cleanKey = item.key.includes('.') ? item.key.split('.').pop() : item.key;
+          const targetImg = iframe.contentDocument.querySelector(`[data-cms-img="${item.key}"], [data-cms-img="${cleanKey}"]`);
+          if (targetImg) {
+            const slider = targetImg.closest('.card-image-slider');
+            if (slider) {
+              const imgs = Array.from(slider.querySelectorAll('.slider-img, img[data-cms-img]'));
+              if (imgs.length > 1) {
+                return imgs.map((img, i) => {
+                  const k = img.getAttribute('data-cms-img') || img.getAttribute('data-cms') || `${item.key}_${i}`;
+                  return {
+                    index: i,
+                    key: k,
+                    src: img.getAttribute('src') || '',
+                    alt: img.getAttribute('alt') || `Slide ${i + 1}`,
+                    isActive: img.classList.contains('active')
+                  };
+                });
+              }
+            }
+          }
+        }
+      } catch (e) {
+        console.warn('[PageEditor] iframe DOM inspect error:', e);
+      }
+
+      // 2. Fallback to known static slider definitions
+      const cleanKey = item.key.includes('.') ? item.key.split('.').pop() : item.key;
+      for (const group of HOME_SLIDERS) {
+        if (group.keys.includes(item.key) || group.keys.some(k => k.split('.').pop() === cleanKey)) {
+          return group.keys.map((k, i) => {
+            return {
+              index: i,
+              key: k,
+              src: this.getCurrentValue(k, group.defaults[i]),
+              alt: group.alts[i],
+              isActive: k === item.key || k.split('.').pop() === cleanKey
+            };
+          });
+        }
+      }
+
+      return null;
+    },
+
+    switchSliderSlide(idx) {
+      if (!this.selectedElement || !this.selectedElement.sliderImages) return;
+      this.activeSliderIndex = idx;
+      const slide = this.selectedElement.sliderImages[idx];
+      if (!slide) return;
+
+      // Update iframe to reveal this slide visually
+      const iframe = document.getElementById('visualCmsIframe');
+      if (iframe && iframe.contentWindow) {
+        iframe.contentWindow.postMessage({
+          type: 'lotus:activate-slide',
+          key: slide.key,
+          index: idx
+        }, '*');
+      }
+
+      // Also directly update active class in iframe DOM if accessible
+      try {
+        if (iframe && iframe.contentDocument) {
+          const cleanKey = slide.key.includes('.') ? slide.key.split('.').pop() : slide.key;
+          const targetImg = iframe.contentDocument.querySelector(`[data-cms-img="${slide.key}"], [data-cms-img="${cleanKey}"]`);
+          if (targetImg) {
+            const parentSlider = targetImg.closest('.card-image-slider');
+            if (parentSlider) {
+              parentSlider.querySelectorAll('.slider-img, img').forEach(im => im.classList.remove('active'));
+              parentSlider.querySelectorAll('.slider-dot').forEach(dt => dt.classList.remove('active'));
+              targetImg.classList.add('active');
+            }
+          }
+        }
+      } catch (e) {}
+
+      // Update inspector title
+      const title = document.getElementById('inspectorTitle');
+      if (title) {
+        title.textContent = `Card Slider (Slide ${idx + 1} of ${this.selectedElement.sliderImages.length})`;
+      }
+
+      // Re-render form with updated active slide
+      this.renderElementForm(this.selectedElement);
     },
 
     clearSelectedElement() {
@@ -154,6 +292,10 @@
     getFriendlyFieldTitle(key, attrType, val, item = null) {
       if (!key) return 'Page Element';
       if (item && item.isWatermark) return '🌊 Watermark Background Heading';
+      if (item && item.sliderImages && item.sliderImages.length > 1) {
+        const currentSlide = (this.activeSliderIndex || 0) + 1;
+        return `Card Slider (Slide ${currentSlide} of ${item.sliderImages.length})`;
+      }
       if (key && (key.includes('watermark') || key.endsWith('.p_1') || key.endsWith('.p_3') || key.endsWith('.p_8') || key.endsWith('.p_41') || key.endsWith('.p_63') || key.endsWith('.p_68'))) {
         if (item && (item.currentVal || '').length < 30) {
           // Check if likely watermark text
@@ -230,12 +372,53 @@
 
       // --- B. IMAGE / BACKGROUND IMAGE INSPECTOR ---
       if (item.attrType === 'image' || item.attrType === 'bg-image') {
-        const imgSrc = currentVal || 'assets/images/sigiriya.jpg';
+        const hasSlider = item.sliderImages && item.sliderImages.length > 1;
+        let activeKey = item.key;
+        let activeAlt = '';
+        let imgSrc = currentVal || 'assets/images/sigiriya.jpg';
+
+        if (hasSlider) {
+          const currentSlideIdx = (typeof this.activeSliderIndex === 'number' && item.sliderImages[this.activeSliderIndex]) ? this.activeSliderIndex : 0;
+          const currentSlide = item.sliderImages[currentSlideIdx] || item.sliderImages[0];
+          activeKey = currentSlide.key;
+          imgSrc = this.getCurrentValue(activeKey, currentSlide.src) || currentSlide.src;
+          activeAlt = currentSlide.alt || '';
+
+          // Render Slider Switcher Bar
+          html += `
+            <div style="background: linear-gradient(135deg, #F0FDFA 0%, #E6FFFA 100%); border: 1.5px solid #2DD4BF; border-radius: 8px; padding: 12px; margin-bottom: 14px;">
+              <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
+                <span style="font-weight: 700; font-size: 0.85rem; color: #0F766E;">🎠 Tour Card Carousel (${item.sliderImages.length} Slides)</span>
+                <span class="badge" style="background: #CCFBF1; color: #115E59; font-size: 0.72rem; font-weight: 700;">Multi-Image</span>
+              </div>
+              <p style="font-size: 0.76rem; color: #134E4A; margin: 0 0 10px 0; line-height: 1.4;">
+                This card rotates between multiple photos on the live site. Click a slide below to preview &amp; change each image:
+              </p>
+              
+              <div style="display: grid; grid-template-columns: repeat(${item.sliderImages.length}, 1fr); gap: 6px;">
+                ${item.sliderImages.map((slide, idx) => {
+                  const isSelected = idx === currentSlideIdx;
+                  const slideVal = this.getCurrentValue(slide.key, slide.src);
+                  return `
+                    <button type="button" 
+                            onclick="PageEditor.switchSliderSlide(${idx})"
+                            style="display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 6px 4px; border-radius: 6px; cursor: pointer; border: 2px solid ${isSelected ? '#0F766E' : '#99F6E4'}; background: ${isSelected ? '#FFFFFF' : 'rgba(255,255,255,0.7)'}; box-shadow: ${isSelected ? '0 2px 6px rgba(15,118,110,0.25)' : 'none'}; transition: all 0.15s ease;">
+                      <img id="sliderTabThumb_${idx}" src="${this.resolvePreviewUrl(slideVal)}" style="width: 100%; height: 42px; object-fit: cover; border-radius: 4px; border: 1px solid #E2E8F0;" onerror="this.src='../assets/images/placeholder.png'"/>
+                      <span style="font-size: 0.75rem; font-weight: 700; color: ${isSelected ? '#0F766E' : '#475569'};">Slide ${idx + 1}</span>
+                      <span style="font-size: 0.65rem; color: #64748B; overflow: hidden; text-overflow: ellipsis; max-width: 100%; white-space: nowrap;">${this.escapeHtml(slide.key.split('.').pop())}</span>
+                    </button>
+                  `;
+                }).join('')}
+              </div>
+            </div>
+          `;
+        }
+
         html += `
           <div class="inspector-field-group">
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
-              <label style="margin: 0; font-weight: 700; color: #0F172A;">${item.isHeroBanner ? '🎯 Hero Banner Preview &amp; Media' : '🖼️ Image Preview &amp; Source'}</label>
-              <span class="badge" style="font-size: 0.72rem; background: #E2E8F0; color: #334155;">${this.escapeHtml(item.key)}</span>
+              <label style="margin: 0; font-weight: 700; color: #0F172A;">${hasSlider ? `Slide ${(this.activeSliderIndex || 0) + 1} Preview &amp; Media` : (item.isHeroBanner ? '🎯 Hero Banner Preview &amp; Media' : '🖼️ Image Preview &amp; Source')}</label>
+              <span class="badge" style="font-size: 0.72rem; background: #E2E8F0; color: #334155;">${this.escapeHtml(activeKey)}</span>
             </div>
             
             <div style="position: relative; border-radius: 8px; overflow: hidden; background: #0B132B; text-align: center; border: 1px solid #CBD5E1; margin-bottom: 10px;">
@@ -244,21 +427,21 @@
 
             <label style="font-size: 0.82rem; font-weight: 600; color: #475569;">Image CDN URL / Relative Path</label>
             <div style="display: flex; gap: 8px; margin-bottom: 10px;">
-              <input type="text" class="form-control" id="fieldInput_${item.key}" value="${this.escapeAttr(imgSrc)}" placeholder="Image path or Cloudinary URL" oninput="PageEditor.handleLiveInput('${item.key}', this.value, '${item.attrType}')"/>
+              <input type="text" class="form-control" id="fieldInput_${activeKey}" value="${this.escapeAttr(imgSrc)}" placeholder="Image path or Cloudinary URL" oninput="PageEditor.handleLiveInput('${activeKey}', this.value, '${item.attrType}')"/>
             </div>
 
             <!-- Action buttons: Upload, Browse, Delete/Remove, Reset -->
             <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 14px;">
-              <button type="button" class="btn btn-secondary btn-sm" onclick="PageEditor.openCloudinaryForField('${item.key}')" title="Upload a new photo directly to Cloudinary CDN">☁️ Upload New</button>
-              <button type="button" class="btn btn-outline btn-sm" onclick="PageEditor.openMediaPicker('${item.key}')" title="Choose from previously uploaded media">📁 Media Library</button>
-              <button type="button" class="btn btn-danger btn-sm" onclick="PageEditor.clearImageField('${item.key}', '${item.attrType}')" style="background: #EF4444; color: #FFFFFF; border: none;" title="Remove this image">🗑️ Remove Image</button>
-              <button type="button" class="btn btn-outline btn-sm" onclick="PageEditor.resetFieldToDefault('${item.key}', '${item.attrType}')" title="Restore original default image">🔄 Reset Default</button>
+              <button type="button" class="btn btn-secondary btn-sm" onclick="PageEditor.openCloudinaryForField('${activeKey}')" title="Upload a new photo directly to Cloudinary CDN">☁️ Upload New</button>
+              <button type="button" class="btn btn-outline btn-sm" onclick="PageEditor.openMediaPicker('${activeKey}')" title="Choose from previously uploaded media">📁 Media Library</button>
+              <button type="button" class="btn btn-danger btn-sm" onclick="PageEditor.clearImageField('${activeKey}', '${item.attrType}')" style="background: #EF4444; color: #FFFFFF; border: none;" title="Remove this image">🗑️ Remove Image</button>
+              <button type="button" class="btn btn-outline btn-sm" onclick="PageEditor.resetFieldToDefault('${activeKey}', '${item.attrType}')" title="Restore original default image">🔄 Reset Default</button>
             </div>
           </div>
 
           <div class="inspector-field-group">
             <label style="font-weight: 600; font-size: 0.82rem; color: #475569;">Image Alt Text (SEO &amp; Accessibility)</label>
-            <input type="text" class="form-control" id="altInput_${item.key}" value="Lotus Ceylon Luxury Tours" placeholder="Descriptive label for search engines" oninput="PageEditor.handleLiveInput('${item.key}_alt', this.value, 'alt')"/>
+            <input type="text" class="form-control" id="altInput_${activeKey}" value="${this.escapeAttr(activeAlt || 'Lotus Ceylon Luxury Tours')}" placeholder="Descriptive label for search engines" oninput="PageEditor.handleLiveInput('${activeKey}_alt', this.value, 'alt')"/>
           </div>
 
           <div style="margin-top: 18px; padding-top: 14px; border-top: 1px solid #E2E8F0;">
@@ -976,6 +1159,16 @@
       if (thumb && (attrType === 'image' || attrType === 'bg-image')) {
         thumb.src = this.resolvePreviewUrl(val);
       }
+
+      // Sync active slide if currently inside slider
+      if (this.selectedElement && this.selectedElement.sliderImages && (attrType === 'image' || attrType === 'bg-image')) {
+        const matchedIdx = this.selectedElement.sliderImages.findIndex(s => s.key === key || (key.includes('.') && s.key === key.split('.').pop()));
+        if (matchedIdx >= 0) {
+          this.selectedElement.sliderImages[matchedIdx].src = val;
+          const tabThumb = document.getElementById(`sliderTabThumb_${matchedIdx}`);
+          if (tabThumb) tabThumb.src = this.resolvePreviewUrl(val);
+        }
+      }
     },
 
     handlePackagesJump() {
@@ -1050,7 +1243,7 @@
       // Load preview in iframe
       const iframe = document.getElementById('visualCmsIframe');
       if (iframe) {
-        iframe.src = `../${this.activePageFile}?edit=1`;
+        iframe.src = `../${this.activePageFile}?edit=1&v=20261029_slider_v5`;
       }
 
       // Fetch doc from Firestore
@@ -1319,6 +1512,10 @@
         const found = this.registry.bindings.find(b => b.fieldKey === key);
         if (found && found.defaultValue) defaultVal = found.defaultValue;
       }
+      if (!defaultVal && this.selectedElement && this.selectedElement.sliderImages) {
+        const slide = this.selectedElement.sliderImages.find(s => s.key === key || (key.includes('.') && s.key === key.split('.').pop()));
+        if (slide) defaultVal = slide.src;
+      }
       if (!defaultVal && this.selectedElement) {
         defaultVal = this.selectedElement.currentVal;
       }
@@ -1391,7 +1588,7 @@
 
       const iframe = document.getElementById('visualCmsIframe');
       if (iframe) {
-        iframe.src = '../index.html?edit=1';
+        iframe.src = '../index.html?edit=1&v=20261029_slider_v5';
       }
 
       this.fetchPageDoc(docKey).then(data => {

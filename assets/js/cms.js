@@ -808,7 +808,8 @@
         } else {
           const imgWrap = e.target.closest('.hover-box, .about-visual-composition, .about-img-main, .about-img-floating, .bespoke-img-main, .bespoke-img-overlap, .dest-card, .beach-card-img-wrap, .card-image-slider, .story-img-wrap, .faq-visual-wrap');
           if (imgWrap && !['P', 'H1', 'H2', 'H3', 'H4', 'A', 'BUTTON'].includes(e.target.tagName)) {
-            const innerImg = imgWrap.querySelector('img[data-cms-img], img, [data-cms-bg]');
+            const activeSlideImg = imgWrap.querySelector('.card-image-slider img.active, img.active');
+            const innerImg = activeSlideImg || imgWrap.querySelector('img[data-cms-img], img, [data-cms-bg]');
             if (innerImg) target = innerImg;
           }
         }
@@ -885,6 +886,37 @@
             }
           }
 
+          // Check if target belongs to a card-image-slider with multiple slides
+          let sliderWrap = target.closest('.card-image-slider');
+          if (!sliderWrap) {
+            const container = target.closest('.hover-box, .package-card, .tour-card, .tour-grid-card, .curated-card, .beach-package-card, .dest-card');
+            if (container) {
+              sliderWrap = container.querySelector('.card-image-slider');
+            }
+          }
+          let sliderImages = null;
+          if (sliderWrap) {
+            const imgs = Array.from(sliderWrap.querySelectorAll('.slider-img, img[data-cms-img]'));
+            if (imgs.length > 1) {
+              sliderImages = imgs.map((img, i) => {
+                let imgKey = img.getAttribute('data-cms-img') || img.getAttribute('data-cms');
+                if (!imgKey) {
+                  const src = img.getAttribute('src') || '';
+                  const filename = (src.split('/').pop() || 'img').split('.')[0] || ('img_' + (i + 1));
+                  imgKey = 'img_' + filename.replace(/[^a-zA-Z0-9_]/g, '_');
+                  img.setAttribute('data-cms-img', imgKey);
+                }
+                return {
+                  index: i,
+                  key: imgKey,
+                  src: img.getAttribute('src') || '',
+                  alt: img.getAttribute('alt') || ('Slide ' + (i + 1)),
+                  isActive: img.classList.contains('active') || i === 0
+                };
+              });
+            }
+          }
+
           // Notify parent frame
           const isWatermark = target.classList.contains('watermark-heading') || (target.className && String(target.className).includes('watermark'));
           if (window.parent && window.parent !== window) {
@@ -896,7 +928,8 @@
               tagName: target.tagName.toLowerCase(),
               sectionId: sectionId,
               packageSlug: packageSlug || null,
-              isWatermark: isWatermark
+              isWatermark: isWatermark,
+              sliderImages: sliderImages
             }, '*');
           }
         }
@@ -920,6 +953,28 @@
           if (lang === 'ar') document.documentElement.dir = 'rtl';
           else document.documentElement.dir = 'ltr';
           this.bindElements();
+        }
+
+        // Activate specific slide in card-image-slider
+        if (event.data.type === 'lotus:activate-slide') {
+          const { key, index } = event.data;
+          const cleanKey = key && key.includes('.') ? key.split('.').pop() : key;
+          const targetImg = document.querySelector(`[data-cms-img="${key}"], [data-cms-img="${cleanKey}"]`);
+          if (targetImg) {
+            const parentSlider = targetImg.closest('.card-image-slider');
+            if (parentSlider) {
+              const allImgs = parentSlider.querySelectorAll('.slider-img, img');
+              const allDots = parentSlider.querySelectorAll('.slider-dot');
+              allImgs.forEach(img => img.classList.remove('active'));
+              allDots.forEach(dot => dot.classList.remove('active'));
+              targetImg.classList.add('active');
+              const idx = Array.from(allImgs).indexOf(targetImg);
+              if (idx >= 0 && allDots[idx]) allDots[idx].classList.add('active');
+            }
+            if (activeEl) activeEl.classList.remove('lotus-cms-selected-element');
+            activeEl = targetImg;
+            activeEl.classList.add('lotus-cms-selected-element');
+          }
         }
 
         // Scroll to Element
