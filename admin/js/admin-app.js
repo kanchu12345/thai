@@ -1661,6 +1661,26 @@ resolveImg(url) {
 
       if (sidebar) sidebar.classList.remove('open');
 
+      // Re-render section data on navigation
+      if (sectionId === 'packages') {
+        this.renderPackages();
+      } else if (sectionId === 'categories') {
+        this.renderCategories();
+      } else if (sectionId === 'destinations') {
+        this.renderDestinations();
+      } else if (sectionId === 'reviews') {
+        this.renderReviews();
+      } else if (sectionId === 'team') {
+        this.renderTeam();
+      } else if (sectionId === 'media') {
+        this.renderMediaLibrary();
+      } else if (sectionId === 'dashboard') {
+        this.renderDashboard();
+      } else if (sectionId === 'users') {
+        this.renderUsers();
+      } else if (sectionId === 'inquiries') {
+        this.renderInquiries();
+      }
     },
 
 
@@ -3140,15 +3160,12 @@ resolveImg(url) {
       }
 
       if (search) {
-
-        list = list.filter(p => 
-
-          (p.title && p.title.toLowerCase().includes(search)) ||
-
-          (p.slug && p.slug.toLowerCase().includes(search))
-
-        );
-
+        list = list.filter(p => {
+          const titleStr = p.title && typeof p.title === 'object' ? (p.title.en || '') : (p.title || '');
+          const titleZhStr = p.title && typeof p.title === 'object' ? (p.title.zh || '') : (p.title_zh || '');
+          const slugStr = p.slug || '';
+          return titleStr.toLowerCase().includes(search) || titleZhStr.toLowerCase().includes(search) || slugStr.toLowerCase().includes(search);
+        });
       }
 
 
@@ -3288,7 +3305,7 @@ resolveImg(url) {
 
       if (editSlug) {
 
-        const pkg = this.packages.find(p => p.slug === editSlug);
+        const pkg = this.packages.find(p => p.slug === editSlug || p.id === editSlug);
 
         if (!pkg) return;
 

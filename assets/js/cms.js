@@ -848,6 +848,18 @@
           const section = target.closest('section, header, footer');
           const sectionId = section ? (section.id || section.className || 'Page Section') : 'General Content';
 
+          // Check if element is inside or part of a tour package card
+          const pkgEl = target.closest('[data-package-slug], [data-slug], [data-tour], .package-card, .tour-card, .tour-grid-card, .curated-card');
+          let packageSlug = pkgEl ? (pkgEl.getAttribute('data-package-slug') || pkgEl.getAttribute('data-slug') || pkgEl.getAttribute('data-tour')) : null;
+          if (!packageSlug) {
+            const linkEl = target.closest('a') || (pkgEl ? pkgEl.querySelector('a[href*="/tours/"]') : null);
+            if (linkEl && linkEl.getAttribute('href')) {
+              const href = linkEl.getAttribute('href');
+              const parts = href.split('/').filter(p => p && !p.endsWith('.html') && p !== 'tours');
+              if (parts.length > 0) packageSlug = parts[parts.length - 1];
+            }
+          }
+
           // Notify parent frame
           const isWatermark = target.classList.contains('watermark-heading') || (target.className && String(target.className).includes('watermark'));
           if (window.parent && window.parent !== window) {
@@ -858,6 +870,7 @@
               currentVal: (currentVal || '').trim(),
               tagName: target.tagName.toLowerCase(),
               sectionId: sectionId,
+              packageSlug: packageSlug || null,
               isWatermark: isWatermark
             }, '*');
           }

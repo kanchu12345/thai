@@ -7,7 +7,7 @@
 <meta content="noindex, nofollow" name="robots"/>
 <title>CMS Admin Panel — LOTUS Ceylon International Tours</title>
 <link href="../assets/images/logo.png" rel="icon" type="image/png"/>
-<link href="css/admin.css?v=20261029_fix2" rel="stylesheet"/>
+<link href="css/admin.css?v=20261029_fix3" rel="stylesheet"/>
 <!-- DOMPurify for XSS Protection -->
 <script src="https://cdn.jsdelivr.net/npm/dompurify@3.1.6/dist/purify.min.js"></script>
 </head>
@@ -75,6 +75,10 @@
 <span>Inquiries</span>
 <span class="nav-badge" id="unreadInquiriesBadge">0</span>
 </a>
+<a class="nav-link" data-section="packages" onclick="AdminApp.switchSection('packages')" style="background: rgba(212, 175, 55, 0.14); color: #D4AF37; font-weight: 700; border: 1px solid rgba(212, 175, 55, 0.35); border-radius: 6px; margin: 6px 12px; display: flex; align-items: center; gap: 8px;">
+<svg viewbox="0 0 24 24" style="width: 18px; height: 18px; fill: currentColor;"><path d="M21 5c-1.11-.35-2.33-.5-3.5-.5-1.95 0-4.05.4-5.5 1.5-1.45-1.1-3.55-1.5-5.5-1.5S2.45 4.9 1 6v14.65c0 .25.25.5.5.5.1 0 .15-.05.25-.05C3.1 20.45 5.05 20 6.5 20c1.95 0 4.05.4 5.5 1.5 1.35-.85 3.8-1.5 5.5-1.5 1.65 0 3.35.3 4.75 1.05.1.05.15.05.25.05.25 0 .5-.25.5-.5V6c-.6-.45-1.25-.75-2-1zm0 13.5c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5V8c1.35-.85 3.8-1.5 5.5-1.5 1.2 0 2.4.15 3.5.5v11.5z"></path></svg>
+<span>📦 Tour Packages (All 26)</span>
+</a>
 
 <!-- PAGES GROUP (15 CORE SHELLS) -->
 <div class="nav-collapsible-group is-open" id="navGroupPages">
@@ -93,7 +97,8 @@
 <a class="nav-link nav-sub-link" data-section="page-editor" data-page-doc="siteContent/blog" onclick="PageEditor.openPage('siteContent/blog', 'blog.html')"><span>📰 Blog &amp; Editorial</span></a>
 <a class="nav-link nav-sub-link" data-section="page-editor" data-page-doc="siteContent/inquiry-detailed" onclick="PageEditor.openPage('siteContent/inquiry-detailed', 'inquiry-detailed.html')"><span>📋 Bespoke Inquiry</span></a>
 <a class="nav-link nav-sub-link" data-section="page-editor" data-page-doc="siteContent/inquiry-quick" onclick="PageEditor.openPage('siteContent/inquiry-quick', 'inquiry-quick.html')"><span>⚡ Quick Consultation</span></a>
-<a class="nav-link nav-sub-link" data-section="page-editor" data-page-doc="siteContent/toursIndex" onclick="PageEditor.openPage('siteContent/toursIndex', 'tours/index.html')"><span>🗺️ All Tours Index</span></a>
+<a class="nav-link nav-sub-link" data-section="page-editor" data-page-doc="siteContent/toursIndex" onclick="PageEditor.openPage('siteContent/toursIndex', 'tours/index.html')"><span>🗺️ Tours Index (Categories)</span></a>
+<a class="nav-link nav-sub-link" data-section="packages" onclick="AdminApp.switchSection('packages')" style="color: #D4AF37; font-weight: 600;"><span>📦 Tour Packages List (26)</span></a>
 <a class="nav-link nav-sub-link" data-section="page-editor" data-page-doc="siteContent/privacy-policy" onclick="PageEditor.openPage('siteContent/privacy-policy', 'privacy-policy.html')"><span>🔒 Privacy Policy</span></a>
 <a class="nav-link nav-sub-link" data-section="page-editor" data-page-doc="siteContent/terms-conditions" onclick="PageEditor.openPage('siteContent/terms-conditions', 'terms-conditions.html')"><span>📜 Terms &amp; Conditions</span></a>
 <a class="nav-link nav-sub-link" data-section="page-editor" data-page-doc="siteContent/cancellation-policy" onclick="PageEditor.openPage('siteContent/cancellation-policy', 'cancellation-policy.html')"><span>⚖️ Cancellation Policy</span></a>
@@ -821,6 +826,34 @@
             <option value="tourCategories/buddhist-heritage|tours/buddhist-heritage/index.html">☸️ Buddhist Heritage</option>
             <option value="tourCategories/ramayana|tours/ramayana/index.html">🏹 Sacred Ramayana Trail</option>
           </optgroup>
+          <optgroup label="📦 Individual Tour Pages (26 Tours)">
+            <option value="tourPackages/three-millennia-of-living-heritage|tours/cultural/three-millennia-of-living-heritage/index.html">🏛️ Three Millennia of Living Heritage</option>
+            <option value="tourPackages/royal-kingdoms-sacred-temples|tours/cultural/royal-kingdoms-sacred-temples/index.html">🏛️ Royal Kingdoms &amp; Sacred Temples</option>
+            <option value="tourPackages/the-sacred-lotus-triangle|tours/cultural/the-sacred-lotus-triangle/index.html">🏛️ The Sacred Lotus Triangle</option>
+            <option value="tourPackages/the-sri-lanka-big-five-expedition|tours/wildlife/the-sri-lanka-big-five-expedition/index.html">🐆 The Sri Lanka Big Five Expedition</option>
+            <option value="tourPackages/wild-ceylon-predator-elephant-trail|tours/wildlife/wild-ceylon-predator-elephant-trail/index.html">🐆 Wild Ceylon Predator &amp; Elephant Trail</option>
+            <option value="tourPackages/untamed-biosphere-rainforest-odyssey|tours/wildlife/untamed-biosphere-rainforest-odyssey/index.html">🐆 Untamed Biosphere &amp; Rainforest Odyssey</option>
+            <option value="tourPackages/southern-sands-serenade|tours/beach/southern-sands-serenade/index.html">🏖️ Southern Sands Serenade</option>
+            <option value="tourPackages/turquoise-eastern-sanctuary|tours/beach/turquoise-eastern-sanctuary/index.html">🏖️ Turquoise Eastern Sanctuary</option>
+            <option value="tourPackages/pristine-seaboard-odyssey|tours/beach/pristine-seaboard-odyssey/index.html">🏖️ Pristine Seaboard Odyssey</option>
+            <option value="tourPackages/ceylon-tea-trails-colonial-grandeur|tours/hill-country/ceylon-tea-trails-colonial-grandeur/index.html">⛰️ Ceylon Tea Trails &amp; Colonial Grandeur</option>
+            <option value="tourPackages/misty-peaks-scenic-railways-expedition|tours/hill-country/misty-peaks-scenic-railways-expedition/index.html">⛰️ Misty Peaks &amp; Scenic Railways Expedition</option>
+            <option value="tourPackages/highland-wilderness-cascading-waterfalls|tours/hill-country/highland-wilderness-cascading-waterfalls/index.html">⛰️ Highland Wilderness &amp; Cascading Waterfalls</option>
+            <option value="tourPackages/island-adrenaline-rapids-expedition|tours/adventure/island-adrenaline-rapids-expedition/index.html">🧗‍♂️ Island Adrenaline &amp; Rapids Expedition</option>
+            <option value="tourPackages/wild-peaks-trails-surf-safari|tours/adventure/wild-peaks-trails-surf-safari/index.html">🧗‍♂️ Wild Peaks, Trails &amp; Surf Safari</option>
+            <option value="tourPackages/lotus-ayu-holistic-rejuvenation|tours/ayurvedic/lotus-ayu-holistic-rejuvenation/index.html">🌿 Lotus Ayu Holistic Rejuvenation</option>
+            <option value="tourPackages/sacred-serenity-forest-meditation-retreat|tours/ayurvedic/sacred-serenity-forest-meditation-retreat/index.html">🌿 Sacred Serenity &amp; Forest Meditation Retreat</option>
+            <option value="tourPackages/enchanted-ceylon-romantic-hideaway|tours/honeymoon/enchanted-ceylon-romantic-hideaway/index.html">💍 Enchanted Ceylon Romantic Hideaway</option>
+            <option value="tourPackages/pure-serenade-coastal-highland-romance|tours/honeymoon/pure-serenade-coastal-highland-romance/index.html">💍 Pure Serenade Coastal &amp; Highland Romance</option>
+            <option value="tourPackages/island-wonder-multi-gen-family-discovery|tours/family/island-wonder-multi-gen-family-discovery/index.html">👨‍👩‍👧‍👦 Island Wonder Multi-Gen Family Discovery</option>
+            <option value="tourPackages/wild-safari-coastal-family-holiday|tours/family/wild-safari-coastal-family-holiday/index.html">👨‍👩‍👧‍👦 Wild Safari &amp; Coastal Family Holiday</option>
+            <option value="tourPackages/the-grand-ceylon-family-adventure|tours/family/the-grand-ceylon-family-adventure/index.html">👨‍👩‍👧‍👦 The Grand Ceylon Family Adventure</option>
+            <option value="tourPackages/sacred-ramayana-heritage-trail|tours/ramayana/sacred-ramayana-heritage-trail/index.html">🏹 Sacred Ramayana Heritage Trail</option>
+            <option value="tourPackages/the-epic-ramayana-chronicle-pilgrimage|tours/ramayana/the-epic-ramayana-chronicle-pilgrimage/index.html">🏹 The Epic Ramayana Chronicle Pilgrimage</option>
+            <option value="tourPackages/the-royal-ceylon-fairways-tour|tours/golf/the-royal-ceylon-fairways-tour/index.html">⛳ The Royal Ceylon Fairways Tour</option>
+            <option value="tourPackages/highland-greens-coastal-links-championship|tours/golf/highland-greens-coastal-links-championship/index.html">⛳ Highland Greens &amp; Coastal Links Championship</option>
+            <option value="tourPackages/the-grand-ceylon-masters-golf-odyssey|tours/golf/the-grand-ceylon-masters-golf-odyssey/index.html">⛳ The Grand Ceylon Masters Golf Odyssey</option>
+          </optgroup>
           <optgroup label="Legal & Policies">
             <option value="siteContent/privacy-policy|privacy-policy.html">🔒 Privacy Policy</option>
             <option value="siteContent/terms-conditions|terms-conditions.html">📜 Terms & Conditions</option>
@@ -862,7 +895,10 @@
         <span id="visualStatusText">All changes saved</span>
       </div>
 
-      <button type="button" class="btn btn-outline btn-sm" onclick="PageEditor.openSeoModal()" title="Edit Page Title, Meta Description & Social Share Image">⚙️ Page SEO</button>
+      <button type="button" class="btn btn-gold btn-sm" onclick="AdminApp.switchSection('packages')" title="Open Tour Packages Manager (All 26 Tours)" style="background: linear-gradient(135deg, #d4af37, #b89025); color: #fff; font-weight: 700; box-shadow: 0 2px 6px rgba(212,175,55,0.3); display: inline-flex; align-items: center; gap: 6px;">
+<span>📦 Manage Tour Packages (26)</span>
+</button>
+<button type="button" class="btn btn-outline btn-sm" onclick="PageEditor.openSeoModal()" title="Edit Page Title, Meta Description & Social Share Image">⚙️ Page SEO</button>
       <button type="button" class="btn btn-outline btn-sm" onclick="PageEditor.resetCurrentPage()" title="Reset page to default values">↺ Reset</button>
       <button type="button" class="btn btn-outline btn-sm" id="visualSaveDraftBtn" onclick="PageEditor.saveDraft()">💾 Save Draft</button>
       <button type="button" class="btn btn-gold btn-sm" id="visualPublishBtn" onclick="PageEditor.publish()">🚀 Publish Live</button>
@@ -1635,7 +1671,7 @@
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
 <script src="../js/firebase-tour-sync.js"></script>
-<script src="js/admin-app.js?v=20261029_fix2"></script>
-<script src="js/page-editor.js?v=20261029_fix2"></script>
+<script src="js/admin-app.js?v=20261029_fix3"></script>
+<script src="js/page-editor.js?v=20261029_fix3"></script>
 </body>
 </html>

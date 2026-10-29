@@ -201,6 +201,28 @@
 
       let html = '';
 
+      // Check if this element relates to a tour package
+      let pkgSlug = item.packageSlug || null;
+      if (this.activePageKey && this.activePageKey.startsWith('tourPackages/')) {
+        pkgSlug = this.activePageKey.replace('tourPackages/', '');
+      } else if (item.key && (item.key.includes('pkg_') || item.key.includes('package') || item.key.includes('tour'))) {
+        if (item.key.includes('pkg_')) {
+          const match = item.key.match(/pkg_([a-zA-Z0-9_-]+)/);
+          if (match) pkgSlug = match[1].split('.')[0];
+        }
+      }
+      if (pkgSlug) {
+        html += `
+          <div style="background: linear-gradient(135deg, #FFFBEB, #FEF3C7); border: 1px solid #FCD34D; border-radius: 8px; padding: 12px; margin-bottom: 14px;">
+            <div style="font-weight: 700; color: #92400E; font-size: 0.88rem; display: flex; align-items: center; justify-content: space-between; margin-bottom: 4px;">
+              <span>📦 Tour Package: ${this.escapeHtml(pkgSlug)}</span>
+            </div>
+            <p style="font-size: 0.78rem; color: #78350F; margin: 0 0 8px 0;">Edit full price, days, route, day-by-day itinerary, highlights, and gallery images.</p>
+            <button type="button" class="btn btn-gold btn-sm btn-block" onclick="AdminApp.openPackageModal('${this.escapeAttr(pkgSlug)}')" style="font-weight: 700;">✏️ Edit Full Tour Package</button>
+          </div>
+        `;
+      }
+
       // --- A. SPECIAL HERO SECTION INSPECTOR ---
       if (item.key.includes('hero') || item.sectionId === 'home') {
         html += this.renderHeroSpecialControls(item);
@@ -402,6 +424,14 @@
 
       body.innerHTML = `
         <div class="inspector-empty-state">
+          <div style="background: linear-gradient(135deg, #FFFBEB, #FEF3C7); border: 1px solid #FCD34D; border-radius: 8px; padding: 12px; margin-bottom: 16px; text-align: center;">
+            <div style="font-size: 0.88rem; color: #92400E; margin-bottom: 4px; font-weight: 700;">📦 Manage 26 Tour Packages</div>
+            <p style="font-size: 0.78rem; color: #78350F; margin: 0 0 10px 0;">Add new tours, edit prices, days, itineraries, photo galleries, and highlights.</p>
+            <button type="button" class="btn btn-gold btn-sm btn-block" onclick="AdminApp.switchSection('packages')" style="font-weight: 700;">
+              📦 Open Tour Packages Table
+            </button>
+          </div>
+
           <div class="inspector-empty-icon">👆</div>
           <h3>Click Anything to Edit</h3>
           <p>Click on any text, photo, button, or section on the left preview to instantly customize it.</p>
@@ -428,7 +458,7 @@
               <span class="qj-icon">📍</span>
               <span class="qj-label">Destinations</span>
             </div>
-            <div class="quick-jump-card" onclick="PageEditor.scrollToSection('packages')">
+            <div class="quick-jump-card" onclick="PageEditor.handlePackagesJump()">
               <span class="qj-icon">📦</span>
               <span class="qj-label">Tour Packages</span>
             </div>
@@ -481,6 +511,14 @@
       const thumb = document.getElementById('inspectorThumb');
       if (thumb && (attrType === 'image' || attrType === 'bg-image')) {
         thumb.src = this.resolvePreviewUrl(val);
+      }
+    },
+
+    handlePackagesJump() {
+      if (this.activePageKey === 'siteContent/home') {
+        this.scrollToSection('packages');
+      } else if (window.AdminApp) {
+        window.AdminApp.switchSection('packages');
       }
     },
 
