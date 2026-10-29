@@ -370,7 +370,9 @@
         if (raw) {
           const resolved = resolveImgUrl(raw);
           if (resolved) {
-            if (el.classList.contains('dest-hero') || el.classList.contains('about-hero') || el.classList.contains('contact-hero') || el.classList.contains('exp-hero') || el.classList.contains('gallery-hero') || el.classList.contains('reviews-hero') || el.classList.contains('blog-hero') || el.classList.contains('beach-hero-banner') || el.classList.contains('tours-hero-banner') || el.classList.contains('banner-section-inner')) {
+            if (el.classList.contains('sacred-cta-banner')) {
+              el.style.backgroundImage = `linear-gradient(135deg, rgba(13, 43, 29, 0.82) 0%, rgba(22, 54, 29, 0.90) 100%), url("${val}")`;
+            } else if (el.classList.contains('dest-hero') || el.classList.contains('about-hero') || el.classList.contains('contact-hero') || el.classList.contains('exp-hero') || el.classList.contains('gallery-hero') || el.classList.contains('reviews-hero') || el.classList.contains('blog-hero') || el.classList.contains('beach-hero-banner') || el.classList.contains('tours-hero-banner') || el.classList.contains('banner-section-inner')) {
               el.style.backgroundImage = `linear-gradient(180deg, rgba(0, 43, 73, 0.65) 0%, rgba(0, 43, 73, 0.88) 100%), url("${resolved}")`;
             } else {
               el.style.backgroundImage = `url("${resolved}")`;
@@ -800,22 +802,24 @@
           e.preventDefault();
         }
 
-        let target = e.target.closest('[data-cms], [data-cms-html], [data-cms-img], [data-cms-bg], [data-cms-video], [data-cms-link], [data-cms-list]');
-
-        if (!target) {
-          if (e.target.tagName === 'IMG') {
-            target = e.target;
-          } else {
-            const hero = e.target.closest('[data-cms-bg], .dest-hero, .about-hero, .contact-hero, .exp-hero, .gallery-hero, .reviews-hero, .blog-hero, .beach-hero-banner, .tours-hero-banner, .banner-section-inner, .banner-section');
-            if (hero) {
-              target = hero.hasAttribute('data-cms-bg') ? hero : hero.querySelector('[data-cms-bg], [data-cms-img]');
-            } else {
-              const card = e.target.closest('.beach-card-img-wrap, .card-image-slider, .hover-box, .beach-package-card, .dest-card, .story-img-wrap, article');
-              if (card) {
-                target = card.querySelector('[data-cms-img], img, [data-cms-html], [data-cms]');
-              }
-            }
+        let target = null;
+        if (e.target.tagName === 'IMG' || e.target.hasAttribute('data-cms-img') || e.target.hasAttribute('data-cms-bg')) {
+          target = e.target;
+        } else {
+          const imgWrap = e.target.closest('.hover-box, .about-visual-composition, .about-img-main, .about-img-floating, .bespoke-img-main, .bespoke-img-overlap, .dest-card, .beach-card-img-wrap, .card-image-slider, .story-img-wrap, .faq-visual-wrap');
+          if (imgWrap && !['P', 'H1', 'H2', 'H3', 'H4', 'A', 'BUTTON'].includes(e.target.tagName)) {
+            const innerImg = imgWrap.querySelector('img[data-cms-img], img, [data-cms-bg]');
+            if (innerImg) target = innerImg;
           }
+        }
+        if (!target) {
+          const banner = e.target.closest('.sacred-cta-banner, [data-cms-bg], .dest-hero, .about-hero, .contact-hero, .exp-hero, .gallery-hero, .reviews-hero, .blog-hero, .beach-hero-banner, .tours-hero-banner, .banner-section-inner, .banner-section');
+          if (banner && (e.target.classList.contains('sacred-cta-banner') || e.target.classList.contains('cta-motif') || banner.hasAttribute('data-cms-bg'))) {
+            target = banner.hasAttribute('data-cms-bg') ? banner : banner.querySelector('[data-cms-bg], [data-cms-img]');
+          }
+        }
+        if (!target) {
+          target = e.target.closest('[data-cms], [data-cms-html], [data-cms-img], [data-cms-bg], [data-cms-video], [data-cms-link], [data-cms-list]');
         }
 
         if (target) {
@@ -951,7 +955,9 @@
           if (!val) {
             el.style.backgroundImage = 'none';
           } else {
-            if (el.classList.contains('dest-hero') || el.classList.contains('about-hero') || el.classList.contains('contact-hero') || el.classList.contains('exp-hero') || el.classList.contains('gallery-hero') || el.classList.contains('reviews-hero') || el.classList.contains('blog-hero') || el.classList.contains('beach-hero-banner') || el.classList.contains('tours-hero-banner') || el.classList.contains('banner-section-inner')) {
+            if (el.classList.contains('sacred-cta-banner')) {
+              el.style.backgroundImage = `linear-gradient(135deg, rgba(13, 43, 29, 0.82) 0%, rgba(22, 54, 29, 0.90) 100%), url("${resolved}")`;
+            } else if (el.classList.contains('dest-hero') || el.classList.contains('about-hero') || el.classList.contains('contact-hero') || el.classList.contains('exp-hero') || el.classList.contains('gallery-hero') || el.classList.contains('reviews-hero') || el.classList.contains('blog-hero') || el.classList.contains('beach-hero-banner') || el.classList.contains('tours-hero-banner') || el.classList.contains('banner-section-inner')) {
               el.style.backgroundImage = `linear-gradient(180deg, rgba(0, 43, 73, 0.65) 0%, rgba(0, 43, 73, 0.88) 100%), url("${val}")`;
             } else {
               el.style.backgroundImage = `url("${val}")`;

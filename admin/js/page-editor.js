@@ -478,79 +478,447 @@
       };
     },
 
-    openHeroBannerEditor() {
-      this.scrollToSection('home');
-      const iframe = document.getElementById('visualCmsIframe');
-      if (iframe && iframe.contentWindow) {
-        iframe.contentWindow.postMessage({ type: 'lotus:scroll-to-key', key: 'home' }, '*');
-      }
-
-      const hero = this.getHeroBindingForActivePage();
+    openImageEditor(key, label, sectionName, defaultUrl, attrType = 'image') {
+      const isHeroBanner = key.includes('hero') || attrType === 'bg-image' || key === 'siteGlobal.branding.cta_bg';
+      const currentVal = this.getCurrentValue(key, (this.activeDocData && this.activeDocData[key]) || defaultUrl || '');
+      
       const item = {
-        key: hero.key,
-        attrType: hero.attrType,
-        currentVal: hero.currentVal,
-        defaultVal: hero.defaultVal,
-        label: hero.label,
-        isHeroBanner: true,
-        isHome: hero.isHome,
-        videoKey: hero.videoKey,
-        videoVal: hero.videoVal
+        key: key,
+        attrType: attrType,
+        currentVal: currentVal,
+        defaultVal: defaultUrl,
+        label: label,
+        sectionId: sectionName,
+        isHeroBanner: isHeroBanner
       };
 
-      this.selectedElement = item;
-      this.renderElementForm(item);
+      if (key === 'hero.image') {
+        item.isHome = true;
+        item.videoKey = 'hero.video';
+        item.videoVal = this.getCurrentValue('hero.video', (this.activeDocData && this.activeDocData['hero.video']) || 'assets/videos/hero-banner.mp4');
+      }
+
+      this.selectElement(item);
+
+      // Scroll iframe to element
+      const iframe = document.getElementById('visualCmsIframe');
+      if (iframe && iframe.contentWindow) {
+        iframe.contentWindow.postMessage({ type: 'lotus:scroll-to-key', key: key }, '*');
+      }
+    },
+
+    openHeroBannerEditor() {
+      const hero = this.getHeroBindingForActivePage();
+      this.openImageEditor(hero.key, hero.label, '🎯 Top Hero Banner', hero.defaultVal, hero.attrType);
+    },
+
+    jumpToSection(secId) {
+      this.scrollToSection(secId);
+      // Automatically open the primary image for this section if one exists
+      const images = this.getSectionImagesForActivePage();
+      const match = images.find(img => img.sectionId.toLowerCase().includes(secId.toLowerCase()) || img.key.toLowerCase().includes(secId.toLowerCase()));
+      if (match) {
+        this.openImageEditor(match.key, match.label, match.sectionName, match.defaultUrl, match.attrType);
+      }
+    },
+
+    getSectionImagesForActivePage() {
+      const docName = (this.activePageKey || '').split('/').pop();
+      const pageFile = (this.activePageFile || '').toLowerCase();
+
+      // Shared Sacred CTA Banner (bottom banner on almost every page)
+      const ctaBg = {
+        key: 'siteGlobal.branding.cta_bg',
+        label: 'Sacred CTA Bottom Banner (Plan Your Sacred Journey)',
+        sectionName: '🕊️ Sacred Bottom Banner',
+        sectionId: 'cta',
+        defaultUrl: 'assets/images/cultural/sigiriya-1.webp',
+        attrType: 'bg-image'
+      };
+
+      if (docName === 'home' || pageFile === 'index.html') {
+        return [
+          {
+            key: 'hero.image',
+            label: 'Home Hero Masthead (Photo & Video)',
+            sectionName: '🎯 Hero Masthead',
+            sectionId: 'home',
+            defaultUrl: 'assets/images/home/hero-sigiriya-aerial-1.webp',
+            attrType: 'image'
+          },
+          {
+            key: 'home.img_1',
+            label: 'About & Our Story: Main Sigiriya Photo',
+            sectionName: '🏛️ About Us / Our Story',
+            sectionId: 'about',
+            defaultUrl: 'assets/images/home/hero-sigiriya-aerial-1.webp',
+            attrType: 'image'
+          },
+          {
+            key: 'home.img_2',
+            label: 'About & Our Story: Sacred Stupa Floating Photo',
+            sectionName: '🏛️ About Us / Our Story',
+            sectionId: 'about',
+            defaultUrl: 'assets/images/buddhist-heritage/ruwanwelisaya-2.webp',
+            attrType: 'image'
+          },
+          {
+            key: 'home.img_3',
+            label: 'Tour Category: Luxury Beach Holidays',
+            sectionName: '🐆 Tour Categories Showcase',
+            sectionId: 'categories',
+            defaultUrl: 'assets/images/beach/mirissa-1.webp',
+            attrType: 'image'
+          },
+          {
+            key: 'home.img_4',
+            label: 'Tour Category: Cultural & Heritage Tours',
+            sectionName: '🐆 Tour Categories Showcase',
+            sectionId: 'categories',
+            defaultUrl: 'assets/images/cultural/sigiriya-1.webp',
+            attrType: 'image'
+          },
+          {
+            key: 'home.img_5',
+            label: 'Tour Category: Luxury Wildlife & Safari',
+            sectionName: '🐆 Tour Categories Showcase',
+            sectionId: 'categories',
+            defaultUrl: 'assets/images/wildlife/yala-leopard-1.webp',
+            attrType: 'image'
+          },
+          {
+            key: 'home.img_6',
+            label: 'Tour Category: Hill Country & Tea Estates',
+            sectionName: '🐆 Tour Categories Showcase',
+            sectionId: 'categories',
+            defaultUrl: 'assets/images/hill-country/nuwara-eliya-tea-2.webp',
+            attrType: 'image'
+          },
+          {
+            key: 'home.img_7',
+            label: 'Tour Category: Active Adventure Expeditions',
+            sectionName: '🐆 Tour Categories Showcase',
+            sectionId: 'categories',
+            defaultUrl: 'assets/images/adventure/kitulgala-rafting-1.webp',
+            attrType: 'image'
+          },
+          {
+            key: 'home.img_8',
+            label: 'Tour Category: Ayurveda & Wellness Retreats',
+            sectionName: '🐆 Tour Categories Showcase',
+            sectionId: 'categories',
+            defaultUrl: 'assets/images/cultural/kandy-temple-of-tooth-4.webp',
+            attrType: 'image'
+          },
+          {
+            key: 'home.img_9',
+            label: 'Tour Category: Luxury Honeymoon & Romance',
+            sectionName: '🐆 Tour Categories Showcase',
+            sectionId: 'categories',
+            defaultUrl: 'assets/images/honeymoon/mirissa-sunset-2.webp',
+            attrType: 'image'
+          },
+          {
+            key: 'home.img_10',
+            label: 'Tour Category: Family Holiday Packages',
+            sectionName: '🐆 Tour Categories Showcase',
+            sectionId: 'categories',
+            defaultUrl: 'assets/images/hill-country/nine-arches-bridge-1.webp',
+            attrType: 'image'
+          },
+          {
+            key: 'home.img_11',
+            label: 'Tour Category: Sacred Ramayana Heritage',
+            sectionName: '🐆 Tour Categories Showcase',
+            sectionId: 'categories',
+            defaultUrl: 'assets/images/cultural/polonnaruwa-gal-vihara-3.webp',
+            attrType: 'image'
+          },
+          {
+            key: 'home.img_12',
+            label: 'Tour Category: Ceylon Golf Holidays',
+            sectionName: '🐆 Tour Categories Showcase',
+            sectionId: 'categories',
+            defaultUrl: 'assets/images/hill-country/nuwara-eliya-tea-2.webp',
+            attrType: 'image'
+          },
+          {
+            key: 'home.img_13',
+            label: 'Destination: Anuradhapura Sacred Stupas',
+            sectionName: '📍 Destinations Showcase',
+            sectionId: 'destinations',
+            defaultUrl: 'assets/images/buddhist-heritage/ruwanwelisaya-2.webp',
+            attrType: 'image'
+          },
+          {
+            key: 'home.img_14',
+            label: 'Destination: Temple of the Sacred Tooth Kandy',
+            sectionName: '📍 Destinations Showcase',
+            sectionId: 'destinations',
+            defaultUrl: 'assets/images/cultural/kandy-temple-of-tooth-4.webp',
+            attrType: 'image'
+          },
+          {
+            key: 'home.img_15',
+            label: 'Destination: Sigiriya Rock Citadel',
+            sectionName: '📍 Destinations Showcase',
+            sectionId: 'destinations',
+            defaultUrl: 'assets/images/cultural/sigiriya-1.webp',
+            attrType: 'image'
+          },
+          {
+            key: 'home.img_16',
+            label: 'Destination: Galle Dutch Fort Lighthouse',
+            sectionName: '📍 Destinations Showcase',
+            sectionId: 'destinations',
+            defaultUrl: 'assets/images/colonial/galle-fort-lighthouse-1.webp',
+            attrType: 'image'
+          },
+          {
+            key: 'home.img_31',
+            label: 'Bespoke Planner: Main Coastal Villa Photo',
+            sectionName: '✨ Bespoke Journey Planner',
+            sectionId: 'bespoke',
+            defaultUrl: 'assets/images/beach/mirissa-1.webp',
+            attrType: 'image'
+          },
+          {
+            key: 'home.img_32',
+            label: 'Bespoke Planner: Highland Tea Trails Overlap Photo',
+            sectionName: '✨ Bespoke Journey Planner',
+            sectionId: 'bespoke',
+            defaultUrl: 'assets/images/hill-country/nuwara-eliya-tea-2.webp',
+            attrType: 'image'
+          },
+          {
+            key: 'home.img_33',
+            label: 'Signature Experience: Artisan Sacred Heritage',
+            sectionName: '🌿 Signature Pillars / Experiences',
+            sectionId: 'experiences',
+            defaultUrl: 'assets/images/cultural/sigiriya-1.webp',
+            attrType: 'image'
+          },
+          {
+            key: 'home.img_34',
+            label: 'Signature Experience: Wildlife Safari Odyssey',
+            sectionName: '🌿 Signature Pillars / Experiences',
+            sectionId: 'experiences',
+            defaultUrl: 'assets/images/wildlife/yala-leopard-1.webp',
+            attrType: 'image'
+          },
+          {
+            key: 'home.img_35',
+            label: 'Signature Experience: Ayu Wellness Sanctuary',
+            sectionName: '🌿 Signature Pillars / Experiences',
+            sectionId: 'experiences',
+            defaultUrl: 'assets/images/hill-country/nuwara-eliya-tea-2.webp',
+            attrType: 'image'
+          },
+          {
+            key: 'home.img_38',
+            label: 'FAQ & Travel Planning: Feature Photo',
+            sectionName: '❓ Travel Planning FAQs',
+            sectionId: 'faq',
+            defaultUrl: 'assets/images/about/hospitality-scenes-1.webp',
+            attrType: 'image'
+          },
+          {
+            key: 'home.img_39',
+            label: 'Editorial & News: Main Feature Article',
+            sectionName: '📰 Travel Insights & News',
+            sectionId: 'news',
+            defaultUrl: 'assets/images/adventure/kitulgala-rafting-1.webp',
+            attrType: 'image'
+          },
+          ctaBg
+        ];
+      }
+
+      if (docName === 'destinations' || pageFile.includes('destinations')) {
+        const destList = [
+          { key: 'destinations.hero_bg', label: 'Destinations Hero Banner', sectionName: '🎯 Hero Banner', sectionId: 'hero', defaultUrl: 'assets/images/cultural/kandy-temple-of-tooth-4.webp', attrType: 'bg-image' },
+          { key: 'destinations.img_1', label: 'Anuradhapura Sacred Stupas', sectionName: '📍 Sacred Pilgrimage', sectionId: 'destinations', defaultUrl: 'assets/images/cultural/kandy-temple-of-tooth-4.webp', attrType: 'image' },
+          { key: 'destinations.img_2', label: 'Mihintale Sacred Cradle', sectionName: '📍 Sacred Pilgrimage', sectionId: 'destinations', defaultUrl: 'assets/images/cultural/dambulla-cave-temple-2.webp', attrType: 'image' },
+          { key: 'destinations.img_3', label: 'Kandy Temple of Tooth', sectionName: '📍 Sacred Pilgrimage', sectionId: 'destinations', defaultUrl: 'assets/images/cultural/sigiriya-1.webp', attrType: 'image' },
+          { key: 'destinations.img_4', label: 'Dambulla Golden Cave Temple', sectionName: '📍 Sacred Pilgrimage', sectionId: 'destinations', defaultUrl: 'assets/images/cultural/polonnaruwa-gal-vihara-3.webp', attrType: 'image' },
+          { key: 'destinations.img_5', label: 'Polonnaruwa Ancient Citadel', sectionName: '📍 Sacred Pilgrimage', sectionId: 'destinations', defaultUrl: 'assets/images/cultural/polonnaruwa-gal-vihara-3.webp', attrType: 'image' },
+          { key: 'destinations.img_6', label: 'Kelaniya Raja Maha Vihara', sectionName: '📍 Sacred Pilgrimage', sectionId: 'destinations', defaultUrl: 'assets/tours/cultural/hero.jpg', attrType: 'image' },
+          { key: 'destinations.img_7', label: "Sri Pada (Adam's Peak)", sectionName: '📍 Sacred Pilgrimage', sectionId: 'destinations', defaultUrl: 'assets/images/hill-country/nuwara-eliya-tea-2.webp', attrType: 'image' },
+          { key: 'destinations.img_8', label: 'Kataragama Sacred Shrine', sectionName: '📍 Sacred Pilgrimage', sectionId: 'destinations', defaultUrl: 'assets/images/cultural/sigiriya-1.webp', attrType: 'image' },
+          { key: 'destinations.img_9', label: 'Sigiriya Rock Fortress', sectionName: '🏛️ Cultural Heritage', sectionId: 'destinations', defaultUrl: 'assets/images/cultural/sigiriya-1.webp', attrType: 'image' },
+          { key: 'destinations.img_10', label: 'Galle Dutch Fort', sectionName: '🏛️ Cultural Heritage', sectionId: 'destinations', defaultUrl: 'assets/images/beach/mirissa-1.webp', attrType: 'image' },
+          { key: 'destinations.img_11', label: 'Colombo & Kelani Valley', sectionName: '🏛️ Cultural Heritage', sectionId: 'destinations', defaultUrl: 'assets/images/about/hospitality-scenes-1.webp', attrType: 'image' },
+          { key: 'destinations.img_12', label: 'Nuwara Eliya Highlands', sectionName: '🍵 Highland Tea Country', sectionId: 'destinations', defaultUrl: 'assets/images/hill-country/nuwara-eliya-tea-2.webp', attrType: 'image' },
+          { key: 'destinations.img_13', label: 'Ella & Nine Arch Bridge', sectionName: '🍵 Highland Tea Country', sectionId: 'destinations', defaultUrl: 'assets/images/hill-country/nine-arches-bridge-1.webp', attrType: 'image' },
+          { key: 'destinations.img_14', label: "Horton Plains & World's End", sectionName: '🍵 Highland Tea Country', sectionId: 'destinations', defaultUrl: 'assets/images/wildlife/sinharaja-rainforest-5.webp', attrType: 'image' },
+          { key: 'destinations.img_15', label: "Haputale & Lipton's Seat", sectionName: '🍵 Highland Tea Country', sectionId: 'destinations', defaultUrl: 'assets/images/hill-country/nuwara-eliya-tea-2.webp', attrType: 'image' },
+          { key: 'destinations.img_16', label: 'Yala National Park Safari', sectionName: '🐆 Wildlife Safari', sectionId: 'destinations', defaultUrl: 'assets/images/wildlife/yala-leopard-1.webp', attrType: 'image' },
+          { key: 'destinations.img_17', label: 'Minneriya Elephant Gathering', sectionName: '🐆 Wildlife Safari', sectionId: 'destinations', defaultUrl: 'assets/images/wildlife/minneriya-elephant-gathering-2.webp', attrType: 'image' },
+          { key: 'destinations.img_18', label: 'Udawalawe National Park', sectionName: '🐆 Wildlife Safari', sectionId: 'destinations', defaultUrl: 'assets/tours/wildlife/hero.jpg', attrType: 'image' },
+          { key: 'destinations.img_19', label: 'Wilpattu Leopard Wilderness', sectionName: '🐆 Wildlife Safari', sectionId: 'destinations', defaultUrl: 'assets/images/wildlife/yala-leopard-1.webp', attrType: 'image' },
+          { key: 'destinations.img_20', label: 'Mirissa & Weligama Bay', sectionName: '🏖️ Pristine Coasts', sectionId: 'destinations', defaultUrl: 'assets/images/honeymoon/mirissa-sunset-2.webp', attrType: 'image' },
+          { key: 'destinations.img_21', label: 'Bentota & Beruwala Sands', sectionName: '🏖️ Pristine Coasts', sectionId: 'destinations', defaultUrl: 'assets/images/beach/mirissa-1.webp', attrType: 'image' },
+          { key: 'destinations.img_22', label: 'Trincomalee & Nilaveli', sectionName: '🏖️ Pristine Coasts', sectionId: 'destinations', defaultUrl: 'assets/images/beach/pasikudah-5.webp', attrType: 'image' },
+          { key: 'destinations.img_23', label: 'Arugam Bay Surf Haven', sectionName: '🏖️ Pristine Coasts', sectionId: 'destinations', defaultUrl: 'assets/images/adventure/kitulgala-rafting-1.webp', attrType: 'image' },
+          { key: 'destinations.img_24', label: 'Negombo Beach & Lagoon', sectionName: '🏖️ Pristine Coasts', sectionId: 'destinations', defaultUrl: 'assets/tours/beach/hero.jpg', attrType: 'image' },
+          ctaBg
+        ];
+        return destList;
+      }
+
+      if (docName === 'about' || pageFile.includes('about')) {
+        return [
+          { key: 'about.hero_bg', label: 'About Us Hero Banner', sectionName: '🎯 Hero Banner', sectionId: 'hero', defaultUrl: 'assets/images/about/hospitality-scenes-1.webp', attrType: 'bg-image' },
+          { key: 'about.img_1', label: 'Our Story: Sacred Heritage Feature Photo', sectionName: '🏛️ Our Story', sectionId: 'about', defaultUrl: 'assets/images/buddhist-heritage/ruwanwelisaya-2.webp', attrType: 'image' },
+          { key: 'about.img_2', label: 'Our Story: Philosophy & Hospitality Photo', sectionName: '🏛️ Our Story', sectionId: 'about', defaultUrl: 'assets/images/about/hospitality-scenes-1.webp', attrType: 'image' },
+          { key: 'about.img_3', label: 'Leadership: Director & Founders Photo', sectionName: '👥 Team & Leadership', sectionId: 'team', defaultUrl: 'assets/images/about/hospitality-scenes-1.webp', attrType: 'image' },
+          ctaBg
+        ];
+      }
+
+      if (docName === 'contact' || pageFile.includes('contact')) {
+        return [
+          { key: 'contact.hero_bg', label: 'Contact Us Hero Banner', sectionName: '🎯 Hero Banner', sectionId: 'hero', defaultUrl: 'assets/images/contact/negombo-lagoon-1.webp', attrType: 'bg-image' },
+          { key: 'contact.img_1', label: 'Ceylon Sanctuary / Office Photo', sectionName: '📍 Contact Office', sectionId: 'contact', defaultUrl: 'assets/images/about/hospitality-scenes-1.webp', attrType: 'image' },
+          ctaBg
+        ];
+      }
+
+      if (docName === 'experiences' || pageFile.includes('experiences')) {
+        return [
+          { key: 'experiences.hero_bg', label: 'Experiences Hero Banner', sectionName: '🎯 Hero Banner', sectionId: 'hero', defaultUrl: 'assets/images/cultural/kandy-temple-of-tooth-4.webp', attrType: 'bg-image' },
+          { key: 'experiences.img_1', label: 'Artisan Sacred Heritage', sectionName: '🌿 Signature Pillar 1', sectionId: 'exp', defaultUrl: 'assets/images/cultural/sigiriya-1.webp', attrType: 'image' },
+          { key: 'experiences.img_2', label: 'Lotus Ayu Holistic Rejuvenation', sectionName: '🌿 Signature Pillar 2', sectionId: 'exp', defaultUrl: 'assets/images/honeymoon/seaside-villa-1.webp', attrType: 'image' },
+          { key: 'experiences.img_3', label: 'Nature Odyssey Wildlife Safari', sectionName: '🌿 Signature Pillar 3', sectionId: 'exp', defaultUrl: 'assets/images/wildlife/yala-leopard-1.webp', attrType: 'image' },
+          { key: 'experiences.img_4', label: 'Temple of the Tooth Evening Chanting', sectionName: '🌿 Experience Showcase', sectionId: 'exp', defaultUrl: 'assets/images/cultural/kandy-temple-of-tooth-4.webp', attrType: 'image' },
+          { key: 'experiences.img_5', label: 'Dawn Meditation at Jaya Sri Maha Bodhi', sectionName: '🌿 Experience Showcase', sectionId: 'exp', defaultUrl: 'assets/images/buddhist-heritage/jaya-sri-maha-bodhi-1.webp', attrType: 'image' },
+          { key: 'experiences.img_6', label: 'Private Leopard Tracking in Yala', sectionName: '🌿 Experience Showcase', sectionId: 'exp', defaultUrl: 'assets/images/wildlife/yala-leopard-1.webp', attrType: 'image' },
+          { key: 'experiences.img_7', label: 'The Great Elephant Gathering Minneriya', sectionName: '🌿 Experience Showcase', sectionId: 'exp', defaultUrl: 'assets/images/wildlife/minneriya-elephant-gathering-2.webp', attrType: 'image' },
+          { key: 'experiences.img_8', label: 'Vaidya Ayurvedic Consultation', sectionName: '🌿 Experience Showcase', sectionId: 'exp', defaultUrl: 'assets/images/ayurveda/herbal-treatment-1.webp', attrType: 'image' },
+          { key: 'experiences.img_9', label: 'Demodara Nine Arch Scenic Train', sectionName: '🌿 Experience Showcase', sectionId: 'exp', defaultUrl: 'assets/images/hill-country/nine-arches-bridge-1.webp', attrType: 'image' },
+          { key: 'experiences.img_10', label: 'Highland Tea Tasting Experience', sectionName: '🌿 Experience Showcase', sectionId: 'exp', defaultUrl: 'assets/images/hill-country/nuwara-eliya-tea-2.webp', attrType: 'image' },
+          { key: 'experiences.img_11', label: 'Blue Whale Watching in Mirissa', sectionName: '🌿 Experience Showcase', sectionId: 'exp', defaultUrl: 'assets/images/wildlife/mirissa-blue-whale-4.webp', attrType: 'image' },
+          { key: 'experiences.img_12', label: 'Geoffrey Bawa Lunuganga Estate', sectionName: '🌿 Experience Showcase', sectionId: 'exp', defaultUrl: 'assets/images/beach/mirissa-1.webp', attrType: 'image' },
+          { key: 'experiences.img_13', label: 'Traditional Mask Carving Guild', sectionName: '🌿 Experience Showcase', sectionId: 'exp', defaultUrl: 'assets/images/cultural/galle-fort-5.webp', attrType: 'image' },
+          { key: 'experiences.img_14', label: 'Ritigala Forest Meditation Walk', sectionName: '🌿 Experience Showcase', sectionId: 'exp', defaultUrl: 'assets/images/wildlife/sinharaja-rainforest-5.webp', attrType: 'image' },
+          { key: 'experiences.img_15', label: 'Madu Ganga River Cinnamon Safari', sectionName: '🌿 Experience Showcase', sectionId: 'exp', defaultUrl: 'assets/images/beach/mirissa-1.webp', attrType: 'image' },
+          ctaBg
+        ];
+      }
+
+      // Default fallback for any category page, tours, reviews, blog, gallery
+      const hero = this.getHeroBindingForActivePage();
+      return [
+        {
+          key: hero.key,
+          label: hero.label,
+          sectionName: '🎯 Hero Banner',
+          sectionId: 'hero',
+          defaultUrl: hero.defaultVal,
+          attrType: hero.attrType
+        },
+        ctaBg
+      ];
     },
 
     renderEmptyState() {
       const body = document.getElementById('inspectorBody');
       if (!body) return;
 
+      const hero = this.getHeroBindingForActivePage();
+      const currentHeroImg = this.getCurrentValue(hero.key, (this.activeDocData && this.activeDocData[hero.key]) || hero.defaultVal);
+      const sectionImages = this.getSectionImagesForActivePage();
+
+      let sectionImagesHtml = '';
+      sectionImages.forEach((img, idx) => {
+        const val = this.getCurrentValue(img.key, (this.activeDocData && this.activeDocData[img.key]) || img.defaultUrl || '');
+        const previewUrl = this.resolvePreviewUrl(val);
+        sectionImagesHtml += `
+          <div style="display: flex; align-items: center; justify-content: space-between; padding: 10px 12px; background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 8px; margin-bottom: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.04);">
+            <div style="display: flex; align-items: center; gap: 10px; overflow: hidden;">
+              <img src="${previewUrl}" style="width: 48px; height: 38px; object-fit: cover; border-radius: 6px; border: 1px solid #CBD5E1; flex-shrink: 0;" onerror="this.src='../assets/images/placeholder.png'"/>
+              <div style="min-width: 0;">
+                <div style="font-size: 0.72rem; font-weight: 700; color: #64748B; text-transform: uppercase;">${this.escapeHtml(img.sectionName)}</div>
+                <div style="font-size: 0.82rem; font-weight: 600; color: #0F172A; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" title="${this.escapeAttr(img.label)}">${this.escapeHtml(img.label)}</div>
+              </div>
+            </div>
+            <button type="button" class="btn btn-outline btn-sm" onclick="PageEditor.openImageEditor('${img.key}', '${this.escapeAttr(img.label)}', '${this.escapeAttr(img.sectionName)}', '${this.escapeAttr(img.defaultUrl)}', '${img.attrType}')" style="margin-left: 8px; white-space: nowrap; font-size: 0.78rem; font-weight: 600; padding: 4px 10px;">
+              ✏️ Edit
+            </button>
+          </div>
+        `;
+      });
+
       body.innerHTML = `
         <div class="inspector-empty-state">
-          <div style="background: linear-gradient(135deg, #FFFBEB, #FEF3C7); border: 1px solid #FCD34D; border-radius: 8px; padding: 12px; margin-bottom: 16px; text-align: center;">
-            <div style="font-size: 0.88rem; color: #92400E; margin-bottom: 4px; font-weight: 700;">📦 Manage 29 Tour Packages</div>
+          <!-- 1. Tour Packages Quick Access -->
+          <div style="background: linear-gradient(135deg, #FFFBEB, #FEF3C7); border: 1px solid #FCD34D; border-radius: 8px; padding: 12px; margin-bottom: 14px; text-align: center;">
+            <div style="font-size: 0.88rem; color: #92400E; margin-bottom: 4px; font-weight: 700;">📦 Tour Packages Manager</div>
             <p style="font-size: 0.78rem; color: #78350F; margin: 0 0 10px 0;">Add new tours, edit prices, days, itineraries, photo galleries, and highlights.</p>
             <button type="button" class="btn btn-gold btn-sm btn-block" onclick="AdminApp.switchSection('packages')" style="font-weight: 700;">
-              📦 Open Tour Packages Table
+              📦 Open 29 Tour Packages Table
             </button>
           </div>
 
-          <div class="inspector-empty-icon">👆</div>
-          <h3>Click Anything to Edit</h3>
-          <p>Click on any text, photo, button, or section on the left preview to instantly customize it.</p>
-          
-          <!-- Prominent Dedicated Hero Banner Editor Card -->
-          <div style="background: linear-gradient(135deg, #0F172A, #1E293B); border: 1px solid #D4AF37; border-radius: 8px; padding: 14px; margin-bottom: 16px; color: #FFFFFF; text-align: left;">
-            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 4px;">
-              <strong style="color: #D4AF37; font-size: 0.95rem;">🎯 Hero Banner Media</strong>
-              <span class="badge" style="background: rgba(212, 175, 55, 0.2); color: #F8E5DD; font-size: 0.72rem;">Photo &amp; Video</span>
+          <!-- 2. Primary Page Hero Banner Card -->
+          <div style="background: linear-gradient(135deg, #0F172A, #1E293B); border: 1px solid #D4AF37; border-radius: 8px; padding: 14px; margin-bottom: 16px; color: #FFFFFF; text-align: left; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
+              <strong style="color: #D4AF37; font-size: 0.95rem;">🎯 Top Hero Banner Media</strong>
+              <span class="badge" style="background: rgba(212, 175, 55, 0.25); color: #F8E5DD; font-size: 0.72rem;">Photo &amp; Video</span>
             </div>
-            <p style="font-size: 0.78rem; color: #CBD5E1; margin: 0 0 10px 0;">Upload, edit, browse, or remove the main hero background photo and video for this page.</p>
+            <div style="display: flex; gap: 10px; align-items: center; margin-bottom: 10px;">
+              <img src="${this.resolvePreviewUrl(currentHeroImg)}" style="width: 64px; height: 42px; object-fit: cover; border-radius: 6px; border: 1px solid #D4AF37;" onerror="this.src='../assets/images/placeholder.png'"/>
+              <div style="font-size: 0.78rem; color: #E2E8F0; line-height: 1.3;">
+                <div>${this.escapeHtml(hero.label)}</div>
+                <span class="badge" style="background: #334155; color: #94A3B8; font-size: 0.68rem;">${this.escapeHtml(hero.key)}</span>
+              </div>
+            </div>
             <button type="button" class="btn btn-gold btn-sm btn-block" onclick="PageEditor.openHeroBannerEditor()" style="font-weight: 700;">
-              🎯 Edit This Page's Hero Banner
+              🎯 Edit / Change Hero Banner &amp; Video
             </button>
           </div>
 
-          <div class="quick-jump-title">Quick Jump to Page Sections</div>
+          <!-- 3. All Section Showcase & Hero Images on this Page -->
+          <div style="margin-bottom: 20px;">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+              <div style="font-size: 0.88rem; font-weight: 700; color: #0F172A; display: flex; align-items: center; gap: 6px;">
+                <span>🖼️ Section Images &amp; Banners</span>
+              </div>
+              <span class="badge" style="background: #E2E8F0; color: #334155; font-size: 0.72rem;">${sectionImages.length} Photos</span>
+            </div>
+            <p style="font-size: 0.78rem; color: #64748B; margin: 0 0 10px 0;">Click "Edit" on any section below to change, upload, or remove its showcase photo:</p>
+            <div style="max-height: 380px; overflow-y: auto; padding-right: 4px;">
+              ${sectionImagesHtml}
+            </div>
+          </div>
+
+          <!-- 4. Click Preview Reminder -->
+          <div style="padding: 12px; background: #F8FAFC; border: 1px dashed #CBD5E1; border-radius: 8px; text-align: center; margin-bottom: 16px;">
+            <div style="font-size: 1.4rem; margin-bottom: 4px;">👆</div>
+            <div style="font-weight: 700; font-size: 0.84rem; color: #1E293B;">Click Anything on Left Preview</div>
+            <p style="font-size: 0.76rem; color: #64748B; margin: 0;">Click directly on any photo, headline, or text on the page to customize it live.</p>
+          </div>
+
+          <!-- 5. Quick Jump to Page Sections -->
+          <div class="quick-jump-title">Quick Jump &amp; Edit Page Sections</div>
           <div class="quick-jump-grid">
             <div class="quick-jump-card" onclick="PageEditor.openHeroBannerEditor()" style="border: 1px solid #D4AF37; background: #FFFDF8;">
               <span class="qj-icon">🎯</span>
               <span class="qj-label" style="font-weight: 700; color: #92400E;">Hero Banner</span>
             </div>
-            <div class="quick-jump-card" onclick="PageEditor.scrollToSection('about')">
+            <div class="quick-jump-card" onclick="PageEditor.jumpToSection('about')">
               <span class="qj-icon">🏛️</span>
               <span class="qj-label">About &amp; Story</span>
             </div>
-            <div class="quick-jump-card" onclick="PageEditor.scrollToSection('why-us')">
+            <div class="quick-jump-card" onclick="PageEditor.jumpToSection('why-us')">
               <span class="qj-icon">💎</span>
               <span class="qj-label">Why Choose Us</span>
             </div>
-            <div class="quick-jump-card" onclick="PageEditor.scrollToSection('categories')">
+            <div class="quick-jump-card" onclick="PageEditor.jumpToSection('categories')">
               <span class="qj-icon">🐆</span>
               <span class="qj-label">Tour Categories</span>
             </div>
-            <div class="quick-jump-card" onclick="PageEditor.scrollToSection('destinations')">
+            <div class="quick-jump-card" onclick="PageEditor.jumpToSection('destinations')">
               <span class="qj-icon">📍</span>
               <span class="qj-label">Destinations</span>
             </div>
@@ -558,21 +926,21 @@
               <span class="qj-icon">📦</span>
               <span class="qj-label">Tour Packages</span>
             </div>
-            <div class="quick-jump-card" onclick="PageEditor.scrollToSection('bespoke')">
+            <div class="quick-jump-card" onclick="PageEditor.jumpToSection('bespoke')">
               <span class="qj-icon">✨</span>
               <span class="qj-label">Bespoke Planner</span>
             </div>
-            <div class="quick-jump-card" onclick="PageEditor.scrollToSection('testimonials')">
+            <div class="quick-jump-card" onclick="PageEditor.jumpToSection('testimonials')">
               <span class="qj-icon">💬</span>
               <span class="qj-label">Reviews &amp; Trust</span>
             </div>
-            <div class="quick-jump-card" onclick="PageEditor.scrollToSection('faq')">
+            <div class="quick-jump-card" onclick="PageEditor.jumpToSection('faq')">
               <span class="qj-icon">❓</span>
               <span class="qj-label">FAQs</span>
             </div>
-            <div class="quick-jump-card" onclick="PageEditor.scrollToSection('siteFooter')">
-              <span class="qj-icon">🔻</span>
-              <span class="qj-label">Footer &amp; Social</span>
+            <div class="quick-jump-card" onclick="PageEditor.openImageEditor('siteGlobal.branding.cta_bg', 'Sacred Bottom CTA Banner', '🕊️ Sacred CTA Banner', 'assets/images/cultural/sigiriya-1.webp', 'bg-image')">
+              <span class="qj-icon">🕊️</span>
+              <span class="qj-label">Sacred CTA</span>
             </div>
           </div>
         </div>
@@ -687,7 +1055,7 @@
 
       // Fetch doc from Firestore
       this.activeDocData = await this.fetchPageDoc(docKey);
-      this.renderEmptyState();
+      this.clearSelectedElement();
       this.markSaved();
     },
 
