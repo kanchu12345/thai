@@ -1137,28 +1137,60 @@ resolveImg(url) {
 
 
     initFirebase() {
-      if (window.firebase && window.firebase.apps && window.firebase.apps.length > 0) {
-        this.fbDb = window.firebase.firestore();
-        this.fbAuth = window.firebase.auth();
-      } else if (window.firebase && typeof window.firebase.initializeApp === 'function') {
-        const config = (window.LOTUS_CONFIG && window.LOTUS_CONFIG.firebase) || {};
-        try {
+      const fallbackConfig = {
+        apiKey: "AIzaSyD5NyCFaPHeS1cKlsgxZ_WsraswHlYonNA",
+        authDomain: "louterst-36b64.firebaseapp.com",
+        projectId: "louterst-36b64",
+        storageBucket: "louterst-36b64.firebasestorage.app",
+        messagingSenderId: "416036235757",
+        appId: "1:416036235757:web:544c89abdb74b41a585fe4",
+        measurementId: "G-KKNCD89X6F"
+      };
+
+      const config = (window.LOTUS_CONFIG && window.LOTUS_CONFIG.firebase && window.LOTUS_CONFIG.firebase.apiKey)
+        ? window.LOTUS_CONFIG.firebase
+        : fallbackConfig;
+
+      try {
+        if (window.firebase && window.firebase.apps && window.firebase.apps.length > 0) {
+          this.fbDb = window.firebase.firestore();
+          this.fbAuth = window.firebase.auth();
+        } else if (window.firebase && typeof window.firebase.initializeApp === 'function') {
           const app = window.firebase.initializeApp(config);
           this.fbDb = window.firebase.firestore(app);
           this.fbAuth = window.firebase.auth(app);
-        } catch (e) {
-          console.warn('[AdminApp] Firebase initializeApp:', e.message);
+        } else if (window.LotusFirebase && window.LotusFirebase.db) {
+          this.fbDb = window.LotusFirebase.db;
+          this.fbAuth = window.LotusFirebase.auth;
         }
-      } else if (window.LotusFirebase) {
-        this.fbDb = window.LotusFirebase.db;
-        this.fbAuth = window.LotusFirebase.auth;
+      } catch (e) {
+        console.warn('[AdminApp] Firebase initializeApp:', e.message);
+      }
+
+      this.updateFirebaseBadge();
+    },
+
+    verifyFirebaseConnection() {
+      this.initFirebase();
+    },
+
+    updateFirebaseBadge() {
+      const badge = document.getElementById('firebaseStatusBadge');
+      if (!badge) return;
+      if (this.fbDb || (window.firebase && window.firebase.apps && window.firebase.apps.length > 0)) {
+        badge.style.background = '#DCFCE7';
+        badge.style.color = '#166534';
+        badge.innerHTML = '🟢 Firebase: Connected';
+      } else {
+        badge.style.background = '#FEE2E2';
+        badge.style.color = '#991B1B';
+        badge.innerHTML = '🔴 Firebase: Disconnected';
       }
     },
 
     /* Supabase removed in favor of Firebase Firestore */
 
     async init() {
-      this.verifyFirebaseConnection();
       this.initFirebase();
       // Firebase only
       this.setupIdleDetector();
@@ -1377,6 +1409,30 @@ resolveImg(url) {
       btn.innerHTML = '<span>Signing In...</span>';
 
       try {
+        if (!this.fbAuth) {
+          this.initFirebase();
+        }
+        if (!this.fbAuth && window.firebase && typeof window.firebase.auth === 'function') {
+          try {
+            if (!window.firebase.apps.length) {
+              const fallbackConfig = {
+                apiKey: "AIzaSyD5NyCFaPHeS1cKlsgxZ_WsraswHlYonNA",
+                authDomain: "louterst-36b64.firebaseapp.com",
+                projectId: "louterst-36b64",
+                storageBucket: "louterst-36b64.firebasestorage.app",
+                messagingSenderId: "416036235757",
+                appId: "1:416036235757:web:544c89abdb74b41a585fe4",
+                measurementId: "G-KKNCD89X6F"
+              };
+              window.firebase.initializeApp(fallbackConfig);
+            }
+            this.fbAuth = window.firebase.auth();
+            this.fbDb = window.firebase.firestore();
+          } catch (e) {
+            console.warn('[AdminApp] handleLogin retry init:', e.message);
+          }
+        }
+
         if (this.fbAuth) {
           const cred = await this.fbAuth.signInWithEmailAndPassword(email, password);
           this.currentUser = { email: cred.user.email, id: cred.user.uid };
