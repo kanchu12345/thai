@@ -1,8 +1,11 @@
+# Robots.txt for Lotus Ceylon International Tours & Services
 User-agent: *
-Disallow: /admin/
-Disallow: /thai/admin/
 Allow: /
 
-# LOTUS Ceylon International Tours & Services (Pvt) Ltd
-# Primary Sitemap
+# Sitemaps
 Sitemap: https://kanchu12345.github.io/thai/sitemap.xml
+
+# Disallow admin panel and private data backups
+Disallow: /admin/
+Disallow: /backups/
+Disallow: /scratch/
