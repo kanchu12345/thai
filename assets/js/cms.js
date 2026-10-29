@@ -849,7 +849,7 @@
           const sectionId = section ? (section.id || section.className || 'Page Section') : 'General Content';
 
           // Check if element is inside or part of a tour package card
-          const pkgEl = target.closest('[data-package-slug], [data-slug], [data-tour], .package-card, .tour-card, .tour-grid-card, .curated-card');
+          const pkgEl = target.closest('[data-package-slug], [data-slug], [data-tour], .package-card, .tour-card, .tour-grid-card, .curated-card, .beach-package-card, .dest-card');
           let packageSlug = pkgEl ? (pkgEl.getAttribute('data-package-slug') || pkgEl.getAttribute('data-slug') || pkgEl.getAttribute('data-tour')) : null;
           if (!packageSlug) {
             const linkEl = target.closest('a') || (pkgEl ? pkgEl.querySelector('a[href*="/tours/"]') : null);
