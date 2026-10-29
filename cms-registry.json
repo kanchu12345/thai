@@ -6301,7 +6301,7 @@
         "firestorePath": "siteContent/destinations.destinations.p_6",
         "type": "text",
         "label": "Paragraph Text (p_6)",
-        "defaultValue": "Magnificent UNESCO cave temple complex housing 153 Buddha statues and 2,100 square meters of sacred ceiling murals dating from the 1st century BC.",
+        "defaultValue": "Magnificent UNESCO cave temple complex comprising 5 main caves housing over 150 Buddha statues spanning from the 1st century BCE onward, and sacred 18th-century Kandyan-era ceiling murals.",
         "i18n": true
       },
       {
@@ -17873,7 +17873,7 @@
         "firestorePath": "siteContent/toursIndex.toursIndex.p_7",
         "type": "text",
         "label": "Paragraph Text (p_7)",
-        "defaultValue": "Journey across 2,500 years of living history. From sky palaces perched atop dramatic monadnocks to candlelit evening temple pujas and ancien...",
+        "defaultValue": "Journey across 2,300+ years of recorded Buddhist history. From sky palaces perched atop dramatic monadnocks to candlelit evening temple pujas and ancien...",
         "i18n": true
       },
       {
@@ -19703,7 +19703,7 @@
         "firestorePath": "siteContent/toursIndex.toursIndex.p_26",
         "type": "html",
         "label": "Paragraph Text (p_26)",
-        "defaultValue": "<strong>Official Channel:</strong> Always use the official government portal (eta.gov.lk). Your Lotus Ceylon travel concierge will gladly verify your nationality’s latest entry protocols upon booking.",
+        "defaultValue": "<strong>Official Channel:</strong> Always use the official government portal (www.eta.gov.lk). Your Lotus Ceylon travel concierge will gladly verify your nationality’s latest entry protocols upon booking.",
         "i18n": true
       },
       {
@@ -37297,7 +37297,7 @@
         "firestorePath": "tourCategories/cultural.cat_cultural.p_2",
         "type": "text",
         "label": "Paragraph Text (p_2)",
-        "defaultValue": "Journey across 2,500 years of living history. From sky palaces perched atop dramatic monadnocks to candlelit evening temple pujas and ancient royal reservoirs, immerse in the authentic soul of Ceylon with our bespoke, private guided cultural expeditions.",
+        "defaultValue": "Journey across 2,300+ years of recorded Buddhist history. From sky palaces perched atop dramatic monadnocks to candlelit evening temple pujas and ancient royal reservoirs, immerse in the authentic soul of Ceylon with our bespoke, private guided cultural expeditions.",
         "i18n": true
       },
       {
@@ -38997,7 +38997,7 @@
         "firestorePath": "tourCategories/cultural.cat_cultural.p_15",
         "type": "html",
         "label": "Paragraph Text (p_15)",
-        "defaultValue": "Traverse the legendary Cultural Triangle through centuries of royal capitals, monumental dagobas, and UNESCO World Heritage sanctuaries. From the sacred 2,500-year-old Bo Tree in <strong>Anuradhapura</strong> and the towering 5th-century sky fortress of <strong>Sigiriya</strong> to the golden-roofed Temple of the Sacred Tooth Relic in <strong>Kandy</strong> and the Dutch maritime bastions of <strong>Galle</strong>, experience Ceylon’s deep soul guided by expert cultural historians.",
+        "defaultValue": "Traverse the legendary Cultural Triangle through centuries of royal capitals, monumental dagobas, and UNESCO World Heritage sanctuaries. From the sacred 2,300-year-old Bo Tree in <strong>Anuradhapura</strong> and the towering 5th-century sky fortress of <strong>Sigiriya</strong> to the golden-roofed Temple of the Sacred Tooth Relic in <strong>Kandy</strong> and the Dutch maritime bastions of <strong>Galle</strong>, experience Ceylon’s deep soul guided by expert cultural historians.",
         "i18n": true
       },
       {
@@ -84610,7 +84610,7 @@
       "firestorePath": "siteContent/destinations.destinations.p_6",
       "type": "text",
       "label": "Paragraph Text (p_6)",
-      "defaultValue": "Magnificent UNESCO cave temple complex housing 153 Buddha statues and 2,100 square meters of sacred ceiling murals dating from the 1st century BC.",
+      "defaultValue": "Magnificent UNESCO cave temple complex comprising 5 main caves housing over 150 Buddha statues spanning from the 1st century BCE onward, and sacred 18th-century Kandyan-era ceiling murals.",
       "i18n": true
     },
     {
@@ -96160,7 +96160,7 @@
       "firestorePath": "siteContent/toursIndex.toursIndex.p_7",
       "type": "text",
       "label": "Paragraph Text (p_7)",
-      "defaultValue": "Journey across 2,500 years of living history. From sky palaces perched atop dramatic monadnocks to candlelit evening temple pujas and ancien...",
+      "defaultValue": "Journey across 2,300+ years of recorded Buddhist history. From sky palaces perched atop dramatic monadnocks to candlelit evening temple pujas and ancien...",
       "i18n": true
     },
     {
@@ -97990,7 +97990,7 @@
       "firestorePath": "siteContent/toursIndex.toursIndex.p_26",
       "type": "html",
       "label": "Paragraph Text (p_26)",
-      "defaultValue": "<strong>Official Channel:</strong> Always use the official government portal (eta.gov.lk). Your Lotus Ceylon travel concierge will gladly verify your nationality’s latest entry protocols upon booking.",
+      "defaultValue": "<strong>Official Channel:</strong> Always use the official government portal (www.eta.gov.lk). Your Lotus Ceylon travel concierge will gladly verify your nationality’s latest entry protocols upon booking.",
       "i18n": true
     },
     {
@@ -115560,7 +115560,7 @@
       "firestorePath": "tourCategories/cultural.cat_cultural.p_2",
       "type": "text",
       "label": "Paragraph Text (p_2)",
-      "defaultValue": "Journey across 2,500 years of living history. From sky palaces perched atop dramatic monadnocks to candlelit evening temple pujas and ancient royal reservoirs, immerse in the authentic soul of Ceylon with our bespoke, private guided cultural expeditions.",
+      "defaultValue": "Journey across 2,300+ years of recorded Buddhist history. From sky palaces perched atop dramatic monadnocks to candlelit evening temple pujas and ancient royal reservoirs, immerse in the authentic soul of Ceylon with our bespoke, private guided cultural expeditions.",
       "i18n": true
     },
     {
@@ -117260,7 +117260,7 @@
       "firestorePath": "tourCategories/cultural.cat_cultural.p_15",
       "type": "html",
       "label": "Paragraph Text (p_15)",
-      "defaultValue": "Traverse the legendary Cultural Triangle through centuries of royal capitals, monumental dagobas, and UNESCO World Heritage sanctuaries. From the sacred 2,500-year-old Bo Tree in <strong>Anuradhapura</strong> and the towering 5th-century sky fortress of <strong>Sigiriya</strong> to the golden-roofed Temple of the Sacred Tooth Relic in <strong>Kandy</strong> and the Dutch maritime bastions of <strong>Galle</strong>, experience Ceylon’s deep soul guided by expert cultural historians.",
+      "defaultValue": "Traverse the legendary Cultural Triangle through centuries of royal capitals, monumental dagobas, and UNESCO World Heritage sanctuaries. From the sacred 2,300-year-old Bo Tree in <strong>Anuradhapura</strong> and the towering 5th-century sky fortress of <strong>Sigiriya</strong> to the golden-roofed Temple of the Sacred Tooth Relic in <strong>Kandy</strong> and the Dutch maritime bastions of <strong>Galle</strong>, experience Ceylon’s deep soul guided by expert cultural historians.",
       "i18n": true
     },
     {
