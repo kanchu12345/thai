@@ -9,7 +9,7 @@
 (function (window, document) {
   'use strict';
 
-  const CACHE_KEY = 'lotus_cms_v3';
+  const CACHE_KEY = 'lotus_cms_v4';
   const CACHE_TTL_MS = 30 * 1000; // 10 minutes
   const LEGACY_CACHE_KEYS = ['lotus_seed_catalog_cache_v2', 'lotus_seed_catalog_cache'];
 
@@ -26,6 +26,10 @@
     'assets/tours/wildlife/predator-trail-1.jpg': 'assets/images/wildlife/minneriya-elephant-gathering-2.webp',
     'assets/tours/wildlife/biosphere-odyssey-1.jpg': 'assets/images/wildlife/udawalawe-3.webp'
   };
+
+  function getApiKey() {
+    return (window.LOTUS_CONFIG && window.LOTUS_CONFIG.firebase && window.LOTUS_CONFIG.firebase.apiKey) || 'AIzaSyD5NyCFaPHeS1cKlsgxZ_WsraswHlYonNA';
+  }
 
   function getProjectId() {
     return (window.LOTUS_CONFIG && window.LOTUS_CONFIG.firebase && window.LOTUS_CONFIG.firebase.projectId) || 'louterst-36b64';
@@ -507,7 +511,7 @@
     },
 
     async fetchVersion() {
-      const url = getFirestoreRestBase() + '/siteMeta/version?cb=' + Date.now();
+      const url = getFirestoreRestBase() + '/siteMeta/version?key=' + getApiKey();
       const res = await fetch(url, { cache: 'no-store' });
       if (!res.ok) {
         if (res.status === 404) return 1;
@@ -522,7 +526,7 @@
       const projectId = getProjectId();
       const fullDocNames = docPaths.map(p => `projects/${projectId}/databases/(default)/documents/${p}`);
 
-      const res = await fetch(getFirestoreRestBase() + ':batchGet?cb=' + Date.now(), {
+      const res = await fetch(getFirestoreRestBase() + ':batchGet?key=' + getApiKey(), {
         cache: 'no-store',
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
