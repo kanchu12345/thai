@@ -3718,6 +3718,7 @@ resolveImg(url) {
       if (this.fbDb) {
 
         this.fbDb.collection('categories').doc(slugOrId).delete().catch(e => console.warn('Firestore delete cat:', e));
+        this.fbDb.collection('siteMeta').doc('version').set({ v: Date.now(), updatedAt: new Date().toISOString() }, { merge: true }).catch(e => {});
 
       }
 
@@ -3746,6 +3747,7 @@ resolveImg(url) {
       if (this.fbDb) {
 
         this.fbDb.collection('destinations').doc(slugOrId).delete().catch(e => console.warn('Firestore delete dest:', e));
+        this.fbDb.collection('siteMeta').doc('version').set({ v: Date.now(), updatedAt: new Date().toISOString() }, { merge: true }).catch(e => {});
 
       }
 
@@ -3776,6 +3778,7 @@ resolveImg(url) {
         this.fbDb.collection('testimonials').doc(id).delete().catch(e => {});
 
         this.fbDb.collection('reviews').doc(id).delete().catch(e => {});
+        this.fbDb.collection('siteMeta').doc('version').set({ v: Date.now(), updatedAt: new Date().toISOString() }, { merge: true }).catch(e => {});
 
       }
 
@@ -3803,13 +3806,19 @@ resolveImg(url) {
         if (this.fbDb) {
           try {
             const deletes = [
+              this.fbDb.collection('tourPackages').doc(pkgSlug).delete(),
               this.fbDb.collection('tours').doc(pkgSlug).delete(),
               this.fbDb.collection('packages').doc(pkgSlug).delete()
             ];
             if (pkgId && pkgId !== pkgSlug) {
+              deletes.push(this.fbDb.collection('tourPackages').doc(pkgId).delete());
               deletes.push(this.fbDb.collection('tours').doc(pkgId).delete());
               deletes.push(this.fbDb.collection('packages').doc(pkgId).delete());
             }
+            deletes.push(this.fbDb.collection('siteMeta').doc('version').set({
+              v: Date.now(),
+              updatedAt: new Date().toISOString()
+            }, { merge: true }));
             await Promise.all(deletes);
           } catch (e) {
             console.warn('Firestore package delete warning:', e);
@@ -5442,111 +5451,6 @@ resolveImg(url) {
 
 
 
-    /**
-
-     * Reusable Media Picker Modal
-
-     */
-
-    openImagePicker(targetInputId, previewImgId = null, cardId = null) {
-
-      this.targetPickerInputId = targetInputId;
-
-      this.targetPickerPreviewId = previewImgId;
-
-      this.targetPickerCardId = cardId;
-
-      const grid = document.getElementById('pickerMediaGrid');
-
-      if (!grid) return;
-
-
-
-      if (!this.mediaFiles || this.mediaFiles.length === 0) {
-
-        this.renderMediaLibrary();
-
-      }
-
-
-
-      grid.innerHTML = this.mediaFiles.map(m => {
-
-        const isVid = m.isVideo || /\.(mp4|webm|mov)$/i.test(m.url);
-
-        const resolved = this.resolveImg(m.url);
-
-        return `
-
-        <div class="media-item" onclick="AdminApp.selectPickedImage('${m.url}')" title="${m.name} (${m.size || ''})">
-
-          ${isVid ? `
-
-            <div style="width: 100%; height: 100%; background: #001726; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #E5B869;">
-
-              <span style="font-size: 2.2rem;">🎬</span>
-
-              <span style="font-size: 0.75rem; letter-spacing: 1px; font-weight: 700; color: #FFFFFF; margin-top: 4px;">HD VIDEO</span>
-
-            </div>
-
-          ` : `
-
-            <img src="${resolved}" alt="${m.name}" loading="lazy" onerror="this.src='../assets/images/logo.png'">
-
-          `}
-
-          <div class="media-overlay">
-
-            <span class="media-info">${m.name}</span>
-
-            <span class="btn btn-gold btn-sm">Select Image</span>
-
-          </div>
-
-        </div>
-
-        `;
-
-      }).join('');
-
-      this.openModal('mediaPickerModal');
-
-    },
-
-
-
-    selectPickedImage(url) {
-      if (this.targetPickerInputId) {
-        const target = document.getElementById(this.targetPickerInputId);
-        if (target) {
-          target.value = url.replace("../", "");
-          target.dispatchEvent(new Event("change", { bubbles: true }));
-          target.dispatchEvent(new Event("input", { bubbles: true }));
-          if (this.targetPickerPreviewId && this.targetPickerCardId) {
-            this.updateImagePreview(this.targetPickerInputId, this.targetPickerPreviewId, this.targetPickerCardId);
-          } else if (this.targetPickerPreviewId) {
-            const p = document.getElementById(this.targetPickerPreviewId);
-            if (p) p.src = this.resolveImg(url);
-          }
-        }
-      }
-      this.closeModal("mediaPickerModal");
-      this.showToast("Image selected and preview updated!", "success");
-    },
-
-
-
-    /**
-
-     * Cloudinary Direct Upload Integration
-
-     */
-
-        /**
-     * Direct Unsigned Cloudinary Upload Engine (No External iframe widget required)
-     * Solves the infinite loading spinner on local file:/// or blocked iframe cross-origin environments.
-     */
     triggerDirectCloudinaryUpload(options = {}) {
       return this.triggerUploadForInput(options.inputId, options.previewImgId, options.cardId, options);
     },

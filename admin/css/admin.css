@@ -485,12 +485,21 @@ textarea.form-control {
 }
 
 .content-section {
-  display: none;
+  display: none !important;
 }
 
 .content-section.active {
-  display: block;
+  display: block !important;
   animation: fadeIn 0.2s ease-in-out;
+}
+
+.content-section.page-editor-section.active {
+  display: flex !important;
+  flex-direction: column;
+  padding: 0;
+  margin: 0;
+  max-width: 100%;
+  height: calc(100vh - 60px);
 }
 
 @keyframes fadeIn {

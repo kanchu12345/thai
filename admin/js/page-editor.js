@@ -205,18 +205,36 @@
         const imgSrc = currentVal || 'assets/images/sigiriya.jpg';
         html += `
           <div class="inspector-field-group">
-            <label>Image Preview</label>
-            <img src="${this.resolvePreviewUrl(imgSrc)}" class="inspector-thumb-preview" id="inspectorThumb" onerror="this.src='../assets/images/sigiriya.jpg'"/>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+              <label style="margin: 0; font-weight: 700; color: #0F172A;">🖼️ Image Preview &amp; Source</label>
+              <span class="badge" style="font-size: 0.72rem; background: #E2E8F0; color: #334155;">${this.escapeHtml(item.key)}</span>
+            </div>
             
-            <div style="display: flex; gap: 8px; margin-top: 8px;">
+            <div style="position: relative; border-radius: 8px; overflow: hidden; background: #0B132B; text-align: center; border: 1px solid #CBD5E1; margin-bottom: 10px;">
+              <img src="${this.resolvePreviewUrl(imgSrc)}" class="inspector-thumb-preview" id="inspectorThumb" style="max-height: 200px; width: 100%; object-fit: cover; display: block;" onerror="this.src='../assets/images/placeholder.png'"/>
+            </div>
+
+            <label style="font-size: 0.82rem; font-weight: 600; color: #475569;">Image CDN URL / Relative Path</label>
+            <div style="display: flex; gap: 8px; margin-bottom: 10px;">
               <input type="text" class="form-control" id="fieldInput_${item.key}" value="${this.escapeAttr(imgSrc)}" placeholder="Image path or Cloudinary URL" oninput="PageEditor.handleLiveInput('${item.key}', this.value, '${item.attrType}')"/>
-              <button type="button" class="btn btn-outline btn-sm" onclick="PageEditor.openMediaPicker('${item.key}')">📁 Browse</button>
-              <button type="button" class="btn btn-secondary btn-sm" onclick="PageEditor.openCloudinaryForField('${item.key}')">☁️ Upload</button>
+            </div>
+
+            <!-- Action buttons: Upload, Browse, Delete/Remove, Reset -->
+            <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 14px;">
+              <button type="button" class="btn btn-secondary btn-sm" onclick="PageEditor.openCloudinaryForField('${item.key}')" title="Upload a new photo directly to Cloudinary CDN">☁️ Upload New</button>
+              <button type="button" class="btn btn-outline btn-sm" onclick="PageEditor.openMediaPicker('${item.key}')" title="Choose from previously uploaded media">📁 Media Library</button>
+              <button type="button" class="btn btn-danger btn-sm" onclick="PageEditor.clearImageField('${item.key}', '${item.attrType}')" style="background: #EF4444; color: #FFFFFF; border: none;" title="Remove this image">🗑️ Remove Image</button>
+              <button type="button" class="btn btn-outline btn-sm" onclick="PageEditor.resetFieldToDefault('${item.key}', '${item.attrType}')" title="Restore original default image">🔄 Reset Default</button>
             </div>
           </div>
+
           <div class="inspector-field-group">
-            <label>Image Alt Text (SEO & Accessibility)</label>
-            <input type="text" class="form-control" id="altInput_${item.key}" value="Lotus Ceylon Luxury Tours" placeholder="Descriptive label for search engines"/>
+            <label style="font-weight: 600; font-size: 0.82rem; color: #475569;">Image Alt Text (SEO &amp; Accessibility)</label>
+            <input type="text" class="form-control" id="altInput_${item.key}" value="Lotus Ceylon Luxury Tours" placeholder="Descriptive label for search engines" oninput="PageEditor.handleLiveInput('${item.key}_alt', this.value, 'alt')"/>
+          </div>
+
+          <div style="margin-top: 18px; padding-top: 14px; border-top: 1px solid #E2E8F0;">
+            <button type="button" class="btn btn-gold btn-block" onclick="PageEditor.publish()">🚀 Publish Changes Live</button>
           </div>
         `;
       }
@@ -226,23 +244,39 @@
         const videoSrc = currentVal || 'assets/videos/sigiriya-aerial.mp4';
         html += `
           <div class="inspector-field-group">
-            <label>Video Player Preview</label>
-            <video src="${this.resolvePreviewUrl(videoSrc)}" class="inspector-video-preview" controls muted autoplay loop style="max-height: 200px; width: 100%;"></video>
-            
-            <label style="margin-top: 10px;">Video File URL (MP4 / Cloudinary / Stream)</label>
-            <div style="display: flex; gap: 8px;">
-              <input type="text" class="form-control" id="fieldInput_${item.key}" value="${this.escapeAttr(videoSrc)}" placeholder="assets/videos/... or Cloudinary URL" oninput="PageEditor.handleLiveInput('${item.key}', this.value, 'video')"/>
-              <button type="button" class="btn btn-outline btn-sm" onclick="PageEditor.openMediaPicker('${item.key}')">📁 Browse</button>
-              <button type="button" class="btn btn-secondary btn-sm" onclick="PageEditor.openCloudinaryForField('${item.key}', 'video')">☁️ Upload Video</button>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+              <label style="margin: 0; font-weight: 700; color: #0F172A;">🎬 Video Player Preview</label>
+              <span class="badge" style="font-size: 0.72rem; background: #E2E8F0; color: #334155;">${this.escapeHtml(item.key)}</span>
             </div>
             
-            <div style="display: flex; gap: 14px; margin-top: 12px;">
-              <label style="display: flex; align-items: center; gap: 6px; font-size: 0.82rem; cursor: pointer;">
+            <div style="border-radius: 8px; overflow: hidden; background: #000; margin-bottom: 10px;">
+              <video src="${this.resolvePreviewUrl(videoSrc)}" class="inspector-video-preview" controls muted autoplay loop style="max-height: 200px; width: 100%; display: block;"></video>
+            </div>
+            
+            <label style="font-size: 0.82rem; font-weight: 600; color: #475569;">Video URL (Cloudinary / MP4 Stream)</label>
+            <div style="display: flex; gap: 8px; margin-bottom: 10px;">
+              <input type="text" class="form-control" id="fieldInput_${item.key}" value="${this.escapeAttr(videoSrc)}" placeholder="assets/videos/... or Cloudinary URL" oninput="PageEditor.handleLiveInput('${item.key}', this.value, 'video')"/>
+            </div>
+
+            <!-- Video Actions -->
+            <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px;">
+              <button type="button" class="btn btn-secondary btn-sm" onclick="PageEditor.openCloudinaryForField('${item.key}', 'video')">🎬 Upload Video</button>
+              <button type="button" class="btn btn-outline btn-sm" onclick="PageEditor.openMediaPicker('${item.key}')">📁 Media Library</button>
+              <button type="button" class="btn btn-danger btn-sm" onclick="PageEditor.clearVideoField('${item.key}')" style="background: #EF4444; color: #FFFFFF; border: none;">🗑️ Remove Video</button>
+              <button type="button" class="btn btn-outline btn-sm" onclick="PageEditor.resetFieldToDefault('${item.key}', 'video')">🔄 Reset Default</button>
+            </div>
+            
+            <div style="display: flex; gap: 14px; margin-top: 10px; padding: 8px 12px; background: #F8FAFC; border-radius: 6px; border: 1px solid #E2E8F0;">
+              <label style="display: flex; align-items: center; gap: 6px; font-size: 0.82rem; cursor: pointer; margin: 0;">
                 <input type="checkbox" id="videoAutoplay" checked onchange="PageEditor.handleVideoToggle('autoplay', this.checked)"/> Autoplay (Muted)
               </label>
-              <label style="display: flex; align-items: center; gap: 6px; font-size: 0.82rem; cursor: pointer;">
+              <label style="display: flex; align-items: center; gap: 6px; font-size: 0.82rem; cursor: pointer; margin: 0;">
                 <input type="checkbox" id="videoLoop" checked onchange="PageEditor.handleVideoToggle('loop', this.checked)"/> Loop
               </label>
+            </div>
+
+            <div style="margin-top: 18px; padding-top: 14px; border-top: 1px solid #E2E8F0;">
+              <button type="button" class="btn btn-gold btn-block" onclick="PageEditor.publish()">🚀 Publish Changes Live</button>
             </div>
           </div>
         `;
@@ -252,9 +286,23 @@
       else if (item.attrType === 'link') {
         html += `
           <div class="inspector-field-group">
-            <label>Button / Link Destination URL</label>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+              <label style="margin: 0; font-weight: 700; color: #0F172A;">🔗 Button / Link Destination</label>
+              <span class="badge" style="font-size: 0.72rem; background: #E2E8F0; color: #334155;">${this.escapeHtml(item.key)}</span>
+            </div>
             <input type="text" class="form-control" id="fieldInput_${item.key}" value="${this.escapeAttr(currentVal)}" placeholder="e.g. tours/index.html or #bespoke" oninput="PageEditor.handleLiveInput('${item.key}', this.value, 'link')"/>
-            <small style="color: #64748B; margin-top: 4px; display: block;">Quick link shortcuts: <code>#bespoke</code>, <code>#packages</code>, <code>tours/index.html</code>, <code>contact.html</code></small>
+            
+            <div style="display: flex; gap: 8px; margin-top: 10px; flex-wrap: wrap;">
+              <button type="button" class="btn btn-outline btn-sm" onclick="document.getElementById('fieldInput_${item.key}').value='#packages'; PageEditor.handleLiveInput('${item.key}', '#packages', 'link');">#packages</button>
+              <button type="button" class="btn btn-outline btn-sm" onclick="document.getElementById('fieldInput_${item.key}').value='inquiry-detailed.html'; PageEditor.handleLiveInput('${item.key}', 'inquiry-detailed.html', 'link');">Bespoke Form</button>
+              <button type="button" class="btn btn-outline btn-sm" onclick="document.getElementById('fieldInput_${item.key}').value='tours/index.html'; PageEditor.handleLiveInput('${item.key}', 'tours/index.html', 'link');">Tours Index</button>
+              <button type="button" class="btn btn-danger btn-sm" onclick="PageEditor.clearTextField('${item.key}');" style="background: #EF4444; color: #FFFFFF; border: none;">🗑️ Clear Link</button>
+              <button type="button" class="btn btn-outline btn-sm" onclick="PageEditor.resetFieldToDefault('${item.key}', 'link')">🔄 Reset Default</button>
+            </div>
+
+            <div style="margin-top: 18px; padding-top: 14px; border-top: 1px solid #E2E8F0;">
+              <button type="button" class="btn btn-gold btn-block" onclick="PageEditor.publish()">🚀 Publish Changes Live</button>
+            </div>
           </div>
         `;
       }
@@ -264,11 +312,19 @@
         html += `
           <div class="inspector-field-group">
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
-              <label style="margin: 0;">Rich Text Content</label>
+              <label style="margin: 0; font-weight: 700; color: #0F172A;">📝 Rich Content Text (${this.activeLang.toUpperCase()})</label>
               ${isMissingTranslation ? `<button type="button" class="auto-translate-btn" onclick="PageEditor.autoTranslateCurrentField('${item.key}', '${this.escapeAttr(enVal)}')">✨ Auto-Translate from EN</button>` : ''}
             </div>
             <textarea class="form-control" id="fieldInput_${item.key}" rows="5" oninput="PageEditor.handleLiveInput('${item.key}', this.value, 'html')">${this.escapeHtml(this.decodeEntities(currentVal))}</textarea>
-            <small style="color: #64748B; margin-top: 4px; display: block;">Supports basic formatting like &lt;strong&gt;, &lt;em&gt;, and &lt;br&gt;.</small>
+            
+            <div style="display: flex; gap: 8px; margin-top: 8px; flex-wrap: wrap;">
+              <button type="button" class="btn btn-danger btn-sm" onclick="PageEditor.clearTextField('${item.key}')" style="background: #EF4444; color: #FFFFFF; border: none;">🗑️ Clear Text</button>
+              <button type="button" class="btn btn-outline btn-sm" onclick="PageEditor.resetFieldToDefault('${item.key}', 'html')">🔄 Reset Default</button>
+            </div>
+
+            <div style="margin-top: 18px; padding-top: 14px; border-top: 1px solid #E2E8F0;">
+              <button type="button" class="btn btn-gold btn-block" onclick="PageEditor.publish()">🚀 Publish Changes Live</button>
+            </div>
           </div>
         `;
       }
@@ -279,7 +335,7 @@
         html += `
           <div class="inspector-field-group">
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
-              <label style="margin: 0;">Text Content (${this.activeLang.toUpperCase()})</label>
+              <label style="margin: 0; font-weight: 700; color: #0F172A;">✏️ Text Content (${this.activeLang.toUpperCase()})</label>
               ${isMissingTranslation ? `<button type="button" class="auto-translate-btn" onclick="PageEditor.autoTranslateCurrentField('${item.key}', '${this.escapeAttr(enVal)}')">✨ Auto-Translate from EN</button>` : ''}
             </div>
             ${isLong ? `
@@ -287,15 +343,24 @@
             ` : `
               <input type="text" class="form-control" id="fieldInput_${item.key}" value="${this.escapeAttr(this.decodeEntities(currentVal))}" oninput="PageEditor.handleLiveInput('${item.key}', this.value, 'text')"/>
             `}
+            
+            <div style="display: flex; gap: 8px; margin-top: 8px; flex-wrap: wrap;">
+              <button type="button" class="btn btn-danger btn-sm" onclick="PageEditor.clearTextField('${item.key}')" style="background: #EF4444; color: #FFFFFF; border: none;">🗑️ Clear Text</button>
+              <button type="button" class="btn btn-outline btn-sm" onclick="PageEditor.resetFieldToDefault('${item.key}', 'text')">🔄 Reset Default</button>
+            </div>
+
+            <div style="margin-top: 18px; padding-top: 14px; border-top: 1px solid #E2E8F0;">
+              <button type="button" class="btn btn-gold btn-block" onclick="PageEditor.publish()">🚀 Publish Changes Live</button>
+            </div>
           </div>
         `;
       }
 
       // Technical Info Accordion (collapsed by default)
       html += `
-        <details class="technical-info-toggle">
-          <summary>⚙️ Technical Info &amp; Database Binding</summary>
-          <div class="technical-info-box">
+        <details class="technical-info-toggle" style="margin-top: 16px;">
+          <summary style="font-size: 0.8rem; color: #64748B; cursor: pointer;">⚙️ Technical Info &amp; Database Binding</summary>
+          <div class="technical-info-box" style="margin-top: 6px; font-size: 0.78rem; background: #F8FAFC; padding: 10px; border-radius: 6px; border: 1px solid #E2E8F0;">
             <div><strong>Firestore Path:</strong> ${this.escapeHtml(this.activePageKey)}.${this.escapeHtml(item.key)}</div>
             <div><strong>Element Key:</strong> ${this.escapeHtml(item.key)}</div>
             <div><strong>Tag Type:</strong> &lt;${this.escapeHtml(item.tagName)}&gt; (${this.escapeHtml(item.attrType)})</div>
@@ -683,7 +748,85 @@
 
     openMediaPicker(fieldKey) {
       if (window.AdminApp && typeof window.AdminApp.openImagePicker === 'function') {
-        window.AdminApp.openImagePicker(`fieldInput_${fieldKey}`, 'inspectorThumb');
+        window.AdminApp.openImagePicker(`fieldInput_${fieldKey}`, 'inspectorThumb', null, {
+          onSelect: (url) => {
+            const input = document.getElementById(`fieldInput_${fieldKey}`);
+            if (input) {
+              input.value = url;
+              input.dispatchEvent(new Event('input', { bubbles: true }));
+              input.dispatchEvent(new Event('change', { bubbles: true }));
+            }
+            this.handleLiveInput(fieldKey, url, 'image');
+            const thumb = document.getElementById('inspectorThumb');
+            if (thumb) thumb.src = this.resolvePreviewUrl(url);
+          }
+        });
+      }
+    },
+
+    clearImageField(key, attrType) {
+      const input = document.getElementById(`fieldInput_${key}`);
+      if (input) {
+        input.value = '';
+        input.dispatchEvent(new Event('input', { bubbles: true }));
+        input.dispatchEvent(new Event('change', { bubbles: true }));
+      }
+      this.handleLiveInput(key, '', attrType);
+      const thumb = document.getElementById('inspectorThumb');
+      if (thumb) thumb.src = '../assets/images/placeholder.png';
+      if (window.AdminApp) {
+        window.AdminApp.showToast('Image cleared. Click "Publish Changes Live" to save.', 'info');
+      }
+    },
+
+    clearVideoField(key) {
+      const input = document.getElementById(`fieldInput_${key}`);
+      if (input) {
+        input.value = '';
+        input.dispatchEvent(new Event('input', { bubbles: true }));
+        input.dispatchEvent(new Event('change', { bubbles: true }));
+      }
+      this.handleLiveInput(key, '', 'video');
+      if (window.AdminApp) {
+        window.AdminApp.showToast('Video removed. Click "Publish Changes Live" to save.', 'info');
+      }
+    },
+
+    clearTextField(key) {
+      const input = document.getElementById(`fieldInput_${key}`);
+      if (input) {
+        input.value = '';
+        input.dispatchEvent(new Event('input', { bubbles: true }));
+        input.dispatchEvent(new Event('change', { bubbles: true }));
+      }
+      this.handleLiveInput(key, '', 'text');
+      if (window.AdminApp) {
+        window.AdminApp.showToast('Content cleared. Click "Publish Changes Live" to save.', 'info');
+      }
+    },
+
+    resetFieldToDefault(key, attrType) {
+      let defaultVal = '';
+      if (this.registry && Array.isArray(this.registry.bindings)) {
+        const found = this.registry.bindings.find(b => b.fieldKey === key);
+        if (found && found.defaultValue) defaultVal = found.defaultValue;
+      }
+      if (!defaultVal && this.selectedElement) {
+        defaultVal = this.selectedElement.currentVal;
+      }
+      const input = document.getElementById(`fieldInput_${key}`);
+      if (input) {
+        input.value = defaultVal;
+        input.dispatchEvent(new Event('input', { bubbles: true }));
+        input.dispatchEvent(new Event('change', { bubbles: true }));
+      }
+      this.handleLiveInput(key, defaultVal, attrType);
+      const thumb = document.getElementById('inspectorThumb');
+      if (thumb && (attrType === 'image' || attrType === 'bg-image')) {
+        thumb.src = this.resolvePreviewUrl(defaultVal);
+      }
+      if (window.AdminApp) {
+        window.AdminApp.showToast('Restored default content.', 'info');
       }
     },
 

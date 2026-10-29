@@ -727,9 +727,24 @@
           outline-offset: 4px !important;
           box-shadow: 0 0 16px rgba(0, 128, 128, 0.45) !important;
           position: relative !important;
+          z-index: 10 !important;
         }
         body.cms-edit-active a {
           cursor: pointer !important;
+        }
+        /* Disable pointer-events on overlays so underlying images and cards can be clicked */
+        body.cms-edit-active .hover-box__overlay,
+        body.cms-edit-active .hover-box:hover .hover-box__overlay,
+        body.cms-edit-active .hero-banner-overlay,
+        body.cms-edit-active .video-overlay,
+        body.cms-edit-active [class*="overlay"]:not([data-cms]):not([data-cms-img]) {
+          pointer-events: none !important;
+        }
+        /* Ensure card image containers are interactive */
+        body.cms-edit-active .beach-card-img-wrap,
+        body.cms-edit-active .card-image-slider,
+        body.cms-edit-active img {
+          pointer-events: auto !important;
         }
       `;
       document.head.appendChild(style);
@@ -739,7 +754,25 @@
       let activeEl = null;
 
       document.addEventListener('click', (e) => {
-        const target = e.target.closest('[data-cms], [data-cms-html], [data-cms-img], [data-cms-bg], [data-cms-video], [data-cms-link], [data-cms-list]');
+        // Prevent default navigation on links in visual edit mode so clicking cards selects element
+        const anchor = e.target.closest('a');
+        if (anchor && (anchor.hasAttribute('data-cms-link') || anchor.querySelector('[data-cms], [data-cms-img], [data-cms-html]') || anchor.classList.contains('hover-box') || anchor.classList.contains('next-btn') || anchor.classList.contains('btn-beach-view') || anchor.classList.contains('btn-beach-inquire'))) {
+          e.preventDefault();
+        }
+
+        let target = e.target.closest('[data-cms], [data-cms-html], [data-cms-img], [data-cms-bg], [data-cms-video], [data-cms-link], [data-cms-list]');
+
+        if (!target) {
+          if (e.target.tagName === 'IMG') {
+            target = e.target;
+          } else {
+            const card = e.target.closest('.beach-card-img-wrap, .card-image-slider, .hover-box, .beach-package-card, .dest-card, .story-img-wrap, article');
+            if (card) {
+              target = card.querySelector('[data-cms-img], img, [data-cms-html], [data-cms]');
+            }
+          }
+        }
+
         if (target) {
           e.preventDefault();
           e.stopPropagation();
@@ -748,20 +781,28 @@
           activeEl = target;
           activeEl.classList.add('lotus-cms-selected-element');
 
-          const attrType = target.hasAttribute('data-cms-html') ? 'html' :
-                           target.hasAttribute('data-cms-img') ? 'image' :
-                           target.hasAttribute('data-cms-bg') ? 'bg-image' :
-                           target.hasAttribute('data-cms-video') ? 'video' :
-                           target.hasAttribute('data-cms-link') ? 'link' :
-                           target.hasAttribute('data-cms-list') ? 'list' : 'text';
+          let attrType = target.hasAttribute('data-cms-html') ? 'html' :
+                         target.hasAttribute('data-cms-img') ? 'image' :
+                         target.hasAttribute('data-cms-bg') ? 'bg-image' :
+                         target.hasAttribute('data-cms-video') ? 'video' :
+                         target.hasAttribute('data-cms-link') ? 'link' :
+                         target.hasAttribute('data-cms-list') ? 'list' :
+                         (target.tagName === 'IMG' ? 'image' : 'text');
 
-          const key = target.getAttribute('data-cms') ||
-                      target.getAttribute('data-cms-html') ||
-                      target.getAttribute('data-cms-img') ||
-                      target.getAttribute('data-cms-bg') ||
-                      target.getAttribute('data-cms-video') ||
-                      target.getAttribute('data-cms-link') ||
-                      target.getAttribute('data-cms-list');
+          let key = target.getAttribute('data-cms') ||
+                    target.getAttribute('data-cms-html') ||
+                    target.getAttribute('data-cms-img') ||
+                    target.getAttribute('data-cms-bg') ||
+                    target.getAttribute('data-cms-video') ||
+                    target.getAttribute('data-cms-link') ||
+                    target.getAttribute('data-cms-list');
+
+          if (!key && target.tagName === 'IMG') {
+            const src = target.getAttribute('src') || '';
+            const filename = (src.split('/').pop() || 'img').split('.')[0] || 'img';
+            key = 'img_' + filename.replace(/[^a-zA-Z0-9_]/g, '_');
+            target.setAttribute('data-cms-img', key);
+          }
 
           let currentVal = '';
           if (attrType === 'image') {
@@ -820,7 +861,8 @@
         // Scroll to Element
         if (event.data.type === 'lotus:scroll-to-key') {
           const { key } = event.data;
-          const el = document.querySelector(`[data-cms="${key}"], [data-cms-html="${key}"], [data-cms-img="${key}"], [data-cms-bg="${key}"], [data-cms-video="${key}"], [data-cms-link="${key}"]`);
+          const cleanKey = key.includes('.') ? key.split('.').pop() : key;
+          const el = document.querySelector(`[data-cms="${key}"], [data-cms="${cleanKey}"], [data-cms-html="${key}"], [data-cms-html="${cleanKey}"], [data-cms-img="${key}"], [data-cms-img="${cleanKey}"], [data-cms-bg="${key}"], [data-cms-video="${key}"], [data-cms-link="${key}"]`);
           if (el) {
             if (activeEl) activeEl.classList.remove('lotus-cms-selected-element');
             activeEl = el;
@@ -832,31 +874,37 @@
     },
 
     applyLiveUpdate(key, val, attrType, lang) {
+      const cleanKey = key.includes('.') ? key.split('.').pop() : key;
       const elements = document.querySelectorAll(
-        `[data-cms="${key}"], [data-cms-html="${key}"], [data-cms-img="${key}"], [data-cms-bg="${key}"], [data-cms-video="${key}"], [data-cms-link="${key}"]`
+        `[data-cms="${key}"], [data-cms="${cleanKey}"],
+         [data-cms-html="${key}"], [data-cms-html="${cleanKey}"],
+         [data-cms-img="${key}"], [data-cms-img="${cleanKey}"],
+         [data-cms-bg="${key}"], [data-cms-bg="${cleanKey}"],
+         [data-cms-video="${key}"], [data-cms-video="${cleanKey}"],
+         [data-cms-link="${key}"], [data-cms-link="${cleanKey}"]`
       );
 
       elements.forEach(el => {
-        if (el.hasAttribute('data-cms-img')) {
-          el.setAttribute('src', val);
+        if (el.hasAttribute('data-cms-img') || el.tagName === 'IMG') {
+          el.setAttribute('src', val || 'assets/images/placeholder.png');
         } else if (el.hasAttribute('data-cms-bg')) {
-          el.style.backgroundImage = `url("${val}")`;
+          el.style.backgroundImage = val ? `url("${val}")` : 'none';
         } else if (el.hasAttribute('data-cms-video')) {
           const src = el.querySelector('source') || el;
-          src.setAttribute('src', val);
+          src.setAttribute('src', val || '');
           if (el.tagName === 'VIDEO') {
-            el.src = val;
+            el.src = val || '';
             el.load();
           }
         } else if (el.hasAttribute('data-cms-link')) {
-          el.setAttribute('href', val);
+          el.setAttribute('href', val || '#');
         } else if (el.hasAttribute('data-cms-html')) {
-          el.innerHTML = sanitizeHtml(val);
+          el.innerHTML = sanitizeHtml(val || '');
         } else if (el.hasAttribute('data-cms')) {
           if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
-            el.setAttribute('placeholder', val);
+            el.setAttribute('placeholder', val || '');
           } else {
-            el.textContent = val;
+            el.textContent = val || '';
           }
         }
       });
