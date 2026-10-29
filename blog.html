@@ -13,6 +13,18 @@
   <meta name="twitter:card" content="summary_large_image">
 
   <link rel="stylesheet" href="./assets/css/site.css">
+  <style>
+    .blog-hero {
+      position: relative;
+      min-height: 440px;
+      display: flex;
+      align-items: center;
+      background: linear-gradient(180deg, rgba(0, 43, 73, 0.75) 0%, rgba(0, 43, 73, 0.90) 100%), url('./assets/images/cultural/sigiriya-1.webp') center/cover no-repeat;
+      color: #ffffff;
+      padding: 140px 0 80px;
+      text-align: center;
+    }
+  </style>
 </head>
 <body style="background-color: var(--ivory, #FBF6EC); color: var(--color-ink, #2A1D17);" data-cms-page="siteContent/blog">
   <a class="skip-to-content-link" href="#mainContent">Skip to main content</a>
@@ -171,6 +183,21 @@
 </div>
 
 <!-- @include mobile-menu:end -->
+  <!-- Hero Section -->
+  <section class="blog-hero" data-cms-bg="blog.hero_bg">
+    <div class="wrapper--80" style="max-width: 880px; margin: 0 auto; text-align: center;">
+      <div class="sacred-badge-tag" style="margin-bottom: 0.85rem; background: rgba(74, 22, 32, 0.7); border-color: rgba(201, 162, 75, 0.6); color: #FBF6EC; display: inline-block;">
+        <span class="sacred-icon">🌸</span> ✦ EDITORIAL &amp; CEYLON STORIES ✦ <span class="sacred-icon">🌸</span>
+      </div>
+      <h1 class="heading--60" style="color: #FFFFFF; margin-bottom: 1rem;" data-cms-html="blog.heading_1">
+        <span data-cms="blog.span_6">Stories from Ceylon</span><br>Insights, Journeys &amp; Heritage
+      </h1>
+      <p class="paragraph--20" style="color: #F1E6D3; line-height: 1.75;" data-cms="blog.p_2">
+        Thoughtful travel chronicles, wildlife encounters, sacred perspectives, and seasonal guides from our destination specialists in Sri Lanka.
+      </p>
+    </div>
+  </section>
+
 <main id="mainContent" style="max-width: 1200px; margin: 0 auto; padding: 60px 20px 100px;">
     <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 2rem;">
       
@@ -406,6 +433,6 @@ Designed &amp; Developed by <a href="https://infiniteweb.dev/" rel="noopener" ta
   <script defer src="./assets/js/config.js"></script>
   <script defer src="assets/js/site-data.js"></script>
   <script defer src="./assets/js/mobile-nav.js"></script>
-  <script defer src="./assets/js/cms.js?v=20261029_fix4"></script>
+  <script defer src="./assets/js/cms.js?v=20261029_fix5"></script>
 </body>
 </html>

@@ -9,7 +9,7 @@
 (function (window, document) {
   'use strict';
 
-  const CACHE_KEY = 'lotus_cms_v4';
+  const CACHE_KEY = 'lotus_cms_v5';
   const CACHE_TTL_MS = 30 * 1000; // 10 minutes
   const LEGACY_CACHE_KEYS = ['lotus_seed_catalog_cache_v2', 'lotus_seed_catalog_cache'];
 
@@ -370,7 +370,11 @@
         if (raw) {
           const resolved = resolveImgUrl(raw);
           if (resolved) {
-            el.style.backgroundImage = `url("${resolved}")`;
+            if (el.classList.contains('dest-hero') || el.classList.contains('about-hero') || el.classList.contains('contact-hero') || el.classList.contains('exp-hero') || el.classList.contains('gallery-hero') || el.classList.contains('reviews-hero') || el.classList.contains('blog-hero') || el.classList.contains('beach-hero-banner') || el.classList.contains('tours-hero-banner') || el.classList.contains('banner-section-inner')) {
+              el.style.backgroundImage = `linear-gradient(180deg, rgba(0, 43, 73, 0.65) 0%, rgba(0, 43, 73, 0.88) 100%), url("${resolved}")`;
+            } else {
+              el.style.backgroundImage = `url("${resolved}")`;
+            }
           }
         }
       });
@@ -774,6 +778,14 @@
         body.cms-edit-active [data-cms-link] {
           pointer-events: auto !important;
         }
+        body.cms-edit-active [data-cms-bg] {
+          outline: 2px dashed rgba(212, 175, 55, 0.65) !important;
+          outline-offset: -2px !important;
+          cursor: pointer !important;
+        }
+        body.cms-edit-active [data-cms-bg]:hover {
+          outline: 3px solid #D4AF37 !important;
+        }
       `;
       document.head.appendChild(style);
       document.body.classList.add('cms-edit-active');
@@ -794,9 +806,14 @@
           if (e.target.tagName === 'IMG') {
             target = e.target;
           } else {
-            const card = e.target.closest('.beach-card-img-wrap, .card-image-slider, .hover-box, .beach-package-card, .dest-card, .story-img-wrap, article');
-            if (card) {
-              target = card.querySelector('[data-cms-img], img, [data-cms-html], [data-cms]');
+            const hero = e.target.closest('[data-cms-bg], .dest-hero, .about-hero, .contact-hero, .exp-hero, .gallery-hero, .reviews-hero, .blog-hero, .beach-hero-banner, .tours-hero-banner, .banner-section-inner, .banner-section');
+            if (hero) {
+              target = hero.hasAttribute('data-cms-bg') ? hero : hero.querySelector('[data-cms-bg], [data-cms-img]');
+            } else {
+              const card = e.target.closest('.beach-card-img-wrap, .card-image-slider, .hover-box, .beach-package-card, .dest-card, .story-img-wrap, article');
+              if (card) {
+                target = card.querySelector('[data-cms-img], img, [data-cms-html], [data-cms]');
+              }
             }
           }
         }
@@ -931,7 +948,15 @@
         if (el.hasAttribute('data-cms-img') || el.tagName === 'IMG') {
           el.setAttribute('src', val || 'assets/images/placeholder.png');
         } else if (el.hasAttribute('data-cms-bg')) {
-          el.style.backgroundImage = val ? `url("${val}")` : 'none';
+          if (!val) {
+            el.style.backgroundImage = 'none';
+          } else {
+            if (el.classList.contains('dest-hero') || el.classList.contains('about-hero') || el.classList.contains('contact-hero') || el.classList.contains('exp-hero') || el.classList.contains('gallery-hero') || el.classList.contains('reviews-hero') || el.classList.contains('blog-hero') || el.classList.contains('beach-hero-banner') || el.classList.contains('tours-hero-banner') || el.classList.contains('banner-section-inner')) {
+              el.style.backgroundImage = `linear-gradient(180deg, rgba(0, 43, 73, 0.65) 0%, rgba(0, 43, 73, 0.88) 100%), url("${val}")`;
+            } else {
+              el.style.backgroundImage = `url("${val}")`;
+            }
+          }
         } else if (el.hasAttribute('data-cms-video')) {
           const src = el.querySelector('source') || el;
           src.setAttribute('src', val || '');

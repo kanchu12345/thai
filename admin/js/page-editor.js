@@ -234,7 +234,7 @@
         html += `
           <div class="inspector-field-group">
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
-              <label style="margin: 0; font-weight: 700; color: #0F172A;">🖼️ Image Preview &amp; Source</label>
+              <label style="margin: 0; font-weight: 700; color: #0F172A;">${item.isHeroBanner ? '🎯 Hero Banner Preview &amp; Media' : '🖼️ Image Preview &amp; Source'}</label>
               <span class="badge" style="font-size: 0.72rem; background: #E2E8F0; color: #334155;">${this.escapeHtml(item.key)}</span>
             </div>
             
@@ -418,6 +418,90 @@
       `;
     },
 
+    getHeroBindingForActivePage() {
+      const docName = (this.activePageKey || '').split('/').pop();
+      const pageFile = (this.activePageFile || '').toLowerCase();
+
+      if (docName === 'home' || pageFile === 'index.html') {
+        const val = this.getCurrentValue('hero.image', (this.activeDocData && this.activeDocData['hero.image']) || 'assets/images/home/hero-sigiriya-aerial-1.webp');
+        const videoVal = this.getCurrentValue('hero.video', (this.activeDocData && this.activeDocData['hero.video']) || 'assets/videos/hero-banner.mp4');
+        return {
+          key: 'hero.image',
+          videoKey: 'hero.video',
+          attrType: 'image',
+          currentVal: val,
+          videoVal: videoVal,
+          label: 'Home Page Hero Banner',
+          isHome: true
+        };
+      }
+
+      const keyMap = {
+        'destinations': { key: 'destinations.hero_bg', label: 'Destinations Hero Banner', defaultVal: 'assets/images/cultural/kandy-temple-of-tooth-4.webp' },
+        'about': { key: 'about.hero_bg', label: 'About Us Hero Banner', defaultVal: 'assets/images/about/hospitality-scenes-1.webp' },
+        'contact': { key: 'contact.hero_bg', label: 'Contact Us Hero Banner', defaultVal: 'assets/images/contact/negombo-lagoon-1.webp' },
+        'experiences': { key: 'experiences.hero_bg', label: 'Experiences Hero Banner', defaultVal: 'assets/images/cultural/kandy-temple-of-tooth-4.webp' },
+        'gallery': { key: 'gallery.hero_bg', label: 'Gallery Hero Banner', defaultVal: 'assets/images/cultural/kandy-temple-of-tooth-4.webp' },
+        'reviews': { key: 'reviews.hero_bg', label: 'Reviews Hero Banner', defaultVal: 'assets/images/cultural/polonnaruwa-gal-vihara-3.webp' },
+        'blog': { key: 'blog.hero_bg', label: 'Blog & Editorial Hero Banner', defaultVal: 'assets/images/cultural/sigiriya-1.webp' },
+        'tours': { key: 'tours.hero_bg', label: 'All Tours Hero Banner', defaultVal: 'assets/images/cultural/sigiriya-1.webp' },
+        'toursindex': { key: 'tours.hero_bg', label: 'All Tours Hero Banner', defaultVal: 'assets/images/cultural/sigiriya-1.webp' },
+        'beach': { key: 'beach.hero_bg', label: 'Pristine Beaches Hero Banner', defaultVal: 'assets/images/beach/mirissa-1.webp' },
+        'cultural': { key: 'cultural.hero_bg', label: 'Cultural Heritage Hero Banner', defaultVal: 'assets/images/cultural/sigiriya-1.webp' },
+        'wildlife': { key: 'wildlife.hero_bg', label: 'Wildlife Safaris Hero Banner', defaultVal: 'assets/images/wildlife/yala-leopard-1.webp' },
+        'hillcountry': { key: 'hillCountry.hero_bg', label: 'Hill Country & Tea Hero Banner', defaultVal: 'assets/images/hill-country/nuwara-eliya-tea-2.webp' },
+        'buddhistanctours': { key: 'buddhistHeritage.hero_bg', label: 'Buddhist Heritage Hero Banner', defaultVal: 'assets/images/buddhist-heritage/ruwanwelisaya-2.webp' },
+        'buddhistheritage': { key: 'buddhistHeritage.hero_bg', label: 'Buddhist Heritage Hero Banner', defaultVal: 'assets/images/buddhist-heritage/ruwanwelisaya-2.webp' },
+        'ayurvedic': { key: 'ayurvedic.hero_bg', label: 'Ayurvedic Healing Hero Banner', defaultVal: 'assets/images/cultural/kandy-temple-of-tooth-4.webp' },
+        'honeymoon': { key: 'honeymoon.hero_bg', label: 'Honeymoon Romance Hero Banner', defaultVal: 'assets/images/honeymoon/seaside-villa-1.webp' },
+        'family': { key: 'family.hero_bg', label: 'Family Discovery Hero Banner', defaultVal: 'assets/images/hill-country/nine-arches-bridge-1.webp' },
+        'adventure': { key: 'adventure.hero_bg', label: 'Active Adventure Hero Banner', defaultVal: 'assets/images/adventure/kitulgala-rafting-1.webp' },
+        'golf': { key: 'golf.hero_bg', label: 'Championship Golf Hero Banner', defaultVal: 'assets/images/hill-country/nuwara-eliya-tea-2.webp' },
+        'ramayana': { key: 'ramayana.hero_bg', label: 'Ramayana Heritage Hero Banner', defaultVal: 'assets/images/cultural/polonnaruwa-gal-vihara-3.webp' }
+      };
+
+      const cleanDoc = docName.toLowerCase().replace(/[^a-z]/g, '');
+      const mapped = keyMap[cleanDoc] || {
+        key: `${docName}.hero_bg`,
+        label: `${this.getFriendlySectionName(docName)} Hero Banner`,
+        defaultVal: 'assets/images/cultural/sigiriya-1.webp'
+      };
+
+      const val = this.getCurrentValue(mapped.key, (this.activeDocData && this.activeDocData[mapped.key]) || mapped.defaultVal);
+      return {
+        key: mapped.key,
+        attrType: 'bg-image',
+        currentVal: val,
+        label: mapped.label,
+        defaultVal: mapped.defaultVal,
+        isHome: false
+      };
+    },
+
+    openHeroBannerEditor() {
+      this.scrollToSection('home');
+      const iframe = document.getElementById('visualCmsIframe');
+      if (iframe && iframe.contentWindow) {
+        iframe.contentWindow.postMessage({ type: 'lotus:scroll-to-key', key: 'home' }, '*');
+      }
+
+      const hero = this.getHeroBindingForActivePage();
+      const item = {
+        key: hero.key,
+        attrType: hero.attrType,
+        currentVal: hero.currentVal,
+        defaultVal: hero.defaultVal,
+        label: hero.label,
+        isHeroBanner: true,
+        isHome: hero.isHome,
+        videoKey: hero.videoKey,
+        videoVal: hero.videoVal
+      };
+
+      this.selectedElement = item;
+      this.renderElementForm(item);
+    },
+
     renderEmptyState() {
       const body = document.getElementById('inspectorBody');
       if (!body) return;
@@ -436,11 +520,23 @@
           <h3>Click Anything to Edit</h3>
           <p>Click on any text, photo, button, or section on the left preview to instantly customize it.</p>
           
+          <!-- Prominent Dedicated Hero Banner Editor Card -->
+          <div style="background: linear-gradient(135deg, #0F172A, #1E293B); border: 1px solid #D4AF37; border-radius: 8px; padding: 14px; margin-bottom: 16px; color: #FFFFFF; text-align: left;">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 4px;">
+              <strong style="color: #D4AF37; font-size: 0.95rem;">🎯 Hero Banner Media</strong>
+              <span class="badge" style="background: rgba(212, 175, 55, 0.2); color: #F8E5DD; font-size: 0.72rem;">Photo &amp; Video</span>
+            </div>
+            <p style="font-size: 0.78rem; color: #CBD5E1; margin: 0 0 10px 0;">Upload, edit, browse, or remove the main hero background photo and video for this page.</p>
+            <button type="button" class="btn btn-gold btn-sm btn-block" onclick="PageEditor.openHeroBannerEditor()" style="font-weight: 700;">
+              🎯 Edit This Page's Hero Banner
+            </button>
+          </div>
+
           <div class="quick-jump-title">Quick Jump to Page Sections</div>
           <div class="quick-jump-grid">
-            <div class="quick-jump-card" onclick="PageEditor.scrollToSection('home')">
+            <div class="quick-jump-card" onclick="PageEditor.openHeroBannerEditor()" style="border: 1px solid #D4AF37; background: #FFFDF8;">
               <span class="qj-icon">🎯</span>
-              <span class="qj-label">Hero Banner</span>
+              <span class="qj-label" style="font-weight: 700; color: #92400E;">Hero Banner</span>
             </div>
             <div class="quick-jump-card" onclick="PageEditor.scrollToSection('about')">
               <span class="qj-icon">🏛️</span>
