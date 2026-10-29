@@ -1246,13 +1246,14 @@ resolveImg(url) {
 
     applyRolePermissions() {
       const isSuper = this.currentRole === 'super_admin';
-      const usersNav = document.querySelector('.nav-link[data-section="users"]');
-      if (usersNav) {
-        usersNav.style.display = isSuper ? 'flex' : 'none';
-      }
-      if (!isSuper && this.activeSection === 'users') {
+      ['users', 'settings', 'forms-editor'].forEach(sec => {
+        const el = document.querySelector(`.nav-link[data-section="${sec}"]`);
+        if (el) el.style.display = isSuper ? 'flex' : 'none';
+      });
+      if (!isSuper && (this.activeSection === 'users' || this.activeSection === 'settings' || this.activeSection === 'forms-editor')) {
         this.switchSection('dashboard');
       }
+    }
       document.querySelectorAll('.btn-icon.delete').forEach(btn => {
         if (!isSuper) {
           btn.style.opacity = '0.35';
@@ -1578,7 +1579,7 @@ resolveImg(url) {
      */
 
     switchSection(sectionId) {
-      if (this.currentRole !== 'super_admin' && sectionId === 'users') {
+      if (this.currentRole !== 'super_admin' && (sectionId === 'users' || sectionId === 'settings' || sectionId === 'forms-editor')) {
         this.showToast('Access denied: Users & Roles section is restricted to Super Admins.', 'error');
         this.activeSection = 'dashboard';
         sectionId = 'dashboard';

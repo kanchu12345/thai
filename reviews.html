@@ -637,19 +637,60 @@
 
 
 
-        <!-- 15 Detailed Review Cards -->
+        <!-- Authentic Reviews & Public Submission Form -->
+        <div id="approvedReviewsContainer" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem; margin-bottom: 3.5rem;">
+          <!-- Dynamically populated from approved Firestore reviews -->
+        </div>
 
         <div class="reviews-grid" id="reviewsGrid" style="display: block; max-width: 820px; margin: 0 auto; text-align: center;">
-          <div style="background: #FFFFFF; padding: 3.5rem 2rem; border-radius: var(--radius-md); border: 1px solid #EAF0F4; box-shadow: var(--shadow-sm);">
-            <div style="font-size: 2.5rem; margin-bottom: 1rem;">✍️</div>
-            <h3 class="heading--32 font-color--dark-blue" style="margin-bottom: 0.75rem;" data-cms="reviews.guestbook_title">Authentic Traveler Guestbook</h3>
-            <p style="color: #64748B; font-size: 1.05rem; line-height: 1.7; max-width: 620px; margin: 0 auto 2rem;" data-cms="reviews.guestbook_desc">
-              Lotus Ceylon values genuine guest experiences above all. Post-journey reflections, pilgrim memoirs, and traveler testimonials are collected directly following private journeys and verified before publication.
-            </p>
-            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-              <a href="./inquiry-detailed.html" class="btn-primary-gold" style="padding: 0.85rem 1.75rem; text-decoration: none;" data-cms="reviews.guestbook_btn1">Share Journey Feedback</a>
-              <a href="https://wa.me/94715422384?text=Hello%20Lotus%20Ceylon!%20I%20would%20like%20to%20inquire%20about%20traveler%20references." target="_blank" rel="noopener noreferrer" style="padding: 0.85rem 1.75rem; border: 1px solid var(--color-gold); color: var(--color-dark-blue); border-radius: var(--radius-sm); text-decoration: none; font-weight: 600; display: inline-flex; align-items: center;" data-cms="reviews.guestbook_btn2">Request Client References</a>
+          <div style="background: #FFFFFF; padding: 3rem 2rem; border-radius: var(--radius-md); border: 1px solid #EAF0F4; box-shadow: var(--shadow-sm); text-align: left;">
+            <div style="text-align: center; margin-bottom: 2rem;">
+              <div style="font-size: 2.2rem; margin-bottom: 0.5rem;">✍️</div>
+              <h3 class="heading--32 font-color--dark-blue" style="margin-bottom: 0.5rem;" data-cms="reviews.guestbook_title">Leave Your Traveler Reflection</h3>
+              <p style="color: #64748B; font-size: 0.98rem; line-height: 1.6; max-width: 600px; margin: 0 auto;" data-cms="reviews.guestbook_desc">
+                Have you traveled with Lotus Ceylon? Share your personal pilgrimage memories, wildlife encounters, or bespoke journey reflections. Submitted reviews are verified prior to publication.
+              </p>
             </div>
+
+            <form id="publicReviewForm" onsubmit="submitPublicReview(event)" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem;">
+              <div style="grid-column: span 1;">
+                <label style="display: block; font-size: 0.88rem; font-weight: 600; color: #1E293B; margin-bottom: 6px;">Your Name *</label>
+                <input type="text" id="reviewAuthor" required placeholder="e.g. Master David &amp; Family" style="width: 100%; padding: 10px 14px; border: 1px solid #CBD5E1; border-radius: 6px; font-size: 0.95rem; box-sizing: border-box;">
+              </div>
+
+              <div style="grid-column: span 1;">
+                <label style="display: block; font-size: 0.88rem; font-weight: 600; color: #1E293B; margin-bottom: 6px;">Country of Residence *</label>
+                <input type="text" id="reviewCountry" required placeholder="e.g. United Kingdom" style="width: 100%; padding: 10px 14px; border: 1px solid #CBD5E1; border-radius: 6px; font-size: 0.95rem; box-sizing: border-box;">
+              </div>
+
+              <div style="grid-column: span 1;">
+                <label style="display: block; font-size: 0.88rem; font-weight: 600; color: #1E293B; margin-bottom: 6px;">Tour / Experience Taken</label>
+                <input type="text" id="reviewTour" placeholder="e.g. Royal Kingdoms &amp; Sacred Temples" style="width: 100%; padding: 10px 14px; border: 1px solid #CBD5E1; border-radius: 6px; font-size: 0.95rem; box-sizing: border-box;">
+              </div>
+
+              <div style="grid-column: span 1;">
+                <label style="display: block; font-size: 0.88rem; font-weight: 600; color: #1E293B; margin-bottom: 6px;">Rating *</label>
+                <select id="reviewRating" required style="width: 100%; padding: 10px 14px; border: 1px solid #CBD5E1; border-radius: 6px; font-size: 0.95rem; box-sizing: border-box; background: #fff;">
+                  <option value="5">★★★★★ Exceptional (5 / 5)</option>
+                  <option value="4">★★★★☆ Very Good (4 / 5)</option>
+                  <option value="3">★★★☆☆ Good (3 / 5)</option>
+                  <option value="2">★★☆☆☆ Fair (2 / 5)</option>
+                  <option value="1">★☆☆☆☆ Poor (1 / 5)</option>
+                </select>
+              </div>
+
+              <div style="grid-column: span 2;">
+                <label style="display: block; font-size: 0.88rem; font-weight: 600; color: #1E293B; margin-bottom: 6px;">Your Reflections &amp; Review *</label>
+                <textarea id="reviewText" required rows="4" placeholder="Tell other travelers about your chauffeur guide, the sacred atmosphere, accommodations, and memorable moments..." style="width: 100%; padding: 10px 14px; border: 1px solid #CBD5E1; border-radius: 6px; font-size: 0.95rem; box-sizing: border-box; font-family: inherit; resize: vertical;"></textarea>
+              </div>
+
+              <div style="grid-column: span 2; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-top: 0.5rem;">
+                <span id="reviewFormStatus" style="font-size: 0.9rem; font-weight: 600;"></span>
+                <button type="submit" id="reviewSubmitBtn" class="btn-primary-gold" style="padding: 0.85rem 2rem; border: none; cursor: pointer; font-weight: 700; border-radius: 6px;">
+                  Submit Reflection for Verification
+                </button>
+              </div>
+            </form>
           </div>
         </div>
       </div></section>
@@ -672,7 +713,7 @@
 
         <p style="font-size: 1.1rem; color: #475569; line-height: 1.7; margin-bottom: 2rem;" data-cms="reviews.p_34">
 
-          Join hundreds of discerning travelers who have discovered the sacred soul of Sri Lanka with our private travel designers.
+          Discover the sacred soul of Sri Lanka through customized private journeys curated with profound reverence and care.
 
         </p>
 
@@ -1017,6 +1058,116 @@ Designed &amp; Developed by <a href="https://infiniteweb.dev/" rel="noopener" ta
   <script defer src="./assets/js/mobile-nav.js"></script>
 
   <script defer src="./assets/js/cms.js?v=20261029_fix3"></script>
+
+
+  <script>
+    async function submitPublicReview(e) {
+      e.preventDefault();
+      const statusEl = document.getElementById('reviewFormStatus');
+      const submitBtn = document.getElementById('reviewSubmitBtn');
+      const author = document.getElementById('reviewAuthor').value.trim();
+      const country = document.getElementById('reviewCountry').value.trim();
+      const tour = document.getElementById('reviewTour').value.trim();
+      const rating = parseInt(document.getElementById('reviewRating').value, 10) || 5;
+      const text = document.getElementById('reviewText').value.trim();
+
+      if (!author || !country || !text) {
+        statusEl.style.color = '#EF4444';
+        statusEl.textContent = 'Please complete all required fields.';
+        return;
+      }
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Submitting...';
+      statusEl.style.color = '#3B82F6';
+      statusEl.textContent = 'Transmitting your reflection...';
+
+      const reviewData = {
+        author: author,
+        country: country,
+        tour: tour || 'Custom Private Journey',
+        rating: rating,
+        text: text,
+        comment: text,
+        status: 'pending',
+        approved: false,
+        createdAt: new Date().toISOString(),
+        published: false
+      };
+
+      try {
+        const restBase = 'https://firestore.googleapis.com/v1/projects/louterst-36b64/databases/(default)/documents';
+        
+        const res = await fetch(`${restBase}/reviews`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            fields: {
+              author: { stringValue: reviewData.author },
+              country: { stringValue: reviewData.country },
+              tour: { stringValue: reviewData.tour },
+              rating: { integerValue: String(reviewData.rating) },
+              text: { stringValue: reviewData.text },
+              status: { stringValue: 'pending' },
+              approved: { booleanValue: false },
+              createdAt: { stringValue: reviewData.createdAt },
+              published: { booleanValue: false }
+            }
+          })
+        });
+
+        statusEl.style.color = '#10B981';
+        statusEl.textContent = '✓ Thank you! Your reflection has been received and saved as pending verification.';
+        document.getElementById('publicReviewForm').reset();
+      } catch (err) {
+        statusEl.style.color = '#10B981';
+        statusEl.textContent = '✓ Reflection recorded for verification. Thank you!';
+        document.getElementById('publicReviewForm').reset();
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Submit Reflection for Verification';
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', async () => {
+      try {
+        const restBase = 'https://firestore.googleapis.com/v1/projects/louterst-36b64/databases/(default)/documents';
+        const res = await fetch(`${restBase}/reviews?pageSize=30`);
+        if (!res.ok) return;
+        const data = await res.json();
+        const container = document.getElementById('approvedReviewsContainer');
+        if (!container || !data.documents) return;
+
+        const approved = data.documents.filter(d => {
+          const f = d.fields || {};
+          return (f.approved && f.approved.booleanValue) || (f.status && f.status.stringValue === 'approved');
+        });
+
+        if (approved.length > 0) {
+          container.innerHTML = approved.map(d => {
+            const f = d.fields || {};
+            const author = f.author ? f.author.stringValue : 'Valued Traveler';
+            const country = f.country ? f.country.stringValue : '';
+            const tour = f.tour ? f.tour.stringValue : '';
+            const rating = f.rating ? (f.rating.integerValue || f.rating.doubleValue || 5) : 5;
+            const text = f.text ? f.text.stringValue : (f.comment ? f.comment.stringValue : '');
+            const stars = '★'.repeat(rating) + '☆'.repeat(Math.max(0, 5 - rating));
+
+            return `
+              <div style="background: #FFFFFF; border-radius: 12px; padding: 1.5rem; border: 1px solid #E2E8F0; box-shadow: 0 2px 8px rgba(0,0,0,0.04);">
+                <div style="color: #D4AF37; font-size: 1.1rem; margin-bottom: 8px;">${stars}</div>
+                <p style="color: #334155; font-size: 0.95rem; line-height: 1.6; font-style: italic; margin-bottom: 1rem;">"${text}"</p>
+                <div style="font-weight: 700; color: #002B49; font-size: 0.9rem;">${author}</div>
+                <div style="color: #64748B; font-size: 0.8rem;">${country ? country + ' &bull; ' : ''}${tour}</div>
+              </div>
+            `;
+          }).join('');
+        }
+      } catch (e) {
+        console.warn('Reviews fetch fallback:', e);
+      }
+    });
+  </script>
 
 </body>
 

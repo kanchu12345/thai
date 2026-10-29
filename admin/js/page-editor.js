@@ -425,7 +425,7 @@
       body.innerHTML = `
         <div class="inspector-empty-state">
           <div style="background: linear-gradient(135deg, #FFFBEB, #FEF3C7); border: 1px solid #FCD34D; border-radius: 8px; padding: 12px; margin-bottom: 16px; text-align: center;">
-            <div style="font-size: 0.88rem; color: #92400E; margin-bottom: 4px; font-weight: 700;">📦 Manage 26 Tour Packages</div>
+            <div style="font-size: 0.88rem; color: #92400E; margin-bottom: 4px; font-weight: 700;">📦 Manage 29 Tour Packages</div>
             <p style="font-size: 0.78rem; color: #78350F; margin: 0 0 10px 0;">Add new tours, edit prices, days, itineraries, photo galleries, and highlights.</p>
             <button type="button" class="btn btn-gold btn-sm btn-block" onclick="AdminApp.switchSection('packages')" style="font-weight: 700;">
               📦 Open Tour Packages Table
