@@ -7,7 +7,7 @@
 <meta content="noindex, nofollow" name="robots"/>
 <title>CMS Admin Panel — LOTUS Ceylon International Tours</title>
 <link href="../assets/images/logo.png" rel="icon" type="image/png"/>
-<link href="css/admin.css?v=20261029_fix3" rel="stylesheet"/>
+<link href="css/admin.css?v=20261029_fix4" rel="stylesheet"/>
 <!-- DOMPurify for XSS Protection -->
 <script src="https://cdn.jsdelivr.net/npm/dompurify@3.1.6/dist/purify.min.js"></script>
 </head>
@@ -1583,9 +1583,47 @@
 <!-- TOAST NOTIFICATIONS CONTAINER -->
 
 <!-- ========================================== -->
+
+<!-- ========================================== -->
+<!-- PAGE SEO MODAL                             -->
+<!-- ========================================== -->
+<div class="modal-overlay" id="seoModal">
+  <div class="modal-dialog">
+    <div class="modal-header">
+      <h3 id="seoModalTitle">⚙️ Page SEO &amp; Meta Settings</h3>
+      <button class="modal-close" onclick="AdminApp.closeModal('seoModal')">×</button>
+    </div>
+    <div class="modal-body">
+      <form id="seoModalForm" onsubmit="event.preventDefault(); PageEditor.saveSeoSettings();">
+        <div class="form-group">
+          <label>Page Title Tag (&lt;title&gt;) *</label>
+          <input class="form-control" id="seoPageTitle" placeholder="Lotus Ceylon Luxury Tours" required type="text"/>
+          <small style="color: #64748b; font-size: 0.78rem;">Optimal length: 50–60 characters</small>
+        </div>
+        <div class="form-group">
+          <label>Meta Description *</label>
+          <textarea class="form-control" id="seoPageDesc" rows="3" placeholder="Handcrafted private tours in Sri Lanka..." required></textarea>
+          <small style="color: #64748b; font-size: 0.78rem;">Optimal length: 140–160 characters</small>
+        </div>
+        <div class="form-group">
+          <label>Social Share Image (og:image)</label>
+          <div style="display: flex; gap: 8px;">
+            <input class="form-control" id="seoPageImage" placeholder="assets/images/cultural/sigiriya-1.webp" type="text" style="flex: 1;"/>
+            <button class="btn btn-secondary" onclick="AdminApp.triggerUploadForInput('seoPageImage')" type="button">☁️ Upload</button>
+          </div>
+        </div>
+        <div class="modal-footer" style="padding: 16px 0 0; margin-top: 16px; border-top: 1px solid #e2e8f0; display: flex; justify-content: flex-end; gap: 10px;">
+          <button class="btn btn-outline" onclick="AdminApp.closeModal('seoModal')" type="button">Cancel</button>
+          <button class="btn btn-primary" type="submit">Save SEO Settings</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
 <!-- BLOG POST MODAL                            -->
 <!-- ========================================== -->
-<div class="modal" id="blogPostModal">
+<div class="modal-overlay" id="blogPostModal">
   <div class="modal-dialog large">
     <div class="modal-header">
       <h3 id="blogPostModalTitle">Add Blog Post</h3>
@@ -1671,7 +1709,7 @@
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
 <script src="../js/firebase-tour-sync.js"></script>
-<script src="js/admin-app.js?v=20261029_fix3"></script>
-<script src="js/page-editor.js?v=20261029_fix3"></script>
+<script src="js/admin-app.js?v=20261029_fix4"></script>
+<script src="js/page-editor.js?v=20261029_fix4"></script>
 </body>
 </html>

@@ -992,6 +992,65 @@
       }
     },
 
+    
+    openSeoModal() {
+      const iframe = document.getElementById('visualCmsIframe');
+      let titleVal = '';
+      let descVal = '';
+      let imgVal = '';
+      if (iframe && iframe.contentDocument) {
+        try {
+          titleVal = iframe.contentDocument.title || '';
+          const metaDesc = iframe.contentDocument.querySelector('meta[name="description"]');
+          if (metaDesc) descVal = metaDesc.getAttribute('content') || '';
+          const ogImg = iframe.contentDocument.querySelector('meta[property="og:image"]');
+          if (ogImg) imgVal = ogImg.getAttribute('content') || '';
+        } catch(e) {}
+      }
+      const titleInput = document.getElementById('seoPageTitle');
+      const descInput = document.getElementById('seoPageDesc');
+      const imgInput = document.getElementById('seoPageImage');
+      if (titleInput) titleInput.value = titleVal;
+      if (descInput) descInput.value = descVal;
+      if (imgInput) imgInput.value = imgVal;
+      if (window.AdminApp && typeof window.AdminApp.openModal === 'function') {
+        window.AdminApp.openModal('seoModal');
+      }
+    },
+
+    saveSeoSettings() {
+      const titleVal = document.getElementById('seoPageTitle')?.value || '';
+      const descVal = document.getElementById('seoPageDesc')?.value || '';
+      const imgVal = document.getElementById('seoPageImage')?.value || '';
+
+      const iframe = document.getElementById('visualCmsIframe');
+      if (iframe && iframe.contentDocument) {
+        try {
+          iframe.contentDocument.title = titleVal;
+          const metaDesc = iframe.contentDocument.querySelector('meta[name="description"]');
+          if (metaDesc) metaDesc.setAttribute('content', descVal);
+          const ogImg = iframe.contentDocument.querySelector('meta[property="og:image"]');
+          if (ogImg) ogImg.setAttribute('content', imgVal);
+        } catch(e) {}
+      }
+
+      if (this.activePageKey) {
+        this.pendingChanges = this.pendingChanges || {};
+        this.pendingChanges[`${this.activePageKey}.seo.title`] = titleVal;
+        this.pendingChanges[`${this.activePageKey}.seo.description`] = descVal;
+        if (imgVal) this.pendingChanges[`${this.activePageKey}.seo.image`] = imgVal;
+      }
+      this.hasUnsavedChanges = true;
+      if (typeof this.updateSaveIndicators === 'function') {
+        this.updateSaveIndicators();
+      }
+
+      if (window.AdminApp && typeof window.AdminApp.closeModal === 'function') {
+        window.AdminApp.closeModal('seoModal');
+        window.AdminApp.showToast('Page SEO settings saved to draft! Click "Publish Live" to apply.', 'success');
+      }
+    },
+
     escapeHtml(str) {
       if (!str) return '';
       return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');

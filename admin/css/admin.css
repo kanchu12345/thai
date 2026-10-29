@@ -805,7 +805,8 @@ input:checked + .slider:before {
 /* ==============================================================================
  * MODALS & DRAWERS
  * ============================================================================== */
-.modal-overlay {
+.modal-overlay,
+.modal {
   position: fixed;
   top: 0;
   left: 0;
@@ -813,7 +814,7 @@ input:checked + .slider:before {
   bottom: 0;
   background: rgba(28, 27, 31, 0.6);
   backdrop-filter: blur(3px);
-  z-index: 200;
+  z-index: 9999;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -823,7 +824,8 @@ input:checked + .slider:before {
   transition: opacity 0.25s ease;
 }
 
-.modal-overlay.active {
+.modal-overlay.active,
+.modal.active {
   opacity: 1;
   pointer-events: auto;
 }
@@ -847,7 +849,8 @@ input:checked + .slider:before {
   max-width: 900px;
 }
 
-.modal-overlay.active .modal-dialog {
+.modal-overlay.active .modal-dialog,
+.modal.active .modal-dialog {
   transform: scale(1);
 }
 
