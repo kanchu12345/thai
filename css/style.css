@@ -5997,3 +5997,12 @@ div.next-btn {
     height: 50px !important;
   }
 }
+
+
+/* CMS Edit Mode override for watermark headings */
+body.cms-edit-active .watermark-heading,
+body.cms-edit-active [class*="watermark"] {
+  pointer-events: auto !important;
+  cursor: pointer !important;
+  z-index: 10 !important;
+}

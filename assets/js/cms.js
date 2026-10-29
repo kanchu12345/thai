@@ -746,6 +746,30 @@
         body.cms-edit-active img {
           pointer-events: auto !important;
         }
+        /* Enable pointer-events on watermark headings so they can be clicked and edited */
+        body.cms-edit-active .watermark-heading,
+        body.cms-edit-active [class*="watermark"] {
+          pointer-events: auto !important;
+          cursor: pointer !important;
+          user-select: text !important;
+          position: relative !important;
+          z-index: 10 !important;
+        }
+        body.cms-edit-active .watermark-heading:hover,
+        body.cms-edit-active [class*="watermark"]:hover {
+          outline: 2px dashed #D4A373 !important;
+          outline-offset: 4px !important;
+          background: rgba(212, 163, 115, 0.12) !important;
+        }
+        /* Ensure all data-cms elements have pointer-events auto */
+        body.cms-edit-active [data-cms],
+        body.cms-edit-active [data-cms-html],
+        body.cms-edit-active [data-cms-img],
+        body.cms-edit-active [data-cms-bg],
+        body.cms-edit-active [data-cms-video],
+        body.cms-edit-active [data-cms-link] {
+          pointer-events: auto !important;
+        }
       `;
       document.head.appendChild(style);
       document.body.classList.add('cms-edit-active');
@@ -825,6 +849,7 @@
           const sectionId = section ? (section.id || section.className || 'Page Section') : 'General Content';
 
           // Notify parent frame
+          const isWatermark = target.classList.contains('watermark-heading') || (target.className && String(target.className).includes('watermark'));
           if (window.parent && window.parent !== window) {
             window.parent.postMessage({
               type: 'lotus:element-selected',
@@ -832,7 +857,8 @@
               attrType: attrType,
               currentVal: (currentVal || '').trim(),
               tagName: target.tagName.toLowerCase(),
-              sectionId: sectionId
+              sectionId: sectionId,
+              isWatermark: isWatermark
             }, '*');
           }
         }

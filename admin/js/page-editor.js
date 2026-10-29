@@ -117,7 +117,7 @@
       const badge = document.getElementById('inspectorSectionBadge');
       const title = document.getElementById('inspectorTitle');
       const secName = this.getFriendlySectionName(item.sectionId);
-      const fieldTitle = this.getFriendlyFieldTitle(item.key, item.attrType, item.currentVal);
+      const fieldTitle = this.getFriendlyFieldTitle(item.key, item.attrType, item.currentVal, item);
 
       if (badge) badge.textContent = secName;
       if (title) title.textContent = fieldTitle;
@@ -151,8 +151,14 @@
       return SECTION_FRIENDLY_NAMES[secId] || secId.replace(/[-_]/g, ' ').toUpperCase();
     },
 
-    getFriendlyFieldTitle(key, attrType, val) {
+    getFriendlyFieldTitle(key, attrType, val, item = null) {
       if (!key) return 'Page Element';
+      if (item && item.isWatermark) return '🌊 Watermark Background Heading';
+      if (key && (key.includes('watermark') || key.endsWith('.p_1') || key.endsWith('.p_3') || key.endsWith('.p_8') || key.endsWith('.p_41') || key.endsWith('.p_63') || key.endsWith('.p_68'))) {
+        if (item && (item.currentVal || '').length < 30) {
+          // Check if likely watermark text
+        }
+      }
       const clean = key.replace(/^(home|about|contact|destinations|experiences|reviews|blog|siteGlobal\.[^.]+)\./, '');
       
       if (clean.includes('title')) return 'Main Heading / Title';
