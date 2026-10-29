@@ -1,16 +1,22 @@
 {
   "site_settings": {
     "general": {
-      "companyName": "LOTUS CEYLON International Tours & Services (Pvt) Ltd",
+      "companyName": "Lotus Ceylon International Tours & Services (Private) Limited",
       "shortName": "Lotus Ceylon Tours",
       "slogan": "PURE JOURNEYS. SACRED EXPERIENCES.",
       "foundedYear": 2014,
       "phone": "+94 71 54 22 384",
       "phoneRaw": "94715422384",
-      "email": "inquiry@lotusceylon.com",
-      "secondaryEmail": "lotusceylontours@gmail.com",
-      "address": "286/C, Niwandama South, Ja-Ela, Sri Lanka – 11350",
-      "whatsapp": "+94 71 54 22 384"
+      "email": "paliforbuddhism@gmail.com",
+      "secondaryEmail": "",
+      "address": "286/C, Niwandama South, Ja-Ela, Sri Lanka 11350",
+      "whatsapp": "+94 71 54 22 384",
+      "legalName": "Lotus Ceylon International Tours & Services (Private) Limited",
+      "companyReg": "PV 00374439",
+      "director": "Mallawa Arachchige Dhushantha Gihan Mallawaarachchi",
+      "wechat": "FGUTaiwan90",
+      "line": "dpbs2024",
+      "linePhone": "+886 958 561 954"
     },
     "hero": {
       "headline": "PURE JOURNEYS. SACRED EXPERIENCES.",
@@ -23,7 +29,15 @@
     "counter_founded": "2014",
     "counter_countries": "10",
     "counter_private_pct": "100",
-    "counter_chat_channels": "3"
+    "counter_chat_channels": "3",
+    "social": {
+      "facebook": "",
+      "instagram": "",
+      "tripadvisor": "",
+      "youtube": "",
+      "googleMaps": "",
+      "bookingDotCom": ""
+    }
   },
   "tour_categories": [
     {

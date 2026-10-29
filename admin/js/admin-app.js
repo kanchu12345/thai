@@ -3709,6 +3709,10 @@ resolveImg(url) {
         };
 
         localStorage.setItem('lotus_seed_catalog_cache_v2', JSON.stringify(cache));
+        const vNow = Date.now();
+        localStorage.setItem('lotus_data_payload', JSON.stringify(cache));
+        localStorage.setItem('lotus_data_v', String(vNow));
+        localStorage.setItem('lotus_cms_last_published', String(vNow));
 
       } catch (e) {
 

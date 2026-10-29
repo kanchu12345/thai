@@ -4,7 +4,7 @@
       "id": "global_settings",
       "status": "published",
       "updatedAt": "2026-10-25T20:00:00Z",
-      "companyName": "LOTUS CEYLON International Tours & Services (Pvt) Ltd",
+      "companyName": "Lotus Ceylon International Tours & Services (Private) Limited",
       "shortName": "Lotus Ceylon Tours",
       "slogan": {
         "en": "PURE JOURNEYS. SACRED EXPERIENCES.",
@@ -21,14 +21,14 @@
       "foundedYear": 2014,
       "phone": "+94 71 54 22 384",
       "phoneRaw": "94715422384",
-      "email": "inquiry@lotusceylon.com",
-      "secondaryEmail": "paliforbuddhism@gmail.com",
+      "email": "paliforbuddhism@gmail.com",
+      "secondaryEmail": "",
       "address": {
         "line1": "286/C, Niwandama South",
         "city": "Ja-Ela",
         "country": "Sri Lanka",
         "postalCode": "11350",
-        "full": "286/C, Niwandama South, Ja-Ela, Sri Lanka – 11350"
+        "full": "286/C, Niwandama South, Ja-Ela, Sri Lanka 11350"
       },
       "coordinates": {
         "lat": 7.0785,
@@ -36,19 +36,21 @@
       },
       "whatsapp": "+94 71 54 22 384",
       "whatsappLink": "https://wa.me/94715422384",
-      "wechat": "LotusCeylonTours",
-      "line": "@lotusceylon",
+      "wechat": "FGUTaiwan90",
+      "line": "dpbs2024",
       "qr": {
         "whatsapp": "assets/qr/whatsapp-qr.png",
         "wechat": "assets/qr/wechat-qr.png",
         "line": "assets/qr/line-qr.png"
       },
       "socialLinks": {
-        "facebook": "https://www.facebook.com/lotusceylontours",
-        "instagram": "https://www.instagram.com/lotusceylontours",
-        "youtube": "https://www.youtube.com/@lotusceylontours",
-        "tripadvisor": "https://www.tripadvisor.com",
-        "twitter": "https://twitter.com/lotusceylon"
+        "facebook": "",
+        "instagram": "",
+        "youtube": "",
+        "tripadvisor": "",
+        "twitter": "",
+        "googleMaps": "",
+        "bookingDotCom": ""
       },
       "counters": {
         "founded": 2014,
@@ -59,7 +61,12 @@
       "designer": {
         "name": "Infinite Design",
         "url": "https://infiniteweb.dev/"
-      }
+      },
+      "legalName": "Lotus Ceylon International Tours & Services (Private) Limited",
+      "companyReg": "PV 00374439",
+      "director": "Mallawa Arachchige Dhushantha Gihan Mallawaarachchi",
+      "sltdaLicense": "",
+      "linePhone": "+886 958 561 954"
     }
   ],
   "categories": [

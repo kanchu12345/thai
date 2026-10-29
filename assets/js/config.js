@@ -32,7 +32,7 @@ window.LOTUS_CONFIG = window.LOTUS_CONFIG || {};
       city: "Ja-Ela",
       country: "Sri Lanka",
       postalCode: "11350",
-      full: "286/C, Niwandama South, Ja-Ela, Sri Lanka – 11350",
+      full: "286/C, Niwandama South, Ja-Ela, Sri Lanka 11350",
       coordinates: {
         lat: 7.0785,
         lng: 79.8913,
@@ -49,13 +49,17 @@ window.LOTUS_CONFIG = window.LOTUS_CONFIG || {};
     phone: "+94 71 54 22 384",
     phoneRaw: "94715422384",
 
-    // Corporate Email
-    email: "inquiry@lotusceylon.com",
+    companyReg: "PV 00374439",
+    director: "Mallawa Arachchige Dhushantha Gihan Mallawaarachchi",
+    sltdaLicense: "", // Intentionally EMPTY per business rules until verified
+
+    // Corporate Email - Single Source of Truth
+    email: "paliforbuddhism@gmail.com",
     emailConfig: {
-      primary: "inquiry@lotusceylon.com",
-      secondary: "lotusceylontours@gmail.com",
+      primary: "paliforbuddhism@gmail.com",
+      secondary: "",
       label: "Email Inquiries",
-      mailto: "mailto:inquiry@lotusceylon.com"
+      mailto: "mailto:paliforbuddhism@gmail.com"
     },
 
     // Instant Messaging & Social Concierge
@@ -66,25 +70,28 @@ window.LOTUS_CONFIG = window.LOTUS_CONFIG || {};
         defaultText: "Hello Lotus Ceylon! I would like to inquire about a customized tour package to Sri Lanka."
       },
       wechat: {
-        id: "LotusCeylonTours",
-        label: "WeChat: LotusCeylonTours",
-        actionUrl: "weixin://dl/chat?LotusCeylonTours",
+        id: "FGUTaiwan90",
+        label: "WeChat: FGUTaiwan90",
+        actionUrl: "weixin://dl/chat?FGUTaiwan90",
         qr: "assets/qr/wechat-qr.png"
       },
       line: {
-        id: "@lotusceylon",
-        label: "LINE: @lotusceylon",
-        actionUrl: "https://line.me/R/ti/p/@lotusceylon",
+        id: "dpbs2024",
+        phone: "+886 958 561 954",
+        label: "LINE: dpbs2024",
+        actionUrl: "https://line.me/R/ti/p/~dpbs2024",
         qr: "assets/qr/line-qr.png"
       }
     },
 
     // Social Channels
     social: {
-      facebook: "https://facebook.com/lotusceylon",
-      instagram: "https://instagram.com/lotusceylon",
-      tripadvisor: "https://tripadvisor.com/lotusceylon",
-      youtube: "https://youtube.com/@lotusceylon"
+      facebook: "",
+      instagram: "",
+      tripadvisor: "",
+      youtube: "",
+      googleMaps: "",
+      bookingDotCom: ""
     },
 
     // API Endpoint for Inquiries (Formspree fallback)

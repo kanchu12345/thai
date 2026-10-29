@@ -89,12 +89,22 @@ service cloud.firestore {
       allow write: if isAdmin();
     }
 
+    match /navigation/{navId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
     // =========================================================================
     // 4. EDITABLE PUBLIC CONTENT
     // =========================================================================
 
     // Public pages - Public read ONLY when published, Admins can read drafts
     match /siteContent/{docId} {
+      allow read: if isPublished() || isAdmin();
+      allow write: if isAdmin();
+    }
+
+    match /pages/{pageId} {
       allow read: if isPublished() || isAdmin();
       allow write: if isAdmin();
     }
@@ -108,12 +118,32 @@ service cloud.firestore {
       allow write: if isAdmin();
     }
 
+    match /packages/{packageId} {
+      allow read: if isPublished() || isAdmin();
+      allow write: if isAdmin();
+    }
+
     match /tourCategories/{categoryId} {
       allow read: if isPublished() || isAdmin();
       allow write: if isAdmin();
     }
 
+    match /categories/{categoryId} {
+      allow read: if isPublished() || isAdmin();
+      allow write: if isAdmin();
+    }
+
     match /destinations/{destinationId} {
+      allow read: if isPublished() || isAdmin();
+      allow write: if isAdmin();
+    }
+
+    match /experiences/{experienceId} {
+      allow read: if isPublished() || isAdmin();
+      allow write: if isAdmin();
+    }
+
+    match /faqs/{faqId} {
       allow read: if isPublished() || isAdmin();
       allow write: if isAdmin();
     }
@@ -129,6 +159,11 @@ service cloud.firestore {
     }
 
     match /blogPosts/{postId} {
+      allow read: if isPublished() || isAdmin();
+      allow write: if isAdmin();
+    }
+
+    match /blog/{blogId} {
       allow read: if isPublished() || isAdmin();
       allow write: if isAdmin();
     }
@@ -149,7 +184,7 @@ service cloud.firestore {
     }
 
     // =========================================================================
-    // 6. CUSTOMER INQUIRY PIPELINES (WRITE-ONLY FOR PUBLIC, NO PUBLIC READ)
+    // 6. CUSTOMER INQUIRY & SUBSCRIBER PIPELINES (WRITE-ONLY FOR PUBLIC, NO PUBLIC READ)
     // =========================================================================
 
     match /inquiries_quick/{inquiryId} {
@@ -165,6 +200,14 @@ service cloud.firestore {
     match /inquiries/{inquiryId} {
       allow get, list, update, delete: if isAdmin();
       allow create: if isValidInquiry(request.resource.data, 'any');
+    }
+
+    match /subscribers/{subscriberId} {
+      allow get, list, update, delete: if isAdmin();
+      allow create: if request.resource.data.keys().hasOnly(['email', 'subscribedAt', 'language', 'source'])
+                    && request.resource.data.email is string
+                    && request.resource.data.email.size() >= 5
+                    && request.resource.data.email.size() <= 100;
     }
 
     // =========================================================================
