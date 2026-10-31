@@ -395,8 +395,9 @@
                 el.src = resolved;
               } else if (el.tagName === 'SOURCE') {
                 el.src = resolved;
-                if (el.parentElement && el.parentElement.tagName === 'VIDEO' && window.innerWidth >= 993) {
+                if (el.parentElement && el.parentElement.tagName === 'VIDEO') {
                   el.parentElement.load();
+                  el.parentElement.play().catch(function(){});
                 }
               }
             }

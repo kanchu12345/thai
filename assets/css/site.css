@@ -2703,9 +2703,14 @@ textarea:focus-visible {
 /* ==============================================================================
  * PERFORMANCE OPTIMIZATION: MEDIA & LAYOUT STABILITY
  * ============================================================================== */
+/* Universal Background Video Banner Display on All Devices */
+.video-banner-video {
+  display: block !important;
+}
+
 @media (max-width: 992px) {
   .desktop-only-video {
-    display: none !important;
+    display: block !important;
   }
 }
 

@@ -262,14 +262,42 @@
 <source media="(max-width: 768px)" srcset="./assets/images/home/hero-sigiriya-aerial-portrait.webp"/>
 <img alt="Sigiriya Ancient Rock Citadel Aerial View" class="hero-img-bg" fetchpriority="high" height="1080" src="./assets/images/home/hero-sigiriya-aerial-1.webp" width="1920" data-cms-img="hero.image" data-cms-alt="hero.title"/>
 </picture>
-<video class="video-banner-video desktop-only-video" autoplay="" loop="" muted="" playsinline="" poster="./assets/images/home/hero-sigiriya-aerial-1.webp" preload="auto" webkit-playsinline="" data-cms-video="hero.video">
-<source media="(min-width: 993px)" src="./assets/videos/hero-banner.mp4" type="video/mp4" data-cms-video="hero.video"/>
+<video class="video-banner-video" autoplay="" loop="" muted="" playsinline="" webkit-playsinline="" poster="./assets/images/home/hero-sigiriya-aerial-1.webp" preload="auto" src="./assets/videos/hero-banner.mp4" data-cms-video="hero.video">
+<source src="./assets/videos/hero-banner.mp4" type="video/mp4" data-cms-video="hero.video"/>
 </video>
 <script>
-if (window.innerWidth >= 993) {
-  var v = document.querySelector('.desktop-only-video');
-  if (v) { v.autoplay = true; v.play().catch(function(){}); }
-}
+(function() {
+  var v = document.querySelector('.video-banner-video');
+  if (v) {
+    v.muted = true;
+    v.defaultMuted = true;
+    v.playsInline = true;
+    v.setAttribute('playsinline', '');
+    v.setAttribute('webkit-playsinline', '');
+    v.setAttribute('muted', '');
+    var playVideo = function() {
+      var p = v.play();
+      if (p !== undefined) {
+        p.catch(function() {
+          var onInteraction = function() {
+            v.play().catch(function(){});
+            ['touchstart', 'touchend', 'click', 'scroll'].forEach(function(evt) {
+              window.removeEventListener(evt, onInteraction);
+            });
+          };
+          ['touchstart', 'touchend', 'click', 'scroll'].forEach(function(evt) {
+            window.addEventListener(evt, onInteraction, { passive: true, once: true });
+          });
+        });
+      }
+    };
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', playVideo);
+    } else {
+      playVideo();
+    }
+  }
+})();
 </script>
 <div class="video-banner-overlay"></div>
 <div class="banner-content-wrap">
