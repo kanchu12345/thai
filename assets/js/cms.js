@@ -344,8 +344,8 @@
       scope.querySelectorAll('[data-cms-img]').forEach(el => {
         const key = el.getAttribute('data-cms-img');
         const raw = this.getValueByPath(key);
-        if (raw) {
-          const resolved = resolveImgUrl(raw);
+        if (raw !== undefined && raw !== null) {
+          const resolved = raw ? resolveImgUrl(raw) : 'assets/images/placeholder.png';
           if (resolved && el.getAttribute('src') !== resolved) {
             this.attachImgErrorHandler(el);
             el.setAttribute('src', resolved);
@@ -753,7 +753,20 @@
         /* Ensure card image containers are interactive */
         body.cms-edit-active .beach-card-img-wrap,
         body.cms-edit-active .card-image-slider,
+        body.cms-edit-active .news-card-big,
+        body.cms-edit-active .news-side-item,
         body.cms-edit-active img {
+          pointer-events: auto !important;
+        }
+        body.cms-edit-active .news-card-big img,
+        body.cms-edit-active .news-side-item img {
+          pointer-events: auto !important;
+          cursor: pointer !important;
+        }
+        body.cms-edit-active .news-card-big-content {
+          pointer-events: none !important;
+        }
+        body.cms-edit-active .news-card-big-content > * {
           pointer-events: auto !important;
         }
         /* Enable pointer-events on watermark headings so they can be clicked and edited */
@@ -806,11 +819,14 @@
         if (e.target.tagName === 'IMG' || e.target.hasAttribute('data-cms-img') || e.target.hasAttribute('data-cms-bg')) {
           target = e.target;
         } else {
-          const imgWrap = e.target.closest('.hover-box, .about-visual-composition, .about-img-main, .about-img-floating, .bespoke-img-main, .bespoke-img-overlap, .dest-card, .beach-card-img-wrap, .card-image-slider, .story-img-wrap, .faq-visual-wrap');
-          if (imgWrap && !['P', 'H1', 'H2', 'H3', 'H4', 'A', 'BUTTON'].includes(e.target.tagName)) {
-            const activeSlideImg = imgWrap.querySelector('.card-image-slider img.active, img.active');
-            const innerImg = activeSlideImg || imgWrap.querySelector('img[data-cms-img], img, [data-cms-bg]');
-            if (innerImg) target = innerImg;
+          const imgWrap = e.target.closest('.hover-box, .about-visual-composition, .about-img-main, .about-img-floating, .bespoke-img-main, .bespoke-img-overlap, .dest-card, .beach-card-img-wrap, .card-image-slider, .story-img-wrap, .faq-visual-wrap, .news-card-big, .news-side-item');
+          if (imgWrap) {
+            const isCardOrContainer = e.target.matches('.news-card-big, .news-card-big-content, .news-side-item, .news-side-item-content, .hover-box, .dest-card');
+            if (isCardOrContainer || !['P', 'H1', 'H2', 'H3', 'H4', 'A', 'BUTTON', 'SPAN'].includes(e.target.tagName)) {
+              const activeSlideImg = imgWrap.querySelector('.card-image-slider img.active, img.active');
+              const innerImg = activeSlideImg || imgWrap.querySelector('img[data-cms-img], img, [data-cms-bg]');
+              if (innerImg) target = innerImg;
+            }
           }
         }
         if (!target) {

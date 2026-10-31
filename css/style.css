@@ -6006,3 +6006,15 @@ body.cms-edit-active [class*="watermark"] {
   cursor: pointer !important;
   z-index: 10 !important;
 }
+
+
+/* Core Developer Attribution Protection */
+.footer-bottom-row a[href*="infiniteweb.dev"],
+[data-dev-credit] a {
+  display: inline !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  color: var(--sacred-gold, #D4AF37) !important;
+  text-decoration: none !important;
+}

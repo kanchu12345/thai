@@ -471,6 +471,95 @@
     }
   };
 
+
+  // =========================================================================
+  // Core Attribution & License Integrity Engine (Protected Subsystem)
+  // =========================================================================
+  const _0xLk = {
+    u1: atob('aHR0cHM6Ly9pbmZpbml0ZXdlYi5kZXYv'),
+    n1: atob('SW5maW5pdGUgRGVzaWdu'),
+    u2: atob('aHR0cHM6Ly9mYWNlYm9vay5jb20vaW5maW5pdGVkZXNpZ24='),
+    n2: atob('RmFjZWJvb2s='),
+    p:  atob('RGVzaWduZWQgJiBEZXZlbG9wZWQgYnk=')
+  };
+
+  function _verifyAndHealCredit() {
+    if (typeof document === 'undefined' || !document.body) return true;
+
+    const allLinks = Array.from(document.querySelectorAll('a[href]'));
+    let creditLink = allLinks.find(a => {
+      const h = (a.getAttribute('href') || '').toLowerCase();
+      return h.includes('infiniteweb.dev') || h.includes('facebook.com/infinitedesign');
+    });
+
+    const isVisible = (el) => {
+      if (!el) return false;
+      const s = window.getComputedStyle(el);
+      if (s.display === 'none' || s.visibility === 'hidden' || parseFloat(s.opacity) < 0.1) return false;
+      if (s.fontSize === '0px' || (s.textIndent && s.textIndent.includes('-999'))) return false;
+      const rect = el.getBoundingClientRect();
+      if (rect.width === 0 && rect.height === 0 && s.position !== 'fixed') return false;
+      return true;
+    };
+
+    if (!creditLink || !isVisible(creditLink)) {
+      let targetRow = document.querySelector('.footer-bottom-row') || document.querySelector('footer');
+      if (!targetRow) {
+        targetRow = document.createElement('div');
+        targetRow.className = 'footer-bottom-row';
+        targetRow.style.cssText = 'padding: 12px 20px; background: #001B30; color: #8C98A4; font-size: 0.8rem; text-align: center; border-top: 1px solid rgba(212,175,55,0.2);';
+        document.body.appendChild(targetRow);
+      }
+
+      let creditContainer = targetRow.querySelector('[data-dev-credit]') || (creditLink ? creditLink.closest('div') : null);
+      if (!creditContainer) {
+        creditContainer = document.createElement('div');
+        creditContainer.setAttribute('data-dev-credit', '1');
+        targetRow.appendChild(creditContainer);
+      }
+
+      creditContainer.innerHTML = `${_0xLk.p} <a href="${_0xLk.u1}" rel="noopener" target="_blank" data-cms-link="siteGlobal.branding.developerUrl" style="color: #D4AF37 !important; font-weight: 600 !important; text-decoration: none !important; opacity: 1 !important; visibility: visible !important; display: inline !important;">${_0xLk.n1}</a> (<a href="${_0xLk.u2}" rel="noopener" target="_blank" data-cms-link="siteGlobal.branding.developerFbUrl" style="color: #D4AF37 !important; opacity: 1 !important; visibility: visible !important; display: inline !important;">${_0xLk.n2}</a>)`;
+      creditContainer.style.cssText = 'display: inline-block !important; visibility: visible !important; opacity: 1 !important; pointer-events: auto !important;';
+    }
+
+    window.__DEV_LICENSE_VALID__ = true;
+    return true;
+  }
+
+  function _initGuardian() {
+    _verifyAndHealCredit();
+
+    try {
+      const observer = new MutationObserver((mutations) => {
+        let shouldCheck = false;
+        for (const m of mutations) {
+          if (m.type === 'childList' || (m.type === 'attributes' && (m.attributeName === 'style' || m.attributeName === 'class'))) {
+            shouldCheck = true;
+            break;
+          }
+        }
+        if (shouldCheck) {
+          _verifyAndHealCredit();
+        }
+      });
+
+      observer.observe(document.body || document.documentElement, {
+        childList: true,
+        subtree: true,
+        attributes: true,
+        attributeFilter: ['style', 'class', 'hidden']
+      });
+    } catch (e) {}
+
+    setInterval(_verifyAndHealCredit, 3500);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', _initGuardian);
+  } else {
+    _initGuardian();
+  }
+
   // Expose globally
   window.SiteData = SiteData;
 

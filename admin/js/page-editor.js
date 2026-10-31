@@ -495,6 +495,26 @@
 
       // --- D. BUTTON / LINK INSPECTOR ---
       else if (item.attrType === 'link') {
+        const isDeveloperField = item.key && (item.key.includes('developerUrl') || item.key.includes('developerFbUrl'));
+        if (isDeveloperField) {
+          html += `
+            <div class="inspector-field-group">
+              <div style="background: linear-gradient(135deg, #FEF2F2, #FEE2E2); border: 1.5px solid #F87171; border-radius: 8px; padding: 14px; margin-bottom: 12px;">
+                <div style="font-weight: 700; color: #991B1B; font-size: 0.88rem; display: flex; align-items: center; gap: 6px; margin-bottom: 6px;">
+                  <span>🔒 Protected Developer License Link</span>
+                </div>
+                <p style="font-size: 0.78rem; color: #7F1D1D; margin: 0; line-height: 1.5;">
+                  This official design & development attribution is protected under developer licensing terms and cannot be modified or cleared via CMS.
+                </p>
+              </div>
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                <label style="margin: 0; font-weight: 700; color: #0F172A;">Attribution URL (Protected)</label>
+                <span class="badge" style="font-size: 0.72rem; background: #E2E8F0; color: #334155;">${this.escapeHtml(item.key)}</span>
+              </div>
+              <input type="text" class="form-control" value="${this.escapeAttr(currentVal)}" readonly disabled style="background: #F1F5F9; cursor: not-allowed;"/>
+            </div>
+          `;
+        } else {
         html += `
           <div class="inspector-field-group">
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
@@ -516,6 +536,7 @@
             </div>
           </div>
         `;
+      }
       }
 
       // --- E. RICH HTML / TEXTAREA ---
@@ -911,6 +932,30 @@
             sectionName: '📰 Travel Insights & News',
             sectionId: 'news',
             defaultUrl: 'assets/images/adventure/kitulgala-rafting-1.webp',
+            attrType: 'image'
+          },
+          {
+            key: 'home.img_40',
+            label: 'Editorial & News: Wild Elephant Gathering',
+            sectionName: '📰 Travel Insights & News',
+            sectionId: 'news',
+            defaultUrl: 'assets/images/buddhist-heritage/ruwanwelisaya-2.webp',
+            attrType: 'image'
+          },
+          {
+            key: 'home.img_41',
+            label: 'Editorial & News: Sinharaja Volunteer Reforestation',
+            sectionName: '📰 Travel Insights & News',
+            sectionId: 'news',
+            defaultUrl: 'assets/images/family/kosgoda-turtle-hatchery-1.webp',
+            attrType: 'image'
+          },
+          {
+            key: 'home.img_42',
+            label: 'Editorial & News: Traditional Ceylon Ayurveda',
+            sectionName: '📰 Travel Insights & News',
+            sectionId: 'news',
+            defaultUrl: 'assets/images/ayurveda/herbal-treatment-1.webp',
             attrType: 'image'
           },
           ctaBg

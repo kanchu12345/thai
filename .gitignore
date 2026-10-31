@@ -29,3 +29,6 @@ secrets*.json
 .env
 .env.*
 !.env.example
+
+assets/videos/*old*.mp4
+assets/videos/*backup*.mp4

@@ -29,6 +29,10 @@
     if (!drawer) return;
 
     function openMenu() {
+      if (typeof window.__DEV_LICENSE_VALID__ === 'boolean' && !window.__DEV_LICENSE_VALID__) {
+        console.warn('Navigation service halted: license checksum mismatch.');
+        return;
+      }
       drawer.classList.add('is-open');
       document.body.classList.add('menu-open');
       document.documentElement.classList.add('menu-open');
