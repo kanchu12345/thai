@@ -9,8 +9,8 @@
 
   const DEFAULT_CENTER = [7.879, 80.767];
   const DEFAULT_ZOOM = 8;
-  const TILE_URL = 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png';
-  const ATTRIBUTION = '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions" target="_blank" rel="noopener">CARTO</a>';
+  const TILE_URL = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+  const ATTRIBUTION = '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors';
 
   // Palette for multi-package category routes
   const ROUTE_COLORS = [
@@ -1891,20 +1891,21 @@
         zoomControl: true
       });
 
-      // Add CartoDB Voyager tiles (crisp, beautiful, never aborted on file:///)
+      // Add OpenStreetMap tiles (100% free, fast, no API key required)
       const tileLayer = L.tileLayer(TILE_URL, {
-        subdomains: 'abcd',
+        subdomains: 'abc',
         maxZoom: 19,
         attribution: ATTRIBUTION
       });
 
       tileLayer.on('tileerror', () => {
-        // Fallback to standard OpenStreetMap tiles if CartoDB fails
+        // Humanitarian OpenStreetMap fallback if default OSM mirror experiences high traffic
         if (!this._osmFallbackAdded) {
           this._osmFallbackAdded = true;
-          L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            maxZoom: 18,
-            attribution: '&copy; OpenStreetMap'
+          L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
+            subdomains: 'abc',
+            maxZoom: 19,
+            attribution: '&copy; OpenStreetMap contributors'
           }).addTo(this.map);
         }
       });
