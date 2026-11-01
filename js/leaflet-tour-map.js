@@ -9,8 +9,9 @@
 
   const DEFAULT_CENTER = [7.879, 80.767];
   const DEFAULT_ZOOM = 8;
-  const TILE_URL = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+  const TILE_URL = 'https://tile.openstreetmap.org/{z}/{x}/{y}.png';
   const ATTRIBUTION = '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors';
+  console.log('[LotusMap] Leaflet OpenStreetMap pure tile engine loaded v20261101_pure_osm_v9');
 
   // Palette for multi-package category routes
   const ROUTE_COLORS = [
