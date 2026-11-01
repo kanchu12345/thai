@@ -172,6 +172,207 @@
       transform: translateY(-2px);
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     }
+    /* Instant Messaging QR Codes Showcase */
+    .contact-qr-section {
+      margin-top: 1.85rem;
+      padding-top: 1.65rem;
+      border-top: 1px solid #E2E8F0;
+    }
+    .contact-qr-header {
+      margin-bottom: 1.15rem;
+    }
+    .contact-qr-title {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #002B49;
+      margin-bottom: 0.35rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .contact-qr-sub {
+      font-size: 0.86rem;
+      color: #64748B;
+      line-height: 1.5;
+      margin: 0;
+    }
+    .contact-qr-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.95rem;
+    }
+    @media (max-width: 580px) {
+      .contact-qr-grid {
+        grid-template-columns: 1fr;
+        gap: 0.85rem;
+      }
+    }
+    .contact-qr-card {
+      background: linear-gradient(180deg, #FFFFFF 0%, #FAF8F5 100%);
+      border: 1px solid rgba(197, 168, 128, 0.35);
+      border-radius: 14px;
+      padding: 1.1rem 0.75rem 0.95rem;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+      box-shadow: 0 4px 12px rgba(0, 43, 73, 0.04);
+    }
+    .contact-qr-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 24px rgba(0, 43, 73, 0.1);
+      border-color: #D9822B;
+      background: #FFFFFF;
+    }
+    .contact-qr-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      padding: 0.25rem 0.65rem;
+      border-radius: 9999px;
+      margin-bottom: 0.65rem;
+      color: #FFFFFF;
+    }
+    .contact-qr-badge--wa {
+      background: #25D366;
+    }
+    .contact-qr-badge--wechat {
+      background: #07C160;
+    }
+    .contact-qr-badge--line {
+      background: #00C300;
+    }
+    .contact-qr-img-wrap {
+      background: #FFFFFF;
+      padding: 6px;
+      border-radius: 10px;
+      border: 1px solid rgba(0, 43, 73, 0.1);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+      margin-bottom: 0.6rem;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      cursor: pointer;
+    }
+    .contact-qr-img-wrap:hover {
+      transform: scale(1.04);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    .contact-qr-img {
+      width: 105px;
+      height: 105px;
+      display: block;
+      object-fit: contain;
+      image-rendering: -webkit-optimize-contrast;
+      border-radius: 4px;
+    }
+    .contact-qr-label {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: #002B49;
+      margin-bottom: 0.2rem;
+    }
+    .contact-qr-handle {
+      font-size: 0.75rem;
+      color: #64748B;
+      font-weight: 600;
+      margin-bottom: 0.6rem;
+      word-break: break-all;
+    }
+    .contact-qr-action {
+      margin-top: auto;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-decoration: none;
+      padding: 0.35rem 0.8rem;
+      border-radius: 6px;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      transition: all 0.2s ease;
+    }
+    .contact-qr-action--wa {
+      color: #128C7E;
+      background: rgba(37, 211, 102, 0.14);
+    }
+    .contact-qr-action--wa:hover {
+      background: #25D366;
+      color: #FFFFFF;
+    }
+    .contact-qr-action--wechat {
+      color: #07C160;
+      background: rgba(7, 193, 96, 0.14);
+    }
+    .contact-qr-action--wechat:hover {
+      background: #07C160;
+      color: #FFFFFF;
+    }
+    .contact-qr-action--line {
+      color: #00B900;
+      background: rgba(0, 195, 0, 0.14);
+    }
+    .contact-qr-action--line:hover {
+      background: #00C300;
+      color: #FFFFFF;
+    }
+    /* QR Lightbox Modal */
+    .qr-modal-backdrop {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 43, 73, 0.72);
+      backdrop-filter: blur(5px);
+      z-index: 99999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+    }
+    .qr-modal-dialog {
+      background: #FFFFFF;
+      border-radius: 20px;
+      padding: 2.25rem 2rem 1.85rem;
+      max-width: 360px;
+      width: 100%;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(197, 168, 128, 0.4);
+      animation: qrModalPop 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    @keyframes qrModalPop {
+      from { opacity: 0; transform: scale(0.92); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    .qr-modal-close {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      background: #F1F5F9;
+      border: none;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      font-size: 1.4rem;
+      line-height: 1;
+      color: #475569;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+    }
+    .qr-modal-close:hover {
+      background: #E2E8F0;
+      color: #0F172A;
+      transform: scale(1.05);
+    }
     .contact-map-wrap {
       margin-top: 2rem;
       border-radius: 12px;
@@ -505,6 +706,65 @@
             <span class="chat-pill chat-pill--line" title="LINE ID: @lotusceylon" data-cms="contact.span_9">
               <span>🟢 LINE: @lotusceylon</span>
             </span>
+          </div>
+
+          <!-- Instant Messaging Direct QR Codes Showcase -->
+          <div class="contact-qr-section">
+            <div class="contact-qr-header">
+              <h4 class="contact-qr-title" data-cms="contact.qr_title">
+                <span>📱</span> Scan QR Code to Chat Directly
+              </h4>
+              <p class="contact-qr-sub" data-cms="contact.qr_desc">
+                Instant mobile concierge access for tour inquiries, custom itineraries, and active guest assistance.
+              </p>
+            </div>
+
+            <div class="contact-qr-grid">
+              <!-- WhatsApp QR Card -->
+              <div class="contact-qr-card">
+                <div class="contact-qr-badge contact-qr-badge--wa">
+                  <span>💬 WhatsApp</span>
+                </div>
+                <div class="contact-qr-img-wrap" onclick="openQrModal('WhatsApp', 'assets/qr/whatsapp-qr.png', '+94 71 54 22 384', 'https://wa.me/94715422384?text=Hello%20Lotus%20Ceylon!%20I%20would%20like%20to%20inquire%20about%20a%20private%20tour.')" title="Click to enlarge WhatsApp QR Code" role="button" tabindex="0">
+                  <img src="assets/qr/whatsapp-qr.png" alt="Scan WhatsApp QR Code - Lotus Ceylon" class="contact-qr-img" width="105" height="105" loading="lazy">
+                </div>
+                <div class="contact-qr-label" data-cms="contact.qr_wa_label">WhatsApp Concierge</div>
+                <div class="contact-qr-handle">+94 71 54 22 384</div>
+                <a href="https://wa.me/94715422384?text=Hello%20Lotus%20Ceylon!%20I%20would%20like%20to%20inquire%20about%20a%20private%20tour." target="_blank" rel="noopener noreferrer" class="contact-qr-action contact-qr-action--wa" data-cms="contact.qr_wa_btn">
+                  <span>Open Chat ➔</span>
+                </a>
+              </div>
+
+              <!-- WeChat QR Card -->
+              <div class="contact-qr-card">
+                <div class="contact-qr-badge contact-qr-badge--wechat">
+                  <span>🌿 WeChat</span>
+                </div>
+                <div class="contact-qr-img-wrap" onclick="openQrModal('WeChat', 'assets/qr/wechat-qr.png', 'WeChat ID: LotusCeylonTours', '')" title="Click to enlarge WeChat QR Code" role="button" tabindex="0">
+                  <img src="assets/qr/wechat-qr.png" alt="Scan WeChat QR Code - Lotus Ceylon" class="contact-qr-img" width="105" height="105" loading="lazy">
+                </div>
+                <div class="contact-qr-label" data-cms="contact.qr_wechat_label">WeChat Official</div>
+                <div class="contact-qr-handle">LotusCeylonTours</div>
+                <button type="button" onclick="copyWeChatId('LotusCeylonTours', this)" class="contact-qr-action contact-qr-action--wechat" style="border: none; cursor: pointer; font-family: inherit;" data-cms="contact.qr_wechat_btn">
+                  <span>📋 Copy ID</span>
+                </button>
+              </div>
+
+              <!-- LINE QR Card -->
+              <div class="contact-qr-card">
+                <div class="contact-qr-badge contact-qr-badge--line">
+                  <span>🟢 LINE</span>
+                </div>
+                <div class="contact-qr-img-wrap" onclick="openQrModal('LINE', 'assets/qr/line-qr.png', 'LINE ID: @lotusceylon', 'https://line.me/R/ti/p/@lotusceylon')" title="Click to enlarge LINE QR Code" role="button" tabindex="0">
+                  <img src="assets/qr/line-qr.png" alt="Scan LINE QR Code - Lotus Ceylon" class="contact-qr-img" width="105" height="105" loading="lazy">
+                </div>
+                <div class="contact-qr-label" data-cms="contact.qr_line_label">LINE Official</div>
+                <div class="contact-qr-handle">@lotusceylon</div>
+                <a href="https://line.me/R/ti/p/@lotusceylon" target="_blank" rel="noopener noreferrer" class="contact-qr-action contact-qr-action--line" data-cms="contact.qr_line_btn">
+                  <span>Add Friend ➔</span>
+                </a>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -900,5 +1160,60 @@ Designed &amp; Developed by <a href="https://infiniteweb.dev/" rel="noopener" ta
     }
   </script>
 
+  <!-- Lightbox Modal for Enlarge QR Code -->
+  <div id="qrModal" class="qr-modal-backdrop" onclick="closeQrModal(event)" style="display: none;">
+    <div class="qr-modal-dialog" onclick="event.stopPropagation()">
+      <button type="button" class="qr-modal-close" onclick="closeQrModal(event)" aria-label="Close QR Preview">&times;</button>
+      <h3 id="qrModalTitle" style="font-family: 'Playfair Display', Georgia, serif; color: #002B49; margin-bottom: 0.25rem;">Scan QR Code</h3>
+      <p id="qrModalSubtitle" style="color: #64748B; font-size: 0.9rem; margin-bottom: 1.25rem; font-weight: 600;"></p>
+      <div style="background: #FFFFFF; padding: 14px; border-radius: 12px; display: inline-block; box-shadow: 0 4px 20px rgba(0,0,0,0.08); border: 1px solid #E2E8F0;">
+        <img id="qrModalImg" src="" alt="Enlarged QR Code" style="width: 230px; height: 230px; display: block; object-fit: contain; image-rendering: -webkit-optimize-contrast;">
+      </div>
+      <div id="qrModalActionWrap" style="margin-top: 1.25rem;"></div>
+    </div>
+  </div>
+
+  <script>
+    function openQrModal(platform, imgSrc, handle, linkUrl) {
+      var modal = document.getElementById('qrModal');
+      if (!modal) return;
+      document.getElementById('qrModalTitle').textContent = platform + ' QR Code';
+      document.getElementById('qrModalSubtitle').textContent = handle;
+      document.getElementById('qrModalImg').src = imgSrc;
+      
+      var actionWrap = document.getElementById('qrModalActionWrap');
+      if (linkUrl) {
+        actionWrap.innerHTML = '<a href="' + linkUrl + '" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 6px; padding: 9px 22px; border-radius: 8px; font-size: 0.9rem; font-weight: 700; text-decoration: none; background: #C5A880; color: #002B49; box-shadow: 0 4px 12px rgba(197, 168, 128, 0.4);">Direct Connect \u2794</a>';
+      } else {
+        actionWrap.innerHTML = '<button type="button" onclick="copyWeChatId(\'LotusCeylonTours\', this)" style="border: none; cursor: pointer; padding: 9px 22px; border-radius: 8px; font-size: 0.9rem; font-weight: 700; background: #07C160; color: #FFFFFF; box-shadow: 0 4px 12px rgba(7, 193, 96, 0.3);">\U0001f4cb Copy WeChat ID</button>';
+      }
+      modal.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeQrModal(e) {
+      var modal = document.getElementById('qrModal');
+      if (modal) {
+        modal.style.display = 'none';
+        document.body.style.overflow = '';
+      }
+    }
+
+    function copyWeChatId(id, btn) {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(id).then(function() {
+          var orig = btn.innerHTML;
+          btn.innerHTML = '<span>\u2713 Copied to Clipboard!</span>';
+          setTimeout(function() { btn.innerHTML = orig; }, 2500);
+        });
+      } else {
+        alert('WeChat ID: ' + id);
+      }
+    }
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeQrModal();
+    });
+  </script>
 </body>
 </html>
