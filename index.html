@@ -322,6 +322,138 @@
 </div>
 </div>
 </div>
+
+<!-- Floating Time-Synced Hero Video Location Badge -->
+<div class="hero-video-location-badge" id="heroLocationBadge" aria-live="polite">
+  <div class="location-badge-icon-box">
+    <svg class="location-pin-svg" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+      <circle cx="12" cy="10" r="3"></circle>
+    </svg>
+  </div>
+  <div class="location-badge-text-col">
+    <span class="location-badge-label" id="heroLocationTitle">Lotus Blossom Sanctuaries</span>
+    <span class="location-badge-sub" id="heroLocationSub">Sacred Waters of Ceylon</span>
+  </div>
+</div>
+
+<style>
+.hero-video-location-badge {
+  position: absolute;
+  bottom: 2.25rem;
+  right: 2.5rem;
+  z-index: 15;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.55rem 1.15rem 0.55rem 0.85rem;
+  background: rgba(10, 25, 47, 0.78);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(212, 175, 55, 0.45);
+  border-radius: 999px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  color: #FFFFFF;
+  pointer-events: none;
+  transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1), transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.location-badge-icon-box {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(212, 175, 55, 0.2);
+  border: 1px solid rgba(212, 175, 55, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #D4AF37;
+  flex-shrink: 0;
+}
+.location-badge-text-col {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.25;
+}
+.location-badge-label {
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  letter-spacing: 0.02em;
+  font-family: var(--font-heading, 'Playfair Display', serif);
+}
+.location-badge-sub {
+  font-size: 0.68rem;
+  color: #D4AF37;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+@media (max-width: 768px) {
+  .hero-video-location-badge {
+    bottom: 1.25rem;
+    right: 1.25rem;
+    padding: 0.4rem 0.85rem 0.4rem 0.65rem;
+  }
+  .location-badge-icon-box {
+    width: 24px;
+    height: 24px;
+  }
+  .location-badge-label {
+    font-size: 0.76rem;
+  }
+  .location-badge-sub {
+    font-size: 0.62rem;
+  }
+}
+</style>
+<script>
+(function() {
+  var v = document.querySelector('.video-banner-video');
+  var badge = document.getElementById('heroLocationBadge');
+  var titleEl = document.getElementById('heroLocationTitle');
+  var subEl = document.getElementById('heroLocationSub');
+  if (!v || !badge || !titleEl || !subEl) return;
+
+  var scenes = [
+    { start: 0.0, end: 9.8, title: 'Lotus Blossom Sanctuaries', sub: 'Sacred Waters of Ceylon' },
+    { start: 9.8, end: 16.5, title: 'Sacred Stupa & Royal Lake', sub: 'Ancient Heritage & Historic Reservoirs' },
+    { start: 16.5, end: 19.9, title: 'Nine Arch Bridge & Demodara', sub: 'Misty Highland Tea Country, Ella' },
+    { start: 19.9, end: 28.0, title: 'Dambulla Rock Cave Temple', sub: 'Golden Temple & Frescoes, Matale' }
+  ];
+
+  var activeIdx = -1;
+  var isFading = false;
+
+  function checkSync() {
+    var t = v.currentTime || 0;
+    var nextIdx = 0;
+    for (var i = 0; i < scenes.length; i++) {
+      if (t >= scenes[i].start && t < scenes[i].end) {
+        nextIdx = i;
+        break;
+      }
+    }
+    if (nextIdx !== activeIdx && !isFading) {
+      activeIdx = nextIdx;
+      isFading = true;
+      badge.style.opacity = '0';
+      badge.style.transform = 'translateY(6px)';
+      setTimeout(function() {
+        titleEl.textContent = scenes[nextIdx].title;
+        subEl.textContent = scenes[nextIdx].sub;
+        badge.style.opacity = '1';
+        badge.style.transform = 'translateY(0)';
+        isFading = false;
+      }, 300);
+    }
+  }
+
+  v.addEventListener('timeupdate', checkSync);
+  v.addEventListener('seeked', checkSync);
+  v.addEventListener('playing', checkSync);
+  checkSync();
+})();
+</script>
 </section>
 <!-- ==========================================================================
        SECTION 1: INTRO (LOTUS CEYLON STORY & PHILOSOPHY)
