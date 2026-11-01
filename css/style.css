@@ -992,7 +992,9 @@ ul, ol {
 
 .banner-content-wrap {
   position: absolute;
-  bottom: 12%;
+  top: 52%;
+  transform: translateY(-50%);
+  bottom: auto;
   left: 0;
   width: 100%;
   z-index: 3;
@@ -5189,8 +5191,10 @@ figure.video iframe,
   }
 
   .banner-content-wrap {
-    bottom: 8% !important;
-    padding-bottom: 1.5rem !important;
+    top: 53% !important;
+    bottom: auto !important;
+    transform: translateY(-50%) !important;
+    padding-bottom: 0 !important;
   }
 
   .banner-text-inner {
@@ -5336,7 +5340,9 @@ figure.video iframe,
   }
 
   .banner-content-wrap {
-    bottom: 6% !important;
+    top: 52% !important;
+    bottom: auto !important;
+    transform: translateY(-50%) !important;
   }
 
   .banner-main-title {
