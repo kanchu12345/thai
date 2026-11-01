@@ -1,4 +1,35 @@
 
+// Global Single Source of Truth SITE_SETTINGS
+window.SITE_SETTINGS = {
+  legalName: "Lotus Ceylon International Tours & Services (Private) Limited",
+  brandName: "Lotus Ceylon",
+  tagline: "PURE JOURNEYS. SACRED EXPERIENCES.",
+  foundedYear: 2014,
+  yearsOfExperience: (new Date().getFullYear() - 2014) + "+ Years",
+  companyRegNo: "PV 00374439",
+  director: "Mallawa Arachchige Dhushantha Gihan Mallawaarachchi",
+  sltdaLicenceNo: "",
+  address: "286/C, Niwandama South, Ja-Ela, Sri Lanka 11350",
+  phone: "+94 71 54 22 384",
+  whatsapp: "+94 71 54 22 384",
+  whatsappLink: "https://wa.me/94715422384",
+  email: "paliforbuddhism@gmail.com",
+  wechat: "FGUTaiwan90",
+  line: "dpbs2024",
+  linePhone: "+886 958 561 954",
+  lineLink: "https://line.me/R/ti/p/~dpbs2024",
+  facebook: "https://facebook.com/lotusceylontours",
+  instagram: "https://instagram.com/lotusceylontours",
+  youtube: "https://youtube.com/@lotusceylontours",
+  tripadvisor: "",
+  SITE_BASE_URL: "https://kanchu12345.github.io/thai/",
+  seasonCulturalTriangle: "Year-round; driest roughly February–September, with heavier rain October–January",
+  passportRule: "Passport valid for at least 6 months from your date of arrival",
+  etaLink: "https://www.eta.gov.lk",
+  etaNotice: "Entry rules change; your concierge will confirm the latest requirements."
+};
+
+
 window.SITE_URL = (typeof window !== 'undefined' && window.location.hostname.includes('github.io'))
   ? 'https://kanchu12345.github.io/thai/'
   : 'https://kanchu12345.github.io/thai/';
@@ -86,10 +117,10 @@ window.LOTUS_CONFIG = window.LOTUS_CONFIG || {};
 
     // Social Channels
     social: {
-      facebook: "",
-      instagram: "",
+      facebook: "https://facebook.com/lotusceylontours",
+      instagram: "https://instagram.com/lotusceylontours",
       tripadvisor: "",
-      youtube: "",
+      youtube: "https://youtube.com/@lotusceylontours",
       googleMaps: "",
       bookingDotCom: ""
     },

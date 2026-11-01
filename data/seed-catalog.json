@@ -66,7 +66,9 @@
       "companyReg": "PV 00374439",
       "director": "Mallawa Arachchige Dhushantha Gihan Mallawaarachchi",
       "sltdaLicense": "",
-      "linePhone": "+886 958 561 954"
+      "linePhone": "+886 958 561 954",
+      "youtube": "https://youtube.com/@lotusceylontours",
+      "tripadvisor": ""
     }
   ],
   "categories": [
@@ -13010,7 +13012,8 @@
         "Honeymoon & Relaxation"
       ],
       "is_popular": false,
-      "is_published": true
+      "is_published": true,
+      "duration": "9 Nights / 10 Days"
     },
     {
       "id": "pkg-beach-02",
@@ -13487,7 +13490,8 @@
         "Summer Holiday"
       ],
       "is_popular": false,
-      "is_published": true
+      "is_published": true,
+      "duration": "11 Nights / 12 Days"
     },
     {
       "id": "pkg-beach-03",
@@ -14020,7 +14024,8 @@
         "Pristine Wilderness"
       ],
       "is_popular": false,
-      "is_published": true
+      "is_published": true,
+      "duration": "13 Nights / 14 Days"
     },
     {
       "id": "pkg-cultural-01",
@@ -14328,7 +14333,8 @@
         "Royal Capital"
       ],
       "is_popular": false,
-      "is_published": true
+      "is_published": true,
+      "duration": "5 Nights / 6 Days"
     },
     {
       "id": "pkg-cultural-02",
@@ -14721,7 +14727,8 @@
         "Bespoke Cultural"
       ],
       "is_popular": false,
-      "is_published": true
+      "is_published": true,
+      "duration": "8 Nights / 9 Days"
     },
     {
       "id": "pkg-cultural-03",
@@ -15282,7 +15289,8 @@
         "Galle Dutch Fort"
       ],
       "is_popular": false,
-      "is_published": true
+      "is_published": true,
+      "duration": "14 Nights / 15 Days"
     },
     {
       "id": "pkg-wildlife-01",
@@ -15327,8 +15335,8 @@
         "ar": "Big Cats, Sloth Bears & The Great Elephant Gathering",
         "hi": "Big Cats, Sloth Bears & The Great Elephant Gathering"
       },
-      "nights": 7,
-      "days": 8,
+      "nights": 16,
+      "days": 17,
       "price_from": 2040,
       "hero_image": "assets/images/wildlife/minneriya-elephant-gathering-2.webp",
       "images": [
@@ -15646,7 +15654,8 @@
         "Wildlife Enthusiasts"
       ],
       "is_popular": false,
-      "is_published": true
+      "is_published": true,
+      "duration": "16 Nights / 17 Days"
     },
     {
       "id": "pkg-wildlife-02",
@@ -16179,7 +16188,8 @@
         "Definitive Wildlife"
       ],
       "is_popular": false,
-      "is_published": true
+      "is_published": true,
+      "duration": "13 Nights / 14 Days"
     },
     {
       "id": "pkg-wildlife-03",
@@ -16796,7 +16806,8 @@
         "Grand Wilderness"
       ],
       "is_popular": false,
-      "is_published": true
+      "is_published": true,
+      "duration": "16 Nights / 17 Days"
     },
     {
       "id": "pkg-ceylon-tea-trails-colonial-grandeur",
@@ -17160,7 +17171,8 @@
         "Private Chauffeur"
       ],
       "is_popular": true,
-      "is_published": true
+      "is_published": true,
+      "duration": "7 Nights / 8 Days"
     },
     {
       "id": "pkg-misty-peaks-scenic-railways-expedition",
@@ -17578,7 +17590,8 @@
         "Private Tour"
       ],
       "is_popular": false,
-      "is_published": true
+      "is_published": true,
+      "duration": "9 Nights / 10 Days"
     },
     {
       "id": "pkg-highland-wilderness-cascading-waterfalls",
@@ -18051,7 +18064,8 @@
         "Highlands"
       ],
       "is_popular": false,
-      "is_published": true
+      "is_published": true,
+      "duration": "11 Nights / 12 Days"
     },
     {
       "id": "pkg-island-adrenaline-rapids-expedition",
@@ -18412,7 +18426,8 @@
         "Trekking"
       ],
       "is_popular": false,
-      "is_published": true
+      "is_published": true,
+      "duration": "7 Nights / 8 Days"
     },
     {
       "id": "pkg-wild-peaks-trails-surf-safari",
@@ -18857,7 +18872,8 @@
         "Adventure"
       ],
       "is_popular": false,
-      "is_published": true
+      "is_published": true,
+      "duration": "10 Nights / 11 Days"
     },
     {
       "id": "pkg-lotus-ayu-holistic-rejuvenation",
@@ -19275,7 +19291,8 @@
         "Panchakarma"
       ],
       "is_popular": false,
-      "is_published": true
+      "is_published": true,
+      "duration": "9 Nights / 10 Days"
     },
     {
       "id": "pkg-sacred-serenity-forest-meditation-retreat",
@@ -19804,7 +19821,8 @@
         "Spiritual"
       ],
       "is_popular": false,
-      "is_published": true
+      "is_published": true,
+      "duration": "13 Nights / 14 Days"
     },
     {
       "id": "pkg-enchanted-ceylon-romantic-hideaway",
@@ -20194,7 +20212,8 @@
         "Luxury Stays"
       ],
       "is_popular": false,
-      "is_published": true
+      "is_published": true,
+      "duration": "8 Nights / 9 Days"
     },
     {
       "id": "pkg-pure-serenade-coastal-highland-romance",
@@ -20668,7 +20687,8 @@
         "Luxury"
       ],
       "is_popular": false,
-      "is_published": true
+      "is_published": true,
+      "duration": "11 Nights / 12 Days"
     },
     {
       "id": "pkg-island-wonder-multi-gen-family-discovery",
@@ -21085,7 +21105,8 @@
         "Wildlife"
       ],
       "is_popular": false,
-      "is_published": true
+      "is_published": true,
+      "duration": "9 Nights / 10 Days"
     },
     {
       "id": "pkg-wild-safari-coastal-family-holiday",
@@ -21558,7 +21579,8 @@
         "Family Adventure"
       ],
       "is_popular": false,
-      "is_published": true
+      "is_published": true,
+      "duration": "11 Nights / 12 Days"
     },
     {
       "id": "pkg-the-grand-ceylon-family-adventure",
@@ -22087,7 +22109,8 @@
         "Multi-Gen"
       ],
       "is_popular": false,
-      "is_published": true
+      "is_published": true,
+      "duration": "13 Nights / 14 Days"
     },
     {
       "id": "pkg-sacred-ramayana-heritage-trail",
@@ -22420,7 +22443,8 @@
         "Heritage"
       ],
       "is_popular": false,
-      "is_published": true
+      "is_published": true,
+      "duration": "6 Nights / 7 Days"
     },
     {
       "id": "pkg-the-epic-ramayana-chronicle-pilgrimage",
@@ -22837,7 +22861,8 @@
         "Ramayana"
       ],
       "is_popular": false,
-      "is_published": true
+      "is_published": true,
+      "duration": "9 Nights / 10 Days"
     },
     {
       "id": "pkg-the-royal-ceylon-fairways-tour",
@@ -23170,7 +23195,8 @@
         "Clubhouse Stays"
       ],
       "is_popular": false,
-      "is_published": true
+      "is_published": true,
+      "duration": "6 Nights / 7 Days"
     },
     {
       "id": "pkg-highland-greens-coastal-links-championship",
@@ -23587,7 +23613,8 @@
         "Luxury"
       ],
       "is_popular": false,
-      "is_published": true
+      "is_published": true,
+      "duration": "9 Nights / 10 Days"
     },
     {
       "id": "pkg-the-grand-ceylon-masters-golf-odyssey",
@@ -24060,7 +24087,8 @@
         "VIP Golf"
       ],
       "is_popular": false,
-      "is_published": true
+      "is_published": true,
+      "duration": "11 Nights / 12 Days"
     },
     {
       "id": "pkg-the-sacred-bodhi-ancient-kingdoms",
@@ -24072,8 +24100,8 @@
       "subtitle": "Chronicles of the Living Dhamma & Sacred Relics",
       "category_slug": "buddhist-heritage",
       "category": "buddhist-heritage",
-      "nights": 7,
-      "days": 8,
+      "nights": 5,
+      "days": 6,
       "price_from": 1450,
       "price_formatted": "$1,450",
       "route": "Negombo • Anuradhapura • Mihintale • Polonnaruwa • Dambulla • Kandy • Colombo",
@@ -24166,7 +24194,9 @@
         }
       ],
       "is_popular": true,
-      "is_published": true
+      "is_published": true,
+      "duration": "5 Nights / 6 Days",
+      "priceNote": "Tailor-made on request"
     },
     {
       "id": "pkg-the-sacred-tooth-monastic-sanctuaries",
@@ -24178,8 +24208,8 @@
       "subtitle": "Royal Reliquaries, Rock Temples & Living Sangha",
       "category_slug": "buddhist-heritage",
       "category": "buddhist-heritage",
-      "nights": 9,
-      "days": 10,
+      "nights": 5,
+      "days": 6,
       "price_from": 1890,
       "price_formatted": "$1,890",
       "route": "Negombo • Kurunegala • Anuradhapura • Sigiriya • Dambulla • Matale • Kandy • Nuwara Eliya • Colombo",
@@ -24279,7 +24309,9 @@
         }
       ],
       "is_popular": false,
-      "is_published": true
+      "is_published": true,
+      "duration": "5 Nights / 6 Days",
+      "priceNote": "Tailor-made on request"
     },
     {
       "id": "pkg-forest-hermitages-mindful-ceylon",
@@ -24291,8 +24323,8 @@
       "subtitle": "Vipassana Meditation, Silent Sanctuaries & Forest Monks",
       "category_slug": "buddhist-heritage",
       "category": "buddhist-heritage",
-      "nights": 11,
-      "days": 12,
+      "nights": 5,
+      "days": 6,
       "price_from": 2250,
       "price_formatted": "$2,250",
       "route": "Negombo • Ritigala Forest • Nilgala • Dambulla • Kandy • Knuckles Range • Colombo",
@@ -24404,7 +24436,9 @@
         }
       ],
       "is_popular": true,
-      "is_published": true
+      "is_published": true,
+      "duration": "5 Nights / 6 Days",
+      "priceNote": "Tailor-made on request"
     }
   ],
   "destinations": [

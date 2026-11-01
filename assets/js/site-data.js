@@ -243,8 +243,10 @@
       }
 
       // Merge single source of truth from LOTUS_CONFIG
+      const siteSettings = window.SITE_SETTINGS || {};
       const cfg = window.LOTUS_CONFIG || {};
       this.store.settings = {
+        ...siteSettings,
         companyName: "Lotus Ceylon International Tours & Services (Private) Limited",
         legalName: "Lotus Ceylon International Tours & Services (Private) Limited",
         shortName: "Lotus Ceylon",
@@ -400,6 +402,20 @@
 
       document.querySelectorAll('[data-bind-slogan]').forEach(el => {
         el.textContent = this.getText(s.slogan, lang);
+      });
+
+      
+      // TripAdvisor hiding if empty
+      if (!s.tripadvisor || s.tripadvisor.trim() === '') {
+        document.querySelectorAll('a[href*="tripadvisor.com"], [data-social="tripadvisor"]').forEach(el => {
+          el.style.display = 'none';
+        });
+      }
+
+      // Dynamic Years of Experience computation from foundedYear (2014)
+      const computedYears = `${new Date().getFullYear() - (s.foundedYear || 2014)}+ Years`;
+      document.querySelectorAll('[data-bind-years], .experience-years-badge').forEach(el => {
+        el.textContent = computedYears;
       });
 
       // 3. SLTDA Compliance: HIDE ALL SLTDA / GOVT LICENSED CLAIMS WHEN EMPTY

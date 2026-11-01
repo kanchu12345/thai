@@ -63,27 +63,18 @@
     blogPosts: [],
 
     async init() {
-      // 1. Load CMS Registry
-      try {
-        const res = await fetch('../cms-registry.json');
-        if (res.ok) {
-          this.registry = await res.json();
-          console.info('[VisualPageEditor] Registry loaded with', this.registry.totalUniqueBindings, 'bindings.');
-        }
-      } catch (e) {
-        console.warn('[VisualPageEditor] Registry load fallback:', e);
-      }
+      this.registry = { totalUniqueBindings: 0, entries: [] };
 
-      // 2. Setup PostMessage Listener
+      // 1. Setup PostMessage Listener
       window.addEventListener('message', this.handleIframeMessage.bind(this));
 
-      // 3. Bind Topbar Controls
+      // 2. Bind Topbar Controls
       this.bindTopbarEvents();
 
-      // 4. Initial load for Home page doc
+      // 3. Initial load for Home page doc
       await this.fetchPageDoc(this.activePageKey);
 
-      // 5. Render default empty state / quick jumps
+      // 4. Render default empty state / quick jumps
       this.renderEmptyState();
     },
 
@@ -1770,10 +1761,12 @@
 
   window.PageEditor = PageEditor;
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => PageEditor.init());
-  } else {
-    PageEditor.init();
-  }
+  // Lazy init on demand when user opens Visual Page Editor tab
+  window.initPageEditorIfNeeded = function() {
+    if (!PageEditor.initialized) {
+      PageEditor.initialized = true;
+      PageEditor.init();
+    }
+  };
 
 })(window, document);

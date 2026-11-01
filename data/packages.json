@@ -424,7 +424,8 @@
       "childFriendly": true,
       "accessibilityNotes": "Accessible rooms and private ground-floor transport arranged upon advance request.",
       "titleMain": "Southern Sands Serenade",
-      "titleAccent": "Sun-Kissed Bays & Blue Whales"
+      "titleAccent": "Sun-Kissed Bays & Blue Whales",
+      "duration": "9 Nights / 10 Days"
     },
     {
       "id": "pkg-beach-02",
@@ -684,7 +685,8 @@
       "childFriendly": true,
       "accessibilityNotes": "Accessible rooms and private ground-floor transport arranged upon advance request.",
       "titleMain": "Turquoise Eastern Sanctuary",
-      "titleAccent": "Coral Lagoons & Coastal Shrines"
+      "titleAccent": "Coral Lagoons & Coastal Shrines",
+      "duration": "11 Nights / 12 Days"
     },
     {
       "id": "pkg-beach-03",
@@ -966,7 +968,8 @@
       "childFriendly": true,
       "accessibilityNotes": "Accessible rooms and private ground-floor transport arranged upon advance request.",
       "titleMain": "Pristine Seaboard Odyssey",
-      "titleAccent": "Dolphins, Dunes & Northern Islands"
+      "titleAccent": "Dolphins, Dunes & Northern Islands",
+      "duration": "13 Nights / 14 Days"
     },
     {
       "id": "pkg-cultural-01",
@@ -1139,7 +1142,8 @@
       "childFriendly": true,
       "accessibilityNotes": "Accessible rooms and private ground-floor transport arranged upon advance request.",
       "titleMain": "Royal Kingdoms & Sacred Temples",
-      "titleAccent": "Citadels of the Sacred Triangle"
+      "titleAccent": "Citadels of the Sacred Triangle",
+      "duration": "5 Nights / 6 Days"
     },
     {
       "id": "pkg-cultural-02",
@@ -1366,7 +1370,8 @@
       "childFriendly": true,
       "accessibilityNotes": "Accessible rooms and private ground-floor transport arranged upon advance request.",
       "titleMain": "The Sacred Lotus Triangle",
-      "titleAccent": "Living UNESCO Heritage & Ancient Capitals"
+      "titleAccent": "Living UNESCO Heritage & Ancient Capitals",
+      "duration": "8 Nights / 9 Days"
     },
     {
       "id": "pkg-cultural-03",
@@ -1689,7 +1694,8 @@
       "childFriendly": true,
       "accessibilityNotes": "Accessible rooms and private ground-floor transport arranged upon advance request.",
       "titleMain": "Three Millennia of Living Heritage",
-      "titleAccent": "Chronicles of Faith & Ancient Stone"
+      "titleAccent": "Chronicles of Faith & Ancient Stone",
+      "duration": "14 Nights / 15 Days"
     },
     {
       "id": "pkg-wildlife-01",
@@ -1697,8 +1703,8 @@
       "category": "wildlife",
       "title": "Wild Ceylon Predator & Elephant Trail",
       "tagline": "Big Cats, Sloth Bears & The Great Elephant Gathering",
-      "nights": 7,
-      "days": 8,
+      "nights": 16,
+      "days": 17,
       "tags": [
         "Big Cat Safari",
         "Elephant Gathering",
@@ -1884,7 +1890,8 @@
       "childFriendly": true,
       "accessibilityNotes": "Accessible rooms and private ground-floor transport arranged upon advance request.",
       "titleMain": "Wild Ceylon Predator & Elephant Trail",
-      "titleAccent": "Leopards, Sloth Bears & Great Gatherings"
+      "titleAccent": "Leopards, Sloth Bears & Great Gatherings",
+      "duration": "16 Nights / 17 Days"
     },
     {
       "id": "pkg-wildlife-02",
@@ -2166,7 +2173,8 @@
       "childFriendly": true,
       "accessibilityNotes": "Accessible rooms and private ground-floor transport arranged upon advance request.",
       "titleMain": "The Sri Lanka Big Five Expedition",
-      "titleAccent": "Whales, Leopards & Giant Tuskers"
+      "titleAccent": "Whales, Leopards & Giant Tuskers",
+      "duration": "13 Nights / 14 Days"
     },
     {
       "id": "pkg-wildlife-03",
@@ -2491,7 +2499,8 @@
       "childFriendly": true,
       "accessibilityNotes": "Accessible rooms and private ground-floor transport arranged upon advance request.",
       "titleMain": "Untamed Biosphere & Rainforest Odyssey",
-      "titleAccent": "Primary Canopies & River Sanctuaries"
+      "titleAccent": "Primary Canopies & River Sanctuaries",
+      "duration": "16 Nights / 17 Days"
     },
     {
       "id": "pkg-ceylon-tea-trails-colonial-grandeur",
@@ -2666,7 +2675,8 @@
       "childFriendly": "Yes (Ages 6+)",
       "accessibilityNotes": "Bungalows have ground-floor suites; station platform assistance arranged.",
       "titleMain": "Ceylon Tea Trails & Colonial Grandeur",
-      "titleAccent": "Planter Bungalows & Misty Valleys"
+      "titleAccent": "Planter Bungalows & Misty Valleys",
+      "duration": "7 Nights / 8 Days"
     },
     {
       "id": "pkg-misty-peaks-scenic-railways-expedition",
@@ -2879,7 +2889,8 @@
       "childFriendly": "Yes (All ages)",
       "accessibilityNotes": "Reserved train compartments with porter service for all luggage.",
       "titleMain": "Misty Peaks & Scenic Railways",
-      "titleAccent": "Nine Arch Bridges & High Cloud Forests"
+      "titleAccent": "Nine Arch Bridges & High Cloud Forests",
+      "duration": "9 Nights / 10 Days"
     },
     {
       "id": "pkg-highland-wilderness-cascading-waterfalls",
@@ -3121,7 +3132,8 @@
       "childFriendly": "Recommended 10+",
       "accessibilityNotes": "Involves moderate hiking trails in Horton Plains and waterfall paths.",
       "titleMain": "Highland Wilderness & Cascading Waterfalls",
-      "titleAccent": "World's End Vistas & Roaring Cataracts"
+      "titleAccent": "World's End Vistas & Roaring Cataracts",
+      "duration": "11 Nights / 12 Days"
     },
     {
       "id": "pkg-island-adrenaline-rapids-expedition",
@@ -3303,7 +3315,8 @@
       "childFriendly": "Recommended 12+",
       "accessibilityNotes": "Water sports and steep hikes require good physical fitness and mobility.",
       "titleMain": "Island Adrenaline & Rapids Expedition",
-      "titleAccent": "Whitewater Canyons & High Peaks"
+      "titleAccent": "Whitewater Canyons & High Peaks",
+      "duration": "7 Nights / 8 Days"
     },
     {
       "id": "pkg-wild-peaks-trails-surf-safari",
@@ -3515,7 +3528,8 @@
       "childFriendly": "Recommended 12+",
       "accessibilityNotes": "Rainforest trails can be uneven and wet; surf coaching tailored to skill.",
       "titleMain": "Wild Peaks, Trails & Surf Safari",
-      "titleAccent": "Virgin Rainforests & Ocean Point Breaks"
+      "titleAccent": "Virgin Rainforests & Ocean Point Breaks",
+      "duration": "10 Nights / 11 Days"
     },
     {
       "id": "pkg-lotus-ayu-holistic-rejuvenation",
@@ -3708,7 +3722,8 @@
       "childFriendly": "Adults recommended (16+)",
       "accessibilityNotes": "Resorts are fully accessible with step-free treatment pavilions and gardens.",
       "titleMain": "Lotus Ayu Holistic Rejuvenation",
-      "titleAccent": "Authentic Panchakarma & Sacred Healing"
+      "titleAccent": "Authentic Panchakarma & Sacred Healing",
+      "duration": "9 Nights / 10 Days"
     },
     {
       "id": "pkg-sacred-serenity-forest-meditation-retreat",
@@ -3940,7 +3955,8 @@
       "childFriendly": "Adults recommended",
       "accessibilityNotes": "Monastery steps require moderate walking; transport arranged to meditation halls.",
       "titleMain": "Sacred Serenity & Forest Meditation",
-      "titleAccent": "Silent Monasteries & Herbal Sanctuaries"
+      "titleAccent": "Silent Monasteries & Herbal Sanctuaries",
+      "duration": "13 Nights / 14 Days"
     },
     {
       "id": "pkg-enchanted-ceylon-romantic-hideaway",
@@ -4133,7 +4149,8 @@
       "childFriendly": "Adults only",
       "accessibilityNotes": "Luxury villas feature step-free private pool access and dedicated butler service.",
       "titleMain": "Enchanted Ceylon Romantic Hideaway",
-      "titleAccent": "Private Plunge Pools & Sunset Ramparts"
+      "titleAccent": "Private Plunge Pools & Sunset Ramparts",
+      "duration": "8 Nights / 9 Days"
     },
     {
       "id": "pkg-pure-serenade-coastal-highland-romance",
@@ -4356,7 +4373,8 @@
       "childFriendly": "Adults only",
       "accessibilityNotes": "Accessible luxury tented glamping suites and ocean villas throughout.",
       "titleMain": "Pure Serenade Coastal & Highland Romance",
-      "titleAccent": "Bespoke Glamping & Turquoise Horizons"
+      "titleAccent": "Bespoke Glamping & Turquoise Horizons",
+      "duration": "11 Nights / 12 Days"
     },
     {
       "id": "pkg-island-wonder-multi-gen-family-discovery",
@@ -4568,7 +4586,8 @@
       "childFriendly": "Yes (All ages 0-99)",
       "accessibilityNotes": "Spacious high-roof air-conditioned passenger van; step-free options prioritized.",
       "titleMain": "Island Wonder Multi-Gen Family Discovery",
-      "titleAccent": "Gentle Safaris, Turtle Bays & Scenic Rail"
+      "titleAccent": "Gentle Safaris, Turtle Bays & Scenic Rail",
+      "duration": "9 Nights / 10 Days"
     },
     {
       "id": "pkg-wild-safari-coastal-family-holiday",
@@ -4810,7 +4829,8 @@
       "childFriendly": "Yes (All ages)",
       "accessibilityNotes": "Private customized safari jeeps with padded seating; beach resorts with children pools.",
       "titleMain": "Wild Safari & Coastal Family Holiday",
-      "titleAccent": "Elephant Gatherings & Calm Ocean Waters"
+      "titleAccent": "Elephant Gatherings & Calm Ocean Waters",
+      "duration": "11 Nights / 12 Days"
     },
     {
       "id": "pkg-the-grand-ceylon-family-adventure",
@@ -5062,7 +5082,8 @@
       "childFriendly": "Yes (All ages)",
       "accessibilityNotes": "Paced with two-night stays at key hubs to avoid packing fatigue for families.",
       "titleMain": "The Grand Ceylon Family Adventure",
-      "titleAccent": "Ancient Citadels, Wilderness & Coastal Play"
+      "titleAccent": "Ancient Citadels, Wilderness & Coastal Play",
+      "duration": "13 Nights / 14 Days"
     },
     {
       "id": "pkg-sacred-ramayana-heritage-trail",
@@ -5224,7 +5245,8 @@
       "childFriendly": "Yes (All ages)",
       "accessibilityNotes": "Temple courtyards require shoe removal; wheelchair assistance arranged at major shrines.",
       "titleMain": "Sacred Ramayana Heritage Trail",
-      "titleAccent": "Seetha Amman, Ashoka Vatika & Sacred Legends"
+      "titleAccent": "Seetha Amman, Ashoka Vatika & Sacred Legends",
+      "duration": "6 Nights / 7 Days"
     },
     {
       "id": "pkg-the-epic-ramayana-chronicle-pilgrimage",
@@ -5446,7 +5468,8 @@
       "childFriendly": "Yes (All ages)",
       "accessibilityNotes": "Cave and mountain shrines involve climbing steps; road journeys arranged on smooth expressways.",
       "titleMain": "The Epic Ramayana Chronicle Pilgrimage",
-      "titleAccent": "Ancient Temples, Ravana Caves & Sacred Fire"
+      "titleAccent": "Ancient Temples, Ravana Caves & Sacred Fire",
+      "duration": "9 Nights / 10 Days"
     },
     {
       "id": "pkg-the-royal-ceylon-fairways-tour",
@@ -5588,7 +5611,8 @@
       "childFriendly": "Yes (Junior golfers welcome)",
       "accessibilityNotes": "Golf buggies and senior caddies available at both championship venues.",
       "titleMain": "The Royal Ceylon Fairways Tour",
-      "titleAccent": "Historic RCGC & Victoria Highland Links"
+      "titleAccent": "Historic RCGC & Victoria Highland Links",
+      "duration": "6 Nights / 7 Days"
     },
     {
       "id": "pkg-highland-greens-coastal-links-championship",
@@ -5780,7 +5804,8 @@
       "childFriendly": "Yes (All golfer levels)",
       "accessibilityNotes": "Club storage and dedicated transfer van for golf bags across the 4 resorts.",
       "titleMain": "Highland Greens & Coastal Links",
-      "titleAccent": "Alpine Fairways & Oceanfront Greens"
+      "titleAccent": "Alpine Fairways & Oceanfront Greens",
+      "duration": "9 Nights / 10 Days"
     },
     {
       "id": "pkg-the-grand-ceylon-masters-golf-odyssey",
@@ -6002,7 +6027,8 @@
       "childFriendly": "Yes",
       "accessibilityNotes": "VIP clubhouse access, dedicated luxury van with extra golf bag compartment, buggy throughout.",
       "titleMain": "The Grand Ceylon Masters Golf Odyssey",
-      "titleAccent": "Four Championship Courses & 5-Star Stays"
+      "titleAccent": "Four Championship Courses & 5-Star Stays",
+      "duration": "11 Nights / 12 Days"
     },
     {
       "id": "pkg-the-sacred-bodhi-ancient-kingdoms",
@@ -6014,8 +6040,8 @@
       "subtitle": "Chronicles of the Living Dhamma & Sacred Relics",
       "category_slug": "buddhist-heritage",
       "category": "buddhist-heritage",
-      "nights": 7,
-      "days": 8,
+      "nights": 5,
+      "days": 6,
       "price_from": 1450,
       "price_formatted": "$1,450",
       "route": "Negombo • Anuradhapura • Mihintale • Polonnaruwa • Dambulla • Kandy • Colombo",
@@ -6108,7 +6134,9 @@
         }
       ],
       "is_popular": true,
-      "is_published": true
+      "is_published": true,
+      "duration": "5 Nights / 6 Days",
+      "priceNote": "Tailor-made on request"
     },
     {
       "id": "pkg-the-sacred-tooth-monastic-sanctuaries",
@@ -6120,8 +6148,8 @@
       "subtitle": "Royal Reliquaries, Rock Temples & Living Sangha",
       "category_slug": "buddhist-heritage",
       "category": "buddhist-heritage",
-      "nights": 9,
-      "days": 10,
+      "nights": 5,
+      "days": 6,
       "price_from": 1890,
       "price_formatted": "$1,890",
       "route": "Negombo • Kurunegala • Anuradhapura • Sigiriya • Dambulla • Matale • Kandy • Nuwara Eliya • Colombo",
@@ -6221,7 +6249,9 @@
         }
       ],
       "is_popular": false,
-      "is_published": true
+      "is_published": true,
+      "duration": "5 Nights / 6 Days",
+      "priceNote": "Tailor-made on request"
     },
     {
       "id": "pkg-forest-hermitages-mindful-ceylon",
@@ -6233,8 +6263,8 @@
       "subtitle": "Vipassana Meditation, Silent Sanctuaries & Forest Monks",
       "category_slug": "buddhist-heritage",
       "category": "buddhist-heritage",
-      "nights": 11,
-      "days": 12,
+      "nights": 5,
+      "days": 6,
       "price_from": 2250,
       "price_formatted": "$2,250",
       "route": "Negombo • Ritigala Forest • Nilgala • Dambulla • Kandy • Knuckles Range • Colombo",
@@ -6346,7 +6376,9 @@
         }
       ],
       "is_popular": true,
-      "is_published": true
+      "is_published": true,
+      "duration": "5 Nights / 6 Days",
+      "priceNote": "Tailor-made on request"
     }
   ]
 }

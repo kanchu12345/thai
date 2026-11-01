@@ -1,4 +1,35 @@
 
+// Global Single Source of Truth SITE_SETTINGS
+window.SITE_SETTINGS = {
+  legalName: "Lotus Ceylon International Tours & Services (Private) Limited",
+  brandName: "Lotus Ceylon",
+  tagline: "PURE JOURNEYS. SACRED EXPERIENCES.",
+  foundedYear: 2014,
+  yearsOfExperience: (new Date().getFullYear() - 2014) + "+ Years",
+  companyRegNo: "PV 00374439",
+  director: "Mallawa Arachchige Dhushantha Gihan Mallawaarachchi",
+  sltdaLicenceNo: "",
+  address: "286/C, Niwandama South, Ja-Ela, Sri Lanka 11350",
+  phone: "+94 71 54 22 384",
+  whatsapp: "+94 71 54 22 384",
+  whatsappLink: "https://wa.me/94715422384",
+  email: "paliforbuddhism@gmail.com",
+  wechat: "FGUTaiwan90",
+  line: "dpbs2024",
+  linePhone: "+886 958 561 954",
+  lineLink: "https://line.me/R/ti/p/~dpbs2024",
+  facebook: "https://facebook.com/lotusceylontours",
+  instagram: "https://instagram.com/lotusceylontours",
+  youtube: "https://youtube.com/@lotusceylontours",
+  tripadvisor: "",
+  SITE_BASE_URL: "https://kanchu12345.github.io/thai/",
+  seasonCulturalTriangle: "Year-round; driest roughly February–September, with heavier rain October–January",
+  passportRule: "Passport valid for at least 6 months from your date of arrival",
+  etaLink: "https://www.eta.gov.lk",
+  etaNotice: "Entry rules change; your concierge will confirm the latest requirements."
+};
+
+
 // Universal Site URL Configuration (Custom Domain Ready)
 window.SITE_URL = (typeof window !== 'undefined' && window.location.hostname.includes('github.io'))
   ? 'https://kanchu12345.github.io/thai/'
@@ -77,15 +108,15 @@ var LOTUS_CONFIG = window.LOTUS_CONFIG || {};
         defaultText: "Hello Lotus Ceylon! I would like to inquire about a customized tour package to Sri Lanka."
       },
       wechat: {
-        id: "LotusCeylonTours",
-        label: "WeChat: LotusCeylonTours",
-        actionUrl: "weixin://dl/chat?LotusCeylonTours",
+        id: "FGUTaiwan90",
+        label: "WeChat: FGUTaiwan90",
+        actionUrl: "weixin://dl/chat?FGUTaiwan90",
         qr: "assets/qr/wechat-qr.png"
       },
       line: {
-        id: "@lotusceylon",
-        label: "LINE: @lotusceylon",
-        actionUrl: "https://line.me/R/ti/p/@lotusceylon",
+        id: "dpbs2024",
+        label: "LINE: dpbs2024",
+        actionUrl: "https://line.me/R/ti/p/~dpbs2024",
         qr: "assets/qr/line-qr.png"
       }
     },
@@ -101,14 +132,14 @@ var LOTUS_CONFIG = window.LOTUS_CONFIG || {};
       wechat: {
         image: "assets/qr/wechat-qr.png",
         label: "WeChat",
-        handle: "LotusCeylonTours",
-        actionUrl: "weixin://dl/chat?LotusCeylonTours"
+        handle: "FGUTaiwan90",
+        actionUrl: "weixin://dl/chat?FGUTaiwan90"
       },
       line: {
         image: "assets/qr/line-qr.png",
         label: "LINE",
-        handle: "@lotusceylon",
-        actionUrl: "https://line.me/R/ti/p/@lotusceylon"
+        handle: "dpbs2024 (+886 958 561 954)",
+        actionUrl: "https://line.me/R/ti/p/~dpbs2024"
       }
     },
 
@@ -116,15 +147,15 @@ var LOTUS_CONFIG = window.LOTUS_CONFIG || {};
     socialLinks: {
       facebook: "https://www.facebook.com/lotusceylontours",
       instagram: "https://www.instagram.com/lotusceylontours",
-      youtube: "https://www.youtube.com/@lotusceylontours",
-      tripadvisor: "https://www.tripadvisor.com",
+      youtube: "https://youtube.com/@lotusceylontours",
+      tripadvisor: "",
       twitter: "https://twitter.com/lotusceylon"
     },
     social: {
       facebook: "https://www.facebook.com/lotusceylontours",
       instagram: "https://www.instagram.com/lotusceylontours",
-      youtube: "https://www.youtube.com/@lotusceylontours",
-      tripadvisor: "https://www.tripadvisor.com"
+      youtube: "https://youtube.com/@lotusceylontours",
+      tripadvisor: ""
     },
 
     // Google Maps Embed URL
