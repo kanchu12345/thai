@@ -1,0 +1,58 @@
+SOFTWARE & DESIGN LICENSE AGREEMENT
+
+Designer / Licensor: Infinite Design (https://infiniteweb.dev/)
+Client / Licensee: Lotus Ceylon International Tours & Services (Private) Limited (https://lotusceylon.com/)
+Platform: Lotus Ceylon Luxury Inbound Tour Operator Website & CMS Engine
+
+================================================================================
+1. GRANT OF LICENSE
+================================================================================
+Infinite Design grants Lotus Ceylon International Tours & Services (Private)
+Limited a perpetual, irrevocable, worldwide, royalty-free, non-exclusive commercial
+license to host, display, run, market, and utilize the bespoke codebase, visual
+styles, responsive templates, administrative live-preview interfaces, and scripts
+specifically developed for the Lotus Ceylon website.
+
+================================================================================
+2. CLIENT OWNERSHIP OF BUSINESS CONTENT
+================================================================================
+Lotus Ceylon International Tours & Services (Pvt) Ltd retains 100% full and
+exclusive ownership of:
+  - All company trademarks, branding emblems, and corporate identities.
+  - All proprietary business text, travel packages, itineraries, descriptions,
+    pricing models, and contact information.
+  - All client-supplied photography, video media, customer reviews, and traveler
+    inquiry submissions.
+  - All customer database records stored within Firebase Firestore and connected
+    services.
+
+================================================================================
+3. AUTHORSHIP & ATTRIBUTION
+================================================================================
+Infinite Design retains moral and legal rights of authorship over the bespoke
+code architecture, custom CSS layout engines, dynamic comparison matrices,
+CMS interface engineering, and original graphic UI motifs.
+
+In accordance with standard industry practices and mutual contractual agreement:
+  - The public footer includes the attribution:
+    "Designed & Developed by Infinite Design" linking to https://infiniteweb.dev/
+  - The designer credit link represents valid public acknowledgment of authorship
+    and shall not be removed, modified, obscured, or hidden without prior written
+    authorization from Infinite Design.
+  - Unauthorized removal or alteration of attribution does not transfer ownership
+    of this codebase or design.
+  - This website is engineered without external kill-switches, licensing callbacks,
+    or malicious tripwires; site availability and operational reliability are fully
+    independent of attribution.
+
+================================================================================
+4. MODIFICATIONS & FUTURE MAINTENANCE
+================================================================================
+Lotus Ceylon and its authorized developers have the full freedom to maintain,
+update, extend, and adapt the website content, tour packages, destinations,
+and layouts as required for ongoing business operations, subject to the attribution
+and copyright terms set forth herein.
+
+Copyright © 2026 Infinite Design. All rights reserved.
+For inquiries regarding this license, contact: hello@infiniteweb.dev
+https://infiniteweb.dev/

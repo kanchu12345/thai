@@ -1,3 +1,9 @@
+/*
+ * © 2026 Infinite Design. All rights reserved.
+ * Built for Lotus Ceylon International Tours & Services (Pvt) Ltd.
+ * Unauthorized removal of attribution does not transfer ownership of this code.
+ * https://infiniteweb.dev/
+ */
 /**
  * Lotus Ceylon - Interactive Leaflet & CartoDB Tour Route Map
  * Privacy-first, locally vendored Leaflet, accessible, responsive & lazy-loaded.

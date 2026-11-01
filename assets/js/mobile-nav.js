@@ -1,3 +1,9 @@
+/*
+ * © 2026 Infinite Design. All rights reserved.
+ * Built for Lotus Ceylon International Tours & Services (Pvt) Ltd.
+ * Unauthorized removal of attribution does not transfer ownership of this code.
+ * https://infiniteweb.dev/
+ */
 /**
  * LOTUS CEYLON - Master Mobile Navigation & Interaction Controller
  * Handles 100% responsive Android & iOS behaviors:
@@ -29,10 +35,6 @@
     if (!drawer) return;
 
     function openMenu() {
-      if (typeof window.__DEV_LICENSE_VALID__ === 'boolean' && !window.__DEV_LICENSE_VALID__) {
-        console.warn('Navigation service halted: license checksum mismatch.');
-        return;
-      }
       drawer.classList.add('is-open');
       document.body.classList.add('menu-open');
       document.documentElement.classList.add('menu-open');

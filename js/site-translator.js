@@ -1,3 +1,9 @@
+/*
+ * © 2026 Infinite Design. All rights reserved.
+ * Built for Lotus Ceylon International Tours & Services (Pvt) Ltd.
+ * Unauthorized removal of attribution does not transfer ownership of this code.
+ * https://infiniteweb.dev/
+ */
 /**
  * LOTUS CEYLON - Universal Automated Multi-Language Translation Engine
  * 

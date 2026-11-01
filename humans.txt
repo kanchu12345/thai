@@ -1,0 +1,18 @@
+/* TEAM */
+  Design & Architecture: Infinite Design
+  Website: https://infiniteweb.dev/
+  Location: Colombo, Sri Lanka
+  Contact: hello@infiniteweb.dev
+  Facebook: https://facebook.com/infinitedesign
+
+/* SITE */
+  Client: Lotus Ceylon International Tours & Services (Pvt) Ltd
+  Official Domain: https://lotusceylon.com/
+  Public Mirror: https://kanchu12345.github.io/thai/
+  Standards: HTML5, CSS3, JavaScript (Vanilla ES6+), Schema.org TouristTrip JSON-LD
+  Architecture: Static Pre-rendered Jamstack with Firebase Firestore Live Synchronizer
+  Media Delivery: Responsive WebP Image Pipeline via Cloudinary CDN
+  Interactive Systems: OpenStreetMap Leaflet Interactive Tour Routes & Dynamic Side-by-Side Comparison Matrices
+  Multilingual: 11 Languages (English, Français, Deutsch, 简体中文, 繁體中文, 日本語, Русский, Español, Italiano, العربية, हिन्दी)
+  Copyright: © 2026 Infinite Design. All rights reserved.
+  License: Licensed for exclusive deployment by Lotus Ceylon International Tours & Services (Pvt) Ltd. See /LICENSE.txt.
