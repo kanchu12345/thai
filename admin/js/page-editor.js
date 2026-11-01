@@ -114,6 +114,9 @@
       if (event.data.type === 'lotus:element-selected') {
         this.selectElement(event.data);
       }
+      if (event.data.type === 'lotus:navigate-page') {
+        this.openLinkedHref(event.data.href);
+      }
     },
 
     selectElement(item) {
@@ -338,6 +341,57 @@
         .replace(/&#39;/g, "'");
     },
 
+    openTourDetailPage(slug) {
+      if (!slug) return;
+      const cleanSlug = slug.toLowerCase().trim();
+      const pageSelect = document.getElementById('visualPageDropdown');
+      if (pageSelect) {
+        for (let i = 0; i < pageSelect.options.length; i++) {
+          const opt = pageSelect.options[i];
+          if (opt.value.includes(`tourPackages/${cleanSlug}|`)) {
+            this.handlePageSelectChange(opt.value);
+            return;
+          }
+        }
+      }
+      this.openPage(`tourPackages/${cleanSlug}`, `tours/cultural/${cleanSlug}/index.html`);
+    },
+
+    openDestinationPage(slug) {
+      if (!slug) return;
+      const cleanSlug = slug.toLowerCase().trim();
+      const pageSelect = document.getElementById('visualPageDropdown');
+      if (pageSelect) {
+        for (let i = 0; i < pageSelect.options.length; i++) {
+          const opt = pageSelect.options[i];
+          if (opt.value.includes(`destinations/${cleanSlug}|`)) {
+            this.handlePageSelectChange(opt.value);
+            return;
+          }
+        }
+      }
+      this.openPage(`destinations/${cleanSlug}`, `destinations/${cleanSlug}/index.html`);
+    },
+
+    openLinkedHref(href) {
+      if (!href || href.startsWith('#') || href.startsWith('mailto:') || href.startsWith('tel:') || href.startsWith('javascript:')) return;
+      let clean = href.replace(/\.\.\//g, '').replace(/^\//, '').split('?')[0].split('#')[0];
+      if (clean.endsWith('/')) clean += 'index.html';
+      if (!clean.endsWith('.html') && clean.includes('/')) clean += '/index.html';
+
+      const pageSelect = document.getElementById('visualPageDropdown');
+      if (pageSelect) {
+        for (let i = 0; i < pageSelect.options.length; i++) {
+          const opt = pageSelect.options[i];
+          const [docK, fileP] = opt.value.split('|');
+          if (fileP === clean || fileP.endsWith(clean) || clean.endsWith(fileP)) {
+            this.handlePageSelectChange(opt.value);
+            return;
+          }
+        }
+      }
+    },
+
     renderElementForm(item) {
       const body = document.getElementById('inspectorBody');
       if (!body) return;
@@ -359,14 +413,42 @@
           if (match) pkgSlug = match[1].split('.')[0];
         }
       }
+            // 1. Tour Package Action Card
       if (pkgSlug) {
         html += `
-          <div style="background: linear-gradient(135deg, #FFFBEB, #FEF3C7); border: 1px solid #FCD34D; border-radius: 8px; padding: 12px; margin-bottom: 14px;">
-            <div style="font-weight: 700; color: #92400E; font-size: 0.88rem; display: flex; align-items: center; justify-content: space-between; margin-bottom: 4px;">
+          <div style="background: linear-gradient(135deg, #EFF6FF, #DBEAFE); border: 1px solid #93C5FD; border-radius: 8px; padding: 12px; margin-bottom: 14px;">
+            <div style="font-weight: 700; color: #1E40AF; font-size: 0.88rem; display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
               <span>📦 Tour Package: ${this.escapeHtml(pkgSlug)}</span>
             </div>
-            <p style="font-size: 0.78rem; color: #78350F; margin: 0 0 8px 0;">Edit full price, days, route, day-by-day itinerary, highlights, and gallery images.</p>
-            <button type="button" class="btn btn-gold btn-sm btn-block" onclick="AdminApp.openPackageModal('${this.escapeAttr(pkgSlug)}')" style="font-weight: 700;">✏️ Edit Full Tour Package</button>
+            <p style="font-size: 0.78rem; color: #1E3A8A; margin: 0 0 10px 0;">Directly open this tour's standalone page or edit its full fields.</p>
+            <div style="display: flex; gap: 8px;">
+              <button type="button" class="btn btn-primary btn-sm" style="flex: 1;" onclick="PageEditor.openTourDetailPage('${this.escapeAttr(pkgSlug)}')">🚀 Open & Edit Page</button>
+              <button type="button" class="btn btn-outline btn-sm" onclick="AdminApp.openPackageModal('${this.escapeAttr(pkgSlug)}')">📝 Edit in Manager</button>
+            </div>
+          </div>
+        `;
+      }
+
+      // 2. Destination Action Card
+      const destSlug = item.destinationSlug || null;
+      if (destSlug) {
+        html += `
+          <div style="background: linear-gradient(135deg, #F0FDF4, #DCFCE7); border: 1px solid #86EFAC; border-radius: 8px; padding: 12px; margin-bottom: 14px;">
+            <div style="font-weight: 700; color: #166534; font-size: 0.88rem; margin-bottom: 4px;">
+              <span>📍 Destination: ${this.escapeHtml(destSlug)}</span>
+            </div>
+            <p style="font-size: 0.78rem; color: #14532D; margin: 0 0 8px 0;">Edit lead text, sights badges, essence narrative, and tailor-made box.</p>
+            <button type="button" class="btn btn-primary btn-sm btn-block" onclick="PageEditor.openDestinationPage('${this.escapeAttr(destSlug)}')">🚀 Open & Edit Destination Page</button>
+          </div>
+        `;
+      }
+
+      // 3. General Linked Href Card (if clicked an anchor)
+      if (item.linkedHref && !pkgSlug && !destSlug && !item.linkedHref.startsWith('#')) {
+        html += `
+          <div style="margin-bottom: 14px; background: #FAFBFD; border: 1px solid #E2E8F0; border-radius: 8px; padding: 10px 12px;">
+            <div style="font-size: 0.78rem; color: #64748B; margin-bottom: 6px;">Target URL: <code style="color: #002B49;">${this.escapeHtml(item.linkedHref)}</code></div>
+            <button type="button" class="btn btn-outline btn-sm btn-block" onclick="PageEditor.openLinkedHref('${this.escapeAttr(item.linkedHref)}')">↗ Switch Editor to Linked Page</button>
           </div>
         `;
       }

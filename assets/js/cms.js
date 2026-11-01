@@ -892,14 +892,38 @@
           const sectionId = section ? (section.id || section.className || 'Page Section') : 'General Content';
 
           // Check if element is inside or part of a tour package card
-          const pkgEl = target.closest('[data-package-slug], [data-slug], [data-tour], .package-card, .tour-card, .tour-grid-card, .curated-card, .beach-package-card, .dest-card');
+          const pkgEl = target.closest('[data-package-slug], [data-slug], [data-tour], .package-card, .tour-card, .tour-grid-card, .curated-card, .beach-package-card');
           let packageSlug = pkgEl ? (pkgEl.getAttribute('data-package-slug') || pkgEl.getAttribute('data-slug') || pkgEl.getAttribute('data-tour')) : null;
           if (!packageSlug) {
-            const linkEl = target.closest('a') || (pkgEl ? pkgEl.querySelector('a[href*="/tours/"]') : null);
+            const linkEl = target.closest('a[href*="/tours/"]') || (pkgEl ? pkgEl.querySelector('a[href*="/tours/"]') : null);
             if (linkEl && linkEl.getAttribute('href')) {
               const href = linkEl.getAttribute('href');
               const parts = href.split('/').filter(p => p && !p.endsWith('.html') && p !== 'tours');
               if (parts.length > 0) packageSlug = parts[parts.length - 1];
+            }
+          }
+
+          // Check if element is inside or part of a destination card
+          const destEl = target.closest('[data-destination-slug], .dest-card, a[href*="destinations/"]');
+          let destinationSlug = destEl ? (destEl.getAttribute('data-destination-slug') || destEl.getAttribute('data-slug')) : null;
+          if (!destinationSlug) {
+            const dLink = target.closest('a[href*="destinations/"]') || (destEl ? destEl.querySelector('a[href*="destinations/"]') : null);
+            if (dLink && dLink.getAttribute('href')) {
+              const href = dLink.getAttribute('href');
+              const parts = href.split('destinations/')[1].split('/').filter(p => p && !p.endsWith('.html'));
+              if (parts.length > 0) destinationSlug = parts[0];
+            }
+          }
+
+          // Check linked href on anchor or enclosing link
+          const enclosingAnchor = target.closest('a') || (target.tagName === 'A' ? target : null) || (pkgEl ? pkgEl.querySelector('a') : null) || (destEl ? destEl.querySelector('a') : null);
+          const linkedHref = enclosingAnchor ? enclosingAnchor.getAttribute('href') : null;
+
+          // Double click or Alt/Ctrl click fast navigation
+          if (e.altKey || e.ctrlKey || e.metaKey) {
+            if (linkedHref && window.parent && window.parent !== window) {
+              window.parent.postMessage({ type: 'lotus:navigate-page', href: linkedHref }, '*');
+              return;
             }
           }
 
@@ -945,6 +969,8 @@
               tagName: target.tagName.toLowerCase(),
               sectionId: sectionId,
               packageSlug: packageSlug || null,
+              destinationSlug: destinationSlug || null,
+              linkedHref: linkedHref || null,
               isWatermark: isWatermark,
               sliderImages: sliderImages
             }, '*');
@@ -1057,6 +1083,21 @@
     },
 
         setupAdminFloatingButton() {
+      // Global shortcut: Ctrl+Shift+E or Alt+E activates Quick Edit
+      window.addEventListener('keydown', (e) => {
+        if ((e.ctrlKey && e.shiftKey && (e.key === 'E' || e.key === 'e')) || (e.altKey && (e.key === 'E' || e.key === 'e'))) {
+          e.preventDefault();
+          try {
+            localStorage.setItem('lotus_admin_active', '1');
+          } catch (err) {}
+          const existing = document.getElementById('lotusAdminQuickEditPill');
+          if (existing) {
+            existing.style.display = existing.style.display === 'none' ? 'flex' : 'none';
+          } else {
+            this.setupAdminFloatingButton();
+          }
+        }
+      });
       if (window.self !== window.top) return; // Do not show inside editor iframe preview
 
       let isAdmin = false;
