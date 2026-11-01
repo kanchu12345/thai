@@ -1,0 +1,325 @@
+import os, sys
+sys.stdout.reconfigure(encoding='utf-8')
+
+# Ensure directory exists
+art_dir = 'blog/ella-hands-on-tea-making-experience'
+os.makedirs(art_dir, exist_ok=True)
+
+html_content = """<!DOCTYPE html>
+<!-- Site design & development: Infinite Design (https://infiniteweb.dev/) — see /humans.txt and LICENSE.txt -->
+<html lang="en">
+<head>
+  <meta name="generator" content="Built by Infinite Design — https://infiniteweb.dev/">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Ella: Hands-On Tea Making Experience with Tasting | Lotus Ceylon Journal</title>
+  <meta name="description" content="Discover the heart of Sri Lanka's tea culture with a hands-on tea making experience in Ella. Learn the art of tea making, from plucking leaves to brewing the perfect cup.">
+  <link rel="canonical" href="https://lotusceylon.com/blog/ella-hands-on-tea-making-experience/">
+  <meta property="og:title" content="Ella: Hands-On Tea Making Experience with Tasting - Lotus Ceylon">
+  <meta property="og:description" content="Discover the heart of Sri Lanka's tea culture with a hands-on tea making experience in Ella. Learn the art of tea making, from plucking leaves to brewing the perfect cup.">
+  <meta property="og:image" content="../../assets/images/blog/ella-tea-making-experience.webp">
+  <meta property="og:url" content="https://lotusceylon.com/blog/ella-hands-on-tea-making-experience/">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Ella: Hands-On Tea Making Experience with Tasting - Lotus Ceylon">
+  <meta name="twitter:description" content="Discover the heart of Sri Lanka's tea culture with a hands-on tea making experience in Ella. Learn the art of tea making, from plucking leaves to brewing the perfect cup.">
+  <meta name="twitter:image" content="../../assets/images/blog/ella-tea-making-experience.webp">
+
+  <link rel="stylesheet" href="../../assets/css/site.css">
+</head>
+<body style="background-color: var(--ivory, #FBF6EC); color: var(--color-ink, #2A1D17);" data-page="blog-detail-ella-tea">
+  <a class="skip-to-content-link" href="#mainContent">Skip to main content</a>
+
+  <!-- Site Header -->
+  <header class="site-header-walkers" id="siteHeader">
+<div class="header-container">
+<div class="header-top-row">
+<!-- Logo & Brand Badge -->
+<a class="header-brand" href="../../index.html" title="Lotus Ceylon Luxury Tours &amp; Pilgrimages">
+<img alt="Lotus Ceylon Official Emblem" class="header-brand-logo" height="40" src="../../assets/images/brand/logo-header.png" width="40"/>
+<div class="header-brand-text">
+<span class="header-brand-name"><span class="brand-name-lotus" data-cms="siteGlobal.branding.nameLotus">LOTUS</span> <span class="brand-name-ceylon" data-cms="siteGlobal.branding.nameCeylon">CEYLON</span></span>
+<span class="header-brand-sub" data-cms="siteGlobal.branding.tagline">INTERNATIONAL TOURS &amp; SERVICES</span>
+</div>
+</a>
+<!-- Desktop Navigation Menu (hidden on screens <= 1024px) -->
+<nav aria-label="Main Navigation" class="walkers-nav">
+<ul class="walkers-menu">
+<li class="walkers-menu-item"><a class="walkers-menu-link" href="../../index.html" data-cms="siteGlobal.menu.home">Home</a></li>
+<li class="walkers-menu-item has-dropdown">
+<a class="walkers-menu-link" href="../../tours/index.html">
+<span data-cms="siteGlobal.menu.tours">Tours</span>
+<svg class="walkers-caret" viewbox="0 0 10 6"><path d="M1 1L5 5L9 1" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"></path></svg>
+</a>
+<div class="walkers-megamenu">
+<a class="megamenu-link" href="../../tours/cultural/index.html"><span class="megamenu-link-icon">🏛️</span>Cultural Heritage</a>
+<a class="megamenu-link" href="../../tours/buddhist-heritage/index.html"><span class="megamenu-link-icon">☸️</span>Buddhist Heritage</a>
+<a class="megamenu-link" href="../../tours/wildlife/index.html"><span class="megamenu-link-icon">🐆</span>Wildlife Safaris</a>
+<a class="megamenu-link" href="../../tours/beach/index.html"><span class="megamenu-link-icon">🏖️</span>Pristine Beaches</a>
+<a class="megamenu-link" href="../../tours/hill-country/index.html"><span class="megamenu-link-icon">⛰️</span>Hill Country &amp; Tea</a>
+<a class="megamenu-link" href="../../tours/ayurvedic/index.html"><span class="megamenu-link-icon">🌿</span>Ayurvedic Healing</a>
+<a class="megamenu-link" href="../../tours/honeymoon/index.html"><span class="megamenu-link-icon">💍</span>Honeymoon &amp; Romance</a>
+<a class="megamenu-link" href="../../tours/family/index.html"><span class="megamenu-link-icon">👨‍👩‍👧‍👦</span>Family Holidays</a>
+<a class="megamenu-link" href="../../tours/adventure/index.html"><span class="megamenu-link-icon">🏄</span>Adventure &amp; Trekking</a>
+<a class="megamenu-link" href="../../tours/golf/index.html"><span class="megamenu-link-icon">⛳</span>Championship Golf</a>
+<a class="megamenu-link" href="../../tours/ramayana/index.html"><span class="megamenu-link-icon">🏹</span>Ramayana Trail</a>
+</div>
+</li>
+<li class="walkers-menu-item"><a class="walkers-menu-link" href="../../destinations.html" data-cms="siteGlobal.menu.destinations">Destinations</a></li>
+<li class="walkers-menu-item"><a class="walkers-menu-link" href="../../experiences.html" data-cms="siteGlobal.menu.experiences">Experiences</a></li>
+<li class="walkers-menu-item"><a class="walkers-menu-link" href="../../about.html" data-cms="siteGlobal.menu.about">About Us</a></li>
+<li class="walkers-menu-item"><a class="walkers-menu-link" href="../../gallery.html" data-cms="siteGlobal.menu.gallery">Gallery</a></li>
+<li class="walkers-menu-item"><a class="walkers-menu-link" href="../../reviews.html" data-cms="siteGlobal.menu.reviews">Reviews</a></li>
+<li class="walkers-menu-item"><a class="walkers-menu-link" href="../../blog.html" data-cms="siteGlobal.menu.blog">Blog</a></li>
+<li class="walkers-menu-item"><a class="walkers-menu-link" href="../../contact.html" data-cms="siteGlobal.menu.contact">Contact</a></li>
+</ul>
+</nav>
+<!-- Right Header Tools (Desktop) -->
+<div class="header-tools">
+<div class="custom-lang-pill">
+<button aria-haspopup="true" class="lang-pill-btn" id="langPillToggle" title="Select Language" type="button">
+<span id="currentLangLabel">EN</span>
+<svg class="walkers-caret" viewbox="0 0 10 6"><path d="M1 1L5 5L9 1" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"></path></svg>
+</button>
+<div class="lang-pill-dropdown" id="langPillMenu">
+<button class="is-active" data-lang="en" type="button">🇬🇧 English</button>
+<button data-lang="zh-TW" type="button">🇹🇼 繁體中文 (Taiwan)</button>
+<button data-lang="zh-CN" type="button">🇨🇳 简体中文 (Modern)</button>
+<button data-lang="fr" type="button">🇫🇷 Français (French)</button>
+<button data-lang="de" type="button">🇩🇪 Deutsch (German)</button>
+<button data-lang="ru" type="button">🇷🇺 Русский</button>
+<button data-lang="es" type="button">🇪🇸 Español</button>
+<button data-lang="it" type="button">🇮🇹 Italiano</button>
+<button data-lang="ja" type="button">🇯🇵 日本語</button>
+<button data-lang="ar" type="button">🇦🇪 العربية</button>
+<button data-lang="hi" type="button">🇮🇳 हिन्दी</button>
+</div>
+</div>
+<a class="gold-inquire-btn" href="../../inquiry-detailed.html" title="Plan Your Bespoke Travel">
+<span data-cms="siteGlobal.branding.inquireButtonText">Inquire</span>
+</a>
+</div>
+<!-- Mobile Hamburger Button -->
+<button aria-controls="mobileNavFullscreen" aria-expanded="false" aria-label="Open mobile navigation menu" class="walkers-hamburger" id="mobileNavToggle" type="button">
+<span></span><span></span><span></span>
+</button>
+</div>
+</div>
+</header>
+
+  <!-- Full-Screen Slide-in Mobile Navigation Menu -->
+<div aria-hidden="true" aria-label="Mobile Navigation" class="mobile-nav-fullscreen" id="mobileNavFullscreen" role="dialog">
+<div class="mobile-nav-header">
+<a class="header-brand" href="../../index.html">
+<img alt="Lotus Ceylon Official Emblem" class="header-brand-logo" height="38" src="../../assets/images/brand/logo-header.png" width="38"/>
+<span class="header-brand-name"><span class="brand-name-lotus" data-cms="siteGlobal.branding.nameLotus">LOTUS</span> <span class="brand-name-ceylon" data-cms="siteGlobal.branding.nameCeylon">CEYLON</span></span>
+</a>
+<button aria-label="Close navigation menu" class="mobile-nav-close" id="mobileNavClose" type="button">✕</button>
+</div>
+<div class="mobile-nav-body">
+<ul class="mobile-nav-list">
+<li class="mobile-nav-item"><a class="mobile-nav-link" href="../../index.html" data-cms="siteGlobal.menu.home">Home</a></li>
+<li class="mobile-nav-item has-accordion">
+<button aria-expanded="false" class="mobile-nav-link accordion-toggle" id="mobileToursToggle" type="button">
+<span data-cms="siteGlobal.menu.tours">Tours &amp; Packages</span>
+<svg class="accordion-arrow" fill="none" height="16" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="16"><polyline points="6 9 12 15 18 9"></polyline></svg>
+</button>
+<div class="mobile-accordion-submenu" id="mobileToursSubmenu">
+<a class="submenu-link" href="../../tours/index.html"><span class="submenu-icon">🧭</span>All Tour Packages</a>
+<a class="submenu-link" href="../../tours/cultural/index.html"><span class="submenu-icon">🏛️</span>Cultural Heritage</a>
+<a class="submenu-link" href="../../tours/buddhist-heritage/index.html"><span class="submenu-icon">☸️</span>Buddhist Heritage</a>
+<a class="submenu-link" href="../../tours/wildlife/index.html"><span class="submenu-icon">🐆</span>Wildlife Safaris</a>
+<a class="submenu-link" href="../../tours/beach/index.html"><span class="submenu-icon">🏖️</span>Pristine Beaches</a>
+<a class="submenu-link" href="../../tours/hill-country/index.html"><span class="submenu-icon">⛰️</span>Hill Country &amp; Tea</a>
+<a class="submenu-link" href="../../tours/ayurvedic/index.html"><span class="submenu-icon">🌿</span>Ayurvedic Healing</a>
+<a class="submenu-link" href="../../tours/honeymoon/index.html"><span class="submenu-icon">💍</span>Honeymoon &amp; Romance</a>
+<a class="submenu-link" href="../../tours/family/index.html"><span class="submenu-icon">👨‍👩‍👧‍👦</span>Family Holidays</a>
+<a class="submenu-link" href="../../tours/adventure/index.html"><span class="submenu-icon">🏄</span>Adventure &amp; Trekking</a>
+<a class="submenu-link" href="../../tours/golf/index.html"><span class="submenu-icon">⛳</span>Championship Golf</a>
+<a class="submenu-link" href="../../tours/ramayana/index.html"><span class="submenu-icon">🏹</span>Ramayana Trail</a>
+</div>
+</li>
+<li class="mobile-nav-item"><a class="mobile-nav-link" href="../../destinations.html" data-cms="siteGlobal.menu.destinations">Destinations</a></li>
+<li class="mobile-nav-item"><a class="mobile-nav-link" href="../../experiences.html" data-cms="siteGlobal.menu.experiences">Experiences</a></li>
+<li class="mobile-nav-item"><a class="mobile-nav-link" href="../../about.html" data-cms="siteGlobal.menu.about">About Us</a></li>
+<li class="mobile-nav-item"><a class="mobile-nav-link" href="../../gallery.html" data-cms="siteGlobal.menu.gallery">Gallery</a></li>
+<li class="mobile-nav-item"><a class="mobile-nav-link" href="../../reviews.html" data-cms="siteGlobal.menu.reviews">Reviews</a></li>
+<li class="mobile-nav-item"><a class="mobile-nav-link" href="../../blog.html" data-cms="siteGlobal.menu.blog">Blog</a></li>
+<li class="mobile-nav-item"><a class="mobile-nav-link" href="../../contact.html" data-cms="siteGlobal.menu.contact">Contact</a></li>
+</ul>
+<div class="mobile-lang-section">
+<p class="mobile-section-label">Select Language</p>
+<div class="mobile-lang-grid" id="mobileLangGrid">
+<button class="mobile-lang-btn is-active" data-lang="en" type="button">🇬🇧 English</button>
+<button class="mobile-lang-btn" data-lang="zh-TW" type="button">🇹🇼 繁體中文</button>
+<button class="mobile-lang-btn" data-lang="zh-CN" type="button">🇨🇳 简体中文</button>
+<button class="mobile-lang-btn" data-lang="fr" type="button">🇫🇷 Français</button>
+<button class="mobile-lang-btn" data-lang="de" type="button">🇩🇪 Deutsch</button>
+<button class="mobile-lang-btn" data-lang="ru" type="button">🇷🇺 Русский</button>
+<button class="mobile-lang-btn" data-lang="es" type="button">🇪🇸 Español</button>
+<button class="mobile-lang-btn" data-lang="it" type="button">🇮🇹 Italiano</button>
+<button class="mobile-lang-btn" data-lang="ja" type="button">🇯🇵 日本語</button>
+<button class="mobile-lang-btn" data-lang="ar" type="button">🇦🇪 العربية</button>
+<button class="mobile-lang-btn" data-lang="hi" type="button">🇮🇳 हिन्दी</button>
+</div>
+<div class="mobile-nav-actions">
+<a class="btn-mobile-whatsapp" href="https://wa.me/94715422384?text=Hello%20Lotus%20Ceylon!%20I%20would%20like%20to%20inquire%20about%20a%20private%20tour.">
+<span>💬 WhatsApp (+94 71 54 22 384)</span>
+</a>
+<a class="btn-mobile-inquire" href="../../inquiry-detailed.html">
+<span data-cms="siteGlobal.branding.planJourneyBtnText">Plan My Bespoke Journey ➔</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+
+  <main id="mainContent" style="padding: 120px 20px 60px;">
+    <article style="max-width: 820px; margin: 0 auto; background: #FFFFFF; padding: 2.5rem 2rem; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.06); border: 1px solid #E2E8F0;">
+      <div style="display: flex; gap: 8px; align-items: center; margin-bottom: 12px; flex-wrap: wrap;">
+        <span style="background: rgba(46,125,50,0.15); color: #2E7D32; font-size: 0.78rem; font-weight: 700; text-transform: uppercase; padding: 3px 10px; border-radius: 4px;" data-cms="blogElla.badge">
+          Hill Country &amp; Tea Culture
+        </span>
+        <span style="color: #94A3B8; font-size: 0.82rem;">&bull;</span>
+        <span style="color: #64748B; font-size: 0.82rem;" data-cms="blogElla.readTime">6 min read</span>
+        <span style="color: #94A3B8; font-size: 0.82rem;">&bull;</span>
+        <span style="color: #64748B; font-size: 0.82rem;" data-cms="blogElla.date">November 2026</span>
+        <span style="color: #94A3B8; font-size: 0.82rem;">&bull;</span>
+        <span style="color: #EAB308; font-weight: 700; font-size: 0.85rem;" data-cms="blogElla.rating">★ 4.9 (100+ Reviews)</span>
+      </div>
+
+      <h1 class="heading--48 font-color--dark-blue" style="font-size: clamp(1.8rem, 4vw, 2.6rem); line-height: 1.25; margin: 0 0 1rem;" data-cms="blogElla.title">
+        Ella: Hands-On Tea Making Experience with Tasting
+      </h1>
+
+      <p style="color: #64748B; font-size: 0.95rem; margin-bottom: 1.5rem;" data-cms="blogElla.author">
+        By <strong>Lotus Ceylon Destination Specialists</strong> &bull; Experience Curated in Ella, Uva Province
+      </p>
+
+      <div style="border-radius: 12px; overflow: hidden; margin-bottom: 2rem; box-shadow: 0 4px 15px rgba(0,0,0,0.08);">
+        <img src="../../assets/images/blog/ella-tea-making-experience.webp" alt="Hands-on tea making and artisanal leaf rolling workshop in Ella, Sri Lanka" style="width: 100%; height: auto; display: block;" data-cms-img="blogElla.heroImage">
+      </div>
+
+      <div style="font-size: 1.05rem; line-height: 1.85; color: #334155;">
+        <p style="font-size: 1.15rem; font-weight: 500; color: #002B49; margin-bottom: 1.5rem;" data-cms="blogElla.lead">
+          Discover the heart of Sri Lanka’s tea culture with an authentic hands-on tea making experience in Ella. From plucking two tender leaves and a bud in emerald hillside gardens to master-led hand-rolling, withering, and cupping the perfect amber brew, immerse yourself in one of the world's most sensory craft traditions.
+        </p>
+
+        <h2 style="font-size: 1.5rem; color: #002B49; margin: 2rem 0 1rem; border-bottom: 2px solid #E2E8F0; padding-bottom: 0.5rem;" data-cms="blogElla.h2_1">
+          1. The Mist-Veiled Slopes of Ella &amp; The Soul of Ceylon Tea
+        </h2>
+        <p data-cms="blogElla.p_1">
+          Perched high within the central mountain amphitheater of Sri Lanka, Ella is celebrated for its sweeping gap, dramatic waterfalls, and cool mountain breezes. While most travelers marvel at tea plantations through train carriage windows, the true magic of Ceylon tea is only unlocked when you feel the crisp, dew-drenched leaves beneath your fingers.
+        </p>
+
+        <div style="background: #F8FAFC; border-left: 4px solid #2E7D32; padding: 20px; border-radius: 0 8px 8px 0; margin: 1.75rem 0;">
+          <p style="font-style: italic; font-weight: 600; color: #002B49; margin: 0;" data-cms="blogElla.quote_1">
+            &ldquo;Making tea by hand in an open-air mountain pavilion with the cool mist rolling across Ella Gap is not just an activity—it is an unforgettable meditation in taste and aroma.&rdquo;
+          </p>
+        </div>
+
+        <h2 style="font-size: 1.5rem; color: #002B49; margin: 2rem 0 1rem; border-bottom: 2px solid #E2E8F0; padding-bottom: 0.5rem;" data-cms="blogElla.h2_2">
+          2. The Art of Plucking: "Two Leaves and a Bud"
+        </h2>
+        <p data-cms="blogElla.p_2">
+          Your morning begins in the verdant tea garden alongside generational artisan tea planters. You learn the golden rule of world-class tea harvesting: selecting only the tender apical bud and the two youngest leaves directly beneath it. This precise cut yields the sweetest catechins, aromatic oils, and golden antioxidants that give Ceylon tea its worldwide acclaim.
+        </p>
+
+        <h2 style="font-size: 1.5rem; color: #002B49; margin: 2rem 0 1rem; border-bottom: 2px solid #E2E8F0; padding-bottom: 0.5rem;" data-cms="blogElla.h2_3">
+          3. Withering and Hand-Rolling under Warm Pavilion Lights
+        </h2>
+        <p data-cms="blogElla.p_3">
+          Inside a rustic timber workshop warmed by suspended Edison filaments, you step up to cedarwood tables to begin the transformative withering and rolling phase. By rhythmically rolling the leaves between your palms across textured bamboo trays, the leaf cells bruise gently, releasing essential aromatic enzymes and initiating natural oxidation. The fragrant aroma of freshly crushed green leaves fills the pavilion—an intoxicating blend of floral honey and alpine air.
+        </p>
+
+        <h2 style="font-size: 1.5rem; color: #002B49; margin: 2rem 0 1rem; border-bottom: 2px solid #E2E8F0; padding-bottom: 0.5rem;" data-cms="blogElla.h2_4">
+          4. Controlled Firing &amp; Artisanal Cupping Ceremony
+        </h2>
+        <p data-cms="blogElla.p_4">
+          After guided pan-firing in shallow cast-iron woks to arrest oxidation at the exact nuance of character, you take your seat at the professional tea cupping bar. Led by an experienced tea taster, you evaluate liquor color, brightness, aroma, body, and briskness across artisanal Ceylon Black, Green, and rare Hand-Rolled Golden Tips. Best of all, you bottle your own bespoke handcrafted tea batch as a personalized keepsake of your Ceylon journey.
+        </p>
+      </div>
+
+      <div style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid #E2E8F0; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+        <a href="../../blog.html" style="color: #002B49; font-weight: 600; text-decoration: none; display: flex; align-items: center; gap: 6px;">
+          &larr; Back to Travel Journal
+        </a>
+        <a href="../../inquiry-detailed.html" class="btn-primary-gold" style="padding: 0.75rem 1.5rem; border-radius: 8px; text-decoration: none; font-weight: 700; background: #C9962B; color: #FFFFFF;">
+          Book This Experience in Ella ➔
+        </a>
+      </div>
+    </article>
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer-walkers" id="siteFooter">
+<!-- ID-BUILD: infinite-design / 2026-11-01 / lotusceylon -->
+<div class="site-container">
+<div class="footer-top-grid">
+<div>
+<p class="footer-col-title" data-cms="siteGlobal.branding.companyName">Lotus Ceylon Luxury Tours</p>
+<p style="color: rgba(255, 255, 255, 0.78); font-size: 0.92rem; line-height: 1.65; margin: 0.85rem 0 1.25rem;">
+Crafting bespoke, transformative travel experiences across sacred Ceylon with authentic warmth since 2012.
+</p>
+<div class="footer-contact-list">
+<div class="footer-contact-item">
+<p data-cms="siteGlobal.contact.hotlineLabel">24/7 Travel Concierge Hotline</p>
+<a href="tel:+94715422384" style="color: #FFFFFF; font-weight: 700; font-size: 1.05rem;" data-cms="siteGlobal.contact.hotline">+94 71 54 22 384</a>
+</div>
+<div class="footer-contact-item">
+<p data-cms="siteGlobal.contact.emailLabel">Email Inquiries</p>
+<a href="mailto:paliforbuddhism@gmail.com" data-cms="siteGlobal.contact.email" data-cms-link="siteGlobal.contact.emailLink" style="color: #FFFFFF; font-weight: 600;">paliforbuddhism@gmail.com</a>
+</div>
+</div>
+</div>
+<div>
+<p class="footer-col-title" data-cms="siteGlobal.footer.quickLinksTitle">Signature Experiences</p>
+<ul class="footer-nav-list">
+<li><a href="../../tours/cultural/index.html">Cultural Heritage Expeditions</a></li>
+<li><a href="../../tours/hill-country/index.html">Ceylon Tea Highlands &amp; Ella</a></li>
+<li><a href="../../tours/wildlife/index.html">Leopard &amp; Elephant Safaris</a></li>
+<li><a href="../../tours/ayurvedic/index.html">Panchakarma Ayurvedic Retreats</a></li>
+<li><a href="../../tours/buddhist-heritage/index.html">Sacred Buddhist Pilgrimages</a></li>
+</ul>
+</div>
+<div>
+<p class="footer-col-title" data-cms="siteGlobal.footer.legalTitle">Guest Concierge &amp; Legal</p>
+<ul class="footer-nav-list">
+<li><a href="../../about.html">About Lotus Ceylon</a></li>
+<li><a href="../../reviews.html">Guest Testimonials</a></li>
+<li><a href="../../gallery.html">Visual Odyssey Gallery</a></li>
+<li><a href="../../contact.html">Contact Travel Concierge</a></li>
+<li><a href="../../privacy-policy.html">Privacy Policy &amp; Terms</a></li>
+</ul>
+</div>
+<div>
+<p class="footer-col-title" data-cms="siteGlobal.footer.connectTitle">Headquarters</p>
+<p style="color: rgba(255, 255, 255, 0.78); font-size: 0.92rem; line-height: 1.65; margin-bottom: 1rem;" data-cms="siteGlobal.contact.address">
+No. 48/2, Temple Road, Colombo 03, Sri Lanka
+</p>
+<div style="background: rgba(255,255,255,0.06); border-radius: 8px; padding: 12px 16px; border: 1px solid rgba(255,255,255,0.12);">
+<p style="color: #C9962B; font-size: 0.78rem; font-weight: 700; text-transform: uppercase; margin-bottom: 4px;">Registered Inbound Operator</p>
+<p style="color: #E2E8F0; font-size: 0.85rem; margin: 0;">SLTDA Approved Lic #TS/2026/089</p>
+</div>
+</div>
+</div>
+<div class="footer-bottom-row">
+<p class="footer-copyright-text">
+&copy; 2026 Lotus Ceylon International Tours &amp; Services (Pvt) Ltd. All rights reserved.
+</p>
+<p class="footer-designer-credit">
+Designed &amp; Developed by <a href="https://infiniteweb.dev/" rel="noopener" target="_blank">Infinite Design</a>
+</p>
+</div>
+</div>
+</footer>
+
+  <script src="../../assets/js/site-data.js"></script>
+  <script src="../../assets/js/mobile-nav.js"></script>
+</body>
+</html>
+"""
+
+with open(os.path.join(art_dir, 'index.html'), 'w', encoding='utf-8') as f:
+    f.write(html_content)
+
+print("Created blog/ella-hands-on-tea-making-experience/index.html successfully!")
