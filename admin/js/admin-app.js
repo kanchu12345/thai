@@ -1696,6 +1696,14 @@ resolveImg(url) {
 
       if (targetSec) targetSec.classList.add('active');
 
+      // Lazy-load Visual CMS iframe only when user navigates to Page Editor tab
+      if (sectionId === 'page-editor') {
+        const iframe = document.getElementById('visualCmsIframe');
+        if (iframe && (!iframe.src || iframe.src === 'about:blank' || iframe.getAttribute('src') === 'about:blank') && iframe.dataset.src) {
+          iframe.src = iframe.dataset.src;
+        }
+      }
+
 
 
       // Update Topbar Title
@@ -1801,10 +1809,14 @@ resolveImg(url) {
       // 1. Fetch from Firebase Firestore live
       if (!loadedFromLive && window.LotusFirebase && navigator.onLine) {
         try {
-          const [liveCatalog, liveDests, liveRevs] = await Promise.all([
-            window.LotusFirebase.fetchFirestoreCatalog(),
-            window.LotusFirebase.fetchDestinations(),
-            window.LotusFirebase.fetchReviews()
+          const timeoutPromise = new Promise((_, reject) => setTimeout(() => reject(new Error('Firestore timeout')), 4500));
+          const [liveCatalog, liveDests, liveRevs] = await Promise.race([
+            Promise.all([
+              window.LotusFirebase.fetchFirestoreCatalog(),
+              window.LotusFirebase.fetchDestinations(),
+              window.LotusFirebase.fetchReviews()
+            ]),
+            timeoutPromise
           ]);
           if (liveCatalog && liveCatalog.packages && liveCatalog.packages.length > 0) {
             this.packages = liveCatalog.packages;
