@@ -1391,7 +1391,19 @@ resolveImg(url) {
 
       this.applyRolePermissions();
       await this.loadAllData();
-      this.switchSection(this.activeSection || 'dashboard');
+      const urlParams = new URLSearchParams(window.location.search);
+      const editPage = urlParams.get('editPage');
+      const editFile = urlParams.get('file');
+      if (editPage && editFile) {
+        this.switchSection('page-editor');
+        if (window.PageEditor && typeof window.PageEditor.openPage === 'function') {
+          setTimeout(() => {
+            window.PageEditor.openPage(editPage, editFile);
+          }, 100);
+        }
+      } else {
+        this.switchSection(this.activeSection || 'dashboard');
+      }
     },
 
     async handleLogin(e) {

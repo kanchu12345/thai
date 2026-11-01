@@ -71,6 +71,21 @@
       // 2. Bind Topbar Controls
       this.bindTopbarEvents();
 
+      // Check URL parameters for direct page editing
+      try {
+        const urlParams = new URLSearchParams(window.location.search);
+        const editPage = urlParams.get('editPage');
+        const editFile = urlParams.get('file');
+        if (editPage && editFile) {
+          this.activePageKey = editPage;
+          this.activePageFile = editFile;
+          const pageSelect = document.getElementById('visualPageDropdown');
+          if (pageSelect) {
+            pageSelect.value = `${editPage}|${editFile}`;
+          }
+        }
+      } catch (e) {}
+
       // 3. Initial load for Home page doc
       await this.fetchPageDoc(this.activePageKey);
 
@@ -656,11 +671,28 @@
       };
 
       const cleanDoc = docName.toLowerCase().replace(/[^a-z]/g, '');
-      const mapped = keyMap[cleanDoc] || {
-        key: `${docName}.hero_bg`,
-        label: `${this.getFriendlySectionName(docName)} Hero Banner`,
-        defaultVal: 'assets/images/cultural/sigiriya-1.webp'
-      };
+      let mapped = keyMap[cleanDoc];
+      if (!mapped) {
+        if (this.activePageKey && this.activePageKey.startsWith('destinations/')) {
+          mapped = {
+            key: `dest_${docName}.hero_bg`,
+            label: `${this.getFriendlySectionName(docName)} Destination Hero Banner`,
+            defaultVal: 'assets/images/cultural/sigiriya-1.webp'
+          };
+        } else if (this.activePageKey && this.activePageKey.startsWith('tourPackages/')) {
+          mapped = {
+            key: `pkg_${docName}.hero_bg`,
+            label: `${this.getFriendlySectionName(docName)} Tour Hero Banner`,
+            defaultVal: 'assets/images/cultural/sigiriya-1.webp'
+          };
+        } else {
+          mapped = {
+            key: `${docName}.hero_bg`,
+            label: `${this.getFriendlySectionName(docName)} Hero Banner`,
+            defaultVal: 'assets/images/cultural/sigiriya-1.webp'
+          };
+        }
+      }
 
       const val = this.getCurrentValue(mapped.key, (this.activeDocData && this.activeDocData[mapped.key]) || mapped.defaultVal);
       return {
