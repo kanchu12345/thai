@@ -2317,3 +2317,119 @@ body {
   -webkit-text-fill-color: #B38744 !important;
   text-shadow: none !important;
 }
+
+
+/* ==============================================================================
+ * WALKERS TOURS SIGNATURE MINIMALIST ICON BOX STYLING (Image 2 Matching)
+ * ============================================================================== */
+.icon-boxes-list,
+#why-us .icon-boxes-list {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0 !important;
+}
+
+.icon-box,
+#why-us .icon-box {
+  display: flex !important;
+  align-items: center !important;
+  gap: 1.5rem !important;
+  padding: 1.25rem 0 !important;
+  background: transparent !important;
+  border-radius: 0 !important;
+  border: none !important;
+  border-bottom: 1px solid #E2E8F0 !important;
+  box-shadow: none !important;
+  opacity: 1 !important;
+  transform: none !important;
+  transition: transform 0.25s ease !important;
+}
+
+.icon-box:last-child,
+#why-us .icon-box:last-child {
+  border-bottom: none !important;
+}
+
+.icon-box:hover,
+#why-us .icon-box:hover {
+  background: transparent !important;
+  box-shadow: none !important;
+  transform: translateX(6px) !important;
+}
+
+.icon-box__left,
+#why-us .icon-box__left {
+  width: 48px !important;
+  height: 48px !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-shrink: 0 !important;
+  transform: none !important;
+}
+
+.icon-box__left img,
+.icon-box__left svg,
+#why-us .icon-box__left img,
+#why-us .icon-box__left svg {
+  width: 40px !important;
+  height: 40px !important;
+  object-fit: contain !important;
+  display: block !important;
+}
+
+.icon-box:hover .icon-box__left,
+#why-us .icon-box:hover .icon-box__left {
+  transform: scale(1.05) !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.icon-box__right,
+#why-us .icon-box__right {
+  flex: 1 !important;
+}
+
+.icon-box__right p,
+#why-us .icon-box__right p {
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  font-size: 1.05rem !important;
+  line-height: 1.55 !important;
+  color: #454545 !important;
+  margin: 0 !important;
+  font-weight: 400 !important;
+  letter-spacing: normal !important;
+}
+
+.icon-box__right strong,
+#why-us .icon-box__right strong {
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  font-weight: 600 !important;
+  color: #012d6b !important;
+  display: inline !important;
+  margin-right: 0.25rem !important;
+}
+
+/* Neutralize all old colored cards */
+.icon-box--gold,
+.icon-box--lotus,
+.icon-box--navy,
+.icon-box--sapphire,
+.icon-box--emerald,
+.icon-box--rose,
+.icon-box--amber,
+#why-us .icon-box--gold,
+#why-us .icon-box--lotus,
+#why-us .icon-box--navy,
+#why-us .icon-box--sapphire,
+#why-us .icon-box--emerald,
+#why-us .icon-box--rose,
+#why-us .icon-box--amber {
+  border-left: none !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
