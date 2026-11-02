@@ -134,7 +134,7 @@
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   color: #FFFFFF;
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-size: 0.76rem;
   font-weight: 700;
   letter-spacing: 0.04em;
@@ -165,7 +165,7 @@
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   color: #002B49;
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-size: 0.74rem;
   font-weight: 700;
   letter-spacing: 0.06em;
@@ -216,7 +216,7 @@
 }
 
 .lotus-map-placeholder-title {
-  font-family: 'Playfair Display', Georgia, serif;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-size: 1.45rem;
   font-weight: 700;
   color: #002B49;
@@ -224,7 +224,7 @@
 }
 
 .lotus-map-placeholder-sub {
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-size: 0.88rem;
   color: #64748B;
   line-height: 1.6;
@@ -238,7 +238,7 @@
   gap: 0.4rem;
   background: #002B49;
   color: #FFFFFF;
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-size: 0.74rem;
   font-weight: 700;
   letter-spacing: 0.06em;
@@ -258,7 +258,7 @@
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-size: 0.78rem;
   font-weight: 800;
   letter-spacing: 0.14em;
@@ -282,7 +282,7 @@
 }
 
 .route-quote-text {
-  font-family: 'Playfair Display', Georgia, serif;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-style: italic;
   font-size: clamp(1.15rem, 1.8vw, 1.35rem);
   line-height: 1.6;
@@ -292,7 +292,7 @@
 
 .route-quote-caption {
   display: block;
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-size: 0.78rem;
   font-weight: 700;
   letter-spacing: 0.08em;
@@ -304,7 +304,7 @@
 .coastline-main-title,
 .coastal-main-title,
 .lotus-route-main-title {
-  font-family: 'Playfair Display', Georgia, serif;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-size: clamp(1.85rem, 2.7vw, 2.45rem);
   font-weight: 700;
   color: #002B49;
@@ -316,7 +316,7 @@
 .coastal-main-title span,
 .lotus-route-main-title span {
   display: block;
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-size: clamp(1.15rem, 1.7vw, 1.5rem);
   font-weight: 400;
   color: #4A5568;
@@ -326,7 +326,7 @@
 .coastline-lead-text,
 .coastal-lead-text,
 .lotus-route-lead-text {
-  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-size: 1.02rem;
   line-height: 1.8;
   color: #2D3748;
@@ -344,7 +344,7 @@
 }
 
 .route-circuit-label {
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-size: 0.72rem;
   font-weight: 800;
   letter-spacing: 0.1em;
@@ -359,7 +359,7 @@
   flex-wrap: wrap;
   align-items: center;
   gap: 0.35rem 0.55rem;
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-size: 0.84rem;
   color: #002B49;
 }
@@ -424,7 +424,7 @@
   gap: 0.55rem;
   background: #C5A880;
   color: #002B49 !important;
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-size: 0.94rem;
   font-weight: 800;
   letter-spacing: 0.04em;
@@ -449,7 +449,7 @@
   gap: 0.55rem;
   background: #25D366;
   color: #FFFFFF !important;
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-size: 0.94rem;
   font-weight: 700;
   padding: 0.95rem 1.6rem;
@@ -531,7 +531,7 @@
 .lotus-map-modal-caption {
   margin-top: 12px;
   color: #E2E8F0;
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-size: 0.88rem;
   letter-spacing: 0.04em;
   text-align: center;
@@ -560,7 +560,7 @@
 
 .comparison-eyebrow {
   display: inline-block;
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-size: 0.74rem;
   font-weight: 800;
   letter-spacing: 0.14em;
@@ -573,7 +573,7 @@
 }
 
 .comparison-title {
-  font-family: 'Playfair Display', Georgia, serif;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-size: clamp(1.85rem, 2.8vw, 2.4rem);
   font-weight: 700;
   color: #002B49;
@@ -581,7 +581,7 @@
 }
 
 .comparison-subtitle {
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-size: 0.94rem;
   color: #64748B;
   max-width: 580px;
@@ -607,7 +607,7 @@
   width: 100%;
   border-collapse: collapse;
   text-align: left;
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-size: 0.86rem;
 }
 
@@ -640,7 +640,7 @@
 
 .comparison-pkg-link {
   display: block;
-  font-family: 'Playfair Display', Georgia, serif;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-size: 0.92rem;
   font-weight: 700;
   color: #002B49;
@@ -656,7 +656,7 @@
 
 .comparison-pkg-nights {
   display: block;
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-size: 0.72rem;
   font-weight: 700;
   color: #8C6D3F;
@@ -765,7 +765,7 @@
   border: 1px solid #CBD5E1;
   border-radius: 9999px;
   padding: 0.38rem 0.85rem;
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-size: 0.76rem;
   font-weight: 700;
   color: #002B49;
@@ -806,7 +806,7 @@
 }
 
 .leaflet-container {
-  font-family: 'Plus Jakarta Sans', sans-serif !important;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
 }
 
 
@@ -951,7 +951,7 @@
 }
 
 .modal-title {
-  font-family: 'Playfair Display', serif;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-size: 1.5rem;
   color: #002B49;
   margin-bottom: 0.5rem;
@@ -1254,7 +1254,7 @@
 }
 
 .compare-pkg-title {
-  font-family: 'Cinzel', serif;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-size: 1.15rem;
   color: #002B49;
   margin: 0.25rem 0 0.5rem;
@@ -1405,7 +1405,7 @@
 }
 
 .season-strip-title h4 {
-  font-family: 'Cinzel', serif;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-size: 1.1rem;
   color: #002B49;
   margin: 0;
@@ -1552,7 +1552,7 @@
 }
 
 .faq-main-title {
-  font-family: 'Cinzel', serif;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-size: 2rem;
   color: #002B49;
   margin: 0 0 0.75rem;
@@ -1658,7 +1658,7 @@
 }
 
 .why-title {
-  font-family: 'Cinzel', serif;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-size: 2.2rem;
   color: #002B49;
   margin: 0 0 0.75rem;
@@ -1699,7 +1699,7 @@
 }
 
 .why-card-title {
-  font-family: 'Cinzel', serif;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-size: 1.05rem;
   color: #002B49;
   margin: 0 0 0.6rem;
@@ -1765,7 +1765,7 @@
 .tour-hero-title,
 .tours-hero-title,
 .hero-title {
-  font-family: 'Playfair Display', Georgia, serif !important;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
   font-size: clamp(1.75rem, 4.5vw, 3.75rem) !important;
   overflow-wrap: break-word;
   word-break: normal;
@@ -2143,7 +2143,7 @@ figure.video iframe,
 }
 
 .travel-hub-title {
-  font-family: 'Playfair Display', Georgia, serif;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-size: clamp(2rem, 3.2vw, 2.75rem);
   font-weight: 700;
   color: #002B49;
@@ -2152,7 +2152,7 @@ figure.video iframe,
 }
 
 .travel-hub-subtitle {
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-size: 1rem;
   color: #64748B;
   max-width: 680px;
@@ -2172,7 +2172,7 @@ figure.video iframe,
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-size: 0.88rem;
   font-weight: 700;
   color: #002B49;
@@ -2235,7 +2235,7 @@ figure.video iframe,
 
 .hub-card-kicker {
   display: inline-block;
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-size: 0.74rem;
   font-weight: 800;
   letter-spacing: 0.12em;
@@ -2245,7 +2245,7 @@ figure.video iframe,
 }
 
 .hub-card-title {
-  font-family: 'Playfair Display', Georgia, serif;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-size: clamp(1.5rem, 2.4vw, 2rem);
   font-weight: 700;
   color: #002B49;
@@ -2254,7 +2254,7 @@ figure.video iframe,
 }
 
 .hub-card-lead {
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-size: 0.98rem;
   color: #4A5568;
   line-height: 1.7;
@@ -2286,7 +2286,7 @@ figure.video iframe,
 }
 
 .hub-subcard-title {
-  font-family: 'Playfair Display', Georgia, serif;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-size: 1.15rem;
   font-weight: 700;
   color: #002B49;
@@ -2294,7 +2294,7 @@ figure.video iframe,
 }
 
 .hub-subcard-meta {
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-size: 0.82rem;
   color: #C9962B;
   font-weight: 700;
@@ -2302,7 +2302,7 @@ figure.video iframe,
 }
 
 .hub-subcard-desc {
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-size: 0.88rem;
   color: #4A5568;
   line-height: 1.6;
@@ -2321,7 +2321,7 @@ figure.video iframe,
 .hub-check-list li {
   position: relative;
   padding-left: 1.4rem;
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-size: 0.88rem;
   color: #4A5568;
   line-height: 1.55;
@@ -2353,7 +2353,7 @@ figure.video iframe,
 }
 
 .hub-tip-banner p {
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-size: 0.88rem;
   color: #002B49;
   line-height: 1.6;

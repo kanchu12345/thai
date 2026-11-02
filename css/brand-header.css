@@ -4,7 +4,7 @@
  * Unauthorized removal of attribution does not transfer ownership of this code.
  * https://infiniteweb.dev/
  */
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..800;1,9..40,300..800&family=Cinzel:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
 
 /* ==============================================================================
  * LOTUS CEYLON - WALKERS TOURS LUXURY BRAND & TYPOGRAPHY SYSTEM
@@ -50,7 +50,7 @@
  * Signature Luxury Roman Serif Typography with High Visibility */
 .header-brand-name,
 .walkers-brand-title {
-  font-family: 'Cinzel', 'Playfair Display', Georgia, serif !important;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
   font-weight: 700 !important;
   font-size: 1.62rem !important;
   letter-spacing: 0.06em !important;
@@ -585,7 +585,7 @@
 }
 
 .editorial-quote-text {
-  font-family: var(--font-serif, "Playfair Display", Georgia, serif) !important;
+  font-family: var(--font-serif, 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif) !important;
   font-size: clamp(1.06rem, 1.28vw, 1.2rem) !important;
   font-style: italic !important;
   font-weight: 600 !important;
@@ -880,7 +880,7 @@
 }
 
 #why-us .icon-box__right p {
-  font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-size: 0.95rem !important;
   line-height: 1.6 !important;
   color: #4A5568 !important;
@@ -891,7 +891,7 @@
 }
 
 #why-us .icon-box__right strong {
-  font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-size: 1.02rem !important;
   font-weight: 700 !important;
   letter-spacing: -0.015em !important;
@@ -1095,7 +1095,7 @@
 }
 
 #why-us .counter-number {
-  font-family: var(--font-serif, "Playfair Display", Georgia, serif) !important;
+  font-family: var(--font-serif, 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif) !important;
   font-size: clamp(3rem, 4.4vw, 4.2rem) !important;
   font-weight: 700 !important;
   line-height: 1 !important;
@@ -1290,7 +1290,7 @@
 }
 
 .categories-carousel-track .walker-card-desc {
-  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif !important;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
   font-size: 0.78rem !important;
   font-weight: 400 !important;
   color: rgba(255, 255, 255, 0.88) !important;
@@ -1312,7 +1312,7 @@
   display: inline-flex !important;
   align-items: center !important;
   gap: 0.65rem !important;
-  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif !important;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
   font-size: 0.96rem !important;
   font-weight: 700 !important;
   color: #FFFFFF !important;
@@ -1448,7 +1448,7 @@
   color: #FFFFFF !important;
   padding: 0.58rem 1.35rem !important;
   border-radius: 9999px !important;
-  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif !important;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
   font-size: 0.82rem !important;
   font-weight: 700 !important;
   letter-spacing: 0.08em !important;
@@ -1486,7 +1486,7 @@
   color: #FFFFFF !important;
   padding: 0.3rem 0.75rem !important;
   border-radius: 9999px !important;
-  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif !important;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
   font-size: 0.72rem !important;
   font-weight: 700 !important;
   letter-spacing: 0.08em !important;
@@ -1623,7 +1623,7 @@
 }
 
 .footer-brand-title {
-  font-family: var(--font-serif, 'Playfair Display', Georgia, serif) !important;
+  font-family: var(--font-serif, 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif) !important;
   font-size: 1.35rem !important;
   font-weight: 700 !important;
   letter-spacing: 0.05em !important;
@@ -1771,7 +1771,7 @@ html {
 }
 
 .dest-card-title {
-  font-family: var(--font-serif, 'Playfair Display', Georgia, serif);
+  font-family: var(--font-serif, 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif);
   font-size: 1.35rem;
   font-weight: 700;
   color: var(--color-dark-blue, #002B49);
@@ -1861,7 +1861,7 @@ html {
 
 .dest-card-title {
   color: #4A1620 !important;
-  font-family: var(--font-serif, 'Playfair Display', Georgia, serif) !important;
+  font-family: var(--font-serif, 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif) !important;
   font-size: 1.35rem !important;
   font-weight: 700 !important;
   margin-bottom: 0.4rem !important;
@@ -2034,7 +2034,7 @@ html {
 
 .testimonial-quote-title {
   color: #4A1620 !important;
-  font-family: var(--font-serif, 'Playfair Display', Georgia, serif) !important;
+  font-family: var(--font-serif, 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif) !important;
   font-size: 1.25rem !important;
 }
 

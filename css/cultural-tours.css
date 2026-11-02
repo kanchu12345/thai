@@ -33,7 +33,7 @@
   font-size: 0.88rem;
   color: rgba(255, 255, 255, 0.8);
   margin-bottom: 1.25rem;
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
 .beach-breadcrumb a {
@@ -52,7 +52,7 @@
 }
 
 .beach-hero-title {
-  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-size: clamp(2.2rem, 4.2vw, 3.4rem);
   font-weight: 600;
   line-height: 1.2;
@@ -73,7 +73,7 @@
   color: rgba(255, 255, 255, 0.92);
   max-width: 780px;
   margin-bottom: 2.25rem;
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
 .beach-hero-cta-row {
@@ -193,7 +193,7 @@
 
 .beach-card-title,
 .cultural-card-title {
-  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-size: 1.45rem;
   font-weight: 600;
   color: #111827;
@@ -261,7 +261,7 @@
   gap: 0.5rem;
   background: var(--color-dark-blue, #002B49);
   color: #FFFFFF !important;
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-size: 0.88rem;
   font-weight: 600;
   padding: 0.75rem 1.4rem;
@@ -325,7 +325,7 @@
 }
 
 .season-title {
-  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-size: 1.45rem;
   color: #111827;
   margin: 0.35rem 0 0.25rem;
@@ -403,7 +403,7 @@
 }
 
 .ocean-exp-box h4 {
-  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-size: 1.25rem;
   color: #111827;
   margin-bottom: 0.6rem;
@@ -445,7 +445,7 @@
   background: transparent;
   border: none;
   cursor: pointer;
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-size: 1.02rem;
   font-weight: 600;
   color: #111827;
@@ -520,7 +520,7 @@
   padding: 1.5rem 1.25rem;
   background: var(--color-dark-blue, #002B49);
   color: #FFFFFF;
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-size: 0.95rem;
   font-weight: 700;
   display: flex;
@@ -553,7 +553,7 @@
 
 .matrix-row-label {
   padding: 0.9rem 1.4rem;
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-size: 0.9rem;
   border-bottom: 1px solid #F1F5F9;
   border-right: 1px solid #F1F5F9;
@@ -669,7 +669,7 @@
 }
 
 .routemap-title {
-  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-size: clamp(1.8rem, 3vw, 2.4rem);
   font-weight: 600;
   color: #002B49;
@@ -771,7 +771,7 @@
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   color: #FFFFFF;
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-size: 0.74rem;
   font-weight: 700;
   letter-spacing: 0.08em;
@@ -787,7 +787,7 @@
 }
 
 .cultural-main-title {
-  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-size: clamp(2rem, 3.2vw, 2.9rem);
   font-weight: 600;
   color: #002B49;
@@ -806,7 +806,7 @@
 }
 
 .cultural-lead-text {
-  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-size: 1.05rem;
   line-height: 1.8;
   color: #00243D;
@@ -855,7 +855,7 @@
   gap: 0.5rem;
   background: var(--color-gold, #C5A880);
   color: #002B49;
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-size: 0.88rem;
   font-weight: 700;
   letter-spacing: 0.04em;

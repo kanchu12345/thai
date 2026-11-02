@@ -4,7 +4,7 @@
  * Unauthorized removal of attribution does not transfer ownership of this code.
  * https://infiniteweb.dev/
  */
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
 
 /**
  * LOTUS CEYLON INTERNATIONAL TOURS & SERVICES (PRIVATE) LIMITED
@@ -29,7 +29,7 @@
   --sacred-gold: #D4A359;          /* Accents, numbers, dividers (Real 3D Emblem Gold) */
   --sacred-gold-hover: #B38744;
   --leaf-green: #224A2A;           /* Secondary buttons, icons (Ceylon Rainforest) */
-  --ink: #1C1B1F;                  /* Headings and body text */
+  --ink: #012d6b;                  /* Headings and body text */
   --ivory: #FBF7F0;                /* Page background, solid header on scroll */
   --mist: #F1E9E1;                 /* Alternate sections, cards */
   --white: #FFFFFF;                /* Header over hero, card surfaces */
@@ -37,15 +37,16 @@
   /* System Color Mappings */
   --color-gold: var(--sacred-gold);
   --color-gold-hover: var(--sacred-gold-hover);
-  --color-dark-blue: var(--leaf-green);
-  --color-secondary-blue: #16361D;
+  --color-dark-blue: #012d6b;
+  --color-secondary-blue: #001f4d;
+  --color-accent-terracotta: #cb5222;
   --color-dark-green: var(--leaf-green);
   --color-footer-bg: var(--leaf-green);
   --color-lotus-pink: var(--lotus-primary);
   --color-lotus-pink-hover: var(--lotus-primary-dark);
   --color-lotus-pink-light: var(--ivory);
-  --color-dark-black: var(--ink);
-  --color-light-black: #3E454F;
+  --color-dark-black: #000000;
+  --color-light-black: #454545;
   --color-light-blue: var(--mist);
   --color-white: var(--white);
   --color-light-gray: rgba(212, 163, 89, 0.22);
@@ -53,8 +54,10 @@
   --color-border-subtle: #E8E2D8;
 
   /* Typography: Playfair Display for headings, Inter for body */
-  --font-serif: 'Playfair Display', Georgia, serif;
-  --font-main: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-serif: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-heading: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-sans: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-main: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 
   /* 8px Spacing Scale */
   --space-1: 8px;
@@ -97,12 +100,14 @@ html {
 }
 
 body {
-  font-family: var(--font-main);
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+
   background-color: var(--color-white);
   color: var(--color-light-black);
   line-height: 1.6;
   overflow-x: hidden;
   max-width: 100%;
+
 }
 
 img, video, svg, picture {
@@ -206,6 +211,7 @@ ul, ol {
 
 /* Typography matching Walkers Tours */
 .heading--60 {
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif !important;
   font-size: clamp(2.2rem, 4vw, 3.4rem);
   font-weight: 300;
   line-height: 1.18;
@@ -217,6 +223,7 @@ ul, ol {
 }
 
 .heading--40 {
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif !important;
   font-size: clamp(1.6rem, 2.5vw, 2.2rem);
   font-weight: 300;
   line-height: 1.25;
@@ -227,12 +234,14 @@ ul, ol {
 }
 
 .heading--28 {
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif !important;
   font-size: 1.4rem;
   font-weight: 300;
   line-height: 1.4;
 }
 
 .heading--24 {
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif !important;
   font-size: 1.25rem;
   font-weight: 600;
   line-height: 1.35;
@@ -2347,7 +2356,7 @@ ul, ol {
 }
 
 .footer-brand-title {
-  font-family: var(--font-serif, 'Playfair Display', Georgia, serif) !important;
+  font-family: var(--font-serif, 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif) !important;
   font-size: 1.35rem !important;
   font-weight: 700 !important;
   letter-spacing: 0.05em !important;
@@ -3933,6 +3942,7 @@ ul, ol {
   }
 
   .heading--60 {
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif !important;
     font-size: 2rem;
   }
 
@@ -4032,6 +4042,7 @@ ul, ol {
 }
 
 .heading--40 {
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif !important;
   font-size: clamp(1.6rem, 2.8vw, 2.4rem);
   line-height: 1.25;
 }
@@ -5447,7 +5458,7 @@ figure.video iframe,
 
 .dest-card-title {
   color: #4A1620 !important;
-  font-family: var(--font-serif, 'Playfair Display', Georgia, serif) !important;
+  font-family: var(--font-serif, 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif) !important;
   font-size: 1.35rem !important;
   font-weight: 700 !important;
   margin-bottom: 0.4rem !important;
@@ -5620,7 +5631,7 @@ figure.video iframe,
 
 .testimonial-quote-title {
   color: #4A1620 !important;
-  font-family: var(--font-serif, 'Playfair Display', Georgia, serif) !important;
+  font-family: var(--font-serif, 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif) !important;
   font-size: 1.25rem !important;
 }
 
