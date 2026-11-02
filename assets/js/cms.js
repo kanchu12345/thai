@@ -1054,17 +1054,19 @@
 
       elements.forEach(el => {
         if (el.hasAttribute('data-cms-img') || el.tagName === 'IMG') {
-          el.setAttribute('src', val || 'assets/images/placeholder.png');
+          const resolved = val ? resolveImgUrl(val) : resolveImgUrl('assets/images/placeholder.png');
+          el.setAttribute('src', resolved);
         } else if (el.hasAttribute('data-cms-bg')) {
           if (!val) {
             el.style.backgroundImage = 'none';
           } else {
+            const resolvedBg = resolveImgUrl(val);
             if (el.classList.contains('sacred-cta-banner')) {
-              el.style.backgroundImage = `linear-gradient(135deg, rgba(13, 43, 29, 0.82) 0%, rgba(22, 54, 29, 0.90) 100%), url("${val}")`;
+              el.style.backgroundImage = `linear-gradient(135deg, rgba(13, 43, 29, 0.82) 0%, rgba(22, 54, 29, 0.90) 100%), url("${resolvedBg}")`;
             } else if (el.classList.contains('dest-hero') || el.classList.contains('about-hero') || el.classList.contains('contact-hero') || el.classList.contains('exp-hero') || el.classList.contains('gallery-hero') || el.classList.contains('reviews-hero') || el.classList.contains('blog-hero') || el.classList.contains('beach-hero-banner') || el.classList.contains('tours-hero-banner') || el.classList.contains('banner-section-inner')) {
-              el.style.backgroundImage = `linear-gradient(180deg, rgba(0, 43, 73, 0.65) 0%, rgba(0, 43, 73, 0.88) 100%), url("${val}")`;
+              el.style.backgroundImage = `linear-gradient(180deg, rgba(0, 43, 73, 0.65) 0%, rgba(0, 43, 73, 0.88) 100%), url("${resolvedBg}")`;
             } else {
-              el.style.backgroundImage = `url("${val}")`;
+              el.style.backgroundImage = `url("${resolvedBg}")`;
             }
           }
         } else if (el.hasAttribute('data-cms-video')) {

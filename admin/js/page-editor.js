@@ -347,36 +347,117 @@
         .replace(/&#39;/g, "'");
     },
 
+    PACKAGE_FILE_MAP: {
+      'island-adrenaline-rapids-expedition': 'tours/adventure/island-adrenaline-rapids-expedition/index.html',
+      'wild-peaks-trails-surf-safari': 'tours/adventure/wild-peaks-trails-surf-safari/index.html',
+      'lotus-ayu-holistic-rejuvenation': 'tours/ayurvedic/lotus-ayu-holistic-rejuvenation/index.html',
+      'sacred-serenity-forest-meditation-retreat': 'tours/ayurvedic/sacred-serenity-forest-meditation-retreat/index.html',
+      'pristine-seaboard-odyssey': 'tours/beach/pristine-seaboard-odyssey/index.html',
+      'southern-sands-serenade': 'tours/beach/southern-sands-serenade/index.html',
+      'turquoise-eastern-sanctuary': 'tours/beach/turquoise-eastern-sanctuary/index.html',
+      'forest-hermitages-mindful-ceylon': 'tours/buddhist-heritage/forest-hermitages-mindful-ceylon/index.html',
+      'the-sacred-bodhi-ancient-kingdoms': 'tours/buddhist-heritage/the-sacred-bodhi-ancient-kingdoms/index.html',
+      'the-sacred-tooth-monastic-sanctuaries': 'tours/buddhist-heritage/the-sacred-tooth-monastic-sanctuaries/index.html',
+      'royal-kingdoms-sacred-temples': 'tours/cultural/royal-kingdoms-sacred-temples/index.html',
+      'the-sacred-lotus-triangle': 'tours/cultural/the-sacred-lotus-triangle/index.html',
+      'three-millennia-of-living-heritage': 'tours/cultural/three-millennia-of-living-heritage/index.html',
+      'island-wonder-multi-gen-family-discovery': 'tours/family/island-wonder-multi-gen-family-discovery/index.html',
+      'the-grand-ceylon-family-adventure': 'tours/family/the-grand-ceylon-family-adventure/index.html',
+      'wild-safari-coastal-family-holiday': 'tours/family/wild-safari-coastal-family-holiday/index.html',
+      'highland-greens-coastal-links-championship': 'tours/golf/highland-greens-coastal-links-championship/index.html',
+      'the-grand-ceylon-masters-golf-odyssey': 'tours/golf/the-grand-ceylon-masters-golf-odyssey/index.html',
+      'the-royal-ceylon-fairways-tour': 'tours/golf/the-royal-ceylon-fairways-tour/index.html',
+      'ceylon-tea-trails-colonial-grandeur': 'tours/hill-country/ceylon-tea-trails-colonial-grandeur/index.html',
+      'highland-wilderness-cascading-waterfalls': 'tours/hill-country/highland-wilderness-cascading-waterfalls/index.html',
+      'misty-peaks-scenic-railways-expedition': 'tours/hill-country/misty-peaks-scenic-railways-expedition/index.html',
+      'enchanted-ceylon-romantic-hideaway': 'tours/honeymoon/enchanted-ceylon-romantic-hideaway/index.html',
+      'pure-serenade-coastal-highland-romance': 'tours/honeymoon/pure-serenade-coastal-highland-romance/index.html',
+      'sacred-ramayana-heritage-trail': 'tours/ramayana/sacred-ramayana-heritage-trail/index.html',
+      'the-epic-ramayana-chronicle-pilgrimage': 'tours/ramayana/the-epic-ramayana-chronicle-pilgrimage/index.html',
+      'the-sri-lanka-big-five-expedition': 'tours/wildlife/the-sri-lanka-big-five-expedition/index.html',
+      'untamed-biosphere-rainforest-odyssey': 'tours/wildlife/untamed-biosphere-rainforest-odyssey/index.html',
+      'wild-ceylon-predator-elephant-trail': 'tours/wildlife/wild-ceylon-predator-elephant-trail/index.html'
+    },
+
+    DESTINATION_FILE_MAP: {
+      'anuradhapura': 'destinations/anuradhapura/index.html',
+      'arugam-bay': 'destinations/arugam-bay/index.html',
+      'bentota-beruwala': 'destinations/bentota-beruwala/index.html',
+      'bentota': 'destinations/bentota-beruwala/index.html',
+      'colombo-kelani-valley': 'destinations/colombo-kelani-valley/index.html',
+      'colombo': 'destinations/colombo-kelani-valley/index.html',
+      'dambulla': 'destinations/dambulla/index.html',
+      'ella-demodara': 'destinations/ella-demodara/index.html',
+      'ella': 'destinations/ella-demodara/index.html',
+      'galle-dutch-fort': 'destinations/galle-dutch-fort/index.html',
+      'galle': 'destinations/galle-dutch-fort/index.html',
+      'haputale-lipton-s-seat': 'destinations/haputale-lipton-s-seat/index.html',
+      'haputale': 'destinations/haputale-lipton-s-seat/index.html',
+      'horton-plains-world-s-end': 'destinations/horton-plains-world-s-end/index.html',
+      'horton-plains': 'destinations/horton-plains-world-s-end/index.html',
+      'kandy': 'destinations/kandy/index.html',
+      'kataragama': 'destinations/kataragama/index.html',
+      'kelaniya': 'destinations/kelaniya/index.html',
+      'mihintale': 'destinations/mihintale/index.html',
+      'minneriya-national-park': 'destinations/minneriya-national-park/index.html',
+      'minneriya': 'destinations/minneriya-national-park/index.html',
+      'mirissa-weligama': 'destinations/mirissa-weligama/index.html',
+      'mirissa': 'destinations/mirissa-weligama/index.html',
+      'negombo-beach-lagoon': 'destinations/negombo-beach-lagoon/index.html',
+      'negombo': 'destinations/negombo-beach-lagoon/index.html',
+      'nuwara-eliya': 'destinations/nuwara-eliya/index.html',
+      'polonnaruwa': 'destinations/polonnaruwa/index.html',
+      'sigiriya-rock-citadel': 'destinations/sigiriya-rock-citadel/index.html',
+      'sigiriya': 'destinations/sigiriya-rock-citadel/index.html',
+      'sri-pada': 'destinations/sri-pada/index.html',
+      'trincomalee-nilaveli': 'destinations/trincomalee-nilaveli/index.html',
+      'trincomalee': 'destinations/trincomalee-nilaveli/index.html',
+      'udawalawe-national-park': 'destinations/udawalawe-national-park/index.html',
+      'udawalawe': 'destinations/udawalawe-national-park/index.html',
+      'wilpattu-national-park': 'destinations/wilpattu-national-park/index.html',
+      'wilpattu': 'destinations/wilpattu-national-park/index.html',
+      'yala-national-park': 'destinations/yala-national-park/index.html',
+      'yala': 'destinations/yala-national-park/index.html'
+    },
+
+    filterSidebarPackages(query) {
+      const q = (query || '').toLowerCase().trim();
+      const list = document.getElementById('sidebarPackagesList');
+      if (!list) return;
+      const links = list.querySelectorAll('.sidebar-pkg-link');
+      const headers = list.querySelectorAll('.sidebar-cat-header');
+      links.forEach(link => {
+        const title = (link.getAttribute('data-pkg-title') || link.textContent || '').toLowerCase();
+        if (!q || title.includes(q)) {
+          link.style.display = 'flex';
+        } else {
+          link.style.display = 'none';
+        }
+      });
+      // Show/hide category headers if all children are hidden
+      headers.forEach(h => {
+        let sibling = h.nextElementSibling;
+        let anyVisible = false;
+        while (sibling && sibling.classList.contains('sidebar-pkg-link')) {
+          if (sibling.style.display !== 'none') anyVisible = true;
+          sibling = sibling.nextElementSibling;
+        }
+        h.style.display = (!q || anyVisible) ? 'block' : 'none';
+      });
+    },
+
     openTourDetailPage(slug) {
       if (!slug) return;
       const cleanSlug = slug.toLowerCase().trim();
-      const pageSelect = document.getElementById('visualPageDropdown');
-      if (pageSelect) {
-        for (let i = 0; i < pageSelect.options.length; i++) {
-          const opt = pageSelect.options[i];
-          if (opt.value.includes(`tourPackages/${cleanSlug}|`)) {
-            this.handlePageSelectChange(opt.value);
-            return;
-          }
-        }
-      }
-      this.openPage(`tourPackages/${cleanSlug}`, `tours/cultural/${cleanSlug}/index.html`);
+      const filePath = this.PACKAGE_FILE_MAP[cleanSlug] || `tours/cultural/${cleanSlug}/index.html`;
+      this.openPage(`tourPackages/${cleanSlug}`, filePath);
     },
 
     openDestinationPage(slug) {
       if (!slug) return;
       const cleanSlug = slug.toLowerCase().trim();
-      const pageSelect = document.getElementById('visualPageDropdown');
-      if (pageSelect) {
-        for (let i = 0; i < pageSelect.options.length; i++) {
-          const opt = pageSelect.options[i];
-          if (opt.value.includes(`destinations/${cleanSlug}|`)) {
-            this.handlePageSelectChange(opt.value);
-            return;
-          }
-        }
-      }
-      this.openPage(`destinations/${cleanSlug}`, `destinations/${cleanSlug}/index.html`);
+      const filePath = this.DESTINATION_FILE_MAP[cleanSlug] || `destinations/${cleanSlug}/index.html`;
+      this.openPage(`destinations/${cleanSlug}`, filePath);
     },
 
     openLinkedHref(href) {

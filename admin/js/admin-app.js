@@ -3337,8 +3337,12 @@ resolveImg(url) {
             </label>
           </td>
           <td style="text-align: right;">
-            <div class="action-btns" style="justify-content: flex-end;">
-              <button class="btn-icon" title="Edit Package" onclick="AdminApp.openPackageModal('${slugAttr}')">
+            <div class="action-btns" style="justify-content: flex-end; gap: 6px;">
+              <button class="btn-icon" title="Open in Live Visual Page Editor" style="color: #2563EB; background: rgba(37,99,235,0.1); border-radius: 4px; padding: 4px 8px; display: inline-flex; align-items: center; gap: 4px; font-weight: 600; font-size: 0.78rem;" onclick="PageEditor.openTourDetailPage('${slugAttr}')">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+                <span>Live Edit</span>
+              </button>
+              <button class="btn-icon" title="Edit Package Form" onclick="AdminApp.openPackageModal('${slugAttr}')">
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>
               </button>
               <button class="btn-icon" title="Duplicate Package" onclick="AdminApp.duplicatePackage('${slugAttr}')">
