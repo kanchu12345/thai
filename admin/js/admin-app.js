@@ -1814,6 +1814,137 @@ resolveImg(url) {
 
 
 
+    renderBlogPosts() {
+      const tbody = document.getElementById('blogPostsTableBody');
+      if (!tbody) return;
+
+      if (!this.blogPosts || this.blogPosts.length === 0) {
+        this.blogPosts = [
+          {
+            id: 'ella-hands-on-tea-making-experience',
+            slug: 'ella-hands-on-tea-making-experience',
+            title: 'Ella: Hands-On Tea Making Experience with Tasting',
+            category: 'Hill Country & Tea Culture',
+            readTime: '6 min read',
+            publishDate: '2026-11-01',
+            rating: '4.9 (100 reviews)',
+            price: 'From $10 per person',
+            coverImage: 'assets/images/blog/ella-tea-making-experience.webp',
+            excerpt: "Discover the heart of Sri Lanka's tea culture with a hands-on tea making experience in Ella. Learn the art of tea making, from plucking leaves to brewing the perfect cup.",
+            docKey: 'siteContent/blog-ella-tea',
+            pageFile: 'blog/ella-hands-on-tea-making-experience/index.html',
+            is_published: true,
+            status: 'published'
+          },
+          {
+            id: 'sacred-footsteps-unlocking-sri-lankas-ancient-buddhist-kingdoms',
+            slug: 'sacred-footsteps-unlocking-sri-lankas-ancient-buddhist-kingdoms',
+            title: 'Sacred Footsteps: Unlocking Sri Lanka’s Ancient Buddhist Kingdoms',
+            category: 'Cultural Heritage',
+            readTime: '8 min read',
+            publishDate: '2026-10-24',
+            rating: '5.0 (84 reviews)',
+            price: 'Bespoke Private Tour',
+            coverImage: 'assets/images/cultural/sigiriya-1.webp',
+            excerpt: 'Journey across 2,300+ years of living Buddhist heritage from the Sacred Bo Tree of Anuradhapura to the golden cave shrines of Dambulla.',
+            docKey: 'siteContent/blog-sacred-kingdoms',
+            pageFile: 'blog/sacred-footsteps-unlocking-sri-lankas-ancient-buddhist-kingdoms/index.html',
+            is_published: true,
+            status: 'published'
+          },
+          {
+            id: 'the-great-gathering-watching-hundreds-of-wild-elephants-at-minneriya',
+            slug: 'the-great-gathering-watching-hundreds-of-wild-elephants-at-minneriya',
+            title: 'The Great Gathering: Watching Hundreds of Wild Elephants at Minneriya',
+            category: 'Wildlife & Safari',
+            readTime: '7 min read',
+            publishDate: '2026-10-18',
+            rating: '4.9 (120 reviews)',
+            price: 'Safari Excursion',
+            coverImage: 'assets/images/wildlife/minneriya-elephant-gathering-2.webp',
+            excerpt: 'Experience the largest gathering of Asian elephants in the world across the ancient reservoir grasslands of Minneriya National Park.',
+            docKey: 'siteContent/blog-elephant-gathering',
+            pageFile: 'blog/the-great-gathering-watching-hundreds-of-wild-elephants-at-minneriya/index.html',
+            is_published: true,
+            status: 'published'
+          },
+          {
+            id: 'growing-a-greener-future-volunteer-reforestation-sinharaja',
+            slug: 'growing-a-greener-future-volunteer-reforestation-sinharaja',
+            title: 'Growing a Greener Future: Volunteer Reforestation in Sinharaja',
+            category: 'Conservation & Sustainability',
+            readTime: '6 min read',
+            publishDate: '2026-09-28',
+            rating: '5.0 (62 reviews)',
+            price: 'Eco Experience',
+            coverImage: 'assets/images/wildlife/sinharaja-rainforest-5.webp',
+            excerpt: 'How travelers with Lotus Ceylon contribute to planting endemic rainforest corridors on the buffer perimeter of UNESCO Sinharaja Biosphere.',
+            docKey: 'siteContent/blog-sinharaja-reforestation',
+            pageFile: 'blog/growing-a-greener-future-volunteer-reforestation-sinharaja/index.html',
+            is_published: true,
+            status: 'published'
+          },
+          {
+            id: 'living-healing-traditional-ceylon-ayurveda',
+            slug: 'living-healing-traditional-ceylon-ayurveda',
+            title: 'Living Healing: Traditional Ceylon Ayurveda & Holistic Wellness',
+            category: 'Wellness & Healing',
+            readTime: '9 min read',
+            publishDate: '2026-09-15',
+            rating: '4.8 (95 reviews)',
+            price: 'Wellness Retreat',
+            coverImage: 'assets/images/cultural/polonnaruwa-gal-vihara-3.webp',
+            excerpt: 'Rediscover equilibrium with time-tested herbal panchakarma, authentic doctor consultations, and curative coastal healing sanctuaries.',
+            docKey: 'siteContent/blog-ayurveda-healing',
+            pageFile: 'blog/living-healing-traditional-ceylon-ayurveda/index.html',
+            is_published: true,
+            status: 'published'
+          }
+        ];
+      }
+
+      tbody.innerHTML = this.blogPosts.map(post => {
+        const coverSrc = post.coverImage.startsWith('http') ? post.coverImage : `../${post.coverImage}`;
+        return `
+          <tr>
+            <td>
+              <img src="${coverSrc}" alt="${post.title}" style="width: 58px; height: 42px; object-fit: cover; border-radius: 6px; border: 1px solid #E2E8F0;" onerror="this.src='../assets/images/placeholder.png'">
+            </td>
+            <td>
+              <div style="font-weight: 700; color: #0F172A; font-size: 0.92rem; max-width: 320px; line-height: 1.35;">${post.title}</div>
+              <div style="font-size: 0.78rem; color: #64748B; margin-top: 3px;">
+                <span>${post.readTime}</span> • <span style="color: #D97706; font-weight: 600;">${post.rating || ''}</span>
+              </div>
+            </td>
+            <td>
+              <span class="badge" style="background: rgba(46,125,50,0.12); color: #166534; font-weight: 600; font-size: 0.78rem; padding: 4px 10px; border-radius: 9999px;">
+                ${post.category}
+              </span>
+            </td>
+            <td>
+              <span style="font-size: 0.84rem; color: #475569;">${post.publishDate}</span>
+            </td>
+            <td>
+              <span class="badge" style="background: #DEF7EC; color: #03543F; font-size: 0.76rem; font-weight: 700; padding: 3px 8px; border-radius: 9999px;">
+                Published
+              </span>
+            </td>
+            <td>
+              <div class="action-btns" style="gap: 8px;">
+                <button type="button" class="btn btn-primary btn-sm" style="display: inline-flex; align-items: center; gap: 4px; padding: 4px 10px; font-size: 0.78rem; font-weight: 600;" onclick="PageEditor.openPage('${post.docKey}', '${post.pageFile}')">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+                  <span>Live Edit</span>
+                </button>
+                <a href="../${post.pageFile}" target="_blank" class="btn btn-outline btn-sm" style="padding: 4px 10px; font-size: 0.78rem; text-decoration: none;">
+                  <span>View ↗</span>
+                </a>
+              </div>
+            </td>
+          </tr>
+        `;
+      }).join('');
+    },
+
     toggleSidebar() {
 
       const sidebar = document.getElementById('sidebar');
