@@ -6248,3 +6248,79 @@ body.cms-edit-active [class*="watermark"] {
   background: transparent !important;
   box-shadow: none !important;
 }
+
+/* ==========================================================================
+   GOLD PILL BUTTONS (Matching Header INQUIRE Button)
+   ========================================================================== */
+.btn-compact-explore-all {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+  background: linear-gradient(135deg, #D4A359 0%, #C98218 50%, #B87314 100%) !important;
+  background-color: var(--sacred-gold, #D4A359) !important;
+  color: #FFFFFF !important;
+  padding: 0.58rem 1.45rem !important;
+  border-radius: 9999px !important;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  font-size: 0.82rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase !important;
+  text-decoration: none !important;
+  box-shadow: 0 4px 18px rgba(189, 110, 15, 0.35) !important;
+  border: none !important;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.btn-compact-explore-all:hover {
+  background: linear-gradient(135deg, #B87314 0%, #A3620D 50%, #8C5208 100%) !important;
+  color: #FFFFFF !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 25px rgba(189, 110, 15, 0.5) !important;
+}
+
+.btn-editorial-primary {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.75rem !important;
+  background: linear-gradient(135deg, #D4A359 0%, #C98218 50%, #B87314 100%) !important;
+  background-color: var(--sacred-gold, #D4A359) !important;
+  color: #FFFFFF !important;
+  padding: 0.85rem 1.85rem !important;
+  border-radius: 9999px !important;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  font-size: 0.86rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase !important;
+  text-decoration: none !important;
+  box-shadow: 0 4px 18px rgba(189, 110, 15, 0.35) !important;
+  border: none !important;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.btn-editorial-primary .btn-arrow-circle {
+  width: 28px !important;
+  height: 28px !important;
+  border-radius: 50% !important;
+  background: rgba(255, 255, 255, 0.28) !important;
+  color: #FFFFFF !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 0.85rem !important;
+  transition: transform 0.3s ease, background 0.3s ease !important;
+  flex-shrink: 0 !important;
+}
+
+.btn-editorial-primary:hover {
+  background: linear-gradient(135deg, #B87314 0%, #A3620D 50%, #8C5208 100%) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 25px rgba(189, 110, 15, 0.5) !important;
+  color: #FFFFFF !important;
+}
+
+.btn-editorial-primary:hover .btn-arrow-circle {
+  transform: translateX(3px) !important;
+  background: rgba(255, 255, 255, 0.45) !important;
+}
