@@ -619,37 +619,111 @@
   font-weight: 600 !important;
 }
 
-/* Feature highlights mini-strip */
+/* Feature highlights mini-strip & Governance Heritage Cards */
 .editorial-chips-grid {
+  display: none !important;
+}
+
+.editorial-gov-cards-grid {
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr) !important;
+  gap: 1.25rem !important;
+  margin: 1.75rem 0 2rem 0 !important;
+}
+
+@media (max-width: 680px) {
+  .editorial-gov-cards-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+    margin: 1.5rem 0 1.75rem 0 !important;
+  }
+}
+
+.gov-card {
+  background: #ffffff !important;
+  border-radius: 12px !important;
+  padding: 1.5rem 1.65rem !important;
+  border: 1px solid rgba(0, 43, 73, 0.08) !important;
+  box-shadow: 0 4px 20px rgba(0, 43, 73, 0.05) !important;
+  transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+  position: relative !important;
+  overflow: hidden !important;
   display: flex !important;
-  flex-wrap: wrap !important;
-  gap: 0.65rem !important;
-  margin-bottom: 1.65rem !important;
+  flex-direction: column !important;
 }
 
-.editorial-chip {
-  display: inline-flex !important;
+.gov-card:hover {
+  transform: translateY(-3px) !important;
+  box-shadow: 0 12px 30px rgba(0, 43, 73, 0.09) !important;
+}
+
+.gov-card::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 4px !important;
+  background: #D4A359 !important;
+}
+
+.gov-card.gov-card--lotus::before {
+  background: #C95451 !important;
+}
+
+.gov-card.gov-card--gold::before {
+  background: #D4A359 !important;
+}
+
+.gov-card.gov-card--navy::before {
+  background: #012D6B !important;
+}
+
+.gov-card-title {
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  font-size: 1.18rem !important;
+  color: #012D6B !important;
+  margin: 0.25rem 0 0.6rem 0 !important;
+  font-weight: 700 !important;
+  line-height: 1.35 !important;
+}
+
+.gov-card-desc {
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  font-size: 0.92rem !important;
+  color: #454545 !important;
+  line-height: 1.6 !important;
+  margin: 0 0 0.85rem 0 !important;
+  flex-grow: 1 !important;
+}
+
+.gov-card-footer {
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  font-size: 0.88rem !important;
+  color: #012D6B !important;
+  font-weight: 700 !important;
+  margin-top: auto !important;
+  padding-top: 0.75rem !important;
+  border-top: 1px solid #E2E8F0 !important;
+  display: flex !important;
   align-items: center !important;
-  gap: 0.45rem !important;
-  background: #F8FAFC !important;
-  border: 1px solid rgba(0, 43, 73, 0.1) !important;
-  padding: 0.42rem 0.9rem !important;
-  border-radius: 8px !important;
-  font-size: 0.82rem !important;
-  font-weight: 600 !important;
-  color: var(--color-dark-blue, #002B49) !important;
-  transition: all 0.25s ease !important;
+  justify-content: space-between !important;
+  flex-wrap: wrap !important;
+  gap: 0.35rem !important;
 }
 
-.editorial-chip:hover {
-  background: #FFFFFF !important;
-  border-color: rgba(201, 84, 81, 0.4) !important;
-  box-shadow: 0 4px 12px rgba(0, 43, 73, 0.08) !important;
-  transform: translateY(-1px) !important;
+.gov-card-highlight.lotus {
+  color: #C95451 !important;
+  font-weight: 800 !important;
 }
 
-.editorial-chip-icon {
-  font-size: 0.95rem !important;
+.gov-card-highlight.gold {
+  color: #D4A359 !important;
+  font-weight: 800 !important;
+}
+
+.gov-card-icon {
+  display: none !important;
 }
 
 /* Matched Luxury Action Buttons */
