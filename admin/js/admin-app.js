@@ -1797,6 +1797,8 @@ resolveImg(url) {
         this.renderDestinations();
       } else if (sectionId === 'reviews') {
         this.renderReviews();
+      } else if (sectionId === 'blog-posts') {
+        this.renderBlogPosts();
       } else if (sectionId === 'team') {
         this.renderTeam();
       } else if (sectionId === 'media') {

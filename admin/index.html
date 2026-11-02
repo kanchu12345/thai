@@ -96,7 +96,13 @@
 <a class="nav-link nav-sub-link" data-section="page-editor" data-page-doc="siteContent/experiences" onclick="PageEditor.openPage('siteContent/experiences', 'experiences.html')"><span>✨ Experiences</span></a>
 <a class="nav-link nav-sub-link" data-section="page-editor" data-page-doc="siteContent/gallery" onclick="PageEditor.openPage('siteContent/gallery', 'gallery.html')"><span>🖼️ Gallery</span></a>
 <a class="nav-link nav-sub-link" data-section="page-editor" data-page-doc="siteContent/reviews" onclick="PageEditor.openPage('siteContent/reviews', 'reviews.html')"><span>✍️ Reviews &amp; Guestbook</span></a>
-<a class="nav-link nav-sub-link" data-section="page-editor" data-page-doc="siteContent/blog" onclick="PageEditor.openPage('siteContent/blog', 'blog.html')"><span>📰 Blog &amp; Editorial</span></a>
+<a class="nav-link nav-sub-link" data-section="page-editor" data-page-doc="siteContent/blog" onclick="PageEditor.openPage('siteContent/blog', 'blog.html')"><span>📰 Blog Main Hub</span></a>
+<a class="nav-link nav-sub-link" data-section="page-editor" data-page-doc="siteContent/blog-ella-tea" onclick="PageEditor.openPage('siteContent/blog-ella-tea', 'blog/ella-hands-on-tea-making-experience/index.html')" style="padding-left: 2rem; font-size: 0.85rem; color: #2E7D32;"><span>☕ Ella Tea Making Article</span></a>
+<a class="nav-link nav-sub-link" data-section="page-editor" data-page-doc="siteContent/blog-sacred-kingdoms" onclick="PageEditor.openPage('siteContent/blog-sacred-kingdoms', 'blog/sacred-footsteps-unlocking-sri-lankas-ancient-buddhist-kingdoms/index.html')" style="padding-left: 2rem; font-size: 0.85rem;"><span>🏛️ Sacred Kingdoms Article</span></a>
+<a class="nav-link nav-sub-link" data-section="page-editor" data-page-doc="siteContent/blog-elephant-gathering" onclick="PageEditor.openPage('siteContent/blog-elephant-gathering', 'blog/the-great-gathering-watching-hundreds-of-wild-elephants-at-minneriya/index.html')" style="padding-left: 2rem; font-size: 0.85rem;"><span>🐘 Minneriya Gathering Article</span></a>
+<a class="nav-link nav-sub-link" data-section="page-editor" data-page-doc="siteContent/blog-sinharaja-reforestation" onclick="PageEditor.openPage('siteContent/blog-sinharaja-reforestation', 'blog/growing-a-greener-future-volunteer-reforestation-sinharaja/index.html')" style="padding-left: 2rem; font-size: 0.85rem;"><span>🌿 Sinharaja Reforestation Article</span></a>
+<a class="nav-link nav-sub-link" data-section="page-editor" data-page-doc="siteContent/blog-ayurveda-healing" onclick="PageEditor.openPage('siteContent/blog-ayurveda-healing', 'blog/living-healing-traditional-ceylon-ayurveda/index.html')" style="padding-left: 2rem; font-size: 0.85rem;"><span>🍵 Living Ayurveda Article</span></a>
+
 <a class="nav-link nav-sub-link" data-section="page-editor" data-page-doc="siteContent/inquiry-detailed" onclick="PageEditor.openPage('siteContent/inquiry-detailed', 'inquiry-detailed.html')"><span>📋 Bespoke Inquiry</span></a>
 <a class="nav-link nav-sub-link" data-section="page-editor" data-page-doc="siteContent/inquiry-quick" onclick="PageEditor.openPage('siteContent/inquiry-quick', 'inquiry-quick.html')"><span>⚡ Quick Consultation</span></a>
 <a class="nav-link nav-sub-link" data-section="page-editor" data-page-doc="siteContent/toursIndex" onclick="PageEditor.openPage('siteContent/toursIndex', 'tours/index.html')"><span>🗺️ Tours Index (Categories)</span></a>
@@ -142,7 +148,7 @@
 <svg viewbox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"></path></svg>
 <span>Our People / Team</span>
 </a>
-<a class="nav-link" data-section="blog-posts" onclick="PageEditor.openBlogSection()">
+<a class="nav-link" data-section="blog-posts" onclick="AdminApp.switchSection('blog-posts')">
 <svg viewbox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"></path></svg>
 <span>Blog Posts</span>
 </a>
@@ -1856,5 +1862,62 @@
 <script src="../js/firebase-tour-sync.js"></script>
 <script src="js/admin-app.js?v=20261101_perf_v9"></script>
 <script src="js/page-editor.js?v=20261101_perf_v9"></script>
+
+<!-- BLOG POST MODAL -->
+<div class="modal-backdrop" id="blogModal" style="display: none;">
+<div class="modal" style="max-width: 680px;">
+<div class="modal-header">
+<h3 id="blogModalTitle">Edit Blog Story</h3>
+<button class="modal-close" onclick="AdminApp.closeBlogModal()">✕</button>
+</div>
+<form id="blogForm" onsubmit="AdminApp.saveBlogModal(event)">
+<input type="hidden" id="blogPostId">
+<div class="modal-body">
+<div class="form-row">
+<div class="form-group" style="flex: 2;">
+<label for="blogTitleInput">Story Title (EN) *</label>
+<input type="text" id="blogTitleInput" class="form-control" required placeholder="e.g. Ella: Hands-On Tea Making Experience with Tasting">
+</div>
+<div class="form-group" style="flex: 1;">
+<label for="blogCategoryInput">Category *</label>
+<input type="text" id="blogCategoryInput" class="form-control" required placeholder="e.g. Hill Country & Tea">
+</div>
+</div>
+
+<div class="form-row">
+<div class="form-group">
+<label for="blogReadTimeInput">Read Time</label>
+<input type="text" id="blogReadTimeInput" class="form-control" placeholder="e.g. 6 min read">
+</div>
+<div class="form-group">
+<label for="blogRatingInput">Rating / Reviews</label>
+<input type="text" id="blogRatingInput" class="form-control" placeholder="e.g. ★ 4.9 (100 reviews)">
+</div>
+</div>
+
+<div class="form-group">
+<label for="blogCoverInput">Cover Image Path / CDN URL *</label>
+<div style="display: flex; gap: 8px;">
+<input type="text" id="blogCoverInput" class="form-control" required placeholder="assets/images/blog/ella-tea-making-experience.webp">
+<button type="button" class="btn btn-secondary" onclick="AdminApp.openMediaPickerForBlog()">Media Library</button>
+</div>
+<div id="blogCoverPreview" style="margin-top: 10px; width: 100%; height: 160px; border-radius: 8px; overflow: hidden; background: #F1F5F9; display: flex; align-items: center; justify-content: center; border: 1px solid #E2E8F0;">
+  <span style="color: #94A3B8; font-size: 0.9rem;">No image selected</span>
+</div>
+</div>
+
+<div class="form-group">
+<label for="blogExcerptInput">Summary / Excerpt (EN) *</label>
+<textarea id="blogExcerptInput" class="form-control" rows="3" required placeholder="Brief intro to the story..."></textarea>
+</div>
+</div>
+<div class="modal-footer">
+<button type="button" class="btn btn-secondary" onclick="AdminApp.closeBlogModal()">Cancel</button>
+<button type="submit" class="btn btn-primary" id="saveBlogBtn">Save Changes</button>
+</div>
+</form>
+</div>
+</div>
+
 </body>
 </html>

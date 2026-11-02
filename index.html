@@ -334,8 +334,8 @@
     </svg>
   </div>
   <div class="location-badge-text-col">
-    <span class="location-badge-label" id="heroLocationTitle">Lotus Blossom Sanctuaries</span>
-    <span class="location-badge-sub" id="heroLocationSub">Sacred Waters of Ceylon</span>
+    <span class="location-badge-label" id="heroLocationTitle">Lotus Tower &amp; Colombo Skyline</span>
+    <span class="location-badge-sub" id="heroLocationSub">Iconic Capital Landmark (350m)</span>
   </div>
 </div>
 
@@ -377,18 +377,23 @@
   line-height: 1.25;
 }
 .location-badge-label {
-  font-size: 0.84rem;
+  font-size: 0.88rem;
   font-weight: 700;
   color: #FFFFFF;
   letter-spacing: 0.02em;
   font-family: var(--font-heading, 'Playfair Display', serif);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.85);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 .location-badge-sub {
-  font-size: 0.68rem;
-  color: #D4AF37;
-  letter-spacing: 0.06em;
+  font-size: 0.70rem;
+  color: #F5C842;
+  letter-spacing: 0.07em;
   text-transform: uppercase;
-  font-weight: 600;
+  font-weight: 700;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.85);
+  -webkit-font-smoothing: antialiased;
 }
 @media (max-width: 768px) {
   .hero-video-location-badge {
@@ -417,22 +422,24 @@
   if (!v || !badge || !titleEl || !subEl) return;
 
   var scenes = [
-    { start: 0.0, end: 3.6, title: 'Lotus Blossom Sanctuaries', sub: 'Sacred Waters of Ceylon' },
-    { start: 3.6, end: 7.2, title: 'Sacred Anuradhapura & Lake', sub: 'Ancient Kingdom & Nuwara Wewa' },
-    { start: 7.2, end: 10.8, title: 'Colossal Jetavanaramaya Stupa', sub: 'UNESCO Sacred Heritage & Monasteries' },
-    { start: 10.8, end: 14.4, title: 'Sigiriya Ancient Rock Citadel', sub: 'Eighth Wonder of the World' },
-    { start: 14.4, end: 18.0, title: 'Dambulla Golden Cave Temple', sub: 'Sacred Monastic Mountain, Matale' },
-    { start: 18.0, end: 21.6, title: 'Diyaluma Cascading Waterfall', sub: 'Highland Mountain Rapids, Koslanda' },
-    { start: 21.6, end: 25.2, title: 'Ambuluwawa Biodiversity Tower', sub: 'Misty Mountain Spire, Gampola' },
-    { start: 25.2, end: 28.8, title: 'Nine Arch Demodara Bridge', sub: 'Misty Highland Train, Ella' },
-    { start: 28.8, end: 32.4, title: 'Kandy Sacred Hill Capital', sub: 'Royal Lake & Historic Sanctuaries' },
-    { start: 32.4, end: 36.0, title: 'Maskeliya & Nuwara Eliya Valleys', sub: 'Emerald Tea Country & Sacred Lakes' },
-    { start: 36.0, end: 39.6, title: 'Ramboda Highland Falls', sub: 'Lush Tea Hills & Cascades' },
-    { start: 39.6, end: 43.2, title: 'Wild Elephant Gathering', sub: 'Kaudulla & Minneriya Sanctuaries' },
-    { start: 43.2, end: 46.8, title: 'Yala National Park Wilderness', sub: 'Untamed Wildlife & Open Savannas' },
-    { start: 46.8, end: 50.4, title: 'Bentota Beach & Golden Sands', sub: 'Pristine Coast & Turquoise Waters' },
-    { start: 50.4, end: 54.0, title: 'Weligama & Mirissa Tropical Bay', sub: 'Azure Ocean & Coconut Palms' },
-    { start: 54.0, end: 62.0, title: 'Dondra Head Lighthouse', sub: 'Southernmost Tip & Deep Blue Ocean' }
+    { start: 0.0, end: 3.6, title: 'Lotus Tower & Colombo Skyline', sub: 'Iconic Capital Landmark (350m)' },
+    { start: 3.6, end: 7.2, title: 'Colombo Maritime Capital', sub: 'Beira Lake & Ocean Horizon' },
+    { start: 7.2, end: 10.8, title: 'Sacred Anuradhapura & Nuwara Wewa', sub: 'Ancient Buddhist Capital (4th c. BCE)' },
+    { start: 10.8, end: 14.4, title: 'Colossal Jetavanaramaya Stupa', sub: 'UNESCO Sacred Heritage & Monasteries' },
+    { start: 14.4, end: 18.0, title: 'Sigiriya Ancient Rock Citadel', sub: '5th Century Royal Sky Palace' },
+    { start: 18.0, end: 21.6, title: 'Sigiriya Lion\'s Paw Terrace', sub: 'Royal Ascent & Ancient Ramparts' },
+    { start: 21.6, end: 25.2, title: 'Dambulla Golden Rock Temple', sub: 'Sacred Cave Monastery & Murals' },
+    { start: 25.2, end: 28.8, title: 'Nine Arch Demodara Bridge', sub: 'Highland Colonial Railway, Ella' },
+    { start: 28.8, end: 32.4, title: 'Diyaluma Cascading Waterfall', sub: 'Highland Mountain Rapids, Koslanda' },
+    { start: 32.4, end: 36.0, title: 'Ambuluwawa Biodiversity Spire', sub: 'Misty 360° Mountain Summit, Gampola' },
+    { start: 36.0, end: 39.6, title: 'Kandy Sacred Hill Capital', sub: 'Last Royal Kingdom & Sacred Valley' },
+    { start: 39.6, end: 43.2, title: 'Anuradhapura Sacred Parklands', sub: 'Ancient Monasteries & Royal Gardens' },
+    { start: 43.2, end: 46.8, title: 'Maskeliya & Nuwara Eliya Valleys', sub: 'Pure Ceylon Tea Country & Lakes' },
+    { start: 46.8, end: 50.4, title: 'Wild Elephant Gathering', sub: 'Kaudulla & Minneriya Sanctuaries' },
+    { start: 50.4, end: 54.0, title: 'Yala National Park Wilderness', sub: 'Untamed Wildlife & Open Savannas' },
+    { start: 54.0, end: 57.6, title: 'Galle Dutch Fort Ramparts', sub: 'UNESCO 17th Century Living Citadel' },
+    { start: 57.6, end: 61.2, title: 'Bentota Golden Beach', sub: 'Pristine Southwest Turquoise Coast' },
+    { start: 61.2, end: 66.0, title: 'Dondra Head Lighthouse', sub: 'Southernmost Tip of Sri Lanka' }
   ];
 
   var activeIdx = -1;
