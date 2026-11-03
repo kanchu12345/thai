@@ -6393,3 +6393,68 @@ body.cms-edit-active [class*="watermark"] {
   visibility: hidden !important;
   pointer-events: none !important;
 }
+
+
+/* ==========================================================================
+   INTERNATIONAL LUXURY SCROLL ANIMATIONS (Lotus Motion System)
+   Inspired by Aman, Belmond, Apple & Awwwards Luxury Experiences
+   ========================================================================== */
+
+/* Text Cinematic Reveal (Upward drift + soft focus dissipation) */
+html.lotus-motion-enabled .lotus-reveal-text:not(.lotus-in-view) {
+  opacity: 0;
+  transform: translateY(22px);
+  filter: blur(4px);
+}
+
+html.lotus-motion-enabled .lotus-reveal-text {
+  will-change: opacity, transform, filter;
+  transition: 
+    opacity 0.95s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.95s cubic-bezier(0.16, 1, 0.3, 1),
+    filter 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+html.lotus-motion-enabled .lotus-reveal-text.lotus-in-view {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+
+/* Imagery & Cards Cinematic Reveal (Gentle Rise + Scale) */
+html.lotus-motion-enabled .lotus-reveal-media:not(.lotus-in-view) {
+  opacity: 0;
+  transform: translateY(28px) scale(0.975);
+}
+
+html.lotus-motion-enabled .lotus-reveal-media {
+  will-change: opacity, transform;
+  transition: 
+    opacity 1s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+html.lotus-motion-enabled .lotus-reveal-media.lotus-in-view {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* Smooth luxury image hover zoom */
+.walkers-img-card img,
+.tour-card img,
+.dest-card img,
+.review-card img,
+.package-card img {
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Accessibility: Instantly disable all motion if reduced-motion is requested */
+@media (prefers-reduced-motion: reduce) {
+  html.lotus-motion-enabled .lotus-reveal-text,
+  html.lotus-motion-enabled .lotus-reveal-media {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    transition: none !important;
+  }
+}
