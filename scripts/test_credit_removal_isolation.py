@@ -7,7 +7,7 @@ sys.stdout.reconfigure(encoding='utf-8')
 with open('index.html', 'r', encoding='utf-8') as f:
     html = f.read()
 
-credit_pattern = r'Designed\s*&amp;\s*Developed by\s*<a[^>]*https://infiniteweb\.dev/[^>]*>Infinite Design</a>'
+credit_pattern = r'Designed\s*(?:&amp;|&|and)\s*Developed by\s*<a[^>]*https://infiniteweb\.dev/[^>]*>Infinite Design</a>'
 stripped_html = re.sub(credit_pattern, '', html, flags=re.IGNORECASE)
 
 print(f"Original index.html length: {len(html)}")

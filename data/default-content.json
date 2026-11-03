@@ -1,7 +1,7 @@
 {
   "site_settings": {
     "general": {
-      "companyName": "Lotus Ceylon International Tours & Services (Private) Limited",
+      "companyName": "Lotus Ceylon International Tours and Services (Private) Limited",
       "shortName": "Lotus Ceylon Tours",
       "slogan": "PURE JOURNEYS. SACRED EXPERIENCES.",
       "foundedYear": 2014,
@@ -11,7 +11,7 @@
       "secondaryEmail": "",
       "address": "286/C, Niwandama South, Ja-Ela, Sri Lanka 11350",
       "whatsapp": "+94 71 54 22 384",
-      "legalName": "Lotus Ceylon International Tours & Services (Private) Limited",
+      "legalName": "Lotus Ceylon International Tours and Services (Private) Limited",
       "companyReg": "PV 00374439",
       "director": "Mallawa Arachchige Dhushantha Gihan Mallawaarachchi",
       "wechat": "FGUTaiwan90",
@@ -74,7 +74,7 @@
     },
     {
       "slug": "hill-country-tea",
-      "name": "Hill Country & Tea",
+      "name": "Hill Country and Tea",
       "tagline": "Mist, Waterfalls & Plantations",
       "description": "Nuwara Eliya, Ella, and world-renowned Ceylon tea estates.",
       "sort_order": 5,

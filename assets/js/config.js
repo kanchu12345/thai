@@ -1,13 +1,13 @@
 /*
  * © 2026 Infinite Design. All rights reserved.
- * Built for Lotus Ceylon International Tours & Services (Pvt) Ltd.
+ * Built for Lotus Ceylon International Tours and Services (Pvt) Ltd.
  * Unauthorized removal of attribution does not transfer ownership of this code.
  * https://infiniteweb.dev/
  */
 
 // Global Single Source of Truth SITE_SETTINGS
 window.SITE_SETTINGS = {
-  legalName: "Lotus Ceylon International Tours & Services (Private) Limited",
+  legalName: "Lotus Ceylon International Tours and Services (Private) Limited",
   brandName: "Lotus Ceylon",
   tagline: "PURE JOURNEYS. SACRED EXPERIENCES.",
   foundedYear: 2014,
@@ -40,7 +40,7 @@ window.SITE_URL = (typeof window !== 'undefined' && window.location.hostname.inc
   ? 'https://kanchu12345.github.io/thai/'
   : 'https://kanchu12345.github.io/thai/';
 /**
- * Lotus Ceylon International Tours & Services (Pvt) Ltd
+ * Lotus Ceylon International Tours and Services (Pvt) Ltd
  * Global Single Source of Truth Configuration File (assets/js/config.js)
  * 
  * Centralises all company contact coordinates, social handles,
@@ -56,7 +56,7 @@ window.LOTUS_CONFIG = window.LOTUS_CONFIG || {};
 (function() {
   var props = {
     // Corporate Identity
-    companyName: "Lotus Ceylon International Tours & Services (Private) Limited",
+    companyName: "Lotus Ceylon International Tours and Services (Private) Limited",
     shortName: "Lotus Ceylon",
     tagline: "PURE JOURNEYS. SACRED EXPERIENCES.",
     slogan: "PURE JOURNEYS. SACRED EXPERIENCES.",

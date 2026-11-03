@@ -1,11 +1,11 @@
 /*
  * © 2026 Infinite Design. All rights reserved.
- * Built for Lotus Ceylon International Tours & Services (Pvt) Ltd.
+ * Built for Lotus Ceylon International Tours and Services (Pvt) Ltd.
  * Unauthorized removal of attribution does not transfer ownership of this code.
  * https://infiniteweb.dev/
  */
 /**
- * Lotus Ceylon International Tours & Services (Private) Limited
+ * Lotus Ceylon International Tours and Services (Private) Limited
  * Single Data Layer Client (assets/js/site-data.js)
  * 
  * Central module used by every public page:
@@ -253,8 +253,8 @@
       const cfg = window.LOTUS_CONFIG || {};
       this.store.settings = {
         ...siteSettings,
-        companyName: "Lotus Ceylon International Tours & Services (Private) Limited",
-        legalName: "Lotus Ceylon International Tours & Services (Private) Limited",
+        companyName: "Lotus Ceylon International Tours and Services (Private) Limited",
+        legalName: "Lotus Ceylon International Tours and Services (Private) Limited",
         shortName: "Lotus Ceylon",
         tagline: "PURE JOURNEYS. SACRED EXPERIENCES.",
         slogan: {
