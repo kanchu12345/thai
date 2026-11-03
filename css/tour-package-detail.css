@@ -1745,3 +1745,102 @@ figure.video iframe,
   transform: translateY(-2px);
   opacity: 0.95;
 }
+
+/* ==============================================================================
+   LOTUS CEYLON - ITINERARY PACKAGES CUSTOM PALETTE OVERRIDE (GOLD / PINK)
+   Replaces dark/black UI elements across tour itinerary packages
+   ============================================================================== */
+
+:root {
+  --lotus-itinerary-gold: #D4A373;
+  --lotus-itinerary-gold-bright: #FFD700;
+  --lotus-itinerary-pink: #FF69B4;
+  --lotus-itinerary-pink-deep: #C95451;
+  --lotus-itinerary-pink-soft: #FFF0F3;
+  --lotus-itinerary-gold-glow: rgba(212, 163, 115, 0.25);
+  --lotus-itinerary-pink-glow: rgba(255, 105, 180, 0.25);
+}
+
+/* 1. Day Numbers & Badges (Replacing Black with Gold / Pink) */
+.walkers-acc-day {
+  background: linear-gradient(135deg, #E6A838 0%, #C9962B 100%) !important;
+  color: #002B49 !important;
+  font-weight: 800 !important;
+  box-shadow: 0 2px 8px rgba(201, 150, 43, 0.35) !important;
+}
+
+.related-tour-duration {
+  background: linear-gradient(135deg, #FF69B4 0%, #E05297 100%) !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 2px 10px rgba(255, 105, 180, 0.4) !important;
+}
+
+/* 2. Tour Card Backgrounds & Overlays */
+.related-tour-card {
+  border: 1px solid rgba(212, 163, 115, 0.3) !important;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease !important;
+}
+
+.related-tour-card:hover {
+  border-color: #FF69B4 !important;
+  box-shadow: 0 8px 24px rgba(255, 105, 180, 0.18) !important;
+}
+
+.walkers-img-card::after {
+  background: linear-gradient(180deg, transparent 40%, rgba(201, 84, 81, 0.7) 80%, rgba(17, 24, 39, 0.85) 100%) !important;
+}
+
+/* 3. Section Dividers & Borders (Replacing Black with Gold / Soft Pink) */
+.itinerary-section-walkers,
+.route-section-walkers,
+.more-journeys-walkers {
+  border-top: 2px solid rgba(212, 163, 115, 0.35) !important;
+  border-bottom: 2px solid rgba(212, 163, 115, 0.35) !important;
+}
+
+.tour-duration-line-walkers::before,
+.tour-duration-line-walkers::after {
+  background: linear-gradient(90deg, rgba(255, 105, 180, 0.2), #D4A373, rgba(255, 105, 180, 0.2)) !important;
+  height: 2px !important;
+}
+
+.walkers-acc-item {
+  border: 1px solid rgba(212, 163, 115, 0.25) !important;
+}
+
+.walkers-acc-item:hover,
+.walkers-acc-item.is-open {
+  border-color: #FF69B4 !important;
+  box-shadow: 0 6px 20px rgba(255, 105, 180, 0.15) !important;
+}
+
+.inclusions-card-walkers.black-accent {
+  border-top: 3px solid #D4A373 !important;
+}
+
+.inclusions-card-walkers.pink-accent {
+  border-top: 3px solid #FF69B4 !important;
+}
+
+/* 4. Headings & Titles (Highlighting with Gold & Lotus Pink accents) */
+.itinerary-heading-walkers span {
+  color: #D4A373 !important;
+  font-weight: 500 !important;
+}
+
+.walkers-acc-item:hover .walkers-acc-title,
+.walkers-acc-item.is-open .walkers-acc-title {
+  color: #C95451 !important;
+}
+
+.related-tour-card:hover .related-tour-content h4 {
+  color: #C95451 !important;
+}
+
+/* 5. Pill tags & interactive elements */
+.tour-badge-pill-walkers {
+  background: #FFF0F3 !important;
+  color: #FF69B4 !important;
+  border: 1px solid rgba(255, 105, 180, 0.45) !important;
+  box-shadow: 0 2px 8px rgba(255, 105, 180, 0.15);
+}

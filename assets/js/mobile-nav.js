@@ -417,14 +417,14 @@
 
     const textElements = document.querySelectorAll(textSelectors);
     textElements.forEach(function(el) {
-      if (!el.closest('#mobileNavFullscreen') && !el.closest('.hero-slider-desktop') && !el.classList.contains('no-anim')) {
+      if (!el.closest('#mobileNavFullscreen') && !el.closest('.hero-slider-desktop') && !el.closest('#siteFooter') && !el.closest('.sacred-cta-banner') && !el.classList.contains('no-anim')) {
         el.classList.add('lotus-reveal-text');
       }
     });
 
     const mediaElements = document.querySelectorAll(mediaSelectors);
     mediaElements.forEach(function(el) {
-      if (!el.closest('#mobileNavFullscreen') && !el.classList.contains('no-anim')) {
+      if (!el.closest('#mobileNavFullscreen') && !el.closest('#siteFooter') && !el.closest('.sacred-cta-banner') && !el.classList.contains('no-anim')) {
         el.classList.add('lotus-reveal-media');
       }
     });

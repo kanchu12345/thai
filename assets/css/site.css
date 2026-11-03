@@ -1130,7 +1130,7 @@ p:last-child {
    ============================================================================== */
 .site-footer-walkers,
 .footer-walkers {
-  background: var(--forest-deep);
+  background-color: #011C40 !important;
   color: var(--white);
   padding: 2.75rem 0 1.5rem;
   border-top: none !important;
@@ -2984,4 +2984,403 @@ html.lotus-motion-enabled .lotus-reveal-media.lotus-in-view {
 .sustainability-sec .wrapper--90 {
   position: relative;
   z-index: 2;
+}
+
+
+/* === LOTUS_UNIFIED_FOOTER_SUITE_V2 === */
+/* ==============================================================================
+   UNIFIED SACRED CEYLON CTA BANNER
+   ============================================================================== */
+.sacred-cta-banner {
+  background: linear-gradient(135deg, #280C17 0%, #3D1223 50%, #1A0710 100%) !important;
+  color: #FFFFFF !important;
+  padding: 5rem 1.5rem !important;
+  position: relative !important;
+  overflow: hidden !important;
+  text-align: center !important;
+  border-top: 2px solid #C95451 !important;
+  border-bottom: none !important;
+  display: block !important;
+  width: 100% !important;
+  clear: both !important;
+  box-sizing: border-box !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: none !important;
+}
+
+.sacred-cta-banner::after {
+  content: "" !important;
+  position: absolute !important;
+  bottom: -1px !important;
+  left: 0 !important;
+  right: 0 !important;
+  height: 120px !important;
+  background: linear-gradient(
+    to bottom,
+    rgba(40, 12, 23, 0) 0%,
+    rgba(20, 15, 35, 0.45) 40%,
+    rgba(1, 28, 64, 0.8) 75%,
+    #011C40 100%
+  ) !important;
+  pointer-events: none !important;
+  z-index: 1 !important;
+}
+
+.sacred-cta-banner .cta-motif {
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  width: 600px !important;
+  height: 600px !important;
+  background: radial-gradient(circle, rgba(201, 84, 81, 0.28) 0%, rgba(0,0,0,0) 70%) !important;
+  pointer-events: none !important;
+}
+
+.sacred-cta-banner .cta-content {
+  position: relative !important;
+  z-index: 2 !important;
+  max-width: 780px !important;
+  margin: 0 auto !important;
+  text-align: center !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+.sacred-cta-banner .cta-title {
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  font-size: clamp(2.1rem, 3.8vw, 2.9rem) !important;
+  font-weight: 700 !important;
+  color: #FFFFFF !important;
+  margin: 0 0 1rem 0 !important;
+  line-height: 1.2 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+.sacred-cta-banner .cta-desc {
+  font-size: 1.05rem !important;
+  color: rgba(255, 255, 255, 0.88) !important;
+  margin: 0 auto 2rem auto !important;
+  line-height: 1.65 !important;
+  max-width: 680px !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+.sacred-cta-banner .cta-btn-group {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 1.25rem !important;
+  flex-wrap: wrap !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+.sacred-cta-banner .btn-primary-gold {
+  background: linear-gradient(135deg, #DA8E28 0%, #BF7819 100%) !important;
+  color: #FFFFFF !important;
+  font-weight: 700 !important;
+  padding: 0.9rem 2.2rem !important;
+  border-radius: 9999px !important;
+  text-decoration: none !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  box-shadow: 0 4px 20px rgba(218, 142, 40, 0.4) !important;
+  transition: all 0.3s ease !important;
+  font-size: 1rem !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+.sacred-cta-banner .btn-primary-gold:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 30px rgba(218, 142, 40, 0.6) !important;
+  background: linear-gradient(135deg, #E59A32 0%, #CC8220 100%) !important;
+}
+
+.sacred-cta-banner .cta-wa-btn {
+  background: #25D366 !important;
+  color: #FFFFFF !important;
+  font-weight: 700 !important;
+  padding: 0.9rem 2.2rem !important;
+  border-radius: 9999px !important;
+  text-decoration: none !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  box-shadow: 0 4px 15px rgba(37, 211, 102, 0.35) !important;
+  transition: all 0.3s ease !important;
+  font-size: 1rem !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+.sacred-cta-banner .cta-wa-btn:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 25px rgba(37, 211, 102, 0.5) !important;
+}
+
+/* ==============================================================================
+   UNIFIED WALKERS LUXURY FOOTER
+   ============================================================================== */
+.site-footer-walkers,
+.footer-walkers {
+  border-top: none !important;
+  background-color: #011C40 !important;
+  background-image: linear-gradient(rgba(1, 28, 64, 0.86), rgba(0, 16, 38, 0.94)), url('../images/footer/footer-sunset-palms.webp') !important;
+  background-position: center bottom !important;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+  color: #FFFFFF !important;
+  padding-top: 3.5rem !important;
+  padding-bottom: 2rem !important;
+  position: relative !important;
+  display: block !important;
+  width: 100% !important;
+  clear: both !important;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+.site-footer-walkers .site-container {
+  max-width: 1280px !important;
+  width: 92% !important;
+  margin: 0 auto !important;
+  position: relative !important;
+  z-index: 2 !important;
+}
+
+.footer-walkers-grid-3 {
+  display: grid !important;
+  grid-template-columns: 1.15fr 1.65fr 1.25fr !important;
+  gap: 3.5rem !important;
+  padding-bottom: 2.25rem !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14) !important;
+}
+
+@media (max-width: 1024px) and (min-width: 769px) {
+  .footer-walkers-grid-3 {
+    grid-template-columns: 1fr 1.35fr 1.1fr !important;
+    gap: 2rem !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer-walkers-grid-3 {
+    grid-template-columns: 1fr !important;
+    gap: 2.25rem !important;
+  }
+}
+
+.footer-walkers-col .footer-col-title {
+  color: #FFFFFF !important;
+  font-size: 0.82rem !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.12em !important;
+  margin: 0 0 0.65rem 0 !important;
+  font-family: 'DM Sans', sans-serif !important;
+}
+
+.footer-col-contact .footer-address-text {
+  color: rgba(255, 255, 255, 0.82) !important;
+  font-size: 0.92rem !important;
+  line-height: 1.65 !important;
+  margin: 0 0 1.5rem 0 !important;
+  max-width: 340px !important;
+}
+
+.footer-col-contact .footer-phone-text,
+.footer-col-contact .footer-email-text {
+  margin: 0 0 1.5rem 0 !important;
+}
+
+.footer-col-contact .footer-phone-text a {
+  color: #FFFFFF !important;
+  font-size: 1.05rem !important;
+  font-weight: 700 !important;
+  text-decoration: none !important;
+  letter-spacing: 0.02em !important;
+  transition: color 0.25s ease !important;
+}
+
+.footer-col-contact .footer-phone-text a:hover {
+  color: #D4A359 !important;
+}
+
+.footer-col-contact .footer-email-text a {
+  color: rgba(255, 255, 255, 0.85) !important;
+  font-size: 0.94rem !important;
+  text-decoration: none !important;
+  transition: color 0.25s ease !important;
+}
+
+.footer-col-contact .footer-email-text a:hover {
+  color: #D4A359 !important;
+}
+
+.footer-quicklinks-grid {
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr) !important;
+  gap: 0.65rem 2rem !important;
+}
+
+.footer-links-subcol {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0.65rem !important;
+}
+
+.footer-links-subcol a {
+  color: rgba(255, 255, 255, 0.82) !important;
+  font-size: 0.92rem !important;
+  text-decoration: none !important;
+  transition: all 0.25s ease !important;
+  line-height: 1.4 !important;
+  display: inline-block !important;
+}
+
+.footer-links-subcol a:hover {
+  color: #D4A359 !important;
+  transform: translateX(4px) !important;
+}
+
+.footer-newsletter-pill {
+  display: flex !important;
+  align-items: center !important;
+  background: rgba(255, 255, 255, 0.16) !important;
+  border: 1px solid rgba(255, 255, 255, 0.28) !important;
+  border-radius: 9999px !important;
+  padding: 4px 6px 4px 18px !important;
+  margin-top: 0.65rem !important;
+  max-width: 380px !important;
+  backdrop-filter: blur(6px) !important;
+  -webkit-backdrop-filter: blur(6px) !important;
+  transition: border-color 0.25s ease, background-color 0.25s ease !important;
+}
+
+.footer-newsletter-pill:focus-within {
+  background: rgba(255, 255, 255, 0.22) !important;
+  border-color: rgba(255, 255, 255, 0.6) !important;
+}
+
+.footer-newsletter-pill input {
+  flex: 1 1 auto !important;
+  background: transparent !important;
+  border: none !important;
+  outline: none !important;
+  color: #FFFFFF !important;
+  font-size: 0.9rem !important;
+  font-family: inherit !important;
+  padding: 6px 0 !important;
+}
+
+.footer-newsletter-pill input::placeholder {
+  color: rgba(255, 255, 255, 0.65) !important;
+}
+
+.footer-newsletter-pill button {
+  width: 36px !important;
+  height: 36px !important;
+  border-radius: 50% !important;
+  background: rgba(255, 255, 255, 0.28) !important;
+  border: none !important;
+  color: #FFFFFF !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  transition: all 0.25s ease !important;
+  flex-shrink: 0 !important;
+}
+
+.footer-newsletter-pill button:hover {
+  background: #D4A359 !important;
+  color: #FFFFFF !important;
+  transform: scale(1.05) !important;
+}
+
+.footer-payment-badges {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  margin-top: 0.65rem !important;
+  flex-wrap: wrap !important;
+}
+
+.footer-payment-badges .pay-badge {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: #FFFFFF !important;
+  border-radius: 4px !important;
+  padding: 2px 4px !important;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25) !important;
+  transition: transform 0.2s ease !important;
+}
+
+.footer-payment-badges .pay-badge:hover {
+  transform: translateY(-2px) !important;
+}
+
+.footer-social-glyphs {
+  display: flex !important;
+  align-items: center !important;
+  gap: 16px !important;
+  margin-top: 1.25rem !important;
+}
+
+.footer-social-glyphs a {
+  color: rgba(255, 255, 255, 0.85) !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: all 0.25s ease !important;
+}
+
+.footer-social-glyphs a:hover {
+  color: #D4A359 !important;
+  transform: translateY(-2px) !important;
+}
+
+.footer-bottom-row {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding-top: 1.5rem !important;
+  color: rgba(255, 255, 255, 0.68) !important;
+  font-size: 0.8rem !important;
+  flex-wrap: wrap !important;
+  gap: 1rem !important;
+}
+
+.footer-bottom-row a {
+  color: rgba(255, 255, 255, 0.75) !important;
+  text-decoration: none !important;
+  transition: color 0.2s ease !important;
+}
+
+.footer-bottom-row a:hover {
+  color: #D4A359 !important;
+}
+
+.footer-bottom-center {
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  flex-wrap: wrap !important;
+}
+
+.footer-sep {
+  color: rgba(255, 255, 255, 0.35) !important;
+}
+
+.footer-bottom-right a {
+  color: #D4A359 !important;
+  font-weight: 600 !important;
 }

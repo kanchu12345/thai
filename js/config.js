@@ -15,7 +15,7 @@ window.SITE_SETTINGS = {
   companyRegNo: "PV 00374439",
   director: "Mallawa Arachchige Dhushantha Gihan Mallawaarachchi",
   sltdaLicenceNo: "",
-  address: "286/C, Niwandama South, Ja-Ela, Sri Lanka 11350",
+  address: "286/C, Niwandama South, Ja-Ela, Western Province, Sri Lanka – 11350 (12 Min./13km away from Airport)",
   phone: "+94 71 54 22 384",
   whatsapp: "+94 71 54 22 384",
   whatsappLink: "https://wa.me/94715422384",
@@ -90,7 +90,7 @@ var LOTUS_CONFIG = window.LOTUS_CONFIG || {};
       city: "Ja-Ela",
       country: "Sri Lanka",
       postalCode: "11350",
-      full: "286/C, Niwandama South, Ja-Ela, Sri Lanka – 11350",
+      full: "286/C, Niwandama South, Ja-Ela, Western Province, Sri Lanka – 11350 (12 Min./13km away from Airport)",
       coordinates: {
         lat: 7.0785,
         lng: 79.8913,

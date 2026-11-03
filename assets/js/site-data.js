@@ -267,7 +267,7 @@
         foundedYear: 2014,
         companyReg: "PV 00374439",
         director: "Mallawa Arachchige Dhushantha Gihan Mallawaarachchi",
-        address: "286/C, Niwandama South, Ja-Ela, Sri Lanka 11350",
+        address: "286/C, Niwandama South, Ja-Ela, Western Province, Sri Lanka – 11350 (12 Min./13km away from Airport)",
         phone: "+94 71 54 22 384",
         whatsapp: "+94 71 54 22 384",
         email: "paliforbuddhism@gmail.com",
