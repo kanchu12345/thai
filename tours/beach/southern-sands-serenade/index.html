@@ -5,231 +5,24 @@
   <meta name="generator" content="Built by Infinite Design — https://infiniteweb.dev/">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="theme-color" content="#16361D">
-  <title data-cms="seo.title">Southern Sands Serenade 10-Day Beach Tour | Lotus Ceylon</title>
-  <meta name="description" content="Experience 10 days of barefoot luxury on Sri Lanka" data-cms="seo.description" data-cms="seo.description" data-cms="seo.description"s south coast. Mirissa blue whales, UNESCO Galle Dutch Fort, and secluded beachfront villas.">
+  <meta name="theme-color" content="#111827">
+  <title data-cms="seo.title">Southern Sands Serenade | Lotus Ceylon Luxury Tours</title>
+  <meta name="description" content="Experience 10 days of barefoot luxury on Sri Lanka's south coast. Mirissa blue whales, UNESCO Galle Dutch Fort, and secluded beachfront villas." data-cms="seo.description">
   <link rel="icon" type="image/png" href="../../../logo.png?v=20261021_step1">
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..800;1,9..40,300..800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..800;1,9..40,300..800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <!-- Master Stylesheets -->
   <link rel="stylesheet" href="../../../css/style.css?v=20261022_beach_v1">
   <link rel="stylesheet" href="../../../css/brand-header.css?v=20261022_exact_hf_v1">
-  <link rel="stylesheet" href="../../../css/tour-package-detail.css?v=20261022_pkg_v1">
-
-  <style>
-    :root {
-      --watermark-shadow-pink: #EEDBE2;
-    }
-    .watermark-heading {
-      color: var(--watermark-shadow-pink) !important;
-      font-weight: 800;
-      letter-spacing: 0.15em;
-    }
-    .itinerary-item {
-      display: flex;
-      gap: 1.5rem;
-      margin-bottom: 2rem;
-      position: relative;
-    }
-    .itinerary-day-badge {
-      width: 70px;
-      height: 70px;
-      flex-shrink: 0;
-      background: linear-gradient(135deg, #002B49 0%, #001A2C 100%);
-      color: #C5A880;
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 700;
-      font-size: 0.95rem;
-      box-shadow: 0 4px 15px rgba(0,43,73,0.15);
-      border: 1px solid rgba(197,168,128,0.3);
-      text-transform: uppercase;
-      text-align: center;
-      line-height: 1.2;
-    }
-    .itinerary-content {
-      background: #FFFFFF;
-      border: 1px solid #E2E8F0;
-      border-radius: 12px;
-      padding: 1.5rem 1.75rem;
-      flex-grow: 1;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
-      transition: all 0.3s ease;
-    }
-    .itinerary-content:hover {
-      border-color: #C5A880;
-      box-shadow: 0 8px 24px rgba(0,43,73,0.08);
-    }
-    .itinerary-day-title {
-      font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      font-size: 1.25rem;
-      color: #002B49;
-      margin-bottom: 0.75rem;
-      font-weight: 600;
-    }
-    .itinerary-day-desc {
-      color: #475569;
-      font-size: 0.95rem;
-      line-height: 1.7;
-      margin-bottom: 1rem;
-    }
-    .itinerary-meta-tags {
-      display: flex;
-      gap: 0.75rem;
-      flex-wrap: wrap;
-    }
-    .itinerary-tag {
-      background: #F1F5F9;
-      color: #002B49;
-      padding: 0.35rem 0.75rem;
-      border-radius: 6px;
-      font-size: 0.82rem;
-      font-weight: 600;
-    }
-    .inclusions-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2rem;
-      margin-top: 2rem;
-    }
-    @media (max-width: 768px) {
-      .inclusions-grid { grid-template-columns: 1fr; }
-      .itinerary-item { flex-direction: column; gap: 0.75rem; }
-      .itinerary-day-badge { width: auto; height: 36px; padding: 0 1rem; }
-    }
-    .inclusions-box, .exclusions-box {
-      background: #FFFFFF;
-      border-radius: 12px;
-      padding: 1.75rem;
-      border: 1px solid #E2E8F0;
-    }
-    .inclusions-box { border-top: 4px solid #10B981; }
-    .exclusions-box { border-top: 4px solid #EF4444; }
-    .inclusions-box h3, .exclusions-box h3 {
-      font-size: 1.15rem;
-      color: #002B49;
-      margin-bottom: 1rem;
-      font-weight: 700;
-    }
-    .inclusions-box ul, .exclusions-box ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-    .inclusions-box li, .exclusions-box li {
-      padding: 0.5rem 0;
-      color: #475569;
-      font-size: 0.92rem;
-      display: flex;
-      align-items: flex-start;
-      gap: 0.6rem;
-      border-bottom: 1px dashed #F1F5F9;
-    }
-    .inclusions-box li span { color: #10B981; font-weight: bold; }
-    .exclusions-box li span { color: #EF4444; font-weight: bold; }
-    .related-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-      margin-top: 2rem;
-    }
-    .related-tour-card {
-      background: #FFFFFF;
-      border: 1px solid #E2E8F0;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.04);
-      transition: all 0.3s ease;
-      display: flex;
-      flex-direction: column;
-    }
-    .related-tour-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 12px 28px rgba(0,43,73,0.12);
-    }
-    .related-tour-img-wrap {
-      position: relative;
-      height: 200px;
-      overflow: hidden;
-    }
-    .related-tour-img-wrap img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.5s ease;
-    }
-    .related-tour-card:hover .related-tour-img-wrap img {
-      transform: scale(1.05);
-    }
-    .related-tour-duration {
-      position: absolute;
-      top: 12px;
-      left: 12px;
-      background: rgba(0, 43, 73, 0.85);
-      color: #C5A880;
-      padding: 4px 12px;
-      border-radius: 20px;
-      font-size: 0.78rem;
-      font-weight: 700;
-    }
-    .related-tour-content {
-      padding: 1.5rem;
-      display: flex;
-      flex-direction: column;
-      flex-grow: 1;
-    }
-    .related-tour-title {
-      font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      font-size: 1.2rem;
-      color: #002B49;
-      margin-bottom: 0.5rem;
-    }
-    .related-tour-desc {
-      color: #64748B;
-      font-size: 0.88rem;
-      line-height: 1.6;
-      margin-bottom: 1.25rem;
-      flex-grow: 1;
-    }
-    .btn-related-explore {
-      color: #002B49;
-      font-weight: 700;
-      font-size: 0.88rem;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      transition: color 0.2s;
-    }
-    .btn-related-explore:hover {
-      color: #C5A880;
-    }
-    .map-lightbox-modal {
-      display: none;
-      position: fixed;
-      z-index: 99999;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.85);
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-    }
-    .map-lightbox-modal.active { display: flex; }
-    .map-lightbox-content { max-width: 90vw; max-height: 90vh; object-fit: contain; border-radius: 8px; }
-    .map-lightbox-close { position: absolute; top: 25px; right: 35px; color: #fff; font-size: 40px; font-weight: 300; cursor: pointer; }
-  </style>
+  <link rel="stylesheet" href="../../../css/tour-package-detail.css?v=20261103_walkers_v1">
   <link rel="stylesheet" href="../../../vendor/leaflet/leaflet.css">
   <link rel="stylesheet" href="../../../css/tours-map.css?v=20261031_osm_v5">
-  <!-- Canonical & OpenGraph SEO (Phase 7) -->
+
+  <!-- Canonical & OpenGraph SEO -->
   <link rel="canonical" href="https://kanchu12345.github.io/thai/tours/beach/southern-sands-serenade/">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Lotus Ceylon International Tours">
@@ -247,17 +40,16 @@
 {
   "@context": "https://schema.org",
   "@type": "TouristTrip",
-  "name": "Southern Sands Serenade (10 Days / 9 Nights)",
+  "name": "Southern Sands Serenade (09 Nights and 10 Days)",
   "description": "Experience 10 days of barefoot luxury on Sri Lanka's south coast. Mirissa blue whales, UNESCO Galle Dutch Fort, and secluded beachfront villas.",
   "touristType": [
     "Luxury Travel",
-    "Cultural Heritage",
-    "Private Chauffeur Tour",
-    "Beach"
+    "Sri Lanka Beach & Coastal Tours",
+    "Private Chauffeur Tour"
   ],
   "provider": {
     "@type": "TravelAgency",
-    "name": "Lotus Ceylon International Tours & Services (Private) Limited",
+    "name": "Lotus Ceylon International Tours and Services (Private) Limited",
     "url": "https://lotusceylon.com/",
     "telephone": "+94715422384",
     "priceRange": "$$$$",
@@ -273,110 +65,13 @@
     "price": "Tailor-made",
     "availability": "https://schema.org/InStock",
     "url": "https://lotusceylon.com/inquiry-detailed.html?package=Southern+Sands+Serenade"
-  },
-  "itinerary": {
-    "@type": "ItemList",
-    "numberOfItems": 10,
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "item": {
-          "@type": "TouristAttraction",
-          "name": "Day 1: Arrival in Paradise • Tropical Warmth in Negombo",
-          "description": "Arrive at Bandaranaike International Airport where your private Lotus Ceylon chauffeur guide warmly welcomes you with fresh lotus blooms. Transfer to your seaside boutique hotel in Negombo to unwind by the pool and enjoy your first authentic coastal sunset."
-        }
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "item": {
-          "@type": "TouristAttraction",
-          "name": "Day 2: Scenic Southern Highway • Tangalle’s Secluded Bays",
-          "description": "Journey south along the scenic expressway towards Tangalle, famed for its untouched golden beaches and whispering palms. Check into your luxury oceanfront pavilion. Afternoon at leisure listening to the rhythm of the Indian Ocean."
-        }
-      },
-      {
-        "@type": "ListItem",
-        "position": 3,
-        "item": {
-          "@type": "TouristAttraction",
-          "name": "Day 3: Hummanaya Natural Geyser & Mulgirigala Monastic Rock",
-          "description": "Witness the dramatic Hummanaya natural sea blowhole sending spray 30 meters skyward. Later, explore the tranquil 2,000-year-old Mulgirigala rock monastery tucked into lush coconut forests."
-        }
-      },
-      {
-        "@type": "ListItem",
-        "position": 4,
-        "item": {
-          "@type": "TouristAttraction",
-          "name": "Day 4: Coastal Drive to Mirissa • Sunset at Coconut Tree Hill",
-          "description": "Drive west along the picturesque coastline to Mirissa. In the late afternoon, take a gentle walk up Coconut Tree Hill for an iconic panoramic view of the turquoise bay framed by slender palms."
-        }
-      },
-      {
-        "@type": "ListItem",
-        "position": 5,
-        "item": {
-          "@type": "TouristAttraction",
-          "name": "Day 5: Gentle Ocean Giants • Blue Whale Marine Safari",
-          "description": "Board a private chartered boat at sunrise into the deep oceanic trench off Mirissa. Accompanied by our marine naturalist, encounter the world's largest mammal—the magnificent blue whale—along with pods of playful spinner dolphins."
-        }
-      },
-      {
-        "@type": "ListItem",
-        "position": 6,
-        "item": {
-          "@type": "TouristAttraction",
-          "name": "Day 6: Unawatuna Bay & Living Heritage of UNESCO Galle Fort",
-          "description": "Travel to historic Galle. In the afternoon, embark on an insider's walking tour of the 17th-century Dutch Fort with a local heritage historian, strolling cobblestone alleys lined with artisan jewelers, colonial mansions, and bastions overlooking the ocean."
-        }
-      },
-      {
-        "@type": "ListItem",
-        "position": 7,
-        "item": {
-          "@type": "TouristAttraction",
-          "name": "Day 7: Stilt Fishermen of Koggala & Coastal Artisan Ateliers",
-          "description": "Witness the timeless practice of stilt fishermen balancing skillfully above the coastal breakers at Koggala. Visit an intimate cinnamon peeling plantation and traditional lace-weaving ateliers."
-        }
-      },
-      {
-        "@type": "ListItem",
-        "position": 8,
-        "item": {
-          "@type": "TouristAttraction",
-          "name": "Day 8: Bentota Coastal Sanctuary • Madu River Boat Safari",
-          "description": "Head northward to Bentota's golden ribbon of beach. Enjoy a peaceful motorized boat cruise along the mangrove canopies of the Madu River wetland, visiting a quiet cinnamon island and bird sanctuaries."
-        }
-      },
-      {
-        "@type": "ListItem",
-        "position": 9,
-        "item": {
-          "@type": "TouristAttraction",
-          "name": "Day 9: Kosgoda Sea Turtle Sanctuary & Beachfront Leisure",
-          "description": "Visit the renowned Kosgoda Sea Turtle Conservation Project to learn about protecting endangered sea turtles. Spend your final coastal evening with a private candlelit seafood dinner served under the palms right beside the waves."
-        }
-      },
-      {
-        "@type": "ListItem",
-        "position": 10,
-        "item": {
-          "@type": "TouristAttraction",
-          "name": "Day 10: Colombo Heritage Drive • Farewell to Ceylon",
-          "description": "Enjoy a leisurely morning swim followed by a scenic transfer to Colombo for light shopping and colonial sightseeing before arriving at the airport for your onward journey with unforgettable memories."
-        }
-      }
-    ]
   }
 }
   </script>
-  <!-- Master Unified Stylesheet -->
-  <link rel="stylesheet" href="../../../assets/css/site.css">
 </head>
 <body class="page-tour-detail" data-cms-page="tourPackages/southern-sands-serenade">
 
+  <!-- Site Header & Navigation -->
   <!-- @include header:start -->
 <!-- Site design & development: Infinite Design (https://infiniteweb.dev/) — see /humans.txt and LICENSE.txt -->
 <!-- Site Header & Navigation (Unified Master Standard Driven by siteGlobal) -->
@@ -457,6 +152,7 @@
 </header>
 <!-- @include header:end -->
 
+  <!-- Full-Screen Slide-in Mobile Navigation Menu -->
   <!-- @include mobile-menu:start -->
 <!-- Site design & development: Infinite Design (https://infiniteweb.dev/) — see /humans.txt and LICENSE.txt -->
 <!-- Full-Screen Slide-in Mobile Navigation Menu -->
@@ -531,416 +227,435 @@
 </div>
 <!-- @include mobile-menu:end -->
 
-  <!-- Full-Screen Slide-in Mobile Navigation Menu -->
-  
-
-  <section class="tour-hero-section" data-cms-bg="pkg_southern-sands-serenade.hero_bg" id="tourHero" style="background-image: url('../../../assets/images/beach/mirissa-1.webp');" data-cms-bg="hero_image">
-    <div class="tour-hero-overlay"></div>
-    <div class="wrapper--90">
-      <div class="tour-hero-content">
-        <nav class="tour-breadcrumb" aria-label="Breadcrumb">
-          <a href="../../../index.html" data-cms="pkg_southern-sands-serenade.a_21">Home</a>
-          <span class="sep">/</span>
-          <a href="../../../tours/index.html" data-cms="pkg_southern-sands-serenade.a_22">Tours</a>
-          <span class="sep">/</span>
-          <a href="../../../tours/beach/index.html" data-cms="pkg_southern-sands-serenade.a_23">Sri Lanka Luxury Beach Holidays</a>
-          <span class="sep">/</span>
-          <span data-cms="pkg_southern-sands-serenade.span_6">Southern Sands Serenade</span>
-        </nav>
-
-        <div class="tour-hero-badges">
-          <span class="tour-badge-pill tour-badge-gold" data-cms="durationText">9 Nights / 10 Days</span>
-          <span class="tour-badge-pill tour-badge-glass" data-cms="category">Sri Lanka Luxury Beach Holidays</span>
-          <span class="tour-badge-pill tour-badge-glass" data-cms="pkg_southern-sands-serenade.span_7">Private Chauffeur Guided</span>
-        </div>
-
-        <h1 class="tour-hero-title">
-          <span class="hero-title-main" data-cms="title">Southern Sands Serenade</span>
-          <span class="hero-title-accent" data-cms="subtitle">Sun-Kissed Bays and Blue Whales</span>
-        </h1>
-        <p class="tour-hero-tagline" data-cms="tagline">Sun-Kissed Bays, Blue Whales and Dutch Ramparts</p>
-
-        <div class="tour-hero-actions">
-          <a href="../../../inquiry-detailed.html?package=Southern+Sands+Serenade" class="btn-hero-primary" data-cms="pkg_southern-sands-serenade.btn_15">Inquire About This Tour</a>
-          <a href="#itinerary" class="btn-hero-secondary" data-cms="pkg_southern-sands-serenade.btn_16">View Day-by-Day Journey ↓</a>
-        </div>
-      </div>
+  <!-- SECTION 1: HERO BANNER (Full-width Walkers Standard) -->
+  <section class="tour-banner-walkers" style="background-image: url('../../../assets/images/beach/mirissa-1.webp');">
+    <div class="wrapper--90" style="position: relative; z-index: 2; padding-bottom: 2.5rem; width: 100%;">
+      <nav class="tour-breadcrumb" aria-label="Breadcrumb" style="display: flex; gap: 8px; align-items: center; color: rgba(255,255,255,0.8); font-size: 0.85rem; font-weight: 500;">
+        <a href="../../../index.html" style="color: #FFFFFF; text-decoration: none;">Home</a>
+        <span>/</span>
+        <a href="../../../tours/index.html" style="color: #FFFFFF; text-decoration: none;">Tours</a>
+        <span>/</span>
+        <a href="../../../tours/beach/index.html" style="color: #FFFFFF; text-decoration: none;">Sri Lanka Beach & Coastal Tours</a>
+        <span>/</span>
+        <span style="color: #D4A359;">Southern Sands Serenade</span>
+      </nav>
     </div>
   </section>
 
-  <section class="tour-facts-bar">
-    <div class="wrapper--90">
-      <div class="tour-facts-grid">
-        <div class="tour-fact-item">
-          <div>
-            <p class="tour-fact-label" data-cms="pkg_southern-sands-serenade.p_2">Duration</p>
-            <p class="tour-fact-value" data-cms="pkg_southern-sands-serenade.p_3">10 Days / 9 Nights</p>
-          </div>
-        </div>
-
-        <div class="tour-fact-item">
-          <div>
-            <p class="tour-fact-label" data-cms="pkg_southern-sands-serenade.p_4">Transport</p>
-            <p class="tour-fact-value" data-cms="pkg_southern-sands-serenade.p_5">Private Luxury AC Chauffeur</p>
-          </div>
-        </div>
-
-        <div class="tour-fact-item">
-          <div>
-            <p class="tour-fact-label" data-cms="pkg_southern-sands-serenade.p_6">Best Season</p>
-            <p class="tour-fact-value" data-cms="pkg_southern-sands-serenade.p_7">November to April (Glorious sunshine and calm glass-like waters)</p>
-          </div>
-        </div>
-
-        <div class="tour-fact-item">
-          <div>
-            <p class="tour-fact-label" data-cms="pkg_southern-sands-serenade.p_8">Accommodation</p>
-            <p class="tour-fact-value" data-cms="pkg_southern-sands-serenade.p_9">Handpicked 5★ &amp; Boutique Stays</p>
-          </div>
-        </div>
-
-        <div class="tour-fact-item">
-          <div>
-            <p class="tour-fact-label">Price</p>
-            <p class="tour-fact-value" data-cms="pkg_southern-sands-serenade.p_10">Tailor-Made on Request</p>
-          </div>
-        </div>
+  <!-- SECTION 2: OVERVIEW & HEADER (Walkers Standard) -->
+  <section class="tour-overview-walkers">
+    <div class="wrapper--70" style="max-width: 980px; margin: 0 auto;">
+      <span class="tour-badge-pill-walkers">Recommended for Beach Leisure, Relaxation</span>
+      <div class="tour-category-sub-walkers">Sri Lanka Beach & Coastal Tours</div>
+      <h1 class="tour-title-walkers">Southern Sands Serenade</h1>
+      <div class="tour-duration-line-walkers">
+        <span>09 Nights and 10 Days</span>
       </div>
-    </div>
-  </section>
-
-    <!-- SEASONALITY / BEST TIME TO VISIT STRIP -->
-  <div class="wrapper--90" style="margin-top: 2rem;">
-    <div id="lotusSeasonStripContainer"></div>
-  </div>
-  <main class="tour-main-section padding-top--70 padding-bottom--100">
-    <div class="wrapper--90">
-      <div class="tour-main-layout" id="itinerary">
-        
-        <div class="tour-itinerary-col">
-          <div class="section-watermark-header" style="margin-bottom: 2rem;">
-            <p class="watermark-heading" data-cms="pkg_southern-sands-serenade.p_11">ITINERARY</p>
-            <h2 class="section-header-title" data-cms="pkg_southern-sands-serenade.heading_1">Detailed Day-by-Day Journey</h2>
-          </div>
-          <p class="itinerary-section-sub" style="color: #475569; font-size: 1rem; line-height: 1.7; margin-bottom: 2.5rem;" data-cms="pkg_southern-sands-serenade.p_12">
-            Every element of this bespoke itinerary is privately chauffeured, seamlessly managed, and fully customizable to your personal travel pace and desires.
-          </p>
-
-          <div class="itinerary-timeline" data-cms-list="itinerary">
-            
-        <div class="itinerary-item" data-day="1">
-          <div class="itinerary-day-badge" data-cms="dayBadge">Day 1</div>
-          <div class="itinerary-content">
-            <h3 class="itinerary-day-title" data-cms="title">Arrival in Paradise • Tropical Warmth in Negombo</h3>
-            <p class="itinerary-day-desc" data-cms-html="description">Arrive at Bandaranaike International Airport where your private Lotus Ceylon chauffeur guide warmly welcomes you with fresh lotus blooms. Transfer to your seaside boutique hotel in Negombo to unwind by the pool and enjoy your first authentic coastal sunset.</p>
-            <div class="itinerary-meta-tags">
-              <span class="itinerary-meta-pill" data-cms="duration">Overnight: <span data-cms="hotel">Negombo Beach Boutique Resort</span></span>
-              <span class="itinerary-meta-pill"><span data-cms="meals">Breakfast and Gourmet Dinner</span></span>
-              <span class="itinerary-meta-pill"><span data-cms="travelTime"></span></span>
-            </div>
-          </div>
-        </div>
-        
-
-        <div class="itinerary-item" data-day="2">
-          <div class="itinerary-day-badge">Day 2</div>
-          <div class="itinerary-content">
-            <h3 class="itinerary-day-title" data-cms="pkg_southern-sands-serenade.heading_2">Scenic Southern Highway • Tangalle’s Secluded Bays</h3>
-            <p class="itinerary-day-desc" data-cms="pkg_southern-sands-serenade.p_13">Journey south along the scenic expressway towards Tangalle, famed for its untouched golden beaches and whispering palms. Check into your luxury oceanfront pavilion. Afternoon at leisure listening to the rhythm of the Indian Ocean.</p>
-            <div class="itinerary-meta-tags">
-              <span class="itinerary-meta-pill">Overnight: Tangalle Luxury Ocean Pavilions</span>
-              <span class="itinerary-meta-pill">Breakfast and Gourmet Dinner</span>
-              <span class="itinerary-meta-pill"></span>
-            </div>
-          </div>
-        </div>
-        
-
-        <div class="itinerary-item" data-day="3">
-          <div class="itinerary-day-badge">Day 3</div>
-          <div class="itinerary-content">
-            <h3 class="itinerary-day-title" data-cms="pkg_southern-sands-serenade.heading_3">Hummanaya Natural Geyser and Mulgirigala Monastic Rock</h3>
-            <p class="itinerary-day-desc" data-cms="pkg_southern-sands-serenade.p_14">Witness the dramatic Hummanaya natural sea blowhole sending spray 30 meters skyward. Later, explore the tranquil 2,000-year-old Mulgirigala rock monastery tucked into lush coconut forests.</p>
-            <div class="itinerary-meta-tags">
-              <span class="itinerary-meta-pill">Overnight: Tangalle Luxury Ocean Pavilions</span>
-              <span class="itinerary-meta-pill">Breakfast and Gourmet Dinner</span>
-              <span class="itinerary-meta-pill"></span>
-            </div>
-          </div>
-        </div>
-        
-
-        <div class="itinerary-item" data-day="4">
-          <div class="itinerary-day-badge">Day 4</div>
-          <div class="itinerary-content">
-            <h3 class="itinerary-day-title" data-cms="pkg_southern-sands-serenade.heading_4">Coastal Drive to Mirissa • Sunset at Coconut Tree Hill</h3>
-            <p class="itinerary-day-desc" data-cms="pkg_southern-sands-serenade.p_15">Drive west along the picturesque coastline to Mirissa. In the late afternoon, take a gentle walk up Coconut Tree Hill for an iconic panoramic view of the turquoise bay framed by slender palms.</p>
-            <div class="itinerary-meta-tags">
-              <span class="itinerary-meta-pill">Overnight: Mirissa Beachfront Boutique Villa</span>
-              <span class="itinerary-meta-pill">Breakfast and Gourmet Dinner</span>
-              <span class="itinerary-meta-pill"></span>
-            </div>
-          </div>
-        </div>
-        
-
-        <div class="itinerary-item" data-day="5">
-          <div class="itinerary-day-badge">Day 5</div>
-          <div class="itinerary-content">
-            <h3 class="itinerary-day-title" data-cms="pkg_southern-sands-serenade.heading_5">Gentle Ocean Giants • Blue Whale Marine Safari</h3>
-            <p class="itinerary-day-desc" data-cms="pkg_southern-sands-serenade.p_16">Board a private chartered boat at sunrise into the deep oceanic trench off Mirissa. Accompanied by our marine naturalist, encounter the world's largest mammal—the magnificent blue whale—along with pods of playful spinner dolphins.</p>
-            <div class="itinerary-meta-tags">
-              <span class="itinerary-meta-pill">Overnight: Mirissa Beachfront Boutique Villa</span>
-              <span class="itinerary-meta-pill">Breakfast and Gourmet Dinner</span>
-              <span class="itinerary-meta-pill"></span>
-            </div>
-          </div>
-        </div>
-        
-
-        <div class="itinerary-item" data-day="6">
-          <div class="itinerary-day-badge">Day 6</div>
-          <div class="itinerary-content">
-            <h3 class="itinerary-day-title" data-cms="pkg_southern-sands-serenade.heading_6">Unawatuna Bay and Living Heritage of UNESCO Galle Fort</h3>
-            <p class="itinerary-day-desc" data-cms="pkg_southern-sands-serenade.p_17">Travel to historic Galle. In the afternoon, embark on an insider's walking tour of the 17th-century Dutch Fort with a local heritage historian, strolling cobblestone alleys lined with artisan jewelers, colonial mansions, and bastions overlooking the ocean.</p>
-            <div class="itinerary-meta-tags">
-              <span class="itinerary-meta-pill">Overnight: Galle Fort Heritage Suite or Beachfront Resort</span>
-              <span class="itinerary-meta-pill">Breakfast and Gourmet Dinner</span>
-              <span class="itinerary-meta-pill"></span>
-            </div>
-          </div>
-        </div>
-        
-
-        <div class="itinerary-item" data-day="7">
-          <div class="itinerary-day-badge">Day 7</div>
-          <div class="itinerary-content">
-            <h3 class="itinerary-day-title" data-cms="pkg_southern-sands-serenade.heading_7">Stilt Fishermen of Koggala and Coastal Artisan Ateliers</h3>
-            <p class="itinerary-day-desc" data-cms="pkg_southern-sands-serenade.p_18">Witness the timeless practice of stilt fishermen balancing skillfully above the coastal breakers at Koggala. Visit an intimate cinnamon peeling plantation and traditional lace-weaving ateliers.</p>
-            <div class="itinerary-meta-tags">
-              <span class="itinerary-meta-pill">Overnight: Galle Fort Heritage Suite or Beachfront Resort</span>
-              <span class="itinerary-meta-pill">Breakfast and Gourmet Dinner</span>
-              <span class="itinerary-meta-pill"></span>
-            </div>
-          </div>
-        </div>
-        
-
-        <div class="itinerary-item" data-day="8">
-          <div class="itinerary-day-badge">Day 8</div>
-          <div class="itinerary-content">
-            <h3 class="itinerary-day-title" data-cms="pkg_southern-sands-serenade.heading_8">Bentota Coastal Sanctuary • Madu River Boat Safari</h3>
-            <p class="itinerary-day-desc" data-cms="pkg_southern-sands-serenade.p_19">Head northward to Bentota's golden ribbon of beach. Enjoy a peaceful motorized boat cruise along the mangrove canopies of the Madu River wetland, visiting a quiet cinnamon island and bird sanctuaries.</p>
-            <div class="itinerary-meta-tags">
-              <span class="itinerary-meta-pill">Overnight: Bentota 5★ Beach Sanctuary</span>
-              <span class="itinerary-meta-pill">Breakfast and Gourmet Dinner</span>
-              <span class="itinerary-meta-pill"></span>
-            </div>
-          </div>
-        </div>
-        
-
-        <div class="itinerary-item" data-day="9">
-          <div class="itinerary-day-badge">Day 9</div>
-          <div class="itinerary-content">
-            <h3 class="itinerary-day-title" data-cms="pkg_southern-sands-serenade.heading_9">Kosgoda Sea Turtle Sanctuary and Beachfront Leisure</h3>
-            <p class="itinerary-day-desc" data-cms="pkg_southern-sands-serenade.p_20">Visit the renowned Kosgoda Sea Turtle Conservation Project to learn about protecting endangered sea turtles. Spend your final coastal evening with a private candlelit seafood dinner served under the palms right beside the waves.</p>
-            <div class="itinerary-meta-tags">
-              <span class="itinerary-meta-pill">Overnight: Bentota 5★ Beach Sanctuary</span>
-              <span class="itinerary-meta-pill">Breakfast and Gourmet Dinner</span>
-              <span class="itinerary-meta-pill"></span>
-            </div>
-          </div>
-        </div>
-        
-
-        <div class="itinerary-item" data-day="10">
-          <div class="itinerary-day-badge">Day 10</div>
-          <div class="itinerary-content">
-            <h3 class="itinerary-day-title" data-cms="pkg_southern-sands-serenade.heading_10">Colombo Heritage Drive • Farewell to Ceylon</h3>
-            <p class="itinerary-day-desc" data-cms="pkg_southern-sands-serenade.p_21">Enjoy a leisurely morning swim followed by a scenic transfer to Colombo for light shopping and colonial sightseeing before arriving at the airport for your onward journey with unforgettable memories.</p>
-            <div class="itinerary-meta-tags">
-              <span class="itinerary-meta-pill">Departure day · Breakfast</span>
-              <span class="itinerary-meta-pill">Breakfast and Gourmet Dinner</span>
-              <span class="itinerary-meta-pill"></span>
-            </div>
-          </div>
-        </div>
-        
-          </div>
-
-          <div class="inclusions-grid">
-            <div class="inclusions-box">
-              <h3 data-cms="pkg_southern-sands-serenade.heading_11">✓ What's Included</h3>
-              <ul>
-                <li data-cms-html="pkg_southern-sands-serenade.li_1"><span>✓</span> Private luxury air-conditioned vehicle with dedicated licensed chauffeur guide</li><li data-cms-html="pkg_southern-sands-serenade.li_2"><span>✓</span> 9 Nights luxury accommodation in handpicked 4★/5★ beachfront boutique resorts</li><li data-cms-html="pkg_southern-sands-serenade.li_3"><span>✓</span> Daily gourmet breakfast and select coastal dinners</li><li data-cms-html="pkg_southern-sands-serenade.li_4"><span>✓</span> Private Mirissa blue whale and dolphin watching boat charter with lifejackets and refreshments</li><li data-cms-html="pkg_southern-sands-serenade.li_5"><span>✓</span> Private guided walking tour of UNESCO Galle Dutch Fort with heritage host</li><li data-cms-html="pkg_southern-sands-serenade.li_6"><span>✓</span> Madu River mangrove boat safari and Kosgoda Sea Turtle Sanctuary entrance permits</li><li data-cms-html="pkg_southern-sands-serenade.li_7"><span>✓</span> All road tolls, fuel, parking fees, and chauffeur accommodation/meals</li><li data-cms-html="pkg_southern-sands-serenade.li_8"><span>✓</span> Complimentary high-speed in-vehicle Wi-Fi, chilled bottled mineral water, and fresh king coconuts</li>
-              </ul>
-            </div>
-
-            <div class="exclusions-box">
-              <h3 data-cms="pkg_southern-sands-serenade.heading_12">✕ What's Excluded</h3>
-              <ul>
-                <li data-cms-html="pkg_southern-sands-serenade.li_9"><span>✕</span> International flight tickets and entry visa fees (ETA)</li><li data-cms-html="pkg_southern-sands-serenade.li_10"><span>✕</span> Lunch and alcoholic beverages (unless specified)</li><li data-cms-html="pkg_southern-sands-serenade.li_11"><span>✕</span> Optional water sports activities (jet ski, surfing lessons)</li><li data-cms-html="pkg_southern-sands-serenade.li_12"><span>✕</span> Personal expenses, laundry, and discretionary tipping for guide and drivers</li>
-              </ul>
-            </div>
-          </div>
-
-          
-        <div id="southern-sands-serenade-leaflet-map" 
-               class="lotus-street-map-frame js-lotus-route-map" 
-               data-package-id="pkg-beach-01" 
-               data-data-path="../../../data/packages.json"
-               role="region" 
-               aria-label="Interactive Route Map for Southern Sands Serenade">
-          </div>
-        </div>
-        
-
-        </div>
-
-        <aside class="tour-sidebar">
-          <div class="tour-booking-card" style="position: sticky; top: 100px;">
-            <div class="tour-price-header">
-              <span class="tour-price-sub" data-cms="pkg_southern-sands-serenade.span_8">Custom Private Journey</span>
-              <div class="tour-price-val" data-cms="price">Tailor-Made Quote</div>
-              <p class="tour-price-note" data-cms="pkg_southern-sands-serenade.p_22">Price customized based on your dates, party size and preferred boutique stays.</p>
-            </div>
-
-            <div style="padding: 1.25rem 1.5rem 0.5rem;">
-              <h4 style="font-size: 0.95rem; font-weight: 700; color: #002B49; margin-bottom: 0.75rem; text-transform: uppercase;" data-cms="pkg_southern-sands-serenade.heading_13">Journey Highlights</h4>
-              <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.6rem;">
-                <li data-cms-html="pkg_southern-sands-serenade.li_13"><span>★</span> Private ocean safari off Mirissa tracking colossal blue whales and spinner dolphins</li><li data-cms-html="pkg_southern-sands-serenade.li_14"><span>★</span> Walk along the secluded crescent beaches and coconut palm hills of Tangalle</li><li data-cms-html="pkg_southern-sands-serenade.li_15"><span>★</span> Private guided sunset walking tour along the 17th-century ramparts of UNESCO Galle Dutch Fort</li><li data-cms-html="pkg_southern-sands-serenade.li_16"><span>★</span> Visit Kosgoda sea turtle conservation project and release baby hatchlings at dusk</li><li data-cms-html="pkg_southern-sands-serenade.li_17"><span>★</span> Luxury beachfront relaxation with Ayurvedic spa therapies and private beach dining</li>
-              </ul>
-            </div>
-
-            <div style="padding: 1.5rem;">
-              <button type="button" class="btn-sidebar-inquire" style="display: block; width: 100%; text-align: center; margin-bottom: 0.75rem; background: linear-gradient(135deg, #C9962B 0%, #F2C14E 100%); color: #002B49; border: none; font-weight: 700; cursor: pointer; padding: 0.85rem 1rem; border-radius: 8px; font-size: 0.92rem; font-family: inherit;" onclick="window.LotusInteractive.openMakeItYoursModal('Southern Sands Serenade', 'beach')" data-cms="pkg_southern-sands-serenade.btn_17">
-                <span data-cms="pkg_southern-sands-serenade.span_9">✨ Make It Yours (Tailor Tour)</span>
-              </button>
-              <a href="../../../inquiry-detailed.html?package=Southern+Sands+Serenade" class="btn-sidebar-inquire" style="display: block; text-align: center; text-decoration: none; margin-bottom: 0.75rem;" data-cms="pkg_southern-sands-serenade.btn_18">Inquire About This Tour</a>
-              <a href="https://wa.me/94715422384?text=Hello+Lotus+Ceylon%2C+I+would+like+to+inquire+about+the+Southern+Sands+Serenade+%289+Nights+%2F+10+Days%29+private+tour." target="_blank" rel="noopener" class="btn-sidebar-whatsapp" style="display: flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none;" data-cms="pkg_southern-sands-serenade.btn_19">
-                <span data-cms="pkg_southern-sands-serenade.span_10">Chat on WhatsApp</span>
-              </a>
-              <div class="tour-action-pills" style="margin-top: 1rem; justify-content: center; display: flex; gap: 0.5rem; flex-wrap: wrap;">
-                <button type="button" class="btn-pill-save" onclick="window.LotusInteractive.toggleSaveTour('pkg-beach-01', this)" aria-pressed="false" style="padding: 0.45rem 0.85rem; font-size: 0.8rem; border: 1px solid #CBD5E1; border-radius: 20px; background: #FFF; cursor: pointer; display: flex; align-items: center; gap: 4px;" data-cms="pkg_southern-sands-serenade.btn_20">
-                  <span>❤️</span> <span class="save-btn-text" data-cms="pkg_southern-sands-serenade.span_11">Save Trip</span>
-                </button>
-                <button type="button" class="btn-pill-share" onclick="window.LotusInteractive.shareTourWhatsApp('Southern Sands Serenade')" style="padding: 0.45rem 0.85rem; font-size: 0.8rem; border: 1px solid #CBD5E1; border-radius: 20px; background: #FFF; cursor: pointer; display: flex; align-items: center; gap: 4px;" data-cms="pkg_southern-sands-serenade.btn_21">
-                  <span data-cms="pkg_southern-sands-serenade.span_12">Share</span>
-                </button>
-                <button type="button" class="btn-pill-share" onclick="window.LotusInteractive.copyTourLink()" style="padding: 0.45rem 0.85rem; font-size: 0.8rem; border: 1px solid #CBD5E1; border-radius: 20px; background: #FFF; cursor: pointer; display: flex; align-items: center; gap: 4px;" data-cms="pkg_southern-sands-serenade.btn_22">
-                  <span data-cms="pkg_southern-sands-serenade.span_13">Link</span>
-                </button>
-              </div>
-            </div>
-
-            <div class="tour-assistance-box" style="padding: 1.25rem 1.5rem; background: #F8FAFC; border-top: 1px solid #E2E8F0; border-radius: 0 0 12px 12px;">
-              <h4 style="font-size: 0.95rem; color: #002B49; font-weight: 700; margin-bottom: 0.35rem;" data-cms="pkg_southern-sands-serenade.heading_14">Speak With Our Travel Specialists</h4>
-              <p style="font-size: 0.85rem; color: #64748B; margin-bottom: 0.75rem; line-height: 1.5;" data-cms="pkg_southern-sands-serenade.p_23">Our local destination experts in Colombo and Kandy are available 24/7 to personalize this route.</p>
-              <div style="display: flex; align-items: center; gap: 8px; font-weight: 700; color: #002B49; font-size: 0.9rem;">
-                <span data-cms="pkg_southern-sands-serenade.span_14">+94 71 54 22 384</span>
-              </div>
-                          <div style="margin-top: 0.85rem; padding-top: 0.75rem; border-top: 1px dashed #CBD5E1;">
-                <a href="../../../tours/index.html#travel-info-hub" style="display: flex; align-items: center; gap: 6px; font-size: 0.82rem; color: #8C6D3F; font-weight: 700; text-decoration: none;">
-                  <span data-cms="pkg_southern-sands-serenade.span_15">Travel Prep: Visa, Weather and Etiquette ➔</span>
-                </a>
-              </div>
-            </div>
-          </div>
-        </aside>
-
+      <div class="tour-desc-walkers">
+        <p>Sun-Kissed Bays, Blue Whales & Dutch Ramparts</p>
+        <p>Every element of this bespoke journey is privately chauffeured in luxury air-conditioned vehicles, thoughtfully paced, and customized to your exact timeline, flight schedules, and personal preferences by Lotus Ceylon destination specialists.</p>
       </div>
-    </div>
-  </main>
-
-  <section class="related-tours-section padding-top--70 padding-bottom--70" style="background: #F8FAFC; border-top: 1px solid #E2E8F0;">
-    <div class="wrapper--90">
-      <div class="section-watermark-header text-center" style="margin-bottom: 1.5rem;">
-        <p class="watermark-heading" data-cms="pkg_southern-sands-serenade.p_24">MORE EXPERIENCES</p>
-        <h2 class="section-header-title" data-cms="pkg_southern-sands-serenade.heading_15">Other Signature Sri Lanka Luxury Beach Holidays</h2>
-      </div>
-      <div class="related-grid">
-        
-        <div class="related-tour-card">
-          <div class="related-tour-img-wrap">
-            <img src="../../../assets/images/beach/pasikudah-5.webp" alt="Turquoise Eastern Sanctuary" loading="lazy" data-cms-img="pkg_southern-sands-serenade.img_1">
-            <span class="related-tour-duration" data-cms="pkg_southern-sands-serenade.span_16">9 Nights / 10 Days</span>
-          </div>
-          <div class="related-tour-content">
-            <h4 class="related-tour-title" data-cms="pkg_southern-sands-serenade.heading_16">Turquoise Eastern Sanctuary</h4>
-            <p class="related-tour-desc" data-cms="pkg_southern-sands-serenade.p_25">Crystal Coral Lagoons, Surfing and Cliffside Shrines</p>
-            <div class="related-tour-actions">
-              <a href="../../../tours/beach/turquoise-eastern-sanctuary/index.html" class="btn-related-explore" data-cms="pkg_southern-sands-serenade.btn_23">Explore Itinerary ➔</a>
-            </div>
-          </div>
-        </div>
-        
-
-        <div class="related-tour-card">
-          <div class="related-tour-img-wrap">
-            <img src="../../../assets/images/beach/unawatuna-2.webp" alt="Pristine Seaboard Odyssey" loading="lazy" data-cms-img="pkg_southern-sands-serenade.img_2">
-            <span class="related-tour-duration" data-cms="pkg_southern-sands-serenade.span_17">9 Nights / 10 Days</span>
-          </div>
-          <div class="related-tour-content">
-            <h4 class="related-tour-title" data-cms="pkg_southern-sands-serenade.heading_17">Pristine Seaboard Odyssey</h4>
-            <p class="related-tour-desc" data-cms="pkg_southern-sands-serenade.p_26">Dolphins, Dunes and Untouched Northern Islands</p>
-            <div class="related-tour-actions">
-              <a href="../../../tours/beach/pristine-seaboard-odyssey/index.html" class="btn-related-explore" data-cms="pkg_southern-sands-serenade.btn_24">Explore Itinerary ➔</a>
-            </div>
-          </div>
-        </div>
-        
-      </div>
-    </div>
-  </section>
-
-  <section class="banner-bottom-cta padding-top--80 padding-bottom--80" style="background: linear-gradient(135deg, #001A2C 0%, #002B49 100%); color: #FFFFFF; text-align: center;">
-    <div class="wrapper--70">
-      <span style="color: #C5A880; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase;" data-cms="pkg_southern-sands-serenade.span_18">PURE JOURNEYS &bull; SACRED EXPERIENCES</span>
-      <h2 style="font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 2.4rem; margin: 1rem 0; color: #FFFFFF;" data-cms="pkg_southern-sands-serenade.heading_18">Ready to Experience Southern Sands Serenade?</h2>
-      <p style="color: rgba(255,255,255,0.85); font-size: 1.05rem; max-width: 650px; margin: 0 auto 2rem; line-height: 1.6;" data-cms="pkg_southern-sands-serenade.p_27">
-        Every detail of this journey is privately chauffeured and customized to your exact timeline, flight schedules, and luxury accommodation preferences.
-      </p>
       <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
-        <a href="../../../inquiry-detailed.html?package=Southern+Sands+Serenade" class="gold-inquire-btn" style="text-decoration: none; padding: 14px 28px; font-weight: 700; font-size: 0.95rem;" data-cms="pkg_southern-sands-serenade.btn_25">Inquire About This Tour</a>
-        <a href="https://wa.me/94715422384?text=Hello+Lotus+Ceylon%2C+I+would+like+to+inquire+about+the+Southern+Sands+Serenade+%289+Nights+%2F+10+Days%29+private+tour." target="_blank" rel="noopener" class="gold-inquire-btn" style="background: transparent; border: 2px solid #C5A880; color: #C5A880; text-decoration: none; padding: 12px 24px; font-weight: 700; font-size: 0.95rem;" data-cms="pkg_southern-sands-serenade.btn_26">WhatsApp Travel Specialist</a>
-      </div>
-    </div>
-  </section>
-
-  
-
-  <!-- ==========================================================================
-       WHY TRAVEL WITH LOTUS & FREQUENTLY ASKED QUESTIONS
-       ========================================================================== -->
-  <section class="lotus-why-section" id="why-lotus">
-    <div id="lotusWhyContainer"></div>
-  </section>
-
-  <section class="lotus-faq-section" id="faqs">
-    <div id="lotusFaqContainer"></div>
-  </section>
-
-    <!-- Sacred Ceylon CTA Band (Unified Standard) -->
-    <!-- Sacred Ceylon CTA Band (Unified Standard) -->
-  <section class="sacred-cta-banner" data-cms-bg="siteGlobal.branding.cta_bg">
-    <div class="cta-motif" aria-hidden="true"></div>
-    <div class="cta-content">
-      <h2 class="cta-title" data-cms="pkg_southern-sands-serenade.heading_19">Ready to Begin Your Sacred Ceylon Journey?</h2>
-      <p class="cta-desc" data-cms="pkg_southern-sands-serenade.p_28">Speak directly with our senior destination specialists in Ja-Ela or connect via WhatsApp for an immediate bespoke itinerary proposal tailored to your rhythm.</p>
-      <div class="cta-btn-group">
-        <a href="../../../inquiry-detailed.html" class="btn-primary-gold" data-cms="pkg_southern-sands-serenade.btn_27">
-          <span data-cms="pkg_southern-sands-serenade.span_19">Plan My Bespoke Journey</span>
-          <span aria-hidden="true">➔</span>
+        <a class="btn-inquire-gold-pill" href="../../../inquiry-detailed.html?package=Southern+Sands+Serenade">
+          <span>Inquire Now</span>
         </a>
-        <a href="https://wa.me/94715422384?text=Hello%20Lotus%20Ceylon!%20I%20would%20like%20to%20inquire%20about%20a%20private%20tour." target="_blank" rel="noopener noreferrer" class="cta-wa-btn" data-cms="pkg_southern-sands-serenade.btn_28">
-          <span data-cms="pkg_southern-sands-serenade.span_20">Chat on WhatsApp</span>
+        <a href="https://wa.me/94715422384?text=Hello%20Lotus%20Ceylon!%20I%20would%20like%20to%20inquire%20about%20Southern+Sands+Serenade." target="_blank" rel="noopener noreferrer" class="btn-cta-whatsapp">
+          <span>WhatsApp Specialist</span>
         </a>
       </div>
     </div>
   </section>
 
-    <!-- @include footer:start -->
+  <!-- SECTION 3: ITINERARY ACCORDION (Walkers Standard) -->
+  <section class="itinerary-section-walkers" id="itinerary">
+    <div class="itinerary-container-walkers">
+      <h2 class="itinerary-heading-walkers">
+        <span>A journey through</span>
+        Southern Sands Serenade
+      </h2>
+      <div class="walkers-accordion-wrap" id="tourInnerAccordion">
+        <div class="walkers-acc-item is-open">
+          <button type="button" class="walkers-acc-trigger" aria-expanded="true">
+            <div class="walkers-acc-left">
+              <span class="walkers-acc-day">Day 01</span>
+              <h3 class="walkers-acc-title">Arrival in Paradise • Tropical Warmth in Negombo</h3>
+            </div>
+            <span class="walkers-acc-icon">+</span>
+          </button>
+          <div class="walkers-acc-content">
+            <p class="walkers-acc-desc">Arrive at Bandaranaike International Airport where your private Lotus Ceylon chauffeur guide warmly welcomes you with fresh lotus blooms. Transfer to your seaside boutique hotel in Negombo to unwind by the pool and enjoy your first authentic coastal sunset.</p>
+            <div class="walkers-acc-pills">
+              <span class="walkers-acc-pill overnight">Overnight: Negombo Beach Boutique Resort</span>
+              <span class="walkers-acc-pill">Meals: Breakfast & Gourmet Dinner</span>
+            </div>
+          </div>
+        </div>
+        <div class="walkers-acc-item ">
+          <button type="button" class="walkers-acc-trigger" aria-expanded="false">
+            <div class="walkers-acc-left">
+              <span class="walkers-acc-day">Day 02</span>
+              <h3 class="walkers-acc-title">Scenic Southern Highway • Tangalle’s Secluded Bays</h3>
+            </div>
+            <span class="walkers-acc-icon">+</span>
+          </button>
+          <div class="walkers-acc-content">
+            <p class="walkers-acc-desc">Journey south along the scenic expressway towards Tangalle, famed for its untouched golden beaches and whispering palms. Check into your luxury oceanfront pavilion. Afternoon at leisure listening to the rhythm of the Indian Ocean.</p>
+            <div class="walkers-acc-pills">
+              <span class="walkers-acc-pill overnight">Overnight: Tangalle Luxury Ocean Pavilions</span>
+              <span class="walkers-acc-pill">Meals: Breakfast & Gourmet Dinner</span>
+            </div>
+          </div>
+        </div>
+        <div class="walkers-acc-item ">
+          <button type="button" class="walkers-acc-trigger" aria-expanded="false">
+            <div class="walkers-acc-left">
+              <span class="walkers-acc-day">Day 03</span>
+              <h3 class="walkers-acc-title">Hummanaya Natural Geyser & Mulgirigala Monastic Rock</h3>
+            </div>
+            <span class="walkers-acc-icon">+</span>
+          </button>
+          <div class="walkers-acc-content">
+            <p class="walkers-acc-desc">Witness the dramatic Hummanaya natural sea blowhole sending spray 30 meters skyward. Later, explore the tranquil 2,000-year-old Mulgirigala rock monastery tucked into lush coconut forests.</p>
+            <div class="walkers-acc-pills">
+              <span class="walkers-acc-pill overnight">Overnight: Tangalle Luxury Ocean Pavilions</span>
+              <span class="walkers-acc-pill">Meals: Breakfast & Gourmet Dinner</span>
+            </div>
+          </div>
+        </div>
+        <div class="walkers-acc-item ">
+          <button type="button" class="walkers-acc-trigger" aria-expanded="false">
+            <div class="walkers-acc-left">
+              <span class="walkers-acc-day">Day 04</span>
+              <h3 class="walkers-acc-title">Coastal Drive to Mirissa • Sunset at Coconut Tree Hill</h3>
+            </div>
+            <span class="walkers-acc-icon">+</span>
+          </button>
+          <div class="walkers-acc-content">
+            <p class="walkers-acc-desc">Drive west along the picturesque coastline to Mirissa. In the late afternoon, take a gentle walk up Coconut Tree Hill for an iconic panoramic view of the turquoise bay framed by slender palms.</p>
+            <div class="walkers-acc-pills">
+              <span class="walkers-acc-pill overnight">Overnight: Mirissa Beachfront Boutique Villa</span>
+              <span class="walkers-acc-pill">Meals: Breakfast & Gourmet Dinner</span>
+            </div>
+          </div>
+        </div>
+        <div class="walkers-acc-item ">
+          <button type="button" class="walkers-acc-trigger" aria-expanded="false">
+            <div class="walkers-acc-left">
+              <span class="walkers-acc-day">Day 05</span>
+              <h3 class="walkers-acc-title">Gentle Ocean Giants • Blue Whale Marine Safari</h3>
+            </div>
+            <span class="walkers-acc-icon">+</span>
+          </button>
+          <div class="walkers-acc-content">
+            <p class="walkers-acc-desc">Board a private chartered boat at sunrise into the deep oceanic trench off Mirissa. Accompanied by our marine naturalist, encounter the world's largest mammal—the magnificent blue whale—along with pods of playful spinner dolphins.</p>
+            <div class="walkers-acc-pills">
+              <span class="walkers-acc-pill overnight">Overnight: Mirissa Beachfront Boutique Villa</span>
+              <span class="walkers-acc-pill">Meals: Breakfast & Gourmet Dinner</span>
+            </div>
+          </div>
+        </div>
+        <div class="walkers-acc-item ">
+          <button type="button" class="walkers-acc-trigger" aria-expanded="false">
+            <div class="walkers-acc-left">
+              <span class="walkers-acc-day">Day 06</span>
+              <h3 class="walkers-acc-title">Unawatuna Bay & Living Heritage of UNESCO Galle Fort</h3>
+            </div>
+            <span class="walkers-acc-icon">+</span>
+          </button>
+          <div class="walkers-acc-content">
+            <p class="walkers-acc-desc">Travel to historic Galle. In the afternoon, embark on an insider's walking tour of the 17th-century Dutch Fort with a local heritage historian, strolling cobblestone alleys lined with artisan jewelers, colonial mansions, and bastions overlooking the ocean.</p>
+            <div class="walkers-acc-pills">
+              <span class="walkers-acc-pill overnight">Overnight: Galle Fort Heritage Suite or Beachfront Resort</span>
+              <span class="walkers-acc-pill">Meals: Breakfast & Gourmet Dinner</span>
+            </div>
+          </div>
+        </div>
+        <div class="walkers-acc-item ">
+          <button type="button" class="walkers-acc-trigger" aria-expanded="false">
+            <div class="walkers-acc-left">
+              <span class="walkers-acc-day">Day 07</span>
+              <h3 class="walkers-acc-title">Stilt Fishermen of Koggala & Coastal Artisan Ateliers</h3>
+            </div>
+            <span class="walkers-acc-icon">+</span>
+          </button>
+          <div class="walkers-acc-content">
+            <p class="walkers-acc-desc">Witness the timeless practice of stilt fishermen balancing skillfully above the coastal breakers at Koggala. Visit an intimate cinnamon peeling plantation and traditional lace-weaving ateliers.</p>
+            <div class="walkers-acc-pills">
+              <span class="walkers-acc-pill overnight">Overnight: Galle Fort Heritage Suite or Beachfront Resort</span>
+              <span class="walkers-acc-pill">Meals: Breakfast & Gourmet Dinner</span>
+            </div>
+          </div>
+        </div>
+        <div class="walkers-acc-item ">
+          <button type="button" class="walkers-acc-trigger" aria-expanded="false">
+            <div class="walkers-acc-left">
+              <span class="walkers-acc-day">Day 08</span>
+              <h3 class="walkers-acc-title">Bentota Coastal Sanctuary • Madu River Boat Safari</h3>
+            </div>
+            <span class="walkers-acc-icon">+</span>
+          </button>
+          <div class="walkers-acc-content">
+            <p class="walkers-acc-desc">Head northward to Bentota's golden ribbon of beach. Enjoy a peaceful motorized boat cruise along the mangrove canopies of the Madu River wetland, visiting a quiet cinnamon island and bird sanctuaries.</p>
+            <div class="walkers-acc-pills">
+              <span class="walkers-acc-pill overnight">Overnight: Bentota 5★ Beach Sanctuary</span>
+              <span class="walkers-acc-pill">Meals: Breakfast & Gourmet Dinner</span>
+            </div>
+          </div>
+        </div>
+        <div class="walkers-acc-item ">
+          <button type="button" class="walkers-acc-trigger" aria-expanded="false">
+            <div class="walkers-acc-left">
+              <span class="walkers-acc-day">Day 09</span>
+              <h3 class="walkers-acc-title">Kosgoda Sea Turtle Sanctuary & Beachfront Leisure</h3>
+            </div>
+            <span class="walkers-acc-icon">+</span>
+          </button>
+          <div class="walkers-acc-content">
+            <p class="walkers-acc-desc">Visit the renowned Kosgoda Sea Turtle Conservation Project to learn about protecting endangered sea turtles. Spend your final coastal evening with a private candlelit seafood dinner served under the palms right beside the waves.</p>
+            <div class="walkers-acc-pills">
+              <span class="walkers-acc-pill overnight">Overnight: Bentota 5★ Beach Sanctuary</span>
+              <span class="walkers-acc-pill">Meals: Breakfast & Gourmet Dinner</span>
+            </div>
+          </div>
+        </div>
+        <div class="walkers-acc-item ">
+          <button type="button" class="walkers-acc-trigger" aria-expanded="false">
+            <div class="walkers-acc-left">
+              <span class="walkers-acc-day">Day 10</span>
+              <h3 class="walkers-acc-title">Colombo Heritage Drive • Farewell to Ceylon</h3>
+            </div>
+            <span class="walkers-acc-icon">+</span>
+          </button>
+          <div class="walkers-acc-content">
+            <p class="walkers-acc-desc">Enjoy a leisurely morning swim followed by a scenic transfer to Colombo for light shopping and colonial sightseeing before arriving at the airport for your onward journey with unforgettable memories.</p>
+            <div class="walkers-acc-pills">
+              <span class="walkers-acc-pill overnight">Overnight: Departure</span>
+              <span class="walkers-acc-pill">Meals: Breakfast & Gourmet Dinner</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 4: VISUAL JOURNEYS & INCLUSIONS (Walkers Standard) -->
+  <section class="visual-journeys-section">
+    <div class="visual-journeys-container">
+      <h2 class="visual-heading-walkers">
+        <span>Visual Journeys</span>
+      </h2>
+      <div class="walkers-img-grid">
+        <div class="walkers-img-card">
+          <img src="../../../assets/images/beach/mirissa-1.webp" alt="Negombo" loading="lazy">
+          <span class="walkers-img-caption">Negombo</span>
+        </div>
+        <div class="walkers-img-card">
+          <img src="../../../assets/tours/beach/southern-sands-2.jpg" alt="Tangalle" loading="lazy">
+          <span class="walkers-img-caption">Tangalle</span>
+        </div>
+        <div class="walkers-img-card">
+          <img src="../../../assets/tours/beach/southern-sands-3.jpg" alt="Mirissa" loading="lazy">
+          <span class="walkers-img-caption">Mirissa</span>
+        </div>
+      </div>
+
+      <div class="inclusions-grid-walkers">
+        <div class="inclusions-card-walkers pink-accent">
+          <h3 class="inclusions-card-title">Inclusions</h3>
+          <ul class="inclusions-list-walkers">
+            <li><span class="check-icon">✓</span> Private luxury air-conditioned vehicle with dedicated licensed chauffeur guide</li>
+            <li><span class="check-icon">✓</span> 9 Nights luxury accommodation in handpicked 4★/5★ beachfront boutique resorts</li>
+            <li><span class="check-icon">✓</span> Daily gourmet breakfast and select coastal dinners</li>
+            <li><span class="check-icon">✓</span> Private Mirissa blue whale & dolphin watching boat charter with lifejackets & refreshments</li>
+            <li><span class="check-icon">✓</span> Private guided walking tour of UNESCO Galle Dutch Fort with heritage host</li>
+            <li><span class="check-icon">✓</span> Madu River mangrove boat safari and Kosgoda Sea Turtle Sanctuary entrance permits</li>
+            <li><span class="check-icon">✓</span> All road tolls, fuel, parking fees, and chauffeur accommodation/meals</li>
+            <li><span class="check-icon">✓</span> Complimentary high-speed in-vehicle Wi-Fi, chilled bottled mineral water, and fresh king coconuts</li>
+          </ul>
+        </div>
+
+        <div class="inclusions-card-walkers black-accent">
+          <h3 class="inclusions-card-title">Exclusions</h3>
+          <ul class="inclusions-list-walkers">
+            <li><span class="cross-icon">✕</span> International flight tickets and entry visa fees (ETA)</li>
+            <li><span class="cross-icon">✕</span> Lunch and alcoholic beverages (unless specified)</li>
+            <li><span class="cross-icon">✕</span> Optional water sports activities (jet ski, surfing lessons)</li>
+            <li><span class="cross-icon">✕</span> Personal expenses, laundry, and discretionary tipping for guide and drivers</li>
+          </ul>
+        </div>
+
+        <div class="inclusions-card-walkers black-accent">
+          <h3 class="inclusions-card-title">Payment Policies</h3>
+          <ul class="inclusions-list-walkers">
+            <li><span class="check-icon">✓</span> 20% advance confirmation deposit upon private reservation acceptance.</li>
+            <li><span class="check-icon">✓</span> Balance payment due 30 days prior to arrival in Sri Lanka.</li>
+            <li><span class="check-icon">✓</span> Free date rescheduling up to 21 days before arrival.</li>
+            <li><span class="check-icon">✓</span> Transparent cancellation terms with dedicated guest concierge care.</li>
+          </ul>
+        </div>
+
+        <div class="inclusions-card-walkers pink-accent">
+          <h3 class="inclusions-card-title">Payment Methods</h3>
+          <ul class="inclusions-list-walkers">
+            <li><span class="check-icon">✓</span> Secure online credit card processing (Visa, MasterCard, American Express).</li>
+            <li><span class="check-icon">✓</span> International Telegraphic Bank Wire Transfer (USD, EUR, GBP).</li>
+            <li><span class="check-icon">✓</span> Encrypted 3D-Secure payment links for direct instant confirmation.</li>
+            <li><span class="check-icon">✓</span> Official corporate invoicing with Central Bank of Sri Lanka registered operator credentials.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 5: ROUTE MAP SECTION (Walkers Standard) -->
+  <section class="route-section-walkers" id="route-map">
+    <div class="route-container-walkers">
+      <div class="route-map-col">
+        <div id="southern-sands-serenade-leaflet-map" 
+             class="route-map-box-walkers js-lotus-route-map" 
+             data-package-id="pkg-beach-01" 
+             data-data-path="../../../data/packages.json"
+             role="region" 
+             aria-label="Interactive Route Map for Southern Sands Serenade">
+        </div>
+      </div>
+      <div class="route-text-walkers">
+        <h2>
+          <span>Here is your</span>
+          Southern Sands Serenade Route
+        </h2>
+        <p>From Negombo through Tangalle and Mirissa, this 09 nights and 10 days journey connects you with Sri Lanka's most iconic landscapes, cultural landmarks, and authentic Ceylon hospitality.</p>
+        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+          <span class="walkers-acc-pill">Negombo</span> <span class="walkers-acc-pill">Tangalle</span> <span class="walkers-acc-pill">Mirissa</span> <span class="walkers-acc-pill">Unawatuna</span> <span class="walkers-acc-pill">Galle Fort</span> <span class="walkers-acc-pill">Bentota</span> <span class="walkers-acc-pill">Colombo</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 6: FAQS (Everything You Need to Know) -->
+  <section class="faq-section-walkers">
+    <div class="faq-container-walkers">
+      <div class="faq-media-card">
+        <img src="../../../assets/images/beach-galle.jpg" alt="Sri Lanka Luxury Travel FAQ" loading="lazy">
+      </div>
+      <div class="faq-content-col">
+        <h2>
+          <span>Everything</span>
+          You Need to Know
+        </h2>
+        <div class="walkers-accordion-wrap">
+          <div class="walkers-acc-item is-open">
+            <button type="button" class="walkers-acc-trigger">
+              <h4 class="walkers-acc-title">Can I extend the number of days for this tour?</h4>
+              <span class="walkers-acc-icon">+</span>
+            </button>
+            <div class="walkers-acc-content">
+              <p class="walkers-acc-desc">Yes, certainly. Every itinerary we design is 100% bespoke. Our private travel designers will gladly extend your stay, add beach days, or tailor the pace to your exact preferences.</p>
+            </div>
+          </div>
+          <div class="walkers-acc-item">
+            <button type="button" class="walkers-acc-trigger">
+              <h4 class="walkers-acc-title">Can I customize the hotels, destinations, or vehicle?</h4>
+              <span class="walkers-acc-icon">+</span>
+            </button>
+            <div class="walkers-acc-content">
+              <p class="walkers-acc-desc">Absolutely. You can choose from audited heritage tea bungalows, boutique eco-villas, or 5-star international luxury resorts. Vehicles range from premium luxury sedans to spacious executive vans.</p>
+            </div>
+          </div>
+          <div class="walkers-acc-item">
+            <button type="button" class="walkers-acc-trigger">
+              <h4 class="walkers-acc-title">What kind of chauffeur guide will accompany us?</h4>
+              <span class="walkers-acc-icon">+</span>
+            </button>
+            <div class="walkers-acc-content">
+              <p class="walkers-acc-desc">Your journey will be led by a handpicked, licensed Sri Lankan National Tour Guide or Tourist Chauffeur with deep cultural understanding, fluent English, and impeccable hospitality standards.</p>
+            </div>
+          </div>
+          <div class="walkers-acc-item">
+            <button type="button" class="walkers-acc-trigger">
+              <h4 class="walkers-acc-title">What are the booking and cancellation policies?</h4>
+              <span class="walkers-acc-icon">+</span>
+            </button>
+            <div class="walkers-acc-content">
+              <p class="walkers-acc-desc">A 20% advance deposit confirms your private reservation. In the event of flight changes or unforeseen circumstances, we offer flexible free date rescheduling up to 21 days prior to arrival.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 7: MORE JOURNEYS (Walkers Standard) -->
+  <section class="more-journeys-walkers">
+    <div class="more-journeys-container">
+      <h2 class="more-journeys-heading">More Journeys to Discover</h2>
+      <div class="more-journeys-grid">
+        <div class="related-tour-card" style="background: #FFFFFF; border-radius: 14px; overflow: hidden; border: 1px solid rgba(0, 43, 73, 0.08); box-shadow: 0 4px 18px rgba(0,0,0,0.04); display: flex; flex-direction: column;">
+          <div class="related-tour-img-wrap" style="position: relative; height: 210px; overflow: hidden;">
+            <img src="../../../assets/images/beach/pasikudah-5.webp" alt="Turquoise Eastern Sanctuary" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;">
+            <span class="related-tour-duration" style="position: absolute; top: 12px; left: 12px; background: rgba(17, 24, 39, 0.88); color: #FFFFFF; padding: 4px 12px; border-radius: 20px; font-size: 0.78rem; font-weight: 700;">11 Nights and 12 Days</span>
+          </div>
+          <div class="related-tour-content" style="padding: 1.5rem; display: flex; flex-direction: column; flex-grow: 1;">
+            <h4 style="font-family: 'DM Sans', sans-serif; font-size: 1.18rem; font-weight: 700; color: #111827; margin: 0 0 0.5rem 0;">Turquoise Eastern Sanctuary</h4>
+            <p style="color: #64748B; font-size: 0.9rem; line-height: 1.6; margin: 0 0 1.25rem 0; flex-grow: 1;">Crystal Coral Lagoons, Surfing & Cliffside Shrines</p>
+            <div>
+              <a href="../../../tours/beach/turquoise-eastern-sanctuary/index.html" class="btn-inquire-gold-pill" style="padding: 8px 20px; font-size: 0.85rem; width: 100%; justify-content: center;">
+                <span>Explore Itinerary ➔</span>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="related-tour-card" style="background: #FFFFFF; border-radius: 14px; overflow: hidden; border: 1px solid rgba(0, 43, 73, 0.08); box-shadow: 0 4px 18px rgba(0,0,0,0.04); display: flex; flex-direction: column;">
+          <div class="related-tour-img-wrap" style="position: relative; height: 210px; overflow: hidden;">
+            <img src="../../../assets/images/beach/unawatuna-2.webp" alt="Pristine Seaboard Odyssey" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;">
+            <span class="related-tour-duration" style="position: absolute; top: 12px; left: 12px; background: rgba(17, 24, 39, 0.88); color: #FFFFFF; padding: 4px 12px; border-radius: 20px; font-size: 0.78rem; font-weight: 700;">13 Nights and 14 Days</span>
+          </div>
+          <div class="related-tour-content" style="padding: 1.5rem; display: flex; flex-direction: column; flex-grow: 1;">
+            <h4 style="font-family: 'DM Sans', sans-serif; font-size: 1.18rem; font-weight: 700; color: #111827; margin: 0 0 0.5rem 0;">Pristine Seaboard Odyssey</h4>
+            <p style="color: #64748B; font-size: 0.9rem; line-height: 1.6; margin: 0 0 1.25rem 0; flex-grow: 1;">Dolphins, Dunes & Untouched Northern Islands</p>
+            <div>
+              <a href="../../../tours/beach/pristine-seaboard-odyssey/index.html" class="btn-inquire-gold-pill" style="padding: 8px 20px; font-size: 0.85rem; width: 100%; justify-content: center;">
+                <span>Explore Itinerary ➔</span>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="related-tour-card" style="background: #FFFFFF; border-radius: 14px; overflow: hidden; border: 1px solid rgba(0, 43, 73, 0.08); box-shadow: 0 4px 18px rgba(0,0,0,0.04); display: flex; flex-direction: column;">
+          <div class="related-tour-img-wrap" style="position: relative; height: 210px; overflow: hidden;">
+            <img src="../../../assets/images/cultural/sigiriya-1.webp" alt="Royal Kingdoms & Sacred Temples" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;">
+            <span class="related-tour-duration" style="position: absolute; top: 12px; left: 12px; background: rgba(17, 24, 39, 0.88); color: #FFFFFF; padding: 4px 12px; border-radius: 20px; font-size: 0.78rem; font-weight: 700;">05 Nights and 06 Days</span>
+          </div>
+          <div class="related-tour-content" style="padding: 1.5rem; display: flex; flex-direction: column; flex-grow: 1;">
+            <h4 style="font-family: 'DM Sans', sans-serif; font-size: 1.18rem; font-weight: 700; color: #111827; margin: 0 0 0.5rem 0;">Royal Kingdoms & Sacred Temples</h4>
+            <p style="color: #64748B; font-size: 0.9rem; line-height: 1.6; margin: 0 0 1.25rem 0; flex-grow: 1;">The Essential UNESCO Heritage Triangle</p>
+            <div>
+              <a href="../../../tours/cultural/royal-kingdoms-sacred-temples/index.html" class="btn-inquire-gold-pill" style="padding: 8px 20px; font-size: 0.85rem; width: 100%; justify-content: center;">
+                <span>Explore Itinerary ➔</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 8: BOTTOM CTA BANNER (Walkers Standard) -->
+  <section class="tour-cta-walkers">
+    <div class="tour-cta-container">
+      <span class="tour-cta-tag">BESPOKE PRIVATE TRAVEL</span>
+      <h2 class="tour-cta-title">Plan your Perfect Beach Escape</h2>
+      <p class="tour-cta-desc">Connect directly with our senior Ceylon travel designers to curate your private chauffeur-guided journey across Sri Lanka.</p>
+      <div class="tour-cta-btn-group">
+        <a href="../../../inquiry-detailed.html?package=Southern+Sands+Serenade" class="btn-inquire-gold-pill">Inquire About This Tour</a>
+        <a href="https://wa.me/94715422384?text=Hello%20Lotus%20Ceylon!%20I%20would%20like%20to%20inquire%20about%20the%20Southern+Sands+Serenade%20private%20tour." target="_blank" rel="noopener noreferrer" class="btn-cta-whatsapp">
+          <span>Chat on WhatsApp</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Site Footer -->
+  <!-- @include footer:start -->
 <!-- Site design & development: Infinite Design (https://infiniteweb.dev/) — see /humans.txt and LICENSE.txt -->
 <!-- Site Footer (Walkers Tours Standard with Sunset Palms Background) -->
 <footer class="site-footer-walkers" id="siteFooter"
@@ -1065,6 +780,7 @@
 </footer>
 <!-- @include footer:end -->
 
+  <!-- Unified Mobile-First Floating Action Group -->
   <!-- @include floating-actions:start -->
 <!-- Site design & development: Infinite Design (https://infiniteweb.dev/) — see /humans.txt and LICENSE.txt -->
 <!-- Unified Mobile-First Floating Action Group (WhatsApp + Back to Top) -->
@@ -1084,16 +800,27 @@
 </a>
 <!-- @include floating-actions:end -->
 
-  <!-- Persistent Floating WhatsApp Concierge -->
-  
-
+  <!-- JavaScript Plugins -->
   <script src="../../../vendor/leaflet/leaflet.js"></script>
   <script src="../../../js/leaflet-tour-map.js?v=20261101_pure_osm_v9"></script>
   <script src="../../../js/tour-interactive.js"></script>
   <script src="../../../js/site-translator.js"></script>
   <script src="../../../assets/js/config.js"></script>
-<script defer src="../../../assets/js/site-data.js"></script>
+  <script defer src="../../../assets/js/site-data.js"></script>
   <script src="../../../assets/js/mobile-nav.js"></script>
-  <script src="../../../assets/js/cms.js?v=20261029_secimg1"></script>
+
+  <!-- Interactive Accordion Handler -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelectorAll('.walkers-acc-trigger').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          var item = this.closest('.walkers-acc-item');
+          if (item) {
+            item.classList.toggle('is-open');
+          }
+        });
+      });
+    });
+  </script>
 </body>
 </html>

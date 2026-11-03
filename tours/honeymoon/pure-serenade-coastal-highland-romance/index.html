@@ -1,263 +1,55 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <!-- Site design & development: Infinite Design (https://infiniteweb.dev/) — see /humans.txt and LICENSE.txt -->
 <html lang="en" dir="ltr">
 <head>
   <meta name="generator" content="Built by Infinite Design — https://infiniteweb.dev/">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="theme-color" content="#16361D">
-  <title data-cms="seo.title">Pure Serenade Coastal and Highland 12-Day Honeymoon | Lotus Ceylon</title>
-  <meta name="description" content="Experience the ultimate Sri Lanka honeymoon: Sigiriya luxury pavilions, Yala safari glamping, and private beachfront villas." data-cms="seo.description" data-cms="seo.description" data-cms="seo.description">
+  <meta name="theme-color" content="#111827">
+  <title data-cms="seo.title">Pure Serenade Coastal & Highland Romance | Lotus Ceylon Luxury Tours</title>
+  <meta name="description" content="Experience the ultimate Sri Lanka honeymoon: Sigiriya luxury pavilions, Yala safari glamping, and private beachfront villas." data-cms="seo.description">
   <link rel="icon" type="image/png" href="../../../logo.png?v=20261021_step1">
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..800;1,9..40,300..800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..800;1,9..40,300..800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <!-- Master Stylesheets -->
   <link rel="stylesheet" href="../../../css/style.css?v=20261022_beach_v1">
   <link rel="stylesheet" href="../../../css/brand-header.css?v=20261022_exact_hf_v1">
-  <link rel="stylesheet" href="../../../css/tour-package-detail.css?v=20261022_pkg_v1">
-
-  <style>
-    :root {
-      --watermark-shadow-pink: #EEDBE2;
-    }
-    .watermark-heading {
-      color: var(--watermark-shadow-pink) !important;
-      font-weight: 800;
-      letter-spacing: 0.15em;
-    }
-    .itinerary-item {
-      display: flex;
-      gap: 1.5rem;
-      margin-bottom: 2rem;
-      position: relative;
-    }
-    .itinerary-day-badge {
-      width: 70px;
-      height: 70px;
-      flex-shrink: 0;
-      background: linear-gradient(135deg, #002B49 0%, #001A2C 100%);
-      color: #C5A880;
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 700;
-      font-size: 0.95rem;
-      box-shadow: 0 4px 15px rgba(0,43,73,0.15);
-      border: 1px solid rgba(197,168,128,0.3);
-      text-transform: uppercase;
-      text-align: center;
-      line-height: 1.2;
-    }
-    .itinerary-content {
-      background: #FFFFFF;
-      border: 1px solid #E2E8F0;
-      border-radius: 12px;
-      padding: 1.5rem 1.75rem;
-      flex-grow: 1;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
-      transition: all 0.3s ease;
-    }
-    .itinerary-content:hover {
-      border-color: #C5A880;
-      box-shadow: 0 8px 24px rgba(0,43,73,0.08);
-    }
-    .itinerary-day-title {
-      font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      font-size: 1.25rem;
-      color: #002B49;
-      margin-bottom: 0.75rem;
-      font-weight: 600;
-    }
-    .itinerary-day-desc {
-      color: #475569;
-      font-size: 0.95rem;
-      line-height: 1.7;
-      margin-bottom: 1rem;
-    }
-    .itinerary-meta-tags {
-      display: flex;
-      gap: 0.75rem;
-      flex-wrap: wrap;
-    }
-    .itinerary-tag {
-      background: #F1F5F9;
-      color: #002B49;
-      padding: 0.35rem 0.75rem;
-      border-radius: 6px;
-      font-size: 0.82rem;
-      font-weight: 600;
-    }
-    .inclusions-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2rem;
-      margin-top: 2rem;
-    }
-    @media (max-width: 768px) {
-      .inclusions-grid { grid-template-columns: 1fr; }
-      .itinerary-item { flex-direction: column; gap: 0.75rem; }
-      .itinerary-day-badge { width: auto; height: 36px; padding: 0 1rem; }
-    }
-    .inclusions-box, .exclusions-box {
-      background: #FFFFFF;
-      border-radius: 12px;
-      padding: 1.75rem;
-      border: 1px solid #E2E8F0;
-    }
-    .inclusions-box { border-top: 4px solid #10B981; }
-    .exclusions-box { border-top: 4px solid #EF4444; }
-    .inclusions-box h3, .exclusions-box h3 {
-      font-size: 1.15rem;
-      color: #002B49;
-      margin-bottom: 1rem;
-      font-weight: 700;
-    }
-    .inclusions-box ul, .exclusions-box ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-    .inclusions-box li, .exclusions-box li {
-      padding: 0.5rem 0;
-      color: #475569;
-      font-size: 0.92rem;
-      display: flex;
-      align-items: flex-start;
-      gap: 0.6rem;
-      border-bottom: 1px dashed #F1F5F9;
-    }
-    .inclusions-box li span { color: #10B981; font-weight: bold; }
-    .exclusions-box li span { color: #EF4444; font-weight: bold; }
-    .related-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-      margin-top: 2rem;
-    }
-    .related-tour-card {
-      background: #FFFFFF;
-      border: 1px solid #E2E8F0;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.04);
-      transition: all 0.3s ease;
-      display: flex;
-      flex-direction: column;
-    }
-    .related-tour-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 12px 28px rgba(0,43,73,0.12);
-    }
-    .related-tour-img-wrap {
-      position: relative;
-      height: 200px;
-      overflow: hidden;
-    }
-    .related-tour-img-wrap img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.5s ease;
-    }
-    .related-tour-card:hover .related-tour-img-wrap img {
-      transform: scale(1.05);
-    }
-    .related-tour-duration {
-      position: absolute;
-      top: 12px;
-      left: 12px;
-      background: rgba(0, 43, 73, 0.85);
-      color: #C5A880;
-      padding: 4px 12px;
-      border-radius: 20px;
-      font-size: 0.78rem;
-      font-weight: 700;
-    }
-    .related-tour-content {
-      padding: 1.5rem;
-      display: flex;
-      flex-direction: column;
-      flex-grow: 1;
-    }
-    .related-tour-title {
-      font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      font-size: 1.2rem;
-      color: #002B49;
-      margin-bottom: 0.5rem;
-    }
-    .related-tour-desc {
-      color: #64748B;
-      font-size: 0.88rem;
-      line-height: 1.6;
-      margin-bottom: 1.25rem;
-      flex-grow: 1;
-    }
-    .btn-related-explore {
-      color: #002B49;
-      font-weight: 700;
-      font-size: 0.88rem;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      transition: color 0.2s;
-    }
-    .btn-related-explore:hover {
-      color: #C5A880;
-    }
-    .map-lightbox-modal {
-      display: none;
-      position: fixed;
-      z-index: 99999;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.85);
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-    }
-    .map-lightbox-modal.active { display: flex; }
-    .map-lightbox-content { max-width: 90vw; max-height: 90vh; object-fit: contain; border-radius: 8px; }
-    .map-lightbox-close { position: absolute; top: 25px; right: 35px; color: #fff; font-size: 40px; font-weight: 300; cursor: pointer; }
-  </style>
+  <link rel="stylesheet" href="../../../css/tour-package-detail.css?v=20261103_walkers_v1">
   <link rel="stylesheet" href="../../../vendor/leaflet/leaflet.css">
   <link rel="stylesheet" href="../../../css/tours-map.css?v=20261031_osm_v5">
-  <!-- Canonical & OpenGraph SEO (Phase 7) -->
+
+  <!-- Canonical & OpenGraph SEO -->
   <link rel="canonical" href="https://kanchu12345.github.io/thai/tours/honeymoon/pure-serenade-coastal-highland-romance/">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Lotus Ceylon International Tours">
-  <meta property="og:title" content="Pure Serenade Coastal and Highland Romance | Lotus Ceylon Pure Journeys">
+  <meta property="og:title" content="Pure Serenade Coastal & Highland Romance | Lotus Ceylon Pure Journeys">
   <meta property="og:description" content="Experience the ultimate Sri Lanka honeymoon: Sigiriya luxury pavilions, Yala safari glamping, and private beachfront villas.">
   <meta property="og:url" content="https://kanchu12345.github.io/thai/tours/honeymoon/pure-serenade-coastal-highland-romance/">
-  <meta property="og:image" content="https://kanchu12345.github.io/thai/assets/images/honeymoon/seaside-villa-1.webp">
+  <meta property="og:image" content="https://kanchu12345.github.io/thai/assets/images/couple-travel.jpg">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Pure Serenade Coastal and Highland Romance | Lotus Ceylon">
+  <meta name="twitter:title" content="Pure Serenade Coastal & Highland Romance | Lotus Ceylon">
   <meta name="twitter:description" content="Experience the ultimate Sri Lanka honeymoon: Sigiriya luxury pavilions, Yala safari glamping, and private beachfront villas.">
-  <meta name="twitter:image" content="https://kanchu12345.github.io/thai/assets/images/honeymoon/seaside-villa-1.webp">
+  <meta name="twitter:image" content="https://kanchu12345.github.io/thai/assets/images/couple-travel.jpg">
 
   <!-- Structured Data: Google TouristTrip Schema -->
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "TouristTrip",
-  "name": "Pure Serenade Coastal & Highland Romance (12 Days / 11 Nights)",
+  "name": "Pure Serenade Coastal & Highland Romance (11 Nights and 12 Days)",
   "description": "Experience the ultimate Sri Lanka honeymoon: Sigiriya luxury pavilions, Yala safari glamping, and private beachfront villas.",
   "touristType": [
     "Luxury Travel",
-    "Cultural Heritage",
-    "Private Chauffeur Tour",
-    "Honeymoon"
+    "Sri Lanka Luxury Honeymoon Romance",
+    "Private Chauffeur Tour"
   ],
   "provider": {
     "@type": "TravelAgency",
-    "name": "Lotus Ceylon International Tours & Services (Private) Limited",
+    "name": "Lotus Ceylon International Tours and Services (Private) Limited",
     "url": "https://lotusceylon.com/",
     "telephone": "+94715422384",
     "priceRange": "$$$$",
@@ -273,130 +65,13 @@
     "price": "Tailor-made",
     "availability": "https://schema.org/InStock",
     "url": "https://lotusceylon.com/inquiry-detailed.html?package=Pure+Serenade+Coastal+&+Highland+Romance"
-  },
-  "itinerary": {
-    "@type": "ItemList",
-    "numberOfItems": 12,
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "item": {
-          "@type": "TouristAttraction",
-          "name": "Day 01: Arrival in Colombo & Transfer to Cultural Oasis",
-          "description": "Warm welcome at CMB airport. Transfer to an eco-luxury water pavilion resort in the Cultural Triangle."
-        }
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "item": {
-          "@type": "TouristAttraction",
-          "name": "Day 02: Sigiriya Rock Palace at Golden Hour",
-          "description": "Morning at leisure by your private pool. In the late afternoon, ascend Sigiriya rock fortress as the sun casts long golden shadows."
-        }
-      },
-      {
-        "@type": "ListItem",
-        "position": 3,
-        "item": {
-          "@type": "TouristAttraction",
-          "name": "Day 03: Bicycle Ride Through Ancient Royal Monasteries",
-          "description": "Leisurely cycling through shaded ruins of Polonnaruwa royal capital. Private sunset boat ride on ancient Minneriya lake."
-        }
-      },
-      {
-        "@type": "ListItem",
-        "position": 4,
-        "item": {
-          "@type": "TouristAttraction",
-          "name": "Day 04: Ascent to Nuwara Eliya Mountain Retreat",
-          "description": "Drive past Dambulla into misty tea country. Check into a colonial manor surrounded by manicured rose gardens."
-        }
-      },
-      {
-        "@type": "ListItem",
-        "position": 5,
-        "item": {
-          "@type": "TouristAttraction",
-          "name": "Day 05: Scenic Mountain Train & Nine Arches Viaduct",
-          "description": "Scenic rail journey through tea-clad cliffs to Ella. Stroll along Nine Arches Bridge and enjoy sunset cocktails."
-        }
-      },
-      {
-        "@type": "ListItem",
-        "position": 6,
-        "item": {
-          "@type": "TouristAttraction",
-          "name": "Day 06: Descent to Yala Safari Wilderness Glamping",
-          "description": "Drive to Yala. Check into your ultra-luxury cocoon safari tent featuring teak decks, four-poster bed, and private plunge pool."
-        }
-      },
-      {
-        "@type": "ListItem",
-        "position": 7,
-        "item": {
-          "@type": "TouristAttraction",
-          "name": "Day 07: Private Leopard Safari & Bush Sundowners",
-          "description": "Morning and afternoon private jeep drives tracking leopards and sloth bears with senior naturalist. Sunset champagne in the bush."
-        }
-      },
-      {
-        "@type": "ListItem",
-        "position": 8,
-        "item": {
-          "@type": "TouristAttraction",
-          "name": "Day 08: Coastal Transfer to Mirissa Beachfront Sanctuary",
-          "description": "Scenic drive along golden southern shores to your private beachfront boutique villa in Mirissa."
-        }
-      },
-      {
-        "@type": "ListItem",
-        "position": 9,
-        "item": {
-          "@type": "TouristAttraction",
-          "name": "Day 09: Private Blue Whale Watching Catamaran Charter",
-          "description": "Private morning boat charter sailing into deep waters. Spot colossal blue whales and spinner dolphins in complete seclusion."
-        }
-      },
-      {
-        "@type": "ListItem",
-        "position": 10,
-        "item": {
-          "@type": "TouristAttraction",
-          "name": "Day 10: Couples Spa Day & Galle Fort Sunset Ramble",
-          "description": "Indulgent couples Ayurvedic herbal massage. Evening walk along Galle's ramparts followed by an intimate dining experience."
-        }
-      },
-      {
-        "@type": "ListItem",
-        "position": 11,
-        "item": {
-          "@type": "TouristAttraction",
-          "name": "Day 11: Barefoot Luxury & Private Beach Barbecue",
-          "description": "A day entirely at leisure to soak up the sun, swim in turquoise waters, and savor a lantern-lit seafood dinner on the sand."
-        }
-      },
-      {
-        "@type": "ListItem",
-        "position": 12,
-        "item": {
-          "@type": "TouristAttraction",
-          "name": "Day 12: Highway Transfer to Colombo & Departure",
-          "description": "Private luxury chauffeur transfer via expressway to CMB airport for onward romantic journey."
-        }
-      }
-    ]
   }
 }
   </script>
-  <!-- Master Unified Stylesheet -->
-  <link rel="stylesheet" href="../../../assets/css/site.css">
 </head>
 <body class="page-tour-detail" data-cms-page="tourPackages/pure-serenade-coastal-highland-romance">
 
-  <!-- Site Header & Navigation (Unified Walkers Luxury Standard) -->
-    <!-- Site Header & Navigation (Unified Master Standard: Mobile Max 64px, Logo Max 40px) -->
+  <!-- Site Header & Navigation -->
   <!-- @include header:start -->
 <!-- Site design & development: Infinite Design (https://infiniteweb.dev/) — see /humans.txt and LICENSE.txt -->
 <!-- Site Header & Navigation (Unified Master Standard Driven by siteGlobal) -->
@@ -552,431 +227,463 @@
 </div>
 <!-- @include mobile-menu:end -->
 
-  <!-- Full-Screen Slide-in Mobile Navigation Menu -->
-  
+  <!-- SECTION 1: HERO BANNER (Full-width Walkers Standard) -->
+  <section class="tour-banner-walkers" style="background-image: url('../../../assets/images/couple-travel.jpg');">
+    <div class="wrapper--90" style="position: relative; z-index: 2; padding-bottom: 2.5rem; width: 100%;">
+      <nav class="tour-breadcrumb" aria-label="Breadcrumb" style="display: flex; gap: 8px; align-items: center; color: rgba(255,255,255,0.8); font-size: 0.85rem; font-weight: 500;">
+        <a href="../../../index.html" style="color: #FFFFFF; text-decoration: none;">Home</a>
+        <span>/</span>
+        <a href="../../../tours/index.html" style="color: #FFFFFF; text-decoration: none;">Tours</a>
+        <span>/</span>
+        <a href="../../../tours/honeymoon/index.html" style="color: #FFFFFF; text-decoration: none;">Sri Lanka Luxury Honeymoon Romance</a>
+        <span>/</span>
+        <span style="color: #D4A359;">Pure Serenade Coastal & Highland Romance</span>
+      </nav>
+    </div>
+  </section>
 
-  <section class="tour-hero-section" data-cms-bg="pkg_pure-serenade-coastal-highland-romance.hero_bg" id="tourHero" style="background-image: url('../../../assets/images/honeymoon/seaside-villa-1.webp');">
-    <div class="tour-hero-overlay"></div>
-    <div class="wrapper--90">
-      <div class="tour-hero-content">
-        <nav class="tour-breadcrumb" aria-label="Breadcrumb">
-          <a href="../../../index.html" data-cms="pkg_pure-serenade-coastal-highland-romance.a_21">Home</a>
-          <span class="sep">/</span>
-          <a href="../../../tours/index.html" data-cms="pkg_pure-serenade-coastal-highland-romance.a_22">Tours</a>
-          <span class="sep">/</span>
-          <a href="../../../tours/honeymoon/index.html" data-cms="pkg_pure-serenade-coastal-highland-romance.a_23">Sri Lanka Luxury Honeymoon Tours</a>
-          <span class="sep">/</span>
-          <span data-cms="pkg_pure-serenade-coastal-highland-romance.span_4">Pure Serenade Coastal and Highland Romance</span>
-        </nav>
+  <!-- SECTION 2: OVERVIEW & HEADER (Walkers Standard) -->
+  <section class="tour-overview-walkers">
+    <div class="wrapper--70" style="max-width: 980px; margin: 0 auto;">
+      <span class="tour-badge-pill-walkers">Recommended for Romance, Honeymoon Luxury</span>
+      <div class="tour-category-sub-walkers">Sri Lanka Luxury Honeymoon Romance</div>
+      <h1 class="tour-title-walkers">Pure Serenade Coastal & Highland Romance</h1>
+      <div class="tour-duration-line-walkers">
+        <span>11 Nights and 12 Days</span>
+      </div>
+      <div class="tour-desc-walkers">
+        <p>An intimate grand tour uniting ancient water gardens, mist-clad peaks, wild safari glamping, and turquoise oceans.</p>
+        <p>Every element of this bespoke journey is privately chauffeured in luxury air-conditioned vehicles, thoughtfully paced, and customized to your exact timeline, flight schedules, and personal preferences by Lotus Ceylon destination specialists.</p>
+      </div>
+      <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+        <a class="btn-inquire-gold-pill" href="../../../inquiry-detailed.html?package=Pure+Serenade+Coastal+&+Highland+Romance">
+          <span>Inquire Now</span>
+        </a>
+        <a href="https://wa.me/94715422384?text=Hello%20Lotus%20Ceylon!%20I%20would%20like%20to%20inquire%20about%20Pure+Serenade+Coastal+&+Highland+Romance." target="_blank" rel="noopener noreferrer" class="btn-cta-whatsapp">
+          <span>WhatsApp Specialist</span>
+        </a>
+      </div>
+    </div>
+  </section>
 
-        <div class="tour-hero-badges">
-          <span class="tour-badge-pill tour-badge-gold" data-cms="category">11 Nights / 12 Days</span>
-          <span class="tour-badge-pill tour-badge-glass" data-cms="pkg_pure-serenade-coastal-highland-romance.span_5">Sri Lanka Luxury Honeymoon Tours</span>
-          <span class="tour-badge-pill tour-badge-glass" data-cms="pkg_pure-serenade-coastal-highland-romance.span_6">Private Chauffeur Guided</span>
+  <!-- SECTION 3: ITINERARY ACCORDION (Walkers Standard) -->
+  <section class="itinerary-section-walkers" id="itinerary">
+    <div class="itinerary-container-walkers">
+      <h2 class="itinerary-heading-walkers">
+        <span>A journey through</span>
+        Pure Serenade Coastal & Highland Romance
+      </h2>
+      <div class="walkers-accordion-wrap" id="tourInnerAccordion">
+        <div class="walkers-acc-item is-open">
+          <button type="button" class="walkers-acc-trigger" aria-expanded="true">
+            <div class="walkers-acc-left">
+              <span class="walkers-acc-day">Day 01</span>
+              <h3 class="walkers-acc-title">Arrival in Colombo & Transfer to Cultural Oasis</h3>
+            </div>
+            <span class="walkers-acc-icon">+</span>
+          </button>
+          <div class="walkers-acc-content">
+            <p class="walkers-acc-desc">Warm welcome at CMB airport. Transfer to an eco-luxury water pavilion resort in the Cultural Triangle.</p>
+            <div class="walkers-acc-pills">
+              <span class="walkers-acc-pill overnight">Overnight: Water Garden Pavilion, Sigiriya</span>
+              <span class="walkers-acc-pill">Meals: Dinner & Champagne</span>
+            </div>
+          </div>
         </div>
-
-        <h1 class="hero-title" data-cms="title">
-          <span class="hero-title-main" data-cms="pkg_pure-serenade-coastal-highland-romance.span_7">Pure Serenade Coastal and Highland Romance</span>
-          <span class="hero-title-accent" data-cms="pkg_pure-serenade-coastal-highland-romance.span_8">Bespoke Glamping and Turquoise Horizons</span>
-        </h1>
-        <p class="tour-hero-tagline" data-cms="pkg_pure-serenade-coastal-highland-romance.p_2">An intimate grand tour uniting ancient water gardens, mist-clad peaks, wild safari glamping, and turquoise oceans.</p>
-
-        <div class="tour-hero-actions">
-          <a href="../../../inquiry-detailed.html?package=Pure+Serenade+Coastal+%26+Highland+Romance" class="btn-hero-primary" data-cms="pkg_pure-serenade-coastal-highland-romance.btn_13">Inquire About This Tour</a>
-          <a href="#itinerary" class="btn-hero-secondary" data-cms="pkg_pure-serenade-coastal-highland-romance.btn_14">View Day-by-Day Journey ↓</a>
+        <div class="walkers-acc-item ">
+          <button type="button" class="walkers-acc-trigger" aria-expanded="false">
+            <div class="walkers-acc-left">
+              <span class="walkers-acc-day">Day 02</span>
+              <h3 class="walkers-acc-title">Sigiriya Rock Palace at Golden Hour</h3>
+            </div>
+            <span class="walkers-acc-icon">+</span>
+          </button>
+          <div class="walkers-acc-content">
+            <p class="walkers-acc-desc">Morning at leisure by your private pool. In the late afternoon, ascend Sigiriya rock fortress as the sun casts long golden shadows.</p>
+            <div class="walkers-acc-pills">
+              <span class="walkers-acc-pill overnight">Overnight: Water Garden Pavilion, Sigiriya</span>
+              <span class="walkers-acc-pill">Meals: Breakfast & Dinner</span>
+            </div>
+          </div>
+        </div>
+        <div class="walkers-acc-item ">
+          <button type="button" class="walkers-acc-trigger" aria-expanded="false">
+            <div class="walkers-acc-left">
+              <span class="walkers-acc-day">Day 03</span>
+              <h3 class="walkers-acc-title">Bicycle Ride Through Ancient Royal Monasteries</h3>
+            </div>
+            <span class="walkers-acc-icon">+</span>
+          </button>
+          <div class="walkers-acc-content">
+            <p class="walkers-acc-desc">Leisurely cycling through shaded ruins of Polonnaruwa royal capital. Private sunset boat ride on ancient Minneriya lake.</p>
+            <div class="walkers-acc-pills">
+              <span class="walkers-acc-pill overnight">Overnight: Water Garden Pavilion, Sigiriya</span>
+              <span class="walkers-acc-pill">Meals: Breakfast & Dinner</span>
+            </div>
+          </div>
+        </div>
+        <div class="walkers-acc-item ">
+          <button type="button" class="walkers-acc-trigger" aria-expanded="false">
+            <div class="walkers-acc-left">
+              <span class="walkers-acc-day">Day 04</span>
+              <h3 class="walkers-acc-title">Ascent to Nuwara Eliya Mountain Retreat</h3>
+            </div>
+            <span class="walkers-acc-icon">+</span>
+          </button>
+          <div class="walkers-acc-content">
+            <p class="walkers-acc-desc">Drive past Dambulla into misty tea country. Check into a colonial manor surrounded by manicured rose gardens.</p>
+            <div class="walkers-acc-pills">
+              <span class="walkers-acc-pill overnight">Overnight: Luxury Manor, Nuwara Eliya</span>
+              <span class="walkers-acc-pill">Meals: Breakfast & Dinner</span>
+            </div>
+          </div>
+        </div>
+        <div class="walkers-acc-item ">
+          <button type="button" class="walkers-acc-trigger" aria-expanded="false">
+            <div class="walkers-acc-left">
+              <span class="walkers-acc-day">Day 05</span>
+              <h3 class="walkers-acc-title">Scenic Mountain Train & Nine Arches Viaduct</h3>
+            </div>
+            <span class="walkers-acc-icon">+</span>
+          </button>
+          <div class="walkers-acc-content">
+            <p class="walkers-acc-desc">Scenic rail journey through tea-clad cliffs to Ella. Stroll along Nine Arches Bridge and enjoy sunset cocktails.</p>
+            <div class="walkers-acc-pills">
+              <span class="walkers-acc-pill overnight">Overnight: Highland Boutique Villa, Ella</span>
+              <span class="walkers-acc-pill">Meals: Breakfast & Dinner</span>
+            </div>
+          </div>
+        </div>
+        <div class="walkers-acc-item ">
+          <button type="button" class="walkers-acc-trigger" aria-expanded="false">
+            <div class="walkers-acc-left">
+              <span class="walkers-acc-day">Day 06</span>
+              <h3 class="walkers-acc-title">Descent to Yala Safari Wilderness Glamping</h3>
+            </div>
+            <span class="walkers-acc-icon">+</span>
+          </button>
+          <div class="walkers-acc-content">
+            <p class="walkers-acc-desc">Drive to Yala. Check into your ultra-luxury cocoon safari tent featuring teak decks, four-poster bed, and private plunge pool.</p>
+            <div class="walkers-acc-pills">
+              <span class="walkers-acc-pill overnight">Overnight: Wild Coast Tented Lodge / Luxury Glamping, Yala</span>
+              <span class="walkers-acc-pill">Meals: All-Inclusive Luxury Dining</span>
+            </div>
+          </div>
+        </div>
+        <div class="walkers-acc-item ">
+          <button type="button" class="walkers-acc-trigger" aria-expanded="false">
+            <div class="walkers-acc-left">
+              <span class="walkers-acc-day">Day 07</span>
+              <h3 class="walkers-acc-title">Private Leopard Safari & Bush Sundowners</h3>
+            </div>
+            <span class="walkers-acc-icon">+</span>
+          </button>
+          <div class="walkers-acc-content">
+            <p class="walkers-acc-desc">Morning and afternoon private jeep drives tracking leopards and sloth bears with senior naturalist. Sunset champagne in the bush.</p>
+            <div class="walkers-acc-pills">
+              <span class="walkers-acc-pill overnight">Overnight: Luxury Glamping Safari Tent, Yala</span>
+              <span class="walkers-acc-pill">Meals: All-Inclusive Luxury Dining</span>
+            </div>
+          </div>
+        </div>
+        <div class="walkers-acc-item ">
+          <button type="button" class="walkers-acc-trigger" aria-expanded="false">
+            <div class="walkers-acc-left">
+              <span class="walkers-acc-day">Day 08</span>
+              <h3 class="walkers-acc-title">Coastal Transfer to Mirissa Beachfront Sanctuary</h3>
+            </div>
+            <span class="walkers-acc-icon">+</span>
+          </button>
+          <div class="walkers-acc-content">
+            <p class="walkers-acc-desc">Scenic drive along golden southern shores to your private beachfront boutique villa in Mirissa.</p>
+            <div class="walkers-acc-pills">
+              <span class="walkers-acc-pill overnight">Overnight: Luxury Beachfront Sanctuary, Mirissa</span>
+              <span class="walkers-acc-pill">Meals: Breakfast & Dinner</span>
+            </div>
+          </div>
+        </div>
+        <div class="walkers-acc-item ">
+          <button type="button" class="walkers-acc-trigger" aria-expanded="false">
+            <div class="walkers-acc-left">
+              <span class="walkers-acc-day">Day 09</span>
+              <h3 class="walkers-acc-title">Private Blue Whale Watching Catamaran Charter</h3>
+            </div>
+            <span class="walkers-acc-icon">+</span>
+          </button>
+          <div class="walkers-acc-content">
+            <p class="walkers-acc-desc">Private morning boat charter sailing into deep waters. Spot colossal blue whales and spinner dolphins in complete seclusion.</p>
+            <div class="walkers-acc-pills">
+              <span class="walkers-acc-pill overnight">Overnight: Luxury Beachfront Sanctuary, Mirissa</span>
+              <span class="walkers-acc-pill">Meals: Breakfast & Dinner</span>
+            </div>
+          </div>
+        </div>
+        <div class="walkers-acc-item ">
+          <button type="button" class="walkers-acc-trigger" aria-expanded="false">
+            <div class="walkers-acc-left">
+              <span class="walkers-acc-day">Day 10</span>
+              <h3 class="walkers-acc-title">Couples Spa Day & Galle Fort Sunset Ramble</h3>
+            </div>
+            <span class="walkers-acc-icon">+</span>
+          </button>
+          <div class="walkers-acc-content">
+            <p class="walkers-acc-desc">Indulgent couples Ayurvedic herbal massage. Evening walk along Galle's ramparts followed by an intimate dining experience.</p>
+            <div class="walkers-acc-pills">
+              <span class="walkers-acc-pill overnight">Overnight: Luxury Beachfront Sanctuary, Mirissa</span>
+              <span class="walkers-acc-pill">Meals: Breakfast & Dinner</span>
+            </div>
+          </div>
+        </div>
+        <div class="walkers-acc-item ">
+          <button type="button" class="walkers-acc-trigger" aria-expanded="false">
+            <div class="walkers-acc-left">
+              <span class="walkers-acc-day">Day 11</span>
+              <h3 class="walkers-acc-title">Barefoot Luxury & Private Beach Barbecue</h3>
+            </div>
+            <span class="walkers-acc-icon">+</span>
+          </button>
+          <div class="walkers-acc-content">
+            <p class="walkers-acc-desc">A day entirely at leisure to soak up the sun, swim in turquoise waters, and savor a lantern-lit seafood dinner on the sand.</p>
+            <div class="walkers-acc-pills">
+              <span class="walkers-acc-pill overnight">Overnight: Luxury Beachfront Sanctuary, Mirissa</span>
+              <span class="walkers-acc-pill">Meals: Breakfast & Private Beach BBQ</span>
+            </div>
+          </div>
+        </div>
+        <div class="walkers-acc-item ">
+          <button type="button" class="walkers-acc-trigger" aria-expanded="false">
+            <div class="walkers-acc-left">
+              <span class="walkers-acc-day">Day 12</span>
+              <h3 class="walkers-acc-title">Highway Transfer to Colombo & Departure</h3>
+            </div>
+            <span class="walkers-acc-icon">+</span>
+          </button>
+          <div class="walkers-acc-content">
+            <p class="walkers-acc-desc">Private luxury chauffeur transfer via expressway to CMB airport for onward romantic journey.</p>
+            <div class="walkers-acc-pills">
+              <span class="walkers-acc-pill overnight">Overnight: Departure</span>
+              <span class="walkers-acc-pill">Meals: Breakfast Included</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="tour-facts-bar">
-    <div class="wrapper--90">
-      <div class="tour-facts-grid">
-        <div class="tour-fact-item">
-          <div>
-            <p class="tour-fact-label" data-cms="pkg_pure-serenade-coastal-highland-romance.p_3">Duration</p>
-            <p class="tour-fact-value" data-cms="pkg_pure-serenade-coastal-highland-romance.p_4">12 Days / 11 Nights</p>
-          </div>
+  <!-- SECTION 4: VISUAL JOURNEYS & INCLUSIONS (Walkers Standard) -->
+  <section class="visual-journeys-section">
+    <div class="visual-journeys-container">
+      <h2 class="visual-heading-walkers">
+        <span>Visual Journeys</span>
+      </h2>
+      <div class="walkers-img-grid">
+        <div class="walkers-img-card">
+          <img src="../../../assets/images/couple-travel.jpg" alt="Colombo" loading="lazy">
+          <span class="walkers-img-caption">Colombo</span>
+        </div>
+        <div class="walkers-img-card">
+          <img src="../../../assets/images/couple-travel.jpg" alt="Cultural Triangle" loading="lazy">
+          <span class="walkers-img-caption">Cultural Triangle</span>
+        </div>
+        <div class="walkers-img-card">
+          <img src="../../../assets/images/couple-travel.jpg" alt="Nuwara Eliya" loading="lazy">
+          <span class="walkers-img-caption">Nuwara Eliya</span>
+        </div>
+      </div>
+
+      <div class="inclusions-grid-walkers">
+        <div class="inclusions-card-walkers pink-accent">
+          <h3 class="inclusions-card-title">Inclusions</h3>
+          <ul class="inclusions-list-walkers">
+            <li><span class="check-icon">✓</span> 11 Nights in premier boutique hotels, luxury glamping tents, and pool villas</li>
+            <li><span class="check-icon">✓</span> All gourmet dinners including private beach BBQ and champagne sundowners</li>
+            <li><span class="check-icon">✓</span> Exclusive private whale watching charter boat in Mirissa</li>
+            <li><span class="check-icon">✓</span> Private 4x4 custom safari drives in Yala with dedicated naturalist</li>
+            <li><span class="check-icon">✓</span> Private luxury vehicle with executive chauffeur guide</li>
+            <li><span class="check-icon">✓</span> All park permits, monument entrances, and government taxes</li>
+          </ul>
         </div>
 
-        <div class="tour-fact-item">
-          <div>
-            <p class="tour-fact-label" data-cms="pkg_pure-serenade-coastal-highland-romance.p_5">Transport</p>
-            <p class="tour-fact-value" data-cms="pkg_pure-serenade-coastal-highland-romance.p_6">Private Luxury AC Chauffeur</p>
-          </div>
+        <div class="inclusions-card-walkers black-accent">
+          <h3 class="inclusions-card-title">Exclusions</h3>
+          <ul class="inclusions-list-walkers">
+            <li><span class="cross-icon">✕</span> International flights</li>
+            <li><span class="cross-icon">✕</span> Visas</li>
+            <li><span class="cross-icon">✕</span> Personal extras</li>
+          </ul>
         </div>
 
-        <div class="tour-fact-item">
-          <div>
-            <p class="tour-fact-label" data-cms="pkg_pure-serenade-coastal-highland-romance.p_7">Best Season</p>
-            <p class="tour-fact-value" data-cms="pkg_pure-serenade-coastal-highland-romance.p_8">November to April (Prime whale sightings, calm seas, and dry safari drives)</p>
-          </div>
+        <div class="inclusions-card-walkers black-accent">
+          <h3 class="inclusions-card-title">Payment Policies</h3>
+          <ul class="inclusions-list-walkers">
+            <li><span class="check-icon">✓</span> 20% advance confirmation deposit upon private reservation acceptance.</li>
+            <li><span class="check-icon">✓</span> Balance payment due 30 days prior to arrival in Sri Lanka.</li>
+            <li><span class="check-icon">✓</span> Free date rescheduling up to 21 days before arrival.</li>
+            <li><span class="check-icon">✓</span> Transparent cancellation terms with dedicated guest concierge care.</li>
+          </ul>
         </div>
 
-        <div class="tour-fact-item">
-          <div>
-            <p class="tour-fact-label" data-cms="pkg_pure-serenade-coastal-highland-romance.p_9">Accommodation</p>
-            <p class="tour-fact-value" data-cms="pkg_pure-serenade-coastal-highland-romance.p_10">Handpicked 5★ &amp; Boutique Stays</p>
-          </div>
-        </div>
-
-        <div class="tour-fact-item">
-          <div>
-            <p class="tour-fact-label">Price</p>
-            <p class="tour-fact-value" data-cms="pkg_pure-serenade-coastal-highland-romance.p_11">Tailor-Made on Request</p>
-          </div>
+        <div class="inclusions-card-walkers pink-accent">
+          <h3 class="inclusions-card-title">Payment Methods</h3>
+          <ul class="inclusions-list-walkers">
+            <li><span class="check-icon">✓</span> Secure online credit card processing (Visa, MasterCard, American Express).</li>
+            <li><span class="check-icon">✓</span> International Telegraphic Bank Wire Transfer (USD, EUR, GBP).</li>
+            <li><span class="check-icon">✓</span> Encrypted 3D-Secure payment links for direct instant confirmation.</li>
+            <li><span class="check-icon">✓</span> Official corporate invoicing with Central Bank of Sri Lanka registered operator credentials.</li>
+          </ul>
         </div>
       </div>
     </div>
   </section>
 
-    <!-- SEASONALITY / BEST TIME TO VISIT STRIP -->
-  <div class="wrapper--90" style="margin-top: 2rem;">
-    <div id="lotusSeasonStripContainer"></div>
-  </div>
-  <main class="tour-main-section padding-top--70 padding-bottom--100">
-    <div class="wrapper--90">
-      <div class="tour-main-layout" id="itinerary">
-        
-        <div class="tour-itinerary-col">
-          <div class="section-watermark-header" style="margin-bottom: 2rem;">
-            <p class="watermark-heading" data-cms="pkg_pure-serenade-coastal-highland-romance.p_12">ITINERARY</p>
-            <h2 class="section-header-title" data-cms="pkg_pure-serenade-coastal-highland-romance.heading_1">Detailed Day-by-Day Journey</h2>
-          </div>
-          <p class="itinerary-section-sub" style="color: #475569; font-size: 1rem; line-height: 1.7; margin-bottom: 2.5rem;" data-cms="pkg_pure-serenade-coastal-highland-romance.p_13">
-            Every element of this bespoke itinerary is privately chauffeured, seamlessly managed, and fully customizable to your personal travel pace and desires.
-          </p>
-
-          <div class="itinerary-timeline" data-cms-list="itinerary">
-            
-        <div class="itinerary-item" data-day="01">
-          <div class="itinerary-day-badge">Day 01</div>
-          <div class="itinerary-content">
-            <h3 class="itinerary-day-title" data-cms="pkg_pure-serenade-coastal-highland-romance.heading_2">Arrival in Colombo and Transfer to Cultural Oasis</h3>
-            <p class="itinerary-day-desc" data-cms="pkg_pure-serenade-coastal-highland-romance.p_14">Warm welcome at CMB airport. Transfer to an eco-luxury water pavilion resort in the Cultural Triangle.</p>
-            <div class="itinerary-meta-tags">
-              <span class="itinerary-meta-pill" data-cms="duration">Overnight: Water Garden Pavilion, Sigiriya</span>
-              <span class="itinerary-meta-pill">Dinner and Champagne</span>
-              <span class="itinerary-meta-pill">Approx. 45 Mins - 1 Hour (35 km)</span>
-            </div>
-          </div>
-        </div>
-        
-
-        <div class="itinerary-item" data-day="02">
-          <div class="itinerary-day-badge">Day 02</div>
-          <div class="itinerary-content">
-            <h3 class="itinerary-day-title" data-cms="pkg_pure-serenade-coastal-highland-romance.heading_3">Sigiriya Rock Palace at Golden Hour</h3>
-            <p class="itinerary-day-desc" data-cms="pkg_pure-serenade-coastal-highland-romance.p_15">Morning at leisure by your private pool. In the late afternoon, ascend Sigiriya rock fortress as the sun casts long golden shadows.</p>
-            <div class="itinerary-meta-tags">
-              <span class="itinerary-meta-pill">Overnight: Water Garden Pavilion, Sigiriya</span>
-              <span class="itinerary-meta-pill">Breakfast and Dinner</span>
-              <span class="itinerary-meta-pill"></span>
-            </div>
-          </div>
-        </div>
-        
-
-        <div class="itinerary-item" data-day="03">
-          <div class="itinerary-day-badge">Day 03</div>
-          <div class="itinerary-content">
-            <h3 class="itinerary-day-title" data-cms="pkg_pure-serenade-coastal-highland-romance.heading_4">Bicycle Ride Through Ancient Royal Monasteries</h3>
-            <p class="itinerary-day-desc" data-cms="pkg_pure-serenade-coastal-highland-romance.p_16">Leisurely cycling through shaded ruins of Polonnaruwa royal capital. Private sunset boat ride on ancient Minneriya lake.</p>
-            <div class="itinerary-meta-tags">
-              <span class="itinerary-meta-pill">Overnight: Water Garden Pavilion, Sigiriya</span>
-              <span class="itinerary-meta-pill">Breakfast and Dinner</span>
-              <span class="itinerary-meta-pill"></span>
-            </div>
-          </div>
-        </div>
-        
-
-        <div class="itinerary-item" data-day="04">
-          <div class="itinerary-day-badge">Day 04</div>
-          <div class="itinerary-content">
-            <h3 class="itinerary-day-title" data-cms="pkg_pure-serenade-coastal-highland-romance.heading_5">Ascent to Nuwara Eliya Mountain Retreat</h3>
-            <p class="itinerary-day-desc" data-cms="pkg_pure-serenade-coastal-highland-romance.p_17">Drive past Dambulla into misty tea country. Check into a colonial manor surrounded by manicured rose gardens.</p>
-            <div class="itinerary-meta-tags">
-              <span class="itinerary-meta-pill">Overnight: Luxury Manor, Nuwara Eliya</span>
-              <span class="itinerary-meta-pill">Breakfast and Dinner</span>
-              <span class="itinerary-meta-pill"></span>
-            </div>
-          </div>
-        </div>
-        
-
-        <div class="itinerary-item" data-day="05">
-          <div class="itinerary-day-badge">Day 05</div>
-          <div class="itinerary-content">
-            <h3 class="itinerary-day-title" data-cms="pkg_pure-serenade-coastal-highland-romance.heading_6">Scenic Mountain Train and Nine Arches Viaduct</h3>
-            <p class="itinerary-day-desc" data-cms="pkg_pure-serenade-coastal-highland-romance.p_18">Scenic rail journey through tea-clad cliffs to Ella. Stroll along Nine Arches Bridge and enjoy sunset cocktails.</p>
-            <div class="itinerary-meta-tags">
-              <span class="itinerary-meta-pill">Overnight: Highland Boutique Villa, Ella</span>
-              <span class="itinerary-meta-pill">Breakfast and Dinner</span>
-              <span class="itinerary-meta-pill"></span>
-            </div>
-          </div>
-        </div>
-        
-
-        <div class="itinerary-item" data-day="06">
-          <div class="itinerary-day-badge">Day 06</div>
-          <div class="itinerary-content">
-            <h3 class="itinerary-day-title" data-cms="pkg_pure-serenade-coastal-highland-romance.heading_7">Descent to Yala Safari Wilderness Glamping</h3>
-            <p class="itinerary-day-desc" data-cms="pkg_pure-serenade-coastal-highland-romance.p_19">Drive to Yala. Check into your ultra-luxury cocoon safari tent featuring teak decks, four-poster bed, and private plunge pool.</p>
-            <div class="itinerary-meta-tags">
-              <span class="itinerary-meta-pill">Overnight: Wild Coast Tented Lodge / Luxury Glamping, Yala</span>
-              <span class="itinerary-meta-pill">All-Inclusive Luxury Dining</span>
-              <span class="itinerary-meta-pill"></span>
-            </div>
-          </div>
-        </div>
-        
-
-        <div class="itinerary-item" data-day="07">
-          <div class="itinerary-day-badge">Day 07</div>
-          <div class="itinerary-content">
-            <h3 class="itinerary-day-title" data-cms="pkg_pure-serenade-coastal-highland-romance.heading_8">Private Leopard Safari and Bush Sundowners</h3>
-            <p class="itinerary-day-desc" data-cms="pkg_pure-serenade-coastal-highland-romance.p_20">Morning and afternoon private jeep drives tracking leopards and sloth bears with senior naturalist. Sunset champagne in the bush.</p>
-            <div class="itinerary-meta-tags">
-              <span class="itinerary-meta-pill">Overnight: Luxury Glamping Safari Tent, Yala</span>
-              <span class="itinerary-meta-pill">All-Inclusive Luxury Dining</span>
-              <span class="itinerary-meta-pill"></span>
-            </div>
-          </div>
-        </div>
-        
-
-        <div class="itinerary-item" data-day="08">
-          <div class="itinerary-day-badge">Day 08</div>
-          <div class="itinerary-content">
-            <h3 class="itinerary-day-title" data-cms="pkg_pure-serenade-coastal-highland-romance.heading_9">Coastal Transfer to Mirissa Beachfront Sanctuary</h3>
-            <p class="itinerary-day-desc" data-cms="pkg_pure-serenade-coastal-highland-romance.p_21">Scenic drive along golden southern shores to your private beachfront boutique villa in Mirissa.</p>
-            <div class="itinerary-meta-tags">
-              <span class="itinerary-meta-pill">Overnight: Luxury Beachfront Sanctuary, Mirissa</span>
-              <span class="itinerary-meta-pill">Breakfast and Dinner</span>
-              <span class="itinerary-meta-pill"></span>
-            </div>
-          </div>
-        </div>
-        
-
-        <div class="itinerary-item" data-day="09">
-          <div class="itinerary-day-badge">Day 09</div>
-          <div class="itinerary-content">
-            <h3 class="itinerary-day-title" data-cms="pkg_pure-serenade-coastal-highland-romance.heading_10">Private Blue Whale Watching Catamaran Charter</h3>
-            <p class="itinerary-day-desc" data-cms="pkg_pure-serenade-coastal-highland-romance.p_22">Private morning boat charter sailing into deep waters. Spot colossal blue whales and spinner dolphins in complete seclusion.</p>
-            <div class="itinerary-meta-tags">
-              <span class="itinerary-meta-pill">Overnight: Luxury Beachfront Sanctuary, Mirissa</span>
-              <span class="itinerary-meta-pill">Breakfast and Dinner</span>
-              <span class="itinerary-meta-pill"></span>
-            </div>
-          </div>
-        </div>
-        
-
-        <div class="itinerary-item" data-day="10">
-          <div class="itinerary-day-badge">Day 10</div>
-          <div class="itinerary-content">
-            <h3 class="itinerary-day-title" data-cms="pkg_pure-serenade-coastal-highland-romance.heading_11">Couples Spa Day and Galle Fort Sunset Ramble</h3>
-            <p class="itinerary-day-desc" data-cms="pkg_pure-serenade-coastal-highland-romance.p_23">Indulgent couples Ayurvedic herbal massage. Evening walk along Galle's ramparts followed by an intimate dining experience.</p>
-            <div class="itinerary-meta-tags">
-              <span class="itinerary-meta-pill">Overnight: Luxury Beachfront Sanctuary, Mirissa</span>
-              <span class="itinerary-meta-pill">Breakfast and Dinner</span>
-              <span class="itinerary-meta-pill"></span>
-            </div>
-          </div>
-        </div>
-        
-
-        <div class="itinerary-item" data-day="11">
-          <div class="itinerary-day-badge">Day 11</div>
-          <div class="itinerary-content">
-            <h3 class="itinerary-day-title" data-cms="pkg_pure-serenade-coastal-highland-romance.heading_12">Barefoot Luxury and Private Beach Barbecue</h3>
-            <p class="itinerary-day-desc" data-cms="pkg_pure-serenade-coastal-highland-romance.p_24">A day entirely at leisure to soak up the sun, swim in turquoise waters, and savor a lantern-lit seafood dinner on the sand.</p>
-            <div class="itinerary-meta-tags">
-              <span class="itinerary-meta-pill">Overnight: Luxury Beachfront Sanctuary, Mirissa</span>
-              <span class="itinerary-meta-pill">Breakfast and Private Beach BBQ</span>
-              <span class="itinerary-meta-pill"></span>
-            </div>
-          </div>
-        </div>
-        
-
-        <div class="itinerary-item" data-day="12">
-          <div class="itinerary-day-badge">Day 12</div>
-          <div class="itinerary-content">
-            <h3 class="itinerary-day-title" data-cms="pkg_pure-serenade-coastal-highland-romance.heading_13">Highway Transfer to Colombo and Departure</h3>
-            <p class="itinerary-day-desc" data-cms="pkg_pure-serenade-coastal-highland-romance.p_25">Private luxury chauffeur transfer via expressway to CMB airport for onward romantic journey.</p>
-            <div class="itinerary-meta-tags">
-              <span class="itinerary-meta-pill">Departure day · Breakfast</span>
-              <span class="itinerary-meta-pill">Breakfast Included</span>
-              <span class="itinerary-meta-pill"></span>
-            </div>
-          </div>
-        </div>
-        
-          </div>
-
-          <div class="inclusions-grid">
-            <div class="inclusions-box">
-              <h3 data-cms="pkg_pure-serenade-coastal-highland-romance.heading_14">✓ What's Included</h3>
-              <ul>
-                <li data-cms-html="pkg_pure-serenade-coastal-highland-romance.li_1"><span>✓</span> 11 Nights in premier boutique hotels, luxury glamping tents, and pool villas</li><li data-cms-html="pkg_pure-serenade-coastal-highland-romance.li_2"><span>✓</span> All gourmet dinners including private beach BBQ and champagne sundowners</li><li data-cms-html="pkg_pure-serenade-coastal-highland-romance.li_3"><span>✓</span> Exclusive private whale watching charter boat in Mirissa</li><li data-cms-html="pkg_pure-serenade-coastal-highland-romance.li_4"><span>✓</span> Private 4x4 custom safari drives in Yala with dedicated naturalist</li><li data-cms-html="pkg_pure-serenade-coastal-highland-romance.li_5"><span>✓</span> Private luxury vehicle with executive chauffeur guide</li><li data-cms-html="pkg_pure-serenade-coastal-highland-romance.li_6"><span>✓</span> All park permits, monument entrances, and government taxes</li>
-              </ul>
-            </div>
-
-            <div class="exclusions-box">
-              <h3 data-cms="pkg_pure-serenade-coastal-highland-romance.heading_15">✕ What's Excluded</h3>
-              <ul>
-                <li data-cms-html="pkg_pure-serenade-coastal-highland-romance.li_7"><span>✕</span> International flights</li><li><span>✕</span> Visas</li><li data-cms-html="pkg_pure-serenade-coastal-highland-romance.li_8"><span>✕</span> Personal extras</li>
-              </ul>
-            </div>
-          </div>
-
-          
-                <div class="section-watermark-header" style="margin-top: 2.5rem; margin-bottom: 1rem;">
-          <p class="watermark-heading" style="color: #EEDBE2;" data-cms="pkg_pure-serenade-coastal-highland-romance.p_26">ROUTE MAP</p>
-          <h2 class="section-header-title" data-cms="pkg_pure-serenade-coastal-highland-romance.heading_16">Curated Itinerary Route</h2>
-        </div>
-
+  <!-- SECTION 5: ROUTE MAP SECTION (Walkers Standard) -->
+  <section class="route-section-walkers" id="route-map">
+    <div class="route-container-walkers">
+      <div class="route-map-col">
         <div id="pure-serenade-coastal-highland-romance-leaflet-map" 
-             class="lotus-street-map-frame js-lotus-route-map" 
+             class="route-map-box-walkers js-lotus-route-map" 
              data-package-id="pkg-pure-serenade-coastal-highland-romance" 
              data-data-path="../../../data/packages.json"
              role="region" 
              aria-label="Interactive Route Map for Pure Serenade Coastal & Highland Romance">
         </div>
-
-        <aside class="tour-sidebar">
-          <div class="tour-booking-card" style="position: sticky; top: 100px;">
-            <div class="tour-price-header">
-              <span class="tour-price-sub" data-cms="pkg_pure-serenade-coastal-highland-romance.span_9">Custom Private Journey</span>
-              <div class="tour-price-val" data-cms="price">Tailor-Made Quote</div>
-              <p class="tour-price-note" data-cms="pkg_pure-serenade-coastal-highland-romance.p_27">Price customized based on your dates, party size and preferred boutique stays.</p>
-            </div>
-
-            <div style="padding: 1.25rem 1.5rem 0.5rem;">
-              <h4 style="font-size: 0.95rem; font-weight: 700; color: #002B49; margin-bottom: 0.75rem; text-transform: uppercase;" data-cms="pkg_pure-serenade-coastal-highland-romance.heading_17">Journey Highlights</h4>
-              <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.6rem;">
-                <li data-cms-html="pkg_pure-serenade-coastal-highland-romance.li_9"><span>★</span> Private sunset champagne climb of Sigiriya Rock Fortress</li><li data-cms-html="pkg_pure-serenade-coastal-highland-romance.li_10"><span>★</span> Luxury tented safari glamping in Yala with private plunge pool</li><li data-cms-html="pkg_pure-serenade-coastal-highland-romance.li_11"><span>★</span> Scenic first-class railway ride through tea-carpeted mountains</li><li data-cms-html="pkg_pure-serenade-coastal-highland-romance.li_12"><span>★</span> Private sunrise whale watching catamaran charter in Mirissa</li><li data-cms-html="pkg_pure-serenade-coastal-highland-romance.li_13"><span>★</span> Romantic seafood barbecue dinner directly on secluded private beach</li>
-              </ul>
-            </div>
-
-            <div style="padding: 1.5rem;">
-              <button type="button" class="btn-sidebar-inquire" style="display: block; width: 100%; text-align: center; margin-bottom: 0.75rem; background: linear-gradient(135deg, #C9962B 0%, #F2C14E 100%); color: #002B49; border: none; font-weight: 700; cursor: pointer; padding: 0.85rem 1rem; border-radius: 8px; font-size: 0.92rem; font-family: inherit;" onclick="window.LotusInteractive.openMakeItYoursModal('Pure Serenade Coastal & Highland Romance', 'honeymoon')" data-cms="pkg_pure-serenade-coastal-highland-romance.btn_15">
-                <span data-cms="pkg_pure-serenade-coastal-highland-romance.span_10">✨ Make It Yours (Tailor Tour)</span>
-              </button>
-              <a href="../../../inquiry-detailed.html?package=Pure+Serenade+Coastal+%26+Highland+Romance" class="btn-sidebar-inquire" style="display: block; text-align: center; text-decoration: none; margin-bottom: 0.75rem;" data-cms="pkg_pure-serenade-coastal-highland-romance.btn_16">Inquire About This Tour</a>
-              <a href="https://wa.me/94715422384?text=Hello+Lotus+Ceylon%2C+I+would+like+to+inquire+about+the+Pure+Serenade+Coastal+%26+Highland+Romance+%2811+Nights+%2F+12+Days%29+private+tour." target="_blank" rel="noopener" class="btn-sidebar-whatsapp" style="display: flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none;" data-cms="pkg_pure-serenade-coastal-highland-romance.btn_17">
-                <span data-cms="pkg_pure-serenade-coastal-highland-romance.span_11">Chat on WhatsApp</span>
-              </a>
-              <div class="tour-action-pills" style="margin-top: 1rem; justify-content: center; display: flex; gap: 0.5rem; flex-wrap: wrap;">
-                <button type="button" class="btn-pill-save" onclick="window.LotusInteractive.toggleSaveTour('pkg-pure-serenade-coastal-highland-romance', this)" aria-pressed="false" style="padding: 0.45rem 0.85rem; font-size: 0.8rem; border: 1px solid #CBD5E1; border-radius: 20px; background: #FFF; cursor: pointer; display: flex; align-items: center; gap: 4px;" data-cms="pkg_pure-serenade-coastal-highland-romance.btn_18">
-                  <span>❤️</span> <span class="save-btn-text" data-cms="pkg_pure-serenade-coastal-highland-romance.span_12">Save Trip</span>
-                </button>
-                <button type="button" class="btn-pill-share" onclick="window.LotusInteractive.shareTourWhatsApp('Pure Serenade Coastal & Highland Romance')" style="padding: 0.45rem 0.85rem; font-size: 0.8rem; border: 1px solid #CBD5E1; border-radius: 20px; background: #FFF; cursor: pointer; display: flex; align-items: center; gap: 4px;" data-cms="pkg_pure-serenade-coastal-highland-romance.btn_19">
-                  <span data-cms="pkg_pure-serenade-coastal-highland-romance.span_13">Share</span>
-                </button>
-                <button type="button" class="btn-pill-share" onclick="window.LotusInteractive.copyTourLink()" style="padding: 0.45rem 0.85rem; font-size: 0.8rem; border: 1px solid #CBD5E1; border-radius: 20px; background: #FFF; cursor: pointer; display: flex; align-items: center; gap: 4px;" data-cms="pkg_pure-serenade-coastal-highland-romance.btn_20">
-                  <span data-cms="pkg_pure-serenade-coastal-highland-romance.span_14">Link</span>
-                </button>
-              </div>
-            </div>
-
-            <div class="tour-assistance-box" style="padding: 1.25rem 1.5rem; background: #F8FAFC; border-top: 1px solid #E2E8F0; border-radius: 0 0 12px 12px;">
-              <h4 style="font-size: 0.95rem; color: #002B49; font-weight: 700; margin-bottom: 0.35rem;" data-cms="pkg_pure-serenade-coastal-highland-romance.heading_18">Speak With Our Travel Specialists</h4>
-              <p style="font-size: 0.85rem; color: #64748B; margin-bottom: 0.75rem; line-height: 1.5;" data-cms="pkg_pure-serenade-coastal-highland-romance.p_28">Our local destination experts in Colombo and Kandy are available 24/7 to personalize this route.</p>
-              <div style="display: flex; align-items: center; gap: 8px; font-weight: 700; color: #002B49; font-size: 0.9rem;">
-                <span data-cms="pkg_pure-serenade-coastal-highland-romance.span_15">+94 71 54 22 384</span>
-              </div>
-                          <div style="margin-top: 0.85rem; padding-top: 0.75rem; border-top: 1px dashed #CBD5E1;">
-                <a href="../../../tours/index.html#travel-info-hub" style="display: flex; align-items: center; gap: 6px; font-size: 0.82rem; color: #8C6D3F; font-weight: 700; text-decoration: none;">
-                  <span data-cms="pkg_pure-serenade-coastal-highland-romance.span_16">Travel Prep: Visa, Weather and Etiquette ➔</span>
-                </a>
-              </div>
-            </div>
-          </div>
-        </aside>
-
+      </div>
+      <div class="route-text-walkers">
+        <h2>
+          <span>Here is your</span>
+          Pure Serenade Coastal & Highland Romance Route
+        </h2>
+        <p>From Colombo through Cultural Triangle and Nuwara Eliya, this 11 nights and 12 days journey connects you with Sri Lanka's most iconic landscapes, cultural landmarks, and authentic Ceylon hospitality.</p>
+        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+          <span class="walkers-acc-pill">Colombo</span> <span class="walkers-acc-pill">Cultural Triangle</span> <span class="walkers-acc-pill">Nuwara Eliya</span> <span class="walkers-acc-pill">Yala</span> <span class="walkers-acc-pill">Mirissa</span>
+        </div>
       </div>
     </div>
-  </main>
+  </section>
 
-  <section class="related-tours-section padding-top--70 padding-bottom--70" style="background: #F8FAFC; border-top: 1px solid #E2E8F0;">
-    <div class="wrapper--90">
-      <div class="section-watermark-header text-center" style="margin-bottom: 1.5rem;">
-        <p class="watermark-heading" data-cms="pkg_pure-serenade-coastal-highland-romance.p_29">MORE EXPERIENCES</p>
-        <h2 class="section-header-title" data-cms="pkg_pure-serenade-coastal-highland-romance.heading_19">Other Signature Sri Lanka Luxury Honeymoon Tours</h2>
+  <!-- SECTION 6: FAQS (Everything You Need to Know) -->
+  <section class="faq-section-walkers">
+    <div class="faq-container-walkers">
+      <div class="faq-media-card">
+        <img src="../../../assets/images/couple-travel.jpg" alt="Sri Lanka Luxury Travel FAQ" loading="lazy">
       </div>
-      <div class="related-grid">
-        
-        <div class="related-tour-card">
-          <div class="related-tour-img-wrap">
-            <img src="../../../assets/images/honeymoon/seaside-villa-1.webp" alt="Enchanted Ceylon Romantic Hideaway" loading="lazy" data-cms-img="pkg_pure-serenade-coastal-highland-romance.img_1">
-            <span class="related-tour-duration" data-cms="pkg_pure-serenade-coastal-highland-romance.span_17">11 Nights / 12 Days</span>
+      <div class="faq-content-col">
+        <h2>
+          <span>Everything</span>
+          You Need to Know
+        </h2>
+        <div class="walkers-accordion-wrap">
+          <div class="walkers-acc-item is-open">
+            <button type="button" class="walkers-acc-trigger">
+              <h4 class="walkers-acc-title">Can I extend the number of days for this tour?</h4>
+              <span class="walkers-acc-icon">+</span>
+            </button>
+            <div class="walkers-acc-content">
+              <p class="walkers-acc-desc">Yes, certainly. Every itinerary we design is 100% bespoke. Our private travel designers will gladly extend your stay, add beach days, or tailor the pace to your exact preferences.</p>
+            </div>
           </div>
-          <div class="related-tour-content">
-            <h4 class="related-tour-title" data-cms="pkg_pure-serenade-coastal-highland-romance.heading_20">Enchanted Ceylon Romantic Hideaway</h4>
-            <p class="related-tour-desc" data-cms="pkg_pure-serenade-coastal-highland-romance.p_30">Private plunge pool villas, misty tea trails, candlelit rampart dining, and secluded southern bays.</p>
-            <div class="related-tour-actions">
-              <a href="../../../tours/honeymoon/enchanted-ceylon-romantic-hideaway/index.html" class="btn-related-explore" data-cms="pkg_pure-serenade-coastal-highland-romance.btn_21">Explore Itinerary ➔</a>
+          <div class="walkers-acc-item">
+            <button type="button" class="walkers-acc-trigger">
+              <h4 class="walkers-acc-title">Can I customize the hotels, destinations, or vehicle?</h4>
+              <span class="walkers-acc-icon">+</span>
+            </button>
+            <div class="walkers-acc-content">
+              <p class="walkers-acc-desc">Absolutely. You can choose from audited heritage tea bungalows, boutique eco-villas, or 5-star international luxury resorts. Vehicles range from premium luxury sedans to spacious executive vans.</p>
+            </div>
+          </div>
+          <div class="walkers-acc-item">
+            <button type="button" class="walkers-acc-trigger">
+              <h4 class="walkers-acc-title">What kind of chauffeur guide will accompany us?</h4>
+              <span class="walkers-acc-icon">+</span>
+            </button>
+            <div class="walkers-acc-content">
+              <p class="walkers-acc-desc">Your journey will be led by a handpicked, licensed Sri Lankan National Tour Guide or Tourist Chauffeur with deep cultural understanding, fluent English, and impeccable hospitality standards.</p>
+            </div>
+          </div>
+          <div class="walkers-acc-item">
+            <button type="button" class="walkers-acc-trigger">
+              <h4 class="walkers-acc-title">What are the booking and cancellation policies?</h4>
+              <span class="walkers-acc-icon">+</span>
+            </button>
+            <div class="walkers-acc-content">
+              <p class="walkers-acc-desc">A 20% advance deposit confirms your private reservation. In the event of flight changes or unforeseen circumstances, we offer flexible free date rescheduling up to 21 days prior to arrival.</p>
             </div>
           </div>
         </div>
-        
       </div>
     </div>
   </section>
 
-  <section class="banner-bottom-cta padding-top--80 padding-bottom--80" style="background: linear-gradient(135deg, #001A2C 0%, #002B49 100%); color: #FFFFFF; text-align: center;">
-    <div class="wrapper--70">
-      <span style="color: #C5A880; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase;" data-cms="pkg_pure-serenade-coastal-highland-romance.span_18">PURE JOURNEYS &bull; SACRED EXPERIENCES</span>
-      <h2 style="font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 2.4rem; margin: 1rem 0; color: #FFFFFF;" data-cms="pkg_pure-serenade-coastal-highland-romance.heading_21">Ready to Experience Pure Serenade Coastal and Highland Romance?</h2>
-      <p style="color: rgba(255,255,255,0.85); font-size: 1.05rem; max-width: 650px; margin: 0 auto 2rem; line-height: 1.6;" data-cms="pkg_pure-serenade-coastal-highland-romance.p_31">
-        Every detail of this journey is privately chauffeured and customized to your exact timeline, flight schedules, and luxury accommodation preferences.
-      </p>
-      <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
-        <a href="../../../inquiry-detailed.html?package=Pure+Serenade+Coastal+%26+Highland+Romance" class="gold-inquire-btn" style="text-decoration: none; padding: 14px 28px; font-weight: 700; font-size: 0.95rem;" data-cms="pkg_pure-serenade-coastal-highland-romance.btn_22">Inquire About This Tour</a>
-        <a href="https://wa.me/94715422384?text=Hello+Lotus+Ceylon%2C+I+would+like+to+inquire+about+the+Pure+Serenade+Coastal+%26+Highland+Romance+%2811+Nights+%2F+12+Days%29+private+tour." target="_blank" rel="noopener" class="gold-inquire-btn" style="background: transparent; border: 2px solid #C5A880; color: #C5A880; text-decoration: none; padding: 12px 24px; font-weight: 700; font-size: 0.95rem;" data-cms="pkg_pure-serenade-coastal-highland-romance.btn_23">WhatsApp Travel Specialist</a>
+  <!-- SECTION 7: MORE JOURNEYS (Walkers Standard) -->
+  <section class="more-journeys-walkers">
+    <div class="more-journeys-container">
+      <h2 class="more-journeys-heading">More Journeys to Discover</h2>
+      <div class="more-journeys-grid">
+        <div class="related-tour-card" style="background: #FFFFFF; border-radius: 14px; overflow: hidden; border: 1px solid rgba(0, 43, 73, 0.08); box-shadow: 0 4px 18px rgba(0,0,0,0.04); display: flex; flex-direction: column;">
+          <div class="related-tour-img-wrap" style="position: relative; height: 210px; overflow: hidden;">
+            <img src="../../../assets/images/couple-travel.jpg" alt="Enchanted Ceylon Romantic Hideaway" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;">
+            <span class="related-tour-duration" style="position: absolute; top: 12px; left: 12px; background: rgba(17, 24, 39, 0.88); color: #FFFFFF; padding: 4px 12px; border-radius: 20px; font-size: 0.78rem; font-weight: 700;">08 Nights and 09 Days</span>
+          </div>
+          <div class="related-tour-content" style="padding: 1.5rem; display: flex; flex-direction: column; flex-grow: 1;">
+            <h4 style="font-family: 'DM Sans', sans-serif; font-size: 1.18rem; font-weight: 700; color: #111827; margin: 0 0 0.5rem 0;">Enchanted Ceylon Romantic Hideaway</h4>
+            <p style="color: #64748B; font-size: 0.9rem; line-height: 1.6; margin: 0 0 1.25rem 0; flex-grow: 1;">Private plunge pool villas, misty tea trails, candlelit rampart dining, and secluded southern bays.</p>
+            <div>
+              <a href="../../../tours/honeymoon/enchanted-ceylon-romantic-hideaway/index.html" class="btn-inquire-gold-pill" style="padding: 8px 20px; font-size: 0.85rem; width: 100%; justify-content: center;">
+                <span>Explore Itinerary ➔</span>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="related-tour-card" style="background: #FFFFFF; border-radius: 14px; overflow: hidden; border: 1px solid rgba(0, 43, 73, 0.08); box-shadow: 0 4px 18px rgba(0,0,0,0.04); display: flex; flex-direction: column;">
+          <div class="related-tour-img-wrap" style="position: relative; height: 210px; overflow: hidden;">
+            <img src="../../../assets/images/beach/mirissa-1.webp" alt="Southern Sands Serenade" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;">
+            <span class="related-tour-duration" style="position: absolute; top: 12px; left: 12px; background: rgba(17, 24, 39, 0.88); color: #FFFFFF; padding: 4px 12px; border-radius: 20px; font-size: 0.78rem; font-weight: 700;">09 Nights and 10 Days</span>
+          </div>
+          <div class="related-tour-content" style="padding: 1.5rem; display: flex; flex-direction: column; flex-grow: 1;">
+            <h4 style="font-family: 'DM Sans', sans-serif; font-size: 1.18rem; font-weight: 700; color: #111827; margin: 0 0 0.5rem 0;">Southern Sands Serenade</h4>
+            <p style="color: #64748B; font-size: 0.9rem; line-height: 1.6; margin: 0 0 1.25rem 0; flex-grow: 1;">Sun-Kissed Bays, Blue Whales & Dutch Ramparts</p>
+            <div>
+              <a href="../../../tours/beach/southern-sands-serenade/index.html" class="btn-inquire-gold-pill" style="padding: 8px 20px; font-size: 0.85rem; width: 100%; justify-content: center;">
+                <span>Explore Itinerary ➔</span>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="related-tour-card" style="background: #FFFFFF; border-radius: 14px; overflow: hidden; border: 1px solid rgba(0, 43, 73, 0.08); box-shadow: 0 4px 18px rgba(0,0,0,0.04); display: flex; flex-direction: column;">
+          <div class="related-tour-img-wrap" style="position: relative; height: 210px; overflow: hidden;">
+            <img src="../../../assets/images/beach/pasikudah-5.webp" alt="Turquoise Eastern Sanctuary" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;">
+            <span class="related-tour-duration" style="position: absolute; top: 12px; left: 12px; background: rgba(17, 24, 39, 0.88); color: #FFFFFF; padding: 4px 12px; border-radius: 20px; font-size: 0.78rem; font-weight: 700;">11 Nights and 12 Days</span>
+          </div>
+          <div class="related-tour-content" style="padding: 1.5rem; display: flex; flex-direction: column; flex-grow: 1;">
+            <h4 style="font-family: 'DM Sans', sans-serif; font-size: 1.18rem; font-weight: 700; color: #111827; margin: 0 0 0.5rem 0;">Turquoise Eastern Sanctuary</h4>
+            <p style="color: #64748B; font-size: 0.9rem; line-height: 1.6; margin: 0 0 1.25rem 0; flex-grow: 1;">Crystal Coral Lagoons, Surfing & Cliffside Shrines</p>
+            <div>
+              <a href="../../../tours/beach/turquoise-eastern-sanctuary/index.html" class="btn-inquire-gold-pill" style="padding: 8px 20px; font-size: 0.85rem; width: 100%; justify-content: center;">
+                <span>Explore Itinerary ➔</span>
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  
-
-  <!-- ==========================================================================
-       WHY TRAVEL WITH LOTUS & FREQUENTLY ASKED QUESTIONS
-       ========================================================================== -->
-  <section class="lotus-why-section" id="why-lotus">
-    <div id="lotusWhyContainer"></div>
-  </section>
-
-  <section class="lotus-faq-section" id="faqs">
-    <div id="lotusFaqContainer"></div>
-  </section>
-
-    <!-- Sacred Ceylon CTA Band (Unified Standard) -->
-    <!-- Sacred Ceylon CTA Band (Unified Standard) -->
-  <section class="sacred-cta-banner" data-cms-bg="siteGlobal.branding.cta_bg">
-    <div class="cta-motif" aria-hidden="true"></div>
-    <div class="cta-content">
-      <h2 class="cta-title" data-cms="pkg_pure-serenade-coastal-highland-romance.heading_22">Ready to Begin Your Sacred Ceylon Journey?</h2>
-      <p class="cta-desc" data-cms="pkg_pure-serenade-coastal-highland-romance.p_32">Speak directly with our senior destination specialists in Ja-Ela or connect via WhatsApp for an immediate bespoke itinerary proposal tailored to your rhythm.</p>
-      <div class="cta-btn-group">
-        <a href="../../../inquiry-detailed.html" class="btn-primary-gold" data-cms="pkg_pure-serenade-coastal-highland-romance.btn_24">
-          <span data-cms="pkg_pure-serenade-coastal-highland-romance.span_19">Plan My Bespoke Journey</span>
-          <span aria-hidden="true">➔</span>
+  <!-- SECTION 8: BOTTOM CTA BANNER (Walkers Standard) -->
+  <section class="tour-cta-walkers">
+    <div class="tour-cta-container">
+      <span class="tour-cta-tag">BESPOKE PRIVATE TRAVEL</span>
+      <h2 class="tour-cta-title">Plan your Perfect Honeymoon Escape</h2>
+      <p class="tour-cta-desc">Connect directly with our senior Ceylon travel designers to curate your private chauffeur-guided journey across Sri Lanka.</p>
+      <div class="tour-cta-btn-group">
+        <a href="../../../inquiry-detailed.html?package=Pure+Serenade+Coastal+&+Highland+Romance" class="btn-inquire-gold-pill">Inquire About This Tour</a>
+        <a href="https://wa.me/94715422384?text=Hello%20Lotus%20Ceylon!%20I%20would%20like%20to%20inquire%20about%20the%20Pure+Serenade+Coastal+&+Highland+Romance%20private%20tour." target="_blank" rel="noopener noreferrer" class="btn-cta-whatsapp">
+          <span>Chat on WhatsApp</span>
         </a>
-        <a href="https://wa.me/94715422384?text=Hello%20Lotus%20Ceylon!%20I%20would%20like%20to%20inquire%20about%20a%20private%20tour." target="_blank" rel="noopener noreferrer" class="cta-wa-btn" data-cms="pkg_pure-serenade-coastal-highland-romance.btn_25">
-          <span data-cms="pkg_pure-serenade-coastal-highland-romance.span_20">Chat on WhatsApp</span>
-        </a>
       </div>
     </div>
   </section>
 
-    <!-- Site Footer (Unified Walkers Standard with Single Source of Truth Coordinates) -->
-    <!-- Site Footer (Unified Walkers Standard with Single Source of Truth Coordinates) -->
+  <!-- Site Footer -->
   <!-- @include footer:start -->
 <!-- Site design & development: Infinite Design (https://infiniteweb.dev/) — see /humans.txt and LICENSE.txt -->
 <!-- Site Footer (Walkers Tours Standard with Sunset Palms Background) -->
@@ -1102,7 +809,7 @@
 </footer>
 <!-- @include footer:end -->
 
-  <!-- Unified Mobile-First Floating Action Group (WhatsApp + Back to Top) -->
+  <!-- Unified Mobile-First Floating Action Group -->
   <!-- @include floating-actions:start -->
 <!-- Site design & development: Infinite Design (https://infiniteweb.dev/) — see /humans.txt and LICENSE.txt -->
 <!-- Unified Mobile-First Floating Action Group (WhatsApp + Back to Top) -->
@@ -1122,16 +829,27 @@
 </a>
 <!-- @include floating-actions:end -->
 
-  <!-- Persistent Floating WhatsApp Concierge -->
-  
-
+  <!-- JavaScript Plugins -->
   <script src="../../../vendor/leaflet/leaflet.js"></script>
   <script src="../../../js/leaflet-tour-map.js?v=20261101_pure_osm_v9"></script>
   <script src="../../../js/tour-interactive.js"></script>
   <script src="../../../js/site-translator.js"></script>
   <script src="../../../assets/js/config.js"></script>
-<script defer src="../../../assets/js/site-data.js"></script>
+  <script defer src="../../../assets/js/site-data.js"></script>
   <script src="../../../assets/js/mobile-nav.js"></script>
-  <script src="../../../assets/js/cms.js?v=20261029_secimg1"></script>
+
+  <!-- Interactive Accordion Handler -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelectorAll('.walkers-acc-trigger').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          var item = this.closest('.walkers-acc-item');
+          if (item) {
+            item.classList.toggle('is-open');
+          }
+        });
+      });
+    });
+  </script>
 </body>
 </html>

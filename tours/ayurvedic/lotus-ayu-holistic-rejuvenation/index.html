@@ -5,259 +5,51 @@
   <meta name="generator" content="Built by Infinite Design — https://infiniteweb.dev/">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="theme-color" content="#16361D">
-  <title data-cms="seo.title">Lotus Ayu Holistic Rejuvenation 10-Day Retreat | Lotus Ceylon</title>
-  <meta name="description" content="Authentic physician-guided Ayurvedic panchakarma retreat in Sri Lanka. Shirodhara, daily yoga, and organic sattvic dining." data-cms="seo.description" data-cms="seo.description" data-cms="seo.description">
+  <meta name="theme-color" content="#111827">
+  <title data-cms="seo.title">Lotus Ayu Holistic Rejuvenation | Lotus Ceylon Luxury Tours</title>
+  <meta name="description" content="Authentic physician-guided Ayurvedic panchakarma retreat in Sri Lanka. Shirodhara, daily yoga, and organic sattvic dining." data-cms="seo.description">
   <link rel="icon" type="image/png" href="../../../logo.png?v=20261021_step1">
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..800;1,9..40,300..800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..800;1,9..40,300..800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <!-- Master Stylesheets -->
   <link rel="stylesheet" href="../../../css/style.css?v=20261022_beach_v1">
   <link rel="stylesheet" href="../../../css/brand-header.css?v=20261022_exact_hf_v1">
-  <link rel="stylesheet" href="../../../css/tour-package-detail.css?v=20261022_pkg_v1">
-
-  <style>
-    :root {
-      --watermark-shadow-pink: #EEDBE2;
-    }
-    .watermark-heading {
-      color: var(--watermark-shadow-pink) !important;
-      font-weight: 800;
-      letter-spacing: 0.15em;
-    }
-    .itinerary-item {
-      display: flex;
-      gap: 1.5rem;
-      margin-bottom: 2rem;
-      position: relative;
-    }
-    .itinerary-day-badge {
-      width: 70px;
-      height: 70px;
-      flex-shrink: 0;
-      background: linear-gradient(135deg, #002B49 0%, #001A2C 100%);
-      color: #C5A880;
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 700;
-      font-size: 0.95rem;
-      box-shadow: 0 4px 15px rgba(0,43,73,0.15);
-      border: 1px solid rgba(197,168,128,0.3);
-      text-transform: uppercase;
-      text-align: center;
-      line-height: 1.2;
-    }
-    .itinerary-content {
-      background: #FFFFFF;
-      border: 1px solid #E2E8F0;
-      border-radius: 12px;
-      padding: 1.5rem 1.75rem;
-      flex-grow: 1;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
-      transition: all 0.3s ease;
-    }
-    .itinerary-content:hover {
-      border-color: #C5A880;
-      box-shadow: 0 8px 24px rgba(0,43,73,0.08);
-    }
-    .itinerary-day-title {
-      font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      font-size: 1.25rem;
-      color: #002B49;
-      margin-bottom: 0.75rem;
-      font-weight: 600;
-    }
-    .itinerary-day-desc {
-      color: #475569;
-      font-size: 0.95rem;
-      line-height: 1.7;
-      margin-bottom: 1rem;
-    }
-    .itinerary-meta-tags {
-      display: flex;
-      gap: 0.75rem;
-      flex-wrap: wrap;
-    }
-    .itinerary-tag {
-      background: #F1F5F9;
-      color: #002B49;
-      padding: 0.35rem 0.75rem;
-      border-radius: 6px;
-      font-size: 0.82rem;
-      font-weight: 600;
-    }
-    .inclusions-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2rem;
-      margin-top: 2rem;
-    }
-    @media (max-width: 768px) {
-      .inclusions-grid { grid-template-columns: 1fr; }
-      .itinerary-item { flex-direction: column; gap: 0.75rem; }
-      .itinerary-day-badge { width: auto; height: 36px; padding: 0 1rem; }
-    }
-    .inclusions-box, .exclusions-box {
-      background: #FFFFFF;
-      border-radius: 12px;
-      padding: 1.75rem;
-      border: 1px solid #E2E8F0;
-    }
-    .inclusions-box { border-top: 4px solid #10B981; }
-    .exclusions-box { border-top: 4px solid #EF4444; }
-    .inclusions-box h3, .exclusions-box h3 {
-      font-size: 1.15rem;
-      color: #002B49;
-      margin-bottom: 1rem;
-      font-weight: 700;
-    }
-    .inclusions-box ul, .exclusions-box ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-    .inclusions-box li, .exclusions-box li {
-      padding: 0.5rem 0;
-      color: #475569;
-      font-size: 0.92rem;
-      display: flex;
-      align-items: flex-start;
-      gap: 0.6rem;
-      border-bottom: 1px dashed #F1F5F9;
-    }
-    .inclusions-box li span { color: #10B981; font-weight: bold; }
-    .exclusions-box li span { color: #EF4444; font-weight: bold; }
-    .related-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-      margin-top: 2rem;
-    }
-    .related-tour-card {
-      background: #FFFFFF;
-      border: 1px solid #E2E8F0;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.04);
-      transition: all 0.3s ease;
-      display: flex;
-      flex-direction: column;
-    }
-    .related-tour-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 12px 28px rgba(0,43,73,0.12);
-    }
-    .related-tour-img-wrap {
-      position: relative;
-      height: 200px;
-      overflow: hidden;
-    }
-    .related-tour-img-wrap img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.5s ease;
-    }
-    .related-tour-card:hover .related-tour-img-wrap img {
-      transform: scale(1.05);
-    }
-    .related-tour-duration {
-      position: absolute;
-      top: 12px;
-      left: 12px;
-      background: rgba(0, 43, 73, 0.85);
-      color: #C5A880;
-      padding: 4px 12px;
-      border-radius: 20px;
-      font-size: 0.78rem;
-      font-weight: 700;
-    }
-    .related-tour-content {
-      padding: 1.5rem;
-      display: flex;
-      flex-direction: column;
-      flex-grow: 1;
-    }
-    .related-tour-title {
-      font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      font-size: 1.2rem;
-      color: #002B49;
-      margin-bottom: 0.5rem;
-    }
-    .related-tour-desc {
-      color: #64748B;
-      font-size: 0.88rem;
-      line-height: 1.6;
-      margin-bottom: 1.25rem;
-      flex-grow: 1;
-    }
-    .btn-related-explore {
-      color: #002B49;
-      font-weight: 700;
-      font-size: 0.88rem;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      transition: color 0.2s;
-    }
-    .btn-related-explore:hover {
-      color: #C5A880;
-    }
-    .map-lightbox-modal {
-      display: none;
-      position: fixed;
-      z-index: 99999;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.85);
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-    }
-    .map-lightbox-modal.active { display: flex; }
-    .map-lightbox-content { max-width: 90vw; max-height: 90vh; object-fit: contain; border-radius: 8px; }
-    .map-lightbox-close { position: absolute; top: 25px; right: 35px; color: #fff; font-size: 40px; font-weight: 300; cursor: pointer; }
-  </style>
+  <link rel="stylesheet" href="../../../css/tour-package-detail.css?v=20261103_walkers_v1">
   <link rel="stylesheet" href="../../../vendor/leaflet/leaflet.css">
   <link rel="stylesheet" href="../../../css/tours-map.css?v=20261031_osm_v5">
-  <!-- Canonical & OpenGraph SEO (Phase 7) -->
+
+  <!-- Canonical & OpenGraph SEO -->
   <link rel="canonical" href="https://kanchu12345.github.io/thai/tours/ayurvedic/lotus-ayu-holistic-rejuvenation/">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Lotus Ceylon International Tours">
   <meta property="og:title" content="Lotus Ayu Holistic Rejuvenation | Lotus Ceylon Pure Journeys">
   <meta property="og:description" content="Authentic physician-guided Ayurvedic panchakarma retreat in Sri Lanka. Shirodhara, daily yoga, and organic sattvic dining.">
   <meta property="og:url" content="https://kanchu12345.github.io/thai/tours/ayurvedic/lotus-ayu-holistic-rejuvenation/">
-  <meta property="og:image" content="https://kanchu12345.github.io/thai/assets/images/cultural/kandy-temple-of-tooth-4.webp">
+  <meta property="og:image" content="https://kanchu12345.github.io/thai/assets/images/temple-culture.jpg">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Lotus Ayu Holistic Rejuvenation | Lotus Ceylon">
   <meta name="twitter:description" content="Authentic physician-guided Ayurvedic panchakarma retreat in Sri Lanka. Shirodhara, daily yoga, and organic sattvic dining.">
-  <meta name="twitter:image" content="https://kanchu12345.github.io/thai/assets/images/cultural/kandy-temple-of-tooth-4.webp">
+  <meta name="twitter:image" content="https://kanchu12345.github.io/thai/assets/images/temple-culture.jpg">
 
   <!-- Structured Data: Google TouristTrip Schema -->
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "TouristTrip",
-  "name": "Lotus Ayu Holistic Rejuvenation (10 Days / 9 Nights)",
+  "name": "Lotus Ayu Holistic Rejuvenation (09 Nights and 10 Days)",
   "description": "Authentic physician-guided Ayurvedic panchakarma retreat in Sri Lanka. Shirodhara, daily yoga, and organic sattvic dining.",
   "touristType": [
     "Luxury Travel",
-    "Cultural Heritage",
-    "Private Chauffeur Tour",
-    "Ayurvedic"
+    "Sri Lanka Ayurvedic & Wellness Retreats",
+    "Private Chauffeur Tour"
   ],
   "provider": {
     "@type": "TravelAgency",
-    "name": "Lotus Ceylon International Tours & Services (Private) Limited",
+    "name": "Lotus Ceylon International Tours and Services (Private) Limited",
     "url": "https://lotusceylon.com/",
     "telephone": "+94715422384",
     "priceRange": "$$$$",
@@ -273,112 +65,13 @@
     "price": "Tailor-made",
     "availability": "https://schema.org/InStock",
     "url": "https://lotusceylon.com/inquiry-detailed.html?package=Lotus+Ayu+Holistic+Rejuvenation"
-  },
-  "itinerary": {
-    "@type": "ItemList",
-    "numberOfItems": 10,
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "item": {
-          "@type": "TouristAttraction",
-          "name": "Day 01: Ayubowan & Welcome to Ayurvedic Beachfront Sanctuary",
-          "description": "Peaceful arrival transfer to your dedicated Ayurvedic coastal sanctuary in Wadduwa. Welcome herbal infusion and tranquil check-in."
-        }
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "item": {
-          "@type": "TouristAttraction",
-          "name": "Day 02: Physician Consultation & Initial Dosha Diagnosis",
-          "description": "In-depth pulse analysis (Nadi Pariksha) by our resident Ayurvedic physician. Your personalized therapy and diet plan begins."
-        }
-      },
-      {
-        "@type": "ListItem",
-        "position": 3,
-        "item": {
-          "@type": "TouristAttraction",
-          "name": "Day 03: Panchakarma Phase 1: Deep Herbal Snehana (Oleation)",
-          "description": "Synchronized full-body warm herbal oil massage (Abhyanga) followed by steam herbal bath (Swedana) to release accumulated toxins."
-        }
-      },
-      {
-        "@type": "ListItem",
-        "position": 4,
-        "item": {
-          "@type": "TouristAttraction",
-          "name": "Day 04: The Art of Shirodhara & Nervous System Restoration",
-          "description": "Experience continuous stream of warm medicinal oil over the third eye chakra (Shirodhara), releasing stress and insomnia."
-        }
-      },
-      {
-        "@type": "ListItem",
-        "position": 5,
-        "item": {
-          "@type": "TouristAttraction",
-          "name": "Day 05: Herbal Steam Bath & Organic Botanical Garden Walk",
-          "description": "Guided walking tour through our medicinal botanical gardens identifying sacred neem, gotu kola, and ashwagandha plants."
-        }
-      },
-      {
-        "@type": "ListItem",
-        "position": 6,
-        "item": {
-          "@type": "TouristAttraction",
-          "name": "Day 06: Pinda Sweda (Medicinal Rice & Herbal Bolus Therapy)",
-          "description": "Warm herbal poultice massage deeply rejuvenating joints and muscle tissues. Sunset meditation on the beach."
-        }
-      },
-      {
-        "@type": "ListItem",
-        "position": 7,
-        "item": {
-          "@type": "TouristAttraction",
-          "name": "Day 07: Lagoon Mindfulness & Silent Sunset Reflection",
-          "description": "Gentle boat ride through peaceful mangrove lagoon waters. Silent mindful walking meditation under ancient banyan trees."
-        }
-      },
-      {
-        "@type": "ListItem",
-        "position": 8,
-        "item": {
-          "@type": "TouristAttraction",
-          "name": "Day 08: Ayurvedic Cooking Workshop & Nutrition Principles",
-          "description": "Interactive culinary masterclass learning to use indigenous spices (turmeric, cinnamon, cardamon) for optimal digestion (Agni)."
-        }
-      },
-      {
-        "@type": "ListItem",
-        "position": 9,
-        "item": {
-          "@type": "TouristAttraction",
-          "name": "Day 09: Final Physician Evaluation & Home Wellness Protocol",
-          "description": "Post-treatment assessment with your doctor. Receive tailored herbal prescriptions and daily routine (Dinacharya) advice."
-        }
-      },
-      {
-        "@type": "ListItem",
-        "position": 10,
-        "item": {
-          "@type": "TouristAttraction",
-          "name": "Day 10: Revitalized Departure Transfer to Colombo Airport",
-          "description": "Enjoy a final dawn yoga session and fresh herbal tonic before private chauffeur transfer to CMB airport."
-        }
-      }
-    ]
   }
 }
   </script>
-  <!-- Master Unified Stylesheet -->
-  <link rel="stylesheet" href="../../../assets/css/site.css">
 </head>
 <body class="page-tour-detail" data-cms-page="tourPackages/lotus-ayu-holistic-rejuvenation">
 
-  <!-- Site Header & Navigation (Unified Walkers Luxury Standard) -->
-    <!-- Site Header & Navigation (Unified Master Standard: Mobile Max 64px, Logo Max 40px) -->
+  <!-- Site Header & Navigation -->
   <!-- @include header:start -->
 <!-- Site design & development: Infinite Design (https://infiniteweb.dev/) — see /humans.txt and LICENSE.txt -->
 <!-- Site Header & Navigation (Unified Master Standard Driven by siteGlobal) -->
@@ -534,403 +227,431 @@
 </div>
 <!-- @include mobile-menu:end -->
 
-  <!-- Full-Screen Slide-in Mobile Navigation Menu -->
-  
+  <!-- SECTION 1: HERO BANNER (Full-width Walkers Standard) -->
+  <section class="tour-banner-walkers" style="background-image: url('../../../assets/images/temple-culture.jpg');">
+    <div class="wrapper--90" style="position: relative; z-index: 2; padding-bottom: 2.5rem; width: 100%;">
+      <nav class="tour-breadcrumb" aria-label="Breadcrumb" style="display: flex; gap: 8px; align-items: center; color: rgba(255,255,255,0.8); font-size: 0.85rem; font-weight: 500;">
+        <a href="../../../index.html" style="color: #FFFFFF; text-decoration: none;">Home</a>
+        <span>/</span>
+        <a href="../../../tours/index.html" style="color: #FFFFFF; text-decoration: none;">Tours</a>
+        <span>/</span>
+        <a href="../../../tours/ayurvedic/index.html" style="color: #FFFFFF; text-decoration: none;">Sri Lanka Ayurvedic & Wellness Retreats</a>
+        <span>/</span>
+        <span style="color: #D4A359;">Lotus Ayu Holistic Rejuvenation</span>
+      </nav>
+    </div>
+  </section>
 
-  <section class="tour-hero-section" data-cms-bg="pkg_lotus-ayu-holistic-rejuvenation.hero_bg" id="tourHero" style="background-image: url('../../../assets/images/cultural/kandy-temple-of-tooth-4.webp');">
-    <div class="tour-hero-overlay"></div>
-    <div class="wrapper--90">
-      <div class="tour-hero-content">
-        <nav class="tour-breadcrumb" aria-label="Breadcrumb">
-          <a href="../../../index.html" data-cms="pkg_lotus-ayu-holistic-rejuvenation.a_21">Home</a>
-          <span class="sep">/</span>
-          <a href="../../../tours/index.html" data-cms="pkg_lotus-ayu-holistic-rejuvenation.a_22">Tours</a>
-          <span class="sep">/</span>
-          <a href="../../../tours/ayurvedic/index.html" data-cms="pkg_lotus-ayu-holistic-rejuvenation.a_23">Sri Lanka Ayurvedic and Holistic Wellness Retreats</a>
-          <span class="sep">/</span>
-          <span data-cms="pkg_lotus-ayu-holistic-rejuvenation.span_4">Lotus Ayu Holistic Rejuvenation</span>
-        </nav>
+  <!-- SECTION 2: OVERVIEW & HEADER (Walkers Standard) -->
+  <section class="tour-overview-walkers">
+    <div class="wrapper--70" style="max-width: 980px; margin: 0 auto;">
+      <span class="tour-badge-pill-walkers">Recommended for Ayurveda, Wellness & Healing</span>
+      <div class="tour-category-sub-walkers">Sri Lanka Ayurvedic & Wellness Retreats</div>
+      <h1 class="tour-title-walkers">Lotus Ayu Holistic Rejuvenation</h1>
+      <div class="tour-duration-line-walkers">
+        <span>09 Nights and 10 Days</span>
+      </div>
+      <div class="tour-desc-walkers">
+        <p>A restorative sanctuary escape dedicated to authentic physician-led panchakarma and tranquil rejuvenation.</p>
+        <p>Every element of this bespoke journey is privately chauffeured in luxury air-conditioned vehicles, thoughtfully paced, and customized to your exact timeline, flight schedules, and personal preferences by Lotus Ceylon destination specialists.</p>
+      </div>
+      <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+        <a class="btn-inquire-gold-pill" href="../../../inquiry-detailed.html?package=Lotus+Ayu+Holistic+Rejuvenation">
+          <span>Inquire Now</span>
+        </a>
+        <a href="https://wa.me/94715422384?text=Hello%20Lotus%20Ceylon!%20I%20would%20like%20to%20inquire%20about%20Lotus+Ayu+Holistic+Rejuvenation." target="_blank" rel="noopener noreferrer" class="btn-cta-whatsapp">
+          <span>WhatsApp Specialist</span>
+        </a>
+      </div>
+    </div>
+  </section>
 
-        <div class="tour-hero-badges">
-          <span class="tour-badge-pill tour-badge-gold" data-cms="category">9 Nights / 10 Days</span>
-          <span class="tour-badge-pill tour-badge-glass" data-cms="pkg_lotus-ayu-holistic-rejuvenation.span_5">Sri Lanka Ayurvedic and Holistic Wellness Retreats</span>
-          <span class="tour-badge-pill tour-badge-glass" data-cms="pkg_lotus-ayu-holistic-rejuvenation.span_6">Private Chauffeur Guided</span>
+  <!-- SECTION 3: ITINERARY ACCORDION (Walkers Standard) -->
+  <section class="itinerary-section-walkers" id="itinerary">
+    <div class="itinerary-container-walkers">
+      <h2 class="itinerary-heading-walkers">
+        <span>A journey through</span>
+        Lotus Ayu Holistic Rejuvenation
+      </h2>
+      <div class="walkers-accordion-wrap" id="tourInnerAccordion">
+        <div class="walkers-acc-item is-open">
+          <button type="button" class="walkers-acc-trigger" aria-expanded="true">
+            <div class="walkers-acc-left">
+              <span class="walkers-acc-day">Day 01</span>
+              <h3 class="walkers-acc-title">Ayubowan & Welcome to Ayurvedic Beachfront Sanctuary</h3>
+            </div>
+            <span class="walkers-acc-icon">+</span>
+          </button>
+          <div class="walkers-acc-content">
+            <p class="walkers-acc-desc">Peaceful arrival transfer to your dedicated Ayurvedic coastal sanctuary in Wadduwa. Welcome herbal infusion and tranquil check-in.</p>
+            <div class="walkers-acc-pills">
+              <span class="walkers-acc-pill overnight">Overnight: Ayurvedic Beach Sanctuary, Wadduwa</span>
+              <span class="walkers-acc-pill">Meals: Sattvic Dinner</span>
+            </div>
+          </div>
         </div>
-
-        <h1 class="hero-title" data-cms="title">
-          <span class="hero-title-main" data-cms="pkg_lotus-ayu-holistic-rejuvenation.span_7">Lotus Ayu Holistic Rejuvenation</span>
-          <span class="hero-title-accent" data-cms="pkg_lotus-ayu-holistic-rejuvenation.span_8">Authentic Panchakarma and Sacred Healing</span>
-        </h1>
-        <p class="tour-hero-tagline" data-cms="pkg_lotus-ayu-holistic-rejuvenation.p_2">A restorative sanctuary escape dedicated to authentic physician-led panchakarma and tranquil rejuvenation.</p>
-
-        <div class="tour-hero-actions">
-          <a href="../../../inquiry-detailed.html?package=Lotus+Ayu+Holistic+Rejuvenation" class="btn-hero-primary" data-cms="pkg_lotus-ayu-holistic-rejuvenation.btn_13">Inquire About This Tour</a>
-          <a href="#itinerary" class="btn-hero-secondary" data-cms="pkg_lotus-ayu-holistic-rejuvenation.btn_14">View Day-by-Day Journey ↓</a>
+        <div class="walkers-acc-item ">
+          <button type="button" class="walkers-acc-trigger" aria-expanded="false">
+            <div class="walkers-acc-left">
+              <span class="walkers-acc-day">Day 02</span>
+              <h3 class="walkers-acc-title">Physician Consultation & Initial Dosha Diagnosis</h3>
+            </div>
+            <span class="walkers-acc-icon">+</span>
+          </button>
+          <div class="walkers-acc-content">
+            <p class="walkers-acc-desc">In-depth pulse analysis (Nadi Pariksha) by our resident Ayurvedic physician. Your personalized therapy and diet plan begins.</p>
+            <div class="walkers-acc-pills">
+              <span class="walkers-acc-pill overnight">Overnight: Ayurvedic Beach Sanctuary, Wadduwa</span>
+              <span class="walkers-acc-pill">Meals: Ayurvedic Full Board</span>
+            </div>
+          </div>
+        </div>
+        <div class="walkers-acc-item ">
+          <button type="button" class="walkers-acc-trigger" aria-expanded="false">
+            <div class="walkers-acc-left">
+              <span class="walkers-acc-day">Day 03</span>
+              <h3 class="walkers-acc-title">Panchakarma Phase 1: Deep Herbal Snehana (Oleation)</h3>
+            </div>
+            <span class="walkers-acc-icon">+</span>
+          </button>
+          <div class="walkers-acc-content">
+            <p class="walkers-acc-desc">Synchronized full-body warm herbal oil massage (Abhyanga) followed by steam herbal bath (Swedana) to release accumulated toxins.</p>
+            <div class="walkers-acc-pills">
+              <span class="walkers-acc-pill overnight">Overnight: Ayurvedic Beach Sanctuary, Wadduwa</span>
+              <span class="walkers-acc-pill">Meals: Ayurvedic Full Board</span>
+            </div>
+          </div>
+        </div>
+        <div class="walkers-acc-item ">
+          <button type="button" class="walkers-acc-trigger" aria-expanded="false">
+            <div class="walkers-acc-left">
+              <span class="walkers-acc-day">Day 04</span>
+              <h3 class="walkers-acc-title">The Art of Shirodhara & Nervous System Restoration</h3>
+            </div>
+            <span class="walkers-acc-icon">+</span>
+          </button>
+          <div class="walkers-acc-content">
+            <p class="walkers-acc-desc">Experience continuous stream of warm medicinal oil over the third eye chakra (Shirodhara), releasing stress and insomnia.</p>
+            <div class="walkers-acc-pills">
+              <span class="walkers-acc-pill overnight">Overnight: Ayurvedic Beach Sanctuary, Wadduwa</span>
+              <span class="walkers-acc-pill">Meals: Ayurvedic Full Board</span>
+            </div>
+          </div>
+        </div>
+        <div class="walkers-acc-item ">
+          <button type="button" class="walkers-acc-trigger" aria-expanded="false">
+            <div class="walkers-acc-left">
+              <span class="walkers-acc-day">Day 05</span>
+              <h3 class="walkers-acc-title">Herbal Steam Bath & Organic Botanical Garden Walk</h3>
+            </div>
+            <span class="walkers-acc-icon">+</span>
+          </button>
+          <div class="walkers-acc-content">
+            <p class="walkers-acc-desc">Guided walking tour through our medicinal botanical gardens identifying sacred neem, gotu kola, and ashwagandha plants.</p>
+            <div class="walkers-acc-pills">
+              <span class="walkers-acc-pill overnight">Overnight: Ayurvedic Beach Sanctuary, Wadduwa</span>
+              <span class="walkers-acc-pill">Meals: Ayurvedic Full Board</span>
+            </div>
+          </div>
+        </div>
+        <div class="walkers-acc-item ">
+          <button type="button" class="walkers-acc-trigger" aria-expanded="false">
+            <div class="walkers-acc-left">
+              <span class="walkers-acc-day">Day 06</span>
+              <h3 class="walkers-acc-title">Pinda Sweda (Medicinal Rice & Herbal Bolus Therapy)</h3>
+            </div>
+            <span class="walkers-acc-icon">+</span>
+          </button>
+          <div class="walkers-acc-content">
+            <p class="walkers-acc-desc">Warm herbal poultice massage deeply rejuvenating joints and muscle tissues. Sunset meditation on the beach.</p>
+            <div class="walkers-acc-pills">
+              <span class="walkers-acc-pill overnight">Overnight: Ayurvedic Beach Sanctuary, Wadduwa</span>
+              <span class="walkers-acc-pill">Meals: Ayurvedic Full Board</span>
+            </div>
+          </div>
+        </div>
+        <div class="walkers-acc-item ">
+          <button type="button" class="walkers-acc-trigger" aria-expanded="false">
+            <div class="walkers-acc-left">
+              <span class="walkers-acc-day">Day 07</span>
+              <h3 class="walkers-acc-title">Lagoon Mindfulness & Silent Sunset Reflection</h3>
+            </div>
+            <span class="walkers-acc-icon">+</span>
+          </button>
+          <div class="walkers-acc-content">
+            <p class="walkers-acc-desc">Gentle boat ride through peaceful mangrove lagoon waters. Silent mindful walking meditation under ancient banyan trees.</p>
+            <div class="walkers-acc-pills">
+              <span class="walkers-acc-pill overnight">Overnight: Ayurvedic Beach Sanctuary, Wadduwa</span>
+              <span class="walkers-acc-pill">Meals: Ayurvedic Full Board</span>
+            </div>
+          </div>
+        </div>
+        <div class="walkers-acc-item ">
+          <button type="button" class="walkers-acc-trigger" aria-expanded="false">
+            <div class="walkers-acc-left">
+              <span class="walkers-acc-day">Day 08</span>
+              <h3 class="walkers-acc-title">Ayurvedic Cooking Workshop & Nutrition Principles</h3>
+            </div>
+            <span class="walkers-acc-icon">+</span>
+          </button>
+          <div class="walkers-acc-content">
+            <p class="walkers-acc-desc">Interactive culinary masterclass learning to use indigenous spices (turmeric, cinnamon, cardamon) for optimal digestion (Agni).</p>
+            <div class="walkers-acc-pills">
+              <span class="walkers-acc-pill overnight">Overnight: Ayurvedic Beach Sanctuary, Wadduwa</span>
+              <span class="walkers-acc-pill">Meals: Ayurvedic Full Board</span>
+            </div>
+          </div>
+        </div>
+        <div class="walkers-acc-item ">
+          <button type="button" class="walkers-acc-trigger" aria-expanded="false">
+            <div class="walkers-acc-left">
+              <span class="walkers-acc-day">Day 09</span>
+              <h3 class="walkers-acc-title">Final Physician Evaluation & Home Wellness Protocol</h3>
+            </div>
+            <span class="walkers-acc-icon">+</span>
+          </button>
+          <div class="walkers-acc-content">
+            <p class="walkers-acc-desc">Post-treatment assessment with your doctor. Receive tailored herbal prescriptions and daily routine (Dinacharya) advice.</p>
+            <div class="walkers-acc-pills">
+              <span class="walkers-acc-pill overnight">Overnight: Ayurvedic Beach Sanctuary, Wadduwa</span>
+              <span class="walkers-acc-pill">Meals: Ayurvedic Full Board</span>
+            </div>
+          </div>
+        </div>
+        <div class="walkers-acc-item ">
+          <button type="button" class="walkers-acc-trigger" aria-expanded="false">
+            <div class="walkers-acc-left">
+              <span class="walkers-acc-day">Day 10</span>
+              <h3 class="walkers-acc-title">Revitalized Departure Transfer to Colombo Airport</h3>
+            </div>
+            <span class="walkers-acc-icon">+</span>
+          </button>
+          <div class="walkers-acc-content">
+            <p class="walkers-acc-desc">Enjoy a final dawn yoga session and fresh herbal tonic before private chauffeur transfer to CMB airport.</p>
+            <div class="walkers-acc-pills">
+              <span class="walkers-acc-pill overnight">Overnight: Departure</span>
+              <span class="walkers-acc-pill">Meals: Breakfast Included</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="tour-facts-bar">
-    <div class="wrapper--90">
-      <div class="tour-facts-grid">
-        <div class="tour-fact-item">
-          <div>
-            <p class="tour-fact-label" data-cms="pkg_lotus-ayu-holistic-rejuvenation.p_3">Duration</p>
-            <p class="tour-fact-value" data-cms="pkg_lotus-ayu-holistic-rejuvenation.p_4">10 Days / 9 Nights</p>
-          </div>
+  <!-- SECTION 4: VISUAL JOURNEYS & INCLUSIONS (Walkers Standard) -->
+  <section class="visual-journeys-section">
+    <div class="visual-journeys-container">
+      <h2 class="visual-heading-walkers">
+        <span>Visual Journeys</span>
+      </h2>
+      <div class="walkers-img-grid">
+        <div class="walkers-img-card">
+          <img src="../../../assets/images/temple-culture.jpg" alt="Negombo" loading="lazy">
+          <span class="walkers-img-caption">Negombo</span>
+        </div>
+        <div class="walkers-img-card">
+          <img src="../../../assets/images/temple-culture.jpg" alt="Wadduwa" loading="lazy">
+          <span class="walkers-img-caption">Wadduwa</span>
+        </div>
+        <div class="walkers-img-card">
+          <img src="../../../assets/images/temple-culture.jpg" alt="Bentota" loading="lazy">
+          <span class="walkers-img-caption">Bentota</span>
+        </div>
+      </div>
+
+      <div class="inclusions-grid-walkers">
+        <div class="inclusions-card-walkers pink-accent">
+          <h3 class="inclusions-card-title">Inclusions</h3>
+          <ul class="inclusions-list-walkers">
+            <li><span class="check-icon">✓</span> 9 Nights in dedicated oceanfront Ayurvedic wellness resort</li>
+            <li><span class="check-icon">✓</span> Complete Ayurvedic full-board organic dining tailored to individual doshas</li>
+            <li><span class="check-icon">✓</span> Daily doctor consultations and personalized daily 2.5-hour therapies</li>
+            <li><span class="check-icon">✓</span> Daily morning yoga, pranayama, and evening guided meditation</li>
+            <li><span class="check-icon">✓</span> All herbal medicines, tonics, and customized treatment oils</li>
+            <li><span class="check-icon">✓</span> Private airport chauffeur transfers in quiet air-conditioned vehicle</li>
+          </ul>
         </div>
 
-        <div class="tour-fact-item">
-          <div>
-            <p class="tour-fact-label" data-cms="pkg_lotus-ayu-holistic-rejuvenation.p_5">Transport</p>
-            <p class="tour-fact-value" data-cms="pkg_lotus-ayu-holistic-rejuvenation.p_6">Private Luxury AC Chauffeur</p>
-          </div>
+        <div class="inclusions-card-walkers black-accent">
+          <h3 class="inclusions-card-title">Exclusions</h3>
+          <ul class="inclusions-list-walkers">
+            <li><span class="cross-icon">✕</span> International flights</li>
+            <li><span class="cross-icon">✕</span> Entry visa</li>
+            <li><span class="cross-icon">✕</span> Personal non-wellness expenses</li>
+          </ul>
         </div>
 
-        <div class="tour-fact-item">
-          <div>
-            <p class="tour-fact-label" data-cms="pkg_lotus-ayu-holistic-rejuvenation.p_7">Best Season</p>
-            <p class="tour-fact-value" data-cms="pkg_lotus-ayu-holistic-rejuvenation.p_8">Year-Round (Ayurveda is traditionally most effective during gentle monsoon months: May to September and Nov to Jan)</p>
-          </div>
+        <div class="inclusions-card-walkers black-accent">
+          <h3 class="inclusions-card-title">Payment Policies</h3>
+          <ul class="inclusions-list-walkers">
+            <li><span class="check-icon">✓</span> 20% advance confirmation deposit upon private reservation acceptance.</li>
+            <li><span class="check-icon">✓</span> Balance payment due 30 days prior to arrival in Sri Lanka.</li>
+            <li><span class="check-icon">✓</span> Free date rescheduling up to 21 days before arrival.</li>
+            <li><span class="check-icon">✓</span> Transparent cancellation terms with dedicated guest concierge care.</li>
+          </ul>
         </div>
 
-        <div class="tour-fact-item">
-          <div>
-            <p class="tour-fact-label" data-cms="pkg_lotus-ayu-holistic-rejuvenation.p_9">Accommodation</p>
-            <p class="tour-fact-value" data-cms="pkg_lotus-ayu-holistic-rejuvenation.p_10">Handpicked 5★ &amp; Boutique Stays</p>
-          </div>
-        </div>
-
-        <div class="tour-fact-item">
-          <div>
-            <p class="tour-fact-label">Price</p>
-            <p class="tour-fact-value" data-cms="pkg_lotus-ayu-holistic-rejuvenation.p_11">Tailor-Made on Request</p>
-          </div>
+        <div class="inclusions-card-walkers pink-accent">
+          <h3 class="inclusions-card-title">Payment Methods</h3>
+          <ul class="inclusions-list-walkers">
+            <li><span class="check-icon">✓</span> Secure online credit card processing (Visa, MasterCard, American Express).</li>
+            <li><span class="check-icon">✓</span> International Telegraphic Bank Wire Transfer (USD, EUR, GBP).</li>
+            <li><span class="check-icon">✓</span> Encrypted 3D-Secure payment links for direct instant confirmation.</li>
+            <li><span class="check-icon">✓</span> Official corporate invoicing with Central Bank of Sri Lanka registered operator credentials.</li>
+          </ul>
         </div>
       </div>
     </div>
   </section>
 
-    <!-- SEASONALITY / BEST TIME TO VISIT STRIP -->
-  <div class="wrapper--90" style="margin-top: 2rem;">
-    <div id="lotusSeasonStripContainer"></div>
-  </div>
-  <main class="tour-main-section padding-top--70 padding-bottom--100">
-    <div class="wrapper--90">
-      <div class="tour-main-layout" id="itinerary">
-        
-        <div class="tour-itinerary-col">
-          <div class="section-watermark-header" style="margin-bottom: 2rem;">
-            <p class="watermark-heading" data-cms="pkg_lotus-ayu-holistic-rejuvenation.p_12">ITINERARY</p>
-            <h2 class="section-header-title" data-cms="pkg_lotus-ayu-holistic-rejuvenation.heading_1">Detailed Day-by-Day Journey</h2>
-          </div>
-          <p class="itinerary-section-sub" style="color: #475569; font-size: 1rem; line-height: 1.7; margin-bottom: 2.5rem;" data-cms="pkg_lotus-ayu-holistic-rejuvenation.p_13">
-            Every element of this bespoke itinerary is privately chauffeured, seamlessly managed, and fully customizable to your personal travel pace and desires.
-          </p>
-
-          <div class="itinerary-timeline" data-cms-list="itinerary">
-            
-        <div class="itinerary-item" data-day="01">
-          <div class="itinerary-day-badge">Day 01</div>
-          <div class="itinerary-content">
-            <h3 class="itinerary-day-title" data-cms="pkg_lotus-ayu-holistic-rejuvenation.heading_2">Ayubowan and Welcome to Ayurvedic Beachfront Sanctuary</h3>
-            <p class="itinerary-day-desc" data-cms="pkg_lotus-ayu-holistic-rejuvenation.p_14">Peaceful arrival transfer to your dedicated Ayurvedic coastal sanctuary in Wadduwa. Welcome herbal infusion and tranquil check-in.</p>
-            <div class="itinerary-meta-tags">
-              <span class="itinerary-meta-pill" data-cms="duration">Overnight: Ayurvedic Beach Sanctuary, Wadduwa</span>
-              <span class="itinerary-meta-pill">Sattvic Dinner</span>
-              <span class="itinerary-meta-pill">Approx. 45 Mins - 1 Hour (35 km)</span>
-            </div>
-          </div>
-        </div>
-        
-
-        <div class="itinerary-item" data-day="02">
-          <div class="itinerary-day-badge">Day 02</div>
-          <div class="itinerary-content">
-            <h3 class="itinerary-day-title" data-cms="pkg_lotus-ayu-holistic-rejuvenation.heading_3">Physician Consultation and Initial Dosha Diagnosis</h3>
-            <p class="itinerary-day-desc" data-cms="pkg_lotus-ayu-holistic-rejuvenation.p_15">In-depth pulse analysis (Nadi Pariksha) by our resident Ayurvedic physician. Your personalized therapy and diet plan begins.</p>
-            <div class="itinerary-meta-tags">
-              <span class="itinerary-meta-pill">Overnight: Ayurvedic Beach Sanctuary, Wadduwa</span>
-              <span class="itinerary-meta-pill">Ayurvedic Full Board</span>
-              <span class="itinerary-meta-pill"></span>
-            </div>
-          </div>
-        </div>
-        
-
-        <div class="itinerary-item" data-day="03">
-          <div class="itinerary-day-badge">Day 03</div>
-          <div class="itinerary-content">
-            <h3 class="itinerary-day-title" data-cms="pkg_lotus-ayu-holistic-rejuvenation.heading_4">Panchakarma Phase 1: Deep Herbal Snehana (Oleation)</h3>
-            <p class="itinerary-day-desc" data-cms="pkg_lotus-ayu-holistic-rejuvenation.p_16">Synchronized full-body warm herbal oil massage (Abhyanga) followed by steam herbal bath (Swedana) to release accumulated toxins.</p>
-            <div class="itinerary-meta-tags">
-              <span class="itinerary-meta-pill">Overnight: Ayurvedic Beach Sanctuary, Wadduwa</span>
-              <span class="itinerary-meta-pill">Ayurvedic Full Board</span>
-              <span class="itinerary-meta-pill"></span>
-            </div>
-          </div>
-        </div>
-        
-
-        <div class="itinerary-item" data-day="04">
-          <div class="itinerary-day-badge">Day 04</div>
-          <div class="itinerary-content">
-            <h3 class="itinerary-day-title" data-cms="pkg_lotus-ayu-holistic-rejuvenation.heading_5">The Art of Shirodhara and Nervous System Restoration</h3>
-            <p class="itinerary-day-desc" data-cms="pkg_lotus-ayu-holistic-rejuvenation.p_17">Experience continuous stream of warm medicinal oil over the third eye chakra (Shirodhara), releasing stress and insomnia.</p>
-            <div class="itinerary-meta-tags">
-              <span class="itinerary-meta-pill">Overnight: Ayurvedic Beach Sanctuary, Wadduwa</span>
-              <span class="itinerary-meta-pill">Ayurvedic Full Board</span>
-              <span class="itinerary-meta-pill"></span>
-            </div>
-          </div>
-        </div>
-        
-
-        <div class="itinerary-item" data-day="05">
-          <div class="itinerary-day-badge">Day 05</div>
-          <div class="itinerary-content">
-            <h3 class="itinerary-day-title" data-cms="pkg_lotus-ayu-holistic-rejuvenation.heading_6">Herbal Steam Bath and Organic Botanical Garden Walk</h3>
-            <p class="itinerary-day-desc" data-cms="pkg_lotus-ayu-holistic-rejuvenation.p_18">Guided walking tour through our medicinal botanical gardens identifying sacred neem, gotu kola, and ashwagandha plants.</p>
-            <div class="itinerary-meta-tags">
-              <span class="itinerary-meta-pill">Overnight: Ayurvedic Beach Sanctuary, Wadduwa</span>
-              <span class="itinerary-meta-pill">Ayurvedic Full Board</span>
-              <span class="itinerary-meta-pill"></span>
-            </div>
-          </div>
-        </div>
-        
-
-        <div class="itinerary-item" data-day="06">
-          <div class="itinerary-day-badge">Day 06</div>
-          <div class="itinerary-content">
-            <h3 class="itinerary-day-title" data-cms="pkg_lotus-ayu-holistic-rejuvenation.heading_7">Pinda Sweda (Medicinal Rice and Herbal Bolus Therapy)</h3>
-            <p class="itinerary-day-desc" data-cms="pkg_lotus-ayu-holistic-rejuvenation.p_19">Warm herbal poultice massage deeply rejuvenating joints and muscle tissues. Sunset meditation on the beach.</p>
-            <div class="itinerary-meta-tags">
-              <span class="itinerary-meta-pill">Overnight: Ayurvedic Beach Sanctuary, Wadduwa</span>
-              <span class="itinerary-meta-pill">Ayurvedic Full Board</span>
-              <span class="itinerary-meta-pill"></span>
-            </div>
-          </div>
-        </div>
-        
-
-        <div class="itinerary-item" data-day="07">
-          <div class="itinerary-day-badge">Day 07</div>
-          <div class="itinerary-content">
-            <h3 class="itinerary-day-title" data-cms="pkg_lotus-ayu-holistic-rejuvenation.heading_8">Lagoon Mindfulness and Silent Sunset Reflection</h3>
-            <p class="itinerary-day-desc" data-cms="pkg_lotus-ayu-holistic-rejuvenation.p_20">Gentle boat ride through peaceful mangrove lagoon waters. Silent mindful walking meditation under ancient banyan trees.</p>
-            <div class="itinerary-meta-tags">
-              <span class="itinerary-meta-pill">Overnight: Ayurvedic Beach Sanctuary, Wadduwa</span>
-              <span class="itinerary-meta-pill">Ayurvedic Full Board</span>
-              <span class="itinerary-meta-pill"></span>
-            </div>
-          </div>
-        </div>
-        
-
-        <div class="itinerary-item" data-day="08">
-          <div class="itinerary-day-badge">Day 08</div>
-          <div class="itinerary-content">
-            <h3 class="itinerary-day-title" data-cms="pkg_lotus-ayu-holistic-rejuvenation.heading_9">Ayurvedic Cooking Workshop and Nutrition Principles</h3>
-            <p class="itinerary-day-desc" data-cms="pkg_lotus-ayu-holistic-rejuvenation.p_21">Interactive culinary masterclass learning to use indigenous spices (turmeric, cinnamon, cardamon) for optimal digestion (Agni).</p>
-            <div class="itinerary-meta-tags">
-              <span class="itinerary-meta-pill">Overnight: Ayurvedic Beach Sanctuary, Wadduwa</span>
-              <span class="itinerary-meta-pill">Ayurvedic Full Board</span>
-              <span class="itinerary-meta-pill"></span>
-            </div>
-          </div>
-        </div>
-        
-
-        <div class="itinerary-item" data-day="09">
-          <div class="itinerary-day-badge">Day 09</div>
-          <div class="itinerary-content">
-            <h3 class="itinerary-day-title" data-cms="pkg_lotus-ayu-holistic-rejuvenation.heading_10">Final Physician Evaluation and Home Wellness Protocol</h3>
-            <p class="itinerary-day-desc" data-cms="pkg_lotus-ayu-holistic-rejuvenation.p_22">Post-treatment assessment with your doctor. Receive tailored herbal prescriptions and daily routine (Dinacharya) advice.</p>
-            <div class="itinerary-meta-tags">
-              <span class="itinerary-meta-pill">Overnight: Ayurvedic Beach Sanctuary, Wadduwa</span>
-              <span class="itinerary-meta-pill">Ayurvedic Full Board</span>
-              <span class="itinerary-meta-pill"></span>
-            </div>
-          </div>
-        </div>
-        
-
-        <div class="itinerary-item" data-day="10">
-          <div class="itinerary-day-badge">Day 10</div>
-          <div class="itinerary-content">
-            <h3 class="itinerary-day-title" data-cms="pkg_lotus-ayu-holistic-rejuvenation.heading_11">Revitalized Departure Transfer to Colombo Airport</h3>
-            <p class="itinerary-day-desc" data-cms="pkg_lotus-ayu-holistic-rejuvenation.p_23">Enjoy a final dawn yoga session and fresh herbal tonic before private chauffeur transfer to CMB airport.</p>
-            <div class="itinerary-meta-tags">
-              <span class="itinerary-meta-pill">Departure day · Breakfast</span>
-              <span class="itinerary-meta-pill">Breakfast Included</span>
-              <span class="itinerary-meta-pill"></span>
-            </div>
-          </div>
-        </div>
-        
-          </div>
-
-          <div class="inclusions-grid">
-            <div class="inclusions-box">
-              <h3 data-cms="pkg_lotus-ayu-holistic-rejuvenation.heading_12">✓ What's Included</h3>
-              <ul>
-                <li data-cms-html="pkg_lotus-ayu-holistic-rejuvenation.li_1"><span>✓</span> 9 Nights in dedicated oceanfront Ayurvedic wellness resort</li><li data-cms-html="pkg_lotus-ayu-holistic-rejuvenation.li_2"><span>✓</span> Complete Ayurvedic full-board organic dining tailored to individual doshas</li><li data-cms-html="pkg_lotus-ayu-holistic-rejuvenation.li_3"><span>✓</span> Daily doctor consultations and personalized daily 2.5-hour therapies</li><li data-cms-html="pkg_lotus-ayu-holistic-rejuvenation.li_4"><span>✓</span> Daily morning yoga, pranayama, and evening guided meditation</li><li data-cms-html="pkg_lotus-ayu-holistic-rejuvenation.li_5"><span>✓</span> All herbal medicines, tonics, and customized treatment oils</li><li data-cms-html="pkg_lotus-ayu-holistic-rejuvenation.li_6"><span>✓</span> Private airport chauffeur transfers in quiet air-conditioned vehicle</li>
-              </ul>
-            </div>
-
-            <div class="exclusions-box">
-              <h3 data-cms="pkg_lotus-ayu-holistic-rejuvenation.heading_13">✕ What's Excluded</h3>
-              <ul>
-                <li data-cms-html="pkg_lotus-ayu-holistic-rejuvenation.li_7"><span>✕</span> International flights</li><li data-cms-html="pkg_lotus-ayu-holistic-rejuvenation.li_8"><span>✕</span> Entry visa</li><li data-cms-html="pkg_lotus-ayu-holistic-rejuvenation.li_9"><span>✕</span> Personal non-wellness expenses</li>
-              </ul>
-            </div>
-          </div>
-
-          
-                <div class="section-watermark-header" style="margin-top: 2.5rem; margin-bottom: 1rem;">
-          <p class="watermark-heading" style="color: #EEDBE2;" data-cms="pkg_lotus-ayu-holistic-rejuvenation.p_24">ROUTE MAP</p>
-          <h2 class="section-header-title" data-cms="pkg_lotus-ayu-holistic-rejuvenation.heading_14">Curated Itinerary Route</h2>
-        </div>
-
+  <!-- SECTION 5: ROUTE MAP SECTION (Walkers Standard) -->
+  <section class="route-section-walkers" id="route-map">
+    <div class="route-container-walkers">
+      <div class="route-map-col">
         <div id="lotus-ayu-holistic-rejuvenation-leaflet-map" 
-             class="lotus-street-map-frame js-lotus-route-map" 
+             class="route-map-box-walkers js-lotus-route-map" 
              data-package-id="pkg-lotus-ayu-holistic-rejuvenation" 
              data-data-path="../../../data/packages.json"
              role="region" 
              aria-label="Interactive Route Map for Lotus Ayu Holistic Rejuvenation">
         </div>
-
-        <aside class="tour-sidebar">
-          <div class="tour-booking-card" style="position: sticky; top: 100px;">
-            <div class="tour-price-header">
-              <span class="tour-price-sub" data-cms="pkg_lotus-ayu-holistic-rejuvenation.span_9">Custom Private Journey</span>
-              <div class="tour-price-val" data-cms="price">Tailor-Made Quote</div>
-              <p class="tour-price-note" data-cms="pkg_lotus-ayu-holistic-rejuvenation.p_25">Price customized based on your dates, party size and preferred boutique stays.</p>
-            </div>
-
-            <div style="padding: 1.25rem 1.5rem 0.5rem;">
-              <h4 style="font-size: 0.95rem; font-weight: 700; color: #002B49; margin-bottom: 0.75rem; text-transform: uppercase;" data-cms="pkg_lotus-ayu-holistic-rejuvenation.heading_15">Journey Highlights</h4>
-              <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.6rem;">
-                <li data-cms-html="pkg_lotus-ayu-holistic-rejuvenation.li_10"><span>★</span> Private initial pulse diagnosis and dosha consultation with senior Vaidya physician</li><li data-cms-html="pkg_lotus-ayu-holistic-rejuvenation.li_11"><span>★</span> Daily bespoke 2.5-hour Ayurvedic treatments (Shirodhara, Abhyanga, Pinda Sweda)</li><li data-cms-html="pkg_lotus-ayu-holistic-rejuvenation.li_12"><span>★</span> Sunrise yoga and pranayama breathwork overlooking calm Indian Ocean</li><li data-cms-html="pkg_lotus-ayu-holistic-rejuvenation.li_13"><span>★</span> Individualized sattvic organic meal plan prepared according to your dosha</li><li data-cms-html="pkg_lotus-ayu-holistic-rejuvenation.li_14"><span>★</span> Herbal garden tour and traditional Ayurvedic medicine preparation workshop</li>
-              </ul>
-            </div>
-
-            <div style="padding: 1.5rem;">
-              <button type="button" class="btn-sidebar-inquire" style="display: block; width: 100%; text-align: center; margin-bottom: 0.75rem; background: linear-gradient(135deg, #C9962B 0%, #F2C14E 100%); color: #002B49; border: none; font-weight: 700; cursor: pointer; padding: 0.85rem 1rem; border-radius: 8px; font-size: 0.92rem; font-family: inherit;" onclick="window.LotusInteractive.openMakeItYoursModal('Lotus Ayu Holistic Rejuvenation', 'ayurvedic')" data-cms="pkg_lotus-ayu-holistic-rejuvenation.btn_15">
-                <span data-cms="pkg_lotus-ayu-holistic-rejuvenation.span_10">✨ Make It Yours (Tailor Tour)</span>
-              </button>
-              <a href="../../../inquiry-detailed.html?package=Lotus+Ayu+Holistic+Rejuvenation" class="btn-sidebar-inquire" style="display: block; text-align: center; text-decoration: none; margin-bottom: 0.75rem;" data-cms="pkg_lotus-ayu-holistic-rejuvenation.btn_16">Inquire About This Tour</a>
-              <a href="https://wa.me/94715422384?text=Hello+Lotus+Ceylon%2C+I+would+like+to+inquire+about+the+Lotus+Ayu+Holistic+Rejuvenation+%289+Nights+%2F+10+Days%29+private+tour." target="_blank" rel="noopener" class="btn-sidebar-whatsapp" style="display: flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none;" data-cms="pkg_lotus-ayu-holistic-rejuvenation.btn_17">
-                <span data-cms="pkg_lotus-ayu-holistic-rejuvenation.span_11">Chat on WhatsApp</span>
-              </a>
-              <div class="tour-action-pills" style="margin-top: 1rem; justify-content: center; display: flex; gap: 0.5rem; flex-wrap: wrap;">
-                <button type="button" class="btn-pill-save" onclick="window.LotusInteractive.toggleSaveTour('pkg-lotus-ayu-holistic-rejuvenation', this)" aria-pressed="false" style="padding: 0.45rem 0.85rem; font-size: 0.8rem; border: 1px solid #CBD5E1; border-radius: 20px; background: #FFF; cursor: pointer; display: flex; align-items: center; gap: 4px;" data-cms="pkg_lotus-ayu-holistic-rejuvenation.btn_18">
-                  <span>❤️</span> <span class="save-btn-text" data-cms="pkg_lotus-ayu-holistic-rejuvenation.span_12">Save Trip</span>
-                </button>
-                <button type="button" class="btn-pill-share" onclick="window.LotusInteractive.shareTourWhatsApp('Lotus Ayu Holistic Rejuvenation')" style="padding: 0.45rem 0.85rem; font-size: 0.8rem; border: 1px solid #CBD5E1; border-radius: 20px; background: #FFF; cursor: pointer; display: flex; align-items: center; gap: 4px;" data-cms="pkg_lotus-ayu-holistic-rejuvenation.btn_19">
-                  <span data-cms="pkg_lotus-ayu-holistic-rejuvenation.span_13">Share</span>
-                </button>
-                <button type="button" class="btn-pill-share" onclick="window.LotusInteractive.copyTourLink()" style="padding: 0.45rem 0.85rem; font-size: 0.8rem; border: 1px solid #CBD5E1; border-radius: 20px; background: #FFF; cursor: pointer; display: flex; align-items: center; gap: 4px;" data-cms="pkg_lotus-ayu-holistic-rejuvenation.btn_20">
-                  <span data-cms="pkg_lotus-ayu-holistic-rejuvenation.span_14">Link</span>
-                </button>
-              </div>
-            </div>
-
-            <div class="tour-assistance-box" style="padding: 1.25rem 1.5rem; background: #F8FAFC; border-top: 1px solid #E2E8F0; border-radius: 0 0 12px 12px;">
-              <h4 style="font-size: 0.95rem; color: #002B49; font-weight: 700; margin-bottom: 0.35rem;" data-cms="pkg_lotus-ayu-holistic-rejuvenation.heading_16">Speak With Our Travel Specialists</h4>
-              <p style="font-size: 0.85rem; color: #64748B; margin-bottom: 0.75rem; line-height: 1.5;" data-cms="pkg_lotus-ayu-holistic-rejuvenation.p_26">Our local destination experts in Colombo and Kandy are available 24/7 to personalize this route.</p>
-              <div style="display: flex; align-items: center; gap: 8px; font-weight: 700; color: #002B49; font-size: 0.9rem;">
-                <span data-cms="pkg_lotus-ayu-holistic-rejuvenation.span_15">+94 71 54 22 384</span>
-              </div>
-                          <div style="margin-top: 0.85rem; padding-top: 0.75rem; border-top: 1px dashed #CBD5E1;">
-                <a href="../../../tours/index.html#travel-info-hub" style="display: flex; align-items: center; gap: 6px; font-size: 0.82rem; color: #8C6D3F; font-weight: 700; text-decoration: none;">
-                  <span data-cms="pkg_lotus-ayu-holistic-rejuvenation.span_16">Travel Prep: Visa, Weather and Etiquette ➔</span>
-                </a>
-              </div>
-            </div>
-          </div>
-        </aside>
-
+      </div>
+      <div class="route-text-walkers">
+        <h2>
+          <span>Here is your</span>
+          Lotus Ayu Holistic Rejuvenation Route
+        </h2>
+        <p>From Negombo through Wadduwa and Bentota, this 09 nights and 10 days journey connects you with Sri Lanka's most iconic landscapes, cultural landmarks, and authentic Ceylon hospitality.</p>
+        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+          <span class="walkers-acc-pill">Negombo</span> <span class="walkers-acc-pill">Wadduwa</span> <span class="walkers-acc-pill">Bentota</span> <span class="walkers-acc-pill">Colombo</span>
+        </div>
       </div>
     </div>
-  </main>
+  </section>
 
-  <section class="related-tours-section padding-top--70 padding-bottom--70" style="background: #F8FAFC; border-top: 1px solid #E2E8F0;">
-    <div class="wrapper--90">
-      <div class="section-watermark-header text-center" style="margin-bottom: 1.5rem;">
-        <p class="watermark-heading" data-cms="pkg_lotus-ayu-holistic-rejuvenation.p_27">MORE EXPERIENCES</p>
-        <h2 class="section-header-title" data-cms="pkg_lotus-ayu-holistic-rejuvenation.heading_17">Other Signature Sri Lanka Ayurvedic and Holistic Wellness Retreats</h2>
+  <!-- SECTION 6: FAQS (Everything You Need to Know) -->
+  <section class="faq-section-walkers">
+    <div class="faq-container-walkers">
+      <div class="faq-media-card">
+        <img src="../../../assets/images/honeymoon/seaside-villa-1.webp" alt="Sri Lanka Luxury Travel FAQ" loading="lazy">
       </div>
-      <div class="related-grid">
-        
-        <div class="related-tour-card">
-          <div class="related-tour-img-wrap">
-            <img src="../../../assets/images/cultural/kandy-temple-of-tooth-4.webp" alt="Sacred Serenity and Forest Meditation Retreat" loading="lazy" data-cms-img="pkg_lotus-ayu-holistic-rejuvenation.img_1">
-            <span class="related-tour-duration" data-cms="pkg_lotus-ayu-holistic-rejuvenation.span_17">9 Nights / 10 Days</span>
+      <div class="faq-content-col">
+        <h2>
+          <span>Everything</span>
+          You Need to Know
+        </h2>
+        <div class="walkers-accordion-wrap">
+          <div class="walkers-acc-item is-open">
+            <button type="button" class="walkers-acc-trigger">
+              <h4 class="walkers-acc-title">Can I extend the number of days for this tour?</h4>
+              <span class="walkers-acc-icon">+</span>
+            </button>
+            <div class="walkers-acc-content">
+              <p class="walkers-acc-desc">Yes, certainly. Every itinerary we design is 100% bespoke. Our private travel designers will gladly extend your stay, add beach days, or tailor the pace to your exact preferences.</p>
+            </div>
           </div>
-          <div class="related-tour-content">
-            <h4 class="related-tour-title" data-cms="pkg_lotus-ayu-holistic-rejuvenation.heading_18">Sacred Serenity and Forest Meditation Retreat</h4>
-            <p class="related-tour-desc" data-cms="pkg_lotus-ayu-holistic-rejuvenation.p_28">Combine ancient Buddhist meditation, forest monasteries, and Ayurvedic restorative healing.</p>
-            <div class="related-tour-actions">
-              <a href="../../../tours/ayurvedic/sacred-serenity-forest-meditation-retreat/index.html" class="btn-related-explore" data-cms="pkg_lotus-ayu-holistic-rejuvenation.btn_21">Explore Itinerary ➔</a>
+          <div class="walkers-acc-item">
+            <button type="button" class="walkers-acc-trigger">
+              <h4 class="walkers-acc-title">Can I customize the hotels, destinations, or vehicle?</h4>
+              <span class="walkers-acc-icon">+</span>
+            </button>
+            <div class="walkers-acc-content">
+              <p class="walkers-acc-desc">Absolutely. You can choose from audited heritage tea bungalows, boutique eco-villas, or 5-star international luxury resorts. Vehicles range from premium luxury sedans to spacious executive vans.</p>
+            </div>
+          </div>
+          <div class="walkers-acc-item">
+            <button type="button" class="walkers-acc-trigger">
+              <h4 class="walkers-acc-title">What kind of chauffeur guide will accompany us?</h4>
+              <span class="walkers-acc-icon">+</span>
+            </button>
+            <div class="walkers-acc-content">
+              <p class="walkers-acc-desc">Your journey will be led by a handpicked, licensed Sri Lankan National Tour Guide or Tourist Chauffeur with deep cultural understanding, fluent English, and impeccable hospitality standards.</p>
+            </div>
+          </div>
+          <div class="walkers-acc-item">
+            <button type="button" class="walkers-acc-trigger">
+              <h4 class="walkers-acc-title">What are the booking and cancellation policies?</h4>
+              <span class="walkers-acc-icon">+</span>
+            </button>
+            <div class="walkers-acc-content">
+              <p class="walkers-acc-desc">A 20% advance deposit confirms your private reservation. In the event of flight changes or unforeseen circumstances, we offer flexible free date rescheduling up to 21 days prior to arrival.</p>
             </div>
           </div>
         </div>
-        
       </div>
     </div>
   </section>
 
-  <section class="banner-bottom-cta padding-top--80 padding-bottom--80" style="background: linear-gradient(135deg, #001A2C 0%, #002B49 100%); color: #FFFFFF; text-align: center;">
-    <div class="wrapper--70">
-      <span style="color: #C5A880; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase;" data-cms="pkg_lotus-ayu-holistic-rejuvenation.span_18">PURE JOURNEYS &bull; SACRED EXPERIENCES</span>
-      <h2 style="font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 2.4rem; margin: 1rem 0; color: #FFFFFF;" data-cms="pkg_lotus-ayu-holistic-rejuvenation.heading_19">Ready to Experience Lotus Ayu Holistic Rejuvenation?</h2>
-      <p style="color: rgba(255,255,255,0.85); font-size: 1.05rem; max-width: 650px; margin: 0 auto 2rem; line-height: 1.6;" data-cms="pkg_lotus-ayu-holistic-rejuvenation.p_29">
-        Every detail of this journey is privately chauffeured and customized to your exact timeline, flight schedules, and luxury accommodation preferences.
-      </p>
-      <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
-        <a href="../../../inquiry-detailed.html?package=Lotus+Ayu+Holistic+Rejuvenation" class="gold-inquire-btn" style="text-decoration: none; padding: 14px 28px; font-weight: 700; font-size: 0.95rem;" data-cms="pkg_lotus-ayu-holistic-rejuvenation.btn_22">Inquire About This Tour</a>
-        <a href="https://wa.me/94715422384?text=Hello+Lotus+Ceylon%2C+I+would+like+to+inquire+about+the+Lotus+Ayu+Holistic+Rejuvenation+%289+Nights+%2F+10+Days%29+private+tour." target="_blank" rel="noopener" class="gold-inquire-btn" style="background: transparent; border: 2px solid #C5A880; color: #C5A880; text-decoration: none; padding: 12px 24px; font-weight: 700; font-size: 0.95rem;" data-cms="pkg_lotus-ayu-holistic-rejuvenation.btn_23">WhatsApp Travel Specialist</a>
+  <!-- SECTION 7: MORE JOURNEYS (Walkers Standard) -->
+  <section class="more-journeys-walkers">
+    <div class="more-journeys-container">
+      <h2 class="more-journeys-heading">More Journeys to Discover</h2>
+      <div class="more-journeys-grid">
+        <div class="related-tour-card" style="background: #FFFFFF; border-radius: 14px; overflow: hidden; border: 1px solid rgba(0, 43, 73, 0.08); box-shadow: 0 4px 18px rgba(0,0,0,0.04); display: flex; flex-direction: column;">
+          <div class="related-tour-img-wrap" style="position: relative; height: 210px; overflow: hidden;">
+            <img src="../../../assets/images/temple-culture.jpg" alt="Sacred Serenity & Forest Meditation Retreat" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;">
+            <span class="related-tour-duration" style="position: absolute; top: 12px; left: 12px; background: rgba(17, 24, 39, 0.88); color: #FFFFFF; padding: 4px 12px; border-radius: 20px; font-size: 0.78rem; font-weight: 700;">13 Nights and 14 Days</span>
+          </div>
+          <div class="related-tour-content" style="padding: 1.5rem; display: flex; flex-direction: column; flex-grow: 1;">
+            <h4 style="font-family: 'DM Sans', sans-serif; font-size: 1.18rem; font-weight: 700; color: #111827; margin: 0 0 0.5rem 0;">Sacred Serenity & Forest Meditation Retreat</h4>
+            <p style="color: #64748B; font-size: 0.9rem; line-height: 1.6; margin: 0 0 1.25rem 0; flex-grow: 1;">Combine ancient Buddhist meditation, forest monasteries, and Ayurvedic restorative healing.</p>
+            <div>
+              <a href="../../../tours/ayurvedic/sacred-serenity-forest-meditation-retreat/index.html" class="btn-inquire-gold-pill" style="padding: 8px 20px; font-size: 0.85rem; width: 100%; justify-content: center;">
+                <span>Explore Itinerary ➔</span>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="related-tour-card" style="background: #FFFFFF; border-radius: 14px; overflow: hidden; border: 1px solid rgba(0, 43, 73, 0.08); box-shadow: 0 4px 18px rgba(0,0,0,0.04); display: flex; flex-direction: column;">
+          <div class="related-tour-img-wrap" style="position: relative; height: 210px; overflow: hidden;">
+            <img src="../../../assets/images/beach/mirissa-1.webp" alt="Southern Sands Serenade" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;">
+            <span class="related-tour-duration" style="position: absolute; top: 12px; left: 12px; background: rgba(17, 24, 39, 0.88); color: #FFFFFF; padding: 4px 12px; border-radius: 20px; font-size: 0.78rem; font-weight: 700;">09 Nights and 10 Days</span>
+          </div>
+          <div class="related-tour-content" style="padding: 1.5rem; display: flex; flex-direction: column; flex-grow: 1;">
+            <h4 style="font-family: 'DM Sans', sans-serif; font-size: 1.18rem; font-weight: 700; color: #111827; margin: 0 0 0.5rem 0;">Southern Sands Serenade</h4>
+            <p style="color: #64748B; font-size: 0.9rem; line-height: 1.6; margin: 0 0 1.25rem 0; flex-grow: 1;">Sun-Kissed Bays, Blue Whales & Dutch Ramparts</p>
+            <div>
+              <a href="../../../tours/beach/southern-sands-serenade/index.html" class="btn-inquire-gold-pill" style="padding: 8px 20px; font-size: 0.85rem; width: 100%; justify-content: center;">
+                <span>Explore Itinerary ➔</span>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="related-tour-card" style="background: #FFFFFF; border-radius: 14px; overflow: hidden; border: 1px solid rgba(0, 43, 73, 0.08); box-shadow: 0 4px 18px rgba(0,0,0,0.04); display: flex; flex-direction: column;">
+          <div class="related-tour-img-wrap" style="position: relative; height: 210px; overflow: hidden;">
+            <img src="../../../assets/images/beach/pasikudah-5.webp" alt="Turquoise Eastern Sanctuary" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;">
+            <span class="related-tour-duration" style="position: absolute; top: 12px; left: 12px; background: rgba(17, 24, 39, 0.88); color: #FFFFFF; padding: 4px 12px; border-radius: 20px; font-size: 0.78rem; font-weight: 700;">11 Nights and 12 Days</span>
+          </div>
+          <div class="related-tour-content" style="padding: 1.5rem; display: flex; flex-direction: column; flex-grow: 1;">
+            <h4 style="font-family: 'DM Sans', sans-serif; font-size: 1.18rem; font-weight: 700; color: #111827; margin: 0 0 0.5rem 0;">Turquoise Eastern Sanctuary</h4>
+            <p style="color: #64748B; font-size: 0.9rem; line-height: 1.6; margin: 0 0 1.25rem 0; flex-grow: 1;">Crystal Coral Lagoons, Surfing & Cliffside Shrines</p>
+            <div>
+              <a href="../../../tours/beach/turquoise-eastern-sanctuary/index.html" class="btn-inquire-gold-pill" style="padding: 8px 20px; font-size: 0.85rem; width: 100%; justify-content: center;">
+                <span>Explore Itinerary ➔</span>
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  
-
-  <!-- ==========================================================================
-       WHY TRAVEL WITH LOTUS & FREQUENTLY ASKED QUESTIONS
-       ========================================================================== -->
-  <section class="lotus-why-section" id="why-lotus">
-    <div id="lotusWhyContainer"></div>
-  </section>
-
-  <section class="lotus-faq-section" id="faqs">
-    <div id="lotusFaqContainer"></div>
-  </section>
-
-    <!-- Sacred Ceylon CTA Band (Unified Standard) -->
-    <!-- Sacred Ceylon CTA Band (Unified Standard) -->
-  <section class="sacred-cta-banner" data-cms-bg="siteGlobal.branding.cta_bg">
-    <div class="cta-motif" aria-hidden="true"></div>
-    <div class="cta-content">
-      <h2 class="cta-title" data-cms="pkg_lotus-ayu-holistic-rejuvenation.heading_20">Ready to Begin Your Sacred Ceylon Journey?</h2>
-      <p class="cta-desc" data-cms="pkg_lotus-ayu-holistic-rejuvenation.p_30">Speak directly with our senior destination specialists in Ja-Ela or connect via WhatsApp for an immediate bespoke itinerary proposal tailored to your rhythm.</p>
-      <div class="cta-btn-group">
-        <a href="../../../inquiry-detailed.html" class="btn-primary-gold" data-cms="pkg_lotus-ayu-holistic-rejuvenation.btn_24">
-          <span data-cms="pkg_lotus-ayu-holistic-rejuvenation.span_19">Plan My Bespoke Journey</span>
-          <span aria-hidden="true">➔</span>
+  <!-- SECTION 8: BOTTOM CTA BANNER (Walkers Standard) -->
+  <section class="tour-cta-walkers">
+    <div class="tour-cta-container">
+      <span class="tour-cta-tag">BESPOKE PRIVATE TRAVEL</span>
+      <h2 class="tour-cta-title">Plan your Perfect Ayurvedic Escape</h2>
+      <p class="tour-cta-desc">Connect directly with our senior Ceylon travel designers to curate your private chauffeur-guided journey across Sri Lanka.</p>
+      <div class="tour-cta-btn-group">
+        <a href="../../../inquiry-detailed.html?package=Lotus+Ayu+Holistic+Rejuvenation" class="btn-inquire-gold-pill">Inquire About This Tour</a>
+        <a href="https://wa.me/94715422384?text=Hello%20Lotus%20Ceylon!%20I%20would%20like%20to%20inquire%20about%20the%20Lotus+Ayu+Holistic+Rejuvenation%20private%20tour." target="_blank" rel="noopener noreferrer" class="btn-cta-whatsapp">
+          <span>Chat on WhatsApp</span>
         </a>
-        <a href="https://wa.me/94715422384?text=Hello%20Lotus%20Ceylon!%20I%20would%20like%20to%20inquire%20about%20a%20private%20tour." target="_blank" rel="noopener noreferrer" class="cta-wa-btn" data-cms="pkg_lotus-ayu-holistic-rejuvenation.btn_25">
-          <span data-cms="pkg_lotus-ayu-holistic-rejuvenation.span_20">Chat on WhatsApp</span>
-        </a>
       </div>
     </div>
   </section>
 
-    <!-- Site Footer (Unified Walkers Standard with Single Source of Truth Coordinates) -->
-    <!-- Site Footer (Unified Walkers Standard with Single Source of Truth Coordinates) -->
+  <!-- Site Footer -->
   <!-- @include footer:start -->
 <!-- Site design & development: Infinite Design (https://infiniteweb.dev/) — see /humans.txt and LICENSE.txt -->
 <!-- Site Footer (Walkers Tours Standard with Sunset Palms Background) -->
@@ -1056,7 +777,7 @@
 </footer>
 <!-- @include footer:end -->
 
-  <!-- Unified Mobile-First Floating Action Group (WhatsApp + Back to Top) -->
+  <!-- Unified Mobile-First Floating Action Group -->
   <!-- @include floating-actions:start -->
 <!-- Site design & development: Infinite Design (https://infiniteweb.dev/) — see /humans.txt and LICENSE.txt -->
 <!-- Unified Mobile-First Floating Action Group (WhatsApp + Back to Top) -->
@@ -1076,16 +797,27 @@
 </a>
 <!-- @include floating-actions:end -->
 
-  <!-- Persistent Floating WhatsApp Concierge -->
-  
-
+  <!-- JavaScript Plugins -->
   <script src="../../../vendor/leaflet/leaflet.js"></script>
   <script src="../../../js/leaflet-tour-map.js?v=20261101_pure_osm_v9"></script>
   <script src="../../../js/tour-interactive.js"></script>
   <script src="../../../js/site-translator.js"></script>
   <script src="../../../assets/js/config.js"></script>
-<script defer src="../../../assets/js/site-data.js"></script>
+  <script defer src="../../../assets/js/site-data.js"></script>
   <script src="../../../assets/js/mobile-nav.js"></script>
-  <script src="../../../assets/js/cms.js?v=20261029_secimg1"></script>
+
+  <!-- Interactive Accordion Handler -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelectorAll('.walkers-acc-trigger').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          var item = this.closest('.walkers-acc-item');
+          if (item) {
+            item.classList.toggle('is-open');
+          }
+        });
+      });
+    });
+  </script>
 </body>
 </html>

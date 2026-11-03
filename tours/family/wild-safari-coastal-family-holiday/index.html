@@ -5,259 +5,51 @@
   <meta name="generator" content="Built by Infinite Design — https://infiniteweb.dev/">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="theme-color" content="#16361D">
-  <title data-cms="seo.title">Wild Safari and Coastal Family Holiday 12-Day Tour | Lotus Ceylon</title>
-  <meta name="description" content="An unforgettable family journey through Sri Lanka: wild elephant gatherings, baby elephant transit home, Yala safari, and Mirissa beaches." data-cms="seo.description" data-cms="seo.description" data-cms="seo.description">
+  <meta name="theme-color" content="#111827">
+  <title data-cms="seo.title">Wild Safari & Coastal Family Holiday | Lotus Ceylon Luxury Tours</title>
+  <meta name="description" content="An unforgettable family journey through Sri Lanka: wild elephant gatherings, baby elephant transit home, Yala safari, and Mirissa beaches." data-cms="seo.description">
   <link rel="icon" type="image/png" href="../../../logo.png?v=20261021_step1">
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..800;1,9..40,300..800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..800;1,9..40,300..800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <!-- Master Stylesheets -->
   <link rel="stylesheet" href="../../../css/style.css?v=20261022_beach_v1">
   <link rel="stylesheet" href="../../../css/brand-header.css?v=20261022_exact_hf_v1">
-  <link rel="stylesheet" href="../../../css/tour-package-detail.css?v=20261022_pkg_v1">
-
-  <style>
-    :root {
-      --watermark-shadow-pink: #EEDBE2;
-    }
-    .watermark-heading {
-      color: var(--watermark-shadow-pink) !important;
-      font-weight: 800;
-      letter-spacing: 0.15em;
-    }
-    .itinerary-item {
-      display: flex;
-      gap: 1.5rem;
-      margin-bottom: 2rem;
-      position: relative;
-    }
-    .itinerary-day-badge {
-      width: 70px;
-      height: 70px;
-      flex-shrink: 0;
-      background: linear-gradient(135deg, #002B49 0%, #001A2C 100%);
-      color: #C5A880;
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 700;
-      font-size: 0.95rem;
-      box-shadow: 0 4px 15px rgba(0,43,73,0.15);
-      border: 1px solid rgba(197,168,128,0.3);
-      text-transform: uppercase;
-      text-align: center;
-      line-height: 1.2;
-    }
-    .itinerary-content {
-      background: #FFFFFF;
-      border: 1px solid #E2E8F0;
-      border-radius: 12px;
-      padding: 1.5rem 1.75rem;
-      flex-grow: 1;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
-      transition: all 0.3s ease;
-    }
-    .itinerary-content:hover {
-      border-color: #C5A880;
-      box-shadow: 0 8px 24px rgba(0,43,73,0.08);
-    }
-    .itinerary-day-title {
-      font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      font-size: 1.25rem;
-      color: #002B49;
-      margin-bottom: 0.75rem;
-      font-weight: 600;
-    }
-    .itinerary-day-desc {
-      color: #475569;
-      font-size: 0.95rem;
-      line-height: 1.7;
-      margin-bottom: 1rem;
-    }
-    .itinerary-meta-tags {
-      display: flex;
-      gap: 0.75rem;
-      flex-wrap: wrap;
-    }
-    .itinerary-tag {
-      background: #F1F5F9;
-      color: #002B49;
-      padding: 0.35rem 0.75rem;
-      border-radius: 6px;
-      font-size: 0.82rem;
-      font-weight: 600;
-    }
-    .inclusions-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2rem;
-      margin-top: 2rem;
-    }
-    @media (max-width: 768px) {
-      .inclusions-grid { grid-template-columns: 1fr; }
-      .itinerary-item { flex-direction: column; gap: 0.75rem; }
-      .itinerary-day-badge { width: auto; height: 36px; padding: 0 1rem; }
-    }
-    .inclusions-box, .exclusions-box {
-      background: #FFFFFF;
-      border-radius: 12px;
-      padding: 1.75rem;
-      border: 1px solid #E2E8F0;
-    }
-    .inclusions-box { border-top: 4px solid #10B981; }
-    .exclusions-box { border-top: 4px solid #EF4444; }
-    .inclusions-box h3, .exclusions-box h3 {
-      font-size: 1.15rem;
-      color: #002B49;
-      margin-bottom: 1rem;
-      font-weight: 700;
-    }
-    .inclusions-box ul, .exclusions-box ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-    .inclusions-box li, .exclusions-box li {
-      padding: 0.5rem 0;
-      color: #475569;
-      font-size: 0.92rem;
-      display: flex;
-      align-items: flex-start;
-      gap: 0.6rem;
-      border-bottom: 1px dashed #F1F5F9;
-    }
-    .inclusions-box li span { color: #10B981; font-weight: bold; }
-    .exclusions-box li span { color: #EF4444; font-weight: bold; }
-    .related-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-      margin-top: 2rem;
-    }
-    .related-tour-card {
-      background: #FFFFFF;
-      border: 1px solid #E2E8F0;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.04);
-      transition: all 0.3s ease;
-      display: flex;
-      flex-direction: column;
-    }
-    .related-tour-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 12px 28px rgba(0,43,73,0.12);
-    }
-    .related-tour-img-wrap {
-      position: relative;
-      height: 200px;
-      overflow: hidden;
-    }
-    .related-tour-img-wrap img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.5s ease;
-    }
-    .related-tour-card:hover .related-tour-img-wrap img {
-      transform: scale(1.05);
-    }
-    .related-tour-duration {
-      position: absolute;
-      top: 12px;
-      left: 12px;
-      background: rgba(0, 43, 73, 0.85);
-      color: #C5A880;
-      padding: 4px 12px;
-      border-radius: 20px;
-      font-size: 0.78rem;
-      font-weight: 700;
-    }
-    .related-tour-content {
-      padding: 1.5rem;
-      display: flex;
-      flex-direction: column;
-      flex-grow: 1;
-    }
-    .related-tour-title {
-      font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      font-size: 1.2rem;
-      color: #002B49;
-      margin-bottom: 0.5rem;
-    }
-    .related-tour-desc {
-      color: #64748B;
-      font-size: 0.88rem;
-      line-height: 1.6;
-      margin-bottom: 1.25rem;
-      flex-grow: 1;
-    }
-    .btn-related-explore {
-      color: #002B49;
-      font-weight: 700;
-      font-size: 0.88rem;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      transition: color 0.2s;
-    }
-    .btn-related-explore:hover {
-      color: #C5A880;
-    }
-    .map-lightbox-modal {
-      display: none;
-      position: fixed;
-      z-index: 99999;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.85);
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-    }
-    .map-lightbox-modal.active { display: flex; }
-    .map-lightbox-content { max-width: 90vw; max-height: 90vh; object-fit: contain; border-radius: 8px; }
-    .map-lightbox-close { position: absolute; top: 25px; right: 35px; color: #fff; font-size: 40px; font-weight: 300; cursor: pointer; }
-  </style>
+  <link rel="stylesheet" href="../../../css/tour-package-detail.css?v=20261103_walkers_v1">
   <link rel="stylesheet" href="../../../vendor/leaflet/leaflet.css">
   <link rel="stylesheet" href="../../../css/tours-map.css?v=20261031_osm_v5">
-  <!-- Canonical & OpenGraph SEO (Phase 7) -->
+
+  <!-- Canonical & OpenGraph SEO -->
   <link rel="canonical" href="https://kanchu12345.github.io/thai/tours/family/wild-safari-coastal-family-holiday/">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Lotus Ceylon International Tours">
-  <meta property="og:title" content="Wild Safari and Coastal Family Holiday | Lotus Ceylon Pure Journeys">
+  <meta property="og:title" content="Wild Safari & Coastal Family Holiday | Lotus Ceylon Pure Journeys">
   <meta property="og:description" content="An unforgettable family journey through Sri Lanka: wild elephant gatherings, baby elephant transit home, Yala safari, and Mirissa beaches.">
   <meta property="og:url" content="https://kanchu12345.github.io/thai/tours/family/wild-safari-coastal-family-holiday/">
-  <meta property="og:image" content="https://kanchu12345.github.io/thai/assets/images/wildlife/yala-leopard-1.webp">
+  <meta property="og:image" content="https://kanchu12345.github.io/thai/assets/images/wildlife.jpg">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Wild Safari and Coastal Family Holiday | Lotus Ceylon">
+  <meta name="twitter:title" content="Wild Safari & Coastal Family Holiday | Lotus Ceylon">
   <meta name="twitter:description" content="An unforgettable family journey through Sri Lanka: wild elephant gatherings, baby elephant transit home, Yala safari, and Mirissa beaches.">
-  <meta name="twitter:image" content="https://kanchu12345.github.io/thai/assets/images/wildlife/yala-leopard-1.webp">
+  <meta name="twitter:image" content="https://kanchu12345.github.io/thai/assets/images/wildlife.jpg">
 
   <!-- Structured Data: Google TouristTrip Schema -->
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "TouristTrip",
-  "name": "Wild Safari & Coastal Family Holiday (12 Days / 11 Nights)",
+  "name": "Wild Safari & Coastal Family Holiday (11 Nights and 12 Days)",
   "description": "An unforgettable family journey through Sri Lanka: wild elephant gatherings, baby elephant transit home, Yala safari, and Mirissa beaches.",
   "touristType": [
     "Luxury Travel",
-    "Cultural Heritage",
-    "Private Chauffeur Tour",
-    "Family"
+    "Sri Lanka Family Discovery Journeys",
+    "Private Chauffeur Tour"
   ],
   "provider": {
     "@type": "TravelAgency",
-    "name": "Lotus Ceylon International Tours & Services (Private) Limited",
+    "name": "Lotus Ceylon International Tours and Services (Private) Limited",
     "url": "https://lotusceylon.com/",
     "telephone": "+94715422384",
     "priceRange": "$$$$",
@@ -273,130 +65,13 @@
     "price": "Tailor-made",
     "availability": "https://schema.org/InStock",
     "url": "https://lotusceylon.com/inquiry-detailed.html?package=Wild+Safari+&+Coastal+Family+Holiday"
-  },
-  "itinerary": {
-    "@type": "ItemList",
-    "numberOfItems": 12,
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "item": {
-          "@type": "TouristAttraction",
-          "name": "Day 01: Arrival & Leisurely Recovery in Negombo Lagoon Resort",
-          "description": "Meet your private chauffeur. Check into a calm lagoon resort to recover from long flights with swimming pools."
-        }
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "item": {
-          "@type": "TouristAttraction",
-          "name": "Day 02: Drive to Minneriya Elephant Country",
-          "description": "Drive into the north-central dry zone. Check into a spacious nature lodge with treehouse balconies."
-        }
-      },
-      {
-        "@type": "ListItem",
-        "position": 3,
-        "item": {
-          "@type": "TouristAttraction",
-          "name": "Day 03: Minneriya Great Elephant Gathering Safari",
-          "description": "Afternoon private 4x4 open-top jeep safari watching herds of wild elephants drinking and playing in ancient reservoir waters."
-        }
-      },
-      {
-        "@type": "ListItem",
-        "position": 4,
-        "item": {
-          "@type": "TouristAttraction",
-          "name": "Day 04: Sigiriya Lion Rock Morning Exploration",
-          "description": "Morning visit to the dramatic 5th-century palace citadel. Children love the giant lion paws carved into the stone."
-        }
-      },
-      {
-        "@type": "ListItem",
-        "position": 5,
-        "item": {
-          "@type": "TouristAttraction",
-          "name": "Day 05: Transfer to Hill Country Kandy & Temple Walk",
-          "description": "Scenic drive into Kandy. Visit the historic lakeside temple and witness colorful traditional fire-dancing shows."
-        }
-      },
-      {
-        "@type": "ListItem",
-        "position": 6,
-        "item": {
-          "@type": "TouristAttraction",
-          "name": "Day 06: Scenic Train to Ella & Nine Arches Bridge",
-          "description": "Experience the famous mountain rail journey over viaduct bridges. Walk through tea estates to view Nine Arches Bridge."
-        }
-      },
-      {
-        "@type": "ListItem",
-        "position": 7,
-        "item": {
-          "@type": "TouristAttraction",
-          "name": "Day 07: Udawalawe Elephant Transit Home & Baby Milk Feeding",
-          "description": "Watch orphaned baby elephants rush out for their bottle-feeding at the transit rehabilitation center before transfer to Yala."
-        }
-      },
-      {
-        "@type": "ListItem",
-        "position": 8,
-        "item": {
-          "@type": "TouristAttraction",
-          "name": "Day 08: Yala National Park Wildlife Safari",
-          "description": "Thrilling morning safari drive in search of leopards, sloth bears, spotted deer, wild boar, and peacock displays."
-        }
-      },
-      {
-        "@type": "ListItem",
-        "position": 9,
-        "item": {
-          "@type": "TouristAttraction",
-          "name": "Day 09: Transfer to Mirissa Beach & Weligama Bay",
-          "description": "Drive along the southern coast. Settle into a beachfront resort with calm family swimming pools and sandy beaches."
-        }
-      },
-      {
-        "@type": "ListItem",
-        "position": 10,
-        "item": {
-          "@type": "TouristAttraction",
-          "name": "Day 10: Mirissa Whale Safari & Galle Fort Gelato Walk",
-          "description": "Morning boat excursion to spot blue whales. Afternoon exploration of Galle Fort with artisan Italian gelato stops."
-        }
-      },
-      {
-        "@type": "ListItem",
-        "position": 11,
-        "item": {
-          "@type": "TouristAttraction",
-          "name": "Day 11: Beachfront Leisure & Sea Turtle Conservation",
-          "description": "A completely relaxed day for sandcastle building, snorkeling in shallow bays, and visiting a turtle nursery."
-        }
-      },
-      {
-        "@type": "ListItem",
-        "position": 12,
-        "item": {
-          "@type": "TouristAttraction",
-          "name": "Day 12: Southern Expressway to Colombo Airport & Departure",
-          "description": "Private transfer via highway to CMB airport for your flight home, with wonderful family stories to tell."
-        }
-      }
-    ]
   }
 }
   </script>
-  <!-- Master Unified Stylesheet -->
-  <link rel="stylesheet" href="../../../assets/css/site.css">
 </head>
 <body class="page-tour-detail" data-cms-page="tourPackages/wild-safari-coastal-family-holiday">
 
-  <!-- Site Header & Navigation (Unified Walkers Luxury Standard) -->
-    <!-- Site Header & Navigation (Unified Master Standard: Mobile Max 64px, Logo Max 40px) -->
+  <!-- Site Header & Navigation -->
   <!-- @include header:start -->
 <!-- Site design & development: Infinite Design (https://infiniteweb.dev/) — see /humans.txt and LICENSE.txt -->
 <!-- Site Header & Navigation (Unified Master Standard Driven by siteGlobal) -->
@@ -552,446 +227,462 @@
 </div>
 <!-- @include mobile-menu:end -->
 
-  <!-- Full-Screen Slide-in Mobile Navigation Menu -->
-  
+  <!-- SECTION 1: HERO BANNER (Full-width Walkers Standard) -->
+  <section class="tour-banner-walkers" style="background-image: url('../../../assets/images/wildlife.jpg');">
+    <div class="wrapper--90" style="position: relative; z-index: 2; padding-bottom: 2.5rem; width: 100%;">
+      <nav class="tour-breadcrumb" aria-label="Breadcrumb" style="display: flex; gap: 8px; align-items: center; color: rgba(255,255,255,0.8); font-size: 0.85rem; font-weight: 500;">
+        <a href="../../../index.html" style="color: #FFFFFF; text-decoration: none;">Home</a>
+        <span>/</span>
+        <a href="../../../tours/index.html" style="color: #FFFFFF; text-decoration: none;">Tours</a>
+        <span>/</span>
+        <a href="../../../tours/family/index.html" style="color: #FFFFFF; text-decoration: none;">Sri Lanka Family Discovery Journeys</a>
+        <span>/</span>
+        <span style="color: #D4A359;">Wild Safari & Coastal Family Holiday</span>
+      </nav>
+    </div>
+  </section>
 
-  <section class="tour-hero-section" data-cms-bg="pkg_wild-safari-coastal-family-holiday.hero_bg" id="tourHero" style="background-image: url('../../../assets/images/wildlife/yala-leopard-1.webp');">
-    <div class="tour-hero-overlay"></div>
-    <div class="wrapper--90">
-      <div class="tour-hero-content">
-        <nav class="tour-breadcrumb" aria-label="Breadcrumb">
-          <a href="../../../index.html" data-cms="pkg_wild-safari-coastal-family-holiday.a_21">Home</a>
-          <span class="sep">/</span>
-          <a href="../../../tours/index.html" data-cms="pkg_wild-safari-coastal-family-holiday.a_22">Tours</a>
-          <span class="sep">/</span>
-          <a href="../../../tours/family/index.html" data-cms="pkg_wild-safari-coastal-family-holiday.a_23">Sri Lanka Family Holiday Packages</a>
-          <span class="sep">/</span>
-          <span data-cms="pkg_wild-safari-coastal-family-holiday.span_4">Wild Safari and Coastal Family Holiday</span>
-        </nav>
+  <!-- SECTION 2: OVERVIEW & HEADER (Walkers Standard) -->
+  <section class="tour-overview-walkers">
+    <div class="wrapper--70" style="max-width: 980px; margin: 0 auto;">
+      <span class="tour-badge-pill-walkers">Recommended for Families, Multi-Gen Discovery</span>
+      <div class="tour-category-sub-walkers">Sri Lanka Family Discovery Journeys</div>
+      <h1 class="tour-title-walkers">Wild Safari & Coastal Family Holiday</h1>
+      <div class="tour-duration-line-walkers">
+        <span>11 Nights and 12 Days</span>
+      </div>
+      <div class="tour-desc-walkers">
+        <p>The ideal blend of exciting animal encounters, rainforest wonders, and warm golden beach relaxation.</p>
+        <p>Every element of this bespoke journey is privately chauffeured in luxury air-conditioned vehicles, thoughtfully paced, and customized to your exact timeline, flight schedules, and personal preferences by Lotus Ceylon destination specialists.</p>
+      </div>
+      <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+        <a class="btn-inquire-gold-pill" href="../../../inquiry-detailed.html?package=Wild+Safari+&+Coastal+Family+Holiday">
+          <span>Inquire Now</span>
+        </a>
+        <a href="https://wa.me/94715422384?text=Hello%20Lotus%20Ceylon!%20I%20would%20like%20to%20inquire%20about%20Wild+Safari+&+Coastal+Family+Holiday." target="_blank" rel="noopener noreferrer" class="btn-cta-whatsapp">
+          <span>WhatsApp Specialist</span>
+        </a>
+      </div>
+    </div>
+  </section>
 
-        <div class="tour-hero-badges">
-          <span class="tour-badge-pill tour-badge-gold" data-cms="category">11 Nights / 12 Days</span>
-          <span class="tour-badge-pill tour-badge-glass" data-cms="pkg_wild-safari-coastal-family-holiday.span_5">Sri Lanka Family Holiday Packages</span>
-          <span class="tour-badge-pill tour-badge-glass" data-cms="pkg_wild-safari-coastal-family-holiday.span_6">Private Chauffeur Guided</span>
+  <!-- SECTION 3: ITINERARY ACCORDION (Walkers Standard) -->
+  <section class="itinerary-section-walkers" id="itinerary">
+    <div class="itinerary-container-walkers">
+      <h2 class="itinerary-heading-walkers">
+        <span>A journey through</span>
+        Wild Safari & Coastal Family Holiday
+      </h2>
+      <div class="walkers-accordion-wrap" id="tourInnerAccordion">
+        <div class="walkers-acc-item is-open">
+          <button type="button" class="walkers-acc-trigger" aria-expanded="true">
+            <div class="walkers-acc-left">
+              <span class="walkers-acc-day">Day 01</span>
+              <h3 class="walkers-acc-title">Arrival & Leisurely Recovery in Negombo Lagoon Resort</h3>
+            </div>
+            <span class="walkers-acc-icon">+</span>
+          </button>
+          <div class="walkers-acc-content">
+            <p class="walkers-acc-desc">Meet your private chauffeur. Check into a calm lagoon resort to recover from long flights with swimming pools.</p>
+            <div class="walkers-acc-pills">
+              <span class="walkers-acc-pill overnight">Overnight: Lagoon Resort, Negombo</span>
+              <span class="walkers-acc-pill">Meals: Dinner Included</span>
+            </div>
+          </div>
         </div>
-
-        <h1 class="hero-title" data-cms="title">
-          <span class="hero-title-main" data-cms="pkg_wild-safari-coastal-family-holiday.span_7">Wild Safari and Coastal Family Holiday</span>
-          <span class="hero-title-accent" data-cms="pkg_wild-safari-coastal-family-holiday.span_8">Elephant Gatherings and Calm Ocean Waters</span>
-        </h1>
-        <p class="tour-hero-tagline" data-cms="pkg_wild-safari-coastal-family-holiday.p_2">The ideal blend of exciting animal encounters, rainforest wonders, and warm golden beach relaxation.</p>
-
-        <div class="tour-hero-actions">
-          <a href="../../../inquiry-detailed.html?package=Wild+Safari+%26+Coastal+Family+Holiday" class="btn-hero-primary" data-cms="pkg_wild-safari-coastal-family-holiday.btn_13">Inquire About This Tour</a>
-          <a href="#itinerary" class="btn-hero-secondary" data-cms="pkg_wild-safari-coastal-family-holiday.btn_14">View Day-by-Day Journey ↓</a>
+        <div class="walkers-acc-item ">
+          <button type="button" class="walkers-acc-trigger" aria-expanded="false">
+            <div class="walkers-acc-left">
+              <span class="walkers-acc-day">Day 02</span>
+              <h3 class="walkers-acc-title">Drive to Minneriya Elephant Country</h3>
+            </div>
+            <span class="walkers-acc-icon">+</span>
+          </button>
+          <div class="walkers-acc-content">
+            <p class="walkers-acc-desc">Drive into the north-central dry zone. Check into a spacious nature lodge with treehouse balconies.</p>
+            <div class="walkers-acc-pills">
+              <span class="walkers-acc-pill overnight">Overnight: Safari Nature Lodge, Habarana</span>
+              <span class="walkers-acc-pill">Meals: Breakfast & Dinner</span>
+            </div>
+          </div>
+        </div>
+        <div class="walkers-acc-item ">
+          <button type="button" class="walkers-acc-trigger" aria-expanded="false">
+            <div class="walkers-acc-left">
+              <span class="walkers-acc-day">Day 03</span>
+              <h3 class="walkers-acc-title">Minneriya Great Elephant Gathering Safari</h3>
+            </div>
+            <span class="walkers-acc-icon">+</span>
+          </button>
+          <div class="walkers-acc-content">
+            <p class="walkers-acc-desc">Afternoon private 4x4 open-top jeep safari watching herds of wild elephants drinking and playing in ancient reservoir waters.</p>
+            <div class="walkers-acc-pills">
+              <span class="walkers-acc-pill overnight">Overnight: Safari Nature Lodge, Habarana</span>
+              <span class="walkers-acc-pill">Meals: Breakfast & Dinner</span>
+            </div>
+          </div>
+        </div>
+        <div class="walkers-acc-item ">
+          <button type="button" class="walkers-acc-trigger" aria-expanded="false">
+            <div class="walkers-acc-left">
+              <span class="walkers-acc-day">Day 04</span>
+              <h3 class="walkers-acc-title">Sigiriya Lion Rock Morning Exploration</h3>
+            </div>
+            <span class="walkers-acc-icon">+</span>
+          </button>
+          <div class="walkers-acc-content">
+            <p class="walkers-acc-desc">Morning visit to the dramatic 5th-century palace citadel. Children love the giant lion paws carved into the stone.</p>
+            <div class="walkers-acc-pills">
+              <span class="walkers-acc-pill overnight">Overnight: Safari Nature Lodge, Habarana</span>
+              <span class="walkers-acc-pill">Meals: Breakfast & Dinner</span>
+            </div>
+          </div>
+        </div>
+        <div class="walkers-acc-item ">
+          <button type="button" class="walkers-acc-trigger" aria-expanded="false">
+            <div class="walkers-acc-left">
+              <span class="walkers-acc-day">Day 05</span>
+              <h3 class="walkers-acc-title">Transfer to Hill Country Kandy & Temple Walk</h3>
+            </div>
+            <span class="walkers-acc-icon">+</span>
+          </button>
+          <div class="walkers-acc-content">
+            <p class="walkers-acc-desc">Scenic drive into Kandy. Visit the historic lakeside temple and witness colorful traditional fire-dancing shows.</p>
+            <div class="walkers-acc-pills">
+              <span class="walkers-acc-pill overnight">Overnight: Hillside Family Resort, Kandy</span>
+              <span class="walkers-acc-pill">Meals: Breakfast & Dinner</span>
+            </div>
+          </div>
+        </div>
+        <div class="walkers-acc-item ">
+          <button type="button" class="walkers-acc-trigger" aria-expanded="false">
+            <div class="walkers-acc-left">
+              <span class="walkers-acc-day">Day 06</span>
+              <h3 class="walkers-acc-title">Scenic Train to Ella & Nine Arches Bridge</h3>
+            </div>
+            <span class="walkers-acc-icon">+</span>
+          </button>
+          <div class="walkers-acc-content">
+            <p class="walkers-acc-desc">Experience the famous mountain rail journey over viaduct bridges. Walk through tea estates to view Nine Arches Bridge.</p>
+            <div class="walkers-acc-pills">
+              <span class="walkers-acc-pill overnight">Overnight: Mountain View Lodge, Ella</span>
+              <span class="walkers-acc-pill">Meals: Breakfast & Dinner</span>
+            </div>
+          </div>
+        </div>
+        <div class="walkers-acc-item ">
+          <button type="button" class="walkers-acc-trigger" aria-expanded="false">
+            <div class="walkers-acc-left">
+              <span class="walkers-acc-day">Day 07</span>
+              <h3 class="walkers-acc-title">Udawalawe Elephant Transit Home & Baby Milk Feeding</h3>
+            </div>
+            <span class="walkers-acc-icon">+</span>
+          </button>
+          <div class="walkers-acc-content">
+            <p class="walkers-acc-desc">Watch orphaned baby elephants rush out for their bottle-feeding at the transit rehabilitation center before transfer to Yala.</p>
+            <div class="walkers-acc-pills">
+              <span class="walkers-acc-pill overnight">Overnight: Wilderness Resort, Yala Border</span>
+              <span class="walkers-acc-pill">Meals: Breakfast & Dinner</span>
+            </div>
+          </div>
+        </div>
+        <div class="walkers-acc-item ">
+          <button type="button" class="walkers-acc-trigger" aria-expanded="false">
+            <div class="walkers-acc-left">
+              <span class="walkers-acc-day">Day 08</span>
+              <h3 class="walkers-acc-title">Yala National Park Wildlife Safari</h3>
+            </div>
+            <span class="walkers-acc-icon">+</span>
+          </button>
+          <div class="walkers-acc-content">
+            <p class="walkers-acc-desc">Thrilling morning safari drive in search of leopards, sloth bears, spotted deer, wild boar, and peacock displays.</p>
+            <div class="walkers-acc-pills">
+              <span class="walkers-acc-pill overnight">Overnight: Wilderness Resort, Yala Border</span>
+              <span class="walkers-acc-pill">Meals: Breakfast & Dinner</span>
+            </div>
+          </div>
+        </div>
+        <div class="walkers-acc-item ">
+          <button type="button" class="walkers-acc-trigger" aria-expanded="false">
+            <div class="walkers-acc-left">
+              <span class="walkers-acc-day">Day 09</span>
+              <h3 class="walkers-acc-title">Transfer to Mirissa Beach & Weligama Bay</h3>
+            </div>
+            <span class="walkers-acc-icon">+</span>
+          </button>
+          <div class="walkers-acc-content">
+            <p class="walkers-acc-desc">Drive along the southern coast. Settle into a beachfront resort with calm family swimming pools and sandy beaches.</p>
+            <div class="walkers-acc-pills">
+              <span class="walkers-acc-pill overnight">Overnight: Beachfront Family Resort, Mirissa</span>
+              <span class="walkers-acc-pill">Meals: Breakfast & Dinner</span>
+            </div>
+          </div>
+        </div>
+        <div class="walkers-acc-item ">
+          <button type="button" class="walkers-acc-trigger" aria-expanded="false">
+            <div class="walkers-acc-left">
+              <span class="walkers-acc-day">Day 10</span>
+              <h3 class="walkers-acc-title">Mirissa Whale Safari & Galle Fort Gelato Walk</h3>
+            </div>
+            <span class="walkers-acc-icon">+</span>
+          </button>
+          <div class="walkers-acc-content">
+            <p class="walkers-acc-desc">Morning boat excursion to spot blue whales. Afternoon exploration of Galle Fort with artisan Italian gelato stops.</p>
+            <div class="walkers-acc-pills">
+              <span class="walkers-acc-pill overnight">Overnight: Beachfront Family Resort, Mirissa</span>
+              <span class="walkers-acc-pill">Meals: Breakfast & Dinner</span>
+            </div>
+          </div>
+        </div>
+        <div class="walkers-acc-item ">
+          <button type="button" class="walkers-acc-trigger" aria-expanded="false">
+            <div class="walkers-acc-left">
+              <span class="walkers-acc-day">Day 11</span>
+              <h3 class="walkers-acc-title">Beachfront Leisure & Sea Turtle Conservation</h3>
+            </div>
+            <span class="walkers-acc-icon">+</span>
+          </button>
+          <div class="walkers-acc-content">
+            <p class="walkers-acc-desc">A completely relaxed day for sandcastle building, snorkeling in shallow bays, and visiting a turtle nursery.</p>
+            <div class="walkers-acc-pills">
+              <span class="walkers-acc-pill overnight">Overnight: Beachfront Family Resort, Mirissa</span>
+              <span class="walkers-acc-pill">Meals: Breakfast & Dinner</span>
+            </div>
+          </div>
+        </div>
+        <div class="walkers-acc-item ">
+          <button type="button" class="walkers-acc-trigger" aria-expanded="false">
+            <div class="walkers-acc-left">
+              <span class="walkers-acc-day">Day 12</span>
+              <h3 class="walkers-acc-title">Southern Expressway to Colombo Airport & Departure</h3>
+            </div>
+            <span class="walkers-acc-icon">+</span>
+          </button>
+          <div class="walkers-acc-content">
+            <p class="walkers-acc-desc">Private transfer via highway to CMB airport for your flight home, with wonderful family stories to tell.</p>
+            <div class="walkers-acc-pills">
+              <span class="walkers-acc-pill overnight">Overnight: Departure</span>
+              <span class="walkers-acc-pill">Meals: Breakfast Included</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="tour-facts-bar">
-    <div class="wrapper--90">
-      <div class="tour-facts-grid">
-        <div class="tour-fact-item">
-          <div>
-            <p class="tour-fact-label" data-cms="pkg_wild-safari-coastal-family-holiday.p_3">Duration</p>
-            <p class="tour-fact-value" data-cms="pkg_wild-safari-coastal-family-holiday.p_4">12 Days / 11 Nights</p>
-          </div>
+  <!-- SECTION 4: VISUAL JOURNEYS & INCLUSIONS (Walkers Standard) -->
+  <section class="visual-journeys-section">
+    <div class="visual-journeys-container">
+      <h2 class="visual-heading-walkers">
+        <span>Visual Journeys</span>
+      </h2>
+      <div class="walkers-img-grid">
+        <div class="walkers-img-card">
+          <img src="../../../assets/images/wildlife.jpg" alt="Colombo" loading="lazy">
+          <span class="walkers-img-caption">Colombo</span>
+        </div>
+        <div class="walkers-img-card">
+          <img src="../../../assets/images/wildlife.jpg" alt="Minneriya" loading="lazy">
+          <span class="walkers-img-caption">Minneriya</span>
+        </div>
+        <div class="walkers-img-card">
+          <img src="../../../assets/images/wildlife.jpg" alt="Kandy" loading="lazy">
+          <span class="walkers-img-caption">Kandy</span>
+        </div>
+      </div>
+
+      <div class="inclusions-grid-walkers">
+        <div class="inclusions-card-walkers pink-accent">
+          <h3 class="inclusions-card-title">Inclusions</h3>
+          <ul class="inclusions-list-walkers">
+            <li><span class="check-icon">✓</span> 11 Nights in premium family-friendly hotels and safari lodges</li>
+            <li><span class="check-icon">✓</span> Private spacious air-conditioned vehicle with patient family driver</li>
+            <li><span class="check-icon">✓</span> Minneriya & Yala National Park safari jeeps, park rangers, and fees</li>
+            <li><span class="check-icon">✓</span> Udawalawe Elephant Transit Home and Kosgoda turtle hatchery tickets</li>
+            <li><span class="check-icon">✓</span> First-class train tickets and daily breakfast and dinner</li>
+          </ul>
         </div>
 
-        <div class="tour-fact-item">
-          <div>
-            <p class="tour-fact-label" data-cms="pkg_wild-safari-coastal-family-holiday.p_5">Transport</p>
-            <p class="tour-fact-value" data-cms="pkg_wild-safari-coastal-family-holiday.p_6">Private Luxury AC Chauffeur</p>
-          </div>
+        <div class="inclusions-card-walkers black-accent">
+          <h3 class="inclusions-card-title">Exclusions</h3>
+          <ul class="inclusions-list-walkers">
+            <li><span class="cross-icon">✕</span> International airfare</li>
+            <li><span class="cross-icon">✕</span> Visas</li>
+            <li><span class="cross-icon">✕</span> Optional water sports</li>
+          </ul>
         </div>
 
-        <div class="tour-fact-item">
-          <div>
-            <p class="tour-fact-label" data-cms="pkg_wild-safari-coastal-family-holiday.p_7">Best Season</p>
-            <p class="tour-fact-value" data-cms="pkg_wild-safari-coastal-family-holiday.p_8">December to April and July to August</p>
-          </div>
+        <div class="inclusions-card-walkers black-accent">
+          <h3 class="inclusions-card-title">Payment Policies</h3>
+          <ul class="inclusions-list-walkers">
+            <li><span class="check-icon">✓</span> 20% advance confirmation deposit upon private reservation acceptance.</li>
+            <li><span class="check-icon">✓</span> Balance payment due 30 days prior to arrival in Sri Lanka.</li>
+            <li><span class="check-icon">✓</span> Free date rescheduling up to 21 days before arrival.</li>
+            <li><span class="check-icon">✓</span> Transparent cancellation terms with dedicated guest concierge care.</li>
+          </ul>
         </div>
 
-        <div class="tour-fact-item">
-          <div>
-            <p class="tour-fact-label" data-cms="pkg_wild-safari-coastal-family-holiday.p_9">Accommodation</p>
-            <p class="tour-fact-value" data-cms="pkg_wild-safari-coastal-family-holiday.p_10">Handpicked 5★ &amp; Boutique Stays</p>
-          </div>
-        </div>
-
-        <div class="tour-fact-item">
-          <div>
-            <p class="tour-fact-label">Price</p>
-            <p class="tour-fact-value" data-cms="pkg_wild-safari-coastal-family-holiday.p_11">Tailor-Made on Request</p>
-          </div>
+        <div class="inclusions-card-walkers pink-accent">
+          <h3 class="inclusions-card-title">Payment Methods</h3>
+          <ul class="inclusions-list-walkers">
+            <li><span class="check-icon">✓</span> Secure online credit card processing (Visa, MasterCard, American Express).</li>
+            <li><span class="check-icon">✓</span> International Telegraphic Bank Wire Transfer (USD, EUR, GBP).</li>
+            <li><span class="check-icon">✓</span> Encrypted 3D-Secure payment links for direct instant confirmation.</li>
+            <li><span class="check-icon">✓</span> Official corporate invoicing with Central Bank of Sri Lanka registered operator credentials.</li>
+          </ul>
         </div>
       </div>
     </div>
   </section>
 
-    <!-- SEASONALITY / BEST TIME TO VISIT STRIP -->
-  <div class="wrapper--90" style="margin-top: 2rem;">
-    <div id="lotusSeasonStripContainer"></div>
-  </div>
-  <main class="tour-main-section padding-top--70 padding-bottom--100">
-    <div class="wrapper--90">
-      <div class="tour-main-layout" id="itinerary">
-        
-        <div class="tour-itinerary-col">
-          <div class="section-watermark-header" style="margin-bottom: 2rem;">
-            <p class="watermark-heading" data-cms="pkg_wild-safari-coastal-family-holiday.p_12">ITINERARY</p>
-            <h2 class="section-header-title" data-cms="pkg_wild-safari-coastal-family-holiday.heading_1">Detailed Day-by-Day Journey</h2>
-          </div>
-          <p class="itinerary-section-sub" style="color: #475569; font-size: 1rem; line-height: 1.7; margin-bottom: 2.5rem;" data-cms="pkg_wild-safari-coastal-family-holiday.p_13">
-            Every element of this bespoke itinerary is privately chauffeured, seamlessly managed, and fully customizable to your personal travel pace and desires.
-          </p>
-
-          <div class="itinerary-timeline" data-cms-list="itinerary">
-            
-        <div class="itinerary-item" data-day="01">
-          <div class="itinerary-day-badge">Day 01</div>
-          <div class="itinerary-content">
-            <h3 class="itinerary-day-title" data-cms="pkg_wild-safari-coastal-family-holiday.heading_2">Arrival and Leisurely Recovery in Negombo Lagoon Resort</h3>
-            <p class="itinerary-day-desc" data-cms="pkg_wild-safari-coastal-family-holiday.p_14">Meet your private chauffeur. Check into a calm lagoon resort to recover from long flights with swimming pools.</p>
-            <div class="itinerary-meta-tags">
-              <span class="itinerary-meta-pill" data-cms="duration">Overnight: Lagoon Resort, Negombo</span>
-              <span class="itinerary-meta-pill">Dinner Included</span>
-              <span class="itinerary-meta-pill">Approx. 45 Mins - 1 Hour (35 km)</span>
-            </div>
-          </div>
-        </div>
-        
-
-        <div class="itinerary-item" data-day="02">
-          <div class="itinerary-day-badge">Day 02</div>
-          <div class="itinerary-content">
-            <h3 class="itinerary-day-title" data-cms="pkg_wild-safari-coastal-family-holiday.heading_3">Drive to Minneriya Elephant Country</h3>
-            <p class="itinerary-day-desc" data-cms="pkg_wild-safari-coastal-family-holiday.p_15">Drive into the north-central dry zone. Check into a spacious nature lodge with treehouse balconies.</p>
-            <div class="itinerary-meta-tags">
-              <span class="itinerary-meta-pill">Overnight: Safari Nature Lodge, Habarana</span>
-              <span class="itinerary-meta-pill">Breakfast and Dinner</span>
-              <span class="itinerary-meta-pill"></span>
-            </div>
-          </div>
-        </div>
-        
-
-        <div class="itinerary-item" data-day="03">
-          <div class="itinerary-day-badge">Day 03</div>
-          <div class="itinerary-content">
-            <h3 class="itinerary-day-title" data-cms="pkg_wild-safari-coastal-family-holiday.heading_4">Minneriya Great Elephant Gathering Safari</h3>
-            <p class="itinerary-day-desc" data-cms="pkg_wild-safari-coastal-family-holiday.p_16">Afternoon private 4x4 open-top jeep safari watching herds of wild elephants drinking and playing in ancient reservoir waters.</p>
-            <div class="itinerary-meta-tags">
-              <span class="itinerary-meta-pill">Overnight: Safari Nature Lodge, Habarana</span>
-              <span class="itinerary-meta-pill">Breakfast and Dinner</span>
-              <span class="itinerary-meta-pill"></span>
-            </div>
-          </div>
-        </div>
-        
-
-        <div class="itinerary-item" data-day="04">
-          <div class="itinerary-day-badge">Day 04</div>
-          <div class="itinerary-content">
-            <h3 class="itinerary-day-title" data-cms="pkg_wild-safari-coastal-family-holiday.heading_5">Sigiriya Lion Rock Morning Exploration</h3>
-            <p class="itinerary-day-desc" data-cms="pkg_wild-safari-coastal-family-holiday.p_17">Morning visit to the dramatic 5th-century palace citadel. Children love the giant lion paws carved into the stone.</p>
-            <div class="itinerary-meta-tags">
-              <span class="itinerary-meta-pill">Overnight: Safari Nature Lodge, Habarana</span>
-              <span class="itinerary-meta-pill">Breakfast and Dinner</span>
-              <span class="itinerary-meta-pill"></span>
-            </div>
-          </div>
-        </div>
-        
-
-        <div class="itinerary-item" data-day="05">
-          <div class="itinerary-day-badge">Day 05</div>
-          <div class="itinerary-content">
-            <h3 class="itinerary-day-title" data-cms="pkg_wild-safari-coastal-family-holiday.heading_6">Transfer to Hill Country Kandy and Temple Walk</h3>
-            <p class="itinerary-day-desc" data-cms="pkg_wild-safari-coastal-family-holiday.p_18">Scenic drive into Kandy. Visit the historic lakeside temple and witness colorful traditional fire-dancing shows.</p>
-            <div class="itinerary-meta-tags">
-              <span class="itinerary-meta-pill">Overnight: Hillside Family Resort, Kandy</span>
-              <span class="itinerary-meta-pill">Breakfast and Dinner</span>
-              <span class="itinerary-meta-pill"></span>
-            </div>
-          </div>
-        </div>
-        
-
-        <div class="itinerary-item" data-day="06">
-          <div class="itinerary-day-badge">Day 06</div>
-          <div class="itinerary-content">
-            <h3 class="itinerary-day-title" data-cms="pkg_wild-safari-coastal-family-holiday.heading_7">Scenic Train to Ella and Nine Arches Bridge</h3>
-            <p class="itinerary-day-desc" data-cms="pkg_wild-safari-coastal-family-holiday.p_19">Experience the famous mountain rail journey over viaduct bridges. Walk through tea estates to view Nine Arches Bridge.</p>
-            <div class="itinerary-meta-tags">
-              <span class="itinerary-meta-pill">Overnight: Mountain View Lodge, Ella</span>
-              <span class="itinerary-meta-pill">Breakfast and Dinner</span>
-              <span class="itinerary-meta-pill"></span>
-            </div>
-          </div>
-        </div>
-        
-
-        <div class="itinerary-item" data-day="07">
-          <div class="itinerary-day-badge">Day 07</div>
-          <div class="itinerary-content">
-            <h3 class="itinerary-day-title" data-cms="pkg_wild-safari-coastal-family-holiday.heading_8">Udawalawe Elephant Transit Home and Baby Milk Feeding</h3>
-            <p class="itinerary-day-desc" data-cms="pkg_wild-safari-coastal-family-holiday.p_20">Watch orphaned baby elephants rush out for their bottle-feeding at the transit rehabilitation center before transfer to Yala.</p>
-            <div class="itinerary-meta-tags">
-              <span class="itinerary-meta-pill">Overnight: Wilderness Resort, Yala Border</span>
-              <span class="itinerary-meta-pill">Breakfast and Dinner</span>
-              <span class="itinerary-meta-pill"></span>
-            </div>
-          </div>
-        </div>
-        
-
-        <div class="itinerary-item" data-day="08">
-          <div class="itinerary-day-badge">Day 08</div>
-          <div class="itinerary-content">
-            <h3 class="itinerary-day-title" data-cms="pkg_wild-safari-coastal-family-holiday.heading_9">Yala National Park Wildlife Safari</h3>
-            <p class="itinerary-day-desc" data-cms="pkg_wild-safari-coastal-family-holiday.p_21">Thrilling morning safari drive in search of leopards, sloth bears, spotted deer, wild boar, and peacock displays.</p>
-            <div class="itinerary-meta-tags">
-              <span class="itinerary-meta-pill">Overnight: Wilderness Resort, Yala Border</span>
-              <span class="itinerary-meta-pill">Breakfast and Dinner</span>
-              <span class="itinerary-meta-pill"></span>
-            </div>
-          </div>
-        </div>
-        
-
-        <div class="itinerary-item" data-day="09">
-          <div class="itinerary-day-badge">Day 09</div>
-          <div class="itinerary-content">
-            <h3 class="itinerary-day-title" data-cms="pkg_wild-safari-coastal-family-holiday.heading_10">Transfer to Mirissa Beach and Weligama Bay</h3>
-            <p class="itinerary-day-desc" data-cms="pkg_wild-safari-coastal-family-holiday.p_22">Drive along the southern coast. Settle into a beachfront resort with calm family swimming pools and sandy beaches.</p>
-            <div class="itinerary-meta-tags">
-              <span class="itinerary-meta-pill">Overnight: Beachfront Family Resort, Mirissa</span>
-              <span class="itinerary-meta-pill">Breakfast and Dinner</span>
-              <span class="itinerary-meta-pill"></span>
-            </div>
-          </div>
-        </div>
-        
-
-        <div class="itinerary-item" data-day="10">
-          <div class="itinerary-day-badge">Day 10</div>
-          <div class="itinerary-content">
-            <h3 class="itinerary-day-title" data-cms="pkg_wild-safari-coastal-family-holiday.heading_11">Mirissa Whale Safari and Galle Fort Gelato Walk</h3>
-            <p class="itinerary-day-desc" data-cms="pkg_wild-safari-coastal-family-holiday.p_23">Morning boat excursion to spot blue whales. Afternoon exploration of Galle Fort with artisan Italian gelato stops.</p>
-            <div class="itinerary-meta-tags">
-              <span class="itinerary-meta-pill">Overnight: Beachfront Family Resort, Mirissa</span>
-              <span class="itinerary-meta-pill">Breakfast and Dinner</span>
-              <span class="itinerary-meta-pill"></span>
-            </div>
-          </div>
-        </div>
-        
-
-        <div class="itinerary-item" data-day="11">
-          <div class="itinerary-day-badge">Day 11</div>
-          <div class="itinerary-content">
-            <h3 class="itinerary-day-title" data-cms="pkg_wild-safari-coastal-family-holiday.heading_12">Beachfront Leisure and Sea Turtle Conservation</h3>
-            <p class="itinerary-day-desc" data-cms="pkg_wild-safari-coastal-family-holiday.p_24">A completely relaxed day for sandcastle building, snorkeling in shallow bays, and visiting a turtle nursery.</p>
-            <div class="itinerary-meta-tags">
-              <span class="itinerary-meta-pill">Overnight: Beachfront Family Resort, Mirissa</span>
-              <span class="itinerary-meta-pill">Breakfast and Dinner</span>
-              <span class="itinerary-meta-pill"></span>
-            </div>
-          </div>
-        </div>
-        
-
-        <div class="itinerary-item" data-day="12">
-          <div class="itinerary-day-badge">Day 12</div>
-          <div class="itinerary-content">
-            <h3 class="itinerary-day-title" data-cms="pkg_wild-safari-coastal-family-holiday.heading_13">Southern Expressway to Colombo Airport and Departure</h3>
-            <p class="itinerary-day-desc" data-cms="pkg_wild-safari-coastal-family-holiday.p_25">Private transfer via highway to CMB airport for your flight home, with wonderful family stories to tell.</p>
-            <div class="itinerary-meta-tags">
-              <span class="itinerary-meta-pill">Departure day · Breakfast</span>
-              <span class="itinerary-meta-pill">Breakfast Included</span>
-              <span class="itinerary-meta-pill"></span>
-            </div>
-          </div>
-        </div>
-        
-          </div>
-
-          <div class="inclusions-grid">
-            <div class="inclusions-box">
-              <h3 data-cms="pkg_wild-safari-coastal-family-holiday.heading_14">✓ What's Included</h3>
-              <ul>
-                <li data-cms-html="pkg_wild-safari-coastal-family-holiday.li_1"><span>✓</span> 11 Nights in premium family-friendly hotels and safari lodges</li><li data-cms-html="pkg_wild-safari-coastal-family-holiday.li_2"><span>✓</span> Private spacious air-conditioned vehicle with patient family driver</li><li data-cms-html="pkg_wild-safari-coastal-family-holiday.li_3"><span>✓</span> Minneriya and Yala National Park safari jeeps, park rangers, and fees</li><li data-cms-html="pkg_wild-safari-coastal-family-holiday.li_4"><span>✓</span> Udawalawe Elephant Transit Home and Kosgoda turtle hatchery tickets</li><li data-cms-html="pkg_wild-safari-coastal-family-holiday.li_5"><span>✓</span> First-class train tickets and daily breakfast and dinner</li>
-              </ul>
-            </div>
-
-            <div class="exclusions-box">
-              <h3 data-cms="pkg_wild-safari-coastal-family-holiday.heading_15">✕ What's Excluded</h3>
-              <ul>
-                <li data-cms-html="pkg_wild-safari-coastal-family-holiday.li_6"><span>✕</span> International airfare</li><li><span>✕</span> Visas</li><li data-cms-html="pkg_wild-safari-coastal-family-holiday.li_7"><span>✕</span> Optional water sports</li>
-              </ul>
-            </div>
-          </div>
-
-          
-                <div class="section-watermark-header" style="margin-top: 2.5rem; margin-bottom: 1rem;">
-          <p class="watermark-heading" style="color: #EEDBE2;" data-cms="pkg_wild-safari-coastal-family-holiday.p_26">ROUTE MAP</p>
-          <h2 class="section-header-title" data-cms="pkg_wild-safari-coastal-family-holiday.heading_16">Curated Itinerary Route</h2>
-        </div>
-
+  <!-- SECTION 5: ROUTE MAP SECTION (Walkers Standard) -->
+  <section class="route-section-walkers" id="route-map">
+    <div class="route-container-walkers">
+      <div class="route-map-col">
         <div id="wild-safari-coastal-family-holiday-leaflet-map" 
-             class="lotus-street-map-frame js-lotus-route-map" 
+             class="route-map-box-walkers js-lotus-route-map" 
              data-package-id="pkg-wild-safari-coastal-family-holiday" 
              data-data-path="../../../data/packages.json"
              role="region" 
              aria-label="Interactive Route Map for Wild Safari & Coastal Family Holiday">
         </div>
+      </div>
+      <div class="route-text-walkers">
+        <h2>
+          <span>Here is your</span>
+          Wild Safari & Coastal Family Holiday Route
+        </h2>
+        <p>From Colombo through Minneriya and Kandy, this 11 nights and 12 days journey connects you with Sri Lanka's most iconic landscapes, cultural landmarks, and authentic Ceylon hospitality.</p>
+        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+          <span class="walkers-acc-pill">Colombo</span> <span class="walkers-acc-pill">Minneriya</span> <span class="walkers-acc-pill">Kandy</span> <span class="walkers-acc-pill">Ella</span> <span class="walkers-acc-pill">Yala</span> <span class="walkers-acc-pill">Galle</span> <span class="walkers-acc-pill">Mirissa</span>
+        </div>
+      </div>
+    </div>
+  </section>
 
-        <aside class="tour-sidebar">
-          <div class="tour-booking-card" style="position: sticky; top: 100px;">
-            <div class="tour-price-header">
-              <span class="tour-price-sub" data-cms="pkg_wild-safari-coastal-family-holiday.span_9">Custom Private Journey</span>
-              <div class="tour-price-val" data-cms="price">Tailor-Made Quote</div>
-              <p class="tour-price-note" data-cms="pkg_wild-safari-coastal-family-holiday.p_27">Price customized based on your dates, party size and preferred boutique stays.</p>
+  <!-- SECTION 6: FAQS (Everything You Need to Know) -->
+  <section class="faq-section-walkers">
+    <div class="faq-container-walkers">
+      <div class="faq-media-card">
+        <img src="../../../assets/images/sigiriya.jpg" alt="Sri Lanka Luxury Travel FAQ" loading="lazy">
+      </div>
+      <div class="faq-content-col">
+        <h2>
+          <span>Everything</span>
+          You Need to Know
+        </h2>
+        <div class="walkers-accordion-wrap">
+          <div class="walkers-acc-item is-open">
+            <button type="button" class="walkers-acc-trigger">
+              <h4 class="walkers-acc-title">Can I extend the number of days for this tour?</h4>
+              <span class="walkers-acc-icon">+</span>
+            </button>
+            <div class="walkers-acc-content">
+              <p class="walkers-acc-desc">Yes, certainly. Every itinerary we design is 100% bespoke. Our private travel designers will gladly extend your stay, add beach days, or tailor the pace to your exact preferences.</p>
             </div>
-
-            <div style="padding: 1.25rem 1.5rem 0.5rem;">
-              <h4 style="font-size: 0.95rem; font-weight: 700; color: #002B49; margin-bottom: 0.75rem; text-transform: uppercase;" data-cms="pkg_wild-safari-coastal-family-holiday.heading_17">Journey Highlights</h4>
-              <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.6rem;">
-                <li data-cms-html="pkg_wild-safari-coastal-family-holiday.li_8"><span>★</span> Witness wild elephant herds of 150+ in Minneriya National Park</li><li data-cms-html="pkg_wild-safari-coastal-family-holiday.li_9"><span>★</span> Visit the Udawalawe Elephant Transit Home during baby milk feeding time</li><li data-cms-html="pkg_wild-safari-coastal-family-holiday.li_10"><span>★</span> Yala National Park jeep safari tracking leopards, sloth bears, and crocodiles</li><li data-cms-html="pkg_wild-safari-coastal-family-holiday.li_11"><span>★</span> Walk the historic 17th-century ramparts of Galle Fort and enjoy artisanal gelato</li><li data-cms-html="pkg_wild-safari-coastal-family-holiday.li_12"><span>★</span> Mirissa whale and dolphin ocean safari suitable for older children</li>
-              </ul>
+          </div>
+          <div class="walkers-acc-item">
+            <button type="button" class="walkers-acc-trigger">
+              <h4 class="walkers-acc-title">Can I customize the hotels, destinations, or vehicle?</h4>
+              <span class="walkers-acc-icon">+</span>
+            </button>
+            <div class="walkers-acc-content">
+              <p class="walkers-acc-desc">Absolutely. You can choose from audited heritage tea bungalows, boutique eco-villas, or 5-star international luxury resorts. Vehicles range from premium luxury sedans to spacious executive vans.</p>
             </div>
+          </div>
+          <div class="walkers-acc-item">
+            <button type="button" class="walkers-acc-trigger">
+              <h4 class="walkers-acc-title">What kind of chauffeur guide will accompany us?</h4>
+              <span class="walkers-acc-icon">+</span>
+            </button>
+            <div class="walkers-acc-content">
+              <p class="walkers-acc-desc">Your journey will be led by a handpicked, licensed Sri Lankan National Tour Guide or Tourist Chauffeur with deep cultural understanding, fluent English, and impeccable hospitality standards.</p>
+            </div>
+          </div>
+          <div class="walkers-acc-item">
+            <button type="button" class="walkers-acc-trigger">
+              <h4 class="walkers-acc-title">What are the booking and cancellation policies?</h4>
+              <span class="walkers-acc-icon">+</span>
+            </button>
+            <div class="walkers-acc-content">
+              <p class="walkers-acc-desc">A 20% advance deposit confirms your private reservation. In the event of flight changes or unforeseen circumstances, we offer flexible free date rescheduling up to 21 days prior to arrival.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-            <div style="padding: 1.5rem;">
-              <button type="button" class="btn-sidebar-inquire" style="display: block; width: 100%; text-align: center; margin-bottom: 0.75rem; background: linear-gradient(135deg, #C9962B 0%, #F2C14E 100%); color: #002B49; border: none; font-weight: 700; cursor: pointer; padding: 0.85rem 1rem; border-radius: 8px; font-size: 0.92rem; font-family: inherit;" onclick="window.LotusInteractive.openMakeItYoursModal('Wild Safari & Coastal Family Holiday', 'family')" data-cms="pkg_wild-safari-coastal-family-holiday.btn_15">
-                <span data-cms="pkg_wild-safari-coastal-family-holiday.span_10">✨ Make It Yours (Tailor Tour)</span>
-              </button>
-              <a href="../../../inquiry-detailed.html?package=Wild+Safari+%26+Coastal+Family+Holiday" class="btn-sidebar-inquire" style="display: block; text-align: center; text-decoration: none; margin-bottom: 0.75rem;" data-cms="pkg_wild-safari-coastal-family-holiday.btn_16">Inquire About This Tour</a>
-              <a href="https://wa.me/94715422384?text=Hello+Lotus+Ceylon%2C+I+would+like+to+inquire+about+the+Wild+Safari+%26+Coastal+Family+Holiday+%2811+Nights+%2F+12+Days%29+private+tour." target="_blank" rel="noopener" class="btn-sidebar-whatsapp" style="display: flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none;" data-cms="pkg_wild-safari-coastal-family-holiday.btn_17">
-                <span data-cms="pkg_wild-safari-coastal-family-holiday.span_11">Chat on WhatsApp</span>
+  <!-- SECTION 7: MORE JOURNEYS (Walkers Standard) -->
+  <section class="more-journeys-walkers">
+    <div class="more-journeys-container">
+      <h2 class="more-journeys-heading">More Journeys to Discover</h2>
+      <div class="more-journeys-grid">
+        <div class="related-tour-card" style="background: #FFFFFF; border-radius: 14px; overflow: hidden; border: 1px solid rgba(0, 43, 73, 0.08); box-shadow: 0 4px 18px rgba(0,0,0,0.04); display: flex; flex-direction: column;">
+          <div class="related-tour-img-wrap" style="position: relative; height: 210px; overflow: hidden;">
+            <img src="../../../assets/images/hero-nine-arches.jpg" alt="Island Wonder Multi-Gen Family Discovery" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;">
+            <span class="related-tour-duration" style="position: absolute; top: 12px; left: 12px; background: rgba(17, 24, 39, 0.88); color: #FFFFFF; padding: 4px 12px; border-radius: 20px; font-size: 0.78rem; font-weight: 700;">09 Nights and 10 Days</span>
+          </div>
+          <div class="related-tour-content" style="padding: 1.5rem; display: flex; flex-direction: column; flex-grow: 1;">
+            <h4 style="font-family: 'DM Sans', sans-serif; font-size: 1.18rem; font-weight: 700; color: #111827; margin: 0 0 0.5rem 0;">Island Wonder Multi-Gen Family Discovery</h4>
+            <p style="color: #64748B; font-size: 0.9rem; line-height: 1.6; margin: 0 0 1.25rem 0; flex-grow: 1;">Safe, gentle, and deeply engaging exploration for grandparents, parents, and children alike.</p>
+            <div>
+              <a href="../../../tours/family/island-wonder-multi-gen-family-discovery/index.html" class="btn-inquire-gold-pill" style="padding: 8px 20px; font-size: 0.85rem; width: 100%; justify-content: center;">
+                <span>Explore Itinerary ➔</span>
               </a>
-              <div class="tour-action-pills" style="margin-top: 1rem; justify-content: center; display: flex; gap: 0.5rem; flex-wrap: wrap;">
-                <button type="button" class="btn-pill-save" onclick="window.LotusInteractive.toggleSaveTour('pkg-wild-safari-coastal-family-holiday', this)" aria-pressed="false" style="padding: 0.45rem 0.85rem; font-size: 0.8rem; border: 1px solid #CBD5E1; border-radius: 20px; background: #FFF; cursor: pointer; display: flex; align-items: center; gap: 4px;" data-cms="pkg_wild-safari-coastal-family-holiday.btn_18">
-                  <span>❤️</span> <span class="save-btn-text" data-cms="pkg_wild-safari-coastal-family-holiday.span_12">Save Trip</span>
-                </button>
-                <button type="button" class="btn-pill-share" onclick="window.LotusInteractive.shareTourWhatsApp('Wild Safari & Coastal Family Holiday')" style="padding: 0.45rem 0.85rem; font-size: 0.8rem; border: 1px solid #CBD5E1; border-radius: 20px; background: #FFF; cursor: pointer; display: flex; align-items: center; gap: 4px;" data-cms="pkg_wild-safari-coastal-family-holiday.btn_19">
-                  <span data-cms="pkg_wild-safari-coastal-family-holiday.span_13">Share</span>
-                </button>
-                <button type="button" class="btn-pill-share" onclick="window.LotusInteractive.copyTourLink()" style="padding: 0.45rem 0.85rem; font-size: 0.8rem; border: 1px solid #CBD5E1; border-radius: 20px; background: #FFF; cursor: pointer; display: flex; align-items: center; gap: 4px;" data-cms="pkg_wild-safari-coastal-family-holiday.btn_20">
-                  <span data-cms="pkg_wild-safari-coastal-family-holiday.span_14">Link</span>
-                </button>
-              </div>
-            </div>
-
-            <div class="tour-assistance-box" style="padding: 1.25rem 1.5rem; background: #F8FAFC; border-top: 1px solid #E2E8F0; border-radius: 0 0 12px 12px;">
-              <h4 style="font-size: 0.95rem; color: #002B49; font-weight: 700; margin-bottom: 0.35rem;" data-cms="pkg_wild-safari-coastal-family-holiday.heading_18">Speak With Our Travel Specialists</h4>
-              <p style="font-size: 0.85rem; color: #64748B; margin-bottom: 0.75rem; line-height: 1.5;" data-cms="pkg_wild-safari-coastal-family-holiday.p_28">Our local destination experts in Colombo and Kandy are available 24/7 to personalize this route.</p>
-              <div style="display: flex; align-items: center; gap: 8px; font-weight: 700; color: #002B49; font-size: 0.9rem;">
-                <span data-cms="pkg_wild-safari-coastal-family-holiday.span_15">+94 71 54 22 384</span>
-              </div>
-                          <div style="margin-top: 0.85rem; padding-top: 0.75rem; border-top: 1px dashed #CBD5E1;">
-                <a href="../../../tours/index.html#travel-info-hub" style="display: flex; align-items: center; gap: 6px; font-size: 0.82rem; color: #8C6D3F; font-weight: 700; text-decoration: none;">
-                  <span data-cms="pkg_wild-safari-coastal-family-holiday.span_16">Travel Prep: Visa, Weather and Etiquette ➔</span>
-                </a>
-              </div>
-            </div>
-          </div>
-        </aside>
-
-      </div>
-    </div>
-  </main>
-
-  <section class="related-tours-section padding-top--70 padding-bottom--70" style="background: #F8FAFC; border-top: 1px solid #E2E8F0;">
-    <div class="wrapper--90">
-      <div class="section-watermark-header text-center" style="margin-bottom: 1.5rem;">
-        <p class="watermark-heading" data-cms="pkg_wild-safari-coastal-family-holiday.p_29">MORE EXPERIENCES</p>
-        <h2 class="section-header-title" data-cms="pkg_wild-safari-coastal-family-holiday.heading_19">Other Signature Sri Lanka Family Holiday Packages</h2>
-      </div>
-      <div class="related-grid">
-        
-        <div class="related-tour-card">
-          <div class="related-tour-img-wrap">
-            <img src="../../../assets/images/hill-country/nine-arches-bridge-1.webp" alt="Island Wonder Multi-Gen Family Discovery" loading="lazy" data-cms-img="pkg_wild-safari-coastal-family-holiday.img_1">
-            <span class="related-tour-duration" data-cms="pkg_wild-safari-coastal-family-holiday.span_17">11 Nights / 12 Days</span>
-          </div>
-          <div class="related-tour-content">
-            <h4 class="related-tour-title" data-cms="pkg_wild-safari-coastal-family-holiday.heading_20">Island Wonder Multi-Gen Family Discovery</h4>
-            <p class="related-tour-desc" data-cms="pkg_wild-safari-coastal-family-holiday.p_30">Safe, gentle, and deeply engaging exploration for grandparents, parents, and children alike.</p>
-            <div class="related-tour-actions">
-              <a href="../../../tours/family/island-wonder-multi-gen-family-discovery/index.html" class="btn-related-explore" data-cms="pkg_wild-safari-coastal-family-holiday.btn_21">Explore Itinerary ➔</a>
             </div>
           </div>
         </div>
-        
-
-        <div class="related-tour-card">
-          <div class="related-tour-img-wrap">
-            <img src="../../../assets/images/hill-country/nine-arches-bridge-1.webp" alt="The Grand Ceylon Family Adventure" loading="lazy" data-cms-img="pkg_wild-safari-coastal-family-holiday.img_2">
-            <span class="related-tour-duration" data-cms="pkg_wild-safari-coastal-family-holiday.span_18">11 Nights / 12 Days</span>
+        <div class="related-tour-card" style="background: #FFFFFF; border-radius: 14px; overflow: hidden; border: 1px solid rgba(0, 43, 73, 0.08); box-shadow: 0 4px 18px rgba(0,0,0,0.04); display: flex; flex-direction: column;">
+          <div class="related-tour-img-wrap" style="position: relative; height: 210px; overflow: hidden;">
+            <img src="../../../assets/images/hero-nine-arches.jpg" alt="The Grand Ceylon Family Adventure" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;">
+            <span class="related-tour-duration" style="position: absolute; top: 12px; left: 12px; background: rgba(17, 24, 39, 0.88); color: #FFFFFF; padding: 4px 12px; border-radius: 20px; font-size: 0.78rem; font-weight: 700;">13 Nights and 14 Days</span>
           </div>
-          <div class="related-tour-content">
-            <h4 class="related-tour-title" data-cms="pkg_wild-safari-coastal-family-holiday.heading_21">The Grand Ceylon Family Adventure</h4>
-            <p class="related-tour-desc" data-cms="pkg_wild-safari-coastal-family-holiday.p_31">Two magical weeks covering ancient wonders, wild national parks, scenic rail, and coastal water sports.</p>
-            <div class="related-tour-actions">
-              <a href="../../../tours/family/the-grand-ceylon-family-adventure/index.html" class="btn-related-explore" data-cms="pkg_wild-safari-coastal-family-holiday.btn_22">Explore Itinerary ➔</a>
+          <div class="related-tour-content" style="padding: 1.5rem; display: flex; flex-direction: column; flex-grow: 1;">
+            <h4 style="font-family: 'DM Sans', sans-serif; font-size: 1.18rem; font-weight: 700; color: #111827; margin: 0 0 0.5rem 0;">The Grand Ceylon Family Adventure</h4>
+            <p style="color: #64748B; font-size: 0.9rem; line-height: 1.6; margin: 0 0 1.25rem 0; flex-grow: 1;">Two magical weeks covering ancient wonders, wild national parks, scenic rail, and coastal water sports.</p>
+            <div>
+              <a href="../../../tours/family/the-grand-ceylon-family-adventure/index.html" class="btn-inquire-gold-pill" style="padding: 8px 20px; font-size: 0.85rem; width: 100%; justify-content: center;">
+                <span>Explore Itinerary ➔</span>
+              </a>
             </div>
           </div>
         </div>
-        
+        <div class="related-tour-card" style="background: #FFFFFF; border-radius: 14px; overflow: hidden; border: 1px solid rgba(0, 43, 73, 0.08); box-shadow: 0 4px 18px rgba(0,0,0,0.04); display: flex; flex-direction: column;">
+          <div class="related-tour-img-wrap" style="position: relative; height: 210px; overflow: hidden;">
+            <img src="../../../assets/images/beach/mirissa-1.webp" alt="Southern Sands Serenade" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;">
+            <span class="related-tour-duration" style="position: absolute; top: 12px; left: 12px; background: rgba(17, 24, 39, 0.88); color: #FFFFFF; padding: 4px 12px; border-radius: 20px; font-size: 0.78rem; font-weight: 700;">09 Nights and 10 Days</span>
+          </div>
+          <div class="related-tour-content" style="padding: 1.5rem; display: flex; flex-direction: column; flex-grow: 1;">
+            <h4 style="font-family: 'DM Sans', sans-serif; font-size: 1.18rem; font-weight: 700; color: #111827; margin: 0 0 0.5rem 0;">Southern Sands Serenade</h4>
+            <p style="color: #64748B; font-size: 0.9rem; line-height: 1.6; margin: 0 0 1.25rem 0; flex-grow: 1;">Sun-Kissed Bays, Blue Whales & Dutch Ramparts</p>
+            <div>
+              <a href="../../../tours/beach/southern-sands-serenade/index.html" class="btn-inquire-gold-pill" style="padding: 8px 20px; font-size: 0.85rem; width: 100%; justify-content: center;">
+                <span>Explore Itinerary ➔</span>
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="banner-bottom-cta padding-top--80 padding-bottom--80" style="background: linear-gradient(135deg, #001A2C 0%, #002B49 100%); color: #FFFFFF; text-align: center;">
-    <div class="wrapper--70">
-      <span style="color: #C5A880; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase;" data-cms="pkg_wild-safari-coastal-family-holiday.span_19">PURE JOURNEYS &bull; SACRED EXPERIENCES</span>
-      <h2 style="font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 2.4rem; margin: 1rem 0; color: #FFFFFF;" data-cms="pkg_wild-safari-coastal-family-holiday.heading_22">Ready to Experience Wild Safari and Coastal Family Holiday?</h2>
-      <p style="color: rgba(255,255,255,0.85); font-size: 1.05rem; max-width: 650px; margin: 0 auto 2rem; line-height: 1.6;" data-cms="pkg_wild-safari-coastal-family-holiday.p_32">
-        Every detail of this journey is privately chauffeured and customized to your exact timeline, flight schedules, and luxury accommodation preferences.
-      </p>
-      <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
-        <a href="../../../inquiry-detailed.html?package=Wild+Safari+%26+Coastal+Family+Holiday" class="gold-inquire-btn" style="text-decoration: none; padding: 14px 28px; font-weight: 700; font-size: 0.95rem;" data-cms="pkg_wild-safari-coastal-family-holiday.btn_23">Inquire About This Tour</a>
-        <a href="https://wa.me/94715422384?text=Hello+Lotus+Ceylon%2C+I+would+like+to+inquire+about+the+Wild+Safari+%26+Coastal+Family+Holiday+%2811+Nights+%2F+12+Days%29+private+tour." target="_blank" rel="noopener" class="gold-inquire-btn" style="background: transparent; border: 2px solid #C5A880; color: #C5A880; text-decoration: none; padding: 12px 24px; font-weight: 700; font-size: 0.95rem;" data-cms="pkg_wild-safari-coastal-family-holiday.btn_24">WhatsApp Travel Specialist</a>
-      </div>
-    </div>
-  </section>
-
-  
-
-  <!-- ==========================================================================
-       WHY TRAVEL WITH LOTUS & FREQUENTLY ASKED QUESTIONS
-       ========================================================================== -->
-  <section class="lotus-why-section" id="why-lotus">
-    <div id="lotusWhyContainer"></div>
-  </section>
-
-  <section class="lotus-faq-section" id="faqs">
-    <div id="lotusFaqContainer"></div>
-  </section>
-
-    <!-- Sacred Ceylon CTA Band (Unified Standard) -->
-    <!-- Sacred Ceylon CTA Band (Unified Standard) -->
-  <section class="sacred-cta-banner" data-cms-bg="siteGlobal.branding.cta_bg">
-    <div class="cta-motif" aria-hidden="true"></div>
-    <div class="cta-content">
-      <h2 class="cta-title" data-cms="pkg_wild-safari-coastal-family-holiday.heading_23">Ready to Begin Your Sacred Ceylon Journey?</h2>
-      <p class="cta-desc" data-cms="pkg_wild-safari-coastal-family-holiday.p_33">Speak directly with our senior destination specialists in Ja-Ela or connect via WhatsApp for an immediate bespoke itinerary proposal tailored to your rhythm.</p>
-      <div class="cta-btn-group">
-        <a href="../../../inquiry-detailed.html" class="btn-primary-gold" data-cms="pkg_wild-safari-coastal-family-holiday.btn_25">
-          <span data-cms="pkg_wild-safari-coastal-family-holiday.span_20">Plan My Bespoke Journey</span>
-          <span aria-hidden="true">➔</span>
-        </a>
-        <a href="https://wa.me/94715422384?text=Hello%20Lotus%20Ceylon!%20I%20would%20like%20to%20inquire%20about%20a%20private%20tour." target="_blank" rel="noopener noreferrer" class="cta-wa-btn" data-cms="pkg_wild-safari-coastal-family-holiday.btn_26">
-          <span data-cms="pkg_wild-safari-coastal-family-holiday.span_21">Chat on WhatsApp</span>
+  <!-- SECTION 8: BOTTOM CTA BANNER (Walkers Standard) -->
+  <section class="tour-cta-walkers">
+    <div class="tour-cta-container">
+      <span class="tour-cta-tag">BESPOKE PRIVATE TRAVEL</span>
+      <h2 class="tour-cta-title">Plan your Perfect Family Escape</h2>
+      <p class="tour-cta-desc">Connect directly with our senior Ceylon travel designers to curate your private chauffeur-guided journey across Sri Lanka.</p>
+      <div class="tour-cta-btn-group">
+        <a href="../../../inquiry-detailed.html?package=Wild+Safari+&+Coastal+Family+Holiday" class="btn-inquire-gold-pill">Inquire About This Tour</a>
+        <a href="https://wa.me/94715422384?text=Hello%20Lotus%20Ceylon!%20I%20would%20like%20to%20inquire%20about%20the%20Wild+Safari+&+Coastal+Family+Holiday%20private%20tour." target="_blank" rel="noopener noreferrer" class="btn-cta-whatsapp">
+          <span>Chat on WhatsApp</span>
         </a>
       </div>
     </div>
   </section>
 
-    <!-- Site Footer (Unified Walkers Standard with Single Source of Truth Coordinates) -->
-    <!-- Site Footer (Unified Walkers Standard with Single Source of Truth Coordinates) -->
+  <!-- Site Footer -->
   <!-- @include footer:start -->
 <!-- Site design & development: Infinite Design (https://infiniteweb.dev/) — see /humans.txt and LICENSE.txt -->
 <!-- Site Footer (Walkers Tours Standard with Sunset Palms Background) -->
@@ -1117,7 +808,7 @@
 </footer>
 <!-- @include footer:end -->
 
-  <!-- Unified Mobile-First Floating Action Group (WhatsApp + Back to Top) -->
+  <!-- Unified Mobile-First Floating Action Group -->
   <!-- @include floating-actions:start -->
 <!-- Site design & development: Infinite Design (https://infiniteweb.dev/) — see /humans.txt and LICENSE.txt -->
 <!-- Unified Mobile-First Floating Action Group (WhatsApp + Back to Top) -->
@@ -1137,16 +828,27 @@
 </a>
 <!-- @include floating-actions:end -->
 
-  <!-- Persistent Floating WhatsApp Concierge -->
-  
-
+  <!-- JavaScript Plugins -->
   <script src="../../../vendor/leaflet/leaflet.js"></script>
   <script src="../../../js/leaflet-tour-map.js?v=20261101_pure_osm_v9"></script>
   <script src="../../../js/tour-interactive.js"></script>
   <script src="../../../js/site-translator.js"></script>
   <script src="../../../assets/js/config.js"></script>
-<script defer src="../../../assets/js/site-data.js"></script>
+  <script defer src="../../../assets/js/site-data.js"></script>
   <script src="../../../assets/js/mobile-nav.js"></script>
-  <script src="../../../assets/js/cms.js?v=20261029_secimg1"></script>
+
+  <!-- Interactive Accordion Handler -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelectorAll('.walkers-acc-trigger').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          var item = this.closest('.walkers-acc-item');
+          if (item) {
+            item.classList.toggle('is-open');
+          }
+        });
+      });
+    });
+  </script>
 </body>
 </html>

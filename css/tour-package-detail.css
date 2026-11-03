@@ -1066,3 +1066,652 @@ figure.video iframe,
   opacity: 0.95;
   transform: translateY(-1px);
 }
+
+
+/* ==============================================================================
+   WALKERS TOURS LUXURY ITINERARY DETAIL STANDARD (PINK / BLACK / WHITE THEME)
+   ============================================================================== */
+
+/* 1. Hero Banner */
+.tour-banner-walkers {
+  position: relative;
+  min-height: 60vh;
+  max-height: 680px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+}
+
+.tour-banner-walkers::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0.15) 50%, rgba(0, 0, 0, 0.65) 100%);
+  pointer-events: none;
+}
+
+/* 2. Overview & Title Section */
+.tour-overview-walkers {
+  background: #FFFFFF;
+  padding: 4.5rem 1rem 3.5rem;
+  text-align: center;
+}
+
+.tour-badge-pill-walkers {
+  display: inline-block;
+  background: #FFF0F3;
+  color: #C95451;
+  border: 1px solid rgba(201, 84, 81, 0.3);
+  padding: 6px 20px;
+  border-radius: 50px;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 1.25rem;
+}
+
+.tour-category-sub-walkers {
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 1.2rem;
+  color: #64748B;
+  font-weight: 400;
+  margin-bottom: 0.4rem;
+}
+
+.tour-title-walkers {
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: clamp(2.4rem, 4.5vw, 3.8rem);
+  font-weight: 700;
+  color: #111827;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin: 0 auto 1.5rem;
+  max-width: 1000px;
+}
+
+.tour-duration-line-walkers {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #111827;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin: 0 auto 2rem;
+  max-width: 600px;
+}
+
+.tour-duration-line-walkers::before,
+.tour-duration-line-walkers::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: rgba(201, 84, 81, 0.35);
+}
+
+.tour-desc-walkers {
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 1.12rem;
+  line-height: 1.85;
+  color: #454545;
+  font-weight: 400;
+  max-width: 860px;
+  margin: 0 auto 2.5rem;
+}
+
+.btn-inquire-gold-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: linear-gradient(135deg, #E6A838 0%, #C9962B 100%);
+  color: #002B49 !important;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  padding: 14px 38px;
+  border-radius: 50px;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  box-shadow: 0 4px 18px rgba(201, 150, 43, 0.3);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-inquire-gold-pill:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(201, 150, 43, 0.45);
+}
+
+/* 3. Itinerary Accordion Section */
+.itinerary-section-walkers {
+  background: #FFFDF8;
+  border-top: 1px solid rgba(201, 84, 81, 0.1);
+  border-bottom: 1px solid rgba(201, 84, 81, 0.1);
+  padding: 5rem 1rem;
+}
+
+.itinerary-container-walkers {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.itinerary-heading-walkers {
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: clamp(2rem, 3.5vw, 2.75rem);
+  font-weight: 700;
+  color: #111827;
+  text-align: center;
+  margin-bottom: 2.75rem;
+  line-height: 1.25;
+}
+
+.itinerary-heading-walkers span {
+  font-weight: 300;
+  color: #454545;
+  display: block;
+  font-size: clamp(1.4rem, 2.2vw, 1.8rem);
+  margin-bottom: 0.25rem;
+}
+
+.walkers-accordion-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.walkers-acc-item {
+  background: #FFFFFF;
+  border: 1px solid rgba(0, 43, 73, 0.08);
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+  overflow: hidden;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.walkers-acc-item:hover {
+  border-color: rgba(201, 84, 81, 0.3);
+  box-shadow: 0 8px 24px rgba(201, 84, 81, 0.08);
+}
+
+.walkers-acc-trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.35rem 1.75rem;
+  background: #FFFFFF;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  font-family: inherit;
+  transition: background 0.2s ease;
+}
+
+.walkers-acc-trigger:hover {
+  background: #FFFDF8;
+}
+
+.walkers-acc-left {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  flex: 1;
+}
+
+.walkers-acc-day {
+  background: #111827;
+  color: #FFFFFF;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 0.88rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 5px 14px;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+
+.walkers-acc-title {
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #111827;
+  line-height: 1.35;
+  margin: 0;
+}
+
+.walkers-acc-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #FFF0F3;
+  color: #C95451;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  font-weight: 700;
+  flex-shrink: 0;
+  transition: transform 0.25s ease, background 0.25s ease;
+}
+
+.walkers-acc-item.is-open .walkers-acc-icon {
+  transform: rotate(45deg);
+  background: #C95451;
+  color: #FFFFFF;
+}
+
+.walkers-acc-content {
+  display: none;
+  padding: 1.25rem 1.75rem 1.75rem;
+  border-top: 1px solid #F1F5F9;
+  background: #FFFFFF;
+}
+
+.walkers-acc-item.is-open .walkers-acc-content {
+  display: block;
+}
+
+.walkers-acc-desc {
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 1.02rem;
+  line-height: 1.8;
+  color: #454545;
+  margin: 0 0 1.25rem 0;
+}
+
+.walkers-acc-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
+.walkers-acc-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  padding: 4px 14px;
+  border-radius: 50px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #1E293B;
+}
+
+.walkers-acc-pill.overnight {
+  background: #FFF0F3;
+  color: #C95451;
+  border-color: rgba(201, 84, 81, 0.25);
+}
+
+/* 4. Visual Journeys & Inclusions Section */
+.visual-journeys-section {
+  background: #FFFFFF;
+  padding: 5rem 1rem;
+}
+
+.visual-journeys-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.visual-heading-walkers {
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: clamp(2rem, 3.5vw, 2.75rem);
+  font-weight: 700;
+  color: #111827;
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.walkers-img-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 4.5rem;
+}
+
+@media (max-width: 768px) {
+  .walkers-img-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+}
+
+.walkers-img-card {
+  position: relative;
+  height: 340px;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.walkers-img-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.walkers-img-card:hover img {
+  transform: scale(1.06);
+}
+
+.walkers-img-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 55%, rgba(0, 0, 0, 0.75) 100%);
+  pointer-events: none;
+}
+
+.walkers-img-caption {
+  position: absolute;
+  bottom: 1.25rem;
+  left: 1.5rem;
+  z-index: 2;
+  color: #FFFFFF;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+/* Inclusions / Exclusions 4-Box Grid */
+.inclusions-grid-walkers {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .inclusions-grid-walkers {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+.inclusions-card-walkers {
+  background: #FFFDF8;
+  border: 1px solid rgba(0, 43, 73, 0.08);
+  border-radius: 14px;
+  padding: 2.25rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+}
+
+.inclusions-card-walkers.pink-accent {
+  border-top: 4px solid #C95451;
+}
+
+.inclusions-card-walkers.black-accent {
+  border-top: 4px solid #111827;
+}
+
+.inclusions-card-title {
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 1.25rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #111827;
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid #E2E8F0;
+}
+
+.inclusions-list-walkers {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.inclusions-list-walkers li {
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: #454545;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.inclusions-list-walkers li .check-icon {
+  color: #16A34A;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+
+.inclusions-list-walkers li .cross-icon {
+  color: #DC2626;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+
+/* 5. Route Map Section */
+.route-section-walkers {
+  background: #FFFDF8;
+  border-top: 1px solid rgba(201, 84, 81, 0.1);
+  border-bottom: 1px solid rgba(201, 84, 81, 0.1);
+  padding: 5rem 1rem;
+}
+
+.route-container-walkers {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3.5rem;
+  align-items: center;
+}
+
+@media (max-width: 991px) {
+  .route-container-walkers {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+.route-text-walkers h2 {
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: clamp(2rem, 3.2vw, 2.75rem);
+  font-weight: 700;
+  color: #111827;
+  line-height: 1.25;
+  margin-bottom: 1.25rem;
+}
+
+.route-text-walkers h2 span {
+  font-weight: 300;
+  color: #454545;
+  display: block;
+  font-size: clamp(1.3rem, 2vw, 1.6rem);
+  margin-bottom: 0.25rem;
+}
+
+.route-text-walkers p {
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: #454545;
+  margin-bottom: 1.75rem;
+}
+
+.route-map-box-walkers {
+  background: #FFFFFF;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0, 43, 73, 0.08);
+  height: 480px;
+}
+
+/* 6. FAQ Section */
+.faq-section-walkers {
+  background: #FFFFFF;
+  padding: 5rem 1rem;
+}
+
+.faq-container-walkers {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 42% 58%;
+  gap: 3rem;
+  align-items: center;
+}
+
+@media (max-width: 900px) {
+  .faq-container-walkers {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+.faq-media-card {
+  border-radius: 16px;
+  overflow: hidden;
+  height: 480px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.faq-media-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.faq-content-col h2 {
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: clamp(2rem, 3.2vw, 2.75rem);
+  font-weight: 700;
+  color: #111827;
+  line-height: 1.25;
+  margin-bottom: 2rem;
+}
+
+.faq-content-col h2 span {
+  font-weight: 300;
+  color: #454545;
+  display: block;
+  font-size: clamp(1.3rem, 2vw, 1.6rem);
+  margin-bottom: 0.25rem;
+}
+
+/* 7. More Journeys Section */
+.more-journeys-walkers {
+  background: #FFFDF8;
+  border-top: 1px solid rgba(201, 84, 81, 0.1);
+  padding: 5rem 1rem;
+}
+
+.more-journeys-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.more-journeys-heading {
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: clamp(2rem, 3.2vw, 2.75rem);
+  font-weight: 700;
+  color: #111827;
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.more-journeys-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.75rem;
+}
+
+@media (max-width: 860px) {
+  .more-journeys-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+/* 8. Bottom CTA Banner */
+.tour-cta-walkers {
+  background: linear-gradient(135deg, #0B1118 0%, #151D28 100%);
+  color: #FFFFFF;
+  padding: 5.5rem 1rem;
+  text-align: center;
+}
+
+.tour-cta-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.tour-cta-tag {
+  color: #C95451;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 0.88rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.tour-cta-title {
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
+  font-weight: 700;
+  color: #FFFFFF;
+  line-height: 1.25;
+  margin-bottom: 1.25rem;
+}
+
+.tour-cta-desc {
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 1.08rem;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 2.25rem;
+}
+
+.tour-cta-btn-group {
+  display: flex;
+  justify-content: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.btn-cta-whatsapp {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #25D366;
+  color: #FFFFFF !important;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  padding: 14px 32px;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.btn-cta-whatsapp:hover {
+  transform: translateY(-2px);
+  opacity: 0.95;
+}

@@ -5,231 +5,24 @@
   <meta name="generator" content="Built by Infinite Design — https://infiniteweb.dev/">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="theme-color" content="#16361D">
-  <title data-cms="seo.title">Three Millennia of Living Heritage 15-Day Tour | Lotus Ceylon</title>
-  <meta name="description" content="The definitive 15-day cultural odyssey of Sri Lanka: Jaffna, Anuradhapura, Sigiriya, Kandy, and Galle Fort with private luxury chauffeur guide." data-cms="seo.description" data-cms="seo.description" data-cms="seo.description">
+  <meta name="theme-color" content="#111827">
+  <title data-cms="seo.title">Three Millennia of Living Heritage | Lotus Ceylon Luxury Tours</title>
+  <meta name="description" content="The definitive 15-day cultural odyssey of Sri Lanka: Jaffna, Anuradhapura, Sigiriya, Kandy, and Galle Fort with private luxury chauffeur guide." data-cms="seo.description">
   <link rel="icon" type="image/png" href="../../../logo.png?v=20261021_step1">
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..800;1,9..40,300..800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..800;1,9..40,300..800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <!-- Master Stylesheets -->
   <link rel="stylesheet" href="../../../css/style.css?v=20261022_beach_v1">
   <link rel="stylesheet" href="../../../css/brand-header.css?v=20261022_exact_hf_v1">
-  <link rel="stylesheet" href="../../../css/tour-package-detail.css?v=20261022_pkg_v1">
-
-  <style>
-    :root {
-      --watermark-shadow-pink: #EEDBE2;
-    }
-    .watermark-heading {
-      color: var(--watermark-shadow-pink) !important;
-      font-weight: 800;
-      letter-spacing: 0.15em;
-    }
-    .itinerary-item {
-      display: flex;
-      gap: 1.5rem;
-      margin-bottom: 2rem;
-      position: relative;
-    }
-    .itinerary-day-badge {
-      width: 70px;
-      height: 70px;
-      flex-shrink: 0;
-      background: linear-gradient(135deg, #002B49 0%, #001A2C 100%);
-      color: #C5A880;
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 700;
-      font-size: 0.95rem;
-      box-shadow: 0 4px 15px rgba(0,43,73,0.15);
-      border: 1px solid rgba(197,168,128,0.3);
-      text-transform: uppercase;
-      text-align: center;
-      line-height: 1.2;
-    }
-    .itinerary-content {
-      background: #FFFFFF;
-      border: 1px solid #E2E8F0;
-      border-radius: 12px;
-      padding: 1.5rem 1.75rem;
-      flex-grow: 1;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
-      transition: all 0.3s ease;
-    }
-    .itinerary-content:hover {
-      border-color: #C5A880;
-      box-shadow: 0 8px 24px rgba(0,43,73,0.08);
-    }
-    .itinerary-day-title {
-      font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      font-size: 1.25rem;
-      color: #002B49;
-      margin-bottom: 0.75rem;
-      font-weight: 600;
-    }
-    .itinerary-day-desc {
-      color: #475569;
-      font-size: 0.95rem;
-      line-height: 1.7;
-      margin-bottom: 1rem;
-    }
-    .itinerary-meta-tags {
-      display: flex;
-      gap: 0.75rem;
-      flex-wrap: wrap;
-    }
-    .itinerary-tag {
-      background: #F1F5F9;
-      color: #002B49;
-      padding: 0.35rem 0.75rem;
-      border-radius: 6px;
-      font-size: 0.82rem;
-      font-weight: 600;
-    }
-    .inclusions-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2rem;
-      margin-top: 2rem;
-    }
-    @media (max-width: 768px) {
-      .inclusions-grid { grid-template-columns: 1fr; }
-      .itinerary-item { flex-direction: column; gap: 0.75rem; }
-      .itinerary-day-badge { width: auto; height: 36px; padding: 0 1rem; }
-    }
-    .inclusions-box, .exclusions-box {
-      background: #FFFFFF;
-      border-radius: 12px;
-      padding: 1.75rem;
-      border: 1px solid #E2E8F0;
-    }
-    .inclusions-box { border-top: 4px solid #10B981; }
-    .exclusions-box { border-top: 4px solid #EF4444; }
-    .inclusions-box h3, .exclusions-box h3 {
-      font-size: 1.15rem;
-      color: #002B49;
-      margin-bottom: 1rem;
-      font-weight: 700;
-    }
-    .inclusions-box ul, .exclusions-box ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-    .inclusions-box li, .exclusions-box li {
-      padding: 0.5rem 0;
-      color: #475569;
-      font-size: 0.92rem;
-      display: flex;
-      align-items: flex-start;
-      gap: 0.6rem;
-      border-bottom: 1px dashed #F1F5F9;
-    }
-    .inclusions-box li span { color: #10B981; font-weight: bold; }
-    .exclusions-box li span { color: #EF4444; font-weight: bold; }
-    .related-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-      margin-top: 2rem;
-    }
-    .related-tour-card {
-      background: #FFFFFF;
-      border: 1px solid #E2E8F0;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.04);
-      transition: all 0.3s ease;
-      display: flex;
-      flex-direction: column;
-    }
-    .related-tour-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 12px 28px rgba(0,43,73,0.12);
-    }
-    .related-tour-img-wrap {
-      position: relative;
-      height: 200px;
-      overflow: hidden;
-    }
-    .related-tour-img-wrap img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.5s ease;
-    }
-    .related-tour-card:hover .related-tour-img-wrap img {
-      transform: scale(1.05);
-    }
-    .related-tour-duration {
-      position: absolute;
-      top: 12px;
-      left: 12px;
-      background: rgba(0, 43, 73, 0.85);
-      color: #C5A880;
-      padding: 4px 12px;
-      border-radius: 20px;
-      font-size: 0.78rem;
-      font-weight: 700;
-    }
-    .related-tour-content {
-      padding: 1.5rem;
-      display: flex;
-      flex-direction: column;
-      flex-grow: 1;
-    }
-    .related-tour-title {
-      font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      font-size: 1.2rem;
-      color: #002B49;
-      margin-bottom: 0.5rem;
-    }
-    .related-tour-desc {
-      color: #64748B;
-      font-size: 0.88rem;
-      line-height: 1.6;
-      margin-bottom: 1.25rem;
-      flex-grow: 1;
-    }
-    .btn-related-explore {
-      color: #002B49;
-      font-weight: 700;
-      font-size: 0.88rem;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      transition: color 0.2s;
-    }
-    .btn-related-explore:hover {
-      color: #C5A880;
-    }
-    .map-lightbox-modal {
-      display: none;
-      position: fixed;
-      z-index: 99999;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.85);
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-    }
-    .map-lightbox-modal.active { display: flex; }
-    .map-lightbox-content { max-width: 90vw; max-height: 90vh; object-fit: contain; border-radius: 8px; }
-    .map-lightbox-close { position: absolute; top: 25px; right: 35px; color: #fff; font-size: 40px; font-weight: 300; cursor: pointer; }
-  </style>
+  <link rel="stylesheet" href="../../../css/tour-package-detail.css?v=20261103_walkers_v1">
   <link rel="stylesheet" href="../../../vendor/leaflet/leaflet.css">
   <link rel="stylesheet" href="../../../css/tours-map.css?v=20261031_osm_v5">
-  <!-- Canonical & OpenGraph SEO (Phase 7) -->
+
+  <!-- Canonical & OpenGraph SEO -->
   <link rel="canonical" href="https://kanchu12345.github.io/thai/tours/cultural/three-millennia-of-living-heritage/">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Lotus Ceylon International Tours">
@@ -247,17 +40,16 @@
 {
   "@context": "https://schema.org",
   "@type": "TouristTrip",
-  "name": "Three Millennia of Living Heritage (9 Days / 14 Nights)",
+  "name": "Three Millennia of Living Heritage (14 Nights and 15 Days)",
   "description": "The definitive 15-day cultural odyssey of Sri Lanka: Jaffna, Anuradhapura, Sigiriya, Kandy, and Galle Fort with private luxury chauffeur guide.",
   "touristType": [
     "Luxury Travel",
-    "Cultural Heritage",
-    "Private Chauffeur Tour",
-    "Cultural"
+    "Sri Lanka Cultural Tours",
+    "Private Chauffeur Tour"
   ],
   "provider": {
     "@type": "TravelAgency",
-    "name": "Lotus Ceylon International Tours & Services (Private) Limited",
+    "name": "Lotus Ceylon International Tours and Services (Private) Limited",
     "url": "https://lotusceylon.com/",
     "telephone": "+94715422384",
     "priceRange": "$$$$",
@@ -273,157 +65,13 @@
     "price": "Tailor-made",
     "availability": "https://schema.org/InStock",
     "url": "https://lotusceylon.com/inquiry-detailed.html?package=Three+Millennia+of+Living+Heritage"
-  },
-  "itinerary": {
-    "@type": "ItemList",
-    "numberOfItems": 15,
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "item": {
-          "@type": "TouristAttraction",
-          "name": "Day 1: Arrival in Negombo • Coastal Sanctuary",
-          "description": "Warm arrival reception by your Lotus Ceylon private chauffeur guide. Transfer to your luxury Negombo boutique stay."
-        }
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "item": {
-          "@type": "TouristAttraction",
-          "name": "Day 2: Wilpattu Sacred Monasteries & Anuradhapura",
-          "description": "Drive northward toward Anuradhapura, visiting tranquil forest hermitages along the border of Wilpattu. Check into your heritage sanctuary."
-        }
-      },
-      {
-        "@type": "ListItem",
-        "position": 3,
-        "item": {
-          "@type": "TouristAttraction",
-          "name": "Day 3: The First Kingdom: Sacred Anuradhapura & Mihintale",
-          "description": "Full day dedicated to the sacred stupas of Ruwanwelisaya, Abhayagiri, and the sacred Jaya Sri Maha Bodhi. Sunset ascent of Mihintale."
-        }
-      },
-      {
-        "@type": "ListItem",
-        "position": 4,
-        "item": {
-          "@type": "TouristAttraction",
-          "name": "Day 4: Journey into the Deep North • Jaffna Peninsula",
-          "description": "Cross the Elephant Pass causeway into the vibrant northern cultural capital of Jaffna. Visit the monumental Nallur Kandaswamy Kovil."
-        }
-      },
-      {
-        "@type": "ListItem",
-        "position": 5,
-        "item": {
-          "@type": "TouristAttraction",
-          "name": "Day 5: Jaffna Dutch Fort & Nagadeepa Sacred Island",
-          "description": "Explore the star-shaped Jaffna Dutch Fort and take a wooden ferry to sacred Nagadeepa Purana Viharaya and Nagapooshani Amman Temple."
-        }
-      },
-      {
-        "@type": "ListItem",
-        "position": 6,
-        "item": {
-          "@type": "TouristAttraction",
-          "name": "Day 6: Southward to the Cultural Triangle • Sigiriya",
-          "description": "Descend southward to Sigiriya. Relax in luxury eco-villas surrounded by peaceful nature and paddy fields."
-        }
-      },
-      {
-        "@type": "ListItem",
-        "position": 7,
-        "item": {
-          "@type": "TouristAttraction",
-          "name": "Day 7: Sigiriya Dawn Sky Citadel & Rural Village Life",
-          "description": "Early morning climb of Sigiriya Lion Rock Fortress. Afternoon village catamaran ride and authentic clay pot meal in Hiriwadunna."
-        }
-      },
-      {
-        "@type": "ListItem",
-        "position": 8,
-        "item": {
-          "@type": "TouristAttraction",
-          "name": "Day 8: Polonnaruwa Medieval Capital Ruins by Bicycle",
-          "description": "Cycle among the ancient stone wonders of Polonnaruwa, marveling at Gal Vihara and the lotus-shaped baths."
-        }
-      },
-      {
-        "@type": "ListItem",
-        "position": 9,
-        "item": {
-          "@type": "TouristAttraction",
-          "name": "Day 9: Dambulla Cave Temples to Royal Hill Capital Kandy",
-          "description": "Explore the five painted caves of Dambulla, then journey into the misty mountains of Kandy. Attend the evening Tooth Relic puja."
-        }
-      },
-      {
-        "@type": "ListItem",
-        "position": 10,
-        "item": {
-          "@type": "TouristAttraction",
-          "name": "Day 10: Peradeniya Botanic Gardens & Three Ancient Temples",
-          "description": "Discover the 14th-century Gadaladeniya, Embekke (famous for intricate wood carvings), and Lankatilaka temples, followed by the Royal Botanic Gardens."
-        }
-      },
-      {
-        "@type": "ListItem",
-        "position": 11,
-        "item": {
-          "@type": "TouristAttraction",
-          "name": "Day 11: Colonial Highlands of Nuwara Eliya & Tea Estates",
-          "description": "Wind through emerald tea-carpeted mountains to 'Little England'. Tour a heritage tea factory and sip pure Ceylon single-estate tea."
-        }
-      },
-      {
-        "@type": "ListItem",
-        "position": 12,
-        "item": {
-          "@type": "TouristAttraction",
-          "name": "Day 12: Scenic Mountain Descent to UNESCO Galle Dutch Fort",
-          "description": "Descend through tea valleys and cascading waterfalls to the historic southern coastline and Galle Dutch Fort."
-        }
-      },
-      {
-        "@type": "ListItem",
-        "position": 13,
-        "item": {
-          "@type": "TouristAttraction",
-          "name": "Day 13: Ramparts, Bastions & Living Maritime History of Galle",
-          "description": "Full day soaking in the ambiance of Galle Fort: visit the Dutch Reformed Church, maritime museum, and enjoy sunset drinks along Flag Rock Bastion."
-        }
-      },
-      {
-        "@type": "ListItem",
-        "position": 14,
-        "item": {
-          "@type": "TouristAttraction",
-          "name": "Day 14: Colombo Metropolitan Heritage Drive",
-          "description": "Travel to Colombo along the southern expressway. Tour the historic Pettah markets, Old Parliament, and National Museum before your farewell dinner."
-        }
-      },
-      {
-        "@type": "ListItem",
-        "position": 15,
-        "item": {
-          "@type": "TouristAttraction",
-          "name": "Day 15: Departure from Sri Lanka",
-          "description": "Bid farewell to Ceylon as your private chauffeur guide escorts you to the airport for your return flight."
-        }
-      }
-    ]
   }
 }
   </script>
-  <!-- Master Unified Stylesheet -->
-  <link rel="stylesheet" href="../../../assets/css/site.css">
 </head>
 <body class="page-tour-detail" data-cms-page="tourPackages/three-millennia-of-living-heritage">
 
-  <!-- Site Header & Navigation (Unified Walkers Luxury Standard) -->
-    <!-- Site Header & Navigation (Unified Master Standard: Mobile Max 64px, Logo Max 40px) -->
+  <!-- Site Header & Navigation -->
   <!-- @include header:start -->
 <!-- Site design & development: Infinite Design (https://infiniteweb.dev/) — see /humans.txt and LICENSE.txt -->
 <!-- Site Header & Navigation (Unified Master Standard Driven by siteGlobal) -->
@@ -579,486 +227,513 @@
 </div>
 <!-- @include mobile-menu:end -->
 
-  <!-- Full-Screen Slide-in Mobile Navigation Menu -->
-  
-
-  <section class="tour-hero-section" data-cms-bg="pkg_three-millennia-of-living-heritage.hero_bg" id="tourHero" style="background-image: url('../../../assets/images/cultural/polonnaruwa-gal-vihara-3.webp');">
-    <div class="tour-hero-overlay"></div>
-    <div class="wrapper--90">
-      <div class="tour-hero-content">
-        <nav class="tour-breadcrumb" aria-label="Breadcrumb">
-          <a href="../../../index.html" data-cms="pkg_three-millennia-of-living-heritage.a_21">Home</a>
-          <span class="sep">/</span>
-          <a href="../../../tours/index.html" data-cms="pkg_three-millennia-of-living-heritage.a_22">Tours</a>
-          <span class="sep">/</span>
-          <a href="../../../tours/cultural/index.html" data-cms="pkg_three-millennia-of-living-heritage.a_23">Sri Lanka Cultural Tours</a>
-          <span class="sep">/</span>
-          <span data-cms="pkg_three-millennia-of-living-heritage.span_4">Three Millennia of Living Heritage</span>
-        </nav>
-
-        <div class="tour-hero-badges">
-          <span class="tour-badge-pill tour-badge-gold" data-cms="category">14 Nights / 15 Days</span>
-          <span class="tour-badge-pill tour-badge-glass" data-cms="pkg_three-millennia-of-living-heritage.span_5">Sri Lanka Cultural Tours</span>
-          <span class="tour-badge-pill tour-badge-glass" data-cms="pkg_three-millennia-of-living-heritage.span_6">Private Chauffeur Guided</span>
-        </div>
-
-        <h1 class="hero-title" data-cms="title">
-          <span class="hero-title-main" data-cms="pkg_three-millennia-of-living-heritage.span_7">Three Millennia of Living Heritage</span>
-          <span class="hero-title-accent" data-cms="pkg_three-millennia-of-living-heritage.span_8">Chronicles of Faith and Ancient Stone</span>
-        </h1>
-        <p class="tour-hero-tagline" data-cms="pkg_three-millennia-of-living-heritage.p_2">The Grand North-to-South Cultural and Historical Odyssey</p>
-
-        <div class="tour-hero-actions">
-          <a href="../../../inquiry-detailed.html?package=Three+Millennia+of+Living+Heritage" class="btn-hero-primary" data-cms="pkg_three-millennia-of-living-heritage.btn_13">Inquire About This Tour</a>
-          <a href="#itinerary" class="btn-hero-secondary" data-cms="pkg_three-millennia-of-living-heritage.btn_14">View Day-by-Day Journey ↓</a>
-        </div>
-      </div>
+  <!-- SECTION 1: HERO BANNER (Full-width Walkers Standard) -->
+  <section class="tour-banner-walkers" style="background-image: url('../../../assets/images/cultural/polonnaruwa-gal-vihara-3.webp');">
+    <div class="wrapper--90" style="position: relative; z-index: 2; padding-bottom: 2.5rem; width: 100%;">
+      <nav class="tour-breadcrumb" aria-label="Breadcrumb" style="display: flex; gap: 8px; align-items: center; color: rgba(255,255,255,0.8); font-size: 0.85rem; font-weight: 500;">
+        <a href="../../../index.html" style="color: #FFFFFF; text-decoration: none;">Home</a>
+        <span>/</span>
+        <a href="../../../tours/index.html" style="color: #FFFFFF; text-decoration: none;">Tours</a>
+        <span>/</span>
+        <a href="../../../tours/cultural/index.html" style="color: #FFFFFF; text-decoration: none;">Sri Lanka Cultural Tours</a>
+        <span>/</span>
+        <span style="color: #D4A359;">Three Millennia of Living Heritage</span>
+      </nav>
     </div>
   </section>
 
-  <section class="tour-facts-bar">
-    <div class="wrapper--90">
-      <div class="tour-facts-grid">
-        <div class="tour-fact-item">
-          <div>
-            <p class="tour-fact-label" data-cms="pkg_three-millennia-of-living-heritage.p_3">Duration</p>
-            <p class="tour-fact-value" data-cms="pkg_three-millennia-of-living-heritage.p_4">9 Days / 14 Nights</p>
-          </div>
-        </div>
-
-        <div class="tour-fact-item">
-          <div>
-            <p class="tour-fact-label" data-cms="pkg_three-millennia-of-living-heritage.p_5">Transport</p>
-            <p class="tour-fact-value" data-cms="pkg_three-millennia-of-living-heritage.p_6">Private Luxury AC Chauffeur</p>
-          </div>
-        </div>
-
-        <div class="tour-fact-item">
-          <div>
-            <p class="tour-fact-label" data-cms="pkg_three-millennia-of-living-heritage.p_7">Best Season</p>
-            <p class="tour-fact-value" data-cms="pkg_three-millennia-of-living-heritage.p_8">Year-Round (Best: November to August)</p>
-          </div>
-        </div>
-
-        <div class="tour-fact-item">
-          <div>
-            <p class="tour-fact-label" data-cms="pkg_three-millennia-of-living-heritage.p_9">Accommodation</p>
-            <p class="tour-fact-value" data-cms="pkg_three-millennia-of-living-heritage.p_10">Handpicked 5★ &amp; Boutique Stays</p>
-          </div>
-        </div>
-
-        <div class="tour-fact-item">
-          <div>
-            <p class="tour-fact-label">Price</p>
-            <p class="tour-fact-value" data-cms="pkg_three-millennia-of-living-heritage.p_11">Tailor-Made on Request</p>
-          </div>
-        </div>
+  <!-- SECTION 2: OVERVIEW & HEADER (Walkers Standard) -->
+  <section class="tour-overview-walkers">
+    <div class="wrapper--70" style="max-width: 980px; margin: 0 auto;">
+      <span class="tour-badge-pill-walkers">Recommended for Culture, Heritage</span>
+      <div class="tour-category-sub-walkers">Sri Lanka Cultural Tours</div>
+      <h1 class="tour-title-walkers">Three Millennia of Living Heritage</h1>
+      <div class="tour-duration-line-walkers">
+        <span>14 Nights and 15 Days</span>
       </div>
-    </div>
-  </section>
-
-    <!-- SEASONALITY / BEST TIME TO VISIT STRIP -->
-  <div class="wrapper--90" style="margin-top: 2rem;">
-    <div id="lotusSeasonStripContainer"></div>
-  </div>
-  <main class="tour-main-section padding-top--70 padding-bottom--100">
-    <div class="wrapper--90">
-      <div class="tour-main-layout" id="itinerary">
-        
-        <div class="tour-itinerary-col">
-          <div class="section-watermark-header" style="margin-bottom: 2rem;">
-            <p class="watermark-heading" data-cms="pkg_three-millennia-of-living-heritage.p_12">ITINERARY</p>
-            <h2 class="section-header-title" data-cms="pkg_three-millennia-of-living-heritage.heading_1">Detailed Day-by-Day Journey</h2>
-          </div>
-          <p class="itinerary-section-sub" style="color: #475569; font-size: 1rem; line-height: 1.7; margin-bottom: 2.5rem;" data-cms="pkg_three-millennia-of-living-heritage.p_13">
-            Every element of this bespoke itinerary is privately chauffeured, seamlessly managed, and fully customizable to your personal travel pace and desires.
-          </p>
-
-          <div class="itinerary-timeline" data-cms-list="itinerary">
-            
-        <div class="itinerary-item" data-day="1">
-          <div class="itinerary-day-badge">Day 1</div>
-          <div class="itinerary-content">
-            <h3 class="itinerary-day-title" data-cms="pkg_three-millennia-of-living-heritage.heading_2">Arrival in Negombo • Coastal Sanctuary</h3>
-            <p class="itinerary-day-desc" data-cms="pkg_three-millennia-of-living-heritage.p_14">Warm arrival reception by your Lotus Ceylon private chauffeur guide. Transfer to your luxury Negombo boutique stay.</p>
-            <div class="itinerary-meta-tags">
-              <span class="itinerary-meta-pill" data-cms="duration">Overnight: Negombo Beach Boutique Resort</span>
-              <span class="itinerary-meta-pill">Breakfast and Gourmet Dinner</span>
-              <span class="itinerary-meta-pill"></span>
-            </div>
-          </div>
-        </div>
-        
-
-        <div class="itinerary-item" data-day="2">
-          <div class="itinerary-day-badge">Day 2</div>
-          <div class="itinerary-content">
-            <h3 class="itinerary-day-title" data-cms="pkg_three-millennia-of-living-heritage.heading_3">Wilpattu Sacred Monasteries and Anuradhapura</h3>
-            <p class="itinerary-day-desc" data-cms="pkg_three-millennia-of-living-heritage.p_15">Drive northward toward Anuradhapura, visiting tranquil forest hermitages along the border of Wilpattu. Check into your heritage sanctuary.</p>
-            <div class="itinerary-meta-tags">
-              <span class="itinerary-meta-pill">Overnight: Anuradhapura Heritage Sanctuary</span>
-              <span class="itinerary-meta-pill">Breakfast and Gourmet Dinner</span>
-              <span class="itinerary-meta-pill"></span>
-            </div>
-          </div>
-        </div>
-        
-
-        <div class="itinerary-item" data-day="3">
-          <div class="itinerary-day-badge">Day 3</div>
-          <div class="itinerary-content">
-            <h3 class="itinerary-day-title" data-cms="pkg_three-millennia-of-living-heritage.heading_4">The First Kingdom: Sacred Anuradhapura and Mihintale</h3>
-            <p class="itinerary-day-desc" data-cms="pkg_three-millennia-of-living-heritage.p_16">Full day dedicated to the sacred stupas of Ruwanwelisaya, Abhayagiri, and the sacred Jaya Sri Maha Bodhi. Sunset ascent of Mihintale.</p>
-            <div class="itinerary-meta-tags">
-              <span class="itinerary-meta-pill">Overnight: Anuradhapura Heritage Sanctuary</span>
-              <span class="itinerary-meta-pill">Breakfast and Gourmet Dinner</span>
-              <span class="itinerary-meta-pill"></span>
-            </div>
-          </div>
-        </div>
-        
-
-        <div class="itinerary-item" data-day="4">
-          <div class="itinerary-day-badge">Day 4</div>
-          <div class="itinerary-content">
-            <h3 class="itinerary-day-title" data-cms="pkg_three-millennia-of-living-heritage.heading_5">Journey into the Deep North • Jaffna Peninsula</h3>
-            <p class="itinerary-day-desc" data-cms="pkg_three-millennia-of-living-heritage.p_17">Cross the Elephant Pass causeway into the vibrant northern cultural capital of Jaffna. Visit the monumental Nallur Kandaswamy Kovil.</p>
-            <div class="itinerary-meta-tags">
-              <span class="itinerary-meta-pill">Overnight: Jaffna Luxury Heritage Hotel</span>
-              <span class="itinerary-meta-pill">Breakfast and Gourmet Dinner</span>
-              <span class="itinerary-meta-pill"></span>
-            </div>
-          </div>
-        </div>
-        
-
-        <div class="itinerary-item" data-day="5">
-          <div class="itinerary-day-badge">Day 5</div>
-          <div class="itinerary-content">
-            <h3 class="itinerary-day-title" data-cms="pkg_three-millennia-of-living-heritage.heading_6">Jaffna Dutch Fort and Nagadeepa Sacred Island</h3>
-            <p class="itinerary-day-desc" data-cms="pkg_three-millennia-of-living-heritage.p_18">Explore the star-shaped Jaffna Dutch Fort and take a wooden ferry to sacred Nagadeepa Purana Viharaya and Nagapooshani Amman Temple.</p>
-            <div class="itinerary-meta-tags">
-              <span class="itinerary-meta-pill">Overnight: Jaffna Luxury Heritage Hotel</span>
-              <span class="itinerary-meta-pill">Breakfast and Gourmet Dinner</span>
-              <span class="itinerary-meta-pill"></span>
-            </div>
-          </div>
-        </div>
-        
-
-        <div class="itinerary-item" data-day="6">
-          <div class="itinerary-day-badge">Day 6</div>
-          <div class="itinerary-content">
-            <h3 class="itinerary-day-title" data-cms="pkg_three-millennia-of-living-heritage.heading_7">Southward to the Cultural Triangle • Sigiriya</h3>
-            <p class="itinerary-day-desc" data-cms="pkg_three-millennia-of-living-heritage.p_19">Descend southward to Sigiriya. Relax in luxury eco-villas surrounded by peaceful nature and paddy fields.</p>
-            <div class="itinerary-meta-tags">
-              <span class="itinerary-meta-pill">Overnight: Sigiriya Luxury Water Pavilion</span>
-              <span class="itinerary-meta-pill">Breakfast and Gourmet Dinner</span>
-              <span class="itinerary-meta-pill"></span>
-            </div>
-          </div>
-        </div>
-        
-
-        <div class="itinerary-item" data-day="7">
-          <div class="itinerary-day-badge">Day 7</div>
-          <div class="itinerary-content">
-            <h3 class="itinerary-day-title" data-cms="pkg_three-millennia-of-living-heritage.heading_8">Sigiriya Dawn Sky Citadel and Rural Village Life</h3>
-            <p class="itinerary-day-desc" data-cms="pkg_three-millennia-of-living-heritage.p_20">Early morning climb of Sigiriya Lion Rock Fortress. Afternoon village catamaran ride and authentic clay pot meal in Hiriwadunna.</p>
-            <div class="itinerary-meta-tags">
-              <span class="itinerary-meta-pill">Overnight: Sigiriya Luxury Water Pavilion</span>
-              <span class="itinerary-meta-pill">Breakfast and Gourmet Dinner</span>
-              <span class="itinerary-meta-pill"></span>
-            </div>
-          </div>
-        </div>
-        
-
-        <div class="itinerary-item" data-day="8">
-          <div class="itinerary-day-badge">Day 8</div>
-          <div class="itinerary-content">
-            <h3 class="itinerary-day-title" data-cms="pkg_three-millennia-of-living-heritage.heading_9">Polonnaruwa Medieval Capital Ruins by Bicycle</h3>
-            <p class="itinerary-day-desc" data-cms="pkg_three-millennia-of-living-heritage.p_21">Cycle among the ancient stone wonders of Polonnaruwa, marveling at Gal Vihara and the lotus-shaped baths.</p>
-            <div class="itinerary-meta-tags">
-              <span class="itinerary-meta-pill">Overnight: Sigiriya Luxury Water Pavilion</span>
-              <span class="itinerary-meta-pill">Breakfast and Gourmet Dinner</span>
-              <span class="itinerary-meta-pill"></span>
-            </div>
-          </div>
-        </div>
-        
-
-        <div class="itinerary-item" data-day="9">
-          <div class="itinerary-day-badge">Day 9</div>
-          <div class="itinerary-content">
-            <h3 class="itinerary-day-title" data-cms="pkg_three-millennia-of-living-heritage.heading_10">Dambulla Cave Temples to Royal Hill Capital Kandy</h3>
-            <p class="itinerary-day-desc" data-cms="pkg_three-millennia-of-living-heritage.p_22">Explore the five painted caves of Dambulla, then journey into the misty mountains of Kandy. Attend the evening Tooth Relic puja.</p>
-            <div class="itinerary-meta-tags">
-              <span class="itinerary-meta-pill">Overnight: Kandy Royal Heritage Hotel</span>
-              <span class="itinerary-meta-pill">Breakfast and Gourmet Dinner</span>
-              <span class="itinerary-meta-pill"></span>
-            </div>
-          </div>
-        </div>
-        
-
-        <div class="itinerary-item" data-day="10">
-          <div class="itinerary-day-badge">Day 10</div>
-          <div class="itinerary-content">
-            <h3 class="itinerary-day-title" data-cms="pkg_three-millennia-of-living-heritage.heading_11">Peradeniya Botanic Gardens and Three Ancient Temples</h3>
-            <p class="itinerary-day-desc" data-cms="pkg_three-millennia-of-living-heritage.p_23">Discover the 14th-century Gadaladeniya, Embekke (famous for intricate wood carvings), and Lankatilaka temples, followed by the Royal Botanic Gardens.</p>
-            <div class="itinerary-meta-tags">
-              <span class="itinerary-meta-pill">Overnight: Kandy Royal Heritage Hotel</span>
-              <span class="itinerary-meta-pill">Breakfast and Gourmet Dinner</span>
-              <span class="itinerary-meta-pill"></span>
-            </div>
-          </div>
-        </div>
-        
-
-        <div class="itinerary-item" data-day="11">
-          <div class="itinerary-day-badge">Day 11</div>
-          <div class="itinerary-content">
-            <h3 class="itinerary-day-title" data-cms="pkg_three-millennia-of-living-heritage.heading_12">Colonial Highlands of Nuwara Eliya and Tea Estates</h3>
-            <p class="itinerary-day-desc" data-cms="pkg_three-millennia-of-living-heritage.p_24">Wind through emerald tea-carpeted mountains to 'Little England'. Tour a heritage tea factory and sip pure Ceylon single-estate tea.</p>
-            <div class="itinerary-meta-tags">
-              <span class="itinerary-meta-pill">Overnight: Nuwara Eliya Heritage Tea Bungalow</span>
-              <span class="itinerary-meta-pill">Breakfast and Gourmet Dinner</span>
-              <span class="itinerary-meta-pill"></span>
-            </div>
-          </div>
-        </div>
-        
-
-        <div class="itinerary-item" data-day="12">
-          <div class="itinerary-day-badge">Day 12</div>
-          <div class="itinerary-content">
-            <h3 class="itinerary-day-title" data-cms="pkg_three-millennia-of-living-heritage.heading_13">Scenic Mountain Descent to UNESCO Galle Dutch Fort</h3>
-            <p class="itinerary-day-desc" data-cms="pkg_three-millennia-of-living-heritage.p_25">Descend through tea valleys and cascading waterfalls to the historic southern coastline and Galle Dutch Fort.</p>
-            <div class="itinerary-meta-tags">
-              <span class="itinerary-meta-pill">Overnight: Galle Fort Luxury Heritage Suite</span>
-              <span class="itinerary-meta-pill">Breakfast and Gourmet Dinner</span>
-              <span class="itinerary-meta-pill"></span>
-            </div>
-          </div>
-        </div>
-        
-
-        <div class="itinerary-item" data-day="13">
-          <div class="itinerary-day-badge">Day 13</div>
-          <div class="itinerary-content">
-            <h3 class="itinerary-day-title" data-cms="pkg_three-millennia-of-living-heritage.heading_14">Ramparts, Bastions and Living Maritime History of Galle</h3>
-            <p class="itinerary-day-desc" data-cms="pkg_three-millennia-of-living-heritage.p_26">Full day soaking in the ambiance of Galle Fort: visit the Dutch Reformed Church, maritime museum, and enjoy sunset drinks along Flag Rock Bastion.</p>
-            <div class="itinerary-meta-tags">
-              <span class="itinerary-meta-pill">Overnight: Galle Fort Luxury Heritage Suite</span>
-              <span class="itinerary-meta-pill">Breakfast and Gourmet Dinner</span>
-              <span class="itinerary-meta-pill"></span>
-            </div>
-          </div>
-        </div>
-        
-
-        <div class="itinerary-item" data-day="14">
-          <div class="itinerary-day-badge">Day 14</div>
-          <div class="itinerary-content">
-            <h3 class="itinerary-day-title" data-cms="pkg_three-millennia-of-living-heritage.heading_15">Colombo Metropolitan Heritage Drive</h3>
-            <p class="itinerary-day-desc" data-cms="pkg_three-millennia-of-living-heritage.p_27">Travel to Colombo along the southern expressway. Tour the historic Pettah markets, Old Parliament, and National Museum before your farewell dinner.</p>
-            <div class="itinerary-meta-tags">
-              <span class="itinerary-meta-pill">Overnight: Colombo 5★ City Hotel</span>
-              <span class="itinerary-meta-pill">Breakfast and Gourmet Dinner</span>
-              <span class="itinerary-meta-pill"></span>
-            </div>
-          </div>
-        </div>
-        
-
-        <div class="itinerary-item" data-day="15">
-          <div class="itinerary-day-badge">Day 15</div>
-          <div class="itinerary-content">
-            <h3 class="itinerary-day-title" data-cms="pkg_three-millennia-of-living-heritage.heading_16">Departure from Sri Lanka</h3>
-            <p class="itinerary-day-desc" data-cms="pkg_three-millennia-of-living-heritage.p_28">Bid farewell to Ceylon as your private chauffeur guide escorts you to the airport for your return flight.</p>
-            <div class="itinerary-meta-tags">
-              <span class="itinerary-meta-pill">Departure day · Breakfast</span>
-              <span class="itinerary-meta-pill">Breakfast and Gourmet Dinner</span>
-              <span class="itinerary-meta-pill"></span>
-            </div>
-          </div>
-        </div>
-        
-          </div>
-
-          <div class="inclusions-grid">
-            <div class="inclusions-box">
-              <h3 data-cms="pkg_three-millennia-of-living-heritage.heading_17">✓ What's Included</h3>
-              <ul>
-                <li data-cms-html="pkg_three-millennia-of-living-heritage.li_1"><span>✓</span> Private luxury vehicle with dedicated licensed chauffeur guide for all 9 Days</li><li data-cms-html="pkg_three-millennia-of-living-heritage.li_2"><span>✓</span> 14 Nights luxury boutique and 5★ heritage accommodation across all regions</li><li data-cms-html="pkg_three-millennia-of-living-heritage.li_3"><span>✓</span> Daily gourmet breakfast and curated dining experiences</li><li data-cms-html="pkg_three-millennia-of-living-heritage.li_4"><span>✓</span> All monument and site entrance fees across Anuradhapura, Jaffna, Sigiriya, Polonnaruwa, Dambulla, Kandy, and Galle</li><li data-cms-html="pkg_three-millennia-of-living-heritage.li_5"><span>✓</span> Bicycle hire in Polonnaruwa and private boat crossing to Nagadeepa</li><li data-cms-html="pkg_three-millennia-of-living-heritage.li_6"><span>✓</span> Tea factory private VIP tasting experience</li><li data-cms-html="pkg_three-millennia-of-living-heritage.li_7"><span>✓</span> All tolls, parking, fuel, and 24/7 Lotus Ceylon concierge support</li>
-              </ul>
-            </div>
-
-            <div class="exclusions-box">
-              <h3 data-cms="pkg_three-millennia-of-living-heritage.heading_18">✕ What's Excluded</h3>
-              <ul>
-                <li data-cms-html="pkg_three-millennia-of-living-heritage.li_8"><span>✕</span> International airfare and Sri Lanka ETA visa fees</li><li data-cms-html="pkg_three-millennia-of-living-heritage.li_9"><span>✕</span> Lunches and alcoholic drinks</li><li data-cms-html="pkg_three-millennia-of-living-heritage.li_10"><span>✕</span> Optional hot air ballooning or scenic helicopter charters</li><li data-cms-html="pkg_three-millennia-of-living-heritage.li_11"><span>✕</span> Personal gratuities and travel insurance</li>
-              </ul>
-            </div>
-          </div>
-
-          
-        <div id="three-millennia-of-living-heritage-leaflet-map" 
-               class="lotus-street-map-frame js-lotus-route-map" 
-               data-package-id="pkg-cultural-03" 
-               data-data-path="../../../data/packages.json"
-               role="region" 
-               aria-label="Interactive Route Map for Three Millennia of Living Heritage">
-          </div>
-        
-
-        </div>
-
-        <aside class="tour-sidebar">
-          <div class="tour-booking-card" style="position: sticky; top: 100px;">
-            <div class="tour-price-header">
-              <span class="tour-price-sub" data-cms="pkg_three-millennia-of-living-heritage.span_9">Custom Private Journey</span>
-              <div class="tour-price-val" data-cms="price">Tailor-Made Quote</div>
-              <p class="tour-price-note" data-cms="pkg_three-millennia-of-living-heritage.p_29">Price customized based on your dates, party size and preferred boutique stays.</p>
-            </div>
-
-            <div style="padding: 1.25rem 1.5rem 0.5rem;">
-              <h4 style="font-size: 0.95rem; font-weight: 700; color: #002B49; margin-bottom: 0.75rem; text-transform: uppercase;" data-cms="pkg_three-millennia-of-living-heritage.heading_19">Journey Highlights</h4>
-              <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.6rem;">
-                <li data-cms-html="pkg_three-millennia-of-living-heritage.li_12"><span>★</span> Traverse the full cultural breadth of Ceylon from ancient northern Tamil kingdoms to southern colonial ramparts</li><li data-cms-html="pkg_three-millennia-of-living-heritage.li_13"><span>★</span> Discover the sacred islands, towering kovils, and colonial libraries of Jaffna</li><li data-cms-html="pkg_three-millennia-of-living-heritage.li_14"><span>★</span> Pay homage at the sacred Bodhi Tree in Anuradhapura and climb Sigiriya Rock Citadel</li><li data-cms-html="pkg_three-millennia-of-living-heritage.li_15"><span>★</span> Experience highland colonial tea estates, scenic mountain railways, and sacred mountain temples</li><li data-cms-html="pkg_three-millennia-of-living-heritage.li_16"><span>★</span> Walk the 400-year-old cobblestone lanes and ocean ramparts of UNESCO Galle Dutch Fort</li>
-              </ul>
-            </div>
-
-            <div style="padding: 1.5rem;">
-              <button type="button" class="btn-sidebar-inquire" style="display: block; width: 100%; text-align: center; margin-bottom: 0.75rem; background: linear-gradient(135deg, #C9962B 0%, #F2C14E 100%); color: #002B49; border: none; font-weight: 700; cursor: pointer; padding: 0.85rem 1rem; border-radius: 8px; font-size: 0.92rem; font-family: inherit;" onclick="window.LotusInteractive.openMakeItYoursModal('Three Millennia of Living Heritage', 'cultural')" data-cms="pkg_three-millennia-of-living-heritage.btn_15">
-                <span data-cms="pkg_three-millennia-of-living-heritage.span_10">✨ Make It Yours (Tailor Tour)</span>
-              </button>
-              <a href="../../../inquiry-detailed.html?package=Three+Millennia+of+Living+Heritage" class="btn-sidebar-inquire" style="display: block; text-align: center; text-decoration: none; margin-bottom: 0.75rem;" data-cms="pkg_three-millennia-of-living-heritage.btn_16">Inquire About This Tour</a>
-              <a href="https://wa.me/94715422384?text=Hello+Lotus+Ceylon%2C+I+would+like+to+inquire+about+the+Three+Millennia+of+Living+Heritage+%2814+Nights+%2F+15+Days%29+private+tour." target="_blank" rel="noopener" class="btn-sidebar-whatsapp" style="display: flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none;" data-cms="pkg_three-millennia-of-living-heritage.btn_17">
-                <span data-cms="pkg_three-millennia-of-living-heritage.span_11">Chat on WhatsApp</span>
-              </a>
-              <div class="tour-action-pills" style="margin-top: 1rem; justify-content: center; display: flex; gap: 0.5rem; flex-wrap: wrap;">
-                <button type="button" class="btn-pill-save" onclick="window.LotusInteractive.toggleSaveTour('pkg-cultural-03', this)" aria-pressed="false" style="padding: 0.45rem 0.85rem; font-size: 0.8rem; border: 1px solid #CBD5E1; border-radius: 20px; background: #FFF; cursor: pointer; display: flex; align-items: center; gap: 4px;" data-cms="pkg_three-millennia-of-living-heritage.btn_18">
-                  <span>❤️</span> <span class="save-btn-text" data-cms="pkg_three-millennia-of-living-heritage.span_12">Save Trip</span>
-                </button>
-                <button type="button" class="btn-pill-share" onclick="window.LotusInteractive.shareTourWhatsApp('Three Millennia of Living Heritage')" style="padding: 0.45rem 0.85rem; font-size: 0.8rem; border: 1px solid #CBD5E1; border-radius: 20px; background: #FFF; cursor: pointer; display: flex; align-items: center; gap: 4px;" data-cms="pkg_three-millennia-of-living-heritage.btn_19">
-                  <span data-cms="pkg_three-millennia-of-living-heritage.span_13">Share</span>
-                </button>
-                <button type="button" class="btn-pill-share" onclick="window.LotusInteractive.copyTourLink()" style="padding: 0.45rem 0.85rem; font-size: 0.8rem; border: 1px solid #CBD5E1; border-radius: 20px; background: #FFF; cursor: pointer; display: flex; align-items: center; gap: 4px;" data-cms="pkg_three-millennia-of-living-heritage.btn_20">
-                  <span data-cms="pkg_three-millennia-of-living-heritage.span_14">Link</span>
-                </button>
-              </div>
-            </div>
-
-            <div class="tour-assistance-box" style="padding: 1.25rem 1.5rem; background: #F8FAFC; border-top: 1px solid #E2E8F0; border-radius: 0 0 12px 12px;">
-              <h4 style="font-size: 0.95rem; color: #002B49; font-weight: 700; margin-bottom: 0.35rem;" data-cms="pkg_three-millennia-of-living-heritage.heading_20">Speak With Our Travel Specialists</h4>
-              <p style="font-size: 0.85rem; color: #64748B; margin-bottom: 0.75rem; line-height: 1.5;" data-cms="pkg_three-millennia-of-living-heritage.p_30">Our local destination experts in Colombo and Kandy are available 24/7 to personalize this route.</p>
-              <div style="display: flex; align-items: center; gap: 8px; font-weight: 700; color: #002B49; font-size: 0.9rem;">
-                <span data-cms="pkg_three-millennia-of-living-heritage.span_15">+94 71 54 22 384</span>
-              </div>
-                          <div style="margin-top: 0.85rem; padding-top: 0.75rem; border-top: 1px dashed #CBD5E1;">
-                <a href="../../../tours/index.html#travel-info-hub" style="display: flex; align-items: center; gap: 6px; font-size: 0.82rem; color: #8C6D3F; font-weight: 700; text-decoration: none;">
-                  <span data-cms="pkg_three-millennia-of-living-heritage.span_16">Travel Prep: Visa, Weather and Etiquette ➔</span>
-                </a>
-              </div>
-            </div>
-          </div>
-        </aside>
-
+      <div class="tour-desc-walkers">
+        <p>The Grand North-to-South Cultural & Historical Odyssey</p>
+        <p>Every element of this bespoke journey is privately chauffeured in luxury air-conditioned vehicles, thoughtfully paced, and customized to your exact timeline, flight schedules, and personal preferences by Lotus Ceylon destination specialists.</p>
       </div>
-    </div>
-  </main>
-
-  <section class="related-tours-section padding-top--70 padding-bottom--70" style="background: #F8FAFC; border-top: 1px solid #E2E8F0;">
-    <div class="wrapper--90">
-      <div class="section-watermark-header text-center" style="margin-bottom: 1.5rem;">
-        <p class="watermark-heading" data-cms="pkg_three-millennia-of-living-heritage.p_31">MORE EXPERIENCES</p>
-        <h2 class="section-header-title" data-cms="pkg_three-millennia-of-living-heritage.heading_21">Other Signature Sri Lanka Cultural Tours</h2>
-      </div>
-      <div class="related-grid">
-        
-        <div class="related-tour-card">
-          <div class="related-tour-img-wrap">
-            <img src="../../../assets/images/cultural/sigiriya-1.webp" alt="Royal Kingdoms and Sacred Temples" loading="lazy" data-cms-img="pkg_three-millennia-of-living-heritage.img_1">
-            <span class="related-tour-duration" data-cms="pkg_three-millennia-of-living-heritage.span_17">14 Nights / 15 Days</span>
-          </div>
-          <div class="related-tour-content">
-            <h4 class="related-tour-title" data-cms="pkg_three-millennia-of-living-heritage.heading_22">Royal Kingdoms and Sacred Temples</h4>
-            <p class="related-tour-desc" data-cms="pkg_three-millennia-of-living-heritage.p_32">The Essential UNESCO Heritage Triangle</p>
-            <div class="related-tour-actions">
-              <a href="../../../tours/cultural/royal-kingdoms-sacred-temples/index.html" class="btn-related-explore" data-cms="pkg_three-millennia-of-living-heritage.btn_21">Explore Itinerary ➔</a>
-            </div>
-          </div>
-        </div>
-        
-
-        <div class="related-tour-card">
-          <div class="related-tour-img-wrap">
-            <img src="../../../assets/images/cultural/dambulla-cave-temple-2.webp" alt="The Sacred Lotus Triangle" loading="lazy" data-cms-img="pkg_three-millennia-of-living-heritage.img_2">
-            <span class="related-tour-duration" data-cms="pkg_three-millennia-of-living-heritage.span_18">14 Nights / 15 Days</span>
-          </div>
-          <div class="related-tour-content">
-            <h4 class="related-tour-title" data-cms="pkg_three-millennia-of-living-heritage.heading_23">The Sacred Lotus Triangle</h4>
-            <p class="related-tour-desc" data-cms="pkg_three-millennia-of-living-heritage.p_33">Living UNESCO Heritage Across Three Ancient Capitals</p>
-            <div class="related-tour-actions">
-              <a href="../../../tours/cultural/the-sacred-lotus-triangle/index.html" class="btn-related-explore" data-cms="pkg_three-millennia-of-living-heritage.btn_22">Explore Itinerary ➔</a>
-            </div>
-          </div>
-        </div>
-        
-      </div>
-    </div>
-  </section>
-
-  <section class="banner-bottom-cta padding-top--80 padding-bottom--80" style="background: linear-gradient(135deg, #001A2C 0%, #002B49 100%); color: #FFFFFF; text-align: center;">
-    <div class="wrapper--70">
-      <span style="color: #C5A880; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase;" data-cms="pkg_three-millennia-of-living-heritage.span_19">PURE JOURNEYS &bull; SACRED EXPERIENCES</span>
-      <h2 style="font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 2.4rem; margin: 1rem 0; color: #FFFFFF;" data-cms="pkg_three-millennia-of-living-heritage.heading_24">Ready to Experience Three Millennia of Living Heritage?</h2>
-      <p style="color: rgba(255,255,255,0.85); font-size: 1.05rem; max-width: 650px; margin: 0 auto 2rem; line-height: 1.6;" data-cms="pkg_three-millennia-of-living-heritage.p_34">
-        Every detail of this journey is privately chauffeured and customized to your exact timeline, flight schedules, and luxury accommodation preferences.
-      </p>
       <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
-        <a href="../../../inquiry-detailed.html?package=Three+Millennia+of+Living+Heritage" class="gold-inquire-btn" style="text-decoration: none; padding: 14px 28px; font-weight: 700; font-size: 0.95rem;" data-cms="pkg_three-millennia-of-living-heritage.btn_23">Inquire About This Tour</a>
-        <a href="https://wa.me/94715422384?text=Hello+Lotus+Ceylon%2C+I+would+like+to+inquire+about+the+Three+Millennia+of+Living+Heritage+%2814+Nights+%2F+15+Days%29+private+tour." target="_blank" rel="noopener" class="gold-inquire-btn" style="background: transparent; border: 2px solid #C5A880; color: #C5A880; text-decoration: none; padding: 12px 24px; font-weight: 700; font-size: 0.95rem;" data-cms="pkg_three-millennia-of-living-heritage.btn_24">WhatsApp Travel Specialist</a>
-      </div>
-    </div>
-  </section>
-
-  
-
-  <!-- ==========================================================================
-       WHY TRAVEL WITH LOTUS & FREQUENTLY ASKED QUESTIONS
-       ========================================================================== -->
-  <section class="lotus-why-section" id="why-lotus">
-    <div id="lotusWhyContainer"></div>
-  </section>
-
-  <section class="lotus-faq-section" id="faqs">
-    <div id="lotusFaqContainer"></div>
-  </section>
-
-    <!-- Sacred Ceylon CTA Band (Unified Standard) -->
-    <!-- Sacred Ceylon CTA Band (Unified Standard) -->
-  <section class="sacred-cta-banner" data-cms-bg="siteGlobal.branding.cta_bg">
-    <div class="cta-motif" aria-hidden="true"></div>
-    <div class="cta-content">
-      <h2 class="cta-title" data-cms="pkg_three-millennia-of-living-heritage.heading_25">Ready to Begin Your Sacred Ceylon Journey?</h2>
-      <p class="cta-desc" data-cms="pkg_three-millennia-of-living-heritage.p_35">Speak directly with our senior destination specialists in Ja-Ela or connect via WhatsApp for an immediate bespoke itinerary proposal tailored to your rhythm.</p>
-      <div class="cta-btn-group">
-        <a href="../../../inquiry-detailed.html" class="btn-primary-gold" data-cms="pkg_three-millennia-of-living-heritage.btn_25">
-          <span data-cms="pkg_three-millennia-of-living-heritage.span_20">Plan My Bespoke Journey</span>
-          <span aria-hidden="true">➔</span>
+        <a class="btn-inquire-gold-pill" href="../../../inquiry-detailed.html?package=Three+Millennia+of+Living+Heritage">
+          <span>Inquire Now</span>
         </a>
-        <a href="https://wa.me/94715422384?text=Hello%20Lotus%20Ceylon!%20I%20would%20like%20to%20inquire%20about%20a%20private%20tour." target="_blank" rel="noopener noreferrer" class="cta-wa-btn" data-cms="pkg_three-millennia-of-living-heritage.btn_26">
-          <span data-cms="pkg_three-millennia-of-living-heritage.span_21">Chat on WhatsApp</span>
+        <a href="https://wa.me/94715422384?text=Hello%20Lotus%20Ceylon!%20I%20would%20like%20to%20inquire%20about%20Three+Millennia+of+Living+Heritage." target="_blank" rel="noopener noreferrer" class="btn-cta-whatsapp">
+          <span>WhatsApp Specialist</span>
         </a>
       </div>
     </div>
   </section>
 
-    <!-- Site Footer (Unified Walkers Standard with Single Source of Truth Coordinates) -->
-    <!-- Site Footer (Unified Walkers Standard with Single Source of Truth Coordinates) -->
+  <!-- SECTION 3: ITINERARY ACCORDION (Walkers Standard) -->
+  <section class="itinerary-section-walkers" id="itinerary">
+    <div class="itinerary-container-walkers">
+      <h2 class="itinerary-heading-walkers">
+        <span>A journey through</span>
+        Three Millennia of Living Heritage
+      </h2>
+      <div class="walkers-accordion-wrap" id="tourInnerAccordion">
+        <div class="walkers-acc-item is-open">
+          <button type="button" class="walkers-acc-trigger" aria-expanded="true">
+            <div class="walkers-acc-left">
+              <span class="walkers-acc-day">Day 01</span>
+              <h3 class="walkers-acc-title">Arrival in Negombo • Coastal Sanctuary</h3>
+            </div>
+            <span class="walkers-acc-icon">+</span>
+          </button>
+          <div class="walkers-acc-content">
+            <p class="walkers-acc-desc">Warm arrival reception by your Lotus Ceylon private chauffeur guide. Transfer to your luxury Negombo boutique stay.</p>
+            <div class="walkers-acc-pills">
+              <span class="walkers-acc-pill overnight">Overnight: Negombo Beach Boutique Resort</span>
+              <span class="walkers-acc-pill">Meals: Breakfast & Gourmet Dinner</span>
+            </div>
+          </div>
+        </div>
+        <div class="walkers-acc-item ">
+          <button type="button" class="walkers-acc-trigger" aria-expanded="false">
+            <div class="walkers-acc-left">
+              <span class="walkers-acc-day">Day 02</span>
+              <h3 class="walkers-acc-title">Wilpattu Sacred Monasteries & Anuradhapura</h3>
+            </div>
+            <span class="walkers-acc-icon">+</span>
+          </button>
+          <div class="walkers-acc-content">
+            <p class="walkers-acc-desc">Drive northward toward Anuradhapura, visiting tranquil forest hermitages along the border of Wilpattu. Check into your heritage sanctuary.</p>
+            <div class="walkers-acc-pills">
+              <span class="walkers-acc-pill overnight">Overnight: Anuradhapura Heritage Sanctuary</span>
+              <span class="walkers-acc-pill">Meals: Breakfast & Gourmet Dinner</span>
+            </div>
+          </div>
+        </div>
+        <div class="walkers-acc-item ">
+          <button type="button" class="walkers-acc-trigger" aria-expanded="false">
+            <div class="walkers-acc-left">
+              <span class="walkers-acc-day">Day 03</span>
+              <h3 class="walkers-acc-title">The First Kingdom: Sacred Anuradhapura & Mihintale</h3>
+            </div>
+            <span class="walkers-acc-icon">+</span>
+          </button>
+          <div class="walkers-acc-content">
+            <p class="walkers-acc-desc">Full day dedicated to the sacred stupas of Ruwanwelisaya, Abhayagiri, and the sacred Jaya Sri Maha Bodhi. Sunset ascent of Mihintale.</p>
+            <div class="walkers-acc-pills">
+              <span class="walkers-acc-pill overnight">Overnight: Anuradhapura Heritage Sanctuary</span>
+              <span class="walkers-acc-pill">Meals: Breakfast & Gourmet Dinner</span>
+            </div>
+          </div>
+        </div>
+        <div class="walkers-acc-item ">
+          <button type="button" class="walkers-acc-trigger" aria-expanded="false">
+            <div class="walkers-acc-left">
+              <span class="walkers-acc-day">Day 04</span>
+              <h3 class="walkers-acc-title">Journey into the Deep North • Jaffna Peninsula</h3>
+            </div>
+            <span class="walkers-acc-icon">+</span>
+          </button>
+          <div class="walkers-acc-content">
+            <p class="walkers-acc-desc">Cross the Elephant Pass causeway into the vibrant northern cultural capital of Jaffna. Visit the monumental Nallur Kandaswamy Kovil.</p>
+            <div class="walkers-acc-pills">
+              <span class="walkers-acc-pill overnight">Overnight: Jaffna Luxury Heritage Hotel</span>
+              <span class="walkers-acc-pill">Meals: Breakfast & Gourmet Dinner</span>
+            </div>
+          </div>
+        </div>
+        <div class="walkers-acc-item ">
+          <button type="button" class="walkers-acc-trigger" aria-expanded="false">
+            <div class="walkers-acc-left">
+              <span class="walkers-acc-day">Day 05</span>
+              <h3 class="walkers-acc-title">Jaffna Dutch Fort & Nagadeepa Sacred Island</h3>
+            </div>
+            <span class="walkers-acc-icon">+</span>
+          </button>
+          <div class="walkers-acc-content">
+            <p class="walkers-acc-desc">Explore the star-shaped Jaffna Dutch Fort and take a wooden ferry to sacred Nagadeepa Purana Viharaya and Nagapooshani Amman Temple.</p>
+            <div class="walkers-acc-pills">
+              <span class="walkers-acc-pill overnight">Overnight: Jaffna Luxury Heritage Hotel</span>
+              <span class="walkers-acc-pill">Meals: Breakfast & Gourmet Dinner</span>
+            </div>
+          </div>
+        </div>
+        <div class="walkers-acc-item ">
+          <button type="button" class="walkers-acc-trigger" aria-expanded="false">
+            <div class="walkers-acc-left">
+              <span class="walkers-acc-day">Day 06</span>
+              <h3 class="walkers-acc-title">Southward to the Cultural Triangle • Sigiriya</h3>
+            </div>
+            <span class="walkers-acc-icon">+</span>
+          </button>
+          <div class="walkers-acc-content">
+            <p class="walkers-acc-desc">Descend southward to Sigiriya. Relax in luxury eco-villas surrounded by peaceful nature and paddy fields.</p>
+            <div class="walkers-acc-pills">
+              <span class="walkers-acc-pill overnight">Overnight: Sigiriya Luxury Water Pavilion</span>
+              <span class="walkers-acc-pill">Meals: Breakfast & Gourmet Dinner</span>
+            </div>
+          </div>
+        </div>
+        <div class="walkers-acc-item ">
+          <button type="button" class="walkers-acc-trigger" aria-expanded="false">
+            <div class="walkers-acc-left">
+              <span class="walkers-acc-day">Day 07</span>
+              <h3 class="walkers-acc-title">Sigiriya Dawn Sky Citadel & Rural Village Life</h3>
+            </div>
+            <span class="walkers-acc-icon">+</span>
+          </button>
+          <div class="walkers-acc-content">
+            <p class="walkers-acc-desc">Early morning climb of Sigiriya Lion Rock Fortress. Afternoon village catamaran ride and authentic clay pot meal in Hiriwadunna.</p>
+            <div class="walkers-acc-pills">
+              <span class="walkers-acc-pill overnight">Overnight: Sigiriya Luxury Water Pavilion</span>
+              <span class="walkers-acc-pill">Meals: Breakfast & Gourmet Dinner</span>
+            </div>
+          </div>
+        </div>
+        <div class="walkers-acc-item ">
+          <button type="button" class="walkers-acc-trigger" aria-expanded="false">
+            <div class="walkers-acc-left">
+              <span class="walkers-acc-day">Day 08</span>
+              <h3 class="walkers-acc-title">Polonnaruwa Medieval Capital Ruins by Bicycle</h3>
+            </div>
+            <span class="walkers-acc-icon">+</span>
+          </button>
+          <div class="walkers-acc-content">
+            <p class="walkers-acc-desc">Cycle among the ancient stone wonders of Polonnaruwa, marveling at Gal Vihara and the lotus-shaped baths.</p>
+            <div class="walkers-acc-pills">
+              <span class="walkers-acc-pill overnight">Overnight: Sigiriya Luxury Water Pavilion</span>
+              <span class="walkers-acc-pill">Meals: Breakfast & Gourmet Dinner</span>
+            </div>
+          </div>
+        </div>
+        <div class="walkers-acc-item ">
+          <button type="button" class="walkers-acc-trigger" aria-expanded="false">
+            <div class="walkers-acc-left">
+              <span class="walkers-acc-day">Day 09</span>
+              <h3 class="walkers-acc-title">Dambulla Cave Temples to Royal Hill Capital Kandy</h3>
+            </div>
+            <span class="walkers-acc-icon">+</span>
+          </button>
+          <div class="walkers-acc-content">
+            <p class="walkers-acc-desc">Explore the five painted caves of Dambulla, then journey into the misty mountains of Kandy. Attend the evening Tooth Relic puja.</p>
+            <div class="walkers-acc-pills">
+              <span class="walkers-acc-pill overnight">Overnight: Kandy Royal Heritage Hotel</span>
+              <span class="walkers-acc-pill">Meals: Breakfast & Gourmet Dinner</span>
+            </div>
+          </div>
+        </div>
+        <div class="walkers-acc-item ">
+          <button type="button" class="walkers-acc-trigger" aria-expanded="false">
+            <div class="walkers-acc-left">
+              <span class="walkers-acc-day">Day 10</span>
+              <h3 class="walkers-acc-title">Peradeniya Botanic Gardens & Three Ancient Temples</h3>
+            </div>
+            <span class="walkers-acc-icon">+</span>
+          </button>
+          <div class="walkers-acc-content">
+            <p class="walkers-acc-desc">Discover the 14th-century Gadaladeniya, Embekke (famous for intricate wood carvings), and Lankatilaka temples, followed by the Royal Botanic Gardens.</p>
+            <div class="walkers-acc-pills">
+              <span class="walkers-acc-pill overnight">Overnight: Kandy Royal Heritage Hotel</span>
+              <span class="walkers-acc-pill">Meals: Breakfast & Gourmet Dinner</span>
+            </div>
+          </div>
+        </div>
+        <div class="walkers-acc-item ">
+          <button type="button" class="walkers-acc-trigger" aria-expanded="false">
+            <div class="walkers-acc-left">
+              <span class="walkers-acc-day">Day 11</span>
+              <h3 class="walkers-acc-title">Colonial Highlands of Nuwara Eliya & Tea Estates</h3>
+            </div>
+            <span class="walkers-acc-icon">+</span>
+          </button>
+          <div class="walkers-acc-content">
+            <p class="walkers-acc-desc">Wind through emerald tea-carpeted mountains to 'Little England'. Tour a heritage tea factory and sip pure Ceylon single-estate tea.</p>
+            <div class="walkers-acc-pills">
+              <span class="walkers-acc-pill overnight">Overnight: Nuwara Eliya Heritage Tea Bungalow</span>
+              <span class="walkers-acc-pill">Meals: Breakfast & Gourmet Dinner</span>
+            </div>
+          </div>
+        </div>
+        <div class="walkers-acc-item ">
+          <button type="button" class="walkers-acc-trigger" aria-expanded="false">
+            <div class="walkers-acc-left">
+              <span class="walkers-acc-day">Day 12</span>
+              <h3 class="walkers-acc-title">Scenic Mountain Descent to UNESCO Galle Dutch Fort</h3>
+            </div>
+            <span class="walkers-acc-icon">+</span>
+          </button>
+          <div class="walkers-acc-content">
+            <p class="walkers-acc-desc">Descend through tea valleys and cascading waterfalls to the historic southern coastline and Galle Dutch Fort.</p>
+            <div class="walkers-acc-pills">
+              <span class="walkers-acc-pill overnight">Overnight: Galle Fort Luxury Heritage Suite</span>
+              <span class="walkers-acc-pill">Meals: Breakfast & Gourmet Dinner</span>
+            </div>
+          </div>
+        </div>
+        <div class="walkers-acc-item ">
+          <button type="button" class="walkers-acc-trigger" aria-expanded="false">
+            <div class="walkers-acc-left">
+              <span class="walkers-acc-day">Day 13</span>
+              <h3 class="walkers-acc-title">Ramparts, Bastions & Living Maritime History of Galle</h3>
+            </div>
+            <span class="walkers-acc-icon">+</span>
+          </button>
+          <div class="walkers-acc-content">
+            <p class="walkers-acc-desc">Full day soaking in the ambiance of Galle Fort: visit the Dutch Reformed Church, maritime museum, and enjoy sunset drinks along Flag Rock Bastion.</p>
+            <div class="walkers-acc-pills">
+              <span class="walkers-acc-pill overnight">Overnight: Galle Fort Luxury Heritage Suite</span>
+              <span class="walkers-acc-pill">Meals: Breakfast & Gourmet Dinner</span>
+            </div>
+          </div>
+        </div>
+        <div class="walkers-acc-item ">
+          <button type="button" class="walkers-acc-trigger" aria-expanded="false">
+            <div class="walkers-acc-left">
+              <span class="walkers-acc-day">Day 14</span>
+              <h3 class="walkers-acc-title">Colombo Metropolitan Heritage Drive</h3>
+            </div>
+            <span class="walkers-acc-icon">+</span>
+          </button>
+          <div class="walkers-acc-content">
+            <p class="walkers-acc-desc">Travel to Colombo along the southern expressway. Tour the historic Pettah markets, Old Parliament, and National Museum before your farewell dinner.</p>
+            <div class="walkers-acc-pills">
+              <span class="walkers-acc-pill overnight">Overnight: Colombo 5★ City Hotel</span>
+              <span class="walkers-acc-pill">Meals: Breakfast & Gourmet Dinner</span>
+            </div>
+          </div>
+        </div>
+        <div class="walkers-acc-item ">
+          <button type="button" class="walkers-acc-trigger" aria-expanded="false">
+            <div class="walkers-acc-left">
+              <span class="walkers-acc-day">Day 15</span>
+              <h3 class="walkers-acc-title">Departure from Sri Lanka</h3>
+            </div>
+            <span class="walkers-acc-icon">+</span>
+          </button>
+          <div class="walkers-acc-content">
+            <p class="walkers-acc-desc">Bid farewell to Ceylon as your private chauffeur guide escorts you to the airport for your return flight.</p>
+            <div class="walkers-acc-pills">
+              <span class="walkers-acc-pill overnight">Overnight: Departure</span>
+              <span class="walkers-acc-pill">Meals: Breakfast & Gourmet Dinner</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 4: VISUAL JOURNEYS & INCLUSIONS (Walkers Standard) -->
+  <section class="visual-journeys-section">
+    <div class="visual-journeys-container">
+      <h2 class="visual-heading-walkers">
+        <span>Visual Journeys</span>
+      </h2>
+      <div class="walkers-img-grid">
+        <div class="walkers-img-card">
+          <img src="../../../assets/images/cultural/polonnaruwa-gal-vihara-3.webp" alt="Negombo" loading="lazy">
+          <span class="walkers-img-caption">Negombo</span>
+        </div>
+        <div class="walkers-img-card">
+          <img src="../../../assets/tours/cultural/three-millennia-2.jpg" alt="Wilpattu" loading="lazy">
+          <span class="walkers-img-caption">Wilpattu</span>
+        </div>
+        <div class="walkers-img-card">
+          <img src="../../../assets/tours/cultural/three-millennia-3.jpg" alt="Anuradhapura" loading="lazy">
+          <span class="walkers-img-caption">Anuradhapura</span>
+        </div>
+      </div>
+
+      <div class="inclusions-grid-walkers">
+        <div class="inclusions-card-walkers pink-accent">
+          <h3 class="inclusions-card-title">Inclusions</h3>
+          <ul class="inclusions-list-walkers">
+            <li><span class="check-icon">✓</span> Private luxury vehicle with dedicated licensed chauffeur guide for all 15 days</li>
+            <li><span class="check-icon">✓</span> 14 Nights luxury boutique and 5★ heritage accommodation across all regions</li>
+            <li><span class="check-icon">✓</span> Daily gourmet breakfast and curated dining experiences</li>
+            <li><span class="check-icon">✓</span> All monument and site entrance fees across Anuradhapura, Jaffna, Sigiriya, Polonnaruwa, Dambulla, Kandy, and Galle</li>
+            <li><span class="check-icon">✓</span> Bicycle hire in Polonnaruwa and private boat crossing to Nagadeepa</li>
+            <li><span class="check-icon">✓</span> Tea factory private VIP tasting experience</li>
+            <li><span class="check-icon">✓</span> All tolls, parking, fuel, and 24/7 Lotus Ceylon concierge support</li>
+          </ul>
+        </div>
+
+        <div class="inclusions-card-walkers black-accent">
+          <h3 class="inclusions-card-title">Exclusions</h3>
+          <ul class="inclusions-list-walkers">
+            <li><span class="cross-icon">✕</span> International airfare and Sri Lanka ETA visa fees</li>
+            <li><span class="cross-icon">✕</span> Lunches and alcoholic drinks</li>
+            <li><span class="cross-icon">✕</span> Optional hot air ballooning or scenic helicopter charters</li>
+            <li><span class="cross-icon">✕</span> Personal gratuities and travel insurance</li>
+          </ul>
+        </div>
+
+        <div class="inclusions-card-walkers black-accent">
+          <h3 class="inclusions-card-title">Payment Policies</h3>
+          <ul class="inclusions-list-walkers">
+            <li><span class="check-icon">✓</span> 20% advance confirmation deposit upon private reservation acceptance.</li>
+            <li><span class="check-icon">✓</span> Balance payment due 30 days prior to arrival in Sri Lanka.</li>
+            <li><span class="check-icon">✓</span> Free date rescheduling up to 21 days before arrival.</li>
+            <li><span class="check-icon">✓</span> Transparent cancellation terms with dedicated guest concierge care.</li>
+          </ul>
+        </div>
+
+        <div class="inclusions-card-walkers pink-accent">
+          <h3 class="inclusions-card-title">Payment Methods</h3>
+          <ul class="inclusions-list-walkers">
+            <li><span class="check-icon">✓</span> Secure online credit card processing (Visa, MasterCard, American Express).</li>
+            <li><span class="check-icon">✓</span> International Telegraphic Bank Wire Transfer (USD, EUR, GBP).</li>
+            <li><span class="check-icon">✓</span> Encrypted 3D-Secure payment links for direct instant confirmation.</li>
+            <li><span class="check-icon">✓</span> Official corporate invoicing with Central Bank of Sri Lanka registered operator credentials.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 5: ROUTE MAP SECTION (Walkers Standard) -->
+  <section class="route-section-walkers" id="route-map">
+    <div class="route-container-walkers">
+      <div class="route-map-col">
+        <div id="three-millennia-of-living-heritage-leaflet-map" 
+             class="route-map-box-walkers js-lotus-route-map" 
+             data-package-id="pkg-cultural-03" 
+             data-data-path="../../../data/packages.json"
+             role="region" 
+             aria-label="Interactive Route Map for Three Millennia of Living Heritage">
+        </div>
+      </div>
+      <div class="route-text-walkers">
+        <h2>
+          <span>Here is your</span>
+          Three Millennia of Living Heritage Route
+        </h2>
+        <p>From Negombo through Wilpattu and Anuradhapura, this 14 nights and 15 days journey connects you with Sri Lanka's most iconic landscapes, cultural landmarks, and authentic Ceylon hospitality.</p>
+        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+          <span class="walkers-acc-pill">Negombo</span> <span class="walkers-acc-pill">Wilpattu</span> <span class="walkers-acc-pill">Anuradhapura</span> <span class="walkers-acc-pill">Jaffna</span> <span class="walkers-acc-pill">Sigiriya</span> <span class="walkers-acc-pill">Polonnaruwa</span> <span class="walkers-acc-pill">Kandy</span> <span class="walkers-acc-pill">Nuwara Eliya</span> <span class="walkers-acc-pill">Galle Fort</span> <span class="walkers-acc-pill">Colombo</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 6: FAQS (Everything You Need to Know) -->
+  <section class="faq-section-walkers">
+    <div class="faq-container-walkers">
+      <div class="faq-media-card">
+        <img src="../../../assets/images/cultural/sigiriya-1.webp" alt="Sri Lanka Luxury Travel FAQ" loading="lazy">
+      </div>
+      <div class="faq-content-col">
+        <h2>
+          <span>Everything</span>
+          You Need to Know
+        </h2>
+        <div class="walkers-accordion-wrap">
+          <div class="walkers-acc-item is-open">
+            <button type="button" class="walkers-acc-trigger">
+              <h4 class="walkers-acc-title">Can I extend the number of days for this tour?</h4>
+              <span class="walkers-acc-icon">+</span>
+            </button>
+            <div class="walkers-acc-content">
+              <p class="walkers-acc-desc">Yes, certainly. Every itinerary we design is 100% bespoke. Our private travel designers will gladly extend your stay, add beach days, or tailor the pace to your exact preferences.</p>
+            </div>
+          </div>
+          <div class="walkers-acc-item">
+            <button type="button" class="walkers-acc-trigger">
+              <h4 class="walkers-acc-title">Can I customize the hotels, destinations, or vehicle?</h4>
+              <span class="walkers-acc-icon">+</span>
+            </button>
+            <div class="walkers-acc-content">
+              <p class="walkers-acc-desc">Absolutely. You can choose from audited heritage tea bungalows, boutique eco-villas, or 5-star international luxury resorts. Vehicles range from premium luxury sedans to spacious executive vans.</p>
+            </div>
+          </div>
+          <div class="walkers-acc-item">
+            <button type="button" class="walkers-acc-trigger">
+              <h4 class="walkers-acc-title">What kind of chauffeur guide will accompany us?</h4>
+              <span class="walkers-acc-icon">+</span>
+            </button>
+            <div class="walkers-acc-content">
+              <p class="walkers-acc-desc">Your journey will be led by a handpicked, licensed Sri Lankan National Tour Guide or Tourist Chauffeur with deep cultural understanding, fluent English, and impeccable hospitality standards.</p>
+            </div>
+          </div>
+          <div class="walkers-acc-item">
+            <button type="button" class="walkers-acc-trigger">
+              <h4 class="walkers-acc-title">What are the booking and cancellation policies?</h4>
+              <span class="walkers-acc-icon">+</span>
+            </button>
+            <div class="walkers-acc-content">
+              <p class="walkers-acc-desc">A 20% advance deposit confirms your private reservation. In the event of flight changes or unforeseen circumstances, we offer flexible free date rescheduling up to 21 days prior to arrival.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 7: MORE JOURNEYS (Walkers Standard) -->
+  <section class="more-journeys-walkers">
+    <div class="more-journeys-container">
+      <h2 class="more-journeys-heading">More Journeys to Discover</h2>
+      <div class="more-journeys-grid">
+        <div class="related-tour-card" style="background: #FFFFFF; border-radius: 14px; overflow: hidden; border: 1px solid rgba(0, 43, 73, 0.08); box-shadow: 0 4px 18px rgba(0,0,0,0.04); display: flex; flex-direction: column;">
+          <div class="related-tour-img-wrap" style="position: relative; height: 210px; overflow: hidden;">
+            <img src="../../../assets/images/cultural/sigiriya-1.webp" alt="Royal Kingdoms & Sacred Temples" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;">
+            <span class="related-tour-duration" style="position: absolute; top: 12px; left: 12px; background: rgba(17, 24, 39, 0.88); color: #FFFFFF; padding: 4px 12px; border-radius: 20px; font-size: 0.78rem; font-weight: 700;">05 Nights and 06 Days</span>
+          </div>
+          <div class="related-tour-content" style="padding: 1.5rem; display: flex; flex-direction: column; flex-grow: 1;">
+            <h4 style="font-family: 'DM Sans', sans-serif; font-size: 1.18rem; font-weight: 700; color: #111827; margin: 0 0 0.5rem 0;">Royal Kingdoms & Sacred Temples</h4>
+            <p style="color: #64748B; font-size: 0.9rem; line-height: 1.6; margin: 0 0 1.25rem 0; flex-grow: 1;">The Essential UNESCO Heritage Triangle</p>
+            <div>
+              <a href="../../../tours/cultural/royal-kingdoms-sacred-temples/index.html" class="btn-inquire-gold-pill" style="padding: 8px 20px; font-size: 0.85rem; width: 100%; justify-content: center;">
+                <span>Explore Itinerary ➔</span>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="related-tour-card" style="background: #FFFFFF; border-radius: 14px; overflow: hidden; border: 1px solid rgba(0, 43, 73, 0.08); box-shadow: 0 4px 18px rgba(0,0,0,0.04); display: flex; flex-direction: column;">
+          <div class="related-tour-img-wrap" style="position: relative; height: 210px; overflow: hidden;">
+            <img src="../../../assets/images/cultural/dambulla-cave-temple-2.webp" alt="The Sacred Lotus Triangle" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;">
+            <span class="related-tour-duration" style="position: absolute; top: 12px; left: 12px; background: rgba(17, 24, 39, 0.88); color: #FFFFFF; padding: 4px 12px; border-radius: 20px; font-size: 0.78rem; font-weight: 700;">08 Nights and 09 Days</span>
+          </div>
+          <div class="related-tour-content" style="padding: 1.5rem; display: flex; flex-direction: column; flex-grow: 1;">
+            <h4 style="font-family: 'DM Sans', sans-serif; font-size: 1.18rem; font-weight: 700; color: #111827; margin: 0 0 0.5rem 0;">The Sacred Lotus Triangle</h4>
+            <p style="color: #64748B; font-size: 0.9rem; line-height: 1.6; margin: 0 0 1.25rem 0; flex-grow: 1;">Living UNESCO Heritage Across Three Ancient Capitals</p>
+            <div>
+              <a href="../../../tours/cultural/the-sacred-lotus-triangle/index.html" class="btn-inquire-gold-pill" style="padding: 8px 20px; font-size: 0.85rem; width: 100%; justify-content: center;">
+                <span>Explore Itinerary ➔</span>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="related-tour-card" style="background: #FFFFFF; border-radius: 14px; overflow: hidden; border: 1px solid rgba(0, 43, 73, 0.08); box-shadow: 0 4px 18px rgba(0,0,0,0.04); display: flex; flex-direction: column;">
+          <div class="related-tour-img-wrap" style="position: relative; height: 210px; overflow: hidden;">
+            <img src="../../../assets/images/beach/mirissa-1.webp" alt="Southern Sands Serenade" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;">
+            <span class="related-tour-duration" style="position: absolute; top: 12px; left: 12px; background: rgba(17, 24, 39, 0.88); color: #FFFFFF; padding: 4px 12px; border-radius: 20px; font-size: 0.78rem; font-weight: 700;">09 Nights and 10 Days</span>
+          </div>
+          <div class="related-tour-content" style="padding: 1.5rem; display: flex; flex-direction: column; flex-grow: 1;">
+            <h4 style="font-family: 'DM Sans', sans-serif; font-size: 1.18rem; font-weight: 700; color: #111827; margin: 0 0 0.5rem 0;">Southern Sands Serenade</h4>
+            <p style="color: #64748B; font-size: 0.9rem; line-height: 1.6; margin: 0 0 1.25rem 0; flex-grow: 1;">Sun-Kissed Bays, Blue Whales & Dutch Ramparts</p>
+            <div>
+              <a href="../../../tours/beach/southern-sands-serenade/index.html" class="btn-inquire-gold-pill" style="padding: 8px 20px; font-size: 0.85rem; width: 100%; justify-content: center;">
+                <span>Explore Itinerary ➔</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 8: BOTTOM CTA BANNER (Walkers Standard) -->
+  <section class="tour-cta-walkers">
+    <div class="tour-cta-container">
+      <span class="tour-cta-tag">BESPOKE PRIVATE TRAVEL</span>
+      <h2 class="tour-cta-title">Plan your Perfect Cultural Escape</h2>
+      <p class="tour-cta-desc">Connect directly with our senior Ceylon travel designers to curate your private chauffeur-guided journey across Sri Lanka.</p>
+      <div class="tour-cta-btn-group">
+        <a href="../../../inquiry-detailed.html?package=Three+Millennia+of+Living+Heritage" class="btn-inquire-gold-pill">Inquire About This Tour</a>
+        <a href="https://wa.me/94715422384?text=Hello%20Lotus%20Ceylon!%20I%20would%20like%20to%20inquire%20about%20the%20Three+Millennia+of+Living+Heritage%20private%20tour." target="_blank" rel="noopener noreferrer" class="btn-cta-whatsapp">
+          <span>Chat on WhatsApp</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Site Footer -->
   <!-- @include footer:start -->
 <!-- Site design & development: Infinite Design (https://infiniteweb.dev/) — see /humans.txt and LICENSE.txt -->
 <!-- Site Footer (Walkers Tours Standard with Sunset Palms Background) -->
@@ -1184,7 +859,7 @@
 </footer>
 <!-- @include footer:end -->
 
-  <!-- Unified Mobile-First Floating Action Group (WhatsApp + Back to Top) -->
+  <!-- Unified Mobile-First Floating Action Group -->
   <!-- @include floating-actions:start -->
 <!-- Site design & development: Infinite Design (https://infiniteweb.dev/) — see /humans.txt and LICENSE.txt -->
 <!-- Unified Mobile-First Floating Action Group (WhatsApp + Back to Top) -->
@@ -1204,16 +879,27 @@
 </a>
 <!-- @include floating-actions:end -->
 
-  <!-- Persistent Floating WhatsApp Concierge -->
-  
-
+  <!-- JavaScript Plugins -->
   <script src="../../../vendor/leaflet/leaflet.js"></script>
   <script src="../../../js/leaflet-tour-map.js?v=20261101_pure_osm_v9"></script>
   <script src="../../../js/tour-interactive.js"></script>
   <script src="../../../js/site-translator.js"></script>
   <script src="../../../assets/js/config.js"></script>
-<script defer src="../../../assets/js/site-data.js"></script>
+  <script defer src="../../../assets/js/site-data.js"></script>
   <script src="../../../assets/js/mobile-nav.js"></script>
-  <script src="../../../assets/js/cms.js?v=20261029_secimg1"></script>
+
+  <!-- Interactive Accordion Handler -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelectorAll('.walkers-acc-trigger').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          var item = this.closest('.walkers-acc-item');
+          if (item) {
+            item.classList.toggle('is-open');
+          }
+        });
+      });
+    });
+  </script>
 </body>
 </html>
