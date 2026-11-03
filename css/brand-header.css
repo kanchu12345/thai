@@ -1627,6 +1627,7 @@
  * ============================================================================== */
 .site-footer-walkers,
 .footer-walkers {
+  border-top: none !important;
   background-color: #011C40 !important;
   background-image: linear-gradient(rgba(1, 28, 64, 0.86), rgba(0, 16, 38, 0.94)), url('../assets/images/footer/footer-sunset-palms.webp') !important;
   background-position: center bottom !important;
@@ -2682,4 +2683,58 @@ body {
   border-left: none !important;
   background: transparent !important;
   box-shadow: none !important;
+}
+
+
+/* Atmospheric blur & gradient blend connecting CTA Banner and Footer */
+.sacred-cta-banner {
+  border-bottom: none !important;
+  position: relative;
+}
+
+.sacred-cta-banner::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 120px;
+  background: linear-gradient(
+    to bottom,
+    rgba(13, 43, 29, 0) 0%,
+    rgba(6, 35, 45, 0.35) 40%,
+    rgba(1, 28, 64, 0.75) 75%,
+    #011C40 100%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+.site-footer-walkers::before,
+.footer-walkers::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100px;
+  background: linear-gradient(
+    to bottom,
+    #011C40 0%,
+    rgba(1, 28, 64, 0.7) 45%,
+    rgba(1, 28, 64, 0.2) 80%,
+    transparent 100%
+  );
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.site-footer-walkers .site-container,
+.site-footer-walkers .wrapper--80,
+.footer-walkers .site-container,
+.footer-walkers .wrapper--80 {
+  position: relative !important;
+  z-index: 2 !important;
 }
