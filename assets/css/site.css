@@ -1037,13 +1037,13 @@ p:last-child {
    SHARED CTA BAND (.sacred-cta-banner)
    ============================================================================== */
 .sacred-cta-banner {
-  background: linear-gradient(135deg, #0D2B1D 0%, #16361D 100%);
+  background: linear-gradient(135deg, #280C17 0%, #3D1223 50%, #1A0710 100%) !important;
   color: var(--white);
   padding: 5rem 1.5rem;
   position: relative;
   overflow: hidden;
   text-align: center;
-  border-top: 2px solid var(--sacred-gold);
+  border-top: 2px solid #C95451 !important;
   border-bottom: none !important;
 }
 
@@ -1057,11 +1057,11 @@ p:last-child {
   height: 120px;
   background: linear-gradient(
     to bottom,
-    rgba(13, 43, 29, 0) 0%,
-    rgba(6, 35, 45, 0.35) 40%,
-    rgba(1, 28, 64, 0.75) 75%,
+    rgba(40, 12, 23, 0) 0%,
+    rgba(20, 15, 35, 0.45) 40%,
+    rgba(1, 28, 64, 0.8) 75%,
     #011C40 100%
-  );
+  ) !important;
   pointer-events: none;
   z-index: 1;
 }
@@ -1073,7 +1073,7 @@ p:last-child {
   transform: translate(-50%, -50%);
   width: 600px;
   height: 600px;
-  background: radial-gradient(circle, rgba(201, 162, 75, 0.12) 0%, rgba(0,0,0,0) 70%);
+  background: radial-gradient(circle, rgba(201, 84, 81, 0.28) 0%, rgba(0,0,0,0) 70%) !important;
   pointer-events: none;
 }
 
