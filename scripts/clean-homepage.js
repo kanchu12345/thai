@@ -21,7 +21,6 @@ if (counterRegex.test(content)) {
 const reviewsBlockRegex = /<div class="testimonial-cards-grid">[\s\S]*?<\/section>/i;
 const newReviewsBlock = `<div class="testimonial-cards-grid" data-cms-list="reviews" style="display: flex; justify-content: center; width: 100%;">
           <div class="empty-reviews-card" style="background: rgba(255,255,255,0.9); border: 1px dashed rgba(197, 168, 128, 0.6); border-radius: 12px; padding: 3rem 2rem; text-align: center; max-width: 620px; margin: 0 auto; box-shadow: 0 4px 16px rgba(0,0,0,0.03);">
-            <div style="font-size: 2.2rem; margin-bottom: 0.75rem;">☸️</div>
             <h4 style="font-family: 'Playfair Display', serif; font-size: 1.35rem; color: #002B49; margin-bottom: 0.5rem;" data-cms="siteContent.home.reviewsEmptyTitle">Guest Reviews Coming Soon</h4>
             <p style="color: #64748B; font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.5rem;" data-cms="siteContent.home.reviewsEmptyDesc">
               We are currently welcoming our upcoming season guests across Sri Lanka. Verified guest reviews and reflections will appear here as they are published.

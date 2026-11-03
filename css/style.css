@@ -1892,8 +1892,29 @@ ul, ol {
    SECTION 9: SUSTAINABILITY ("TRAVEL SMART, TREAD LIGHTLY")
    ========================================================================== */
 .sustainability-sec {
-  background-color: var(--color-dark-green);
+  background: linear-gradient(135deg, #280C17 0%, #3D1223 50%, #1A0710 100%);
+  border-top: 1px solid rgba(201, 84, 81, 0.3);
+  border-bottom: 1px solid rgba(201, 84, 81, 0.3);
+  position: relative;
+  overflow: hidden;
   color: var(--color-white);
+}
+
+.sustainability-sec::before {
+  content: "";
+  position: absolute;
+  top: -40%;
+  right: -15%;
+  width: 550px;
+  height: 550px;
+  background: radial-gradient(circle, rgba(201, 84, 81, 0.16) 0%, rgba(0, 0, 0, 0) 70%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.sustainability-sec .wrapper--90 {
+  position: relative;
+  z-index: 2;
 }
 
 .sustainability-grid {
