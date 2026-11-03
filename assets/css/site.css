@@ -2884,3 +2884,11 @@ textarea:focus-visible {
 .mobile-nav-actions:not(.mobile-nav-fullscreen .mobile-nav-actions) {
   display: none !important;
 }
+
+
+/* Ensure floating quick edit pill is completely disabled and hidden */
+#lotusAdminQuickEditPill {
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}

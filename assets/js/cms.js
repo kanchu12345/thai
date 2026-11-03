@@ -1090,68 +1090,7 @@
       });
     },
 
-        setupAdminFloatingButton() {
-      // Global shortcut: Ctrl+Shift+E or Alt+E activates Quick Edit
-      window.addEventListener('keydown', (e) => {
-        if ((e.ctrlKey && e.shiftKey && (e.key === 'E' || e.key === 'e')) || (e.altKey && (e.key === 'E' || e.key === 'e'))) {
-          e.preventDefault();
-          try {
-            localStorage.setItem('lotus_admin_active', '1');
-          } catch (err) {}
-          const existing = document.getElementById('lotusAdminQuickEditPill');
-          if (existing) {
-            existing.style.display = existing.style.display === 'none' ? 'flex' : 'none';
-          } else {
-            this.setupAdminFloatingButton();
-          }
-        }
-      });
-      if (window.self !== window.top) return; // Do not show inside editor iframe preview
-
-      let isAdmin = false;
-      try {
-        const urlParams = new URLSearchParams(window.location.search);
-        if (urlParams.has('admin') || urlParams.get('edit') === '1') {
-          isAdmin = true;
-        } else if (localStorage.getItem('lotus_admin_active') === '1') {
-          isAdmin = true;
-        } else {
-          for (let i = 0; i < localStorage.length; i++) {
-            const k = localStorage.key(i);
-            if (k && (k.startsWith('firebase:authUser') || k.includes('lotus_admin'))) {
-              isAdmin = true;
-              break;
-            }
-          }
-        }
-      } catch (e) {}
-
-      if (!isAdmin) return;
-
-      const docKey = document.body.getAttribute('data-cms-page') || 'siteContent/home';
-      let path = window.location.pathname.replace(/\\/g, '/');
-      if (path.includes('/thai/')) {
-        path = path.split('/thai/')[1] || '';
-      } else {
-        path = path.replace(/^\//, '');
-      }
-      if (!path || path === '') path = 'index.html';
-      if (path.endsWith('/')) path += 'index.html';
-
-      const relPrefix = getRelativePrefix();
-      const adminHref = `${relPrefix}admin/index.html?editPage=${encodeURIComponent(docKey)}&file=${encodeURIComponent(path)}`;
-
-      const pill = document.createElement('a');
-      pill.href = adminHref;
-      pill.target = '_blank';
-      pill.id = 'lotusAdminQuickEditPill';
-      pill.innerHTML = `<span style="font-size:1rem;">✏️</span> <span>Edit This Page in Admin</span>`;
-      pill.style.cssText = 'position:fixed;bottom:24px;left:24px;z-index:9999999;background:linear-gradient(135deg,#0B132B,#1C1B1F);color:#D4AF37;border:1.5px solid #D4AF37;padding:10px 18px;border-radius:30px;font-weight:700;font-size:0.84rem;box-shadow:0 6px 20px rgba(0,0,0,0.5);display:flex;align-items:center;gap:8px;text-decoration:none;cursor:pointer;font-family:system-ui,-apple-system,sans-serif;letter-spacing:0.02em;transition:all 0.2s ease;';
-      pill.onmouseover = () => { pill.style.transform = 'translateY(-2px)'; pill.style.boxShadow = '0 8px 25px rgba(212,175,55,0.4)'; };
-      pill.onmouseout = () => { pill.style.transform = 'translateY(0)'; pill.style.boxShadow = '0 6px 20px rgba(0,0,0,0.5)'; };
-
-      document.body.appendChild(pill);
-    },
+        
 
     init() {
       if (this.initialized) return;
@@ -1161,7 +1100,7 @@
       this.detectLanguage();
       this.setupLanguageListeners();
       this.setupVisualEditMode();
-      this.setupAdminFloatingButton();
+      
 
       if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', () => this.loadContent());

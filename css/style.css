@@ -6379,3 +6379,11 @@ body.cms-edit-active [class*="watermark"] {
   position: relative !important;
   z-index: 2 !important;
 }
+
+
+/* Ensure floating quick edit pill is completely disabled and hidden */
+#lotusAdminQuickEditPill {
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
