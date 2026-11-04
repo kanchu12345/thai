@@ -1777,7 +1777,60 @@
   font-variant-ligatures: normal !important;
 }
 
-.beach-hero-content .beach-hero-title,
+/* Left-aligned editorial banners (Beach, Cultural, Wildlife) */
+.beach-hero-content .beach-hero-title {
+  margin-left: 0 !important;
+  margin-right: auto !important;
+  text-align: left !important;
+}
+
+/* Centered Category Hero Banners (.banner-section-inner) */
+.banner-section-inner,
+.banner-section-inner.tours-hero-banner {
+  text-align: center !important;
+}
+
+.banner-section-inner .tours-breadcrumbs,
+.banner-section-inner .beach-breadcrumb {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  text-align: center !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.banner-section-inner .beach-hero-title,
+.banner-section-inner .wildlife-hero-title,
+.banner-section-inner .tour-hero-title,
+.banner-section-inner .tours-hero-title,
+.banner-section-inner .hero-title,
+.banner-section-inner h1 {
+  margin-left: auto !important;
+  margin-right: auto !important;
+  text-align: center !important;
+  max-width: 34ch !important;
+}
+
+.beach-hero-content .beach-hero-lead {
+  margin-left: 0 !important;
+  margin-right: auto !important;
+  text-align: left !important;
+}
+
+.banner-section-inner p,
+.banner-section-inner .beach-hero-lead,
+.banner-section-inner .wildlife-hero-lead,
+.banner-section-inner .tour-hero-tagline,
+.banner-section-inner .tours-hero-lead,
+.banner-section-inner p.hero-lead {
+  margin-left: auto !important;
+  margin-right: auto !important;
+  text-align: center !important;
+  max-width: 780px !important;
+}
+
+
 .banner-section-inner .tours-hero-title {
   margin-left: auto !important;
   margin-right: auto !important;
@@ -1814,7 +1867,7 @@
   text-wrap: pretty !important;
 }
 
-.beach-hero-content .beach-hero-lead,
+/* .beach-hero-content .beach-hero-lead is left-aligned */
 .banner-section-inner p.hero-lead {
   margin-left: auto !important;
   margin-right: auto !important;

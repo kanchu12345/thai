@@ -2076,6 +2076,59 @@ img, video, iframe, table {
     font-size: 0.55rem !important;
     letter-spacing: 0.05em !important;
     font-weight: 600 !important;
+}
+
+/* ==========================================================================
+   UNIFIED CENTERED HERO BANNER STANDARD (.banner-section-inner)
+   ========================================================================== */
+.banner-section-inner,
+.banner-section-inner.tours-hero-banner {
+  text-align: center !important;
+}
+
+.banner-section-inner .wrapper--90,
+.banner-section-inner .wrapper--80 {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.banner-section-inner .tours-breadcrumbs,
+.banner-section-inner .beach-breadcrumb,
+.banner-section-inner .hero-breadcrumbs {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  text-align: center !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  margin-bottom: 1.25rem !important;
+}
+
+.banner-section-inner .beach-hero-title,
+.banner-section-inner .wildlife-hero-title,
+.banner-section-inner .tour-hero-title,
+.banner-section-inner .tours-hero-title,
+.banner-section-inner .hero-title,
+.banner-section-inner h1 {
+  margin-left: auto !important;
+  margin-right: auto !important;
+  text-align: center !important;
+  max-width: 34ch !important;
+  display: block !important;
+}
+
+.banner-section-inner p,
+.banner-section-inner .beach-hero-lead,
+.banner-section-inner .wildlife-hero-lead,
+.banner-section-inner .tour-hero-tagline,
+.banner-section-inner .tours-hero-lead,
+.banner-section-inner p.hero-lead {
+  margin-left: auto !important;
+  margin-right: auto !important;
+  text-align: center !important;
+  max-width: 780px !important;
+  display: block !important;
+}
   }
 
   .walkers-ham {
@@ -2280,6 +2333,59 @@ img, video, iframe, table {
   padding: 0.45rem 0.5rem !important;
   font-size: 0.95rem !important;
   font-weight: 600 !important;
+}
+
+/* ==========================================================================
+   UNIFIED CENTERED HERO BANNER STANDARD (.banner-section-inner)
+   ========================================================================== */
+.banner-section-inner,
+.banner-section-inner.tours-hero-banner {
+  text-align: center !important;
+}
+
+.banner-section-inner .wrapper--90,
+.banner-section-inner .wrapper--80 {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.banner-section-inner .tours-breadcrumbs,
+.banner-section-inner .beach-breadcrumb,
+.banner-section-inner .hero-breadcrumbs {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  text-align: center !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  margin-bottom: 1.25rem !important;
+}
+
+.banner-section-inner .beach-hero-title,
+.banner-section-inner .wildlife-hero-title,
+.banner-section-inner .tour-hero-title,
+.banner-section-inner .tours-hero-title,
+.banner-section-inner .hero-title,
+.banner-section-inner h1 {
+  margin-left: auto !important;
+  margin-right: auto !important;
+  text-align: center !important;
+  max-width: 34ch !important;
+  display: block !important;
+}
+
+.banner-section-inner p,
+.banner-section-inner .beach-hero-lead,
+.banner-section-inner .wildlife-hero-lead,
+.banner-section-inner .tour-hero-tagline,
+.banner-section-inner .tours-hero-lead,
+.banner-section-inner p.hero-lead {
+  margin-left: auto !important;
+  margin-right: auto !important;
+  text-align: center !important;
+  max-width: 780px !important;
+  display: block !important;
+}
   color: #334155 !important;
   text-decoration: none !important;
   border-radius: 6px !important;
@@ -3383,4 +3489,57 @@ html.lotus-motion-enabled .lotus-reveal-media.lotus-in-view {
 .footer-bottom-right a {
   color: #D4A359 !important;
   font-weight: 600 !important;
+}
+
+/* ==========================================================================
+   UNIFIED CENTERED HERO BANNER STANDARD (.banner-section-inner)
+   ========================================================================== */
+.banner-section-inner,
+.banner-section-inner.tours-hero-banner {
+  text-align: center !important;
+}
+
+.banner-section-inner .wrapper--90,
+.banner-section-inner .wrapper--80 {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.banner-section-inner .tours-breadcrumbs,
+.banner-section-inner .beach-breadcrumb,
+.banner-section-inner .hero-breadcrumbs {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  text-align: center !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  margin-bottom: 1.25rem !important;
+}
+
+.banner-section-inner .beach-hero-title,
+.banner-section-inner .wildlife-hero-title,
+.banner-section-inner .tour-hero-title,
+.banner-section-inner .tours-hero-title,
+.banner-section-inner .hero-title,
+.banner-section-inner h1 {
+  margin-left: auto !important;
+  margin-right: auto !important;
+  text-align: center !important;
+  max-width: 34ch !important;
+  display: block !important;
+}
+
+.banner-section-inner p,
+.banner-section-inner .beach-hero-lead,
+.banner-section-inner .wildlife-hero-lead,
+.banner-section-inner .tour-hero-tagline,
+.banner-section-inner .tours-hero-lead,
+.banner-section-inner p.hero-lead {
+  margin-left: auto !important;
+  margin-right: auto !important;
+  text-align: center !important;
+  max-width: 780px !important;
+  display: block !important;
+}
 }
