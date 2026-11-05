@@ -177,12 +177,12 @@ replacement_action_cards = """      // 1. Tour Package Action Card
         html += `
           <div style="background: linear-gradient(135deg, #EFF6FF, #DBEAFE); border: 1px solid #93C5FD; border-radius: 8px; padding: 12px; margin-bottom: 14px;">
             <div style="font-weight: 700; color: #1E40AF; font-size: 0.88rem; display: flex; align-items: center; justify-content: space-between; margin-bottom: 4px;">
-              <span> Tour Package: ${this.escapeHtml(pkgSlug)}</span>
+              <span>📦 Tour Package: ${this.escapeHtml(pkgSlug)}</span>
             </div>
             <p style="font-size: 0.78rem; color: #1E3A8A; margin: 0 0 10px 0;">Directly open this tour's standalone page or edit its full fields.</p>
             <div style="display: flex; gap: 8px;">
-              <button type="button" class="btn btn-primary btn-sm" style="flex: 1;" onclick="PageEditor.openTourDetailPage('${this.escapeAttr(pkgSlug)}')">Open & Edit Page</button>
-              <button type="button" class="btn btn-outline btn-sm" onclick="AdminApp.openPackageModal('${this.escapeAttr(pkgSlug)}')"> Edit in Manager</button>
+              <button type="button" class="btn btn-primary btn-sm" style="flex: 1;" onclick="PageEditor.openTourDetailPage('${this.escapeAttr(pkgSlug)}')">🚀 Open & Edit Page</button>
+              <button type="button" class="btn btn-outline btn-sm" onclick="AdminApp.openPackageModal('${this.escapeAttr(pkgSlug)}')">📝 Edit in Manager</button>
             </div>
           </div>
         `;
@@ -194,10 +194,10 @@ replacement_action_cards = """      // 1. Tour Package Action Card
         html += `
           <div style="background: linear-gradient(135deg, #F0FDF4, #DCFCE7); border: 1px solid #86EFAC; border-radius: 8px; padding: 12px; margin-bottom: 14px;">
             <div style="font-weight: 700; color: #166534; font-size: 0.88rem; margin-bottom: 4px;">
-              <span> Destination: ${this.escapeHtml(destSlug)}</span>
+              <span>📍 Destination: ${this.escapeHtml(destSlug)}</span>
             </div>
             <p style="font-size: 0.78rem; color: #14532D; margin: 0 0 8px 0;">Edit lead text, sights badges, essence narrative, and tailor-made box.</p>
-            <button type="button" class="btn btn-primary btn-sm btn-block" onclick="PageEditor.openDestinationPage('${this.escapeAttr(destSlug)}')">Open & Edit Destination Page</button>
+            <button type="button" class="btn btn-primary btn-sm btn-block" onclick="PageEditor.openDestinationPage('${this.escapeAttr(destSlug)}')">🚀 Open & Edit Destination Page</button>
           </div>
         `;
       }

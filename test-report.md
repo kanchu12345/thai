@@ -1,11 +1,23 @@
 # LOTUS CEYLON CMS REBUILD — TEST REPORT (test-report.md)
-**Execution Date**: 2026-10-27 **Test Suite**: Visual Click-to-Edit CMS Automated Playwright Suite **Status**: **100% ALL TESTS PASSED (0 FAILURES)** --- ## 1. Executive Summary
+**Execution Date**: 2026-10-27  
+**Test Suite**: Visual Click-to-Edit CMS Automated Playwright Suite  
+**Status**: **100% ALL TESTS PASSED (0 FAILURES)**
+
+---
+
+## 1. Executive Summary
 The Lotus Ceylon Admin Panel was completely transformed from a cryptic, cluttered list of 292 unorganized elements into a **modern, visual, click-to-edit CMS** tailored for non-technical operators:
 - **70% Interactive Live Preview / 30% Edit Inspector Panel** with instant postMessage live synchronization.
 - **Single Global Language Selector** (EN, FR, DE, ZH-CN, ZH-TW, JA, AR, HI, IT, RU, ES).
 - **1-Click Mobile (390px phone container) and Desktop viewport toggles**.
 - **Specialized Hero Section Editor** supporting Photo Image, MP4/Cloudinary/YouTube Video, dark overlay darkness slider, badges, headlines, and CTA buttons.
-- **Technical jargon removed**: developer database tools moved to a dedicated Advanced section, raw keys hidden under collapsibles, and plain-language labels applied. --- ## 2. Automated Test Results Table | Test ID | Test Category | Target Element / Action | Verification Method | Result | Notes |
+- **Technical jargon removed**: developer database tools moved to a dedicated Advanced section, raw keys hidden under collapsibles, and plain-language labels applied.
+
+---
+
+## 2. Automated Test Results Table
+
+| Test ID | Test Category | Target Element / Action | Verification Method | Result | Notes |
 | :--- | :--- | :--- | :--- | :---: | :--- |
 | **TC-01** | **Visual Workspace** | Split 70/30 layout rendering | Playwright DOM check (`#visualWorkspace`) | **PASS** | Left iframe & right inspector loaded with clean borders |
 | **TC-02** | **Iframe Mode** | Same-origin iframe loading `?edit=1` | Network check & URL parameters | **PASS** | Loaded `index.html?edit=1` without same-origin sandbox errors |
@@ -24,10 +36,18 @@ The Lotus Ceylon Admin Panel was completely transformed from a cryptic, cluttere
 | **TC-15** | **Publish Live** | Publish content & bump version | `siteMeta/version` increment check | **PASS** | Increments version `v` and triggers public cache refresh |
 | **TC-16** | **Reset Defaults** | Revert page fields to HTML baseline | `resetCurrentPage()` execution | **PASS** | Reverts modified values to hardcoded source values |
 | **TC-17** | **Forgot Password** | Auth password reset dialog | `sendPasswordResetEmail` handler | **PASS** | Working dialog with email input and feedback toast |
-| **TC-18** | **Role Protection** | Editor role restriction | Super Admin vs Editor capability check | **PASS** | Non-super admins restricted from Advanced developer tools | --- ## 3. Visual Verification Artifacts
+| **TC-18** | **Role Protection** | Editor role restriction | Super Admin vs Editor capability check | **PASS** | Non-super admins restricted from Advanced developer tools |
+
+---
+
+## 3. Visual Verification Artifacts
 - **Desktop Visual Editor Screenshot**: `artifacts/visual_cms_desktop.png`
 - **Mobile 390px Device Preview**: `artifacts/visual_cms_mobile.png`
 - **Element Click & Form Inspector**: `artifacts/visual_cms_element_selected.png`
-- **Instant Live Preview Success**: `artifacts/visual_cms_live_preview_success.png` --- ## 4. Uneditable / Non-Applicable Elements Note
+- **Instant Live Preview Success**: `artifacts/visual_cms_live_preview_success.png`
+
+---
+
+## 4. Uneditable / Non-Applicable Elements Note
 - **None**. 100% of public customer-facing content (texts, headings, images, hero videos, buttons, links, reviews, tour packages, categories, and SEO tags) is now fully editable.
 - Hardcoded JavaScript calculation logic (such as price conversions and form honeypot regex algorithms) remains in application scripts for security and data integrity.

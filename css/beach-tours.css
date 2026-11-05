@@ -1,1 +1,1679 @@
-/* * 2026 Infinite Design. All rights reserved. * Built for Lotus Ceylon International Tours & Services (Pvt) Ltd. * Unauthorized removal of attribution does not transfer ownership of this code. * https://infiniteweb.dev/ */ .wrapper--85 { width: 88%; max-width: 1360px; margin: 0 auto; box-sizing: border-box; } @media (max-width: 1080px) { .wrapper--85 { width: 92%; padding: 0 1rem; } } @media (max-width: 768px) { .wrapper--85 { width: 100%; padding: 0 1rem; } } @import url('tours-map.css'); /* ========================================================================== SRI LANKA BEACH TOURS DEDICATED STYLES (LOTUS CEYLON LUXURY ESCAPES) ========================================================================== */ .beach-hero-banner { position: relative; min-height: 520px; background-image: linear-gradient(180deg, rgba(0, 43, 73, 0.55) 0%, rgba(0, 43, 73, 0.78) 100%), url('../assets/images/beach-galle.jpg'); background-size: cover; background-position: center center; background-repeat: no-repeat; display: flex; align-items: center; padding: 7.5rem 0 5.5rem; color: #FFFFFF; } .beach-hero-content { position: relative; z-index: 2; } .beach-breadcrumb { display: flex; align-items: center; gap: 0.5rem; font-size: 0.88rem; color: rgba(255, 255, 255, 0.8); margin-bottom: 1.25rem; font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; } .beach-breadcrumb a { color: #FFFFFF; text-decoration: none; transition: color 0.2s; } .beach-breadcrumb a:hover { color: var(--color-gold); } .beach-breadcrumb .active-crumb { color: var(--color-gold); font-weight: 600; } .beach-hero-title { font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: clamp(2.2rem, 4.2vw, 3.4rem); font-weight: 600; line-height: 1.2; color: #FFFFFF; margin-bottom: 1.2rem; letter-spacing: -0.01em; } .beach-hero-title span { font-weight: 400; font-style: normal; color: #FEE7BE; } .beach-hero-lead { font-size: clamp(1rem, 1.3vw, 1.15rem); line-height: 1.75; color: rgba(255, 255, 255, 0.92); max-width: 780px; margin-bottom: 2.25rem; font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; } .beach-hero-cta-row { display: flex; align-items: center; gap: 1.25rem; flex-wrap: wrap; } /* Package Grid - Luxury Responsive Standard (1 col < 640px, 2 col 640-1023px, 3 col 1024px+) */ .beach-grid-cards, .beach-packages-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; align-items: stretch; } @media (min-width: 1024px) { .beach-grid-cards, .beach-packages-grid { grid-template-columns: repeat(3, 1fr) !important; gap: 24px !important; } } @media (min-width: 640px) and (max-width: 1023px) { .beach-grid-cards, .beach-packages-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 20px !important; } } @media (max-width: 639px) { .beach-grid-cards, .beach-packages-grid { grid-template-columns: 1fr !important; gap: 20px !important; } } .beach-package-card { background: #FFFFFF; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0, 43, 73, 0.07); border: 1px solid rgba(226, 232, 240, 0.8); display: flex; flex-direction: column; transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1); } .beach-package-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0, 43, 73, 0.14); } .beach-card-img-wrap { position: relative; height: 270px; overflow: hidden; background: #E2E8F0; } .beach-card-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1); } .beach-package-card:hover .beach-card-img-wrap img { transform: scale(1.06); } .beach-tag-badge { position: absolute; top: 16px; left: 16px; background: var(--color-gold, #C4984F); color: #1C1B1F; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; padding: 0.35rem 0.85rem; border-radius: 9999px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); z-index: 2; } .beach-duration-pill { position: absolute; bottom: 16px; right: 16px; background: rgba(0, 31, 53, 0.75); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); color: #FFFFFF; font-size: 0.75rem; font-weight: 600; padding: 0.35rem 0.85rem; border-radius: 9999px; letter-spacing: 0.04em; z-index: 2; } .beach-card-body { padding: 1.85rem 2rem 2rem; display: flex; flex-direction: column; flex-grow: 1; } .beach-card-category { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: #C95451; margin-bottom: 0.35rem; display: inline-block; } .beach-card-title { font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 1.45rem; font-weight: 600; color: #111827; line-height: 1.3; margin-bottom: 0.65rem; } .beach-card-route { font-size: 0.88rem; color: #64748B; padding-bottom: 0.85rem; margin-bottom: 0.85rem; border-bottom: 1px dashed #E2E8F0; line-height: 1.5; } .beach-card-route strong { color: #1E293B; font-weight: 600; } .beach-card-desc { font-size: 0.92rem; color: #475569; line-height: 1.65; margin-bottom: 1.25rem; } .beach-card-highlights { list-style: none; padding: 0; margin: 0 0 1.5rem; display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.86rem; color: #334155; background: #F8FAFC; padding: 1rem 1.25rem; border-radius: 12px; border-left: 3px solid var(--color-gold, #C4984F); } .beach-card-highlights li { line-height: 1.45; } .beach-card-footer { margin-top: auto; padding-top: 1.25rem; border-top: 1px solid #F1F5F9; display: flex; justify-content: flex-end; } .btn-beach-inquire { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--color-dark-blue, #002B49); color: #FFFFFF !important; font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 0.88rem; font-weight: 600; padding: 0.75rem 1.4rem; border-radius: 9999px; text-decoration: none; transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1); box-shadow: 0 4px 14px rgba(0, 43, 73, 0.15); } .btn-beach-inquire:hover { background: var(--color-gold, #C4984F); color: #1C1B1F !important; transform: translateX(3px); box-shadow: 0 6px 18px rgba(196, 152, 79, 0.3); } /* Seasonal Guide */ .beach-seasons-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); width: 100%; box-sizing: border-box; gap: 2rem; margin-top: 2rem; } @media (max-width: 850px) { .beach-seasons-grid { grid-template-columns: 1fr; } } .season-card { background: #FFFFFF; border-radius: 20px; border: 1px solid #E2E8F0; padding: 2.25rem 2rem; box-shadow: 0 10px 25px rgba(0, 43, 73, 0.04); transition: box-shadow 0.3s; } .season-card:hover { box-shadow: 0 16px 35px rgba(0, 43, 73, 0.08); } .season-card-header { padding-left: 1.25rem; margin-bottom: 1.25rem; } .season-badge { display: inline-block; padding: 0.3rem 0.85rem; border-radius: 9999px; font-size: 0.74rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; background: rgba(196, 152, 79, 0.15); color: #936B28; margin-bottom: 0.5rem; } .season-title { font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 1.45rem; color: #111827; margin: 0.35rem 0 0.25rem; } .season-loc { font-size: 0.86rem; color: #64748B; } .season-card-body p { font-size: 0.94rem; line-height: 1.7; color: #475569; margin-bottom: 1.25rem; } .season-perks-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.65rem; font-size: 0.88rem; color: #334155; line-height: 1.6; } .season-perks-list strong { color: #111827; } /* Ocean Experiences Grid */ .ocean-experiences-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.75rem; margin-top: 2rem; } @media (max-width: 950px) { .ocean-experiences-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); width: 100%; box-sizing: border-box; } } @media (max-width: 600px) { .ocean-experiences-grid { grid-template-columns: 1fr; } } .ocean-exp-box { background: #FFFFFF; border-radius: 18px; padding: 2.25rem 1.75rem; border: 1px solid #E2E8F0; text-align: center; transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s; box-shadow: 0 4px 15px rgba(0, 43, 73, 0.04); } .ocean-exp-box:hover { transform: translateY(-6px); box-shadow: 0 16px 30px rgba(0, 43, 73, 0.09); border-color: rgba(196, 152, 79, 0.4); } .exp-icon-circle { font-size: 2.5rem; margin-bottom: 1rem; display: inline-block; line-height: 1; } .ocean-exp-box h4 { font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 1.25rem; color: #111827; margin-bottom: 0.6rem; } .ocean-exp-box p { font-size: 0.88rem; line-height: 1.65; color: #64748B; margin: 0; } /* Coastal FAQ */ .beach-faq-list { max-width: 780px; margin: 2rem auto 0; } .accordion-item { background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 14px; margin-bottom: 1rem; overflow: hidden; transition: border-color 0.25s, box-shadow 0.25s; } .accordion-item.open { border-color: rgba(196, 152, 79, 0.5); box-shadow: 0 8px 24px rgba(0, 43, 73, 0.06); } .accordion-header-btn { width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 1.2rem 1.5rem; background: transparent; border: none; cursor: pointer; font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 1.02rem; font-weight: 600; color: #111827; text-align: left; transition: color 0.2s; } .accordion-header-btn:hover { color: #C95451; } .accordion-icon { font-size: 1.4rem; line-height: 1; color: var(--color-gold, #C4984F); transition: transform 0.25s ease; font-weight: 400; } .accordion-item.open .accordion-icon { transform: rotate(45deg); color: #C95451; } .accordion-body { display: none; padding: 0 1.5rem 1.35rem; } .accordion-item.open .accordion-body { display: block; } .accordion-body p { font-size: 0.94rem; line-height: 1.7; color: #475569; margin: 0; } /* ========================================================================== COMPARISON MATRIX (WALKERS TOURS STYLE) ========================================================================== */ .matrix-section { padding: 5.5rem 0 6.5rem; background: #FDFBF7; } .matrix-wrapper { background: #FFFFFF; border-radius: 20px; box-shadow: 0 10px 35px rgba(0, 43, 73, 0.08); border: 1px solid #E2E8F0; overflow: hidden; margin-top: 2.5rem; } .matrix-scroll-container { overflow-x: auto; -webkit-overflow-scrolling: touch; } .comparison-matrix { display: grid; grid-template-columns: 2fr repeat(3, 1fr); width: 100%; min-width: 820px; } .matrix-header { padding: 1.5rem 1.25rem; background: var(--color-dark-blue, #002B49); color: #FFFFFF; font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 0.95rem; font-weight: 700; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; border-right: 1px solid rgba(255, 255, 255, 0.1); } .matrix-header.corner-cell { background: #001F35; align-items: flex-start; text-align: left; padding-left: 1.5rem; font-size: 0.85rem; color: rgba(255, 255, 255, 0.7); letter-spacing: 0.08em; text-transform: uppercase; } .matrix-header.tour-column span { display: block; font-size: 0.78rem; font-weight: 500; color: var(--color-gold, #C4984F); margin-top: 0.35rem; letter-spacing: 0.04em; } .matrix-row-label { padding: 0.9rem 1.4rem; font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 0.9rem; border-bottom: 1px solid #F1F5F9; border-right: 1px solid #F1F5F9; display: flex; align-items: center; } .matrix-row-label.parent-location { background: #F8FAFC; font-weight: 700; color: #111827; font-size: 0.95rem; } .matrix-row-label.child-activity { padding-left: 2.5rem; color: #475569; font-size: 0.86rem; background: #FFFFFF; } .matrix-row-label.child-activity::before { content: "↳ "; color: var(--color-gold, #C4984F); margin-right: 0.4rem; font-weight: 700; } .matrix-cell { display: flex; align-items: center; justify-content: center; border-bottom: 1px solid #F1F5F9; border-right: 1px solid #F1F5F9; padding: 0.85rem; background: #FFFFFF; } .matrix-cell.parent-bg { background: #F8FAFC; } .matrix-cell.is-checked .checkmark-icon { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 50%; background: rgba(34, 197, 94, 0.14); color: #16A34A; font-weight: 800; font-size: 1rem; } .matrix-cell.is-empty { color: #E2E8F0; font-size: 1.1rem; } /* ========================================================================== ROUTE MAP & COASTLINE EXPLORATION SECTION ========================================================================== */ .routemap-section { padding: 5.5rem 0; background: linear-gradient(135deg, #F0F7FB 0%, #E6F0F7 100%); position: relative; overflow: hidden; } .routemap-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 3.5rem; align-items: center; } @media (max-width: 900px) { .routemap-grid { grid-template-columns: 1fr; gap: 2.5rem; } } .routemap-card { background: #FFFFFF; border-radius: 20px; padding: 1.5rem; box-shadow: 0 12px 36px rgba(0, 43, 73, 0.08); border: 1px solid #E2E8F0; position: relative; overflow: hidden; } .routemap-card img { width: 100%; height: auto; border-radius: 14px; display: block; } .routemap-badge { display: inline-block; padding: 0.35rem 0.85rem; border-radius: 9999px; font-size: 0.74rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; background: rgba(0, 43, 73, 0.08); color: #111827; margin-bottom: 0.85rem; } .routemap-title { font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: clamp(1.8rem, 3vw, 2.4rem); font-weight: 600; color: #002B49; line-height: 1.22; margin-bottom: 1.2rem; } .routemap-title span { font-weight: 400; font-style: normal; color: #C95451; } .routemap-desc { font-size: 0.96rem; line-height: 1.75; color: #475569; margin-bottom: 1.5rem; } .coastal-stops-list { list-style: none; padding: 0; margin: 0 0 2rem; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); width: 100%; box-sizing: border-box; gap: 0.75rem; } .coastal-stops-list li { font-size: 0.88rem; color: #1E293B; display: flex; align-items: center; gap: 0.5rem; } .coastal-stops-list li span { color: var(--color-gold, #C4984F); font-weight: 700; } /* ========================================================================== COASTLINE MAP & EXPLORATION SECTION (IMAGE 2 & 3 STYLE) ========================================================================== */ /* ========================================================================== PREMIUM LUXURY ROUTE MAP SECTION (LEFT: MAP | RIGHT: EDITORIAL & QUOTE) ========================================================================== */ .coastline-map-section, .coastal-map-section, .lotus-route-map-section { padding: 5.5rem 0 6rem; background: linear-gradient(180deg, #FAF8F5 0%, #F5F1EA 50%, #FAF8F5 100%); position: relative; overflow: hidden; border-top: 1px solid rgba(197, 168, 128, 0.25); border-bottom: 1px solid rgba(197, 168, 128, 0.25); } .coastline-map-section::before, .coastal-map-section::before, .lotus-route-map-section::before { content: ''; position: absolute; top: -120px; right: -100px; width: 500px; height: 500px; background: radial-gradient(circle, rgba(197, 168, 128, 0.08) 0%, transparent 70%); pointer-events: none; z-index: 0; } .coastline-map-wrapper, .coastal-map-wrapper, .lotus-route-map-wrapper { display: grid; grid-template-columns: 1fr 1.15fr; gap: 2.25rem; width: 100%; max-width: 100%; box-sizing: border-box; align-items: center; position: relative; z-index: 1; } @media (max-width: 1080px) { .coastline-map-wrapper, .coastal-map-wrapper, .lotus-route-map-wrapper { grid-template-columns: 1fr; gap: 3rem; } } /* LEFT COLUMN: Map Showcase */ .coastline-map-figure, .coastal-map-figure, .lotus-map-figure { position: relative; display: flex; flex-direction: column; align-items: center; width: 100%; } .coastline-map-frame, .coastal-map-frame, .lotus-map-frame { position: relative; width: 100%; max-width: 500px; border-radius: 20px; background: #FFFFFF; padding: 10px; box-shadow: 0 20px 45px rgba(0, 43, 73, 0.12), 0 4px 16px rgba(197, 168, 128, 0.15); border: 1px solid rgba(197, 168, 128, 0.35); transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease; overflow: hidden; cursor: pointer; text-decoration: none; display: block; } .coastline-map-frame:hover, .coastal-map-frame:hover, .lotus-map-frame:hover { transform: translateY(-4px) scale(1.01); box-shadow: 0 28px 55px rgba(0, 43, 73, 0.18), 0 8px 24px rgba(197, 168, 128, 0.25); } .coastline-map-img, .coastal-map-img, .lotus-map-img { width: 100%; height: auto; max-height: 640px; object-fit: contain; border-radius: 12px; display: block; background: #FFFFFF; } /* Floating interactive zoom badge */ .map-zoom-badge { position: absolute; top: 20px; right: 20px; display: inline-flex; align-items: center; gap: 0.45rem; background: rgba(0, 26, 44, 0.88); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); color: #FFFFFF; font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 0.76rem; font-weight: 700; letter-spacing: 0.04em; padding: 0.42rem 0.95rem; border-radius: 9999px; box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25); border: 1px solid rgba(197, 168, 128, 0.4); transition: background 0.3s ease, transform 0.2s ease, color 0.3s ease; pointer-events: none; } .coastline-map-frame:hover .map-zoom-badge, .coastal-map-frame:hover .map-zoom-badge, .lotus-map-frame:hover .map-zoom-badge { background: #C5A880; color: #002B49; transform: scale(1.04); } /* Floating status tag at bottom */ .coastline-map-tag, .coastal-map-tag, .lotus-map-tag { position: absolute; bottom: 20px; left: 20px; background: rgba(255, 255, 255, 0.94); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); color: #002B49; font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 0.74rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 0.4rem 0.9rem; border-radius: 9999px; box-shadow: 0 4px 14px rgba(0, 43, 73, 0.1); border: 1px solid rgba(197, 168, 128, 0.3); pointer-events: none; } /* Luxury Map Placeholder (Coming Soon) */ .lotus-map-placeholder { width: 100%; max-width: 500px; min-height: 440px; border-radius: 20px; background: linear-gradient(145deg, #FFFFFF 0%, #FAF8F5 100%); border: 2px dashed rgba(197, 168, 128, 0.5); box-shadow: 0 16px 40px rgba(0, 43, 73, 0.08); display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 2.5rem 2rem; text-align: center; position: relative; transition: transform 0.3s ease, box-shadow 0.3s ease; } .lotus-map-placeholder:hover { transform: translateY(-4px); box-shadow: 0 22px 48px rgba(0, 43, 73, 0.12); border-color: #C5A880; } .lotus-map-placeholder-icon { width: 72px; height: 72px; border-radius: 50%; background: rgba(197, 168, 128, 0.15); display: flex; align-items: center; justify-content: center; font-size: 2.2rem; margin-bottom: 1.25rem; color: #8C6D3F; } .lotus-map-placeholder-title { font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 1.45rem; font-weight: 700; color: #002B49; margin-bottom: 0.5rem; } .lotus-map-placeholder-sub { font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 0.88rem; color: #64748B; line-height: 1.6; max-width: 320px; margin-bottom: 1.25rem; } .lotus-map-placeholder-badge { display: inline-flex; align-items: center; gap: 0.4rem; background: #002B49; color: #FFFFFF; font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 0.74rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 0.4rem 0.95rem; border-radius: 9999px; } /* RIGHT COLUMN: Rich Editorial & Inspirational Quote */ .coastline-content-col, .coastal-content-col, .lotus-map-content-col { padding-right: 0.5rem; } .route-eyebrow { display: inline-flex; align-items: center; gap: 0.45rem; font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 0.78rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: #8C6D3F; background: rgba(197, 168, 128, 0.16); padding: 0.35rem 0.95rem; border-radius: 9999px; margin-bottom: 1.35rem; } /* Inspirational Category Quote */ .route-quote-card { position: relative; background: #FFFFFF; border-left: 4px solid #C5A880; padding: 1.35rem 1.65rem 1.35rem 1.5rem; border-radius: 0 16px 16px 0; margin-bottom: 1.65rem; box-shadow: 0 8px 24px rgba(0, 43, 73, 0.05); } .route-quote-text { font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-style: italic; font-size: clamp(1.15rem, 1.8vw, 1.35rem); line-height: 1.6; color: #002B49; margin: 0; } .route-quote-caption { display: block; font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #8C6D3F; margin-top: 0.65rem; } .coastline-main-title, .coastal-main-title, .lotus-route-main-title { font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: clamp(1.85rem, 2.7vw, 2.45rem); font-weight: 700; color: #002B49; line-height: 1.25; margin-bottom: 1.15rem; } .coastline-main-title span, .coastal-main-title span, .lotus-route-main-title span { display: block; font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: clamp(1.15rem, 1.7vw, 1.5rem); font-weight: 400; color: #4A5568; margin-top: 0.35rem; } .coastline-lead-text, .coastal-lead-text, .lotus-route-lead-text { font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 1.02rem; line-height: 1.8; color: #2D3748; margin-bottom: 1.5rem; } /* Route Sequence Ribbon (Signature Circuit) */ .route-circuit-ribbon { background: #FFFFFF; border: 1px solid rgba(197, 168, 128, 0.35); border-radius: 12px; padding: 0.95rem 1.25rem; margin-bottom: 1.65rem; box-shadow: 0 4px 12px rgba(0, 43, 73, 0.04); } .route-circuit-label { font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 0.72rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: #8C6D3F; margin-bottom: 0.45rem; display: block; } .route-circuit-stops { display: flex; flex-wrap: wrap; align-items: center; gap: 0.35rem 0.55rem; font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 0.84rem; color: #002B49; } .route-stop-pill { font-weight: 700; color: #002B49; } .route-stop-arrow { color: #C5A880; font-weight: 800; font-size: 0.78rem; } /* Highlights Grid */ .coastline-highlights-row, .coastal-highlights-row, .lotus-route-highlights { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); width: 100%; box-sizing: border-box; gap: 0.75rem; margin-bottom: 2rem; } @media (max-width: 576px) { .coastline-highlights-row, .coastal-highlights-row, .lotus-route-highlights { grid-template-columns: 1fr; } } .coastline-highlight-item, .coastal-highlight-item, .lotus-route-highlight-item { display: flex; align-items: center; gap: 0.6rem; background: #FFFFFF; padding: 0.65rem 0.85rem; min-width: 0; box-sizing: border-box; overflow: hidden; border-radius: 10px; font-size: 0.85rem; font-weight: 700; color: #002B49; box-shadow: 0 3px 10px rgba(0, 43, 73, 0.05); border: 1px solid rgba(197, 168, 128, 0.25); } /* CTAs Row */ .route-actions-row { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; } .btn-route-inquire { display: inline-flex; align-items: center; justify-content: center; gap: 0.55rem; background: #C5A880; color: #002B49 !important; font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 0.94rem; font-weight: 800; letter-spacing: 0.04em; padding: 0.95rem 2rem; border-radius: 9999px; text-decoration: none; transition: all 0.3s ease; box-shadow: 0 8px 20px rgba(197, 168, 128, 0.35); } .btn-route-inquire:hover { background: #B09267; color: #001A2C !important; transform: translateY(-2px); box-shadow: 0 12px 26px rgba(197, 168, 128, 0.45); } .btn-route-whatsapp { display: inline-flex; align-items: center; justify-content: center; gap: 0.55rem; background: #25D366; color: #FFFFFF !important; font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 0.94rem; font-weight: 700; padding: 0.95rem 1.6rem; border-radius: 9999px; text-decoration: none; transition: all 0.3s ease; box-shadow: 0 8px 20px rgba(37, 211, 102, 0.28); } .btn-route-whatsapp:hover { background: #1EBE5D; color: #FFFFFF !important; transform: translateY(-2px); box-shadow: 0 12px 24px rgba(37, 211, 102, 0.38); } /* ========================================================================== IN-PAGE LIGHTBOX MODAL FOR MAP (ACCESSIBLE & MOBILE-FRIENDLY) ========================================================================== */ .lotus-map-modal { position: fixed; inset: 0; z-index: 99999; background: rgba(0, 18, 32, 0.92); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); display: none; align-items: center; justify-content: center; padding: 20px; opacity: 0; transition: opacity 0.3s ease; } .lotus-map-modal.active { display: flex; opacity: 1; } .lotus-map-modal-dialog { position: relative; max-width: 92vw; max-height: 92vh; display: flex; flex-direction: column; align-items: center; justify-content: center; } .lotus-map-modal-img { max-width: 90vw; max-height: 85vh; object-fit: contain; border-radius: 12px; box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6); border: 4px solid #FFFFFF; background: #FFFFFF; } .lotus-map-modal-close { position: absolute; top: -45px; right: 0; background: transparent; border: none; color: #FFFFFF; font-size: 2.4rem; line-height: 1; cursor: pointer; padding: 0.25rem 0.6rem; transition: color 0.2s ease, transform 0.2s ease; } .lotus-map-modal-close:hover { color: #C5A880; transform: scale(1.15); } .lotus-map-modal-caption { margin-top: 12px; color: #E2E8F0; font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 0.88rem; letter-spacing: 0.04em; text-align: center; } .btn-beach-view { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; background: var(--color-gold, #C5A880); color: #002B49; font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 0.88rem; font-weight: 700; letter-spacing: 0.04em; padding: 0.72rem 1.35rem; border-radius: 9999px; text-decoration: none; transition: all 0.3s ease; box-shadow: 0 4px 12px rgba(197, 168, 128, 0.25); } .btn-beach-view:hover { background: #B09267; transform: translateY(-2px); box-shadow: 0 6px 18px rgba(197, 168, 128, 0.4); color: #001A2C; } /* ========================================================================== UNIVERSAL MOBILE RESPONSIVE MEDIA ARCHITECTURE (Phase 2 Enhancement) Guarantees 100% fluid responsiveness for all existing & future admin-uploaded images, videos, banners, cards, and embedded media across all viewports. ========================================================================== */ /* 1. Universal Element Fluidity */ img, picture, svg, video, canvas, audio, iframe, embed, object { max-width: 100% !important; box-sizing: border-box; } /* 2. Global Image Display & Containment */ img { height: auto; display: block; } /* Fluid Responsive Image Class (Admin & Dynamic) */ .responsive-media-img, .lotus-responsive-img { width: 100% !important; max-width: 100% !important; height: auto !important; object-fit: cover !important; display: block; border-radius: var(--radius-md, 10px); } /* 3. Card & Gallery Aspect-Ratio Uniformity */ .hover-box__img, .tour-card img, .package-card img, .category-card img, .related-tour-card img, .compare-hero-img, .beach-card-img-wrap img, .cultural-card-img-wrap img, .wildlife-card-img-wrap img, .day-card-img, .table-thumb, .media-item img { width: 100% !important; max-width: 100% !important; object-fit: cover !important; display: block; } /* 4. Universal Video Responsiveness */ video { max-width: 100% !important; height: auto; display: block; object-fit: cover; } /* 5. Universal 16:9 Video Embed Wrapper (Cloudinary, MP4, YouTube, Vimeo) */ .responsive-video-wrap, .video-responsive, .video-container, figure.video, .tour-video-wrap, .lotus-responsive-video { position: relative !important; width: 100% !important; max-width: 100% !important; aspect-ratio: 16 / 9 !important; overflow: hidden !important; border-radius: var(--radius-md, 12px) !important; background-color: #001726 !important; margin: 1.25rem 0 !important; } .responsive-video-wrap video, .responsive-video-wrap iframe, .video-responsive video, .video-responsive iframe, .video-container video, .video-container iframe, figure.video video, figure.video iframe, .tour-video-wrap video, .tour-video-wrap iframe, .lotus-responsive-video video, .lotus-responsive-video iframe { position: absolute !important; top: 0 !important; left: 0 !important; width: 100% !important; height: 100% !important; border: 0 !important; object-fit: cover !important; } /* 6. Background Video Banner Fluidity */ .hero-picture-bg { position: absolute !important; top: 0 !important; left: 0 !important; width: 100% !important; height: 100% !important; z-index: 0 !important; overflow: hidden !important; pointer-events: none !important; } .hero-picture-bg img, .hero-img-bg { width: 100% !important; height: 100% !important; object-fit: cover !important; object-position: center center !important; display: block !important; } .video-banner-slide { position: relative !important; width: 100% !important; height: 100% !important; overflow: hidden !important; } .video-banner-video { position: absolute !important; top: 50% !important; left: 50% !important; min-width: 100% !important; min-height: 100% !important; width: 100% !important; height: 100% !important; transform: translate(-50%, -50%) !important; object-fit: cover !important; z-index: 1 !important; } /* 7. Mobile Viewport Refinements (<= 768px) */ @media (max-width: 768px) { /* Hero Video Banner on Tablets & Mobile */ .banner-section { min-height: 500px !important; height: 78vh !important; max-height: 720px !important; } /* Prevent iOS Safari background-attachment fixed zoom bug */ .banner-section, .tour-hero-section, .beach-hero-banner, .wildlife-hero-banner, .banner-section-inner { background-attachment: scroll !important; background-size: cover !important; background-position: center center !important; } /* Section Featured & Story Images */ .intro-img-card img, .about-img-main, .about-img-main img, .mice-image-wrap img, .faq-featured-image img, .sustain-img-card img { height: 290px !important; max-height: 52vw !important; width: 100% !important; object-fit: cover !important; } /* Overlapping Secondary Image on Mobile */ .intro-img-overlap, .about-img-overlap { width: 48% !important; height: 48% !important; border-width: 3px !important; } /* Card Image Wrappers */ .brand-card-img-wrap, .beach-card-img-wrap, .cultural-card-img-wrap, .wildlife-card-img-wrap { height: 230px !important; } /* Itinerary & Day-by-day Images */ .day-card-img { height: 200px !important; max-height: 48vw !important; } /* Split Content Cards */ .img-content-card { flex-direction: column !important; } .img-content-card__left, .img-content-card__right { flex: 1 1 100% !important; width: 100% !important; } .img-content-card__left { min-height: 260px !important; max-height: 320px !important; } .img-content-card__right { padding: 2rem 1.5rem !important; } /* Route & Tourist Map Responsive Frames */ .coastline-map-img, .coastal-map-img, .cultural-map-img, .wildlife-map-img, .lotus-map-img { width: 100% !important; max-width: 100% !important; height: auto !important; max-height: 450px !important; object-fit: contain !important; } .leaflet-tour-map, .walkers-leaflet-map, .osm-tour-map-container, #touristMap, #leafletTourMap { min-height: 360px !important; height: 380px !important; width: 100% !important; max-width: 100% !important; } } /* 8. Small Mobile Viewport Refinements (<= 480px) */ @media (max-width: 480px) { .banner-section { min-height: 440px !important; height: 72vh !important; } .intro-img-card img, .about-img-main, .about-img-main img, .mice-image-wrap img, .faq-featured-image img, .sustain-img-card img { height: 230px !important; max-height: 60vw !important; } .brand-card-img-wrap, .beach-card-img-wrap, .cultural-card-img-wrap, .wildlife-card-img-wrap { height: 200px !important; } .day-card-img { height: 180px !important; } .img-content-card__left { min-height: 210px !important; } .leaflet-tour-map, .walkers-leaflet-map, .osm-tour-map-container, #touristMap, #leafletTourMap { min-height: 320px !important; height: 340px !important; } } /* ============================================================================== MOBILE CARDS & TYPOGRAPHY STANDARDIZATION (Lotus Mobile QA) ============================================================================== */ .beach-package-card { min-width: 0; width: 100%; } @media (max-width: 639px) { .beach-package-card { border-radius: 16px !important; } .beach-card-img-wrap { height: auto !important; aspect-ratio: 4 / 3 !important; width: 100% !important; position: relative !important; overflow: hidden !important; } .beach-tag-badge { top: 12px !important; left: 12px !important; right: auto !important; font-size: 0.68rem !important; padding: 0.32rem 0.65rem !important; max-width: calc(100% - 24px) !important; white-space: normal !important; line-height: 1.25 !important; border-radius: 6px !important; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25) !important; z-index: 2 !important; } .beach-duration-pill { bottom: 12px !important; left: 12px !important; right: auto !important; font-size: 0.72rem !important; padding: 0.32rem 0.7rem !important; border-radius: 6px !important; background: rgba(0, 31, 53, 0.88) !important; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25) !important; z-index: 2 !important; } .beach-card-body { padding: 18px 20px 20px !important; overflow-wrap: normal !important; word-break: normal !important; hyphens: manual !important; } .beach-card-category { font-size: 0.72rem !important; margin-bottom: 0.35rem !important; letter-spacing: 0.08em !important; overflow-wrap: normal !important; word-break: normal !important; } .beach-card-title { font-size: clamp(1.2rem, 4vw, 1.45rem) !important; line-height: 1.35 !important; margin-bottom: 0.65rem !important; overflow-wrap: normal !important; word-break: normal !important; hyphens: manual !important; } .beach-card-route { font-size: 0.82rem !important; line-height: 1.45 !important; margin-bottom: 0.75rem !important; padding-bottom: 0.75rem !important; overflow-wrap: normal !important; word-break: normal !important; } .beach-card-desc { font-size: 0.88rem !important; line-height: 1.55 !important; margin-bottom: 1rem !important; overflow-wrap: normal !important; word-break: normal !important; } .beach-card-highlights { font-size: 0.82rem !important; padding: 0.85rem 1rem !important; margin-bottom: 1.25rem !important; } .beach-card-actions { display: flex !important; flex-direction: row !important; gap: 0.65rem !important; align-items: center !important; } .btn-beach-view { flex: 2 !important; padding: 0.75rem 1rem !important; font-size: 0.85rem !important; } .btn-beach-inquire { flex: 1 !important; padding: 0.75rem 1rem !important; font-size: 0.85rem !important; text-align: center !important; } } 
+/*
+ * © 2026 Infinite Design. All rights reserved.
+ * Built for Lotus Ceylon International Tours & Services (Pvt) Ltd.
+ * Unauthorized removal of attribution does not transfer ownership of this code.
+ * https://infiniteweb.dev/
+ */
+
+.wrapper--85 {
+  width: 88%;
+  max-width: 1360px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+@media (max-width: 1080px) {
+  .wrapper--85 {
+    width: 92%;
+    padding: 0 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .wrapper--85 {
+    width: 100%;
+    padding: 0 1rem;
+  }
+}
+
+@import url('tours-map.css');
+
+/* ==========================================================================
+   SRI LANKA BEACH TOURS DEDICATED STYLES (LOTUS CEYLON LUXURY ESCAPES)
+   ========================================================================== */
+
+.beach-hero-banner {
+  position: relative;
+  min-height: 520px;
+  background-image: linear-gradient(180deg, rgba(0, 43, 73, 0.55) 0%, rgba(0, 43, 73, 0.78) 100%), url('../assets/images/beach-galle.jpg');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  padding: 7.5rem 0 5.5rem;
+  color: #FFFFFF;
+}
+
+.beach-hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+.beach-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.88rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 1.25rem;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.beach-breadcrumb a {
+  color: #FFFFFF;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.beach-breadcrumb a:hover {
+  color: var(--color-gold);
+}
+
+.beach-breadcrumb .active-crumb {
+  color: var(--color-gold);
+  font-weight: 600;
+}
+
+.beach-hero-title {
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: clamp(2.2rem, 4.2vw, 3.4rem);
+  font-weight: 600;
+  line-height: 1.2;
+  color: #FFFFFF;
+  margin-bottom: 1.2rem;
+  letter-spacing: -0.01em;
+}
+
+.beach-hero-title span {
+  font-weight: 400;
+  font-style: normal;
+  color: #FEE7BE;
+}
+
+.beach-hero-lead {
+  font-size: clamp(1rem, 1.3vw, 1.15rem);
+  line-height: 1.75;
+  color: rgba(255, 255, 255, 0.92);
+  max-width: 780px;
+  margin-bottom: 2.25rem;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.beach-hero-cta-row {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+/* Package Grid - Luxury Responsive Standard (1 col < 640px, 2 col 640-1023px, 3 col 1024px+) */
+.beach-grid-cards,
+.beach-packages-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  align-items: stretch;
+}
+
+@media (min-width: 1024px) {
+  .beach-grid-cards,
+  .beach-packages-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 24px !important;
+  }
+}
+
+@media (min-width: 640px) and (max-width: 1023px) {
+  .beach-grid-cards,
+  .beach-packages-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 20px !important;
+  }
+}
+
+@media (max-width: 639px) {
+  .beach-grid-cards,
+  .beach-packages-grid {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+}
+
+.beach-package-card {
+  background: #FFFFFF;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 43, 73, 0.07);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.beach-package-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 43, 73, 0.14);
+}
+
+.beach-card-img-wrap {
+  position: relative;
+  height: 270px;
+  overflow: hidden;
+  background: #E2E8F0;
+}
+
+.beach-card-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.beach-package-card:hover .beach-card-img-wrap img {
+  transform: scale(1.06);
+}
+
+.beach-tag-badge {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  background: var(--color-gold, #C4984F);
+  color: #1C1B1F;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.35rem 0.85rem;
+  border-radius: 9999px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 2;
+}
+
+.beach-duration-pill {
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+  background: rgba(0, 31, 53, 0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #FFFFFF;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.35rem 0.85rem;
+  border-radius: 9999px;
+  letter-spacing: 0.04em;
+  z-index: 2;
+}
+
+.beach-card-body {
+  padding: 1.85rem 2rem 2rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.beach-card-category {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #C95451;
+  margin-bottom: 0.35rem;
+  display: inline-block;
+}
+
+.beach-card-title {
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 1.45rem;
+  font-weight: 600;
+  color: #111827;
+  line-height: 1.3;
+  margin-bottom: 0.65rem;
+}
+
+.beach-card-route {
+  font-size: 0.88rem;
+  color: #64748B;
+  padding-bottom: 0.85rem;
+  margin-bottom: 0.85rem;
+  border-bottom: 1px dashed #E2E8F0;
+  line-height: 1.5;
+}
+
+.beach-card-route strong {
+  color: #1E293B;
+  font-weight: 600;
+}
+
+.beach-card-desc {
+  font-size: 0.92rem;
+  color: #475569;
+  line-height: 1.65;
+  margin-bottom: 1.25rem;
+}
+
+.beach-card-highlights {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-size: 0.86rem;
+  color: #334155;
+  background: #F8FAFC;
+  padding: 1rem 1.25rem;
+  border-radius: 12px;
+  border-left: 3px solid var(--color-gold, #C4984F);
+}
+
+.beach-card-highlights li {
+  line-height: 1.45;
+}
+
+.beach-card-footer {
+  margin-top: auto;
+  padding-top: 1.25rem;
+  border-top: 1px solid #F1F5F9;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.btn-beach-inquire {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--color-dark-blue, #002B49);
+  color: #FFFFFF !important;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 0.88rem;
+  font-weight: 600;
+  padding: 0.75rem 1.4rem;
+  border-radius: 9999px;
+  text-decoration: none;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 14px rgba(0, 43, 73, 0.15);
+}
+
+.btn-beach-inquire:hover {
+  background: var(--color-gold, #C4984F);
+  color: #1C1B1F !important;
+  transform: translateX(3px);
+  box-shadow: 0 6px 18px rgba(196, 152, 79, 0.3);
+}
+
+/* Seasonal Guide */
+.beach-seasons-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr)); width: 100%; box-sizing: border-box;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+@media (max-width: 850px) {
+  .beach-seasons-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.season-card {
+  background: #FFFFFF;
+  border-radius: 20px;
+  border: 1px solid #E2E8F0;
+  padding: 2.25rem 2rem;
+  box-shadow: 0 10px 25px rgba(0, 43, 73, 0.04);
+  transition: box-shadow 0.3s;
+}
+
+.season-card:hover {
+  box-shadow: 0 16px 35px rgba(0, 43, 73, 0.08);
+}
+
+.season-card-header {
+  padding-left: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
+.season-badge {
+  display: inline-block;
+  padding: 0.3rem 0.85rem;
+  border-radius: 9999px;
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background: rgba(196, 152, 79, 0.15);
+  color: #936B28;
+  margin-bottom: 0.5rem;
+}
+
+.season-title {
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 1.45rem;
+  color: #111827;
+  margin: 0.35rem 0 0.25rem;
+}
+
+.season-loc {
+  font-size: 0.86rem;
+  color: #64748B;
+}
+
+.season-card-body p {
+  font-size: 0.94rem;
+  line-height: 1.7;
+  color: #475569;
+  margin-bottom: 1.25rem;
+}
+
+.season-perks-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  font-size: 0.88rem;
+  color: #334155;
+  line-height: 1.6;
+}
+
+.season-perks-list strong {
+  color: #111827;
+}
+
+/* Ocean Experiences Grid */
+.ocean-experiences-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.75rem;
+  margin-top: 2rem;
+}
+
+@media (max-width: 950px) {
+  .ocean-experiences-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)); width: 100%; box-sizing: border-box;
+  }
+}
+
+@media (max-width: 600px) {
+  .ocean-experiences-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.ocean-exp-box {
+  background: #FFFFFF;
+  border-radius: 18px;
+  padding: 2.25rem 1.75rem;
+  border: 1px solid #E2E8F0;
+  text-align: center;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s;
+  box-shadow: 0 4px 15px rgba(0, 43, 73, 0.04);
+}
+
+.ocean-exp-box:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 30px rgba(0, 43, 73, 0.09);
+  border-color: rgba(196, 152, 79, 0.4);
+}
+
+.exp-icon-circle {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  display: inline-block;
+  line-height: 1;
+}
+
+.ocean-exp-box h4 {
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 1.25rem;
+  color: #111827;
+  margin-bottom: 0.6rem;
+}
+
+.ocean-exp-box p {
+  font-size: 0.88rem;
+  line-height: 1.65;
+  color: #64748B;
+  margin: 0;
+}
+
+/* Coastal FAQ */
+.beach-faq-list {
+  max-width: 780px;
+  margin: 2rem auto 0;
+}
+
+.accordion-item {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 14px;
+  margin-bottom: 1rem;
+  overflow: hidden;
+  transition: border-color 0.25s, box-shadow 0.25s;
+}
+
+.accordion-item.open {
+  border-color: rgba(196, 152, 79, 0.5);
+  box-shadow: 0 8px 24px rgba(0, 43, 73, 0.06);
+}
+
+.accordion-header-btn {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.2rem 1.5rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 1.02rem;
+  font-weight: 600;
+  color: #111827;
+  text-align: left;
+  transition: color 0.2s;
+}
+
+.accordion-header-btn:hover {
+  color: #C95451;
+}
+
+.accordion-icon {
+  font-size: 1.4rem;
+  line-height: 1;
+  color: var(--color-gold, #C4984F);
+  transition: transform 0.25s ease;
+  font-weight: 400;
+}
+
+.accordion-item.open .accordion-icon {
+  transform: rotate(45deg);
+  color: #C95451;
+}
+
+.accordion-body {
+  display: none;
+  padding: 0 1.5rem 1.35rem;
+}
+
+.accordion-item.open .accordion-body {
+  display: block;
+}
+
+.accordion-body p {
+  font-size: 0.94rem;
+  line-height: 1.7;
+  color: #475569;
+  margin: 0;
+}
+
+
+/* ==========================================================================
+   COMPARISON MATRIX (WALKERS TOURS STYLE)
+   ========================================================================== */
+.matrix-section {
+  padding: 5.5rem 0 6.5rem;
+  background: #FDFBF7;
+}
+
+.matrix-wrapper {
+  background: #FFFFFF;
+  border-radius: 20px;
+  box-shadow: 0 10px 35px rgba(0, 43, 73, 0.08);
+  border: 1px solid #E2E8F0;
+  overflow: hidden;
+  margin-top: 2.5rem;
+}
+
+.matrix-scroll-container {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.comparison-matrix {
+  display: grid;
+  grid-template-columns: 2fr repeat(3, 1fr);
+  width: 100%;
+  min-width: 820px;
+}
+
+.matrix-header {
+  padding: 1.5rem 1.25rem;
+  background: var(--color-dark-blue, #002B49);
+  color: #FFFFFF;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.matrix-header.corner-cell {
+  background: #001F35;
+  align-items: flex-start;
+  text-align: left;
+  padding-left: 1.5rem;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.7);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.matrix-header.tour-column span {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--color-gold, #C4984F);
+  margin-top: 0.35rem;
+  letter-spacing: 0.04em;
+}
+
+.matrix-row-label {
+  padding: 0.9rem 1.4rem;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 0.9rem;
+  border-bottom: 1px solid #F1F5F9;
+  border-right: 1px solid #F1F5F9;
+  display: flex;
+  align-items: center;
+}
+
+.matrix-row-label.parent-location {
+  background: #F8FAFC;
+  font-weight: 700;
+  color: #111827;
+  font-size: 0.95rem;
+}
+
+.matrix-row-label.child-activity {
+  padding-left: 2.5rem;
+  color: #475569;
+  font-size: 0.86rem;
+  background: #FFFFFF;
+}
+
+.matrix-row-label.child-activity::before {
+  content: "↳ ";
+  color: var(--color-gold, #C4984F);
+  margin-right: 0.4rem;
+  font-weight: 700;
+}
+
+.matrix-cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid #F1F5F9;
+  border-right: 1px solid #F1F5F9;
+  padding: 0.85rem;
+  background: #FFFFFF;
+}
+
+.matrix-cell.parent-bg {
+  background: #F8FAFC;
+}
+
+.matrix-cell.is-checked .checkmark-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(34, 197, 94, 0.14);
+  color: #16A34A;
+  font-weight: 800;
+  font-size: 1rem;
+}
+
+.matrix-cell.is-empty {
+  color: #E2E8F0;
+  font-size: 1.1rem;
+}
+
+/* ==========================================================================
+   ROUTE MAP & COASTLINE EXPLORATION SECTION
+   ========================================================================== */
+.routemap-section {
+  padding: 5.5rem 0;
+  background: linear-gradient(135deg, #F0F7FB 0%, #E6F0F7 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.routemap-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 3.5rem;
+  align-items: center;
+}
+
+@media (max-width: 900px) {
+  .routemap-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+}
+
+.routemap-card {
+  background: #FFFFFF;
+  border-radius: 20px;
+  padding: 1.5rem;
+  box-shadow: 0 12px 36px rgba(0, 43, 73, 0.08);
+  border: 1px solid #E2E8F0;
+  position: relative;
+  overflow: hidden;
+}
+
+.routemap-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 14px;
+  display: block;
+}
+
+.routemap-badge {
+  display: inline-block;
+  padding: 0.35rem 0.85rem;
+  border-radius: 9999px;
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: rgba(0, 43, 73, 0.08);
+  color: #111827;
+  margin-bottom: 0.85rem;
+}
+
+.routemap-title {
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  font-weight: 600;
+  color: #002B49;
+  line-height: 1.22;
+  margin-bottom: 1.2rem;
+}
+
+.routemap-title span {
+  font-weight: 400;
+  font-style: normal;
+  color: #C95451;
+}
+
+.routemap-desc {
+  font-size: 0.96rem;
+  line-height: 1.75;
+  color: #475569;
+  margin-bottom: 1.5rem;
+}
+
+.coastal-stops-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2rem;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr)); width: 100%; box-sizing: border-box;
+  gap: 0.75rem;
+}
+
+.coastal-stops-list li {
+  font-size: 0.88rem;
+  color: #1E293B;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.coastal-stops-list li span {
+  color: var(--color-gold, #C4984F);
+  font-weight: 700;
+}
+
+
+/* ==========================================================================
+   COASTLINE MAP & EXPLORATION SECTION (IMAGE 2 & 3 STYLE)
+   ========================================================================== */
+/* ==========================================================================
+   PREMIUM LUXURY ROUTE MAP SECTION (LEFT: MAP | RIGHT: EDITORIAL & QUOTE)
+   ========================================================================== */
+.coastline-map-section,
+.coastal-map-section,
+.lotus-route-map-section {
+  padding: 5.5rem 0 6rem;
+  background: linear-gradient(180deg, #FAF8F5 0%, #F5F1EA 50%, #FAF8F5 100%);
+  position: relative;
+  overflow: hidden;
+  border-top: 1px solid rgba(197, 168, 128, 0.25);
+  border-bottom: 1px solid rgba(197, 168, 128, 0.25);
+}
+
+.coastline-map-section::before,
+.coastal-map-section::before,
+.lotus-route-map-section::before {
+  content: '';
+  position: absolute;
+  top: -120px;
+  right: -100px;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(197, 168, 128, 0.08) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.coastline-map-wrapper,
+.coastal-map-wrapper,
+.lotus-route-map-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: 2.25rem; width: 100%; max-width: 100%; box-sizing: border-box;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 1080px) {
+  .coastline-map-wrapper,
+  .coastal-map-wrapper,
+  .lotus-route-map-wrapper {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+}
+
+/* LEFT COLUMN: Map Showcase */
+.coastline-map-figure,
+.coastal-map-figure,
+.lotus-map-figure {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.coastline-map-frame,
+.coastal-map-frame,
+.lotus-map-frame {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  border-radius: 20px;
+  background: #FFFFFF;
+  padding: 10px;
+  box-shadow: 0 20px 45px rgba(0, 43, 73, 0.12), 0 4px 16px rgba(197, 168, 128, 0.15);
+  border: 1px solid rgba(197, 168, 128, 0.35);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+  overflow: hidden;
+  cursor: pointer;
+  text-decoration: none;
+  display: block;
+}
+
+.coastline-map-frame:hover,
+.coastal-map-frame:hover,
+.lotus-map-frame:hover {
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: 0 28px 55px rgba(0, 43, 73, 0.18), 0 8px 24px rgba(197, 168, 128, 0.25);
+}
+
+.coastline-map-img,
+.coastal-map-img,
+.lotus-map-img {
+  width: 100%;
+  height: auto;
+  max-height: 640px;
+  object-fit: contain;
+  border-radius: 12px;
+  display: block;
+  background: #FFFFFF;
+}
+
+/* Floating interactive zoom badge */
+.map-zoom-badge {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: rgba(0, 26, 44, 0.88);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #FFFFFF;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 0.42rem 0.95rem;
+  border-radius: 9999px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(197, 168, 128, 0.4);
+  transition: background 0.3s ease, transform 0.2s ease, color 0.3s ease;
+  pointer-events: none;
+}
+
+.coastline-map-frame:hover .map-zoom-badge,
+.coastal-map-frame:hover .map-zoom-badge,
+.lotus-map-frame:hover .map-zoom-badge {
+  background: #C5A880;
+  color: #002B49;
+  transform: scale(1.04);
+}
+
+/* Floating status tag at bottom */
+.coastline-map-tag,
+.coastal-map-tag,
+.lotus-map-tag {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #002B49;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.4rem 0.9rem;
+  border-radius: 9999px;
+  box-shadow: 0 4px 14px rgba(0, 43, 73, 0.1);
+  border: 1px solid rgba(197, 168, 128, 0.3);
+  pointer-events: none;
+}
+
+/* Luxury Map Placeholder (Coming Soon) */
+.lotus-map-placeholder {
+  width: 100%;
+  max-width: 500px;
+  min-height: 440px;
+  border-radius: 20px;
+  background: linear-gradient(145deg, #FFFFFF 0%, #FAF8F5 100%);
+  border: 2px dashed rgba(197, 168, 128, 0.5);
+  box-shadow: 0 16px 40px rgba(0, 43, 73, 0.08);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2.5rem 2rem;
+  text-align: center;
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.lotus-map-placeholder:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 22px 48px rgba(0, 43, 73, 0.12);
+  border-color: #C5A880;
+}
+
+.lotus-map-placeholder-icon {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: rgba(197, 168, 128, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.2rem;
+  margin-bottom: 1.25rem;
+  color: #8C6D3F;
+}
+
+.lotus-map-placeholder-title {
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: #002B49;
+  margin-bottom: 0.5rem;
+}
+
+.lotus-map-placeholder-sub {
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 0.88rem;
+  color: #64748B;
+  line-height: 1.6;
+  max-width: 320px;
+  margin-bottom: 1.25rem;
+}
+
+.lotus-map-placeholder-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: #002B49;
+  color: #FFFFFF;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.4rem 0.95rem;
+  border-radius: 9999px;
+}
+
+/* RIGHT COLUMN: Rich Editorial & Inspirational Quote */
+.coastline-content-col,
+.coastal-content-col,
+.lotus-map-content-col {
+  padding-right: 0.5rem;
+}
+
+.route-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #8C6D3F;
+  background: rgba(197, 168, 128, 0.16);
+  padding: 0.35rem 0.95rem;
+  border-radius: 9999px;
+  margin-bottom: 1.35rem;
+}
+
+/* Inspirational Category Quote */
+.route-quote-card {
+  position: relative;
+  background: #FFFFFF;
+  border-left: 4px solid #C5A880;
+  padding: 1.35rem 1.65rem 1.35rem 1.5rem;
+  border-radius: 0 16px 16px 0;
+  margin-bottom: 1.65rem;
+  box-shadow: 0 8px 24px rgba(0, 43, 73, 0.05);
+}
+
+.route-quote-text {
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-style: italic;
+  font-size: clamp(1.15rem, 1.8vw, 1.35rem);
+  line-height: 1.6;
+  color: #002B49;
+  margin: 0;
+}
+
+.route-quote-caption {
+  display: block;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #8C6D3F;
+  margin-top: 0.65rem;
+}
+
+.coastline-main-title,
+.coastal-main-title,
+.lotus-route-main-title {
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: clamp(1.85rem, 2.7vw, 2.45rem);
+  font-weight: 700;
+  color: #002B49;
+  line-height: 1.25;
+  margin-bottom: 1.15rem;
+}
+
+.coastline-main-title span,
+.coastal-main-title span,
+.lotus-route-main-title span {
+  display: block;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: clamp(1.15rem, 1.7vw, 1.5rem);
+  font-weight: 400;
+  color: #4A5568;
+  margin-top: 0.35rem;
+}
+
+.coastline-lead-text,
+.coastal-lead-text,
+.lotus-route-lead-text {
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 1.02rem;
+  line-height: 1.8;
+  color: #2D3748;
+  margin-bottom: 1.5rem;
+}
+
+/* Route Sequence Ribbon (Signature Circuit) */
+.route-circuit-ribbon {
+  background: #FFFFFF;
+  border: 1px solid rgba(197, 168, 128, 0.35);
+  border-radius: 12px;
+  padding: 0.95rem 1.25rem;
+  margin-bottom: 1.65rem;
+  box-shadow: 0 4px 12px rgba(0, 43, 73, 0.04);
+}
+
+.route-circuit-label {
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #8C6D3F;
+  margin-bottom: 0.45rem;
+  display: block;
+}
+
+.route-circuit-stops {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem 0.55rem;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 0.84rem;
+  color: #002B49;
+}
+
+.route-stop-pill {
+  font-weight: 700;
+  color: #002B49;
+}
+
+.route-stop-arrow {
+  color: #C5A880;
+  font-weight: 800;
+  font-size: 0.78rem;
+}
+
+/* Highlights Grid */
+.coastline-highlights-row,
+.coastal-highlights-row,
+.lotus-route-highlights {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr)); width: 100%; box-sizing: border-box;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+}
+
+@media (max-width: 576px) {
+  .coastline-highlights-row,
+  .coastal-highlights-row,
+  .lotus-route-highlights {
+    grid-template-columns: 1fr;
+  }
+}
+
+.coastline-highlight-item,
+.coastal-highlight-item,
+.lotus-route-highlight-item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: #FFFFFF;
+  padding: 0.65rem 0.85rem; min-width: 0; box-sizing: border-box; overflow: hidden;
+  border-radius: 10px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #002B49;
+  box-shadow: 0 3px 10px rgba(0, 43, 73, 0.05);
+  border: 1px solid rgba(197, 168, 128, 0.25);
+}
+
+/* CTAs Row */
+.route-actions-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.btn-route-inquire {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  background: #C5A880;
+  color: #002B49 !important;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 0.94rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  padding: 0.95rem 2rem;
+  border-radius: 9999px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 20px rgba(197, 168, 128, 0.35);
+}
+
+.btn-route-inquire:hover {
+  background: #B09267;
+  color: #001A2C !important;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 26px rgba(197, 168, 128, 0.45);
+}
+
+.btn-route-whatsapp {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  background: #25D366;
+  color: #FFFFFF !important;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 0.94rem;
+  font-weight: 700;
+  padding: 0.95rem 1.6rem;
+  border-radius: 9999px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 20px rgba(37, 211, 102, 0.28);
+}
+
+.btn-route-whatsapp:hover {
+  background: #1EBE5D;
+  color: #FFFFFF !important;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px rgba(37, 211, 102, 0.38);
+}
+
+/* ==========================================================================
+   IN-PAGE LIGHTBOX MODAL FOR MAP (ACCESSIBLE & MOBILE-FRIENDLY)
+   ========================================================================== */
+.lotus-map-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: rgba(0, 18, 32, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.lotus-map-modal.active {
+  display: flex;
+  opacity: 1;
+}
+
+.lotus-map-modal-dialog {
+  position: relative;
+  max-width: 92vw;
+  max-height: 92vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.lotus-map-modal-img {
+  max-width: 90vw;
+  max-height: 85vh;
+  object-fit: contain;
+  border-radius: 12px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
+  border: 4px solid #FFFFFF;
+  background: #FFFFFF;
+}
+
+.lotus-map-modal-close {
+  position: absolute;
+  top: -45px;
+  right: 0;
+  background: transparent;
+  border: none;
+  color: #FFFFFF;
+  font-size: 2.4rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0.25rem 0.6rem;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.lotus-map-modal-close:hover {
+  color: #C5A880;
+  transform: scale(1.15);
+}
+
+.lotus-map-modal-caption {
+  margin-top: 12px;
+  color: #E2E8F0;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 0.88rem;
+  letter-spacing: 0.04em;
+  text-align: center;
+}
+
+.btn-beach-view {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: var(--color-gold, #C5A880);
+  color: #002B49;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 0.72rem 1.35rem;
+  border-radius: 9999px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(197, 168, 128, 0.25);
+}
+
+.btn-beach-view:hover {
+  background: #B09267;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(197, 168, 128, 0.4);
+  color: #001A2C;
+}
+
+
+/* ==========================================================================
+   UNIVERSAL MOBILE RESPONSIVE MEDIA ARCHITECTURE (Phase 2 Enhancement)
+   Guarantees 100% fluid responsiveness for all existing & future admin-uploaded
+   images, videos, banners, cards, and embedded media across all viewports.
+   ========================================================================== */
+
+/* 1. Universal Element Fluidity */
+img,
+picture,
+svg,
+video,
+canvas,
+audio,
+iframe,
+embed,
+object {
+  max-width: 100% !important;
+  box-sizing: border-box;
+}
+
+/* 2. Global Image Display & Containment */
+img {
+  height: auto;
+  display: block;
+}
+
+/* Fluid Responsive Image Class (Admin & Dynamic) */
+.responsive-media-img,
+.lotus-responsive-img {
+  width: 100% !important;
+  max-width: 100% !important;
+  height: auto !important;
+  object-fit: cover !important;
+  display: block;
+  border-radius: var(--radius-md, 10px);
+}
+
+/* 3. Card & Gallery Aspect-Ratio Uniformity */
+.hover-box__img,
+.tour-card img,
+.package-card img,
+.category-card img,
+.related-tour-card img,
+.compare-hero-img,
+.beach-card-img-wrap img,
+.cultural-card-img-wrap img,
+.wildlife-card-img-wrap img,
+.day-card-img,
+.table-thumb,
+.media-item img {
+  width: 100% !important;
+  max-width: 100% !important;
+  object-fit: cover !important;
+  display: block;
+}
+
+/* 4. Universal Video Responsiveness */
+video {
+  max-width: 100% !important;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+/* 5. Universal 16:9 Video Embed Wrapper (Cloudinary, MP4, YouTube, Vimeo) */
+.responsive-video-wrap,
+.video-responsive,
+.video-container,
+figure.video,
+.tour-video-wrap,
+.lotus-responsive-video {
+  position: relative !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  aspect-ratio: 16 / 9 !important;
+  overflow: hidden !important;
+  border-radius: var(--radius-md, 12px) !important;
+  background-color: #001726 !important;
+  margin: 1.25rem 0 !important;
+}
+
+.responsive-video-wrap video,
+.responsive-video-wrap iframe,
+.video-responsive video,
+.video-responsive iframe,
+.video-container video,
+.video-container iframe,
+figure.video video,
+figure.video iframe,
+.tour-video-wrap video,
+.tour-video-wrap iframe,
+.lotus-responsive-video video,
+.lotus-responsive-video iframe {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  border: 0 !important;
+  object-fit: cover !important;
+}
+
+/* 6. Background Video Banner Fluidity */
+
+.hero-picture-bg {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  z-index: 0 !important;
+  overflow: hidden !important;
+  pointer-events: none !important;
+}
+
+.hero-picture-bg img,
+.hero-img-bg {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center center !important;
+  display: block !important;
+}
+
+.video-banner-slide {
+  position: relative !important;
+  width: 100% !important;
+  height: 100% !important;
+  overflow: hidden !important;
+}
+
+.video-banner-video {
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  min-width: 100% !important;
+  min-height: 100% !important;
+  width: 100% !important;
+  height: 100% !important;
+  transform: translate(-50%, -50%) !important;
+  object-fit: cover !important;
+  z-index: 1 !important;
+}
+
+/* 7. Mobile Viewport Refinements (<= 768px) */
+@media (max-width: 768px) {
+  /* Hero Video Banner on Tablets & Mobile */
+  .banner-section {
+    min-height: 500px !important;
+    height: 78vh !important;
+    max-height: 720px !important;
+  }
+
+  /* Prevent iOS Safari background-attachment fixed zoom bug */
+  .banner-section,
+  .tour-hero-section,
+  .beach-hero-banner,
+  .wildlife-hero-banner,
+  .banner-section-inner {
+    background-attachment: scroll !important;
+    background-size: cover !important;
+    background-position: center center !important;
+  }
+
+  /* Section Featured & Story Images */
+  .intro-img-card img,
+  .about-img-main,
+  .about-img-main img,
+  .mice-image-wrap img,
+  .faq-featured-image img,
+  .sustain-img-card img {
+    height: 290px !important;
+    max-height: 52vw !important;
+    width: 100% !important;
+    object-fit: cover !important;
+  }
+
+  /* Overlapping Secondary Image on Mobile */
+  .intro-img-overlap,
+  .about-img-overlap {
+    width: 48% !important;
+    height: 48% !important;
+    border-width: 3px !important;
+  }
+
+  /* Card Image Wrappers */
+  .brand-card-img-wrap,
+  .beach-card-img-wrap,
+  .cultural-card-img-wrap,
+  .wildlife-card-img-wrap {
+    height: 230px !important;
+  }
+
+  /* Itinerary & Day-by-day Images */
+  .day-card-img {
+    height: 200px !important;
+    max-height: 48vw !important;
+  }
+
+  /* Split Content Cards */
+  .img-content-card {
+    flex-direction: column !important;
+  }
+
+  .img-content-card__left,
+  .img-content-card__right {
+    flex: 1 1 100% !important;
+    width: 100% !important;
+  }
+
+  .img-content-card__left {
+    min-height: 260px !important;
+    max-height: 320px !important;
+  }
+
+  .img-content-card__right {
+    padding: 2rem 1.5rem !important;
+  }
+
+  /* Route & Tourist Map Responsive Frames */
+  .coastline-map-img,
+  .coastal-map-img,
+  .cultural-map-img,
+  .wildlife-map-img,
+  .lotus-map-img {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    max-height: 450px !important;
+    object-fit: contain !important;
+  }
+
+  .leaflet-tour-map,
+  .walkers-leaflet-map,
+  .osm-tour-map-container,
+  #touristMap,
+  #leafletTourMap {
+    min-height: 360px !important;
+    height: 380px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
+
+/* 8. Small Mobile Viewport Refinements (<= 480px) */
+@media (max-width: 480px) {
+  .banner-section {
+    min-height: 440px !important;
+    height: 72vh !important;
+  }
+
+  .intro-img-card img,
+  .about-img-main,
+  .about-img-main img,
+  .mice-image-wrap img,
+  .faq-featured-image img,
+  .sustain-img-card img {
+    height: 230px !important;
+    max-height: 60vw !important;
+  }
+
+  .brand-card-img-wrap,
+  .beach-card-img-wrap,
+  .cultural-card-img-wrap,
+  .wildlife-card-img-wrap {
+    height: 200px !important;
+  }
+
+  .day-card-img {
+    height: 180px !important;
+  }
+
+  .img-content-card__left {
+    min-height: 210px !important;
+  }
+
+  .leaflet-tour-map,
+  .walkers-leaflet-map,
+  .osm-tour-map-container,
+  #touristMap,
+  #leafletTourMap {
+    min-height: 320px !important;
+    height: 340px !important;
+  }
+}
+
+/* ==============================================================================
+   MOBILE CARDS & TYPOGRAPHY STANDARDIZATION (Lotus Mobile QA)
+   ============================================================================== */
+.beach-package-card {
+  min-width: 0;
+  width: 100%;
+}
+
+@media (max-width: 639px) {
+  .beach-package-card {
+    border-radius: 16px !important;
+  }
+
+  .beach-card-img-wrap {
+    height: auto !important;
+    aspect-ratio: 4 / 3 !important;
+    width: 100% !important;
+    position: relative !important;
+    overflow: hidden !important;
+  }
+
+  .beach-tag-badge {
+    top: 12px !important;
+    left: 12px !important;
+    right: auto !important;
+    font-size: 0.68rem !important;
+    padding: 0.32rem 0.65rem !important;
+    max-width: calc(100% - 24px) !important;
+    white-space: normal !important;
+    line-height: 1.25 !important;
+    border-radius: 6px !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25) !important;
+    z-index: 2 !important;
+  }
+
+  .beach-duration-pill {
+    bottom: 12px !important;
+    left: 12px !important;
+    right: auto !important;
+    font-size: 0.72rem !important;
+    padding: 0.32rem 0.7rem !important;
+    border-radius: 6px !important;
+    background: rgba(0, 31, 53, 0.88) !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25) !important;
+    z-index: 2 !important;
+  }
+
+  .beach-card-body {
+    padding: 18px 20px 20px !important;
+    overflow-wrap: normal !important;
+    word-break: normal !important;
+    hyphens: manual !important;
+  }
+
+  .beach-card-category {
+    font-size: 0.72rem !important;
+    margin-bottom: 0.35rem !important;
+    letter-spacing: 0.08em !important;
+    overflow-wrap: normal !important;
+    word-break: normal !important;
+  }
+
+  .beach-card-title {
+    font-size: clamp(1.2rem, 4vw, 1.45rem) !important;
+    line-height: 1.35 !important;
+    margin-bottom: 0.65rem !important;
+    overflow-wrap: normal !important;
+    word-break: normal !important;
+    hyphens: manual !important;
+  }
+
+  .beach-card-route {
+    font-size: 0.82rem !important;
+    line-height: 1.45 !important;
+    margin-bottom: 0.75rem !important;
+    padding-bottom: 0.75rem !important;
+    overflow-wrap: normal !important;
+    word-break: normal !important;
+  }
+
+  .beach-card-desc {
+    font-size: 0.88rem !important;
+    line-height: 1.55 !important;
+    margin-bottom: 1rem !important;
+    overflow-wrap: normal !important;
+    word-break: normal !important;
+  }
+
+  .beach-card-highlights {
+    font-size: 0.82rem !important;
+    padding: 0.85rem 1rem !important;
+    margin-bottom: 1.25rem !important;
+  }
+
+  .beach-card-actions {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 0.65rem !important;
+    align-items: center !important;
+  }
+
+  .btn-beach-view {
+    flex: 2 !important;
+    padding: 0.75rem 1rem !important;
+    font-size: 0.85rem !important;
+  }
+
+  .btn-beach-inquire {
+    flex: 1 !important;
+    padding: 0.75rem 1rem !important;
+    font-size: 0.85rem !important;
+    text-align: center !important;
+  }
+}

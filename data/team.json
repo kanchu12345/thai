@@ -1,1 +1,32 @@
-[ { "id": "dhushantha-gihan-mallawaarachchi", "name": "Mallawa Arachchige Dhushantha Gihan Mallawaarachchi", "role": "Director", "country": "Sri Lanka", "flag": "", "photo": { "cloudinaryPublicId": "lotus-ceylon/team/dhushantha-gihan", "alt": "Director Mallawa Arachchige Dhushantha Gihan Mallawaarachchi", "url": "assets/images/team/avatar-dg.svg" }, "bio": "Introduction coming soon", "sortOrder": 1, "published": true }, { "id": "kuenga-yarpel", "name": "Mr. Kuenga Yarpel", "role": "The Lotus Representative, Bhutan", "country": "Bhutan", "flag": "", "photo": { "cloudinaryPublicId": "lotus-ceylon/team/kuenga-yarpel", "alt": "Mr. Kuenga Yarpel, The Lotus Representative, Bhutan", "url": "assets/images/team/avatar-ky.svg" }, "bio": "Introduction coming soon", "sortOrder": 2, "published": true } ]
+[
+  {
+    "id": "dhushantha-gihan-mallawaarachchi",
+    "name": "Mallawa Arachchige Dhushantha Gihan Mallawaarachchi",
+    "role": "Director",
+    "country": "Sri Lanka",
+    "flag": "🇱🇰",
+    "photo": {
+      "cloudinaryPublicId": "lotus-ceylon/team/dhushantha-gihan",
+      "alt": "Director Mallawa Arachchige Dhushantha Gihan Mallawaarachchi",
+      "url": "assets/images/team/avatar-dg.svg"
+    },
+    "bio": "Introduction coming soon",
+    "sortOrder": 1,
+    "published": true
+  },
+  {
+    "id": "kuenga-yarpel",
+    "name": "Mr. Kuenga Yarpel",
+    "role": "The Lotus Representative, Bhutan",
+    "country": "Bhutan",
+    "flag": "🇧🇹",
+    "photo": {
+      "cloudinaryPublicId": "lotus-ceylon/team/kuenga-yarpel",
+      "alt": "Mr. Kuenga Yarpel, The Lotus Representative, Bhutan",
+      "url": "assets/images/team/avatar-ky.svg"
+    },
+    "bio": "Introduction coming soon",
+    "sortOrder": 2,
+    "published": true
+  }
+]

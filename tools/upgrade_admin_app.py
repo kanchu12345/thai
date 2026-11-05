@@ -324,7 +324,7 @@ picker_old = """    openImagePicker(targetInputId) {
         <div class="media-item" onclick="AdminApp.selectPickedImage('${m.url}')">
           ${isVid ? `
             <div style="width: 100%; height: 100%; background: #001726; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #E5B869;">
-              <span style="font-size: 2.2rem;"></span>
+              <span style="font-size: 2.2rem;">🎬</span>
               <span style="font-size: 0.75rem; letter-spacing: 1px; font-weight: 700; color: #FFFFFF; margin-top: 4px;">HD VIDEO</span>
             </div>
           ` : `
@@ -370,7 +370,7 @@ picker_new = """    openImagePicker(targetInputId, previewImgId = null, cardId =
         <div class="media-item" onclick="AdminApp.selectPickedImage('${m.url}')" title="${m.name} (${m.size || ''})">
           ${isVid ? `
             <div style="width: 100%; height: 100%; background: #001726; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #E5B869;">
-              <span style="font-size: 2.2rem;"></span>
+              <span style="font-size: 2.2rem;">🎬</span>
               <span style="font-size: 0.75rem; letter-spacing: 1px; font-weight: 700; color: #FFFFFF; margin-top: 4px;">HD VIDEO</span>
             </div>
           ` : `
@@ -885,7 +885,7 @@ seeder_method = '''
         this.renderMediaLibrary();
       } catch (err) {
         console.error('Master Seeder error:', err);
-        if (statusText) statusText.textContent = 'Seeder error: ' + err.message;
+        if (statusText) statusText.textContent = '❌ Seeder error: ' + err.message;
         this.updateFirebaseBadge('Firebase Offline / Error', '#EF4444');
         this.showToast('Seeding failed: ' + err.message, 'error', 5000);
       } finally {

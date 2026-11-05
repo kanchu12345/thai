@@ -309,7 +309,7 @@ md.append("| Page Path | Total Elements | CMS Bound | Hard-Coded | Coverage % | 
 md.append("| :--- | :--- | :--- | :--- | :--- | :--- |")
 
 for p in audit_data:
-    status = "[HIGH] High (>75%)" if p['pct'] >= 75 else ("[MED] Partial (40-75%)" if p['pct'] >= 40 else "[LOW] Low (<40%)")
+    status = "🟢 High (>75%)" if p['pct'] >= 75 else ("🟡 Partial (40-75%)" if p['pct'] >= 40 else "🔴 Low (<40%)")
     md.append(f"| [`{p['page']}`]({p['page']}) | `{p['total']}` | `{p['bound']}` | `{p['hardcoded']}` | `{p['pct']:.1f}%` | {status} |")
 
 md.append("")

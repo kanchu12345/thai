@@ -228,7 +228,7 @@ code_to_inject = '''
         html += `
           <tr>
             <td colspan="${selectedPkgs.length + 1}" style="text-align: center; padding: 30px; color: #64748B;">
-              No destination groups defined yet. Click <strong>"+ Add Destination Group"</strong> or <strong>"Auto-generate from Routes"</strong> above.
+              No destination groups defined yet. Click <strong>"+ Add Destination Group"</strong> or <strong>"⚡ Auto-generate from Routes"</strong> above.
             </td>
           </tr>
         `;
@@ -250,7 +250,7 @@ code_to_inject = '''
                 </div>
                 <div style="display: flex; gap: 4px;">
                   <button type="button" class="btn btn-xs btn-outline" onclick="AdminApp.addCompSight('${group.id}')">+ Sight</button>
-                  <button type="button" class="btn-icon delete" title="Delete Group" onclick="AdminApp.deleteCompGroup('${group.id}')"></button>
+                  <button type="button" class="btn-icon delete" title="Delete Group" onclick="AdminApp.deleteCompGroup('${group.id}')">🗑</button>
                 </div>
               </div>
             </td>
@@ -293,7 +293,7 @@ code_to_inject = '''
                     <input type="text" class="form-control form-control-sm" style="font-size: 0.82rem; width: 190px;" value="${this.escapeHtml(sight.label)}" onchange="AdminApp.updateCompSightLabel('${group.id}', '${sight.id}', this.value)" />
                   </div>
                   <div style="display: flex; gap: 2px;">
-                    <button type="button" class="btn-icon" title="Duplicate Sight" onclick="AdminApp.duplicateCompSight('${group.id}', '${sight.id}')"></button>
+                    <button type="button" class="btn-icon" title="Duplicate Sight" onclick="AdminApp.duplicateCompSight('${group.id}', '${sight.id}')">📋</button>
                     <button type="button" class="btn-icon delete" title="Delete Sight" onclick="AdminApp.deleteCompSight('${group.id}', '${sight.id}')">✕</button>
                     <button type="button" class="btn-icon" title="Tick All Packages" onclick="AdminApp.tickAllRowSights('${group.id}', '${sight.id}')" style="font-size: 0.7rem; color: #16A34A;">All</button>
                     <button type="button" class="btn-icon" title="Clear Row" onclick="AdminApp.clearRowSights('${group.id}', '${sight.id}')" style="font-size: 0.7rem; color: #DC2626;">None</button>
@@ -672,7 +672,7 @@ code_to_inject = '''
         box.style.border = '1px solid #FDE68A';
         box.style.color = '#B45309';
         box.innerHTML = `
-          <div style="font-weight: 700; margin-bottom: 4px;"> Table Validation Notices (${warnings.length}):</div>
+          <div style="font-weight: 700; margin-bottom: 4px;">⚠️ Table Validation Notices (${warnings.length}):</div>
           <ul style="margin: 0; padding-left: 18px; line-height: 1.5;">
             ${warnings.map(w => `<li>${w}</li>`).join('')}
           </ul>
@@ -823,7 +823,7 @@ code_to_inject = '''
         html += `
           <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 6px; padding: 10px 14px;">
             <div style="font-weight: 700; color: #002B49; margin-bottom: 8px; font-size: 0.92rem;">
-               ${this.escapeHtml(group.label)}
+              📍 ${this.escapeHtml(group.label)}
             </div>
             <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 8px;">
         `;

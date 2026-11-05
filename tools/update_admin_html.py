@@ -8,7 +8,7 @@ pkg_old = '''          <div class="form-group">
             <label>Hero Featured Image</label>
             <div style="display: flex; gap: 8px; flex-wrap: wrap;">
               <input type="text" id="pkgHeroImage" class="form-control" style="flex: 1; min-width: 220px;" placeholder="assets/images/cultural-triangle.jpg or Cloudinary URL">
-              <button type="button" class="btn btn-secondary" onclick="AdminApp.openCloudinaryWidgetForInput('pkgHeroImage')" title="Direct unsigned upload to Cloudinary preset">Upload Cloudinary</button>
+              <button type="button" class="btn btn-secondary" onclick="AdminApp.openCloudinaryWidgetForInput('pkgHeroImage')" title="Direct unsigned upload to Cloudinary preset">☁️ Upload Cloudinary</button>
               <button type="button" class="btn btn-outline" onclick="AdminApp.openImagePicker('pkgHeroImage')">Browse Media</button>
             </div>
           </div>'''
@@ -17,10 +17,10 @@ pkg_new = '''          <div class="form-group">
             <label>Hero Featured Image *</label>
             <div style="display: flex; gap: 8px; flex-wrap: wrap;">
               <input type="text" id="pkgHeroImage" class="form-control" style="flex: 1; min-width: 220px;" placeholder="assets/images/cultural/sigiriya-1.webp or Cloudinary URL" oninput="AdminApp.updateImagePreview('pkgHeroImage', 'pkgHeroImagePreview', 'pkgHeroPreviewCard')">
-              <button type="button" class="btn btn-secondary" onclick="AdminApp.openCloudinaryWidgetForInput('pkgHeroImage', 'pkgHeroImagePreview', 'pkgHeroPreviewCard')" title="Direct unsigned upload to Cloudinary preset">Upload Cloudinary</button>
+              <button type="button" class="btn btn-secondary" onclick="AdminApp.openCloudinaryWidgetForInput('pkgHeroImage', 'pkgHeroImagePreview', 'pkgHeroPreviewCard')" title="Direct unsigned upload to Cloudinary preset">☁️ Upload Cloudinary</button>
               <button type="button" class="btn btn-outline" onclick="AdminApp.openImagePicker('pkgHeroImage', 'pkgHeroImagePreview', 'pkgHeroPreviewCard')">Browse Media</button>
               <label class="btn-upload-direct" title="Upload local WebP/JPG directly">
-                <span>Local Upload</span>
+                <span>📁 Local Upload</span>
                 <input type="file" accept="image/*" style="display: none;" onchange="AdminApp.handleDirectImageUpload(this.files[0], 'pkgHeroImage', 'pkgHeroImagePreview', 'pkgHeroPreviewCard')">
               </label>
             </div>
@@ -80,7 +80,7 @@ html = html.replace(team_old, team_new)
 settings_target = '<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 24px;">'
 seeder_banner = '''          <!-- Master Seeder Banner (Job 5) -->
           <div class="seeder-banner">
-            <h3><span></span> Master Firestore Synchronizer &amp; Content Seeder</h3>
+            <h3><span>⚡</span> Master Firestore Synchronizer &amp; Content Seeder</h3>
             <p>Seed, sync, and persist all 14 site collections to Firebase Firestore with a single click. Populates all 26 tour packages, 10 categories, 10 destinations, reviews, team, faqs, settings, and 140 self-hosted media assets across 10 supported languages.</p>
             <div class="seeder-stats">
               <span class="seeder-stat-pill"><strong>26</strong> Tour Packages</span>
@@ -92,10 +92,10 @@ seeder_banner = '''          <!-- Master Seeder Banner (Job 5) -->
             </div>
             <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
               <button type="button" class="btn btn-gold" onclick="AdminApp.seedAllToFirestore()" id="btnMasterSeed" style="padding: 10px 22px; font-weight: 700; font-size: 0.95rem;">
-                <span>Seed All 14 Collections to Firebase</span>
+                <span>🚀 Seed All 14 Collections to Firebase</span>
               </button>
               <button type="button" class="btn btn-secondary" onclick="AdminApp.fetchFromFirebase()" style="padding: 10px 18px;">
-                <span>Refresh from Firestore</span>
+                <span>🔄 Refresh from Firestore</span>
               </button>
               <span id="seederStatusText" style="font-size: 0.88rem; color: #E5B869; font-weight: 600;">Ready to seed</span>
             </div>
@@ -156,7 +156,7 @@ modals_html = '''
             <label>Category Hero Image</label>
             <div style="display: flex; gap: 8px; flex-wrap: wrap;">
               <input type="text" id="catHeroImage" class="form-control" style="flex: 1; min-width: 200px;" placeholder="assets/tours/cultural/hero.jpg" oninput="AdminApp.updateImagePreview('catHeroImage', 'catHeroPreview', 'catHeroPreviewCard')">
-              <button type="button" class="btn btn-secondary" onclick="AdminApp.openCloudinaryWidgetForInput('catHeroImage', 'catHeroPreview', 'catHeroPreviewCard')">Cloudinary</button>
+              <button type="button" class="btn btn-secondary" onclick="AdminApp.openCloudinaryWidgetForInput('catHeroImage', 'catHeroPreview', 'catHeroPreviewCard')">☁️ Cloudinary</button>
               <button type="button" class="btn btn-outline" onclick="AdminApp.openImagePicker('catHeroImage', 'catHeroPreview', 'catHeroPreviewCard')">Browse Media</button>
             </div>
             <div class="image-preview-card" id="catHeroPreviewCard" style="display: none;">
@@ -239,7 +239,7 @@ modals_html = '''
             <label>Destination Card Image</label>
             <div style="display: flex; gap: 8px; flex-wrap: wrap;">
               <input type="text" id="destImage" class="form-control" style="flex: 1; min-width: 200px;" placeholder="assets/images/cultural/sigiriya-1.webp" oninput="AdminApp.updateImagePreview('destImage', 'destImagePreview', 'destImagePreviewCard')">
-              <button type="button" class="btn btn-secondary" onclick="AdminApp.openCloudinaryWidgetForInput('destImage', 'destImagePreview', 'destImagePreviewCard')">Cloudinary</button>
+              <button type="button" class="btn btn-secondary" onclick="AdminApp.openCloudinaryWidgetForInput('destImage', 'destImagePreview', 'destImagePreviewCard')">☁️ Cloudinary</button>
               <button type="button" class="btn btn-outline" onclick="AdminApp.openImagePicker('destImage', 'destImagePreview', 'destImagePreviewCard')">Browse Media</button>
             </div>
             <div class="image-preview-card" id="destImagePreviewCard" style="display: none;">
@@ -320,7 +320,7 @@ modals_html = '''
             <label>Guest Avatar Photo</label>
             <div style="display: flex; gap: 8px; flex-wrap: wrap;">
               <input type="text" id="revAvatar" class="form-control" style="flex: 1; min-width: 200px;" placeholder="assets/images/avatar-1.jpg" oninput="AdminApp.updateImagePreview('revAvatar', 'revAvatarPreview', 'revAvatarPreviewCard')">
-              <button type="button" class="btn btn-secondary" onclick="AdminApp.openCloudinaryWidgetForInput('revAvatar', 'revAvatarPreview', 'revAvatarPreviewCard')">Cloudinary</button>
+              <button type="button" class="btn btn-secondary" onclick="AdminApp.openCloudinaryWidgetForInput('revAvatar', 'revAvatarPreview', 'revAvatarPreviewCard')">☁️ Cloudinary</button>
               <button type="button" class="btn btn-outline" onclick="AdminApp.openImagePicker('revAvatar', 'revAvatarPreview', 'revAvatarPreviewCard')">Browse Media</button>
             </div>
             <div class="image-preview-card" id="revAvatarPreviewCard" style="display: none;">

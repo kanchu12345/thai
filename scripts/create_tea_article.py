@@ -51,17 +51,17 @@ html_content = """<!DOCTYPE html>
 <svg class="walkers-caret" viewbox="0 0 10 6"><path d="M1 1L5 5L9 1" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"></path></svg>
 </a>
 <div class="walkers-megamenu">
-<a class="megamenu-link" href="../../tours/cultural/index.html"><span class="megamenu-link-icon"></span>Cultural Heritage</a>
-<a class="megamenu-link" href="../../tours/buddhist-heritage/index.html"><span class="megamenu-link-icon"></span>Buddhist Heritage</a>
-<a class="megamenu-link" href="../../tours/wildlife/index.html"><span class="megamenu-link-icon"></span>Wildlife Safaris</a>
-<a class="megamenu-link" href="../../tours/beach/index.html"><span class="megamenu-link-icon"></span>Pristine Beaches</a>
-<a class="megamenu-link" href="../../tours/hill-country/index.html"><span class="megamenu-link-icon"></span>Hill Country &amp; Tea</a>
-<a class="megamenu-link" href="../../tours/ayurvedic/index.html"><span class="megamenu-link-icon"></span>Ayurvedic Healing</a>
-<a class="megamenu-link" href="../../tours/honeymoon/index.html"><span class="megamenu-link-icon"></span>Honeymoon &amp; Romance</a>
-<a class="megamenu-link" href="../../tours/family/index.html"><span class="megamenu-link-icon"></span>Family Holidays</a>
-<a class="megamenu-link" href="../../tours/adventure/index.html"><span class="megamenu-link-icon"></span>Adventure &amp; Trekking</a>
-<a class="megamenu-link" href="../../tours/golf/index.html"><span class="megamenu-link-icon"></span>Championship Golf</a>
-<a class="megamenu-link" href="../../tours/ramayana/index.html"><span class="megamenu-link-icon"></span>Ramayana Trail</a>
+<a class="megamenu-link" href="../../tours/cultural/index.html"><span class="megamenu-link-icon">🏛️</span>Cultural Heritage</a>
+<a class="megamenu-link" href="../../tours/buddhist-heritage/index.html"><span class="megamenu-link-icon">☸️</span>Buddhist Heritage</a>
+<a class="megamenu-link" href="../../tours/wildlife/index.html"><span class="megamenu-link-icon">🐆</span>Wildlife Safaris</a>
+<a class="megamenu-link" href="../../tours/beach/index.html"><span class="megamenu-link-icon">🏖️</span>Pristine Beaches</a>
+<a class="megamenu-link" href="../../tours/hill-country/index.html"><span class="megamenu-link-icon">⛰️</span>Hill Country &amp; Tea</a>
+<a class="megamenu-link" href="../../tours/ayurvedic/index.html"><span class="megamenu-link-icon">🌿</span>Ayurvedic Healing</a>
+<a class="megamenu-link" href="../../tours/honeymoon/index.html"><span class="megamenu-link-icon">💍</span>Honeymoon &amp; Romance</a>
+<a class="megamenu-link" href="../../tours/family/index.html"><span class="megamenu-link-icon">👨‍👩‍👧‍👦</span>Family Holidays</a>
+<a class="megamenu-link" href="../../tours/adventure/index.html"><span class="megamenu-link-icon">🏄</span>Adventure &amp; Trekking</a>
+<a class="megamenu-link" href="../../tours/golf/index.html"><span class="megamenu-link-icon">⛳</span>Championship Golf</a>
+<a class="megamenu-link" href="../../tours/ramayana/index.html"><span class="megamenu-link-icon">🏹</span>Ramayana Trail</a>
 </div>
 </li>
 <li class="walkers-menu-item"><a class="walkers-menu-link" href="../../destinations.html" data-cms="siteGlobal.menu.destinations">Destinations</a></li>
@@ -81,17 +81,17 @@ html_content = """<!DOCTYPE html>
 <svg class="walkers-caret" viewbox="0 0 10 6"><path d="M1 1L5 5L9 1" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"></path></svg>
 </button>
 <div class="lang-pill-dropdown" id="langPillMenu">
-<button class="is-active" data-lang="en" type="button"> English</button>
-<button data-lang="zh-TW" type="button"> 繁體中文 (Taiwan)</button>
-<button data-lang="zh-CN" type="button"> 简体中文 (Modern)</button>
-<button data-lang="fr" type="button"> Français (French)</button>
-<button data-lang="de" type="button"> Deutsch (German)</button>
-<button data-lang="ru" type="button"> Русский</button>
-<button data-lang="es" type="button"> Español</button>
-<button data-lang="it" type="button"> Italiano</button>
-<button data-lang="ja" type="button"> 日本語</button>
-<button data-lang="ar" type="button"> العربية</button>
-<button data-lang="hi" type="button"> हिन्दी</button>
+<button class="is-active" data-lang="en" type="button">🇬🇧 English</button>
+<button data-lang="zh-TW" type="button">🇹🇼 繁體中文 (Taiwan)</button>
+<button data-lang="zh-CN" type="button">🇨🇳 简体中文 (Modern)</button>
+<button data-lang="fr" type="button">🇫🇷 Français (French)</button>
+<button data-lang="de" type="button">🇩🇪 Deutsch (German)</button>
+<button data-lang="ru" type="button">🇷🇺 Русский</button>
+<button data-lang="es" type="button">🇪🇸 Español</button>
+<button data-lang="it" type="button">🇮🇹 Italiano</button>
+<button data-lang="ja" type="button">🇯🇵 日本語</button>
+<button data-lang="ar" type="button">🇦🇪 العربية</button>
+<button data-lang="hi" type="button">🇮🇳 हिन्दी</button>
 </div>
 </div>
 <a class="gold-inquire-btn" href="../../inquiry-detailed.html" title="Plan Your Bespoke Travel">
@@ -124,18 +124,18 @@ html_content = """<!DOCTYPE html>
 <svg class="accordion-arrow" fill="none" height="16" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="16"><polyline points="6 9 12 15 18 9"></polyline></svg>
 </button>
 <div class="mobile-accordion-submenu" id="mobileToursSubmenu">
-<a class="submenu-link" href="../../tours/index.html"><span class="submenu-icon"></span>All Tour Packages</a>
-<a class="submenu-link" href="../../tours/cultural/index.html"><span class="submenu-icon"></span>Cultural Heritage</a>
-<a class="submenu-link" href="../../tours/buddhist-heritage/index.html"><span class="submenu-icon"></span>Buddhist Heritage</a>
-<a class="submenu-link" href="../../tours/wildlife/index.html"><span class="submenu-icon"></span>Wildlife Safaris</a>
-<a class="submenu-link" href="../../tours/beach/index.html"><span class="submenu-icon"></span>Pristine Beaches</a>
-<a class="submenu-link" href="../../tours/hill-country/index.html"><span class="submenu-icon"></span>Hill Country &amp; Tea</a>
-<a class="submenu-link" href="../../tours/ayurvedic/index.html"><span class="submenu-icon"></span>Ayurvedic Healing</a>
-<a class="submenu-link" href="../../tours/honeymoon/index.html"><span class="submenu-icon"></span>Honeymoon &amp; Romance</a>
-<a class="submenu-link" href="../../tours/family/index.html"><span class="submenu-icon"></span>Family Holidays</a>
-<a class="submenu-link" href="../../tours/adventure/index.html"><span class="submenu-icon"></span>Adventure &amp; Trekking</a>
-<a class="submenu-link" href="../../tours/golf/index.html"><span class="submenu-icon"></span>Championship Golf</a>
-<a class="submenu-link" href="../../tours/ramayana/index.html"><span class="submenu-icon"></span>Ramayana Trail</a>
+<a class="submenu-link" href="../../tours/index.html"><span class="submenu-icon">🧭</span>All Tour Packages</a>
+<a class="submenu-link" href="../../tours/cultural/index.html"><span class="submenu-icon">🏛️</span>Cultural Heritage</a>
+<a class="submenu-link" href="../../tours/buddhist-heritage/index.html"><span class="submenu-icon">☸️</span>Buddhist Heritage</a>
+<a class="submenu-link" href="../../tours/wildlife/index.html"><span class="submenu-icon">🐆</span>Wildlife Safaris</a>
+<a class="submenu-link" href="../../tours/beach/index.html"><span class="submenu-icon">🏖️</span>Pristine Beaches</a>
+<a class="submenu-link" href="../../tours/hill-country/index.html"><span class="submenu-icon">⛰️</span>Hill Country &amp; Tea</a>
+<a class="submenu-link" href="../../tours/ayurvedic/index.html"><span class="submenu-icon">🌿</span>Ayurvedic Healing</a>
+<a class="submenu-link" href="../../tours/honeymoon/index.html"><span class="submenu-icon">💍</span>Honeymoon &amp; Romance</a>
+<a class="submenu-link" href="../../tours/family/index.html"><span class="submenu-icon">👨‍👩‍👧‍👦</span>Family Holidays</a>
+<a class="submenu-link" href="../../tours/adventure/index.html"><span class="submenu-icon">🏄</span>Adventure &amp; Trekking</a>
+<a class="submenu-link" href="../../tours/golf/index.html"><span class="submenu-icon">⛳</span>Championship Golf</a>
+<a class="submenu-link" href="../../tours/ramayana/index.html"><span class="submenu-icon">🏹</span>Ramayana Trail</a>
 </div>
 </li>
 <li class="mobile-nav-item"><a class="mobile-nav-link" href="../../destinations.html" data-cms="siteGlobal.menu.destinations">Destinations</a></li>
@@ -149,21 +149,21 @@ html_content = """<!DOCTYPE html>
 <div class="mobile-lang-section">
 <p class="mobile-section-label">Select Language</p>
 <div class="mobile-lang-grid" id="mobileLangGrid">
-<button class="mobile-lang-btn is-active" data-lang="en" type="button"> English</button>
-<button class="mobile-lang-btn" data-lang="zh-TW" type="button"> 繁體中文</button>
-<button class="mobile-lang-btn" data-lang="zh-CN" type="button"> 简体中文</button>
-<button class="mobile-lang-btn" data-lang="fr" type="button"> Français</button>
-<button class="mobile-lang-btn" data-lang="de" type="button"> Deutsch</button>
-<button class="mobile-lang-btn" data-lang="ru" type="button"> Русский</button>
-<button class="mobile-lang-btn" data-lang="es" type="button"> Español</button>
-<button class="mobile-lang-btn" data-lang="it" type="button"> Italiano</button>
-<button class="mobile-lang-btn" data-lang="ja" type="button"> 日本語</button>
-<button class="mobile-lang-btn" data-lang="ar" type="button"> العربية</button>
-<button class="mobile-lang-btn" data-lang="hi" type="button"> हिन्दी</button>
+<button class="mobile-lang-btn is-active" data-lang="en" type="button">🇬🇧 English</button>
+<button class="mobile-lang-btn" data-lang="zh-TW" type="button">🇹🇼 繁體中文</button>
+<button class="mobile-lang-btn" data-lang="zh-CN" type="button">🇨🇳 简体中文</button>
+<button class="mobile-lang-btn" data-lang="fr" type="button">🇫🇷 Français</button>
+<button class="mobile-lang-btn" data-lang="de" type="button">🇩🇪 Deutsch</button>
+<button class="mobile-lang-btn" data-lang="ru" type="button">🇷🇺 Русский</button>
+<button class="mobile-lang-btn" data-lang="es" type="button">🇪🇸 Español</button>
+<button class="mobile-lang-btn" data-lang="it" type="button">🇮🇹 Italiano</button>
+<button class="mobile-lang-btn" data-lang="ja" type="button">🇯🇵 日本語</button>
+<button class="mobile-lang-btn" data-lang="ar" type="button">🇦🇪 العربية</button>
+<button class="mobile-lang-btn" data-lang="hi" type="button">🇮🇳 हिन्दी</button>
 </div>
 <div class="mobile-nav-actions">
 <a class="btn-mobile-whatsapp" href="https://wa.me/94715422384?text=Hello%20Lotus%20Ceylon!%20I%20would%20like%20to%20inquire%20about%20a%20private%20tour.">
-<span> WhatsApp (+94 71 54 22 384)</span>
+<span>💬 WhatsApp (+94 71 54 22 384)</span>
 </a>
 <a class="btn-mobile-inquire" href="../../inquiry-detailed.html">
 <span data-cms="siteGlobal.branding.planJourneyBtnText">Plan My Bespoke Journey ➔</span>

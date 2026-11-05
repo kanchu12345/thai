@@ -29,16 +29,16 @@ def get_header_html(rel_prefix, active_tab="home"):
                 <svg class="walkers-caret" viewBox="0 0 10 6"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" fill="none"/></svg>
               </a>
               <div class="walkers-megamenu">
-                <a href="{rel_prefix}tours/cultural/" class="megamenu-link"> Cultural Heritage</a>
-                <a href="{rel_prefix}tours/buddhist-heritage/" class="megamenu-link"> Buddhist Heritage</a>
-                <a href="{rel_prefix}tours/wildlife/" class="megamenu-link"> Wildlife Safaris</a>
-                <a href="{rel_prefix}tours/beach/" class="megamenu-link"> Pristine Beaches</a>
-                <a href="{rel_prefix}tours/hill-country/" class="megamenu-link"> Hill Country &amp; Tea</a>
-                <a href="{rel_prefix}tours/ayurvedic/" class="megamenu-link"> Ayurvedic Healing</a>
-                <a href="{rel_prefix}tours/honeymoon/" class="megamenu-link">Honeymoon Romance</a>
-                <a href="{rel_prefix}tours/family/" class="megamenu-link">Family Discovery</a>
-                <a href="{rel_prefix}tours/adventure/" class="megamenu-link">Active Adventure</a>
-                <a href="{rel_prefix}tours/ramayana/" class="megamenu-link">Ramayana Trail</a>
+                <a href="{rel_prefix}tours/cultural/" class="megamenu-link"><span class="megamenu-link-icon">🏛️</span> Cultural Heritage</a>
+                <a href="{rel_prefix}tours/buddhist-heritage/" class="megamenu-link"><span class="megamenu-link-icon">☸️</span> Buddhist Heritage</a>
+                <a href="{rel_prefix}tours/wildlife/" class="megamenu-link"><span class="megamenu-link-icon">🐆</span> Wildlife Safaris</a>
+                <a href="{rel_prefix}tours/beach/" class="megamenu-link"><span class="megamenu-link-icon">🏖️</span> Pristine Beaches</a>
+                <a href="{rel_prefix}tours/hill-country/" class="megamenu-link"><span class="megamenu-link-icon">⛰️</span> Hill Country &amp; Tea</a>
+                <a href="{rel_prefix}tours/ayurvedic/" class="megamenu-link"><span class="megamenu-link-icon">🌿</span> Ayurvedic Healing</a>
+                <a href="{rel_prefix}tours/honeymoon/" class="megamenu-link"><span class="megamenu-link-icon">💍</span> Honeymoon Romance</a>
+                <a href="{rel_prefix}tours/family/" class="megamenu-link"><span class="megamenu-link-icon">👨‍👩‍👧‍👦</span> Family Discovery</a>
+                <a href="{rel_prefix}tours/adventure/" class="megamenu-link"><span class="megamenu-link-icon">🏄</span> Active Adventure</a>
+                <a href="{rel_prefix}tours/ramayana/" class="megamenu-link"><span class="megamenu-link-icon">🏹</span> Ramayana Trail</a>
               </div>
             </li>
             <li class="walkers-menu-item{' active' if active_tab == 'destinations' else ''}"><a href="{rel_prefix}destinations.html" class="walkers-menu-link">Destinations</a></li>
@@ -59,17 +59,17 @@ def get_header_html(rel_prefix, active_tab="home"):
               <svg class="walkers-caret" viewBox="0 0 10 6"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" fill="none"/></svg>
             </button>
             <div class="lang-pill-dropdown" id="langPillMenu">
-              <button type="button" data-lang="en" class="is-active">English</button>
-              <button type="button" data-lang="zh-TW">繁體中文 (Taiwan)</button>
-              <button type="button" data-lang="zh-CN">简体中文 (Modern)</button>
-              <button type="button" data-lang="fr">Français (French)</button>
-              <button type="button" data-lang="de">Deutsch (German)</button>
-              <button type="button" data-lang="ru">Русский</button>
-              <button type="button" data-lang="es">Español</button>
-              <button type="button" data-lang="it">Italiano</button>
-              <button type="button" data-lang="ja">日本語</button>
-              <button type="button" data-lang="ar">العربية</button>
-              <button type="button" data-lang="hi">हिन्दी</button>
+              <button type="button" data-lang="en" class="is-active">🇬🇧 English</button>
+              <button type="button" data-lang="zh-TW">🇹🇼 繁體中文 (Taiwan)</button>
+              <button type="button" data-lang="zh-CN">🇨🇳 简体中文 (Modern)</button>
+              <button type="button" data-lang="fr">🇫🇷 Français (French)</button>
+              <button type="button" data-lang="de">🇩🇪 Deutsch (German)</button>
+              <button type="button" data-lang="ru">🇷🇺 Русский</button>
+              <button type="button" data-lang="es">🇪🇸 Español</button>
+              <button type="button" data-lang="it">🇮🇹 Italiano</button>
+              <button type="button" data-lang="ja">🇯🇵 日本語</button>
+              <button type="button" data-lang="ar">🇦🇪 العربية</button>
+              <button type="button" data-lang="hi">🇮🇳 हिन्दी</button>
             </div>
           </div>
 
@@ -108,16 +108,16 @@ def get_header_html(rel_prefix, active_tab="home"):
           </button>
           <div class="mobile-accordion-submenu" id="mobileToursSubmenu">
             <a href="{rel_prefix}sri-lanka-tours.html" class="submenu-link"><strong>All Tour Packages</strong></a>
-            <a href="{rel_prefix}tours/cultural/" class="submenu-link">Cultural Heritage</a>
-            <a href="{rel_prefix}tours/buddhist-heritage/" class="submenu-link">Buddhist Pilgrimages</a>
-            <a href="{rel_prefix}tours/wildlife/" class="submenu-link">Wildlife Safaris</a>
-            <a href="{rel_prefix}tours/beach/" class="submenu-link">Pristine Beaches</a>
-            <a href="{rel_prefix}tours/hill-country/" class="submenu-link">Hill Country &amp; Tea</a>
-            <a href="{rel_prefix}tours/ayurvedic/" class="submenu-link">Ayurvedic Healing</a>
-            <a href="{rel_prefix}tours/honeymoon/" class="submenu-link">Honeymoon Sanctuaries</a>
-            <a href="{rel_prefix}tours/family/" class="submenu-link"> Family Journeys</a>
-            <a href="{rel_prefix}tours/adventure/" class="submenu-link">Active Adventure</a>
-            <a href="{rel_prefix}tours/ramayana/" class="submenu-link">Ramayana Trail</a>
+            <a href="{rel_prefix}tours/cultural/" class="submenu-link">🏛️ Cultural Heritage</a>
+            <a href="{rel_prefix}tours/buddhist-heritage/" class="submenu-link">☸️ Buddhist Pilgrimages</a>
+            <a href="{rel_prefix}tours/wildlife/" class="submenu-link">🐆 Wildlife Safaris</a>
+            <a href="{rel_prefix}tours/beach/" class="submenu-link">🏖️ Pristine Beaches</a>
+            <a href="{rel_prefix}tours/hill-country/" class="submenu-link">⛰️ Hill Country &amp; Tea</a>
+            <a href="{rel_prefix}tours/ayurvedic/" class="submenu-link">🌿 Ayurvedic Healing</a>
+            <a href="{rel_prefix}tours/honeymoon/" class="submenu-link">💍 Honeymoon Sanctuaries</a>
+            <a href="{rel_prefix}tours/family/" class="submenu-link">👨‍👩‍👧‍👦 Family Journeys</a>
+            <a href="{rel_prefix}tours/adventure/" class="submenu-link">🏄 Active Adventure</a>
+            <a href="{rel_prefix}tours/ramayana/" class="submenu-link">🏹 Ramayana Trail</a>
           </div>
         </li>
 
@@ -134,24 +134,24 @@ def get_header_html(rel_prefix, active_tab="home"):
       <div class="mobile-lang-section">
         <p class="mobile-section-label">Select Language</p>
         <div class="mobile-lang-grid" id="mobileLangGrid">
-          <button type="button" data-lang="en" class="mobile-lang-btn is-active">English</button>
-          <button type="button" data-lang="zh-TW" class="mobile-lang-btn">繁體中文</button>
-          <button type="button" data-lang="zh-CN" class="mobile-lang-btn">简体中文</button>
-          <button type="button" data-lang="fr" class="mobile-lang-btn">Français</button>
-          <button type="button" data-lang="de" class="mobile-lang-btn">Deutsch</button>
-          <button type="button" data-lang="ru" class="mobile-lang-btn">Русский</button>
-          <button type="button" data-lang="es" class="mobile-lang-btn">Español</button>
-          <button type="button" data-lang="it" class="mobile-lang-btn">Italiano</button>
-          <button type="button" data-lang="ja" class="mobile-lang-btn">日本語</button>
-          <button type="button" data-lang="ar" class="mobile-lang-btn">العربية</button>
-          <button type="button" data-lang="hi" class="mobile-lang-btn">हिन्दी</button>
+          <button type="button" data-lang="en" class="mobile-lang-btn is-active">🇬🇧 English</button>
+          <button type="button" data-lang="zh-TW" class="mobile-lang-btn">🇹🇼 繁體中文</button>
+          <button type="button" data-lang="zh-CN" class="mobile-lang-btn">🇨🇳 简体中文</button>
+          <button type="button" data-lang="fr" class="mobile-lang-btn">🇫🇷 Français</button>
+          <button type="button" data-lang="de" class="mobile-lang-btn">🇩🇪 Deutsch</button>
+          <button type="button" data-lang="ru" class="mobile-lang-btn">🇷🇺 Русский</button>
+          <button type="button" data-lang="es" class="mobile-lang-btn">🇪🇸 Español</button>
+          <button type="button" data-lang="it" class="mobile-lang-btn">🇮🇹 Italiano</button>
+          <button type="button" data-lang="ja" class="mobile-lang-btn">🇯🇵 日本語</button>
+          <button type="button" data-lang="ar" class="mobile-lang-btn">🇦🇪 العربية</button>
+          <button type="button" data-lang="hi" class="mobile-lang-btn">🇮🇳 हिन्दी</button>
         </div>
       </div>
 
       <!-- Mobile Action Buttons -->
       <div class="mobile-nav-actions">
         <a href="https://wa.me/94715422384?text=Hello%20Lotus%20Ceylon!%20I%20would%20like%20to%20inquire%20about%20a%20private%20tour." target="_blank" rel="noopener noreferrer" class="btn-mobile-whatsapp">
-          <span>WhatsApp (+94 71 54 22 384)</span>
+          <span>💬 WhatsApp (+94 71 54 22 384)</span>
         </a>
         <a href="{rel_prefix}inquiry-detailed.html" class="btn-mobile-inquire">
           <span>Plan My Bespoke Journey ➔</span>
@@ -279,7 +279,7 @@ def get_cta_band_html(rel_prefix):
           <span aria-hidden="true">➔</span>
         </a>
         <a href="https://wa.me/94715422384?text=Hello%20Lotus%20Ceylon!%20I%20would%20like%20to%20inquire%20about%20a%20private%20tour." target="_blank" rel="noopener noreferrer" class="cta-wa-btn">
-          <span>Chat on WhatsApp</span>
+          <span>💬 Chat on WhatsApp</span>
         </a>
       </div>
     </div>
