@@ -224,7 +224,7 @@ for cat in sorted(categories):
                 tds = r.find_all('td')
                 manual_ticks = {}
                 for idx, td in enumerate(tds):
-                    is_checked = 'check-cell' in td.get('class', []) or '✓' in td.get_text() or '✔' in td.get_text() or '☑' in td.get_text()
+                    is_checked = 'check-cell' in td.get('class', []) or '✓' in td.get_text() or '✔' in td.get_text() or '[x]' in td.get_text()
                     if idx < len(packages):
                         manual_ticks[packages[idx]['slug']] = is_checked
 
@@ -247,7 +247,7 @@ for cat in sorted(categories):
                 
                 included_in = []
                 for idx, td in enumerate(tds[1:]):
-                    is_checked = 'check-cell' in td.get('class', []) or '✓' in td.get_text() or '✔' in td.get_text() or '☑' in td.get_text()
+                    is_checked = 'check-cell' in td.get('class', []) or '✓' in td.get_text() or '✔' in td.get_text() or '[x]' in td.get_text()
                     if is_checked and idx < len(packages):
                         included_in.append(packages[idx]['slug'])
                 

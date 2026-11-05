@@ -1,3545 +1,527 @@
-/*
- * © 2026 Infinite Design. All rights reserved.
- * Built for Lotus Ceylon International Tours & Services (Pvt) Ltd.
- * Unauthorized removal of attribution does not transfer ownership of this code.
- * https://infiniteweb.dev/
- */
-/**
- * LOTUS CEYLON INTERNATIONAL TOURS & SERVICES (PRIVATE) LIMITED
- * ONE SHARED STYLESHEET: assets/css/site.css
- * Master Design System — Pure Journeys. Sacred Experiences.
- */
-
-:root {
-  /* MASTER SACRED CEYLON COLOR TOKENS */
-  --lotus-primary: #C95451;        /* Primary Lotus Carmine */
-  --lotus-primary-dark: #7E1442;   /* Deep Petal Burgundy */
-  --sacred-gold: #D4A359;          /* Royal Emblem Gold */
-  --sacred-gold-hover: #B38744;    /* Burnished Gold Hover */
-  --saffron-start: #D9822B;        /* Primary Button Saffron */
-  --saffron-end: #B86214;          /* Primary Button Deep Gold */
-  --leaf-green: #224A2A;           /* Ceylon Rainforest Green */
-  --forest-deep: #0D2B1D;          /* Footer Deep Emerald */
-  --ink: #012d6b;                  /* Headings and High Contrast Text */
-  --ivory: #FBF7F0;                /* Soft Sacred Temple Ivory Background */
-  --mist: #F1E9E1;                 /* Subtle Secondary Card / Section Tint */
-  --white: #FFFFFF;                /* Crisp Card Surface */
-  --border-subtle: #E8E2D8;        /* Harmonious Warm Border */
-  --text-muted: #64748B;           /* Subtitles and Metadata */
-  --text-body: #454545;            /* Readable Paragraph Body */
-
-  /* Aliases for Full Backward Compatibility */
-  --color-gold: var(--sacred-gold);
-  --color-gold-hover: var(--sacred-gold-hover);
-  --color-dark-blue: #012d6b;
-  --color-accent-terracotta: #cb5222;
-  --color-dark-green: var(--leaf-green);
-  --color-footer-bg: var(--forest-deep);
-  --color-border-subtle: var(--border-subtle);
-
-  /* TYPOGRAPHY */
-  --font-serif: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-display: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-body: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-heading: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-main: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-brand-sub: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-
-  /* LAYOUT & SPACING (Strict Max 1200px Content Width) */
-  --container-max-width: 1200px;
-  --header-max-width: 1540px;
-  --section-pad-desktop: 4.5rem;
-  --section-pad-mobile: 3rem;
-
-  /* RADIUS & SHADOWS */
-  --radius-sm: 6px;
-  --radius-md: 10px;
-  --radius-lg: 16px;
-  --radius-xl: 24px;
-  --radius-full: 9999px;
-
-  --shadow-sm: 0 4px 15px rgba(28, 27, 31, 0.05);
-  --shadow-md: 0 10px 30px rgba(28, 27, 31, 0.08), 0 2px 10px rgba(212, 163, 89, 0.12);
-  --shadow-lg: 0 20px 50px rgba(28, 27, 31, 0.12), 0 4px 20px rgba(212, 163, 89, 0.16);
-  --shadow-gold: 0 8px 25px rgba(217, 130, 43, 0.35);
-
-  --transition-fast: 0.2s ease;
-  --transition-standard: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-}
-
-/* ==============================================================================
-   RESET & FOUNDATION
-   ============================================================================== */
-*, *::before, *::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-html {
-  font-size: 16px;
-  scroll-behavior: smooth;
-  -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
-  max-width: 100vw;
-}
-
-body {
-  font-family: var(--font-body);
-  background-color: var(--white);
-  color: var(--text-body);
-  line-height: 1.65;
-  overflow-x: hidden;
-  max-width: 100vw;
-}
-
-img, video, svg, picture {
-  display: block;
-  max-width: 100%;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-  transition: var(--transition-standard);
-}
-
-button, input, select, textarea {
-  font: inherit;
-  border: none;
-  outline: none;
-}
-
-ul, ol {
-  list-style: none;
-}
-
-/* ==============================================================================
-   LAYOUT CONTAINERS (STRICT MAX 1200px)
-   ============================================================================== */
+/* * 2026 Infinite Design. All rights reserved. * Built for Lotus Ceylon International Tours & Services (Pvt) Ltd. * Unauthorized removal of attribution does not transfer ownership of this code. * https://infiniteweb.dev/ */
+/** * LOTUS CEYLON INTERNATIONAL TOURS & SERVICES (PRIVATE) LIMITED * ONE SHARED STYLESHEET: assets/css/site.css * Master Design System — Pure Journeys. Sacred Experiences. */ :root { /* MASTER SACRED CEYLON COLOR TOKENS */ --lotus-primary: #C95451; /* Primary Lotus Carmine */ --lotus-primary-dark: #7E1442; /* Deep Petal Burgundy */ --sacred-gold: #D4A359; /* Royal Emblem Gold */ --sacred-gold-hover: #B38744; /* Burnished Gold Hover */ --saffron-start: #D9822B; /* Primary Button Saffron */ --saffron-end: #B86214; /* Primary Button Deep Gold */ --leaf-green: #224A2A; /* Ceylon Rainforest Green */ --forest-deep: #0D2B1D; /* Footer Deep Emerald */ --ink: #012d6b; /* Headings and High Contrast Text */ --ivory: #FBF7F0; /* Soft Sacred Temple Ivory Background */ --mist: #F1E9E1; /* Subtle Secondary Card / Section Tint */ --white: #FFFFFF; /* Crisp Card Surface */ --border-subtle: #E8E2D8; /* Harmonious Warm Border */ --text-muted: #64748B; /* Subtitles and Metadata */ --text-body: #454545; /* Readable Paragraph Body */ /* Aliases for Full Backward Compatibility */ --color-gold: var(--sacred-gold); --color-gold-hover: var(--sacred-gold-hover); --color-dark-blue: #012d6b; --color-accent-terracotta: #cb5222; --color-dark-green: var(--leaf-green); --color-footer-bg: var(--forest-deep); --color-border-subtle: var(--border-subtle); /* TYPOGRAPHY */ --font-serif: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; --font-display: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; --font-body: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; --font-heading: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; --font-main: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; --font-brand-sub: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif; /* LAYOUT & SPACING (Strict Max 1200px Content Width) */ --container-max-width: 1200px; --header-max-width: 1540px; --section-pad-desktop: 4.5rem; --section-pad-mobile: 3rem; /* RADIUS & SHADOWS */ --radius-sm: 6px; --radius-md: 10px; --radius-lg: 16px; --radius-xl: 24px; --radius-full: 9999px; --shadow-sm: 0 4px 15px rgba(28, 27, 31, 0.05); --shadow-md: 0 10px 30px rgba(28, 27, 31, 0.08), 0 2px 10px rgba(212, 163, 89, 0.12); --shadow-lg: 0 20px 50px rgba(28, 27, 31, 0.12), 0 4px 20px rgba(212, 163, 89, 0.16); --shadow-gold: 0 8px 25px rgba(217, 130, 43, 0.35); --transition-fast: 0.2s ease; --transition-standard: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+} /* ============================================================================== RESET & FOUNDATION ============================================================================== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0;
+} html { font-size: 16px; scroll-behavior: smooth; -webkit-font-smoothing: antialiased; overflow-x: hidden; max-width: 100vw;
+} body { font-family: var(--font-body); background-color: var(--white); color: var(--text-body); line-height: 1.65; overflow-x: hidden; max-width: 100vw;
+} img, video, svg, picture { display: block; max-width: 100%;
+} a { color: inherit; text-decoration: none; transition: var(--transition-standard);
+} button, input, select, textarea { font: inherit; border: none; outline: none;
+} ul, ol { list-style: none;
+} /* ============================================================================== LAYOUT CONTAINERS (STRICT MAX 1200px) ============================================================================== */
 .site-container,
 .wrapper--80,
-.container {
-  width: 100%;
-  max-width: var(--container-max-width);
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
-}
-
-.wrapper--95,
-.header-container {
-  width: 100%;
-  max-width: var(--header-max-width);
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
-}
-
-/* Standard Section Spacing */
-.section-pad {
-  padding-top: var(--section-pad-desktop);
-  padding-bottom: var(--section-pad-desktop);
-}
-
-@media (max-width: 768px) {
-  .section-pad {
-    padding-top: var(--section-pad-mobile);
-    padding-bottom: var(--section-pad-mobile);
-  }
-}
-
-/* Section Header Typography */
-.section-header-center {
-  text-align: center;
-  max-width: 780px;
-  margin: 0 auto 3rem;
-}
-
-.section-tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: rgba(201, 162, 75, 0.15);
-  border: 1px solid rgba(201, 162, 75, 0.4);
-  color: var(--saffron-end);
-  font-size: 0.8rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
-  padding: 6px 16px;
-  border-radius: var(--radius-full);
-  margin-bottom: 1rem;
-}
-
-.section-title {
-  font-family: var(--font-serif);
-  font-size: clamp(2rem, 3.8vw, 2.75rem);
-  color: var(--ink);
-  line-height: 1.2;
-  margin-bottom: 1rem;
-  font-weight: 700;
-}
-
-.section-subtitle {
-  color: var(--text-muted);
-  font-size: 1.05rem;
-  line-height: 1.65;
-}
-
-/* ==============================================================================
-   TYPOGRAPHY SCALE
-   ============================================================================== */
-h1, .h1 {
-  font-family: var(--font-serif);
-  font-size: clamp(2.4rem, 4.5vw, 3.4rem);
-  color: var(--ink);
-  line-height: 1.18;
-  font-weight: 700;
-}
-
-h2, .h2 {
-  font-family: var(--font-serif);
-  font-size: clamp(1.9rem, 3.2vw, 2.5rem);
-  color: var(--ink);
-  line-height: 1.25;
-  font-weight: 700;
-}
-
-h3, .h3 {
-  font-family: var(--font-serif);
-  font-size: clamp(1.35rem, 2vw, 1.65rem);
-  color: var(--ink);
-  line-height: 1.35;
-  font-weight: 600;
-}
-
-p {
-  color: var(--text-body);
-  font-size: 1rem;
-  line-height: 1.68;
-  margin-bottom: 1rem;
-}
-
-p:last-child {
-  margin-bottom: 0;
-}
-
-.lead-text {
-  font-size: 1.15rem;
-  line-height: 1.7;
-  color: var(--ink);
-}
-
-/* ==============================================================================
-   SHARED BUTTONS
-   ============================================================================== */
-.btn-primary-gold {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  background: linear-gradient(135deg, var(--saffron-start) 0%, var(--saffron-end) 100%);
-  color: var(--white) !important;
-  font-weight: 700;
-  font-size: 0.95rem;
-  padding: 0.9rem 2rem;
-  border-radius: var(--radius-full);
-  text-decoration: none;
-  box-shadow: var(--shadow-gold);
-  cursor: pointer;
-  transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.btn-primary-gold:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 12px 30px rgba(217, 130, 43, 0.5);
-  filter: brightness(1.06);
-}
-
-.btn-secondary-outline {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  background: transparent;
-  color: var(--ink);
-  font-weight: 700;
-  font-size: 0.95rem;
-  padding: 0.85rem 1.85rem;
-  border-radius: var(--radius-full);
-  border: 1.5px solid var(--border-subtle);
-  text-decoration: none;
-  cursor: pointer;
-  transition: var(--transition-standard);
-}
-
-.btn-secondary-outline:hover {
-  border-color: var(--sacred-gold);
-  color: var(--sacred-gold-hover);
-  background: var(--ivory);
-}
-
-.gold-inquire-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: linear-gradient(135deg, var(--saffron-start) 0%, var(--saffron-end) 100%);
-  color: var(--white) !important;
-  font-weight: 700;
-  font-size: 0.88rem;
-  padding: 0.65rem 1.4rem;
-  border-radius: var(--radius-full);
-  box-shadow: 0 4px 15px rgba(217, 130, 43, 0.35);
-  transition: var(--transition-standard);
-}
-
-.gold-inquire-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 22px rgba(217, 130, 43, 0.5);
-}
-
-/* Persistent Floating WhatsApp Concierge */
-.floating-whatsapp-btn {
-  position: fixed;
-  bottom: 28px;
-  right: 28px;
-  width: 60px;
-  height: 60px;
-  background: #25D366;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #FFFFFF;
-  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.45);
-  z-index: 999;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.floating-whatsapp-btn:hover {
-  transform: scale(1.1);
-  box-shadow: 0 10px 25px rgba(37, 211, 102, 0.6);
-}
-
-.floating-whatsapp-btn svg {
-  width: 34px;
-  height: 34px;
-  fill: currentColor;
-}
-
-/* ==============================================================================
-   HEADER & NAVIGATION (.site-header-walkers)
-   ============================================================================== */
-.site-header-walkers {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 1000;
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0) 100%);
-  transition: background 0.35s ease, box-shadow 0.35s ease, padding 0.35s ease;
-  padding: 1.1rem 0;
-}
-
-.site-header-walkers.is-scrolled {
-  background: rgba(251, 247, 240, 0.98);
-  backdrop-filter: blur(12px);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-  padding: 0.65rem 0;
-}
-
-.header-top-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1.5rem;
-}
-
-/* Brand Emblem & Typography */
-.header-brand {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.85rem;
-  text-decoration: none;
-}
-
-.header-brand-logo {
-  height: 72px;
-  width: auto;
-  max-width: 95px;
-  object-fit: contain;
-  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.75));
-  transition: height 0.3s ease, transform 0.3s ease;
-}
-
-.site-header-walkers.is-scrolled .header-brand-logo {
-  height: 52px;
-  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.2));
-}
-
-.header-brand-text {
-  display: flex;
-  flex-direction: column;
-  line-height: 1.15;
-}
-
-.header-brand-name {
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 1.45rem;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--white);
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
-  transition: color 0.3s ease, text-shadow 0.3s ease;
-}
-
-.brand-name-lotus {
-  color: #FFFFFF;
-}
-
-.brand-name-ceylon {
-  color: var(--sacred-gold);
-}
-
-.site-header-walkers.is-scrolled .header-brand-name {
-  color: var(--ink);
-  text-shadow: none;
-}
-
-.site-header-walkers.is-scrolled .brand-name-lotus {
-  color: var(--ink);
-}
-
-.header-brand-sub {
-  font-family: var(--font-brand-sub);
-  font-size: 0.58rem;
-  font-weight: 700;
-  letter-spacing: 0.24em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.9);
-  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);
-  margin-top: 2px;
-  transition: color 0.3s ease;
-}
-
-.site-header-walkers.is-scrolled .header-brand-sub {
-  color: var(--saffron-end);
-  text-shadow: none;
-}
-
-/* Nav Menu */
-.walkers-nav {
-  display: flex;
-  align-items: center;
-}
-
-.walkers-menu {
-  display: flex;
-  align-items: center;
-  gap: 1.75rem;
-}
-
-.walkers-menu-item {
-  position: relative;
-}
-
-.walkers-menu-link {
-  font-family: var(--font-body);
-  font-size: 0.92rem;
-  font-weight: 600;
-  color: var(--white);
-  padding: 0.6rem 0;
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.7);
-  transition: color 0.25s ease;
-}
-
-.site-header-walkers.is-scrolled .walkers-menu-link {
-  color: var(--ink);
-  text-shadow: none;
-}
-
-.walkers-menu-link:hover,
-.walkers-menu-item.active .walkers-menu-link {
-  color: var(--sacred-gold);
-}
-
-.walkers-caret {
-  width: 9px;
-  height: 6px;
-  transition: transform 0.25s ease;
-}
-
-.walkers-menu-item:hover .walkers-caret {
-  transform: rotate(180deg);
-}
-
-/* Mega Menu Dropdown */
-.walkers-megamenu {
-  position: absolute;
-  top: 100%;
-  left: -120px;
-  width: 580px;
-  background: var(--white);
-  border-radius: var(--radius-md);
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
-  border: 1px solid var(--border-subtle);
-  padding: 1.5rem;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 0.75rem 1.5rem;
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(12px);
-  transition: var(--transition-standard);
-  pointer-events: none;
-}
-
-.walkers-menu-item:hover .walkers-megamenu {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-  pointer-events: auto;
-}
-
-.megamenu-link {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 0.6rem 0.8rem;
-  border-radius: var(--radius-sm);
-  color: var(--ink);
-  font-weight: 600;
-  font-size: 0.9rem;
-  transition: var(--transition-fast);
-}
-
-.megamenu-link:hover {
-  background: var(--ivory);
-  color: var(--saffron-end);
-  padding-left: 1rem;
-}
-
-.megamenu-link-icon {
-  font-size: 1.1rem;
-}
-
-/* Header Tools: Lang Pill & Inquire */
-.header-tools {
-  display: flex;
-  align-items: center;
-  gap: 1.15rem;
-}
-
-.custom-lang-pill {
-  position: relative;
-}
-
-.lang-pill-btn {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  background: rgba(255, 255, 255, 0.18);
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  color: var(--white);
-  font-size: 0.82rem;
-  font-weight: 700;
-  padding: 6px 14px;
-  border-radius: var(--radius-full);
-  cursor: pointer;
-  backdrop-filter: blur(8px);
-  transition: var(--transition-fast);
-}
-
-.site-header-walkers.is-scrolled .lang-pill-btn {
-  background: rgba(0, 43, 73, 0.06);
-  border-color: rgba(0, 43, 73, 0.15);
-  color: var(--ink);
-}
-
-.lang-pill-dropdown {
-  position: absolute;
-  top: calc(100% + 8px);
-  right: 0;
-  background: var(--white);
-  border-radius: var(--radius-md);
-  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
-  border: 1px solid var(--border-subtle);
-  padding: 0.5rem 0;
-  width: 210px;
-  max-height: 380px;
-  overflow-y: auto;
-  display: none;
-  flex-direction: column;
-  z-index: 1002;
-}
-
-.lang-pill-dropdown.is-active,
-.lang-pill-dropdown.show {
-  display: flex !important;
-}
-
-.lang-pill-dropdown button {
-  width: 100%;
-  text-align: left;
-  padding: 0.6rem 1.25rem;
-  font-size: 0.88rem;
-  color: var(--ink);
-  background: transparent;
-  cursor: pointer;
-  transition: var(--transition-fast);
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.lang-pill-dropdown button:hover,
-.lang-pill-dropdown button.is-active {
-  background: var(--ivory);
-  color: var(--saffron-end);
-  font-weight: 700;
-}
-
-/* Mobile Hamburger */
-.walkers-ham {
-  display: none;
-  flex-direction: column;
-  justify-content: center;
-  gap: 5px;
-  width: 36px;
-  height: 36px;
-  background: transparent;
-  cursor: pointer;
-  z-index: 1005;
-}
-
-.walkers-ham span {
-  display: block;
-  width: 26px;
-  height: 2.5px;
-  background: var(--white);
-  border-radius: 2px;
-  transition: var(--transition-fast);
-}
-
-.site-header-walkers.is-scrolled .walkers-ham span {
-  background: var(--ink);
-}
-
-/* Mobile Slide-in Fullscreen Nav */
-.mobile-nav-fullscreen {
-  position: fixed;
-  inset: 0;
-  background: var(--white);
-  z-index: 2000;
-  padding: 2rem;
-  display: flex;
-  flex-direction: column;
-  transform: translateX(100%);
-  visibility: hidden;
-  pointer-events: none;
-  transition: transform 0.35s cubic-bezier(0.25, 0.8, 0.25, 1), visibility 0.35s;
-  overflow-y: auto;
-}
-
-.mobile-nav-fullscreen.is-open {
-  transform: translateX(0);
-  visibility: visible;
-  pointer-events: auto;
-}
-
-@media (max-width: 768px) {
-  .header-top-row {
-    gap: 0.5rem;
-  }
-  .header-brand {
-    gap: 0.5rem;
-    max-width: calc(100% - 48px);
-  }
-  .header-brand-logo {
-    height: 42px !important;
-    max-width: 65px;
-  }
-  .header-brand-name {
-    font-size: 1.05rem !important;
-  }
-  .header-brand-sub {
-    font-size: 0.52rem !important;
-    letter-spacing: 0.05em;
-  }
-  .header-tools {
-    display: none;
-  }
-}
-
-.mobile-nav-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-bottom: 1.5rem;
-  border-bottom: 1px solid var(--border-subtle);
-}
-
-.mobile-nav-close {
-  background: transparent;
-  font-size: 2.2rem;
-  color: var(--ink);
-  cursor: pointer;
-  line-height: 1;
-}
-
-.mobile-nav-list {
-  margin: 1.5rem 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.42rem;
-}
-
-.mobile-nav-link {
-  font-family: var(--font-serif);
-  font-size: 1.35rem;
-  color: var(--ink);
-  font-weight: 600;
-  padding: 0.5rem 0;
-  display: block;
-}
-
-.mobile-nav-link:hover {
-  color: var(--saffron-end);
-}
-
-@media (max-width: 1024px) {
-  .walkers-nav {
-    display: none;
-  }
-  .walkers-ham {
-    display: flex;
-  }
-}
-
-/* ==============================================================================
-   UNIFIED HERO BANNER (.hero-banner)
-   ============================================================================== */
-.hero-banner {
-  position: relative;
-  min-height: 380px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  color: var(--white);
-  padding: 140px 1.5rem 60px;
-  text-align: center;
-  overflow: hidden;
-}
-
-/* Home Page Taller Hero */
-.hero-banner.home-hero {
-  min-height: 650px;
-  padding: 160px 1.5rem 100px;
-}
-
-/* Dark Gradient Overlay for Maximum Legibility */
-.hero-overlay-motif {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at center, rgba(12, 28, 20, 0.6) 0%, rgba(12, 28, 20, 0.85) 100%),
-              linear-gradient(180deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.85) 100%);
-  z-index: 1;
-}
-
-.hero-content {
-  position: relative;
-  z-index: 2;
-  max-width: 900px;
-  margin: 0 auto;
-}
-
-.hero-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: rgba(201, 162, 75, 0.25);
-  border: 1px solid rgba(201, 162, 75, 0.55);
-  color: #F7D59A;
-  font-size: 0.82rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  padding: 6px 18px;
-  border-radius: var(--radius-full);
-  margin-bottom: 1.25rem;
-}
-
-.hero-badge svg {
-  width: 16px;
-  height: 16px;
-  fill: currentColor;
-}
-
-.hero-title {
-  font-family: var(--font-serif);
-  font-size: clamp(2.3rem, 4.8vw, 3.4rem);
-  color: var(--white);
-  line-height: 1.15;
-  margin-bottom: 0.85rem;
-  font-weight: 700;
-  text-shadow: 0 4px 18px rgba(0, 0, 0, 0.7);
-}
-
-.hero-slogan {
-  font-family: var(--font-brand-sub);
-  font-size: 0.95rem;
-  font-weight: 700;
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
-  color: var(--sacred-gold);
-  margin-bottom: 1.25rem;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
-}
-
-.hero-breadcrumbs {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: rgba(0, 0, 0, 0.45);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  padding: 6px 16px;
-  border-radius: var(--radius-full);
-  font-size: 0.85rem;
-  color: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(6px);
-}
-
-.hero-breadcrumbs a {
-  color: var(--white);
-}
-
-.hero-breadcrumbs a:hover {
-  color: var(--sacred-gold);
-}
-
-.hero-breadcrumbs .sep {
-  color: var(--sacred-gold);
-}
-
-/* ==============================================================================
-   SHARED CARDS (.tour-card, .info-card)
-   ============================================================================== */
-.tour-card {
-  background: var(--white);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  box-shadow: var(--shadow-sm);
-  display: flex;
-  flex-direction: column;
-  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-}
-
-.tour-card:hover {
-  transform: translateY(-6px);
-  box-shadow: var(--shadow-md);
-  border-color: var(--sacred-gold);
-}
-
-.tour-card-img-wrap {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 16 / 10;
-  overflow: hidden;
-}
-
-.tour-card-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.5s ease;
-}
-
-.tour-card:hover .tour-card-img {
-  transform: scale(1.06);
-}
-
-.tour-card-badge {
-  position: absolute;
-  top: 14px;
-  left: 14px;
-  background: rgba(13, 43, 29, 0.85);
-  border: 1px solid rgba(201, 162, 75, 0.5);
-  color: #F7D59A;
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  padding: 4px 12px;
-  border-radius: var(--radius-full);
-  backdrop-filter: blur(4px);
-}
-
-.tour-card-body {
-  padding: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-}
-
-.tour-card-meta {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-size: 0.85rem;
-  color: var(--text-muted);
-  font-weight: 600;
-  margin-bottom: 0.65rem;
-}
-
-.tour-card-title {
-  font-family: var(--font-serif);
-  font-size: 1.35rem;
-  color: var(--ink);
-  line-height: 1.3;
-  margin-bottom: 0.75rem;
-  font-weight: 700;
-}
-
-.tour-card-desc {
-  font-size: 0.92rem;
-  color: var(--text-muted);
-  line-height: 1.6;
-  margin-bottom: 1.25rem;
-  flex-grow: 1;
-}
-
-.tour-card-footer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-top: 1rem;
-  border-top: 1px solid var(--border-subtle);
-  margin-top: auto;
-}
-
-.tour-price-box .from {
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  display: block;
-}
-
-.tour-price-box .amount {
-  font-size: 1.25rem;
-  font-weight: 800;
-  color: var(--saffron-end);
-}
-
-/* 3-Column Card Grid */
-.cards-grid-3 {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
-}
-
-@media (max-width: 992px) {
-  .cards-grid-3 {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 640px) {
-  .cards-grid-3 {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* ==============================================================================
-   SHARED FAQ COMPONENT
-   ============================================================================== */
-.faq-section {
-  background: var(--ivory);
-  border-top: 1px solid var(--border-subtle);
-  border-bottom: 1px solid var(--border-subtle);
-}
-
-.faq-accordion {
-  max-width: 860px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.faq-item {
-  background: var(--white);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-md);
-  overflow: hidden;
-  transition: border-color 0.25s ease, box-shadow 0.25s ease;
-}
-
-.faq-item.is-active,
-.faq-item:hover {
-  border-color: var(--sacred-gold);
-  box-shadow: var(--shadow-sm);
-}
-
-.faq-question {
-  width: 100%;
-  padding: 1.25rem 1.5rem;
-  text-align: left;
-  background: transparent;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  font-family: var(--font-serif);
-  font-size: 1.12rem;
-  font-weight: 700;
-  color: var(--ink);
-  cursor: pointer;
-}
-
-.faq-icon {
-  font-size: 1.25rem;
-  color: var(--saffron-start);
-  transition: transform 0.3s ease;
-  flex-shrink: 0;
-}
-
-.faq-item.is-active .faq-icon {
-  transform: rotate(45deg);
-}
-
-.faq-answer {
-  display: none;
-  padding: 0 1.5rem 1.25rem;
-  color: var(--text-body);
-  font-size: 0.95rem;
-  line-height: 1.65;
-  border-top: 1px solid rgba(232, 226, 216, 0.4);
-  padding-top: 1rem;
-}
-
-.faq-item.is-active .faq-answer {
-  display: block;
-}
-
-/* ==============================================================================
-   SHARED CTA BAND (.sacred-cta-banner)
-   ============================================================================== */
-.sacred-cta-banner {
-  background: linear-gradient(135deg, #280C17 0%, #3D1223 50%, #1A0710 100%) !important;
-  color: var(--white);
-  padding: 5rem 1.5rem;
-  position: relative;
-  overflow: hidden;
-  text-align: center;
-  border-top: 2px solid #C95451 !important;
-  border-bottom: none !important;
-}
-
-/* Atmospheric blur & gradient blend connecting CTA Banner and Footer */
-.sacred-cta-banner::after {
-  content: "";
-  position: absolute;
-  bottom: -1px;
-  left: 0;
-  right: 0;
-  height: 120px;
-  background: linear-gradient(
-    to bottom,
-    rgba(40, 12, 23, 0) 0%,
-    rgba(20, 15, 35, 0.45) 40%,
-    rgba(1, 28, 64, 0.8) 75%,
-    #011C40 100%
-  ) !important;
-  pointer-events: none;
-  z-index: 1;
-}
-
-.cta-motif {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, rgba(201, 84, 81, 0.28) 0%, rgba(0,0,0,0) 70%) !important;
-  pointer-events: none;
-}
-
-.cta-content {
-  position: relative;
-  z-index: 2;
-  max-width: 780px;
-  margin: 0 auto;
-}
-
-.cta-title {
-  font-family: var(--font-serif);
-  font-size: clamp(2.1rem, 3.8vw, 2.9rem);
-  color: var(--white);
-  margin-bottom: 1rem;
-  line-height: 1.2;
-}
-
-.cta-desc {
-  font-size: 1.05rem;
-  color: rgba(255, 255, 255, 0.85);
-  margin-bottom: 2rem;
-  line-height: 1.65;
-}
-
-.cta-btn-group {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1.25rem;
-  flex-wrap: wrap;
-}
-
-.cta-wa-btn {
-  background: #25D366;
-  color: #FFFFFF !important;
-  font-weight: 700;
-  padding: 0.9rem 2rem;
-  border-radius: var(--radius-full);
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  box-shadow: 0 4px 15px rgba(37, 211, 102, 0.35);
-  transition: var(--transition-fast);
-}
-
-.cta-wa-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(37, 211, 102, 0.5);
-}
-
-/* ==============================================================================
-   SHARED FOOTER (.site-footer-walkers)
-   ============================================================================== */
+.container { width: 100%; max-width: var(--container-max-width); margin-left: auto; margin-right: auto; padding-left: 1.5rem; padding-right: 1.5rem;
+} .wrapper--95,
+.header-container { width: 100%; max-width: var(--header-max-width); margin-left: auto; margin-right: auto; padding-left: 1.5rem; padding-right: 1.5rem;
+} /* Standard Section Spacing */
+.section-pad { padding-top: var(--section-pad-desktop); padding-bottom: var(--section-pad-desktop);
+} @media (max-width: 768px) { .section-pad { padding-top: var(--section-pad-mobile); padding-bottom: var(--section-pad-mobile); }
+} /* Section Header Typography */
+.section-header-center { text-align: center; max-width: 780px; margin: 0 auto 3rem;
+} .section-tag { display: inline-flex; align-items: center; gap: 8px; background: rgba(201, 162, 75, 0.15); border: 1px solid rgba(201, 162, 75, 0.4); color: var(--saffron-end); font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.14em; padding: 6px 16px; border-radius: var(--radius-full); margin-bottom: 1rem;
+} .section-title { font-family: var(--font-serif); font-size: clamp(2rem, 3.8vw, 2.75rem); color: var(--ink); line-height: 1.2; margin-bottom: 1rem; font-weight: 700;
+} .section-subtitle { color: var(--text-muted); font-size: 1.05rem; line-height: 1.65;
+} /* ============================================================================== TYPOGRAPHY SCALE ============================================================================== */
+h1, .h1 { font-family: var(--font-serif); font-size: clamp(2.4rem, 4.5vw, 3.4rem); color: var(--ink); line-height: 1.18; font-weight: 700;
+} h2, .h2 { font-family: var(--font-serif); font-size: clamp(1.9rem, 3.2vw, 2.5rem); color: var(--ink); line-height: 1.25; font-weight: 700;
+} h3, .h3 { font-family: var(--font-serif); font-size: clamp(1.35rem, 2vw, 1.65rem); color: var(--ink); line-height: 1.35; font-weight: 600;
+} p { color: var(--text-body); font-size: 1rem; line-height: 1.68; margin-bottom: 1rem;
+} p:last-child { margin-bottom: 0;
+} .lead-text { font-size: 1.15rem; line-height: 1.7; color: var(--ink);
+} /* ============================================================================== SHARED BUTTONS ============================================================================== */
+.btn-primary-gold { display: inline-flex; align-items: center; justify-content: center; gap: 10px; background: linear-gradient(135deg, var(--saffron-start) 0%, var(--saffron-end) 100%); color: var(--white) !important; font-weight: 700; font-size: 0.95rem; padding: 0.9rem 2rem; border-radius: var(--radius-full); text-decoration: none; box-shadow: var(--shadow-gold); cursor: pointer; transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease; border: 1px solid rgba(255, 255, 255, 0.2);
+} .btn-primary-gold:hover { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(217, 130, 43, 0.5); filter: brightness(1.06);
+} .btn-secondary-outline { display: inline-flex; align-items: center; justify-content: center; gap: 10px; background: transparent; color: var(--ink); font-weight: 700; font-size: 0.95rem; padding: 0.85rem 1.85rem; border-radius: var(--radius-full); border: 1.5px solid var(--border-subtle); text-decoration: none; cursor: pointer; transition: var(--transition-standard);
+} .btn-secondary-outline:hover { border-color: var(--sacred-gold); color: var(--sacred-gold-hover); background: var(--ivory);
+} .gold-inquire-btn { display: inline-flex; align-items: center; gap: 8px; background: linear-gradient(135deg, var(--saffron-start) 0%, var(--saffron-end) 100%); color: var(--white) !important; font-weight: 700; font-size: 0.88rem; padding: 0.65rem 1.4rem; border-radius: var(--radius-full); box-shadow: 0 4px 15px rgba(217, 130, 43, 0.35); transition: var(--transition-standard);
+} .gold-inquire-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 22px rgba(217, 130, 43, 0.5);
+} /* Persistent Floating WhatsApp Concierge */
+.floating-whatsapp-btn { position: fixed; bottom: 28px; right: 28px; width: 60px; height: 60px; background: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #FFFFFF; box-shadow: 0 6px 20px rgba(37, 211, 102, 0.45); z-index: 999; transition: transform 0.3s ease, box-shadow 0.3s ease;
+} .floating-whatsapp-btn:hover { transform: scale(1.1); box-shadow: 0 10px 25px rgba(37, 211, 102, 0.6);
+} .floating-whatsapp-btn svg { width: 34px; height: 34px; fill: currentColor;
+} /* ============================================================================== HEADER & NAVIGATION (.site-header-walkers) ============================================================================== */
+.site-header-walkers { position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; background: linear-gradient(180deg, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0) 100%); transition: background 0.35s ease, box-shadow 0.35s ease, padding 0.35s ease; padding: 1.1rem 0;
+} .site-header-walkers.is-scrolled { background: rgba(251, 247, 240, 0.98); backdrop-filter: blur(12px); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); padding: 0.65rem 0;
+} .header-top-row { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem;
+} /* Brand Emblem & Typography */
+.header-brand { display: inline-flex; align-items: center; gap: 0.85rem; text-decoration: none;
+} .header-brand-logo { height: 72px; width: auto; max-width: 95px; object-fit: contain; filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.75)); transition: height 0.3s ease, transform 0.3s ease;
+} .site-header-walkers.is-scrolled .header-brand-logo { height: 52px; filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.2));
+} .header-brand-text { display: flex; flex-direction: column; line-height: 1.15;
+} .header-brand-name { font-family: var(--font-display); font-weight: 700; font-size: 1.45rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--white); text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8); transition: color 0.3s ease, text-shadow 0.3s ease;
+} .brand-name-lotus { color: #FFFFFF;
+} .brand-name-ceylon { color: var(--sacred-gold);
+} .site-header-walkers.is-scrolled .header-brand-name { color: var(--ink); text-shadow: none;
+} .site-header-walkers.is-scrolled .brand-name-lotus { color: var(--ink);
+} .header-brand-sub { font-family: var(--font-brand-sub); font-size: 0.58rem; font-weight: 700; letter-spacing: 0.24em; text-transform: uppercase; color: rgba(255, 255, 255, 0.9); text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8); margin-top: 2px; transition: color 0.3s ease;
+} .site-header-walkers.is-scrolled .header-brand-sub { color: var(--saffron-end); text-shadow: none;
+} /* Nav Menu */
+.walkers-nav { display: flex; align-items: center;
+} .walkers-menu { display: flex; align-items: center; gap: 1.75rem;
+} .walkers-menu-item { position: relative;
+} .walkers-menu-link { font-family: var(--font-body); font-size: 0.92rem; font-weight: 600; color: var(--white); padding: 0.6rem 0; display: flex; align-items: center; gap: 5px; text-shadow: 0 1px 4px rgba(0, 0, 0, 0.7); transition: color 0.25s ease;
+} .site-header-walkers.is-scrolled .walkers-menu-link { color: var(--ink); text-shadow: none;
+} .walkers-menu-link:hover,
+.walkers-menu-item.active .walkers-menu-link { color: var(--sacred-gold);
+} .walkers-caret { width: 9px; height: 6px; transition: transform 0.25s ease;
+} .walkers-menu-item:hover .walkers-caret { transform: rotate(180deg);
+} /* Mega Menu Dropdown */
+.walkers-megamenu { position: absolute; top: 100%; left: -120px; width: 580px; background: var(--white); border-radius: var(--radius-md); box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15); border: 1px solid var(--border-subtle); padding: 1.5rem; display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.75rem 1.5rem; opacity: 0; visibility: hidden; transform: translateY(12px); transition: var(--transition-standard); pointer-events: none;
+} .walkers-menu-item:hover .walkers-megamenu { opacity: 1; visibility: visible; transform: translateY(0); pointer-events: auto;
+} .megamenu-link { display: flex; align-items: center; gap: 10px; padding: 0.6rem 0.8rem; border-radius: var(--radius-sm); color: var(--ink); font-weight: 600; font-size: 0.9rem; transition: var(--transition-fast);
+} .megamenu-link:hover { background: var(--ivory); color: var(--saffron-end); padding-left: 1rem;
+} .megamenu-link-icon { font-size: 1.1rem;
+} /* Header Tools: Lang Pill & Inquire */
+.header-tools { display: flex; align-items: center; gap: 1.15rem;
+} .custom-lang-pill { position: relative;
+} .lang-pill-btn { display: flex; align-items: center; gap: 6px; background: rgba(255, 255, 255, 0.18); border: 1px solid rgba(255, 255, 255, 0.4); color: var(--white); font-size: 0.82rem; font-weight: 700; padding: 6px 14px; border-radius: var(--radius-full); cursor: pointer; backdrop-filter: blur(8px); transition: var(--transition-fast);
+} .site-header-walkers.is-scrolled .lang-pill-btn { background: rgba(0, 43, 73, 0.06); border-color: rgba(0, 43, 73, 0.15); color: var(--ink);
+} .lang-pill-dropdown { position: absolute; top: calc(100% + 8px); right: 0; background: var(--white); border-radius: var(--radius-md); box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15); border: 1px solid var(--border-subtle); padding: 0.5rem 0; width: 210px; max-height: 380px; overflow-y: auto; display: none; flex-direction: column; z-index: 1002;
+} .lang-pill-dropdown.is-active,
+.lang-pill-dropdown.show { display: flex !important;
+} .lang-pill-dropdown button { width: 100%; text-align: left; padding: 0.6rem 1.25rem; font-size: 0.88rem; color: var(--ink); background: transparent; cursor: pointer; transition: var(--transition-fast); display: flex; align-items: center; gap: 8px;
+} .lang-pill-dropdown button:hover,
+.lang-pill-dropdown button.is-active { background: var(--ivory); color: var(--saffron-end); font-weight: 700;
+} /* Mobile Hamburger */
+.walkers-ham { display: none; flex-direction: column; justify-content: center; gap: 5px; width: 36px; height: 36px; background: transparent; cursor: pointer; z-index: 1005;
+} .walkers-ham span { display: block; width: 26px; height: 2.5px; background: var(--white); border-radius: 2px; transition: var(--transition-fast);
+} .site-header-walkers.is-scrolled .walkers-ham span { background: var(--ink);
+} /* Mobile Slide-in Fullscreen Nav */
+.mobile-nav-fullscreen { position: fixed; inset: 0; background: var(--white); z-index: 2000; padding: 2rem; display: flex; flex-direction: column; transform: translateX(100%); visibility: hidden; pointer-events: none; transition: transform 0.35s cubic-bezier(0.25, 0.8, 0.25, 1), visibility 0.35s; overflow-y: auto;
+} .mobile-nav-fullscreen.is-open { transform: translateX(0); visibility: visible; pointer-events: auto;
+} @media (max-width: 768px) { .header-top-row { gap: 0.5rem; } .header-brand { gap: 0.5rem; max-width: calc(100% - 48px); } .header-brand-logo { height: 42px !important; max-width: 65px; } .header-brand-name { font-size: 1.05rem !important; } .header-brand-sub { font-size: 0.52rem !important; letter-spacing: 0.05em; } .header-tools { display: none; }
+} .mobile-nav-header { display: flex; align-items: center; justify-content: space-between; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border-subtle);
+} .mobile-nav-close { background: transparent; font-size: 2.2rem; color: var(--ink); cursor: pointer; line-height: 1;
+} .mobile-nav-list { margin: 1.5rem 0; display: flex; flex-direction: column; gap: 0.42rem;
+} .mobile-nav-link { font-family: var(--font-serif); font-size: 1.35rem; color: var(--ink); font-weight: 600; padding: 0.5rem 0; display: block;
+} .mobile-nav-link:hover { color: var(--saffron-end);
+} @media (max-width: 1024px) { .walkers-nav { display: none; } .walkers-ham { display: flex; }
+} /* ============================================================================== UNIFIED HERO BANNER (.hero-banner) ============================================================================== */
+.hero-banner { position: relative; min-height: 380px; display: flex; align-items: center; justify-content: center; background-position: center; background-size: cover; background-repeat: no-repeat; color: var(--white); padding: 140px 1.5rem 60px; text-align: center; overflow: hidden;
+} /* Home Page Taller Hero */
+.hero-banner.home-hero { min-height: 650px; padding: 160px 1.5rem 100px;
+} /* Dark Gradient Overlay for Maximum Legibility */
+.hero-overlay-motif { position: absolute; inset: 0; background: radial-gradient(circle at center, rgba(12, 28, 20, 0.6) 0%, rgba(12, 28, 20, 0.85) 100%), linear-gradient(180deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.85) 100%); z-index: 1;
+} .hero-content { position: relative; z-index: 2; max-width: 900px; margin: 0 auto;
+} .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(201, 162, 75, 0.25); border: 1px solid rgba(201, 162, 75, 0.55); color: #F7D59A; font-size: 0.82rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; padding: 6px 18px; border-radius: var(--radius-full); margin-bottom: 1.25rem;
+} .hero-badge svg { width: 16px; height: 16px; fill: currentColor;
+} .hero-title { font-family: var(--font-serif); font-size: clamp(2.3rem, 4.8vw, 3.4rem); color: var(--white); line-height: 1.15; margin-bottom: 0.85rem; font-weight: 700; text-shadow: 0 4px 18px rgba(0, 0, 0, 0.7);
+} .hero-slogan { font-family: var(--font-brand-sub); font-size: 0.95rem; font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase; color: var(--sacred-gold); margin-bottom: 1.25rem; text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
+} .hero-breadcrumbs { display: inline-flex; align-items: center; gap: 8px; background: rgba(0, 0, 0, 0.45); border: 1px solid rgba(255, 255, 255, 0.2); padding: 6px 16px; border-radius: var(--radius-full); font-size: 0.85rem; color: rgba(255, 255, 255, 0.8); backdrop-filter: blur(6px);
+} .hero-breadcrumbs a { color: var(--white);
+} .hero-breadcrumbs a:hover { color: var(--sacred-gold);
+} .hero-breadcrumbs .sep { color: var(--sacred-gold);
+} /* ============================================================================== SHARED CARDS (.tour-card, .info-card) ============================================================================== */
+.tour-card { background: var(--white); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-sm); display: flex; flex-direction: column; transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+} .tour-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); border-color: var(--sacred-gold);
+} .tour-card-img-wrap { position: relative; width: 100%; aspect-ratio: 16 / 10; overflow: hidden;
+} .tour-card-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;
+} .tour-card:hover .tour-card-img { transform: scale(1.06);
+} .tour-card-badge { position: absolute; top: 14px; left: 14px; background: rgba(13, 43, 29, 0.85); border: 1px solid rgba(201, 162, 75, 0.5); color: #F7D59A; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 4px 12px; border-radius: var(--radius-full); backdrop-filter: blur(4px);
+} .tour-card-body { padding: 1.5rem; display: flex; flex-direction: column; flex-grow: 1;
+} .tour-card-meta { display: flex; align-items: center; justify-content: space-between; font-size: 0.85rem; color: var(--text-muted); font-weight: 600; margin-bottom: 0.65rem;
+} .tour-card-title { font-family: var(--font-serif); font-size: 1.35rem; color: var(--ink); line-height: 1.3; margin-bottom: 0.75rem; font-weight: 700;
+} .tour-card-desc { font-size: 0.92rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 1.25rem; flex-grow: 1;
+} .tour-card-footer { display: flex; align-items: center; justify-content: space-between; padding-top: 1rem; border-top: 1px solid var(--border-subtle); margin-top: auto;
+} .tour-price-box .from { font-size: 0.75rem; text-transform: uppercase; color: var(--text-muted); display: block;
+} .tour-price-box .amount { font-size: 1.25rem; font-weight: 800; color: var(--saffron-end);
+} /* 3-Column Card Grid */
+.cards-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;
+} @media (max-width: 992px) { .cards-grid-3 { grid-template-columns: repeat(2, 1fr); }
+} @media (max-width: 640px) { .cards-grid-3 { grid-template-columns: 1fr; }
+} /* ============================================================================== SHARED FAQ COMPONENT ============================================================================== */
+.faq-section { background: var(--ivory); border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle);
+} .faq-accordion { max-width: 860px; margin: 0 auto; display: flex; flex-direction: column; gap: 1rem;
+} .faq-item { background: var(--white); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); overflow: hidden; transition: border-color 0.25s ease, box-shadow 0.25s ease;
+} .faq-item.is-active,
+.faq-item:hover { border-color: var(--sacred-gold); box-shadow: var(--shadow-sm);
+} .faq-question { width: 100%; padding: 1.25rem 1.5rem; text-align: left; background: transparent; display: flex; align-items: center; justify-content: space-between; gap: 1rem; font-family: var(--font-serif); font-size: 1.12rem; font-weight: 700; color: var(--ink); cursor: pointer;
+} .faq-icon { font-size: 1.25rem; color: var(--saffron-start); transition: transform 0.3s ease; flex-shrink: 0;
+} .faq-item.is-active .faq-icon { transform: rotate(45deg);
+} .faq-answer { display: none; padding: 0 1.5rem 1.25rem; color: var(--text-body); font-size: 0.95rem; line-height: 1.65; border-top: 1px solid rgba(232, 226, 216, 0.4); padding-top: 1rem;
+} .faq-item.is-active .faq-answer { display: block;
+} /* ============================================================================== SHARED CTA BAND (.sacred-cta-banner) ============================================================================== */
+.sacred-cta-banner { background: linear-gradient(135deg, #280C17 0%, #3D1223 50%, #1A0710 100%) !important; color: var(--white); padding: 5rem 1.5rem; position: relative; overflow: hidden; text-align: center; border-top: 2px solid #C95451 !important; border-bottom: none !important;
+} /* Atmospheric blur & gradient blend connecting CTA Banner and Footer */
+.sacred-cta-banner::after { content: ""; position: absolute; bottom: -1px; left: 0; right: 0; height: 120px; background: linear-gradient( to bottom, rgba(40, 12, 23, 0) 0%, rgba(20, 15, 35, 0.45) 40%, rgba(1, 28, 64, 0.8) 75%, #011C40 100% ) !important; pointer-events: none; z-index: 1;
+} .cta-motif { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 600px; height: 600px; background: radial-gradient(circle, rgba(201, 84, 81, 0.28) 0%, rgba(0,0,0,0) 70%) !important; pointer-events: none;
+} .cta-content { position: relative; z-index: 2; max-width: 780px; margin: 0 auto;
+} .cta-title { font-family: var(--font-serif); font-size: clamp(2.1rem, 3.8vw, 2.9rem); color: var(--white); margin-bottom: 1rem; line-height: 1.2;
+} .cta-desc { font-size: 1.05rem; color: rgba(255, 255, 255, 0.85); margin-bottom: 2rem; line-height: 1.65;
+} .cta-btn-group { display: flex; align-items: center; justify-content: center; gap: 1.25rem; flex-wrap: wrap;
+} .cta-wa-btn { background: #25D366; color: #FFFFFF !important; font-weight: 700; padding: 0.9rem 2rem; border-radius: var(--radius-full); display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.35); transition: var(--transition-fast);
+} .cta-wa-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(37, 211, 102, 0.5);
+} /* ============================================================================== SHARED FOOTER (.site-footer-walkers) ============================================================================== */
 .site-footer-walkers,
-.footer-walkers {
-  background-color: #011C40 !important;
-  color: var(--white);
-  padding: 2.75rem 0 1.5rem;
-  border-top: none !important;
-  position: relative;
-  z-index: 100;
-}
-
-.site-footer-walkers::before,
-.footer-walkers::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 100px;
-  background: linear-gradient(
-    to bottom,
-    #011C40 0%,
-    rgba(1, 28, 64, 0.7) 45%,
-    rgba(1, 28, 64, 0.2) 80%,
-    transparent 100%
-  );
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  pointer-events: none;
-  z-index: 1;
-}
-
-.site-footer-walkers .site-container,
+.footer-walkers { background-color: #011C40 !important; color: var(--white); padding: 2.75rem 0 1.5rem; border-top: none !important; position: relative; z-index: 100;
+} .site-footer-walkers::before,
+.footer-walkers::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 100px; background: linear-gradient( to bottom, #011C40 0%, rgba(1, 28, 64, 0.7) 45%, rgba(1, 28, 64, 0.2) 80%, transparent 100% ); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); pointer-events: none; z-index: 1;
+} .site-footer-walkers .site-container,
 .site-footer-walkers .wrapper--80,
 .footer-walkers .site-container,
-.footer-walkers .wrapper--80 {
-  position: relative !important;
-  z-index: 2 !important;
-}
-
-.site-footer-walkers .site-container,
-.site-footer-walkers .wrapper--80 {
-  max-width: 1180px;
-  width: 92%;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.footer-top-grid {
-  display: grid;
-  grid-template-columns: 1.35fr 1fr 1.05fr 1.15fr;
-  gap: 2rem;
-  margin-bottom: 1.5rem;
-}
-
-.footer-col-title {
-  font-family: var(--font-serif);
-  font-size: 1.15rem;
-  color: var(--sacred-gold);
-  margin-bottom: 1.25rem;
-  font-weight: 700;
-}
-
-.footer-contact-item {
-  margin-bottom: 1rem;
-}
-
-.footer-contact-item p {
-  font-size: 0.78rem;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--sacred-gold);
-  margin-bottom: 0.25rem;
-}
-
-.footer-contact-item a {
-  color: rgba(255, 255, 255, 0.9);
-  font-size: 0.95rem;
-}
-
-.footer-contact-item a:hover {
-  color: var(--sacred-gold);
-}
-
-.footer-links-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 0.42rem;
-}
-
-.footer-links-grid a {
-  color: rgba(255, 255, 255, 0.78);
-  font-size: 0.9rem;
-  transition: var(--transition-fast);
-}
-
-.footer-links-grid a:hover {
-  color: var(--sacred-gold);
-  padding-left: 4px;
-}
-
-.footer-bottom-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-top: 1.25rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.12);
-  font-size: 0.82rem;
-  color: rgba(255, 255, 255, 0.65);
-  flex-wrap: wrap;
-  gap: 1rem;
-}
-
-@media (max-width: 992px) {
-  .footer-top-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 640px) {
-  .footer-top-grid {
-    grid-template-columns: 1fr;
-  }
-  .footer-bottom-row {
-    flex-direction: column;
-    text-align: center;
-  }
-}
-
-/* ==============================================================================
-   JOB 2: FULL-WIDTH RESPONSIVE CONTACT MAP COMPONENT
-   ============================================================================== */
-.contact-map-section {
-  width: 100%;
-  margin-top: 3.5rem;
-  position: relative;
-  z-index: 10; /* Lower than footer (z-index: 100) to ensure zero overlap */
-}
-
-.contact-map-wrapper {
-  width: 100%;
-  height: 360px; /* Fixed height on desktop */
-  position: relative;
-  overflow: hidden;
-  border-radius: var(--radius-lg);
-  border: 1.5px solid var(--border-subtle);
-  box-shadow: var(--shadow-sm);
-  background: var(--ivory);
-}
-
-#contactMap {
-  width: 100%;
-  height: 100%;
-}
-
-@media (max-width: 768px) {
-  .contact-map-wrapper {
-    height: 280px; /* Fixed height on mobile */
-  }
-}
-
-/* ==============================================================================
-   JOB 4: 100% ANDROID / MOBILE RESPONSIVE ENGINE (ALL TEMPLATES & VIEWPORTS)
-   ============================================================================== */
-
-/* Base Fluid Scaling & Safe Areas */
-html {
-  -webkit-text-size-adjust: 100%;
-  text-size-adjust: 100%;
-  scroll-padding-top: calc(68px + env(safe-area-inset-top, 0px));
-}
-
-body {
-  font-size: 16px;
-  line-height: 1.65;
-  -webkit-font-smoothing: antialiased;
-}
-
-body.menu-open, html.menu-open {
-  overflow: hidden !important;
-  touch-action: none;
-}
-
-/* Fluid Typography */
-h1, .banner-main-title, .hero-title {
-  font-size: clamp(28px, 6vw, 42px) !important;
-  line-height: 1.2 !important;
-  overflow-wrap: anywhere;
-  word-break: break-word;
-}
-
-h2, .section-title, .section-header-title {
-  font-size: clamp(24px, 5vw, 34px) !important;
-  line-height: 1.25 !important;
-  overflow-wrap: anywhere;
-  word-break: break-word;
-}
-
-h3 {
-  font-size: clamp(20px, 4vw, 24px) !important;
-  line-height: 1.3 !important;
-  overflow-wrap: anywhere;
-}
-
-/* Watermark Collision Prevention */
-.section-watermark-header {
-  position: relative;
-  text-align: center;
-  margin-bottom: 2rem;
-}
-
-.watermark-heading {
-  user-select: none;
-  pointer-events: none;
-  opacity: 0.04;
-  margin: 0 auto !important;
-  line-height: 1 !important;
-}
-
-@media (max-width: 768px) {
-  .section-watermark-header .watermark-heading {
-    display: none !important;
-  }
-}
-
-/* Header & Navigation Rules (Max 64px tall on mobile, Logo Max 40px) */
-@media (max-width: 1024px) {
-  .site-header-walkers {
-    height: 64px !important;
-    max-height: 64px !important;
-    padding: 0 !important;
-    display: flex !important;
-    align-items: center !important;
-    background: rgba(13, 43, 29, 0.96) !important;
-    backdrop-filter: none !important; /* Battery & GPU efficiency on budget Androids */
-  }
-
-  .site-header-walkers .header-container {
-    height: 64px !important;
-    display: flex !important;
-    align-items: center !important;
-    padding-left: calc(1rem + env(safe-area-inset-left, 0px)) !important;
-    padding-right: calc(1rem + env(safe-area-inset-right, 0px)) !important;
-    width: 100% !important;
-  }
-
-  .site-header-walkers .header-top-row {
-    width: 100% !important;
-    height: 100% !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: space-between !important;
-    gap: 0.5rem !important;
-  }
-
-  .header-brand {
-    display: flex !important;
-    align-items: center !important;
-    gap: 0.6rem !important;
-    max-width: calc(100% - 56px) !important;
-  }
-
-  .header-brand-logo {
-    height: 38px !important;
-    max-height: 40px !important;
-    width: auto !important;
-    flex-shrink: 0 !important;
-  }
-
-  .header-brand-name {
-    font-size: clamp(1.05rem, 3.8vw, 1.25rem) !important;
-    letter-spacing: 0.04em !important;
-    white-space: nowrap !important;
-  }
-
-  .walkers-nav,
-  .header-tools {
-    display: none !important;
-  }
-
-  .walkers-ham {
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    width: 48px !important;
-    height: 48px !important;
-    min-width: 48px !important;
-    min-height: 48px !important;
-    background: transparent !important;
-    border: none !important;
-    cursor: pointer !important;
-    padding: 0 !important;
-    margin-right: -4px !important;
-    flex-shrink: 0 !important;
-    z-index: 1005 !important;
-  }
-
-  .walkers-ham span {
-    display: block !important;
-    width: 24px !important;
-    height: 2.5px !important;
-    background: #FFFFFF !important;
-    border-radius: 2px !important;
-    transition: transform 0.25s, opacity 0.25s !important;
-  }
-}
-
-@media (max-width: 600px) {
-  .header-brand-sub {
-    display: none !important;
-  }
-}
-
-/* Fullscreen Slide-in Mobile Drawer */
-.mobile-nav-fullscreen {
-  position: fixed !important;
-  inset: 0 !important;
-  width: 100vw !important;
-  height: 100% !important;
-  background: #FFFFFF !important;
-  z-index: 3000 !important;
-  display: flex !important;
-  flex-direction: column !important;
-  overflow-y: auto !important;
-  -webkit-overflow-scrolling: touch !important;
-  transform: translateX(100%) !important;
-  visibility: hidden !important;
-  pointer-events: none !important;
-  transition: transform 0.35s cubic-bezier(0.25, 0.8, 0.25, 1), visibility 0.35s !important;
-  padding: calc(1rem + env(safe-area-inset-top, 0px)) 1.25rem calc(2rem + env(safe-area-inset-bottom, 0px)) !important;
-  box-sizing: border-box !important;
-}
-
-.mobile-nav-fullscreen.is-open {
-  transform: translateX(0) !important;
-  visibility: visible !important;
-  pointer-events: auto !important;
-}
-
-.mobile-nav-header {
-  display: flex !important;
-  align-items: center !important;
-  justify-content: space-between !important;
-  padding-bottom: 0.85rem !important;
-  border-bottom: 1.5px solid var(--border-subtle) !important;
-}
-
-.mobile-nav-close {
-  width: 48px !important;
-  height: 48px !important;
-  min-width: 48px !important;
-  min-height: 48px !important;
-  border-radius: 50% !important;
-  background: #F1E9E1 !important;
-  border: none !important;
-  font-size: 1.8rem !important;
-  line-height: 1 !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  color: var(--ink) !important;
-  cursor: pointer !important;
-}
-
-.mobile-nav-body {
-  padding: 1rem 0 2rem !important;
-  display: flex !important;
-  flex-direction: column !important;
-  flex-grow: 1 !important;
-}
-
-.mobile-nav-list {
-  list-style: none !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  display: flex !important;
-  flex-direction: column !important;
-  gap: 0.35rem !important;
-}
-
-.mobile-nav-item {
-  margin: 0 !important;
-  padding: 0 !important;
-}
-
-.mobile-nav-link {
-  min-height: 48px !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: space-between !important;
-  padding: 0.6rem 0.85rem !important;
-  font-size: 1.12rem !important;
-  font-weight: 700 !important;
-  color: var(--ink) !important;
-  text-decoration: none !important;
-  border-radius: 8px !important;
-  transition: background-color 0.2s !important;
-}
-
-.mobile-nav-link:active {
-  background: #FAF7F2 !important;
-}
-
-.accordion-toggle {
-  width: 100% !important;
-  border: none !important;
-  background: transparent !important;
-  cursor: pointer !important;
-  text-align: left !important;
-}
-
-.accordion-chevron {
-  transition: transform 0.3s ease !important;
-}
-
-.accordion-toggle.is-expanded .accordion-chevron {
-  transform: rotate(180deg) !important;
-}
-
-.mobile-accordion-submenu {
-  display: none !important;
-  flex-direction: column !important;
-  padding: 0.35rem 0 0.5rem 0.75rem !important;
-  margin: 0.25rem 0 0.5rem 0.75rem !important;
-  border-left: 2.5px solid var(--sacred-gold) !important;
-  gap: 0.25rem !important;
-}
-
-.mobile-accordion-submenu.is-expanded {
-  display: flex !important;
-}
-
-.submenu-link {
-  min-height: 44px !important;
-  display: flex !important;
-  align-items: center !important;
-  padding: 0.45rem 0.75rem !important;
-  font-size: 0.95rem !important;
-  color: #334155 !important;
-  text-decoration: none !important;
-  border-radius: 6px !important;
-}
-
-.submenu-link:active {
-  background: #F8F5F0 !important;
-  color: var(--lotus-primary) !important;
-}
-
-.mobile-lang-section {
-  margin-top: 1.5rem !important;
-  padding-top: 1.25rem !important;
-  border-top: 1px solid var(--border-subtle) !important;
-}
-
-.mobile-section-label {
-  font-size: 0.78rem !important;
-  text-transform: uppercase !important;
-  letter-spacing: 0.12em !important;
-  color: var(--text-muted) !important;
-  font-weight: 700 !important;
-  margin-bottom: 0.65rem !important;
-}
-
-.mobile-lang-grid {
-  display: grid !important;
-  grid-template-columns: repeat(2, 1fr) !important;
-  gap: 0.5rem !important;
-}
-
-.mobile-lang-btn {
-  min-height: 46px !important;
-  padding: 0.5rem 0.75rem !important;
-  border: 1px solid var(--border-subtle) !important;
-  background: #FAF7F2 !important;
-  border-radius: 8px !important;
-  font-size: 0.85rem !important;
-  color: var(--ink) !important;
-  text-align: left !important;
-  cursor: pointer !important;
-  display: flex !important;
-  align-items: center !important;
-  gap: 6px !important;
-}
-
-.mobile-lang-btn.is-active {
-  background: var(--lotus-primary) !important;
-  color: #FFFFFF !important;
-  border-color: var(--lotus-primary) !important;
-  font-weight: 700 !important;
-}
-
-.mobile-nav-actions {
-  margin-top: 1.75rem !important;
-  display: flex !important;
-  flex-direction: column !important;
-  gap: 0.75rem !important;
-}
-
-.btn-mobile-whatsapp {
-  min-height: 50px !important;
-  height: 50px !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  background: #25D366 !important;
-  color: #FFFFFF !important;
-  font-weight: 700 !important;
-  text-decoration: none !important;
-  border-radius: 9999px !important;
-  font-size: 0.95rem !important;
-  box-shadow: 0 4px 15px rgba(37, 211, 102, 0.25) !important;
-}
-
-.btn-mobile-inquire {
-  min-height: 50px !important;
-  height: 50px !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  background: linear-gradient(135deg, var(--saffron-start), var(--saffron-end)) !important;
-  color: #FFFFFF !important;
-  font-weight: 700 !important;
-  text-decoration: none !important;
-  border-radius: 9999px !important;
-  font-size: 0.95rem !important;
-  box-shadow: var(--shadow-gold) !important;
-}
-
-/* Hero Section Mobile Rules (100svh, Clean Layout, Symmetrical 50px Buttons) */
-.banner-section {
-  min-height: 100svh !important;
-  height: 100svh !important;
-  position: relative !important;
-  overflow: hidden !important;
-}
-
-@media (max-width: 768px) {
-  .banner-content-wrap {
-    bottom: 8% !important;
-    padding-top: calc(72px + env(safe-area-inset-top, 0px)) !important;
-  }
-
-  .banner-actions {
-    display: flex !important;
-    flex-direction: column !important;
-    width: 100% !important;
-    gap: 0.75rem !important;
-    margin-top: 1.5rem !important;
-  }
-
-  .banner-actions .next-btn {
-    width: 100% !important;
-    min-height: 50px !important;
-    height: 50px !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    font-size: 15px !important;
-    font-weight: 700 !important;
-    border-radius: 9999px !important;
-    padding: 0 1.25rem !important;
-    box-sizing: border-box !important;
-  }
-
-  .banner-actions .next-btn .next-btn-circle {
-    display: none !important; /* Eliminate icon mismatch, guarantee identical width/height */
-  }
-
-  .next-btn--gold {
-    background: linear-gradient(135deg, var(--saffron-start), var(--saffron-end)) !important;
-    color: #FFFFFF !important;
-    border: none !important;
-  }
-
-  .next-btn--white {
-    background: #FFFFFF !important;
-    color: var(--ink) !important;
-    border: 1.5px solid rgba(255, 255, 255, 0.8) !important;
-  }
-}
-
-/* Unified Floating Action Button Cluster (WhatsApp + Top) */
-.unified-fab-group {
-  position: fixed !important;
-  right: calc(1rem + env(safe-area-inset-right, 0px)) !important;
-  bottom: calc(1.25rem + env(safe-area-inset-bottom, 0px)) !important;
-  z-index: 1500 !important;
-  display: flex !important;
-  flex-direction: column !important;
-  align-items: center !important;
-  gap: 0.65rem !important;
-  transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), opacity 0.3s !important;
-}
-
-.unified-fab-group.keyboard-hidden {
-  transform: translateY(120px) !important;
-  opacity: 0 !important;
-  pointer-events: none !important;
-}
-
-.fab-btn {
-  width: 52px !important;
-  height: 52px !important;
-  min-width: 52px !important;
-  min-height: 52px !important;
-  border-radius: 50% !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.22) !important;
-  border: none !important;
-  cursor: pointer !important;
-  text-decoration: none !important;
-  transition: transform 0.2s, box-shadow 0.2s !important;
-}
-
-.fab-btn:active {
-  transform: scale(0.92) !important;
-}
-
-.fab-top {
-  background: #FFFFFF !important;
-  color: var(--ink) !important;
-  border: 1.5px solid var(--border-subtle) !important;
-  display: none !important;
-}
-
-.fab-top.is-visible {
-  display: flex !important;
-}
-
-.fab-whatsapp {
-  background: #25D366 !important;
-  color: #FFFFFF !important;
-}
-
-/* Forms on Mobile (Input Font >= 16px to Prevent Auto-Zoom) */
-@media (max-width: 768px) {
-  input[type="text"],
-  input[type="email"],
-  input[type="tel"],
-  input[type="date"],
-  select,
-  textarea {
-    font-size: 16px !important;
-    min-height: 48px !important;
-    border-radius: 8px !important;
-    width: 100% !important;
-    box-sizing: border-box !important;
-  }
-
-  .form-submit-btn,
-  button[type="submit"] {
-    width: 100% !important;
-    min-height: 52px !important;
-    font-size: 16px !important;
-    font-weight: 700 !important;
-    border-radius: 9999px !important;
-  }
-}
-
-/* Tables / Destination Matrix Horizontal Scroll Container */
+.footer-walkers .wrapper--80 { position: relative !important; z-index: 2 !important;
+} .site-footer-walkers .site-container,
+.site-footer-walkers .wrapper--80 { max-width: 1180px; width: 92%; margin-left: auto; margin-right: auto;
+} .footer-top-grid { display: grid; grid-template-columns: 1.35fr 1fr 1.05fr 1.15fr; gap: 2rem; margin-bottom: 1.5rem;
+} .footer-col-title { font-family: var(--font-serif); font-size: 1.15rem; color: var(--sacred-gold); margin-bottom: 1.25rem; font-weight: 700;
+} .footer-contact-item { margin-bottom: 1rem;
+} .footer-contact-item p { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--sacred-gold); margin-bottom: 0.25rem;
+} .footer-contact-item a { color: rgba(255, 255, 255, 0.9); font-size: 0.95rem;
+} .footer-contact-item a:hover { color: var(--sacred-gold);
+} .footer-links-grid { display: flex; flex-direction: column; gap: 0.42rem;
+} .footer-links-grid a { color: rgba(255, 255, 255, 0.78); font-size: 0.9rem; transition: var(--transition-fast);
+} .footer-links-grid a:hover { color: var(--sacred-gold); padding-left: 4px;
+} .footer-bottom-row { display: flex; align-items: center; justify-content: space-between; padding-top: 1.25rem; border-top: 1px solid rgba(255, 255, 255, 0.12); font-size: 0.82rem; color: rgba(255, 255, 255, 0.65); flex-wrap: wrap; gap: 1rem;
+} @media (max-width: 992px) { .footer-top-grid { grid-template-columns: repeat(2, 1fr); }
+} @media (max-width: 640px) { .footer-top-grid { grid-template-columns: 1fr; } .footer-bottom-row { flex-direction: column; text-align: center; }
+} /* ============================================================================== JOB 2: FULL-WIDTH RESPONSIVE CONTACT MAP COMPONENT ============================================================================== */
+.contact-map-section { width: 100%; margin-top: 3.5rem; position: relative; z-index: 10; /* Lower than footer (z-index: 100) to ensure zero overlap */
+} .contact-map-wrapper { width: 100%; height: 360px; /* Fixed height on desktop */ position: relative; overflow: hidden; border-radius: var(--radius-lg); border: 1.5px solid var(--border-subtle); box-shadow: var(--shadow-sm); background: var(--ivory);
+} #contactMap { width: 100%; height: 100%;
+} @media (max-width: 768px) { .contact-map-wrapper { height: 280px; /* Fixed height on mobile */ }
+} /* ============================================================================== JOB 4: 100% ANDROID / MOBILE RESPONSIVE ENGINE (ALL TEMPLATES & VIEWPORTS) ============================================================================== */ /* Base Fluid Scaling & Safe Areas */
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; scroll-padding-top: calc(68px + env(safe-area-inset-top, 0px));
+} body { font-size: 16px; line-height: 1.65; -webkit-font-smoothing: antialiased;
+} body.menu-open, html.menu-open { overflow: hidden !important; touch-action: none;
+} /* Fluid Typography */
+h1, .banner-main-title, .hero-title { font-size: clamp(28px, 6vw, 42px) !important; line-height: 1.2 !important; overflow-wrap: anywhere; word-break: break-word;
+} h2, .section-title, .section-header-title { font-size: clamp(24px, 5vw, 34px) !important; line-height: 1.25 !important; overflow-wrap: anywhere; word-break: break-word;
+} h3 { font-size: clamp(20px, 4vw, 24px) !important; line-height: 1.3 !important; overflow-wrap: anywhere;
+} /* Watermark Collision Prevention */
+.section-watermark-header { position: relative; text-align: center; margin-bottom: 2rem;
+} .watermark-heading { user-select: none; pointer-events: none; opacity: 0.04; margin: 0 auto !important; line-height: 1 !important;
+} @media (max-width: 768px) { .section-watermark-header .watermark-heading { display: none !important; }
+} /* Header & Navigation Rules (Max 64px tall on mobile, Logo Max 40px) */
+@media (max-width: 1024px) { .site-header-walkers { height: 64px !important; max-height: 64px !important; padding: 0 !important; display: flex !important; align-items: center !important; background: rgba(13, 43, 29, 0.96) !important; backdrop-filter: none !important; /* Battery & GPU efficiency on budget Androids */ } .site-header-walkers .header-container { height: 64px !important; display: flex !important; align-items: center !important; padding-left: calc(1rem + env(safe-area-inset-left, 0px)) !important; padding-right: calc(1rem + env(safe-area-inset-right, 0px)) !important; width: 100% !important; } .site-header-walkers .header-top-row { width: 100% !important; height: 100% !important; display: flex !important; align-items: center !important; justify-content: space-between !important; gap: 0.5rem !important; } .header-brand { display: flex !important; align-items: center !important; gap: 0.6rem !important; max-width: calc(100% - 56px) !important; } .header-brand-logo { height: 38px !important; max-height: 40px !important; width: auto !important; flex-shrink: 0 !important; } .header-brand-name { font-size: clamp(1.05rem, 3.8vw, 1.25rem) !important; letter-spacing: 0.04em !important; white-space: nowrap !important; } .walkers-nav, .header-tools { display: none !important; } .walkers-ham { display: flex !important; align-items: center !important; justify-content: center !important; width: 48px !important; height: 48px !important; min-width: 48px !important; min-height: 48px !important; background: transparent !important; border: none !important; cursor: pointer !important; padding: 0 !important; margin-right: -4px !important; flex-shrink: 0 !important; z-index: 1005 !important; } .walkers-ham span { display: block !important; width: 24px !important; height: 2.5px !important; background: #FFFFFF !important; border-radius: 2px !important; transition: transform 0.25s, opacity 0.25s !important; }
+} @media (max-width: 600px) { .header-brand-sub { display: none !important; }
+} /* Fullscreen Slide-in Mobile Drawer */
+.mobile-nav-fullscreen { position: fixed !important; inset: 0 !important; width: 100vw !important; height: 100% !important; background: #FFFFFF !important; z-index: 3000 !important; display: flex !important; flex-direction: column !important; overflow-y: auto !important; -webkit-overflow-scrolling: touch !important; transform: translateX(100%) !important; visibility: hidden !important; pointer-events: none !important; transition: transform 0.35s cubic-bezier(0.25, 0.8, 0.25, 1), visibility 0.35s !important; padding: calc(1rem + env(safe-area-inset-top, 0px)) 1.25rem calc(2rem + env(safe-area-inset-bottom, 0px)) !important; box-sizing: border-box !important;
+} .mobile-nav-fullscreen.is-open { transform: translateX(0) !important; visibility: visible !important; pointer-events: auto !important;
+} .mobile-nav-header { display: flex !important; align-items: center !important; justify-content: space-between !important; padding-bottom: 0.85rem !important; border-bottom: 1.5px solid var(--border-subtle) !important;
+} .mobile-nav-close { width: 48px !important; height: 48px !important; min-width: 48px !important; min-height: 48px !important; border-radius: 50% !important; background: #F1E9E1 !important; border: none !important; font-size: 1.8rem !important; line-height: 1 !important; display: flex !important; align-items: center !important; justify-content: center !important; color: var(--ink) !important; cursor: pointer !important;
+} .mobile-nav-body { padding: 1rem 0 2rem !important; display: flex !important; flex-direction: column !important; flex-grow: 1 !important;
+} .mobile-nav-list { list-style: none !important; margin: 0 !important; padding: 0 !important; display: flex !important; flex-direction: column !important; gap: 0.35rem !important;
+} .mobile-nav-item { margin: 0 !important; padding: 0 !important;
+} .mobile-nav-link { min-height: 48px !important; display: flex !important; align-items: center !important; justify-content: space-between !important; padding: 0.6rem 0.85rem !important; font-size: 1.12rem !important; font-weight: 700 !important; color: var(--ink) !important; text-decoration: none !important; border-radius: 8px !important; transition: background-color 0.2s !important;
+} .mobile-nav-link:active { background: #FAF7F2 !important;
+} .accordion-toggle { width: 100% !important; border: none !important; background: transparent !important; cursor: pointer !important; text-align: left !important;
+} .accordion-chevron { transition: transform 0.3s ease !important;
+} .accordion-toggle.is-expanded .accordion-chevron { transform: rotate(180deg) !important;
+} .mobile-accordion-submenu { display: none !important; flex-direction: column !important; padding: 0.35rem 0 0.5rem 0.75rem !important; margin: 0.25rem 0 0.5rem 0.75rem !important; border-left: 2.5px solid var(--sacred-gold) !important; gap: 0.25rem !important;
+} .mobile-accordion-submenu.is-expanded { display: flex !important;
+} .submenu-link { min-height: 44px !important; display: flex !important; align-items: center !important; padding: 0.45rem 0.75rem !important; font-size: 0.95rem !important; color: #334155 !important; text-decoration: none !important; border-radius: 6px !important;
+} .submenu-link:active { background: #F8F5F0 !important; color: var(--lotus-primary) !important;
+} .mobile-lang-section { margin-top: 1.5rem !important; padding-top: 1.25rem !important; border-top: 1px solid var(--border-subtle) !important;
+} .mobile-section-label { font-size: 0.78rem !important; text-transform: uppercase !important; letter-spacing: 0.12em !important; color: var(--text-muted) !important; font-weight: 700 !important; margin-bottom: 0.65rem !important;
+} .mobile-lang-grid { display: grid !important; grid-template-columns: repeat(2, 1fr) !important; gap: 0.5rem !important;
+} .mobile-lang-btn { min-height: 46px !important; padding: 0.5rem 0.75rem !important; border: 1px solid var(--border-subtle) !important; background: #FAF7F2 !important; border-radius: 8px !important; font-size: 0.85rem !important; color: var(--ink) !important; text-align: left !important; cursor: pointer !important; display: flex !important; align-items: center !important; gap: 6px !important;
+} .mobile-lang-btn.is-active { background: var(--lotus-primary) !important; color: #FFFFFF !important; border-color: var(--lotus-primary) !important; font-weight: 700 !important;
+} .mobile-nav-actions { margin-top: 1.75rem !important; display: flex !important; flex-direction: column !important; gap: 0.75rem !important;
+} .btn-mobile-whatsapp { min-height: 50px !important; height: 50px !important; display: flex !important; align-items: center !important; justify-content: center !important; background: #25D366 !important; color: #FFFFFF !important; font-weight: 700 !important; text-decoration: none !important; border-radius: 9999px !important; font-size: 0.95rem !important; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.25) !important;
+} .btn-mobile-inquire { min-height: 50px !important; height: 50px !important; display: flex !important; align-items: center !important; justify-content: center !important; background: linear-gradient(135deg, var(--saffron-start), var(--saffron-end)) !important; color: #FFFFFF !important; font-weight: 700 !important; text-decoration: none !important; border-radius: 9999px !important; font-size: 0.95rem !important; box-shadow: var(--shadow-gold) !important;
+} /* Hero Section Mobile Rules (100svh, Clean Layout, Symmetrical 50px Buttons) */
+.banner-section { min-height: 100svh !important; height: 100svh !important; position: relative !important; overflow: hidden !important;
+} @media (max-width: 768px) { .banner-content-wrap { bottom: 8% !important; padding-top: calc(72px + env(safe-area-inset-top, 0px)) !important; } .banner-actions { display: flex !important; flex-direction: column !important; width: 100% !important; gap: 0.75rem !important; margin-top: 1.5rem !important; } .banner-actions .next-btn { width: 100% !important; min-height: 50px !important; height: 50px !important; display: flex !important; align-items: center !important; justify-content: center !important; font-size: 15px !important; font-weight: 700 !important; border-radius: 9999px !important; padding: 0 1.25rem !important; box-sizing: border-box !important; } .banner-actions .next-btn .next-btn-circle { display: none !important; /* Eliminate icon mismatch, guarantee identical width/height */ } .next-btn--gold { background: linear-gradient(135deg, var(--saffron-start), var(--saffron-end)) !important; color: #FFFFFF !important; border: none !important; } .next-btn--white { background: #FFFFFF !important; color: var(--ink) !important; border: 1.5px solid rgba(255, 255, 255, 0.8) !important; }
+} /* Unified Floating Action Button Cluster (WhatsApp + Top) */
+.unified-fab-group { position: fixed !important; right: calc(1rem + env(safe-area-inset-right, 0px)) !important; bottom: calc(1.25rem + env(safe-area-inset-bottom, 0px)) !important; z-index: 1500 !important; display: flex !important; flex-direction: column !important; align-items: center !important; gap: 0.65rem !important; transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), opacity 0.3s !important;
+} .unified-fab-group.keyboard-hidden { transform: translateY(120px) !important; opacity: 0 !important; pointer-events: none !important;
+} .fab-btn { width: 52px !important; height: 52px !important; min-width: 52px !important; min-height: 52px !important; border-radius: 50% !important; display: flex !important; align-items: center !important; justify-content: center !important; box-shadow: 0 6px 20px rgba(0,0,0,0.22) !important; border: none !important; cursor: pointer !important; text-decoration: none !important; transition: transform 0.2s, box-shadow 0.2s !important;
+} .fab-btn:active { transform: scale(0.92) !important;
+} .fab-top { background: #FFFFFF !important; color: var(--ink) !important; border: 1.5px solid var(--border-subtle) !important; display: none !important;
+} .fab-top.is-visible { display: flex !important;
+} .fab-whatsapp { background: #25D366 !important; color: #FFFFFF !important;
+} /* Forms on Mobile (Input Font >= 16px to Prevent Auto-Zoom) */
+@media (max-width: 768px) { input[type="text"], input[type="email"], input[type="tel"], input[type="date"], select, textarea { font-size: 16px !important; min-height: 48px !important; border-radius: 8px !important; width: 100% !important; box-sizing: border-box !important; } .form-submit-btn, button[type="submit"] { width: 100% !important; min-height: 52px !important; font-size: 16px !important; font-weight: 700 !important; border-radius: 9999px !important; }
+} /* Tables / Destination Matrix Horizontal Scroll Container */
 .table-responsive-container,
-.matrix-table-wrap {
-  width: 100% !important;
-  overflow-x: auto !important;
-  -webkit-overflow-scrolling: touch !important;
-  margin: 1.5rem 0 !important;
-}
-
-.table-responsive-container table th:first-child,
-.table-responsive-container table td:first-child {
-  position: sticky !important;
-  left: 0 !important;
-  background: #FFFFFF !important;
-  z-index: 2 !important;
-}
-
-/* RTL (Arabic) Support */
-html[dir="rtl"] {
-  direction: rtl !important;
-  text-align: right !important;
-}
-
-html[dir="rtl"] .mobile-nav-fullscreen {
-  transform: translateX(-100%) !important;
-}
-
-html[dir="rtl"] .mobile-nav-fullscreen.is-open {
-  transform: translateX(0) !important;
-}
-
-html[dir="rtl"] .accordion-chevron {
-  transform: scaleX(-1) !important;
-}
-
-html[dir="rtl"] .unified-fab-group {
-  right: auto !important;
-  left: calc(1rem + env(safe-area-inset-left, 0px)) !important;
-}
-
-/* Long Word Hyphenation for German & Russian */
-html:lang(de), html:lang(ru) {
-  hyphens: auto;
-  -webkit-hyphens: auto;
-}
-
-/* CJK Font Fallbacks */
-html:lang(zh-TW), html:lang(zh-CN), html:lang(ja) {
-  font-family: system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", "Meiryo", sans-serif !important;
-}
-
-/* Performance Optimizations: Disable expensive backdrop filters on mobile devices */
-@media (max-width: 768px) {
-  * {
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
-  }
-}
-
-/* Destination Matrix & Package Comparison Table Mobile Rules */
-.lotus-table-responsive {
-  width: 100% !important;
-  max-width: 100% !important;
-  overflow-x: auto !important;
-  -webkit-overflow-scrolling: touch !important;
-  position: relative !important;
-  border-radius: var(--radius-md) !important;
-  border: 1px solid var(--border-subtle) !important;
-  margin: 1.5rem 0 2.5rem !important;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04) !important;
-}
-
-.lotus-table-responsive .lotus-comparison-table {
-  min-width: 680px !important;
-  width: 100% !important;
-  border-collapse: separate !important;
-  border-spacing: 0 !important;
-  margin: 0 !important;
-}
-
-.lotus-table-responsive th:first-child,
-.lotus-table-responsive td:first-child {
-  position: sticky !important;
-  left: 0 !important;
-  background: #FFFFFF !important;
-  z-index: 5 !important;
-  box-shadow: 2px 0 6px rgba(0, 0, 0, 0.08) !important;
-}
-
-.lotus-table-responsive thead th:first-child {
-  z-index: 6 !important;
-  background: #FAF7F2 !important;
-}
-
-/* Day Cards, Tour Cards & FAQs Clean Mobile Stacking */
-@media (max-width: 768px) {
-  .itinerary-day-card,
-  .tour-card,
-  .faq-card,
-  .stats-card,
-  .about-luxury-split-grid,
-  .company-card-grid,
-  .destinations-grid,
-  .experiences-grid {
-    grid-template-columns: 1fr !important;
-    width: 100% !important;
-    max-width: 100% !important;
-  }
-}
-
-
-/* ==========================================================================
-   HOTFIX - ANDROID HORIZONTAL OVERFLOW, MENU, HEADER & FOOTER
-   Strictly enforces 100% mobile viewport containment (320px - 412px)
-   ========================================================================== */
-
-/* 1. Global Reset & Root Safety Net */
-html {
-  max-width: 100% !important;
-  overflow-x: clip !important;
-  -webkit-text-size-adjust: 100% !important;
-}
-
-body {
-  max-width: 100% !important;
-  overflow-x: clip !important;
-  position: relative !important;
-  margin: 0 !important;
-  padding: 0 !important;
-}
-
-/* Ensure no element stretches document width */
-*, *::before, *::after {
-  box-sizing: border-box !important;
-}
-
-img, video, iframe, table {
-  max-width: 100% !important;
-  height: auto;
-}
-
-/* 2. Source-Level Overflow Fixes */
-
-/* Fix A: CTA Motif Overflow */
+.matrix-table-wrap { width: 100% !important; overflow-x: auto !important; -webkit-overflow-scrolling: touch !important; margin: 1.5rem 0 !important;
+} .table-responsive-container table th:first-child,
+.table-responsive-container table td:first-child { position: sticky !important; left: 0 !important; background: #FFFFFF !important; z-index: 2 !important;
+} /* RTL (Arabic) Support */
+html[dir="rtl"] { direction: rtl !important; text-align: right !important;
+} html[dir="rtl"] .mobile-nav-fullscreen { transform: translateX(-100%) !important;
+} html[dir="rtl"] .mobile-nav-fullscreen.is-open { transform: translateX(0) !important;
+} html[dir="rtl"] .accordion-chevron { transform: scaleX(-1) !important;
+} html[dir="rtl"] .unified-fab-group { right: auto !important; left: calc(1rem + env(safe-area-inset-left, 0px)) !important;
+} /* Long Word Hyphenation for German & Russian */
+html:lang(de), html:lang(ru) { hyphens: auto; -webkit-hyphens: auto;
+} /* CJK Font Fallbacks */
+html:lang(zh-TW), html:lang(zh-CN), html:lang(ja) { font-family: system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", "Meiryo", sans-serif !important;
+} /* Performance Optimizations: Disable expensive backdrop filters on mobile devices */
+@media (max-width: 768px) { * { backdrop-filter: none !important; -webkit-backdrop-filter: none !important; }
+} /* Destination Matrix & Package Comparison Table Mobile Rules */
+.lotus-table-responsive { width: 100% !important; max-width: 100% !important; overflow-x: auto !important; -webkit-overflow-scrolling: touch !important; position: relative !important; border-radius: var(--radius-md) !important; border: 1px solid var(--border-subtle) !important; margin: 1.5rem 0 2.5rem !important; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04) !important;
+} .lotus-table-responsive .lotus-comparison-table { min-width: 680px !important; width: 100% !important; border-collapse: separate !important; border-spacing: 0 !important; margin: 0 !important;
+} .lotus-table-responsive th:first-child,
+.lotus-table-responsive td:first-child { position: sticky !important; left: 0 !important; background: #FFFFFF !important; z-index: 5 !important; box-shadow: 2px 0 6px rgba(0, 0, 0, 0.08) !important;
+} .lotus-table-responsive thead th:first-child { z-index: 6 !important; background: #FAF7F2 !important;
+} /* Day Cards, Tour Cards & FAQs Clean Mobile Stacking */
+@media (max-width: 768px) { .itinerary-day-card, .tour-card, .faq-card, .stats-card, .about-luxury-split-grid, .company-card-grid, .destinations-grid, .experiences-grid { grid-template-columns: 1fr !important; width: 100% !important; max-width: 100% !important; }
+} /* ========================================================================== HOTFIX - ANDROID HORIZONTAL OVERFLOW, MENU, HEADER & FOOTER Strictly enforces 100% mobile viewport containment (320px - 412px) ========================================================================== */ /* 1. Global Reset & Root Safety Net */
+html { max-width: 100% !important; overflow-x: clip !important; -webkit-text-size-adjust: 100% !important;
+} body { max-width: 100% !important; overflow-x: clip !important; position: relative !important; margin: 0 !important; padding: 0 !important;
+} /* Ensure no element stretches document width */
+*, *::before, *::after { box-sizing: border-box !important;
+} img, video, iframe, table { max-width: 100% !important; height: auto;
+} /* 2. Source-Level Overflow Fixes */ /* Fix A: CTA Motif Overflow */
 .site-cta,
-.cta-band {
-  position: relative !important;
-  overflow: hidden !important;
-  max-width: 100% !important;
-  width: 100% !important;
-}
-
-.cta-motif {
-  max-width: 100% !important;
-  overflow: hidden !important;
-  pointer-events: none !important;
-}
-
-/* Fix B: Category Carousel & Track Viewport */
+.cta-band { position: relative !important; overflow: hidden !important; max-width: 100% !important; width: 100% !important;
+} .cta-motif { max-width: 100% !important; overflow: hidden !important; pointer-events: none !important;
+} /* Fix B: Category Carousel & Track Viewport */
 .categories-carousel-wrapper,
-.categories-carousel-viewport {
-  overflow: hidden !important;
-  max-width: 100% !important;
-  width: 100% !important;
-}
-
-/* Fix C: Watermarks under 768px */
-@media (max-width: 768px) {
-  .watermark-heading,
-  .section-watermark-header .watermark-heading {
-    display: none !important;
-    width: 0 !important;
-    height: 0 !important;
-    overflow: hidden !important;
-    font-size: 0 !important;
-  }
-}
-
-/* Fix D: Form Grids in Inquiry Quick & Detailed */
-@media (max-width: 640px) {
-  .form-grid-2 {
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 1rem !important;
-    width: 100% !important;
-    max-width: 100% !important;
-  }
-}
-
-@media (max-width: 768px) {
-  .cards-grid-5 {
-    display: grid !important;
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 0.65rem !important;
-    width: 100% !important;
-    max-width: 100% !important;
-  }
-  .cards-grid-5 .selectable-card:last-child {
-    grid-column: span 2 !important;
-  }
-}
-
-/* Fix E: Leaflet Map containment */
-.leaflet-container {
-  max-width: 100% !important;
-  overflow: hidden !important;
-}
-
-/* 3. Mobile Header (Screens <= 1024px) */
-@media (max-width: 1024px) {
-  .site-header-walkers {
-    height: 64px !important;
-    max-height: 64px !important;
-    padding: 0 !important;
-    display: flex !important;
-    align-items: center !important;
-    background: #FFFFFF !important; /* Solid white background */
-    border-bottom: 1px solid rgba(0, 0, 0, 0.08) !important;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04) !important;
-    backdrop-filter: none !important;
-    position: sticky !important;
-    top: 0 !important;
-    z-index: 1000 !important;
-  }
-
-  .site-header-walkers:not(.is-scrolled) {
-    background: #FFFFFF !important;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.08) !important;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04) !important;
-    backdrop-filter: none !important;
-  }
-
-  .site-header-walkers .header-container {
-    height: 64px !important;
-    display: flex !important;
-    align-items: center !important;
-    padding-left: calc(1rem + env(safe-area-inset-left, 0px)) !important;
-    padding-right: calc(1rem + env(safe-area-inset-right, 0px)) !important;
-    width: 100% !important;
-    box-sizing: border-box !important;
-  }
-
-  .site-header-walkers .header-top-row {
-    width: 100% !important;
-    height: 100% !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: space-between !important;
-    gap: 0.5rem !important;
-  }
-
-  .header-brand {
-    display: flex !important;
-    align-items: center !important;
-    gap: 0.6rem !important;
-    max-width: calc(100% - 56px) !important;
-    text-decoration: none !important;
-  }
-
-  .header-brand-logo {
-    height: 38px !important;
-    max-height: 40px !important;
-    width: auto !important;
-    flex-shrink: 0 !important;
-    object-fit: contain !important;
-  }
-
-  .header-brand-name {
-    font-size: clamp(1.05rem, 3.8vw, 1.25rem) !important;
-    letter-spacing: 0.04em !important;
-    white-space: nowrap !important;
-    font-weight: 700 !important;
-    color: #002B49 !important;
-  }
-
-  .site-header-walkers .brand-name-lotus {
-    color: #002B49 !important; /* Navy */
-  }
-
-  .site-header-walkers .brand-name-ceylon {
-    color: #B38744 !important; /* Deep Royal Gold (4.5:1 contrast on white) */
-  }
-
-  .header-brand-sub {
-    color: #334155 !important; /* Dark Slate (contrast >= 4.5:1) */
-    font-size: 0.55rem !important;
-    letter-spacing: 0.05em !important;
-    font-weight: 600 !important;
-}
-
-/* ==========================================================================
-   UNIFIED CENTERED HERO BANNER STANDARD (.banner-section-inner)
-   ========================================================================== */
+.categories-carousel-viewport { overflow: hidden !important; max-width: 100% !important; width: 100% !important;
+} /* Fix C: Watermarks under 768px */
+@media (max-width: 768px) { .watermark-heading, .section-watermark-header .watermark-heading { display: none !important; width: 0 !important; height: 0 !important; overflow: hidden !important; font-size: 0 !important; }
+} /* Fix D: Form Grids in Inquiry Quick & Detailed */
+@media (max-width: 640px) { .form-grid-2 { display: flex !important; flex-direction: column !important; gap: 1rem !important; width: 100% !important; max-width: 100% !important; }
+} @media (max-width: 768px) { .cards-grid-5 { display: grid !important; grid-template-columns: repeat(2, 1fr) !important; gap: 0.65rem !important; width: 100% !important; max-width: 100% !important; } .cards-grid-5 .selectable-card { padding: 0.65rem 0.5rem !important; min-height: 44px !important; } .cards-grid-5 .selectable-card:last-child { grid-column: span 2 !important; }
+} /* Fix E: Leaflet Map containment */
+.leaflet-container { max-width: 100% !important; overflow: hidden !important;
+} /* 3. Mobile Header (Screens <= 1024px) */
+@media (max-width: 1024px) { .site-header-walkers { height: 64px !important; max-height: 64px !important; padding: 0 !important; display: flex !important; align-items: center !important; background: #FFFFFF !important; /* Solid white background */ border-bottom: 1px solid rgba(0, 0, 0, 0.08) !important; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04) !important; backdrop-filter: none !important; position: sticky !important; top: 0 !important; z-index: 1000 !important; } .site-header-walkers:not(.is-scrolled) { background: #FFFFFF !important; border-bottom: 1px solid rgba(0, 0, 0, 0.08) !important; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04) !important; backdrop-filter: none !important; } .site-header-walkers .header-container { height: 64px !important; display: flex !important; align-items: center !important; padding-left: calc(1rem + env(safe-area-inset-left, 0px)) !important; padding-right: calc(1rem + env(safe-area-inset-right, 0px)) !important; width: 100% !important; box-sizing: border-box !important; } .site-header-walkers .header-top-row { width: 100% !important; height: 100% !important; display: flex !important; align-items: center !important; justify-content: space-between !important; gap: 0.5rem !important; } .header-brand { display: flex !important; align-items: center !important; gap: 0.6rem !important; max-width: calc(100% - 56px) !important; text-decoration: none !important; } .header-brand-logo { height: 38px !important; max-height: 40px !important; width: auto !important; flex-shrink: 0 !important; object-fit: contain !important; } .header-brand-name { font-size: clamp(1.05rem, 3.8vw, 1.25rem) !important; letter-spacing: 0.04em !important; white-space: nowrap !important; font-weight: 700 !important; color: #002B49 !important; } .site-header-walkers .brand-name-lotus { color: #002B49 !important; /* Navy */ } .site-header-walkers .brand-name-ceylon { color: #B38744 !important; /* Deep Royal Gold (4.5:1 contrast on white) */ } .header-brand-sub { color: #334155 !important; /* Dark Slate (contrast >= 4.5:1) */ font-size: 0.55rem !important; letter-spacing: 0.05em !important; font-weight: 600 !important;
+} /* ========================================================================== UNIFIED CENTERED HERO BANNER STANDARD (.banner-section-inner) ========================================================================== */
 .banner-section-inner,
-.banner-section-inner.tours-hero-banner {
-  text-align: center !important;
-}
-
-.banner-section-inner .wrapper--90,
-.banner-section-inner .wrapper--80 {
-  margin-left: auto !important;
-  margin-right: auto !important;
-}
-
-.banner-section-inner .tours-breadcrumbs,
+.banner-section-inner.tours-hero-banner { text-align: center !important;
+} .banner-section-inner .wrapper--90,
+.banner-section-inner .wrapper--80 { margin-left: auto !important; margin-right: auto !important;
+} .banner-section-inner .tours-breadcrumbs,
 .banner-section-inner .beach-breadcrumb,
-.banner-section-inner .hero-breadcrumbs {
-  display: flex !important;
-  justify-content: center !important;
-  align-items: center !important;
-  text-align: center !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
-  margin-bottom: 1.25rem !important;
-}
-
-.banner-section-inner .beach-hero-title,
+.banner-section-inner .hero-breadcrumbs { display: flex !important; justify-content: center !important; align-items: center !important; text-align: center !important; margin-left: auto !important; margin-right: auto !important; margin-bottom: 1.25rem !important;
+} .banner-section-inner .beach-hero-title,
 .banner-section-inner .wildlife-hero-title,
 .banner-section-inner .tour-hero-title,
 .banner-section-inner .tours-hero-title,
 .banner-section-inner .hero-title,
-.banner-section-inner h1 {
-  margin-left: auto !important;
-  margin-right: auto !important;
-  text-align: center !important;
-  max-width: 34ch !important;
-  display: block !important;
-}
-
-.banner-section-inner p,
+.banner-section-inner h1 { margin-left: auto !important; margin-right: auto !important; text-align: center !important; max-width: 34ch !important; display: block !important;
+} .banner-section-inner p,
 .banner-section-inner .beach-hero-lead,
 .banner-section-inner .wildlife-hero-lead,
 .banner-section-inner .tour-hero-tagline,
 .banner-section-inner .tours-hero-lead,
-.banner-section-inner p.hero-lead {
-  margin-left: auto !important;
-  margin-right: auto !important;
-  text-align: center !important;
-  max-width: 780px !important;
-  display: block !important;
-}
-  }
-
-  .walkers-ham {
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    width: 48px !important;
-    height: 48px !important;
-    min-width: 48px !important;
-    min-height: 48px !important;
-    background: transparent !important;
-    border: none !important;
-    cursor: pointer !important;
-    padding: 0 !important;
-    margin-right: -4px !important;
-    flex-shrink: 0 !important;
-    z-index: 1005 !important;
-  }
-
-  .walkers-ham span {
-    display: block !important;
-    width: 24px !important;
-    height: 2.5px !important;
-    background: #002B49 !important; /* Dark navy bars */
-    border-radius: 2px !important;
-    transition: transform 0.25s, opacity 0.25s !important;
-  }
-}
-
-@media (max-width: 480px) {
-  .header-brand-sub {
-    display: block !important;
-    font-size: clamp(0.46rem, 2vw, 0.54rem) !important;
-    letter-spacing: 0.08em !important;
-    white-space: nowrap !important;
-  }
-}
-
-/* 4. Fullscreen Slide-in Mobile Drawer (100dvh, Cream Theme, Fixed Containment) */
-.mobile-nav-fullscreen {
-  position: fixed !important;
-  inset: 0 !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
-  width: 100% !important;
-  max-width: 100% !important;
-  height: 100% !important;
-  height: 100dvh !important;
-  background: #FBF7F0 !important; /* Elegant Cream */
-  z-index: 3000 !important;
-  display: flex !important;
-  flex-direction: column !important;
-  overflow-y: auto !important;
-  -webkit-overflow-scrolling: touch !important;
-  transform: translateX(100%) !important;
-  visibility: hidden !important;
-  pointer-events: none !important;
-  transition: transform 0.35s cubic-bezier(0.25, 0.8, 0.25, 1), visibility 0.35s !important;
-  padding: calc(1rem + env(safe-area-inset-top, 0px)) 24px calc(2rem + env(safe-area-inset-bottom, 0px)) 24px !important;
-  box-sizing: border-box !important;
-}
-
-.mobile-nav-fullscreen.is-open {
-  transform: translateX(0) !important;
-  visibility: visible !important;
-  pointer-events: auto !important;
-}
-
-.mobile-nav-header {
-  display: flex !important;
-  align-items: center !important;
-  justify-content: space-between !important;
-  padding-bottom: 0.85rem !important;
-  border-bottom: 1.5px solid rgba(28, 27, 31, 0.12) !important;
-  background: transparent !important;
-}
-
-.mobile-nav-header .header-brand {
-  display: flex !important;
-  align-items: center !important;
-  gap: 0.65rem !important;
-  text-decoration: none !important;
-}
-
-.mobile-nav-header .header-brand-logo {
-  height: 38px !important;
-  width: auto !important;
-  filter: none !important;
-}
-
-.mobile-nav-header .header-brand-name {
-  font-family: var(--font-display, 'Cinzel', serif) !important;
-  font-size: 1.18rem !important;
-  font-weight: 700 !important;
-  letter-spacing: 0.05em !important;
-  text-transform: uppercase !important;
-  color: #002B49 !important; /* Dark navy */
-  text-shadow: none !important;
-}
-
-.mobile-nav-header .brand-name-lotus {
-  color: #002B49 !important; /* Dark Navy */
-}
-
-.mobile-nav-header .brand-name-ceylon {
-  color: #B38744 !important; /* Deep Royal Gold */
-}
-
-.mobile-nav-close {
-  width: 48px !important;
-  height: 48px !important;
-  min-width: 48px !important;
-  min-height: 48px !important;
-  border-radius: 50% !important;
-  background: #E8E2D8 !important;
-  border: 1px solid rgba(28, 27, 31, 0.15) !important;
-  font-size: 1.8rem !important;
-  line-height: 1 !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  color: #1C1B1F !important; /* High contrast >= 4.5:1 */
-  cursor: pointer !important;
-  padding: 0 !important;
-}
-
-.mobile-nav-body {
-  padding: 1rem 0 2rem !important;
-  display: flex !important;
-  flex-direction: column !important;
-  flex-grow: 1 !important;
-}
-
-.mobile-nav-list {
-  list-style: none !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  display: flex !important;
-  flex-direction: column !important;
-  gap: 0.25rem !important;
-}
-
-.mobile-nav-item {
-  margin: 0 !important;
-  padding: 0 !important;
-  min-height: 48px !important;
-  display: flex !important;
-  flex-direction: column !important;
-  justify-content: center !important;
-}
-
-.mobile-nav-link {
-  min-height: 48px !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: space-between !important;
-  padding: 0.6rem 0.5rem !important;
-  font-size: 1.15rem !important;
-  font-weight: 700 !important;
-  color: #1C1B1F !important;
-  text-decoration: none !important;
-  border-radius: 8px !important;
-  transition: background-color 0.2s, color 0.2s !important;
-}
-
-.mobile-nav-link:active,
-.mobile-nav-link:hover {
-  background: #EFE7DC !important;
-  color: #B86214 !important;
-}
-
-/* Accordion Toggle */
-.accordion-toggle {
-  width: 100% !important;
-  border: none !important;
-  background: transparent !important;
-  cursor: pointer !important;
-  text-align: left !important;
-}
-
-/* Tours Submenu: Indented, Clean SVG alignment */
-.mobile-accordion-submenu {
-  display: none !important;
-  flex-direction: column !important;
-  padding: 0.5rem 0 0.5rem 1.25rem !important; /* Indented */
-  margin: 0.25rem 0 0.5rem 0.5rem !important;
-  border-left: 2.5px solid #D4A359 !important; /* Gold accent guide */
-  gap: 0.25rem !important;
-}
-
-.mobile-accordion-submenu.is-expanded {
-  display: flex !important;
-}
-
-.submenu-link {
-  min-height: 46px !important;
-  display: flex !important;
-  align-items: center !important;
-  gap: 0.75rem !important;
-  padding: 0.45rem 0.5rem !important;
-  font-size: 0.95rem !important;
-  font-weight: 600 !important;
-}
-
-/* ==========================================================================
-   UNIFIED CENTERED HERO BANNER STANDARD (.banner-section-inner)
-   ========================================================================== */
+.banner-section-inner p.hero-lead { margin-left: auto !important; margin-right: auto !important; text-align: center !important; max-width: 780px !important; display: block !important;
+} } .walkers-ham { display: flex !important; align-items: center !important; justify-content: center !important; width: 48px !important; height: 48px !important; min-width: 48px !important; min-height: 48px !important; background: transparent !important; border: none !important; cursor: pointer !important; padding: 0 !important; margin-right: -4px !important; flex-shrink: 0 !important; z-index: 1005 !important; } .walkers-ham span { display: block !important; width: 24px !important; height: 2.5px !important; background: #002B49 !important; /* Dark navy bars */ border-radius: 2px !important; transition: transform 0.25s, opacity 0.25s !important; }
+} @media (max-width: 480px) { .header-brand-sub { display: block !important; font-size: clamp(0.46rem, 2vw, 0.54rem) !important; letter-spacing: 0.08em !important; white-space: nowrap !important; }
+} /* 4. Fullscreen Slide-in Mobile Drawer (100dvh, Cream Theme, Fixed Containment) */
+.mobile-nav-fullscreen { position: fixed !important; inset: 0 !important; top: 0 !important; left: 0 !important; right: 0 !important; bottom: 0 !important; width: 100% !important; max-width: 100% !important; height: 100% !important; height: 100dvh !important; background: #FBF7F0 !important; /* Elegant Cream */ z-index: 3000 !important; display: flex !important; flex-direction: column !important; overflow-y: auto !important; -webkit-overflow-scrolling: touch !important; transform: translateX(100%) !important; visibility: hidden !important; pointer-events: none !important; transition: transform 0.35s cubic-bezier(0.25, 0.8, 0.25, 1), visibility 0.35s !important; padding: calc(1rem + env(safe-area-inset-top, 0px)) 24px calc(2rem + env(safe-area-inset-bottom, 0px)) 24px !important; box-sizing: border-box !important;
+} .mobile-nav-fullscreen.is-open { transform: translateX(0) !important; visibility: visible !important; pointer-events: auto !important;
+} .mobile-nav-header { display: flex !important; align-items: center !important; justify-content: space-between !important; padding-bottom: 0.85rem !important; border-bottom: 1.5px solid rgba(28, 27, 31, 0.12) !important; background: transparent !important;
+} .mobile-nav-header .header-brand { display: flex !important; align-items: center !important; gap: 0.65rem !important; text-decoration: none !important;
+} .mobile-nav-header .header-brand-logo { height: 38px !important; width: auto !important; filter: none !important;
+} .mobile-nav-header .header-brand-name { font-family: var(--font-display, 'Cinzel', serif) !important; font-size: 1.18rem !important; font-weight: 700 !important; letter-spacing: 0.05em !important; text-transform: uppercase !important; color: #002B49 !important; /* Dark navy */ text-shadow: none !important;
+} .mobile-nav-header .brand-name-lotus { color: #002B49 !important; /* Dark Navy */
+} .mobile-nav-header .brand-name-ceylon { color: #B38744 !important; /* Deep Royal Gold */
+} .mobile-nav-close { width: 48px !important; height: 48px !important; min-width: 48px !important; min-height: 48px !important; border-radius: 50% !important; background: #E8E2D8 !important; border: 1px solid rgba(28, 27, 31, 0.15) !important; font-size: 1.8rem !important; line-height: 1 !important; display: flex !important; align-items: center !important; justify-content: center !important; color: #1C1B1F !important; /* High contrast >= 4.5:1 */ cursor: pointer !important; padding: 0 !important;
+} .mobile-nav-body { padding: 1rem 0 2rem !important; display: flex !important; flex-direction: column !important; flex-grow: 1 !important;
+} .mobile-nav-list { list-style: none !important; margin: 0 !important; padding: 0 !important; display: flex !important; flex-direction: column !important; gap: 0.25rem !important;
+} .mobile-nav-item { margin: 0 !important; padding: 0 !important; min-height: 48px !important; display: flex !important; flex-direction: column !important; justify-content: center !important;
+} .mobile-nav-link { min-height: 48px !important; display: flex !important; align-items: center !important; justify-content: space-between !important; padding: 0.6rem 0.5rem !important; font-size: 1.15rem !important; font-weight: 700 !important; color: #1C1B1F !important; text-decoration: none !important; border-radius: 8px !important; transition: background-color 0.2s, color 0.2s !important;
+} .mobile-nav-link:active,
+.mobile-nav-link:hover { background: #EFE7DC !important; color: #B86214 !important;
+} /* Accordion Toggle */
+.accordion-toggle { width: 100% !important; border: none !important; background: transparent !important; cursor: pointer !important; text-align: left !important;
+} /* Tours Submenu: Indented, Clean SVG alignment */
+.mobile-accordion-submenu { display: none !important; flex-direction: column !important; padding: 0.5rem 0 0.5rem 1.25rem !important; /* Indented */ margin: 0.25rem 0 0.5rem 0.5rem !important; border-left: 2.5px solid #D4A359 !important; /* Gold accent guide */ gap: 0.25rem !important;
+} .mobile-accordion-submenu.is-expanded { display: flex !important;
+} .submenu-link { min-height: 46px !important; display: flex !important; align-items: center !important; gap: 0.75rem !important; padding: 0.45rem 0.5rem !important; font-size: 0.95rem !important; font-weight: 600 !important;
+} /* ========================================================================== UNIFIED CENTERED HERO BANNER STANDARD (.banner-section-inner) ========================================================================== */
 .banner-section-inner,
-.banner-section-inner.tours-hero-banner {
-  text-align: center !important;
-}
-
-.banner-section-inner .wrapper--90,
-.banner-section-inner .wrapper--80 {
-  margin-left: auto !important;
-  margin-right: auto !important;
-}
-
-.banner-section-inner .tours-breadcrumbs,
+.banner-section-inner.tours-hero-banner { text-align: center !important;
+} .banner-section-inner .wrapper--90,
+.banner-section-inner .wrapper--80 { margin-left: auto !important; margin-right: auto !important;
+} .banner-section-inner .tours-breadcrumbs,
 .banner-section-inner .beach-breadcrumb,
-.banner-section-inner .hero-breadcrumbs {
-  display: flex !important;
-  justify-content: center !important;
-  align-items: center !important;
-  text-align: center !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
-  margin-bottom: 1.25rem !important;
-}
-
-.banner-section-inner .beach-hero-title,
+.banner-section-inner .hero-breadcrumbs { display: flex !important; justify-content: center !important; align-items: center !important; text-align: center !important; margin-left: auto !important; margin-right: auto !important; margin-bottom: 1.25rem !important;
+} .banner-section-inner .beach-hero-title,
 .banner-section-inner .wildlife-hero-title,
 .banner-section-inner .tour-hero-title,
 .banner-section-inner .tours-hero-title,
 .banner-section-inner .hero-title,
-.banner-section-inner h1 {
-  margin-left: auto !important;
-  margin-right: auto !important;
-  text-align: center !important;
-  max-width: 34ch !important;
-  display: block !important;
-}
-
-.banner-section-inner p,
+.banner-section-inner h1 { margin-left: auto !important; margin-right: auto !important; text-align: center !important; max-width: 34ch !important; display: block !important;
+} .banner-section-inner p,
 .banner-section-inner .beach-hero-lead,
 .banner-section-inner .wildlife-hero-lead,
 .banner-section-inner .tour-hero-tagline,
 .banner-section-inner .tours-hero-lead,
-.banner-section-inner p.hero-lead {
-  margin-left: auto !important;
-  margin-right: auto !important;
-  text-align: center !important;
-  max-width: 780px !important;
-  display: block !important;
-}
-  color: #334155 !important;
-  text-decoration: none !important;
-  border-radius: 6px !important;
-}
-
-.submenu-link:active,
-.submenu-link:hover {
-  background: #EFE7DC !important;
-  color: #B86214 !important;
-}
-
-/* Fixed-width SVG column so icons line up across all Android devices */
-.submenu-icon {
-  display: inline-flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  width: 22px !important;
-  min-width: 22px !important;
-  height: 22px !important;
-  flex-shrink: 0 !important;
-  color: #B38744 !important;
-}
-
-/* 5. Mobile Footer Rules */
-@media (max-width: 768px) {
-  .site-footer-walkers {
-    padding-left: 1rem !important;
-    padding-right: 1rem !important;
-    box-sizing: border-box !important;
-    overflow-x: hidden !important;
-    width: 100% !important;
-    max-width: 100% !important;
-  }
-
-  .site-footer-walkers .wrapper--80,
-  .site-footer-walkers .footer-container {
-    width: 100% !important;
-    max-width: 100% !important;
-    padding-left: 0 !important;
-    padding-right: 0 !important;
-    box-sizing: border-box !important;
-  }
-
-  .site-footer-walkers .footer-grid,
-  .footer-grid {
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 2rem !important;
-    width: 100% !important;
-    box-sizing: border-box !important;
-  }
-
-  /* Phone shows in full without wrapping digits or cutting */
-  .footer-contact-item a[href^="tel:"],
-  a[href^="tel:"] {
-    white-space: nowrap !important;
-    font-size: clamp(0.95rem, 4.2vw, 1.15rem) !important;
-    letter-spacing: 0.02em !important;
-    display: inline-block !important;
-    max-width: 100% !important;
-  }
-
-  /* Wrap long email addresses, links, and text inside padding */
-  .site-footer-walkers a,
-  .site-footer-walkers p,
-  .site-footer-walkers span,
-  .site-footer-walkers li {
-    overflow-wrap: anywhere !important;
-    word-break: break-word !important;
-    max-width: 100% !important;
-  }
-}
-
-
-/* ==============================================================================
-   HOTFIX - ZERO HORIZONTAL OVERFLOW AT 320px, 360px, 393px, 412px
-   Strict Root-Cause Resolution for All Grids, Inputs, Maps, and Menus
-   ============================================================================== */
-
-/* Safety Net applied strictly after fixing causes at source */
-html, body {
-  max-width: 100% !important;
-  overflow-x: clip !important;
-  overflow-wrap: anywhere !important;
-  -webkit-text-size-adjust: 100% !important;
-}
-
-/* 1. Mobile Menu: Inset 0, 100dvh, closed state visibility hidden & zero width impact */
-.mobile-nav-fullscreen {
-  position: fixed !important;
-  inset: 0 !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
-  width: 100% !important;
-  max-width: 100% !important;
-  height: 100% !important;
-  height: 100dvh !important;
-  background: #FBF7F0 !important; /* Cream */
-  z-index: 3000 !important;
-  display: flex !important;
-  flex-direction: column !important;
-  overflow-y: auto !important;
-  -webkit-overflow-scrolling: touch !important;
-  padding: calc(1rem + env(safe-area-inset-top, 0px)) 24px calc(2rem + env(safe-area-inset-bottom, 0px)) 24px !important;
-  box-sizing: border-box !important;
-}
-
-.mobile-nav-fullscreen:not(.is-open) {
-  display: none !important;
-  visibility: hidden !important;
-  pointer-events: none !important;
-  opacity: 0 !important;
-  transform: translateX(100%) !important;
-}
-
-.mobile-nav-fullscreen.is-open {
-  display: flex !important;
-  visibility: visible !important;
-  pointer-events: auto !important;
-  opacity: 1 !important;
-  transform: translateX(0) !important;
-}
-
-/* 2. Inquiry Form Grids & Pax Calculator */
-@media (max-width: 768px) {
-  .pax-inputs-row {
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 0.75rem !important;
-    width: 100% !important;
-    max-width: 100% !important;
-  }
-  .total-pax-badge-wrapper {
-    width: 100% !important;
-    max-width: 100% !important;
-    box-sizing: border-box !important;
-  }
-  .checkbox-tiles-grid {
-    grid-template-columns: 1fr !important;
-    gap: 0.5rem !important;
-    width: 100% !important;
-  }
-  .interests-grid {
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 0.5rem !important;
-    width: 100% !important;
-  }
-  .interest-tile, .checkbox-tile {
-    width: 100% !important;
-    box-sizing: border-box !important;
-    padding: 0.65rem 0.5rem !important;
-  }
-  .form-card {
-    padding: 1.5rem 1rem !important;
-    border-radius: 12px !important;
-    box-sizing: border-box !important;
-    width: 100% !important;
-    max-width: 100% !important;
-  }
-}
-
-@media (max-width: 360px) {
-  .interests-grid {
-    grid-template-columns: 1fr !important;
-  }
-  .checkbox-tiles-grid {
-    grid-template-columns: 1fr !important;
-  }
-}
-
-/* 3. Contact Page Cards & Leaflet Maps */
-@media (max-width: 768px) {
-  .contact-grid {
-    grid-template-columns: 1fr !important;
-    gap: 1.5rem !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    box-sizing: border-box !important;
-  }
-  .contact-info-card,
-  .contact-form-card {
-    padding: 1.5rem 1rem !important;
-    border-radius: 12px !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    box-sizing: border-box !important;
-  }
-  .contact-map-section,
-  .contact-map-wrapper,
-  .contact-map-wrap,
-  #contactMap {
-    width: 100% !important;
-    max-width: 100% !important;
-    overflow: hidden !important;
-    box-sizing: border-box !important;
-  }
-  .leaflet-container {
-    max-width: 100% !important;
-    overflow: hidden !important;
-  }
-  .leaflet-tile-container {
-    max-width: 100% !important;
-  }
-  .chat-channel-pills {
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 0.5rem !important;
-    width: 100% !important;
-  }
-  .chat-pill {
-    width: 100% !important;
-    justify-content: center !important;
-    box-sizing: border-box !important;
-  }
-}
-
-@media (max-width: 360px) {
-  .contact-info-card,
-  .contact-form-card {
-    padding: 1.25rem 0.75rem !important;
-  }
-  .wrapper--90,
-  .wrapper--80,
-  .wrapper--95 {
-    width: 100% !important;
-    padding-left: 1rem !important;
-    padding-right: 1rem !important;
-    box-sizing: border-box !important;
-  }
-}
-
-
-/* ==============================================================================
-   RESPONSIVE DESIGN REPAIR - ALL VIEWPORTS & DEVICES (320px - 1920px & LANDSCAPE)
-   Strict Element-by-Element Sizing, Breakpoints & Safe-Area Adjustments
-   ============================================================================== */
-
-/* 1. Header Brand Protection (Zero Crushing / Squishing between 1024px - 1280px) */
+.banner-section-inner p.hero-lead { margin-left: auto !important; margin-right: auto !important; text-align: center !important; max-width: 780px !important; display: block !important;
+} color: #334155 !important; text-decoration: none !important; border-radius: 6px !important;
+} .submenu-link:active,
+.submenu-link:hover { background: #EFE7DC !important; color: #B86214 !important;
+} /* Fixed-width SVG column so icons line up across all Android devices */
+.submenu-icon { display: inline-flex !important; align-items: center !important; justify-content: center !important; width: 22px !important; min-width: 22px !important; height: 22px !important; flex-shrink: 0 !important; color: #B38744 !important;
+} /* 5. Mobile Footer Rules */
+@media (max-width: 768px) { .site-footer-walkers { padding-left: 1rem !important; padding-right: 1rem !important; box-sizing: border-box !important; overflow-x: hidden !important; width: 100% !important; max-width: 100% !important; } .site-footer-walkers .wrapper--80, .site-footer-walkers .footer-container { width: 100% !important; max-width: 100% !important; padding-left: 0 !important; padding-right: 0 !important; box-sizing: border-box !important; } .site-footer-walkers .footer-grid, .footer-grid { display: flex !important; flex-direction: column !important; gap: 2rem !important; width: 100% !important; box-sizing: border-box !important; } /* Phone shows in full without wrapping digits or cutting */ .footer-contact-item a[href^="tel:"], a[href^="tel:"] { white-space: nowrap !important; font-size: clamp(0.95rem, 4.2vw, 1.15rem) !important; letter-spacing: 0.02em !important; display: inline-block !important; max-width: 100% !important; } /* Wrap long email addresses, links, and text inside padding */ .site-footer-walkers a, .site-footer-walkers p, .site-footer-walkers span, .site-footer-walkers li { overflow-wrap: anywhere !important; word-break: break-word !important; max-width: 100% !important; }
+} /* ============================================================================== HOTFIX - ZERO HORIZONTAL OVERFLOW AT 320px, 360px, 393px, 412px Strict Root-Cause Resolution for All Grids, Inputs, Maps, and Menus ============================================================================== */ /* Safety Net applied strictly after fixing causes at source */
+html, body { max-width: 100% !important; overflow-x: clip !important; overflow-wrap: anywhere !important; -webkit-text-size-adjust: 100% !important;
+} /* 1. Mobile Menu: Inset 0, 100dvh, closed state visibility hidden & zero width impact */
+.mobile-nav-fullscreen { position: fixed !important; inset: 0 !important; top: 0 !important; left: 0 !important; right: 0 !important; bottom: 0 !important; width: 100% !important; max-width: 100% !important; height: 100% !important; height: 100dvh !important; background: #FBF7F0 !important; /* Cream */ z-index: 3000 !important; display: flex !important; flex-direction: column !important; overflow-y: auto !important; -webkit-overflow-scrolling: touch !important; padding: calc(1rem + env(safe-area-inset-top, 0px)) 24px calc(2rem + env(safe-area-inset-bottom, 0px)) 24px !important; box-sizing: border-box !important;
+} .mobile-nav-fullscreen:not(.is-open) { display: none !important; visibility: hidden !important; pointer-events: none !important; opacity: 0 !important; transform: translateX(100%) !important;
+} .mobile-nav-fullscreen.is-open { display: flex !important; visibility: visible !important; pointer-events: auto !important; opacity: 1 !important; transform: translateX(0) !important;
+} /* 2. Inquiry Form Grids & Pax Calculator */
+@media (max-width: 768px) { .pax-inputs-row { display: flex !important; flex-direction: column !important; gap: 0.75rem !important; width: 100% !important; max-width: 100% !important; } .total-pax-badge-wrapper { width: 100% !important; max-width: 100% !important; box-sizing: border-box !important; } .checkbox-tiles-grid { grid-template-columns: 1fr !important; gap: 0.5rem !important; width: 100% !important; } .interests-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 0.5rem !important; width: 100% !important; } .interest-tile, .checkbox-tile { width: 100% !important; box-sizing: border-box !important; padding: 0.65rem 0.5rem !important; } .form-card { padding: 1.5rem 1rem !important; border-radius: 12px !important; box-sizing: border-box !important; width: 100% !important; max-width: 100% !important; }
+} @media (max-width: 360px) { .interests-grid { grid-template-columns: 1fr !important; } .checkbox-tiles-grid { grid-template-columns: 1fr !important; }
+} /* 3. Contact Page Cards & Leaflet Maps */
+@media (max-width: 768px) { .contact-grid { grid-template-columns: 1fr !important; gap: 1.5rem !important; width: 100% !important; max-width: 100% !important; box-sizing: border-box !important; } .contact-info-card, .contact-form-card { padding: 1.5rem 1rem !important; border-radius: 12px !important; width: 100% !important; max-width: 100% !important; box-sizing: border-box !important; } .contact-map-section, .contact-map-wrapper, .contact-map-wrap, #contactMap { width: 100% !important; max-width: 100% !important; overflow: hidden !important; box-sizing: border-box !important; } .leaflet-container { max-width: 100% !important; overflow: hidden !important; } .leaflet-tile-container { max-width: 100% !important; } .chat-channel-pills { display: flex !important; flex-direction: column !important; gap: 0.5rem !important; width: 100% !important; } .chat-pill { width: 100% !important; justify-content: center !important; box-sizing: border-box !important; }
+} @media (max-width: 360px) { .contact-info-card, .contact-form-card { padding: 1.25rem 0.75rem !important; } .wrapper--90, .wrapper--80, .wrapper--95 { width: 100% !important; padding-left: 1rem !important; padding-right: 1rem !important; box-sizing: border-box !important; }
+} /* ============================================================================== RESPONSIVE DESIGN REPAIR - ALL VIEWPORTS & DEVICES (320px - 1920px & LANDSCAPE) Strict Element-by-Element Sizing, Breakpoints & Safe-Area Adjustments ============================================================================== */ /* 1. Header Brand Protection (Zero Crushing / Squishing between 1024px - 1280px) */
 .header-brand,
-.site-header-walkers .header-brand {
-  flex-shrink: 0 !important;
-  white-space: nowrap !important;
+.site-header-walkers .header-brand { flex-shrink: 0 !important; white-space: nowrap !important;
 }
 .header-brand-text,
-.site-header-walkers .header-brand-text {
-  flex-shrink: 0 !important;
-  white-space: nowrap !important;
+.site-header-walkers .header-brand-text { flex-shrink: 0 !important; white-space: nowrap !important;
 }
 .header-brand-name,
-.site-header-walkers .header-brand-name {
-  white-space: nowrap !important;
+.site-header-walkers .header-brand-name { white-space: nowrap !important;
 }
 .header-brand-sub,
-.site-header-walkers .header-brand-sub {
-  white-space: nowrap !important;
-  font-size: clamp(0.65rem, 1.1vw, 0.76rem) !important;
-  letter-spacing: 0.08em !important;
-}
-
-/* 2. Laptop Navigation Compact Tuning (1025px - 1280px) */
-@media (min-width: 1025px) and (max-width: 1280px) {
-  .site-header-walkers {
-    padding: 0.55rem 0 !important;
-  }
-  .site-header-walkers .header-container {
-    padding-left: 1rem !important;
-    padding-right: 1rem !important;
-    max-width: 100% !important;
-  }
-  .header-brand-logo {
-    height: 46px !important;
-    max-width: 58px !important;
-  }
-  .header-brand-name {
-    font-size: 1.15rem !important;
-  }
-  .walkers-nav {
-    flex-grow: 1 !important;
-    justify-content: center !important;
-  }
-  .walkers-menu {
-    gap: 0.65rem !important;
-  }
-  .walkers-menu-link {
-    font-size: 0.82rem !important;
-    padding: 0.35rem 0.35rem !important;
-  }
-  .header-tools {
-    gap: 0.5rem !important;
-  }
-  .lang-pill-btn {
-    padding: 0.4rem 0.6rem !important;
-    font-size: 0.8rem !important;
-  }
-  .gold-inquire-btn {
-    padding: 0.45rem 0.85rem !important;
-    font-size: 0.82rem !important;
-  }
-}
-
-/* 3. Hero Banner & Heading Fluid Sizing */
+.site-header-walkers .header-brand-sub { white-space: nowrap !important; font-size: clamp(0.65rem, 1.1vw, 0.76rem) !important; letter-spacing: 0.08em !important;
+} /* 2. Laptop Navigation Compact Tuning (1025px - 1280px) */
+@media (min-width: 1025px) and (max-width: 1280px) { .site-header-walkers { padding: 0.55rem 0 !important; } .site-header-walkers .header-container { padding-left: 1rem !important; padding-right: 1rem !important; max-width: 100% !important; } .header-brand-logo { height: 46px !important; max-width: 58px !important; } .header-brand-name { font-size: 1.15rem !important; } .walkers-nav { flex-grow: 1 !important; justify-content: center !important; } .walkers-menu { gap: 0.65rem !important; } .walkers-menu-link { font-size: 0.82rem !important; padding: 0.35rem 0.35rem !important; } .header-tools { gap: 0.5rem !important; } .lang-pill-btn { padding: 0.4rem 0.6rem !important; font-size: 0.8rem !important; } .gold-inquire-btn { padding: 0.45rem 0.85rem !important; font-size: 0.82rem !important; }
+} /* 3. Hero Banner & Heading Fluid Sizing */
 .hero-banner,
-.contact-hero {
-  padding-top: max(140px, calc(80px + 3vw)) !important;
+.contact-hero { padding-top: max(140px, calc(80px + 3vw)) !important;
+} .hero-title,
+.contact-hero h1 { font-size: clamp(1.85rem, 4.8vw, 3.4rem) !important; overflow-wrap: anywhere !important; word-break: break-word !important; line-height: 1.2 !important;
+} .hero-slogan { font-size: clamp(0.78rem, 1.8vw, 0.95rem) !important; letter-spacing: 0.12em !important;
+} @media (max-width: 1024px) { .hero-banner, .contact-hero { padding-top: max(96px, calc(64px + 2rem)) !important; }
+} /* 4. Universal Grid Adaptability under 768px */
+@media (max-width: 768px) { .beach-packages-grid, .packages-grid, .tours-grid, .category-card-grid, .destinations-grid, .vision-mission-grid { grid-template-columns: 1fr !important; gap: 1.5rem !important; width: 100% !important; } .beach-package-card, .package-card, .cat-showcase-card, .destination-card, .tour-card, .vision-mission-card { width: 100% !important; max-width: 100% !important; box-sizing: border-box !important; }
+} /* 5. Comparison Matrix & Tables Touch Scrolling Affordance */
+.lotus-table-responsive { width: 100% !important; max-width: 100% !important; overflow-x: auto !important; -webkit-overflow-scrolling: touch !important; position: relative !important; border-radius: 12px !important; border: 1px solid var(--border-subtle, #E8E2D8) !important; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04) !important; margin-bottom: 2rem !important;
+} .lotus-table-responsive::-webkit-scrollbar { height: 6px !important;
 }
-
-.hero-title,
-.contact-hero h1 {
-  font-size: clamp(1.85rem, 4.8vw, 3.4rem) !important;
-  overflow-wrap: anywhere !important;
-  word-break: break-word !important;
-  line-height: 1.2 !important;
+.lotus-table-responsive::-webkit-scrollbar-track { background: #F1E9E1 !important; border-radius: 3px !important;
 }
-
-.hero-slogan {
-  font-size: clamp(0.78rem, 1.8vw, 0.95rem) !important;
-  letter-spacing: 0.12em !important;
-}
-
-@media (max-width: 1024px) {
-  .hero-banner,
-  .contact-hero {
-    padding-top: max(96px, calc(64px + 2rem)) !important;
-  }
-}
-
-/* 4. Universal Grid Adaptability under 768px */
-@media (max-width: 768px) {
-  .beach-packages-grid,
-  .packages-grid,
-  .tours-grid,
-  .category-card-grid,
-  .destinations-grid,
-  .vision-mission-grid {
-    grid-template-columns: 1fr !important;
-    gap: 1.5rem !important;
-    width: 100% !important;
-  }
-  .beach-package-card,
-  .package-card,
-  .cat-showcase-card,
-  .destination-card,
-  .tour-card,
-  .vision-mission-card {
-    width: 100% !important;
-    max-width: 100% !important;
-    box-sizing: border-box !important;
-  }
-}
-
-/* 5. Comparison Matrix & Tables Touch Scrolling Affordance */
-.lotus-table-responsive {
-  width: 100% !important;
-  max-width: 100% !important;
-  overflow-x: auto !important;
-  -webkit-overflow-scrolling: touch !important;
-  position: relative !important;
-  border-radius: 12px !important;
-  border: 1px solid var(--border-subtle, #E8E2D8) !important;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04) !important;
-  margin-bottom: 2rem !important;
-}
-
-.lotus-table-responsive::-webkit-scrollbar {
-  height: 6px !important;
-}
-.lotus-table-responsive::-webkit-scrollbar-track {
-  background: #F1E9E1 !important;
-  border-radius: 3px !important;
-}
-.lotus-table-responsive::-webkit-scrollbar-thumb {
-  background: var(--sacred-gold, #D4A359) !important;
-  border-radius: 3px !important;
-}
-
-@media (max-width: 768px) {
-  .lotus-comparison-table th,
-  .lotus-comparison-table td {
-    padding: 0.75rem 0.65rem !important;
-    font-size: 0.82rem !important;
-  }
-}
-
-/* 6. Short Mobile Landscape Viewports (e.g. 800x360, 915x412) & Safe Areas */
-@media (max-height: 480px) and (orientation: landscape) {
-  .site-header-walkers {
-    height: 54px !important;
-    max-height: 54px !important;
-    padding: 0 !important;
-  }
-  .site-header-walkers .header-container {
-    height: 54px !important;
-  }
-  .header-brand-logo {
-    height: 34px !important;
-    max-height: 34px !important;
-  }
-  .header-brand-name {
-    font-size: 1.05rem !important;
-  }
-  .header-brand-sub {
-    display: none !important;
-  }
-  .hero-banner,
-  .contact-hero {
-    padding-top: 80px !important;
-    min-height: auto !important;
-    padding-bottom: 2rem !important;
-  }
-  .unified-fab-group {
-    bottom: calc(0.5rem + env(safe-area-inset-bottom, 0px)) !important;
-    right: calc(0.75rem + env(safe-area-inset-right, 0px)) !important;
-    gap: 0.4rem !important;
-  }
-  .fab-btn {
-    width: 42px !important;
-    height: 42px !important;
-    min-width: 42px !important;
-    min-height: 42px !important;
-  }
-  .mobile-nav-fullscreen {
-    padding-top: calc(0.5rem + env(safe-area-inset-top, 0px)) !important;
-  }
-}
-
-/* 7. Minimum Typography & Line Spacing for Android & Touch Legibility */
-p, li {
-  line-height: 1.65 !important;
+.lotus-table-responsive::-webkit-scrollbar-thumb { background: var(--sacred-gold, #D4A359) !important; border-radius: 3px !important;
+} @media (max-width: 768px) { .lotus-comparison-table th, .lotus-comparison-table td { padding: 0.75rem 0.65rem !important; font-size: 0.82rem !important; }
+} /* 6. Short Mobile Landscape Viewports (e.g. 800x360, 915x412) & Safe Areas */
+@media (max-height: 480px) and (orientation: landscape) { .site-header-walkers { height: 54px !important; max-height: 54px !important; padding: 0 !important; } .site-header-walkers .header-container { height: 54px !important; } .header-brand-logo { height: 34px !important; max-height: 34px !important; } .header-brand-name { font-size: 1.05rem !important; } .header-brand-sub { display: none !important; } .hero-banner, .contact-hero { padding-top: 80px !important; min-height: auto !important; padding-bottom: 2rem !important; } .unified-fab-group { bottom: calc(0.5rem + env(safe-area-inset-bottom, 0px)) !important; right: calc(0.75rem + env(safe-area-inset-right, 0px)) !important; gap: 0.4rem !important; } .fab-btn { width: 42px !important; height: 42px !important; min-width: 42px !important; min-height: 42px !important; } .mobile-nav-fullscreen { padding-top: calc(0.5rem + env(safe-area-inset-top, 0px)) !important; }
+} /* 7. Minimum Typography & Line Spacing for Android & Touch Legibility */
+p, li { line-height: 1.65 !important;
 }
 .beach-tag-badge,
 .tag-badge,
-.meta-pill {
-  font-size: clamp(0.72rem, 1.5vw, 0.8rem) !important;
-  line-height: 1.3 !important;
-}
-
-/* ==============================================================================
- * WCAG 2.2 AA ACCESSIBILITY: VISIBLE FOCUS INDICATORS & SKIP NAVIGATION
- * ============================================================================== */
-:focus-visible {
-  outline: 3px solid #D4A359 !important;
-  outline-offset: 3px !important;
-  box-shadow: 0 0 0 1px #FFFFFF, 0 0 8px rgba(212, 163, 89, 0.6) !important;
-}
-
-input:focus-visible,
+.meta-pill { font-size: clamp(0.72rem, 1.5vw, 0.8rem) !important; line-height: 1.3 !important;
+} /* ============================================================================== * WCAG 2.2 AA ACCESSIBILITY: VISIBLE FOCUS INDICATORS & SKIP NAVIGATION * ============================================================================== */
+:focus-visible { outline: 3px solid #D4A359 !important; outline-offset: 3px !important; box-shadow: 0 0 0 1px #FFFFFF, 0 0 8px rgba(212, 163, 89, 0.6) !important;
+} input:focus-visible,
 select:focus-visible,
-textarea:focus-visible {
-  outline: 2px solid #002B49 !important;
-  outline-offset: 2px !important;
-  border-color: #D4A359 !important;
-}
-
-/* Skip link for keyboard users (WCAG 2.4.1 Bypass Blocks) */
-.skip-to-content-link {
-  position: absolute;
-  top: -120px;
-  left: 16px;
-  background: #002B49;
-  color: #FFFFFF !important;
-  padding: 12px 20px;
-  font-weight: 700;
-  font-size: 0.95rem;
-  border-radius: 6px;
-  z-index: 100000;
-  text-decoration: none !important;
-  border: 2px solid #D4A359;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-  transition: top 0.2s ease-in-out;
-}
-
-.skip-to-content-link:focus,
-.skip-to-content-link:focus-visible {
-  top: 16px;
-  outline: 3px solid #D4A359 !important;
-}
-
-/* ==============================================================================
- * PERFORMANCE OPTIMIZATION: MEDIA & LAYOUT STABILITY
- * ============================================================================== */
+textarea:focus-visible { outline: 2px solid #002B49 !important; outline-offset: 2px !important; border-color: #D4A359 !important;
+} /* Skip link for keyboard users (WCAG 2.4.1 Bypass Blocks) */
+.skip-to-content-link { position: absolute; top: -120px; left: 16px; background: #002B49; color: #FFFFFF !important; padding: 12px 20px; font-weight: 700; font-size: 0.95rem; border-radius: 6px; z-index: 100000; text-decoration: none !important; border: 2px solid #D4A359; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); transition: top 0.2s ease-in-out;
+} .skip-to-content-link:focus,
+.skip-to-content-link:focus-visible { top: 16px; outline: 3px solid #D4A359 !important;
+} /* ============================================================================== * PERFORMANCE OPTIMIZATION: MEDIA & LAYOUT STABILITY * ============================================================================== */
 /* Universal Background Video Banner Display on All Devices */
-.video-banner-video {
-  display: block !important;
-}
-
-@media (max-width: 992px) {
-  .desktop-only-video {
-    display: block !important;
-  }
-}
-
-/* Aspect Ratio Preservation to prevent Cumulative Layout Shifts (CLS) */
+.video-banner-video { display: block !important;
+} @media (max-width: 992px) { .desktop-only-video { display: block !important; }
+} /* Aspect Ratio Preservation to prevent Cumulative Layout Shifts (CLS) */
 .card-img,
 .tour-card-img,
 .tour-card-figure img,
 .gallery-card img,
-.dest-card-figure img {
-  aspect-ratio: 16 / 10;
-  object-fit: cover;
-  width: 100%;
-  height: auto;
-}
-
-.avatar-img,
+.dest-card-figure img { aspect-ratio: 16 / 10; object-fit: cover; width: 100%; height: auto;
+} .avatar-img,
 .testimonial-avatar img,
-.team-avatar img {
-  aspect-ratio: 1 / 1;
-  object-fit: cover;
-}
-
-.header-brand-logo {
-  aspect-ratio: 1 / 1;
-  object-fit: contain;
-}
-
-/* ==============================================================================
-   UNIVERSAL MOBILE RESPONSIVE CARDS & FLOATING ACTIONS (Lotus Standard)
-   ============================================================================== */
-@media (min-width: 1024px) {
-  .beach-grid-cards,
-  .beach-packages-grid,
-  .cards-grid-3,
-  .package-cards-grid {
-    grid-template-columns: repeat(3, 1fr) !important;
-    gap: 24px !important;
-  }
-}
-
-@media (min-width: 640px) and (max-width: 1023px) {
-  .beach-grid-cards,
-  .beach-packages-grid,
-  .cards-grid-3,
-  .package-cards-grid {
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 20px !important;
-  }
-}
-
-@media (max-width: 639px) {
-  .beach-grid-cards,
-  .beach-packages-grid,
-  .cards-grid-3,
-  .package-cards-grid {
-    grid-template-columns: 1fr !important;
-    gap: 20px !important;
-  }
-
-  .beach-package-card,
-  .package-card,
-  .dest-card {
-    min-width: 0 !important;
-    width: 100% !important;
-    overflow-wrap: normal !important;
-    word-break: normal !important;
-    hyphens: manual !important;
-  }
-
-  /* Floating WhatsApp Concierge Button on Mobile */
-  .unified-fab-group {
-    position: fixed !important;
-    bottom: calc(16px + env(safe-area-inset-bottom, 0px)) !important;
-    right: 16px !important;
-    z-index: 9999 !important;
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 10px !important;
-    align-items: center !important;
-  }
-
-  .unified-fab-group .fab-whatsapp {
-    width: 52px !important;
-    height: 52px !important;
-    border-radius: 50% !important;
-    background: #25D366 !important;
-    color: #FFFFFF !important;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.28) !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-  }
-
-  /* Prevent floating-inquire-tab collision on small mobile */
-  .floating-inquire-tab {
-    display: none !important;
-  }
-
-  /* Category package sections: ensure clean ivory theme */
-  .beach-packages-section {
-    background: #FAF8F5 !important;
-  }
-
-  /* Ensure page content is never hidden behind floating buttons */
-  body {
-    padding-bottom: 70px !important;
-  }
-}
-
-
-/* Safety guard: never display mobile action buttons outside the mobile drawer */
-.mobile-nav-actions:not(.mobile-nav-fullscreen .mobile-nav-actions) {
-  display: none !important;
-}
-
-
-/* Ensure floating quick edit pill is completely disabled and hidden */
-#lotusAdminQuickEditPill {
-  display: none !important;
-  visibility: hidden !important;
-  pointer-events: none !important;
-}
-
-
-/* ==========================================================================
-   INTERNATIONAL LUXURY SCROLL ANIMATIONS (Lotus Motion System)
-   Inspired by Aman, Belmond, Apple & Awwwards Luxury Experiences
-   ========================================================================== */
-
-/* Text Cinematic Reveal (Upward drift + soft focus dissipation) */
-html.lotus-motion-enabled .lotus-reveal-text:not(.lotus-in-view) {
-  opacity: 0;
-  transform: translateY(22px);
-  filter: blur(4px);
-}
-
-html.lotus-motion-enabled .lotus-reveal-text {
-  will-change: opacity, transform, filter;
-  transition: 
-    opacity 0.95s cubic-bezier(0.16, 1, 0.3, 1),
-    transform 0.95s cubic-bezier(0.16, 1, 0.3, 1),
-    filter 0.85s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-html.lotus-motion-enabled .lotus-reveal-text.lotus-in-view {
-  opacity: 1;
-  transform: translateY(0);
-  filter: blur(0);
-}
-
-/* Imagery & Cards Cinematic Reveal (Gentle Rise + Scale) */
-html.lotus-motion-enabled .lotus-reveal-media:not(.lotus-in-view) {
-  opacity: 0;
-  transform: translateY(28px) scale(0.975);
-}
-
-html.lotus-motion-enabled .lotus-reveal-media {
-  will-change: opacity, transform;
-  transition: 
-    opacity 1s cubic-bezier(0.16, 1, 0.3, 1),
-    transform 1s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-html.lotus-motion-enabled .lotus-reveal-media.lotus-in-view {
-  opacity: 1;
-  transform: translateY(0) scale(1);
-}
-
-/* Smooth luxury image hover zoom */
+.team-avatar img { aspect-ratio: 1 / 1; object-fit: cover;
+} .header-brand-logo { aspect-ratio: 1 / 1; object-fit: contain;
+} /* ============================================================================== UNIVERSAL MOBILE RESPONSIVE CARDS & FLOATING ACTIONS (Lotus Standard) ============================================================================== */
+@media (min-width: 1024px) { .beach-grid-cards, .beach-packages-grid, .cards-grid-3, .package-cards-grid { grid-template-columns: repeat(3, 1fr) !important; gap: 24px !important; }
+} @media (min-width: 640px) and (max-width: 1023px) { .beach-grid-cards, .beach-packages-grid, .cards-grid-3, .package-cards-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 20px !important; }
+} @media (max-width: 639px) { .beach-grid-cards, .beach-packages-grid, .cards-grid-3, .package-cards-grid { grid-template-columns: 1fr !important; gap: 20px !important; } .beach-package-card, .package-card, .dest-card { min-width: 0 !important; width: 100% !important; overflow-wrap: normal !important; word-break: normal !important; hyphens: manual !important; } /* Floating WhatsApp Concierge Button on Mobile */ .unified-fab-group { position: fixed !important; bottom: calc(16px + env(safe-area-inset-bottom, 0px)) !important; right: 16px !important; z-index: 9999 !important; display: flex !important; flex-direction: column !important; gap: 10px !important; align-items: center !important; } .unified-fab-group .fab-whatsapp { width: 52px !important; height: 52px !important; border-radius: 50% !important; background: #25D366 !important; color: #FFFFFF !important; box-shadow: 0 4px 16px rgba(0, 0, 0, 0.28) !important; display: flex !important; align-items: center !important; justify-content: center !important; } /* Prevent floating-inquire-tab collision on small mobile */ .floating-inquire-tab { display: none !important; } /* Category package sections: ensure clean ivory theme */ .beach-packages-section { background: #FAF8F5 !important; } /* Ensure page content is never hidden behind floating buttons */ body { padding-bottom: 70px !important; }
+} /* Safety guard: never display mobile action buttons outside the mobile drawer */
+.mobile-nav-actions:not(.mobile-nav-fullscreen .mobile-nav-actions) { display: none !important;
+} /* Ensure floating quick edit pill is completely disabled and hidden */
+#lotusAdminQuickEditPill { display: none !important; visibility: hidden !important; pointer-events: none !important;
+} /* ========================================================================== INTERNATIONAL LUXURY SCROLL ANIMATIONS (Lotus Motion System) Inspired by Aman, Belmond, Apple & Awwwards Luxury Experiences ========================================================================== */ /* Text Cinematic Reveal (Upward drift + soft focus dissipation) */
+html.lotus-motion-enabled .lotus-reveal-text:not(.lotus-in-view) { opacity: 0; transform: translateY(22px); filter: blur(4px);
+} html.lotus-motion-enabled .lotus-reveal-text { will-change: opacity, transform, filter; transition: opacity 0.95s cubic-bezier(0.16, 1, 0.3, 1), transform 0.95s cubic-bezier(0.16, 1, 0.3, 1), filter 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+} html.lotus-motion-enabled .lotus-reveal-text.lotus-in-view { opacity: 1; transform: translateY(0); filter: blur(0);
+} /* Imagery & Cards Cinematic Reveal (Gentle Rise + Scale) */
+html.lotus-motion-enabled .lotus-reveal-media:not(.lotus-in-view) { opacity: 0; transform: translateY(28px) scale(0.975);
+} html.lotus-motion-enabled .lotus-reveal-media { will-change: opacity, transform; transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+} html.lotus-motion-enabled .lotus-reveal-media.lotus-in-view { opacity: 1; transform: translateY(0) scale(1);
+} /* Smooth luxury image hover zoom */
 .walkers-img-card img,
 .tour-card img,
 .dest-card img,
 .review-card img,
-.package-card img {
-  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-/* Accessibility: Instantly disable all motion if reduced-motion is requested */
-@media (prefers-reduced-motion: reduce) {
-  html.lotus-motion-enabled .lotus-reveal-text,
-  html.lotus-motion-enabled .lotus-reveal-media {
-    opacity: 1 !important;
-    transform: none !important;
-    filter: none !important;
-    transition: none !important;
-  }
-}
-
-
-/* Sustainability Section - Luxury Brand Theme */
-.sustainability-sec {
-  background: linear-gradient(135deg, #280C17 0%, #3D1223 50%, #1A0710 100%) !important;
-  border-top: 1px solid rgba(201, 84, 81, 0.3) !important;
-  border-bottom: 1px solid rgba(201, 84, 81, 0.3) !important;
-  position: relative;
-  overflow: hidden;
-  color: var(--white) !important;
-}
-
-.sustainability-sec::before {
-  content: "";
-  position: absolute;
-  top: -40%;
-  right: -15%;
-  width: 550px;
-  height: 550px;
-  background: radial-gradient(circle, rgba(201, 84, 81, 0.16) 0%, rgba(0, 0, 0, 0) 70%);
-  pointer-events: none;
-  z-index: 1;
-}
-
-.sustainability-sec .wrapper--90 {
-  position: relative;
-  z-index: 2;
-}
-
-
-/* === LOTUS_UNIFIED_FOOTER_SUITE_V2 === */
-/* ==============================================================================
-   UNIFIED SACRED CEYLON CTA BANNER
-   ============================================================================== */
-.sacred-cta-banner {
-  background: linear-gradient(135deg, #280C17 0%, #3D1223 50%, #1A0710 100%) !important;
-  color: #FFFFFF !important;
-  padding: 5rem 1.5rem !important;
-  position: relative !important;
-  overflow: hidden !important;
-  text-align: center !important;
-  border-top: 2px solid #C95451 !important;
-  border-bottom: none !important;
-  display: block !important;
-  width: 100% !important;
-  clear: both !important;
-  box-sizing: border-box !important;
-  opacity: 1 !important;
-  visibility: visible !important;
-  transform: none !important;
-}
-
-.sacred-cta-banner::after {
-  content: "" !important;
-  position: absolute !important;
-  bottom: -1px !important;
-  left: 0 !important;
-  right: 0 !important;
-  height: 120px !important;
-  background: linear-gradient(
-    to bottom,
-    rgba(40, 12, 23, 0) 0%,
-    rgba(20, 15, 35, 0.45) 40%,
-    rgba(1, 28, 64, 0.8) 75%,
-    #011C40 100%
-  ) !important;
-  pointer-events: none !important;
-  z-index: 1 !important;
-}
-
-.sacred-cta-banner .cta-motif {
-  position: absolute !important;
-  top: 50% !important;
-  left: 50% !important;
-  transform: translate(-50%, -50%) !important;
-  width: 600px !important;
-  height: 600px !important;
-  background: radial-gradient(circle, rgba(201, 84, 81, 0.28) 0%, rgba(0,0,0,0) 70%) !important;
-  pointer-events: none !important;
-}
-
-.sacred-cta-banner .cta-content {
-  position: relative !important;
-  z-index: 2 !important;
-  max-width: 780px !important;
-  margin: 0 auto !important;
-  text-align: center !important;
-  opacity: 1 !important;
-  visibility: visible !important;
-}
-
-.sacred-cta-banner .cta-title {
-  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
-  font-size: clamp(2.1rem, 3.8vw, 2.9rem) !important;
-  font-weight: 700 !important;
-  color: #FFFFFF !important;
-  margin: 0 0 1rem 0 !important;
-  line-height: 1.2 !important;
-  opacity: 1 !important;
-  visibility: visible !important;
-}
-
-.sacred-cta-banner .cta-desc {
-  font-size: 1.05rem !important;
-  color: rgba(255, 255, 255, 0.88) !important;
-  margin: 0 auto 2rem auto !important;
-  line-height: 1.65 !important;
-  max-width: 680px !important;
-  opacity: 1 !important;
-  visibility: visible !important;
-}
-
-.sacred-cta-banner .cta-btn-group {
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  gap: 1.25rem !important;
-  flex-wrap: wrap !important;
-  opacity: 1 !important;
-  visibility: visible !important;
-}
-
-.sacred-cta-banner .btn-primary-gold {
-  background: linear-gradient(135deg, #DA8E28 0%, #BF7819 100%) !important;
-  color: #FFFFFF !important;
-  font-weight: 700 !important;
-  padding: 0.9rem 2.2rem !important;
-  border-radius: 9999px !important;
-  text-decoration: none !important;
-  display: inline-flex !important;
-  align-items: center !important;
-  gap: 10px !important;
-  box-shadow: 0 4px 20px rgba(218, 142, 40, 0.4) !important;
-  transition: all 0.3s ease !important;
-  font-size: 1rem !important;
-  opacity: 1 !important;
-  visibility: visible !important;
-}
-
-.sacred-cta-banner .btn-primary-gold:hover {
-  transform: translateY(-2px) !important;
-  box-shadow: 0 8px 30px rgba(218, 142, 40, 0.6) !important;
-  background: linear-gradient(135deg, #E59A32 0%, #CC8220 100%) !important;
-}
-
-.sacred-cta-banner .cta-wa-btn {
-  background: #25D366 !important;
-  color: #FFFFFF !important;
-  font-weight: 700 !important;
-  padding: 0.9rem 2.2rem !important;
-  border-radius: 9999px !important;
-  text-decoration: none !important;
-  display: inline-flex !important;
-  align-items: center !important;
-  gap: 8px !important;
-  box-shadow: 0 4px 15px rgba(37, 211, 102, 0.35) !important;
-  transition: all 0.3s ease !important;
-  font-size: 1rem !important;
-  opacity: 1 !important;
-  visibility: visible !important;
-}
-
-.sacred-cta-banner .cta-wa-btn:hover {
-  transform: translateY(-2px) !important;
-  box-shadow: 0 8px 25px rgba(37, 211, 102, 0.5) !important;
-}
-
-/* ==============================================================================
-   UNIFIED WALKERS LUXURY FOOTER
-   ============================================================================== */
+.package-card img { transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+} /* Accessibility: Instantly disable all motion if reduced-motion is requested */
+@media (prefers-reduced-motion: reduce) { html.lotus-motion-enabled .lotus-reveal-text, html.lotus-motion-enabled .lotus-reveal-media { opacity: 1 !important; transform: none !important; filter: none !important; transition: none !important; }
+} /* Sustainability Section - Luxury Brand Theme */
+.sustainability-sec { background: linear-gradient(135deg, #280C17 0%, #3D1223 50%, #1A0710 100%) !important; border-top: 1px solid rgba(201, 84, 81, 0.3) !important; border-bottom: 1px solid rgba(201, 84, 81, 0.3) !important; position: relative; overflow: hidden; color: var(--white) !important;
+} .sustainability-sec::before { content: ""; position: absolute; top: -40%; right: -15%; width: 550px; height: 550px; background: radial-gradient(circle, rgba(201, 84, 81, 0.16) 0%, rgba(0, 0, 0, 0) 70%); pointer-events: none; z-index: 1;
+} .sustainability-sec .wrapper--90 { position: relative; z-index: 2;
+} /* === LOTUS_UNIFIED_FOOTER_SUITE_V2 === */
+/* ============================================================================== UNIFIED SACRED CEYLON CTA BANNER ============================================================================== */
+.sacred-cta-banner { background: linear-gradient(135deg, #280C17 0%, #3D1223 50%, #1A0710 100%) !important; color: #FFFFFF !important; padding: 5rem 1.5rem !important; position: relative !important; overflow: hidden !important; text-align: center !important; border-top: 2px solid #C95451 !important; border-bottom: none !important; display: block !important; width: 100% !important; clear: both !important; box-sizing: border-box !important; opacity: 1 !important; visibility: visible !important; transform: none !important;
+} .sacred-cta-banner::after { content: "" !important; position: absolute !important; bottom: -1px !important; left: 0 !important; right: 0 !important; height: 120px !important; background: linear-gradient( to bottom, rgba(40, 12, 23, 0) 0%, rgba(20, 15, 35, 0.45) 40%, rgba(1, 28, 64, 0.8) 75%, #011C40 100% ) !important; pointer-events: none !important; z-index: 1 !important;
+} .sacred-cta-banner .cta-motif { position: absolute !important; top: 50% !important; left: 50% !important; transform: translate(-50%, -50%) !important; width: 600px !important; height: 600px !important; background: radial-gradient(circle, rgba(201, 84, 81, 0.28) 0%, rgba(0,0,0,0) 70%) !important; pointer-events: none !important;
+} .sacred-cta-banner .cta-content { position: relative !important; z-index: 2 !important; max-width: 780px !important; margin: 0 auto !important; text-align: center !important; opacity: 1 !important; visibility: visible !important;
+} .sacred-cta-banner .cta-title { font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important; font-size: clamp(2.1rem, 3.8vw, 2.9rem) !important; font-weight: 700 !important; color: #FFFFFF !important; margin: 0 0 1rem 0 !important; line-height: 1.2 !important; opacity: 1 !important; visibility: visible !important;
+} .sacred-cta-banner .cta-desc { font-size: 1.05rem !important; color: rgba(255, 255, 255, 0.88) !important; margin: 0 auto 2rem auto !important; line-height: 1.65 !important; max-width: 680px !important; opacity: 1 !important; visibility: visible !important;
+} .sacred-cta-banner .cta-btn-group { display: flex !important; align-items: center !important; justify-content: center !important; gap: 1.25rem !important; flex-wrap: wrap !important; opacity: 1 !important; visibility: visible !important;
+} .sacred-cta-banner .btn-primary-gold { background: linear-gradient(135deg, #DA8E28 0%, #BF7819 100%) !important; color: #FFFFFF !important; font-weight: 700 !important; padding: 0.9rem 2.2rem !important; border-radius: 9999px !important; text-decoration: none !important; display: inline-flex !important; align-items: center !important; gap: 10px !important; box-shadow: 0 4px 20px rgba(218, 142, 40, 0.4) !important; transition: all 0.3s ease !important; font-size: 1rem !important; opacity: 1 !important; visibility: visible !important;
+} .sacred-cta-banner .btn-primary-gold:hover { transform: translateY(-2px) !important; box-shadow: 0 8px 30px rgba(218, 142, 40, 0.6) !important; background: linear-gradient(135deg, #E59A32 0%, #CC8220 100%) !important;
+} .sacred-cta-banner .cta-wa-btn { background: #25D366 !important; color: #FFFFFF !important; font-weight: 700 !important; padding: 0.9rem 2.2rem !important; border-radius: 9999px !important; text-decoration: none !important; display: inline-flex !important; align-items: center !important; gap: 8px !important; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.35) !important; transition: all 0.3s ease !important; font-size: 1rem !important; opacity: 1 !important; visibility: visible !important;
+} .sacred-cta-banner .cta-wa-btn:hover { transform: translateY(-2px) !important; box-shadow: 0 8px 25px rgba(37, 211, 102, 0.5) !important;
+} /* ============================================================================== UNIFIED WALKERS LUXURY FOOTER ============================================================================== */
 .site-footer-walkers,
-.footer-walkers {
-  border-top: none !important;
-  background-color: #011C40 !important;
-  background-image: linear-gradient(rgba(1, 28, 64, 0.86), rgba(0, 16, 38, 0.94)), url('../images/footer/footer-sunset-palms.webp') !important;
-  background-position: center bottom !important;
-  background-size: cover !important;
-  background-repeat: no-repeat !important;
-  color: #FFFFFF !important;
-  padding-top: 3.5rem !important;
-  padding-bottom: 2rem !important;
-  position: relative !important;
-  display: block !important;
-  width: 100% !important;
-  clear: both !important;
-  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
-  opacity: 1 !important;
-  visibility: visible !important;
-}
-
-.site-footer-walkers .site-container {
-  max-width: 1280px !important;
-  width: 92% !important;
-  margin: 0 auto !important;
-  position: relative !important;
-  z-index: 2 !important;
-}
-
-.footer-walkers-grid-3 {
-  display: grid !important;
-  grid-template-columns: 1.15fr 1.65fr 1.25fr !important;
-  gap: 3.5rem !important;
-  padding-bottom: 2.25rem !important;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.14) !important;
-}
-
-@media (max-width: 1024px) and (min-width: 769px) {
-  .footer-walkers-grid-3 {
-    grid-template-columns: 1fr 1.35fr 1.1fr !important;
-    gap: 2rem !important;
-  }
-}
-
-@media (max-width: 768px) {
-  .footer-walkers-grid-3 {
-    grid-template-columns: 1fr !important;
-    gap: 2.25rem !important;
-  }
-}
-
-.footer-walkers-col .footer-col-title {
-  color: #FFFFFF !important;
-  font-size: 0.82rem !important;
-  font-weight: 700 !important;
-  text-transform: uppercase !important;
-  letter-spacing: 0.12em !important;
-  margin: 0 0 0.65rem 0 !important;
-  font-family: 'DM Sans', sans-serif !important;
-}
-
-.footer-col-contact .footer-address-text {
-  color: rgba(255, 255, 255, 0.82) !important;
-  font-size: 0.92rem !important;
-  line-height: 1.65 !important;
-  margin: 0 0 1.5rem 0 !important;
-  max-width: 340px !important;
-}
-
-.footer-col-contact .footer-phone-text,
-.footer-col-contact .footer-email-text {
-  margin: 0 0 1.5rem 0 !important;
-}
-
-.footer-col-contact .footer-phone-text a {
-  color: #FFFFFF !important;
-  font-size: 1.05rem !important;
-  font-weight: 700 !important;
-  text-decoration: none !important;
-  letter-spacing: 0.02em !important;
-  transition: color 0.25s ease !important;
-}
-
-.footer-col-contact .footer-phone-text a:hover {
-  color: #D4A359 !important;
-}
-
-.footer-col-contact .footer-email-text a {
-  color: rgba(255, 255, 255, 0.85) !important;
-  font-size: 0.94rem !important;
-  text-decoration: none !important;
-  transition: color 0.25s ease !important;
-}
-
-.footer-col-contact .footer-email-text a:hover {
-  color: #D4A359 !important;
-}
-
-.footer-quicklinks-grid {
-  display: grid !important;
-  grid-template-columns: repeat(2, 1fr) !important;
-  gap: 0.65rem 2rem !important;
-}
-
-.footer-links-subcol {
-  display: flex !important;
-  flex-direction: column !important;
-  gap: 0.65rem !important;
-}
-
-.footer-links-subcol a {
-  color: rgba(255, 255, 255, 0.82) !important;
-  font-size: 0.92rem !important;
-  text-decoration: none !important;
-  transition: all 0.25s ease !important;
-  line-height: 1.4 !important;
-  display: inline-block !important;
-}
-
-.footer-links-subcol a:hover {
-  color: #D4A359 !important;
-  transform: translateX(4px) !important;
-}
-
-.footer-newsletter-pill {
-  display: flex !important;
-  align-items: center !important;
-  background: rgba(255, 255, 255, 0.16) !important;
-  border: 1px solid rgba(255, 255, 255, 0.28) !important;
-  border-radius: 9999px !important;
-  padding: 4px 6px 4px 18px !important;
-  margin-top: 0.65rem !important;
-  max-width: 380px !important;
-  backdrop-filter: blur(6px) !important;
-  -webkit-backdrop-filter: blur(6px) !important;
-  transition: border-color 0.25s ease, background-color 0.25s ease !important;
-}
-
-.footer-newsletter-pill:focus-within {
-  background: rgba(255, 255, 255, 0.22) !important;
-  border-color: rgba(255, 255, 255, 0.6) !important;
-}
-
-.footer-newsletter-pill input {
-  flex: 1 1 auto !important;
-  background: transparent !important;
-  border: none !important;
-  outline: none !important;
-  color: #FFFFFF !important;
-  font-size: 0.9rem !important;
-  font-family: inherit !important;
-  padding: 6px 0 !important;
-}
-
-.footer-newsletter-pill input::placeholder {
-  color: rgba(255, 255, 255, 0.65) !important;
-}
-
-.footer-newsletter-pill button {
-  width: 36px !important;
-  height: 36px !important;
-  border-radius: 50% !important;
-  background: rgba(255, 255, 255, 0.28) !important;
-  border: none !important;
-  color: #FFFFFF !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  cursor: pointer !important;
-  transition: all 0.25s ease !important;
-  flex-shrink: 0 !important;
-}
-
-.footer-newsletter-pill button:hover {
-  background: #D4A359 !important;
-  color: #FFFFFF !important;
-  transform: scale(1.05) !important;
-}
-
-.footer-payment-badges {
-  display: flex !important;
-  align-items: center !important;
-  gap: 8px !important;
-  margin-top: 0.65rem !important;
-  flex-wrap: wrap !important;
-}
-
-.footer-payment-badges .pay-badge {
-  display: inline-flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  background: #FFFFFF !important;
-  border-radius: 4px !important;
-  padding: 2px 4px !important;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25) !important;
-  transition: transform 0.2s ease !important;
-}
-
-.footer-payment-badges .pay-badge:hover {
-  transform: translateY(-2px) !important;
-}
-
-.footer-social-glyphs {
-  display: flex !important;
-  align-items: center !important;
-  gap: 16px !important;
-  margin-top: 1.25rem !important;
-}
-
-.footer-social-glyphs a {
-  color: rgba(255, 255, 255, 0.85) !important;
-  display: inline-flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  transition: all 0.25s ease !important;
-}
-
-.footer-social-glyphs a:hover {
-  color: #D4A359 !important;
-  transform: translateY(-2px) !important;
-}
-
-.footer-bottom-row {
-  display: flex !important;
-  align-items: center !important;
-  justify-content: space-between !important;
-  padding-top: 1.5rem !important;
-  color: rgba(255, 255, 255, 0.68) !important;
-  font-size: 0.8rem !important;
-  flex-wrap: wrap !important;
-  gap: 1rem !important;
-}
-
-.footer-bottom-row a {
-  color: rgba(255, 255, 255, 0.75) !important;
-  text-decoration: none !important;
-  transition: color 0.2s ease !important;
-}
-
-.footer-bottom-row a:hover {
-  color: #D4A359 !important;
-}
-
-.footer-bottom-center {
-  display: flex !important;
-  align-items: center !important;
-  gap: 10px !important;
-  flex-wrap: wrap !important;
-}
-
-.footer-sep {
-  color: rgba(255, 255, 255, 0.35) !important;
-}
-
-.footer-bottom-right a {
-  color: #D4A359 !important;
-  font-weight: 600 !important;
-}
-
-/* ==========================================================================
-   UNIFIED CENTERED HERO BANNER STANDARD (.banner-section-inner)
-   ========================================================================== */
+.footer-walkers { border-top: none !important; background-color: #011C40 !important; background-image: linear-gradient(rgba(1, 28, 64, 0.86), rgba(0, 16, 38, 0.94)), url('../images/footer/footer-sunset-palms.webp') !important; background-position: center bottom !important; background-size: cover !important; background-repeat: no-repeat !important; color: #FFFFFF !important; padding-top: 3.5rem !important; padding-bottom: 2rem !important; position: relative !important; display: block !important; width: 100% !important; clear: both !important; font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important; opacity: 1 !important; visibility: visible !important;
+} .site-footer-walkers .site-container { max-width: 1280px !important; width: 92% !important; margin: 0 auto !important; position: relative !important; z-index: 2 !important;
+} .footer-walkers-grid-3 { display: grid !important; grid-template-columns: 1.15fr 1.65fr 1.25fr !important; gap: 3.5rem !important; padding-bottom: 2.25rem !important; border-bottom: 1px solid rgba(255, 255, 255, 0.14) !important;
+} @media (max-width: 1024px) and (min-width: 769px) { .footer-walkers-grid-3 { grid-template-columns: 1fr 1.35fr 1.1fr !important; gap: 2rem !important; }
+} @media (max-width: 768px) { .footer-walkers-grid-3 { grid-template-columns: 1fr !important; gap: 2.25rem !important; }
+} .footer-walkers-col .footer-col-title { color: #FFFFFF !important; font-size: 0.82rem !important; font-weight: 700 !important; text-transform: uppercase !important; letter-spacing: 0.12em !important; margin: 0 0 0.65rem 0 !important; font-family: 'DM Sans', sans-serif !important;
+} .footer-col-contact .footer-address-text { color: rgba(255, 255, 255, 0.82) !important; font-size: 0.92rem !important; line-height: 1.65 !important; margin: 0 0 1.5rem 0 !important; max-width: 340px !important;
+} .footer-col-contact .footer-phone-text,
+.footer-col-contact .footer-email-text { margin: 0 0 1.5rem 0 !important;
+} .footer-col-contact .footer-phone-text a { color: #FFFFFF !important; font-size: 1.05rem !important; font-weight: 700 !important; text-decoration: none !important; letter-spacing: 0.02em !important; transition: color 0.25s ease !important;
+} .footer-col-contact .footer-phone-text a:hover { color: #D4A359 !important;
+} .footer-col-contact .footer-email-text a { color: rgba(255, 255, 255, 0.85) !important; font-size: 0.94rem !important; text-decoration: none !important; transition: color 0.25s ease !important;
+} .footer-col-contact .footer-email-text a:hover { color: #D4A359 !important;
+} .footer-quicklinks-grid { display: grid !important; grid-template-columns: repeat(2, 1fr) !important; gap: 0.65rem 2rem !important;
+} .footer-links-subcol { display: flex !important; flex-direction: column !important; gap: 0.65rem !important;
+} .footer-links-subcol a { color: rgba(255, 255, 255, 0.82) !important; font-size: 0.92rem !important; text-decoration: none !important; transition: all 0.25s ease !important; line-height: 1.4 !important; display: inline-block !important;
+} .footer-links-subcol a:hover { color: #D4A359 !important; transform: translateX(4px) !important;
+} .footer-newsletter-pill { display: flex !important; align-items: center !important; background: rgba(255, 255, 255, 0.16) !important; border: 1px solid rgba(255, 255, 255, 0.28) !important; border-radius: 9999px !important; padding: 4px 6px 4px 18px !important; margin-top: 0.65rem !important; max-width: 380px !important; backdrop-filter: blur(6px) !important; -webkit-backdrop-filter: blur(6px) !important; transition: border-color 0.25s ease, background-color 0.25s ease !important;
+} .footer-newsletter-pill:focus-within { background: rgba(255, 255, 255, 0.22) !important; border-color: rgba(255, 255, 255, 0.6) !important;
+} .footer-newsletter-pill input { flex: 1 1 auto !important; background: transparent !important; border: none !important; outline: none !important; color: #FFFFFF !important; font-size: 0.9rem !important; font-family: inherit !important; padding: 6px 0 !important;
+} .footer-newsletter-pill input::placeholder { color: rgba(255, 255, 255, 0.65) !important;
+} .footer-newsletter-pill button { width: 36px !important; height: 36px !important; border-radius: 50% !important; background: rgba(255, 255, 255, 0.28) !important; border: none !important; color: #FFFFFF !important; display: flex !important; align-items: center !important; justify-content: center !important; cursor: pointer !important; transition: all 0.25s ease !important; flex-shrink: 0 !important;
+} .footer-newsletter-pill button:hover { background: #D4A359 !important; color: #FFFFFF !important; transform: scale(1.05) !important;
+} .footer-payment-badges { display: flex !important; align-items: center !important; gap: 8px !important; margin-top: 0.65rem !important; flex-wrap: wrap !important;
+} .footer-payment-badges .pay-badge { display: inline-flex !important; align-items: center !important; justify-content: center !important; background: #FFFFFF !important; border-radius: 4px !important; padding: 2px 4px !important; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25) !important; transition: transform 0.2s ease !important;
+} .footer-payment-badges .pay-badge:hover { transform: translateY(-2px) !important;
+} .footer-social-glyphs { display: flex !important; align-items: center !important; gap: 16px !important; margin-top: 1.25rem !important;
+} .footer-social-glyphs a { color: rgba(255, 255, 255, 0.85) !important; display: inline-flex !important; align-items: center !important; justify-content: center !important; transition: all 0.25s ease !important;
+} .footer-social-glyphs a:hover { color: #D4A359 !important; transform: translateY(-2px) !important;
+} .footer-bottom-row { display: flex !important; align-items: center !important; justify-content: space-between !important; padding-top: 1.5rem !important; color: rgba(255, 255, 255, 0.68) !important; font-size: 0.8rem !important; flex-wrap: wrap !important; gap: 1rem !important;
+} .footer-bottom-row a { color: rgba(255, 255, 255, 0.75) !important; text-decoration: none !important; transition: color 0.2s ease !important;
+} .footer-bottom-row a:hover { color: #D4A359 !important;
+} .footer-bottom-center { display: flex !important; align-items: center !important; gap: 10px !important; flex-wrap: wrap !important;
+} .footer-sep { color: rgba(255, 255, 255, 0.35) !important;
+} .footer-bottom-right a { color: #D4A359 !important; font-weight: 600 !important;
+} /* ========================================================================== UNIFIED CENTERED HERO BANNER STANDARD (.banner-section-inner) ========================================================================== */
 .banner-section-inner,
-.banner-section-inner.tours-hero-banner {
-  text-align: center !important;
-}
-
-.banner-section-inner .wrapper--90,
-.banner-section-inner .wrapper--80 {
-  margin-left: auto !important;
-  margin-right: auto !important;
-}
-
-.banner-section-inner .tours-breadcrumbs,
+.banner-section-inner.tours-hero-banner { text-align: center !important;
+} .banner-section-inner .wrapper--90,
+.banner-section-inner .wrapper--80 { margin-left: auto !important; margin-right: auto !important;
+} .banner-section-inner .tours-breadcrumbs,
 .banner-section-inner .beach-breadcrumb,
-.banner-section-inner .hero-breadcrumbs {
-  display: flex !important;
-  justify-content: center !important;
-  align-items: center !important;
-  text-align: center !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
-  margin-bottom: 1.25rem !important;
-}
-
-.banner-section-inner .beach-hero-title,
+.banner-section-inner .hero-breadcrumbs { display: flex !important; justify-content: center !important; align-items: center !important; text-align: center !important; margin-left: auto !important; margin-right: auto !important; margin-bottom: 1.25rem !important;
+} .banner-section-inner .beach-hero-title,
 .banner-section-inner .wildlife-hero-title,
 .banner-section-inner .tour-hero-title,
 .banner-section-inner .tours-hero-title,
 .banner-section-inner .hero-title,
-.banner-section-inner h1 {
-  margin-left: auto !important;
-  margin-right: auto !important;
-  text-align: center !important;
-  max-width: 34ch !important;
-  display: block !important;
-}
-
-.banner-section-inner p,
+.banner-section-inner h1 { margin-left: auto !important; margin-right: auto !important; text-align: center !important; max-width: 34ch !important; display: block !important;
+} .banner-section-inner p,
 .banner-section-inner .beach-hero-lead,
 .banner-section-inner .wildlife-hero-lead,
 .banner-section-inner .tour-hero-tagline,
 .banner-section-inner .tours-hero-lead,
-.banner-section-inner p.hero-lead {
-  margin-left: auto !important;
-  margin-right: auto !important;
-  text-align: center !important;
-  max-width: 780px !important;
-  display: block !important;
+.banner-section-inner p.hero-lead { margin-left: auto !important; margin-right: auto !important; text-align: center !important; max-width: 780px !important; display: block !important;
 }
-}
+} /* ============================================================================== LOTUS CEYLON — UNIFIED SHARED HERO BANNER ARCHITECTURE Applied across EVERY page: Home, Tours, Destinations, Experiences, About, Gallery, Reviews, Blog, Contact, Tour Packages, Destinations, and Blog Posts. ============================================================================== */ :root { --site-header-height-desktop: 104px; --site-header-height-tablet: 86px; --site-header-height-mobile: 76px; --hero-ease: cubic-bezier(0.22, 1, 0.36, 1); --hero-anim-duration: 1.4s; } /* -------------------------------------------------------------------------- 1. KEYFRAMES FOR SMOOTH ANIMATIONS -------------------------------------------------------------------------- */ @keyframes heroFadeSlideUp { 0% { opacity: 0; transform: translateY(22px); } 100% { opacity: 1; transform: translateY(0); } } @keyframes heroGentleZoom { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } } @keyframes heroBgCoverZoom { 0% { background-size: 100% auto; } 50% { background-size: 106% auto; } 100% { background-size: 100% auto; } } /* -------------------------------------------------------------------------- 2. UNIFIED HERO CONTAINER & VERTICAL / HORIZONTAL CENTERING With top padding strictly matching/exceeding header height so hero text never touches, clips, or hides under the fixed header bar. -------------------------------------------------------------------------- */ .site-shared-hero, .banner-section, .banner-section-inner, .banner-section-inner.tours-hero-banner, .beach-hero-banner, .wildlife-hero-banner, .tour-hero-section, .tours-hero-section, .dest-hero, .exp-hero, .about-hero, .gallery-hero, .reviews-hero, .blog-hero, .contact-hero, .hero-banner, .destination-detail-hero, .blog-post-hero, .legal-hero { position: relative !important; display: flex !important; flex-direction: column !important; justify-content: center !important; align-items: center !important; text-align: center !important; box-sizing: border-box !important; overflow: hidden !important; width: 100% !important; height: auto !important; min-height: clamp(500px, 62vh, 700px) !important; padding-top: max(144px, calc(var(--site-header-height-desktop) + 2.5rem)) !important; padding-bottom: 4.5rem !important; padding-left: 1.5rem !important; padding-right: 1.5rem !important; background-size: cover !important; background-position: center center !important; background-repeat: no-repeat !important; } /* Fullscreen Home Page Hero */ .banner-section#home, .banner-section.home-hero, .hero-banner.home-hero { min-height: 100svh !important; padding-top: max(144px, calc(var(--site-header-height-desktop) + 2.5rem)) !important; padding-bottom: 4rem !important; } /* Tour package top banner safe clearance */ .tour-banner-walkers { padding-top: max(124px, calc(var(--site-header-height-desktop) + 1.5rem)) !important; overflow: hidden !important; background-size: cover !important; background-position: center center !important; } /* Responsive Padding Breakpoints */ @media (max-width: 1024px) { .site-shared-hero, .banner-section, .banner-section-inner, .banner-section-inner.tours-hero-banner, .beach-hero-banner, .wildlife-hero-banner, .tour-hero-section, .tours-hero-section, .dest-hero, .exp-hero, .about-hero, .gallery-hero, .reviews-hero, .blog-hero, .contact-hero, .hero-banner, .destination-detail-hero, .blog-post-hero, .legal-hero { min-height: clamp(440px, 56vh, 620px) !important; padding-top: max(124px, calc(var(--site-header-height-tablet) + 2rem)) !important; padding-bottom: 3.5rem !important; padding-left: 1.25rem !important; padding-right: 1.25rem !important; } .banner-section#home, .banner-section.home-hero, .hero-banner.home-hero { min-height: 100svh !important; padding-top: max(124px, calc(var(--site-header-height-tablet) + 2rem)) !important; padding-bottom: 3rem !important; } } @media (max-width: 768px) { .site-shared-hero, .banner-section, .banner-section-inner, .banner-section-inner.tours-hero-banner, .beach-hero-banner, .wildlife-hero-banner, .tour-hero-section, .tours-hero-section, .dest-hero, .exp-hero, .about-hero, .gallery-hero, .reviews-hero, .blog-hero, .contact-hero, .hero-banner, .destination-detail-hero, .blog-post-hero, .legal-hero { min-height: clamp(400px, 52vh, 560px) !important; padding-top: max(112px, calc(var(--site-header-height-mobile) + 1.75rem)) !important; padding-bottom: 2.75rem !important; padding-left: 1rem !important; padding-right: 1rem !important; } .banner-section#home, .banner-section.home-hero, .hero-banner.home-hero { min-height: 100svh !important; padding-top: max(112px, calc(var(--site-header-height-mobile) + 1.75rem)) !important; padding-bottom: 2.5rem !important; } } /* -------------------------------------------------------------------------- 3. CONTENT BLOCK CENTERING (Horizontal & Vertical) -------------------------------------------------------------------------- */ .site-shared-hero .site-hero-content, .banner-content-wrap, .banner-text-inner, .banner-section-inner > .wrapper--90, .banner-section-inner > .wrapper--80, .banner-section-inner > .wrapper--75, .beach-hero-content, .tour-hero-content, .about-hero-content, .contact-hero-content, .legal-hero-content, .destination-detail-hero .site-container, .dest-hero > .wrapper--80, .exp-hero > .wrapper--80, .gallery-hero > .wrapper--80, .reviews-hero > .wrapper--80, .blog-hero > .wrapper--80, .hero-banner > .hero-content { width: 100% !important; max-width: 1040px !important; margin-left: auto !important; margin-right: auto !important; display: flex !important; flex-direction: column !important; align-items: center !important; justify-content: center !important; text-align: center !important; position: relative !important; z-index: 2 !important; box-sizing: border-box !important; } /* Home hero content positioning */ .banner-section .banner-content-wrap { position: relative !important; top: auto !important; left: auto !important; transform: none !important; width: 100% !important; display: flex !important; justify-content: center !important; align-items: center !important; z-index: 3 !important; } .banner-section .banner-text-inner { margin-left: auto !important; margin-right: auto !important; text-align: center !important; align-items: center !important; display: flex !important; flex-direction: column !important; } /* -------------------------------------------------------------------------- 4. ELEMENT 1: SMALL LABELS / BADGES / BREADCRUMBS -------------------------------------------------------------------------- */ .hero-label, .site-hero-badge, .banner-subtitle-badge, .tours-breadcrumbs, .beach-breadcrumb, .tour-breadcrumb, .about-badge, .contact-badge, .legal-badge, .destination-detail-hero .badge, .tour-badge-pill-walkers, .dest-hero .sacred-badge-tag, .exp-hero .sacred-badge-tag, .gallery-hero .sacred-badge-tag, .reviews-hero .sacred-badge-tag, .blog-hero .sacred-badge-tag, .hero-banner .hero-badge { display: inline-flex !important; align-items: center !important; justify-content: center !important; text-align: center !important; margin-left: auto !important; margin-right: auto !important; margin-top: 0 !important; margin-bottom: 1.25rem !important; letter-spacing: 0.12em !important; animation: heroFadeSlideUp var(--hero-anim-duration) var(--hero-ease) 0.1s both !important; } .tours-breadcrumbs a, .beach-breadcrumb a, .tour-breadcrumb a { display: inline-block !important; } /* -------------------------------------------------------------------------- 5. ELEMENT 2: HEADING (Clamp 2rem to 4rem, Wraps on 2 Lines Max on Desktop) -------------------------------------------------------------------------- */ .site-hero-title, .banner-main-title, .tours-hero-title, .beach-hero-title, .wildlife-hero-title, .tour-hero-title, .about-hero-title, .dest-hero h1, .exp-hero h1, .gallery-hero h1, .reviews-hero h1, .blog-hero h1, .contact-hero h1, .legal-hero h1, .destination-detail-hero h1, .tour-title-walkers, .hero-banner .hero-title { font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important; font-size: clamp(2rem, 5vw, 4rem) !important; font-weight: 700 !important; line-height: 1.16 !important; letter-spacing: -0.015em !important; text-align: center !important; margin-left: auto !important; margin-right: auto !important; margin-top: 0 !important; margin-bottom: 1.25rem !important; max-width: 960px !important; text-wrap: balance !important; overflow-wrap: break-word !important; word-break: normal !important; color: #FFFFFF !important; text-shadow: 0 2px 14px rgba(0, 0, 0, 0.5) !important; animation: heroFadeSlideUp var(--hero-anim-duration) var(--hero-ease) 0.3s both !important; } /* Tour overview walkers is below the banner on white background */ .tour-overview-walkers .tour-title-walkers { color: #111827 !important; text-shadow: none !important; } .hero-title-main { color: #FFFFFF !important; font-weight: 700 !important; display: block !important; font-style: normal !important; } .hero-title-accent { color: #D4AF37 !important; font-weight: 600 !important; display: block !important; font-style: italic !important; margin-top: 0.35rem !important; } /* -------------------------------------------------------------------------- 6. ELEMENT 3: SUBTITLE (Max-width 800px, Centred, Comfortable Line-Height) -------------------------------------------------------------------------- */ .site-hero-sub, .tours-hero-lead, .beach-hero-lead, .wildlife-hero-lead, .tour-hero-tagline, .about-hero-sub, .contact-hero p, .legal-hero p, .destination-detail-hero p, .tour-desc-walkers p, .hero-banner p.hero-subtitle, .dest-hero p.paragraph--20, .exp-hero p.paragraph--20, .gallery-hero p.paragraph--20, .reviews-hero p.paragraph--20, .blog-hero p.paragraph--20, .banner-section p.paragraph--20 { max-width: 800px !important; margin-left: auto !important; margin-right: auto !important; text-align: center !important; line-height: 1.7 !important; font-size: clamp(1.02rem, 1.3vw, 1.2rem) !important; font-weight: 400 !important; color: #E2EBF1 !important; text-wrap: pretty !important; margin-top: 0 !important; margin-bottom: 2rem !important; animation: heroFadeSlideUp var(--hero-anim-duration) var(--hero-ease) 0.5s both !important; } .tour-overview-walkers .tour-desc-walkers p { color: #475569 !important; } /* -------------------------------------------------------------------------- 7. ELEMENT 4: ACTION BUTTONS / PILLS / SEARCH -------------------------------------------------------------------------- */ .site-hero-actions, .banner-actions, .beach-hero-cta-row, .about-hero-actions, .dest-search-bar, .destination-detail-hero div[style*="flex"], .tour-overview-walkers div[style*="flex"] { display: flex !important; justify-content: center !important; align-items: center !important; flex-wrap: wrap !important; gap: 1rem !important; margin-left: auto !important; margin-right: auto !important; width: 100% !important; max-width: 760px !important; animation: heroFadeSlideUp var(--hero-anim-duration) var(--hero-ease) 0.7s both !important; } /* -------------------------------------------------------------------------- 8. GENTLE BACKGROUND ZOOM ANIMATION (20s+ Cycle) -------------------------------------------------------------------------- */ .hero-img-bg, .video-banner-video, .banner-section-inner .banner-img, .site-shared-hero-bg, .hero-bg-zoom { animation: heroGentleZoom 24s ease-in-out infinite alternate !important; transform-origin: center center !important; will-change: transform !important; } /* -------------------------------------------------------------------------- 9. PREFERS-REDUCED-MOTION (Accessibility Compliance) -------------------------------------------------------------------------- */ @media (prefers-reduced-motion: reduce) { .site-shared-hero *, .banner-section *, .banner-section-inner *, .beach-hero-banner *, .wildlife-hero-banner *, .tour-hero-section *, .dest-hero *, .exp-hero *, .about-hero *, .gallery-hero *, .reviews-hero *, .blog-hero *, .contact-hero *, .hero-banner *, .destination-detail-hero *, .tour-banner-walkers *, .tour-overview-walkers *, .blog-post-hero *, .legal-hero *, .hero-img-bg, .video-banner-video, .hero-bg-zoom { animation: none !important; transform: none !important; transition-duration: 0.01ms !important; opacity: 1 !important; } } 

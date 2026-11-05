@@ -70,8 +70,8 @@ def build_buddhist_page(rel_prefix, out_path):
           </div>
           <div class="tour-card-body">
             <div class="tour-card-meta">
-              <span>⏱️ 8 Days / 7 Nights</span>
-              <span>🕊️ Reverent Pace</span>
+              <span>8 Days / 7 Nights</span>
+              <span> Reverent Pace</span>
             </div>
             <h3 class="tour-card-title">The Sacred Bodhi &amp; Ancient Kingdoms</h3>
             <p class="tour-card-desc">
@@ -97,8 +97,8 @@ def build_buddhist_page(rel_prefix, out_path):
           </div>
           <div class="tour-card-body">
             <div class="tour-card-meta">
-              <span>⏱️ 10 Days / 9 Nights</span>
-              <span>☸️ Living Heritage</span>
+              <span> 10 Days / 9 Nights</span>
+              <span> Living Heritage</span>
             </div>
             <h3 class="tour-card-title">The Sacred Tooth &amp; Monastic Sanctuaries</h3>
             <p class="tour-card-desc">
@@ -124,8 +124,8 @@ def build_buddhist_page(rel_prefix, out_path):
           </div>
           <div class="tour-card-body">
             <div class="tour-card-meta">
-              <span>⏱️ 12 Days / 11 Nights</span>
-              <span>🧘 Mindful Living</span>
+              <span> 12 Days / 11 Nights</span>
+              <span> Mindful Living</span>
             </div>
             <h3 class="tour-card-title">Forest Hermitages &amp; Mindful Ceylon</h3>
             <p class="tour-card-desc">

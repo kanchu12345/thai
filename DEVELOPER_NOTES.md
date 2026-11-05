@@ -1,44 +1,10 @@
-# Developer & Architectural Notes — Attribution & Code Integrity
-
-**Project**: Lotus Ceylon International Tours & Services Website  
-**Designer & Architecture**: Infinite Design ([https://infiniteweb.dev/](https://infiniteweb.dev/))  
-**Client**: Lotus Ceylon International Tours & Services (Pvt) Ltd  
-**Primary Repository**: `https://github.com/kanchu12345/thai`  
-
----
-
-## 1. Purpose of Attribution Metadata
-
-This project contains several standard, non-functional metadata markers that document original design authorship and technical provenance:
-
-1. **`humans.txt`**: Follows the web-standard [Humans TXT](https://humanstxt.org/) format at the site root, recognizing the teams, standards, and components used to construct the platform.
+# Developer & Architectural Notes — Attribution & Code Integrity **Project**: Lotus Ceylon International Tours & Services Website **Designer & Architecture**: Infinite Design ([https://infiniteweb.dev/](https://infiniteweb.dev/)) **Client**: Lotus Ceylon International Tours & Services (Pvt) Ltd **Primary Repository**: `https://github.com/kanchu12345/thai` --- ## 1. Purpose of Attribution Metadata This project contains several standard, non-functional metadata markers that document original design authorship and technical provenance: 1. **`humans.txt`**: Follows the web-standard [Humans TXT](https://humanstxt.org/) format at the site root, recognizing the teams, standards, and components used to construct the platform.
 2. **`<meta name="generator" content="Built by Infinite Design — https://infiniteweb.dev/">`**: Placed in the `<head>` of HTML documents to identify the authoring studio.
 3. **HTML Top Comments**: `<!-- Site design & development: Infinite Design (https://infiniteweb.dev/) — see /humans.txt and LICENSE.txt -->` placed near the top of pages.
 4. **Source Code Copyright Headers**: Comment blocks at the top of CSS and JavaScript assets noting copyright and creation date.
-5. **Inert Watermark Comments**: Specific build stamps (such as `<!-- ID-BUILD: infinite-design / 2026-11-01 / lotusceylon -->`) located inside stable template partials.
-
----
-
-## 2. Zero Site-Breakage Guarantee (No Tripwires or Kill-Switches)
-
-To ensure maximum operational stability, security, and peace of mind for Lotus Ceylon:
-
-- **100% Functionality Independence**: The website operates completely normally whether the footer credit is visible or removed. No images, forms, APIs, maps, pricing calculators, or CMS features depend on the presence of the footer link.
+5. **Inert Watermark Comments**: Specific build stamps (such as `<!-- ID-BUILD: infinite-design / 2026-11-01 / lotusceylon -->`) located inside stable template partials. --- ## 2. Zero Site-Breakage Guarantee (No Tripwires or Kill-Switches) To ensure maximum operational stability, security, and peace of mind for Lotus Ceylon: - **100% Functionality Independence**: The website operates completely normally whether the footer credit is visible or removed. No images, forms, APIs, maps, pricing calculators, or CMS features depend on the presence of the footer link.
 - **No License Callbacks**: The site never "phones home" to external validation servers or checks against remote blacklists.
 - **No Timers or Delayed Failures**: There are no artificial expiration dates, trial limits, or performance-throttling scripts.
-- **Clean & Maintainable Code**: All code is readable, modular, and un-obfuscated so that future in-house or external developers can inspect and maintain the software without hindrance.
-
----
-
-## 3. Client Rights & Licensing Summary
-
-Per the contractual agreement and [`LICENSE.txt`](LICENSE.txt):
-
-- **Lotus Ceylon owns all business assets**: 100% of the copywriting, tour package definitions, pricing, imagery, guest reviews, booking inquiries, and customer data belong exclusively to Lotus Ceylon.
+- **Clean & Maintainable Code**: All code is readable, modular, and un-obfuscated so that future in-house or external developers can inspect and maintain the software without hindrance. --- ## 3. Client Rights & Licensing Summary Per the contractual agreement and [`LICENSE.txt`](LICENSE.txt): - **Lotus Ceylon owns all business assets**: 100% of the copywriting, tour package definitions, pricing, imagery, guest reviews, booking inquiries, and customer data belong exclusively to Lotus Ceylon.
 - **Attribution clause**: The "Designed & Developed by Infinite Design" link in the footer is an agreed acknowledgment of creative and technical craftsmanship. It should not be stripped or disguised without mutual written consent from Infinite Design.
-- **Modifications permitted**: Lotus Ceylon is fully licensed to update content, add new destinations, launch new tour categories, and modify styles via the Admin Panel or direct code updates.
-
-For any questions regarding licensing, extensions, or design updates:  
-**Infinite Design**  
-Email: [hello@infiniteweb.dev](mailto:hello@infiniteweb.dev)  
-Web: [https://infiniteweb.dev/](https://infiniteweb.dev/)
+- **Modifications permitted**: Lotus Ceylon is fully licensed to update content, add new destinations, launch new tour categories, and modify styles via the Admin Panel or direct code updates. For any questions regarding licensing, extensions, or design updates: **Infinite Design** Email: [hello@infiniteweb.dev](mailto:hello@infiniteweb.dev) Web: [https://infiniteweb.dev/](https://infiniteweb.dev/)

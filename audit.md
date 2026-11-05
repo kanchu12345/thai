@@ -1,22 +1,12 @@
 # LOTUS CEYLON CMS FULL AUDIT REPORT (audit.md)
-**Date**: 2026-10-27T13:20:18.090Z  
-**Pages Audited**: 69  
-**Total Identified Audit Checkpoints**: 553
-
----
-
-## Executive Summary
+**Date**: 2026-10-27T13:20:18.090Z **Pages Audited**: 69 **Total Identified Audit Checkpoints**: 553 --- ## Executive Summary
 This audit inspects every public page of Lotus Ceylon International Tours & Services across all critical elements:
 - **Hero Image, Hero Background, Hero Video** (MP4 / Cloudinary / YouTube), Hero heading, subheading, and CTA buttons.
 - **Brand Logo & Favicon** across headers, footers, and mobile drawers.
 - **Section Background Images, Gallery Images, Team Photos, Map Images, and QR Codes**.
 - **SEO Title, Meta Description, and OpenGraph Image tags**.
 - **Header, Menu Navigation, Footer, and Floating WhatsApp / Concierge Widgets**.
-- **Tour Packages, Categories, Destinations, Reviews, FAQs, and Inquiry Form Options**.
-
----
-
-| Page | Element | Type | Current Firestore Key | Editable in Admin Today? | Required Fix |
+- **Tour Packages, Categories, Destinations, Reviews, FAQs, and Inquiry Form Options**. --- | Page | Element | Type | Current Firestore Key | Editable in Admin Today? | Required Fix |
 | :--- | :--- | :--- | :--- | :---: | :--- |
 | `404.html` | Favicon (<link rel="icon">) | **image** | `siteGlobal.branding.favicon` | **NO** | Add data-cms-img="siteGlobal.branding.favicon" and Firestore field |
 | `404.html` | Page Title (<title>) | **seo** | `siteContent/404.seo.title` | **NO** | Add data-cms="siteContent/404.seo.title" and bind in editor |

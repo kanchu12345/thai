@@ -103,7 +103,7 @@ for filepath in all_html:
         # Add touch helper overlay for the map
         touch_helper = '''
           <div class="map-touch-helper" id="mapTouchHelper" style="position: absolute; top: 12px; right: 12px; z-index: 400; background: rgba(13, 43, 29, 0.85); color: #FFFFFF; font-size: 0.78rem; font-weight: 600; padding: 6px 14px; border-radius: 9999px; pointer-events: none; backdrop-filter: blur(4px);">
-            <span>👆 Tap to interact with map</span>
+            <span>Tap to interact with map</span>
           </div>'''
         if 'map-touch-helper' not in content:
             content = content.replace('<div id="contactMap"', f'{touch_helper}\n          <div id="contactMap"')

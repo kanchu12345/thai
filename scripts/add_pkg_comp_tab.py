@@ -10,7 +10,7 @@ replacement = """<!-- Multi-language tabs -->
 <div class="lang-tabs">
 <button class="lang-tab-btn active" id="pkgTabBtn-en" onclick="AdminApp.switchPkgLangTab(this, 'en')" type="button">English (EN)</button>
 <button class="lang-tab-btn" id="pkgTabBtn-zh" onclick="AdminApp.switchPkgLangTab(this, 'zh')" type="button">中文 (Chinese)</button>
-<button class="lang-tab-btn" id="pkgTabBtn-comp" onclick="AdminApp.switchPkgTab('comparison')" type="button">📊 Category Comparison Ticks</button>
+<button class="lang-tab-btn" id="pkgTabBtn-comp" onclick="AdminApp.switchPkgTab('comparison')" type="button"> Category Comparison Ticks</button>
 </div>
 <div class="lang-tab-pane" id="pkgTab-comparison" style="display: none; padding: 12px 0;">
   <div style="background: #FAFBFD; border: 1px solid #E2E8F0; border-radius: 8px; padding: 14px 16px; margin-bottom: 16px;">

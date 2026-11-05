@@ -261,7 +261,7 @@ if idx_t1 != -1:
     if idx_t2 != -1 and idx_t3 != -1:
         new_team_block = """tbody.innerHTML = this.team.map(member => {
         const photoUrl = member.photo ? (member.photo.url || member.photo.secure_url || '') : '';
-        const flag = this.escapeHtml(member.flag || '🌐');
+        const flag = this.escapeHtml(member.flag || '');
         const name = this.escapeHtml(member.name || '');
         const role = this.escapeHtml(member.role || '');
         const country = this.escapeHtml(member.country || '');

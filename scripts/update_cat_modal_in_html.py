@@ -10,8 +10,8 @@ new_markup = """<!-- CATEGORY EDIT MODAL -->
 <!-- Category Modal Tabs: General Details vs Comparison Table Matrix -->
 <div style="padding: 0 24px; border-bottom: 2px solid var(--mist); background: #FAFBFD;">
   <div class="lang-tabs" style="margin-bottom: 0; border-bottom: none; gap: 8px;">
-    <button type="button" class="lang-tab-btn active" id="catTabBtn-general" onclick="AdminApp.switchCatModalTab('general')">📋 General Details</button>
-    <button type="button" class="lang-tab-btn" id="catTabBtn-comparison" onclick="AdminApp.switchCatModalTab('comparison')">📊 Comparison Table Matrix</button>
+    <button type="button" class="lang-tab-btn active" id="catTabBtn-general" onclick="AdminApp.switchCatModalTab('general')"> General Details</button>
+    <button type="button" class="lang-tab-btn" id="catTabBtn-comparison" onclick="AdminApp.switchCatModalTab('comparison')"> Comparison Table Matrix</button>
   </div>
 </div>
 <div class="modal-body" style="max-height: 80vh; overflow-y: auto; padding: 20px 24px;">
@@ -50,7 +50,7 @@ new_markup = """<!-- CATEGORY EDIT MODAL -->
 <label>Category Hero Image</label>
 <div style="display: flex; gap: 8px; flex-wrap: wrap;">
 <input class="form-control" id="catHeroImage" oninput="AdminApp.updateImagePreview('catHeroImage', 'catHeroPreview', 'catHeroPreviewCard')" placeholder="assets/tours/cultural/hero.jpg" style="flex: 1; min-width: 200px;" type="text"/>
-<button class="btn btn-secondary" onclick="AdminApp.openCloudinaryWidgetForInput('catHeroImage', 'catHeroPreview', 'catHeroPreviewCard')" type="button">☁️ Cloudinary</button>
+<button class="btn btn-secondary" onclick="AdminApp.openCloudinaryWidgetForInput('catHeroImage', 'catHeroPreview', 'catHeroPreviewCard')" type="button">Cloudinary</button>
 <button class="btn btn-outline" onclick="AdminApp.openImagePicker('catHeroImage', 'catHeroPreview', 'catHeroPreviewCard')" type="button">Browse Media</button>
 </div>
 <div class="image-preview-card" id="catHeroPreviewCard" style="display: none;">
@@ -101,8 +101,8 @@ new_markup = """<!-- CATEGORY EDIT MODAL -->
   <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 14px;">
     <div style="display: flex; gap: 8px; flex-wrap: wrap;">
       <button type="button" class="btn btn-sm btn-primary" onclick="AdminApp.addCompGroup()">+ Add Destination Group</button>
-      <button type="button" class="btn btn-sm btn-secondary" onclick="AdminApp.autoGenerateCompFromRoutes()">⚡ Auto-generate from Routes</button>
-      <button type="button" class="btn btn-sm btn-outline" onclick="AdminApp.toggleCompLivePreview()">👁️ Toggle Live Preview</button>
+      <button type="button" class="btn btn-sm btn-secondary" onclick="AdminApp.autoGenerateCompFromRoutes()">Auto-generate from Routes</button>
+      <button type="button" class="btn btn-sm btn-outline" onclick="AdminApp.toggleCompLivePreview()"> Toggle Live Preview</button>
     </div>
     <div style="display: flex; gap: 6px;">
       <button type="button" class="btn btn-sm btn-outline" onclick="AdminApp.tickAllCompSights()">✓ Tick All Sights</button>
