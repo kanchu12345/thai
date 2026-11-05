@@ -1681,21 +1681,69 @@
   background: #FAF8F5;
   border: 1px solid #E2E8F0;
   border-radius: 16px;
-  padding: 1.75rem 1.25rem;
+  padding: 2rem 1.35rem 1.75rem;
   text-align: center;
-  transition: all 0.3s ease;
+  transition: all 0.35s ease;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .why-pillar-card:hover {
   transform: translateY(-4px);
   border-color: #C9962B;
-  box-shadow: 0 10px 25px rgba(0, 43, 73, 0.08);
+  box-shadow: 0 12px 28px rgba(0, 43, 73, 0.08);
 }
 
 .why-icon-wrap {
-  font-size: 2.2rem;
-  margin-bottom: 1rem;
+  width: 58px;
+  height: 58px;
+  margin: 0 auto 1.25rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(201, 150, 43, 0.12) 0%, rgba(201, 150, 43, 0.04) 100%);
+  border: 1px solid rgba(201, 150, 43, 0.32);
+  color: #C9962B;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 12px rgba(201, 150, 43, 0.08);
+}
+
+.why-pillar-card:hover .why-icon-wrap {
+  background: linear-gradient(135deg, #D4AF37 0%, #B8860B 100%);
+  color: #FFFFFF;
+  border-color: #B8860B;
+  transform: translateY(-2px) scale(1.08);
+  box-shadow: 0 8px 22px rgba(184, 134, 11, 0.32);
+}
+
+.why-icon-wrap svg {
+  width: 28px;
+  height: 28px;
+  stroke: currentColor;
+  stroke-width: 1.65;
+  fill: none;
+  display: block;
+  transition: all 0.35s ease;
+}
+
+.custom-opt-icon {
+  font-size: 1.25rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #C9962B;
+}
+
+.custom-opt-icon svg {
+  width: 18px;
+  height: 18px;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  fill: none;
+  display: block;
 }
 
 .why-card-title {

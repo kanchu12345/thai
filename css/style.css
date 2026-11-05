@@ -299,7 +299,7 @@ ul, ol {
   font-weight: 700;
   color: #E2E6E9; /* Exact soft light gray backdrop as in reference */
   text-align: center;
-  text-transform: lowercase;
+  text-transform: capitalize;
   line-height: 0.92;
   letter-spacing: -0.025em;
   user-select: none;
@@ -6877,4 +6877,36 @@ html.lotus-motion-enabled .lotus-reveal-media.lotus-in-view {
 .footer-bottom-right a {
   color: #D4A359 !important;
   font-weight: 600 !important;
+}
+/* Hero Banner Full-Cover Smooth Display (No lagging / No scroll sticking) */
+.banner-section {
+  position: relative !important;
+  width: 100% !important;
+  height: 100vh !important;
+  min-height: 650px !important;
+  max-height: 1050px !important;
+  overflow: hidden !important;
+  background-color: #001726 !important;
+}
+
+.video-banner-slide {
+  position: relative !important;
+  width: 100% !important;
+  height: 100% !important;
+  overflow: hidden !important;
+}
+
+.video-banner-video {
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  width: 100% !important;
+  height: 100% !important;
+  min-width: 100% !important;
+  min-height: 100% !important;
+  transform: translate(-50%, -50%) !important;
+  object-fit: cover !important;
+  object-position: center center !important;
+  z-index: 1 !important;
+  pointer-events: none !important;
 }

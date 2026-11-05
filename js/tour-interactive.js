@@ -92,12 +92,36 @@
   // 2. "Make It Yours" Customizer Modal
   // =========================================================================
   const MAKE_IT_YOURS_OPTIONS = [
-    { id: 'opt-extra-days', label: 'Add extra leisure days in Sri Lanka (+2-3 Nights)', icon: '🗓️' },
-    { id: 'opt-ayurveda', label: 'Include Ayurvedic restorative massage & wellness day', icon: '🌿' },
-    { id: 'opt-hotel-upgrade', label: 'Upgrade to private plunge-pool villa / presidential suite', icon: '💎' },
-    { id: 'opt-safari', label: 'Add exclusive 4x4 private game drive & naturalist tracker', icon: '🐆' },
-    { id: 'opt-chauffeur', label: 'Senior national tourist guide lecturer / language specialist', icon: '🎩' },
-    { id: 'opt-train', label: 'First-class reserved scenic mountain railway observation car', icon: '🚂' }
+    {
+      id: 'opt-extra-days',
+      label: 'Add extra leisure days in Sri Lanka (+2-3 Nights)',
+      icon: '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>'
+    },
+    {
+      id: 'opt-ayurveda',
+      label: 'Include Ayurvedic restorative massage & wellness day',
+      icon: '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21a9 9 0 0 0 9-9c0-4.97-4.03-9-9-9-4.97 0-9 4.03-9 9a9 9 0 0 0 9 9z"/><path d="M12 3v18"/><path d="M12 12c-3-2-4-5-4-5s3-1 5 1"/><path d="M12 16c3-1.5 4-4 4-4s-2.5-.5-4 1"/></svg>'
+    },
+    {
+      id: 'opt-hotel-upgrade',
+      label: 'Upgrade to private plunge-pool villa / presidential suite',
+      icon: '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12l4 6-10 12L2 9l4-6z"/><path d="M2 9h20"/></svg>'
+    },
+    {
+      id: 'opt-safari',
+      label: 'Add exclusive 4x4 private game drive & naturalist tracker',
+      icon: '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>'
+    },
+    {
+      id: 'opt-chauffeur',
+      label: 'Senior national tourist guide lecturer / language specialist',
+      icon: '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 1 0-16 0"/><line x1="12" y1="13" x2="12" y2="17"/></svg>'
+    },
+    {
+      id: 'opt-train',
+      label: 'First-class reserved scenic mountain railway observation car',
+      icon: '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="16" rx="2"/><path d="M4 11h16"/><path d="M12 3v8"/><path d="M8 19l-3 3"/><path d="M16 19l3 3"/><circle cx="8" cy="15" r="1"/><circle cx="16" cy="15" r="1"/></svg>'
+    }
   ];
 
   function openMakeItYoursModal(packageTitle, categorySlug) {
@@ -633,25 +657,54 @@
 
         <div class="why-pillars-grid">
           <div class="why-pillar-card">
-            <div class="why-icon-wrap">🛡️</div>
+            <div class="why-icon-wrap" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2L4 5.5v6.2c0 5.4 3.4 10.1 8 11.3 4.6-1.2 8-5.9 8-11.3V5.5L12 2z"/>
+                <path d="m9 12 2 2 4-4"/>
+              </svg>
+            </div>
             <h4 class="why-card-title">100% Private & Bespoke</h4>
             <p class="why-card-desc">No shared coaches or rushed timetables. Your private vehicle, personal chauffeur, and schedule adapt entirely to your mood and waking hour.</p>
           </div>
 
           <div class="why-pillar-card">
-            <div class="why-icon-wrap">👨‍✈️</div>
+            <div class="why-icon-wrap" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="9.5"/>
+                <circle cx="12" cy="12" r="3.2"/>
+                <line x1="12" y1="2.5" x2="12" y2="8.8"/>
+                <line x1="3.8" y1="16.5" x2="9.3" y2="13.5"/>
+                <line x1="20.2" y1="16.5" x2="14.7" y2="13.5"/>
+              </svg>
+            </div>
             <h4 class="why-card-title">Certified Master Chauffeurs</h4>
             <p class="why-card-desc">Hand-vetted SLTDA-licensed tourist guide lecturers who bring cultural depth, warm hospitality, and defensive driving excellence to every mile.</p>
           </div>
 
           <div class="why-pillar-card">
-            <div class="why-icon-wrap">🌿</div>
+            <div class="why-icon-wrap" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 21h18"/>
+                <path d="M4 10.5L12 3.5l8 7V21"/>
+                <path d="M10 21v-6a2 2 0 0 1 4 0v6"/>
+                <line x1="12" y1="7" x2="12" y2="10"/>
+              </svg>
+            </div>
             <h4 class="why-card-title">Curated Boutique Sanctuaries</h4>
             <p class="why-card-desc">We personally inspect every heritage tea bungalow, private beach pavilion, and wildlife luxury tented suite for soul, privacy, and impeccable service.</p>
           </div>
 
           <div class="why-pillar-card">
-            <div class="why-icon-wrap">💎</div>
+            <div class="why-icon-wrap" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 3v3"/>
+                <path d="M10 3h4"/>
+                <path d="M4 17h16"/>
+                <path d="M3 20h18"/>
+                <path d="M5 17a7 7 0 0 1 14 0"/>
+                <circle cx="12" cy="7.5" r="1" fill="currentColor"/>
+              </svg>
+            </div>
             <h4 class="why-card-title">24/7 Dedicated Concierge</h4>
             <p class="why-card-desc">A senior trip director monitors your itinerary around the clock. Backed by a strict zero-commission policy—no tourist traps, guaranteed.</p>
           </div>
