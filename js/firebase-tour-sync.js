@@ -43,27 +43,27 @@
 
 
   function resolveFallbackPath(relPath) {
-
     if (!relPath || relPath.startsWith('http://') || relPath.startsWith('https://') || relPath.startsWith('/')) {
-
       return relPath;
-
     }
-
     const clean = relPath.replace(/^(\.\/)+/, '');
-
     const path = window.location.pathname.replace(/\\/g, '/');
-
-    if (path.includes('/tours/')) {
-
-      const after = path.split('/tours/')[1].split('/').filter(p => p && !p.endsWith('.html'));
-
-      return '../'.repeat(after.length + 1) + clean;
-
+    if (path.includes('/admin/')) {
+      return '../' + clean;
     }
-
+    if (path.includes('/tours/')) {
+      const after = path.split('/tours/')[1].split('/').filter(p => p && !p.endsWith('.html'));
+      return '../'.repeat(after.length + 1) + clean;
+    }
+    if (path.includes('/destinations/')) {
+      const after = path.split('/destinations/')[1].split('/').filter(p => p && !p.endsWith('.html'));
+      return '../'.repeat(after.length + 1) + clean;
+    }
+    if (path.includes('/blog/')) {
+      const after = path.split('/blog/')[1].split('/').filter(p => p && !p.endsWith('.html'));
+      return '../'.repeat(after.length + 1) + clean;
+    }
     return './' + clean;
-
   }
 
 
@@ -1228,6 +1228,75 @@
     /**
      * Admin: Delete package from tours & packages collections by ID and slug
      */
+    
+    /**
+     * Fetch Success Stories (Firestore -> local data/success-stories.json fallback)
+     */
+    async fetchSuccessStories(fallbackJsonPath = 'data/success-stories.json') {
+      if (!this.initialized) await this.init();
+      const list = [];
+      if (this.db && navigator.onLine) {
+        try {
+          if (this.db.collection) {
+            const snap = await this.db.collection('success_stories').orderBy('sortOrder', 'asc').get();
+            snap.forEach(doc => list.push({ id: doc.id, ...doc.data() }));
+          } else {
+            const { collection, getDocs, query, orderBy } = await import('https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js');
+            const q = query(collection(this.db, 'success_stories'), orderBy('sortOrder', 'asc'));
+            const snap = await getDocs(q);
+            snap.forEach(doc => list.push({ id: doc.id, ...doc.data() }));
+          }
+          if (list.length > 0) return list;
+        } catch (e) {
+          console.warn('[LotusFirebase] Firestore success stories fetch failed, using fallback:', e.message);
+        }
+      }
+
+      try {
+        const res = await fetch(resolveFallbackPath(fallbackJsonPath));
+        if (res.ok) {
+          return await res.json();
+        }
+      } catch (err) {
+        console.warn('[LotusFirebase] Could not load static success-stories JSON:', err.message);
+      }
+      return [];
+    }
+
+    /**
+     * Save/Update Success Story
+     */
+    async saveSuccessStory(storyData) {
+      if (!this.initialized) await this.init();
+      if (!this.db) return null;
+      const storyId = storyData.id || 'story-' + Date.now();
+      const payload = { ...storyData, id: storyId, updatedAt: new Date().toISOString() };
+
+      if (this.db.collection) {
+        await this.db.collection('success_stories').doc(storyId).set(payload, { merge: true });
+      } else {
+        const { doc, setDoc } = await import('https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js');
+        await setDoc(doc(this.db, 'success_stories', storyId), payload, { merge: true });
+      }
+      return payload;
+    }
+
+    /**
+     * Delete Success Story
+     */
+    async deleteSuccessStory(storyId) {
+      if (!this.initialized) await this.init();
+      if (!this.db) return false;
+
+      if (this.db.collection) {
+        await this.db.collection('success_stories').doc(storyId).delete();
+      } else {
+        const { doc, deleteDoc } = await import('https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js');
+        await deleteDoc(doc(this.db, 'success_stories', storyId));
+      }
+      return true;
+    }
+
     async deletePackage(pkgIdOrSlug, alternateId = null) {
       await this.init();
       if (!this.db) return false;

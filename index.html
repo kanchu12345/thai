@@ -150,6 +150,7 @@
 <button data-lang="ja" type="button">🇯🇵 日本語</button>
 <button data-lang="ar" type="button">🇦🇪 العربية</button>
 <button data-lang="hi" type="button">🇮🇳 हिन्दी</button>
+<button data-lang="vi" type="button">🇻🇳 Tiếng Việt</button>
 </div>
 </div>
 <a class="gold-inquire-btn" href="./inquiry-detailed.html" title="Plan Your Bespoke Travel">
@@ -222,6 +223,7 @@
 <button class="mobile-lang-btn" data-lang="ja" type="button">🇯🇵 日本語</button>
 <button class="mobile-lang-btn" data-lang="ar" type="button">🇦🇪 العربية</button>
 <button class="mobile-lang-btn" data-lang="hi" type="button">🇮🇳 हिन्दी</button>
+<button class="mobile-lang-btn" data-lang="vi" type="button">🇻🇳 Tiếng Việt</button>
 
 </div>
 <!-- Mobile Action Buttons -->
@@ -420,10 +422,10 @@
   var scenes = [
     { start: 0.0, end: 9.4, title: 'Lotus Blossom Sanctuaries', sub: 'Sacred Waters of Ceylon' },
     { start: 9.4, end: 13.8, title: 'Lotus Tower and Colombo Skyline', sub: 'Iconic Capital Landmark (350m)' },
-    { start: 13.8, end: 17.3, title: 'Sacred Anuradhapura and Nuwara Wewa', sub: 'Ancient Buddhist Capital (4th c. BCE)' },
-    { start: 17.3, end: 20.9, title: 'Colossal Jetavanaramaya Stupa', sub: 'UNESCO Sacred Heritage and Monasteries' },
-    { start: 20.9, end: 24.4, title: 'Sigiriya Ancient Rock Citadel', sub: '5th Century Royal Sky Palace' },
-    { start: 24.4, end: 28.0, title: 'Sigiriya Lion\'s Paw Terrace', sub: 'Royal Ascent and Ancient Ramparts' },
+    { start: 13.8, end: 17.3, title: 'Sigiriya Ancient Rock Citadel', sub: '5th Century Royal Sky Palace' },
+    { start: 17.3, end: 20.9, title: 'Sigiriya Lion\'s Paw Terrace', sub: 'Royal Ascent and Ancient Ramparts' },
+    { start: 20.9, end: 24.4, title: 'Sacred Anuradhapura and Nuwara Wewa', sub: 'Ancient Buddhist Capital (4th c. BCE)' },
+    { start: 24.4, end: 28.0, title: 'Colossal Jetavanaramaya Stupa', sub: 'UNESCO Sacred Heritage and Monasteries' },
     { start: 28.0, end: 31.6, title: 'Dambulla Golden Rock Temple', sub: 'Sacred Cave Monastery and Murals' },
     { start: 31.6, end: 35.1, title: 'Nine Arch Demodara Bridge', sub: 'Highland Colonial Railway, Ella' },
     { start: 35.1, end: 38.7, title: 'Diyaluma Cascading Waterfall', sub: 'Highland Mountain Rapids, Koslanda' },
@@ -497,9 +499,13 @@
 <!-- Overlapping Floating Secondary Photo (Wildlife & Nature) -->
 <div class="about-img-floating">
 <img alt="Sacred Ruwanwelisaya Stupa, Anuradhapura" loading="lazy" src="./assets/images/buddhist-heritage/ruwanwelisaya-2.webp" decoding="async" data-cms-img="home.img_2">
+<div class="floating-card-logo" title="Lotus Ceylon">
+<img src="./assets/images/brand/logo-header.png" alt="Lotus Ceylon Logo" class="floating-logo-img">
+</div>
 <div class="floating-badge-pill">
+<img src="./assets/images/brand/logo-header.png" alt="" class="floating-badge-logo" aria-hidden="true">
 <span class="floating-badge-dot"></span>
-<span data-cms="home.span_12">Wild and Pristine</span>
+<span data-cms="home.span_12">The sacred city of Anuradhapura</span>
 </div>
 </div>
 <!-- Luxury Trust Seal Card -->
@@ -561,6 +567,54 @@
 <span data-cms="home.span_19">Plan Your Journey</span>
 <span class="btn-arrow-circle">➔</span>
 </a>
+</div>
+
+<!-- Our Success Stories Landscape Card (Auto-swaps every 1 min) -->
+<div class="success-stories-card-wrapper" id="homeSuccessStoriesWrapper">
+  <div class="success-stories-landscape-card" id="successStoriesCard">
+    <!-- Left Landscape Photo with Burgundy Badge -->
+    <div class="story-media-box" id="storyMediaBox">
+      <span class="story-badge-pill" id="storyBadge">SACRED SITES</span>
+      <img id="storyImage" src="./assets/images/home/anuradhapura-success-story.jpg" alt="Our Success Stories" class="story-image" loading="lazy">
+      <div class="story-image-overlay"></div>
+    </div>
+    <!-- Right Editorial Content -->
+    <div class="story-body-box">
+      <div>
+        <div class="story-header-row">
+          <div class="story-meta-tag">
+            <span class="story-meta-dot"></span>
+            <span class="story-meta-title">OUR SUCCESS STORIES</span>
+          </div>
+          <div class="story-counter">
+            <span class="story-current-num" id="storyCurrentIndex">1</span>
+            <span>/</span>
+            <span id="storyTotalCount">5</span>
+          </div>
+        </div>
+        <h3 class="story-title" id="storyTitle">Anuradhapura</h3>
+        <p class="story-description" id="storyDesc">Ancient capital of great stupas and the revered Sri Maha Bodhi tree. Our travellers experienced peaceful evening meditation beneath the sacred Bodhi canopy.</p>
+      </div>
+      <!-- Footer with 1-Min Progress Bar & Controls -->
+      <div class="story-footer-row">
+        <div class="story-progress-track" title="Auto-swapping every 1 minute">
+          <div class="story-progress-bar" id="storyProgressBar"></div>
+        </div>
+        <div class="story-controls-bar">
+          <span class="story-auto-hint">Auto-swap: 1 min</span>
+          <div class="story-nav-group">
+            <button type="button" class="story-nav-btn" id="storyPrevBtn" aria-label="Previous Story" title="Previous Story">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+            </button>
+            <div class="story-dots" id="storyDots"></div>
+            <button type="button" class="story-nav-btn" id="storyNextBtn" aria-label="Next Story" title="Next Story">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 </div>
 </div>
@@ -1957,5 +2011,6 @@ SIGNATURE TRAVEL PILLARS </div>
 <script defer src="assets/js/site-data.js"></script>
 <script defer src="./assets/js/mobile-nav.js"></script>
 <script defer src="./assets/js/cms.js?v=20261031_news_img_v2"></script>
+<script defer src="js/success-stories.js"></script>
 </body>
 </html>

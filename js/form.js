@@ -1823,94 +1823,49 @@ function closeThankYouModal(modal) {
  */
 
 function formatWhatsAppMessage(data) {
-
   const hotelsStr = Array.isArray(data.hotelCategory) ? data.hotelCategory.join(", ") : data.hotelCategory;
-
   const mealsStr = Array.isArray(data.mealPlan) ? data.mealPlan.join(", ") : data.mealPlan;
-
   const interestsStr = Array.isArray(data.interests) ? data.interests.join(", ") : data.interests;
 
-
-
-  let msg = `🌺 *LOTUS CEYLON - ${data.formType === 'quick' ? 'QUICK' : 'TRAVEL'} INQUIRY*\n`;
-
-  msg += `━━━━━━━━━━━━━━━━━━━━\n`;
-
-  msg += `📌 *Reference:* ${data.referenceId}\n`;
-
-  msg += `👤 *Name:* ${data.name}\n`;
-
-  msg += `🌍 *Country:* ${data.country}\n`;
-
-  msg += `✉️ *Email:* ${data.email}\n`;
-
+  let msg = `*LOTUS CEYLON - ${data.formType === 'quick' ? 'QUICK' : 'TRAVEL'} INQUIRY*\n`;
+  msg += `------------------------------------\n`;
+  msg += `*Reference:* ${data.referenceId}\n`;
+  msg += `*Name:* ${data.name}\n`;
+  msg += `*Country:* ${data.country}\n`;
+  msg += `*Email:* ${data.email}\n`;
   if (data.whatsapp) {
-
-    msg += `📱 *WhatsApp:* ${data.whatsapp}\n`;
-
+    msg += `*WhatsApp:* ${data.whatsapp}\n`;
   }
-
-  msg += `━━━━━━━━━━━━━━━━━━━━\n`;
-
-  msg += `✈️ *Arrival Date:* ${data.arrivalDate}\n`;
-
-  msg += `🛫 *Departure Date:* ${data.departureDate}\n`;
-
+  msg += `------------------------------------\n`;
+  msg += `*Arrival Date:* ${data.arrivalDate}\n`;
+  msg += `*Departure Date:* ${data.departureDate}\n`;
   if (data.formType === "detailed") {
-
-    msg += `👥 *Travelers:* ${data.totalPax} Pax (${data.adults || 2} Adults, ${data.children || 0} Children)\n`;
-
+    msg += `*Travelers:* ${data.totalPax} Pax (${data.adults || 2} Adults, ${data.children || 0} Children)\n`;
   } else {
-
-    msg += `👥 *Total Pax:* ${data.totalPax} Persons\n`;
-
+    msg += `*Total Pax:* ${data.totalPax} Persons\n`;
   }
-
-  msg += `🏨 *Hotel Preferences:* ${hotelsStr || "Standard"}\n`;
-
+  msg += `*Hotel Preferences:* ${hotelsStr || "Standard"}\n`;
   if (data.rooms) {
-
-    msg += `🛏️ *No. Rooms:* ${data.rooms}\n`;
-
+    msg += `*No. Rooms:* ${data.rooms}\n`;
   }
-
   if (mealsStr) {
-
-    msg += `🍽️ *Meal Plan:* ${mealsStr}\n`;
-
+    msg += `*Meal Plan:* ${mealsStr}\n`;
   }
-
   if (interestsStr) {
-
-    msg += `🎯 *Interests:* ${interestsStr}\n`;
-
+    msg += `*Interests:* ${interestsStr}\n`;
   }
-
   if (data.budget) {
-
-    msg += `💰 *Targeted Budget (USD/person):* ${data.budget}\n`;
-
+    msg += `*Targeted Budget (USD/person):* ${data.budget}\n`;
   }
-
   if (data.prefill) {
-
-    msg += `🔖 *Enquiring About:* ${data.prefill}\n`;
-
+    msg += `*Enquiring About:* ${data.prefill}\n`;
   }
-
   if (data.otherRequirements) {
-
-    msg += `━━━━━━━━━━━━━━━━━━━━\n📝 *Other Requirements:*\n${data.otherRequirements}\n`;
-
+    msg += `------------------------------------\n*Other Requirements:*\n${data.otherRequirements}\n`;
   }
-
-  msg += `━━━━━━━━━━━━━━━━━━━━\n`;
-
-  msg += `_Sent from Lotus Ceylon Official Website (${data.language || 'en'})_`;
-
-
+  msg += `------------------------------------\n`;
+  msg += `Sent from Lotus Ceylon Official Website (${data.language || 'en'})`;
 
   return msg;
-
 }
 

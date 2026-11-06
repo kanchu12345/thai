@@ -19,6 +19,7 @@
  * - 🇯🇵 ja (Japanese / 日本語)
  * - 🇦🇪 ar (Arabic / العربية with automatic RTL layout)
  * - 🇮🇳 hi (Hindi / हिन्दी)
+ * - 🇻🇳 vi (Vietnamese / Tiếng Việt)
  *
  * Automatically translates the entire web page upon clicking any language in the header pill.
  */
@@ -37,7 +38,8 @@
     'it': { label: 'IT', name: 'Italiano', flag: '🇮🇹', dir: 'ltr' },
     'ja': { label: 'JA', name: '日本語', flag: '🇯🇵', dir: 'ltr' },
     'ar': { label: 'AR', name: 'العربية', flag: '🇦🇪', dir: 'rtl' },
-    'hi': { label: 'HI', name: 'हिन्दी', flag: '🇮🇳', dir: 'ltr' }
+    'hi': { label: 'HI', name: 'हिन्दी', flag: '🇮🇳', dir: 'ltr' },
+    'vi': { label: 'VI', name: 'Tiếng Việt', flag: '🇻🇳', dir: 'ltr' }
   };
 
   function getCookie(name) {
@@ -187,7 +189,7 @@
       try {
         new window.google.translate.TranslateElement({
           pageLanguage: 'en',
-          includedLanguages: 'en,zh-TW,zh-CN,fr,de,ru,es,it,ja,ar,hi',
+          includedLanguages: 'en,zh-TW,zh-CN,fr,de,ru,es,it,ja,ar,hi,vi',
           autoDisplay: false
         }, 'google_translate_element');
       } catch (err) {

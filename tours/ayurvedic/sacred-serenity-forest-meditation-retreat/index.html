@@ -137,6 +137,7 @@
 <button data-lang="ja" type="button">🇯🇵 日本語</button>
 <button data-lang="ar" type="button">🇦🇪 العربية</button>
 <button data-lang="hi" type="button">🇮🇳 हिन्दी</button>
+<button data-lang="vi" type="button">🇻🇳 Tiếng Việt</button>
 </div>
 </div>
 <a class="gold-inquire-btn" href="../../../inquiry-detailed.html" title="Plan Your Bespoke Travel">
@@ -211,6 +212,7 @@
 <button class="mobile-lang-btn" data-lang="ja" type="button">🇯🇵 日本語</button>
 <button class="mobile-lang-btn" data-lang="ar" type="button">🇦🇪 العربية</button>
 <button class="mobile-lang-btn" data-lang="hi" type="button">🇮🇳 हिन्दी</button>
+<button class="mobile-lang-btn" data-lang="vi" type="button">🇻🇳 Tiếng Việt</button>
 
 </div>
 <!-- Mobile Action Buttons -->
@@ -879,8 +881,24 @@
       document.querySelectorAll('.walkers-acc-trigger').forEach(function(btn) {
         btn.addEventListener('click', function() {
           var item = this.closest('.walkers-acc-item');
-          if (item) {
-            item.classList.toggle('is-open');
+          if (!item) return;
+
+          var wrap = item.closest('.walkers-accordion-wrap') || document;
+          var wasOpen = item.classList.contains('is-open');
+
+          // Auto-close all other open days in this itinerary
+          wrap.querySelectorAll('.walkers-acc-item').forEach(function(otherItem) {
+            otherItem.classList.remove('is-open');
+            var otherBtn = otherItem.querySelector('.walkers-acc-trigger');
+            if (otherBtn) {
+              otherBtn.setAttribute('aria-expanded', 'false');
+            }
+          });
+
+          // Toggle current day: open if previously closed
+          if (!wasOpen) {
+            item.classList.add('is-open');
+            this.setAttribute('aria-expanded', 'true');
           }
         });
       });

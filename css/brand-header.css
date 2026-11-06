@@ -449,6 +449,49 @@
   box-shadow: 0 0 8px #22C55E !important;
 }
 
+.floating-card-logo {
+  position: absolute !important;
+  top: 0.85rem !important;
+  right: 0.85rem !important;
+  width: 44px !important;
+  height: 44px !important;
+  background: rgba(255, 255, 255, 0.94) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  border-radius: 50% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 6px !important;
+  box-shadow: 0 6px 18px rgba(0, 43, 73, 0.2) !important;
+  border: 1.5px solid rgba(201, 150, 43, 0.45) !important;
+  z-index: 3 !important;
+  transition: transform 0.35s ease, box-shadow 0.35s ease !important;
+}
+
+.about-img-floating:hover .floating-card-logo {
+  transform: scale(1.1) rotate(5deg) !important;
+  box-shadow: 0 8px 22px rgba(201, 150, 43, 0.35) !important;
+  border-color: #C9962B !important;
+}
+
+.floating-logo-img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
+  display: block !important;
+}
+
+.floating-badge-logo {
+  width: 15px !important;
+  height: 15px !important;
+  object-fit: contain !important;
+  display: inline-block !important;
+  flex-shrink: 0 !important;
+  margin-right: 2px !important;
+}
+
+
 /* Luxury Trust Seal Pill */
 .about-experience-seal {
   position: absolute !important;
@@ -2751,4 +2794,277 @@ body {
   display: none !important;
   visibility: hidden !important;
   pointer-events: none !important;
+}
+
+
+/* ==============================================================================
+ * OUR SUCCESS STORIES LANDSCAPE CARD COMPONENT
+ * Positioned right below the About Us & Plan Your Journey buttons
+ * Matches user's Sacred Sites card style in horizontal landscape format
+ * ============================================================================== */
+.success-stories-card-wrapper {
+  margin-top: 1.85rem !important;
+  width: 100% !important;
+  max-width: 680px !important;
+}
+
+.success-stories-landscape-card {
+  display: flex !important;
+  flex-direction: row !important;
+  background: #FFFDF9 !important;
+  border: 1.5px solid rgba(212, 175, 55, 0.32) !important;
+  border-radius: 18px !important;
+  overflow: hidden !important;
+  box-shadow: 0 10px 32px rgba(0, 43, 73, 0.08), 0 2px 10px rgba(212, 175, 55, 0.12) !important;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease !important;
+  position: relative !important;
+}
+
+.success-stories-landscape-card:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 14px 40px rgba(0, 43, 73, 0.12), 0 4px 14px rgba(212, 175, 55, 0.2) !important;
+  border-color: rgba(212, 175, 55, 0.55) !important;
+}
+
+/* Left Image Box (Landscape / 40-42%) */
+.story-media-box {
+  flex: 0 0 40% !important;
+  position: relative !important;
+  min-height: 195px !important;
+  background: #111827 !important;
+  overflow: hidden !important;
+}
+
+.story-media-box .story-image {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center !important;
+  display: block !important;
+  transition: opacity 0.3s ease, transform 0.4s ease !important;
+}
+
+.story-media-box .story-image-overlay {
+  position: absolute !important;
+  inset: 0 !important;
+  background: linear-gradient(180deg, rgba(0,0,0,0.3) 0%, transparent 40%, rgba(0,0,0,0.45) 100%) !important;
+  pointer-events: none !important;
+}
+
+/* Sacred Sites / Category Tag (Dark Burgundy Pill from Image 2) */
+.story-badge-pill {
+  position: absolute !important;
+  top: 14px !important;
+  left: 14px !important;
+  background: #46141F !important;
+  color: #FFFFFF !important;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif !important;
+  font-size: 0.70rem !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.12em !important;
+  text-transform: uppercase !important;
+  padding: 5px 13px !important;
+  border-radius: 9999px !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4) !important;
+  z-index: 3 !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  pointer-events: none !important;
+}
+
+/* Right Content Box */
+.story-body-box {
+  flex: 1 !important;
+  padding: 1.25rem 1.4rem !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  min-width: 0 !important;
+}
+
+.story-header-row {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  margin-bottom: 0.35rem !important;
+}
+
+.story-meta-tag {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.45rem !important;
+}
+
+.story-meta-dot {
+  width: 7px !important;
+  height: 7px !important;
+  border-radius: 50% !important;
+  background: #D4A359 !important;
+  box-shadow: 0 0 8px rgba(212, 163, 89, 0.8) !important;
+}
+
+.story-meta-title {
+  font-family: 'DM Sans', sans-serif !important;
+  font-size: 0.72rem !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.10em !important;
+  text-transform: uppercase !important;
+  color: #B87314 !important;
+}
+
+.story-counter {
+  font-family: 'DM Sans', sans-serif !important;
+  font-size: 0.75rem !important;
+  font-weight: 700 !important;
+  color: #8C827A !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 2px !important;
+}
+
+.story-current-num {
+  color: #46141F !important;
+  font-weight: 800 !important;
+}
+
+.story-title {
+  font-family: 'DM Serif Display', Georgia, serif !important;
+  font-size: 1.30rem !important;
+  font-weight: 700 !important;
+  color: #381119 !important;
+  line-height: 1.25 !important;
+  margin: 0.2rem 0 0.45rem 0 !important;
+  transition: opacity 0.25s ease, transform 0.25s ease !important;
+}
+
+.story-description {
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif !important;
+  font-size: 0.86rem !important;
+  color: #55504A !important;
+  line-height: 1.52 !important;
+  margin: 0 0 0.85rem 0 !important;
+  display: -webkit-box !important;
+  -webkit-line-clamp: 3 !important;
+  -webkit-box-orient: vertical !important;
+  overflow: hidden !important;
+  transition: opacity 0.25s ease, transform 0.25s ease !important;
+}
+
+/* Footer / Progress Bar & Navigation */
+.story-footer-row {
+  margin-top: auto !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0.6rem !important;
+}
+
+.story-progress-track {
+  width: 100% !important;
+  height: 3px !important;
+  background: rgba(212, 175, 55, 0.22) !important;
+  border-radius: 3px !important;
+  overflow: hidden !important;
+}
+
+.story-progress-bar {
+  height: 100% !important;
+  background: linear-gradient(90deg, #D4A359 0%, #B87314 100%) !important;
+  width: 0% !important;
+  border-radius: 3px !important;
+  transition: width 0.1s linear !important;
+}
+
+.story-controls-bar {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+}
+
+.story-auto-hint {
+  font-size: 0.68rem !important;
+  color: #9E968E !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.04em !important;
+  text-transform: uppercase !important;
+}
+
+.story-nav-group {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.45rem !important;
+}
+
+.story-dots {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.35rem !important;
+}
+
+.story-dot {
+  width: 7px !important;
+  height: 7px !important;
+  border-radius: 50% !important;
+  background: rgba(0, 43, 73, 0.2) !important;
+  border: none !important;
+  padding: 0 !important;
+  cursor: pointer !important;
+  transition: all 0.25s ease !important;
+}
+
+.story-dot.is-active {
+  width: 18px !important;
+  border-radius: 10px !important;
+  background: #B87314 !important;
+}
+
+.story-nav-btn {
+  width: 26px !important;
+  height: 26px !important;
+  border-radius: 50% !important;
+  background: #FFFFFF !important;
+  border: 1px solid rgba(0, 43, 73, 0.16) !important;
+  color: #002B49 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  padding: 0 !important;
+  transition: all 0.2s ease !important;
+}
+
+.story-nav-btn:hover {
+  background: #B87314 !important;
+  color: #FFFFFF !important;
+  border-color: #B87314 !important;
+  transform: scale(1.08) !important;
+}
+
+/* Animating state during swap */
+.success-stories-landscape-card.is-animating .story-image {
+  opacity: 0.3 !important;
+  transform: scale(0.97) !important;
+}
+
+.success-stories-landscape-card.is-animating .story-title,
+.success-stories-landscape-card.is-animating .story-description {
+  opacity: 0 !important;
+  transform: translateY(3px) !important;
+}
+
+/* Responsive Adaptation */
+@media (max-width: 640px) {
+  .success-stories-landscape-card {
+    flex-direction: column !important;
+  }
+  .story-media-box {
+    flex: none !important;
+    width: 100% !important;
+    height: 180px !important;
+    min-height: 180px !important;
+  }
+  .story-body-box {
+    padding: 1.1rem !important;
+  }
+  .story-title {
+    font-size: 1.20rem !important;
+  }
 }

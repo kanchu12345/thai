@@ -26,8 +26,19 @@
     }
     const clean = relPath.replace(/^(\.\/)+/, '');
     const path = window.location.pathname.replace(/\\/g, '/');
+    if (path.includes('/admin/')) {
+      return '../' + clean;
+    }
     if (path.includes('/tours/')) {
       const after = path.split('/tours/')[1].split('/').filter(p => p && !p.endsWith('.html'));
+      return '../'.repeat(after.length + 1) + clean;
+    }
+    if (path.includes('/destinations/')) {
+      const after = path.split('/destinations/')[1].split('/').filter(p => p && !p.endsWith('.html'));
+      return '../'.repeat(after.length + 1) + clean;
+    }
+    if (path.includes('/blog/')) {
+      const after = path.split('/blog/')[1].split('/').filter(p => p && !p.endsWith('.html'));
       return '../'.repeat(after.length + 1) + clean;
     }
     return './' + clean;

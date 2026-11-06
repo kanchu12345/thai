@@ -1,5 +1,44 @@
 [
   {
+    "id": "ella-hands-on-tea-making-experience",
+    "slug": "ella-hands-on-tea-making-experience",
+    "title": {
+      "en": "Ella: Hands-On Tea Making Experience with Tasting",
+      "fr": "Ella : Expérience Pratique de Fabrication et Dégustation de Thé",
+      "de": "Ella: Praxiserlebnis Teeherstellung mit Verkostung",
+      "zh-CN": "埃拉：亲手制茶与品茗体验",
+      "zh-TW": "埃拉：親手製茶與品茗體驗",
+      "ru": "Элла: Практический мастер-класс по производству и дегустации чая",
+      "es": "Ella: Experiencia Práctica de Elaboración y Cata de Té",
+      "it": "Ella: Esperienza Pratica di Produzione e Degustazione del Tè",
+      "ja": "エッラ：本場セイロンティーの手摘み製茶＆テイスティング体験",
+      "ar": "إيلا: تجربة عملية لصنع وتذوق الشاي السيلاني",
+      "hi": "एला: चाय बनाने का व्यावहारिक अनुभव और चाय चखना"
+    },
+    "category": "Hill Country & Tea Culture",
+    "cover": "assets/images/blog/ella-tea-making-experience.webp",
+    "author": "Lotus Ceylon Tea Master",
+    "publishDate": "2026-11-01",
+    "date": "November 2026",
+    "readTime": "6 min read",
+    "rating": "★ 4.9 (100 reviews)",
+    "price": "From $10 / person",
+    "excerpt": {
+      "en": "Discover the heart of Sri Lanka's tea culture with an authentic hands-on tea making experience in Ella. Learn the art of tea making, from plucking leaves to brewing the perfect cup.",
+      "fr": "Découvrez le cœur de la culture du thé au Sri Lanka lors d'une expérience pratique à Ella.",
+      "de": "Entdecken Sie das Herz der Teekultur Sri Lankas bei einem authentischen Praxiserlebnis in Ella.",
+      "zh-CN": "在埃拉亲身体验斯里兰卡茶文化精髓，从采摘鲜叶、揉捻烘焙到品味一杯纯正锡兰红茶。",
+      "zh-TW": "在埃拉親身體驗斯里蘭卡茶文化精髓，從採摘鮮葉、揉撚烘焙到品味一杯純正錫蘭紅茶。",
+      "ru": "Погрузитесь в чайные традиции Шри-Ланки в Элле: от сбора чайных листьев до заваривания идеальной чашки чая.",
+      "es": "Descubra el corazón de la cultura del té en Sri Lanka con una experiencia práctica en Ella.",
+      "it": "Scoprite l'anima del tè di Ceylon con un'esperienza pratica a Ella.",
+      "ja": "緑豊かなエッラの茶畑で、茶摘みから手もみ焙煎、最高の淹れ方までを体験する本格的な紅茶作り。",
+      "ar": "اكتشف جوهر ثقافة الشاي السيلاني في إيلا من خلال تجربة عملية فريدة لصنع وتذوق أرقى أنواع الشاي.",
+      "hi": "एला के चाय बागानों में चाय की पत्तियां चुनने से लेकर उत्तम कप बनाने तक की कला का अनुभव करें।"
+    },
+    "contentHtml": "<p>High in the misty emerald amphitheatre of Ella, tea is not merely an export; it is a sacred daily rhythm and a living heritage spanning over a century and a half.</p>"
+  },
+  {
     "id": "sacred-footsteps-unlocking-sri-lankas-ancient-buddhist-kingdoms",
     "slug": "sacred-footsteps-unlocking-sri-lankas-ancient-buddhist-kingdoms",
     "title": {
@@ -33,7 +72,8 @@
       "ar": "من ستوبا أنورادابورا الضخمة إلى قلعة سيجيريا وحفلات المساء في معبد السن في كاندي، استمتع بأكثر من 2300 عام من التراث البوذي الحي.",
       "hi": "अनुराधापुर के विशाल स्तूपों से लेकर सिगिरिया के आकाश किले और कैंडी के दंत मंदिर तक, 2,300 वर्षों की जीवित बौद्ध परंपरा का अनुभव करें।"
     },
-    "contentHtml": "\n      <p>Sri Lanka is more than an emerald teardrop in the Indian Ocean; it is the spiritual custodian of over 2,300 years of unbroken Theravada Buddhist tradition. For discerning cultural travelers and pilgrims, journeying through the Cultural Triangle is an encounter with enduring serenity.</p>\n      <h2>The Sacred Cities of the Northern Plains</h2>\n      <p>In Anuradhapura, the ancient capital founded in the 4th century BCE, colossal white dagobas like Ruwanwelisaya and Jetavanaramaya rise like spiritual mountains against the azure horizon. Here stands the Jaya Sri Maha Bodhi, the oldest historically documented tree planted by human hands (288 BCE), grown from a sapling of the original Bodhi Tree in Bodh Gaya under which the Buddha attained supreme enlightenment.</p>\n      <div style=\"background: #FBF6EC; border-left: 4px solid #D4AF37; padding: 20px; border-radius: 8px; margin: 30px 0;\">\n        <p style=\"font-style: italic; font-weight: 600; color: #002B49; margin: 0;\">\n          &ldquo;Pilgrimage in Ceylon is not passive sightseeing; it is an intimate mindfulness journey, where the scent of jasmine blossoms and the rhythm of traditional temple drums invite deep inner reflection.&rdquo;\n        </p>\n      </div>\n      <h2>Polonnaruwa and the Living Rock of Gal Vihara</h2>\n      <p>In medieval Polonnaruwa, master sculptors transformed living granite into sublime expressions of peace. The Gal Vihara rock temple presents four monumental Buddha statues, including the renowned 14-meter reclining Buddha, capturing the sublime moment of Parinirvana with delicate drapery and effortless grace.</p>\n      <h2>The Temple of the Sacred Tooth Relic in Kandy</h2>\n      <p>Nestled in the mist-veiled central highlands beside Kandy Lake, Sri Dalada Maligawa preserves the venerated canine tooth of Gautama Buddha. Joining the evening <em>Thevava</em> (service) surrounded by fluttering Buddhist flags, sound of conch shells, and reverent devotees offering fragrant lotus blossoms is an unforgettable sensory memory.</p>\n    "
+    "contentHtml": "\n      <p>Sri Lanka is more than an emerald teardrop in the Indian Ocean; it is the spiritual custodian of over 2,300 years of unbroken Theravada Buddhist tradition. For discerning cultural travelers and pilgrims, journeying through the Cultural Triangle is an encounter with enduring serenity.</p>\n      <h2>The Sacred Cities of the Northern Plains</h2>\n      <p>In Anuradhapura, the ancient capital founded in the 4th century BCE, colossal white dagobas like Ruwanwelisaya and Jetavanaramaya rise like spiritual mountains against the azure horizon. Here stands the Jaya Sri Maha Bodhi, the oldest historically documented tree planted by human hands (288 BCE), grown from a sapling of the original Bodhi Tree in Bodh Gaya under which the Buddha attained supreme enlightenment.</p>\n      <div style=\"background: #FBF6EC; border-left: 4px solid #D4AF37; padding: 20px; border-radius: 8px; margin: 30px 0;\">\n        <p style=\"font-style: italic; font-weight: 600; color: #002B49; margin: 0;\">\n          &ldquo;Pilgrimage in Ceylon is not passive sightseeing; it is an intimate mindfulness journey, where the scent of jasmine blossoms and the rhythm of traditional temple drums invite deep inner reflection.&rdquo;\n        </p>\n      </div>\n      <h2>Polonnaruwa and the Living Rock of Gal Vihara</h2>\n      <p>In medieval Polonnaruwa, master sculptors transformed living granite into sublime expressions of peace. The Gal Vihara rock temple presents four monumental Buddha statues, including the renowned 14-meter reclining Buddha, capturing the sublime moment of Parinirvana with delicate drapery and effortless grace.</p>\n      <h2>The Temple of the Sacred Tooth Relic in Kandy</h2>\n      <p>Nestled in the mist-veiled central highlands beside Kandy Lake, Sri Dalada Maligawa preserves the venerated canine tooth of Gautama Buddha. Joining the evening <em>Thevava</em> (service) surrounded by fluttering Buddhist flags, sound of conch shells, and reverent devotees offering fragrant lotus blossoms is an unforgettable sensory memory.</p>\n    ",
+    "publishDate": "2026-10-24"
   },
   {
     "id": "the-great-gathering-watching-hundreds-of-wild-elephants-at-minneriya",
@@ -69,7 +109,8 @@
       "ar": "مصنف كواحد من أعظم مشاهد الحياة البرية في العالم، حيث يجتمع ما يصل إلى 300 فيل آسيوي على ضفاف بحيرة مينيريا.",
       "hi": "दुनिया के सबसे भव्य वन्यजीव चमत्कारों में से एक, जहाँ मिनेरिया झील के तट पर 300 से अधिक जंगली एशियाई हाथी एकत्र होते हैं।"
     },
-    "contentHtml": "\n      <p>Every year during the dry season from July through October, nature orchestrates one of the most magnificent wildlife gatherings on planet Earth in Sri Lanka's North Central Province. Known globally as &ldquo;The Gathering,&rdquo; this awe-inspiring phenomenon brings together up to 300 wild Asian elephants (<em>Elephas maximus maximus</em>) along the green lakebed of Minneriya National Park.</p>\n      <h2>The Ancient Reservoir That Sustains Generations</h2>\n      <p>Built by King Mahasen in the 3rd century CE, the ancient Minneriya tank covers over 4,600 acres. As the surrounding jungle water holes evaporate under the tropical sun, the reservoir's receding waters reveal rich, tender sprout grasses that provide an irresistible banquet for elephant herds arriving from across the Matale, Polonnaruwa, and Trincomalee forest corridors.</p>\n      <h2>Ethical Safaris with Lotus Ceylon Chauffeurs</h2>\n      <p>Lotus Ceylon adheres strictly to ethical wildlife protocols. Our custom safari jeeps maintain respectful distances, never box herds in, and turn off engines during grazing periods so travelers can observe mother cows nursing newborn calves, juveniles play-sparring, and majestic matriarchs leading their families in unhurried tranquility.</p>\n    "
+    "contentHtml": "\n      <p>Every year during the dry season from July through October, nature orchestrates one of the most magnificent wildlife gatherings on planet Earth in Sri Lanka's North Central Province. Known globally as &ldquo;The Gathering,&rdquo; this awe-inspiring phenomenon brings together up to 300 wild Asian elephants (<em>Elephas maximus maximus</em>) along the green lakebed of Minneriya National Park.</p>\n      <h2>The Ancient Reservoir That Sustains Generations</h2>\n      <p>Built by King Mahasen in the 3rd century CE, the ancient Minneriya tank covers over 4,600 acres. As the surrounding jungle water holes evaporate under the tropical sun, the reservoir's receding waters reveal rich, tender sprout grasses that provide an irresistible banquet for elephant herds arriving from across the Matale, Polonnaruwa, and Trincomalee forest corridors.</p>\n      <h2>Ethical Safaris with Lotus Ceylon Chauffeurs</h2>\n      <p>Lotus Ceylon adheres strictly to ethical wildlife protocols. Our custom safari jeeps maintain respectful distances, never box herds in, and turn off engines during grazing periods so travelers can observe mother cows nursing newborn calves, juveniles play-sparring, and majestic matriarchs leading their families in unhurried tranquility.</p>\n    ",
+    "publishDate": "2026-10-18"
   },
   {
     "id": "growing-a-greener-future-volunteer-reforestation-sinharaja",
@@ -105,7 +146,8 @@
       "ar": "اكتشف كيف تدعم لوتس سيلان حماية الغابات المطيرة في محمية سينهاراجا التابعة لليونسكو وحماية الطيور المستوطنة النادرة.",
       "hi": "जानिए कैसे लोटस सीलोन यूनेस्को सिंहराजा वर्षावन के संरक्षण और स्थानिक पक्षी प्रजातियों की सुरक्षा का समर्थन करता है।"
     },
-    "contentHtml": "\n      <p>As Sri Lanka's last viable area of primary tropical rainforest, the Sinharaja Forest Reserve is a UNESCO World Heritage biodiversity hotspot of global significance. More than 60% of the trees are endemic, and many are considered critically endangered. In the canopy, over 50% of Sri Lanka's endemic wildlife species make their home.</p>\n      <h2>The Buffer Zone Protection Initiative</h2>\n      <p>Through our responsible travel charter, Lotus Ceylon contributes directly to native sapling nurseries along the southern buffer border. Guests participating in our <em>Untamed Biosphere</em> expeditions have the privileged opportunity to plant indigenous mahogany, ironwood (Na), and dipterocarp seedlings alongside community forestry wardens.</p>\n      <h2>Silent Walks Through Living Evolution</h2>\n      <p>Trekking under Sinharaja's dense emerald canopy is a transformative sensory experience. Giant tree ferns, rare carnivorous pitcher plants, and colorful mixed-species bird feeding flocks create a symphony of natural wonder that has remained undisturbed for millennia.</p>\n    "
+    "contentHtml": "\n      <p>As Sri Lanka's last viable area of primary tropical rainforest, the Sinharaja Forest Reserve is a UNESCO World Heritage biodiversity hotspot of global significance. More than 60% of the trees are endemic, and many are considered critically endangered. In the canopy, over 50% of Sri Lanka's endemic wildlife species make their home.</p>\n      <h2>The Buffer Zone Protection Initiative</h2>\n      <p>Through our responsible travel charter, Lotus Ceylon contributes directly to native sapling nurseries along the southern buffer border. Guests participating in our <em>Untamed Biosphere</em> expeditions have the privileged opportunity to plant indigenous mahogany, ironwood (Na), and dipterocarp seedlings alongside community forestry wardens.</p>\n      <h2>Silent Walks Through Living Evolution</h2>\n      <p>Trekking under Sinharaja's dense emerald canopy is a transformative sensory experience. Giant tree ferns, rare carnivorous pitcher plants, and colorful mixed-species bird feeding flocks create a symphony of natural wonder that has remained undisturbed for millennia.</p>\n    ",
+    "publishDate": "2026-09-28"
   },
   {
     "id": "living-healing-traditional-ceylon-ayurveda",
@@ -141,6 +183,7 @@
       "ar": "تعرف على كيفية دمج الطب الأصلي في سريلانكا مع الأيورفيدا الكلاسيكية لتحقيق توازن الطاقة وتجديد النشاط.",
       "hi": "जानिए कैसे श्रीलंका की स्वदेशी चिकित्सा और पारंपरिक आयुर्वेद वात, पित्त और कफ दोषों को संतुलित कर पूर्ण कायाकल्प प्रदान करते हैं।"
     },
-    "contentHtml": "\n      <p>For more than 3,000 years, the island of Sri Lanka has nurtured one of the world's most sophisticated indigenous healing traditions: <em>Deshiya Chikitsa</em>, blended seamlessly with classical Ayurveda. At Lotus Ceylon, our signature <strong>Lotus Ayu</strong> retreats offer authentic holistic rejuvenation that goes far beyond surface pampering.</p>\n      <h2>Pulse Diagnosis (Nadi Pariksha) with Resident Vaidyas</h2>\n      <p>Every healing journey begins with a private diagnostic consultation by a senior Ayurvedic physician (Vaidya). By reading the radial pulse, evaluating the tongue, and observing natural constitution (Prakriti), the Vaidya identifies deep imbalances across the three elemental doshas: Vata (air/space), Pitta (fire/water), and Kapha (earth/water).</p>\n      <h2>Tailored Herbal Elixirs and Sacred Treatments</h2>\n      <p>Treatments are prescribed individually using freshly prepared organic decoctions: <em>Abhyanga</em> full-body warm herbal oil massages, <em>Shirodhara</em> rhythmic oil pouring over the forehead to calm mental restlessness, <em>Swedana</em> herbal steam baths enriched with indigenous jungle leaves, and sattvic dosha-balanced dining.</p>\n      <h2>Sanctuary for the Soul</h2>\n      <p>Set within private coastal coconut groves in Bentota and secluded river sanctuaries near Sigiriya, our partner Ayurvedic boutique hospitals provide the tranquil sanctuary needed to shed modern fatigue and rediscover vitality.</p>\n    "
+    "contentHtml": "\n      <p>For more than 3,000 years, the island of Sri Lanka has nurtured one of the world's most sophisticated indigenous healing traditions: <em>Deshiya Chikitsa</em>, blended seamlessly with classical Ayurveda. At Lotus Ceylon, our signature <strong>Lotus Ayu</strong> retreats offer authentic holistic rejuvenation that goes far beyond surface pampering.</p>\n      <h2>Pulse Diagnosis (Nadi Pariksha) with Resident Vaidyas</h2>\n      <p>Every healing journey begins with a private diagnostic consultation by a senior Ayurvedic physician (Vaidya). By reading the radial pulse, evaluating the tongue, and observing natural constitution (Prakriti), the Vaidya identifies deep imbalances across the three elemental doshas: Vata (air/space), Pitta (fire/water), and Kapha (earth/water).</p>\n      <h2>Tailored Herbal Elixirs and Sacred Treatments</h2>\n      <p>Treatments are prescribed individually using freshly prepared organic decoctions: <em>Abhyanga</em> full-body warm herbal oil massages, <em>Shirodhara</em> rhythmic oil pouring over the forehead to calm mental restlessness, <em>Swedana</em> herbal steam baths enriched with indigenous jungle leaves, and sattvic dosha-balanced dining.</p>\n      <h2>Sanctuary for the Soul</h2>\n      <p>Set within private coastal coconut groves in Bentota and secluded river sanctuaries near Sigiriya, our partner Ayurvedic boutique hospitals provide the tranquil sanctuary needed to shed modern fatigue and rediscover vitality.</p>\n    ",
+    "publishDate": "2026-09-15"
   }
 ]

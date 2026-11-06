@@ -10,6 +10,8 @@
 <title>CMS Admin Panel — LOTUS Ceylon International Tours</title>
 <link href="../assets/images/logo.png" rel="icon" type="image/png"/>
 <link href="css/admin.css?v=20261029_fix5" rel="stylesheet"/>
+<!-- Chart.js for Executive Analytics -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js"></script>
 <!-- DOMPurify for XSS Protection -->
 <script src="https://cdn.jsdelivr.net/npm/dompurify@3.1.6/dist/purify.min.js"></script>
 </head>
@@ -103,8 +105,8 @@
 <a class="nav-link nav-sub-link" data-section="page-editor" data-page-doc="siteContent/blog-sinharaja-reforestation" onclick="PageEditor.openPage('siteContent/blog-sinharaja-reforestation', 'blog/growing-a-greener-future-volunteer-reforestation-sinharaja/index.html')" style="padding-left: 2rem; font-size: 0.85rem;"><span>🌿 Sinharaja Reforestation Article</span></a>
 <a class="nav-link nav-sub-link" data-section="page-editor" data-page-doc="siteContent/blog-ayurveda-healing" onclick="PageEditor.openPage('siteContent/blog-ayurveda-healing', 'blog/living-healing-traditional-ceylon-ayurveda/index.html')" style="padding-left: 2rem; font-size: 0.85rem;"><span>🍵 Living Ayurveda Article</span></a>
 
-<a class="nav-link nav-sub-link" data-section="page-editor" data-page-doc="siteContent/inquiry-detailed" onclick="PageEditor.openPage('siteContent/inquiry-detailed', 'inquiry-detailed.html')"><span>📋 Bespoke Inquiry</span></a>
-<a class="nav-link nav-sub-link" data-section="page-editor" data-page-doc="siteContent/inquiry-quick" onclick="PageEditor.openPage('siteContent/inquiry-quick', 'inquiry-quick.html')"><span>⚡ Quick Consultation</span></a>
+<a class="nav-link nav-sub-link" data-section="page-editor" data-page-doc="siteContent/inquiry-quick" onclick="PageEditor.openPage('siteContent/inquiry-quick', 'inquiry-quick.html')"><span>Quick Inquiry (Short)</span></a>
+<a class="nav-link nav-sub-link" data-section="page-editor" data-page-doc="siteContent/inquiry-detailed" onclick="PageEditor.openPage('siteContent/inquiry-detailed', 'inquiry-detailed.html')"><span>Bespoke Inquiry (Detailed)</span></a>
 <a class="nav-link nav-sub-link" data-section="page-editor" data-page-doc="siteContent/toursIndex" onclick="PageEditor.openPage('siteContent/toursIndex', 'tours/index.html')"><span>🗺️ Tours Index (Categories)</span></a>
 <a class="nav-link nav-sub-link" data-section="packages" onclick="AdminApp.switchSection('packages')" style="color: #D4AF37; font-weight: 600;"><span>📦 Tour Packages List (29)</span></a>
 <a class="nav-link nav-sub-link" data-section="page-editor" data-page-doc="siteContent/privacy-policy" onclick="PageEditor.openPage('siteContent/privacy-policy', 'privacy-policy.html')"><span>🔒 Privacy Policy</span></a>
@@ -295,6 +297,12 @@
 <svg viewbox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"></path></svg>
 <span>Our People / Team</span>
 </a>
+
+<a class="nav-link" data-section="success-stories" onclick="AdminApp.switchSection('success-stories')">
+<svg viewBox="0 0 24 24"><path d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-4.86 8.86l-3 3.87L9 13.14 6 17h12l-3.86-5.14z"/></svg>
+<span>Our Success Stories</span>
+<span class="nav-badge" id="storiesCountBadge" style="background: rgba(212,175,55,0.25); color: #D4AF37;">5/5</span>
+</a>
 <a class="nav-link" data-section="blog-posts" onclick="AdminApp.switchSection('blog-posts')">
 <svg viewbox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"></path></svg>
 <span>Blog Posts</span>
@@ -341,7 +349,20 @@
 </button>
 <div class="page-breadcrumb" id="pageTitle">Dashboard</div>
 </div>
+<div class="topbar-center">
+  <button class="topbar-search-trigger" onclick="AdminApp.openCommandPalette()" type="button" title="Press Ctrl + K to search anything">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+    <span>Quick Search / Command Center...</span>
+    <kbd class="shortcut-badge">Ctrl K</kbd>
+  </button>
+</div>
 <div class="topbar-right">
+<div class="currency-indicator" title="Multi-Currency Global Operations">
+  <span class="currency-tag active">USD $</span>
+  <span class="currency-tag">EUR €</span>
+  <span class="currency-tag">GBP £</span>
+  <span class="currency-tag">AUD A$</span>
+</div>
 <div class="session-indicator" title="Active Admin Session">
 <span class="session-dot"></span>
 <span id="sessionTimer">Live</span>
@@ -371,83 +392,253 @@
 <!-- SECTION 1: DASHBOARD                       -->
 <!-- ========================================== -->
 <section class="content-section active" id="section-dashboard">
-<div class="section-header">
+<div class="section-header dashboard-header">
 <div class="section-title-wrap">
-<h2>Dashboard Overview</h2>
-<p>Welcome back to Lotus Ceylon Tour Operations and Content Management</p>
+<div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
+  <span class="live-pulse-dot"></span>
+  <span style="font-size: 0.76rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--sacred-gold);">Global Concierge Operations Hub</span>
 </div>
-<div style="display: flex; gap: 10px;">
-<button class="btn btn-gold" onclick="AdminApp.openPackageModal()">
-<span>+ Add Package</span>
+<h2>Executive Dashboard</h2>
+<p>Real-time analytics, inquiry pipeline, and CMS catalog operations for Lotus Ceylon International</p>
+</div>
+<div class="dashboard-header-actions" style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
+<button class="btn btn-outline" onclick="AdminApp.openCommandPalette()" type="button" title="Open Command Center (Ctrl+K)">
+  <span>🔍 Command Center</span>
+  <kbd class="shortcut-badge">⌘K</kbd>
 </button>
-<button class="btn btn-outline" onclick="AdminApp.switchSection('inquiries')">
-<span>View Inquiries</span>
+<button class="btn btn-outline" onclick="AdminApp.switchSection('inquiries')" type="button">
+  <span>📋 CRM Pipeline</span>
+</button>
+<button class="btn btn-gold" onclick="AdminApp.openPackageModal()" type="button">
+  <span>+ Add Tour Package</span>
 </button>
 </div>
 </div>
-<!-- Stats Grid -->
-<div class="stats-grid">
-<div class="stat-card primary">
-<div class="stat-icon">
-<svg viewbox="0 0 24 24"><path d="M21 5c-1.11-.35-2.33-.5-3.5-.5-1.95 0-4.05.4-5.5 1.5-1.45-1.1-3.55-1.5-5.5-1.5S2.45 4.9 1 6v14.65c0 .25.25.5.5.5.1 0 .15-.05.25-.05C3.1 20.45 5.05 20 6.5 20c1.95 0 4.05.4 5.5 1.5 1.35-.85 3.8-1.5 5.5-1.5 1.65 0 3.35.3 4.75 1.05.1.05.15.05.25.05.25 0 .5-.25.5-.5V6c-.6-.45-1.25-.75-2-1zm0 13.5c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5V8c1.35-.85 3.8-1.5 5.5-1.5 1.2 0 2.4.15 3.5.5v11.5z"></path></svg>
+
+<!-- Quick Action Executive Dock -->
+<div class="dashboard-dock">
+  <div class="dock-item" onclick="AdminApp.openPackageModal()">
+    <span class="dock-icon">✨</span>
+    <div class="dock-text">
+      <strong>Create Package</strong>
+      <small>Curate bespoke itinerary</small>
+    </div>
+  </div>
+  <div class="dock-item" onclick="AdminApp.switchSection('inquiries')">
+    <span class="dock-icon">📬</span>
+    <div class="dock-text">
+      <strong>Manage Inquiries</strong>
+      <small>Review traveler requests</small>
+    </div>
+  </div>
+  <div class="dock-item" onclick="AdminApp.switchSection('destinations')">
+    <span class="dock-icon">📍</span>
+    <div class="dock-text">
+      <strong>Destinations</strong>
+      <small>24 Curated regions</small>
+    </div>
+  </div>
+  <div class="dock-item" onclick="AdminApp.switchSection('media')">
+    <span class="dock-icon">🖼️</span>
+    <div class="dock-text">
+      <strong>Cloud Media</strong>
+      <small>High-res assets library</small>
+    </div>
+  </div>
+  <div class="dock-item" onclick="window.open('../index.html', '_blank')">
+    <span class="dock-icon">🌐</span>
+    <div class="dock-text">
+      <strong>Live Website</strong>
+      <small>Preview public portal</small>
+    </div>
+  </div>
 </div>
-<div class="stat-info">
-<h4>Active Packages</h4>
-<div class="stat-number" id="statPackagesCount">0</div>
+
+<!-- Luxury KPI Performance Cards Grid -->
+<div class="stats-grid executive-stats-grid">
+  <div class="stat-card stat-card-luxury primary">
+    <div class="stat-header">
+      <span class="stat-badge">Catalog Live</span>
+      <div class="stat-icon">
+        <svg viewBox="0 0 24 24"><path d="M21 5c-1.11-.35-2.33-.5-3.5-.5-1.95 0-4.05.4-5.5 1.5-1.45-1.1-3.55-1.5-5.5-1.5S2.45 4.9 1 6v14.65c0 .25.25.5.5.5.1 0 .15-.05.25-.05C3.1 20.45 5.05 20 6.5 20c1.95 0 4.05.4 5.5 1.5 1.35-.85 3.8-1.5 5.5-1.5 1.65 0 3.35.3 4.75 1.05.1.05.15.05.25.05.25 0 .5-.25.5-.5V6c-.6-.45-1.25-.75-2-1zm0 13.5c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5V8c1.35-.85 3.8-1.5 5.5-1.5 1.2 0 2.4.15 3.5.5v11.5z"/></svg>
+      </div>
+    </div>
+    <div class="stat-info">
+      <div class="stat-number" id="statPackagesCount">29</div>
+      <h4>Signature Tour Packages</h4>
+      <div class="stat-meta">Across 11 Bespoke Categories</div>
+    </div>
+  </div>
+
+  <div class="stat-card stat-card-luxury gold">
+    <div class="stat-header">
+      <span class="stat-badge urgent">Requires Action</span>
+      <div class="stat-icon">
+        <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+      </div>
+    </div>
+    <div class="stat-info">
+      <div class="stat-number" id="statNewInquiriesCount">0</div>
+      <h4>New Guest Inquiries</h4>
+      <div class="stat-meta">Pending concierge review</div>
+    </div>
+  </div>
+
+  <div class="stat-card stat-card-luxury green">
+    <div class="stat-header">
+      <span class="stat-badge positive">+18.4% MoM</span>
+      <div class="stat-icon">
+        <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6z"/></svg>
+      </div>
+    </div>
+    <div class="stat-info">
+      <div class="stat-number" id="statMonthInquiriesCount">0</div>
+      <h4>Total Inquiries</h4>
+      <div class="stat-meta">Active Traveler Pipeline</div>
+    </div>
+  </div>
+
+  <div class="stat-card stat-card-luxury dark">
+    <div class="stat-header">
+      <span class="stat-badge rating">★ 4.95 / 5.0</span>
+      <div class="stat-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+      </div>
+    </div>
+    <div class="stat-info">
+      <div class="stat-number" id="statReviewsCount">0</div>
+      <h4>Verified Guest Reviews</h4>
+      <div class="stat-meta">High Traveler Satisfaction</div>
+    </div>
+  </div>
+
+  <div class="stat-card stat-card-luxury blue">
+    <div class="stat-header">
+      <span class="stat-badge benchmark">&lt; 2h SLA</span>
+      <div class="stat-icon">
+        <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+      </div>
+    </div>
+    <div class="stat-info">
+      <div class="stat-number">98.2%</div>
+      <h4>Concierge Response Rate</h4>
+      <div class="stat-meta">Ultra-Luxury Standard</div>
+    </div>
+  </div>
 </div>
+
+<!-- Executive Analytics Charts Row -->
+<div class="analytics-charts-row">
+  <div class="chart-card-executive chart-card-wide">
+    <div class="chart-header">
+      <div>
+        <h3>Inquiry Volume & Lead Growth</h3>
+        <p>Monthly traveler booking flow & conversion dynamics</p>
+      </div>
+      <div class="chart-badge-group">
+        <span class="chart-legend-pill active">Inquiries Flow</span>
+        <span class="chart-legend-pill secondary">Confirmed Bookings</span>
+      </div>
+    </div>
+    <div class="chart-body" style="height: 250px; position: relative;">
+      <canvas id="chartInquiriesTrends"></canvas>
+    </div>
+  </div>
+
+  <div class="chart-card-executive chart-card-narrow">
+    <div class="chart-header">
+      <div>
+        <h3>Travel Style Demand</h3>
+        <p>Portfolio inquiries by tour category</p>
+      </div>
+      <span class="chart-tag">11 Themes</span>
+    </div>
+    <div class="chart-body" style="height: 250px; position: relative;">
+      <canvas id="chartCategoryShare"></canvas>
+    </div>
+  </div>
 </div>
-<div class="stat-card">
-<div class="stat-icon">
-<svg viewbox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"></path></svg>
-</div>
-<div class="stat-info">
-<h4>New Inquiries</h4>
-<div class="stat-number" id="statNewInquiriesCount">0</div>
-</div>
-</div>
-<div class="stat-card green">
-<div class="stat-icon">
-<svg viewbox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6z"></path></svg>
-</div>
-<div class="stat-info">
-<h4>Inquiries (This Month)</h4>
-<div class="stat-number" id="statMonthInquiriesCount">0</div>
-</div>
-</div>
-<div class="stat-card">
-<div class="stat-icon">
-<svg viewbox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path></svg>
-</div>
-<div class="stat-info">
-<h4>Guest Reviews</h4>
-<div class="stat-number" id="statReviewsCount">0</div>
-</div>
-</div>
-</div>
-<!-- Recent Inquiries Table -->
-<div class="table-card">
-<div class="table-toolbar">
-<h3 style="font-size: 1.05rem;">Recent Inquiries</h3>
-<button class="btn btn-outline btn-sm" onclick="AdminApp.switchSection('inquiries')">View All Inquiries →</button>
-</div>
-<div class="data-table-wrap">
-<table class="data-table">
-<thead>
-<tr>
-<th>Ref #</th>
-<th>Guest Name</th>
-<th>Email / Phone</th>
-<th>Dates / Travelers</th>
-<th>Status</th>
-<th>Received</th>
-<th>Action</th>
-</tr>
-</thead>
-<tbody id="dashboardInquiriesTbody">
-<tr><td colspan="7" style="text-align: center; color: var(--ink-muted);">Loading recent inquiries...</td></tr>
-</tbody>
-</table>
-</div>
+
+<!-- Lower Hub: Recent Inquiries + System Audit Stream -->
+<div class="dashboard-split-grid">
+  <!-- Left Column: Recent Inquiries Table -->
+  <div class="table-card dashboard-inquiries-card">
+    <div class="table-toolbar">
+      <div>
+        <h3 style="font-size: 1.05rem; margin-bottom: 2px;">Recent Incoming Inquiries</h3>
+        <small style="color: var(--ink-muted);">Latest luxury travel requests received across web forms</small>
+      </div>
+      <button class="btn btn-outline btn-sm" onclick="AdminApp.switchSection('inquiries')">Open Inquiries CRM →</button>
+    </div>
+    <div class="data-table-wrap">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Ref #</th>
+            <th>Guest Name</th>
+            <th>Origin</th>
+            <th>Dates / Pax</th>
+            <th>Status</th>
+            <th>Received</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="dashboardInquiriesTbody">
+          <tr><td colspan="7" style="text-align: center; color: var(--ink-muted); padding: 30px;">Loading live inquiries...</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Right Column: System Health & Activity Audit -->
+  <div class="dashboard-side-col">
+    <!-- System Health Card -->
+    <div class="system-health-card">
+      <div class="system-health-header">
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <span class="status-indicator-live"></span>
+          <strong style="font-size: 0.92rem;">System Health & Infrastructure</strong>
+        </div>
+        <span class="badge badge-success" style="font-size: 0.72rem;">Operational</span>
+      </div>
+      <div class="system-health-list">
+        <div class="health-row">
+          <span class="health-label">⚡ Firestore Database</span>
+          <span class="health-val text-green" id="dashHealthFirestore">Connected (Live Sync)</span>
+        </div>
+        <div class="health-row">
+          <span class="health-label">☁️ Cloudinary Media CDN</span>
+          <span class="health-val text-gold" id="dashHealthCloudinary">Ready (Auto WebP)</span>
+        </div>
+        <div class="health-row">
+          <span class="health-label">🛡️ Security & XSS Shield</span>
+          <span class="health-val text-blue">DOMPurify Enforced</span>
+        </div>
+        <div class="health-row">
+          <span class="health-label">🔒 Authorization & RBAC</span>
+          <span class="health-val text-purple">Super Admin Active</span>
+        </div>
+        <div class="health-row">
+          <span class="health-label">🌐 Web Server & SSL</span>
+          <span class="health-val text-green">TLS 1.3 High-Security</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Live Audit Trail Card -->
+    <div class="audit-trail-card">
+      <div class="audit-trail-header">
+        <div>
+          <strong style="font-size: 0.92rem;">Activity Log & Audit Trail</strong>
+          <small style="display: block; color: var(--ink-muted); font-size: 0.75rem;">Real-time administrator operations</small>
+        </div>
+        <button class="btn btn-outline btn-xs" onclick="AdminApp.renderAuditTrail()" title="Refresh Log" type="button">🔄</button>
+      </div>
+      <div class="audit-trail-timeline" id="dashboardAuditTrail">
+        <div class="audit-empty" style="color: var(--ink-muted); font-size: 0.82rem; padding: 12px 0; text-align: center;">Loading activity audit...</div>
+      </div>
+    </div>
+  </div>
 </div>
 </section>
 <!-- ========================================== -->
@@ -459,7 +650,11 @@
 <h2>Customer Inquiries</h2>
 <p>Manage incoming Quick and Detailed booking requests across Firebase Firestore collections</p>
 </div>
-<div style="display: flex; gap: 10px;">
+<div style="display: flex; gap: 10px; flex-wrap: wrap;">
+<button class="btn btn-primary" onclick="AdminApp.exportCombinedInquiriesCSV()">
+<svg fill="currentColor" height="16" viewbox="0 0 24 24" width="16"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"></path></svg>
+<span>Export All Inquiries (Short First, Then Detailed)</span>
+</button>
 <button class="btn btn-outline" onclick="AdminApp.exportInquiriesCSV()">
 <svg fill="currentColor" height="16" viewbox="0 0 24 24" width="16"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"></path></svg>
 <span id="exportCsvBtnText">Export Active Sheet (CSV)</span>
@@ -467,15 +662,30 @@
 </div>
 </div>
 <!-- Dual Sheet Navigation Tabs -->
-<div class="inquiry-tab-bar">
+<div class="inquiry-view-controls" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; flex-wrap: wrap; gap: 10px;">
+<div class="inquiry-tab-bar" style="margin-bottom: 0;">
 <button class="inquiry-tab-btn active" id="btnTabQuickInquiries" onclick="AdminApp.switchInquiryTab('quick')" type="button">
-              ⚡ Quick Inquiries (<span id="countQuickInquiries">0</span>)
-            </button>
+  Quick Inquiries (<span id="countQuickInquiries">0</span>)
+</button>
 <button class="inquiry-tab-btn" id="btnTabDetailedInquiries" onclick="AdminApp.switchInquiryTab('detailed')" type="button">
-              📋 Detailed Inquiries (<span id="countDetailedInquiries">0</span>)
-            </button>
+  Detailed Inquiries (<span id="countDetailedInquiries">0</span>)
+</button>
+<button class="inquiry-tab-btn" id="btnTabAllInquiries" onclick="AdminApp.switchInquiryTab('all')" type="button">
+  All Inquiries (<span id="countAllInquiries">0</span>)
+</button>
 </div>
-<div class="table-card">
+<div class="view-mode-toggle">
+  <button type="button" class="view-mode-btn active" id="btnViewModeTable" onclick="AdminApp.setInquiryViewMode('table')">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M3 3h18v18H3V3zm16 16V9H5v10h14zm0-12V5H5v2h14z"/></svg>
+    <span>Table View</span>
+  </button>
+  <button type="button" class="view-mode-btn" id="btnViewModePipeline" onclick="AdminApp.setInquiryViewMode('pipeline')">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M4 4h4v16H4V4zm6 0h4v10h-4V4zm6 0h4v14h-4V4z"/></svg>
+    <span>CRM Pipeline</span>
+  </button>
+</div>
+</div>
+<div class="table-card" id="inquiriesTableCard">
 <div class="table-toolbar">
 <div class="search-box">
 <svg fill="currentColor" height="16" viewbox="0 0 24 24" width="16"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path></svg>
@@ -512,6 +722,10 @@
 </tbody>
 </table>
 </div>
+</div>
+<!-- CRM PIPELINE KANBAN VIEW -->
+<div id="inquiriesPipelineView" class="inquiries-pipeline-container" style="display: none;">
+  <!-- Rendered dynamically by AdminApp.renderInquiryPipeline() -->
 </div>
 </section>
 <!-- ========================================== -->
@@ -757,13 +971,13 @@
 <!-- Master Seeder Banner (Job 5) -->
 <div class="seeder-banner">
 <h3><span>⚡</span> Master Firestore Synchronizer and Content Seeder</h3>
-<p>Seed, sync, and persist all 14 site collections to Firebase Firestore with a single click. Populates all 26 tour packages, 10 categories, 10 destinations, reviews, team, faqs, settings, and 140 self-hosted media assets across 10 supported languages.</p>
+<p>Seed, sync, and persist all 14 site collections to Firebase Firestore with a single click. Populates all 26 tour packages, 10 categories, 10 destinations, reviews, team, faqs, settings, and 140 self-hosted media assets across 12 supported languages.</p>
 <div class="seeder-stats">
 <span class="seeder-stat-pill"><strong>26</strong> Tour Packages</span>
 <span class="seeder-stat-pill"><strong>10</strong> Travel Categories</span>
 <span class="seeder-stat-pill"><strong>10</strong> Sacred Destinations</span>
 <span class="seeder-stat-pill"><strong>140</strong> Media Assets</span>
-<span class="seeder-stat-pill"><strong>10</strong> Languages</span>
+<span class="seeder-stat-pill"><strong>12</strong> Languages</span>
 <span class="seeder-stat-pill"><strong>3</strong> Inquiry Forms</span>
 </div>
 <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
@@ -965,6 +1179,50 @@
 </section>
 
 <!-- ========================================== -->
+<!-- SECTION: OUR SUCCESS STORIES (HOMEPAGE CARD) -->
+<!-- ========================================== -->
+<section class="content-section" id="section-success-stories">
+<div class="section-header">
+<div class="section-title-wrap">
+<h2>Our Success Stories (Homepage Landscape Card)</h2>
+<p>Manage up to 5 featured success stories shown right under the About Us button on the homepage. Rotates automatically every 1 minute.</p>
+</div>
+<div style="display: flex; gap: 10px; align-items: center;">
+<span id="storiesCapacityBadge" style="background: rgba(212, 175, 55, 0.15); color: #B87314; font-weight: 700; padding: 6px 14px; border-radius: 9999px; font-size: 0.85rem; border: 1px solid rgba(212, 175, 55, 0.35);">5 / 5 Stories</span>
+<button class="btn btn-primary" id="btnAddStory" onclick="AdminApp.openStoryModal()">
+<span>+ Add Story</span>
+</button>
+</div>
+</div>
+
+<div class="alert alert-info" style="margin-bottom: 20px; background: rgba(212, 175, 55, 0.08); border-left: 4px solid #D4AF37; padding: 12px 16px; border-radius: 6px; font-size: 0.88rem; color: var(--ink);">
+  <strong>Homepage Landscape Card:</strong> These stories appear in a luxury horizontal card right below the "About Us" and "Plan Your Journey" buttons. Up to 5 stories can be stored. They rotate automatically every 1 minute.
+</div>
+
+<div class="table-card">
+<div class="data-table-wrap">
+<table class="data-table">
+<thead>
+<tr>
+<th>Photo</th>
+<th>Tag / Badge</th>
+<th>Title</th>
+<th>Description</th>
+<th>Order</th>
+<th>Status</th>
+<th>Actions</th>
+</tr>
+</thead>
+<tbody id="successStoriesTableBody">
+<tr><td colspan="7" style="text-align: center; color: var(--ink-muted);">Loading success stories...</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+
+
+<!-- ========================================== -->
 <!-- SECTION 9: UNIVERSAL PAGE EDITOR           -->
 <!-- ========================================== -->
 <section class="content-section page-editor-section" id="section-page-editor">
@@ -1089,6 +1347,7 @@
           <option value="it">🇮🇹 Italiano</option>
           <option value="ru">🇷🇺 Русский</option>
           <option value="es">🇪🇸 Español</option>
+          <option value="vi">🇻🇳 Tiếng Việt</option>
         </select>
       </div>
 
@@ -1205,7 +1464,7 @@
       <h2>Blog Posts and Editorial Stories</h2>
       <p>Manage travel guides, cultural essays, and destination spotlights published on blog.html</p>
     </div>
-    <button type="button" class="btn btn-gold" onclick="PageEditor.openBlogPostModal()">+ New Blog Post</button>
+    <button type="button" class="btn btn-gold" onclick="AdminApp.openBlogModal()">+ New Blog Post</button>
   </div>
   <div class="table-card">
     <div class="table-responsive">
@@ -1443,9 +1702,26 @@
 <div class="modal-body" id="inquiryModalBody">
 <!-- Rendered dynamically -->
 </div>
-<div class="modal-footer">
-<button class="btn btn-outline" onclick="AdminApp.closeModal('inquiryModal')" type="button">Close</button>
-<button class="btn btn-gold" id="inquiryWhatsAppBtn" type="button">Reply via WhatsApp</button>
+<div class="modal-footer inquiry-modal-footer">
+  <div class="inquiry-footer-left">
+    <button class="btn btn-outline btn-sm" onclick="AdminApp.printInquirySummary()" type="button" title="Print or save as PDF">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19 8H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zm-3 11H8v-5h8v5zm3-7c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm-1-9H6v4h12V3z"/></svg>
+      <span>Print / PDF</span>
+    </button>
+    <button class="btn btn-outline btn-sm" id="inquiryEmailBtn" type="button" title="Reply via Email Client">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+      <span>Send Email</span>
+    </button>
+  </div>
+  <div class="inquiry-footer-right">
+    <button class="btn btn-outline" onclick="AdminApp.closeModal('inquiryModal')" type="button">Close</button>
+    <div class="wa-action-dropdown" style="position: relative; display: inline-flex;">
+      <button class="btn btn-gold" id="inquiryWhatsAppBtn" type="button" style="display: inline-flex; align-items: center; gap: 6px;">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c4.54 0 8.24 3.7 8.24 8.24 0 2.2-.86 4.27-2.42 5.82a8.18 8.18 0 0 1-5.82 2.41c-1.48 0-2.93-.39-4.2-1.14l-.3-.18-3.12.82.83-3.04-.2-.31a8.184 8.184 0 0 1-1.23-4.38c0-4.54 3.7-8.24 8.24-8.24z"/></svg>
+        <span>Reply via WhatsApp</span>
+      </button>
+    </div>
+  </div>
 </div>
 </div>
 </div>
@@ -1935,7 +2211,7 @@
       <button class="modal-close" onclick="AdminApp.closeModal('blogPostModal')">×</button>
     </div>
     <div class="modal-body">
-      <form id="blogPostForm" onsubmit="event.preventDefault(); PageEditor.saveActiveBlogPost();">
+      <form id="blogPostForm" onsubmit="AdminApp.saveBlogModal(event)">
         <input id="blogPostId" type="hidden"/>
         <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 16px;">
           <div class="form-group">
@@ -2017,59 +2293,102 @@
 <script src="js/admin-app.js?v=20261101_perf_v9"></script>
 <script src="js/page-editor.js?v=20261101_perf_v9"></script>
 
-<!-- BLOG POST MODAL -->
-<div class="modal-backdrop" id="blogModal" style="display: none;">
-<div class="modal" style="max-width: 680px;">
+
+
+
+<!-- COMMAND PALETTE (CTRL + K) -->
+<div class="command-palette-backdrop" id="commandPalette" style="display: none;" onclick="if(event.target===this) AdminApp.closeCommandPalette()">
+  <div class="command-palette-modal">
+    <div class="command-palette-input-wrap">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+      <input type="text" id="commandPaletteInput" placeholder="Jump to tour package, destination, page, or quick action..." autocomplete="off" oninput="AdminApp.handleCommandPaletteSearch(this.value)" onkeydown="AdminApp.handleCommandPaletteKey(event)">
+      <kbd class="command-palette-esc" onclick="AdminApp.closeCommandPalette()">ESC</kbd>
+    </div>
+    <div class="command-palette-results" id="commandPaletteResults">
+      <!-- Dynamically populated -->
+    </div>
+    <div class="command-palette-footer">
+      <span>Navigate with <kbd>↑</kbd> <kbd>↓</kbd> • Select with <kbd>↵</kbd> • Exit with <kbd>ESC</kbd></span>
+      <span style="color: var(--sacred-gold); font-weight: 600;">Lotus Ceylon Command Center</span>
+    </div>
+  </div>
+</div>
+
+
+<!-- SUCCESS STORY MODAL -->
+<div class="modal-overlay" id="storyModal">
+<div class="modal-dialog" style="max-width: 640px; width: 95vw;">
 <div class="modal-header">
-<h3 id="blogModalTitle">Edit Blog Story</h3>
-<button class="modal-close" onclick="AdminApp.closeBlogModal()">✕</button>
+<h3 id="storyModalTitle">Add Success Story</h3>
+<button class="modal-close" onclick="AdminApp.closeModal('storyModal')">×</button>
 </div>
-<form id="blogForm" onsubmit="AdminApp.saveBlogModal(event)">
-<input type="hidden" id="blogPostId">
-<div class="modal-body">
-<div class="form-row">
-<div class="form-group" style="flex: 2;">
-<label for="blogTitleInput">Story Title (EN) *</label>
-<input type="text" id="blogTitleInput" class="form-control" required placeholder="e.g. Ella: Hands-On Tea Making Experience with Tasting">
-</div>
-<div class="form-group" style="flex: 1;">
-<label for="blogCategoryInput">Category *</label>
-<input type="text" id="blogCategoryInput" class="form-control" required placeholder="e.g. Hill Country & Tea">
-</div>
-</div>
+<div class="modal-body" style="padding: 20px 24px; max-height: 82vh; overflow-y: auto;">
+<form id="storyForm" onsubmit="AdminApp.saveStory(event)">
+<input id="storyId" type="hidden"/>
 
 <div class="form-row">
-<div class="form-group">
-<label for="blogReadTimeInput">Read Time</label>
-<input type="text" id="blogReadTimeInput" class="form-control" placeholder="e.g. 6 min read">
-</div>
-<div class="form-group">
-<label for="blogRatingInput">Rating / Reviews</label>
-<input type="text" id="blogRatingInput" class="form-control" placeholder="e.g. ★ 4.9 (100 reviews)">
-</div>
-</div>
-
-<div class="form-group">
-<label for="blogCoverInput">Cover Image Path / CDN URL *</label>
-<div style="display: flex; gap: 8px;">
-<input type="text" id="blogCoverInput" class="form-control" required placeholder="assets/images/blog/ella-tea-making-experience.webp">
-<button type="button" class="btn btn-secondary" onclick="AdminApp.openMediaPickerForBlog()">Media Library</button>
-</div>
-<div id="blogCoverPreview" style="margin-top: 10px; width: 100%; height: 160px; border-radius: 8px; overflow: hidden; background: #F1F5F9; display: flex; align-items: center; justify-content: center; border: 1px solid #E2E8F0;">
-  <span style="color: #94A3B8; font-size: 0.9rem;">No image selected</span>
-</div>
+  <div class="form-group" style="flex: 2;">
+    <label for="storyTitleInput">Story Title *</label>
+    <input class="form-control" id="storyTitleInput" placeholder="e.g. Anuradhapura" required type="text"/>
+  </div>
+  <div class="form-group" style="flex: 1;">
+    <label for="storyBadgeInput">Badge / Tag *</label>
+    <input class="form-control" id="storyBadgeInput" placeholder="e.g. SACRED SITES" required type="text" oninput="AdminApp.updateStoryPhotoPreview()"/>
+  </div>
 </div>
 
 <div class="form-group">
-<label for="blogExcerptInput">Summary / Excerpt (EN) *</label>
-<textarea id="blogExcerptInput" class="form-control" rows="3" required placeholder="Brief intro to the story..."></textarea>
+  <label for="storyPhotoInput">Photo URL or Local Path *</label>
+  <div style="display: flex; gap: 8px;">
+    <input class="form-control" id="storyPhotoInput" placeholder="assets/images/home/anuradhapura-success-story.jpg" required type="text" oninput="AdminApp.updateStoryPhotoPreview()"/>
+    <button type="button" class="btn btn-outline" onclick="AdminApp.openCloudinaryForStory()" style="white-space: nowrap; font-size: 0.8rem;">
+      ☁ Cloudinary
+    </button>
+  </div>
+  <!-- Quick Ceylon Landmarks Selector -->
+  <div style="margin-top: 8px; display: flex; gap: 6px; flex-wrap: wrap; align-items: center;">
+    <span style="font-size: 0.75rem; color: var(--ink-muted);">Presets:</span>
+    <button type="button" class="btn btn-xs btn-outline" style="font-size: 0.72rem; padding: 2px 8px; cursor: pointer;" onclick="AdminApp.setStoryPhotoPreset('assets/images/home/anuradhapura-success-story.jpg', 'Anuradhapura', 'SACRED SITES')">Anuradhapura</button>
+    <button type="button" class="btn btn-xs btn-outline" style="font-size: 0.72rem; padding: 2px 8px; cursor: pointer;" onclick="AdminApp.setStoryPhotoPreset('assets/images/cultural/sigiriya-1.webp', 'Sigiriya Citadel', 'UNESCO WONDER')">Sigiriya</button>
+    <button type="button" class="btn btn-xs btn-outline" style="font-size: 0.72rem; padding: 2px 8px; cursor: pointer;" onclick="AdminApp.setStoryPhotoPreset('assets/images/blog/ella-tea-making-banner.webp', 'Ella Tea Country', 'HIGHLAND SERENITY')">Ella</button>
+    <button type="button" class="btn btn-xs btn-outline" style="font-size: 0.72rem; padding: 2px 8px; cursor: pointer;" onclick="AdminApp.setStoryPhotoPreset('assets/images/beach/mirissa-1.webp', 'Mirissa Sanctuary', 'WILD OCEANS')">Mirissa</button>
+    <button type="button" class="btn btn-xs btn-outline" style="font-size: 0.72rem; padding: 2px 8px; cursor: pointer;" onclick="AdminApp.setStoryPhotoPreset('assets/images/cultural/kandy-temple-of-tooth-4.webp', 'Kandy Royal Kingdom', 'SACRED HERITAGE')">Kandy</button>
+  </div>
 </div>
+
+<!-- Photo Live Preview -->
+<div class="form-group" id="storyPreviewContainer" style="display: none; margin-top: 8px;">
+  <label style="font-size: 0.78rem; color: var(--ink-muted);">Landscape Preview:</label>
+  <div style="width: 100%; height: 160px; border-radius: 8px; overflow: hidden; border: 1px solid var(--mist); background: #0F172A; position: relative;">
+    <img id="storyPhotoPreview" src="" alt="Preview" style="width: 100%; height: 100%; object-fit: cover; display: block;"/>
+    <span id="storyPhotoPreviewBadge" style="position: absolute; top: 10px; left: 10px; background: #46141F; color: #FFF; font-size: 0.68rem; font-weight: 700; padding: 4px 10px; border-radius: 9999px; border: 1px solid rgba(255,255,255,0.2);">SACRED SITES</span>
+  </div>
 </div>
-<div class="modal-footer">
-<button type="button" class="btn btn-secondary" onclick="AdminApp.closeBlogModal()">Cancel</button>
-<button type="submit" class="btn btn-primary" id="saveBlogBtn">Save Changes</button>
+
+<div class="form-group">
+  <label for="storyDescInput">Description (About 20-40 words) *</label>
+  <textarea class="form-control" id="storyDescInput" rows="4" placeholder="Ancient capital of great stupas and the revered Sri Maha Bodhi tree..." required></textarea>
+</div>
+
+<div class="form-row">
+  <div class="form-group" style="flex: 1;">
+    <label for="storySortOrder">Display Order (1 - 5)</label>
+    <input class="form-control" id="storySortOrder" max="5" min="1" type="number" value="1"/>
+  </div>
+  <div class="form-group" style="flex: 1; display: flex; align-items: center; margin-top: 28px;">
+    <label class="checkbox-label" style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+      <input id="storyPublished" type="checkbox" checked/>
+      <span style="font-weight: 600;">Active / Published</span>
+    </label>
+  </div>
+</div>
+
+<div class="modal-footer" style="padding: 16px 0 0; margin-top: 16px; border-top: 1px solid var(--mist); display: flex; justify-content: flex-end; gap: 10px;">
+  <button class="btn btn-outline" onclick="AdminApp.closeModal('storyModal')" type="button">Cancel</button>
+  <button class="btn btn-primary" id="saveStoryBtn" type="submit">Save Story</button>
 </div>
 </form>
+</div>
 </div>
 </div>
 

@@ -1,0 +1,47 @@
+[
+  {
+    "id": "story-01",
+    "badge": "SACRED SITES",
+    "title": "Anuradhapura",
+    "photo": "assets/images/home/anuradhapura-success-story.jpg",
+    "description": "Ancient capital of great stupas and the revered Sri Maha Bodhi tree. Our travellers experienced peaceful evening meditation beneath the sacred Bodhi canopy.",
+    "sortOrder": 1,
+    "published": true
+  },
+  {
+    "id": "story-02",
+    "badge": "UNESCO WONDER",
+    "title": "Sigiriya Citadel",
+    "photo": "assets/images/cultural/sigiriya-1.webp",
+    "description": "Marvel of 5th-century royal architecture and landscaped water gardens. Private dawn ascent guided by our expert Ceylon cultural historian.",
+    "sortOrder": 2,
+    "published": true
+  },
+  {
+    "id": "story-03",
+    "badge": "HIGHLAND SERENITY",
+    "title": "Ella Tea Country",
+    "photo": "assets/images/blog/ella-tea-making-banner.webp",
+    "description": "Misty emerald peaks and hands-on artisanal tea plucking. Bespoke journeys through historic colonial tea trails and cascading highland waterfalls.",
+    "sortOrder": 3,
+    "published": true
+  },
+  {
+    "id": "story-04",
+    "badge": "WILD OCEANS",
+    "title": "Mirissa Sanctuary",
+    "photo": "assets/images/beach/mirissa-1.webp",
+    "description": "Gentle ocean giants and pristine golden coastlines. Private catamaran sunrise voyage encountering blue whales in the deep southern waters of Ceylon.",
+    "sortOrder": 4,
+    "published": true
+  },
+  {
+    "id": "story-05",
+    "badge": "SACRED HERITAGE",
+    "title": "Kandy Royal Kingdom",
+    "photo": "assets/images/cultural/kandy-temple-of-tooth-4.webp",
+    "description": "The revered Temple of the Sacred Tooth Relic amidst scenic mountains. Exclusive access to the evening royal ceremony with authentic blessings.",
+    "sortOrder": 5,
+    "published": true
+  }
+]

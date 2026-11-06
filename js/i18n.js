@@ -7,7 +7,7 @@
 /**
  * Multi-Language (i18n) & RTL Engine
  * LOTUS CEYLON International Tours & Services (Pvt) Ltd
- * Supported Languages: EN, HI, FR, IT, ZH, JA, AR (RTL), DE, ES, RU
+ * Supported Languages: EN, HI, FR, IT, ZH, JA, AR (RTL), DE, ES, RU, VI
  */
 
 const TRANSLATIONS = {
@@ -1213,7 +1213,130 @@ const TRANSLATIONS = {
       since: "Безупречный сервис на Шри-Ланке с 2014 года.",
       designerCredit: "Разработано"
     }
-  }
+  },
+  vi: {
+    langName: "Tiếng Việt",
+    dir: "ltr",
+    tours: {
+      "tour_comparator_dock": "Các gói đã chọn để so sánh",
+      "tour_comparator_btn": "So sánh chi tiết",
+      "tour_season_best": "Thời điểm lý tưởng nhất",
+      "tour_season_peak": "Nắng vàng rực rỡ & Biển êm",
+      "tour_season_good": "Thời tiết du lịch thuận lợi",
+      "tour_season_monsoon": "Giao mùa nhiệt đới",
+      "tour_why_lotus_title": "Tại sao du khách tinh hoa chọn chúng tôi",
+      "tour_why_pillar_1_title": "100% Riêng tư & May đo theo yêu cầu",
+      "tour_why_pillar_2_title": "Tài xế kiêm hướng dẫn viên chuyên nghiệp",
+      "tour_why_pillar_3_title": "Khu nghỉ dưỡng & Villa boutique tuyển chọn",
+      "tour_why_pillar_4_title": "Quản gia du lịch tận tâm 24/7",
+      "tour_make_it_yours_badge": "THIẾT KẾ RIÊNG BIỆT",
+      "tour_mobile_inquire": "Tùy chỉnh / Yêu cầu báo giá",
+      "tour_mobile_wa": "Hỗ trợ qua WhatsApp"
+    },
+    nav: {
+      home: "Trang chủ",
+      tours: "Gói du lịch",
+      about: "Về chúng tôi",
+      whyUs: "Tại sao chọn chúng tôi",
+      testimonials: "Đánh giá",
+      contact: "Liên hệ",
+      inquiry: "Yêu cầu tư vấn",
+      quickInquiry: "Tư vấn nhanh"
+    },
+    hero: {
+      badge: "Kỳ nghỉ may đo tại Sri Lanka",
+      title: "Lên kế hoạch hành trình",
+      slogan: "HÀNH TRÌNH THUẦN KHIẾT. TRẢI NGHIỆM THIÊNG LIÊNG."
+    },
+    form: {
+      cardTitle: "Mẫu yêu cầu tư vấn du lịch",
+      intro: "Lấy cảm hứng từ hoa sen – biểu tượng của sự thuần khiết, linh thiêng và kiên cường, hãy chia sẻ chuyến đi mơ ước và chúng tôi sẽ hiện thực hóa cho bạn.",
+      switchQuickNotice: "Bạn bận rộn?",
+      switchQuickLink: "Dùng mẫu tư vấn nhanh ➔",
+      switchDetailedNotice: "Cần lịch trình chi tiết?",
+      switchDetailedLink: "Dùng mẫu tư vấn chi tiết ➔",
+      
+      // Fields
+      nameLabel: "Họ và tên",
+      namePlaceholder: "ví dụ: Nguyễn Văn A",
+      countryLabel: "Quốc gia cư trú",
+      countryPlaceholder: "Tìm và chọn quốc gia của bạn...",
+      emailLabel: "Địa chỉ Email",
+      emailPlaceholder: "ten@example.com",
+      whatsappLabel: "Số WhatsApp",
+      whatsappPlaceholder: "91 234 5678",
+      whatsappHint: "Nhập số WhatsApp đang hoạt động để nhận cập nhật lịch trình nhanh chóng.",
+      arrivalLabel: "Ngày đến (Sri Lanka)",
+      departureLabel: "Ngày về (từ Sri Lanka)",
+      paxLabel: "Số lượng khách (Người)",
+      adultsLabel: "Người lớn (12+ tuổi)",
+      childrenLabel: "Trẻ em (6–12 tuổi)",
+      totalPaxBadge: "Tổng số khách",
+      hotelCategoryLabel: "Hạng khách sạn",
+      hotelCategoryHint: "Chọn một hoặc nhiều phong cách lưu trú ưa thích:",
+      hotelDropdownToggle: "Hoặc chọn hạng sao từ danh sách",
+      hotelDropdownPrompt: "Chọn hạng sao...",
+      hotelBoutique: "Boutique / Villa Di sản",
+      hotel5Star: "Khách sạn 5 sao sang trọng",
+      hotel4Star: "Khách sạn 4 sao cao cấp",
+      hotel3Star: "Khách sạn 3 sao tiêu chuẩn",
+      hotelBudget: "Khu lưu trú sinh thái / Tiết kiệm",
+      roomsLabel: "Số phòng yêu cầu",
+      roomsSelect: "Chọn số phòng",
+      mealPlanLabel: "Gói bữa ăn mong muốn",
+      mealBB: "Bao gồm ăn sáng (BB)",
+      mealHB: "Nửa bữa - Ăn sáng & tối (HB)",
+      mealFB: "Trọn gói toàn bộ bữa ăn (FB)",
+      interestsLabel: "Sở thích & Trải nghiệm đặc biệt",
+      interestCulture: "Văn hóa & Di sản",
+      interestNature: "Thiên nhiên & Đồi chè",
+      interestArchaeology: "Cổ vật & Khảo cổ học",
+      interestWildlife: "Động vật hoang dã & Safari",
+      interestAdventure: "Phiêu lưu & Trekking",
+      interestBeach: "Nghỉ dưỡng biển",
+      interestShopping: "Mua sắm & Đá quý",
+      budgetLabel: "Ngân sách dự kiến cho chuyến đi",
+      budgetPlaceholder: "ví dụ: 2,500 (mỗi người hoặc tổng cộng)",
+      budgetHint: "Giúp chúng tôi gợi ý khách sạn và trải nghiệm tối ưu nhất cho bạn.",
+      otherLabel: "Yêu cầu & Ghi chú đặc biệt",
+      otherPlaceholder: "Chia sẻ yêu cầu về chế độ ăn uống, tài xế riêng, lễ kỷ niệm, ngôi chùa muốn viếng thăm...",
+      securityLabel: "Xác minh người dùng",
+      securityPrompt: "Vui lòng xác minh bạn là du khách thực sự:",
+      securitySuccess: "Đã xác minh thành công ✓",
+      submitButton: "Gửi yêu cầu",
+      submitting: "Đang chuẩn bị hành trình thiêng liêng của bạn...",
+      whatsappDirectBtn: "Gửi trực tiếp qua WhatsApp"
+    },
+    validation: {
+      required: "Trường này là bắt buộc.",
+      invalidEmail: "Vui lòng nhập địa chỉ email hợp lệ.",
+      invalidPhone: "Vui lòng nhập số điện thoại hợp lệ.",
+      pastDate: "Ngày đến không thể ở quá khứ.",
+      departureBeforeArrival: "Ngày về phải sau ngày đến.",
+      minPax: "Vui lòng chọn ít nhất 1 khách.",
+      selectHotel: "Vui lòng chọn ít nhất một hạng khách sạn.",
+      invalidBudget: "Vui lòng nhập ngân sách dự kiến của bạn.",
+      securityCheck: "Vui lòng hoàn thành bước xác minh."
+    },
+    modal: {
+      title: "Yêu cầu đã được tiếp nhận",
+      message: "Xin cảm ơn! Chuyên viên du lịch Sri Lanka của chúng tôi sẽ liên hệ với bạn trong vòng 24 giờ cùng lịch trình cá nhân hóa.",
+      refNumber: "Mã tham chiếu yêu cầu",
+      whatsappAction: "Trò chuyện qua WhatsApp ngay",
+      downloadCopy: "Lưu bản sao",
+      close: "Đóng"
+    },
+    footer: {
+      aboutTitle: "Lotus Ceylon",
+      aboutDesc: "Thiết kế những hành trình du lịch may đo, biến đổi tâm hồn khắp hòn đảo thiêng Sri Lanka với lòng hiếu khách nồng hậu mang đậm bản sắc Ceylon.",
+      quickLinks: "Liên kết nhanh",
+      contactTitle: "Liên hệ",
+      connectTitle: "Mã QR kết nối trực tiếp",
+      connectDesc: "Quét mã để trò chuyện trực tiếp với chuyên viên thiết kế tour:",
+      since: "Cam kết chất lượng dịch vụ xuất sắc tại Sri Lanka từ năm 2014.",
+      designerCredit: "Được thiết kế tinh tế bởi"
+    }
+  },
 };
 
 /**
@@ -1376,7 +1499,8 @@ window.TOUR_CATEGORY_I18N = {
     ru: "Пляжные и прибрежные туры",
     ar: "جولات الشواطئ والسواحل",
     es: "Tours de Playa y Costa",
-    hi: "समुद्र तट और तटीय यात्राएं"
+    hi: "समुद्र तट और तटीय यात्राएं",
+    vi: "Tour Nghỉ dưỡng Biển & Duyên hải"
   },
   cultural: {
     en: "Cultural & Heritage Expeditions",
@@ -1388,7 +1512,8 @@ window.TOUR_CATEGORY_I18N = {
     ru: "Культурные и исторические туры",
     ar: "رحلات التراث والثقافة",
     es: "Expediciones Culturales y de Patrimonio",
-    hi: "सांस्कृतिक और विरासत यात्राएं"
+    hi: "सांस्कृतिक और विरासत यात्राएं",
+    vi: "Hành trình Văn hóa & Di sản"
   },
   wildlife: {
     en: "Wildlife Safaris & Wilderness",
@@ -1400,7 +1525,8 @@ window.TOUR_CATEGORY_I18N = {
     ru: "Сафари и дикая природа",
     ar: "سفاري الحياة البرية",
     es: "Safaris de Vida Silvestre",
-    hi: "वन्यजीव सफारी और जंगल यात्राएं"
+    hi: "वन्यजीव सफारी और जंगल यात्राएं",
+    vi: "Safari Động vật hoang dã & Thiên nhiên"
   },
   "hill-country": {
     en: "Hill Country & Tea Trails",
@@ -1412,7 +1538,8 @@ window.TOUR_CATEGORY_I18N = {
     ru: "Чайные плантации и высокогорье",
     ar: "مزارع الشاي والمرتفعات",
     es: "Plantaciones de Té y Tierras Altas",
-    hi: "चाय के बागान और पहाड़ी यात्राएं"
+    hi: "चाय के बागान और पहाड़ी यात्राएं",
+    vi: "Vùng Cao nguyên & Đồi chè Ceylon"
   },
   adventure: {
     en: "Adventure & Active Expeditions",
@@ -1424,7 +1551,8 @@ window.TOUR_CATEGORY_I18N = {
     ru: "Приключения и активный отдых",
     ar: "المغامرات والرحلات النشطة",
     es: "Aventura y Expediciones Activas",
-    hi: "साहसिक और सक्रिय यात्राएं"
+    hi: "साहसिक और सक्रिय यात्राएं",
+    vi: "Phiêu lưu mạo hiểm & Khám phá năng động"
   },
   ayurvedic: {
     en: "Ayurvedic & Holistic Wellness",
@@ -1436,7 +1564,8 @@ window.TOUR_CATEGORY_I18N = {
     ru: "Аюрведа и оздоровительный отдых",
     ar: "الأيورفيدا والعافية الشاملة",
     es: "Ayurveda y Bienestar Holístico",
-    hi: "आयुर्वेद और समग्र कल्याण"
+    hi: "आयुर्वेद और समग्र कल्याण",
+    vi: "Nghỉ dưỡng Ayurveda & Chăm sóc sức khỏe"
   },
   honeymoon: {
     en: "Luxury Honeymoon & Romance",
@@ -1448,7 +1577,8 @@ window.TOUR_CATEGORY_I18N = {
     ru: "Медовый месяц и романтический отдых",
     ar: "شهر العسل الفاخر والرومانسية",
     es: "Lunas de Miel de Lujo y Romance",
-    hi: "विलासिता हनीमून और रोमांस"
+    hi: "विलासिता हनीमून और रोमांस",
+    vi: "Tuần trăng mật sang trọng & Kỳ nghỉ lãng mạn"
   },
   family: {
     en: "Multi-Generational Family Holidays",
@@ -1460,7 +1590,8 @@ window.TOUR_CATEGORY_I18N = {
     ru: "Семейные туры для всех поколений",
     ar: "عطلات عائلية متعددة الأجيال",
     es: "Vacaciones Familiares Multigeneracionales",
-    hi: "पारिवारिक छुट्टियां और यात्राएं"
+    hi: "पारिवारिक छुट्टियां और यात्राएं",
+    vi: "Kỳ nghỉ gia đình nhiều thế hệ"
   },
   ramayana: {
     en: "Sacred Ramayana Heritage Trails",
@@ -1472,7 +1603,8 @@ window.TOUR_CATEGORY_I18N = {
     ru: "Священные тропы Рамаяны",
     ar: "مسارات رامايانا التراثية المقدسة",
     es: "Rutas Sagradas del Ramayana",
-    hi: "पवित्र रामायण विरासत यात्राएं"
+    hi: "पवित्र रामायण विरासत यात्राएं",
+    vi: "Hành hương theo dấu tích Ramayana thiêng liêng"
   },
   golf: {
     en: "Championship Golf & Fairway Holidays",
@@ -1484,6 +1616,7 @@ window.TOUR_CATEGORY_I18N = {
     ru: "Гольф-туры и чемпионские поля",
     ar: "عطلات الجولف والملاعب الملكية",
     es: "Vacaciones de Golf y Campeonatos",
-    hi: "गोल्फ छुट्टियां और चैंपियनशिप"
+    hi: "गोल्फ छुट्टियां और चैंपियनशिप",
+    vi: "Kỳ nghỉ Golf đỉnh cao & Sân golf tiêu chuẩn"
   }
 };

@@ -34,7 +34,8 @@
     { code: 'hi', label: '🇮🇳 हिन्दी' },
     { code: 'it', label: '🇮🇹 Italiano' },
     { code: 'ru', label: '🇷🇺 Русский' },
-    { code: 'es', label: '🇪🇸 Español' }
+    { code: 'es', label: '🇪🇸 Español' },
+    { code: 'vi', label: '🇻🇳 Tiếng Việt' }
   ];
 
   const SECTION_FRIENDLY_NAMES = {
@@ -1067,7 +1068,7 @@
             label: 'Destination: Galle Dutch Fort Lighthouse',
             sectionName: '📍 Destinations Showcase',
             sectionId: 'destinations',
-            defaultUrl: 'assets/images/colonial/galle-fort-lighthouse-1.webp',
+            defaultUrl: 'assets/images/cultural/galle-fort-5.webp',
             attrType: 'image'
           },
           {
@@ -1619,6 +1620,7 @@
             localStorage.setItem('lotus_cms_published_' + this.activePageKey, JSON.stringify(payload));
             localStorage.setItem('lotus_cms_last_published', String(Date.now()));
             // Clear cached bundle
+            localStorage.removeItem('lotus_cms_v5');
             localStorage.removeItem('lotus_cms_v3');
           } catch (e) {}
         }
@@ -1880,10 +1882,144 @@
             </div>
           </div>
         `;
+      } else if (docKey === 'siteGlobal/header') {
+        const phone = (this.activeDocData && this.activeDocData['siteGlobal.header.phone']) || '+94 77 722 0070';
+        const topbarText = (this.activeDocData && this.activeDocData['siteGlobal.header.topbar_text']) || 'Official Luxury Concierge for Sri Lanka & Ceylon Travel';
+        const waText = (this.activeDocData && this.activeDocData['siteGlobal.header.whatsapp_label']) || 'Chat on WhatsApp';
+        const waNum = (this.activeDocData && this.activeDocData['siteGlobal.header.whatsapp_num']) || '+94 77 722 0070';
+        const inqBtn = (this.activeDocData && this.activeDocData['siteGlobal.header.inquire_btn']) || 'Inquire Now';
+
+        panel.innerHTML = `
+          <div class="inspector-card">
+            <h4 style="font-size: 1.05rem; margin-bottom: 8px;">🔝 Global Header & Topbar</h4>
+            <p style="color: #64748B; font-size: 0.82rem; margin-bottom: 16px;">Customize the top announcement bar, telephone, WhatsApp button, and Inquire call-to-action.</p>
+            
+            <div class="inspector-field-group">
+              <label>Topbar Announcement / Slogan</label>
+              <input type="text" class="form-control" id="fieldInput_siteGlobal.header.topbar_text" value="${this.escapeAttr(topbarText)}" oninput="PageEditor.handleLiveInput('siteGlobal.header.topbar_text', this.value, 'text')"/>
+            </div>
+
+            <div class="inspector-field-group" style="margin-top: 14px;">
+              <label>Direct Telephone Hotline</label>
+              <input type="text" class="form-control" id="fieldInput_siteGlobal.header.phone" value="${this.escapeAttr(phone)}" oninput="PageEditor.handleLiveInput('siteGlobal.header.phone', this.value, 'text')"/>
+            </div>
+
+            <div class="inspector-field-group" style="margin-top: 14px;">
+              <label>WhatsApp Button Label</label>
+              <input type="text" class="form-control" id="fieldInput_siteGlobal.header.whatsapp_label" value="${this.escapeAttr(waText)}" oninput="PageEditor.handleLiveInput('siteGlobal.header.whatsapp_label', this.value, 'text')"/>
+            </div>
+
+            <div class="inspector-field-group" style="margin-top: 14px;">
+              <label>WhatsApp Target Number</label>
+              <input type="text" class="form-control" id="fieldInput_siteGlobal.header.whatsapp_num" value="${this.escapeAttr(waNum)}" oninput="PageEditor.handleLiveInput('siteGlobal.header.whatsapp_num', this.value, 'text')"/>
+            </div>
+
+            <div class="inspector-field-group" style="margin-top: 14px;">
+              <label>Inquire Button Text</label>
+              <input type="text" class="form-control" id="fieldInput_siteGlobal.header.inquire_btn" value="${this.escapeAttr(inqBtn)}" oninput="PageEditor.handleLiveInput('siteGlobal.header.inquire_btn', this.value, 'text')"/>
+            </div>
+          </div>
+        `;
+      } else if (docKey === 'siteGlobal/footer') {
+        const about = (this.activeDocData && this.activeDocData['siteGlobal.footer.about_text']) || 'Lotus Ceylon International Tours & Services (Pvt) Ltd is a registered inbound tour operator curating ultra-luxury, culturally authentic Sri Lanka journeys.';
+        const copyright = (this.activeDocData && this.activeDocData['siteGlobal.footer.copyright']) || '© 2026 Lotus Ceylon International Tours & Services (Pvt) Ltd. All rights reserved.';
+        const license = (this.activeDocData && this.activeDocData['siteGlobal.footer.license_note']) || 'SLTDA Approved Destination Management Company (PV 00374439)';
+
+        panel.innerHTML = `
+          <div class="inspector-card">
+            <h4 style="font-size: 1.05rem; margin-bottom: 8px;">🔻 Global Footer & Legal</h4>
+            <p style="color: #64748B; font-size: 0.82rem; margin-bottom: 16px;">Configure brand description, copyright notices, and regulatory disclosures appearing on all footers.</p>
+            
+            <div class="inspector-field-group">
+              <label>Footer Brand Summary</label>
+              <textarea class="form-control" rows="3" id="fieldInput_siteGlobal.footer.about_text" oninput="PageEditor.handleLiveInput('siteGlobal.footer.about_text', this.value, 'text')">${this.escapeHtml(about)}</textarea>
+            </div>
+
+            <div class="inspector-field-group" style="margin-top: 14px;">
+              <label>Copyright Statement</label>
+              <input type="text" class="form-control" id="fieldInput_siteGlobal.footer.copyright" value="${this.escapeAttr(copyright)}" oninput="PageEditor.handleLiveInput('siteGlobal.footer.copyright', this.value, 'text')"/>
+            </div>
+
+            <div class="inspector-field-group" style="margin-top: 14px;">
+              <label>SLTDA License & Certification Badge</label>
+              <input type="text" class="form-control" id="fieldInput_siteGlobal.footer.license_note" value="${this.escapeAttr(license)}" oninput="PageEditor.handleLiveInput('siteGlobal.footer.license_note', this.value, 'text')"/>
+            </div>
+          </div>
+        `;
+      } else if (docKey === 'siteGlobal/contact') {
+        const email = (this.activeDocData && this.activeDocData['siteGlobal.contact.email']) || 'paliforbuddhism@gmail.com';
+        const phone = (this.activeDocData && this.activeDocData['siteGlobal.contact.phone']) || '+94 77 722 0070';
+        const address = (this.activeDocData && this.activeDocData['siteGlobal.contact.address']) || 'Colombo & Kandy, Sri Lanka';
+        const wechat = (this.activeDocData && this.activeDocData['siteGlobal.contact.wechat']) || 'FGUTaiwan90';
+        const line = (this.activeDocData && this.activeDocData['siteGlobal.contact.line']) || 'dpbs2024';
+
+        panel.innerHTML = `
+          <div class="inspector-card">
+            <h4 style="font-size: 1.05rem; margin-bottom: 8px;">📞 Concierge & Direct Contact Channels</h4>
+            <p style="color: #64748B; font-size: 0.82rem; margin-bottom: 16px;">Manage official inquiry email, hotline, messaging IDs (WeChat/LINE), and office addresses.</p>
+            
+            <div class="inspector-field-group">
+              <label>Official Concierge Email</label>
+              <input type="email" class="form-control" id="fieldInput_siteGlobal.contact.email" value="${this.escapeAttr(email)}" oninput="PageEditor.handleLiveInput('siteGlobal.contact.email', this.value, 'text')"/>
+            </div>
+
+            <div class="inspector-field-group" style="margin-top: 14px;">
+              <label>Concierge Phone / WhatsApp</label>
+              <input type="text" class="form-control" id="fieldInput_siteGlobal.contact.phone" value="${this.escapeAttr(phone)}" oninput="PageEditor.handleLiveInput('siteGlobal.contact.phone', this.value, 'text')"/>
+            </div>
+
+            <div class="inspector-field-group" style="margin-top: 14px;">
+              <label>Physical Address</label>
+              <input type="text" class="form-control" id="fieldInput_siteGlobal.contact.address" value="${this.escapeAttr(address)}" oninput="PageEditor.handleLiveInput('siteGlobal.contact.address', this.value, 'text')"/>
+            </div>
+
+            <div class="inspector-field-group" style="margin-top: 14px;">
+              <label>WeChat ID (China & Asian Guests)</label>
+              <input type="text" class="form-control" id="fieldInput_siteGlobal.contact.wechat" value="${this.escapeAttr(wechat)}" oninput="PageEditor.handleLiveInput('siteGlobal.contact.wechat', this.value, 'text')"/>
+            </div>
+
+            <div class="inspector-field-group" style="margin-top: 14px;">
+              <label>LINE ID (Taiwan & East Asia)</label>
+              <input type="text" class="form-control" id="fieldInput_siteGlobal.contact.line" value="${this.escapeAttr(line)}" oninput="PageEditor.handleLiveInput('siteGlobal.contact.line', this.value, 'text')"/>
+            </div>
+          </div>
+        `;
+      } else if (docKey === 'siteGlobal/social') {
+        const fb = (this.activeDocData && this.activeDocData['siteGlobal.social.facebook']) || 'https://facebook.com/lotusceylon';
+        const ig = (this.activeDocData && this.activeDocData['siteGlobal.social.instagram']) || 'https://instagram.com/lotusceylon';
+        const yt = (this.activeDocData && this.activeDocData['siteGlobal.social.youtube']) || 'https://youtube.com/@lotusceylontours';
+        const ta = (this.activeDocData && this.activeDocData['siteGlobal.social.tripadvisor']) || 'https://tripadvisor.com';
+
+        panel.innerHTML = `
+          <div class="inspector-card">
+            <h4 style="font-size: 1.05rem; margin-bottom: 8px;">🌐 Social Media Channels</h4>
+            <p style="color: #64748B; font-size: 0.82rem; margin-bottom: 16px;">Global URLs for Facebook, Instagram, YouTube, and TripAdvisor linked across the entire site.</p>
+            
+            <div class="inspector-field-group">
+              <label>Facebook Page URL</label>
+              <input type="url" class="form-control" id="fieldInput_siteGlobal.social.facebook" value="${this.escapeAttr(fb)}" oninput="PageEditor.handleLiveInput('siteGlobal.social.facebook', this.value, 'link')"/>
+            </div>
+
+            <div class="inspector-field-group" style="margin-top: 14px;">
+              <label>Instagram Profile URL</label>
+              <input type="url" class="form-control" id="fieldInput_siteGlobal.social.instagram" value="${this.escapeAttr(ig)}" oninput="PageEditor.handleLiveInput('siteGlobal.social.instagram', this.value, 'link')"/>
+            </div>
+
+            <div class="inspector-field-group" style="margin-top: 14px;">
+              <label>YouTube Channel URL</label>
+              <input type="url" class="form-control" id="fieldInput_siteGlobal.social.youtube" value="${this.escapeAttr(yt)}" oninput="PageEditor.handleLiveInput('siteGlobal.social.youtube', this.value, 'link')"/>
+            </div>
+
+            <div class="inspector-field-group" style="margin-top: 14px;">
+              <label>TripAdvisor Listing URL</label>
+              <input type="url" class="form-control" id="fieldInput_siteGlobal.social.tripadvisor" value="${this.escapeAttr(ta)}" oninput="PageEditor.handleLiveInput('siteGlobal.social.tripadvisor', this.value, 'link')"/>
+            </div>
+          </div>
+        `;
       } else {
         panel.innerHTML = `
           <div class="inspector-card">
-            <h4>${label}</h4>
+            <h4>${this.escapeHtml(label || docKey)}</h4>
             <p style="color: #64748B; font-size: 0.85rem;">Global document components are editable via the live preview on the left. Click any element on the page with a dashed outline to edit its text, link, or media.</p>
           </div>
         `;
@@ -1946,6 +2082,105 @@
       if (window.AdminApp && typeof window.AdminApp.closeModal === 'function') {
         window.AdminApp.closeModal('seoModal');
         window.AdminApp.showToast('Page SEO settings saved to draft! Click "Publish Live" to apply.', 'success');
+      }
+    },
+
+
+    resetCurrentPage() {
+      if (!confirm('Are you sure you want to reset this page and discard all unsaved edits?')) {
+        return;
+      }
+      this.currentFieldValues = {};
+      this.hasUnsavedChanges = false;
+      this.markSaved();
+      const iframe = document.getElementById('visualCmsIframe');
+      if (iframe) {
+        const curSrc = iframe.src;
+        iframe.src = 'about:blank';
+        setTimeout(() => { iframe.src = curSrc; }, 60);
+      }
+      this.fetchPageDoc(this.activePageKey).then(() => {
+        this.renderEmptyState();
+        if (window.AdminApp) {
+          window.AdminApp.showToast('Page reset to saved state.', 'info');
+        }
+      });
+    },
+
+    openFormEditor(formType = 'inquiry_detailed') {
+      this.activeFormType = formType;
+      const titleEl = document.getElementById('formEditorActiveTitle');
+      const emailEl = document.getElementById('formRecipientEmail');
+      const subjEl = document.getElementById('formEmailSubject');
+      const honeypotEl = document.getElementById('formHoneypotEnabled');
+      const destEl = document.getElementById('formDestinationsList');
+      const stylesEl = document.getElementById('formTravelStylesList');
+
+      if (window.AdminApp) {
+        window.AdminApp.switchSection('forms-editor');
+      }
+
+      let saved = null;
+      try {
+        const raw = localStorage.getItem('lotus_form_config_' + formType);
+        if (raw) saved = JSON.parse(raw);
+      } catch (e) {}
+
+      if (formType === 'inquiry_quick') {
+        if (titleEl) titleEl.textContent = 'Quick Consultation & Tour Inquire Form (All Pages Quick Modal)';
+        if (emailEl) emailEl.value = (saved && saved.recipientEmail) || 'paliforbuddhism@gmail.com';
+        if (subjEl) subjEl.value = (saved && saved.emailSubject) || 'New Tour Consultation Inquiry - Lotus Ceylon';
+        if (honeypotEl) honeypotEl.value = saved ? String(saved.honeypotEnabled) : 'true';
+        if (destEl) destEl.value = (saved && saved.destinations) || 'Cultural Triangle, Hill Country, Wildlife Safari, Southern Coast, Jaffna & North';
+        if (stylesEl) stylesEl.value = (saved && saved.travelStyles) || 'Luxury Heritage, Wildlife Safari, Cultural Immersion, Romantic Honeymoon, Ayurveda Wellness';
+      } else {
+        if (titleEl) titleEl.textContent = 'Bespoke Journey Inquiry Form (inquiry-detailed.html)';
+        if (emailEl) emailEl.value = (saved && saved.recipientEmail) || 'paliforbuddhism@gmail.com';
+        if (subjEl) subjEl.value = (saved && saved.emailSubject) || 'We received your bespoke Sri Lanka journey inquiry - Lotus Ceylon';
+        if (honeypotEl) honeypotEl.value = saved ? String(saved.honeypotEnabled) : 'true';
+        if (destEl) destEl.value = (saved && saved.destinations) || 'Cultural Triangle (Sigiriya/Polonnaruwa), Hill Country (Kandy/Nuwara Eliya/Ella), Wildlife and Safari (Yala/Wilpattu), Southern Coast (Galle/Mirissa/Tangalle), East Coast (Trincomalee/Pasikudah), Jaffna and Northern Province';
+        if (stylesEl) stylesEl.value = (saved && saved.travelStyles) || 'Luxury Boutique and Heritage, Wildlife Safari and Nature, Cultural Immersion and Ancient Cities, Romantic Honeymoon, Wellness and Ayurveda Retreat, Scenic Train and Tea Country';
+      }
+    },
+
+    async saveActiveForm() {
+      const formType = this.activeFormType || 'inquiry_detailed';
+      const emailEl = document.getElementById('formRecipientEmail');
+      const subjEl = document.getElementById('formEmailSubject');
+      const honeypotEl = document.getElementById('formHoneypotEnabled');
+      const destEl = document.getElementById('formDestinationsList');
+      const stylesEl = document.getElementById('formTravelStylesList');
+
+      const config = {
+        formType,
+        recipientEmail: emailEl ? emailEl.value.trim() : 'paliforbuddhism@gmail.com',
+        emailSubject: subjEl ? subjEl.value.trim() : '',
+        honeypotEnabled: honeypotEl ? (honeypotEl.value === 'true') : true,
+        destinations: destEl ? destEl.value.trim() : '',
+        travelStyles: stylesEl ? stylesEl.value.trim() : '',
+        updatedAt: new Date().toISOString()
+      };
+
+      try {
+        localStorage.setItem('lotus_form_config_' + formType, JSON.stringify(config));
+      } catch (e) {}
+
+      if (window.AdminApp && window.AdminApp.fbDb) {
+        try {
+          await window.AdminApp.fbDb.collection('forms').doc(formType).set(config, { merge: true });
+        } catch (err) {
+          console.warn('[PageEditor] Firestore save form error:', err);
+        }
+      }
+
+      if (window.AdminApp) {
+        window.AdminApp.showToast(`Form configuration for "${formType === 'inquiry_quick' ? 'Quick Consultation' : 'Bespoke Inquiry'}" saved successfully!`, 'success');
+      }
+    },
+
+    saveActiveBlogPost() {
+      if (window.AdminApp && typeof window.AdminApp.saveBlogModal === 'function') {
+        window.AdminApp.saveBlogModal();
       }
     },
 

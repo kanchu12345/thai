@@ -48,7 +48,7 @@ window.SITE_URL = (typeof window !== 'undefined' && window.location.hostname.inc
  */
 
 // BASE_PATH for GitHub Pages hosting under /thai/
-window.BASE_PATH = window.BASE_PATH || "/thai/";
+window.BASE_PATH = window.BASE_PATH || (typeof window !== "undefined" && window.location.pathname.startsWith("/thai") ? "/thai/" : "/");
 var BASE_PATH = window.BASE_PATH;
 
 window.LOTUS_CONFIG = window.LOTUS_CONFIG || {};
