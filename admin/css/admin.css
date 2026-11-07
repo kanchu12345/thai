@@ -3355,3 +3355,243 @@ input:checked + .slider:before {
 .sidebar-preview-link:hover {
   color: #FFF;
 }
+
+
+/* ========================================================
+   PHASE 2: INSPECTOR RIGHT DRAWER ENHANCEMENTS
+   Tabs, Visibility Switch, Typography, Add & Delete Panels
+   ======================================================== */
+
+.inspector-tabs {
+  display: flex;
+  background: #F1F5F9;
+  border-bottom: 1px solid #E2E8F0;
+  margin: -20px -18px 16px -18px;
+  padding: 4px 6px 0 6px;
+  gap: 4px;
+}
+
+.inspector-tab-btn {
+  flex: 1;
+  padding: 9px 8px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #64748B;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  border-radius: 6px 6px 0 0;
+  transition: all 0.15s ease;
+}
+
+.inspector-tab-btn:hover {
+  color: #0F172A;
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.inspector-tab-btn.active {
+  color: #002B49;
+  background: #FFFFFF;
+  border-bottom-color: #D4AF37;
+  font-weight: 700;
+  box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.03);
+}
+
+/* Visibility Switch Bar */
+.visibility-switch-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 9px 12px;
+  background: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  border-radius: 8px;
+  margin-bottom: 14px;
+}
+
+.visibility-label-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #1E293B;
+}
+
+.switch-toggle {
+  position: relative;
+  display: inline-block;
+  width: 38px;
+  height: 20px;
+}
+
+.switch-toggle input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.switch-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: #CBD5E1;
+  transition: .2s;
+  border-radius: 20px;
+}
+
+.switch-slider:before {
+  position: absolute;
+  content: "";
+  height: 14px;
+  width: 14px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: .2s;
+  border-radius: 50%;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+.switch-toggle input:checked + .switch-slider {
+  background-color: #10B981;
+}
+
+.switch-toggle input:checked + .switch-slider:before {
+  transform: translateX(18px);
+}
+
+/* Tag Converter & Pill Controls */
+.pill-controls-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-bottom: 10px;
+}
+
+.pill-ctrl-btn {
+  padding: 4px 10px;
+  font-size: 0.74rem;
+  font-weight: 600;
+  border: 1px solid #CBD5E1;
+  background: #FFFFFF;
+  color: #334155;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.12s ease;
+}
+
+.pill-ctrl-btn:hover {
+  background: #F1F5F9;
+  border-color: #94A3B8;
+  color: #0F172A;
+}
+
+.pill-ctrl-btn.active {
+  background: #002B49;
+  color: #FFFFFF;
+  border-color: #002B49;
+}
+
+/* Color Presets */
+.color-swatch-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+  margin-bottom: 12px;
+}
+
+.color-swatch-btn {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 2px solid #CBD5E1;
+  cursor: pointer;
+  transition: transform 0.12s ease, border-color 0.12s ease;
+  padding: 0;
+}
+
+.color-swatch-btn:hover {
+  transform: scale(1.18);
+  border-color: #0F172A;
+}
+
+/* Add Element Action Cards */
+.add-element-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  background: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  text-align: left;
+  width: 100%;
+}
+
+.add-element-card:hover {
+  background: #FFFFFF;
+  border-color: #D4AF37;
+  box-shadow: 0 4px 12px rgba(212, 175, 55, 0.12);
+  transform: translateY(-1px);
+}
+
+.add-element-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.15), rgba(0, 43, 73, 0.08));
+  color: #002B49;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.15rem;
+  flex-shrink: 0;
+}
+
+.add-element-info strong {
+  display: block;
+  font-size: 0.86rem;
+  color: #0F172A;
+  margin-bottom: 2px;
+}
+
+.add-element-info small {
+  display: block;
+  font-size: 0.74rem;
+  color: #64748B;
+}
+
+/* Delete / Action Warning Cards */
+.action-danger-card {
+  background: #FEF2F2;
+  border: 1px solid #FECACA;
+  border-radius: 8px;
+  padding: 14px;
+  margin-bottom: 14px;
+}
+
+.action-danger-card h4 {
+  margin: 0 0 6px 0;
+  color: #991B1B;
+  font-size: 0.88rem;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.action-danger-card p {
+  margin: 0 0 12px 0;
+  color: #7F1D1D;
+  font-size: 0.78rem;
+  line-height: 1.45;
+}

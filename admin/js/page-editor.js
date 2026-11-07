@@ -462,6 +462,13 @@
       this.openPage(`destinations/${cleanSlug}`, filePath);
     },
 
+    openCategoryPage(slug) {
+      if (!slug) return;
+      const cleanSlug = slug.toLowerCase().trim();
+      const filePath = `tours/${cleanSlug}/index.html`;
+      this.openPage(`tourCategories/${cleanSlug}`, filePath);
+    },
+
     openLinkedHref(href) {
       if (!href || href.startsWith('#') || href.startsWith('mailto:') || href.startsWith('tel:') || href.startsWith('javascript:')) return;
       let clean = href.replace(/\.\.\//g, '').replace(/^\//, '').split('?')[0].split('#')[0];
@@ -481,16 +488,128 @@
       }
     },
 
+    setInspectorTab(tab) {
+      this.activeInspectorTab = tab;
+      if (this.selectedElement) {
+        this.renderElementForm(this.selectedElement);
+      }
+    },
+
+    toggleElementVisibility(key, isVisible) {
+      if (!this.selectedElement) return;
+      this.selectedElement.isHidden = !isVisible;
+      this.postIframeMessage({
+        type: 'lotus:toggle-visibility',
+        key: key,
+        hidden: !isVisible
+      });
+      this.handleLiveInput(key + '_hidden', !isVisible ? 'true' : 'false', 'hidden');
+      if (window.AdminApp) {
+        window.AdminApp.showToast(isVisible ? 'Element set to visible on live site' : 'Element hidden from live site', 'info');
+      }
+      this.renderElementForm(this.selectedElement);
+    },
+
+    convertElementTag(newTag) {
+      if (!this.selectedElement) return;
+      this.postIframeMessage({
+        type: 'lotus:convert-tag',
+        newTag: newTag
+      });
+      this.selectedElement.tagName = newTag.toLowerCase();
+      if (newTag === 'p') this.selectedElement.attrType = 'text';
+      this.renderElementForm(this.selectedElement);
+      if (window.AdminApp) {
+        window.AdminApp.showToast(`Converted element to <${newTag.toUpperCase()}>`, 'info');
+      }
+    },
+
+    updateElementStyle(prop, val) {
+      if (!this.selectedElement) return;
+      this.postIframeMessage({
+        type: 'lotus:update-style',
+        prop: prop,
+        value: val
+      });
+      this.handleLiveInput(`${this.selectedElement.key}_style_${prop}`, val, 'style');
+    },
+
+    addElementBelow(tag) {
+      const autoKey = 'block_' + tag + '_' + Date.now().toString(36);
+      this.postIframeMessage({
+        type: 'lotus:add-element',
+        tag: tag,
+        key: autoKey
+      });
+      this.activeInspectorTab = 'edit';
+      if (window.AdminApp) {
+        window.AdminApp.showToast(`Added new <${tag.toUpperCase()}> block below!`, 'success');
+      }
+    },
+
+    deleteSelectedElement() {
+      if (!this.selectedElement) return;
+      const key = this.selectedElement.key;
+      this.postIframeMessage({
+        type: 'lotus:delete-element',
+        key: key
+      });
+      this.handleLiveInput(key + '_hidden', 'true', 'hidden');
+      if (window.AdminApp) {
+        window.AdminApp.showToast('Element removed from page view.', 'info');
+      }
+      this.clearSelectedElement();
+    },
+
+    clearSelectedContent() {
+      if (!this.selectedElement) return;
+      const key = this.selectedElement.key;
+      const type = this.selectedElement.attrType;
+      if (type === 'image' || type === 'bg-image') {
+        this.handleLiveInput(key, '', type);
+        const input = document.getElementById(`fieldInput_${key}`);
+        if (input) input.value = '';
+        const thumb = document.getElementById('inspectorThumb');
+        if (thumb) thumb.src = '../assets/images/placeholder.png';
+      } else {
+        this.handleLiveInput(key, '', type);
+        const input = document.getElementById(`fieldInput_${key}`);
+        if (input) input.value = '';
+      }
+      if (window.AdminApp) {
+        window.AdminApp.showToast('Content cleared.', 'info');
+      }
+    },
+
+    resetSelectedElement() {
+      if (!this.selectedElement) return;
+      const key = this.selectedElement.key;
+      const type = this.selectedElement.attrType;
+      this.resetFieldToDefault(key, type);
+      this.renderElementForm(this.selectedElement);
+      if (window.AdminApp) {
+        window.AdminApp.showToast('Reset to default values.', 'info');
+      }
+    },
+
+    postIframeMessage(msg) {
+      const iframe = document.getElementById('visualCmsIframe');
+      if (iframe && iframe.contentWindow) {
+        iframe.contentWindow.postMessage(msg, '*');
+      }
+    },
+
     renderElementForm(item) {
       const body = document.getElementById('inspectorBody');
       if (!body) return;
+
+      this.activeInspectorTab = this.activeInspectorTab || 'edit';
 
       const currentVal = this.getCurrentValue(item.key, item.currentVal);
       const isEnglish = this.activeLang === 'en';
       const enVal = this.getEnglishValue(item.key, item.currentVal);
       const isMissingTranslation = !isEnglish && (!currentVal || currentVal === enVal);
-
-      let html = '';
+      const isHidden = item.isHidden || this.getCurrentValue(item.key + '_hidden', '') === 'true';
 
       // Special Success Stories Card Inspector
       if (item.attrType === 'success-stories' || item.key === 'home.success_stories_card') {
@@ -498,284 +617,409 @@
         return;
       }
 
-      // Check if this element relates to a tour package
-      let pkgSlug = item.packageSlug || null;
-      if (this.activePageKey && this.activePageKey.startsWith('tourPackages/')) {
-        pkgSlug = this.activePageKey.replace('tourPackages/', '');
-      } else if (item.key && (item.key.includes('pkg_') || item.key.includes('package') || item.key.includes('tour'))) {
-        if (item.key.includes('pkg_')) {
-          const match = item.key.match(/pkg_([a-zA-Z0-9_-]+)/);
-          if (match) pkgSlug = match[1].split('.')[0];
-        }
-      }
-            // 1. Tour Package Action Card
-      if (pkgSlug) {
-        html += `
-          <div style="background: linear-gradient(135deg, #EFF6FF, #DBEAFE); border: 1px solid #93C5FD; border-radius: 8px; padding: 12px; margin-bottom: 14px;">
-            <div style="font-weight: 700; color: #1E40AF; font-size: 0.88rem; display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
-              <span>📦 Tour Package: ${this.escapeHtml(pkgSlug)}</span>
-            </div>
-            <p style="font-size: 0.78rem; color: #1E3A8A; margin: 0 0 10px 0;">Directly open this tour's standalone page or edit its full fields.</p>
-            <div style="display: flex; gap: 8px;">
-              <button type="button" class="btn btn-primary btn-sm" style="flex: 1;" onclick="PageEditor.openTourDetailPage('${this.escapeAttr(pkgSlug)}')">🚀 Open & Edit Page</button>
-              <button type="button" class="btn btn-outline btn-sm" onclick="AdminApp.openPackageModal('${this.escapeAttr(pkgSlug)}')">📝 Edit in Manager</button>
-            </div>
+      let html = '';
+
+      // --- 1. INSPECTOR TABS: [ ✏️ Edit ] [ ➕ Add Block ] [ 🗑️ Delete ] ---
+      html += `
+        <div class="inspector-tabs">
+          <button type="button" class="inspector-tab-btn ${this.activeInspectorTab === 'edit' ? 'active' : ''}" onclick="PageEditor.setInspectorTab('edit')">
+            <span>✏️ Edit Content</span>
+          </button>
+          <button type="button" class="inspector-tab-btn ${this.activeInspectorTab === 'add' ? 'active' : ''}" onclick="PageEditor.setInspectorTab('add')">
+            <span>➕ Add Element</span>
+          </button>
+          <button type="button" class="inspector-tab-btn ${this.activeInspectorTab === 'delete' ? 'active' : ''}" onclick="PageEditor.setInspectorTab('delete')">
+            <span>🗑️ Delete / Actions</span>
+          </button>
+        </div>
+      `;
+
+      // --- 2. LIVE VISIBILITY SWITCH BAR ---
+      html += `
+        <div class="visibility-switch-bar">
+          <div class="visibility-label-wrap">
+            <span style="font-size: 0.8rem; font-weight: 700; color: ${isHidden ? '#EF4444' : '#10B981'};">
+              ${isHidden ? '👁️‍🗨️ Hidden on Website' : '👁️ Visible on Website'}
+            </span>
+            <span class="badge" style="font-size: 0.72rem; background: #E2E8F0; color: #334155;">&lt;${(item.tagName || 'div').toUpperCase()}&gt;</span>
           </div>
-        `;
-      }
+          <label class="switch-toggle" title="Toggle visibility of this element on the live website">
+            <input type="checkbox" id="elementVisibilityToggle" ${!isHidden ? 'checked' : ''} onchange="PageEditor.toggleElementVisibility('${this.escapeAttr(item.key)}', this.checked)">
+            <span class="switch-slider"></span>
+          </label>
+        </div>
+      `;
 
-      // 2. Destination Action Card
-      const destSlug = item.destinationSlug || null;
-      if (destSlug) {
+      // ==========================================
+      // TAB 2: ADD ELEMENT BELOW
+      // ==========================================
+      if (this.activeInspectorTab === 'add') {
         html += `
-          <div style="background: linear-gradient(135deg, #F0FDF4, #DCFCE7); border: 1px solid #86EFAC; border-radius: 8px; padding: 12px; margin-bottom: 14px;">
-            <div style="font-weight: 700; color: #166534; font-size: 0.88rem; margin-bottom: 4px;">
-              <span>📍 Destination: ${this.escapeHtml(destSlug)}</span>
+          <div class="inspector-field-group">
+            <div style="margin-bottom: 12px;">
+              <strong style="display: block; font-size: 0.9rem; color: #0F172A; margin-bottom: 4px;">Insert New Element Below</strong>
+              <p style="font-size: 0.78rem; color: #64748B; margin: 0;">Add a new block directly underneath the currently selected &lt;${(item.tagName || 'element').toUpperCase()}&gt;:</p>
             </div>
-            <p style="font-size: 0.78rem; color: #14532D; margin: 0 0 8px 0;">Edit lead text, sights badges, essence narrative, and tailor-made box.</p>
-            <button type="button" class="btn btn-primary btn-sm btn-block" onclick="PageEditor.openDestinationPage('${this.escapeAttr(destSlug)}')">🚀 Open & Edit Destination Page</button>
-          </div>
-        `;
-      }
 
-      // 3. General Linked Href Card (if clicked an anchor)
-      if (item.linkedHref && !pkgSlug && !destSlug && !item.linkedHref.startsWith('#')) {
-        html += `
-          <div style="margin-bottom: 14px; background: #FAFBFD; border: 1px solid #E2E8F0; border-radius: 8px; padding: 10px 12px;">
-            <div style="font-size: 0.78rem; color: #64748B; margin-bottom: 6px;">Target URL: <code style="color: #002B49;">${this.escapeHtml(item.linkedHref)}</code></div>
-            <button type="button" class="btn btn-outline btn-sm btn-block" onclick="PageEditor.openLinkedHref('${this.escapeAttr(item.linkedHref)}')">↗ Switch Editor to Linked Page</button>
-          </div>
-        `;
-      }
-
-      // --- A. SPECIAL HERO SECTION INSPECTOR ---
-      if (item.key.includes('hero') || item.sectionId === 'home') {
-        html += this.renderHeroSpecialControls(item);
-      }
-
-      // --- B. IMAGE / BACKGROUND IMAGE INSPECTOR ---
-      if (item.attrType === 'image' || item.attrType === 'bg-image') {
-        const hasSlider = item.sliderImages && item.sliderImages.length > 1;
-        let activeKey = item.key;
-        let activeAlt = '';
-        let imgSrc = currentVal || 'assets/images/sigiriya.jpg';
-
-        if (hasSlider) {
-          const currentSlideIdx = (typeof this.activeSliderIndex === 'number' && item.sliderImages[this.activeSliderIndex]) ? this.activeSliderIndex : 0;
-          const currentSlide = item.sliderImages[currentSlideIdx] || item.sliderImages[0];
-          activeKey = currentSlide.key;
-          imgSrc = this.getCurrentValue(activeKey, currentSlide.src) || currentSlide.src;
-          activeAlt = currentSlide.alt || '';
-
-          // Render Slider Switcher Bar
-          html += `
-            <div style="background: linear-gradient(135deg, #F0FDFA 0%, #E6FFFA 100%); border: 1.5px solid #2DD4BF; border-radius: 8px; padding: 12px; margin-bottom: 14px;">
-              <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
-                <span style="font-weight: 700; font-size: 0.85rem; color: #0F766E;">🎠 Tour Card Carousel (${item.sliderImages.length} Slides)</span>
-                <span class="badge" style="background: #CCFBF1; color: #115E59; font-size: 0.72rem; font-weight: 700;">Multi-Image</span>
+            <button type="button" class="add-element-card" onclick="PageEditor.addElementBelow('h3')">
+              <div class="add-element-icon"><strong>H3</strong></div>
+              <div class="add-element-info">
+                <strong>Add Heading (H3)</strong>
+                <small>Section or subsection title</small>
               </div>
-              <p style="font-size: 0.76rem; color: #134E4A; margin: 0 0 10px 0; line-height: 1.4;">
-                This card rotates between multiple photos on the live site. Click a slide below to preview &amp; change each image:
-              </p>
+            </button>
+
+            <button type="button" class="add-element-card" onclick="PageEditor.addElementBelow('p')">
+              <div class="add-element-icon"><span>¶</span></div>
+              <div class="add-element-info">
+                <strong>Add Paragraph Text</strong>
+                <small>Standard narrative or description text block</small>
+              </div>
+            </button>
+
+            <button type="button" class="add-element-card" onclick="PageEditor.addElementBelow('img')">
+              <div class="add-element-icon"><span>🖼️</span></div>
+              <div class="add-element-info">
+                <strong>Add Image / Photo</strong>
+                <small>Responsive picture or editorial visual</small>
+              </div>
+            </button>
+
+            <button type="button" class="add-element-card" onclick="PageEditor.addElementBelow('a')">
+              <div class="add-element-icon"><span>🔗</span></div>
+              <div class="add-element-info">
+                <strong>Add Call-to-Action Button</strong>
+                <small>Golden action button with destination link</small>
+              </div>
+            </button>
+
+            <button type="button" class="add-element-card" onclick="PageEditor.addElementBelow('li')">
+              <div class="add-element-icon"><span>•</span></div>
+              <div class="add-element-info">
+                <strong>Add Bullet List Item</strong>
+                <small>Feature highlight or itinerary bullet point</small>
+              </div>
+            </button>
+          </div>
+        `;
+      }
+
+      // ==========================================
+      // TAB 3: DELETE / RESET / ACTIONS
+      // ==========================================
+      else if (this.activeInspectorTab === 'delete') {
+        html += `
+          <div class="inspector-field-group">
+            <div class="action-danger-card">
+              <h4><span>⚠️</span> Remove or Hide Element</h4>
+              <p>Hiding or deleting this element will remove it from the page in real time. You can publish changes or reset back to default at any time.</p>
               
-              <div style="display: grid; grid-template-columns: repeat(${item.sliderImages.length}, 1fr); gap: 6px;">
-                ${item.sliderImages.map((slide, idx) => {
-                  const isSelected = idx === currentSlideIdx;
-                  const slideVal = this.getCurrentValue(slide.key, slide.src);
-                  return `
-                    <button type="button" 
-                            onclick="PageEditor.switchSliderSlide(${idx})"
-                            style="display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 6px 4px; border-radius: 6px; cursor: pointer; border: 2px solid ${isSelected ? '#0F766E' : '#99F6E4'}; background: ${isSelected ? '#FFFFFF' : 'rgba(255,255,255,0.7)'}; box-shadow: ${isSelected ? '0 2px 6px rgba(15,118,110,0.25)' : 'none'}; transition: all 0.15s ease;">
-                      <img id="sliderTabThumb_${idx}" src="${this.resolvePreviewUrl(slideVal)}" style="width: 100%; height: 42px; object-fit: cover; border-radius: 4px; border: 1px solid #E2E8F0;" onerror="this.src='../assets/images/placeholder.png'"/>
-                      <span style="font-size: 0.75rem; font-weight: 700; color: ${isSelected ? '#0F766E' : '#475569'};">Slide ${idx + 1}</span>
-                      <span style="font-size: 0.65rem; color: #64748B; overflow: hidden; text-overflow: ellipsis; max-width: 100%; white-space: nowrap;">${this.escapeHtml(slide.key.split('.').pop())}</span>
-                    </button>
-                  `;
-                }).join('')}
+              <div style="display: flex; flex-direction: column; gap: 8px;">
+                <button type="button" class="btn btn-danger btn-block" onclick="PageEditor.deleteSelectedElement()" style="background: #DC2626; color: #FFFFFF; font-weight: 700; border: none; padding: 10px;">
+                  🗑️ Delete This Element
+                </button>
+                <button type="button" class="btn btn-outline btn-block" onclick="PageEditor.clearSelectedContent()">
+                  🧹 Clear Content Text / Image
+                </button>
+                <button type="button" class="btn btn-outline btn-block" onclick="PageEditor.resetSelectedElement()">
+                  🔄 Restore Original Seeded Value
+                </button>
+              </div>
+            </div>
+          </div>
+        `;
+      }
+
+      // ==========================================
+      // TAB 1: EDIT CONTENT (Default)
+      // ==========================================
+      else {
+        // Check if this element relates to a tour package
+        let pkgSlug = item.packageSlug || null;
+        if (this.activePageKey && this.activePageKey.startsWith('tourPackages/')) {
+          pkgSlug = this.activePageKey.replace('tourPackages/', '');
+        } else if (item.key && (item.key.includes('pkg_') || item.key.includes('package') || item.key.includes('tour'))) {
+          if (item.key.includes('pkg_')) {
+            const match = item.key.match(/pkg_([a-zA-Z0-9_-]+)/);
+            if (match) pkgSlug = match[1].split('.')[0];
+          }
+        }
+
+        // 1. Tour Package Action Card
+        if (pkgSlug) {
+          html += `
+            <div style="background: linear-gradient(135deg, #EFF6FF, #DBEAFE); border: 1px solid #93C5FD; border-radius: 8px; padding: 12px; margin-bottom: 14px;">
+              <div style="font-weight: 700; color: #1E40AF; font-size: 0.88rem; display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
+                <span>📦 Tour Package: ${this.escapeHtml(pkgSlug)}</span>
+              </div>
+              <p style="font-size: 0.78rem; color: #1E3A8A; margin: 0 0 10px 0;">Directly open this tour's standalone page or edit its full fields.</p>
+              <div style="display: flex; gap: 8px;">
+                <button type="button" class="btn btn-primary btn-sm" style="flex: 1;" onclick="PageEditor.openTourDetailPage('${this.escapeAttr(pkgSlug)}')">🚀 Open & Edit Page</button>
+                <button type="button" class="btn btn-outline btn-sm" onclick="AdminApp.openPackageModal('${this.escapeAttr(pkgSlug)}')">📝 Edit in Manager</button>
               </div>
             </div>
           `;
         }
 
-        html += `
-          <div class="inspector-field-group">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
-              <label style="margin: 0; font-weight: 700; color: #0F172A;">${hasSlider ? `Slide ${(this.activeSliderIndex || 0) + 1} Preview &amp; Media` : (item.isHeroBanner ? '🎯 Hero Banner Preview &amp; Media' : '🖼️ Image Preview &amp; Source')}</label>
-              <span class="badge" style="font-size: 0.72rem; background: #E2E8F0; color: #334155;">${this.escapeHtml(activeKey)}</span>
+        // 2. Destination Action Card
+        const destSlug = item.destinationSlug || null;
+        if (destSlug) {
+          html += `
+            <div style="background: linear-gradient(135deg, #F0FDF4, #DCFCE7); border: 1px solid #86EFAC; border-radius: 8px; padding: 12px; margin-bottom: 14px;">
+              <div style="font-weight: 700; color: #166534; font-size: 0.88rem; margin-bottom: 4px;">
+                <span>📍 Destination: ${this.escapeHtml(destSlug)}</span>
+              </div>
+              <p style="font-size: 0.78rem; color: #14532D; margin: 0 0 8px 0;">Edit lead text, sights badges, essence narrative, and tailor-made box.</p>
+              <button type="button" class="btn btn-primary btn-sm btn-block" onclick="PageEditor.openDestinationPage('${this.escapeAttr(destSlug)}')">🚀 Open & Edit Destination Page</button>
             </div>
-            
-            <div style="position: relative; border-radius: 8px; overflow: hidden; background: #0B132B; text-align: center; border: 1px solid #CBD5E1; margin-bottom: 10px;">
-              <img src="${this.resolvePreviewUrl(imgSrc)}" class="inspector-thumb-preview" id="inspectorThumb" style="max-height: 200px; width: 100%; object-fit: cover; display: block;" onerror="this.src='../assets/images/placeholder.png'"/>
-            </div>
+          `;
+        }
 
-            <label style="font-size: 0.82rem; font-weight: 600; color: #475569;">Image CDN URL / Relative Path</label>
-            <div style="display: flex; gap: 8px; margin-bottom: 10px;">
-              <input type="text" class="form-control" id="fieldInput_${activeKey}" value="${this.escapeAttr(imgSrc)}" placeholder="Image path or Cloudinary URL" oninput="PageEditor.handleLiveInput('${activeKey}', this.value, '${item.attrType}')"/>
+        // 3. General Linked Href Card (if clicked an anchor)
+        if (item.linkedHref && !pkgSlug && !destSlug && !item.linkedHref.startsWith('#')) {
+          html += `
+            <div style="margin-bottom: 14px; background: #FAFBFD; border: 1px solid #E2E8F0; border-radius: 8px; padding: 10px 12px;">
+              <div style="font-size: 0.78rem; color: #64748B; margin-bottom: 6px;">Target URL: <code style="color: #002B49;">${this.escapeHtml(item.linkedHref)}</code></div>
+              <button type="button" class="btn btn-outline btn-sm btn-block" onclick="PageEditor.openLinkedHref('${this.escapeAttr(item.linkedHref)}')">↗ Switch Editor to Linked Page</button>
             </div>
+          `;
+        }
 
-            <!-- Action buttons: Upload, Browse, Delete/Remove, Reset -->
-            <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 14px;">
-              <button type="button" class="btn btn-secondary btn-sm" onclick="PageEditor.openCloudinaryForField('${activeKey}')" title="Upload a new photo directly to Cloudinary CDN">☁️ Upload New</button>
-              <button type="button" class="btn btn-outline btn-sm" onclick="PageEditor.openMediaPicker('${activeKey}')" title="Choose from previously uploaded media">📁 Media Library</button>
-              <button type="button" class="btn btn-danger btn-sm" onclick="PageEditor.clearImageField('${activeKey}', '${item.attrType}')" style="background: #EF4444; color: #FFFFFF; border: none;" title="Remove this image">🗑️ Remove Image</button>
-              <button type="button" class="btn btn-outline btn-sm" onclick="PageEditor.resetFieldToDefault('${activeKey}', '${item.attrType}')" title="Restore original default image">🔄 Reset Default</button>
-            </div>
-          </div>
+        // --- A. SPECIAL HERO SECTION INSPECTOR ---
+        if (item.key.includes('hero') || item.sectionId === 'home') {
+          html += this.renderHeroSpecialControls(item);
+        }
 
-          <div class="inspector-field-group">
-            <label style="font-weight: 600; font-size: 0.82rem; color: #475569;">Image Alt Text (SEO &amp; Accessibility)</label>
-            <input type="text" class="form-control" id="altInput_${activeKey}" value="${this.escapeAttr(activeAlt || 'Lotus Ceylon Luxury Tours')}" placeholder="Descriptive label for search engines" oninput="PageEditor.handleLiveInput('${activeKey}_alt', this.value, 'alt')"/>
-          </div>
+        // --- B. IMAGE / BACKGROUND IMAGE INSPECTOR ---
+        if (item.attrType === 'image' || item.attrType === 'bg-image') {
+          const hasSlider = item.sliderImages && item.sliderImages.length > 1;
+          let activeKey = item.key;
+          let activeAlt = item.altText || '';
+          let imgSrc = currentVal || 'assets/images/sigiriya.jpg';
 
-          <div style="margin-top: 18px; padding-top: 14px; border-top: 1px solid #E2E8F0;">
-            <button type="button" class="btn btn-gold btn-block" onclick="PageEditor.publish()">🚀 Publish Changes Live</button>
-          </div>
-        `;
-      }
+          if (hasSlider) {
+            const activeIdx = Math.min(this.activeSliderIndex || 0, item.sliderImages.length - 1);
+            const activeSlide = item.sliderImages[activeIdx] || item.sliderImages[0];
+            activeKey = activeSlide.key;
+            activeAlt = activeSlide.alt || '';
+            imgSrc = this.getCurrentValue(activeKey, activeSlide.src || imgSrc);
 
-      // --- C. VIDEO INSPECTOR ---
-      else if (item.attrType === 'video') {
-        const videoSrc = currentVal || 'assets/videos/sigiriya-aerial.mp4';
-        html += `
-          <div class="inspector-field-group">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
-              <label style="margin: 0; font-weight: 700; color: #0F172A;">🎬 Video Player Preview</label>
-              <span class="badge" style="font-size: 0.72rem; background: #E2E8F0; color: #334155;">${this.escapeHtml(item.key)}</span>
-            </div>
-            
-            <div style="border-radius: 8px; overflow: hidden; background: #000; margin-bottom: 10px;">
-              <video src="${this.resolvePreviewUrl(videoSrc)}" class="inspector-video-preview" controls muted autoplay loop style="max-height: 200px; width: 100%; display: block;"></video>
-            </div>
-            
-            <label style="font-size: 0.82rem; font-weight: 600; color: #475569;">Video URL (Cloudinary / MP4 Stream)</label>
-            <div style="display: flex; gap: 8px; margin-bottom: 10px;">
-              <input type="text" class="form-control" id="fieldInput_${item.key}" value="${this.escapeAttr(videoSrc)}" placeholder="assets/videos/... or Cloudinary URL" oninput="PageEditor.handleLiveInput('${item.key}', this.value, 'video')"/>
-            </div>
+            html += `
+              <div class="slider-tabs-container" style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 8px; padding: 10px; margin-bottom: 14px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                  <span style="font-size: 0.8rem; font-weight: 700; color: #002B49;">📸 Carousel Slides (${item.sliderImages.length} Photos)</span>
+                  <span class="badge" style="font-size: 0.72rem; background: #E2E8F0; color: #002B49;">Slide ${activeIdx + 1} of ${item.sliderImages.length}</span>
+                </div>
+                <div class="slider-thumbnails-row" style="display: grid; grid-template-columns: repeat(${item.sliderImages.length}, 1fr); gap: 6px;">
+                  ${item.sliderImages.map((slide, idx) => {
+                    const slideVal = this.getCurrentValue(slide.key, slide.src);
+                    const isCur = idx === activeIdx;
+                    return `
+                      <button type="button" class="slider-thumb-btn ${isCur ? 'active' : ''}" onclick="PageEditor.switchSliderSlide(${idx}, '${this.escapeAttr(slide.key)}')" style="padding: 3px; border: 2px solid ${isCur ? '#D4AF37' : '#E2E8F0'}; border-radius: 6px; background: #FFFFFF; cursor: pointer; transition: all 0.15s ease;" title="${this.escapeAttr(slide.alt || ('Slide ' + (idx + 1)))}">
+                        <img src="${this.resolvePreviewUrl(slideVal)}" id="sliderTabThumb_${idx}" style="width: 100%; height: 42px; object-fit: cover; border-radius: 4px; display: block;" onerror="this.src='../assets/images/placeholder.png'"/>
+                        <span style="display: block; font-size: 0.68rem; font-weight: 600; color: ${isCur ? '#002B49' : '#64748B'}; margin-top: 2px; text-overflow: ellipsis; overflow: hidden; max-width: 100%; white-space: nowrap;">${this.escapeHtml(slide.key.split('.').pop())}</span>
+                      </button>
+                    `;
+                  }).join('')}
+                </div>
+              </div>
+            `;
+          }
 
-            <!-- Video Actions -->
-            <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px;">
-              <button type="button" class="btn btn-secondary btn-sm" onclick="PageEditor.openCloudinaryForField('${item.key}', 'video')">🎬 Upload Video</button>
-              <button type="button" class="btn btn-outline btn-sm" onclick="PageEditor.openMediaPicker('${item.key}')">📁 Media Library</button>
-              <button type="button" class="btn btn-danger btn-sm" onclick="PageEditor.clearVideoField('${item.key}')" style="background: #EF4444; color: #FFFFFF; border: none;">🗑️ Remove Video</button>
-              <button type="button" class="btn btn-outline btn-sm" onclick="PageEditor.resetFieldToDefault('${item.key}', 'video')">🔄 Reset Default</button>
-            </div>
-            
-            <div style="display: flex; gap: 14px; margin-top: 10px; padding: 8px 12px; background: #F8FAFC; border-radius: 6px; border: 1px solid #E2E8F0;">
-              <label style="display: flex; align-items: center; gap: 6px; font-size: 0.82rem; cursor: pointer; margin: 0;">
-                <input type="checkbox" id="videoAutoplay" checked onchange="PageEditor.handleVideoToggle('autoplay', this.checked)"/> Autoplay (Muted)
-              </label>
-              <label style="display: flex; align-items: center; gap: 6px; font-size: 0.82rem; cursor: pointer; margin: 0;">
-                <input type="checkbox" id="videoLoop" checked onchange="PageEditor.handleVideoToggle('loop', this.checked)"/> Loop
-              </label>
-            </div>
-
-            <div style="margin-top: 18px; padding-top: 14px; border-top: 1px solid #E2E8F0;">
-              <button type="button" class="btn btn-gold btn-block" onclick="PageEditor.publish()">🚀 Publish Changes Live</button>
-            </div>
-          </div>
-        `;
-      }
-
-      // --- D. BUTTON / LINK INSPECTOR ---
-      else if (item.attrType === 'link') {
-        const isDeveloperField = item.key && (item.key.includes('developerUrl') || item.key.includes('developerFbUrl'));
-        if (isDeveloperField) {
           html += `
             <div class="inspector-field-group">
-              <div style="background: linear-gradient(135deg, #FEF2F2, #FEE2E2); border: 1.5px solid #F87171; border-radius: 8px; padding: 14px; margin-bottom: 12px;">
-                <div style="font-weight: 700; color: #991B1B; font-size: 0.88rem; display: flex; align-items: center; gap: 6px; margin-bottom: 6px;">
-                  <span>🔒 Protected Developer License Link</span>
-                </div>
-                <p style="font-size: 0.78rem; color: #7F1D1D; margin: 0; line-height: 1.5;">
-                  This official design & development attribution is protected under developer licensing terms and cannot be modified or cleared via CMS.
-                </p>
-              </div>
               <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
-                <label style="margin: 0; font-weight: 700; color: #0F172A;">Attribution URL (Protected)</label>
-                <span class="badge" style="font-size: 0.72rem; background: #E2E8F0; color: #334155;">${this.escapeHtml(item.key)}</span>
+                <label style="margin: 0; font-weight: 700; color: #0F172A;">${hasSlider ? `Slide ${(this.activeSliderIndex || 0) + 1} Preview &amp; Media` : (item.isHeroBanner ? '🎯 Hero Banner Preview &amp; Media' : '🖼️ Image Preview &amp; Source')}</label>
+                <span class="badge" style="font-size: 0.72rem; background: #E2E8F0; color: #334155;">${this.escapeHtml(activeKey)}</span>
               </div>
-              <input type="text" class="form-control" value="${this.escapeAttr(currentVal)}" readonly disabled style="background: #F1F5F9; cursor: not-allowed;"/>
+              
+              <div style="position: relative; border-radius: 8px; overflow: hidden; background: #0B132B; text-align: center; border: 1px solid #CBD5E1; margin-bottom: 10px;">
+                <img src="${this.resolvePreviewUrl(imgSrc)}" class="inspector-thumb-preview" id="inspectorThumb" style="max-height: 200px; width: 100%; object-fit: cover; display: block;" onerror="this.src='../assets/images/placeholder.png'"/>
+              </div>
+
+              <label style="font-size: 0.82rem; font-weight: 600; color: #475569;">Image CDN URL / Relative Path</label>
+              <div style="display: flex; gap: 8px; margin-bottom: 10px;">
+                <input type="text" class="form-control" id="fieldInput_${activeKey}" value="${this.escapeAttr(imgSrc)}" placeholder="Image path or Cloudinary URL" oninput="PageEditor.handleLiveInput('${activeKey}', this.value, '${item.attrType}')"/>
+              </div>
+
+              <!-- Action buttons: Upload, Browse, Delete/Remove, Reset -->
+              <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 14px;">
+                <button type="button" class="btn btn-secondary btn-sm" onclick="PageEditor.openCloudinaryForField('${activeKey}')" title="Upload a new photo directly to Cloudinary CDN">☁️ Upload New</button>
+                <button type="button" class="btn btn-outline btn-sm" onclick="PageEditor.openMediaPicker('${activeKey}')" title="Choose from previously uploaded media">📁 Media Library</button>
+                <button type="button" class="btn btn-danger btn-sm" onclick="PageEditor.clearImageField('${activeKey}', '${item.attrType}')" style="background: #EF4444; color: #FFFFFF; border: none;" title="Remove this image">🗑️ Remove Image</button>
+                <button type="button" class="btn btn-outline btn-sm" onclick="PageEditor.resetFieldToDefault('${activeKey}', '${item.attrType}')" title="Restore original default image">🔄 Reset Default</button>
+              </div>
+            </div>
+
+            <div class="inspector-field-group">
+              <label style="font-weight: 600; font-size: 0.82rem; color: #475569;">Image Alt Text (SEO &amp; Accessibility)</label>
+              <input type="text" class="form-control" id="altInput_${activeKey}" value="${this.escapeAttr(activeAlt || 'Lotus Ceylon Luxury Tours')}" placeholder="Descriptive label for search engines" oninput="PageEditor.handleLiveInput('${activeKey}_alt', this.value, 'alt')"/>
+              <small style="display: block; font-size: 0.72rem; color: #64748B; margin-top: 4px;">Recommended: 30-100 characters for optimal image SEO.</small>
             </div>
           `;
-        } else {
-        html += `
-          <div class="inspector-field-group">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
-              <label style="margin: 0; font-weight: 700; color: #0F172A;">🔗 Button / Link Destination</label>
-              <span class="badge" style="font-size: 0.72rem; background: #E2E8F0; color: #334155;">${this.escapeHtml(item.key)}</span>
-            </div>
-            <input type="text" class="form-control" id="fieldInput_${item.key}" value="${this.escapeAttr(currentVal)}" placeholder="e.g. tours/index.html or #bespoke" oninput="PageEditor.handleLiveInput('${item.key}', this.value, 'link')"/>
-            
-            <div style="display: flex; gap: 8px; margin-top: 10px; flex-wrap: wrap;">
-              <button type="button" class="btn btn-outline btn-sm" onclick="document.getElementById('fieldInput_${item.key}').value='#packages'; PageEditor.handleLiveInput('${item.key}', '#packages', 'link');">#packages</button>
-              <button type="button" class="btn btn-outline btn-sm" onclick="document.getElementById('fieldInput_${item.key}').value='inquiry-detailed.html'; PageEditor.handleLiveInput('${item.key}', 'inquiry-detailed.html', 'link');">Bespoke Form</button>
-              <button type="button" class="btn btn-outline btn-sm" onclick="document.getElementById('fieldInput_${item.key}').value='tours/index.html'; PageEditor.handleLiveInput('${item.key}', 'tours/index.html', 'link');">Tours Index</button>
-              <button type="button" class="btn btn-danger btn-sm" onclick="PageEditor.clearTextField('${item.key}');" style="background: #EF4444; color: #FFFFFF; border: none;">🗑️ Clear Link</button>
-              <button type="button" class="btn btn-outline btn-sm" onclick="PageEditor.resetFieldToDefault('${item.key}', 'link')">🔄 Reset Default</button>
-            </div>
+        }
 
-            <div style="margin-top: 18px; padding-top: 14px; border-top: 1px solid #E2E8F0;">
-              <button type="button" class="btn btn-gold btn-block" onclick="PageEditor.publish()">🚀 Publish Changes Live</button>
+        // --- C. VIDEO INSPECTOR ---
+        else if (item.attrType === 'video') {
+          const videoSrc = currentVal || 'assets/videos/sigiriya-aerial.mp4';
+          html += `
+            <div class="inspector-field-group">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                <label style="margin: 0; font-weight: 700; color: #0F172A;">🎬 Video Player Preview</label>
+                <span class="badge" style="font-size: 0.72rem; background: #E2E8F0; color: #334155;">${this.escapeHtml(item.key)}</span>
+              </div>
+              
+              <div style="border-radius: 8px; overflow: hidden; background: #000; margin-bottom: 10px;">
+                <video src="${this.resolvePreviewUrl(videoSrc)}" class="inspector-video-preview" controls muted autoplay loop style="max-height: 200px; width: 100%; display: block;"></video>
+              </div>
+              
+              <label style="font-size: 0.82rem; font-weight: 600; color: #475569;">Video URL (Cloudinary / MP4 Stream)</label>
+              <div style="display: flex; gap: 8px; margin-bottom: 10px;">
+                <input type="text" class="form-control" id="fieldInput_${item.key}" value="${this.escapeAttr(videoSrc)}" placeholder="assets/videos/... or Cloudinary URL" oninput="PageEditor.handleLiveInput('${item.key}', this.value, 'video')"/>
+              </div>
+
+              <!-- Video Actions -->
+              <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px;">
+                <button type="button" class="btn btn-secondary btn-sm" onclick="PageEditor.openCloudinaryForField('${item.key}', 'video')">🎬 Upload Video</button>
+                <button type="button" class="btn btn-outline btn-sm" onclick="PageEditor.openMediaPicker('${item.key}')">📁 Media Library</button>
+                <button type="button" class="btn btn-danger btn-sm" onclick="PageEditor.clearVideoField('${item.key}')" style="background: #EF4444; color: #FFFFFF; border: none;">🗑️ Remove Video</button>
+                <button type="button" class="btn btn-outline btn-sm" onclick="PageEditor.resetFieldToDefault('${item.key}', 'video')">🔄 Reset Default</button>
+              </div>
+              
+              <div style="display: flex; gap: 14px; margin-top: 10px; padding: 8px 12px; background: #F8FAFC; border-radius: 6px; border: 1px solid #E2E8F0;">
+                <label style="display: flex; align-items: center; gap: 6px; font-size: 0.82rem; cursor: pointer; margin: 0;">
+                  <input type="checkbox" id="videoAutoplay" checked onchange="PageEditor.handleVideoToggle('autoplay', this.checked)"/> Autoplay (Muted)
+                </label>
+                <label style="display: flex; align-items: center; gap: 6px; font-size: 0.82rem; cursor: pointer; margin: 0;">
+                  <input type="checkbox" id="videoLoop" checked onchange="PageEditor.handleVideoToggle('loop', this.checked)"/> Loop
+                </label>
+              </div>
             </div>
-          </div>
-        `;
+          `;
+        }
+
+        // --- D. BUTTON / LINK INSPECTOR ---
+        else if (item.attrType === 'link') {
+          html += `
+            <div class="inspector-field-group">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                <label style="margin: 0; font-weight: 700; color: #0F172A;">🔗 Button / Link Destination</label>
+                <span class="badge" style="font-size: 0.72rem; background: #E2E8F0; color: #334155;">${this.escapeHtml(item.key)}</span>
+              </div>
+              <input type="text" class="form-control" id="fieldInput_${item.key}" value="${this.escapeAttr(currentVal)}" placeholder="e.g. tours/index.html or #bespoke" oninput="PageEditor.handleLiveInput('${item.key}', this.value, 'link')"/>
+              
+              <div style="display: flex; gap: 6px; margin-top: 8px; flex-wrap: wrap;">
+                <span style="font-size: 0.74rem; font-weight: 600; color: #64748B; width: 100%;">Quick Presets:</span>
+                <button type="button" class="pill-ctrl-btn" onclick="document.getElementById('fieldInput_${item.key}').value='#inquiry'; PageEditor.handleLiveInput('${item.key}', '#inquiry', 'link');">#inquiry</button>
+                <button type="button" class="pill-ctrl-btn" onclick="document.getElementById('fieldInput_${item.key}').value='inquiry-detailed.html'; PageEditor.handleLiveInput('${item.key}', 'inquiry-detailed.html', 'link');">Bespoke Form</button>
+                <button type="button" class="pill-ctrl-btn" onclick="document.getElementById('fieldInput_${item.key}').value='tours/index.html'; PageEditor.handleLiveInput('${item.key}', 'tours/index.html', 'link');">Tours Index</button>
+                <button type="button" class="pill-ctrl-btn" onclick="document.getElementById('fieldInput_${item.key}').value='contact.html'; PageEditor.handleLiveInput('${item.key}', 'contact.html', 'link');">Contact Us</button>
+              </div>
+
+              <div style="display: flex; gap: 8px; margin-top: 10px; flex-wrap: wrap;">
+                <button type="button" class="btn btn-danger btn-sm" onclick="PageEditor.clearTextField('${item.key}');" style="background: #EF4444; color: #FFFFFF; border: none;">🗑️ Clear Link</button>
+                <button type="button" class="btn btn-outline btn-sm" onclick="PageEditor.resetFieldToDefault('${item.key}', 'link')">🔄 Reset Default</button>
+              </div>
+            </div>
+          `;
+        }
+
+        // --- E. RICH HTML / TEXTAREA ---
+        else if (item.attrType === 'html') {
+          html += `
+            <div class="inspector-field-group">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                <label style="margin: 0; font-weight: 700; color: #0F172A;">📝 Rich Content Text (${this.activeLang.toUpperCase()})</label>
+                ${isMissingTranslation ? `<button type="button" class="auto-translate-btn" onclick="PageEditor.autoTranslateCurrentField('${item.key}', '${this.escapeAttr(enVal)}')">✨ Auto-Translate from EN</button>` : ''}
+              </div>
+              <textarea class="form-control" id="fieldInput_${item.key}" rows="5" oninput="PageEditor.handleLiveInput('${item.key}', this.value, 'html')">${this.escapeHtml(this.decodeEntities(currentVal))}</textarea>
+              
+              <div style="display: flex; gap: 8px; margin-top: 8px; flex-wrap: wrap;">
+                <button type="button" class="btn btn-danger btn-sm" onclick="PageEditor.clearTextField('${item.key}')" style="background: #EF4444; color: #FFFFFF; border: none;">🗑️ Clear Text</button>
+                <button type="button" class="btn btn-outline btn-sm" onclick="PageEditor.resetFieldToDefault('${item.key}', 'html')">🔄 Reset Default</button>
+              </div>
+            </div>
+          `;
+        }
+
+        // --- F. STANDARD PLAIN TEXT & HEADINGS ---
+        else {
+          const isLong = (currentVal || '').length > 70;
+          const currentTag = (item.tagName || 'p').toLowerCase();
+          
+          html += `
+            <div class="inspector-field-group">
+              <!-- Tag Switcher Pills -->
+              <div style="margin-bottom: 10px;">
+                <label style="font-size: 0.74rem; font-weight: 600; color: #64748B; margin-bottom: 4px; display: block;">Convert Element Tag:</label>
+                <div class="pill-controls-group">
+                  <button type="button" class="pill-ctrl-btn ${currentTag === 'h1' ? 'active' : ''}" onclick="PageEditor.convertElementTag('h1')">H1</button>
+                  <button type="button" class="pill-ctrl-btn ${currentTag === 'h2' ? 'active' : ''}" onclick="PageEditor.convertElementTag('h2')">H2</button>
+                  <button type="button" class="pill-ctrl-btn ${currentTag === 'h3' ? 'active' : ''}" onclick="PageEditor.convertElementTag('h3')">H3</button>
+                  <button type="button" class="pill-ctrl-btn ${currentTag === 'h4' ? 'active' : ''}" onclick="PageEditor.convertElementTag('h4')">H4</button>
+                  <button type="button" class="pill-ctrl-btn ${currentTag === 'p' ? 'active' : ''}" onclick="PageEditor.convertElementTag('p')">Paragraph</button>
+                  <button type="button" class="pill-ctrl-btn ${currentTag === 'blockquote' ? 'active' : ''}" onclick="PageEditor.convertElementTag('blockquote')">Quote</button>
+                </div>
+              </div>
+
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                <label style="margin: 0; font-weight: 700; color: #0F172A;">✏️ Text Content (${this.activeLang.toUpperCase()})</label>
+                ${isMissingTranslation ? `<button type="button" class="auto-translate-btn" onclick="PageEditor.autoTranslateCurrentField('${item.key}', '${this.escapeAttr(enVal)}')">✨ Auto-Translate from EN</button>` : ''}
+              </div>
+              ${isLong ? `
+                <textarea class="form-control" id="fieldInput_${item.key}" rows="4" oninput="PageEditor.handleLiveInput('${item.key}', this.value, 'text')">${this.escapeHtml(this.decodeEntities(currentVal))}</textarea>
+              ` : `
+                <input type="text" class="form-control" id="fieldInput_${item.key}" value="${this.escapeAttr(this.decodeEntities(currentVal))}" oninput="PageEditor.handleLiveInput('${item.key}', this.value, 'text')"/>
+              `}
+
+              <!-- Typography & Alignment Controls -->
+              <div style="margin-top: 10px;">
+                <label style="font-size: 0.74rem; font-weight: 600; color: #64748B; margin-bottom: 4px; display: block;">Text Formatting &amp; Style:</label>
+                <div class="pill-controls-group">
+                  <button type="button" class="pill-ctrl-btn" onclick="PageEditor.updateElementStyle('textAlign', 'left')" title="Align Left">⬅ Left</button>
+                  <button type="button" class="pill-ctrl-btn" onclick="PageEditor.updateElementStyle('textAlign', 'center')" title="Align Center">⬍ Center</button>
+                  <button type="button" class="pill-ctrl-btn" onclick="PageEditor.updateElementStyle('textAlign', 'right')" title="Align Right">➡ Right</button>
+                  <button type="button" class="pill-ctrl-btn" onclick="PageEditor.updateElementStyle('fontWeight', '700')" title="Bold">Bold</button>
+                  <button type="button" class="pill-ctrl-btn" onclick="PageEditor.updateElementStyle('fontWeight', 'normal')" title="Normal">Normal</button>
+                </div>
+
+                <div class="color-swatch-row">
+                  <span style="font-size: 0.74rem; font-weight: 600; color: #64748B;">Color:</span>
+                  <button type="button" class="color-swatch-btn" style="background: #D4AF37;" onclick="PageEditor.updateElementStyle('color', '#D4AF37')" title="Sacred Gold"></button>
+                  <button type="button" class="color-swatch-btn" style="background: #002B49;" onclick="PageEditor.updateElementStyle('color', '#002B49')" title="Deep Navy"></button>
+                  <button type="button" class="color-swatch-btn" style="background: #0F172A;" onclick="PageEditor.updateElementStyle('color', '#0F172A')" title="Obsidian"></button>
+                  <button type="button" class="color-swatch-btn" style="background: #64748B;" onclick="PageEditor.updateElementStyle('color', '#64748B')" title="Slate Gray"></button>
+                  <button type="button" class="color-swatch-btn" style="background: #FFFFFF;" onclick="PageEditor.updateElementStyle('color', '#FFFFFF')" title="Pure White"></button>
+                  <button type="button" class="color-swatch-btn" style="background: #C95451;" onclick="PageEditor.updateElementStyle('color', '#C95451')" title="Lotus Red"></button>
+                </div>
+              </div>
+              
+              <div style="display: flex; gap: 8px; margin-top: 8px; flex-wrap: wrap;">
+                <button type="button" class="btn btn-danger btn-sm" onclick="PageEditor.clearTextField('${item.key}')" style="background: #EF4444; color: #FFFFFF; border: none;">🗑️ Clear Text</button>
+                <button type="button" class="btn btn-outline btn-sm" onclick="PageEditor.resetFieldToDefault('${item.key}', 'text')">🔄 Reset Default</button>
+              </div>
+            </div>
+          `;
+        }
       }
-      }
 
-      // --- E. RICH HTML / TEXTAREA ---
-      else if (item.attrType === 'html') {
-        html += `
-          <div class="inspector-field-group">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
-              <label style="margin: 0; font-weight: 700; color: #0F172A;">📝 Rich Content Text (${this.activeLang.toUpperCase()})</label>
-              ${isMissingTranslation ? `<button type="button" class="auto-translate-btn" onclick="PageEditor.autoTranslateCurrentField('${item.key}', '${this.escapeAttr(enVal)}')">✨ Auto-Translate from EN</button>` : ''}
-            </div>
-            <textarea class="form-control" id="fieldInput_${item.key}" rows="5" oninput="PageEditor.handleLiveInput('${item.key}', this.value, 'html')">${this.escapeHtml(this.decodeEntities(currentVal))}</textarea>
-            
-            <div style="display: flex; gap: 8px; margin-top: 8px; flex-wrap: wrap;">
-              <button type="button" class="btn btn-danger btn-sm" onclick="PageEditor.clearTextField('${item.key}')" style="background: #EF4444; color: #FFFFFF; border: none;">🗑️ Clear Text</button>
-              <button type="button" class="btn btn-outline btn-sm" onclick="PageEditor.resetFieldToDefault('${item.key}', 'html')">🔄 Reset Default</button>
-            </div>
-
-            <div style="margin-top: 18px; padding-top: 14px; border-top: 1px solid #E2E8F0;">
-              <button type="button" class="btn btn-gold btn-block" onclick="PageEditor.publish()">🚀 Publish Changes Live</button>
-            </div>
-          </div>
-        `;
-      }
-
-      // --- F. STANDARD PLAIN TEXT ---
-      else {
-        const isLong = (currentVal || '').length > 70;
-        html += `
-          <div class="inspector-field-group">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
-              <label style="margin: 0; font-weight: 700; color: #0F172A;">✏️ Text Content (${this.activeLang.toUpperCase()})</label>
-              ${isMissingTranslation ? `<button type="button" class="auto-translate-btn" onclick="PageEditor.autoTranslateCurrentField('${item.key}', '${this.escapeAttr(enVal)}')">✨ Auto-Translate from EN</button>` : ''}
-            </div>
-            ${isLong ? `
-              <textarea class="form-control" id="fieldInput_${item.key}" rows="4" oninput="PageEditor.handleLiveInput('${item.key}', this.value, 'text')">${this.escapeHtml(this.decodeEntities(currentVal))}</textarea>
-            ` : `
-              <input type="text" class="form-control" id="fieldInput_${item.key}" value="${this.escapeAttr(this.decodeEntities(currentVal))}" oninput="PageEditor.handleLiveInput('${item.key}', this.value, 'text')"/>
-            `}
-            
-            <div style="display: flex; gap: 8px; margin-top: 8px; flex-wrap: wrap;">
-              <button type="button" class="btn btn-danger btn-sm" onclick="PageEditor.clearTextField('${item.key}')" style="background: #EF4444; color: #FFFFFF; border: none;">🗑️ Clear Text</button>
-              <button type="button" class="btn btn-outline btn-sm" onclick="PageEditor.resetFieldToDefault('${item.key}', 'text')">🔄 Reset Default</button>
-            </div>
-
-            <div style="margin-top: 18px; padding-top: 14px; border-top: 1px solid #E2E8F0;">
-              <button type="button" class="btn btn-gold btn-block" onclick="PageEditor.publish()">🚀 Publish Changes Live</button>
-            </div>
-          </div>
-        `;
-      }
+      // --- STICKY PUBLISH / SAVE ACTION BAR ---
+      html += `
+        <div style="margin-top: 20px; padding-top: 14px; border-top: 1px solid #E2E8F0; display: flex; flex-direction: column; gap: 8px;">
+          <button type="button" class="btn btn-gold btn-block" onclick="PageEditor.publish()" style="font-weight: 700;">
+            🚀 Publish Changes Live
+          </button>
+          <button type="button" class="btn btn-outline btn-block" onclick="PageEditor.saveDraft()">
+            💾 Save Draft
+          </button>
+        </div>
+      `;
 
       // Technical Info Accordion (collapsed by default)
       html += `
-        <details class="technical-info-toggle" style="margin-top: 16px;">
-          <summary style="font-size: 0.8rem; color: #64748B; cursor: pointer;">⚙️ Technical Info &amp; Database Binding</summary>
-          <div class="technical-info-box" style="margin-top: 6px; font-size: 0.78rem; background: #F8FAFC; padding: 10px; border-radius: 6px; border: 1px solid #E2E8F0;">
+        <details class="technical-info-toggle" style="margin-top: 14px;">
+          <summary style="font-size: 0.78rem; color: #94A3B8; cursor: pointer;">⚙️ Technical Info &amp; Database Binding</summary>
+          <div class="technical-info-box" style="margin-top: 6px; font-size: 0.76rem; background: #F8FAFC; padding: 10px; border-radius: 6px; border: 1px solid #E2E8F0;">
             <div><strong>Firestore Path:</strong> ${this.escapeHtml(this.activePageKey)}.${this.escapeHtml(item.key)}</div>
             <div><strong>Element Key:</strong> ${this.escapeHtml(item.key)}</div>
             <div><strong>Tag Type:</strong> &lt;${this.escapeHtml(item.tagName)}&gt; (${this.escapeHtml(item.attrType)})</div>
@@ -785,7 +1029,6 @@
 
       body.innerHTML = html;
     },
-
     renderHeroSpecialControls(item) {
       return `
         <div style="background: #F1F5F9; border: 1px solid #CBD5E1; border-radius: 10px; padding: 14px; margin-bottom: 18px;">
@@ -1661,12 +1904,42 @@
 
           await window.AdminApp.fbDb.collection(col).doc(docId).set(payload, { merge: true });
 
-          // If published, increment version
+          // If published, increment version and record version history snapshot
           if (status === 'published') {
             await window.AdminApp.fbDb.collection('siteMeta').doc('version').set({
               v: Date.now(),
               updatedAt: new Date().toISOString()
             }, { merge: true });
+
+            // Record snapshot in siteHistory
+            try {
+              const versionId = 'v_' + Date.now();
+              const historyDocKey = this.activePageKey.replace('/', '__');
+              await window.AdminApp.fbDb.collection('siteHistory').doc(historyDocKey).collection('versions').doc(versionId).set({
+                id: versionId,
+                timestamp: new Date().toISOString(),
+                pageKey: this.activePageKey,
+                updatedBy: payload.updatedBy || 'admin',
+                payload: payload
+              });
+            } catch(he) { console.warn('[PageEditor] History record warning:', he); }
+          }
+
+          // Always record locally in localStorage
+          if (status === 'published') {
+            try {
+              const hKey = 'lotus_history_' + this.activePageKey;
+              const list = JSON.parse(localStorage.getItem(hKey) || '[]');
+              list.unshift({
+                id: 'v_' + Date.now(),
+                timestamp: new Date().toISOString(),
+                pageKey: this.activePageKey,
+                updatedBy: payload.updatedBy || 'admin',
+                payload: payload
+              });
+              if (list.length > 20) list.length = 20;
+              localStorage.setItem(hKey, JSON.stringify(list));
+            } catch(le) {}
           }
         }
 
@@ -2525,6 +2798,125 @@
       PageEditor.initialized = true;
       PageEditor.init();
     }
-  };
+  
+    async openVersionHistoryModal() {
+      const modal = document.getElementById('versionHistoryModal');
+      const pageTitle = document.getElementById('versionHistoryPageTitle');
+      const listEl = document.getElementById('versionHistoryList');
+      if (!modal || !listEl) return;
+
+      if (pageTitle) {
+        pageTitle.textContent = `Page: ${this.activePageKey} (${this.activePageFile || 'live view'})`;
+      }
+      modal.style.display = 'flex';
+      listEl.innerHTML = '<div style="text-align: center; color: #64748B; padding: 24px;">Loading version checkpoints...</div>';
+
+      let versions = [];
+      // 1. Try localStorage first for instant display
+      try {
+        const localList = JSON.parse(localStorage.getItem('lotus_history_' + this.activePageKey) || '[]');
+        if (localList.length > 0) versions = localList;
+      } catch(e) {}
+
+      // 2. Try Firestore siteHistory
+      if (window.AdminApp && window.AdminApp.fbDb) {
+        try {
+          const historyDocKey = this.activePageKey.replace('/', '__');
+          const snap = await window.AdminApp.fbDb.collection('siteHistory').doc(historyDocKey).collection('versions').orderBy('timestamp', 'desc').limit(15).get();
+          if (!snap.empty) {
+            versions = [];
+            snap.forEach(doc => versions.push(doc.data()));
+          }
+        } catch(fe) { console.warn('[PageEditor] Could not fetch remote history:', fe); }
+      }
+
+      if (versions.length === 0) {
+        listEl.innerHTML = `
+          <div style="text-align: center; padding: 32px 16px; color: #64748B;">
+            <div style="font-size: 2.2rem; margin-bottom: 8px;">⏳</div>
+            <h4 style="color: #0F172A; margin: 0 0 6px 0;">No Prior Published Checkpoints</h4>
+            <p style="font-size: 0.82rem; margin: 0;">Clicking <strong>Publish Live</strong> creates an automatic version snapshot that allows 1-click rollback at any time.</p>
+          </div>
+        `;
+        return;
+      }
+
+      listEl.innerHTML = versions.map((v, i) => {
+        const dateStr = v.timestamp ? new Date(v.timestamp).toLocaleString() : 'Recent checkpoint';
+        const isCurrent = i === 0;
+        return `
+          <div style="display: flex; justify-content: space-between; align-items: center; padding: 14px; margin-bottom: 10px; background: ${isCurrent ? '#F0FDF4' : '#F8FAFC'}; border: 1px solid ${isCurrent ? '#86EFAC' : '#E2E8F0'}; border-radius: 8px;">
+            <div>
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <strong style="color: #0F172A; font-size: 0.88rem;">${dateStr}</strong>
+                ${isCurrent ? '<span class="badge badge-success" style="font-size: 0.7rem;">Current Live</span>' : ''}
+              </div>
+              <small style="color: #64748B; font-size: 0.76rem; display: block; margin-top: 2px;">Published by: ${this.escapeHtml(v.updatedBy || 'admin')}</small>
+            </div>
+            <div>
+              ${isCurrent ? `
+                <button type="button" class="btn btn-outline btn-sm" disabled style="opacity: 0.6; cursor: default;">Active</button>
+              ` : `
+                <button type="button" class="btn btn-outline btn-sm" style="color: #B45309; border-color: #D97706; background: #FFFBEB;" onclick="PageEditor.rollbackToVersion('${v.id}')">
+                  ↺ Rollback
+                </button>
+              `}
+            </div>
+          </div>
+        `;
+      }).join('');
+    },
+
+    closeVersionHistoryModal() {
+      const modal = document.getElementById('versionHistoryModal');
+      if (modal) modal.style.display = 'none';
+    },
+
+    async rollbackToVersion(versionId) {
+      if (!confirm('Are you sure you want to roll back this page to this previous version checkpoint? Current draft changes will be replaced.')) {
+        return;
+      }
+
+      let targetVersion = null;
+      // Look in localStorage
+      try {
+        const localList = JSON.parse(localStorage.getItem('lotus_history_' + this.activePageKey) || '[]');
+        targetVersion = localList.find(v => v.id === versionId);
+      } catch(e) {}
+
+      // Look in Firestore
+      if (!targetVersion && window.AdminApp && window.AdminApp.fbDb) {
+        try {
+          const historyDocKey = this.activePageKey.replace('/', '__');
+          const doc = await window.AdminApp.fbDb.collection('siteHistory').doc(historyDocKey).collection('versions').doc(versionId).get();
+          if (doc.exists) targetVersion = doc.data();
+        } catch(e) {}
+      }
+
+      if (!targetVersion || !targetVersion.payload) {
+        if (window.AdminApp) window.AdminApp.showToast('Could not load target version payload.', 'error');
+        return;
+      }
+
+      // Restore payload
+      this.activeDocData = Object.assign({}, targetVersion.payload);
+      this.currentFieldValues = {};
+
+      // Apply to iframe
+      const iframe = document.getElementById('visualCmsIframe');
+      if (iframe) {
+        const curSrc = iframe.src;
+        iframe.src = 'about:blank';
+        setTimeout(() => { iframe.src = curSrc; }, 80);
+      }
+
+      this.closeVersionHistoryModal();
+      await this.savePageContent('published');
+      if (window.AdminApp) {
+        window.AdminApp.showToast('Page rolled back to chosen checkpoint and published live!', 'success');
+      }
+    },
+
+};
 
 })(window, document);

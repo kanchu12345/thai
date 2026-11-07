@@ -893,6 +893,14 @@
           target = e.target.closest('[data-cms], [data-cms-html], [data-cms-img], [data-cms-bg], [data-cms-video], [data-cms-link], [data-cms-list]');
         }
 
+        // Universal Selector: Any text node, heading, paragraph, button, link, list item or image
+        if (!target) {
+          const candidate = e.target.closest('h1, h2, h3, h4, h5, h6, p, span, a, button, li, blockquote, label, th, td, figcaption, b, strong, em, img, video');
+          if (candidate && !candidate.closest('#lotus-cms-edit-styles, script, style, noscript')) {
+            target = candidate;
+          }
+        }
+
         if (target) {
           e.preventDefault();
           e.stopPropagation();
@@ -917,11 +925,31 @@
                     target.getAttribute('data-cms-link') ||
                     target.getAttribute('data-cms-list');
 
-          if (!key && target.tagName === 'IMG') {
-            const src = target.getAttribute('src') || '';
-            const filename = (src.split('/').pop() || 'img').split('.')[0] || 'img';
-            key = 'img_' + filename.replace(/[^a-zA-Z0-9_]/g, '_');
-            target.setAttribute('data-cms-img', key);
+          if (!key) {
+            const pageSlug = (document.body && document.body.getAttribute('data-cms-page')) || window.location.pathname.split('/').pop().replace('.html', '') || 'page';
+            const tag = target.tagName.toLowerCase();
+            const textSnippet = (target.textContent || '').trim().slice(0, 15).replace(/[^a-zA-Z0-9]/g, '_').toLowerCase();
+            const section = target.closest('section, header, footer');
+            const secName = section ? (section.id || (section.className ? String(section.className).split(' ')[0] : 'sec')) : 'gen';
+
+            if (tag === 'img') {
+              const src = target.getAttribute('src') || '';
+              const filename = (src.split('/').pop() || 'img').split('.')[0] || 'img';
+              key = (pageSlug + '.' + filename).replace(/[^a-zA-Z0-9_.]/g, '_');
+              target.setAttribute('data-cms-img', key);
+              attrType = 'image';
+            } else if (tag === 'a' || tag === 'button') {
+              key = (pageSlug + '.' + secName + '_' + tag + '_' + (textSnippet || 'btn')).replace(/[^a-zA-Z0-9_.]/g, '_');
+              if (target.getAttribute('href')) {
+                target.setAttribute('data-cms-link', key + '_link');
+              }
+              target.setAttribute('data-cms', key);
+              attrType = target.getAttribute('href') ? 'link' : 'text';
+            } else {
+              key = (pageSlug + '.' + secName + '_' + tag + '_' + (textSnippet || 'text')).replace(/[^a-zA-Z0-9_.]/g, '_');
+              target.setAttribute('data-cms', key);
+              attrType = 'text';
+            }
           }
 
           let currentVal = '';
@@ -1014,6 +1042,15 @@
           // Notify parent frame
           const isWatermark = target.classList.contains('watermark-heading') || (target.className && String(target.className).includes('watermark'));
           if (window.parent && window.parent !== window) {
+            const isHidden = target.getAttribute('data-cms-hidden') === 'true' || target.style.display === 'none';
+            const altText = target.tagName === 'IMG' ? (target.getAttribute('alt') || '') : '';
+            const styleObj = window.getComputedStyle ? {
+              fontSize: window.getComputedStyle(target).fontSize,
+              fontWeight: window.getComputedStyle(target).fontWeight,
+              textAlign: window.getComputedStyle(target).textAlign,
+              color: window.getComputedStyle(target).color
+            } : {};
+
             window.parent.postMessage({
               type: 'lotus:element-selected',
               key: key,
@@ -1025,7 +1062,10 @@
               destinationSlug: destinationSlug || null,
               linkedHref: linkedHref || null,
               isWatermark: isWatermark,
-              sliderImages: sliderImages
+              sliderImages: sliderImages,
+              isHidden: isHidden,
+              altText: altText,
+              computedStyles: styleObj
             }, '*');
           }
         }
@@ -1110,6 +1150,123 @@
             el.scrollIntoView({ behavior: 'smooth', block: 'center' });
           }
         }
+
+        // Toggle Element Visibility
+        if (event.data.type === 'lotus:toggle-visibility') {
+          const { key, hidden } = event.data;
+          const cleanKey = key && key.includes('.') ? key.split('.').pop() : key;
+          const el = (key ? document.querySelector(`[data-cms="${key}"], [data-cms="${cleanKey}"], [data-cms-img="${key}"], [data-cms-img="${cleanKey}"], [data-cms-bg="${key}"], [data-cms-link="${key}"]`) : null) || activeEl;
+          if (el) {
+            if (hidden) {
+              el.setAttribute('data-cms-hidden', 'true');
+              el.style.opacity = '0.35';
+              el.style.filter = 'grayscale(80%)';
+              el.style.outline = '2px dashed #EF4444';
+            } else {
+              el.removeAttribute('data-cms-hidden');
+              el.style.opacity = '1';
+              el.style.filter = 'none';
+              el.style.outline = '';
+            }
+          }
+        }
+
+        // Delete Element (Hide from DOM with visual indicator)
+        if (event.data.type === 'lotus:delete-element') {
+          const { key } = event.data;
+          const cleanKey = key && key.includes('.') ? key.split('.').pop() : key;
+          const el = (key ? document.querySelector(`[data-cms="${key}"], [data-cms="${cleanKey}"], [data-cms-img="${key}"], [data-cms-img="${cleanKey}"], [data-cms-bg="${key}"], [data-cms-link="${key}"]`) : null) || activeEl;
+          if (el) {
+            el.setAttribute('data-cms-hidden', 'true');
+            el.style.display = 'none';
+            if (activeEl === el) {
+              activeEl.classList.remove('lotus-cms-selected-element');
+              activeEl = null;
+            }
+          }
+        }
+
+        // Add Element Below Active Element
+        if (event.data.type === 'lotus:add-element') {
+          const { tag, defaultContent, key } = event.data;
+          const parentOrRef = activeEl || document.querySelector('main') || document.body;
+          const newEl = document.createElement(tag || 'p');
+          const autoKey = key || ('new_' + tag + '_' + Date.now().toString(36));
+          
+          if (tag === 'img') {
+            newEl.setAttribute('data-cms-img', autoKey);
+            newEl.src = defaultContent || 'assets/images/sigiriya.jpg';
+            newEl.alt = 'Lotus Ceylon Tours';
+            newEl.style.maxWidth = '100%';
+            newEl.style.borderRadius = '8px';
+            newEl.style.display = 'block';
+            newEl.style.margin = '16px 0';
+          } else if (tag === 'a') {
+            newEl.setAttribute('data-cms-link', autoKey + '_link');
+            newEl.setAttribute('data-cms', autoKey);
+            newEl.href = '#';
+            newEl.className = 'btn btn-gold';
+            newEl.textContent = defaultContent || 'Discover More';
+            newEl.style.display = 'inline-block';
+            newEl.style.margin = '10px 0';
+          } else {
+            newEl.setAttribute('data-cms', autoKey);
+            newEl.textContent = defaultContent || (tag.startsWith('h') ? 'New Heading Title' : 'New paragraph content text here...');
+            if (tag.startsWith('h')) {
+              newEl.style.color = '#002B49';
+              newEl.style.margin = '16px 0 8px 0';
+            } else {
+              newEl.style.lineHeight = '1.7';
+              newEl.style.margin = '8px 0';
+            }
+          }
+
+          if (parentOrRef && parentOrRef.parentNode && parentOrRef !== document.body) {
+            parentOrRef.parentNode.insertBefore(newEl, parentOrRef.nextSibling);
+          } else {
+            (document.querySelector('main') || document.body).appendChild(newEl);
+          }
+
+          if (activeEl) activeEl.classList.remove('lotus-cms-selected-element');
+          activeEl = newEl;
+          activeEl.classList.add('lotus-cms-selected-element');
+          newEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+          if (window.parent && window.parent !== window) {
+            window.parent.postMessage({
+              type: 'lotus:element-selected',
+              key: autoKey,
+              attrType: tag === 'img' ? 'image' : (tag === 'a' ? 'link' : 'text'),
+              currentVal: tag === 'img' ? newEl.src : newEl.textContent,
+              tagName: tag,
+              sectionId: 'Custom Added Content',
+              isNewlyAdded: true
+            }, '*');
+          }
+        }
+
+        // Convert Tag (e.g. H2 -> P, P -> H3)
+        if (event.data.type === 'lotus:convert-tag') {
+          const { newTag } = event.data;
+          if (activeEl && newTag && activeEl.tagName.toLowerCase() !== newTag.toLowerCase()) {
+            const replacement = document.createElement(newTag);
+            Array.from(activeEl.attributes).forEach(attr => {
+              replacement.setAttribute(attr.name, attr.value);
+            });
+            replacement.innerHTML = activeEl.innerHTML;
+            activeEl.parentNode.replaceChild(replacement, activeEl);
+            activeEl = replacement;
+            activeEl.classList.add('lotus-cms-selected-element');
+          }
+        }
+
+        // Update Inline Style (fontSize, textAlign, fontWeight, color)
+        if (event.data.type === 'lotus:update-style') {
+          const { prop, value } = event.data;
+          if (activeEl && prop) {
+            activeEl.style[prop] = value;
+          }
+        }
       });
     },
 
@@ -1123,6 +1280,12 @@
          [data-cms-video="${key}"], [data-cms-video="${cleanKey}"],
          [data-cms-link="${key}"], [data-cms-link="${cleanKey}"]`
       );
+
+      if (attrType === 'alt') {
+        const cleanKey = key.replace(/_alt$/, '');
+        const img = document.querySelector(`[data-cms-img="${cleanKey}"], img[data-cms="${cleanKey}"]`);
+        if (img && img.tagName === 'IMG') img.setAttribute('alt', val || '');
+      }
 
       elements.forEach(el => {
         if (el.hasAttribute('data-cms-img') || el.tagName === 'IMG') {

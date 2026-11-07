@@ -9,7 +9,7 @@
 <meta content="noindex, nofollow" name="robots"/>
 <title>CMS Admin Panel — LOTUS Ceylon International Tours</title>
 <link href="../assets/images/logo.png" rel="icon" type="image/png"/>
-<link href="css/admin.css?v=20261029_fix5" rel="stylesheet"/>
+<link href="css/admin.css?v=20261107_v2" rel="stylesheet"/>
 <!-- Chart.js for Executive Analytics -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js"></script>
 <!-- DOMPurify for XSS Protection -->
@@ -565,9 +565,101 @@
   </div>
 </div>
 
-<!-- Luxury KPI Performance Cards Grid -->
+<!-- Go-Live Readiness Checklist Card -->
+<div class="card" id="goLiveChecklistCard" style="margin-bottom: 22px; padding: 20px 24px; background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 12px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);">
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; flex-wrap: wrap; gap: 10px;">
+    <div>
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="#D4AF37"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+        <h3 style="margin: 0; font-size: 1.05rem; color: #002B49; font-weight: 700;">Production Go-Live Readiness Checklist</h3>
+      </div>
+      <p style="margin: 4px 0 0 0; font-size: 0.8rem; color: #64748B;">Audit critical official credentials, map integrations, and brand assets before domain launch.</p>
+    </div>
+    <div style="display: flex; align-items: center; gap: 10px;">
+      <span class="badge" id="checklistScoreBadge" style="font-size: 0.82rem; font-weight: 700; padding: 6px 12px; border-radius: 20px; background: #FEF3C7; color: #92400E;">Audit Running...</span>
+      <button type="button" class="btn btn-outline btn-sm" onclick="AdminApp.checkGoLiveStatus(true)">Refresh Audit</button>
+    </div>
+  </div>
+
+  <div class="checklist-items-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px;">
+    <!-- 1. SLTDA Number -->
+    <div class="checklist-item-box" id="checkItemSltda" style="display: flex; align-items: center; justify-content: space-between; padding: 12px 14px; background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 8px;">
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <span class="check-icon" id="iconSltda">⏳</span>
+        <div>
+          <strong style="font-size: 0.86rem; color: #0F172A; display: block;">SLTDA Registration Number</strong>
+          <small style="color: #64748B; font-size: 0.74rem;" id="metaSltda">Checking site credentials...</small>
+        </div>
+      </div>
+      <span class="badge" id="badgeSltda" style="font-size: 0.74rem;">Pending</span>
+    </div>
+
+    <!-- 2. TripAdvisor URL -->
+    <div class="checklist-item-box" id="checkItemTripAdvisor" style="display: flex; align-items: center; justify-content: space-between; padding: 12px 14px; background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 8px;">
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <span class="check-icon" id="iconTripAdvisor">⏳</span>
+        <div>
+          <strong style="font-size: 0.86rem; color: #0F172A; display: block;">TripAdvisor Profile URL</strong>
+          <small style="color: #64748B; font-size: 0.74rem;" id="metaTripAdvisor">Official review destination</small>
+        </div>
+      </div>
+      <span class="badge" id="badgeTripAdvisor" style="font-size: 0.74rem;">Pending</span>
+    </div>
+
+    <!-- 3. Google Reviews URL -->
+    <div class="checklist-item-box" id="checkItemGoogleReviews" style="display: flex; align-items: center; justify-content: space-between; padding: 12px 14px; background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 8px;">
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <span class="check-icon" id="iconGoogleReviews">⏳</span>
+        <div>
+          <strong style="font-size: 0.86rem; color: #0F172A; display: block;">Google Reviews Link</strong>
+          <small style="color: #64748B; font-size: 0.74rem;" id="metaGoogleReviews">Google Business Profile link</small>
+        </div>
+      </div>
+      <span class="badge" id="badgeGoogleReviews" style="font-size: 0.74rem;">Pending</span>
+    </div>
+
+    <!-- 4. Google Maps Link -->
+    <div class="checklist-item-box" id="checkItemGoogleMaps" style="display: flex; align-items: center; justify-content: space-between; padding: 12px 14px; background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 8px;">
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <span class="check-icon" id="iconGoogleMaps">⏳</span>
+        <div>
+          <strong style="font-size: 0.86rem; color: #0F172A; display: block;">Google Maps Location Pin</strong>
+          <small style="color: #64748B; font-size: 0.74rem;" id="metaGoogleMaps">Headquarters map coordinate</small>
+        </div>
+      </div>
+      <span class="badge" id="badgeGoogleMaps" style="font-size: 0.74rem;">Pending</span>
+    </div>
+
+    <!-- 5. Reviews Added -->
+    <div class="checklist-item-box" id="checkItemReviewsAdded" style="display: flex; align-items: center; justify-content: space-between; padding: 12px 14px; background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 8px;">
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <span class="check-icon" id="iconReviewsAdded">⏳</span>
+        <div>
+          <strong style="font-size: 0.86rem; color: #0F172A; display: block;">Guest Reviews Published</strong>
+          <small style="color: #64748B; font-size: 0.74rem;" id="metaReviewsAdded">Verified customer guestbook</small>
+        </div>
+      </div>
+      <span class="badge" id="badgeReviewsAdded" style="font-size: 0.74rem;">Pending</span>
+    </div>
+
+    <!-- 6. Brand Logo Set -->
+    <div class="checklist-item-box" id="checkItemLogoSet" style="display: flex; align-items: center; justify-content: space-between; padding: 12px 14px; background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 8px;">
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <span class="check-icon" id="iconLogoSet">⏳</span>
+        <div>
+          <strong style="font-size: 0.86rem; color: #0F172A; display: block;">Primary Brand Logo Set</strong>
+          <small style="color: #64748B; font-size: 0.74rem;" id="metaLogoSet">Vector SVG or high-res PNG</small>
+        </div>
+      </div>
+      <span class="badge" id="badgeLogoSet" style="font-size: 0.74rem;">Pending</span>
+    </div>
+  </div>
+</div>
+
+<!-- Real Computed Live Firestore Stats Grid (No Fake / Demo Stats) -->
 <div class="stats-grid executive-stats-grid">
-  <div class="stat-card stat-card-luxury primary">
+  <!-- 1. Tour Packages -->
+  <div class="stat-card stat-card-luxury primary" onclick="AdminApp.switchSection('packages')" style="cursor: pointer;">
     <div class="stat-header">
       <span class="stat-badge">Catalog Live</span>
       <div class="stat-icon">
@@ -581,37 +673,55 @@
     </div>
   </div>
 
-  <div class="stat-card stat-card-luxury gold">
+  <!-- 2. Tour Categories -->
+  <div class="stat-card stat-card-luxury gold" onclick="AdminApp.switchSection('categories')" style="cursor: pointer;">
     <div class="stat-header">
-      <span class="stat-badge urgent">Requires Action</span>
+      <span class="stat-badge">Curated Themes</span>
+      <div class="stat-icon">
+        <svg viewBox="0 0 24 24"><path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H8V4h12v12z"/></svg>
+      </div>
+    </div>
+    <div class="stat-info">
+      <div class="stat-number" id="statCategoriesCount">11</div>
+      <h4>Tour Categories</h4>
+      <div class="stat-meta">Bespoke thematic journeys</div>
+    </div>
+  </div>
+
+  <!-- 3. Destinations -->
+  <div class="stat-card stat-card-luxury blue" onclick="AdminApp.switchSection('destinations')" style="cursor: pointer;">
+    <div class="stat-header">
+      <span class="stat-badge">Destinations</span>
+      <div class="stat-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+      </div>
+    </div>
+    <div class="stat-info">
+      <div class="stat-number" id="statDestinationsCount">24</div>
+      <h4>Curated Destinations</h4>
+      <div class="stat-meta">Iconic Sri Lankan locales</div>
+    </div>
+  </div>
+
+  <!-- 4. Total Inquiries -->
+  <div class="stat-card stat-card-luxury green" onclick="AdminApp.switchSection('inquiries')" style="cursor: pointer;">
+    <div class="stat-header">
+      <span class="stat-badge">Guest Leads</span>
       <div class="stat-icon">
         <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
       </div>
     </div>
     <div class="stat-info">
-      <div class="stat-number" id="statNewInquiriesCount">0</div>
-      <h4>New Guest Inquiries</h4>
-      <div class="stat-meta">Pending concierge review</div>
-    </div>
-  </div>
-
-  <div class="stat-card stat-card-luxury green">
-    <div class="stat-header">
-      <span class="stat-badge positive">+18.4% MoM</span>
-      <div class="stat-icon">
-        <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6z"/></svg>
-      </div>
-    </div>
-    <div class="stat-info">
       <div class="stat-number" id="statMonthInquiriesCount">0</div>
       <h4>Total Inquiries</h4>
-      <div class="stat-meta">Active Traveler Pipeline</div>
+      <div class="stat-meta"><span id="statNewInquiriesCount">0</span> New pending review</div>
     </div>
   </div>
 
-  <div class="stat-card stat-card-luxury dark">
+  <!-- 5. Verified Reviews -->
+  <div class="stat-card stat-card-luxury dark" onclick="AdminApp.switchSection('reviews')" style="cursor: pointer;">
     <div class="stat-header">
-      <span class="stat-badge rating">★ 4.95 / 5.0</span>
+      <span class="stat-badge">Guestbook</span>
       <div class="stat-icon">
         <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
       </div>
@@ -619,21 +729,7 @@
     <div class="stat-info">
       <div class="stat-number" id="statReviewsCount">0</div>
       <h4>Verified Guest Reviews</h4>
-      <div class="stat-meta">High Traveler Satisfaction</div>
-    </div>
-  </div>
-
-  <div class="stat-card stat-card-luxury blue">
-    <div class="stat-header">
-      <span class="stat-badge benchmark">&lt; 2h SLA</span>
-      <div class="stat-icon">
-        <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
-      </div>
-    </div>
-    <div class="stat-info">
-      <div class="stat-number">98.2%</div>
-      <h4>Concierge Response Rate</h4>
-      <div class="stat-meta">Ultra-Luxury Standard</div>
+      <div class="stat-meta">Published traveler guestbook</div>
     </div>
   </div>
 </div>
@@ -910,6 +1006,15 @@
 </button>
 </div>
 <div class="table-card">
+<div class="table-toolbar">
+  <div class="search-box">
+    <input aria-label="Search tour categories" id="categorySearchInput" oninput="AdminApp.filterCategories()" placeholder="Search categories..." type="text"/>
+  </div>
+  <div style="display: flex; gap: 8px;">
+    <button type="button" class="btn btn-outline btn-sm" onclick="AdminApp.bulkToggleCategories(true)">Publish All</button>
+    <button type="button" class="btn btn-outline btn-sm" onclick="AdminApp.bulkToggleCategories(false)">Unpublish All</button>
+  </div>
+</div>
 <div class="data-table-wrap">
 <table class="data-table">
 <thead>
@@ -936,13 +1041,24 @@
 <div class="section-header">
 <div class="section-title-wrap">
 <h2>Destinations</h2>
-<p>Iconic Sri Lankan cities, heritage sites, and coastal escapes</p>
+<p>Iconic Sri Lankan cities, heritage sites, and coastal escapes (24 curated regions)</p>
 </div>
-<button class="btn btn-primary" onclick="AdminApp.openDestinationModal()">
-<span>+ Add Destination</span>
-</button>
+<div style="display: flex; gap: 8px;">
+  <button class="btn btn-primary" onclick="AdminApp.openDestinationModal()">
+    <span>+ Add Destination</span>
+  </button>
+</div>
 </div>
 <div class="table-card">
+<div class="table-toolbar">
+  <div class="search-box">
+    <input aria-label="Search destinations" id="destinationSearchInput" oninput="AdminApp.filterDestinations()" placeholder="Search destinations by title, region, slug..." type="text"/>
+  </div>
+  <div style="display: flex; gap: 8px;">
+    <button type="button" class="btn btn-outline btn-sm" onclick="AdminApp.bulkToggleDestinations(true)">Publish All</button>
+    <button type="button" class="btn btn-outline btn-sm" onclick="AdminApp.bulkToggleDestinations(false)">Unpublish All</button>
+  </div>
+</div>
 <div class="data-table-wrap">
 <table class="data-table">
 <thead>
@@ -969,13 +1085,30 @@
 <div class="section-header">
 <div class="section-title-wrap">
 <h2>Guest Reviews and Testimonials</h2>
-<p>Curate approved traveler feedback</p>
+<p>Curate approved traveler feedback and verified testimonials</p>
 </div>
-<button class="btn btn-primary" onclick="AdminApp.openReviewModal()">
-<span>+ Add Review</span>
-</button>
+<div style="display: flex; gap: 8px;">
+  <button type="button" class="btn btn-outline" onclick="PageEditor.openPage('siteContent/reviews', 'reviews.html')">
+    <span>Live Edit Page</span>
+  </button>
+  <button class="btn btn-primary" onclick="AdminApp.openReviewModal()">
+    <span>+ Add Review</span>
+  </button>
+</div>
 </div>
 <div class="table-card">
+<div class="table-toolbar">
+  <div class="search-box">
+    <input aria-label="Search guest reviews" id="reviewSearchInput" oninput="AdminApp.filterReviews()" placeholder="Search by guest name, country, tour..." type="text"/>
+  </div>
+  <div class="filter-group">
+    <select class="filter-select" id="reviewRatingFilter" onchange="AdminApp.filterReviews()">
+      <option value="all">All Ratings</option>
+      <option value="5">★★★★★ (5 Stars)</option>
+      <option value="4">★★★★☆ (4 Stars)</option>
+    </select>
+  </div>
+</div>
 <div class="data-table-wrap">
 <table class="data-table">
 <thead>
@@ -1343,104 +1476,7 @@
       <!-- Page Selector -->
       <div class="visual-page-selector">
         <label for="visualPageDropdown">Page:</label>
-        <select id="visualPageDropdown" class="form-control" onchange="PageEditor.handlePageSelectChange(this.value)">
-          <optgroup label="Main Website Pages">
-            <option value="siteContent/home|index.html" selected>🏠 Home Page</option>
-            <option value="siteContent/about|about.html">🏛️ About Us</option>
-            <option value="siteContent/contact|contact.html">📞 Contact and Concierge</option>
-            <option value="siteContent/destinations|destinations.html">📍 Destinations</option>
-            <option value="siteContent/experiences|experiences.html">✨ Experiences</option>
-            <option value="siteContent/gallery|gallery.html">🖼️ Gallery</option>
-            <option value="siteContent/reviews|reviews.html">✍️ Reviews and Guestbook</option>
-            <option value="siteContent/blog|blog.html">📰 Blog and Editorial</option>
-            <option value="siteContent/toursIndex|tours/index.html">🗺️ All Tours Index</option>
-            <option value="siteContent/inquiry-detailed|inquiry-detailed.html">📋 Bespoke Inquiry</option>
-            <option value="siteContent/inquiry-quick|inquiry-quick.html">⚡ Quick Consultation</option>
-          </optgroup>
-          <optgroup label="Tour Categories">
-            <option value="tourCategories/cultural|tours/cultural/index.html">🏛️ Cultural Triangle</option>
-            <option value="tourCategories/wildlife|tours/wildlife/index.html">🐆 Wildlife Safari</option>
-            <option value="tourCategories/beach|tours/beach/index.html">🏖️ Pristine Beaches</option>
-            <option value="tourCategories/hill-country|tours/hill-country/index.html">⛰️ Hill Country and Tea</option>
-            <option value="tourCategories/ayurvedic|tours/ayurvedic/index.html">🌿 Authentic Ayurveda</option>
-            <option value="tourCategories/honeymoon|tours/honeymoon/index.html">💍 Romantic Honeymoon</option>
-            <option value="tourCategories/family|tours/family/index.html">👨‍👩‍👧‍👦 Family Escapes</option>
-            <option value="tourCategories/adventure|tours/adventure/index.html">🧗‍♂️ Adventure and Trekking</option>
-            <option value="tourCategories/golf|tours/golf/index.html">⛳ Ceylon Golf Masters</option>
-            <option value="tourCategories/buddhist-heritage|tours/buddhist-heritage/index.html">☸️ Buddhist Heritage</option>
-            <option value="tourCategories/ramayana|tours/ramayana/index.html">🏹 Sacred Ramayana Trail</option>
-          </optgroup>
-                    <optgroup label="📦 Individual Tour Pages (All 29 Tours)">
-            <option value="tourPackages/three-millennia-of-living-heritage|tours/cultural/three-millennia-of-living-heritage/index.html">🏛️ Three Millennia of Living Heritage</option>
-            <option value="tourPackages/royal-kingdoms-sacred-temples|tours/cultural/royal-kingdoms-sacred-temples/index.html">🏛️ Royal Kingdoms and Sacred Temples</option>
-            <option value="tourPackages/the-sacred-lotus-triangle|tours/cultural/the-sacred-lotus-triangle/index.html">🏛️ The Sacred Lotus Triangle</option>
-            <option value="tourPackages/forest-hermitages-mindful-ceylon|tours/buddhist-heritage/forest-hermitages-mindful-ceylon/index.html">☸️ Forest Hermitages and Mindful Ceylon</option>
-            <option value="tourPackages/the-sacred-bodhi-ancient-kingdoms|tours/buddhist-heritage/the-sacred-bodhi-ancient-kingdoms/index.html">☸️ The Sacred Bodhi and Ancient Kingdoms</option>
-            <option value="tourPackages/the-sacred-tooth-monastic-sanctuaries|tours/buddhist-heritage/the-sacred-tooth-monastic-sanctuaries/index.html">☸️ The Sacred Tooth and Monastic Sanctuaries</option>
-            <option value="tourPackages/the-sri-lanka-big-five-expedition|tours/wildlife/the-sri-lanka-big-five-expedition/index.html">🐆 The Sri Lanka Big Five Expedition</option>
-            <option value="tourPackages/wild-ceylon-predator-elephant-trail|tours/wildlife/wild-ceylon-predator-elephant-trail/index.html">🐆 Wild Ceylon Predator and Elephant Trail</option>
-            <option value="tourPackages/untamed-biosphere-rainforest-odyssey|tours/wildlife/untamed-biosphere-rainforest-odyssey/index.html">🐆 Untamed Biosphere and Rainforest Odyssey</option>
-            <option value="tourPackages/southern-sands-serenade|tours/beach/southern-sands-serenade/index.html">🏖️ Southern Sands Serenade</option>
-            <option value="tourPackages/turquoise-eastern-sanctuary|tours/beach/turquoise-eastern-sanctuary/index.html">🏖️ Turquoise Eastern Sanctuary</option>
-            <option value="tourPackages/pristine-seaboard-odyssey|tours/beach/pristine-seaboard-odyssey/index.html">🏖️ Pristine Seaboard Odyssey</option>
-            <option value="tourPackages/ceylon-tea-trails-colonial-grandeur|tours/hill-country/ceylon-tea-trails-colonial-grandeur/index.html">⛰️ Ceylon Tea Trails and Colonial Grandeur</option>
-            <option value="tourPackages/misty-peaks-scenic-railways-expedition|tours/hill-country/misty-peaks-scenic-railways-expedition/index.html">⛰️ Misty Peaks and Scenic Railways Expedition</option>
-            <option value="tourPackages/highland-wilderness-cascading-waterfalls|tours/hill-country/highland-wilderness-cascading-waterfalls/index.html">⛰️ Highland Wilderness and Cascading Waterfalls</option>
-            <option value="tourPackages/island-adrenaline-rapids-expedition|tours/adventure/island-adrenaline-rapids-expedition/index.html">🧗‍♂️ Island Adrenaline and Rapids Expedition</option>
-            <option value="tourPackages/wild-peaks-trails-surf-safari|tours/adventure/wild-peaks-trails-surf-safari/index.html">🧗‍♂️ Wild Peaks, Trails and Surf Safari</option>
-            <option value="tourPackages/lotus-ayu-holistic-rejuvenation|tours/ayurvedic/lotus-ayu-holistic-rejuvenation/index.html">🌿 Lotus Ayu Holistic Rejuvenation</option>
-            <option value="tourPackages/sacred-serenity-forest-meditation-retreat|tours/ayurvedic/sacred-serenity-forest-meditation-retreat/index.html">🌿 Sacred Serenity and Forest Meditation Retreat</option>
-            <option value="tourPackages/enchanted-ceylon-romantic-hideaway|tours/honeymoon/enchanted-ceylon-romantic-hideaway/index.html">💍 Enchanted Ceylon Romantic Hideaway</option>
-            <option value="tourPackages/pure-serenade-coastal-highland-romance|tours/honeymoon/pure-serenade-coastal-highland-romance/index.html">💍 Pure Serenade Coastal and Highland Romance</option>
-            <option value="tourPackages/island-wonder-multi-gen-family-discovery|tours/family/island-wonder-multi-gen-family-discovery/index.html">👨‍👩‍👧‍👦 Island Wonder Multi-Gen Family Discovery</option>
-            <option value="tourPackages/wild-safari-coastal-family-holiday|tours/family/wild-safari-coastal-family-holiday/index.html">👨‍👩‍👧‍👦 Wild Safari and Coastal Family Holiday</option>
-            <option value="tourPackages/the-grand-ceylon-family-adventure|tours/family/the-grand-ceylon-family-adventure/index.html">👨‍👩‍👧‍👦 The Grand Ceylon Family Adventure</option>
-            <option value="tourPackages/sacred-ramayana-heritage-trail|tours/ramayana/sacred-ramayana-heritage-trail/index.html">🏹 Sacred Ramayana Heritage Trail</option>
-            <option value="tourPackages/the-epic-ramayana-chronicle-pilgrimage|tours/ramayana/the-epic-ramayana-chronicle-pilgrimage/index.html">🏹 The Epic Ramayana Chronicle Pilgrimage</option>
-            <option value="tourPackages/the-royal-ceylon-fairways-tour|tours/golf/the-royal-ceylon-fairways-tour/index.html">⛳ The Royal Ceylon Fairways Tour</option>
-            <option value="tourPackages/highland-greens-coastal-links-championship|tours/golf/highland-greens-coastal-links-championship/index.html">⛳ Highland Greens and Coastal Links Championship</option>
-            <option value="tourPackages/the-grand-ceylon-masters-golf-odyssey|tours/golf/the-grand-ceylon-masters-golf-odyssey/index.html">⛳ The Grand Ceylon Masters Golf Odyssey</option>
-          </optgroup>
-          <optgroup label="📍 Destination Pages (24 Destinations)">
-            <option value="destinations/anuradhapura|destinations/anuradhapura/index.html">📍 Anuradhapura Sacred Kingdom</option>
-            <option value="destinations/arugam-bay|destinations/arugam-bay/index.html">📍 Arugam Bay Surf Haven</option>
-            <option value="destinations/bentota-beruwala|destinations/bentota-beruwala/index.html">📍 Bentota and Beruwala Golden Sands</option>
-            <option value="destinations/colombo-kelani-valley|destinations/colombo-kelani-valley/index.html">📍 Colombo and Kelani Valley</option>
-            <option value="destinations/dambulla|destinations/dambulla/index.html">📍 Dambulla Golden Cave Temple</option>
-            <option value="destinations/ella-demodara|destinations/ella-demodara/index.html">📍 Ella and Demodara Misty Spire</option>
-            <option value="destinations/galle-dutch-fort|destinations/galle-dutch-fort/index.html">📍 Galle Dutch Fort UNESCO</option>
-            <option value="destinations/haputale-lipton-s-seat|destinations/haputale-lipton-s-seat/index.html">📍 Haputale and Lipton's Seat</option>
-            <option value="destinations/horton-plains-world-s-end|destinations/horton-plains-world-s-end/index.html">📍 Horton Plains and World's End</option>
-            <option value="destinations/kandy|destinations/kandy/index.html">📍 Kandy Sacred Hill Capital</option>
-            <option value="destinations/kataragama|destinations/kataragama/index.html">📍 Kataragama Sacred Forest Shrines</option>
-            <option value="destinations/kelaniya|destinations/kelaniya/index.html">📍 Kelaniya Royal Raja Maha Vihara</option>
-            <option value="destinations/mihintale|destinations/mihintale/index.html">📍 Mihintale Cradle of Buddhism</option>
-            <option value="destinations/minneriya-national-park|destinations/minneriya-national-park/index.html">📍 Minneriya Elephant Gathering</option>
-            <option value="destinations/mirissa-weligama|destinations/mirissa-weligama/index.html">📍 Mirissa and Weligama Whale Bay</option>
-            <option value="destinations/negombo-beach-lagoon|destinations/negombo-beach-lagoon/index.html">📍 Negombo Beach and Lagoon</option>
-            <option value="destinations/nuwara-eliya|destinations/nuwara-eliya/index.html">📍 Nuwara Eliya Little England</option>
-            <option value="destinations/polonnaruwa|destinations/polonnaruwa/index.html">📍 Polonnaruwa Medieval Capital</option>
-            <option value="destinations/sigiriya-rock-citadel|destinations/sigiriya-rock-citadel/index.html">📍 Sigiriya Ancient Rock Citadel</option>
-            <option value="destinations/sri-pada|destinations/sri-pada/index.html">📍 Sri Pada (Adam's Peak)</option>
-            <option value="destinations/trincomalee-nilaveli|destinations/trincomalee-nilaveli/index.html">📍 Trincomalee and Nilaveli</option>
-            <option value="destinations/udawalawe-national-park|destinations/udawalawe-national-park/index.html">📍 Udawalawe Elephant Sanctuary</option>
-            <option value="destinations/wilpattu-national-park|destinations/wilpattu-national-park/index.html">📍 Wilpattu Leopard Lakes</option>
-            <option value="destinations/yala-national-park|destinations/yala-national-park/index.html">📍 Yala Untamed Wilderness</option>
-          </optgroup>
-                    <optgroup label="📰 Blog Articles (All 5 Articles)">
-            <option value="siteContent/blog-ella-tea|blog/ella-hands-on-tea-making-experience/index.html">☕ Ella: Hands-On Tea Making Experience with Tasting</option>
-            <option value="siteContent/blog-sacred-kingdoms|blog/sacred-footsteps-unlocking-sri-lankas-ancient-buddhist-kingdoms/index.html">🏛️ Sacred Footsteps: Ancient Kingdoms</option>
-            <option value="siteContent/blog-elephant-gathering|blog/the-great-gathering-watching-hundreds-of-wild-elephants-at-minneriya/index.html">🐘 The Great Gathering: Minneriya Elephants</option>
-            <option value="siteContent/blog-sinharaja-reforestation|blog/growing-a-greener-future-volunteer-reforestation-sinharaja/index.html">🌿 Sinharaja Volunteer Reforestation</option>
-            <option value="siteContent/blog-ayurveda-healing|blog/living-healing-traditional-ceylon-ayurveda/index.html">🍵 Living Healing: Traditional Ayurveda</option>
-          </optgroup>
-          <optgroup label="Legal & Policies">
-            <option value="siteContent/privacy-policy|privacy-policy.html">🔒 Privacy Policy</option>
-            <option value="siteContent/terms-conditions|terms-conditions.html">📜 Terms and Conditions</option>
-            <option value="siteContent/cancellation-policy|cancellation-policy.html">⚖️ Cancellation Policy</option>
-            <option value="siteContent/cookie-policy|cookie-policy.html">🍪 Cookie Policy</option>
-          </optgroup>
-        </select>
+        <select id="visualPageDropdown" class="form-control" onchange="PageEditor.handlePageSelectChange(this.value)"> <optgroup label="Main Website Pages"> <option value="siteContent/home|index.html" selected> Home Page</option> <option value="siteContent/about|about.html"> About Us</option> <option value="siteContent/contact|contact.html"> Contact and Concierge</option> <option value="siteContent/destinations|destinations.html"> Destinations</option> <option value="siteContent/experiences|experiences.html"> Experiences</option> <option value="siteContent/gallery|gallery.html"> Gallery</option> <option value="siteContent/reviews|reviews.html"> Reviews and Guestbook</option> <option value="siteContent/blog|blog.html"> Blog and Editorial</option> <option value="siteContent/toursIndex|tours/index.html"> All Tours Index</option> <option value="siteContent/inquiry-detailed|inquiry-detailed.html"> Bespoke Inquiry</option> <option value="siteContent/inquiry-quick|inquiry-quick.html"> Quick Consultation</option> </optgroup> <optgroup label="Tour Categories"> <option value="tourCategories/cultural|tours/cultural/index.html"> Cultural Triangle</option> <option value="tourCategories/wildlife|tours/wildlife/index.html"> Wildlife Safari</option> <option value="tourCategories/beach|tours/beach/index.html"> Pristine Beaches</option> <option value="tourCategories/hill-country|tours/hill-country/index.html"> Hill Country and Tea</option> <option value="tourCategories/ayurvedic|tours/ayurvedic/index.html"> Authentic Ayurveda</option> <option value="tourCategories/honeymoon|tours/honeymoon/index.html"> Romantic Honeymoon</option> <option value="tourCategories/family|tours/family/index.html"> Family Escapes</option> <option value="tourCategories/adventure|tours/adventure/index.html"> Adventure and Trekking</option> <option value="tourCategories/golf|tours/golf/index.html"> Ceylon Golf Masters</option> <option value="tourCategories/buddhist-heritage|tours/buddhist-heritage/index.html"> Buddhist Heritage</option> <option value="tourCategories/ramayana|tours/ramayana/index.html"> Sacred Ramayana Trail</option> </optgroup> <optgroup label=" Individual Tour Pages (All 29 Tours)"> <option value="tourPackages/three-millennia-of-living-heritage|tours/cultural/three-millennia-of-living-heritage/index.html"> Three Millennia of Living Heritage</option> <option value="tourPackages/royal-kingdoms-sacred-temples|tours/cultural/royal-kingdoms-sacred-temples/index.html"> Royal Kingdoms and Sacred Temples</option> <option value="tourPackages/the-sacred-lotus-triangle|tours/cultural/the-sacred-lotus-triangle/index.html"> The Sacred Lotus Triangle</option> <option value="tourPackages/forest-hermitages-mindful-ceylon|tours/buddhist-heritage/forest-hermitages-mindful-ceylon/index.html"> Forest Hermitages and Mindful Ceylon</option> <option value="tourPackages/the-sacred-bodhi-ancient-kingdoms|tours/buddhist-heritage/the-sacred-bodhi-ancient-kingdoms/index.html"> The Sacred Bodhi and Ancient Kingdoms</option> <option value="tourPackages/the-sacred-tooth-monastic-sanctuaries|tours/buddhist-heritage/the-sacred-tooth-monastic-sanctuaries/index.html"> The Sacred Tooth and Monastic Sanctuaries</option> <option value="tourPackages/the-sri-lanka-big-five-expedition|tours/wildlife/the-sri-lanka-big-five-expedition/index.html"> The Sri Lanka Big Five Expedition</option> <option value="tourPackages/wild-ceylon-predator-elephant-trail|tours/wildlife/wild-ceylon-predator-elephant-trail/index.html"> Wild Ceylon Predator and Elephant Trail</option> <option value="tourPackages/untamed-biosphere-rainforest-odyssey|tours/wildlife/untamed-biosphere-rainforest-odyssey/index.html"> Untamed Biosphere and Rainforest Odyssey</option> <option value="tourPackages/southern-sands-serenade|tours/beach/southern-sands-serenade/index.html"> Southern Sands Serenade</option> <option value="tourPackages/turquoise-eastern-sanctuary|tours/beach/turquoise-eastern-sanctuary/index.html"> Turquoise Eastern Sanctuary</option> <option value="tourPackages/pristine-seaboard-odyssey|tours/beach/pristine-seaboard-odyssey/index.html"> Pristine Seaboard Odyssey</option> <option value="tourPackages/ceylon-tea-trails-colonial-grandeur|tours/hill-country/ceylon-tea-trails-colonial-grandeur/index.html"> Ceylon Tea Trails and Colonial Grandeur</option> <option value="tourPackages/misty-peaks-scenic-railways-expedition|tours/hill-country/misty-peaks-scenic-railways-expedition/index.html"> Misty Peaks and Scenic Railways Expedition</option> <option value="tourPackages/highland-wilderness-cascading-waterfalls|tours/hill-country/highland-wilderness-cascading-waterfalls/index.html"> Highland Wilderness and Cascading Waterfalls</option> <option value="tourPackages/island-adrenaline-rapids-expedition|tours/adventure/island-adrenaline-rapids-expedition/index.html"> Island Adrenaline and Rapids Expedition</option> <option value="tourPackages/wild-peaks-trails-surf-safari|tours/adventure/wild-peaks-trails-surf-safari/index.html"> Wild Peaks, Trails and Surf Safari</option> <option value="tourPackages/lotus-ayu-holistic-rejuvenation|tours/ayurvedic/lotus-ayu-holistic-rejuvenation/index.html"> Lotus Ayu Holistic Rejuvenation</option> <option value="tourPackages/sacred-serenity-forest-meditation-retreat|tours/ayurvedic/sacred-serenity-forest-meditation-retreat/index.html"> Sacred Serenity and Forest Meditation Retreat</option> <option value="tourPackages/enchanted-ceylon-romantic-hideaway|tours/honeymoon/enchanted-ceylon-romantic-hideaway/index.html"> Enchanted Ceylon Romantic Hideaway</option> <option value="tourPackages/pure-serenade-coastal-highland-romance|tours/honeymoon/pure-serenade-coastal-highland-romance/index.html"> Pure Serenade Coastal and Highland Romance</option> <option value="tourPackages/island-wonder-multi-gen-family-discovery|tours/family/island-wonder-multi-gen-family-discovery/index.html"> Island Wonder Multi-Gen Family Discovery</option> <option value="tourPackages/wild-safari-coastal-family-holiday|tours/family/wild-safari-coastal-family-holiday/index.html"> Wild Safari and Coastal Family Holiday</option> <option value="tourPackages/the-grand-ceylon-family-adventure|tours/family/the-grand-ceylon-family-adventure/index.html"> The Grand Ceylon Family Adventure</option> <option value="tourPackages/sacred-ramayana-heritage-trail|tours/ramayana/sacred-ramayana-heritage-trail/index.html"> Sacred Ramayana Heritage Trail</option> <option value="tourPackages/the-epic-ramayana-chronicle-pilgrimage|tours/ramayana/the-epic-ramayana-chronicle-pilgrimage/index.html"> The Epic Ramayana Chronicle Pilgrimage</option> <option value="tourPackages/the-royal-ceylon-fairways-tour|tours/golf/the-royal-ceylon-fairways-tour/index.html"> The Royal Ceylon Fairways Tour</option> <option value="tourPackages/highland-greens-coastal-links-championship|tours/golf/highland-greens-coastal-links-championship/index.html"> Highland Greens and Coastal Links Championship</option> <option value="tourPackages/the-grand-ceylon-masters-golf-odyssey|tours/golf/the-grand-ceylon-masters-golf-odyssey/index.html"> The Grand Ceylon Masters Golf Odyssey</option> </optgroup> <optgroup label=" Destination Pages (24 Destinations)"> <option value="destinations/anuradhapura|destinations/anuradhapura/index.html"> Anuradhapura Sacred Kingdom</option> <option value="destinations/arugam-bay|destinations/arugam-bay/index.html"> Arugam Bay Surf Haven</option> <option value="destinations/bentota-beruwala|destinations/bentota-beruwala/index.html"> Bentota and Beruwala Golden Sands</option> <option value="destinations/colombo-kelani-valley|destinations/colombo-kelani-valley/index.html"> Colombo and Kelani Valley</option> <option value="destinations/dambulla|destinations/dambulla/index.html"> Dambulla Golden Cave Temple</option> <option value="destinations/ella-demodara|destinations/ella-demodara/index.html"> Ella and Demodara Misty Spire</option> <option value="destinations/galle-dutch-fort|destinations/galle-dutch-fort/index.html"> Galle Dutch Fort UNESCO</option> <option value="destinations/haputale-lipton-s-seat|destinations/haputale-lipton-s-seat/index.html"> Haputale and Lipton's Seat</option> <option value="destinations/horton-plains-world-s-end|destinations/horton-plains-world-s-end/index.html"> Horton Plains and World's End</option> <option value="destinations/kandy|destinations/kandy/index.html"> Kandy Sacred Hill Capital</option> <option value="destinations/kataragama|destinations/kataragama/index.html"> Kataragama Sacred Forest Shrines</option> <option value="destinations/kelaniya|destinations/kelaniya/index.html"> Kelaniya Royal Raja Maha Vihara</option> <option value="destinations/mihintale|destinations/mihintale/index.html"> Mihintale Cradle of Buddhism</option> <option value="destinations/minneriya-national-park|destinations/minneriya-national-park/index.html"> Minneriya Elephant Gathering</option> <option value="destinations/mirissa-weligama|destinations/mirissa-weligama/index.html"> Mirissa and Weligama Whale Bay</option> <option value="destinations/negombo-beach-lagoon|destinations/negombo-beach-lagoon/index.html"> Negombo Beach and Lagoon</option> <option value="destinations/nuwara-eliya|destinations/nuwara-eliya/index.html"> Nuwara Eliya Little England</option> <option value="destinations/polonnaruwa|destinations/polonnaruwa/index.html"> Polonnaruwa Medieval Capital</option> <option value="destinations/sigiriya-rock-citadel|destinations/sigiriya-rock-citadel/index.html"> Sigiriya Ancient Rock Citadel</option> <option value="destinations/sri-pada|destinations/sri-pada/index.html"> Sri Pada (Adam's Peak)</option> <option value="destinations/trincomalee-nilaveli|destinations/trincomalee-nilaveli/index.html"> Trincomalee and Nilaveli</option> <option value="destinations/udawalawe-national-park|destinations/udawalawe-national-park/index.html"> Udawalawe Elephant Sanctuary</option> <option value="destinations/wilpattu-national-park|destinations/wilpattu-national-park/index.html"> Wilpattu Leopard Lakes</option> <option value="destinations/yala-national-park|destinations/yala-national-park/index.html"> Yala Untamed Wilderness</option> </optgroup> <optgroup label=" Blog Articles (All 5 Articles)"> <option value="siteContent/blog-ella-tea|blog/ella-hands-on-tea-making-experience/index.html"> Ella: Hands-On Tea Making Experience with Tasting</option> <option value="siteContent/blog-sacred-kingdoms|blog/sacred-footsteps-unlocking-sri-lankas-ancient-buddhist-kingdoms/index.html"> Sacred Footsteps: Ancient Kingdoms</option> <option value="siteContent/blog-elephant-gathering|blog/the-great-gathering-watching-hundreds-of-wild-elephants-at-minneriya/index.html"> The Great Gathering: Minneriya Elephants</option> <option value="siteContent/blog-sinharaja-reforestation|blog/growing-a-greener-future-volunteer-reforestation-sinharaja/index.html"> Sinharaja Volunteer Reforestation</option> <option value="siteContent/blog-ayurveda-healing|blog/living-healing-traditional-ceylon-ayurveda/index.html"> Living Healing: Traditional Ayurveda</option> </optgroup> <optgroup label="Legal & Policies"> <option value="siteContent/privacy-policy|privacy-policy.html"> Privacy Policy</option> <option value="siteContent/terms-conditions|terms-conditions.html"> Terms and Conditions</option> <option value="siteContent/cancellation-policy|cancellation-policy.html"> Cancellation Policy</option> <option value="siteContent/cookie-policy|cookie-policy.html"> Cookie Policy</option> </optgroup> </select>
       </div>
 
       <!-- Single Global Language Selector -->
@@ -1464,8 +1500,14 @@
 
       <!-- Desktop / Mobile Viewport Toggle -->
       <div class="visual-viewport-toggle">
-        <button type="button" class="viewport-btn active" id="btnViewDesktop" onclick="PageEditor.setViewport('desktop')" title="Desktop View">🖥️ Desktop</button>
-        <button type="button" class="viewport-btn" id="btnViewMobile" onclick="PageEditor.setViewport('mobile')" title="Mobile View (390px)">📱 Mobile</button>
+        <button type="button" class="viewport-btn active" id="btnViewDesktop" onclick="PageEditor.setViewport('desktop')" title="Desktop View">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M21 2H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h7l-2 3v1h8v-1l-2-3h7c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 12H3V4h18v10z"/></svg>
+          <span>Desktop</span>
+        </button>
+        <button type="button" class="viewport-btn" id="btnViewMobile" onclick="PageEditor.setViewport('mobile')" title="Mobile View (390px)">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z"/></svg>
+          <span>Mobile</span>
+        </button>
       </div>
     </div>
 
@@ -1476,13 +1518,26 @@
         <span id="visualStatusText">All changes saved</span>
       </div>
 
-      <button type="button" class="btn btn-gold btn-sm" onclick="AdminApp.switchSection('packages')" title="Open Tour Packages Manager (All 26 Tours)" style="background: linear-gradient(135deg, #d4af37, #b89025); color: #fff; font-weight: 700; box-shadow: 0 2px 6px rgba(212,175,55,0.3); display: inline-flex; align-items: center; gap: 6px;">
-<span>📦 Manage Tour Packages (29)</span>
-</button>
-<button type="button" class="btn btn-outline btn-sm" onclick="PageEditor.openSeoModal()" title="Edit Page Title, Meta Description and Social Share Image">⚙️ Page SEO</button>
-      <button type="button" class="btn btn-outline btn-sm" onclick="PageEditor.resetCurrentPage()" title="Reset page to default values">↺ Reset</button>
-      <button type="button" class="btn btn-outline btn-sm" id="visualSaveDraftBtn" onclick="PageEditor.saveDraft()">💾 Save Draft</button>
-      <button type="button" class="btn btn-gold btn-sm" id="visualPublishBtn" onclick="PageEditor.publish()">🚀 Publish Live</button>
+      <button type="button" class="btn btn-outline btn-sm" onclick="PageEditor.openVersionHistoryModal()" title="View Version History & Rollback to Previous Published Checkpoint" style="display: inline-flex; align-items: center; gap: 5px;">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M13 3c-4.97 0-9 4.03-9 9H1l3.89 3.89.07.14L9 12H6c0-3.87 3.13-7 7-7s7 3.13 7 7-3.13 7-7 7c-1.93 0-3.68-.79-4.94-2.06l-1.42 1.42C8.27 19.99 10.51 21 13 21c4.97 0 9-4.03 9-9s-4.03-9-9-9zm-1 5v5l4.28 2.54.72-1.21-3.5-2.08V8H12z"/></svg>
+        <span>History</span>
+      </button>
+      <button type="button" class="btn btn-outline btn-sm" onclick="PageEditor.openSeoModal()" title="Edit Page Title, Meta Description and Social Share Image" style="display: inline-flex; align-items: center; gap: 5px;">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+        <span>Page SEO</span>
+      </button>
+      <button type="button" class="btn btn-outline btn-sm" onclick="PageEditor.resetCurrentPage()" title="Reset page to default values" style="display: inline-flex; align-items: center; gap: 5px;">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/></svg>
+        <span>Reset</span>
+      </button>
+      <button type="button" class="btn btn-outline btn-sm" id="visualSaveDraftBtn" onclick="PageEditor.saveDraft()" style="display: inline-flex; align-items: center; gap: 5px;">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M17 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V7l-4-4zm-5 16c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3zm3-10H5V5h10v4z"/></svg>
+        <span>Save Draft</span>
+      </button>
+      <button type="button" class="btn btn-gold btn-sm" id="visualPublishBtn" onclick="PageEditor.publish()" style="font-weight: 700; display: inline-flex; align-items: center; gap: 5px;">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+        <span>Publish Live</span>
+      </button>
     </div>
   </div>
 
@@ -2401,8 +2456,8 @@
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
 <script src="../js/firebase-tour-sync.js"></script>
-<script src="js/admin-app.js?v=20261101_perf_v9"></script>
-<script src="js/page-editor.js?v=20261101_perf_v9"></script>
+<script src="js/admin-app.js?v=20261107_v2"></script>
+<script src="js/page-editor.js?v=20261107_v2"></script>
 
 
 
@@ -2579,6 +2634,26 @@
 </form>
 </div>
 </div>
+</div>
+
+
+<!-- VERSION HISTORY & ROLLBACK MODAL -->
+<div class="modal-overlay" id="versionHistoryModal" style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.65); z-index: 9999; align-items: center; justify-content: center;">
+  <div class="modal-card" style="background: #FFFFFF; border-radius: 12px; max-width: 650px; width: 90%; max-height: 85vh; display: flex; flex-direction: column; box-shadow: 0 10px 40px rgba(0,0,0,0.25); overflow: hidden;">
+    <div style="padding: 18px 22px; background: #002B49; color: #FFFFFF; display: flex; justify-content: space-between; align-items: center;">
+      <div>
+        <h3 style="margin: 0; font-size: 1.1rem; color: #D4AF37;">Version History &amp; 1-Click Rollback</h3>
+        <small style="color: #CBD5E1;" id="versionHistoryPageTitle">Page Versions</small>
+      </div>
+      <button type="button" onclick="PageEditor.closeVersionHistoryModal()" style="background: none; border: none; color: #CBD5E1; font-size: 1.3rem; cursor: pointer;">✕</button>
+    </div>
+    <div style="padding: 20px; overflow-y: auto; flex: 1;" id="versionHistoryList">
+      <div style="text-align: center; color: #64748B; padding: 20px;">Loading version history...</div>
+    </div>
+    <div style="padding: 14px 20px; background: #F8FAFC; border-top: 1px solid #E2E8F0; display: flex; justify-content: flex-end;">
+      <button type="button" class="btn btn-outline" onclick="PageEditor.closeVersionHistoryModal()">Close</button>
+    </div>
+  </div>
 </div>
 
 </body>
