@@ -43,27 +43,20 @@
 
 
   function resolveFallbackPath(relPath) {
-    if (!relPath || relPath.startsWith('http://') || relPath.startsWith('https://') || relPath.startsWith('/')) {
+    if (!relPath || relPath.startsWith('http://') || relPath.startsWith('https://')) {
       return relPath;
     }
-    const clean = relPath.replace(/^(\.\/)+/, '');
+    const clean = relPath.replace(/^(\.\.\/|\.\/|\/)+/, '');
     const path = window.location.pathname.replace(/\\/g, '/');
-    if (path.includes('/admin/')) {
-      return '../' + clean;
+    let sub = '';
+    if (path.includes('/thai/')) {
+      sub = path.split('/thai/')[1] || '';
+    } else {
+      sub = path.replace(/^\//, '');
     }
-    if (path.includes('/tours/')) {
-      const after = path.split('/tours/')[1].split('/').filter(p => p && !p.endsWith('.html'));
-      return '../'.repeat(after.length + 1) + clean;
-    }
-    if (path.includes('/destinations/')) {
-      const after = path.split('/destinations/')[1].split('/').filter(p => p && !p.endsWith('.html'));
-      return '../'.repeat(after.length + 1) + clean;
-    }
-    if (path.includes('/blog/')) {
-      const after = path.split('/blog/')[1].split('/').filter(p => p && !p.endsWith('.html'));
-      return '../'.repeat(after.length + 1) + clean;
-    }
-    return './' + clean;
+    const segments = sub.split('/').filter(p => p && !p.endsWith('.html'));
+    const depth = segments.length;
+    return (depth > 0 ? '../'.repeat(depth) : './') + clean;
   }
 
 

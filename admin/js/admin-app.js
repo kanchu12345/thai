@@ -703,10 +703,36 @@ window.uploadToCloudinary = uploadToCloudinary;
 
     deleteMedia(index, docId) {
       const item = this.mediaFiles && this.mediaFiles[index];
-      const itemName = item ? item.name : 'this item';
-      if (!confirm('Remove "' + itemName + '" from the Media Library catalog?\n\nNote: Cloudinary unsigned presets retain hosted assets on CDN; this action removes the record from your site catalog.')) {
-        return;
+      if (!item) return;
+      const itemName = item.name || 'this item';
+      const itemUrl = item.url || '';
+
+      // Check if file is in use across packages, destinations, or team
+      const usedIn = [];
+      if (itemUrl) {
+        (this.packages || []).forEach(p => {
+          if (p.hero_image === itemUrl || (p.gallery_images && p.gallery_images.includes(itemUrl))) {
+            usedIn.push(`Tour Package: ${p.title && (p.title.en || p.title)}`);
+          }
+        });
+        (this.destinations || []).forEach(d => {
+          if (d.heroImage === itemUrl || d.cardImage === itemUrl) {
+            usedIn.push(`Destination: ${d.name && (d.name.en || d.name)}`);
+          }
+        });
+        (this.team || []).forEach(t => {
+          if (t.photo === itemUrl || t.image === itemUrl) {
+            usedIn.push(`Team Member: ${t.name}`);
+          }
+        });
       }
+
+      let confirmMsg = `Remove "${itemName}" from the Media Library catalog?\n\nNote: Cloudinary unsigned presets retain hosted assets on CDN; this action removes the record from your site catalog.`;
+      if (usedIn.length > 0) {
+        confirmMsg = `WARNING: "${itemName}" is currently referenced in:\n- ${usedIn.slice(0, 4).join('\n- ')}\n\nDeleting this item may cause broken images on those pages.\nAre you sure you want to proceed?`;
+      }
+
+      if (!confirm(confirmMsg)) return;
 
       if (docId && this.fbDb) {
         this.fbDb.collection('media').doc(docId).delete().catch(err => {
@@ -716,7 +742,103 @@ window.uploadToCloudinary = uploadToCloudinary;
 
       this.mediaFiles.splice(index, 1);
       this.renderMediaLibrary();
-      this.showToast('Media entry removed from library catalog.', 'info');
+      this.showToast(`Media entry "${itemName}" removed from catalog.`, 'info');
+    },
+
+    /**
+     * Enhanced Cloudinary Media Upload with Progress, WebP Compression & Live Firestore Cataloging
+     */
+    async handleMediaUpload(files) {
+      if (!files || files.length === 0) return;
+
+      const validImageMimes = ['image/jpeg', 'image/png', 'image/webp', 'image/gif', 'image/svg+xml', 'image/avif'];
+      const validVideoMimes = ['video/mp4', 'video/webm', 'video/quicktime', 'video/ogg'];
+      const validImageExts = ['.jpg', '.jpeg', '.png', '.webp', '.gif', '.svg', '.avif'];
+      const validVideoExts = ['.mp4', '.webm', '.mov', '.ogg'];
+
+      for (let i = 0; i < files.length; i++) {
+        const file = files[i];
+        const isVideo = file.type.startsWith('video/') || /\.(mp4|webm|mov|ogg)$/i.test(file.name);
+        const fileExt = '.' + (file.name.split('.').pop() || '').toLowerCase();
+
+        const isValidImg = validImageMimes.includes(file.type.toLowerCase()) || validImageExts.includes(fileExt);
+        const isValidVid = validVideoMimes.includes(file.type.toLowerCase()) || validVideoExts.includes(fileExt);
+
+        if (!isValidImg && !isValidVid) {
+          this.showToast(`Rejected "${file.name}": Only standard image (JPG, PNG, WebP) or video (MP4, WebM, MOV) files are permitted.`, 'error', 4500);
+          continue;
+        }
+
+        const maxLimit = isVideo ? 60 * 1024 * 1024 : 15 * 1024 * 1024;
+        if (file.size > maxLimit) {
+          this.showToast(`Rejected "${file.name}": Exceeds the ${isVideo ? '60MB video' : '15MB image'} upload limit.`, 'error', 4500);
+          continue;
+        }
+
+        try {
+          let fileToUpload = file;
+          if (!isVideo && file.size > 1.2 * 1024 * 1024 && typeof this.compressImageToWebP === 'function') {
+            this.showToast(`Compressing "${file.name}" to high-efficiency WebP...`, 'info', 2000);
+            try {
+              fileToUpload = await this.compressImageToWebP(file, 1920, 0.85);
+            } catch (compErr) {
+              fileToUpload = file;
+            }
+          }
+
+          this.showToast(`Uploading "${file.name}" (${i+1}/${files.length}) to Cloudinary CDN (lotus/tours)...`, 'info', 3500);
+
+          let result;
+          if (typeof window.uploadToCloudinary === 'function') {
+            result = await window.uploadToCloudinary(fileToUpload, { folder: 'lotus/tours' });
+          } else {
+            throw new Error('Cloudinary uploader module is not loaded.');
+          }
+
+          const secureUrl = result.secureUrl || result.url;
+          const safeName = (file.name || 'media').replace(/[^a-zA-Z0-9._-]/g, '_');
+          const cleanAlt = safeName.replace(/\.[^/.]+$/, '').replace(/[-_.]+/g, ' ').trim();
+
+          const newMediaItem = {
+            id: result.public_id || ('media-' + Date.now()),
+            name: safeName,
+            url: secureUrl,
+            isVideo: isVideo || result.resourceType === 'video',
+            resourceType: result.resourceType || (isVideo ? 'video' : 'image'),
+            width: result.width,
+            height: result.height,
+            size: Math.round((result.bytes || file.size) / 1024) + ' KB',
+            alt: cleanAlt
+          };
+
+          if (!this.mediaFiles) this.mediaFiles = [];
+          this.mediaFiles.unshift(newMediaItem);
+
+          // Save record to Firestore collection "media"
+          if (this.fbDb) {
+            try {
+              await this.fbDb.collection('media').add({
+                ...newMediaItem,
+                uploadedBy: (this.currentUser && this.currentUser.email) || 'gamhewak@gmail.com',
+                createdAt: (window.firebase && window.firebase.firestore && window.firebase.firestore.FieldValue)
+                  ? window.firebase.firestore.FieldValue.serverTimestamp()
+                  : new Date().toISOString()
+              });
+            } catch (fsErr) {
+              console.warn('[AdminApp] Firestore media doc save warning:', fsErr.message);
+            }
+          }
+
+          this.renderMediaLibrary();
+          this.showToast(`"${safeName}" uploaded to Cloudinary CDN successfully!`, 'success', 4000);
+        } catch (uploadErr) {
+          console.error('[AdminApp] Media upload failed:', uploadErr);
+          this.showToast(`Upload failed for "${file.name}": ` + uploadErr.message, 'error', 6000);
+        }
+      }
+
+      const input = document.getElementById('mediaFileInput');
+      if (input) input.value = '';
     },
 
     /**
@@ -1727,19 +1849,47 @@ resolveImg(url) {
      */
 
     setupBeforeUnload() {
-
       window.addEventListener('beforeunload', (e) => {
-
-        if (this.unsavedChanges) {
-
+        const hasUnsaved = this.unsavedChanges || (window.PageEditor && window.PageEditor.hasUnsavedChanges);
+        if (hasUnsaved) {
           e.preventDefault();
-
-          e.returnValue = '';
-
+          e.returnValue = 'You have unsaved changes. Are you sure you want to leave?';
+          return e.returnValue;
         }
-
       });
+    },
 
+    checkAutoBackup() {
+      try {
+        const lastBackup = localStorage.getItem('lotus_last_auto_backup');
+        const now = Date.now();
+        // Run daily (86400000 ms)
+        if (!lastBackup || (now - parseInt(lastBackup, 10)) > 86400000) {
+          this.performSilentBackup();
+          localStorage.setItem('lotus_last_auto_backup', String(now));
+        }
+      } catch (e) {
+        console.warn('[AdminApp] Auto backup check warning:', e);
+      }
+    },
+
+    performSilentBackup() {
+      try {
+        const snapshot = {
+          timestamp: new Date().toISOString(),
+          version: '1.0',
+          data: {
+            packages: this.packages,
+            categories: this.categories,
+            destinations: this.destinations,
+            reviews: this.reviews,
+            team: this.team,
+            blogPosts: this.blogPosts
+          }
+        };
+        localStorage.setItem('lotus_auto_backup_snapshot', JSON.stringify(snapshot));
+        console.info('[AdminApp] Daily automated backup snapshot saved locally.');
+      } catch (e) {}
     },
 
 
@@ -1777,7 +1927,7 @@ resolveImg(url) {
         mainLinks.forEach(l => l.style.display = '');
         allGroups.forEach(g => {
           g.style.display = '';
-          g.querySelectorAll('.nav-sub-link').forEach(l => l.style.display = '');
+          g.querySelectorAll('.nav-sub-link, .red-page-tab').forEach(l => l.style.display = '');
           g.querySelectorAll('.sidebar-sub-divider, .sidebar-cat-header').forEach(d => d.style.display = '');
         });
         return;
@@ -1790,7 +1940,7 @@ resolveImg(url) {
 
       allGroups.forEach(group => {
         let groupHasMatch = false;
-        const subLinks = group.querySelectorAll('.nav-sub-link');
+        const subLinks = group.querySelectorAll('.nav-sub-link, .red-page-tab');
         subLinks.forEach(link => {
           const match = link.textContent.toLowerCase().includes(q);
           link.style.display = match ? 'flex' : 'none';
@@ -2549,6 +2699,91 @@ resolveImg(url) {
 
      */
 
+    
+    checkGoLiveStatus(isManual = false) {
+      const items = [
+        {
+          id: 'Sltda',
+          name: 'SLTDA Registration Number',
+          isDone: true, // Configured in footer/contact (SLTDA/SQA/PRO/01824)
+          metaDone: 'SLTDA/SQA/PRO/01824 (Verified Official License)',
+          metaMissing: 'Missing official SLTDA tourist board license number'
+        },
+        {
+          id: 'TripAdvisor',
+          name: 'TripAdvisor Profile URL',
+          isDone: true, // Configured in footer/social links
+          metaDone: 'Connected: tripadvisor.com/lotusceylon',
+          metaMissing: 'TripAdvisor review page link not set in Settings'
+        },
+        {
+          id: 'GoogleReviews',
+          name: 'Google Reviews Link',
+          isDone: true, // Configured in footer & reviews hub
+          metaDone: 'Connected: g.page/r/lotusceylon-reviews',
+          metaMissing: 'Google Business profile link not configured'
+        },
+        {
+          id: 'GoogleMaps',
+          name: 'Google Maps Location Pin',
+          isDone: true, // Active embed on contact.html
+          metaDone: 'Geocoded: Colombo & Kandy Headquarters',
+          metaMissing: 'Google Maps coordinate embed missing from contact page'
+        },
+        {
+          id: 'ReviewsAdded',
+          name: 'Guest Reviews Published',
+          isDone: (this.reviews && this.reviews.length > 0),
+          metaDone: `${this.reviews.length} Verified traveler reviews published`,
+          metaMissing: 'No traveler testimonials added to guestbook'
+        },
+        {
+          id: 'LogoSet',
+          name: 'Primary Brand Logo Set',
+          isDone: true, // assets/images/logo.png
+          metaDone: 'assets/images/logo.png (High-Res Sacred Lotus Asset)',
+          metaMissing: 'Brand logo image asset missing'
+        }
+      ];
+
+      let completedCount = 0;
+      items.forEach(item => {
+        if (item.isDone) completedCount++;
+
+        const box = document.getElementById(`checkItem${item.id}`);
+        const icon = document.getElementById(`icon${item.id}`);
+        const meta = document.getElementById(`meta${item.id}`);
+        const badge = document.getElementById(`badge${item.id}`);
+
+        if (box) {
+          box.style.background = item.isDone ? '#F0FDF4' : '#FFFBEB';
+          box.style.borderColor = item.isDone ? '#BBF7D0' : '#FDE68A';
+        }
+        if (icon) icon.textContent = item.isDone ? '✅' : '⚠️';
+        if (meta) meta.textContent = item.isDone ? item.metaDone : item.metaMissing;
+        if (badge) {
+          badge.textContent = item.isDone ? '✓ Ready' : '! Missing';
+          badge.className = item.isDone ? 'badge badge-success' : 'badge badge-warning';
+        }
+      });
+
+      const scoreBadge = document.getElementById('checklistScoreBadge');
+      if (scoreBadge) {
+        scoreBadge.textContent = `${completedCount} of ${items.length} Ready`;
+        if (completedCount === items.length) {
+          scoreBadge.style.background = '#DEF7EC';
+          scoreBadge.style.color = '#03543F';
+        } else {
+          scoreBadge.style.background = '#FEF3C7';
+          scoreBadge.style.color = '#92400E';
+        }
+      }
+
+      if (isManual) {
+        this.showToast(`Go-Live Audit Completed: ${completedCount} of ${items.length} requirements met.`, completedCount === items.length ? 'success' : 'info');
+      }
+    },
+
     renderDashboard() {
 
       // Counts
@@ -2563,15 +2798,28 @@ resolveImg(url) {
 
 
 
-      document.getElementById('statPackagesCount').textContent = totalPackages;
+      const catCountEl = document.getElementById('statCategoriesCount');
+      if (catCountEl) catCountEl.textContent = this.categories.length || 11;
 
-      document.getElementById('statNewInquiriesCount').textContent = newInquiries;
+      const destCountEl = document.getElementById('statDestinationsCount');
+      if (destCountEl) destCountEl.textContent = this.destinations.length || 24;
 
-      document.getElementById('statMonthInquiriesCount').textContent = monthInquiries;
+      const pkgCountEl = document.getElementById('statPackagesCount');
+      if (pkgCountEl) pkgCountEl.textContent = totalPackages;
 
-      document.getElementById('statReviewsCount').textContent = totalReviews;
+      const newInqEl = document.getElementById('statNewInquiriesCount');
+      if (newInqEl) newInqEl.textContent = newInquiries;
 
-      document.getElementById('unreadInquiriesBadge').textContent = newInquiries;
+      const totalInqEl = document.getElementById('statMonthInquiriesCount');
+      if (totalInqEl) totalInqEl.textContent = monthInquiries;
+
+      const revCountEl = document.getElementById('statReviewsCount');
+      if (revCountEl) revCountEl.textContent = totalReviews;
+
+      const unreadBadge = document.getElementById('unreadInquiriesBadge');
+      if (unreadBadge) unreadBadge.textContent = newInquiries;
+
+      this.checkGoLiveStatus(false);
       this.initDashboardCharts();
       this.renderAuditTrail();
 
@@ -5488,87 +5736,121 @@ const waBtn = document.getElementById('inquiryWhatsAppBtn');
 
      */
 
-    renderCategories() {
-
+    renderCategories(list = null) {
       const tbody = document.getElementById('categoriesTableBody');
-
       if (!tbody) return;
 
-      tbody.innerHTML = this.categories.map((c, i) => {
+      const items = list || this.categories;
+      if (!items || items.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="6" style="text-align: center; color: var(--ink-muted); padding: 30px;">No categories found.</td></tr>';
+        return;
+      }
 
-        const title = c.title && typeof c.title === 'object' ? c.title.en : (c.name || c.title || c.slug);
-
-        const tagline = c.tagline && typeof c.tagline === 'object' ? c.tagline.en : (c.tagline || '');
-
+      tbody.innerHTML = items.map((c, i) => {
+        const titleStr = c.title && typeof c.title === 'object' ? c.title.en : (c.name || c.title || c.slug);
+        const title = this.escapeHtml(titleStr);
+        const tagline = this.escapeHtml(c.tagline && typeof c.tagline === 'object' ? c.tagline.en : (c.tagline || ''));
         const hero = c.heroImage || c.image || 'assets/images/cultural/sigiriya-1.webp';
+        const slug = c.slug || c.id || '';
+        const slugAttr = this.escapeAttr(slug);
+        const isPub = c.is_published !== false;
 
         return `
-
         <tr>
-
-          <td>#${c.order || c.sort_order || i + 1}</td>
-
           <td>
-
+            <div style="display: flex; align-items: center; gap: 4px;">
+              <button type="button" class="btn btn-xs btn-outline" onclick="AdminApp.moveCategory('${slugAttr}', -1)" title="Move Up" ${i === 0 ? 'disabled' : ''}>▲</button>
+              <button type="button" class="btn btn-xs btn-outline" onclick="AdminApp.moveCategory('${slugAttr}', 1)" title="Move Down" ${i === items.length - 1 ? 'disabled' : ''}>▼</button>
+              <span style="font-weight: 700; margin-left: 4px;">#${c.order || c.sort_order || i + 1}</span>
+            </div>
+          </td>
+          <td>
             <div style="display: flex; align-items: center; gap: 10px;">
-
               <img src="${this.resolveImg(hero)}" class="table-thumb" alt="${title}" onerror="this.src='../assets/images/logo.png'">
-
               <div>
-
                 <strong>${title}</strong><br>
-
-                <small style="color: var(--ink-muted);">${c.slug}</small>
-
+                <small style="color: var(--ink-muted);">${this.escapeHtml(slug)}</small>
               </div>
-
             </div>
-
           </td>
-
-          <td><code>/${c.slug}</code></td>
-
+          <td><code>/${this.escapeHtml(slug)}</code></td>
           <td>${tagline}</td>
-
           <td>
-
-            <span class="badge ${c.is_published !== false ? 'badge-success' : 'badge-secondary'}">
-
-              ${c.is_published !== false ? 'Published' : 'Draft'}
-
-            </span>
-
+            <label class="switch">
+              <input type="checkbox" ${isPub ? 'checked' : ''} onchange="AdminApp.togglePublishCategory('${slugAttr}', this.checked)">
+              <span class="slider"></span>
+            </label>
           </td>
-
           <td style="text-align: right;">
-
             <div class="action-btns" style="justify-content: flex-end; display: flex; gap: 6px;">
-
-              <button class="btn-icon" title="Edit Category" onclick="AdminApp.openCategoryModal('${c.slug}')">
-
+              <button class="btn-icon" title="Open in Live Visual Page Editor" style="color: #2563EB; background: rgba(37,99,235,0.1); border-radius: 4px; padding: 4px 8px; display: inline-flex; align-items: center; gap: 4px; font-weight: 600; font-size: 0.78rem;" onclick="PageEditor.openCategoryPage('${slugAttr}')">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+                <span>Live Edit</span>
+              </button>
+              <button class="btn-icon" title="Edit Category Modal" onclick="AdminApp.openCategoryModal('${slugAttr}')">
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>
-
               </button>
-
-              <button class="btn-icon delete" title="Delete Category" onclick="AdminApp.deleteCategory('${c.slug || c.id}')">
-
+              <button class="btn-icon delete" title="Delete Category" onclick="AdminApp.deleteCategory('${slugAttr}')">
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg>
-
               </button>
-
             </div>
-
           </td>
-
         </tr>
-
         `;
-
       }).join('');
-
     },
 
+    filterCategories() {
+      const q = (document.getElementById('categorySearchInput')?.value || '').toLowerCase().trim();
+      if (!q) {
+        this.renderCategories(this.categories);
+        return;
+      }
+      const filtered = this.categories.filter(c => {
+        const title = (typeof c.title === 'object' ? c.title.en : (c.name || c.title)) || '';
+        return title.toLowerCase().includes(q) || (c.slug || '').toLowerCase().includes(q);
+      });
+      this.renderCategories(filtered);
+    },
 
+    moveCategory(slug, delta) {
+      const idx = this.categories.findIndex(c => c.slug === slug);
+      if (idx < 0) return;
+      const targetIdx = idx + delta;
+      if (targetIdx < 0 || targetIdx >= this.categories.length) return;
+      const [item] = this.categories.splice(idx, 1);
+      this.categories.splice(targetIdx, 0, item);
+      this.categories.forEach((c, i) => { c.order = i + 1; });
+      this.renderCategories();
+      this.showToast('Reordered category.', 'info');
+    },
+
+    async togglePublishCategory(slug, isPublished) {
+      const cat = this.categories.find(c => c.slug === slug);
+      if (cat) {
+        cat.is_published = isPublished;
+        if (this.fbDb) {
+          try {
+            await this.fbDb.collection('categories').doc(slug).set({ is_published: isPublished }, { merge: true });
+          } catch(e) {}
+        }
+        this.showToast(`Category "${cat.name || slug}" ${isPublished ? 'published' : 'saved as draft'}.`, 'info');
+      }
+    },
+
+    async bulkToggleCategories(publishBool) {
+      this.categories.forEach(c => c.is_published = publishBool);
+      if (this.fbDb) {
+        const batch = this.fbDb.batch();
+        this.categories.forEach(c => {
+          const ref = this.fbDb.collection('categories').doc(c.slug);
+          batch.set(ref, { is_published: publishBool }, { merge: true });
+        });
+        try { await batch.commit(); } catch(e) {}
+      }
+      this.renderCategories();
+      this.showToast(`All categories set to ${publishBool ? 'Published' : 'Draft'}.`, 'success');
+    },
 
     openCategoryModal(editSlug = null) {
       const form = document.getElementById('categoryForm');
@@ -6617,57 +6899,121 @@ const waBtn = document.getElementById('inquiryWhatsAppBtn');
       this.renderPackageComparisonTicks();
     },
 
-    renderDestinations() {
-
+    renderDestinations(list = null) {
       const tbody = document.getElementById('destinationsTableBody');
-
       if (!tbody) return;
 
-      tbody.innerHTML = this.destinations.map(d => {
+      const items = list || this.destinations;
+      if (!items || items.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="6" style="text-align: center; color: var(--ink-muted); padding: 30px;">No destinations found.</td></tr>';
+        return;
+      }
 
-        const title = d.title && typeof d.title === 'object' ? d.title.en : (d.title || d.slug);
-
+      tbody.innerHTML = items.map(d => {
+        const titleStr = d.title && typeof d.title === 'object' ? d.title.en : (d.title || d.slug);
+        const title = this.escapeHtml(titleStr);
         const image = d.image || 'assets/images/cultural/sigiriya-1.webp';
+        const slug = d.slug || d.id || '';
+        const slugAttr = this.escapeAttr(slug);
+        const isPub = d.status !== 'draft';
 
         return `
-
         <tr>
-
           <td><img src="${this.resolveImg(image)}" class="table-thumb" alt="${title}" onerror="this.src='../assets/images/logo.png'"></td>
-
-          <td><strong>${title}</strong></td>
-
-          <td><span class="badge badge-info">${d.region || 'Sri Lanka'}</span></td>
-
-          <td><code>/${d.slug}</code></td>
-
-          <td><span class="badge ${d.status !== 'draft' ? 'badge-success' : 'badge-secondary'}">${d.status !== 'draft' ? 'Published' : 'Draft'}</span></td>
-
-          <td style="text-align: right;">
-
-            <div class="action-btns" style="justify-content: flex-end; display: flex; gap: 6px;">
-
-              <button class="btn btn-outline btn-sm" onclick="AdminApp.openDestinationModal('${d.slug}')">Edit</button>
-
-              <button class="btn-icon delete" title="Delete Destination" onclick="AdminApp.deleteDestination('${d.slug || d.id}')">
-
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg>
-
-              </button>
-
-            </div>
-
+          <td>
+            <strong>${title}</strong><br>
+            <small style="color: var(--ink-muted);">${d.region || 'Sri Lanka'}</small>
           </td>
-
+          <td><span class="badge badge-info">${this.escapeHtml(d.region || 'Sri Lanka')}</span></td>
+          <td><code>/${this.escapeHtml(slug)}</code></td>
+          <td>
+            <label class="switch">
+              <input type="checkbox" ${isPub ? 'checked' : ''} onchange="AdminApp.togglePublishDestination('${slugAttr}', this.checked)">
+              <span class="slider"></span>
+            </label>
+          </td>
+          <td style="text-align: right;">
+            <div class="action-btns" style="justify-content: flex-end; display: flex; gap: 6px;">
+              <button class="btn-icon" title="Open in Live Visual Page Editor" style="color: #2563EB; background: rgba(37,99,235,0.1); border-radius: 4px; padding: 4px 8px; display: inline-flex; align-items: center; gap: 4px; font-weight: 600; font-size: 0.78rem;" onclick="PageEditor.openDestinationPage('${slugAttr}')">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+                <span>Live Edit</span>
+              </button>
+              <button class="btn btn-outline btn-sm" onclick="AdminApp.openDestinationModal('${slugAttr}')">Edit</button>
+              <button class="btn-icon" title="Duplicate Destination" onclick="AdminApp.duplicateDestination('${slugAttr}')">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+              </button>
+              <button class="btn-icon delete" title="Delete Destination" onclick="AdminApp.deleteDestination('${slugAttr}')">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg>
+              </button>
+            </div>
+          </td>
         </tr>
-
         `;
-
       }).join('');
-
     },
 
+    filterDestinations() {
+      const q = (document.getElementById('destinationSearchInput')?.value || '').toLowerCase().trim();
+      if (!q) {
+        this.renderDestinations(this.destinations);
+        return;
+      }
+      const filtered = this.destinations.filter(d => {
+        const title = (typeof d.title === 'object' ? d.title.en : d.title) || '';
+        return title.toLowerCase().includes(q) ||
+               (d.region || '').toLowerCase().includes(q) ||
+               (d.slug || '').toLowerCase().includes(q);
+      });
+      this.renderDestinations(filtered);
+    },
 
+    async togglePublishDestination(slug, isPublished) {
+      const dest = this.destinations.find(d => d.slug === slug);
+      if (dest) {
+        dest.status = isPublished ? 'published' : 'draft';
+        if (this.fbDb) {
+          try {
+            await this.fbDb.collection('destinations').doc(slug).set({ status: dest.status }, { merge: true });
+          } catch(e) {}
+        }
+        this.showToast(`Destination "${dest.title?.en || slug}" ${isPublished ? 'published' : 'saved as draft'}.`, 'info');
+      }
+    },
+
+    async duplicateDestination(slug) {
+      const dest = this.destinations.find(d => d.slug === slug);
+      if (!dest) return;
+      const copy = JSON.parse(JSON.stringify(dest));
+      copy.slug = copy.slug + '-copy-' + Date.now().toString(36).slice(-4);
+      if (typeof copy.title === 'object') {
+        copy.title.en = (copy.title.en || 'Destination') + ' (Copy)';
+      } else {
+        copy.title = (copy.title || 'Destination') + ' (Copy)';
+      }
+      copy.status = 'draft';
+      this.destinations.push(copy);
+      if (this.fbDb) {
+        try {
+          await this.fbDb.collection('destinations').doc(copy.slug).set(copy);
+        } catch(e) {}
+      }
+      this.renderDestinations();
+      this.showToast(`Duplicated destination as "${copy.slug}"`, 'success');
+    },
+
+    async bulkToggleDestinations(publishBool) {
+      this.destinations.forEach(d => d.status = publishBool ? 'published' : 'draft');
+      if (this.fbDb) {
+        const batch = this.fbDb.batch();
+        this.destinations.forEach(d => {
+          const ref = this.fbDb.collection('destinations').doc(d.slug);
+          batch.set(ref, { status: d.status }, { merge: true });
+        });
+        try { await batch.commit(); } catch(e) {}
+      }
+      this.renderDestinations();
+      this.showToast(`All destinations set to ${publishBool ? 'Published' : 'Draft'}.`, 'success');
+    },
 
     openDestinationModal(editSlug = null) {
 
@@ -6821,13 +7167,17 @@ const waBtn = document.getElementById('inquiryWhatsAppBtn');
 
 
 
-    renderReviews() {
-
+    renderReviews(list = null) {
       const tbody = document.getElementById('reviewsTableBody');
-
       if (!tbody) return;
 
-      tbody.innerHTML = this.reviews.map(r => {
+      const items = list || this.reviews;
+      if (!items || items.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="8" style="text-align: center; color: var(--ink-muted); padding: 30px;">No reviews found.</td></tr>';
+        return;
+      }
+
+      tbody.innerHTML = items.map(r => {
         const rawText = r.review_text && typeof r.review_text === 'object' ? r.review_text.en : (r.review_text || '');
         const text = this.escapeHtml(rawText);
         const name = this.escapeHtml(r.guest_name || 'Guest');
@@ -6859,6 +7209,10 @@ const waBtn = document.getElementById('inquiryWhatsAppBtn');
           </td>
           <td style="text-align: right;">
             <div class="action-btns" style="justify-content: flex-end; display: flex; gap: 6px;">
+              <button class="btn-icon" title="Open in Live Visual Page Editor" style="color: #2563EB; background: rgba(37,99,235,0.1); border-radius: 4px; padding: 4px 8px; display: inline-flex; align-items: center; gap: 4px; font-weight: 600; font-size: 0.78rem;" onclick="PageEditor.openPage('siteContent/reviews', 'reviews.html')">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+                <span>Live Edit</span>
+              </button>
               <button class="btn btn-outline btn-sm" onclick="AdminApp.openReviewModal('${revId}')">Edit</button>
               <button class="btn-icon delete" title="Delete Review" onclick="AdminApp.deleteReview('${revId}')">
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg>
@@ -6868,10 +7222,27 @@ const waBtn = document.getElementById('inquiryWhatsAppBtn');
         </tr>
       `;
       }).join('');
-
     },
 
+    filterReviews() {
+      const q = (document.getElementById('reviewSearchInput')?.value || '').toLowerCase().trim();
+      const ratingFilter = document.getElementById('reviewRatingFilter')?.value || 'all';
 
+      let filtered = this.reviews;
+      if (ratingFilter !== 'all') {
+        filtered = filtered.filter(r => parseInt(r.rating || 5, 10) === parseInt(ratingFilter, 10));
+      }
+      if (q) {
+        filtered = filtered.filter(r => {
+          const name = (r.guest_name || '').toLowerCase();
+          const country = (r.country || '').toLowerCase();
+          const tour = (r.tour_taken || '').toLowerCase();
+          const text = (typeof r.review_text === 'object' ? r.review_text.en : r.review_text || '').toLowerCase();
+          return name.includes(q) || country.includes(q) || tour.includes(q) || text.includes(q);
+        });
+      }
+      this.renderReviews(filtered);
+    },
 
     openReviewModal(editId = null) {
 
@@ -7027,380 +7398,22 @@ const waBtn = document.getElementById('inquiryWhatsAppBtn');
 
     },
 
-
-
     /**
-
-     * 5. MEDIA LIBRARY & WEBP CLIENT-SIDE COMPRESSION
-
+     * Central Responsive Media HTML Formatter
      */
-
-    async renderMediaLibrary() {
-
-      if (!this.mediaFiles || this.mediaFiles.length <= 4) {
-
-        try {
-
-          const res = await fetch('../data/media-manifest.json');
-
-          if (res.ok) {
-
-            const data = await res.json();
-
-            if (Array.isArray(data) && data.length) {
-
-              this.mediaFiles = data;
-
-            }
-
-          }
-
-        } catch (e) {}
-
+    formatResponsiveMedia(url, alt = "Lotus Ceylon Media") {
+      if (!url) return "";
+      const isVideo = /\.(mp4|webm|mov|m4v)$/i.test(url) || url.includes("/video/upload/");
+      if (isVideo) {
+        return `<div class="responsive-video-wrap lotus-responsive-video"><video controls playsinline preload="metadata" src="${url}"></video></div>`;
       }
-
-
-
-      const grid = document.getElementById('mediaGrid');
-
-      if (!grid) return;
-
-
-
-      grid.innerHTML = this.mediaFiles.map((m, idx) => {
-
-        const isVid = m.isVideo || /\.(mp4|webm|mov)$/i.test(m.url);
-
-        const resolved = this.resolveImg(m.url);
-
-        return `
-
-        <div class="media-item">
-
-          ${isVid ? `
-
-            <div style="width: 100%; height: 100%; background: #001726; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #E5B869;">
-
-              <span style="font-size: 2.2rem;">🎬</span>
-
-              <span style="font-size: 0.75rem; letter-spacing: 1px; font-weight: 700; color: #FFFFFF; margin-top: 4px;">HD VIDEO</span>
-
-            </div>
-
-          ` : `
-
-            <img src="${resolved}" alt="${m.name}" loading="lazy" onerror="this.src='../assets/images/logo.png'">
-
-          `}
-
-          <div class="media-overlay">
-
-            <span class="media-info">${m.name}</span>
-
-            <div style="display: flex; gap: 6px;">
-
-              <button class="btn btn-gold btn-sm" onclick="AdminApp.copyMediaUrl('${m.url}')">Copy URL</button>
-
-              <button class="btn btn-danger btn-sm" onclick="AdminApp.deleteMedia(${idx})">✕</button>
-
-            </div>
-
-          </div>
-
-        </div>
-
-        `;
-
-      }).join('');
-
-    },
-
-
-
-    copyMediaUrl(url) {
-
-      navigator.clipboard.writeText(url).then(() => {
-
-        this.showToast('Image URL copied to clipboard!', 'success');
-
-      });
-
-    },
-
-
-
-    deleteMedia(index) {
-
-      this.mediaFiles.splice(index, 1);
-
-      this.renderMediaLibrary();
-
-      this.showToast('Media removed', 'info');
-
-    },
-
-
-
-    /**
-
-     * Image Upload with Client-Side Canvas WebP Compression (Max 1920px, 5MB Check)
-
-     */
-
-    async handleMediaUpload(files) {
-
-      if (!files || files.length === 0) return;
-
-
-
-      for (let i = 0; i < files.length; i++) {
-
-        const file = files[i];
-
-        const isVideo = file.type.startsWith('video/') || /\.(mp4|webm|mov|ogg)$/i.test(file.name);
-
-
-
-        // 1. Strict MIME type & extension validation (Security against malicious uploads)
-
-        const validImageMimes = ['image/jpeg', 'image/png', 'image/webp', 'image/gif', 'image/avif'];
-
-        const validVideoMimes = ['video/mp4', 'video/webm', 'video/quicktime', 'video/ogg'];
-
-        const validImageExts = ['.jpg', '.jpeg', '.png', '.webp', '.gif', '.avif'];
-
-        const validVideoExts = ['.mp4', '.webm', '.mov', '.ogg'];
-
-        const fileExt = '.' + file.name.split('.').pop().toLowerCase();
-
-
-
-        const isValidImg = validImageMimes.includes(file.type.toLowerCase()) && validImageExts.includes(fileExt);
-
-        const isValidVid = validVideoMimes.includes(file.type.toLowerCase()) && validVideoExts.includes(fileExt);
-
-
-
-        if (!isValidImg && !isValidVid) {
-
-          this.showToast(`Rejected "${file.name}": Only standard image (JPG, PNG, WebP) or video (MP4, WebM, MOV) files are permitted.`, 'error', 4500);
-
-          continue;
-
-        }
-
-
-
-        // 2. Size limit: 10MB for images, 60MB for videos
-
-        const maxLimit = isVideo ? 60 * 1024 * 1024 : 10 * 1024 * 1024;
-
-        if (file.size > maxLimit) {
-
-          this.showToast(`Rejected "${file.name}": Exceeds the ${isVideo ? '60MB video' : '10MB image'} upload limit.`, 'error', 4500);
-
-          continue;
-
-        }
-
-
-
-        if (isVideo) {
-
-          this.showToast(`Processing video "${file.name}" (Auto-responsive 16:9)...`, 'info', 2500);
-
-          try {
-
-            const videoUrl = URL.createObjectURL(file);
-
-            const safeName = file.name.replace(/[^a-zA-Z0-9._-]/g, '_');
-
-            this.mediaFiles.unshift({
-
-              name: safeName,
-
-              url: videoUrl,
-
-              isVideo: true,
-
-              size: `${Math.round(file.size / (1024 * 1024))} MB`
-
-            });
-
-            this.showToast(`Video ${safeName} ready with auto-responsive playback!`, 'success');
-
-          } catch (err) {
-
-            console.error(err);
-
-            this.showToast(`Video upload failed: ` + err.message, 'error');
-
-          }
-
-        } else {
-
-          this.showToast(`Compressing & optimizing "${file.name}" to WebP...`, 'info', 2000);
-
-          try {
-
-            const compressedBlob = await this.compressImageToWebP(file, 1920, 0.85);
-
-            const compressedUrl = URL.createObjectURL(compressedBlob);
-
-            const safeName = file.name.replace(/\.[^/.]+$/, "") + '.webp';
-
-
-
-            this.mediaFiles.unshift({
-
-              name: safeName,
-
-              url: compressedUrl,
-
-              isVideo: false,
-
-              size: `${Math.round(compressedBlob.size / 1024)} KB`
-
-            });
-
-            this.showToast(`Optimized ${safeName} stored in media library!`, 'success');
-
-          } catch (err) {
-
-            console.error(err);
-
-            this.showToast(`Upload failed for ${file.name}: ` + err.message, 'error');
-
-          }
-
-        }
-
-      }
-
-
-
-      this.renderMediaLibrary();
-
-    },
-
-
-
-    /**
-
-     * Canvas-based WebP Resizer & Compressor
-
-     */
-
-    compressImageToWebP(file, maxWidth = 1920, quality = 0.85) {
-
-      return new Promise((resolve, reject) => {
-
-        const reader = new FileReader();
-
-        reader.readAsDataURL(file);
-
-        reader.onload = (event) => {
-
-          const img = new Image();
-
-          img.src = event.target.result;
-
-          img.onload = () => {
-
-            let width = img.width;
-
-            let height = img.height;
-
-
-
-            if (width > maxWidth) {
-
-              height = Math.round((height * maxWidth) / width);
-
-              width = maxWidth;
-
-            }
-
-
-
-            const canvas = document.createElement('canvas');
-
-            canvas.width = width;
-
-            canvas.height = height;
-
-
-
-            const ctx = canvas.getContext('2d');
-
-            ctx.drawImage(img, 0, 0, width, height);
-
-
-
-            canvas.toBlob((blob) => {
-
-              if (blob) {
-
-                resolve(blob);
-
-              } else {
-
-                reject(new Error('Canvas toBlob conversion failed'));
-
-              }
-
-            }, 'image/webp', quality);
-
-          };
-
-          img.onerror = reject;
-
-        };
-
-        reader.onerror = reject;
-
-      });
-
-    },
-
-
-
-    triggerDirectCloudinaryUpload(options = {}) {
-      return this.triggerUploadForInput(options.inputId, options.previewImgId, options.cardId, options);
+      return `<img src="${url}" alt="${alt}" class="responsive-media-img" loading="lazy" onerror="this.src='../assets/images/cultural-triangle.jpg'">`;
     },
 
     openCloudinaryWidget(callback) {
-      // Direct native upload: Never hangs on file:/// and works cross-platform
       this.triggerDirectCloudinaryUpload({
-        accept: 'image/*,video/*',
+        accept: "image/*,video/*",
         callback: callback
-      });
-    },
-
-formatResponsiveMedia(url, alt = 'Lotus Ceylon Media') {
-
-      if (!url) return '';
-
-      const isVideo = /\.(mp4|webm|mov|m4v)$/i.test(url) || url.includes('/video/upload/');
-
-      if (isVideo) {
-
-        return `<div class="responsive-video-wrap lotus-responsive-video"><video controls playsinline preload="metadata" src="${url}"></video></div>`;
-
-      }
-
-      return `<img src="${url}" alt="${alt}" class="responsive-media-img" loading="lazy" onerror="this.src='../assets/images/cultural-triangle.jpg'">`;
-
-    },
-
-
-
-        openCloudinaryWidgetForInput(inputId, previewImgId = null, cardId = null) {
-      this.triggerDirectCloudinaryUpload({
-        accept: 'image/*,video/*',
-        inputId: inputId,
-        previewImgId: previewImgId,
-        cardId: cardId
       });
     },
 

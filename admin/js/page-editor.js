@@ -622,13 +622,13 @@
       // --- 1. INSPECTOR TABS: [ ✏️ Edit ] [ ➕ Add Block ] [ 🗑️ Delete ] ---
       html += `
         <div class="inspector-tabs">
-          <button type="button" class="inspector-tab-btn ${this.activeInspectorTab === 'edit' ? 'active' : ''}" onclick="PageEditor.setInspectorTab('edit')">
+          <button type="button" class="inspector-tab-btn tab-edit ${this.activeInspectorTab === 'edit' ? 'active' : ''}" onclick="PageEditor.setInspectorTab('edit')">
             <span>✏️ Edit Content</span>
           </button>
-          <button type="button" class="inspector-tab-btn ${this.activeInspectorTab === 'add' ? 'active' : ''}" onclick="PageEditor.setInspectorTab('add')">
+          <button type="button" class="inspector-tab-btn tab-add ${this.activeInspectorTab === 'add' ? 'active' : ''}" onclick="PageEditor.setInspectorTab('add')">
             <span>➕ Add Element</span>
           </button>
-          <button type="button" class="inspector-tab-btn ${this.activeInspectorTab === 'delete' ? 'active' : ''}" onclick="PageEditor.setInspectorTab('delete')">
+          <button type="button" class="inspector-tab-btn tab-delete ${this.activeInspectorTab === 'delete' ? 'active' : ''}" onclick="PageEditor.setInspectorTab('delete')">
             <span>🗑️ Delete / Actions</span>
           </button>
         </div>
@@ -1722,8 +1722,8 @@
         window.AdminApp.switchSection('page-editor');
       }
 
-      // Highlight only the matching sub-link in sidebar and ensure its accordion is open
-      const subLinks = document.querySelectorAll('.sidebar-nav .nav-sub-link');
+            // Highlight only the matching sub-link / red-page-tab in sidebar and ensure its accordion is open
+      const subLinks = document.querySelectorAll('.sidebar-nav .nav-sub-link, .sidebar-nav .red-page-tab');
       let matchedGroup = null;
       subLinks.forEach(link => {
         const linkDoc = link.getAttribute('data-page-doc');
@@ -1742,6 +1742,14 @@
         });
         matchedGroup.classList.add('is-open');
       }
+
+      // Also highlight matching quick page strip button
+      document.querySelectorAll('.strip-tab-btn').forEach(btn => {
+        const btnKey = btn.getAttribute('data-page-key');
+        const onclickAttr = btn.getAttribute('onclick') || '';
+        const isMatch = (btnKey === docKey) || onclickAttr.includes(`'${docKey}'`) || (fileName && onclickAttr.includes(`'${fileName}'`));
+        btn.classList.toggle('active', !!isMatch);
+      });
 
       // Update Topbar Page Dropdown if needed
       const pageSelect = document.getElementById('visualPageDropdown');
@@ -2348,6 +2356,7 @@
       if (titleInput) titleInput.value = titleVal;
       if (descInput) descInput.value = descVal;
       if (imgInput) imgInput.value = imgVal;
+      this.updateSeoCounters();
       if (window.AdminApp && typeof window.AdminApp.openModal === 'function') {
         window.AdminApp.openModal('seoModal');
       }
@@ -2784,21 +2793,6 @@
       this.renderElementForm(this.selectedElement);
     },
 
-    escapeAttr(str) {
-      if (!str) return '';
-      return String(str).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/'/g, '&#39;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-    }
-  };
-
-  window.PageEditor = PageEditor;
-
-  // Lazy init on demand when user opens Visual Page Editor tab
-  window.initPageEditorIfNeeded = function() {
-    if (!PageEditor.initialized) {
-      PageEditor.initialized = true;
-      PageEditor.init();
-    }
-  
     async openVersionHistoryModal() {
       const modal = document.getElementById('versionHistoryModal');
       const pageTitle = document.getElementById('versionHistoryPageTitle');
@@ -2812,13 +2806,11 @@
       listEl.innerHTML = '<div style="text-align: center; color: #64748B; padding: 24px;">Loading version checkpoints...</div>';
 
       let versions = [];
-      // 1. Try localStorage first for instant display
       try {
         const localList = JSON.parse(localStorage.getItem('lotus_history_' + this.activePageKey) || '[]');
         if (localList.length > 0) versions = localList;
       } catch(e) {}
 
-      // 2. Try Firestore siteHistory
       if (window.AdminApp && window.AdminApp.fbDb) {
         try {
           const historyDocKey = this.activePageKey.replace('/', '__');
@@ -2878,13 +2870,11 @@
       }
 
       let targetVersion = null;
-      // Look in localStorage
       try {
         const localList = JSON.parse(localStorage.getItem('lotus_history_' + this.activePageKey) || '[]');
         targetVersion = localList.find(v => v.id === versionId);
       } catch(e) {}
 
-      // Look in Firestore
       if (!targetVersion && window.AdminApp && window.AdminApp.fbDb) {
         try {
           const historyDocKey = this.activePageKey.replace('/', '__');
@@ -2898,11 +2888,9 @@
         return;
       }
 
-      // Restore payload
       this.activeDocData = Object.assign({}, targetVersion.payload);
       this.currentFieldValues = {};
 
-      // Apply to iframe
       const iframe = document.getElementById('visualCmsIframe');
       if (iframe) {
         const curSrc = iframe.src;
@@ -2917,6 +2905,29 @@
       }
     },
 
-};
+    escapeAttr(str) {
+      if (!str) return '';
+      return String(str).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/'/g, '&#39;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    }
+  };
+
+  window.PageEditor = PageEditor;
+
+  // Lazy init on demand when user opens Visual Page Editor tab
+  window.initPageEditorIfNeeded = function() {
+    if (!PageEditor.initialized) {
+      PageEditor.initialized = true;
+      PageEditor.init();
+    }
+  };
+
+  // Warn on unsaved changes when navigating away
+  window.addEventListener('beforeunload', function(e) {
+    if (window.PageEditor && window.PageEditor.hasUnsavedChanges) {
+      e.preventDefault();
+      e.returnValue = 'You have unsaved changes in the visual editor. Are you sure you want to leave?';
+      return e.returnValue;
+    }
+  });
 
 })(window, document);

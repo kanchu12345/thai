@@ -3595,3 +3595,162 @@ input:checked + .slider:before {
   font-size: 0.78rem;
   line-height: 1.45;
 }
+
+
+/* ==============================================================================
+ * RED PAGE TABS (Executive Orderly Red Website Navigation - Matches User Spec)
+ * ============================================================================== */
+.red-page-tab {
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  background: linear-gradient(135deg, #C95451, #B84A48) !important;
+  color: #FFFFFF !important;
+  border: 1px solid rgba(0, 0, 0, 0.22) !important;
+  border-radius: 8px !important;
+  padding: 10px 14px !important;
+  margin-bottom: 6px !important;
+  font-size: 0.88rem !important;
+  font-weight: 600 !important;
+  text-decoration: none !important;
+  cursor: pointer !important;
+  transition: all 0.18s ease !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.18) !important;
+}
+
+.red-page-tab:hover {
+  background: linear-gradient(135deg, #D45B56, #C44E49) !important;
+  color: #FFFFFF !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 10px rgba(201, 84, 81, 0.35) !important;
+}
+
+.red-page-tab.active {
+  background: linear-gradient(135deg, #D9534F, #C23B38) !important;
+  border: 2px solid #D4AF37 !important;
+  box-shadow: 0 0 14px rgba(212, 175, 55, 0.55), 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+  font-weight: 700 !important;
+}
+
+.red-page-tab .tab-icon {
+  font-size: 1.15rem !important;
+  line-height: 1 !important;
+  flex-shrink: 0 !important;
+}
+
+.red-page-tab .tab-label {
+  flex: 1 !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+/* QUICK RED PAGE STRIP ABOVE PREVIEW IFRAME */
+.editor-quick-page-strip {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #0B132B;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+  padding: 8px 18px;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.editor-quick-page-strip .strip-label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #D4AF37;
+  flex-shrink: 0;
+}
+
+.editor-quick-page-strip .strip-tabs-scroll {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+}
+
+.strip-tab-btn {
+  background: linear-gradient(135deg, #C95451, #B84A48);
+  color: #FFFFFF;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 6px;
+  padding: 5px 12px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.15s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.strip-tab-btn:hover {
+  background: linear-gradient(135deg, #D45B56, #C44E49);
+  transform: translateY(-1px);
+}
+
+.strip-tab-btn.active {
+  background: linear-gradient(135deg, #D9534F, #C23B38);
+  border: 2px solid #D4AF37;
+  box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+  font-weight: 700;
+}
+
+/* ENHANCED INSPECTOR TABS (Edit, Add, Delete) */
+.inspector-tabs {
+  display: flex;
+  background: #E2E8F0;
+  border-radius: 8px;
+  padding: 4px;
+  margin: -10px -8px 14px -8px;
+  gap: 4px;
+}
+
+.inspector-tab-btn {
+  flex: 1;
+  padding: 9px 8px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #475569;
+  background: transparent;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: all 0.18s ease;
+}
+
+.inspector-tab-btn:hover {
+  color: #0F172A;
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.inspector-tab-btn.active {
+  background: #FFFFFF;
+  color: #002B49;
+  font-weight: 700;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.inspector-tab-btn.tab-add.active {
+  color: #047857;
+  border-bottom: 2px solid #10B981;
+}
+
+.inspector-tab-btn.tab-delete.active {
+  color: #B91C1C;
+  border-bottom: 2px solid #EF4444;
+}
+
+.inspector-tab-btn.tab-edit.active {
+  color: #002B49;
+  border-bottom: 2px solid #D4AF37;
+}

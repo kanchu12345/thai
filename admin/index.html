@@ -111,55 +111,96 @@
       </div>
     </div>
 
-    <!-- 3. PAGES (Home, About, Contact, Destinations, Experiences, Gallery, Reviews, Blog, Tours hub, Legal) -->
-    <div class="nav-collapsible-group" id="navGroupPages">
+    <!-- 3. WEBSITE PAGES (Orderly Red Tabs matching user request) -->
+    <div class="nav-collapsible-group is-open" id="navGroupPages">
       <div class="nav-collapsible-header" onclick="AdminApp.toggleAccordion('navGroupPages')">
         <div class="nav-header-left">
           <svg viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
-          <span>Pages</span>
+          <span style="font-weight: 700; color: #D4AF37; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 0.05em;">Website Pages (16)</span>
         </div>
         <svg viewBox="0 0 24 24" class="nav-chevron"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
       </div>
-      <div class="nav-collapsible-body">
-        <a class="nav-sub-link" data-page-doc="siteContent/home" onclick="PageEditor.openPage('siteContent/home', 'index.html')">
-          <span class="sub-bullet"></span><span>Home Page</span>
+      <div class="nav-collapsible-body" style="padding: 8px 10px;">
+        <a class="red-page-tab active" data-page-doc="siteContent/home" onclick="PageEditor.openPage('siteContent/home', 'index.html')">
+          <span class="tab-icon">🏠</span>
+          <span class="tab-label">Home Page</span>
         </a>
-        <a class="nav-sub-link" data-page-doc="siteContent/about" onclick="PageEditor.openPage('siteContent/about', 'about.html')">
-          <span class="sub-bullet"></span><span>About Us</span>
+        <a class="red-page-tab" data-page-doc="siteContent/about" onclick="PageEditor.openPage('siteContent/about', 'about.html')">
+          <span class="tab-icon">🏛️</span>
+          <span class="tab-label">About Us</span>
         </a>
-        <a class="nav-sub-link" data-page-doc="siteContent/contact" onclick="PageEditor.openPage('siteContent/contact', 'contact.html')">
-          <span class="sub-bullet"></span><span>Contact &amp; Concierge</span>
+        <a class="red-page-tab" data-page-doc="siteContent/contact" onclick="PageEditor.openPage('siteContent/contact', 'contact.html')">
+          <span class="tab-icon">📞</span>
+          <span class="tab-label">Contact</span>
         </a>
-        <a class="nav-sub-link" data-page-doc="siteContent/destinations" onclick="PageEditor.openPage('siteContent/destinations', 'destinations.html')">
-          <span class="sub-bullet"></span><span>Destinations Hub</span>
+        <a class="red-page-tab" data-page-doc="siteContent/destinations" onclick="PageEditor.openPage('siteContent/destinations', 'destinations.html')">
+          <span class="tab-icon">📍</span>
+          <span class="tab-label">Destinations</span>
         </a>
-        <a class="nav-sub-link" data-page-doc="siteContent/experiences" onclick="PageEditor.openPage('siteContent/experiences', 'experiences.html')">
-          <span class="sub-bullet"></span><span>Experiences</span>
+        <a class="red-page-tab" data-page-doc="siteContent/experiences" onclick="PageEditor.openPage('siteContent/experiences', 'experiences.html')">
+          <span class="tab-icon">✨</span>
+          <span class="tab-label">Experiences</span>
         </a>
-        <a class="nav-sub-link" data-page-doc="siteContent/gallery" onclick="PageEditor.openPage('siteContent/gallery', 'gallery.html')">
-          <span class="sub-bullet"></span><span>Gallery</span>
+        <a class="red-page-tab" data-page-doc="siteContent/gallery" onclick="PageEditor.openPage('siteContent/gallery', 'gallery.html')">
+          <span class="tab-icon">🖼️</span>
+          <span class="tab-label">Gallery</span>
         </a>
-        <a class="nav-sub-link" data-page-doc="siteContent/reviews" onclick="PageEditor.openPage('siteContent/reviews', 'reviews.html')">
-          <span class="sub-bullet"></span><span>Reviews &amp; Guestbook</span>
+        <a class="red-page-tab" data-page-doc="siteContent/reviews" onclick="PageEditor.openPage('siteContent/reviews', 'reviews.html')">
+          <span class="tab-icon">✍️</span>
+          <span class="tab-label">Reviews and Guestbook</span>
         </a>
-        <a class="nav-sub-link" data-page-doc="siteContent/blog" onclick="PageEditor.openPage('siteContent/blog', 'blog.html')">
-          <span class="sub-bullet"></span><span>Blog Main Hub</span>
+        <a class="red-page-tab" data-page-doc="siteContent/blog" onclick="PageEditor.openPage('siteContent/blog', 'blog.html')">
+          <span class="tab-icon">📰</span>
+          <span class="tab-label">Blog Main Hub</span>
         </a>
-        <a class="nav-sub-link" data-page-doc="siteContent/toursIndex" onclick="PageEditor.openPage('siteContent/toursIndex', 'tours/index.html')">
-          <span class="sub-bullet"></span><span>Tours Hub (Index)</span>
+        <a class="red-page-tab" data-page-doc="siteContent/blog-ella-tea" onclick="PageEditor.openPage('siteContent/blog-ella-tea', 'blog/ella-hands-on-tea-making-experience/index.html')">
+          <span class="tab-icon">🍵</span>
+          <span class="tab-label">Ella Tea Making Article</span>
         </a>
-        <div class="sidebar-sub-divider">Legal &amp; Policies</div>
-        <a class="nav-sub-link" data-page-doc="siteContent/privacy-policy" onclick="PageEditor.openPage('siteContent/privacy-policy', 'privacy-policy.html')">
-          <span class="sub-bullet"></span><span>Privacy Policy</span>
+        <a class="red-page-tab" data-page-doc="siteContent/blog-sacred-kingdoms" onclick="PageEditor.openPage('siteContent/blog-sacred-kingdoms', 'blog/sacred-footsteps-unlocking-sri-lankas-ancient-buddhist-kingdoms/index.html')">
+          <span class="tab-icon">🏛️</span>
+          <span class="tab-label">Sacred Kingdoms Article</span>
         </a>
-        <a class="nav-sub-link" data-page-doc="siteContent/terms-conditions" onclick="PageEditor.openPage('siteContent/terms-conditions', 'terms-conditions.html')">
-          <span class="sub-bullet"></span><span>Terms &amp; Conditions</span>
+        <a class="red-page-tab" data-page-doc="siteContent/blog-elephant-gathering" onclick="PageEditor.openPage('siteContent/blog-elephant-gathering', 'blog/the-great-gathering-watching-hundreds-of-wild-elephants-at-minneriya/index.html')">
+          <span class="tab-icon">🐘</span>
+          <span class="tab-label">Minneriya Gathering Article</span>
         </a>
-        <a class="nav-sub-link" data-page-doc="siteContent/cancellation-policy" onclick="PageEditor.openPage('siteContent/cancellation-policy', 'cancellation-policy.html')">
-          <span class="sub-bullet"></span><span>Cancellation Policy</span>
+        <a class="red-page-tab" data-page-doc="siteContent/blog-sinharaja-reforestation" onclick="PageEditor.openPage('siteContent/blog-sinharaja-reforestation', 'blog/growing-a-greener-future-volunteer-reforestation-sinharaja/index.html')">
+          <span class="tab-icon">🌿</span>
+          <span class="tab-label">Sinharaja Reforestation Article</span>
         </a>
-        <a class="nav-sub-link" data-page-doc="siteContent/cookie-policy" onclick="PageEditor.openPage('siteContent/cookie-policy', 'cookie-policy.html')">
-          <span class="sub-bullet"></span><span>Cookie Policy</span>
+        <a class="red-page-tab" data-page-doc="siteContent/blog-ayurveda-healing" onclick="PageEditor.openPage('siteContent/blog-ayurveda-healing', 'blog/living-healing-traditional-ceylon-ayurveda/index.html')">
+          <span class="tab-icon">🫖</span>
+          <span class="tab-label">Living Ayurveda Article</span>
+        </a>
+        <a class="red-page-tab" data-page-doc="siteContent/inquiry-quick" onclick="PageEditor.openPage('siteContent/inquiry-quick', 'inquiry-quick.html')">
+          <span class="tab-icon">📋</span>
+          <span class="tab-label">Quick Inquiry (Short)</span>
+        </a>
+        <a class="red-page-tab" data-page-doc="siteContent/inquiry-detailed" onclick="PageEditor.openPage('siteContent/inquiry-detailed', 'inquiry-detailed.html')">
+          <span class="tab-icon">✈️</span>
+          <span class="tab-label">Bespoke Inquiry (Detailed)</span>
+        </a>
+        <a class="red-page-tab" data-page-doc="siteContent/toursIndex" onclick="PageEditor.openPage('siteContent/toursIndex', 'tours/index.html')">
+          <span class="tab-icon">🗺️</span>
+          <span class="tab-label">Tours Index (Categories)</span>
+        </a>
+        <div class="sidebar-sub-divider" style="margin-top: 10px; margin-bottom: 6px;">Legal &amp; Policies</div>
+        <a class="red-page-tab" data-page-doc="siteContent/privacy-policy" onclick="PageEditor.openPage('siteContent/privacy-policy', 'privacy-policy.html')">
+          <span class="tab-icon">🔒</span>
+          <span class="tab-label">Privacy Policy</span>
+        </a>
+        <a class="red-page-tab" data-page-doc="siteContent/terms-conditions" onclick="PageEditor.openPage('siteContent/terms-conditions', 'terms-conditions.html')">
+          <span class="tab-icon">📜</span>
+          <span class="tab-label">Terms &amp; Conditions</span>
+        </a>
+        <a class="red-page-tab" data-page-doc="siteContent/cancellation-policy" onclick="PageEditor.openPage('siteContent/cancellation-policy', 'cancellation-policy.html')">
+          <span class="tab-icon">↩️</span>
+          <span class="tab-label">Cancellation Policy</span>
+        </a>
+        <a class="red-page-tab" data-page-doc="siteContent/cookie-policy" onclick="PageEditor.openPage('siteContent/cookie-policy', 'cookie-policy.html')">
+          <span class="tab-icon">🍪</span>
+          <span class="tab-label">Cookie Policy</span>
         </a>
       </div>
     </div>
@@ -1541,6 +1582,24 @@
     </div>
   </div>
 
+  <!-- QUICK RED PAGE TABS STRIP (Orderly 1-Click Page Switcher) -->
+  <div class="editor-quick-page-strip">
+    <span class="strip-label">Website Pages:</span>
+    <div class="strip-tabs-scroll">
+      <button type="button" class="strip-tab-btn active" data-page-key="siteContent/home" onclick="PageEditor.openPage('siteContent/home', 'index.html')">🏠 Home</button>
+      <button type="button" class="strip-tab-btn" data-page-key="siteContent/about" onclick="PageEditor.openPage('siteContent/about', 'about.html')">🏛️ About</button>
+      <button type="button" class="strip-tab-btn" data-page-key="siteContent/contact" onclick="PageEditor.openPage('siteContent/contact', 'contact.html')">📞 Contact</button>
+      <button type="button" class="strip-tab-btn" data-page-key="siteContent/destinations" onclick="PageEditor.openPage('siteContent/destinations', 'destinations.html')">📍 Destinations</button>
+      <button type="button" class="strip-tab-btn" data-page-key="siteContent/experiences" onclick="PageEditor.openPage('siteContent/experiences', 'experiences.html')">✨ Experiences</button>
+      <button type="button" class="strip-tab-btn" data-page-key="siteContent/gallery" onclick="PageEditor.openPage('siteContent/gallery', 'gallery.html')">🖼️ Gallery</button>
+      <button type="button" class="strip-tab-btn" data-page-key="siteContent/reviews" onclick="PageEditor.openPage('siteContent/reviews', 'reviews.html')">✍️ Reviews</button>
+      <button type="button" class="strip-tab-btn" data-page-key="siteContent/blog" onclick="PageEditor.openPage('siteContent/blog', 'blog.html')">📰 Blog</button>
+      <button type="button" class="strip-tab-btn" data-page-key="siteContent/toursIndex" onclick="PageEditor.openPage('siteContent/toursIndex', 'tours/index.html')">🗺️ Tours Hub</button>
+      <button type="button" class="strip-tab-btn" data-page-key="siteContent/inquiry-quick" onclick="PageEditor.openPage('siteContent/inquiry-quick', 'inquiry-quick.html')">📋 Quick Inquiry</button>
+      <button type="button" class="strip-tab-btn" data-page-key="siteContent/inquiry-detailed" onclick="PageEditor.openPage('siteContent/inquiry-detailed', 'inquiry-detailed.html')">✈️ Bespoke Inquiry</button>
+    </div>
+  </div>
+
   <!-- VISUAL SPLIT WORKSPACE (70% Preview Iframe | 30% Edit Panel) -->
   <div class="visual-split-workspace" id="visualWorkspace">
     <!-- LEFT: PREVIEW IFRAME VIEWPORT -->
@@ -2343,14 +2402,20 @@
     <div class="modal-body">
       <form id="seoModalForm" onsubmit="event.preventDefault(); PageEditor.saveSeoSettings();">
         <div class="form-group">
-          <label>Page Title Tag (&lt;title&gt;) *</label>
-          <input class="form-control" id="seoPageTitle" placeholder="Lotus Ceylon Luxury Tours" required type="text"/>
-          <small style="color: #64748b; font-size: 0.78rem;">Optimal length: 50–60 characters</small>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+            <label style="margin: 0;">Page Title Tag (&lt;title&gt;) *</label>
+            <span class="badge" id="seoTitleCountBadge" style="font-size: 0.74rem; font-weight: 600; padding: 2px 8px; border-radius: 12px; background: #F1F5F9; color: #475569;">0 / 60 chars</span>
+          </div>
+          <input class="form-control" id="seoPageTitle" placeholder="Lotus Ceylon Luxury Tours" required type="text" oninput="PageEditor.updateSeoCounters()"/>
+          <small style="color: #64748b; font-size: 0.76rem; display: block; margin-top: 3px;">Search engine snippet title (Target: 50–60 characters)</small>
         </div>
         <div class="form-group">
-          <label>Meta Description *</label>
-          <textarea class="form-control" id="seoPageDesc" rows="3" placeholder="Handcrafted private tours in Sri Lanka..." required></textarea>
-          <small style="color: #64748b; font-size: 0.78rem;">Optimal length: 140–160 characters</small>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+            <label style="margin: 0;">Meta Description *</label>
+            <span class="badge" id="seoDescCountBadge" style="font-size: 0.74rem; font-weight: 600; padding: 2px 8px; border-radius: 12px; background: #F1F5F9; color: #475569;">0 / 160 chars</span>
+          </div>
+          <textarea class="form-control" id="seoPageDesc" rows="3" placeholder="Handcrafted private tours in Sri Lanka..." required oninput="PageEditor.updateSeoCounters()"></textarea>
+          <small style="color: #64748b; font-size: 0.76rem; display: block; margin-top: 3px;">Snippet summary shown in Google search results (Target: 120–160 characters)</small>
         </div>
         <div class="form-group">
           <label>Social Share Image (og:image)</label>

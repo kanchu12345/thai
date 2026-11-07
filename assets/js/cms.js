@@ -205,6 +205,24 @@
           // e.g. tours/beach/southern-sands-serenade
           const slug = parts[parts.length - 1];
           return 'tourPackages/' + slug;
+        } else if (parts.length === 1) {
+          return 'tourCategories/' + parts[0];
+        }
+      }
+      if (path.includes('/destinations/')) {
+        const parts = path.split('/destinations/')[1].split('/').filter(function (p) {
+          return p && !p.endsWith('.html');
+        });
+        if (parts.length >= 1) {
+          return 'destinations/' + parts[0];
+        }
+      }
+      if (path.includes('/blog/')) {
+        const parts = path.split('/blog/')[1].split('/').filter(function (p) {
+          return p && !p.endsWith('.html');
+        });
+        if (parts.length >= 1) {
+          return 'blogPosts/' + parts[0];
         }
       }
       if (path.endsWith('about.html') || path.includes('/about.')) return 'siteContent/about';
@@ -214,7 +232,13 @@
       if (path.endsWith('gallery.html') || path.includes('/gallery.')) return 'siteContent/gallery';
       if (path.endsWith('reviews.html') || path.includes('/reviews.')) return 'siteContent/reviews';
       if (path.endsWith('blog.html') || path.includes('/blog.')) return 'siteContent/blog';
-      if (path.endsWith('sri-lanka-tours.html')) return 'siteContent/toursCatalog';
+      if (path.endsWith('sri-lanka-tours.html') || path.endsWith('tours.html')) return 'siteContent/toursCatalog';
+      if (path.endsWith('privacy-policy.html')) return 'siteContent/privacy-policy';
+      if (path.endsWith('terms-conditions.html')) return 'siteContent/terms-conditions';
+      if (path.endsWith('cancellation-policy.html')) return 'siteContent/cancellation-policy';
+      if (path.endsWith('cookie-policy.html')) return 'siteContent/cookie-policy';
+      if (path.endsWith('inquiry-quick.html')) return 'siteContent/inquiry-quick';
+      if (path.endsWith('inquiry-detailed.html')) return 'siteContent/inquiry-detailed';
 
       return 'siteContent/home';
     },
@@ -314,6 +338,24 @@
 
     bindElements(scope = document) {
       const lang = this.currentLang;
+
+      // 0. Check hidden elements
+      scope.querySelectorAll('[data-cms], [data-cms-html], [data-cms-img], [data-cms-bg], [data-cms-video], [data-cms-link]').forEach(el => {
+        const key = el.getAttribute('data-cms') || el.getAttribute('data-cms-html') || el.getAttribute('data-cms-img') || el.getAttribute('data-cms-bg') || el.getAttribute('data-cms-video') || el.getAttribute('data-cms-link');
+        if (key) {
+          const hiddenVal = this.getValueByPath(key + '_hidden');
+          if (hiddenVal === 'true' || hiddenVal === true) {
+            el.setAttribute('data-cms-hidden', 'true');
+            if (window.location.search.includes('edit=1')) {
+              el.style.opacity = '0.35';
+              el.style.filter = 'grayscale(80%)';
+              el.style.outline = '2px dashed #EF4444';
+            } else {
+              el.style.display = 'none';
+            }
+          }
+        }
+      });
 
       // 1. data-cms (textContent or input placeholder)
       scope.querySelectorAll('[data-cms]').forEach(el => {
