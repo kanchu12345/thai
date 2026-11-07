@@ -2338,13 +2338,36 @@
 </div>
 
 <div class="form-group">
-  <label for="storyPhotoInput">Photo URL or Local Path *</label>
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; flex-wrap: wrap; gap: 8px;">
+    <label for="storyPhotoInput" style="margin-bottom: 0; font-weight: 600;">Photo (Upload, Library or URL) *</label>
+    <div style="display: flex; gap: 6px; align-items: center; flex-wrap: wrap;">
+      <button type="button" class="btn btn-xs btn-primary" onclick="AdminApp.triggerUploadForStory()" title="Upload image directly from your computer or phone" style="font-size: 0.75rem; padding: 4px 10px; display: inline-flex; align-items: center; gap: 5px;">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+        <span>Upload Photo</span>
+      </button>
+      <button type="button" class="btn btn-xs btn-outline" onclick="AdminApp.openStoryImagePicker()" title="Choose an existing image from media library" style="font-size: 0.75rem; padding: 4px 10px; display: inline-flex; align-items: center; gap: 5px;">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+        <span>Media Library</span>
+      </button>
+      <button type="button" class="btn btn-xs btn-outline" onclick="AdminApp.openCloudinaryForStory()" title="Upload or crop/edit with Cloudinary" style="font-size: 0.75rem; padding: 4px 10px; display: inline-flex; align-items: center; gap: 5px;">
+        ☁ <span>Cloudinary</span>
+      </button>
+      <button type="button" class="btn btn-xs btn-outline text-danger" id="storyRemovePhotoBtn" onclick="AdminApp.clearStoryPhoto()" title="Remove this photo" style="font-size: 0.75rem; padding: 4px 10px; color: #EF4444; border-color: #FECACA; display: none; align-items: center; gap: 5px;">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg>
+        <span>Remove</span>
+      </button>
+    </div>
+  </div>
+
   <div style="display: flex; gap: 8px;">
-    <input class="form-control" id="storyPhotoInput" placeholder="assets/images/home/anuradhapura-success-story.jpg" required type="text" oninput="AdminApp.updateStoryPhotoPreview()"/>
-    <button type="button" class="btn btn-outline" onclick="AdminApp.openCloudinaryForStory()" style="white-space: nowrap; font-size: 0.8rem;">
-      ☁ Cloudinary
+    <input class="form-control" id="storyPhotoInput" placeholder="assets/images/home/... or https://res.cloudinary.com/..." required type="text" oninput="AdminApp.updateStoryPhotoPreview()"/>
+    <button type="button" class="btn btn-outline" onclick="AdminApp.triggerUploadForStory()" title="Choose image file from your device" style="white-space: nowrap; font-size: 0.8rem; display: inline-flex; align-items: center; gap: 6px;">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+      Browse File
     </button>
   </div>
+  <input type="file" id="storyPhotoFileInput" accept="image/jpeg,image/png,image/webp,image/gif,image/svg+xml,.jpg,.jpeg,.png,.webp" style="display: none;" onchange="AdminApp.handleStoryFileSelect(this)"/>
+
   <!-- Quick Ceylon Landmarks Selector -->
   <div style="margin-top: 8px; display: flex; gap: 6px; flex-wrap: wrap; align-items: center;">
     <span style="font-size: 0.75rem; color: var(--ink-muted);">Presets:</span>
@@ -2356,12 +2379,67 @@
   </div>
 </div>
 
-<!-- Photo Live Preview -->
-<div class="form-group" id="storyPreviewContainer" style="display: none; margin-top: 8px;">
-  <label style="font-size: 0.78rem; color: var(--ink-muted);">Landscape Preview:</label>
-  <div style="width: 100%; height: 160px; border-radius: 8px; overflow: hidden; border: 1px solid var(--mist); background: #0F172A; position: relative;">
-    <img id="storyPhotoPreview" src="" alt="Preview" style="width: 100%; height: 100%; object-fit: cover; display: block;"/>
-    <span id="storyPhotoPreviewBadge" style="position: absolute; top: 10px; left: 10px; background: #46141F; color: #FFF; font-size: 0.68rem; font-weight: 700; padding: 4px 10px; border-radius: 9999px; border: 1px solid rgba(255,255,255,0.2);">SACRED SITES</span>
+<!-- Photo Live Preview & Interactive Controls -->
+<div class="form-group" style="margin-top: 10px;">
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+    <label style="font-size: 0.78rem; color: var(--ink-muted); margin-bottom: 0;">Landscape Preview (16:9 Banner):</label>
+    <span id="storyPhotoStatusBadge" class="image-preview-badge" style="display: none;"></span>
+  </div>
+
+  <!-- Active Photo Preview Card -->
+  <div id="storyPreviewContainer" style="display: none;">
+    <div class="story-photo-preview-box">
+      <img id="storyPhotoPreview" src="" alt="Preview" style="width: 100%; height: 100%; object-fit: cover; display: block;"/>
+      <span id="storyPhotoPreviewBadge" style="position: absolute; top: 10px; left: 10px; background: #46141F; color: #FFF; font-size: 0.68rem; font-weight: 700; padding: 4px 10px; border-radius: 9999px; border: 1px solid rgba(255,255,255,0.2); letter-spacing: 0.05em;">SACRED SITES</span>
+      
+      <!-- Floating Quick Actions on Image Hover -->
+      <div class="story-photo-overlay-actions">
+        <button type="button" class="btn btn-xs" style="background: rgba(15, 23, 42, 0.85); color: #FFF; border: 1px solid rgba(255,255,255,0.3); backdrop-filter: blur(4px); padding: 4px 9px; font-size: 0.72rem; display: inline-flex; align-items: center; gap: 4px;" onclick="AdminApp.triggerUploadForStory()" title="Upload a different photo">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+          Replace
+        </button>
+        <button type="button" class="btn btn-xs" style="background: rgba(15, 23, 42, 0.85); color: #FFF; border: 1px solid rgba(255,255,255,0.3); backdrop-filter: blur(4px); padding: 4px 9px; font-size: 0.72rem; display: inline-flex; align-items: center; gap: 4px;" onclick="AdminApp.openCloudinaryForStory()" title="Crop or edit image with Cloudinary">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/></svg>
+          Crop/Edit
+        </button>
+        <button type="button" class="btn btn-xs" style="background: rgba(220, 38, 38, 0.9); color: #FFF; border: 1px solid rgba(255,255,255,0.3); backdrop-filter: blur(4px); padding: 4px 9px; font-size: 0.72rem; display: inline-flex; align-items: center; gap: 4px;" onclick="AdminApp.clearStoryPhoto()" title="Remove this photo">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg>
+          Remove
+        </button>
+      </div>
+    </div>
+
+    <!-- Preview Info and Bottom Action Bar -->
+    <div class="story-photo-info-bar">
+      <div style="display: flex; align-items: center; gap: 8px; min-width: 0; flex: 1;">
+        <span style="font-weight: 600; color: #334155;">Source:</span>
+        <span id="storyPhotoUrlDisplay" style="font-family: monospace; color: #64748B; font-size: 0.74rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"></span>
+      </div>
+      <div style="display: flex; gap: 6px; align-items: center;">
+        <button type="button" class="btn btn-xs btn-outline" onclick="AdminApp.triggerUploadForStory()" style="font-size: 0.72rem; padding: 3px 8px;">
+          📤 Change Image
+        </button>
+        <button type="button" class="btn btn-xs btn-outline" onclick="AdminApp.openStoryImagePicker()" style="font-size: 0.72rem; padding: 3px 8px;">
+          📁 Media Library
+        </button>
+        <button type="button" class="btn btn-xs btn-outline text-danger" onclick="AdminApp.clearStoryPhoto()" style="font-size: 0.72rem; padding: 3px 8px; color: #EF4444; border-color: #FECACA;">
+          🗑️ Remove
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Empty State / Dropzone when no photo is set -->
+  <div id="storyDropzoneContainer" class="story-photo-dropzone" onclick="AdminApp.triggerUploadForStory()" ondragover="AdminApp.handleStoryDragOver(event)" ondragleave="AdminApp.handleStoryDragLeave(event)" ondrop="AdminApp.handleStoryDrop(event)">
+    <div style="width: 44px; height: 44px; border-radius: 50%; background: #E2E8F0; display: flex; align-items: center; justify-content: center; color: #64748B;">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+    </div>
+    <div style="font-size: 0.85rem; font-weight: 600; color: #1E293B;">Click to upload an image or drag & drop here</div>
+    <div style="font-size: 0.75rem; color: #64748B;">Supports JPG, PNG, WebP (Landscape 16:9 recommended)</div>
+    <div style="display: flex; gap: 8px; margin-top: 4px;" onclick="event.stopPropagation();">
+      <button type="button" class="btn btn-xs btn-primary" onclick="AdminApp.triggerUploadForStory()">Upload from Device</button>
+      <button type="button" class="btn btn-xs btn-outline" onclick="AdminApp.openStoryImagePicker()">Browse Media Library</button>
+    </div>
   </div>
 </div>
 

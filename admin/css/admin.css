@@ -3038,3 +3038,63 @@ input:checked + .slider:before {
     display: none;
   }
 }
+
+
+/* ==============================================================================
+ * SUCCESS STORY PHOTO DROPZONE & ENHANCED PREVIEW CONTROLS
+ * ============================================================================== */
+.story-photo-dropzone {
+  border: 2px dashed #CBD5E1;
+  background: #F8FAFC;
+  border-radius: 8px;
+  padding: 24px 16px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+.story-photo-dropzone:hover,
+.story-photo-dropzone.dragover {
+  border-color: var(--sacred-gold, #C59A45);
+  background: #FCFBF7;
+}
+.story-photo-preview-box {
+  width: 100%;
+  height: 180px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--mist, #E2E8F0);
+  background: #0F172A;
+  position: relative;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+}
+.story-photo-overlay-actions {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  gap: 6px;
+  opacity: 0.95;
+  transition: opacity 0.2s;
+  z-index: 5;
+}
+.story-photo-preview-box:hover .story-photo-overlay-actions {
+  opacity: 1;
+}
+.story-photo-info-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 8px;
+  padding: 8px 12px;
+  background: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  border-radius: 6px;
+  font-size: 0.78rem;
+  gap: 10px;
+  flex-wrap: wrap;
+}

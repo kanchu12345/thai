@@ -417,36 +417,109 @@
   box-shadow: 0 24px 50px rgba(0, 43, 73, 0.24) !important;
 }
 
-.about-img-floating img {
+.about-img-floating > img:first-of-type,
+.about-img-floating > img[data-cms-img] {
   width: 100% !important;
   height: 100% !important;
   object-fit: cover !important;
   display: block !important;
 }
 
+/* Small Caption Badge Pill at Bottom Centre */
+.about-img-floating .floating-badge-pill,
 .floating-badge-pill {
   position: absolute !important;
-  bottom: 0.75rem !important;
-  left: 0.75rem !important;
-  background: rgba(0, 43, 73, 0.75) !important;
+  bottom: 0.65rem !important;
+  left: 50% !important;
+  right: auto !important;
+  top: auto !important;
+  transform: translateX(-50%) !important;
+  width: auto !important;
+  max-width: calc(100% - 1.25rem) !important;
+  height: auto !important;
+  background: rgba(0, 43, 73, 0.82) !important;
   backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
   color: #FFFFFF !important;
-  padding: 0.35rem 0.75rem !important;
+  padding: 0.28rem 0.65rem !important;
   border-radius: 9999px !important;
-  font-size: 0.72rem !important;
+  font-size: 0.7rem !important;
   font-weight: 600 !important;
   display: inline-flex !important;
+  flex-direction: row !important;
   align-items: center !important;
-  gap: 0.4rem !important;
-  border: 1px solid rgba(255, 255, 255, 0.25) !important;
+  justify-content: center !important;
+  gap: 0.35rem !important;
+  border: 1px solid rgba(255, 255, 255, 0.28) !important;
+  box-shadow: 0 4px 14px rgba(0, 20, 35, 0.35) !important;
+  z-index: 4 !important;
+  white-space: nowrap !important;
+  box-sizing: border-box !important;
+  pointer-events: none !important;
 }
 
+.about-img-floating .floating-badge-dot,
 .floating-badge-dot {
-  width: 6px !important;
-  height: 6px !important;
+  width: 5px !important;
+  height: 5px !important;
+  min-width: 5px !important;
+  min-height: 5px !important;
   border-radius: 50% !important;
   background: #22C55E !important;
-  box-shadow: 0 0 8px #22C55E !important;
+  box-shadow: 0 0 6px #22C55E !important;
+  flex-shrink: 0 !important;
+}
+
+.about-img-floating .floating-badge-pill .floating-badge-logo,
+.floating-badge-pill .floating-badge-logo {
+  width: 14px !important;
+  height: 14px !important;
+  min-width: 14px !important;
+  min-height: 14px !important;
+  max-width: 14px !important;
+  max-height: 14px !important;
+  object-fit: contain !important;
+  display: inline-block !important;
+  flex-shrink: 0 !important;
+  margin: 0 !important;
+}
+
+.about-img-floating .floating-badge-pill span[data-cms],
+.floating-badge-pill span[data-cms] {
+  display: inline-block !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+  max-width: 145px !important;
+  font-size: 0.68rem !important;
+  line-height: 1.2 !important;
+  letter-spacing: 0.01em !important;
+  color: #FFFFFF !important;
+}
+
+@media (max-width: 480px) {
+  .about-img-floating .floating-badge-pill,
+  .floating-badge-pill {
+    bottom: 0.5rem !important;
+    padding: 0.22rem 0.5rem !important;
+    gap: 0.25rem !important;
+    font-size: 0.64rem !important;
+    max-width: calc(100% - 1rem) !important;
+  }
+  .about-img-floating .floating-badge-pill .floating-badge-logo,
+  .floating-badge-pill .floating-badge-logo {
+    width: 12px !important;
+    height: 12px !important;
+    min-width: 12px !important;
+    min-height: 12px !important;
+    max-width: 12px !important;
+    max-height: 12px !important;
+  }
+  .about-img-floating .floating-badge-pill span[data-cms],
+  .floating-badge-pill span[data-cms] {
+    max-width: 110px !important;
+    font-size: 0.62rem !important;
+  }
 }
 
 .floating-card-logo {
