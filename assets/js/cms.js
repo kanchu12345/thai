@@ -62,9 +62,6 @@
   function resolveImgUrl(url) {
     if (!url) return '';
     url = String(url).trim();
-    if (url.indexOf('njxtwn8iygezlcqdofke') !== -1 || url.indexOf('v0yok8zw7gy0sepcfb9l') !== -1) {
-      return getRelativePrefix() + 'assets/images/original_logo_transparent.png';
-    }
     if (url.startsWith('https://') || url.startsWith('http://') || url.startsWith('data:') || url.startsWith('blob:')) {
       return url;
     }
