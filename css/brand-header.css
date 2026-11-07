@@ -2976,10 +2976,11 @@ body {
 .story-controls-bar {
   display: flex !important;
   align-items: center !important;
-  justify-content: space-between !important;
+  justify-content: flex-end !important;
 }
 
 .story-auto-hint {
+  display: none !important;
   font-size: 0.68rem !important;
   color: #9E968E !important;
   font-weight: 600 !important;

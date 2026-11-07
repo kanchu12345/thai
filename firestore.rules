@@ -158,6 +158,11 @@ service cloud.firestore {
       allow write: if isAdmin();
     }
 
+    match /success_stories/{storyId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
     match /blogPosts/{postId} {
       allow read: if isPublished() || isAdmin();
       allow write: if isAdmin();

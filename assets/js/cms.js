@@ -15,9 +15,9 @@
 (function (window, document) {
   'use strict';
 
-  const CACHE_KEY = 'lotus_cms_v5';
+  const CACHE_KEY = 'lotus_cms_v6';
   const CACHE_TTL_MS = 30 * 1000; // 10 minutes
-  const LEGACY_CACHE_KEYS = ['lotus_seed_catalog_cache_v2', 'lotus_seed_catalog_cache'];
+  const LEGACY_CACHE_KEYS = ['lotus_cms_v5', 'lotus_seed_catalog_cache_v2', 'lotus_seed_catalog_cache'];
 
   // Legacy Image Alias Mapping
   const IMAGE_ALIAS_MAP = {
@@ -62,6 +62,9 @@
   function resolveImgUrl(url) {
     if (!url) return '';
     url = String(url).trim();
+    if (url.indexOf('njxtwn8iygezlcqdofke') !== -1 || url.indexOf('v0yok8zw7gy0sepcfb9l') !== -1) {
+      return getRelativePrefix() + 'assets/images/original_logo_transparent.png';
+    }
     if (url.startsWith('https://') || url.startsWith('http://') || url.startsWith('data:') || url.startsWith('blob:')) {
       return url;
     }
@@ -822,6 +825,53 @@
           e.preventDefault();
         }
 
+        // Check if element belongs to Our Success Stories homepage landscape card
+        const storyCard = e.target.closest('#homeSuccessStoriesWrapper, #successStoriesCard, .success-stories-landscape-card');
+        if (storyCard) {
+          e.preventDefault();
+          e.stopPropagation();
+
+          if (activeEl) activeEl.classList.remove('lotus-cms-selected-element');
+          activeEl = storyCard;
+          activeEl.classList.add('lotus-cms-selected-element');
+
+          const curIdxEl = document.getElementById('storyCurrentIndex');
+          const currentSlide = curIdxEl ? (parseInt(curIdxEl.textContent, 10) - 1) : 0;
+          const stories = (window.LotusSuccessStories && typeof window.LotusSuccessStories.getStories === 'function')
+            ? window.LotusSuccessStories.getStories()
+            : [];
+          const curStory = (stories && stories[currentSlide]) || {};
+          const titleEl = document.getElementById('storyTitle');
+          const descEl = document.getElementById('storyDesc');
+          const badgeEl = document.getElementById('storyBadge');
+          const imgEl = document.getElementById('storyImage');
+
+          if (window.parent && window.parent !== window) {
+            window.parent.postMessage({
+              type: 'lotus:element-selected',
+              key: 'home.success_stories_card',
+              attrType: 'success-stories',
+              currentVal: (curStory.title || (titleEl ? titleEl.textContent : '')).trim(),
+              tagName: 'card',
+              sectionId: 'home',
+              storyData: {
+                currentSlide: currentSlide,
+                stories: stories,
+                story: {
+                  id: curStory.id || ('story-0' + (currentSlide + 1)),
+                  title: curStory.title || (titleEl ? titleEl.textContent : ''),
+                  badge: curStory.badge || (badgeEl ? badgeEl.textContent : ''),
+                  description: curStory.description || (descEl ? descEl.textContent : ''),
+                  photo: curStory.photo || (imgEl ? imgEl.getAttribute('src') : ''),
+                  sortOrder: curStory.sortOrder || (currentSlide + 1),
+                  published: curStory.published !== false
+                }
+              }
+            }, '*');
+          }
+          return;
+        }
+
         let target = null;
         if (e.target.tagName === 'IMG' || e.target.hasAttribute('data-cms-img') || e.target.hasAttribute('data-cms-bg')) {
           target = e.target;
@@ -1002,6 +1052,31 @@
           if (lang === 'ar') document.documentElement.dir = 'rtl';
           else document.documentElement.dir = 'ltr';
           this.bindElements();
+        }
+
+        // Activate specific story slide in Our Success Stories
+        if (event.data.type === 'lotus:set-story-slide') {
+          if (window.LotusSuccessStories && typeof window.LotusSuccessStories.goTo === 'function') {
+            window.LotusSuccessStories.goTo(event.data.index);
+          }
+        }
+
+        // Live update for success story field
+        if (event.data.type === 'lotus:update-story-live') {
+          const { field, val } = event.data;
+          if (field === 'title') {
+            const el = document.getElementById('storyTitle');
+            if (el) el.textContent = val;
+          } else if (field === 'badge') {
+            const el = document.getElementById('storyBadge');
+            if (el) el.textContent = val;
+          } else if (field === 'description') {
+            const el = document.getElementById('storyDesc');
+            if (el) el.textContent = val;
+          } else if (field === 'photo') {
+            const el = document.getElementById('storyImage');
+            if (el) el.src = resolveImgUrl(val);
+          }
         }
 
         // Activate specific slide in card-image-slider

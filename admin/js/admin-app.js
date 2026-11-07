@@ -1819,7 +1819,8 @@ resolveImg(url) {
         team: 'Our People & Global Representatives',
         'page-editor': 'Page Content Editor',
         'forms-editor': 'Form Definitions & Dynamic Schemas',
-        'blog-posts': 'Blog Posts & Editorial Stories'
+        'blog-posts': 'Blog Posts & Editorial Stories',
+        'success-stories': 'Our Success Stories (Homepage Card)'
 
       };
 
@@ -1848,7 +1849,8 @@ resolveImg(url) {
         this.renderBlogPosts();
       } else if (sectionId === 'team') {
         this.renderTeam();
-      this.renderSuccessStories();
+      } else if (sectionId === 'success-stories') {
+        this.renderSuccessStories();
       } else if (sectionId === 'media') {
         this.renderMediaLibrary();
       } else if (sectionId === 'dashboard') {

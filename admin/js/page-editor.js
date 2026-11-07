@@ -333,6 +333,7 @@
       if (attrType === 'bg-image') return 'Section Background Image';
       if (attrType === 'video') return 'Hero Background Video';
       if (attrType === 'link') return 'Action Button / Link';
+      if (attrType === 'success-stories' || key === 'home.success_stories_card') return '👑 Our Success Stories (Card Slider)';
       if (attrType === 'html') return 'Rich Content / Story Text';
 
       return clean.replace(/[-_]/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
@@ -490,6 +491,12 @@
       const isMissingTranslation = !isEnglish && (!currentVal || currentVal === enVal);
 
       let html = '';
+
+      // Special Success Stories Card Inspector
+      if (item.attrType === 'success-stories' || item.key === 'home.success_stories_card') {
+        body.innerHTML = this.renderSuccessStoriesInspector(item);
+        return;
+      }
 
       // Check if this element relates to a tour package
       let pkgSlug = item.packageSlug || null;
@@ -2187,6 +2194,256 @@
     escapeHtml(str) {
       if (!str) return '';
       return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    },
+
+    renderSuccessStoriesInspector(item) {
+      const storyData = item.storyData || {};
+      const stories = (window.AdminApp && window.AdminApp.successStories && window.AdminApp.successStories.length > 0)
+        ? window.AdminApp.successStories
+        : (storyData.stories || []);
+      const currentIdx = (typeof this.activeStoryIndex === 'number' && stories[this.activeStoryIndex])
+        ? this.activeStoryIndex
+        : (storyData.currentSlide || 0);
+      const story = stories[currentIdx] || storyData.story || {
+        id: 'story-01',
+        title: 'Anuradhapura',
+        badge: 'SACRED SITES',
+        photo: 'assets/images/home/anuradhapura-success-story.jpg',
+        description: 'Ancient capital of great stupas and the revered Sri Maha Bodhi tree...',
+        sortOrder: 1,
+        published: true
+      };
+
+      let html = `
+        <div style="background: linear-gradient(135deg, #FFFBEB 0%, #FEF3C7 100%); border: 1.5px solid #F59E0B; border-radius: 8px; padding: 14px; margin-bottom: 16px;">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
+            <span style="font-weight: 700; font-size: 0.9rem; color: #92400E;">👑 Our Success Stories (${stories.length || 5} Landscape Stories)</span>
+            <span class="badge" style="background: #FDE68A; color: #78350F; font-size: 0.72rem; font-weight: 700;">Rotates 1 Min</span>
+          </div>
+          <p style="font-size: 0.78rem; color: #78350F; margin: 0 0 10px 0; line-height: 1.45;">
+            These luxury stories rotate automatically on the homepage right below the "About Us" button. Select any story below to edit its text, badge, or landscape photo:
+          </p>
+
+          <!-- 5 Story Switcher Tabs -->
+          <div style="display: grid; grid-template-columns: repeat(${Math.max(stories.length, 1)}, 1fr); gap: 6px; margin-bottom: 8px;">
+            ${stories.map((s, idx) => {
+              const isSelected = idx === currentIdx;
+              const photoSrc = s.photo || '';
+              return `
+                <button type="button" 
+                        onclick="PageEditor.switchStorySlide(${idx})"
+                        style="display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 6px 4px; border-radius: 6px; cursor: pointer; border: 2px solid ${isSelected ? '#D97706' : '#FDE68A'}; background: ${isSelected ? '#FFFFFF' : 'rgba(255,255,255,0.7)'}; box-shadow: ${isSelected ? '0 2px 6px rgba(217,119,6,0.25)' : 'none'}; transition: all 0.15s ease;">
+                  <img src="${this.resolvePreviewUrl(photoSrc)}" style="width: 100%; height: 38px; object-fit: cover; border-radius: 4px; border: 1px solid #E2E8F0;" onerror="this.src='../assets/images/placeholder.png'"/>
+                  <span style="font-size: 0.73rem; font-weight: 700; color: ${isSelected ? '#92400E' : '#475569'}; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%;">${idx + 1}. ${(s.title || 'Story').split(' ')[0]}</span>
+                </button>
+              `;
+            }).join('')}
+          </div>
+        </div>
+
+        <!-- Form fields for active story -->
+        <div class="inspector-field-group">
+          <label style="font-weight: 700; color: #0F172A; font-size: 0.85rem;">Story Title *</label>
+          <input type="text" class="form-control" id="peStoryTitle" value="${this.escapeAttr(story.title || '')}" placeholder="e.g. Kandy Royal Kingdom" oninput="PageEditor.handleStoryLiveInput('title', this.value)"/>
+        </div>
+
+        <div class="inspector-field-group">
+          <label style="font-weight: 700; color: #0F172A; font-size: 0.85rem;">Badge / Tag *</label>
+          <input type="text" class="form-control" id="peStoryBadge" value="${this.escapeAttr(story.badge || 'OUR SUCCESS STORIES')}" placeholder="e.g. SACRED SITES, SACRED HERITAGE" oninput="PageEditor.handleStoryLiveInput('badge', this.value)"/>
+        </div>
+
+        <div class="inspector-field-group">
+          <label style="font-weight: 700; color: #0F172A; font-size: 0.85rem;">Story Description *</label>
+          <textarea class="form-control" rows="3" id="peStoryDesc" placeholder="Brief story text describing this Ceylon experience..." oninput="PageEditor.handleStoryLiveInput('description', this.value)">${this.escapeHtml(story.description || '')}</textarea>
+        </div>
+
+        <div class="inspector-field-group">
+          <label style="font-weight: 700; color: #0F172A; font-size: 0.85rem;">Landscape Photo URL / CDN *</label>
+          <div style="position: relative; border-radius: 8px; overflow: hidden; background: #0B132B; text-align: center; border: 1px solid #CBD5E1; margin-bottom: 8px;">
+            <img src="${this.resolvePreviewUrl(story.photo || '')}" class="inspector-thumb-preview" id="peStoryPhotoPreview" style="max-height: 160px; width: 100%; object-fit: cover; display: block;" onerror="this.src='../assets/images/placeholder.png'"/>
+          </div>
+          <div style="display: flex; gap: 8px; margin-bottom: 8px;">
+            <input type="text" class="form-control" id="peStoryPhoto" value="${this.escapeAttr(story.photo || '')}" placeholder="assets/images/... or Cloudinary URL" oninput="PageEditor.handleStoryLiveInput('photo', this.value)"/>
+          </div>
+          <div style="display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 12px;">
+            <button type="button" class="btn btn-secondary btn-sm" onclick="PageEditor.openCloudinaryForStoryField()">☁️ Cloudinary</button>
+            <button type="button" class="btn btn-outline btn-sm" onclick="PageEditor.openMediaPickerForStory()">📁 Media Library</button>
+          </div>
+        </div>
+
+        <!-- Order & Published -->
+        <div style="display: flex; gap: 12px; align-items: center; margin-bottom: 16px;">
+          <div style="flex: 1;">
+            <label style="font-size: 0.8rem; font-weight: 600; color: #475569;">Display Order (1 - 5)</label>
+            <input type="number" min="1" max="5" class="form-control" id="peStorySortOrder" value="${story.sortOrder || (currentIdx + 1)}"/>
+          </div>
+          <div style="flex: 1; margin-top: 22px;">
+            <label style="display: flex; align-items: center; gap: 8px; font-weight: 600; cursor: pointer; font-size: 0.85rem;">
+              <input type="checkbox" id="peStoryPublished" ${story.published !== false ? 'checked' : ''}/>
+              <span>Active / Published</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div style="display: flex; gap: 10px; margin-top: 20px;">
+          <button type="button" class="btn btn-primary btn-block" style="flex: 2; padding: 10px;" onclick="PageEditor.saveActiveStory()">
+            💾 Save Success Story
+          </button>
+          <button type="button" class="btn btn-outline btn-sm" style="flex: 1;" onclick="AdminApp.switchSection('success-stories')" title="Switch to full table manager in Admin">
+            📋 Full Table
+          </button>
+        </div>
+      `;
+      return html;
+    },
+
+    switchStorySlide(idx) {
+      this.activeStoryIndex = idx;
+      const iframe = document.getElementById('visualCmsIframe');
+      if (iframe && iframe.contentWindow) {
+        iframe.contentWindow.postMessage({ type: 'lotus:set-story-slide', index: idx }, '*');
+      }
+      this.renderElementForm(this.selectedElement);
+    },
+
+    handleStoryLiveInput(field, val) {
+      const iframe = document.getElementById('visualCmsIframe');
+      if (iframe && iframe.contentWindow) {
+        iframe.contentWindow.postMessage({ type: 'lotus:update-story-live', field: field, val: val }, '*');
+      }
+      if (field === 'photo') {
+        const preview = document.getElementById('peStoryPhotoPreview');
+        if (preview) preview.src = this.resolvePreviewUrl(val);
+      }
+    },
+
+    openCloudinaryForStoryField() {
+      if (!window.cloudinary) {
+        if (window.AdminApp) window.AdminApp.showToast('Cloudinary widget not loaded', 'error');
+        return;
+      }
+      const widget = window.cloudinary.createUploadWidget({
+        cloudName: (window.LOTUS_CONFIG && window.LOTUS_CONFIG.cloudinary && window.LOTUS_CONFIG.cloudinary.cloudName) || 'qmukrbh6',
+        uploadPreset: (window.LOTUS_CONFIG && window.LOTUS_CONFIG.cloudinary && window.LOTUS_CONFIG.cloudinary.uploadPreset) || 'lotus_tours_unsigned',
+        folder: 'lotus/stories',
+        sources: ['local', 'url', 'camera'],
+        multiple: false
+      }, (error, result) => {
+        if (!error && result && result.event === 'success') {
+          const optimizedUrl = result.info.secure_url.replace('/upload/', '/upload/f_auto,q_auto/');
+          const input = document.getElementById('peStoryPhoto');
+          if (input) {
+            input.value = optimizedUrl;
+            this.handleStoryLiveInput('photo', optimizedUrl);
+          }
+          if (window.AdminApp) window.AdminApp.showToast('Photo uploaded successfully!', 'success');
+        }
+      });
+      widget.open();
+    },
+
+    openMediaPickerForStory() {
+      if (window.AdminApp && typeof window.AdminApp.openImagePicker === 'function') {
+        window.AdminApp.openImagePicker('peStoryPhoto', 'peStoryPhotoPreview');
+      }
+    },
+
+    async saveActiveStory() {
+      const titleInput = document.getElementById('peStoryTitle');
+      const badgeInput = document.getElementById('peStoryBadge');
+      const descInput = document.getElementById('peStoryDesc');
+      const photoInput = document.getElementById('peStoryPhoto');
+      const sortInput = document.getElementById('peStorySortOrder');
+      const pubInput = document.getElementById('peStoryPublished');
+
+      if (!titleInput || !descInput || !photoInput) return;
+
+      const title = titleInput.value.trim();
+      const badge = (badgeInput && badgeInput.value.trim()) || 'OUR SUCCESS STORIES';
+      const desc = descInput.value.trim();
+      const photo = photoInput.value.trim();
+      const sortOrder = parseInt(sortInput ? sortInput.value : '1', 10) || 1;
+      const published = pubInput ? pubInput.checked : true;
+
+      if (!title || !desc || !photo) {
+        if (window.AdminApp) window.AdminApp.showToast('Please fill all required fields (Title, Badge, Description, Photo)', 'error');
+        return;
+      }
+
+      const stories = (window.AdminApp && window.AdminApp.successStories) ? window.AdminApp.successStories : [];
+      const idx = (typeof this.activeStoryIndex === 'number') ? this.activeStoryIndex : 0;
+      const existing = stories[idx] || {};
+      const id = existing.id || ('story-0' + (idx + 1));
+
+      const storyData = {
+        id: id,
+        title: title,
+        badge: badge,
+        photo: photo,
+        description: desc,
+        sortOrder: sortOrder,
+        published: published,
+        updatedAt: new Date().toISOString()
+      };
+
+      // 1. Firebase save
+      if (window.LotusFirebase && typeof window.LotusFirebase.saveSuccessStory === 'function') {
+        try {
+          await window.LotusFirebase.saveSuccessStory(storyData);
+        } catch (err) {
+          console.warn('[PageEditor] Firebase story save warning:', err);
+        }
+      }
+
+      // 2. Update AdminApp local array
+      if (window.AdminApp) {
+        if (!window.AdminApp.successStories) window.AdminApp.successStories = [];
+        const sIdx = window.AdminApp.successStories.findIndex(s => s.id === id);
+        if (sIdx !== -1) {
+          window.AdminApp.successStories[sIdx] = storyData;
+        } else {
+          window.AdminApp.successStories.push(storyData);
+        }
+        window.AdminApp.successStories.sort((a, b) => (a.sortOrder || 0) - (b.sortOrder || 0));
+        try {
+          localStorage.setItem('lotus_success_stories_cache', JSON.stringify(window.AdminApp.successStories));
+          window.dispatchEvent(new CustomEvent('lotus_stories_updated', { detail: window.AdminApp.successStories }));
+        } catch (e) {}
+        if (typeof window.AdminApp.renderSuccessStories === 'function') {
+          window.AdminApp.renderSuccessStories();
+        }
+      }
+
+      // 3. Notify iframe to reload or refresh story
+      const iframe = document.getElementById('visualCmsIframe');
+      if (iframe && iframe.contentWindow) {
+        iframe.contentWindow.postMessage({
+          type: 'lotus:update-story-live',
+          field: 'title',
+          val: title
+        }, '*');
+        iframe.contentWindow.postMessage({
+          type: 'lotus:update-story-live',
+          field: 'description',
+          val: desc
+        }, '*');
+        iframe.contentWindow.postMessage({
+          type: 'lotus:update-story-live',
+          field: 'badge',
+          val: badge
+        }, '*');
+        iframe.contentWindow.postMessage({
+          type: 'lotus:update-story-live',
+          field: 'photo',
+          val: photo
+        }, '*');
+      }
+
+      if (window.AdminApp) {
+        window.AdminApp.showToast(`Saved story: ${title}`, 'success');
+      }
+      this.renderElementForm(this.selectedElement);
     },
 
     escapeAttr(str) {
