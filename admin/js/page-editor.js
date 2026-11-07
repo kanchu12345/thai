@@ -1479,6 +1479,27 @@
         window.AdminApp.switchSection('page-editor');
       }
 
+      // Highlight only the matching sub-link in sidebar and ensure its accordion is open
+      const subLinks = document.querySelectorAll('.sidebar-nav .nav-sub-link');
+      let matchedGroup = null;
+      subLinks.forEach(link => {
+        const linkDoc = link.getAttribute('data-page-doc');
+        const onclickAttr = link.getAttribute('onclick') || '';
+        const isMatch = (linkDoc === docKey) || 
+                        (onclickAttr.includes(`'${docKey}'`) || onclickAttr.includes(`"${docKey}"`) || 
+                        (fileName && (onclickAttr.includes(`'${fileName}'`) || onclickAttr.includes(`"${fileName}"`))));
+        link.classList.toggle('active', !!isMatch);
+        if (isMatch && !matchedGroup) {
+          matchedGroup = link.closest('.nav-collapsible-group');
+        }
+      });
+      if (matchedGroup) {
+        document.querySelectorAll('.sidebar-nav .nav-collapsible-group').forEach(g => {
+          if (g !== matchedGroup) g.classList.remove('is-open');
+        });
+        matchedGroup.classList.add('is-open');
+      }
+
       // Update Topbar Page Dropdown if needed
       const pageSelect = document.getElementById('visualPageDropdown');
       if (pageSelect) {
@@ -2266,8 +2287,10 @@
             <input type="text" class="form-control" id="peStoryPhoto" value="${this.escapeAttr(story.photo || '')}" placeholder="assets/images/... or Cloudinary URL" oninput="PageEditor.handleStoryLiveInput('photo', this.value)"/>
           </div>
           <div style="display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 12px;">
-            <button type="button" class="btn btn-secondary btn-sm" onclick="PageEditor.openCloudinaryForStoryField()">☁️ Cloudinary</button>
+            <button type="button" class="btn btn-primary btn-sm" onclick="PageEditor.triggerStoryUploadDirect()">📤 Upload Photo</button>
             <button type="button" class="btn btn-outline btn-sm" onclick="PageEditor.openMediaPickerForStory()">📁 Media Library</button>
+            <button type="button" class="btn btn-secondary btn-sm" onclick="PageEditor.openCloudinaryForStoryField()">☁️ Crop/Edit</button>
+            <button type="button" class="btn btn-outline btn-sm text-danger" style="color: #EF4444; border-color: #FECACA;" onclick="PageEditor.clearStoryPhoto()">🗑️ Remove</button>
           </div>
         </div>
 
@@ -2320,7 +2343,7 @@
 
     openCloudinaryForStoryField() {
       if (!window.cloudinary) {
-        if (window.AdminApp) window.AdminApp.showToast('Cloudinary widget not loaded', 'error');
+        this.triggerStoryUploadDirect();
         return;
       }
       const widget = window.cloudinary.createUploadWidget({
@@ -2328,7 +2351,12 @@
         uploadPreset: (window.LOTUS_CONFIG && window.LOTUS_CONFIG.cloudinary && window.LOTUS_CONFIG.cloudinary.uploadPreset) || 'lotus_tours_unsigned',
         folder: 'lotus/stories',
         sources: ['local', 'url', 'camera'],
-        multiple: false
+        multiple: false,
+        cropping: true,
+        croppingAspectRatio: 1.777,
+        showSkipCropButton: true,
+        croppingShowDimensions: true,
+        resourceType: 'image'
       }, (error, result) => {
         if (!error && result && result.event === 'success') {
           const optimizedUrl = result.info.secure_url.replace('/upload/', '/upload/f_auto,q_auto/');
@@ -2337,15 +2365,52 @@
             input.value = optimizedUrl;
             this.handleStoryLiveInput('photo', optimizedUrl);
           }
-          if (window.AdminApp) window.AdminApp.showToast('Photo uploaded successfully!', 'success');
+          if (window.AdminApp) window.AdminApp.showToast('Photo uploaded and cropped successfully!', 'success');
         }
       });
       widget.open();
     },
 
+    triggerStoryUploadDirect() {
+      if (window.AdminApp && typeof window.AdminApp.triggerUploadForInput === 'function') {
+        window.AdminApp.triggerUploadForInput('peStoryPhoto', 'peStoryPhotoPreview', null, {
+          folder: 'lotus/stories',
+          resourceType: 'image',
+          callback: (url) => {
+            const input = document.getElementById('peStoryPhoto');
+            if (input) input.value = url;
+            this.handleStoryLiveInput('photo', url);
+            if (window.AdminApp) window.AdminApp.showToast('Story photo uploaded!', 'success');
+          }
+        });
+      }
+    },
+
+    clearStoryPhoto() {
+      const input = document.getElementById('peStoryPhoto');
+      if (input) {
+        input.value = '';
+        this.handleStoryLiveInput('photo', '');
+      }
+      const preview = document.getElementById('peStoryPhotoPreview');
+      if (preview) {
+        preview.src = '../assets/images/placeholder.png';
+      }
+      if (window.AdminApp) window.AdminApp.showToast('Photo removed', 'info');
+    },
+
     openMediaPickerForStory() {
       if (window.AdminApp && typeof window.AdminApp.openImagePicker === 'function') {
-        window.AdminApp.openImagePicker('peStoryPhoto', 'peStoryPhotoPreview');
+        window.AdminApp.openImagePicker('peStoryPhoto', 'peStoryPhotoPreview', null, {
+          filter: 'image',
+          onSelect: (url) => {
+            const input = document.getElementById('peStoryPhoto');
+            if (input) {
+              input.value = url;
+              this.handleStoryLiveInput('photo', url);
+            }
+          }
+        });
       }
     },
 

@@ -60,284 +60,395 @@
    * ============================================================================== -->
 <div id="adminApp" style="display: none;">
 <!-- SIDEBAR -->
+<!-- SIDEBAR -->
 <aside class="admin-sidebar" id="sidebar">
-<div class="sidebar-header">
-<img alt="Emblem" class="sidebar-logo" onerror="this.src='../logo.png'" src="../assets/images/logo.png"/>
-<div class="sidebar-title">
-<span class="brand-name">Lotus Ceylon</span>
-<span class="brand-sub">Tours and Services</span>
-</div>
-</div>
-<nav class="sidebar-nav">
-<div class="nav-section-title">Main</div>
-<a class="nav-link active" data-section="dashboard" onclick="AdminApp.switchSection('dashboard')">
-<svg viewbox="0 0 24 24"><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"></path></svg>
-<span>Dashboard</span>
-</a>
-<a class="nav-link" data-section="inquiries" onclick="AdminApp.switchSection('inquiries')">
-<svg viewbox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"></path></svg>
-<span>Inquiries</span>
-<span class="nav-badge" id="unreadInquiriesBadge">0</span>
-</a>
-<a class="nav-link" data-section="packages" onclick="AdminApp.switchSection('packages')" style="background: rgba(212, 175, 55, 0.14); color: #D4AF37; font-weight: 700; border: 1px solid rgba(212, 175, 55, 0.35); border-radius: 6px; margin: 6px 12px; display: flex; align-items: center; gap: 8px;">
-<svg viewbox="0 0 24 24" style="width: 18px; height: 18px; fill: currentColor;"><path d="M21 5c-1.11-.35-2.33-.5-3.5-.5-1.95 0-4.05.4-5.5 1.5-1.45-1.1-3.55-1.5-5.5-1.5S2.45 4.9 1 6v14.65c0 .25.25.5.5.5.1 0 .15-.05.25-.05C3.1 20.45 5.05 20 6.5 20c1.95 0 4.05.4 5.5 1.5 1.35-.85 3.8-1.5 5.5-1.5 1.65 0 3.35.3 4.75 1.05.1.05.15.05.25.05.25 0 .5-.25.5-.5V6c-.6-.45-1.25-.75-2-1zm0 13.5c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5V8c1.35-.85 3.8-1.5 5.5-1.5 1.2 0 2.4.15 3.5.5v11.5z"></path></svg>
-<span>📦 Tour Packages (All 29)</span>
-</a>
+  <div class="sidebar-header">
+    <img alt="Emblem" class="sidebar-logo" onerror="this.src='../logo.png'" src="../assets/images/logo.png"/>
+    <div class="sidebar-title">
+      <span class="brand-name">Lotus Ceylon</span>
+      <span class="brand-sub">Tours and Services</span>
+    </div>
+  </div>
 
-<!-- PAGES GROUP (15 CORE SHELLS) -->
-<div class="nav-collapsible-group is-open" id="navGroupPages">
-<div class="nav-section-title nav-collapsible-header" onclick="this.parentElement.classList.toggle('is-open')">
-<span>Website Pages (15)</span>
-<span class="nav-toggle-icon">▼</span>
-</div>
-<div class="nav-collapsible-body">
-<a class="nav-link nav-sub-link" data-section="page-editor" data-page-doc="siteContent/home" onclick="PageEditor.openPage('siteContent/home', 'index.html')"><span>🏠 Home Page</span></a>
-<a class="nav-link nav-sub-link" data-section="page-editor" data-page-doc="siteContent/about" onclick="PageEditor.openPage('siteContent/about', 'about.html')"><span>🏛️ About Us</span></a>
-<a class="nav-link nav-sub-link" data-section="page-editor" data-page-doc="siteContent/contact" onclick="PageEditor.openPage('siteContent/contact', 'contact.html')"><span>📞 Contact</span></a>
-<a class="nav-link nav-sub-link" data-section="page-editor" data-page-doc="siteContent/destinations" onclick="PageEditor.openPage('siteContent/destinations', 'destinations.html')"><span>📍 Destinations</span></a>
-<a class="nav-link nav-sub-link" data-section="page-editor" data-page-doc="siteContent/experiences" onclick="PageEditor.openPage('siteContent/experiences', 'experiences.html')"><span>✨ Experiences</span></a>
-<a class="nav-link nav-sub-link" data-section="page-editor" data-page-doc="siteContent/gallery" onclick="PageEditor.openPage('siteContent/gallery', 'gallery.html')"><span>🖼️ Gallery</span></a>
-<a class="nav-link nav-sub-link" data-section="page-editor" data-page-doc="siteContent/reviews" onclick="PageEditor.openPage('siteContent/reviews', 'reviews.html')"><span>✍️ Reviews and Guestbook</span></a>
-<a class="nav-link nav-sub-link" data-section="page-editor" data-page-doc="siteContent/blog" onclick="PageEditor.openPage('siteContent/blog', 'blog.html')"><span>📰 Blog Main Hub</span></a>
-<a class="nav-link nav-sub-link" data-section="page-editor" data-page-doc="siteContent/blog-ella-tea" onclick="PageEditor.openPage('siteContent/blog-ella-tea', 'blog/ella-hands-on-tea-making-experience/index.html')" style="padding-left: 2rem; font-size: 0.85rem; color: #2E7D32;"><span>☕ Ella Tea Making Article</span></a>
-<a class="nav-link nav-sub-link" data-section="page-editor" data-page-doc="siteContent/blog-sacred-kingdoms" onclick="PageEditor.openPage('siteContent/blog-sacred-kingdoms', 'blog/sacred-footsteps-unlocking-sri-lankas-ancient-buddhist-kingdoms/index.html')" style="padding-left: 2rem; font-size: 0.85rem;"><span>🏛️ Sacred Kingdoms Article</span></a>
-<a class="nav-link nav-sub-link" data-section="page-editor" data-page-doc="siteContent/blog-elephant-gathering" onclick="PageEditor.openPage('siteContent/blog-elephant-gathering', 'blog/the-great-gathering-watching-hundreds-of-wild-elephants-at-minneriya/index.html')" style="padding-left: 2rem; font-size: 0.85rem;"><span>🐘 Minneriya Gathering Article</span></a>
-<a class="nav-link nav-sub-link" data-section="page-editor" data-page-doc="siteContent/blog-sinharaja-reforestation" onclick="PageEditor.openPage('siteContent/blog-sinharaja-reforestation', 'blog/growing-a-greener-future-volunteer-reforestation-sinharaja/index.html')" style="padding-left: 2rem; font-size: 0.85rem;"><span>🌿 Sinharaja Reforestation Article</span></a>
-<a class="nav-link nav-sub-link" data-section="page-editor" data-page-doc="siteContent/blog-ayurveda-healing" onclick="PageEditor.openPage('siteContent/blog-ayurveda-healing', 'blog/living-healing-traditional-ceylon-ayurveda/index.html')" style="padding-left: 2rem; font-size: 0.85rem;"><span>🍵 Living Ayurveda Article</span></a>
+  <!-- SIDEBAR QUICK SEARCH BOX -->
+  <div class="sidebar-search-wrap">
+    <div class="sidebar-search-inner">
+      <svg viewBox="0 0 24 24" class="sidebar-search-icon"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+      <input type="text" id="sidebarLiveSearch" placeholder="Search menu &amp; pages..." oninput="AdminApp.filterSidebar(this.value)" autocomplete="off">
+      <button type="button" class="sidebar-search-clear" id="sidebarSearchClear" onclick="AdminApp.clearSidebarSearch()" style="display: none;" title="Clear search">✕</button>
+    </div>
+  </div>
 
-<a class="nav-link nav-sub-link" data-section="page-editor" data-page-doc="siteContent/inquiry-quick" onclick="PageEditor.openPage('siteContent/inquiry-quick', 'inquiry-quick.html')"><span>Quick Inquiry (Short)</span></a>
-<a class="nav-link nav-sub-link" data-section="page-editor" data-page-doc="siteContent/inquiry-detailed" onclick="PageEditor.openPage('siteContent/inquiry-detailed', 'inquiry-detailed.html')"><span>Bespoke Inquiry (Detailed)</span></a>
-<a class="nav-link nav-sub-link" data-section="page-editor" data-page-doc="siteContent/toursIndex" onclick="PageEditor.openPage('siteContent/toursIndex', 'tours/index.html')"><span>🗺️ Tours Index (Categories)</span></a>
-<a class="nav-link nav-sub-link" data-section="packages" onclick="AdminApp.switchSection('packages')" style="color: #D4AF37; font-weight: 600;"><span>📦 Tour Packages List (29)</span></a>
-<a class="nav-link nav-sub-link" data-section="page-editor" data-page-doc="siteContent/privacy-policy" onclick="PageEditor.openPage('siteContent/privacy-policy', 'privacy-policy.html')"><span>🔒 Privacy Policy</span></a>
-<a class="nav-link nav-sub-link" data-section="page-editor" data-page-doc="siteContent/terms-conditions" onclick="PageEditor.openPage('siteContent/terms-conditions', 'terms-conditions.html')"><span>📜 Terms and Conditions</span></a>
-<a class="nav-link nav-sub-link" data-section="page-editor" data-page-doc="siteContent/cancellation-policy" onclick="PageEditor.openPage('siteContent/cancellation-policy', 'cancellation-policy.html')"><span>⚖️ Cancellation Policy</span></a>
-<a class="nav-link nav-sub-link" data-section="page-editor" data-page-doc="siteContent/cookie-policy" onclick="PageEditor.openPage('siteContent/cookie-policy', 'cookie-policy.html')"><span>🍪 Cookie Policy</span></a>
-</div>
-</div>
+  <nav class="sidebar-nav" id="sidebarNav">
+    <!-- 1. DASHBOARD -->
+    <a class="nav-link active" data-section="dashboard" onclick="AdminApp.switchSection('dashboard')">
+      <svg viewBox="0 0 24 24"><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/></svg>
+      <span>Dashboard</span>
+    </a>
 
-<!-- TOUR CATEGORIES (11 PAGES) -->
-<div class="nav-collapsible-group" id="navGroupCategories">
-<div class="nav-section-title nav-collapsible-header" onclick="this.parentElement.classList.toggle('is-open')">
-<span>Tour Categories (11)</span>
-<span class="nav-toggle-icon">▼</span>
-</div>
-<div class="nav-collapsible-body">
-<a class="nav-link nav-sub-link" data-section="page-editor" data-page-doc="tourCategories/cultural" onclick="PageEditor.openPage('tourCategories/cultural', 'tours/cultural/index.html')"><span>🏛️ Cultural Heritage</span></a>
-<a class="nav-link nav-sub-link" data-section="page-editor" data-page-doc="tourCategories/buddhist-heritage" onclick="PageEditor.openPage('tourCategories/buddhist-heritage', 'tours/buddhist-heritage/index.html')"><span>☸️ Buddhist Heritage</span></a>
-<a class="nav-link nav-sub-link" data-section="page-editor" data-page-doc="tourCategories/wildlife" onclick="PageEditor.openPage('tourCategories/wildlife', 'tours/wildlife/index.html')"><span>🐆 Wildlife Safaris</span></a>
-<a class="nav-link nav-sub-link" data-section="page-editor" data-page-doc="tourCategories/beach" onclick="PageEditor.openPage('tourCategories/beach', 'tours/beach/index.html')"><span>🏖️ Pristine Beaches</span></a>
-<a class="nav-link nav-sub-link" data-section="page-editor" data-page-doc="tourCategories/hill-country" onclick="PageEditor.openPage('tourCategories/hill-country', 'tours/hill-country/index.html')"><span>⛰️ Hill Country and Tea</span></a>
-<a class="nav-link nav-sub-link" data-section="page-editor" data-page-doc="tourCategories/ayurvedic" onclick="PageEditor.openPage('tourCategories/ayurvedic', 'tours/ayurvedic/index.html')"><span>🌿 Ayurvedic Healing</span></a>
-<a class="nav-link nav-sub-link" data-section="page-editor" data-page-doc="tourCategories/honeymoon" onclick="PageEditor.openPage('tourCategories/honeymoon', 'tours/honeymoon/index.html')"><span>💍 Honeymoon Romance</span></a>
-<a class="nav-link nav-sub-link" data-section="page-editor" data-page-doc="tourCategories/family" onclick="PageEditor.openPage('tourCategories/family', 'tours/family/index.html')"><span>👨‍👩‍👧‍👦 Family Discovery</span></a>
-<a class="nav-link nav-sub-link" data-section="page-editor" data-page-doc="tourCategories/adventure" onclick="PageEditor.openPage('tourCategories/adventure', 'tours/adventure/index.html')"><span>🧗 Active Adventure</span></a>
-<a class="nav-link nav-sub-link" data-section="page-editor" data-page-doc="tourCategories/golf" onclick="PageEditor.openPage('tourCategories/golf', 'tours/golf/index.html')"><span>⛳ Championship Golf</span></a>
-<a class="nav-link nav-sub-link" data-section="page-editor" data-page-doc="tourCategories/ramayana" onclick="PageEditor.openPage('tourCategories/ramayana', 'tours/ramayana/index.html')"><span>🏹 Ramayana Trail</span></a>
-</div>
-</div>
+    <!-- 2. INQUIRIES (Quick, Detailed) -->
+    <div class="nav-collapsible-group" id="navGroupInquiries">
+      <div class="nav-collapsible-header" onclick="AdminApp.toggleAccordion('navGroupInquiries')">
+        <div class="nav-header-left">
+          <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+          <span>Inquiries</span>
+        </div>
+        <div class="nav-header-right">
+          <span class="nav-badge" id="unreadInquiriesBadge">0</span>
+          <svg viewBox="0 0 24 24" class="nav-chevron"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
+        </div>
+      </div>
+      <div class="nav-collapsible-body">
+        <a class="nav-sub-link" onclick="AdminApp.switchSection('inquiries'); AdminApp.setInquiryFilter('all');">
+          <span class="sub-bullet"></span><span>All Inquiries</span>
+        </a>
+        <a class="nav-sub-link" onclick="AdminApp.switchSection('inquiries'); AdminApp.setInquiryFilter('quick');">
+          <span class="sub-bullet"></span><span>Quick Consultations</span>
+        </a>
+        <a class="nav-sub-link" onclick="AdminApp.switchSection('inquiries'); AdminApp.setInquiryFilter('detailed');">
+          <span class="sub-bullet"></span><span>Bespoke Journeys</span>
+        </a>
+      </div>
+    </div>
 
-<!-- INDIVIDUAL TOUR PACKAGES (ALL 29 PAGES) -->
-<div class="nav-collapsible-group is-open" id="navGroupTourPackages">
-<div class="nav-section-title nav-collapsible-header" onclick="this.parentElement.classList.toggle('is-open')" style="display: flex; justify-content: space-between; align-items: center;">
-<span>📦 Tour Packages (All 29)</span>
-<span class="nav-toggle-icon">▼</span>
-</div>
-<div class="nav-collapsible-body" style="max-height: 480px; overflow-y: auto;">
-<div style="padding: 6px 12px; margin-bottom: 6px;">
-  <input type="text" placeholder="🔍 Search 29 packages..." id="sidebarPackageSearch" oninput="PageEditor.filterSidebarPackages(this.value)" style="width: 100%; padding: 6px 10px; font-size: 0.8rem; background: #0F172A; border: 1px solid rgba(212,175,55,0.45); border-radius: 6px; color: #FFF; outline: none;">
-</div>
-<div id="sidebarPackagesList">
-  <!-- Cultural Heritage (3) -->
-  <div class="sidebar-cat-header" style="font-size: 0.72rem; text-transform: uppercase; color: #D4AF37; padding: 4px 14px; font-weight: 700; letter-spacing: 0.05em;">Cultural Heritage</div>
-  <a class="nav-link nav-sub-link sidebar-pkg-link" data-pkg-title="Three Millennia of Living Heritage" onclick="PageEditor.openTourDetailPage('three-millennia-of-living-heritage')"><span>🏛️ Three Millennia</span></a>
-  <a class="nav-link nav-sub-link sidebar-pkg-link" data-pkg-title="Royal Kingdoms and Sacred Temples" onclick="PageEditor.openTourDetailPage('royal-kingdoms-sacred-temples')"><span>🏛️ Royal Kingdoms</span></a>
-  <a class="nav-link nav-sub-link sidebar-pkg-link" data-pkg-title="The Sacred Lotus Triangle" onclick="PageEditor.openTourDetailPage('the-sacred-lotus-triangle')"><span>🏛️ Sacred Lotus Triangle</span></a>
+    <!-- 3. PAGES (Home, About, Contact, Destinations, Experiences, Gallery, Reviews, Blog, Tours hub, Legal) -->
+    <div class="nav-collapsible-group" id="navGroupPages">
+      <div class="nav-collapsible-header" onclick="AdminApp.toggleAccordion('navGroupPages')">
+        <div class="nav-header-left">
+          <svg viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
+          <span>Pages</span>
+        </div>
+        <svg viewBox="0 0 24 24" class="nav-chevron"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
+      </div>
+      <div class="nav-collapsible-body">
+        <a class="nav-sub-link" data-page-doc="siteContent/home" onclick="PageEditor.openPage('siteContent/home', 'index.html')">
+          <span class="sub-bullet"></span><span>Home Page</span>
+        </a>
+        <a class="nav-sub-link" data-page-doc="siteContent/about" onclick="PageEditor.openPage('siteContent/about', 'about.html')">
+          <span class="sub-bullet"></span><span>About Us</span>
+        </a>
+        <a class="nav-sub-link" data-page-doc="siteContent/contact" onclick="PageEditor.openPage('siteContent/contact', 'contact.html')">
+          <span class="sub-bullet"></span><span>Contact &amp; Concierge</span>
+        </a>
+        <a class="nav-sub-link" data-page-doc="siteContent/destinations" onclick="PageEditor.openPage('siteContent/destinations', 'destinations.html')">
+          <span class="sub-bullet"></span><span>Destinations Hub</span>
+        </a>
+        <a class="nav-sub-link" data-page-doc="siteContent/experiences" onclick="PageEditor.openPage('siteContent/experiences', 'experiences.html')">
+          <span class="sub-bullet"></span><span>Experiences</span>
+        </a>
+        <a class="nav-sub-link" data-page-doc="siteContent/gallery" onclick="PageEditor.openPage('siteContent/gallery', 'gallery.html')">
+          <span class="sub-bullet"></span><span>Gallery</span>
+        </a>
+        <a class="nav-sub-link" data-page-doc="siteContent/reviews" onclick="PageEditor.openPage('siteContent/reviews', 'reviews.html')">
+          <span class="sub-bullet"></span><span>Reviews &amp; Guestbook</span>
+        </a>
+        <a class="nav-sub-link" data-page-doc="siteContent/blog" onclick="PageEditor.openPage('siteContent/blog', 'blog.html')">
+          <span class="sub-bullet"></span><span>Blog Main Hub</span>
+        </a>
+        <a class="nav-sub-link" data-page-doc="siteContent/toursIndex" onclick="PageEditor.openPage('siteContent/toursIndex', 'tours/index.html')">
+          <span class="sub-bullet"></span><span>Tours Hub (Index)</span>
+        </a>
+        <div class="sidebar-sub-divider">Legal &amp; Policies</div>
+        <a class="nav-sub-link" data-page-doc="siteContent/privacy-policy" onclick="PageEditor.openPage('siteContent/privacy-policy', 'privacy-policy.html')">
+          <span class="sub-bullet"></span><span>Privacy Policy</span>
+        </a>
+        <a class="nav-sub-link" data-page-doc="siteContent/terms-conditions" onclick="PageEditor.openPage('siteContent/terms-conditions', 'terms-conditions.html')">
+          <span class="sub-bullet"></span><span>Terms &amp; Conditions</span>
+        </a>
+        <a class="nav-sub-link" data-page-doc="siteContent/cancellation-policy" onclick="PageEditor.openPage('siteContent/cancellation-policy', 'cancellation-policy.html')">
+          <span class="sub-bullet"></span><span>Cancellation Policy</span>
+        </a>
+        <a class="nav-sub-link" data-page-doc="siteContent/cookie-policy" onclick="PageEditor.openPage('siteContent/cookie-policy', 'cookie-policy.html')">
+          <span class="sub-bullet"></span><span>Cookie Policy</span>
+        </a>
+      </div>
+    </div>
 
-  <!-- Buddhist Heritage (3) -->
-  <div class="sidebar-cat-header" style="font-size: 0.72rem; text-transform: uppercase; color: #D4AF37; padding: 4px 14px; font-weight: 700; letter-spacing: 0.05em;">Buddhist Heritage</div>
-  <a class="nav-link nav-sub-link sidebar-pkg-link" data-pkg-title="Forest Hermitages and Mindful Ceylon" onclick="PageEditor.openTourDetailPage('forest-hermitages-mindful-ceylon')"><span>☸️ Forest Hermitages</span></a>
-  <a class="nav-link nav-sub-link sidebar-pkg-link" data-pkg-title="The Sacred Bodhi and Ancient Kingdoms" onclick="PageEditor.openTourDetailPage('the-sacred-bodhi-ancient-kingdoms')"><span>☸️ Sacred Bodhi</span></a>
-  <a class="nav-link nav-sub-link sidebar-pkg-link" data-pkg-title="The Sacred Tooth and Monastic Sanctuaries" onclick="PageEditor.openTourDetailPage('the-sacred-tooth-monastic-sanctuaries')"><span>☸️ Sacred Tooth</span></a>
+    <!-- 4. TOURS (Category -> Package Tree with Search) -->
+    <div class="nav-collapsible-group" id="navGroupTours">
+      <div class="nav-collapsible-header" onclick="AdminApp.toggleAccordion('navGroupTours')">
+        <div class="nav-header-left">
+          <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+          <span>Tours</span>
+        </div>
+        <svg viewBox="0 0 24 24" class="nav-chevron"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
+      </div>
+      <div class="nav-collapsible-body">
+        <a class="nav-sub-link" onclick="AdminApp.switchSection('packages')">
+          <span class="sub-bullet"></span><strong>Tour Packages (Table View)</strong>
+        </a>
+        <a class="nav-sub-link" onclick="AdminApp.switchSection('categories')">
+          <span class="sub-bullet"></span><strong>Tour Categories (Table View)</strong>
+        </a>
+        <div style="padding: 6px 4px 4px;">
+          <input type="text" placeholder="Filter 29 packages..." class="sidebar-inline-filter" oninput="PageEditor.filterSidebarPackages(this.value)">
+        </div>
+        <div id="sidebarPackagesList">
+          <!-- Cultural Heritage (3) -->
+          <div class="sidebar-cat-header">Cultural Heritage</div>
+          <a class="nav-sub-link sidebar-pkg-link" data-pkg-title="Three Millennia of Living Heritage" onclick="PageEditor.openTourDetailPage('three-millennia-of-living-heritage')"><span class="sub-bullet"></span><span>Three Millennia</span></a>
+          <a class="nav-sub-link sidebar-pkg-link" data-pkg-title="Royal Kingdoms and Sacred Temples" onclick="PageEditor.openTourDetailPage('royal-kingdoms-sacred-temples')"><span class="sub-bullet"></span><span>Royal Kingdoms</span></a>
+          <a class="nav-sub-link sidebar-pkg-link" data-pkg-title="The Sacred Lotus Triangle" onclick="PageEditor.openTourDetailPage('the-sacred-lotus-triangle')"><span class="sub-bullet"></span><span>Sacred Lotus Triangle</span></a>
 
-  <!-- Wildlife Safaris (3) -->
-  <div class="sidebar-cat-header" style="font-size: 0.72rem; text-transform: uppercase; color: #D4AF37; padding: 4px 14px; font-weight: 700; letter-spacing: 0.05em;">Wildlife Safaris</div>
-  <a class="nav-link nav-sub-link sidebar-pkg-link" data-pkg-title="The Sri Lanka Big Five Expedition" onclick="PageEditor.openTourDetailPage('the-sri-lanka-big-five-expedition')"><span>🐆 Big Five Expedition</span></a>
-  <a class="nav-link nav-sub-link sidebar-pkg-link" data-pkg-title="Wild Ceylon Predator and Elephant Trail" onclick="PageEditor.openTourDetailPage('wild-ceylon-predator-elephant-trail')"><span>🐆 Predator and Elephant</span></a>
-  <a class="nav-link nav-sub-link sidebar-pkg-link" data-pkg-title="Untamed Biosphere and Rainforest Odyssey" onclick="PageEditor.openTourDetailPage('untamed-biosphere-rainforest-odyssey')"><span>🐆 Untamed Biosphere</span></a>
+          <!-- Buddhist Heritage (3) -->
+          <div class="sidebar-cat-header">Buddhist Heritage</div>
+          <a class="nav-sub-link sidebar-pkg-link" data-pkg-title="Forest Hermitages and Mindful Ceylon" onclick="PageEditor.openTourDetailPage('forest-hermitages-mindful-ceylon')"><span class="sub-bullet"></span><span>Forest Hermitages</span></a>
+          <a class="nav-sub-link sidebar-pkg-link" data-pkg-title="The Sacred Bodhi and Ancient Kingdoms" onclick="PageEditor.openTourDetailPage('the-sacred-bodhi-ancient-kingdoms')"><span class="sub-bullet"></span><span>Sacred Bodhi</span></a>
+          <a class="nav-sub-link sidebar-pkg-link" data-pkg-title="The Sacred Tooth and Monastic Sanctuaries" onclick="PageEditor.openTourDetailPage('the-sacred-tooth-monastic-sanctuaries')"><span class="sub-bullet"></span><span>Sacred Tooth</span></a>
 
-  <!-- Pristine Beaches (3) -->
-  <div class="sidebar-cat-header" style="font-size: 0.72rem; text-transform: uppercase; color: #D4AF37; padding: 4px 14px; font-weight: 700; letter-spacing: 0.05em;">Pristine Beaches</div>
-  <a class="nav-link nav-sub-link sidebar-pkg-link" data-pkg-title="Southern Sands Serenade" onclick="PageEditor.openTourDetailPage('southern-sands-serenade')"><span>🏖️ Southern Sands</span></a>
-  <a class="nav-link nav-sub-link sidebar-pkg-link" data-pkg-title="Turquoise Eastern Sanctuary" onclick="PageEditor.openTourDetailPage('turquoise-eastern-sanctuary')"><span>🏖️ Eastern Sanctuary</span></a>
-  <a class="nav-link nav-sub-link sidebar-pkg-link" data-pkg-title="Pristine Seaboard Odyssey" onclick="PageEditor.openTourDetailPage('pristine-seaboard-odyssey')"><span>🏖️ Seaboard Odyssey</span></a>
+          <!-- Wildlife Safaris (3) -->
+          <div class="sidebar-cat-header">Wildlife Safaris</div>
+          <a class="nav-sub-link sidebar-pkg-link" data-pkg-title="The Sri Lanka Big Five Expedition" onclick="PageEditor.openTourDetailPage('the-sri-lanka-big-five-expedition')"><span class="sub-bullet"></span><span>Big Five Expedition</span></a>
+          <a class="nav-sub-link sidebar-pkg-link" data-pkg-title="Wild Ceylon Predator and Elephant Trail" onclick="PageEditor.openTourDetailPage('wild-ceylon-predator-elephant-trail')"><span class="sub-bullet"></span><span>Predator &amp; Elephant</span></a>
+          <a class="nav-sub-link sidebar-pkg-link" data-pkg-title="Untamed Biosphere and Rainforest Odyssey" onclick="PageEditor.openTourDetailPage('untamed-biosphere-rainforest-odyssey')"><span class="sub-bullet"></span><span>Untamed Biosphere</span></a>
 
-  <!-- Hill Country & Tea (3) -->
-  <div class="sidebar-cat-header" style="font-size: 0.72rem; text-transform: uppercase; color: #D4AF37; padding: 4px 14px; font-weight: 700; letter-spacing: 0.05em;">Hill Country and Tea</div>
-  <a class="nav-link nav-sub-link sidebar-pkg-link" data-pkg-title="Ceylon Tea Trails and Colonial Grandeur" onclick="PageEditor.openTourDetailPage('ceylon-tea-trails-colonial-grandeur')"><span>⛰️ Tea Trails Grandeur</span></a>
-  <a class="nav-link nav-sub-link sidebar-pkg-link" data-pkg-title="Misty Peaks and Scenic Railways Expedition" onclick="PageEditor.openTourDetailPage('misty-peaks-scenic-railways-expedition')"><span>⛰️ Misty Peaks and Railways</span></a>
-  <a class="nav-link nav-sub-link sidebar-pkg-link" data-pkg-title="Highland Wilderness and Cascading Waterfalls" onclick="PageEditor.openTourDetailPage('highland-wilderness-cascading-waterfalls')"><span>⛰️ Highland Wilderness</span></a>
+          <!-- Pristine Beaches (3) -->
+          <div class="sidebar-cat-header">Pristine Beaches</div>
+          <a class="nav-sub-link sidebar-pkg-link" data-pkg-title="Southern Sands Serenade" onclick="PageEditor.openTourDetailPage('southern-sands-serenade')"><span class="sub-bullet"></span><span>Southern Sands</span></a>
+          <a class="nav-sub-link sidebar-pkg-link" data-pkg-title="Turquoise Eastern Sanctuary" onclick="PageEditor.openTourDetailPage('turquoise-eastern-sanctuary')"><span class="sub-bullet"></span><span>Eastern Sanctuary</span></a>
+          <a class="nav-sub-link sidebar-pkg-link" data-pkg-title="Pristine Seaboard Odyssey" onclick="PageEditor.openTourDetailPage('pristine-seaboard-odyssey')"><span class="sub-bullet"></span><span>Seaboard Odyssey</span></a>
 
-  <!-- Ayurvedic Healing (2) -->
-  <div class="sidebar-cat-header" style="font-size: 0.72rem; text-transform: uppercase; color: #D4AF37; padding: 4px 14px; font-weight: 700; letter-spacing: 0.05em;">Ayurvedic Healing</div>
-  <a class="nav-link nav-sub-link sidebar-pkg-link" data-pkg-title="Lotus Ayu Holistic Rejuvenation" onclick="PageEditor.openTourDetailPage('lotus-ayu-holistic-rejuvenation')"><span>🌿 Lotus Ayu Rejuvenation</span></a>
-  <a class="nav-link nav-sub-link sidebar-pkg-link" data-pkg-title="Sacred Serenity and Forest Meditation Retreat" onclick="PageEditor.openTourDetailPage('sacred-serenity-forest-meditation-retreat')"><span>🌿 Forest Meditation</span></a>
+          <!-- Hill Country & Tea (3) -->
+          <div class="sidebar-cat-header">Hill Country &amp; Tea</div>
+          <a class="nav-sub-link sidebar-pkg-link" data-pkg-title="Ceylon Tea Trails and Colonial Grandeur" onclick="PageEditor.openTourDetailPage('ceylon-tea-trails-colonial-grandeur')"><span class="sub-bullet"></span><span>Tea Trails Grandeur</span></a>
+          <a class="nav-sub-link sidebar-pkg-link" data-pkg-title="Misty Peaks and Scenic Railways Expedition" onclick="PageEditor.openTourDetailPage('misty-peaks-scenic-railways-expedition')"><span class="sub-bullet"></span><span>Misty Peaks &amp; Railways</span></a>
+          <a class="nav-sub-link sidebar-pkg-link" data-pkg-title="Highland Wilderness and Cascading Waterfalls" onclick="PageEditor.openTourDetailPage('highland-wilderness-cascading-waterfalls')"><span class="sub-bullet"></span><span>Highland Wilderness</span></a>
 
-  <!-- Honeymoon Romance (2) -->
-  <div class="sidebar-cat-header" style="font-size: 0.72rem; text-transform: uppercase; color: #D4AF37; padding: 4px 14px; font-weight: 700; letter-spacing: 0.05em;">Honeymoon Romance</div>
-  <a class="nav-link nav-sub-link sidebar-pkg-link" data-pkg-title="Enchanted Ceylon Romantic Hideaway" onclick="PageEditor.openTourDetailPage('enchanted-ceylon-romantic-hideaway')"><span>💍 Enchanted Hideaway</span></a>
-  <a class="nav-link nav-sub-link sidebar-pkg-link" data-pkg-title="Pure Serenade Coastal and Highland Romance" onclick="PageEditor.openTourDetailPage('pure-serenade-coastal-highland-romance')"><span>💍 Pure Serenade Romance</span></a>
+          <!-- Ayurvedic Healing (2) -->
+          <div class="sidebar-cat-header">Ayurvedic Healing</div>
+          <a class="nav-sub-link sidebar-pkg-link" data-pkg-title="Lotus Ayu Holistic Rejuvenation" onclick="PageEditor.openTourDetailPage('lotus-ayu-holistic-rejuvenation')"><span class="sub-bullet"></span><span>Lotus Ayu Rejuvenation</span></a>
+          <a class="nav-sub-link sidebar-pkg-link" data-pkg-title="Sacred Serenity and Forest Meditation Retreat" onclick="PageEditor.openTourDetailPage('sacred-serenity-forest-meditation-retreat')"><span class="sub-bullet"></span><span>Forest Meditation</span></a>
 
-  <!-- Family Discovery (3) -->
-  <div class="sidebar-cat-header" style="font-size: 0.72rem; text-transform: uppercase; color: #D4AF37; padding: 4px 14px; font-weight: 700; letter-spacing: 0.05em;">Family Discovery</div>
-  <a class="nav-link nav-sub-link sidebar-pkg-link" data-pkg-title="Island Wonder Multi-Gen Family Discovery" onclick="PageEditor.openTourDetailPage('island-wonder-multi-gen-family-discovery')"><span>👨‍👩‍👧‍👦 Island Wonder Multi-Gen</span></a>
-  <a class="nav-link nav-sub-link sidebar-pkg-link" data-pkg-title="Wild Safari and Coastal Family Holiday" onclick="PageEditor.openTourDetailPage('wild-safari-coastal-family-holiday')"><span>👨‍👩‍👧‍👦 Wild Safari and Coast</span></a>
-  <a class="nav-link nav-sub-link sidebar-pkg-link" data-pkg-title="The Grand Ceylon Family Adventure" onclick="PageEditor.openTourDetailPage('the-grand-ceylon-family-adventure')"><span>👨‍👩‍👧‍👦 Grand Family Adventure</span></a>
+          <!-- Honeymoon Romance (2) -->
+          <div class="sidebar-cat-header">Honeymoon Romance</div>
+          <a class="nav-sub-link sidebar-pkg-link" data-pkg-title="Enchanted Ceylon Romantic Hideaway" onclick="PageEditor.openTourDetailPage('enchanted-ceylon-romantic-hideaway')"><span class="sub-bullet"></span><span>Enchanted Hideaway</span></a>
+          <a class="nav-sub-link sidebar-pkg-link" data-pkg-title="Pure Serenade Coastal and Highland Romance" onclick="PageEditor.openTourDetailPage('pure-serenade-coastal-highland-romance')"><span class="sub-bullet"></span><span>Pure Serenade Romance</span></a>
 
-  <!-- Active Adventure (2) -->
-  <div class="sidebar-cat-header" style="font-size: 0.72rem; text-transform: uppercase; color: #D4AF37; padding: 4px 14px; font-weight: 700; letter-spacing: 0.05em;">Active Adventure</div>
-  <a class="nav-link nav-sub-link sidebar-pkg-link" data-pkg-title="Island Adrenaline and Rapids Expedition" onclick="PageEditor.openTourDetailPage('island-adrenaline-rapids-expedition')"><span>🧗 Adrenaline and Rapids</span></a>
-  <a class="nav-link nav-sub-link sidebar-pkg-link" data-pkg-title="Wild Peaks Trails and Surf Safari" onclick="PageEditor.openTourDetailPage('wild-peaks-trails-surf-safari')"><span>🧗 Wild Peaks and Surf</span></a>
+          <!-- Family Discovery (3) -->
+          <div class="sidebar-cat-header">Family Discovery</div>
+          <a class="nav-sub-link sidebar-pkg-link" data-pkg-title="Island Wonder Multi-Gen Family Discovery" onclick="PageEditor.openTourDetailPage('island-wonder-multi-gen-family-discovery')"><span class="sub-bullet"></span><span>Island Wonder Multi-Gen</span></a>
+          <a class="nav-sub-link sidebar-pkg-link" data-pkg-title="Wild Safari and Coastal Family Holiday" onclick="PageEditor.openTourDetailPage('wild-safari-coastal-family-holiday')"><span class="sub-bullet"></span><span>Wild Safari &amp; Coast</span></a>
+          <a class="nav-sub-link sidebar-pkg-link" data-pkg-title="The Grand Ceylon Family Adventure" onclick="PageEditor.openTourDetailPage('the-grand-ceylon-family-adventure')"><span class="sub-bullet"></span><span>Grand Family Adventure</span></a>
 
-  <!-- Championship Golf (3) -->
-  <div class="sidebar-cat-header" style="font-size: 0.72rem; text-transform: uppercase; color: #D4AF37; padding: 4px 14px; font-weight: 700; letter-spacing: 0.05em;">Championship Golf</div>
-  <a class="nav-link nav-sub-link sidebar-pkg-link" data-pkg-title="The Royal Ceylon Fairways Tour" onclick="PageEditor.openTourDetailPage('the-royal-ceylon-fairways-tour')"><span>⛳ Royal Fairways Tour</span></a>
-  <a class="nav-link nav-sub-link sidebar-pkg-link" data-pkg-title="Highland Greens and Coastal Links Championship" onclick="PageEditor.openTourDetailPage('highland-greens-coastal-links-championship')"><span>⛳ Highland Greens</span></a>
-  <a class="nav-link nav-sub-link sidebar-pkg-link" data-pkg-title="The Grand Ceylon Masters Golf Odyssey" onclick="PageEditor.openTourDetailPage('the-grand-ceylon-masters-golf-odyssey')"><span>⛳ Masters Golf Odyssey</span></a>
+          <!-- Active Adventure (2) -->
+          <div class="sidebar-cat-header">Active Adventure</div>
+          <a class="nav-sub-link sidebar-pkg-link" data-pkg-title="Island Adrenaline and Rapids Expedition" onclick="PageEditor.openTourDetailPage('island-adrenaline-rapids-expedition')"><span class="sub-bullet"></span><span>Adrenaline &amp; Rapids</span></a>
+          <a class="nav-sub-link sidebar-pkg-link" data-pkg-title="Wild Peaks Trails and Surf Safari" onclick="PageEditor.openTourDetailPage('wild-peaks-trails-surf-safari')"><span class="sub-bullet"></span><span>Wild Peaks &amp; Surf</span></a>
 
-  <!-- Ramayana Trail (2) -->
-  <div class="sidebar-cat-header" style="font-size: 0.72rem; text-transform: uppercase; color: #D4AF37; padding: 4px 14px; font-weight: 700; letter-spacing: 0.05em;">Ramayana Trail</div>
-  <a class="nav-link nav-sub-link sidebar-pkg-link" data-pkg-title="Sacred Ramayana Heritage Trail" onclick="PageEditor.openTourDetailPage('sacred-ramayana-heritage-trail')"><span>🏹 Ramayana Heritage Trail</span></a>
-  <a class="nav-link nav-sub-link sidebar-pkg-link" data-pkg-title="The Epic Ramayana Chronicle Pilgrimage" onclick="PageEditor.openTourDetailPage('the-epic-ramayana-chronicle-pilgrimage')"><span>🏹 Epic Ramayana Chronicle</span></a>
-</div>
-</div>
-</div>
+          <!-- Championship Golf (3) -->
+          <div class="sidebar-cat-header">Championship Golf</div>
+          <a class="nav-sub-link sidebar-pkg-link" data-pkg-title="The Royal Ceylon Fairways Tour" onclick="PageEditor.openTourDetailPage('the-royal-ceylon-fairways-tour')"><span class="sub-bullet"></span><span>Royal Fairways Tour</span></a>
+          <a class="nav-sub-link sidebar-pkg-link" data-pkg-title="Highland Greens and Coastal Links Championship" onclick="PageEditor.openTourDetailPage('highland-greens-coastal-links-championship')"><span class="sub-bullet"></span><span>Highland Greens</span></a>
+          <a class="nav-sub-link sidebar-pkg-link" data-pkg-title="The Grand Ceylon Masters Golf Odyssey" onclick="PageEditor.openTourDetailPage('the-grand-ceylon-masters-golf-odyssey')"><span class="sub-bullet"></span><span>Masters Golf Odyssey</span></a>
 
-<!-- DESTINATIONS (24 PAGES) -->
-<div class="nav-collapsible-group" id="navGroupDestinations">
-<div class="nav-section-title nav-collapsible-header" onclick="this.parentElement.classList.toggle('is-open')">
-<span>📍 Destinations (24)</span>
-<span class="nav-toggle-icon">▼</span>
-</div>
-<div class="nav-collapsible-body" style="max-height: 380px; overflow-y: auto;">
-<a class="nav-link nav-sub-link" onclick="PageEditor.openDestinationPage('dambulla')"><span>📍 Dambulla Golden Caves</span></a>
-<a class="nav-link nav-sub-link" onclick="PageEditor.openDestinationPage('sigiriya-rock-citadel')"><span>📍 Sigiriya Rock Citadel</span></a>
-<a class="nav-link nav-sub-link" onclick="PageEditor.openDestinationPage('kandy')"><span>📍 Kandy Sacred Hill Capital</span></a>
-<a class="nav-link nav-sub-link" onclick="PageEditor.openDestinationPage('galle-dutch-fort')"><span>📍 Galle Dutch Fort</span></a>
-<a class="nav-link nav-sub-link" onclick="PageEditor.openDestinationPage('yala-national-park')"><span>📍 Yala Safari Wilderness</span></a>
-<a class="nav-link nav-sub-link" onclick="PageEditor.openDestinationPage('ella-demodara')"><span>📍 Ella and Demodara Spire</span></a>
-<a class="nav-link nav-sub-link" onclick="PageEditor.openDestinationPage('nuwara-eliya')"><span>📍 Nuwara Eliya Tea Hills</span></a>
-<a class="nav-link nav-sub-link" onclick="PageEditor.openDestinationPage('bentota-beruwala')"><span>📍 Bentota and Beruwala</span></a>
-<a class="nav-link nav-sub-link" onclick="PageEditor.openDestinationPage('mirissa-weligama')"><span>📍 Mirissa and Weligama Whale Bay</span></a>
-<a class="nav-link nav-sub-link" onclick="PageEditor.openDestinationPage('anuradhapura')"><span>📍 Anuradhapura Sacred City</span></a>
-<a class="nav-link nav-sub-link" onclick="PageEditor.openDestinationPage('polonnaruwa')"><span>📍 Polonnaruwa Ruins</span></a>
-<a class="nav-link nav-sub-link" onclick="PageEditor.openDestinationPage('colombo-kelani-valley')"><span>📍 Colombo and Kelani</span></a>
-<a class="nav-link nav-sub-link" onclick="PageEditor.openDestinationPage('negombo-beach-lagoon')"><span>📍 Negombo Lagoon</span></a>
-<a class="nav-link nav-sub-link" onclick="PageEditor.openDestinationPage('trincomalee-nilaveli')"><span>📍 Trincomalee and Nilaveli</span></a>
-<a class="nav-link nav-sub-link" onclick="PageEditor.openDestinationPage('arugam-bay')"><span>📍 Arugam Bay Surf</span></a>
-<a class="nav-link nav-sub-link" onclick="PageEditor.openDestinationPage('udawalawe-national-park')"><span>📍 Udawalawe Elephants</span></a>
-<a class="nav-link nav-sub-link" onclick="PageEditor.openDestinationPage('minneriya-national-park')"><span>📍 Minneriya Elephant Gathering</span></a>
-<a class="nav-link nav-sub-link" onclick="PageEditor.openDestinationPage('wilpattu-national-park')"><span>📍 Wilpattu Leopard Lakes</span></a>
-<a class="nav-link nav-sub-link" onclick="PageEditor.openDestinationPage('horton-plains-world-s-end')"><span>📍 Horton Plains and World's End</span></a>
-<a class="nav-link nav-sub-link" onclick="PageEditor.openDestinationPage('haputale-lipton-s-seat')"><span>📍 Haputale and Lipton's Seat</span></a>
-<a class="nav-link nav-sub-link" onclick="PageEditor.openDestinationPage('sri-pada')"><span>📍 Sri Pada (Adam's Peak)</span></a>
-<a class="nav-link nav-sub-link" onclick="PageEditor.openDestinationPage('mihintale')"><span>📍 Mihintale Cradle</span></a>
-<a class="nav-link nav-sub-link" onclick="PageEditor.openDestinationPage('kelaniya')"><span>📍 Kelaniya Raja Maha Vihara</span></a>
-<a class="nav-link nav-sub-link" onclick="PageEditor.openDestinationPage('kataragama')"><span>📍 Kataragama Shrines</span></a>
-</div>
-</div>
+          <!-- Ramayana Trail (2) -->
+          <div class="sidebar-cat-header">Ramayana Trail</div>
+          <a class="nav-sub-link sidebar-pkg-link" data-pkg-title="Sacred Ramayana Heritage Trail" onclick="PageEditor.openTourDetailPage('sacred-ramayana-heritage-trail')"><span class="sub-bullet"></span><span>Ramayana Heritage Trail</span></a>
+          <a class="nav-sub-link sidebar-pkg-link" data-pkg-title="The Epic Ramayana Chronicle Pilgrimage" onclick="PageEditor.openTourDetailPage('the-epic-ramayana-chronicle-pilgrimage')"><span class="sub-bullet"></span><span>Epic Ramayana Pilgrimage</span></a>
+        </div>
+      </div>
+    </div>
 
+    <!-- 5. DESTINATIONS (List view + 24 Sacred Regions) -->
+    <div class="nav-collapsible-group" id="navGroupDestinations">
+      <div class="nav-collapsible-header" onclick="AdminApp.toggleAccordion('navGroupDestinations')">
+        <div class="nav-header-left">
+          <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+          <span>Destinations</span>
+        </div>
+        <svg viewBox="0 0 24 24" class="nav-chevron"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
+      </div>
+      <div class="nav-collapsible-body" style="max-height: 380px; overflow-y: auto;">
+        <a class="nav-sub-link" onclick="AdminApp.switchSection('destinations')">
+          <span class="sub-bullet"></span><strong>Destinations (Table View)</strong>
+        </a>
+        <div class="sidebar-sub-divider">24 Curated Regions</div>
+        <a class="nav-sub-link" onclick="PageEditor.openDestinationPage('dambulla')"><span class="sub-bullet"></span><span>Dambulla Cave Temple</span></a>
+        <a class="nav-sub-link" onclick="PageEditor.openDestinationPage('sigiriya-rock-citadel')"><span class="sub-bullet"></span><span>Sigiriya Rock Citadel</span></a>
+        <a class="nav-sub-link" onclick="PageEditor.openDestinationPage('kandy')"><span class="sub-bullet"></span><span>Kandy Sacred Capital</span></a>
+        <a class="nav-sub-link" onclick="PageEditor.openDestinationPage('galle-dutch-fort')"><span class="sub-bullet"></span><span>Galle Dutch Fort</span></a>
+        <a class="nav-sub-link" onclick="PageEditor.openDestinationPage('yala-national-park')"><span class="sub-bullet"></span><span>Yala National Park</span></a>
+        <a class="nav-sub-link" onclick="PageEditor.openDestinationPage('ella-demodara')"><span class="sub-bullet"></span><span>Ella &amp; Demodara</span></a>
+        <a class="nav-sub-link" onclick="PageEditor.openDestinationPage('nuwara-eliya')"><span class="sub-bullet"></span><span>Nuwara Eliya</span></a>
+        <a class="nav-sub-link" onclick="PageEditor.openDestinationPage('bentota-beruwala')"><span class="sub-bullet"></span><span>Bentota &amp; Beruwala</span></a>
+        <a class="nav-sub-link" onclick="PageEditor.openDestinationPage('mirissa-weligama')"><span class="sub-bullet"></span><span>Mirissa &amp; Weligama</span></a>
+        <a class="nav-sub-link" onclick="PageEditor.openDestinationPage('anuradhapura')"><span class="sub-bullet"></span><span>Anuradhapura</span></a>
+        <a class="nav-sub-link" onclick="PageEditor.openDestinationPage('polonnaruwa')"><span class="sub-bullet"></span><span>Polonnaruwa</span></a>
+        <a class="nav-sub-link" onclick="PageEditor.openDestinationPage('colombo-kelani-valley')"><span class="sub-bullet"></span><span>Colombo &amp; Kelani</span></a>
+        <a class="nav-sub-link" onclick="PageEditor.openDestinationPage('negombo-beach-lagoon')"><span class="sub-bullet"></span><span>Negombo Beach</span></a>
+        <a class="nav-sub-link" onclick="PageEditor.openDestinationPage('trincomalee-nilaveli')"><span class="sub-bullet"></span><span>Trincomalee &amp; Nilaveli</span></a>
+        <a class="nav-sub-link" onclick="PageEditor.openDestinationPage('arugam-bay')"><span class="sub-bullet"></span><span>Arugam Bay</span></a>
+        <a class="nav-sub-link" onclick="PageEditor.openDestinationPage('udawalawe-national-park')"><span class="sub-bullet"></span><span>Udawalawe Elephants</span></a>
+        <a class="nav-sub-link" onclick="PageEditor.openDestinationPage('minneriya-national-park')"><span class="sub-bullet"></span><span>Minneriya Gathering</span></a>
+        <a class="nav-sub-link" onclick="PageEditor.openDestinationPage('wilpattu-national-park')"><span class="sub-bullet"></span><span>Wilpattu Leopards</span></a>
+        <a class="nav-sub-link" onclick="PageEditor.openDestinationPage('horton-plains-world-s-end')"><span class="sub-bullet"></span><span>Horton Plains</span></a>
+        <a class="nav-sub-link" onclick="PageEditor.openDestinationPage('haputale-lipton-s-seat')"><span class="sub-bullet"></span><span>Haputale &amp; Lipton's Seat</span></a>
+        <a class="nav-sub-link" onclick="PageEditor.openDestinationPage('sri-pada')"><span class="sub-bullet"></span><span>Sri Pada (Adam's Peak)</span></a>
+        <a class="nav-sub-link" onclick="PageEditor.openDestinationPage('mihintale')"><span class="sub-bullet"></span><span>Mihintale Sanctuary</span></a>
+        <a class="nav-sub-link" onclick="PageEditor.openDestinationPage('kelaniya')"><span class="sub-bullet"></span><span>Kelaniya Vihara</span></a>
+        <a class="nav-sub-link" onclick="PageEditor.openDestinationPage('kataragama')"><span class="sub-bullet"></span><span>Kataragama Shrines</span></a>
+      </div>
+    </div>
 
-<!-- BLOG STORIES (5 POSTS) -->
-<div class="nav-collapsible-group is-open" id="navGroupBlogStories">
-<div class="nav-section-title nav-collapsible-header" onclick="this.parentElement.classList.toggle('is-open')">
-<span>📰 Blog Stories (5)</span>
-<span class="nav-toggle-icon">▼</span>
-</div>
-<div class="nav-collapsible-body">
-<a class="nav-link nav-sub-link" onclick="PageEditor.openPage('siteContent/blog-ella-tea', 'blog/ella-hands-on-tea-making-experience/index.html')" style="color: #2E7D32; font-weight: 600;"><span>☕ Ella Tea Making Experience</span></a>
-<a class="nav-link nav-sub-link" onclick="PageEditor.openPage('siteContent/blog-sacred-kingdoms', 'blog/sacred-footsteps-unlocking-sri-lankas-ancient-buddhist-kingdoms/index.html')"><span>🏛️ Sacred Ancient Kingdoms</span></a>
-<a class="nav-link nav-sub-link" onclick="PageEditor.openPage('siteContent/blog-elephant-gathering', 'blog/the-great-gathering-watching-hundreds-of-wild-elephants-at-minneriya/index.html')"><span>🐘 Minneriya Elephant Gathering</span></a>
-<a class="nav-link nav-sub-link" onclick="PageEditor.openPage('siteContent/blog-sinharaja-reforestation', 'blog/growing-a-greener-future-volunteer-reforestation-sinharaja/index.html')"><span>🌿 Sinharaja Reforestation</span></a>
-<a class="nav-link nav-sub-link" onclick="PageEditor.openPage('siteContent/blog-ayurveda-healing', 'blog/living-healing-traditional-ceylon-ayurveda/index.html')"><span>🍵 Living Ceylon Ayurveda</span></a>
-</div>
-</div>
+    <!-- 6. BLOG (List view + 5 Editorial Articles) -->
+    <div class="nav-collapsible-group" id="navGroupBlog">
+      <div class="nav-collapsible-header" onclick="AdminApp.toggleAccordion('navGroupBlog')">
+        <div class="nav-header-left">
+          <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
+          <span>Blog</span>
+        </div>
+        <svg viewBox="0 0 24 24" class="nav-chevron"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
+      </div>
+      <div class="nav-collapsible-body">
+        <a class="nav-sub-link" onclick="AdminApp.switchSection('blog-posts')">
+          <span class="sub-bullet"></span><strong>Blog Posts (Table View)</strong>
+        </a>
+        <a class="nav-sub-link" data-page-doc="siteContent/blog" onclick="PageEditor.openPage('siteContent/blog', 'blog.html')">
+          <span class="sub-bullet"></span><span>Blog Main Hub Page</span>
+        </a>
+        <div class="sidebar-sub-divider">Editorial Articles (5)</div>
+        <a class="nav-sub-link" data-page-doc="siteContent/blog-ella-tea" onclick="PageEditor.openPage('siteContent/blog-ella-tea', 'blog/ella-hands-on-tea-making-experience/index.html')">
+          <span class="sub-bullet"></span><span>Ella Tea Making</span>
+        </a>
+        <a class="nav-sub-link" data-page-doc="siteContent/blog-sacred-kingdoms" onclick="PageEditor.openPage('siteContent/blog-sacred-kingdoms', 'blog/sacred-footsteps-unlocking-sri-lankas-ancient-buddhist-kingdoms/index.html')">
+          <span class="sub-bullet"></span><span>Sacred Kingdoms</span>
+        </a>
+        <a class="nav-sub-link" data-page-doc="siteContent/blog-elephant-gathering" onclick="PageEditor.openPage('siteContent/blog-elephant-gathering', 'blog/the-great-gathering-watching-hundreds-of-wild-elephants-at-minneriya/index.html')">
+          <span class="sub-bullet"></span><span>Minneriya Gathering</span>
+        </a>
+        <a class="nav-sub-link" data-page-doc="siteContent/blog-sinharaja-reforestation" onclick="PageEditor.openPage('siteContent/blog-sinharaja-reforestation', 'blog/growing-a-greener-future-volunteer-reforestation-sinharaja/index.html')">
+          <span class="sub-bullet"></span><span>Sinharaja Reforestation</span>
+        </a>
+        <a class="nav-sub-link" data-page-doc="siteContent/blog-ayurveda-healing" onclick="PageEditor.openPage('siteContent/blog-ayurveda-healing', 'blog/living-healing-traditional-ceylon-ayurveda/index.html')">
+          <span class="sub-bullet"></span><span>Living Ceylon Ayurveda</span>
+        </a>
+      </div>
+    </div>
 
-<!-- GLOBAL COMPONENTS GROUP -->
-<div class="nav-collapsible-group is-open" id="navGroupGlobal">
-<div class="nav-section-title nav-collapsible-header" onclick="this.parentElement.classList.toggle('is-open')">
-<span>Global Components (6)</span>
-<span class="nav-toggle-icon">▼</span>
-</div>
-<div class="nav-collapsible-body">
-<a class="nav-link nav-sub-link" data-section="page-editor" data-page-doc="siteGlobal/branding" onclick="PageEditor.openGlobalDoc('siteGlobal/branding', 'Branding &amp; Identity')"><span>🌸 Branding and Identity</span></a>
-<a class="nav-link nav-sub-link" data-section="page-editor" data-page-doc="siteGlobal/header" onclick="PageEditor.openGlobalDoc('siteGlobal/header', 'Header &amp; Topbar')"><span>🔝 Header and Topbar</span></a>
-<a class="nav-link nav-sub-link" data-section="page-editor" data-page-doc="siteGlobal/footer" onclick="PageEditor.openGlobalDoc('siteGlobal/footer', 'Footer &amp; Copyright')"><span>🔻 Footer and Copyright</span></a>
-<a class="nav-link nav-sub-link" data-section="page-editor" data-page-doc="siteGlobal/contact" onclick="PageEditor.openGlobalDoc('siteGlobal/contact', 'Concierge &amp; Contact')"><span>💬 Concierge and Direct</span></a>
-<a class="nav-link nav-sub-link" data-section="page-editor" data-page-doc="siteGlobal/menu" onclick="PageEditor.openGlobalDoc('siteGlobal/menu', 'Navigation Menu')"><span>🧭 Navigation Menu</span></a>
-<a class="nav-link nav-sub-link" data-section="page-editor" data-page-doc="siteGlobal/social" onclick="PageEditor.openGlobalDoc('siteGlobal/social', 'Social Channels')"><span>🌐 Social Media Links</span></a>
-</div>
-</div>
+    <!-- 7. PEOPLE & STORIES -->
+    <div class="nav-collapsible-group" id="navGroupPeople">
+      <div class="nav-collapsible-header" onclick="AdminApp.toggleAccordion('navGroupPeople')">
+        <div class="nav-header-left">
+          <svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+          <span>People &amp; Stories</span>
+        </div>
+        <svg viewBox="0 0 24 24" class="nav-chevron"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
+      </div>
+      <div class="nav-collapsible-body">
+        <a class="nav-sub-link" onclick="AdminApp.switchSection('team')">
+          <span class="sub-bullet"></span><span>Our People &amp; Team</span>
+        </a>
+        <a class="nav-sub-link" onclick="AdminApp.switchSection('success-stories')">
+          <span class="sub-bullet"></span><span>Success Stories (5)</span>
+        </a>
+        <a class="nav-sub-link" onclick="AdminApp.switchSection('reviews')">
+          <span class="sub-bullet"></span><span>Guest Reviews &amp; Testimonials</span>
+        </a>
+      </div>
+    </div>
 
-<!-- CONTENT COLLECTIONS -->
-<div class="nav-section-title">Content Collections</div>
-<a class="nav-link" data-section="packages" onclick="AdminApp.switchSection('packages')">
-<svg viewbox="0 0 24 24"><path d="M21 5c-1.11-.35-2.33-.5-3.5-.5-1.95 0-4.05.4-5.5 1.5-1.45-1.1-3.55-1.5-5.5-1.5S2.45 4.9 1 6v14.65c0 .25.25.5.5.5.1 0 .15-.05.25-.05C3.1 20.45 5.05 20 6.5 20c1.95 0 4.05.4 5.5 1.5 1.35-.85 3.8-1.5 5.5-1.5 1.65 0 3.35.3 4.75 1.05.1.05.15.05.25.05.25 0 .5-.25.5-.5V6c-.6-.45-1.25-.75-2-1zm0 13.5c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5V8c1.35-.85 3.8-1.5 5.5-1.5 1.2 0 2.4.15 3.5.5v11.5z"></path></svg>
-<span>Tour Packages</span>
-</a>
-<a class="nav-link" data-section="categories" onclick="AdminApp.switchSection('categories')">
-<svg viewbox="0 0 24 24"><path d="M10 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z"></path></svg>
-<span>Categories</span>
-</a>
-<a class="nav-link" data-section="destinations" onclick="AdminApp.switchSection('destinations')">
-<svg viewbox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"></path></svg>
-<span>Destinations</span>
-</a>
-<a class="nav-link" data-section="team" onclick="AdminApp.switchSection('team')">
-<svg viewbox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"></path></svg>
-<span>Our People / Team</span>
-</a>
+    <!-- 8. MEDIA LIBRARY -->
+    <a class="nav-link" data-section="media" onclick="AdminApp.switchSection('media')">
+      <svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+      <span>Media Library</span>
+    </a>
 
-<a class="nav-link" data-section="success-stories" onclick="AdminApp.switchSection('success-stories')">
-<svg viewBox="0 0 24 24"><path d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-4.86 8.86l-3 3.87L9 13.14 6 17h12l-3.86-5.14z"/></svg>
-<span>Our Success Stories</span>
-<span class="nav-badge" id="storiesCountBadge" style="background: rgba(212,175,55,0.25); color: #D4AF37;">5/5</span>
-</a>
-<a class="nav-link" data-section="blog-posts" onclick="AdminApp.switchSection('blog-posts')">
-<svg viewbox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"></path></svg>
-<span>Blog Posts</span>
-</a>
-<a class="nav-link" data-section="reviews" onclick="AdminApp.switchSection('reviews')">
-<svg viewbox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path></svg>
-<span>Guest Reviews</span>
-</a>
+    <!-- 9. SITE SETTINGS (Branding, Header, Footer, Menu, Social, Contact, Concierge) -->
+    <div class="nav-collapsible-group" id="navGroupSettings">
+      <div class="nav-collapsible-header" onclick="AdminApp.toggleAccordion('navGroupSettings')">
+        <div class="nav-header-left">
+          <svg viewBox="0 0 24 24"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg>
+          <span>Site Settings</span>
+        </div>
+        <svg viewBox="0 0 24 24" class="nav-chevron"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
+      </div>
+      <div class="nav-collapsible-body">
+        <a class="nav-sub-link" onclick="AdminApp.switchSection('settings')">
+          <span class="sub-bullet"></span><strong>General Settings</strong>
+        </a>
+        <a class="nav-sub-link" data-page-doc="siteGlobal/branding" onclick="PageEditor.openGlobalDoc('siteGlobal/branding', 'Branding &amp; Identity')">
+          <span class="sub-bullet"></span><span>Branding &amp; Logo</span>
+        </a>
+        <a class="nav-sub-link" data-page-doc="siteGlobal/header" onclick="PageEditor.openGlobalDoc('siteGlobal/header', 'Header &amp; Topbar')">
+          <span class="sub-bullet"></span><span>Header &amp; Topbar</span>
+        </a>
+        <a class="nav-sub-link" data-page-doc="siteGlobal/footer" onclick="PageEditor.openGlobalDoc('siteGlobal/footer', 'Footer &amp; Copyright')">
+          <span class="sub-bullet"></span><span>Footer &amp; Copyright</span>
+        </a>
+        <a class="nav-sub-link" data-page-doc="siteGlobal/menu" onclick="PageEditor.openGlobalDoc('siteGlobal/menu', 'Navigation Menu')">
+          <span class="sub-bullet"></span><span>Navigation Menu</span>
+        </a>
+        <a class="nav-sub-link" data-page-doc="siteGlobal/social" onclick="PageEditor.openGlobalDoc('siteGlobal/social', 'Social Channels')">
+          <span class="sub-bullet"></span><span>Social Channels</span>
+        </a>
+        <a class="nav-sub-link" data-page-doc="siteGlobal/contact" onclick="PageEditor.openGlobalDoc('siteGlobal/contact', 'Concierge &amp; Contact')">
+          <span class="sub-bullet"></span><span>Contact &amp; Concierge</span>
+        </a>
+      </div>
+    </div>
 
-<!-- FORMS GROUP -->
-<div class="nav-section-title">Forms and Inquiries</div>
-<a class="nav-link" data-section="forms-editor" onclick="PageEditor.openFormEditor('inquiry_quick')">
-<svg viewbox="0 0 24 24"><path d="M19 3h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm2 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"></path></svg>
-<span>Form Configurations</span>
-</a>
+    <!-- 10. FORMS -->
+    <div class="nav-collapsible-group" id="navGroupForms">
+      <div class="nav-collapsible-header" onclick="AdminApp.toggleAccordion('navGroupForms')">
+        <div class="nav-header-left">
+          <svg viewBox="0 0 24 24"><path d="M19 3h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm2 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
+          <span>Forms</span>
+        </div>
+        <svg viewBox="0 0 24 24" class="nav-chevron"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
+      </div>
+      <div class="nav-collapsible-body">
+        <a class="nav-sub-link" onclick="PageEditor.openFormEditor('inquiry_quick')">
+          <span class="sub-bullet"></span><span>Quick Consultation</span>
+        </a>
+        <a class="nav-sub-link" onclick="PageEditor.openFormEditor('inquiry_detailed')">
+          <span class="sub-bullet"></span><span>Bespoke Inquiry</span>
+        </a>
+        <a class="nav-sub-link" onclick="AdminApp.switchSection('settings'); AdminApp.scrollToSetting('notifications');">
+          <span class="sub-bullet"></span><span>Email &amp; WhatsApp Alerts</span>
+        </a>
+      </div>
+    </div>
 
-<!-- ASSETS & SYSTEM -->
-<div class="nav-section-title">Assets and System</div>
-<a class="nav-link" data-section="media" onclick="AdminApp.switchSection('media')">
-<svg viewbox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"></path></svg>
-<span>Media Library</span>
-</a>
-<a class="nav-link" data-section="users" onclick="AdminApp.switchSection('users')">
-<svg viewbox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"></path></svg>
-<span>Users and Roles</span>
-</a>
-<a class="nav-link" data-section="settings" onclick="AdminApp.switchSection('settings')">
-<svg viewbox="0 0 24 24"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"></path></svg>
-<span>Settings</span>
-</a>
-</nav>
-<div class="sidebar-footer">
-<span id="cmsVersion">v2.0 • Firebase</span>
-<a href="../index.html" style="color: var(--sacred-gold);" target="_blank">Preview Site ↗</a>
-</div>
+    <!-- 11. ADVANCED (Seeder, Backup/Restore, Users & Roles, Cloudinary config) -->
+    <div class="nav-collapsible-group" id="navGroupAdvanced">
+      <div class="nav-collapsible-header" onclick="AdminApp.toggleAccordion('navGroupAdvanced')">
+        <div class="nav-header-left">
+          <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/></svg>
+          <span>Advanced</span>
+        </div>
+        <svg viewBox="0 0 24 24" class="nav-chevron"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
+      </div>
+      <div class="nav-collapsible-body">
+        <a class="nav-sub-link" onclick="AdminApp.switchSection('settings'); AdminApp.scrollToSetting('seeder');">
+          <span class="sub-bullet"></span><span>Master Firestore Seeder</span>
+        </a>
+        <a class="nav-sub-link" onclick="AdminApp.exportCompleteBackup()">
+          <span class="sub-bullet"></span><span>Export Database Backup (.json)</span>
+        </a>
+        <label class="nav-sub-link" style="cursor: pointer; margin: 0;">
+          <span class="sub-bullet"></span><span>Restore Backup (.json)</span>
+          <input type="file" accept=".json" onchange="AdminApp.restoreBackup(this.files[0])" style="display: none;">
+        </label>
+        <a class="nav-sub-link" onclick="AdminApp.switchSection('users')">
+          <span class="sub-bullet"></span><span>Users &amp; Roles</span>
+        </a>
+        <a class="nav-sub-link" onclick="AdminApp.switchSection('settings'); AdminApp.scrollToSetting('cloudinary');">
+          <span class="sub-bullet"></span><span>Cloudinary CDN Config</span>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="sidebar-footer">
+    <div class="sidebar-footer-info">
+      <span class="dot-online"></span>
+      <span id="cmsVersion">Lotus CMS • Live Sync</span>
+    </div>
+    <a href="../index.html" class="sidebar-preview-link" target="_blank" title="Open live website in new tab">
+      <span>View Site</span>
+      <svg viewBox="0 0 24 24"><path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg>
+    </a>
+  </div>
 </aside>
 <!-- MAIN WRAPPER -->
 <div class="admin-main">

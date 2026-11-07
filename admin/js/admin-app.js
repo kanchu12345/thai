@@ -1308,13 +1308,23 @@ resolveImg(url) {
 
     applyRolePermissions() {
       const isSuper = this.currentRole === 'super_admin';
+      const isEditor = this.currentRole === 'editor';
+
+      // Role-based UI: Editors do not see Advanced or Settings
+      const grpAdv = document.getElementById('navGroupAdvanced');
+      const grpSet = document.getElementById('navGroupSettings');
+      if (grpAdv) grpAdv.style.display = isEditor ? 'none' : '';
+      if (grpSet) grpSet.style.display = isEditor ? 'none' : '';
+
       ['users', 'settings', 'forms-editor'].forEach(sec => {
         const el = document.querySelector(`.nav-link[data-section="${sec}"]`);
         if (el) el.style.display = isSuper ? 'flex' : 'none';
       });
-      if (!isSuper && (this.activeSection === 'users' || this.activeSection === 'settings' || this.activeSection === 'forms-editor')) {
+
+      if ((isEditor || !isSuper) && (this.activeSection === 'users' || this.activeSection === 'settings' || this.activeSection === 'forms-editor')) {
         this.switchSection('dashboard');
       }
+
       document.querySelectorAll('.btn-icon.delete').forEach(btn => {
         if (!isSuper) {
           btn.style.opacity = '0.35';
@@ -1740,6 +1750,97 @@ resolveImg(url) {
 
      */
 
+    // Phase 1 Sidebar Accordion & Search Controls
+    toggleAccordion(groupId) {
+      const allGroups = document.querySelectorAll('.sidebar-nav .nav-collapsible-group');
+      const target = document.getElementById(groupId);
+      if (!target) return;
+      const wasOpen = target.classList.contains('is-open');
+
+      // Close all other groups ("one open at a time")
+      allGroups.forEach(g => {
+        if (g !== target) g.classList.remove('is-open');
+      });
+
+      target.classList.toggle('is-open', !wasOpen);
+    },
+
+    filterSidebar(query) {
+      const q = (query || '').toLowerCase().trim();
+      const clearBtn = document.getElementById('sidebarSearchClear');
+      if (clearBtn) clearBtn.style.display = q ? 'block' : 'none';
+
+      const allGroups = document.querySelectorAll('.sidebar-nav .nav-collapsible-group');
+      const mainLinks = document.querySelectorAll('.sidebar-nav > .nav-link');
+
+      if (!q) {
+        mainLinks.forEach(l => l.style.display = '');
+        allGroups.forEach(g => {
+          g.style.display = '';
+          g.querySelectorAll('.nav-sub-link').forEach(l => l.style.display = '');
+          g.querySelectorAll('.sidebar-sub-divider, .sidebar-cat-header').forEach(d => d.style.display = '');
+        });
+        return;
+      }
+
+      mainLinks.forEach(l => {
+        const text = l.textContent.toLowerCase();
+        l.style.display = text.includes(q) ? 'flex' : 'none';
+      });
+
+      allGroups.forEach(group => {
+        let groupHasMatch = false;
+        const subLinks = group.querySelectorAll('.nav-sub-link');
+        subLinks.forEach(link => {
+          const match = link.textContent.toLowerCase().includes(q);
+          link.style.display = match ? 'flex' : 'none';
+          if (match) groupHasMatch = true;
+        });
+
+        const headerSpan = group.querySelector('.nav-collapsible-header span');
+        const headerText = headerSpan ? headerSpan.textContent.toLowerCase() : '';
+        if (headerText.includes(q)) {
+          groupHasMatch = true;
+          subLinks.forEach(l => l.style.display = 'flex');
+        }
+
+        group.style.display = groupHasMatch ? 'block' : 'none';
+        if (groupHasMatch) {
+          group.classList.add('is-open');
+        }
+      });
+    },
+
+    clearSidebarSearch() {
+      const input = document.getElementById('sidebarLiveSearch');
+      if (input) {
+        input.value = '';
+        this.filterSidebar('');
+      }
+    },
+
+    setInquiryFilter(type) {
+      this.switchSection('inquiries');
+      const filterEl = document.getElementById('inquiryFilterType');
+      if (filterEl) {
+        filterEl.value = type;
+        filterEl.dispatchEvent(new Event('change'));
+      }
+    },
+
+    scrollToSetting(target) {
+      this.switchSection('settings');
+      setTimeout(() => {
+        const map = {
+          seeder: document.querySelector('.seeder-banner') || document.getElementById('section-settings'),
+          cloudinary: document.getElementById('setting-cloudinary') || document.querySelector('.seeder-banner'),
+          notifications: document.getElementById('setting-notifications') || document.getElementById('section-settings')
+        };
+        const el = map[target];
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 120);
+    },
+
     switchSection(sectionId) {
       if (this.currentRole !== 'super_admin' && (sectionId === 'users' || sectionId === 'settings' || sectionId === 'forms-editor')) {
         this.showToast('Access denied: Users & Roles section is restricted to Super Admins.', 'error');
@@ -1759,13 +1860,16 @@ resolveImg(url) {
 
 
 
-      // Update Sidebar Active Class
-
-      document.querySelectorAll('.sidebar-nav .nav-link').forEach(link => {
-
+      // Update Sidebar Active Class (only main nav-links, not sub-links!)
+      document.querySelectorAll('.sidebar-nav > .nav-link').forEach(link => {
         link.classList.toggle('active', link.dataset.section === sectionId);
-
       });
+      // Clear sub-link active state when navigating away from page editor
+      if (sectionId !== 'page-editor') {
+        document.querySelectorAll('.sidebar-nav .nav-sub-link').forEach(link => {
+          link.classList.remove('active');
+        });
+      }
 
 
 
@@ -3730,20 +3834,45 @@ const waBtn = document.getElementById('inquiryWhatsAppBtn');
       const photoInput = document.getElementById('storyPhotoInput');
       const badgeInput = document.getElementById('storyBadgeInput');
       const container = document.getElementById('storyPreviewContainer');
+      const dropzone = document.getElementById('storyDropzoneContainer');
       const previewImg = document.getElementById('storyPhotoPreview');
       const previewBadge = document.getElementById('storyPhotoPreviewBadge');
+      const removeBtn = document.getElementById('storyRemovePhotoBtn');
+      const urlDisplay = document.getElementById('storyPhotoUrlDisplay');
+      const statusBadge = document.getElementById('storyPhotoStatusBadge');
 
-      if (!photoInput || !container || !previewImg) return;
+      if (!photoInput) return;
       const url = photoInput.value.trim();
       const badge = (badgeInput && badgeInput.value.trim()) || 'SACRED SITES';
 
       if (url) {
-        container.style.display = 'block';
-        previewImg.src = this.resolveImg ? this.resolveImg(url) : url;
+        if (container) container.style.display = 'block';
+        if (dropzone) dropzone.style.display = 'none';
+        if (previewImg) previewImg.src = this.resolveImg ? this.resolveImg(url) : url;
         if (previewBadge) previewBadge.textContent = badge;
+        if (removeBtn) removeBtn.style.display = 'inline-flex';
+        if (urlDisplay) urlDisplay.textContent = url;
+
+        if (statusBadge) {
+          statusBadge.style.display = 'inline-block';
+          if (url.startsWith('http') && url.includes('cloudinary')) {
+            statusBadge.textContent = 'Cloudinary CDN';
+            statusBadge.className = 'image-preview-badge cdn';
+          } else if (url.startsWith('http')) {
+            statusBadge.textContent = 'External Web';
+            statusBadge.className = 'image-preview-badge';
+          } else {
+            statusBadge.textContent = 'Local Asset';
+            statusBadge.className = 'image-preview-badge';
+          }
+        }
       } else {
-        container.style.display = 'none';
-        previewImg.src = '';
+        if (container) container.style.display = 'none';
+        if (dropzone) dropzone.style.display = 'flex';
+        if (previewImg) previewImg.src = '';
+        if (removeBtn) removeBtn.style.display = 'none';
+        if (statusBadge) statusBadge.style.display = 'none';
+        if (urlDisplay) urlDisplay.textContent = '';
       }
     },
 
@@ -3759,9 +3888,107 @@ const waBtn = document.getElementById('inquiryWhatsAppBtn');
       this.showToast(`Applied landmark preset: ${title}`, 'info');
     },
 
+    triggerUploadForStory() {
+      const fileInput = document.getElementById('storyPhotoFileInput');
+      if (fileInput) {
+        fileInput.value = '';
+        fileInput.click();
+      } else {
+        this.triggerUploadForInput('storyPhotoInput', 'storyPhotoPreview', null, {
+          folder: 'lotus/stories',
+          resourceType: 'image',
+          callback: (url) => {
+            const input = document.getElementById('storyPhotoInput');
+            if (input) input.value = url;
+            this.updateStoryPhotoPreview();
+            this.showToast('Story photo uploaded successfully!', 'success');
+          }
+        });
+      }
+    },
+
+    async handleStoryFileSelect(inputEl) {
+      const file = inputEl && inputEl.files && inputEl.files[0];
+      if (file) {
+        await this.uploadStoryFile(file);
+      }
+    },
+
+    async uploadStoryFile(file) {
+      if (!file) return;
+      if (!file.type || !file.type.startsWith('image/')) {
+        this.showToast('Please select a valid image file (JPG, PNG, WebP).', 'warning');
+        return;
+      }
+      try {
+        this.showToast('Uploading photo to Cloudinary CDN...', 'info', 4000);
+        const res = await uploadToCloudinary(file, { folder: 'lotus/stories', resourceType: 'image' });
+        if (res && res.secureUrl) {
+          const input = document.getElementById('storyPhotoInput');
+          if (input) {
+            input.value = res.secureUrl;
+            this.updateStoryPhotoPreview();
+          }
+          this.showToast('Photo uploaded successfully to CDN!', 'success');
+        }
+      } catch (err) {
+        console.error('[Upload Story Photo Error]', err);
+        this.showToast('Failed to upload photo: ' + (err.message || 'Network error'), 'error');
+      }
+    },
+
+    openStoryImagePicker() {
+      this.openImagePicker('storyPhotoInput', 'storyPhotoPreview', null, {
+        filter: 'image',
+        onSelect: (url) => {
+          const input = document.getElementById('storyPhotoInput');
+          if (input) {
+            input.value = url;
+            this.updateStoryPhotoPreview();
+          }
+        }
+      });
+    },
+
+    clearStoryPhoto() {
+      const input = document.getElementById('storyPhotoInput');
+      if (input) {
+        input.value = '';
+      }
+      this.updateStoryPhotoPreview();
+      this.showToast('Photo removed', 'info');
+    },
+
+    handleStoryDragOver(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      const dropzone = document.getElementById('storyDropzoneContainer');
+      if (dropzone) dropzone.classList.add('dragover');
+    },
+
+    handleStoryDragLeave(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      const dropzone = document.getElementById('storyDropzoneContainer');
+      if (dropzone) dropzone.classList.remove('dragover');
+    },
+
+    async handleStoryDrop(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      const dropzone = document.getElementById('storyDropzoneContainer');
+      if (dropzone) dropzone.classList.remove('dragover');
+
+      const dt = e.dataTransfer;
+      const file = dt && dt.files && dt.files[0];
+      if (file) {
+        await this.uploadStoryFile(file);
+      }
+    },
+
     openCloudinaryForStory() {
       if (!window.cloudinary) {
-        this.showToast('Cloudinary widget not loaded', 'error');
+        this.triggerUploadForStory();
         return;
       }
 
@@ -3770,7 +3997,12 @@ const waBtn = document.getElementById('inquiryWhatsAppBtn');
         uploadPreset: (window.LOTUS_CONFIG && window.LOTUS_CONFIG.cloudinary && window.LOTUS_CONFIG.cloudinary.uploadPreset) || 'lotus_tours_unsigned',
         folder: 'lotus/stories',
         sources: ['local', 'url', 'camera'],
-        multiple: false
+        multiple: false,
+        cropping: true,
+        croppingAspectRatio: 1.777,
+        showSkipCropButton: true,
+        croppingShowDimensions: true,
+        resourceType: 'image'
       }, (error, result) => {
         if (!error && result && result.event === 'success') {
           const optimizedUrl = result.info.secure_url.replace('/upload/', '/upload/f_auto,q_auto/');
@@ -3779,7 +4011,7 @@ const waBtn = document.getElementById('inquiryWhatsAppBtn');
             input.value = optimizedUrl;
             this.updateStoryPhotoPreview();
           }
-          this.showToast('Photo uploaded successfully!', 'success');
+          this.showToast('Photo uploaded and cropped successfully!', 'success');
         }
       });
       widget.open();
