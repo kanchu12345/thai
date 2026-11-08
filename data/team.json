@@ -2,22 +2,22 @@
   {
     "id": "dhushantha-gihan-mallawaarachchi",
     "name": "Mallawa Arachchige Dhushantha Gihan Mallawaarachchi",
-    "role": "Director",
+    "role": "Founder & Chief Executive Officer",
     "country": "Sri Lanka",
     "flag": "🇱🇰",
     "photo": {
       "cloudinaryPublicId": "lotus-ceylon/team/dhushantha-gihan",
-      "alt": "Director Mallawa Arachchige Dhushantha Gihan Mallawaarachchi",
+      "alt": "Founder & CEO Mallawa Arachchige Dhushantha Gihan Mallawaarachchi",
       "url": "assets/images/team/avatar-dg.svg"
     },
-    "bio": "Introduction coming soon",
+    "bio": "Founding director leading bespoke luxury travel expeditions across Sri Lanka.",
     "sortOrder": 1,
     "published": true
   },
   {
     "id": "kuenga-yarpel",
     "name": "Mr. Kuenga Yarpel",
-    "role": "The Lotus Representative, Bhutan",
+    "role": "The Lotus Representative, Bhutan & Himalayas",
     "country": "Bhutan",
     "flag": "🇧🇹",
     "photo": {
@@ -25,8 +25,143 @@
       "alt": "Mr. Kuenga Yarpel, The Lotus Representative, Bhutan",
       "url": "assets/images/team/avatar-ky.svg"
     },
-    "bio": "Introduction coming soon",
+    "bio": "Regional specialist for Bhutanese and Himalayan cultural travel partnerships.",
     "sortOrder": 2,
+    "published": true
+  },
+  {
+    "id": "rep-united-kingdom",
+    "name": "Global Representative – United Kingdom & Ireland",
+    "role": "Lotus Global Representative, UK & Europe",
+    "country": "United Kingdom",
+    "flag": "🇬🇧",
+    "photo": {
+      "cloudinaryPublicId": "lotus-ceylon/team/rep-uk",
+      "alt": "Lotus Representative, United Kingdom",
+      "url": "assets/images/team/rep-uk.svg"
+    },
+    "bio": "Dedicated concierge & private expedition consultations for UK & European travelers.",
+    "sortOrder": 3,
+    "published": true
+  },
+  {
+    "id": "rep-australia",
+    "name": "Global Representative – Australia & New Zealand",
+    "role": "Lotus Global Representative, Oceania",
+    "country": "Australia",
+    "flag": "🇦🇺",
+    "photo": {
+      "cloudinaryPublicId": "lotus-ceylon/team/rep-australia",
+      "alt": "Lotus Representative, Australia & Oceania",
+      "url": "assets/images/team/rep-australia.svg"
+    },
+    "bio": "Direct travel design and concierge services for Australian and Kiwi adventurers.",
+    "sortOrder": 4,
+    "published": true
+  },
+  {
+    "id": "rep-germany",
+    "name": "Global Representative – Germany & DACH",
+    "role": "Lotus Global Representative, Central Europe",
+    "country": "Germany",
+    "flag": "🇩🇪",
+    "photo": {
+      "cloudinaryPublicId": "lotus-ceylon/team/rep-germany",
+      "alt": "Lotus Representative, Germany & DACH",
+      "url": "assets/images/team/rep-germany.svg"
+    },
+    "bio": "Cultural expedition coordination for German, Austrian, and Swiss private clientele.",
+    "sortOrder": 5,
+    "published": true
+  },
+  {
+    "id": "rep-france",
+    "name": "Global Representative – France & Benelux",
+    "role": "Lotus Global Representative, Western Europe",
+    "country": "France",
+    "flag": "🇫🇷",
+    "photo": {
+      "cloudinaryPublicId": "lotus-ceylon/team/rep-france",
+      "alt": "Lotus Representative, France & Benelux",
+      "url": "assets/images/team/rep-france.svg"
+    },
+    "bio": "High-end bespoke travel curation and concierge support for French travelers.",
+    "sortOrder": 6,
+    "published": true
+  },
+  {
+    "id": "rep-usa",
+    "name": "Global Representative – United States & Canada",
+    "role": "Lotus Global Representative, North America",
+    "country": "United States",
+    "flag": "🇺🇸",
+    "photo": {
+      "cloudinaryPublicId": "lotus-ceylon/team/rep-usa",
+      "alt": "Lotus Representative, United States & Canada",
+      "url": "assets/images/team/rep-usa.svg"
+    },
+    "bio": "North American travel liaison offering 24/7 tailor-made itinerary planning.",
+    "sortOrder": 7,
+    "published": true
+  },
+  {
+    "id": "rep-china",
+    "name": "Global Representative – Greater China",
+    "role": "Lotus Representative & WeChat Concierge",
+    "country": "China",
+    "flag": "🇨🇳",
+    "photo": {
+      "cloudinaryPublicId": "lotus-ceylon/team/rep-china",
+      "alt": "Lotus Representative, Greater China",
+      "url": "assets/images/team/rep-china.svg"
+    },
+    "bio": "Seamless Mandarin communication, WeChat concierge support, and luxury touring.",
+    "sortOrder": 8,
+    "published": true
+  },
+  {
+    "id": "rep-japan",
+    "name": "Global Representative – Japan",
+    "role": "Lotus Representative & LINE Concierge",
+    "country": "Japan",
+    "flag": "🇯🇵",
+    "photo": {
+      "cloudinaryPublicId": "lotus-ceylon/team/rep-japan",
+      "alt": "Lotus Representative, Japan",
+      "url": "assets/images/team/rep-japan.svg"
+    },
+    "bio": "Japanese language travel guidance, LINE support, and respectful cultural expeditions.",
+    "sortOrder": 9,
+    "published": true
+  },
+  {
+    "id": "rep-india",
+    "name": "Global Representative – India & South Asia",
+    "role": "Lotus Global Representative, South Asia",
+    "country": "India",
+    "flag": "🇮🇳",
+    "photo": {
+      "cloudinaryPublicId": "lotus-ceylon/team/rep-india",
+      "alt": "Lotus Representative, India & South Asia",
+      "url": "assets/images/team/rep-india.svg"
+    },
+    "bio": "Spiritual pilgrimage and luxury heritage tour design for Indian travelers.",
+    "sortOrder": 10,
+    "published": true
+  },
+  {
+    "id": "rep-uae",
+    "name": "Global Representative – Middle East & GCC",
+    "role": "Lotus Global Representative, UAE & GCC",
+    "country": "United Arab Emirates",
+    "flag": "🇦🇪",
+    "photo": {
+      "cloudinaryPublicId": "lotus-ceylon/team/rep-uae",
+      "alt": "Lotus Representative, UAE & Middle East",
+      "url": "assets/images/team/rep-uae.svg"
+    },
+    "bio": "Ultra-luxury VIP travel, private helicopter transfers, and Arabian market concierge.",
+    "sortOrder": 11,
     "published": true
   }
 ]

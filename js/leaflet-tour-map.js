@@ -15,8 +15,8 @@
 
   const DEFAULT_CENTER = [7.879, 80.767];
   const DEFAULT_ZOOM = 8;
-  const TILE_URL = 'https://tile.openstreetmap.org/{z}/{x}/{y}.png';
-  const ATTRIBUTION = '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors';
+  const TILE_URL = 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png';
+  const ATTRIBUTION = '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions" target="_blank" rel="noopener">CARTO</a>';
   console.log('[LotusMap] Leaflet OpenStreetMap pure tile engine loaded v20261101_pure_osm_v9');
 
   // Palette for multi-package category routes
@@ -1877,7 +1877,7 @@
         }
 
         this.renderMap();
-        this.renderAccessibleFallback();
+        // this.renderAccessibleFallback(); // Disabled: text itinerary button removed across all pages
       } catch (err) {
         console.error('[LotusTourMap] Error initializing map:', err);
       }
@@ -2070,34 +2070,8 @@
     }
 
     renderAccessibleFallback() {
-      if (this.container.parentNode && this.container.parentNode.querySelector('.lotus-map-accessible-fallback')) {
-        return;
-      }
-
-      const fallbackWrap = document.createElement('div');
-      fallbackWrap.className = 'lotus-map-accessible-fallback';
-      fallbackWrap.innerHTML = 
-        '<details style="margin-top: 14px; font-family: Plus Jakarta Sans, sans-serif; font-size: 13px; color: #4A5568;">' +
-          '<summary style="cursor: pointer; font-weight: 700; color: #002B49; padding: 4px 0;">' +
-            '🗺️ View Complete Text Itinerary of Route Stops' +
-          '</summary>' +
-          '<div style="padding: 10px 0;">' +
-            this.packagesData.map(pkg => 
-              '<div style="margin-bottom: 12px;">' +
-                '<strong style="color: #002B49;">' + (pkg.title || pkg.name) + ' (' + (pkg.nights || 0) + ' Nights & ' + (pkg.days || 0) + ' Days):</strong>' +
-                '<ol style="margin: 4px 0 0; padding-left: 20px;">' +
-                  (pkg.destinations || []).map(d => 
-                    '<li><strong>' + d.name + ':</strong> ' + (d.activities && d.activities.length ? d.activities.join(', ') : 'Sightseeing & Safari') + '</li>'
-                  ).join('') +
-                '</ol>' +
-              '</div>'
-            ).join('') +
-          '</div>' +
-        '</details>';
-
-      if (this.container.parentNode) {
-        this.container.parentNode.appendChild(fallbackWrap);
-      }
+      // Permanently removed per design request across all itinerary & tour pages
+      return;
     }
   }
 

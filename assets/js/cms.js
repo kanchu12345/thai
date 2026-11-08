@@ -911,6 +911,79 @@
           return;
         }
 
+        // Dedicated Click Handler for Real Experiences Carousel
+        const wreSec = e.target.closest('.real-experiences-sec, .walkers-real-experiences, #experiences');
+        if (wreSec) {
+          const isText = e.target.closest('.wre-quote-title, .wre-quote-text, .wre-quote-author, .real-exp-quote-title, .real-exp-quote-body, .real-exp-author-name, .real-exp-tour-meta, .real-exp-btn-secondary');
+          if (!isText || e.target.classList.contains('real-exp-bg-layer') || e.target.classList.contains('wre-bg-slide') || e.target.classList.contains('real-exp-content-overlay') || e.target.classList.contains('real-exp-nav-btn') || e.target.classList.contains('real-exp-dot') || e.target.classList.contains('real-exp-thumb-btn') || e.target === wreSec) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            const bgSlides = Array.from(wreSec.querySelectorAll('.real-exp-bg-layer, .wre-bg-slide'));
+            let currentSlide = bgSlides.findIndex(s => s.classList.contains('is-active'));
+            if (currentSlide < 0) currentSlide = 0;
+
+            const clickedDot = e.target.closest('.wre-dot, .real-exp-dot, .real-exp-thumb-btn');
+            if (clickedDot) {
+              const dotsOrThumbs = clickedDot.classList.contains('real-exp-thumb-btn')
+                ? Array.from(wreSec.querySelectorAll('.real-exp-thumb-btn'))
+                : Array.from(wreSec.querySelectorAll('.real-exp-dot, .wre-dot'));
+              const dotIdx = dotsOrThumbs.indexOf(clickedDot);
+              if (dotIdx >= 0) currentSlide = dotIdx;
+            }
+
+            const slideKeys = ['home.real_exp_bg_1', 'home.real_exp_bg_2', 'home.real_exp_bg_3', 'home.real_exp_bg_4'];
+            const slideAlts = [
+              'Ella Rock Misty Highlands (Panoramic)',
+              'Sigiriya Rock Citadel (Panoramic)',
+              'Kaudulla Wild Elephants & Safari (Panoramic)',
+              'Scenic Ceylon Highlands Train (Panoramic)'
+            ];
+            const slideDefaults = [
+              'assets/images/experiences/real-experiences-ella-rock-large.webp',
+              'assets/images/home/hero-sigiriya-aerial-1.webp',
+              'assets/images/wildlife/minneriya-elephant-gathering-2.webp',
+              'assets/images/family/scenic-train-ride-2.webp'
+            ];
+
+            const sliderImages = slideKeys.map((k, i) => {
+              const slideEl = bgSlides[i];
+              let bg = slideEl ? slideEl.style.backgroundImage : '';
+              bg = bg.replace(/^url\(["\']?/, '').replace(/["\']?\)$/, '');
+              return {
+                index: i,
+                key: k,
+                src: bg || slideDefaults[i],
+                alt: slideAlts[i],
+                isActive: i === currentSlide
+              };
+            });
+
+            const activeKey = slideKeys[currentSlide] || 'home.real_exp_bg_1';
+            const curVal = sliderImages[currentSlide] ? sliderImages[currentSlide].src : slideDefaults[0];
+
+            if (activeEl) activeEl.classList.remove('lotus-cms-selected-element');
+            if (bgSlides[currentSlide]) {
+              activeEl = bgSlides[currentSlide];
+              activeEl.classList.add('lotus-cms-selected-element');
+            }
+
+            if (window.parent && window.parent !== window) {
+              window.parent.postMessage({
+                type: 'lotus:element-selected',
+                key: activeKey,
+                attrType: 'bg-image',
+                currentVal: curVal,
+                tagName: 'div',
+                sectionId: 'experiences',
+                label: `Real Experiences (Slide ${currentSlide + 1} of 4)`,
+                sliderImages: sliderImages
+              }, '*');
+            }
+            return;
+          }
+        }
+
         let target = null;
         if (e.target.tagName === 'IMG' || e.target.hasAttribute('data-cms-img') || e.target.hasAttribute('data-cms-bg')) {
           target = e.target;
@@ -1081,6 +1154,81 @@
             }
           }
 
+          // Design credit protection check
+          const isCreditLocked = !!(target.closest('#designCredit, .infinite-design-credit, a[href*="infiniteweb.dev"]') || (target.textContent && target.textContent.includes('Infinite Design')));
+
+          // Linked content check (single source of truth enforcement)
+          let isLinked = false;
+          let linkedSource = '';
+          let targetTab = '';
+          let targetSubtab = '';
+          let modalOpenFn = '';
+
+          const path = (window.location.pathname || '').toLowerCase();
+          const isHomePage = path.endsWith('index.html') || path.endsWith('/') || path === '' || !path.includes('.html');
+
+          if (pkgEl || target.closest('#featuredTours, .package-card, .tour-card, .tour-grid-card, .curated-card, .beach-package-card')) {
+            if (isHomePage || target.closest('#featuredTours')) {
+              isLinked = true;
+              linkedSource = 'Tours > Packages';
+              targetTab = 'tours';
+              targetSubtab = 'packages';
+              if (packageSlug) modalOpenFn = "AdminApp.openPackageModal('" + packageSlug + "');";
+            }
+          } else if (target.closest('#categoryShowcase, .cat-showcase-card, [data-category-slug]')) {
+            if (isHomePage || target.closest('#categoryShowcase')) {
+              isLinked = true;
+              linkedSource = 'Tours > Categories';
+              targetTab = 'tours';
+              targetSubtab = 'categories';
+            }
+          } else if (destEl || target.closest('#destinations, #destinationsGrid, .dest-card')) {
+            if (isHomePage || target.closest('#destinations')) {
+              isLinked = true;
+              linkedSource = 'Destinations > Destinations list';
+              targetTab = 'destinations';
+              targetSubtab = 'destinations-list';
+              if (destinationSlug) modalOpenFn = "AdminApp.openDestinationModal('" + destinationSlug + "');";
+            }
+          } else if (target.closest('#experiences, .experience-card, .exp-grid-item, .exp-card')) {
+            if (target.closest('.experience-card, .exp-grid-item, .exp-card')) {
+              isLinked = true;
+              linkedSource = 'Experiences > Experiences list';
+              targetTab = 'experiences';
+              targetSubtab = 'experiences-list';
+            }
+          } else if (target.closest('#reviews, .testimonial-card, .review-card, .reviews-slider')) {
+            if (isHomePage || target.closest('#reviews')) {
+              if (target.closest('.testimonial-card, .review-card, .swiper-slide')) {
+                isLinked = true;
+                linkedSource = 'Reviews > Reviews list';
+                targetTab = 'reviews';
+                targetSubtab = 'reviews-list';
+              }
+            }
+          } else if (target.closest('#gallery, .gallery-grid, .gallery-item')) {
+            if (isHomePage || target.closest('#gallery')) {
+              if (target.closest('.gallery-item, .gallery-thumb, [data-gallery-idx]')) {
+                isLinked = true;
+                linkedSource = 'Gallery > Gallery Images';
+                targetTab = 'gallery';
+                targetSubtab = 'gallery-images';
+              }
+            }
+          } else if (target.closest('#newsInsights, .news-card, .news-card-big, .news-card-side, .footer-recent-posts')) {
+            if (isHomePage || target.closest('#newsInsights, .footer-recent-posts')) {
+              isLinked = true;
+              linkedSource = 'Blog > Blog Posts';
+              targetTab = 'blog';
+              targetSubtab = 'blog-posts';
+            }
+          } else if (target.closest('#teamGrid, .team-card, .team-member-card')) {
+            isLinked = true;
+            linkedSource = 'About Us > Team Members';
+            targetTab = 'about';
+            targetSubtab = 'team';
+          }
+
           // Notify parent frame
           const isWatermark = target.classList.contains('watermark-heading') || (target.className && String(target.className).includes('watermark'));
           if (window.parent && window.parent !== window) {
@@ -1107,7 +1255,13 @@
               sliderImages: sliderImages,
               isHidden: isHidden,
               altText: altText,
-              computedStyles: styleObj
+              computedStyles: styleObj,
+              isCreditLocked: isCreditLocked,
+              isLinked: isLinked,
+              linkedSource: linkedSource,
+              targetTab: targetTab,
+              targetSubtab: targetSubtab,
+              modalOpenFn: modalOpenFn
             }, '*');
           }
         }
@@ -1131,6 +1285,26 @@
           if (lang === 'ar') document.documentElement.dir = 'rtl';
           else document.documentElement.dir = 'ltr';
           this.bindElements();
+        }
+
+        // Activate specific slide in Real Experiences Carousel
+        if (event.data.type === 'lotus:set-wre-slide' || event.data.type === 'lotus:set-real-exp-slide') {
+          const idx = typeof event.data.index === 'number' ? event.data.index : 0;
+          if (window.LotusRealExp && typeof window.LotusRealExp.goTo === 'function') {
+            window.LotusRealExp.goTo(idx);
+          } else {
+            const wreSec = document.querySelector('.real-experiences-sec, .walkers-real-experiences, #experiences');
+            if (wreSec) {
+              const bgSlides = wreSec.querySelectorAll('.real-exp-bg-layer, .wre-bg-slide');
+              const quoteSlides = wreSec.querySelectorAll('.real-exp-slide, .wre-quote-slide');
+              const dots = wreSec.querySelectorAll('.real-exp-dot, .wre-dot');
+              const thumbs = wreSec.querySelectorAll('.real-exp-thumb-btn');
+              bgSlides.forEach((s, i) => s.classList.toggle('is-active', i === idx));
+              quoteSlides.forEach((q, i) => q.classList.toggle('is-active', i === idx));
+              dots.forEach((d, i) => d.classList.toggle('is-active', i === idx));
+              thumbs.forEach((t, i) => t.classList.toggle('is-active', i === idx));
+            }
+          }
         }
 
         // Activate specific story slide in Our Success Stories

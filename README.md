@@ -184,3 +184,93 @@ Within 1–2 minutes, your website will be live at:
 * Touch target sizes minimum 44px for buttons, checkboxes, and pickers.
 * Keyboard navigable (Tab, Enter, Escape on dropdowns).
 * Floating WhatsApp badge positioned conveniently in the bottom-right corner.
+
+
+---
+
+## 🔒 Developer Note: Protected Design Attribution Credit
+
+* **Protected Attribution Text:** `"Website Designed & Developed by Infinite Design"`
+* **Protected Link:** `https://infiniteweb.dev/`
+* **Generator Tag:** `<meta name="generator" content="Built by Infinite Design — https://infiniteweb.dev/">`
+* **Single Source of Truth in Code:**
+  1. `partials/footer.html` (line 137)
+  2. `assets/js/site-data.js` (`SiteData.ensureDesignCredit()`)
+* **Tamper Protection & Locking Rules:**
+  - The design attribution credit is **locked in code** and intentionally **excluded** from the Firestore `pageContent`, `siteSettings`, and CMS JSON registries.
+  - The Admin Panel contains **no fields, toggles, or controls** to edit, hide, or remove this attribution.
+  - In the click-to-edit PageEditor (`admin/js/page-editor.js`), clicking the design attribution displays an informative lock banner explaining that developer attribution is permanently protected.
+  - `SiteData.ensureDesignCredit()` executes on `DOMContentLoaded`, on dynamic hydration (`hydrateDOM()`), and monitors DOM mutations via a `MutationObserver`. If the attribution link, text, or meta generator tag is removed, detached, or rendered invisible (e.g. `display: none`, `visibility: hidden`, `opacity: 0`, zero dimensions), it is automatically reinstated in real time.
+  - **No remote dependencies, kill-switches, phone-home beacons, or obfuscation** are employed; protection is purely client-side code integrity preservation.
+
+---
+
+## 🧭 CMS Administration Guide: Where to Edit What
+
+The Admin Panel navigation mirrors the public website navigation structure. Top-level tabs correspond to website pages, each containing section sub-tabs. Linked dynamic items (tours, categories, destinations, experiences, reviews, gallery photos, and blog posts) are edited in their dedicated source manager to ensure a single source of truth across all pages.
+
+### 1. Home (`index.html`)
+* **Hero** (`#hero`): Hero headline, sub-headline, primary and secondary CTA button labels and URLs, background slides and video.
+* **Why Travel With Us** (`#whyUs`): Section heading, subtext, 4 value pillars (titles, descriptions, and iconography).
+* **Category Showcase** (Linked): Section heading, subheading, and item count. *To manage categories, go to Tours > Categories.*
+* **Featured Tours** (Linked): Section heading, subheading, item count, and display mode (featured/popular). *To manage tour packages, go to Tours > Packages.*
+* **Destinations** (Linked): Section heading, subheading, and item count. *To manage destinations, go to Destinations > Destinations list.*
+* **Experiences** (Linked): Section heading, subheading, and item count. *To manage experiences, go to Experiences > Experiences list.*
+* **Reviews** (Linked): Section heading, subheading, and item count. *To manage reviews, go to Reviews > Reviews list.*
+* **Gallery** (Linked): Section heading, subheading, and item count. *To manage gallery images, go to Gallery > Gallery Images.*
+* **News and Insights** (Linked): Section heading, subheading, and homepage slot assignments (Main Featured & Side Slots 1-4). *To manage articles, go to Blog > Blog Posts.*
+* **Success Stories**: 5 curated traveler stories with guest names, quote narratives, badges, photos, and sort orders.
+* **Sustainability**: Environmental commitment statement, conservation pillars, and community support copy.
+* **SEO**: Meta title, Meta description, Canonical URL, and Open Graph share image.
+
+### 2. Tours (`tours/index.html`)
+* **Page Content**: Tour catalog banner headline, subtitle, Travel Preparation Guide copy (visa regulations, packing advice, local currency, cultural etiquette), and bottom CTA.
+* **Categories**: Tour category definitions (Cultural, Wildlife, Scenic, Beach, Wellness, Adventure), hero banners, taglines, and display order.
+* **Packages**: Full tour package catalog: titles, slugs, categories, durations, prices, highlights, day-by-day itineraries, inclusions/exclusions, popular badges, and publication status.
+* **Trip Finder options**: Durations, travel styles, and budget range options.
+* **SEO**: Meta title, Meta description, and OG image for the Tours page.
+
+### 3. Destinations (`destinations.html`)
+* **Page Content**: Destinations directory headline, subtitle, regional travel overview, and travel advice banner.
+* **Destinations list**: All destination entries: title, region, summary narrative, hero photography, key highlights, best time to visit, and publication status.
+* **SEO**: Meta title, Meta description, and OG image for Destinations.
+
+### 4. Experiences (`experiences.html`)
+* **Page Content**: Experiences page headline, subtitle, and experiential travel guarantee copy.
+* **Experiences list**: Curated experiences: title, category tag, duration, descriptive body, image, activity rating, and publication status.
+* **SEO**: Meta title, Meta description, and OG image for Experiences.
+
+### 5. About Us (`about.html`)
+* **Page Content**: Heritage narrative, company founding story, foundational pillars, director's welcome message, and ethics statement.
+* **Team Members**: Team profiles: name, role, country/flag, profile photograph, sort order, and publication status.
+* **SEO**: Meta title, Meta description, and OG image for About Us.
+
+### 6. Gallery (`gallery.html`)
+* **Page Content**: Visual gallery headline, subtitle, and intro narrative.
+* **Gallery Images**: Curated visual assets: image file (Media Library or upload), alt text, category filter (Wildlife, Culture, Scenic, Heritage), display order, and publication status.
+* **SEO**: Meta title, Meta description, and OG image for Gallery.
+
+### 7. Reviews (`reviews.html`)
+* **Page Content**: Traveler testimonials headline, subtitle, guestbook introduction, and verified reviews promise.
+* **Reviews list**: Customer feedback: guest name, avatar, nationality, rating (1–5 stars), tour taken, testimonial narrative, verified status, and publication status.
+* **SEO**: Meta title, Meta description, and OG image for Reviews.
+
+### 8. Blog (`blog.html`)
+* **Page Content**: Editorial journal headline, subtitle, newsletter signup copy, and reading room intro.
+* **Blog Posts**: Complete article catalog: headline, slug, category, author, read time, publication date, cover photography, full HTML content, and publication status.
+* **SEO**: Meta title, Meta description, and OG image for Blog.
+
+### 9. Contact (`contact.html`)
+* **Page Content**: Inquiries hero headline, subtitle, office hours, and consultation promise.
+* **Contact Details and Social Links**: Primary telephone, WhatsApp hotline, official email, physical office address, Google Maps embed URL, QR codes (WhatsApp, WeChat, LINE), and social media profile URLs.
+* **Inquiry form texts**: Detailed and quick inquiry form field labels, placeholder texts, step indicators, and confirmation thank-you modal copy.
+* **Customer Inquiries**: Central inbox of submitted client inquiries with search, status filters, and export capabilities.
+* **SEO**: Meta title, Meta description, and OG image for Contact.
+
+### 10. Site (Global Infrastructure)
+* **Logo & Branding**: Primary header logo, white footer logo, and browser favicon.
+* **Header and Footer text**: Global navigation bar labels, footer slogan, and legal copyright text.
+* **Social Links**: Global social media profile links (Facebook, Instagram, YouTube, LinkedIn, TripAdvisor).
+* **Media Library**: Upload, search, preview, and replace image assets across the entire website.
+* **Publish / Export to GitHub**: Staging branch validation, automated safety checks, and 1-click publishing to GitHub Pages.
+* **Admin Account & Users**: Administrator credentials, security management, and authentication controls.

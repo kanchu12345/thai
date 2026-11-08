@@ -173,15 +173,32 @@
 
 
       // 3. Hydrate DOM
-
       if (document.readyState === 'loading') {
-
-        document.addEventListener('DOMContentLoaded', () => this.hydrateDOM());
-
+        document.addEventListener('DOMContentLoaded', () => {
+          this.hydrateDOM();
+          this.ensureDesignCredit();
+        });
       } else {
-
         this.hydrateDOM();
+        this.ensureDesignCredit();
+      }
 
+      // Setup MutationObserver to protect design credit integrity
+      if (typeof MutationObserver !== 'undefined' && typeof document !== 'undefined') {
+        try {
+          const targetNode = document.body || document.documentElement;
+          if (targetNode) {
+            const creditObserver = new MutationObserver(() => {
+              this.ensureDesignCredit();
+            });
+            creditObserver.observe(targetNode, {
+              childList: true,
+              subtree: true,
+              attributes: true,
+              attributeFilter: ['style', 'class', 'hidden']
+            });
+          }
+        } catch (e) {}
       }
 
 
@@ -1033,7 +1050,62 @@
 
       this.hydrateBlogs();
       this.hydrateNavigation();
+      this.ensureDesignCredit();
 
+    },
+
+    ensureDesignCredit() {
+      const CREDIT_HTML = 'Website Designed &amp; Developed by <a href="https://infiniteweb.dev/" rel="noopener" target="_blank" style="color: var(--sacred-gold, #C9A84C); font-weight: 600;">Infinite Design</a>';
+      const META_GENERATOR = 'Built by Infinite Design — https://infiniteweb.dev/';
+
+      // 1. Meta generator tag in <head>
+      let meta = document.querySelector('meta[name="generator"]');
+      if (!meta) {
+        meta = document.createElement('meta');
+        meta.name = 'generator';
+        document.head.appendChild(meta);
+      }
+      if (!meta.getAttribute('content') || !meta.getAttribute('content').includes('Infinite Design')) {
+        meta.setAttribute('content', META_GENERATOR);
+      }
+
+      // 2. Footer credit element in .footer-bottom-right
+      let rightEl = document.querySelector('.footer-bottom-right');
+      if (!rightEl) {
+        const bottomRow = document.querySelector('.footer-bottom-inner, .footer-bottom, #siteFooter, footer');
+        if (bottomRow) {
+          rightEl = document.createElement('div');
+          rightEl.className = 'footer-bottom-right';
+          bottomRow.appendChild(rightEl);
+        }
+      }
+
+      if (rightEl) {
+        const link = rightEl.querySelector('a[href*="infiniteweb.dev"]');
+        if (!link || !rightEl.textContent.includes('Infinite Design')) {
+          rightEl.innerHTML = CREDIT_HTML;
+        }
+
+        // Integrity check: enforce visibility (never hidden, never 0 opacity, never 0 font size)
+        try {
+          const comp = window.getComputedStyle ? window.getComputedStyle(rightEl) : null;
+          if (comp) {
+            if (comp.display === 'none') rightEl.style.setProperty('display', 'block', 'important');
+            if (comp.visibility === 'hidden') rightEl.style.setProperty('visibility', 'visible', 'important');
+            if (comp.opacity === '0') rightEl.style.setProperty('opacity', '1', 'important');
+            if (parseFloat(comp.fontSize) === 0) rightEl.style.setProperty('font-size', '0.85rem', 'important');
+          }
+          const aTag = rightEl.querySelector('a');
+          if (aTag) {
+            const aComp = window.getComputedStyle ? window.getComputedStyle(aTag) : null;
+            if (aComp) {
+              if (aComp.display === 'none') aTag.style.setProperty('display', 'inline', 'important');
+              if (aComp.visibility === 'hidden') aTag.style.setProperty('visibility', 'visible', 'important');
+              if (aComp.opacity === '0') aTag.style.setProperty('opacity', '1', 'important');
+            }
+          }
+        } catch (e) {}
+      }
     },
 
 

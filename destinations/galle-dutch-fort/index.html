@@ -14,6 +14,7 @@
 <meta content="../../assets/images/beach/mirissa-1.webp" property="og:image"/>
 <meta content="place" property="og:type"/>
 <link href="../../css/style.css" rel="stylesheet"/>
+<link href="../../css/brand-header.css" rel="stylesheet"/>
 </head>
 <body data-cms-page="destinations/galle-dutch-fort">
 <!-- @include header:start -->
@@ -203,10 +204,10 @@
 </div>
 </div>
 <div>
-<div style="background: #0F172A; color: #FFFFFF; border-radius: 16px; padding: 2.5rem; box-shadow: 0 10px 30px rgba(0,0,0,0.12);">
+<div class="dest-bespoke-card" style="position: relative; border-radius: 16px; padding: 2.5rem; overflow: hidden; box-shadow: 0 14px 40px rgba(0,0,0,0.22); background: linear-gradient(180deg, rgba(15, 23, 42, 0.82) 0%, rgba(15, 23, 42, 0.94) 100%), url('../../assets/images/cultural/galle-fort-5.webp') center/cover no-repeat; color: #FFFFFF; border: 1px solid rgba(212, 175, 55, 0.35);">
 <span data-cms="dest_galle_dutch_fort.tailor_badge" style="color: var(--sacred-gold, #D4AF37); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 0.6rem;">Tailor-Made Journey</span>
-<h3 data-cms="dest_galle-dutch-fort.tailor_title" style="font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 1.6rem; margin: 0 0 1rem; color: #FFFFFF;">Include Galle Dutch Fort in Your Bespoke Ceylon Itinerary</h3>
-<p data-cms="dest_galle_dutch_fort.tailor_desc" style="color: rgba(255,255,255,0.8); font-size: 0.95rem; line-height: 1.6; margin-bottom: 2rem;">
+<h3 data-cms="dest_galle-dutch-fort.tailor_title" style="font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 1.6rem; margin: 0 0 1rem; color: #FFFFFF; text-shadow: 0 2px 6px rgba(0,0,0,0.6)">Include Galle Dutch Fort in Your Bespoke Ceylon Itinerary</h3>
+<p data-cms="dest_galle_dutch_fort.tailor_desc" style="color: #F8FAFC; font-size: 0.98rem; line-height: 1.65; margin-bottom: 2rem; text-shadow: 0 1px 3px rgba(0,0,0,0.5);">
               Let our luxury travel designers curate a seamless, private chauffeur-driven tour incorporating Galle Dutch Fort with luxury boutique stays and personalized excursions.
             </p>
 <a class="btn-primary-gold" data-cms="dest_galle_dutch_fort.tailor_btn" data-cms-link="dest_galle_dutch_fort.tailor_link" href="../../inquiry-detailed.html?destination=Galle%20Dutch%20Fort" style="display: block; text-align: center; padding: 0.85rem 1.5rem; font-weight: 700; text-decoration: none; border-radius: 8px; background: linear-gradient(135deg, #D4AF37, #AA820A); color: #FFFFFF;">
@@ -355,7 +356,7 @@
         <a href="../../cookie-policy.html">Cookie Policy</a>
       </div>
       <div class="footer-bottom-right">
-        Website Designed &amp; Developed by <a href="https://infiniteweb.dev/" rel="noopener" target="_blank" data-cms-link="siteGlobal.branding.developerUrl" style="color: var(--sacred-gold, #C9A84C); font-weight: 600;">Infinite Design</a>
+        Website Designed &amp; Developed by <a href="https://infiniteweb.dev/" rel="noopener" target="_blank" style="color: var(--sacred-gold, #C9A84C); font-weight: 600;">Infinite Design</a>
       </div>
     </div>
   </div>
@@ -384,5 +385,19 @@
 <script defer="" src="../../assets/js/site-data.js"></script>
 <script defer="" src="../../assets/js/mobile-nav.js"></script>
 <script defer="" src="../../assets/js/cms.js?v=20261029_secimg1"></script>
+<script>
+(function() {
+  var header = document.getElementById('siteHeader');
+  if (header) {
+    function onScroll() {
+      if (window.scrollY > 40) header.classList.add('is-scrolled');
+      else header.classList.remove('is-scrolled');
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  }
+})();
+</script>
+
 </body>
 </html>

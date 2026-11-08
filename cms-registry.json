@@ -2,9 +2,9 @@
   "schemaVersion": "2.0",
   "scannedAt": "2026-11-08T15:53:58.080Z",
   "totalPagesScanned": 55,
-  "totalUniqueBindings": 1873,
+  "totalUniqueBindings": 1885,
   "totalPageSpecificBindings": 1842,
-  "totalGlobalBindings": 31,
+  "totalGlobalBindings": 30,
   "fieldsByType": {
     "text": 1600,
     "html": 116,
@@ -313,16 +313,6 @@
       "type": "link",
       "label": "Youtube",
       "defaultValue": "https://youtube.com/dpbs2024tours",
-      "i18n": false
-    },
-    {
-      "page": "siteGlobal/branding",
-      "file": "index.html",
-      "fieldKey": "siteGlobal.branding.developerUrl",
-      "firestorePath": "siteGlobal/branding.developerUrl",
-      "type": "link",
-      "label": "DeveloperUrl",
-      "defaultValue": "https://infiniteweb.dev/",
       "i18n": false
     }
   ],
@@ -10565,7 +10555,7 @@
         "firestorePath": "tourCategories/adventure.cat_adventure.btn_20",
         "type": "text",
         "label": "Action Button (btn_20)",
-        "defaultValue": "WhatsApp Specialist (+94 71 54 22 384)",
+        "defaultValue": "WhatsApp Us (+94 71 54 22 384)",
         "i18n": true
       },
       {
@@ -11161,7 +11151,7 @@
         "firestorePath": "tourCategories/ayurvedic.cat_ayurvedic.btn_20",
         "type": "text",
         "label": "Action Button (btn_20)",
-        "defaultValue": "WhatsApp Specialist (+94 71 54 22 384)",
+        "defaultValue": "WhatsApp Us (+94 71 54 22 384)",
         "i18n": true
       },
       {
@@ -14861,7 +14851,7 @@
         "firestorePath": "tourCategories/family.cat_family.btn_22",
         "type": "text",
         "label": "Action Button (btn_22)",
-        "defaultValue": "WhatsApp Specialist (+94 71 54 22 384)",
+        "defaultValue": "WhatsApp Us (+94 71 54 22 384)",
         "i18n": true
       },
       {
@@ -15579,7 +15569,7 @@
         "firestorePath": "tourCategories/golf.cat_golf.btn_22",
         "type": "text",
         "label": "Action Button (btn_22)",
-        "defaultValue": "WhatsApp Specialist (+94 71 54 22 384)",
+        "defaultValue": "WhatsApp Us (+94 71 54 22 384)",
         "i18n": true
       },
       {
@@ -16317,7 +16307,7 @@
         "firestorePath": "tourCategories/hill-country.cat_hill-country.btn_22",
         "type": "text",
         "label": "Action Button (btn_22)",
-        "defaultValue": "WhatsApp Specialist (+94 71 54 22 384)",
+        "defaultValue": "WhatsApp Us (+94 71 54 22 384)",
         "i18n": true
       },
       {
@@ -16945,7 +16935,7 @@
         "firestorePath": "tourCategories/honeymoon.cat_honeymoon.btn_20",
         "type": "text",
         "label": "Action Button (btn_20)",
-        "defaultValue": "WhatsApp Specialist (+94 71 54 22 384)",
+        "defaultValue": "WhatsApp Us (+94 71 54 22 384)",
         "i18n": true
       },
       {
@@ -17531,7 +17521,7 @@
         "firestorePath": "tourCategories/ramayana.cat_ramayana.btn_20",
         "type": "text",
         "label": "Action Button (btn_20)",
-        "defaultValue": "WhatsApp Specialist (+94 71 54 22 384)",
+        "defaultValue": "WhatsApp Us (+94 71 54 22 384)",
         "i18n": true
       },
       {
@@ -29376,7 +29366,7 @@
       "firestorePath": "tourCategories/adventure.cat_adventure.btn_20",
       "type": "text",
       "label": "Action Button (btn_20)",
-      "defaultValue": "WhatsApp Specialist (+94 71 54 22 384)",
+      "defaultValue": "WhatsApp Us (+94 71 54 22 384)",
       "i18n": true
     },
     {
@@ -29966,7 +29956,7 @@
       "firestorePath": "tourCategories/ayurvedic.cat_ayurvedic.btn_20",
       "type": "text",
       "label": "Action Button (btn_20)",
-      "defaultValue": "WhatsApp Specialist (+94 71 54 22 384)",
+      "defaultValue": "WhatsApp Us (+94 71 54 22 384)",
       "i18n": true
     },
     {
@@ -33636,7 +33626,7 @@
       "firestorePath": "tourCategories/family.cat_family.btn_22",
       "type": "text",
       "label": "Action Button (btn_22)",
-      "defaultValue": "WhatsApp Specialist (+94 71 54 22 384)",
+      "defaultValue": "WhatsApp Us (+94 71 54 22 384)",
       "i18n": true
     },
     {
@@ -34346,7 +34336,7 @@
       "firestorePath": "tourCategories/golf.cat_golf.btn_22",
       "type": "text",
       "label": "Action Button (btn_22)",
-      "defaultValue": "WhatsApp Specialist (+94 71 54 22 384)",
+      "defaultValue": "WhatsApp Us (+94 71 54 22 384)",
       "i18n": true
     },
     {
@@ -35076,7 +35066,7 @@
       "firestorePath": "tourCategories/hill-country.cat_hill-country.btn_22",
       "type": "text",
       "label": "Action Button (btn_22)",
-      "defaultValue": "WhatsApp Specialist (+94 71 54 22 384)",
+      "defaultValue": "WhatsApp Us (+94 71 54 22 384)",
       "i18n": true
     },
     {
@@ -35696,7 +35686,7 @@
       "firestorePath": "tourCategories/honeymoon.cat_honeymoon.btn_20",
       "type": "text",
       "label": "Action Button (btn_20)",
-      "defaultValue": "WhatsApp Specialist (+94 71 54 22 384)",
+      "defaultValue": "WhatsApp Us (+94 71 54 22 384)",
       "i18n": true
     },
     {
@@ -36276,7 +36266,7 @@
       "firestorePath": "tourCategories/ramayana.cat_ramayana.btn_20",
       "type": "text",
       "label": "Action Button (btn_20)",
-      "defaultValue": "WhatsApp Specialist (+94 71 54 22 384)",
+      "defaultValue": "WhatsApp Us (+94 71 54 22 384)",
       "i18n": true
     },
     {
@@ -37587,6 +37577,126 @@
       "type": "text",
       "label": "Page Title / Heading",
       "defaultValue": "Wild Ceylon Predator & Elephant Trail | Lotus Ceylon Luxury Tours",
+      "i18n": true
+    },
+    {
+      "page": "siteContent/home",
+      "file": "index.html",
+      "fieldKey": "home.real_exp_bg_1",
+      "firestorePath": "siteContent/home.home.real_exp_bg_1",
+      "type": "image",
+      "label": "Real Experiences Slide 1 Panoramic Background (Ella Rock)",
+      "defaultValue": "assets/images/experiences/real-experiences-ella-rock-large.webp",
+      "i18n": false
+    },
+    {
+      "page": "siteContent/home",
+      "file": "index.html",
+      "fieldKey": "home.real_exp_bg_2",
+      "firestorePath": "siteContent/home.home.real_exp_bg_2",
+      "type": "image",
+      "label": "Real Experiences Slide 2 Panoramic Background (Sigiriya Citadel)",
+      "defaultValue": "assets/images/cultural/sigiriya-1.webp",
+      "i18n": false
+    },
+    {
+      "page": "siteContent/home",
+      "file": "index.html",
+      "fieldKey": "home.real_exp_bg_3",
+      "firestorePath": "siteContent/home.home.real_exp_bg_3",
+      "type": "image",
+      "label": "Real Experiences Slide 3 Panoramic Background (Wild Elephants & Safari)",
+      "defaultValue": "assets/images/wildlife/minneriya-elephant-gathering-2.webp",
+      "i18n": false
+    },
+    {
+      "page": "siteContent/home",
+      "file": "index.html",
+      "fieldKey": "home.real_exp_quote1_title",
+      "firestorePath": "siteContent/home.home.real_exp_quote1_title",
+      "type": "text",
+      "label": "Real Experiences Quote 1 Title",
+      "defaultValue": "Wonderful Family Trip to Sri Lanka",
+      "i18n": true
+    },
+    {
+      "page": "siteContent/home",
+      "file": "index.html",
+      "fieldKey": "home.real_exp_quote1_text",
+      "firestorePath": "siteContent/home.home.real_exp_quote1_text",
+      "type": "text",
+      "label": "Real Experiences Quote 1 Review Text",
+      "defaultValue": "Wonderful family trip to Sri Lanka. We were a multi-generational group and Lotus Ceylon was able to navigate our interests seamlessly...",
+      "i18n": true
+    },
+    {
+      "page": "siteContent/home",
+      "file": "index.html",
+      "fieldKey": "home.real_exp_quote1_author",
+      "firestorePath": "siteContent/home.home.real_exp_quote1_author",
+      "type": "text",
+      "label": "Real Experiences Quote 1 Author",
+      "defaultValue": "Shalini Castelli and Family",
+      "i18n": true
+    },
+    {
+      "page": "siteContent/home",
+      "file": "index.html",
+      "fieldKey": "home.real_exp_quote2_title",
+      "firestorePath": "siteContent/home.home.real_exp_quote2_title",
+      "type": "text",
+      "label": "Real Experiences Quote 2 Title",
+      "defaultValue": "Pure Magic & Seamless Tailor-Made Planning",
+      "i18n": true
+    },
+    {
+      "page": "siteContent/home",
+      "file": "index.html",
+      "fieldKey": "home.real_exp_quote2_text",
+      "firestorePath": "siteContent/home.home.real_exp_quote2_text",
+      "type": "text",
+      "label": "Real Experiences Quote 2 Review Text",
+      "defaultValue": "Our private journey with Lotus Ceylon was completely flawless from the moment we landed in Colombo...",
+      "i18n": true
+    },
+    {
+      "page": "siteContent/home",
+      "file": "index.html",
+      "fieldKey": "home.real_exp_quote2_author",
+      "firestorePath": "siteContent/home.home.real_exp_quote2_author",
+      "type": "text",
+      "label": "Real Experiences Quote 2 Author",
+      "defaultValue": "Dr. David & Sarah Jenkins",
+      "i18n": true
+    },
+    {
+      "page": "siteContent/home",
+      "file": "index.html",
+      "fieldKey": "home.real_exp_quote3_title",
+      "firestorePath": "siteContent/home.home.real_exp_quote3_title",
+      "type": "text",
+      "label": "Real Experiences Quote 3 Title",
+      "defaultValue": "Bespoke Safari Luxury Beyond All Expectation",
+      "i18n": true
+    },
+    {
+      "page": "siteContent/home",
+      "file": "index.html",
+      "fieldKey": "home.real_exp_quote3_text",
+      "firestorePath": "siteContent/home.home.real_exp_quote3_text",
+      "type": "text",
+      "label": "Real Experiences Quote 3 Review Text",
+      "defaultValue": "We chose Lotus Ceylon for our honeymoon and private safari expedition, and every single detail was curated to perfection...",
+      "i18n": true
+    },
+    {
+      "page": "siteContent/home",
+      "file": "index.html",
+      "fieldKey": "home.real_exp_quote3_author",
+      "firestorePath": "siteContent/home.home.real_exp_quote3_author",
+      "type": "text",
+      "label": "Real Experiences Quote 3 Author",
+      "defaultValue": "Liam & Sophie Tremblay",
       "i18n": true
     }
   ]

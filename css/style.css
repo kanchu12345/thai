@@ -1893,7 +1893,8 @@ ul, ol {
    ========================================================================== */
 .sustainability-sec {
   background: linear-gradient(135deg, #280C17 0%, #3D1223 50%, #1A0710 100%);
-  border-top: 1px solid rgba(201, 84, 81, 0.3);
+  border-top: none !important;
+  margin-top: -1px;
   border-bottom: 1px solid rgba(201, 84, 81, 0.3);
   position: relative;
   overflow: hidden;

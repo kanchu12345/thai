@@ -32,7 +32,7 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..800;1,9..40,300..800&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;family=Inter:wght@300;400;500;600;700&amp;family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&amp;display=swap" rel="stylesheet"/>
 <!-- Master Stylesheet (Lotus Ceylon Luxury Style) -->
 <link href="css/style.css?v=20261022_sleek_btn_v9" rel="stylesheet"/>
-<link href="css/brand-header.css?v=20261108_realexp_v6" rel="stylesheet"/>
+<link href="css/brand-header.css?v=20261109_realexp_light_v1" rel="stylesheet"/>
 <script defer src="https://cdn.jsdelivr.net/npm/dompurify@3.1.6/dist/purify.min.js"></script>
 <script defer src="js/config.js"></script>
 <script defer src="js/dynamic-renderer.js"></script>
@@ -1224,7 +1224,7 @@ SACRED DESTINATIONS </div>
 </section>
 <!-- ==========================================================================
        SECTION 6: REAL EXPERIENCES / GUEST TESTIMONIALS SLIDER
-       (Multi-Image Panoramic with Blurred/Feathered Margins into Lotus Burgundy/Pink)
+       (Clean White Canvas with Pink Watermark & Sunlit Mountain Landscape)
        ========================================================================== -->
 <section class="real-experiences-sec" id="experiences" style="scroll-margin-top: 105px; position: relative;">
   <!-- Anchor Aliases for Nav Links and Smooth Scrolling -->
@@ -1233,41 +1233,33 @@ SACRED DESTINATIONS </div>
   <span id="reviews" style="position: absolute; top: -105px; left: 0; display: block; visibility: hidden; pointer-events: none;"></span>
   <span id="gallery" style="position: absolute; top: -105px; left: 0; display: block; visibility: hidden; pointer-events: none;"></span>
 
-  <!-- Cross-fading Panoramic Background Layers for each experience -->
+  <!-- Cross-fading Panoramic Background Layers for each experience (anchored at bottom with soft white fade, no dark overlays) -->
   <div class="real-exp-bg-layers" aria-hidden="true">
-    <div class="real-exp-bg-layer is-active" style="background-image: url('assets/images/experiences/real-experiences-ella-rock-large.webp');"></div>
-    <div class="real-exp-bg-layer" style="background-image: url('assets/images/home/hero-sigiriya-aerial-1.webp');"></div>
-    <div class="real-exp-bg-layer" style="background-image: url('assets/images/wildlife/yala-leopard-1.webp');"></div>
-    <div class="real-exp-bg-layer" style="background-image: url('assets/images/family/scenic-train-ride-2.webp');"></div>
+    <div class="real-exp-bg-layer is-active" data-cms-bg="home.real_exp_bg_1" style="background-image: url('assets/images/experiences/real-experiences-ella-rock-large.webp');"></div>
+    <div class="real-exp-bg-layer" data-cms-bg="home.real_exp_bg_2" style="background-image: url('assets/images/hill-country/ceylon-tea-tasting-terrace.webp');"></div>
+    <div class="real-exp-bg-layer" data-cms-bg="home.real_exp_bg_3" style="background-image: url('assets/images/cultural/sigiriya-1.webp');"></div>
+    <div class="real-exp-bg-layer" data-cms-bg="home.real_exp_bg_4" style="background-image: url('assets/images/wildlife/minneriya-elephant-gathering-2.webp');"></div>
   </div>
 
-  <!-- Soft Overlay for Typography Readability -->
-  <div class="real-exp-content-overlay" aria-hidden="true"></div>
-
-  <!-- Top Margin Feather & Blur into section above -->
-  <div class="real-exp-top-fade" aria-hidden="true"></div>
-
-  <!-- Bottom Margin Feather & Blur directly into Pink/Burgundy Sustainability Section -->
-  <div class="real-exp-bottom-fade" aria-hidden="true"></div>
-
-  <!-- Vignette Glow softening all outer edges -->
-  <div class="real-exp-vignette" aria-hidden="true"></div>
-
   <div class="real-experiences-inner">
-    <p class="real-exp-watermark-title" data-cms="home.real_exp_watermark">real experiences</p>
+    <!-- Header with Luxury Pink Watermark and Close Heading (Matching Reference Image 2) -->
+    <div class="section-watermark-header real-exp-header">
+      <p class="watermark-heading" data-cms="home.real_exp_watermark">real stories</p>
+      <h2 class="section-header-title" data-cms="home.real_exp_heading">Real Experiences</h2>
+    </div>
 
-    <!-- Interactive Carousel Wrap -->
+    <!-- Interactive Carousel Wrap (with spacious breathing room below heading) -->
     <div class="real-exp-slider-wrap" id="realExpSlider" role="region" aria-roledescription="carousel" aria-label="Guest Real Experiences">
       
-      <!-- Desktop Side Navigation Arrows (matching Image 1 circular design) -->
+      <!-- Desktop Side Circular Navigation Arrows (Matching Reference Image 2) -->
       <button type="button" class="real-exp-nav-btn real-exp-nav-prev" id="realExpPrevBtn" aria-label="Previous traveler experience">
-        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <polyline points="15 18 9 12 15 6"></polyline>
         </svg>
       </button>
 
       <button type="button" class="real-exp-nav-btn real-exp-nav-next" id="realExpNextBtn" aria-label="Next traveler experience">
-        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <polyline points="9 18 15 12 9 6"></polyline>
         </svg>
       </button>
@@ -1275,66 +1267,46 @@ SACRED DESTINATIONS </div>
       <!-- Slides Container -->
       <div class="real-exp-slides-container">
         
-        <!-- Slide 1: Ella Rock / Misty Highlands (Image 2 couple) -->
+        <!-- Slide 1: Family Scenic Train & Tea Country (Matching Image 2 Reference) -->
         <article class="real-exp-slide is-active" aria-hidden="false">
-          <h3 class="real-exp-quote-title">&ldquo;Pure Magic in the Misty Tea Mountains&rdquo;</h3>
-          <p class="real-exp-quote-body">
-            Standing atop the mist-veiled peaks of Ella overlooking the endless emerald valleys was pure magic. Savoring freshly brewed single-estate teas on panoramic plantation balconies, discovering secret waterfalls away from tourist crowds, and the comfort of our luxury chauffeured vehicle made this the most romantic and effortless trip of our lives. Every boutique villa was handpicked with impeccable taste.
-          </p>
-          <div class="real-exp-author-name">&mdash; Liam &amp; Sophie Tremblay, France &mdash;</div>
-          <div class="real-exp-tour-meta">10-Day Romantic Ceylon Highlands &amp; Coastline Escape</div>
-        </article>
-
-        <!-- Slide 2: Sigiriya Rock Citadel & Ancient Kingdoms -->
-        <article class="real-exp-slide" aria-hidden="true">
-          <h3 class="real-exp-quote-title">&ldquo;Three Millennia of Living Heritage &amp; Wonder&rdquo;</h3>
-          <p class="real-exp-quote-body">
-            Ascending the ancient Lion Rock of Sigiriya at sunrise before other travelers arrived was breathtaking. Lotus Ceylon arranged private temple chanting under the sacred Jaya Sri Maha Bodhi in Anuradhapura, accompanied by scholarly guidance that brought 3,000 years of Buddhist chronicles to life. A deeply spiritual, luxurious pilgrimage our family will treasure forever.
-          </p>
-          <div class="real-exp-author-name">&mdash; Zhang Wei &amp; Family, Singapore &mdash;</div>
-          <div class="real-exp-tour-meta">10-Day Sacred Buddhist Triangle &amp; Cultural Connoisseur</div>
-        </article>
-
-        <!-- Slide 3: Yala Leopard Safaris & Big Five Wildlife -->
-        <article class="real-exp-slide" aria-hidden="true">
-          <h3 class="real-exp-quote-title">&ldquo;Bespoke Safari Luxury Beyond All Expectation&rdquo;</h3>
-          <p class="real-exp-quote-body">
-            Our private wildlife expedition with Lotus Ceylon exceeded every hope. From our expert field naturalist and chauffeur guide Nuwan to our luxury tented pavilion bordering Yala, every moment was pristine. Tracking an apex leopard across our dawn safari path and watching hundreds of wild elephants gather at Minneriya made this an unforgettable adventure. Flawless concierge care throughout.
-          </p>
-          <div class="real-exp-author-name">&mdash; Dr. David &amp; Sarah Jenkins, Australia &mdash;</div>
-          <div class="real-exp-tour-meta">14-Day Grand Ceylon Heritage &amp; Leopard Safari</div>
-        </article>
-
-        <!-- Slide 4: Family Scenic Train & Tea Country (Homage to Image 1) -->
-        <article class="real-exp-slide" aria-hidden="true">
-          <h3 class="real-exp-quote-title">&ldquo;Wonderful Multi-Generational Family Holiday&rdquo;</h3>
-          <p class="real-exp-quote-body">
+          <h3 class="real-exp-quote-title" data-cms="home.real_exp_title_1">&ldquo;Wonderful Family Trip to Sri Lanka&rdquo;</h3>
+          <p class="real-exp-quote-body" data-cms="home.real_exp_body_1">
             Wonderful family trip to Sri Lanka. We were a multi-generational group and Lotus Ceylon handled our rhythm effortlessly. Our private chauffeur was extremely knowledgeable about the sites and suggested we do a scenic train ride in Ella for a few stops so the children could experience the magic without fatigue. When a family member needed medical assistance, the team quickly arranged private clinic support without missing a beat. Genuine Sri Lankan warmth and flawlessness.
           </p>
-          <div class="real-exp-author-name">&mdash; Shalini Castelli and Family, United Kingdom &mdash;</div>
-          <div class="real-exp-tour-meta">12-Day Family Heritage, Scenic Highlands &amp; Wildlife Safari</div>
+          <div class="real-exp-author-name" data-cms="home.real_exp_author_1">&mdash; Shalini Castelli and Family, United Kingdom &mdash;</div>
+          <div class="real-exp-tour-meta" data-cms="home.real_exp_tour_1">12-Day Family Heritage, Scenic Highlands &amp; Wildlife Safari</div>
         </article>
 
-      </div>
+        <!-- Slide 2: Ella Rock / Misty Highlands -->
+        <article class="real-exp-slide" aria-hidden="true">
+          <h3 class="real-exp-quote-title" data-cms="home.real_exp_title_2">&ldquo;Pure Magic in the Misty Tea Mountains&rdquo;</h3>
+          <p class="real-exp-quote-body" data-cms="home.real_exp_body_2">
+            Standing atop the mist-veiled peaks of Ella overlooking the endless emerald valleys was pure magic. Savoring freshly brewed single-estate teas on panoramic plantation balconies, discovering secret waterfalls away from tourist crowds, and the comfort of our luxury chauffeured vehicle made this the most romantic and effortless trip of our lives. Every boutique villa was handpicked with impeccable taste.
+          </p>
+          <div class="real-exp-author-name" data-cms="home.real_exp_author_2">&mdash; Liam &amp; Sophie Tremblay, France &mdash;</div>
+          <div class="real-exp-tour-meta" data-cms="home.real_exp_tour_2">10-Day Romantic Ceylon Highlands &amp; Coastline Escape</div>
+        </article>
 
-      <!-- Interactive Destination Thumbnails Selector -->
-      <div class="real-exp-thumbs-row" id="realExpThumbs" role="tablist" aria-label="Select destination experience">
-        <button type="button" class="real-exp-thumb-btn is-active" role="tab" aria-selected="true" aria-label="View Misty Highlands Experience">
-          <img src="assets/images/experiences/real-experiences-ella-rock-large.webp" alt="" class="real-exp-thumb-img">
-          <span>Ella Highlands</span>
-        </button>
-        <button type="button" class="real-exp-thumb-btn" role="tab" aria-selected="false" aria-label="View Sigiriya Heritage Experience">
-          <img src="assets/images/home/hero-sigiriya-aerial-1.webp" alt="" class="real-exp-thumb-img">
-          <span>Sigiriya Citadel</span>
-        </button>
-        <button type="button" class="real-exp-thumb-btn" role="tab" aria-selected="false" aria-label="View Yala Safari Experience">
-          <img src="assets/images/wildlife/yala-leopard-1.webp" alt="" class="real-exp-thumb-img">
-          <span>Yala Leopards</span>
-        </button>
-        <button type="button" class="real-exp-thumb-btn" role="tab" aria-selected="false" aria-label="View Scenic Train Experience">
-          <img src="assets/images/family/scenic-train-ride-2.webp" alt="" class="real-exp-thumb-img">
-          <span>Scenic Tea Train</span>
-        </button>
+        <!-- Slide 3: Sigiriya Rock Citadel & Ancient Kingdoms -->
+        <article class="real-exp-slide" aria-hidden="true">
+          <h3 class="real-exp-quote-title" data-cms="home.real_exp_title_3">&ldquo;Three Millennia of Living Heritage &amp; Wonder&rdquo;</h3>
+          <p class="real-exp-quote-body" data-cms="home.real_exp_body_3">
+            Ascending the ancient Lion Rock of Sigiriya at sunrise before other travelers arrived was breathtaking. Lotus Ceylon arranged private temple chanting under the sacred Jaya Sri Maha Bodhi in Anuradhapura, accompanied by scholarly guidance that brought 3,000 years of Buddhist chronicles to life. A deeply spiritual, luxurious pilgrimage our family will treasure forever.
+          </p>
+          <div class="real-exp-author-name" data-cms="home.real_exp_author_3">&mdash; Zhang Wei &amp; Family, Singapore &mdash;</div>
+          <div class="real-exp-tour-meta" data-cms="home.real_exp_tour_3">10-Day Sacred Buddhist Triangle &amp; Cultural Connoisseur</div>
+        </article>
+
+        <!-- Slide 4: Yala Leopard Safaris & Big Five Wildlife -->
+        <article class="real-exp-slide" aria-hidden="true">
+          <h3 class="real-exp-quote-title" data-cms="home.real_exp_title_4">&ldquo;Bespoke Safari Luxury Beyond All Expectation&rdquo;</h3>
+          <p class="real-exp-quote-body" data-cms="home.real_exp_body_4">
+            Our private wildlife expedition with Lotus Ceylon exceeded every hope. From our expert field naturalist and chauffeur guide Nuwan to our luxury tented pavilion bordering Yala, every moment was pristine. Tracking an apex leopard across our dawn safari path and watching hundreds of wild elephants gather at Minneriya made this an unforgettable adventure. Flawless concierge care throughout.
+          </p>
+          <div class="real-exp-author-name" data-cms="home.real_exp_author_4">&mdash; Dr. David &amp; Sarah Jenkins, Australia &mdash;</div>
+          <div class="real-exp-tour-meta" data-cms="home.real_exp_tour_4">14-Day Grand Ceylon Heritage &amp; Leopard Safari</div>
+        </article>
+
       </div>
 
       <!-- Mobile Navigation Arrows (Shown on smaller screens below quote) -->
@@ -1704,7 +1676,7 @@ SACRED DESTINATIONS </div>
         <a href="./cookie-policy.html">Cookie Policy</a>
       </div>
       <div class="footer-bottom-right">
-        Website Designed &amp; Developed by <a href="https://infiniteweb.dev/" rel="noopener" target="_blank" data-cms-link="siteGlobal.branding.developerUrl" style="color: var(--sacred-gold, #C9A84C); font-weight: 600;">Infinite Design</a>
+        Website Designed &amp; Developed by <a href="https://infiniteweb.dev/" rel="noopener" target="_blank" style="color: var(--sacred-gold, #C9A84C); font-weight: 600;">Infinite Design</a>
       </div>
     </div>
   </div>

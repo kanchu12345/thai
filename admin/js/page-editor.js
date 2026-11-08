@@ -159,6 +159,16 @@
 
       const HOME_SLIDERS = [
         {
+          keys: ['home.real_exp_bg_1', 'home.real_exp_bg_2', 'home.real_exp_bg_3', 'home.real_exp_bg_4'],
+          alts: ['Ella Misty Highlands (Panoramic)', 'Sigiriya Rock Citadel (Panoramic)', 'Kaudulla Wild Elephants Safari (Panoramic)', 'Scenic Ceylon Highlands Train (Panoramic)'],
+          defaults: [
+            'assets/images/experiences/real-experiences-ella-rock-large.webp',
+            'assets/images/home/hero-sigiriya-aerial-1.webp',
+            'assets/images/wildlife/minneriya-elephant-gathering-2.webp',
+            'assets/images/family/scenic-train-ride-2.webp'
+          ]
+        },
+        {
           keys: ['home.img_17', 'home.img_18', 'home.img_19'],
           alts: ['Sigiriya Citadel', 'Polonnaruwa Vatadage', 'Sacred Temple Heritage'],
           defaults: ['assets/images/cultural/sigiriya-1.webp', 'assets/images/cultural/polonnaruwa-gal-vihara-3.webp', 'assets/images/cultural/kandy-temple-of-tooth-4.webp']
@@ -252,6 +262,10 @@
           key: slide.key,
           index: idx
         }, '*');
+        iframe.contentWindow.postMessage({
+          type: 'lotus:set-wre-slide',
+          index: idx
+        }, '*');
       }
 
       // Also directly update active class in iframe DOM if accessible
@@ -307,6 +321,14 @@
 
     getFriendlyFieldTitle(key, attrType, val, item = null) {
       if (!key) return 'Page Element';
+      if (key && key.includes('team_img_')) {
+        const num = key.replace(/.*team_img_/, '');
+        return `👥 Leadership / Global Representative #${num}`;
+      }
+      if (key && key.includes('real_exp_bg_')) {
+        const slideNum = key.replace(/.*real_exp_bg_/, '');
+        return `✨ Real Experiences (Slide ${slideNum} of 4)`;
+      }
       if (item && item.isWatermark) return '🌊 Watermark Background Heading';
       if (item && item.sliderImages && item.sliderImages.length > 1) {
         const currentSlide = (this.activeSliderIndex || 0) + 1;
@@ -610,6 +632,59 @@
       const enVal = this.getEnglishValue(item.key, item.currentVal);
       const isMissingTranslation = !isEnglish && (!currentVal || currentVal === enVal);
       const isHidden = item.isHidden || this.getCurrentValue(item.key + '_hidden', '') === 'true';
+
+      // Protected Design Credit Lock (Part 4)
+      if (item.isCreditLocked || (item.currentVal && item.currentVal.includes('Infinite Design')) || item.key === 'siteGlobal.branding.developerUrl') {
+        body.innerHTML = `
+          <div style="padding: 24px 18px; text-align: center;">
+            <div style="width: 52px; height: 52px; border-radius: 50%; background: #EFF6FF; border: 2px solid #BFDBFE; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; color: #1D4ED8;">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
+            </div>
+            <h4 style="color: #002B49; font-size: 1.05rem; font-weight: 700; margin-bottom: 8px;">Design Attribution Protected</h4>
+            <p style="font-size: 0.85rem; color: #475569; line-height: 1.5; margin-bottom: 16px;">
+              <strong>"Website Designed &amp; Developed by Infinite Design"</strong><br>
+              This developer attribution credit is permanently locked in code and cannot be edited, hidden, or deleted from the admin panel.
+            </p>
+            <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 8px; padding: 12px; font-size: 0.8rem; color: #64748B; text-align: left;">
+              <div>• Single source of truth in code (locked constant)</div>
+              <div>• Automated tamper protection active on all public pages</div>
+              <div>• Non-removable by admin or page editor</div>
+            </div>
+          </div>
+        `;
+        return;
+      }
+
+      // Linked Dynamic Content Lock (Part 2)
+      if (item.isLinked) {
+        body.innerHTML = `
+          <div style="padding: 24px 18px;">
+            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 16px;">
+              <div style="width: 44px; height: 44px; border-radius: 8px; background: #FEF3C7; color: #92400E; display: flex; align-items: center; justify-content: center; font-size: 1.2rem;">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"/></svg>
+              </div>
+              <div>
+                <h4 style="color: #002B49; font-size: 1rem; font-weight: 700; margin: 0;">Linked Dynamic Content</h4>
+                <div style="font-size: 0.78rem; color: #64748B;">Source: ${this.escapeHtml(item.linkedSource || 'Source Catalog')}</div>
+              </div>
+            </div>
+
+            <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 8px; padding: 14px; margin-bottom: 18px;">
+              <p style="font-size: 0.84rem; color: #334155; line-height: 1.5; margin: 0 0 10px 0;">
+                This item is part of a centrally managed collection. To maintain data consistency across all pages, linked items cannot be edited directly inside the visual page preview.
+              </p>
+              <div style="font-size: 0.8rem; font-weight: 600; color: #002B49;">
+                Edit this item in: <span style="color: #D4AF37;">${this.escapeHtml(item.linkedSource || 'Source Manager')}</span>
+              </div>
+            </div>
+
+            <button type="button" class="btn btn-primary btn-block" style="display: flex; align-items: center; justify-content: center; gap: 8px; padding: 10px 16px; font-weight: 700;" onclick="AdminApp.navigateToTab('${item.targetTab || 'home'}', '${item.targetSubtab || ''}'); ${item.modalOpenFn || ''}">
+              <span>Edit this in ${this.escapeHtml(item.linkedSource || 'Source Manager')} &rarr;</span>
+            </button>
+          </div>
+        `;
+        return;
+      }
 
       // Special Success Stories Card Inspector
       if (item.attrType === 'success-stories' || item.key === 'home.success_stories_card') {
@@ -1159,6 +1234,21 @@
       this.openImageEditor(hero.key, hero.label, '🎯 Top Hero Banner', hero.defaultVal, hero.attrType);
     },
 
+    openRealExperiencesEditor() {
+      this.openImageEditor(
+        'home.real_exp_bg_1',
+        'Real Experiences: Slide 1 (Ella Misty Highlands)',
+        '✨ Real Experiences',
+        'assets/images/experiences/real-experiences-ella-rock-large.webp',
+        'bg-image'
+      );
+      const iframe = document.getElementById('visualCmsIframe');
+      if (iframe && iframe.contentWindow) {
+        iframe.contentWindow.postMessage({ type: 'lotus:scroll-to-key', key: 'experiences' }, '*');
+        iframe.contentWindow.postMessage({ type: 'lotus:set-wre-slide', index: 0 }, '*');
+      }
+    },
+
     jumpToSection(secId) {
       this.scrollToSection(secId);
       // Automatically open the primary image for this section if one exists
@@ -1193,6 +1283,39 @@
             defaultUrl: 'assets/images/home/hero-sigiriya-aerial-1.webp',
             attrType: 'image'
           },
+          {
+            key: 'home.real_exp_bg_1',
+            label: 'Real Experiences: Slide 1 (Ella Misty Highlands Panoramic Photo)',
+            sectionName: '✨ Real Experiences Slides',
+            sectionId: 'experiences',
+            defaultUrl: 'assets/images/experiences/real-experiences-ella-rock-large.webp',
+            attrType: 'bg-image'
+          },
+          {
+            key: 'home.real_exp_bg_2',
+            label: 'Real Experiences: Slide 2 (Sigiriya Rock Citadel Panoramic Photo)',
+            sectionName: '✨ Real Experiences Slides',
+            sectionId: 'experiences',
+            defaultUrl: 'assets/images/cultural/sigiriya-1.webp',
+            attrType: 'bg-image'
+          },
+          {
+            key: 'home.real_exp_bg_3',
+            label: 'Real Experiences: Slide 3 (Kaudulla Wild Elephants & Safari Photo)',
+            sectionName: '✨ Real Experiences Slides',
+            sectionId: 'experiences',
+            defaultUrl: 'assets/images/wildlife/minneriya-elephant-gathering-2.webp',
+            attrType: 'bg-image'
+          },
+          {
+            key: 'home.real_exp_bg_4',
+            label: 'Real Experiences: Slide 4 (Scenic Ceylon Highlands Train Photo)',
+            sectionName: '✨ Real Experiences Slides',
+            sectionId: 'experiences',
+            defaultUrl: 'assets/images/family/scenic-train-ride-2.webp',
+            attrType: 'bg-image'
+          },
+
           {
             key: 'home.img_1',
             label: 'About & Our Story: Main Sigiriya Photo',
@@ -1441,8 +1564,17 @@
         return [
           { key: 'about.hero_bg', label: 'About Us Hero Banner', sectionName: '🎯 Hero Banner', sectionId: 'hero', defaultUrl: 'assets/images/about/hospitality-scenes-1.webp', attrType: 'bg-image' },
           { key: 'about.img_1', label: 'Our Story: Sacred Heritage Feature Photo', sectionName: '🏛️ Our Story', sectionId: 'about', defaultUrl: 'assets/images/buddhist-heritage/ruwanwelisaya-2.webp', attrType: 'image' },
-          { key: 'about.img_2', label: 'Our Story: Philosophy & Hospitality Photo', sectionName: '🏛️ Our Story', sectionId: 'about', defaultUrl: 'assets/images/about/hospitality-scenes-1.webp', attrType: 'image' },
-          { key: 'about.img_3', label: 'Leadership: Director & Founders Photo', sectionName: '👥 Team & Leadership', sectionId: 'team', defaultUrl: 'assets/images/about/hospitality-scenes-1.webp', attrType: 'image' },
+          { key: 'about.team_img_1', label: 'CEO & Founder: Mallawa Arachchige Dhushantha Gihan Mallawaarachchi (Sri Lanka 🇱🇰)', sectionName: '👥 Leadership & Representatives', sectionId: 'ourPeople', defaultUrl: 'assets/images/team/avatar-dg.svg', attrType: 'image' },
+          { key: 'about.team_img_2', label: 'Global Representative 1: Mr. Kuenga Yarpel (Bhutan 🇧🇹)', sectionName: '👥 Leadership & Representatives', sectionId: 'ourPeople', defaultUrl: 'assets/images/team/avatar-ky.svg', attrType: 'image' },
+          { key: 'about.team_img_3', label: 'Global Representative 2: United Kingdom & Ireland (🇬🇧)', sectionName: '👥 Leadership & Representatives', sectionId: 'ourPeople', defaultUrl: 'assets/images/team/rep-uk.svg', attrType: 'image' },
+          { key: 'about.team_img_4', label: 'Global Representative 3: Australia & New Zealand (🇦🇺)', sectionName: '👥 Leadership & Representatives', sectionId: 'ourPeople', defaultUrl: 'assets/images/team/rep-australia.svg', attrType: 'image' },
+          { key: 'about.team_img_5', label: 'Global Representative 4: Germany & DACH (🇩🇪)', sectionName: '👥 Leadership & Representatives', sectionId: 'ourPeople', defaultUrl: 'assets/images/team/rep-germany.svg', attrType: 'image' },
+          { key: 'about.team_img_6', label: 'Global Representative 5: France & Benelux (🇫🇷)', sectionName: '👥 Leadership & Representatives', sectionId: 'ourPeople', defaultUrl: 'assets/images/team/rep-france.svg', attrType: 'image' },
+          { key: 'about.team_img_7', label: 'Global Representative 6: United States & Canada (🇺🇸)', sectionName: '👥 Leadership & Representatives', sectionId: 'ourPeople', defaultUrl: 'assets/images/team/rep-usa.svg', attrType: 'image' },
+          { key: 'about.team_img_8', label: 'Global Representative 7: Greater China & WeChat (🇨🇳)', sectionName: '👥 Leadership & Representatives', sectionId: 'ourPeople', defaultUrl: 'assets/images/team/rep-china.svg', attrType: 'image' },
+          { key: 'about.team_img_9', label: 'Global Representative 8: Japan & LINE Concierge (🇯🇵)', sectionName: '👥 Leadership & Representatives', sectionId: 'ourPeople', defaultUrl: 'assets/images/team/rep-japan.svg', attrType: 'image' },
+          { key: 'about.team_img_10', label: 'Global Representative 9: India & South Asia (🇮🇳)', sectionName: '👥 Leadership & Representatives', sectionId: 'ourPeople', defaultUrl: 'assets/images/team/rep-india.svg', attrType: 'image' },
+          { key: 'about.team_img_11', label: 'Global Representative 10: UAE & Middle East (🇦🇪)', sectionName: '👥 Leadership & Representatives', sectionId: 'ourPeople', defaultUrl: 'assets/images/team/rep-uae.svg', attrType: 'image' },
           ctaBg
         ];
       }
@@ -1549,6 +1681,36 @@
             </button>
           </div>
 
+          <!-- 2b. Real Experiences Panoramic Slides Card -->
+          <div style="background: linear-gradient(135deg, #0A192F, #002B49); border: 1px solid #D4AF37; border-radius: 8px; padding: 14px; margin-bottom: 16px; color: #FFFFFF; text-align: left; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
+              <strong style="color: #D4AF37; font-size: 0.95rem;">✨ Real Experiences Slides</strong>
+              <span class="badge" style="background: rgba(212, 175, 55, 0.25); color: #F8E5DD; font-size: 0.72rem;">4 Panoramic Slides</span>
+            </div>
+            <p style="font-size: 0.76rem; color: #CBD5E1; margin: 0 0 10px 0;">Customize the full-width panoramic background photos (Ella Rock, Sigiriya, Kaudulla Elephants, Scenic Train).</p>
+            <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin-bottom: 10px;">
+              <div style="text-align: center;">
+                <img src="${this.resolvePreviewUrl(this.getCurrentValue('home.real_exp_bg_1', 'assets/images/experiences/real-experiences-ella-rock-large.webp'))}" style="width: 100%; height: 42px; object-fit: cover; border-radius: 4px; border: 1px solid #D4AF37;" onerror="this.src='../assets/images/placeholder.png'"/>
+                <span style="font-size: 0.65rem; color: #94A3B8; display: block; margin-top: 2px;">1: Ella</span>
+              </div>
+              <div style="text-align: center;">
+                <img src="${this.resolvePreviewUrl(this.getCurrentValue('home.real_exp_bg_2', 'assets/images/home/hero-sigiriya-aerial-1.webp'))}" style="width: 100%; height: 42px; object-fit: cover; border-radius: 4px; border: 1px solid #D4AF37;" onerror="this.src='../assets/images/placeholder.png'"/>
+                <span style="font-size: 0.65rem; color: #94A3B8; display: block; margin-top: 2px;">2: Sigiriya</span>
+              </div>
+              <div style="text-align: center;">
+                <img src="${this.resolvePreviewUrl(this.getCurrentValue('home.real_exp_bg_3', 'assets/images/wildlife/minneriya-elephant-gathering-2.webp'))}" style="width: 100%; height: 42px; object-fit: cover; border-radius: 4px; border: 1px solid #D4AF37;" onerror="this.src='../assets/images/placeholder.png'"/>
+                <span style="font-size: 0.65rem; color: #94A3B8; display: block; margin-top: 2px;">3: Elephants</span>
+              </div>
+              <div style="text-align: center;">
+                <img src="${this.resolvePreviewUrl(this.getCurrentValue('home.real_exp_bg_4', 'assets/images/family/scenic-train-ride-2.webp'))}" style="width: 100%; height: 42px; object-fit: cover; border-radius: 4px; border: 1px solid #D4AF37;" onerror="this.src='../assets/images/placeholder.png'"/>
+                <span style="font-size: 0.65rem; color: #94A3B8; display: block; margin-top: 2px;">4: Train</span>
+              </div>
+            </div>
+            <button type="button" class="btn btn-gold btn-sm btn-block" onclick="PageEditor.openRealExperiencesEditor()" style="font-weight: 700;">
+              ✨ Edit Real Experiences Images &amp; Slides
+            </button>
+          </div>
+
           <!-- 3. All Section Showcase & Hero Images on this Page -->
           <div style="margin-bottom: 20px;">
             <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
@@ -1576,6 +1738,10 @@
             <div class="quick-jump-card" onclick="PageEditor.openHeroBannerEditor()" style="border: 1px solid #D4AF37; background: #FFFDF8;">
               <span class="qj-icon">🎯</span>
               <span class="qj-label" style="font-weight: 700; color: #92400E;">Hero Banner</span>
+            </div>
+            <div class="quick-jump-card" onclick="PageEditor.openRealExperiencesEditor()" style="border: 1px solid #D4AF37; background: #FFFDF8;">
+              <span class="qj-icon">✨</span>
+              <span class="qj-label" style="font-weight: 700; color: #92400E;">Real Experiences</span>
             </div>
             <div class="quick-jump-card" onclick="PageEditor.jumpToSection('about')">
               <span class="qj-icon">🏛️</span>

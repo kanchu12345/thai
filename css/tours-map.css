@@ -2733,3 +2733,8 @@ figure.video iframe,
   box-shadow: 0 12px 26px rgba(37, 211, 102, 0.4) !important;
   transform: translateY(-2px);
 }
+
+/* Suppress accessible text itinerary button across all tour map pages */
+.lotus-map-accessible-fallback {
+  display: none !important;
+}

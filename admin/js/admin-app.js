@@ -1033,7 +1033,7 @@ window.uploadToCloudinary = uploadToCloudinary;
 
     currentRole: 'editor',
 
-    activeSection: 'dashboard',
+    activeSection: 'page-editor',
 
     lastActivity: Date.now(),
 
@@ -1569,7 +1569,7 @@ resolveImg(url) {
           }, 100);
         }
       } else {
-        this.switchSection(this.activeSection || 'dashboard');
+        this.switchSection(this.activeSection || 'page-editor');
       }
     },
 
@@ -1992,10 +1992,11 @@ resolveImg(url) {
     },
 
     switchSection(sectionId) {
+      if (sectionId === 'dashboard') sectionId = 'page-editor';
       if (this.currentRole !== 'super_admin' && (sectionId === 'users' || sectionId === 'settings' || sectionId === 'forms-editor')) {
         this.showToast('Access denied: Users & Roles section is restricted to Super Admins.', 'error');
-        this.activeSection = 'dashboard';
-        sectionId = 'dashboard';
+        this.activeSection = 'page-editor';
+        sectionId = 'page-editor';
       }
 
       if (this.unsavedChanges && !confirm('You have unsaved changes. Discard and switch section?')) {
@@ -3123,82 +3124,10 @@ resolveImg(url) {
     },
 
     renderDashboard() {
-
-      // Counts
-
-      const totalPackages = this.packages.length;
-
-      const newInquiries = this.inquiries.filter(i => i.status === 'new').length;
-
-      const monthInquiries = this.inquiries.length;
-
-      const totalReviews = this.reviews.length;
-
-
-
-      const catCountEl = document.getElementById('statCategoriesCount');
-      if (catCountEl) catCountEl.textContent = this.categories.length || 11;
-
-      const destCountEl = document.getElementById('statDestinationsCount');
-      if (destCountEl) destCountEl.textContent = this.destinations.length || 24;
-
-      const pkgCountEl = document.getElementById('statPackagesCount');
-      if (pkgCountEl) pkgCountEl.textContent = totalPackages;
-
-      const newInqEl = document.getElementById('statNewInquiriesCount');
-      if (newInqEl) newInqEl.textContent = newInquiries;
-
-      const totalInqEl = document.getElementById('statMonthInquiriesCount');
-      if (totalInqEl) totalInqEl.textContent = monthInquiries;
-
-      const revCountEl = document.getElementById('statReviewsCount');
-      if (revCountEl) revCountEl.textContent = totalReviews;
-
-      const unreadBadge = document.getElementById('unreadInquiriesBadge');
+      // Unread inquiries badge update (safe when dashboard view is removed)
+      const newInquiries = (this.inquiries || []).filter(i => i.status === "new").length;
+      const unreadBadge = document.getElementById("unreadInquiriesBadge");
       if (unreadBadge) unreadBadge.textContent = newInquiries;
-
-      this.checkGoLiveStatus(false);
-      this.initDashboardCharts();
-      this.renderAuditTrail();
-
-
-
-      // Recent 5 Inquiries (if table exists)
-      const tbody = document.getElementById('dashboardInquiriesTbody');
-      if (tbody) {
-        const recent = this.inquiries.slice(0, 5);
-        if (recent.length === 0) {
-          tbody.innerHTML = '<tr><td colspan="7" style="text-align: center; color: var(--ink-muted);">No inquiries received yet.</td></tr>';
-        } else {
-          tbody.innerHTML = recent.map(inq => {
-            const refNo = this.escapeHtml(inq.reference_no || 'N/A');
-            const refAttr = this.escapeAttr(inq.reference_no || '');
-            const name = this.escapeHtml(inq.full_name || 'Guest');
-            const country = this.escapeHtml(inq.country || '');
-            const email = this.escapeHtml(inq.email || '');
-            const phone = this.escapeHtml(inq.phone || 'N/A');
-            const dates = this.escapeHtml(inq.travel_dates || 'Flexible');
-            const pax = this.escapeHtml(String(inq.travelers_count || 2));
-            const status = this.escapeHtml(inq.status || 'new');
-            return `
-            <tr>
-              <td><strong style="color: var(--lotus-primary); font-size: 0.8rem;">${refNo}</strong></td>
-              <td><strong>${name}</strong><br><small style="color: var(--ink-muted);">${country}</small></td>
-              <td>${email}<br><small style="color: var(--ink-muted);">${phone}</small></td>
-              <td>${dates}<br><small>${pax} Pax</small></td>
-              <td><span class="badge ${this.getInquiryBadgeClass(inq.status)}">${status}</span></td>
-              <td><small style="color: var(--ink-muted);">${this.formatDate(inq.created_at)}</small></td>
-              <td>
-                <button class="btn btn-outline btn-sm" onclick="AdminApp.viewInquiry('${refAttr}')">View</button>
-              </td>
-            </tr>
-          `;
-          }).join('');
-        }
-      }
-      this.initDashboardCharts();
-      this.renderAuditTrail();
-
     },
 
 

@@ -589,7 +589,7 @@
     const faqs = customFaqs || DEFAULT_FAQS;
 
     const accordionHtml = faqs.map((faq, idx) => `
-      <details class="lotus-faq-item" ${idx === 0 ? 'open' : ''}>
+      <details class="lotus-faq-item" name="lotus-faq-group" ${idx === 0 ? 'open' : ''}>
         <summary class="lotus-faq-question">
           <span class="faq-q-text">${faq.q}</span>
           <span class="faq-chevron">▾</span>
@@ -612,6 +612,33 @@
         </div>
       </div>
     `;
+
+    // Auto-close previously opened FAQ item when another is opened (single active accordion)
+    const allDetails = container.querySelectorAll('details.lotus-faq-item');
+    allDetails.forEach(details => {
+      details.addEventListener('toggle', function() {
+        if (this.open) {
+          allDetails.forEach(other => {
+            if (other !== this && other.open) {
+              other.open = false;
+            }
+          });
+        }
+      });
+    });
+
+    container.addEventListener('click', function(e) {
+      const summary = e.target.closest('.lotus-faq-question');
+      if (!summary) return;
+      const current = summary.closest('details.lotus-faq-item');
+      if (!current || current.open) return;
+
+      allDetails.forEach(other => {
+        if (other !== current && other.open) {
+          other.open = false;
+        }
+      });
+    });
 
     // Inject FAQPage JSON-LD schema into head
     injectFAQSchema(faqs);
