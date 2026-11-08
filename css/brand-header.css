@@ -335,27 +335,20 @@
   display: grid !important;
   grid-template-columns: 1.05fr 1.25fr !important;
   gap: clamp(2.5rem, 4.5vw, 4.75rem) !important;
-  align-items: stretch !important;
+  align-items: center !important;
 }
 
 .about-visual-composition {
   position: relative !important;
   width: 100% !important;
-  height: 100% !important;
-  min-height: 520px !important;
-  display: flex !important;
-  flex-direction: column !important;
   padding-right: 1.5rem !important;
   padding-bottom: 1.75rem !important;
-  box-sizing: border-box !important;
 }
 
 .about-img-main {
   position: relative !important;
   width: 100% !important;
-  height: 100% !important;
-  min-height: 520px !important;
-  flex: 1 1 auto !important;
+  height: 520px !important;
   border-radius: 22px !important;
   overflow: hidden !important;
   box-shadow: 0 20px 48px rgba(0, 43, 73, 0.12), 0 4px 14px rgba(0, 0, 0, 0.04) !important;
@@ -660,7 +653,7 @@
 .editorial-intro-wrapper {
   display: flex !important;
   flex-direction: column !important;
-  justify-content: flex-start !important;
+  justify-content: center !important;
   padding: 0.25rem 0.5rem !important;
 }
 
@@ -1402,11 +1395,8 @@
   .about-luxury-split-grid {
     grid-template-columns: 1fr !important;
     gap: 3rem !important;
-    align-items: start !important;
   }
   .about-visual-composition {
-    height: auto !important;
-    min-height: unset !important;
     max-width: 520px !important;
     margin: 0 auto !important;
     padding-right: 1rem !important;
@@ -1414,8 +1404,6 @@
   }
   .about-img-main {
     height: 420px !important;
-    min-height: unset !important;
-    flex: none !important;
   }
   .about-experience-seal {
     left: 0.5rem !important;
@@ -2881,6 +2869,49 @@ body {
   pointer-events: none !important;
 }
 
+
+/* ==============================================================================
+ * WHY US HEADER ROW WITH PARALLEL SUCCESS STORIES LANDSCAPE CARD
+ * ============================================================================== */
+.why-us-header-flex {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: clamp(1.5rem, 3.5vw, 3.5rem) !important;
+  margin-bottom: 2.75rem !important;
+}
+
+.why-us-heading-col {
+  flex: 0 1 auto !important;
+  max-width: 480px !important;
+}
+
+.why-us-heading-col .heading--60 {
+  margin-bottom: 0 !important;
+}
+
+.why-us-header-flex .success-stories-card-wrapper {
+  margin-top: 0 !important;
+  flex: 1 1 540px !important;
+  max-width: 660px !important;
+  width: 100% !important;
+}
+
+@media (max-width: 991px) {
+  .why-us-header-flex {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 2rem !important;
+    margin-bottom: 2rem !important;
+  }
+  .why-us-heading-col {
+    max-width: 100% !important;
+  }
+  .why-us-header-flex .success-stories-card-wrapper {
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+}
 
 /* ==============================================================================
  * OUR SUCCESS STORIES LANDSCAPE CARD COMPONENT
