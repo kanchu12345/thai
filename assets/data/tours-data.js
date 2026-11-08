@@ -5,14 +5,16 @@
  * https://infiniteweb.dev/
  */
 /**
- * Single Source of Truth for Lotus Ceylon Tours & Categories
- * Defines all 11 Curated Holiday Themes and 29 Handcrafted Packages.
- * Auto-generated from data/packages.json
+ * ============================================================================
+ * GENERATED FILE - DO NOT EDIT DIRECTLY
+ * Single Source of Truth is /data/packages.json
+ * Regenerate with: node scripts/sync-tours-data.js
+ * ============================================================================
  */
 (function() {
   'use strict';
   const toursData = {
-  "version": "2026.11.09",
+  "version": "2026.11.08",
   "totalCategories": 11,
   "totalPackages": 29,
   "categories": [
