@@ -1,0 +1,561 @@
+/*
+ * © 2026 Infinite Design. All rights reserved.
+ * Built for Lotus Ceylon International Tours & Services (Pvt) Ltd.
+ * Unauthorized removal of attribution does not transfer ownership of this code.
+ * https://infiniteweb.dev/
+ *
+ * HERO BANNERS & WIPE-IN TEXT ANIMATIONS SYSTEM (Unified Master Standard)
+ * Supports all 10 languages (EN, ZH-TW, ZH-CN, FR, DE, RU, ES, IT, JA, AR [RTL], HI, VI)
+ */
+
+/* ==============================================================================
+ * 1. CSS VARIABLES & SYSTEM FOUNDATIONS
+ * ============================================================================== */
+:root {
+  --header-h: 120px;
+  --anim-wipe-duration: 0.9s;
+  --anim-fade-duration: 0.7s;
+  --anim-ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --hero-content-max-w: 800px;
+}
+
+@media (max-width: 1024px) {
+  :root {
+    --header-h: 80px;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --header-h: 72px;
+  }
+}
+
+/* ==============================================================================
+ * 2. HERO BANNERS — UNIVERSAL CENTERED LAYOUT & READABILITY SCRIM
+ * ============================================================================== */
+
+/* Universal Hero Container:
+ * - Padding-top equal to fixed header height (--header-h)
+ * - Vertically centers content in remaining space
+ * - Horizontally centers all content
+ */
+.banner-section,
+.about-hero,
+.dest-hero,
+.exp-hero,
+.gallery-hero,
+.reviews-hero,
+.blog-hero,
+.contact-hero,
+.legal-hero,
+.hero-banner,
+.destination-detail-hero,
+.tours-hero-banner,
+.banner-section-inner,
+.beach-hero-banner,
+.tour-banner-walkers,
+.notfound-section,
+[data-hero="true"] {
+  position: relative !important;
+  box-sizing: border-box !important;
+  padding-top: var(--header-h) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important; /* Vertically center in remaining space */
+  align-items: center !important;     /* Horizontally center */
+  text-align: center !important;
+  min-height: max(72vh, 520px) !important;
+  width: 100% !important;
+  overflow: hidden !important;
+}
+
+/* Home hero is full viewport */
+.banner-section#home {
+  min-height: 100vh !important;
+}
+
+/* Form and legal pages */
+.legal-hero,
+.contact-hero,
+.hero-banner {
+  min-height: max(55vh, 440px) !important;
+  padding-bottom: 3.5rem !important;
+}
+
+/* Dark gradient / radial overlay behind the text so it stays readable over hero image/video */
+.banner-section::before,
+.about-hero::before,
+.dest-hero::before,
+.exp-hero::before,
+.gallery-hero::before,
+.reviews-hero::before,
+.blog-hero::before,
+.contact-hero::before,
+.legal-hero::before,
+.hero-banner::before,
+.destination-detail-hero::before,
+.tours-hero-banner::before,
+.banner-section-inner::before,
+.beach-hero-banner::before,
+.tour-banner-walkers::before,
+.notfound-section::before {
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 !important;
+  background: radial-gradient(circle at center, rgba(7, 21, 38, 0.72) 0%, rgba(7, 21, 38, 0.88) 65%, rgba(5, 15, 28, 0.96) 100%),
+              linear-gradient(180deg, rgba(0, 20, 36, 0.6) 0%, rgba(0, 20, 36, 0.35) 45%, rgba(0, 20, 36, 0.85) 100%) !important;
+  pointer-events: none !important;
+  z-index: 2 !important;
+}
+
+/* Ensure background picture/video stays beneath the dark overlay */
+.hero-picture-bg,
+.hero-img-bg,
+.video-banner-video,
+.video-banner-slide {
+  z-index: 1 !important;
+}
+
+/* Hero Content Wrapper:
+ * Placed above overlay (z-index: 5), centered horizontally and vertically
+ */
+.banner-content-wrap,
+.video-banner-slide .banner-content-wrap,
+.about-hero-content,
+.about-hero .wrapper--80,
+.dest-hero > .wrapper--80,
+.exp-hero > .wrapper--80,
+.gallery-hero > .wrapper--80,
+.reviews-hero > .wrapper--80,
+.blog-hero > .wrapper--80,
+.contact-hero-content,
+.contact-hero .wrapper--90,
+.legal-hero-content,
+.legal-hero .wrapper--90,
+.beach-hero-content,
+.beach-hero-banner .wrapper--80,
+.hero-content,
+.tours-hero-banner > .wrapper--90,
+.banner-section-inner > .wrapper--90,
+.destination-detail-hero .site-container,
+.tour-banner-walkers .wrapper--90,
+.tour-overview-walkers .wrapper--70,
+.notfound-card,
+.banner-text-inner {
+  position: relative !important;
+  z-index: 5 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  margin-inline: auto !important;
+  max-width: 960px !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+/* 1. Breadcrumbs in Hero - Centered */
+.beach-breadcrumb,
+.category-breadcrumb,
+.tours-breadcrumbs,
+.hero-breadcrumbs,
+.tour-breadcrumb,
+nav[aria-label="Breadcrumb"],
+nav[aria-label="Breadcrumbs"] {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  margin-inline: auto !important;
+  flex-wrap: wrap !important;
+  gap: 0.5rem !important;
+  margin-bottom: 1.1rem !important;
+  color: rgba(255, 255, 255, 0.85) !important;
+}
+
+.beach-breadcrumb a,
+.category-breadcrumb a,
+.tours-breadcrumbs a,
+.hero-breadcrumbs a,
+.tour-breadcrumb a {
+  color: #FFFFFF !important;
+  text-decoration: none !important;
+}
+
+/* 2. Badge Pills in Hero - Centered */
+.banner-subtitle-badge,
+.sacred-badge-tag,
+.about-badge,
+.hero-badge,
+.legal-hero-badge,
+.tour-badge-pill-walkers,
+.destination-detail-hero .badge,
+.notfound-eyebrow,
+.hero-pill {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  margin-inline: auto !important;
+  margin-bottom: 1.25rem !important;
+  max-width: fit-content !important;
+}
+
+/* 3. Hero H1 - Centered, Responsive clamp(), Text Shadow */
+.banner-main-title,
+.about-hero-title,
+.beach-hero-title,
+.tours-hero-title,
+.hero-title,
+.tour-title-walkers,
+.heading--60,
+.notfound-title,
+.destination-detail-hero h1,
+.contact-hero h1,
+.legal-hero h1,
+.dest-hero h1,
+.exp-hero h1,
+.gallery-hero h1,
+.reviews-hero h1,
+.blog-hero h1 {
+  text-align: center !important;
+  margin-inline: auto !important;
+  max-width: 950px !important;
+  width: 100% !important;
+  font-size: clamp(2.2rem, 5.5vw, 4rem) !important;
+  line-height: 1.14 !important;
+  margin-bottom: 1.35rem !important;
+  color: #FFFFFF !important;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.7), 0 1px 4px rgba(0, 0, 0, 0.85) !important;
+}
+
+.banner-main-title span,
+.about-hero-title span,
+.beach-hero-title span,
+.tours-hero-title span,
+.hero-title span,
+.hero-title-main,
+.hero-title-accent,
+.hero-line {
+  text-align: center !important;
+  display: inline-block !important;
+}
+
+/* 4. Hero Paragraph - max-width ~800px, margin-inline: auto, text-align: center */
+.banner-text-inner p,
+.banner-content-wrap p,
+.about-hero-sub,
+.beach-hero-lead,
+.tours-hero-lead,
+.hero-slogan,
+.tour-desc-walkers p,
+.destination-detail-hero p,
+.legal-hero-sub,
+.contact-hero p,
+.dest-hero p,
+.exp-hero p,
+.gallery-hero p,
+.reviews-hero p,
+.blog-hero p,
+.notfound-desc,
+.hero-lead,
+.paragraph--20 {
+  max-width: var(--hero-content-max-w) !important;
+  margin-inline: auto !important;
+  text-align: center !important;
+  font-size: clamp(1rem, 2.3vw, 1.25rem) !important;
+  line-height: 1.72 !important;
+  color: rgba(241, 245, 249, 0.95) !important;
+  margin-bottom: 2.25rem !important;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.7) !important;
+}
+
+/* 5. Hero CTA Buttons Row - justify-content: center, wrap on small screens */
+.banner-actions,
+.about-hero-actions,
+.beach-hero-cta-row,
+.notfound-actions,
+.hero-cta-row,
+.cta-btn-group,
+.tour-overview-walkers .wrapper--70 > div[style*="display: flex"],
+.dest-search-bar {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  flex-wrap: wrap !important;
+  gap: 1.25rem !important;
+  margin-inline: auto !important;
+  width: 100% !important;
+  max-width: 800px !important;
+}
+
+/* Android (≤480px) Responsiveness */
+@media (max-width: 480px) {
+  .banner-section,
+  .about-hero,
+  .dest-hero,
+  .exp-hero,
+  .gallery-hero,
+  .reviews-hero,
+  .blog-hero,
+  .contact-hero,
+  .legal-hero,
+  .hero-banner,
+  .destination-detail-hero,
+  .tours-hero-banner,
+  .banner-section-inner,
+  .beach-hero-banner,
+  .tour-banner-walkers,
+  .notfound-section {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+    padding-bottom: 2.5rem !important;
+    min-height: max(65vh, 480px) !important;
+    overflow-x: hidden !important;
+  }
+
+  .banner-main-title,
+  .about-hero-title,
+  .beach-hero-title,
+  .tours-hero-title,
+  .hero-title,
+  .tour-title-walkers,
+  .heading--60,
+  .notfound-title,
+  .destination-detail-hero h1,
+  .contact-hero h1,
+  .legal-hero h1,
+  .dest-hero h1,
+  .exp-hero h1,
+  .gallery-hero h1,
+  .reviews-hero h1,
+  .blog-hero h1 {
+    font-size: clamp(1.65rem, 7.8vw, 2.25rem) !important;
+    line-height: 1.2 !important;
+    margin-bottom: 1rem !important;
+  }
+
+  .banner-text-inner p,
+  .banner-content-wrap p,
+  .about-hero-sub,
+  .beach-hero-lead,
+  .tours-hero-lead,
+  .hero-slogan,
+  .tour-desc-walkers p,
+  .destination-detail-hero p,
+  .legal-hero-sub,
+  .contact-hero p,
+  .dest-hero p,
+  .exp-hero p,
+  .gallery-hero p,
+  .reviews-hero p,
+  .blog-hero p,
+  .notfound-desc,
+  .hero-lead,
+  .paragraph--20 {
+    font-size: clamp(0.9rem, 4vw, 1.05rem) !important;
+    line-height: 1.55 !important;
+    margin-bottom: 1.75rem !important;
+    padding-inline: 0.25rem !important;
+  }
+
+  /* CTA Buttons stack full-width on Android */
+  .banner-actions,
+  .about-hero-actions,
+  .beach-hero-cta-row,
+  .notfound-actions,
+  .hero-cta-row,
+  .cta-btn-group,
+  .tour-overview-walkers .wrapper--70 > div[style*="display: flex"] {
+    flex-direction: column !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    gap: 0.85rem !important;
+  }
+
+  .banner-actions a,
+  .about-hero-actions a,
+  .beach-hero-cta-row a,
+  .notfound-actions a,
+  .hero-cta-row a,
+  .cta-btn-group a,
+  .tour-overview-walkers a.btn-inquire-gold-pill,
+  .tour-overview-walkers a.btn-cta-whatsapp,
+  .next-btn,
+  .btn-editorial-primary,
+  .btn-editorial-secondary,
+  .btn-primary-gold,
+  .btn-notfound-gold,
+  .btn-notfound-primary {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    text-align: center !important;
+    justify-content: center !important;
+    margin-inline: 0 !important;
+    padding: 0.95rem 1.25rem !important;
+  }
+
+  .dest-search-bar {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  .dest-search-input {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+}
+
+/* ==============================================================================
+ * 3. WIPE-IN & FADE-UP ANIMATIONS (Zero Layout Shift, Fallback Ready)
+ * ============================================================================== */
+
+/* Progressive Enhancement Fallback:
+ * If JS is disabled or fails to run, all content is 100% visible!
+ */
+[data-anim="wipe"],
+[data-anim="fade"] {
+  opacity: 1;
+  clip-path: none;
+  transform: none;
+  visibility: visible;
+}
+
+/* Only when JS initializes and adds .js-anim-ready to <html> do we set initial hidden states */
+html.js-anim-ready [data-anim="wipe"]:not(.is-animated) {
+  clip-path: inset(0 100% 0 0);
+  opacity: 0.001; /* Keeps layout box rendered to prevent layout shift (CLS = 0) */
+}
+
+/* Arabic RTL support: Wipe reveals from Right to Left */
+html.js-anim-ready[dir="rtl"] [data-anim="wipe"]:not(.is-animated),
+html.js-anim-ready.is-rtl [data-anim="wipe"]:not(.is-animated),
+body.is-rtl [data-anim="wipe"]:not(.is-animated) {
+  clip-path: inset(0 0 0 100%);
+}
+
+html.js-anim-ready [data-anim="fade"]:not(.is-animated) {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+/* Transition parameters: 0.9s ease-out for wipe, 0.7s for fade */
+html.js-anim-ready [data-anim="wipe"] {
+  transition: clip-path var(--anim-wipe-duration) var(--anim-ease-out),
+              opacity var(--anim-wipe-duration) var(--anim-ease-out);
+}
+
+html.js-anim-ready [data-anim="fade"] {
+  transition: opacity var(--anim-fade-duration) var(--anim-ease-out),
+              transform var(--anim-fade-duration) var(--anim-ease-out);
+}
+
+/* will-change applied ONLY during active animation to save GPU memory and eliminate scroll jank */
+html.js-anim-ready [data-anim="wipe"].is-animating {
+  will-change: clip-path, opacity;
+}
+
+html.js-anim-ready [data-anim="fade"].is-animating {
+  will-change: opacity, transform;
+}
+
+/* Completed Animation States */
+html.js-anim-ready [data-anim="wipe"].is-animated {
+  clip-path: inset(0 0 0 0) !important;
+  opacity: 1 !important;
+  will-change: auto;
+}
+
+html.js-anim-ready [data-anim="fade"].is-animated {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+  will-change: auto;
+}
+
+/* Keep button hover transforms free and responsive */
+button[data-anim].is-animated,
+a[data-anim].is-animated,
+.next-btn.is-animated,
+.gold-inquire-btn.is-animated,
+.btn-primary-gold.is-animated,
+.btn-editorial-primary.is-animated,
+.btn-editorial-secondary.is-animated,
+.btn-inquire-gold-pill.is-animated,
+.btn-cta-whatsapp.is-animated {
+  transform: none;
+}
+
+/* ==============================================================================
+ * 4. STRICT EXCLUSIONS (DO NOT ANIMATE)
+ * ============================================================================== */
+#siteHeader,
+#siteHeader *,
+.site-header-walkers,
+.site-header-walkers *,
+.walkers-nav,
+.walkers-nav *,
+.mobile-nav-fullscreen,
+.mobile-nav-fullscreen *,
+.custom-lang-pill,
+.custom-lang-pill *,
+#langPillToggle,
+#langPillMenu,
+.mobile-lang-section,
+.mobile-lang-section *,
+#mobileLangGrid,
+[data-lang],
+#siteFooter,
+#siteFooter *,
+.site-footer-walkers,
+.site-footer-walkers *,
+footer,
+footer *,
+form label,
+form input,
+form textarea,
+form select,
+.form-group label,
+.form-group input,
+.form-group textarea,
+.form-group select,
+.unified-fab-group,
+.unified-fab-group * {
+  clip-path: none !important;
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+/* Buttons' hover states remain fluid and unaffected by transitions */
+.banner-actions a:hover,
+.about-hero-actions a:hover,
+.beach-hero-cta-row a:hover,
+.next-btn:hover,
+.gold-inquire-btn:hover,
+.btn-editorial-primary:hover,
+.btn-editorial-secondary:hover,
+.btn-primary-gold:hover,
+.btn-cta-whatsapp:hover,
+.btn-inquire-gold-pill:hover,
+.btn-notfound-gold:hover,
+.btn-notfound-primary:hover {
+  transition: transform 0.25s ease, background 0.25s ease, color 0.25s ease, box-shadow 0.25s ease !important;
+}
+
+/* ==============================================================================
+ * 5. ACCESSIBILITY — PREFERS-REDUCED-MOTION
+ * ============================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  html.js-anim-ready [data-anim="wipe"]:not(.is-animated),
+  html.js-anim-ready [data-anim="fade"]:not(.is-animated),
+  [data-anim="wipe"],
+  [data-anim="fade"] {
+    clip-path: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+    will-change: auto !important;
+  }
+}
