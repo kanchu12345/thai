@@ -9,7 +9,7 @@
 
 const https = require('https');
 const path = require('path');
-const canonicalData = require('../data/canonical-packages.json');
+const canonicalData = require('../data/packages.json');
 
 const PROJECT_ID = 'louterst-36b64';
 const API_KEY = 'AIzaSyD5NyCFaPHeS1cKlsgxZ_WsraswHlYonNA';
@@ -101,7 +101,7 @@ async function runSeed() {
   // 3. siteGlobal/header
   await writeDoc('siteGlobal/header', {
     topHotline: '+94 71 54 22 384',
-    topEmail: 'paliforbuddhism@gmail.com'
+    topEmail: 'info@lotusceylon.com'
   });
   console.log('✓ Seeded siteGlobal/header');
 
@@ -121,8 +121,8 @@ async function runSeed() {
     phone: '+94 71 54 22 384',
     phoneTel: 'tel:+94715422384',
     emailLabel: 'Email Inquiries',
-    email: 'paliforbuddhism@gmail.com',
-    emailMailto: 'mailto:paliforbuddhism@gmail.com',
+    email: 'info@lotusceylon.com',
+    emailMailto: 'mailto:info@lotusceylon.com',
     address: '286/C, Niwandama South, Ja-Ela, Sri Lanka – 11350',
     directMessagingLabel: 'Direct Messaging',
     wechat: 'LotusCeylonTours',
@@ -186,7 +186,7 @@ async function runSeed() {
     await writeDoc('tourPackages/southern-sands-serenade', packagePayload);
     console.log('✓ Seeded tourPackages/southern-sands-serenade');
   } else {
-    console.warn('! Package southern-sands-serenade not found in canonical-packages.json');
+    console.warn('! Package southern-sands-serenade not found in packages.json');
   }
 
   console.log('\n[SEED COMPLETE] All pilot Firestore documents seeded successfully!');

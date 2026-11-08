@@ -578,7 +578,7 @@
 
         whatsapp: "+94 71 54 22 384",
 
-        email: "paliforbuddhism@gmail.com",
+        email: "info@lotusceylon.com",
 
         wechat: "FGUTaiwan90",
 

@@ -19,7 +19,7 @@ window.SITE_SETTINGS = {
   phone: "+94 71 54 22 384",
   whatsapp: "+94 71 54 22 384",
   whatsappLink: "https://wa.me/94715422384",
-  email: "paliforbuddhism@gmail.com",
+  email: "info@lotusceylon.com",
   wechat: "FGUTaiwan90",
   line: "dpbs2024",
   linePhone: "+886 958 561 954",
@@ -91,12 +91,12 @@ window.LOTUS_CONFIG = window.LOTUS_CONFIG || {};
     sltdaLicense: "", // Intentionally EMPTY per business rules until verified
 
     // Corporate Email - Single Source of Truth
-    email: "paliforbuddhism@gmail.com",
+    email: "info@lotusceylon.com",
     emailConfig: {
-      primary: "paliforbuddhism@gmail.com",
+      primary: "info@lotusceylon.com",
       secondary: "",
       label: "Email Inquiries",
-      mailto: "mailto:paliforbuddhism@gmail.com"
+      mailto: "mailto:info@lotusceylon.com"
     },
 
     // Instant Messaging & Social Concierge

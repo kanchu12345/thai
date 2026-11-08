@@ -19,7 +19,7 @@ window.SITE_SETTINGS = {
   phone: "+94 71 54 22 384",
   whatsapp: "+94 71 54 22 384",
   whatsappLink: "https://wa.me/94715422384",
-  email: "paliforbuddhism@gmail.com",
+  email: "info@lotusceylon.com",
   wechat: "FGUTaiwan90",
   line: "dpbs2024",
   linePhone: "+886 958 561 954",
@@ -74,13 +74,13 @@ var LOTUS_CONFIG = window.LOTUS_CONFIG || {};
     },
 
     // Corporate Email
-    email: "paliforbuddhism@gmail.com",
-    secondaryEmail: "paliforbuddhism@gmail.com",
+    email: "info@lotusceylon.com",
+    secondaryEmail: "info@lotusceylon.com",
     emailConfig: {
-      primary: "paliforbuddhism@gmail.com",
-      secondary: "paliforbuddhism@gmail.com",
+      primary: "info@lotusceylon.com",
+      secondary: "info@lotusceylon.com",
       label: "Email Inquiries",
-      mailto: "mailto:paliforbuddhism@gmail.com"
+      mailto: "mailto:info@lotusceylon.com"
     },
     
     // Physical office address (Ja-Ela Headquarters)

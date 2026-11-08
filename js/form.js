@@ -1441,7 +1441,7 @@ async function handleFormSubmit(form, isQuickForm) {
         // Write to mail collection for Firebase Trigger Email Extension
         try {
           await db.collection("mail").add({
-            to: ["paliforbuddhism@gmail.com"],
+            to: ["info@lotusceylon.com"],
             message: {
               subject: `[Lotus Ceylon Inquiry] ${payload.referenceId} - ${payload.name}`,
               html: `<p><strong>Ref:</strong> ${payload.referenceId}</p><p><strong>Name:</strong> ${payload.name}</p><p><strong>Email:</strong> ${payload.email}</p><p><strong>WhatsApp:</strong> ${payload.whatsapp}</p><p><strong>Pax:</strong> ${payload.totalPax || payload.pax || 'N/A'}</p><p><strong>Hotels:</strong> ${Array.isArray(payload.hotelCategory) ? payload.hotelCategory.join(', ') : payload.hotelCategory}</p><p><strong>Dates:</strong> ${payload.arrivalDate || ''} to ${payload.departureDate || ''}</p><p><strong>Notes:</strong> ${payload.otherRequirements || ''}</p>`

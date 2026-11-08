@@ -7,7 +7,7 @@
  * - siteGlobal: branding, header, footer, contact, menu, social
  * - siteContent: ALL 52 public pages
  * - tourCategories: 11 categories (including buddhist-heritage & golf)
- * - tourPackages: 26 packages (with itineraries, inclusions, FAQs & extra fields)
+ * - tourPackages: 29 packages (with itineraries, inclusions, FAQs & extra fields)
  * - destinations: 12 curated destinations
  * - team: verified executive team members
  * - blogPosts: curated editorial insights
@@ -145,7 +145,7 @@ function buildGlobalDocs(registry) {
       sortOrder: 2,
       tagline: 'Transformative Sri Lanka Travel Since 2014',
       hotline: '+94 71 54 22 384',
-      email: 'paliforbuddhism@gmail.com',
+      email: 'info@lotusceylon.com',
       inquireButtonText: 'Inquire',
       planJourneyText: 'Plan My Bespoke Journey ➔'
     },
@@ -164,8 +164,8 @@ function buildGlobalDocs(registry) {
       sortOrder: 4,
       phone: '+94 71 54 22 384',
       phoneTel: 'tel:+94715422384',
-      email: 'paliforbuddhism@gmail.com',
-      emailMailto: 'mailto:paliforbuddhism@gmail.com',
+      email: 'info@lotusceylon.com',
+      emailMailto: 'mailto:info@lotusceylon.com',
       hotlineLabel: '24/7 Travel Concierge Hotline',
       emailLabel: 'Email Inquiries',
       directMessagingLabel: 'Direct Messaging',

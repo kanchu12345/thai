@@ -1474,7 +1474,7 @@ resolveImg(url) {
           } else {
             const active = localStorage.getItem('lotus_admin_active');
             const savedUser = localStorage.getItem('lotus_admin_user');
-            if (active === '1' && (savedUser === 'admin@lotusceylon.com' || savedUser === 'paliforbuddhism@gmail.com')) {
+            if (active === '1' && (savedUser === 'admin@lotusceylon.com' || savedUser === 'info@lotusceylon.com')) {
               this.currentUser = { email: savedUser, id: 'admin_master_session' };
               this.currentRole = 'super_admin';
               this.showApp();
@@ -1503,7 +1503,7 @@ resolveImg(url) {
       } else {
         const active = localStorage.getItem('lotus_admin_active');
         const savedUser = localStorage.getItem('lotus_admin_user');
-        if (active === '1' && (savedUser === 'admin@lotusceylon.com' || savedUser === 'paliforbuddhism@gmail.com')) {
+        if (active === '1' && (savedUser === 'admin@lotusceylon.com' || savedUser === 'info@lotusceylon.com')) {
           this.currentUser = { email: savedUser, id: 'admin_master_session' };
           this.currentRole = 'super_admin';
           this.showApp();
@@ -1621,7 +1621,7 @@ resolveImg(url) {
 
             // Authorized master administrator fallback for offline/pre-configured credentials
             const clean = (email || '').toLowerCase().trim();
-            const isAuthorizedEmail = (clean === 'admin@lotusceylon.com' || clean === 'paliforbuddhism@gmail.com');
+            const isAuthorizedEmail = (clean === 'admin@lotusceylon.com' || clean === 'info@lotusceylon.com');
             const isAuthorizedPassword = (password === 'LotusCeylon@2026' || password === 'Lotus@2026');
 
             if (isAuthorizedEmail && isAuthorizedPassword) {
@@ -7906,7 +7906,7 @@ const waBtn = document.getElementById('inquiryWhatsAppBtn');
           companyReg: document.getElementById('settingCompanyReg') ? document.getElementById('settingCompanyReg').value : 'PV 00374439',
           slogan: document.getElementById('settingSlogan') ? document.getElementById('settingSlogan').value : '',
           phone: document.getElementById('settingPhone') ? document.getElementById('settingPhone').value : '+94 77 722 0070',
-          email: document.getElementById('settingEmail') ? document.getElementById('settingEmail').value : 'paliforbuddhism@gmail.com',
+          email: document.getElementById('settingEmail') ? document.getElementById('settingEmail').value : 'info@lotusceylon.com',
           address: document.getElementById('settingAddress') ? document.getElementById('settingAddress').value : 'Colombo & Kandy, Sri Lanka',
           whatsapp: document.getElementById('settingWhatsApp') ? document.getElementById('settingWhatsApp').value : '+94 77 722 0070',
           wechat: document.getElementById('settingWeChat') ? document.getElementById('settingWeChat').value : 'FGUTaiwan90',

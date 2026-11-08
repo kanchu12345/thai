@@ -93,7 +93,7 @@ class FirestoreRulesTester {
     this.database = {
       'admins/admin_uid_1': { role: 'super_admin', email: 'admin@lotusceylon.com' },
       'admins/editor_uid_2': { role: 'editor', email: 'editor@lotusceylon.com' },
-      'admins/paliforbuddhism@gmail.com': { role: 'super_admin', email: 'paliforbuddhism@gmail.com' },
+      'admins/info@lotusceylon.com': { role: 'super_admin', email: 'info@lotusceylon.com' },
       'siteMeta/version': { v: 1, updatedAt: '2026-10-26T10:00:00Z', status: 'published' },
       'siteGlobal/branding': { companyName: 'Lotus Ceylon', status: 'published' },
       'siteContent/home': { title: 'Lotus Ceylon', status: 'published' },
@@ -214,7 +214,7 @@ async function runUnitTests() {
   const anonymous = null;
   const regularUser = { uid: 'regular_user_123', token: { email: 'guest@gmail.com' } };
   const adminUid = { uid: 'admin_uid_1', token: { email: 'admin@lotusceylon.com' } };
-  const adminEmail = { uid: 'unknown_uid_99', token: { email: 'paliforbuddhism@gmail.com' } };
+  const adminEmail = { uid: 'unknown_uid_99', token: { email: 'info@lotusceylon.com' } };
   const editorUid = { uid: 'editor_uid_2', token: { email: 'editor@lotusceylon.com' } };
 
   console.log('\n--- SUITE 1: ANONYMOUS PUBLIC READ RESTRICTIONS ---');

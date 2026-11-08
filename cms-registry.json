@@ -212,7 +212,7 @@
       "firestorePath": "siteGlobal/contact.email",
       "type": "text",
       "label": "Email",
-      "defaultValue": "paliforbuddhism@gmail.com",
+      "defaultValue": "info@lotusceylon.com",
       "i18n": true
     },
     {
@@ -352,7 +352,7 @@
       "firestorePath": "siteGlobal/contact.emailMailto",
       "type": "link",
       "label": "EmailMailto",
-      "defaultValue": "mailto:paliforbuddhism@gmail.com",
+      "defaultValue": "mailto:info@lotusceylon.com",
       "i18n": false
     },
     {
@@ -4097,7 +4097,7 @@
         "firestorePath": "siteContent/about.about.a_22",
         "type": "text",
         "label": "Text Link (a_22)",
-        "defaultValue": "paliforbuddhism@gmail.com",
+        "defaultValue": "info@lotusceylon.com",
         "i18n": true
       },
       {
@@ -4787,7 +4787,7 @@
         "firestorePath": "siteContent/about.about.p_18",
         "type": "html",
         "label": "Paragraph Text (p_18)",
-        "defaultValue": "<a href=\"tel:+94715422384\" style=\"color: var(--color-dark-blue); font-weight: 700; text-decoration: none;\" data-cms=\"about.a_21\">+94 71 54 22 384</a><br>\r\n\r\n                <a href=\"mailto:paliforbuddhism@gmail.com\" style=\"color: #64748B; font-size: 0.9rem; text-decoration: none;\" data-cms=\"about.a_22\">paliforbuddhism@gmail.com</a>",
+        "defaultValue": "<a href=\"tel:+94715422384\" style=\"color: var(--color-dark-blue); font-weight: 700; text-decoration: none;\" data-cms=\"about.a_21\">+94 71 54 22 384</a><br>\r\n\r\n                <a href=\"mailto:info@lotusceylon.com\" style=\"color: #64748B; font-size: 0.9rem; text-decoration: none;\" data-cms=\"about.a_22\">info@lotusceylon.com</a>",
         "i18n": true
       },
       {
@@ -5329,7 +5329,7 @@
         "firestorePath": "siteContent/contact.contact.p_6",
         "type": "text",
         "label": "Paragraph Text (p_6)",
-        "defaultValue": "paliforbuddhism@gmail.com",
+        "defaultValue": "info@lotusceylon.com",
         "i18n": true
       },
       {
@@ -5339,7 +5339,7 @@
         "firestorePath": "siteContent/contact.contact.p_7",
         "type": "text",
         "label": "Paragraph Text (p_7)",
-        "defaultValue": "Secondary: paliforbuddhism@gmail.com",
+        "defaultValue": "Secondary: info@lotusceylon.com",
         "i18n": true
       },
       {
@@ -14725,7 +14725,7 @@
         "firestorePath": "siteContent/privacy-policy.privacy-policy.p_7",
         "type": "text",
         "label": "Paragraph Text (p_7)",
-        "defaultValue": "You have the right to request access to your personal data, request corrections, or request complete deletion of your records from our systems following the completion of your journey. Inquiries may be addressed to: paliforbuddhism@gmail.com.",
+        "defaultValue": "You have the right to request access to your personal data, request corrections, or request complete deletion of your records from our systems following the completion of your journey. Inquiries may be addressed to: info@lotusceylon.com.",
         "i18n": true
       },
       {
@@ -17593,7 +17593,7 @@
         "firestorePath": "siteContent/toursIndex.toursIndex.p_2",
         "type": "text",
         "label": "Paragraph Text (p_2)",
-        "defaultValue": "26 Curated tailor-made expeditions across 10 signature holiday themes. Private luxury chauffeur journeys crafted around the rhythm of Ceylon.",
+        "defaultValue": "29 Curated tailor-made expeditions across 11 signature holiday themes. Private luxury chauffeur journeys crafted around the rhythm of Ceylon.",
         "i18n": true
       },
       {
@@ -78530,7 +78530,7 @@
       "firestorePath": "siteGlobal/contact.email",
       "type": "text",
       "label": "Email",
-      "defaultValue": "paliforbuddhism@gmail.com",
+      "defaultValue": "info@lotusceylon.com",
       "i18n": true
     },
     {
@@ -78670,7 +78670,7 @@
       "firestorePath": "siteGlobal/contact.emailMailto",
       "type": "link",
       "label": "EmailMailto",
-      "defaultValue": "mailto:paliforbuddhism@gmail.com",
+      "defaultValue": "mailto:info@lotusceylon.com",
       "i18n": false
     },
     {
@@ -82410,7 +82410,7 @@
       "firestorePath": "siteContent/about.about.a_22",
       "type": "text",
       "label": "Text Link (a_22)",
-      "defaultValue": "paliforbuddhism@gmail.com",
+      "defaultValue": "info@lotusceylon.com",
       "i18n": true
     },
     {
@@ -83100,7 +83100,7 @@
       "firestorePath": "siteContent/about.about.p_18",
       "type": "html",
       "label": "Paragraph Text (p_18)",
-      "defaultValue": "<a href=\"tel:+94715422384\" style=\"color: var(--color-dark-blue); font-weight: 700; text-decoration: none;\" data-cms=\"about.a_21\">+94 71 54 22 384</a><br>\r\n\r\n                <a href=\"mailto:paliforbuddhism@gmail.com\" style=\"color: #64748B; font-size: 0.9rem; text-decoration: none;\" data-cms=\"about.a_22\">paliforbuddhism@gmail.com</a>",
+      "defaultValue": "<a href=\"tel:+94715422384\" style=\"color: var(--color-dark-blue); font-weight: 700; text-decoration: none;\" data-cms=\"about.a_21\">+94 71 54 22 384</a><br>\r\n\r\n                <a href=\"mailto:info@lotusceylon.com\" style=\"color: #64748B; font-size: 0.9rem; text-decoration: none;\" data-cms=\"about.a_22\">info@lotusceylon.com</a>",
       "i18n": true
     },
     {
@@ -83640,7 +83640,7 @@
       "firestorePath": "siteContent/contact.contact.p_6",
       "type": "text",
       "label": "Paragraph Text (p_6)",
-      "defaultValue": "paliforbuddhism@gmail.com",
+      "defaultValue": "info@lotusceylon.com",
       "i18n": true
     },
     {
@@ -83650,7 +83650,7 @@
       "firestorePath": "siteContent/contact.contact.p_7",
       "type": "text",
       "label": "Paragraph Text (p_7)",
-      "defaultValue": "Secondary: paliforbuddhism@gmail.com",
+      "defaultValue": "Secondary: info@lotusceylon.com",
       "i18n": true
     },
     {
@@ -93020,7 +93020,7 @@
       "firestorePath": "siteContent/privacy-policy.privacy-policy.p_7",
       "type": "text",
       "label": "Paragraph Text (p_7)",
-      "defaultValue": "You have the right to request access to your personal data, request corrections, or request complete deletion of your records from our systems following the completion of your journey. Inquiries may be addressed to: paliforbuddhism@gmail.com.",
+      "defaultValue": "You have the right to request access to your personal data, request corrections, or request complete deletion of your records from our systems following the completion of your journey. Inquiries may be addressed to: info@lotusceylon.com.",
       "i18n": true
     },
     {
@@ -95880,7 +95880,7 @@
       "firestorePath": "siteContent/toursIndex.toursIndex.p_2",
       "type": "text",
       "label": "Paragraph Text (p_2)",
-      "defaultValue": "26 Curated tailor-made expeditions across 10 signature holiday themes. Private luxury chauffeur journeys crafted around the rhythm of Ceylon.",
+      "defaultValue": "29 Curated tailor-made expeditions across 11 signature holiday themes. Private luxury chauffeur journeys crafted around the rhythm of Ceylon.",
       "i18n": true
     },
     {

@@ -356,8 +356,8 @@
 
       // Email
       document.querySelectorAll('.footer-email, [data-bind="email"]').forEach(el => {
-        el.textContent = general.email || 'paliforbuddhism@gmail.com';
-        if (el.tagName === 'A') el.href = `mailto:${general.email || 'paliforbuddhism@gmail.com'}`;
+        el.textContent = general.email || 'info@lotusceylon.com';
+        if (el.tagName === 'A') el.href = `mailto:${general.email || 'info@lotusceylon.com'}`;
       });
 
       // Address

@@ -145,7 +145,7 @@ allRaw.forEach((item, idx) => {
 const consolidated = Array.from(packageMap.values());
 consolidated.sort((a, b) => a.sortOrder - b.sortOrder);
 
-const outputPath = path.join(REPO_ROOT, 'data/canonical-packages.json');
+const outputPath = path.join(REPO_ROOT, 'data/packages.json');
 fs.writeFileSync(outputPath, JSON.stringify({ tourPackages: consolidated }, null, 2), 'utf-8');
 
 console.log(`Successfully consolidated ${consolidated.length} unique canonical tour packages (${conflictCount} duplicate entries merged).`);
