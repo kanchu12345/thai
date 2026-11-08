@@ -31381,5 +31381,126 @@
       },
       "contentHtml": "\n      <p>For more than 3,000 years, the island of Sri Lanka has nurtured one of the world's most sophisticated indigenous healing traditions: <em>Deshiya Chikitsa</em>, blended seamlessly with classical Ayurveda. At Lotus Ceylon, our signature <strong>Lotus Ayu</strong> retreats offer authentic holistic rejuvenation that goes far beyond surface pampering.</p>\n      <h2>Pulse Diagnosis (Nadi Pariksha) with Resident Vaidyas</h2>\n      <p>Every healing journey begins with a private diagnostic consultation by a senior Ayurvedic physician (Vaidya). By reading the radial pulse, evaluating the tongue, and observing natural constitution (Prakriti), the Vaidya identifies deep imbalances across the three elemental doshas: Vata (air/space), Pitta (fire/water), and Kapha (earth/water).</p>\n      <h2>Tailored Herbal Elixirs and Sacred Treatments</h2>\n      <p>Treatments are prescribed individually using freshly prepared organic decoctions: <em>Abhyanga</em> full-body warm herbal oil massages, <em>Shirodhara</em> rhythmic oil pouring over the forehead to calm mental restlessness, <em>Swedana</em> herbal steam baths enriched with indigenous jungle leaves, and sattvic dosha-balanced dining.</p>\n      <h2>Sanctuary for the Soul</h2>\n      <p>Set within private coastal coconut groves in Bentota and secluded river sanctuaries near Sigiriya, our partner Ayurvedic boutique hospitals provide the tranquil sanctuary needed to shed modern fatigue and rediscover vitality.</p>\n    "
     }
+  ],
+  "homepageBlogConfig": {
+    "main": "sacred-footsteps-unlocking-sri-lankas-ancient-buddhist-kingdoms",
+    "mainBadge": "Sacred Heritage",
+    "side": [
+      "ella-hands-on-tea-making-experience",
+      "the-great-gathering-watching-hundreds-of-wild-elephants-at-minneriya",
+      "growing-a-greener-future-volunteer-reforestation-sinharaja",
+      "living-healing-traditional-ceylon-ayurveda"
+    ],
+    "sideBadges": {
+      "ella-hands-on-tea-making-experience": "Hill Country and Tea",
+      "the-great-gathering-watching-hundreds-of-wild-elephants-at-minneriya": "Wildlife Journal",
+      "growing-a-greener-future-volunteer-reforestation-sinharaja": "Eco Reverence",
+      "living-healing-traditional-ceylon-ayurveda": "Holistic Wellness"
+    },
+    "updatedAt": "2026-11-08T18:00:00.000Z"
+  },
+  "successStories": [
+    {
+      "id": "story-01",
+      "badge": "SACRED SITES",
+      "title": "Sacred Anuradhapura",
+      "location": "Ancient Capital • Cultural Triangle",
+      "photo": "assets/images/buddhist-heritage/ruwanwelisaya-2.webp",
+      "description": "Ancient capital of colossal white stupas and the revered Sri Maha Bodhi tree. Our travellers experienced peaceful evening meditation beneath the sacred Bodhi canopy with private scholarly guidance.",
+      "sortOrder": 1,
+      "published": true
+    },
+    {
+      "id": "story-02",
+      "badge": "OUR SUCCESS STORIES",
+      "title": "The Coastal Marvel of Coconut Tree Hill",
+      "location": "Mirissa • Southern Coast",
+      "photo": "assets/images/honeymoon/mirissa-sunset-2.webp",
+      "description": "Traveling down to Mirissa, our guests stood beneath the famous palm canopy atop the red cliffs, watching a breathtaking sunset melt into the Indian Ocean—capturing memories they promised would last a lifetime.",
+      "sortOrder": 2,
+      "published": true
+    },
+    {
+      "id": "story-03",
+      "badge": "TEA HIGHLANDS",
+      "title": "Ella Tea Country",
+      "location": "Badulla Highlands • Scenic Railway Trails",
+      "photo": "assets/images/hill-country/kandy-ella-train-5.webp",
+      "description": "Misty emerald tea estates, iconic colonial railways, and artisanal tea crafting. Bespoke private journeys through scenic mountain trails, Nine Arch Bridge, and cascades.",
+      "sortOrder": 3,
+      "published": true
+    },
+    {
+      "id": "story-04",
+      "badge": "OCEAN SANCTUARY",
+      "title": "Mirissa Blue Waters",
+      "location": "Southern Coast • Whale Sanctuary",
+      "photo": "assets/images/beach/mirissa-1.webp",
+      "description": "Gentle ocean giants and sun-kissed golden coastlines. Private sunrise catamaran voyages encountering magnificent blue whales and dolphins off the southern Ceylon shores.",
+      "sortOrder": 4,
+      "published": true
+    },
+    {
+      "id": "story-05",
+      "badge": "ROYAL HERITAGE",
+      "title": "Kandy Royal Kingdom",
+      "location": "Sacred Hill Capital • Temple of the Tooth",
+      "photo": "assets/images/cultural/kandy-temple-of-tooth-4.webp",
+      "description": "The revered Temple of the Sacred Tooth Relic amidst misty hills. Exclusive VIP access to the traditional evening royal pooja ceremony with private sacred blessings.",
+      "sortOrder": 5,
+      "published": true
+    }
+  ],
+  "success_stories": [
+    {
+      "id": "story-01",
+      "badge": "SACRED SITES",
+      "title": "Sacred Anuradhapura",
+      "location": "Ancient Capital • Cultural Triangle",
+      "photo": "assets/images/buddhist-heritage/ruwanwelisaya-2.webp",
+      "description": "Ancient capital of colossal white stupas and the revered Sri Maha Bodhi tree. Our travellers experienced peaceful evening meditation beneath the sacred Bodhi canopy with private scholarly guidance.",
+      "sortOrder": 1,
+      "published": true
+    },
+    {
+      "id": "story-02",
+      "badge": "OUR SUCCESS STORIES",
+      "title": "The Coastal Marvel of Coconut Tree Hill",
+      "location": "Mirissa • Southern Coast",
+      "photo": "assets/images/honeymoon/mirissa-sunset-2.webp",
+      "description": "Traveling down to Mirissa, our guests stood beneath the famous palm canopy atop the red cliffs, watching a breathtaking sunset melt into the Indian Ocean—capturing memories they promised would last a lifetime.",
+      "sortOrder": 2,
+      "published": true
+    },
+    {
+      "id": "story-03",
+      "badge": "TEA HIGHLANDS",
+      "title": "Ella Tea Country",
+      "location": "Badulla Highlands • Scenic Railway Trails",
+      "photo": "assets/images/hill-country/kandy-ella-train-5.webp",
+      "description": "Misty emerald tea estates, iconic colonial railways, and artisanal tea crafting. Bespoke private journeys through scenic mountain trails, Nine Arch Bridge, and cascades.",
+      "sortOrder": 3,
+      "published": true
+    },
+    {
+      "id": "story-04",
+      "badge": "OCEAN SANCTUARY",
+      "title": "Mirissa Blue Waters",
+      "location": "Southern Coast • Whale Sanctuary",
+      "photo": "assets/images/beach/mirissa-1.webp",
+      "description": "Gentle ocean giants and sun-kissed golden coastlines. Private sunrise catamaran voyages encountering magnificent blue whales and dolphins off the southern Ceylon shores.",
+      "sortOrder": 4,
+      "published": true
+    },
+    {
+      "id": "story-05",
+      "badge": "ROYAL HERITAGE",
+      "title": "Kandy Royal Kingdom",
+      "location": "Sacred Hill Capital • Temple of the Tooth",
+      "photo": "assets/images/cultural/kandy-temple-of-tooth-4.webp",
+      "description": "The revered Temple of the Sacred Tooth Relic amidst misty hills. Exclusive VIP access to the traditional evening royal pooja ceremony with private sacred blessings.",
+      "sortOrder": 5,
+      "published": true
+    }
   ]
 }

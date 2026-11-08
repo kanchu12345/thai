@@ -6,7 +6,7 @@
 (function (window, document) {
   'use strict';
 
-  const STORAGE_KEY = 'lotus_success_stories_cache_v6';
+  const STORAGE_KEY = 'lotus_success_stories_cache_v7';
   const SWAP_INTERVAL_MS = 60000; // 1 minute (60s)
   const PROGRESS_TICK_MS = 100; // Smooth progress bar updates
 
@@ -148,7 +148,7 @@
 
     // Listen to localStorage update from Admin panel (multi-tab / instant update)
     window.addEventListener('storage', (e) => {
-      if ((e.key === STORAGE_KEY || e.key === 'lotus_success_stories_cache' || e.key === 'lotus_success_stories_cache_v6') && e.newValue) {
+      if ((e.key === STORAGE_KEY || e.key === 'lotus_success_stories_cache_v7' || e.key === 'lotus_success_stories_cache_v6' || e.key === 'lotus_success_stories_cache') && e.newValue) {
         try {
           const fresh = JSON.parse(e.newValue);
           if (Array.isArray(fresh) && fresh.length > 0) {

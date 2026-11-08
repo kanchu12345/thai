@@ -1109,106 +1109,90 @@
 
 
       // 6B. Homepage "The Lotus Journal: Chronicles of Ceylon" (Section 11 / #news)
-
       const bigCard = document.querySelector('.news-card-big') || document.querySelector('#news .news-card-big');
-
-      if (bigCard) {
-
-        const b0 = blogs[0];
-
-        const b0Title = this.getText(b0.title, lang);
-
-        const b0Excerpt = this.getText(b0.excerpt, lang);
-
-        const b0Cat = (typeof b0.category === 'string' ? b0.category : this.getText(b0.category, lang)) || 'Lotus Journal';
-
-        const rawCover = b0.cover || b0.coverImage || 'assets/images/cultural/sigiriya-1.webp';
-
-        const b0Cover = rawCover.startsWith('http') ? rawCover : `${base}${rawCover.replace(/^(\.\/)+/, '')}`;
-
-
-
-        bigCard.setAttribute('href', `${base}blog/${b0.slug}/index.html`);
-
-        const bigImg = bigCard.querySelector('img');
-
-        if (bigImg) {
-
-          bigImg.src = b0Cover;
-
-          bigImg.alt = b0Title;
-
-        }
-
-        const bigDate = bigCard.querySelector('.news-date');
-
-        if (bigDate) {
-
-          bigDate.innerHTML = `${b0Cat} &bull; Lotus Journal`;
-
-        }
-
-        const bigTitle = bigCard.querySelector('h3');
-
-        if (bigTitle) {
-
-          bigTitle.textContent = b0Title;
-
-        }
-
-        const bigExcerpt = bigCard.querySelector('p');
-
-        if (bigExcerpt && b0Excerpt) {
-
-          bigExcerpt.textContent = b0Excerpt;
-
-        }
-
-      }
-
-
-
-      // Side list (Top 2, Top 3, Top 4 latest articles)
-
       const sideList = document.querySelector('.news-side-list');
 
-      if (sideList && blogs.length > 1) {
-
-        const sidePosts = blogs.slice(1, 4);
-
-        sideList.innerHTML = sidePosts.map(p => {
-
-          const pTitle = this.getText(p.title, lang);
-
-          const pCat = (typeof p.category === 'string' ? p.category : this.getText(p.category, lang)) || 'Travel Journal';
-
-          const rawCover = p.cover || p.coverImage || 'assets/images/sigiriya.jpg';
-
-          const pCover = rawCover.startsWith('http') ? rawCover : `${base}${rawCover.replace(/^(\.\/)+/, '')}`;
-
-          return `
-
-            <a class="news-side-item" href="${base}blog/${p.slug}/index.html" style="text-decoration: none; display: flex; gap: 1.25rem; align-items: center; background: #FFFFFF; padding: 1.25rem; border-radius: var(--radius-md); border: 1px solid #EAF0F4; transition: var(--transition);">
-
-              <img alt="${pTitle}" src="${pCover}" style="width: 105px; height: 85px; object-fit: cover; border-radius: var(--radius-sm); flex-shrink: 0;" loading="lazy" decoding="async" onerror="this.src='${base}assets/images/sigiriya.jpg'">
-
-              <div class="news-side-item-content">
-
-                <span class="news-date" style="color: var(--color-gold); font-size: 0.75rem; font-weight: 700; text-transform: uppercase;">${pCat}</span>
-
-                <h4 class="news-side-title" style="font-size: 1.02rem; font-weight: 600; color: var(--color-dark-blue); margin-top: 0.25rem; line-height: 1.4;">${pTitle}</h4>
-
-              </div>
-
-            </a>
-
-          `;
-
-        }).join('');
-
+      let homeBlogCfg = null;
+      try {
+        const rawCfg = localStorage.getItem('lotus_homepage_blogs_config');
+        if (rawCfg) homeBlogCfg = JSON.parse(rawCfg);
+      } catch (e) {}
+      if (!homeBlogCfg && this.store && this.store.homepageBlogConfig) {
+        homeBlogCfg = this.store.homepageBlogConfig;
       }
 
+      const defaultMainSlug = 'sacred-footsteps-unlocking-sri-lankas-ancient-buddhist-kingdoms';
+      const mainSlug = (homeBlogCfg && homeBlogCfg.main) || defaultMainSlug;
+      const b0 = blogs.find(b => b.slug === mainSlug || b.id === mainSlug) || blogs[0];
 
+      if (bigCard && b0) {
+        const b0Title = this.getText(b0.title, lang);
+        const b0Excerpt = this.getText(b0.excerpt, lang);
+        const b0Badge = (homeBlogCfg && homeBlogCfg.mainBadge) || (typeof b0.category === 'string' ? b0.category : this.getText(b0.category, lang)) || 'Sacred Heritage';
+        const rawCover = b0.cover || b0.coverImage || 'assets/images/cultural/sigiriya-1.webp';
+        const b0Cover = rawCover.startsWith('http') ? rawCover : `./${rawCover.replace(/^(\.\/)+/, '')}`;
+
+        bigCard.setAttribute('href', `./blog/${b0.slug || b0.id}/index.html`);
+        const bigImg = bigCard.querySelector('img');
+        if (bigImg) {
+          bigImg.src = b0Cover;
+          bigImg.alt = b0Title;
+        }
+        const bigDate = bigCard.querySelector('.news-date');
+        if (bigDate) {
+          bigDate.innerHTML = `${b0Badge} &bull; Lotus Journal`;
+        }
+        const bigTitle = bigCard.querySelector('h3');
+        if (bigTitle) {
+          bigTitle.textContent = b0Title;
+        }
+        const bigExcerpt = bigCard.querySelector('p');
+        if (bigExcerpt && b0Excerpt) {
+          bigExcerpt.textContent = b0Excerpt;
+        }
+      }
+
+      // Side list (All 4 featured side articles)
+      if (sideList && blogs.length > 0) {
+        const defaultSideSlugs = [
+          'ella-hands-on-tea-making-experience',
+          'the-great-gathering-watching-hundreds-of-wild-elephants-at-minneriya',
+          'growing-a-greener-future-volunteer-reforestation-sinharaja',
+          'living-healing-traditional-ceylon-ayurveda'
+        ];
+        const sideSlugs = (homeBlogCfg && Array.isArray(homeBlogCfg.side) && homeBlogCfg.side.length > 0)
+          ? homeBlogCfg.side
+          : defaultSideSlugs;
+
+        const sidePosts = [];
+        sideSlugs.forEach(slug => {
+          const found = blogs.find(b => b.slug === slug || b.id === slug);
+          if (found) sidePosts.push(found);
+        });
+        if (sidePosts.length === 0) {
+          blogs.filter(b => (b.slug || b.id) !== (b0 ? (b0.slug || b0.id) : '')).slice(0, 4).forEach(p => sidePosts.push(p));
+        }
+
+        sideList.innerHTML = sidePosts.map(p => {
+          const pTitle = this.getText(p.title, lang);
+          const pSlug = p.slug || p.id;
+          const pBadge = (homeBlogCfg && homeBlogCfg.sideBadges && homeBlogCfg.sideBadges[pSlug])
+            || (typeof p.category === 'string' ? p.category : this.getText(p.category, lang))
+            || 'Travel Journal';
+          const rawCover = p.cover || p.coverImage || 'assets/images/sigiriya.jpg';
+          const pCover = rawCover.startsWith('http') ? rawCover : `./${rawCover.replace(/^(\.\/)+/, '')}`;
+
+          return `
+            <a class="news-side-item" href="./blog/${pSlug}/index.html" style="text-decoration: none; display: flex; gap: 1.25rem; align-items: center; background: #FFFFFF; padding: 1.25rem; border-radius: var(--radius-md); border: 1px solid #EAF0F4; transition: var(--transition);">
+              <img alt="${pTitle.replace(/"/g, '&quot;')}" src="${pCover}" style="width: 105px; height: 85px; object-fit: cover; border-radius: var(--radius-sm); flex-shrink: 0;" loading="lazy" decoding="async" onerror="this.src='./assets/images/sigiriya.jpg'">
+              <div class="news-side-item-content">
+                <span class="news-date" style="color: var(--color-gold); font-size: 0.75rem; font-weight: 700; text-transform: uppercase;">${pBadge}</span>
+                <h4 class="news-side-title" style="font-size: 1.02rem; font-weight: 600; color: var(--color-dark-blue); margin-top: 0.25rem; line-height: 1.4;">${pTitle}</h4>
+              </div>
+            </a>
+          `;
+        }).join('');
+      }
 
       // 6C. Main Blog Listing Page Grid (blog.html)
 

@@ -2118,106 +2118,206 @@ resolveImg(url) {
 
 
 
+    /**
+     * Load Blog Posts and Homepage Blog Configuration
+     */
+    async loadBlogData() {
+      // 1. Try Firebase Firestore
+      if (this.fbDb) {
+        try {
+          const snap = await this.fbDb.collection('blog').get();
+          if (!snap.empty) {
+            const list = [];
+            snap.forEach(doc => {
+              list.push({ id: doc.id, ...doc.data() });
+            });
+            if (list.length > 0) this.blogPosts = list;
+          }
+        } catch (err) {
+          console.warn('[AdminApp] Firestore blog fetch notice:', err);
+        }
+
+        try {
+          const cfgDoc = await this.fbDb.collection('settings').doc('homepage_blogs').get();
+          if (cfgDoc && cfgDoc.exists) {
+            this.homepageBlogConfig = cfgDoc.data();
+          }
+        } catch (e) {}
+      }
+
+      // 2. Try localStorage payload cache
+      if (!this.blogPosts || this.blogPosts.length === 0) {
+        try {
+          const cached = localStorage.getItem('lotus_data_payload');
+          if (cached) {
+            const p = JSON.parse(cached);
+            const list = p.blog || p.blogPosts;
+            if (Array.isArray(list) && list.length > 0) this.blogPosts = list;
+            if (p.homepageBlogConfig && !this.homepageBlogConfig) this.homepageBlogConfig = p.homepageBlogConfig;
+          }
+        } catch (e) {}
+      }
+
+      // 3. Try dedicated homepage blogs config in localStorage
+      if (!this.homepageBlogConfig) {
+        try {
+          const rawCfg = localStorage.getItem('lotus_homepage_blogs_config');
+          if (rawCfg) this.homepageBlogConfig = JSON.parse(rawCfg);
+        } catch (e) {}
+      }
+
+      // 4. Fallback to data/blog.json
+      if (!this.blogPosts || this.blogPosts.length === 0) {
+        try {
+          const res = await fetch('../data/blog.json');
+          if (res.ok) {
+            const data = await res.json();
+            if (Array.isArray(data) && data.length > 0) {
+              this.blogPosts = data.map(b => ({
+                id: b.id || b.slug,
+                slug: b.slug || b.id,
+                title: typeof b.title === 'object' ? (b.title.en || Object.values(b.title)[0]) : b.title,
+                category: b.category || 'Editorial',
+                readTime: b.readTime || '6 min read',
+                publishDate: b.publishDate || b.date || '2026-11-01',
+                rating: b.rating || '★ 4.9 (100 reviews)',
+                price: b.price || 'From $10 / person',
+                coverImage: b.cover || b.coverImage || 'assets/images/cultural/sigiriya-1.webp',
+                excerpt: typeof b.excerpt === 'object' ? (b.excerpt.en || Object.values(b.excerpt)[0]) : (b.excerpt || ''),
+                content: b.contentHtml || b.content || '',
+                docKey: 'siteContent/blog-' + (b.slug || b.id),
+                pageFile: 'blog/' + (b.slug || b.id) + '/index.html',
+                is_published: b.is_published !== false,
+                status: 'published'
+              }));
+            }
+          }
+        } catch (e) {}
+      }
+
+      // 5. Fallback to data/homepage-blogs.json
+      if (!this.homepageBlogConfig) {
+        try {
+          const res = await fetch('../data/homepage-blogs.json');
+          if (res.ok) {
+            this.homepageBlogConfig = await res.json();
+          }
+        } catch (e) {}
+      }
+
+      // 6. Hard baseline defaults if all failed
+      if (!this.homepageBlogConfig) {
+        this.homepageBlogConfig = {
+          main: 'sacred-footsteps-unlocking-sri-lankas-ancient-buddhist-kingdoms',
+          mainBadge: 'Sacred Heritage',
+          side: [
+            'ella-hands-on-tea-making-experience',
+            'the-great-gathering-watching-hundreds-of-wild-elephants-at-minneriya',
+            'growing-a-greener-future-volunteer-reforestation-sinharaja',
+            'living-healing-traditional-ceylon-ayurveda'
+          ],
+          sideBadges: {
+            'ella-hands-on-tea-making-experience': 'Hill Country and Tea',
+            'the-great-gathering-watching-hundreds-of-wild-elephants-at-minneriya': 'Wildlife Journal',
+            'growing-a-greener-future-volunteer-reforestation-sinharaja': 'Eco Reverence',
+            'living-healing-traditional-ceylon-ayurveda': 'Holistic Wellness'
+          }
+        };
+      }
+    },
+
     renderBlogPosts() {
+      if (!this.blogPosts || this.blogPosts.length === 0) {
+        this.loadBlogData();
+      }
+
+      const cfg = this.homepageBlogConfig || {
+        main: 'sacred-footsteps-unlocking-sri-lankas-ancient-buddhist-kingdoms',
+        mainBadge: 'Sacred Heritage',
+        side: [
+          'ella-hands-on-tea-making-experience',
+          'the-great-gathering-watching-hundreds-of-wild-elephants-at-minneriya',
+          'growing-a-greener-future-volunteer-reforestation-sinharaja',
+          'living-healing-traditional-ceylon-ayurveda'
+        ],
+        sideBadges: {}
+      };
+
+      // 1. Populate Homepage Selection Dropdowns
+      const mainSelect = document.getElementById('homeBlogMainSelect');
+      const sideSelect1 = document.getElementById('homeBlogSideSelect1');
+      const sideSelect2 = document.getElementById('homeBlogSideSelect2');
+      const sideSelect3 = document.getElementById('homeBlogSideSelect3');
+      const sideSelect4 = document.getElementById('homeBlogSideSelect4');
+
+      const buildOptions = (selectedId) => {
+        let opts = '<option value="">-- Choose Article --</option>';
+        (this.blogPosts || []).forEach(post => {
+          const id = post.slug || post.id;
+          const isSel = id === selectedId ? 'selected' : '';
+          opts += `<option value="${this.escapeAttr(id)}" ${isSel}>${this.escapeHtml(post.title)}</option>`;
+        });
+        return opts;
+      };
+
+      if (mainSelect) {
+        mainSelect.innerHTML = buildOptions(cfg.main);
+        const mainBadgeInput = document.getElementById('homeBlogMainBadge');
+        if (mainBadgeInput) mainBadgeInput.value = cfg.mainBadge || '';
+      }
+
+      const sideSlots = [
+        { sel: sideSelect1, badgeInput: document.getElementById('homeBlogSideBadge1'), idx: 0 },
+        { sel: sideSelect2, badgeInput: document.getElementById('homeBlogSideBadge2'), idx: 1 },
+        { sel: sideSelect3, badgeInput: document.getElementById('homeBlogSideBadge3'), idx: 2 },
+        { sel: sideSelect4, badgeInput: document.getElementById('homeBlogSideBadge4'), idx: 3 }
+      ];
+
+      sideSlots.forEach(slot => {
+        if (slot.sel) {
+          const sideId = (cfg.side && cfg.side[slot.idx]) || '';
+          slot.sel.innerHTML = buildOptions(sideId);
+          if (slot.badgeInput) {
+            slot.badgeInput.value = (cfg.sideBadges && cfg.sideBadges[sideId]) || '';
+          }
+        }
+      });
+
+      this.updateHomepageBlogPreview();
+
+      // 2. Populate Blog Posts Table
       const tbody = document.getElementById('blogPostsTableBody');
       if (!tbody) return;
 
-      if (!this.blogPosts || this.blogPosts.length === 0) {
-        this.blogPosts = [
-          {
-            id: 'ella-hands-on-tea-making-experience',
-            slug: 'ella-hands-on-tea-making-experience',
-            title: 'Ella: Hands-On Tea Making Experience with Tasting',
-            category: 'Hill Country & Tea Culture',
-            readTime: '6 min read',
-            publishDate: '2026-11-01',
-            rating: '4.9 (100 reviews)',
-            price: 'From $10 per person',
-            coverImage: 'assets/images/blog/ella-tea-making-experience.webp',
-            excerpt: "Discover the heart of Sri Lanka's tea culture with a hands-on tea making experience in Ella. Learn the art of tea making, from plucking leaves to brewing the perfect cup.",
-            docKey: 'siteContent/blog-ella-tea',
-            pageFile: 'blog/ella-hands-on-tea-making-experience/index.html',
-            is_published: true,
-            status: 'published'
-          },
-          {
-            id: 'sacred-footsteps-unlocking-sri-lankas-ancient-buddhist-kingdoms',
-            slug: 'sacred-footsteps-unlocking-sri-lankas-ancient-buddhist-kingdoms',
-            title: 'Sacred Footsteps: Unlocking Sri Lanka’s Ancient Buddhist Kingdoms',
-            category: 'Cultural Heritage',
-            readTime: '8 min read',
-            publishDate: '2026-10-24',
-            rating: '5.0 (84 reviews)',
-            price: 'Bespoke Private Tour',
-            coverImage: 'assets/images/cultural/sigiriya-1.webp',
-            excerpt: 'Journey across 2,300+ years of living Buddhist heritage from the Sacred Bo Tree of Anuradhapura to the golden cave shrines of Dambulla.',
-            docKey: 'siteContent/blog-sacred-kingdoms',
-            pageFile: 'blog/sacred-footsteps-unlocking-sri-lankas-ancient-buddhist-kingdoms/index.html',
-            is_published: true,
-            status: 'published'
-          },
-          {
-            id: 'the-great-gathering-watching-hundreds-of-wild-elephants-at-minneriya',
-            slug: 'the-great-gathering-watching-hundreds-of-wild-elephants-at-minneriya',
-            title: 'The Great Gathering: Watching Hundreds of Wild Elephants at Minneriya',
-            category: 'Wildlife & Safari',
-            readTime: '7 min read',
-            publishDate: '2026-10-18',
-            rating: '4.9 (120 reviews)',
-            price: 'Safari Excursion',
-            coverImage: 'assets/images/wildlife/minneriya-elephant-gathering-2.webp',
-            excerpt: 'Experience the largest gathering of Asian elephants in the world across the ancient reservoir grasslands of Minneriya National Park.',
-            docKey: 'siteContent/blog-elephant-gathering',
-            pageFile: 'blog/the-great-gathering-watching-hundreds-of-wild-elephants-at-minneriya/index.html',
-            is_published: true,
-            status: 'published'
-          },
-          {
-            id: 'growing-a-greener-future-volunteer-reforestation-sinharaja',
-            slug: 'growing-a-greener-future-volunteer-reforestation-sinharaja',
-            title: 'Growing a Greener Future: Volunteer Reforestation in Sinharaja',
-            category: 'Conservation & Sustainability',
-            readTime: '6 min read',
-            publishDate: '2026-09-28',
-            rating: '5.0 (62 reviews)',
-            price: 'Eco Experience',
-            coverImage: 'assets/images/wildlife/sinharaja-rainforest-5.webp',
-            excerpt: 'How travelers with Lotus Ceylon contribute to planting endemic rainforest corridors on the buffer perimeter of UNESCO Sinharaja Biosphere.',
-            docKey: 'siteContent/blog-sinharaja-reforestation',
-            pageFile: 'blog/growing-a-greener-future-volunteer-reforestation-sinharaja/index.html',
-            is_published: true,
-            status: 'published'
-          },
-          {
-            id: 'living-healing-traditional-ceylon-ayurveda',
-            slug: 'living-healing-traditional-ceylon-ayurveda',
-            title: 'Living Healing: Traditional Ceylon Ayurveda & Holistic Wellness',
-            category: 'Wellness & Healing',
-            readTime: '9 min read',
-            publishDate: '2026-09-15',
-            rating: '4.8 (95 reviews)',
-            price: 'Wellness Retreat',
-            coverImage: 'assets/images/cultural/polonnaruwa-gal-vihara-3.webp',
-            excerpt: 'Rediscover equilibrium with time-tested herbal panchakarma, authentic doctor consultations, and curative coastal healing sanctuaries.',
-            docKey: 'siteContent/blog-ayurveda-healing',
-            pageFile: 'blog/living-healing-traditional-ceylon-ayurveda/index.html',
-            is_published: true,
-            status: 'published'
-          }
-        ];
-      }
+      tbody.innerHTML = (this.blogPosts || []).map(post => {
+        const coverSrc = (post.coverImage || post.cover || '').startsWith('http')
+          ? (post.coverImage || post.cover)
+          : `../${post.coverImage || post.cover || 'assets/images/sigiriya.jpg'}`;
+        const id = post.slug || post.id;
 
-      tbody.innerHTML = this.blogPosts.map(post => {
-        const coverSrc = (post.coverImage || '').startsWith('http') ? post.coverImage : `../${post.coverImage || 'assets/images/sigiriya.jpg'}`;
+        // Determine Homepage status badge
+        let homeBadge = '<span style="color: #94A3B8; font-size: 0.8rem;">— Not on Homepage</span>';
+        if (id === cfg.main) {
+          homeBadge = '<span class="badge" style="background: #FEF3C7; color: #92400E; font-weight: 700; border: 1px solid #FCD34D;">★ Main Featured</span>';
+        } else if (cfg.side && cfg.side[0] === id) {
+          homeBadge = '<span class="badge" style="background: #EFF6FF; color: #1D4ED8; font-weight: 700; border: 1px solid #BFDBFE;">Side Slot #1</span>';
+        } else if (cfg.side && cfg.side[1] === id) {
+          homeBadge = '<span class="badge" style="background: #EFF6FF; color: #1D4ED8; font-weight: 700; border: 1px solid #BFDBFE;">Side Slot #2</span>';
+        } else if (cfg.side && cfg.side[2] === id) {
+          homeBadge = '<span class="badge" style="background: #EFF6FF; color: #1D4ED8; font-weight: 700; border: 1px solid #BFDBFE;">Side Slot #3</span>';
+        } else if (cfg.side && cfg.side[3] === id) {
+          homeBadge = '<span class="badge" style="background: #EFF6FF; color: #1D4ED8; font-weight: 700; border: 1px solid #BFDBFE;">Side Slot #4</span>';
+        }
+
         return `
           <tr>
             <td>
               <img src="${coverSrc}" alt="${this.escapeAttr(post.title)}" style="width: 58px; height: 42px; object-fit: cover; border-radius: 6px; border: 1px solid #E2E8F0;" onerror="this.src='../assets/images/placeholder.png'">
             </td>
             <td>
-              <div style="font-weight: 700; color: #0F172A; font-size: 0.92rem; max-width: 320px; line-height: 1.35;">${this.escapeHtml(post.title)}</div>
+              <div style="font-weight: 700; color: #0F172A; font-size: 0.92rem; max-width: 280px; line-height: 1.35;">${this.escapeHtml(post.title)}</div>
               <div style="font-size: 0.78rem; color: #64748B; margin-top: 3px;">
-                <span>${this.escapeHtml(post.readTime || '5 min read')}</span> • <span style="color: #D97706; font-weight: 600;">${this.escapeHtml(post.rating || '★ 5.0')}</span>
+                <span>${this.escapeHtml(post.readTime || '6 min read')}</span> • <span style="color: #D97706; font-weight: 600;">${this.escapeHtml(post.rating || '★ 5.0')}</span>
               </div>
             </td>
             <td>
@@ -2234,8 +2334,11 @@ resolveImg(url) {
               </span>
             </td>
             <td>
+              ${homeBadge}
+            </td>
+            <td>
               <div class="action-btns" style="gap: 6px; display: flex; align-items: center; flex-wrap: wrap;">
-                <button type="button" class="btn btn-primary btn-sm" style="padding: 4px 8px; font-size: 0.78rem; font-weight: 600;" onclick="AdminApp.openBlogModal('${post.id}')" title="Edit Post Details">
+                <button type="button" class="btn btn-primary btn-sm" style="padding: 4px 8px; font-size: 0.78rem; font-weight: 600;" onclick="AdminApp.openBlogModal('${id}')" title="Edit Post Details">
                   <span>Edit</span>
                 </button>
                 <button type="button" class="btn btn-outline btn-sm" style="display: inline-flex; align-items: center; gap: 4px; padding: 4px 8px; font-size: 0.78rem;" onclick="PageEditor.openPage('${post.docKey}', '${post.pageFile}')" title="Visual Click-to-Edit">
@@ -2244,12 +2347,184 @@ resolveImg(url) {
                 <a href="../${post.pageFile}" target="_blank" class="btn btn-outline btn-sm" style="padding: 4px 8px; font-size: 0.78rem; text-decoration: none;" title="Open Public Page">
                   <span>View ↗</span>
                 </a>
-                <button type="button" class="btn btn-danger btn-sm" style="padding: 4px 8px; font-size: 0.78rem;" onclick="AdminApp.deleteBlogPost('${post.id}')" title="Delete Post">✕</button>
+                <select class="form-control form-control-sm" onchange="AdminApp.quickSetBlogHomepage('${id}', this.value); this.value='';" style="width: 110px; padding: 3px 6px; font-size: 0.75rem; border-color: #CBD5E1;" title="Promote to Homepage slot">
+                  <option value="">Set Position...</option>
+                  <option value="main">★ Make Main</option>
+                  <option value="side_1">Slot Side #1</option>
+                  <option value="side_2">Slot Side #2</option>
+                  <option value="side_3">Slot Side #3</option>
+                  <option value="side_4">Slot Side #4</option>
+                  <option value="remove">Remove from Home</option>
+                </select>
+                <button type="button" class="btn btn-danger btn-sm" style="padding: 4px 8px; font-size: 0.78rem;" onclick="AdminApp.deleteBlogPost('${id}')" title="Delete Post">✕</button>
               </div>
             </td>
           </tr>
         `;
       }).join('');
+    },
+
+    updateHomepageBlogPreview() {
+      const mainSelect = document.getElementById('homeBlogMainSelect');
+      const mainBadgeInput = document.getElementById('homeBlogMainBadge');
+      const previewImg = document.getElementById('homeMainBlogPreviewImg');
+      const previewBadge = document.getElementById('homeMainBlogPreviewBadge');
+      const previewTitle = document.getElementById('homeMainBlogPreviewTitle');
+      const previewExcerpt = document.getElementById('homeMainBlogPreviewExcerpt');
+
+      const mainId = mainSelect ? mainSelect.value : '';
+      const mainPost = (this.blogPosts || []).find(p => (p.slug || p.id) === mainId);
+
+      if (mainPost) {
+        const coverSrc = (mainPost.coverImage || mainPost.cover || '').startsWith('http')
+          ? (mainPost.coverImage || mainPost.cover)
+          : `../${mainPost.coverImage || mainPost.cover || 'assets/images/sigiriya.jpg'}`;
+        if (previewImg) previewImg.src = coverSrc;
+        const badge = (mainBadgeInput && mainBadgeInput.value.trim()) || mainPost.category || 'Sacred Heritage';
+        if (previewBadge) previewBadge.textContent = `${badge} • Lotus Journal`;
+        if (previewTitle) previewTitle.textContent = mainPost.title || '';
+        if (previewExcerpt) previewExcerpt.textContent = mainPost.excerpt || '';
+      }
+
+      // Update 4 side previews
+      for (let i = 1; i <= 4; i++) {
+        const sel = document.getElementById(`homeBlogSideSelect${i}`);
+        const img = document.getElementById(`homeSidePreviewImg${i}`);
+        const sideId = sel ? sel.value : '';
+        const post = (this.blogPosts || []).find(p => (p.slug || p.id) === sideId);
+        if (img) {
+          if (post) {
+            const src = (post.coverImage || post.cover || '').startsWith('http')
+              ? (post.coverImage || post.cover)
+              : `../${post.coverImage || post.cover || 'assets/images/sigiriya.jpg'}`;
+            img.src = src;
+          } else {
+            img.src = '../assets/images/placeholder.png';
+          }
+        }
+      }
+    },
+
+    async saveHomepageBlogConfig() {
+      const mainSelect = document.getElementById('homeBlogMainSelect');
+      const mainBadgeInput = document.getElementById('homeBlogMainBadge');
+      const sideSelect1 = document.getElementById('homeBlogSideSelect1');
+      const sideSelect2 = document.getElementById('homeBlogSideSelect2');
+      const sideSelect3 = document.getElementById('homeBlogSideSelect3');
+      const sideSelect4 = document.getElementById('homeBlogSideSelect4');
+
+      const sideBadge1 = document.getElementById('homeBlogSideBadge1');
+      const sideBadge2 = document.getElementById('homeBlogSideBadge2');
+      const sideBadge3 = document.getElementById('homeBlogSideBadge3');
+      const sideBadge4 = document.getElementById('homeBlogSideBadge4');
+
+      const mainId = mainSelect ? mainSelect.value.trim() : '';
+      if (!mainId) {
+        this.showToast('Please select a Main Featured Article for the homepage.', 'warning');
+        return;
+      }
+
+      const s1 = sideSelect1 ? sideSelect1.value.trim() : '';
+      const s2 = sideSelect2 ? sideSelect2.value.trim() : '';
+      const s3 = sideSelect3 ? sideSelect3.value.trim() : '';
+      const s4 = sideSelect4 ? sideSelect4.value.trim() : '';
+
+      const sideArray = [s1, s2, s3, s4].filter(Boolean);
+      const sideBadges = {};
+      if (s1 && sideBadge1 && sideBadge1.value.trim()) sideBadges[s1] = sideBadge1.value.trim();
+      if (s2 && sideBadge2 && sideBadge2.value.trim()) sideBadges[s2] = sideBadge2.value.trim();
+      if (s3 && sideBadge3 && sideBadge3.value.trim()) sideBadges[s3] = sideBadge3.value.trim();
+      if (s4 && sideBadge4 && sideBadge4.value.trim()) sideBadges[s4] = sideBadge4.value.trim();
+
+      const newConfig = {
+        main: mainId,
+        mainBadge: (mainBadgeInput && mainBadgeInput.value.trim()) || 'Sacred Heritage',
+        side: sideArray,
+        sideBadges: sideBadges,
+        updatedAt: new Date().toISOString()
+      };
+
+      this.homepageBlogConfig = newConfig;
+
+      // 1. Cache in localStorage
+      try {
+        localStorage.setItem('lotus_homepage_blogs_config', JSON.stringify(newConfig));
+      } catch (e) {}
+
+      // 2. Sync into general catalog cache
+      this.syncCatalogCache();
+
+      // 3. Save to Firebase Firestore
+      if (this.fbDb) {
+        try {
+          await this.fbDb.collection('settings').doc('homepage_blogs').set(newConfig, { merge: true });
+          await this.fbDb.collection('siteContent').doc('home').set({
+            homepageBlogConfig: newConfig,
+            updatedAt: new Date().toISOString()
+          }, { merge: true });
+        } catch (err) {
+          console.warn('[AdminApp] Firestore homepage blog config save warning:', err);
+        }
+      }
+
+      // 4. Dispatch event for live preview / cross-tab updates
+      try {
+        window.dispatchEvent(new CustomEvent('lotus_homepage_blogs_updated', { detail: newConfig }));
+      } catch (e) {}
+
+      this.renderBlogPosts();
+      this.showToast('Homepage featured articles saved and published live to homepage!', 'success');
+    },
+
+    resetHomepageBlogsDefault() {
+      this.homepageBlogConfig = {
+        main: 'sacred-footsteps-unlocking-sri-lankas-ancient-buddhist-kingdoms',
+        mainBadge: 'Sacred Heritage',
+        side: [
+          'ella-hands-on-tea-making-experience',
+          'the-great-gathering-watching-hundreds-of-wild-elephants-at-minneriya',
+          'growing-a-greener-future-volunteer-reforestation-sinharaja',
+          'living-healing-traditional-ceylon-ayurveda'
+        ],
+        sideBadges: {
+          'ella-hands-on-tea-making-experience': 'Hill Country and Tea',
+          'the-great-gathering-watching-hundreds-of-wild-elephants-at-minneriya': 'Wildlife Journal',
+          'growing-a-greener-future-volunteer-reforestation-sinharaja': 'Eco Reverence',
+          'living-healing-traditional-ceylon-ayurveda': 'Holistic Wellness'
+        }
+      };
+      this.renderBlogPosts();
+      this.saveHomepageBlogConfig();
+    },
+
+    quickSetBlogHomepage(postId, position) {
+      if (!position) return;
+      if (!this.homepageBlogConfig) this.homepageBlogConfig = { main: '', side: [] };
+      if (!Array.isArray(this.homepageBlogConfig.side)) this.homepageBlogConfig.side = [];
+
+      // Remove from existing slots first
+      if (this.homepageBlogConfig.main === postId) this.homepageBlogConfig.main = '';
+      this.homepageBlogConfig.side = this.homepageBlogConfig.side.filter(id => id !== postId);
+
+      if (position === 'main') {
+        this.homepageBlogConfig.main = postId;
+      } else if (position === 'side_1') {
+        this.homepageBlogConfig.side[0] = postId;
+      } else if (position === 'side_2') {
+        this.homepageBlogConfig.side[1] = postId;
+      } else if (position === 'side_3') {
+        this.homepageBlogConfig.side[2] = postId;
+      } else if (position === 'side_4') {
+        this.homepageBlogConfig.side[3] = postId;
+      }
+
+      // If main is now empty, find fallback
+      if (!this.homepageBlogConfig.main) {
+        const remaining = (this.blogPosts || []).find(p => (p.slug || p.id) !== postId);
+        if (remaining) this.homepageBlogConfig.main = remaining.slug || remaining.id;
+      }
+
+      this.saveHomepageBlogConfig();
     },
 
     openBlogModal(postId = null) {
@@ -2273,6 +2548,8 @@ resolveImg(url) {
           const excerptInput = document.getElementById('blogExcerpt');
           const contentInput = document.getElementById('blogContent');
           const pubInput = document.getElementById('blogIsPublished');
+          const posInput = document.getElementById('blogHomepagePosition');
+          const badgeInput = document.getElementById('blogHomepageBadge');
 
           if (idInput) idInput.value = post.id || '';
           if (titleInput) titleInput.value = post.title || '';
@@ -2280,12 +2557,28 @@ resolveImg(url) {
           if (catInput) catInput.value = post.category || '';
           if (authorInput) authorInput.value = post.author || 'Lotus Ceylon Editorial';
           if (dateInput) dateInput.value = post.publishDate || new Date().toISOString().split('T')[0];
-          if (coverInput) coverInput.value = post.coverImage || '';
+          if (coverInput) coverInput.value = post.coverImage || post.cover || '';
           if (excerptInput) excerptInput.value = post.excerpt || '';
           if (contentInput) contentInput.value = post.content || '';
           if (pubInput) pubInput.checked = post.is_published !== false;
 
-          if (post.coverImage) {
+          const id = post.slug || post.id;
+          const cfg = this.homepageBlogConfig || {};
+          if (posInput) {
+            if (cfg.main === id) posInput.value = 'main';
+            else if (cfg.side && cfg.side[0] === id) posInput.value = 'side_1';
+            else if (cfg.side && cfg.side[1] === id) posInput.value = 'side_2';
+            else if (cfg.side && cfg.side[2] === id) posInput.value = 'side_3';
+            else if (cfg.side && cfg.side[3] === id) posInput.value = 'side_4';
+            else posInput.value = 'none';
+          }
+          if (badgeInput) {
+            if (cfg.main === id && cfg.mainBadge) badgeInput.value = cfg.mainBadge;
+            else if (cfg.sideBadges && cfg.sideBadges[id]) badgeInput.value = cfg.sideBadges[id];
+            else badgeInput.value = post.category || '';
+          }
+
+          if (post.coverImage || post.cover) {
             this.updateImagePreview('blogCoverImage', 'blogCoverPreview', 'blogCoverPreviewCard');
           }
         }
@@ -2295,10 +2588,14 @@ resolveImg(url) {
         const authorInput = document.getElementById('blogAuthor');
         const dateInput = document.getElementById('blogDate');
         const pubInput = document.getElementById('blogIsPublished');
+        const posInput = document.getElementById('blogHomepagePosition');
+        const badgeInput = document.getElementById('blogHomepageBadge');
         if (idInput) idInput.value = '';
         if (authorInput) authorInput.value = 'Lotus Ceylon Editorial';
         if (dateInput) dateInput.value = new Date().toISOString().split('T')[0];
         if (pubInput) pubInput.checked = true;
+        if (posInput) posInput.value = 'none';
+        if (badgeInput) badgeInput.value = '';
       }
       this.openModal('blogPostModal');
     },
@@ -2323,6 +2620,8 @@ resolveImg(url) {
       const excerptInput = document.getElementById('blogExcerpt');
       const contentInput = document.getElementById('blogContent');
       const pubInput = document.getElementById('blogIsPublished');
+      const posInput = document.getElementById('blogHomepagePosition');
+      const badgeInput = document.getElementById('blogHomepageBadge');
 
       const title = (titleInput ? titleInput.value : '').trim();
       if (!title) {
@@ -2343,10 +2642,11 @@ resolveImg(url) {
         author: (authorInput ? authorInput.value.trim() : 'Lotus Ceylon Editorial') || 'Lotus Ceylon',
         publishDate: (dateInput ? dateInput.value : '') || new Date().toISOString().split('T')[0],
         coverImage: (coverInput ? coverInput.value.trim() : '') || 'assets/images/cultural/sigiriya-1.webp',
+        cover: (coverInput ? coverInput.value.trim() : '') || 'assets/images/cultural/sigiriya-1.webp',
         excerpt: excerptInput ? excerptInput.value.trim() : '',
         content: contentInput ? contentInput.value : '',
         readTime: '6 min read',
-        rating: '5.0 (New)',
+        rating: '★ 5.0',
         docKey: 'siteContent/blog-' + slug,
         pageFile: 'blog/' + slug + '/index.html',
         is_published: is_published,
@@ -2370,6 +2670,23 @@ resolveImg(url) {
         }
       }
 
+      // Check homepage placement
+      const chosenPos = posInput ? posInput.value : 'none';
+      const chosenBadge = badgeInput ? badgeInput.value.trim() : '';
+      if (chosenPos && chosenPos !== 'none') {
+        this.quickSetBlogHomepage(slug || id, chosenPos);
+        if (chosenBadge && this.homepageBlogConfig) {
+          if (chosenPos === 'main') this.homepageBlogConfig.mainBadge = chosenBadge;
+          else {
+            if (!this.homepageBlogConfig.sideBadges) this.homepageBlogConfig.sideBadges = {};
+            this.homepageBlogConfig.sideBadges[slug || id] = chosenBadge;
+          }
+          try {
+            localStorage.setItem('lotus_homepage_blogs_config', JSON.stringify(this.homepageBlogConfig));
+          } catch(e) {}
+        }
+      }
+
       this.syncCatalogCache();
       this.closeModal('blogPostModal');
       this.renderBlogPosts();
@@ -2389,6 +2706,21 @@ resolveImg(url) {
           console.warn('Firestore blog delete:', e);
         }
       }
+
+      // Also clean up from homepage if it was featured
+      if (this.homepageBlogConfig) {
+        if (this.homepageBlogConfig.main === postId) {
+          const firstRemaining = this.blogPosts[0];
+          this.homepageBlogConfig.main = firstRemaining ? (firstRemaining.slug || firstRemaining.id) : '';
+        }
+        if (Array.isArray(this.homepageBlogConfig.side)) {
+          this.homepageBlogConfig.side = this.homepageBlogConfig.side.filter(id => id !== postId);
+        }
+        try {
+          localStorage.setItem('lotus_homepage_blogs_config', JSON.stringify(this.homepageBlogConfig));
+        } catch(e) {}
+      }
+
       this.syncCatalogCache();
       this.renderBlogPosts();
       this.showToast(`Blog story "${title}" deleted successfully`, 'success');
@@ -2474,10 +2806,12 @@ resolveImg(url) {
 
       await this.loadTeamData();
       await this.loadSuccessStories();
+      await this.loadBlogData();
 
       this.renderInquiries();
 
       this.renderTeam();
+      this.renderBlogPosts();
 
       this.renderPackages();
 
@@ -2561,6 +2895,10 @@ resolveImg(url) {
 
               this.mediaFiles = seedData.mediaFiles;
 
+            }
+
+            if (seedData.successStories || seedData.success_stories) {
+              this.successStories = seedData.successStories || seedData.success_stories;
             }
 
           }
@@ -4330,6 +4668,69 @@ const waBtn = document.getElementById('inquiryWhatsAppBtn');
       this.showToast(`Saved story: ${title}`, 'success');
     },
 
+    async seedSuccessStories() {
+      const btn = document.getElementById('btnSeedStories');
+      if (btn) {
+        btn.disabled = true;
+        btn.innerHTML = '<span>🌱 Seeding...</span>';
+      }
+      try {
+        let stories = [];
+        try {
+          const res = await fetch('../data/success-stories.json');
+          if (res.ok) stories = await res.json();
+        } catch (e) {}
+
+        if (!stories || stories.length === 0) {
+          try {
+            const res = await fetch('../data/seed-catalog.json');
+            if (res.ok) {
+              const cat = await res.json();
+              stories = cat.successStories || cat.success_stories || [];
+            }
+          } catch (e) {}
+        }
+
+        if (stories && stories.length > 0) {
+          this.successStories = stories;
+          this.successStories.sort((a, b) => (a.sortOrder || 0) - (b.sortOrder || 0));
+
+          // Save to localStorage (all version keys)
+          localStorage.setItem('lotus_success_stories_cache_v7', JSON.stringify(this.successStories));
+          localStorage.setItem('lotus_success_stories_cache_v6', JSON.stringify(this.successStories));
+          localStorage.setItem('lotus_success_stories_cache', JSON.stringify(this.successStories));
+          window.dispatchEvent(new CustomEvent('lotus_stories_updated', { detail: this.successStories }));
+
+          // Save to Firestore collections
+          if (this.fbDb) {
+            for (const s of this.successStories) {
+              try {
+                await this.fbDb.collection('success_stories').doc(s.id).set(s, { merge: true });
+              } catch(e) {}
+            }
+            try {
+              await this.fbDb.collection('siteContent').doc('home').set({
+                successStories: this.successStories,
+                updatedAt: new Date().toISOString()
+              }, { merge: true });
+            } catch(e) {}
+          }
+
+          this.renderSuccessStories();
+          this.showToast(`🌱 Seeded ${this.successStories.length} Success Stories to database!`, 'success');
+        } else {
+          this.showToast('Could not load success-stories data to seed.', 'error');
+        }
+      } catch (err) {
+        this.showToast('Seeding error: ' + err.message, 'error');
+      } finally {
+        if (btn) {
+          btn.disabled = false;
+          btn.innerHTML = '<span>🌱 Seed Stories</span>';
+        }
+      }
+    },
+
     async deleteStory(storyId) {
       const story = (this.successStories || []).find(s => s.id === storyId);
       const name = story ? story.title : 'this story';
@@ -4950,6 +5351,8 @@ const waBtn = document.getElementById('inquiryWhatsAppBtn');
           blogPosts: this.blogPosts,
 
           blog: this.blogPosts,
+
+          homepageBlogConfig: this.homepageBlogConfig,
 
           settings: this.settings || []
 

@@ -775,7 +775,8 @@
 
         { key: 'navigation', col: 'navigation', idField: 'id' },
 
-        { key: 'formDefinitions', col: 'formDefinitions', idField: 'id' }
+        { key: 'formDefinitions', col: 'formDefinitions', idField: 'id' },
+        { key: 'successStories', col: 'success_stories', idField: 'id' }
 
       ];
 
