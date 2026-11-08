@@ -36,7 +36,7 @@
       badge: 'TEA HIGHLANDS',
       title: 'Ella Tea Country',
       location: 'Badulla Highlands • Scenic Railway Trails',
-      photo: 'assets/images/hill-country/kandy-ella-train-1.webp',
+      photo: 'assets/images/hill-country/kandy-ella-train-5.webp',
       description: 'Misty emerald tea estates, iconic colonial railways, and artisanal tea crafting. Bespoke private journeys through scenic mountain trails, Nine Arch Bridge, and cascades.',
       sortOrder: 3,
       published: true

@@ -2871,24 +2871,24 @@ body {
 
 
 /* ==============================================================================
- * WHY US HEADER ROW WITH PARALLEL SUCCESS STORIES LANDSCAPE CARD
+ * WHY JOURNEY WITH LOTUS CEYLON + OUR SUCCESS STORIES (EXPANDED LUXURY SHOWCASE)
  * ============================================================================== */
 .why-us-header-flex {
   display: flex !important;
   align-items: center !important;
   justify-content: space-between !important;
-  gap: clamp(1.5rem, 3.5vw, 3.5rem) !important;
-  margin-bottom: 2.75rem !important;
+  gap: clamp(1.75rem, 3vw, 3.5rem) !important;
+  margin-bottom: 3rem !important;
 }
 
 .why-us-heading-col {
-  flex: 0 1 auto !important;
-  max-width: 540px !important;
+  flex: 0 1 420px !important;
+  max-width: 460px !important;
 }
 
 .why-us-heading-col .heading--60 {
-  font-size: clamp(2.6rem, 4vw, 3.85rem) !important;
-  line-height: 1.14 !important;
+  font-size: clamp(2.4rem, 3.8vw, 3.6rem) !important;
+  line-height: 1.15 !important;
   letter-spacing: -0.025em !important;
   margin-bottom: 0 !important;
   color: var(--color-dark-blue, #002B49) !important;
@@ -2901,8 +2901,8 @@ body {
 
 .why-us-header-flex .success-stories-card-wrapper {
   margin-top: 0 !important;
-  flex: 1 1 500px !important;
-  max-width: 590px !important;
+  flex: 1 1 620px !important;
+  max-width: 780px !important;
   width: 100% !important;
 }
 
@@ -2911,13 +2911,13 @@ body {
     flex-direction: column !important;
     align-items: flex-start !important;
     gap: 2rem !important;
-    margin-bottom: 2rem !important;
+    margin-bottom: 2.25rem !important;
   }
   .why-us-heading-col {
     max-width: 100% !important;
   }
   .why-us-heading-col .heading--60 {
-    font-size: clamp(2.2rem, 6vw, 3rem) !important;
+    font-size: clamp(2.2rem, 5.5vw, 3rem) !important;
   }
   .why-us-header-flex .success-stories-card-wrapper {
     max-width: 100% !important;
@@ -2926,41 +2926,40 @@ body {
 }
 
 /* ==============================================================================
- * OUR SUCCESS STORIES LANDSCAPE CARD COMPONENT
- * Positioned right below the About Us & Plan Your Journey buttons
- * Matches user's Sacred Sites card style in horizontal landscape format
+ * OUR SUCCESS STORIES LANDSCAPE CARD COMPONENT (EXPANDED LUXURY SHOWCASE)
+ * Showcases authentic latest tours & guest experiences handled by Lotus Ceylon
  * ============================================================================== */
 .success-stories-card-wrapper {
   margin-top: 1.85rem !important;
   width: 100% !important;
-  max-width: 680px !important;
+  max-width: 780px !important;
 }
 
 .success-stories-landscape-card {
   display: flex !important;
   flex-direction: row !important;
   background: #FFFFFF !important;
-  border: 1.5px solid rgba(212, 175, 55, 0.35) !important;
-  border-radius: 16px !important;
+  border: 1.5px solid rgba(212, 175, 55, 0.42) !important;
+  border-radius: 20px !important;
   overflow: hidden !important;
-  box-shadow: 0 10px 32px rgba(0, 43, 73, 0.08), 0 2px 10px rgba(212, 175, 55, 0.12) !important;
-  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease !important;
+  box-shadow: 0 14px 44px rgba(0, 43, 73, 0.09), 0 3px 14px rgba(212, 175, 55, 0.12) !important;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease !important;
   position: relative !important;
-  min-height: 185px !important;
+  min-height: 275px !important;
 }
 
 .success-stories-landscape-card:hover {
-  transform: translateY(-2px) !important;
-  box-shadow: 0 14px 40px rgba(0, 43, 73, 0.12), 0 4px 14px rgba(212, 175, 55, 0.2) !important;
-  border-color: rgba(212, 175, 55, 0.55) !important;
+  transform: translateY(-3px) !important;
+  box-shadow: 0 20px 52px rgba(0, 43, 73, 0.13), 0 6px 20px rgba(212, 175, 55, 0.22) !important;
+  border-color: rgba(212, 175, 55, 0.7) !important;
 }
 
-/* Left Image Box (Landscape / 40-42%) */
+/* Left Image Box (Landscape / 45% High-Impact Showcase) */
 .story-media-box {
-  flex: 0 0 38% !important;
+  flex: 0 0 45% !important;
   position: relative !important;
-  min-height: 185px !important;
-  background: #111827 !important;
+  min-height: 275px !important;
+  background: #0B1724 !important;
   overflow: hidden !important;
 }
 
@@ -2970,17 +2969,21 @@ body {
   object-fit: cover !important;
   object-position: center !important;
   display: block !important;
-  transition: opacity 0.3s ease, transform 0.4s ease !important;
+  transition: opacity 0.35s ease, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.success-stories-landscape-card:hover .story-image {
+  transform: scale(1.05) !important;
 }
 
 .story-media-box .story-image-overlay {
   position: absolute !important;
   inset: 0 !important;
-  background: linear-gradient(180deg, rgba(0,0,0,0.3) 0%, transparent 40%, rgba(0,0,0,0.45) 100%) !important;
+  background: linear-gradient(180deg, rgba(0,0,0,0.25) 0%, transparent 45%, rgba(0,0,0,0.55) 100%) !important;
   pointer-events: none !important;
 }
 
-/* Sacred Sites / Category Tag (Dark Burgundy Pill from Image 2) */
+/* Sacred Sites / Category Tag (Dark Burgundy Pill with Gold Accent) */
 .story-badge-pill {
   position: absolute !important;
   top: 14px !important;
@@ -2988,26 +2991,61 @@ body {
   background: #46141F !important;
   color: #FFFFFF !important;
   font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif !important;
-  font-size: 0.70rem !important;
+  font-size: 0.72rem !important;
   font-weight: 800 !important;
   letter-spacing: 0.12em !important;
   text-transform: uppercase !important;
-  padding: 5px 13px !important;
+  padding: 6px 14px !important;
   border-radius: 9999px !important;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4) !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35) !important;
   z-index: 3 !important;
-  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  border: 1px solid rgba(212, 175, 55, 0.45) !important;
   pointer-events: none !important;
+}
+
+/* Verified Tour Pill at bottom of photo */
+.story-verified-badge {
+  position: absolute !important;
+  bottom: 12px !important;
+  left: 12px !important;
+  background: rgba(10, 25, 42, 0.85) !important;
+  backdrop-filter: blur(6px) !important;
+  -webkit-backdrop-filter: blur(6px) !important;
+  color: #F6D68D !important;
+  font-family: 'DM Sans', sans-serif !important;
+  font-size: 0.66rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase !important;
+  padding: 4px 10px !important;
+  border-radius: 6px !important;
+  border: 1px solid rgba(212, 175, 55, 0.35) !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 5px !important;
+  z-index: 3 !important;
+  pointer-events: none !important;
+}
+
+.story-verified-badge svg {
+  color: #D4A359 !important;
+  flex-shrink: 0 !important;
 }
 
 /* Right Content Box */
 .story-body-box {
   flex: 1 !important;
-  padding: 1.15rem 1.35rem 0.95rem !important;
+  padding: 1.35rem 1.6rem 1.15rem !important;
   display: flex !important;
   flex-direction: column !important;
   justify-content: space-between !important;
   min-width: 0 !important;
+  background: #FFFFFF !important;
+}
+
+.story-content-top {
+  display: flex !important;
+  flex-direction: column !important;
 }
 
 .story-header-row {
@@ -3020,34 +3058,37 @@ body {
 .story-meta-tag {
   display: inline-flex !important;
   align-items: center !important;
-  gap: 0.45rem !important;
+  gap: 0.5rem !important;
 }
 
 .story-meta-dot {
-  width: 7px !important;
-  height: 7px !important;
+  width: 8px !important;
+  height: 8px !important;
   border-radius: 50% !important;
   background: #D4A359 !important;
-  box-shadow: 0 0 8px rgba(212, 163, 89, 0.8) !important;
+  box-shadow: 0 0 10px rgba(212, 163, 89, 0.85) !important;
 }
 
 .story-meta-title {
   font-family: 'DM Sans', sans-serif !important;
-  font-size: 0.72rem !important;
+  font-size: 0.74rem !important;
   font-weight: 800 !important;
-  letter-spacing: 0.10em !important;
+  letter-spacing: 0.12em !important;
   text-transform: uppercase !important;
   color: #B87314 !important;
 }
 
 .story-counter {
   font-family: 'DM Sans', sans-serif !important;
-  font-size: 0.75rem !important;
+  font-size: 0.78rem !important;
   font-weight: 700 !important;
   color: #8C827A !important;
   display: inline-flex !important;
   align-items: center !important;
-  gap: 2px !important;
+  gap: 3px !important;
+  background: rgba(212, 175, 55, 0.1) !important;
+  padding: 2px 8px !important;
+  border-radius: 12px !important;
 }
 
 .story-current-num {
@@ -3057,25 +3098,73 @@ body {
 
 .story-title {
   font-family: 'DM Serif Display', Georgia, serif !important;
-  font-size: 1.30rem !important;
+  font-size: clamp(1.35rem, 1.8vw, 1.62rem) !important;
   font-weight: 700 !important;
-  color: #381119 !important;
-  line-height: 1.25 !important;
-  margin: 0.2rem 0 0.45rem 0 !important;
+  color: #2F0E16 !important;
+  line-height: 1.22 !important;
+  margin: 0.25rem 0 0.35rem 0 !important;
   transition: opacity 0.25s ease, transform 0.25s ease !important;
+}
+
+/* Tour Location / Route Line */
+.story-location-row {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 5px !important;
+  font-family: 'DM Sans', sans-serif !important;
+  font-size: 0.78rem !important;
+  color: #8C7B6D !important;
+  font-weight: 600 !important;
+  margin-bottom: 0.55rem !important;
+  letter-spacing: 0.02em !important;
+}
+
+.story-location-row svg {
+  color: #B87314 !important;
+  flex-shrink: 0 !important;
 }
 
 .story-description {
   font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif !important;
-  font-size: 0.86rem !important;
-  color: #55504A !important;
-  line-height: 1.52 !important;
-  margin: 0 0 0.85rem 0 !important;
+  font-size: 0.90rem !important;
+  color: #4A4641 !important;
+  line-height: 1.58 !important;
+  margin: 0 0 0.75rem 0 !important;
   display: -webkit-box !important;
-  -webkit-line-clamp: 3 !important;
+  -webkit-line-clamp: 4 !important;
   -webkit-box-orient: vertical !important;
   overflow: hidden !important;
   transition: opacity 0.25s ease, transform 0.25s ease !important;
+}
+
+/* Action CTA Link */
+.story-action-row {
+  margin-bottom: 0.85rem !important;
+}
+
+.story-action-link {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  font-family: 'DM Sans', sans-serif !important;
+  font-size: 0.82rem !important;
+  font-weight: 700 !important;
+  color: #9C6114 !important;
+  text-decoration: none !important;
+  transition: color 0.2s ease, transform 0.2s ease !important;
+}
+
+.story-action-link:hover {
+  color: #46141F !important;
+  transform: translateX(3px) !important;
+}
+
+.story-action-link svg {
+  transition: transform 0.2s ease !important;
+}
+
+.story-action-link:hover svg {
+  transform: translateX(2px) !important;
 }
 
 /* Footer / Progress Bar & Navigation */
@@ -3083,13 +3172,15 @@ body {
   margin-top: auto !important;
   display: flex !important;
   flex-direction: column !important;
-  gap: 0.6rem !important;
+  gap: 0.65rem !important;
+  padding-top: 0.4rem !important;
+  border-top: 1px solid rgba(212, 175, 55, 0.18) !important;
 }
 
 .story-progress-track {
   width: 100% !important;
   height: 3px !important;
-  background: rgba(212, 175, 55, 0.22) !important;
+  background: rgba(212, 175, 55, 0.18) !important;
   border-radius: 3px !important;
   overflow: hidden !important;
 }
@@ -3105,33 +3196,43 @@ body {
 .story-controls-bar {
   display: flex !important;
   align-items: center !important;
-  justify-content: flex-end !important;
+  justify-content: space-between !important;
 }
 
 .story-auto-hint {
-  display: none !important;
-  font-size: 0.68rem !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  font-size: 0.70rem !important;
   color: #9E968E !important;
   font-weight: 600 !important;
-  letter-spacing: 0.04em !important;
-  text-transform: uppercase !important;
+  letter-spacing: 0.03em !important;
+}
+
+.story-live-pulse {
+  width: 6px !important;
+  height: 6px !important;
+  border-radius: 50% !important;
+  background: #10B981 !important;
+  display: inline-block !important;
+  box-shadow: 0 0 6px rgba(16, 185, 129, 0.7) !important;
 }
 
 .story-nav-group {
   display: inline-flex !important;
   align-items: center !important;
-  gap: 0.45rem !important;
+  gap: 0.55rem !important;
 }
 
 .story-dots {
   display: inline-flex !important;
   align-items: center !important;
-  gap: 0.35rem !important;
+  gap: 0.4rem !important;
 }
 
 .story-dot {
-  width: 7px !important;
-  height: 7px !important;
+  width: 8px !important;
+  height: 8px !important;
   border-radius: 50% !important;
   background: rgba(0, 43, 73, 0.2) !important;
   border: none !important;
@@ -3141,14 +3242,14 @@ body {
 }
 
 .story-dot.is-active {
-  width: 18px !important;
+  width: 22px !important;
   border-radius: 10px !important;
   background: #B87314 !important;
 }
 
 .story-nav-btn {
-  width: 26px !important;
-  height: 26px !important;
+  width: 30px !important;
+  height: 30px !important;
   border-radius: 50% !important;
   background: #FFFFFF !important;
   border: 1px solid rgba(0, 43, 73, 0.16) !important;
@@ -3175,27 +3276,32 @@ body {
 }
 
 .success-stories-landscape-card.is-animating .story-title,
+.success-stories-landscape-card.is-animating .story-location-row,
 .success-stories-landscape-card.is-animating .story-description {
   opacity: 0 !important;
   transform: translateY(3px) !important;
 }
 
 /* Responsive Adaptation */
-@media (max-width: 640px) {
+@media (max-width: 680px) {
   .success-stories-landscape-card {
     flex-direction: column !important;
+    min-height: auto !important;
   }
   .story-media-box {
     flex: none !important;
     width: 100% !important;
-    height: 180px !important;
-    min-height: 180px !important;
+    height: 210px !important;
+    min-height: 210px !important;
   }
   .story-body-box {
-    padding: 1.1rem !important;
+    padding: 1.25rem 1.2rem 1.1rem !important;
   }
   .story-title {
-    font-size: 1.20rem !important;
+    font-size: 1.30rem !important;
+  }
+  .story-auto-hint {
+    display: none !important;
   }
 }
 
