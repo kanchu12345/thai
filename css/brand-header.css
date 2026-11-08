@@ -2883,11 +2883,20 @@ body {
 
 .why-us-heading-col {
   flex: 0 1 auto !important;
-  max-width: 480px !important;
+  max-width: 540px !important;
 }
 
 .why-us-heading-col .heading--60 {
+  font-size: clamp(2.6rem, 4vw, 3.85rem) !important;
+  line-height: 1.14 !important;
+  letter-spacing: -0.025em !important;
   margin-bottom: 0 !important;
+  color: var(--color-dark-blue, #002B49) !important;
+}
+
+.why-us-heading-col .heading--60 span {
+  font-weight: 700 !important;
+  color: var(--color-dark-blue, #002B49) !important;
 }
 
 .why-us-header-flex .success-stories-card-wrapper {
@@ -2906,6 +2915,9 @@ body {
   }
   .why-us-heading-col {
     max-width: 100% !important;
+  }
+  .why-us-heading-col .heading--60 {
+    font-size: clamp(2.2rem, 6vw, 3rem) !important;
   }
   .why-us-header-flex .success-stories-card-wrapper {
     max-width: 100% !important;
