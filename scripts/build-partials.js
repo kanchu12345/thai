@@ -87,7 +87,7 @@ function processFile(filePath, partials) {
 function findHtmlFiles(dir, fileList = []) {
   const items = fs.readdirSync(dir, { withFileTypes: true });
   for (const item of items) {
-    if (item.name.startsWith('.') || item.name === 'node_modules' || item.name === 'admin' || item.name === 'partials') {
+    if (item.name.startsWith('.') || item.name === 'node_modules' || item.name === 'admin' || item.name === 'partials' || item.name.startsWith('backup-')) {
       continue;
     }
     const fullPath = path.join(dir, item.name);

@@ -32,7 +32,7 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..800;1,9..40,300..800&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;family=Inter:wght@300;400;500;600;700&amp;family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&amp;display=swap" rel="stylesheet"/>
 <!-- Master Stylesheet (Lotus Ceylon Luxury Style) -->
 <link href="css/style.css?v=20261022_sleek_btn_v9" rel="stylesheet"/>
-<link href="css/brand-header.css?v=20261108_stories_v3" rel="stylesheet"/>
+<link href="css/brand-header.css?v=20261108_realexp_v6" rel="stylesheet"/>
 <script defer src="https://cdn.jsdelivr.net/npm/dompurify@3.1.6/dist/purify.min.js"></script>
 <script defer src="js/config.js"></script>
 <script defer src="js/dynamic-renderer.js"></script>
@@ -108,12 +108,17 @@
 <svg class="walkers-caret" viewbox="0 0 10 6"><path d="M1 1L5 5L9 1" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.8"></path></svg>
 </a>
 <div class="walkers-megamenu">
-<a class="megamenu-link" href="./tours/cultural/index.html">Cultural Heritage</a>
-<a class="megamenu-link" href="./tours/buddhist-heritage/index.html">Buddhist Heritage</a>
-<a class="megamenu-link" href="./tours/wildlife/index.html">Wildlife Safaris</a>
-<a class="megamenu-link" href="./tours/beach/index.html">Pristine Beaches</a>
-<a class="megamenu-link" href="./tours/hill-country/index.html">Hill Country and Tea</a>
-<a class="megamenu-link" href="./tours/ayurvedic/index.html">Ayurvedic Healing</a>
+<a class="megamenu-link" href="./tours/cultural/index.html" data-category-slug="cultural">Cultural Heritage</a>
+<a class="megamenu-link" href="./tours/buddhist-heritage/index.html" data-category-slug="buddhist-heritage">Buddhist Heritage</a>
+<a class="megamenu-link" href="./tours/wildlife/index.html" data-category-slug="wildlife">Wildlife Safaris</a>
+<a class="megamenu-link" href="./tours/beach/index.html" data-category-slug="beach">Pristine Beaches</a>
+<a class="megamenu-link" href="./tours/hill-country/index.html" data-category-slug="hill-country">Hill Country and Tea</a>
+<a class="megamenu-link" href="./tours/ayurvedic/index.html" data-category-slug="ayurvedic">Ayurvedic Healing</a>
+<a class="megamenu-link" href="./tours/honeymoon/index.html" data-category-slug="honeymoon">Honeymoon Romance</a>
+<a class="megamenu-link" href="./tours/family/index.html" data-category-slug="family">Family Discovery</a>
+<a class="megamenu-link" href="./tours/adventure/index.html" data-category-slug="adventure">Active Adventure</a>
+<a class="megamenu-link" href="./tours/golf/index.html" data-category-slug="golf">Championship Golf</a>
+<a class="megamenu-link" href="./tours/ramayana/index.html" data-category-slug="ramayana">Ramayana Trail</a>
 <a class="megamenu-link megamenu-link-all" href="./tours/index.html"><span>View All Tours &amp; Themes (29 Packages)</span> <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
 </div>
 </li>
@@ -134,18 +139,18 @@
 <svg class="walkers-caret" viewbox="0 0 10 6"><path d="M1 1L5 5L9 1" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.8"></path></svg>
 </button>
 <div class="lang-pill-dropdown" id="langPillMenu">
-<button class="is-active" data-lang="en" type="button">🇬🇧 English</button>
-<button data-lang="zh-TW" type="button">🇹🇼 繁體中文 (Taiwan)</button>
-<button data-lang="zh-CN" type="button">🇨🇳 简体中文 (Modern)</button>
-<button data-lang="fr" type="button">🇫🇷 Français (French)</button>
-<button data-lang="de" type="button">🇩🇪 Deutsch (German)</button>
-<button data-lang="ru" type="button">🇷🇺 Русский</button>
-<button data-lang="es" type="button">🇪🇸 Español</button>
-<button data-lang="it" type="button">🇮🇹 Italiano</button>
-<button data-lang="ja" type="button">🇯🇵 日本語</button>
-<button data-lang="ar" type="button">🇦🇪 العربية</button>
-<button data-lang="hi" type="button">🇮🇳 हिन्दी</button>
-<button data-lang="vi" type="button">🇻🇳 Tiếng Việt</button>
+<button class="is-active" data-lang="en" type="button">English</button>
+<button data-lang="zh-TW" type="button">繁體中文 (Taiwan)</button>
+<button data-lang="zh-CN" type="button">简体中文 (Modern)</button>
+<button data-lang="fr" type="button">Français (French)</button>
+<button data-lang="de" type="button">Deutsch (German)</button>
+<button data-lang="ru" type="button">Русский</button>
+<button data-lang="es" type="button">Español</button>
+<button data-lang="it" type="button">Italiano</button>
+<button data-lang="ja" type="button">日本語</button>
+<button data-lang="ar" type="button">العربية</button>
+<button data-lang="hi" type="button">हिन्दी</button>
+<button data-lang="vi" type="button">Tiếng Việt</button>
 </div>
 </div>
 <a class="gold-inquire-btn" href="./inquiry-detailed.html" title="Plan Your Bespoke Travel">
@@ -181,12 +186,17 @@
 <svg class="accordion-arrow" fill="none" height="16" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="16"><polyline points="6 9 12 15 18 9"></polyline></svg>
 </button>
 <div class="mobile-accordion-submenu" id="mobileToursSubmenu">
-<a class="submenu-link" href="./tours/cultural/index.html">Cultural Heritage</a>
-<a class="submenu-link" href="./tours/buddhist-heritage/index.html">Buddhist Heritage</a>
-<a class="submenu-link" href="./tours/wildlife/index.html">Wildlife Safaris</a>
-<a class="submenu-link" href="./tours/beach/index.html">Pristine Beaches</a>
-<a class="submenu-link" href="./tours/hill-country/index.html">Hill Country and Tea</a>
-<a class="submenu-link" href="./tours/ayurvedic/index.html">Ayurvedic Healing</a>
+<a class="submenu-link" href="./tours/cultural/index.html" data-category-slug="cultural">Cultural Heritage</a>
+<a class="submenu-link" href="./tours/buddhist-heritage/index.html" data-category-slug="buddhist-heritage">Buddhist Heritage</a>
+<a class="submenu-link" href="./tours/wildlife/index.html" data-category-slug="wildlife">Wildlife Safaris</a>
+<a class="submenu-link" href="./tours/beach/index.html" data-category-slug="beach">Pristine Beaches</a>
+<a class="submenu-link" href="./tours/hill-country/index.html" data-category-slug="hill-country">Hill Country and Tea</a>
+<a class="submenu-link" href="./tours/ayurvedic/index.html" data-category-slug="ayurvedic">Ayurvedic Healing</a>
+<a class="submenu-link" href="./tours/honeymoon/index.html" data-category-slug="honeymoon">Honeymoon Romance</a>
+<a class="submenu-link" href="./tours/family/index.html" data-category-slug="family">Family Discovery</a>
+<a class="submenu-link" href="./tours/adventure/index.html" data-category-slug="adventure">Active Adventure</a>
+<a class="submenu-link" href="./tours/golf/index.html" data-category-slug="golf">Championship Golf</a>
+<a class="submenu-link" href="./tours/ramayana/index.html" data-category-slug="ramayana">Ramayana Trail</a>
 <a class="submenu-link submenu-link-all" href="./tours/index.html"><span>View All Tours &amp; Themes (29 Packages)</span> <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
 </div>
 </li>
@@ -202,19 +212,18 @@
 <div class="mobile-lang-section">
 <p class="mobile-section-label">Select Language</p>
 <div class="mobile-lang-grid" id="mobileLangGrid">
-<button class="mobile-lang-btn is-active" data-lang="en" type="button">🇬🇧 English</button>
-<button class="mobile-lang-btn" data-lang="zh-TW" type="button">🇹🇼 繁體中文</button>
-<button class="mobile-lang-btn" data-lang="zh-CN" type="button">🇨🇳 简体中文</button>
-<button class="mobile-lang-btn" data-lang="fr" type="button">🇫🇷 Français</button>
-<button class="mobile-lang-btn" data-lang="de" type="button">🇩🇪 Deutsch</button>
-<button class="mobile-lang-btn" data-lang="ru" type="button">🇷🇺 Русский</button>
-<button class="mobile-lang-btn" data-lang="es" type="button">🇪🇸 Español</button>
-<button class="mobile-lang-btn" data-lang="it" type="button">🇮🇹 Italiano</button>
-<button class="mobile-lang-btn" data-lang="ja" type="button">🇯🇵 日本語</button>
-<button class="mobile-lang-btn" data-lang="ar" type="button">🇦🇪 العربية</button>
-<button class="mobile-lang-btn" data-lang="hi" type="button">🇮🇳 हिन्दी</button>
-<button class="mobile-lang-btn" data-lang="vi" type="button">🇻🇳 Tiếng Việt</button>
-
+<button class="mobile-lang-btn is-active" data-lang="en" type="button">English</button>
+<button class="mobile-lang-btn" data-lang="zh-TW" type="button">繁體中文</button>
+<button class="mobile-lang-btn" data-lang="zh-CN" type="button">简体中文</button>
+<button class="mobile-lang-btn" data-lang="fr" type="button">Français</button>
+<button class="mobile-lang-btn" data-lang="de" type="button">Deutsch</button>
+<button class="mobile-lang-btn" data-lang="ru" type="button">Русский</button>
+<button class="mobile-lang-btn" data-lang="es" type="button">Español</button>
+<button class="mobile-lang-btn" data-lang="it" type="button">Italiano</button>
+<button class="mobile-lang-btn" data-lang="ja" type="button">日本語</button>
+<button class="mobile-lang-btn" data-lang="ar" type="button">العربية</button>
+<button class="mobile-lang-btn" data-lang="hi" type="button">हिन्दी</button>
+<button class="mobile-lang-btn" data-lang="vi" type="button">Tiếng Việt</button>
 </div>
 <!-- Mobile Action Buttons -->
 <div class="mobile-nav-actions">
@@ -1214,107 +1223,150 @@ SACRED DESTINATIONS </div>
 </div>
 </section>
 <!-- ==========================================================================
-       SECTION 6: EXCLUSIVE BRANDS & EXPERIENCES
+       SECTION 6: REAL EXPERIENCES / GUEST TESTIMONIALS SLIDER
+       (Multi-Image Panoramic with Blurred/Feathered Margins into Lotus Burgundy/Pink)
        ========================================================================== -->
-<section class="padding-top--100 padding-bottom--100" id="brands" style="scroll-margin-top: 105px; position: relative;">
-<!-- Anchor Aliases for Header and Nav Links -->
-<span id="experiences" style="position: absolute; top: -105px; left: 0; display: block; visibility: hidden; pointer-events: none;"></span>
-<span id="gallery" style="position: absolute; top: -105px; left: 0; display: block; visibility: hidden; pointer-events: none;"></span>
-<div class="wrapper--50 text-center" style="text-align: center; position: relative;">
-<div class="section-watermark-header">
-<p class="watermark-heading" data-cms="home.p_63">experiences</p>
-<div class="sacred-badge-tag" style="margin-bottom: 0.6rem;">
-SIGNATURE TRAVEL PILLARS </div>
-<h2 class="section-header-title" data-cms-html="home.heading_12">Moments of Pure Wonder: <br/><span data-cms="home.span_52">Handcrafted Encounters</span></h2>
-</div>
-<p class="paragraph--20" style="position: relative; z-index: 2; color: #475569;" data-cms="home.p_64">
-        Beyond standard sightseeing lies the true soul of Ceylon—intimate moments of stillness, living heritage, authentic Ayurveda, and wild natural encounters.
-      </p>
-</div>
-<div class="wrapper--90">
-<div class="brands-3col-grid">
-<!-- Pillar 1: Lotus Artisan & Sacred Heritage (Inspired by Art Travele) -->
-<div class="brand-card-item">
-<div class="brand-card-img-wrap">
-<img alt="Lotus Artisan Sacred Heritage Sri Lanka" loading="lazy" src="./assets/images/cultural/sigiriya-1.webp" decoding="async" data-cms-img="home.img_33">
-</div>
-<div class="brand-card-body">
-<span class="brand-card-tag" data-cms="home.span_53">Heritage and Living Art</span>
-<h3 class="brand-card-title" data-cms-html="home.heading_13">Cultural Depth &amp;<br/><span data-cms="home.span_54">Sacred Sanctuaries</span></h3>
-<p data-cms="home.p_65">Three millennia of living Buddhist heritage, UNESCO rock citadels, private temple rituals, and Geoffrey Bawa architectural journeys.</p>
-<a class="next-btn next-btn--blue" href="experiences.html#artisan-heritage" data-cms="home.btn_27">
-<span class="next-btn-circle">➔</span>
-<span data-cms="home.span_55">Explore Heritage Pillar</span>
-</a>
-</div>
-</div>
-<!-- Pillar 2: Lotus Nature Odyssey (Inspired by Nature Odyssey) -->
-<div class="brand-card-item">
-<div class="brand-card-img-wrap">
-<img alt="Lotus Nature Odyssey Wildlife Safari Sri Lanka" loading="lazy" src="./assets/images/wildlife/yala-leopard-1.webp" decoding="async" data-cms-img="home.img_34">
-</div>
-<div class="brand-card-body">
-<span class="brand-card-tag" data-cms="home.span_56">Untamed Nature and Safaris</span>
-<h3 class="brand-card-title" data-cms-html="home.heading_14">Wild Encounters &amp;<br/><span data-cms="home.span_57">Coastal Solitude</span></h3>
-<p data-cms="home.p_66">Private leopard safaris in Yala, the Minneriya elephant gathering, ethical blue whale catamaran excursions, and Sinharaja rainforest expeditions.</p>
-<a class="next-btn next-btn--blue" href="experiences.html#nature-odyssey" data-cms="home.btn_28">
-<span class="next-btn-circle">➔</span>
-<span data-cms="home.span_58">Explore Nature Pillar</span>
-</a>
-</div>
-</div>
-<!-- Pillar 3: Lotus Ayu Wellness (Inspired by Ayu by Walkers) -->
-<div class="brand-card-item">
-<div class="brand-card-img-wrap">
-<img alt="Lotus Ayu Wellness and Highlands Sri Lanka" loading="lazy" src="./assets/images/hill-country/nuwara-eliya-tea-2.webp" decoding="async" data-cms-img="home.img_35">
-</div>
-<div class="brand-card-body">
-<span class="brand-card-tag" data-cms="home.span_59">Holistic Wellness and Healing</span>
-<h3 class="brand-card-title" data-cms-html="home.heading_15">Lotus Ayu &amp;<br/><span data-cms="home.span_60">Highland Serenity</span></h3>
-<p data-cms="home.p_67">Authentic physician-guided Ceylon Ayurveda, Panchakarma restorative retreats, silent forest meditation, and colonial tea country repose.</p>
-<a class="next-btn next-btn--blue" href="experiences.html#lotus-ayu" data-cms="home.btn_29">
-<span class="next-btn-circle">➔</span>
-<span data-cms="home.span_61">Explore Wellness Pillar</span>
-</a>
-</div>
-</div>
-</div>
-<!-- Button linking to dedicated experiences.html -->
-<div style="text-align: center; margin-top: 3.5rem;">
-<a class="btn-editorial-primary" href="experiences.html" style="display: inline-flex; align-items: center; gap: 0.75rem;" title="Explore All Experiences and Signature Brands" data-cms="home.btn_30">
-<span data-cms="home.span_62">Explore All Experiences and Signature Brands</span>
-<span class="btn-arrow-circle">➔</span>
-</a>
-</div>
-</div>
-</section>
-<!-- ==========================================================================
-       SECTION 8: REAL EXPERIENCES / GUEST REVIEWS
-       ========================================================================== -->
-<section class="padding-top--100 padding-bottom--100 review-sec" id="testimonials" style="scroll-margin-top: 105px; position: relative;">
-<!-- Anchor Alias for Header Reviews Link -->
-<span id="reviews" style="position: absolute; top: -105px; left: 0; display: block; visibility: hidden; pointer-events: none;"></span>
-<div class="wrapper--80">
-<div class="section-watermark-header">
-<p class="watermark-heading" data-cms="home.p_68">real stories</p>
-<h2 class="section-header-title" data-cms="home.heading_16">Guest Stories</h2>
-</div>
-<div style="max-width: 650px; margin: 0 auto; text-align: center; position: relative; z-index: 2;">
-<p class="paragraph--20" data-cms="home.p_69">
-          Hear from our global guests who experienced the authentic warmth, flawless planning, and sacred memories of Sri Lanka.
-        </p>
-</div>
-<div class="testimonial-cards-grid" data-cms-list="reviews" style="display: flex; justify-content: center; width: 100%;">
-          <div class="empty-reviews-card" style="background: rgba(255,255,255,0.9); border: 1px dashed rgba(197, 168, 128, 0.6); border-radius: 12px; padding: 3rem 2rem; text-align: center; max-width: 620px; margin: 0 auto; box-shadow: 0 4px 16px rgba(0,0,0,0.03);">
-            <h4 style="font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 1.35rem; color: #002B49; margin-bottom: 0.5rem;" data-cms="siteContent.home.reviewsEmptyTitle">Guest Reviews Coming Soon</h4>
-            <p style="color: #64748B; font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.5rem;" data-cms="siteContent.home.reviewsEmptyDesc">
-              We are currently welcoming our upcoming season guests across Sri Lanka. Verified guest reviews and reflections will appear here as they are published.
-            </p>
-            <a href="contact.html" class="next-btn next-btn--gold" style="display: inline-flex; padding: 0.75rem 1.5rem;" data-cms="home.btn_31"><span data-cms="home.span_63">Plan Your Bespoke Tour</span></a>
-          </div>
-        </div>
+<section class="real-experiences-sec" id="experiences" style="scroll-margin-top: 105px; position: relative;">
+  <!-- Anchor Aliases for Nav Links and Smooth Scrolling -->
+  <span id="brands" style="position: absolute; top: -105px; left: 0; display: block; visibility: hidden; pointer-events: none;"></span>
+  <span id="testimonials" style="position: absolute; top: -105px; left: 0; display: block; visibility: hidden; pointer-events: none;"></span>
+  <span id="reviews" style="position: absolute; top: -105px; left: 0; display: block; visibility: hidden; pointer-events: none;"></span>
+  <span id="gallery" style="position: absolute; top: -105px; left: 0; display: block; visibility: hidden; pointer-events: none;"></span>
+
+  <!-- Cross-fading Panoramic Background Layers for each experience -->
+  <div class="real-exp-bg-layers" aria-hidden="true">
+    <div class="real-exp-bg-layer is-active" style="background-image: url('assets/images/experiences/real-experiences-ella-rock-large.webp');"></div>
+    <div class="real-exp-bg-layer" style="background-image: url('assets/images/home/hero-sigiriya-aerial-1.webp');"></div>
+    <div class="real-exp-bg-layer" style="background-image: url('assets/images/wildlife/yala-leopard-1.webp');"></div>
+    <div class="real-exp-bg-layer" style="background-image: url('assets/images/family/scenic-train-ride-2.webp');"></div>
+  </div>
+
+  <!-- Soft Overlay for Typography Readability -->
+  <div class="real-exp-content-overlay" aria-hidden="true"></div>
+
+  <!-- Top Margin Feather & Blur into section above -->
+  <div class="real-exp-top-fade" aria-hidden="true"></div>
+
+  <!-- Bottom Margin Feather & Blur directly into Pink/Burgundy Sustainability Section -->
+  <div class="real-exp-bottom-fade" aria-hidden="true"></div>
+
+  <!-- Vignette Glow softening all outer edges -->
+  <div class="real-exp-vignette" aria-hidden="true"></div>
+
+  <div class="real-experiences-inner">
+    <p class="real-exp-watermark-title" data-cms="home.real_exp_watermark">real experiences</p>
+
+    <!-- Interactive Carousel Wrap -->
+    <div class="real-exp-slider-wrap" id="realExpSlider" role="region" aria-roledescription="carousel" aria-label="Guest Real Experiences">
+      
+      <!-- Desktop Side Navigation Arrows (matching Image 1 circular design) -->
+      <button type="button" class="real-exp-nav-btn real-exp-nav-prev" id="realExpPrevBtn" aria-label="Previous traveler experience">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+
+      <button type="button" class="real-exp-nav-btn real-exp-nav-next" id="realExpNextBtn" aria-label="Next traveler experience">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
+      </button>
+
+      <!-- Slides Container -->
+      <div class="real-exp-slides-container">
+        
+        <!-- Slide 1: Ella Rock / Misty Highlands (Image 2 couple) -->
+        <article class="real-exp-slide is-active" aria-hidden="false">
+          <h3 class="real-exp-quote-title">&ldquo;Pure Magic in the Misty Tea Mountains&rdquo;</h3>
+          <p class="real-exp-quote-body">
+            Standing atop the mist-veiled peaks of Ella overlooking the endless emerald valleys was pure magic. Savoring freshly brewed single-estate teas on panoramic plantation balconies, discovering secret waterfalls away from tourist crowds, and the comfort of our luxury chauffeured vehicle made this the most romantic and effortless trip of our lives. Every boutique villa was handpicked with impeccable taste.
+          </p>
+          <div class="real-exp-author-name">&mdash; Liam &amp; Sophie Tremblay, France &mdash;</div>
+          <div class="real-exp-tour-meta">10-Day Romantic Ceylon Highlands &amp; Coastline Escape</div>
+        </article>
+
+        <!-- Slide 2: Sigiriya Rock Citadel & Ancient Kingdoms -->
+        <article class="real-exp-slide" aria-hidden="true">
+          <h3 class="real-exp-quote-title">&ldquo;Three Millennia of Living Heritage &amp; Wonder&rdquo;</h3>
+          <p class="real-exp-quote-body">
+            Ascending the ancient Lion Rock of Sigiriya at sunrise before other travelers arrived was breathtaking. Lotus Ceylon arranged private temple chanting under the sacred Jaya Sri Maha Bodhi in Anuradhapura, accompanied by scholarly guidance that brought 3,000 years of Buddhist chronicles to life. A deeply spiritual, luxurious pilgrimage our family will treasure forever.
+          </p>
+          <div class="real-exp-author-name">&mdash; Zhang Wei &amp; Family, Singapore &mdash;</div>
+          <div class="real-exp-tour-meta">10-Day Sacred Buddhist Triangle &amp; Cultural Connoisseur</div>
+        </article>
+
+        <!-- Slide 3: Yala Leopard Safaris & Big Five Wildlife -->
+        <article class="real-exp-slide" aria-hidden="true">
+          <h3 class="real-exp-quote-title">&ldquo;Bespoke Safari Luxury Beyond All Expectation&rdquo;</h3>
+          <p class="real-exp-quote-body">
+            Our private wildlife expedition with Lotus Ceylon exceeded every hope. From our expert field naturalist and chauffeur guide Nuwan to our luxury tented pavilion bordering Yala, every moment was pristine. Tracking an apex leopard across our dawn safari path and watching hundreds of wild elephants gather at Minneriya made this an unforgettable adventure. Flawless concierge care throughout.
+          </p>
+          <div class="real-exp-author-name">&mdash; Dr. David &amp; Sarah Jenkins, Australia &mdash;</div>
+          <div class="real-exp-tour-meta">14-Day Grand Ceylon Heritage &amp; Leopard Safari</div>
+        </article>
+
+        <!-- Slide 4: Family Scenic Train & Tea Country (Homage to Image 1) -->
+        <article class="real-exp-slide" aria-hidden="true">
+          <h3 class="real-exp-quote-title">&ldquo;Wonderful Multi-Generational Family Holiday&rdquo;</h3>
+          <p class="real-exp-quote-body">
+            Wonderful family trip to Sri Lanka. We were a multi-generational group and Lotus Ceylon handled our rhythm effortlessly. Our private chauffeur was extremely knowledgeable about the sites and suggested we do a scenic train ride in Ella for a few stops so the children could experience the magic without fatigue. When a family member needed medical assistance, the team quickly arranged private clinic support without missing a beat. Genuine Sri Lankan warmth and flawlessness.
+          </p>
+          <div class="real-exp-author-name">&mdash; Shalini Castelli and Family, United Kingdom &mdash;</div>
+          <div class="real-exp-tour-meta">12-Day Family Heritage, Scenic Highlands &amp; Wildlife Safari</div>
+        </article>
+
       </div>
-    </section>
+
+      <!-- Interactive Destination Thumbnails Selector -->
+      <div class="real-exp-thumbs-row" id="realExpThumbs" role="tablist" aria-label="Select destination experience">
+        <button type="button" class="real-exp-thumb-btn is-active" role="tab" aria-selected="true" aria-label="View Misty Highlands Experience">
+          <img src="assets/images/experiences/real-experiences-ella-rock-large.webp" alt="" class="real-exp-thumb-img">
+          <span>Ella Highlands</span>
+        </button>
+        <button type="button" class="real-exp-thumb-btn" role="tab" aria-selected="false" aria-label="View Sigiriya Heritage Experience">
+          <img src="assets/images/home/hero-sigiriya-aerial-1.webp" alt="" class="real-exp-thumb-img">
+          <span>Sigiriya Citadel</span>
+        </button>
+        <button type="button" class="real-exp-thumb-btn" role="tab" aria-selected="false" aria-label="View Yala Safari Experience">
+          <img src="assets/images/wildlife/yala-leopard-1.webp" alt="" class="real-exp-thumb-img">
+          <span>Yala Leopards</span>
+        </button>
+        <button type="button" class="real-exp-thumb-btn" role="tab" aria-selected="false" aria-label="View Scenic Train Experience">
+          <img src="assets/images/family/scenic-train-ride-2.webp" alt="" class="real-exp-thumb-img">
+          <span>Scenic Tea Train</span>
+        </button>
+      </div>
+
+      <!-- Mobile Navigation Arrows (Shown on smaller screens below quote) -->
+      <div class="real-exp-mobile-arrows">
+        <button type="button" class="real-exp-nav-btn" onclick="document.getElementById('realExpPrevBtn').click()" aria-label="Previous traveler experience">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg>
+        </button>
+        <button type="button" class="real-exp-nav-btn" onclick="document.getElementById('realExpNextBtn').click()" aria-label="Next traveler experience">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </button>
+      </div>
+
+      <!-- Dots Indicators -->
+      <div class="real-exp-dots-row" id="realExpDots" aria-label="Slide indicators"></div>
+
+      <!-- Action Links -->
+      <div class="real-exp-bottom-actions">
+        <a href="experiences.html" class="real-exp-btn-secondary" title="Explore All Curated Experiences">
+          <span>Explore All Experiences</span>
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+        </a>
+        <a href="reviews.html" class="real-exp-btn-secondary" title="View All Verified Traveler Reviews">
+          <span>Read All Guest Stories</span>
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
 <!-- ==========================================================================
        SECTION 9: SUSTAINABILITY ("TRAVEL SMART, TREAD LIGHTLY")
        ========================================================================== -->
@@ -2033,5 +2085,6 @@ SIGNATURE TRAVEL PILLARS </div>
 <script defer src="./assets/js/cms.js?v=20261107_v7"></script>
 <script defer src="js/success-stories.js?v=20261108_5s"></script>
 <script defer src="js/homepage-blogs.js"></script>
+<script defer src="js/real-experiences.js?v=20261108_v2"></script>
 </body>
 </html>

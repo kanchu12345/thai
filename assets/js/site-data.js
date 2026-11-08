@@ -821,82 +821,53 @@
 
 
       // 2. Hydrate Company Coordinates across the entire page
-
-      document.querySelectorAll('[data-bind-phone], a[href^="tel:"]').forEach(el => {
-
-        if (el.hasAttribute('data-bind-phone')) el.textContent = s.phone;
-
-        if (el.tagName === 'A' && el.getAttribute('href').startsWith('tel:')) {
-
-          el.setAttribute('href', `tel:${s.phone.replace(/[^0-9+]/g, '')}`);
-
+      document.querySelectorAll('[data-bind-phone], [data-cms="siteGlobal.contact.phone"], a[href^="tel:"]').forEach(el => {
+        if (el.hasAttribute('data-bind-phone') || el.hasAttribute('data-cms')) el.textContent = s.phone;
+        if (el.tagName === 'A' && el.getAttribute('href') && el.getAttribute('href').startsWith('tel:')) {
+          el.setAttribute('href', `tel:${(s.phoneRaw || s.phone).replace(/[^0-9+]/g, '')}`);
           if (el.textContent.includes('+94')) el.textContent = s.phone;
-
         }
-
       });
 
-
-
-      document.querySelectorAll('[data-bind-email], a[href^="mailto:"]').forEach(el => {
-
-        if (el.hasAttribute('data-bind-email')) el.textContent = s.email;
-
-        if (el.tagName === 'A' && el.getAttribute('href').startsWith('mailto:')) {
-
+      document.querySelectorAll('[data-bind-email], [data-cms="siteGlobal.contact.email"], a[href^="mailto:"]').forEach(el => {
+        if (el.hasAttribute('data-bind-email') || el.hasAttribute('data-cms')) el.textContent = s.email;
+        if (el.tagName === 'A' && el.getAttribute('href') && el.getAttribute('href').startsWith('mailto:')) {
           el.setAttribute('href', `mailto:${s.email}`);
-
-          if (el.textContent.includes('@')) el.textContent = s.email;
-
+          if (el.textContent.includes('@') && !el.getAttribute('placeholder')) el.textContent = s.email;
         }
-
       });
 
-
-
-      document.querySelectorAll('[data-bind-whatsapp], a[href*="wa.me"]').forEach(el => {
-
-        const cleanPhone = (s.whatsapp || s.phone).replace(/[^0-9]/g, '');
-
-        el.setAttribute('href', `https://wa.me/${cleanPhone}`);
-
+      document.querySelectorAll('[data-bind-whatsapp], [data-cms-link="siteGlobal.contact.whatsappUrl"], a[href*="wa.me"]').forEach(el => {
+        const cleanPhone = (s.whatsappRaw || s.whatsapp || s.phone).replace(/[^0-9]/g, '');
+        const curr = el.getAttribute('href') || '';
+        const textMatch = curr.match(/[?&]text=([^&]*)/);
+        const query = textMatch ? `?text=${textMatch[1]}` : '';
+        el.setAttribute('href', `https://wa.me/${cleanPhone}${query}`);
       });
 
-
-
-      document.querySelectorAll('[data-bind-address]').forEach(el => {
-
+      document.querySelectorAll('[data-bind-address], [data-cms="siteGlobal.contact.address"]').forEach(el => {
         el.textContent = s.address;
-
       });
 
-
-
-      document.querySelectorAll('[data-bind-director]').forEach(el => {
-
+      document.querySelectorAll('[data-bind-director], [data-cms="siteGlobal.contact.director"]').forEach(el => {
         el.textContent = s.director;
-
       });
 
-
-
-      document.querySelectorAll('[data-bind-company-reg]').forEach(el => {
-
+      document.querySelectorAll('[data-bind-company-reg], [data-cms="siteGlobal.contact.companyReg"]').forEach(el => {
         el.textContent = s.companyReg;
-
       });
 
+      document.querySelectorAll('[data-bind-company-name], [data-cms="siteGlobal.branding.companyName"], [data-cms="siteGlobal.branding.companyLegalName"]').forEach(el => {
+        el.textContent = s.legalName || s.companyName;
+      });
 
+      document.querySelectorAll('[data-bind-hours], [data-cms="siteGlobal.contact.openingHours"]').forEach(el => {
+        el.textContent = s.openingHours || 'Mon - Sun: 24/7 Dedicated Concierge Care';
+      });
 
       document.querySelectorAll('[data-bind-slogan]').forEach(el => {
-
         el.textContent = this.getText(s.slogan, lang);
-
       });
-
-
-
-      
 
       // TripAdvisor hiding if empty
 
@@ -1061,10 +1032,90 @@
       // 6. Dynamic Blog Hydration (Sustainability, Homepage News, Blog Listing)
 
       this.hydrateBlogs();
+      this.hydrateNavigation();
 
     },
 
 
+
+    detectBasePath() {
+      if (typeof window !== 'undefined' && window.location.pathname.startsWith('/thai')) {
+        return '/thai/';
+      }
+      const brandLink = document.querySelector('a.header-brand');
+      if (brandLink) {
+        const rawHref = brandLink.getAttribute('href') || '';
+        if (rawHref.endsWith('index.html')) {
+          return rawHref.replace(/index\.html$/, '');
+        }
+      }
+      return './';
+    },
+
+    hydrateNavigation() {
+      const basePath = this.detectBasePath();
+      const lang = this.currentLang || 'en';
+
+      const canonicalCategories = [
+        { slug: 'cultural', title: 'Cultural Heritage', path: 'tours/cultural/index.html' },
+        { slug: 'buddhist-heritage', title: 'Buddhist Heritage', path: 'tours/buddhist-heritage/index.html' },
+        { slug: 'wildlife', title: 'Wildlife Safaris', path: 'tours/wildlife/index.html' },
+        { slug: 'beach', title: 'Pristine Beaches', path: 'tours/beach/index.html' },
+        { slug: 'hill-country', title: 'Hill Country and Tea', path: 'tours/hill-country/index.html' },
+        { slug: 'ayurvedic', title: 'Ayurvedic Healing', path: 'tours/ayurvedic/index.html' },
+        { slug: 'honeymoon', title: 'Honeymoon Romance', path: 'tours/honeymoon/index.html' },
+        { slug: 'family', title: 'Family Discovery', path: 'tours/family/index.html' },
+        { slug: 'adventure', title: 'Active Adventure', path: 'tours/adventure/index.html' },
+        { slug: 'golf', title: 'Championship Golf', path: 'tours/golf/index.html' },
+        { slug: 'ramayana', title: 'Ramayana Trail', path: 'tours/ramayana/index.html' }
+      ];
+
+      const totalPackages = (this.store.packages || []).length || 29;
+
+      // 1. Desktop Megamenu (.walkers-megamenu)
+      const megamenu = document.querySelector('.walkers-megamenu');
+      if (megamenu) {
+        canonicalCategories.forEach(cat => {
+          let link = megamenu.querySelector(`[data-category-slug="${cat.slug}"]`);
+          if (!link) {
+            link = megamenu.querySelector(`a[href*="/tours/${cat.slug}/"]`);
+          }
+          const storeCat = (this.store.categories || []).find(c => (c.slug || c.id) === cat.slug);
+          const title = storeCat ? this.getText(storeCat.title || storeCat.name || cat.title, lang) : cat.title;
+          if (link) {
+            link.textContent = title;
+            link.setAttribute('data-category-slug', cat.slug);
+          }
+        });
+        const allLink = megamenu.querySelector('.megamenu-link-all');
+        if (allLink) {
+          const span = allLink.querySelector('span');
+          if (span) span.textContent = `View All Tours & Themes (${totalPackages} Packages)`;
+        }
+      }
+
+      // 2. Mobile Submenu (#mobileToursSubmenu)
+      const mobileSubmenu = document.getElementById('mobileToursSubmenu');
+      if (mobileSubmenu) {
+        canonicalCategories.forEach(cat => {
+          let link = mobileSubmenu.querySelector(`[data-category-slug="${cat.slug}"]`);
+          if (!link) {
+            link = mobileSubmenu.querySelector(`a[href*="/tours/${cat.slug}/"]`);
+          }
+          const storeCat = (this.store.categories || []).find(c => (c.slug || c.id) === cat.slug);
+          const title = storeCat ? this.getText(storeCat.title || storeCat.name || cat.title, lang) : cat.title;
+          if (link) {
+            link.textContent = title;
+            link.setAttribute('data-category-slug', cat.slug);
+          }
+        });
+        const allMobileLink = mobileSubmenu.querySelector('.submenu-link-all');
+        if (allMobileLink) {
+          const span = allMobileLink.querySelector('span');
+          if (span) span.textContent = `View All Tours & Themes (${totalPackages} Packages)`;
+        }
+      }
+    },
 
     hydrateBlogs() {
 
