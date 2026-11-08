@@ -2513,9 +2513,23 @@
 
     renderSuccessStoriesInspector(item) {
       const storyData = item.storyData || {};
-      const stories = (window.AdminApp && window.AdminApp.successStories && window.AdminApp.successStories.length > 0)
+      let stories = (window.AdminApp && window.AdminApp.successStories && window.AdminApp.successStories.length > 0)
         ? window.AdminApp.successStories
         : (storyData.stories || []);
+
+      // Fallback: If stories still empty, read from localStorage cache or seed
+      if (!stories || stories.length === 0) {
+        try {
+          const cached = localStorage.getItem('lotus_success_stories_cache_v7') || localStorage.getItem('lotus_success_stories_cache');
+          if (cached) {
+            const parsed = JSON.parse(cached);
+            if (Array.isArray(parsed) && parsed.length > 0) {
+              stories = parsed;
+              if (window.AdminApp) window.AdminApp.successStories = parsed;
+            }
+          }
+        } catch (e) {}
+      }
       const currentIdx = (typeof this.activeStoryIndex === 'number' && stories[this.activeStoryIndex])
         ? this.activeStoryIndex
         : (storyData.currentSlide || 0);
