@@ -5379,7 +5379,7 @@
         "firestorePath": "siteContent/contact.contact.span_7",
         "type": "text",
         "label": "Badge / Statistic (span_7)",
-        "defaultValue": "💬 WhatsApp",
+        "defaultValue": "WhatsApp",
         "i18n": true
       },
       {
@@ -5389,7 +5389,7 @@
         "firestorePath": "siteContent/contact.contact.span_8",
         "type": "text",
         "label": "Badge / Statistic (span_8)",
-        "defaultValue": "🌿 WeChat: LotusCeylonTours",
+        "defaultValue": "WeChat: FGUTaiwan90",
         "i18n": true
       },
       {
@@ -5399,7 +5399,7 @@
         "firestorePath": "siteContent/contact.contact.span_9",
         "type": "text",
         "label": "Badge / Statistic (span_9)",
-        "defaultValue": "🟢 LINE: @lotusceylon",
+        "defaultValue": "LINE: dpbs2024 (+886 958 561 954)",
         "i18n": true
       },
       {
@@ -83690,7 +83690,7 @@
       "firestorePath": "siteContent/contact.contact.span_7",
       "type": "text",
       "label": "Badge / Statistic (span_7)",
-      "defaultValue": "💬 WhatsApp",
+      "defaultValue": "WhatsApp",
       "i18n": true
     },
     {
@@ -83700,7 +83700,7 @@
       "firestorePath": "siteContent/contact.contact.span_8",
       "type": "text",
       "label": "Badge / Statistic (span_8)",
-      "defaultValue": "🌿 WeChat: LotusCeylonTours",
+      "defaultValue": "WeChat: FGUTaiwan90",
       "i18n": true
     },
     {
@@ -83710,7 +83710,7 @@
       "firestorePath": "siteContent/contact.contact.span_9",
       "type": "text",
       "label": "Badge / Statistic (span_9)",
-      "defaultValue": "🟢 LINE: @lotusceylon",
+      "defaultValue": "LINE: dpbs2024 (+886 958 561 954)",
       "i18n": true
     },
     {

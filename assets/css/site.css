@@ -3640,3 +3640,58 @@ html.lotus-motion-enabled .lotus-reveal-media.lotus-in-view {
 .ocean-exp-box:hover p {
   color: #334155;
 }
+
+
+/* All Tour Package Category Hero Centering Standard */
+.beach-hero-banner,
+.tour-hero-section {
+  text-align: center !important;
+  justify-content: center !important;
+}
+
+.beach-hero-content {
+  text-align: center !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+}
+
+.beach-breadcrumb {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.beach-hero-content .sacred-badge-tag {
+  margin-left: auto !important;
+  margin-right: auto !important;
+  text-align: center !important;
+}
+
+.beach-hero-title {
+  margin-left: auto !important;
+  margin-right: auto !important;
+  text-align: center !important;
+}
+
+.beach-hero-title span {
+  text-align: center !important;
+}
+
+.beach-hero-lead {
+  margin-left: auto !important;
+  margin-right: auto !important;
+  text-align: center !important;
+}
+
+.beach-hero-cta-row {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
