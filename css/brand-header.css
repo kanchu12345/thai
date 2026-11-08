@@ -331,16 +331,23 @@
 /* ==============================================================================
    SECTION 1: ABOUT US - LUXURIOUS 2-COLUMN LAYERED EDITORIAL LAYOUT
    ============================================================================== */
+#about {
+  padding-bottom: clamp(0.75rem, 1.2vw, 1.25rem) !important;
+}
+
 .about-luxury-split-grid {
   display: grid !important;
   grid-template-columns: 1.05fr 1.25fr !important;
-  gap: clamp(2.5rem, 4.5vw, 4.75rem) !important;
-  align-items: center !important;
+  gap: clamp(2rem, 3.5vw, 3.75rem) !important;
+  align-items: stretch !important;
 }
 
 .about-visual-composition {
   position: relative !important;
   width: 100% !important;
+  height: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
   padding-right: 1.5rem !important;
   padding-bottom: 1.75rem !important;
 }
@@ -348,7 +355,9 @@
 .about-img-main {
   position: relative !important;
   width: 100% !important;
-  height: 520px !important;
+  flex: 1 1 auto !important;
+  height: 100% !important;
+  min-height: 520px !important;
   border-radius: 22px !important;
   overflow: hidden !important;
   box-shadow: 0 20px 48px rgba(0, 43, 73, 0.12), 0 4px 14px rgba(0, 0, 0, 0.04) !important;
@@ -744,7 +753,7 @@
   display: grid !important;
   grid-template-columns: repeat(2, 1fr) !important;
   gap: 1.25rem !important;
-  margin: 1.75rem 0 2rem 0 !important;
+  margin: 1.15rem 0 1.25rem 0 !important;
 }
 
 @media (max-width: 680px) {
@@ -998,6 +1007,7 @@
   position: relative;
   background: linear-gradient(180deg, #FFFFFF 0%, #FCF9F5 100%);
   overflow: hidden;
+  padding-top: clamp(1.25rem, 2vw, 2.25rem) !important;
 }
 
 #why-us .icon-boxes-list {
@@ -1394,16 +1404,21 @@
 @media (max-width: 991px) {
   .about-luxury-split-grid {
     grid-template-columns: 1fr !important;
-    gap: 3rem !important;
+    gap: 2.25rem !important;
+    align-items: start !important;
   }
   .about-visual-composition {
     max-width: 520px !important;
     margin: 0 auto !important;
     padding-right: 1rem !important;
     padding-bottom: 1.25rem !important;
+    height: auto !important;
+    display: block !important;
   }
   .about-img-main {
     height: 420px !important;
+    min-height: 420px !important;
+    flex: none !important;
   }
   .about-experience-seal {
     left: 0.5rem !important;
@@ -2876,7 +2891,7 @@ body {
  * Matches user's Sacred Sites card style in horizontal landscape format
  * ============================================================================== */
 .success-stories-card-wrapper {
-  margin-top: 1.85rem !important;
+  margin-top: 1.15rem !important;
   width: 100% !important;
   max-width: 680px !important;
 }
