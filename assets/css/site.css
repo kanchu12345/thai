@@ -3543,3 +3543,44 @@ html.lotus-motion-enabled .lotus-reveal-media.lotus-in-view {
   display: block !important;
 }
 }
+
+/* ==========================================================================
+   TOURS DROPDOWN ALL PACKAGES LINK (Method 1: Top 6 + View All)
+   ========================================================================== */
+.megamenu-link-all {
+  grid-column: 1 / -1 !important;
+  margin-top: 0.5rem !important;
+  padding: 0.75rem 1rem !important;
+  border-top: 1px dashed rgba(201, 150, 43, 0.45) !important;
+  color: #C9962B !important;
+  font-weight: 700 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  background: rgba(201, 150, 43, 0.08) !important;
+  border-radius: 8px !important;
+  text-decoration: none !important;
+  transition: all 0.25s ease !important;
+}
+
+.megamenu-link-all:hover {
+  background: #002B49 !important;
+  color: #FFFFFF !important;
+  padding-left: 1.25rem !important;
+}
+
+.submenu-link-all {
+  border-top: 1px dashed rgba(201, 150, 43, 0.35) !important;
+  margin-top: 0.4rem !important;
+  padding-top: 0.75rem !important;
+  padding-bottom: 0.5rem !important;
+  color: #C9962B !important;
+  font-weight: 700 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+}
+
+.submenu-link-all:hover {
+  color: #002B49 !important;
+}
