@@ -576,16 +576,20 @@
   </div>
   <!-- Our Success Stories Landscape Card (Auto-swaps every 1 min) -->
 <div class="success-stories-card-wrapper" id="homeSuccessStoriesWrapper">
-  <div class="success-stories-landscape-card" id="successStoriesCard" data-cms="home.success_stories_card" data-cms-component="success-stories" title="Click to edit Success Stories">
-    <!-- Left Landscape Photo with Burgundy Badge -->
+  <div class="success-stories-landscape-card" id="successStoriesCard" data-cms="home.success_stories_card" data-cms-component="success-stories" title="Click to view and edit Success Stories">
+    <!-- Left Landscape Photo with Burgundy Badge and Verified Tag -->
     <div class="story-media-box" id="storyMediaBox">
       <span class="story-badge-pill" id="storyBadge">SACRED SITES</span>
-      <img id="storyImage" src="./assets/images/buddhist-heritage/ruwanwelisaya-2.webp" alt="Our Success Stories" class="story-image" loading="lazy">
+      <img id="storyImage" src="./assets/images/buddhist-heritage/ruwanwelisaya-2.webp" alt="Lotus Ceylon Completed Tour" class="story-image" loading="lazy">
       <div class="story-image-overlay"></div>
+      <div class="story-verified-badge">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <span>RECENT TOUR HIGHLIGHT</span>
+      </div>
     </div>
     <!-- Right Editorial Content -->
     <div class="story-body-box">
-      <div>
+      <div class="story-content-top">
         <div class="story-header-row">
           <div class="story-meta-tag">
             <span class="story-meta-dot"></span>
@@ -598,7 +602,17 @@
           </div>
         </div>
         <h3 class="story-title" id="storyTitle">Sacred Anuradhapura</h3>
-        <p class="story-description" id="storyDesc">Ancient capital of great stupas and the revered Sri Maha Bodhi tree. Our travellers experienced peaceful evening meditation beneath the sacred Bodhi canopy.</p>
+        <div class="story-location-row" id="storyLocation">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+          <span id="storyLocationText">Ancient Capital • Cultural Triangle</span>
+        </div>
+        <p class="story-description" id="storyDesc">Ancient capital of colossal white stupas and the revered Sri Maha Bodhi tree. Our travellers experienced peaceful evening meditation beneath the sacred Bodhi canopy with private scholarly guidance.</p>
+        <div class="story-action-row">
+          <a href="./inquiry-detailed.html" class="story-action-link" id="storyActionLink" title="Plan your bespoke Sri Lanka journey">
+            <span>Inquire About Similar Journey</span>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </a>
+        </div>
       </div>
       <!-- Footer with 1-Min Progress Bar & Controls -->
       <div class="story-footer-row">
@@ -606,9 +620,10 @@
           <div class="story-progress-bar" id="storyProgressBar"></div>
         </div>
         <div class="story-controls-bar">
+          <span class="story-auto-hint"><span class="story-live-pulse"></span> Auto-swaps every 1 min</span>
           <div class="story-nav-group">
             <button type="button" class="story-nav-btn" id="storyPrevBtn" aria-label="Previous Story" title="Previous Story">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
             </button>
             <div class="story-dots" id="storyDots">
               <button type="button" class="story-dot is-active" aria-label="Go to story 1"></button>
@@ -618,7 +633,7 @@
               <button type="button" class="story-dot" aria-label="Go to story 5"></button>
             </div>
             <button type="button" class="story-nav-btn" id="storyNextBtn" aria-label="Next Story" title="Next Story">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
             </button>
           </div>
         </div>

@@ -6,7 +6,7 @@
 (function (window, document) {
   'use strict';
 
-  const STORAGE_KEY = 'lotus_success_stories_cache_v5';
+  const STORAGE_KEY = 'lotus_success_stories_cache_v6';
   const SWAP_INTERVAL_MS = 60000; // 1 minute (60s)
   const PROGRESS_TICK_MS = 100; // Smooth progress bar updates
 
@@ -15,8 +15,9 @@
       id: 'story-01',
       badge: 'SACRED SITES',
       title: 'Sacred Anuradhapura',
+      location: 'Ancient Capital • Cultural Triangle',
       photo: 'assets/images/buddhist-heritage/ruwanwelisaya-2.webp',
-      description: 'Ancient capital of colossal white stupas and the revered Sri Maha Bodhi tree. Our travellers experienced peaceful evening meditation beneath the sacred Bodhi canopy.',
+      description: 'Ancient capital of colossal white stupas and the revered Sri Maha Bodhi tree. Our travellers experienced peaceful evening meditation beneath the sacred Bodhi canopy with private scholarly guidance.',
       sortOrder: 1,
       published: true
     },
@@ -24,8 +25,9 @@
       id: 'story-02',
       badge: 'UNESCO CITADEL',
       title: 'Sigiriya Rock Fortress',
+      location: 'UNESCO Sky Citadel • Central Province',
       photo: 'assets/images/cultural/sigiriya-1.webp',
-      description: 'Marvel of 5th-century royal sky palace architecture and water gardens. Private dawn ascent guided by our resident Ceylon cultural historian.',
+      description: 'Marvel of 5th-century royal sky palace architecture and water gardens. Private dawn ascent arranged for our VIP guests with our resident Ceylon cultural historian.',
       sortOrder: 2,
       published: true
     },
@@ -33,8 +35,9 @@
       id: 'story-03',
       badge: 'TEA HIGHLANDS',
       title: 'Ella Tea Country',
+      location: 'Badulla Highlands • Scenic Railway Trails',
       photo: 'assets/images/hill-country/kandy-ella-train-1.webp',
-      description: 'Misty emerald tea estates, iconic colonial railways, and artisanal tea crafting. Bespoke private journeys through scenic mountain trails and cascades.',
+      description: 'Misty emerald tea estates, iconic colonial railways, and artisanal tea crafting. Bespoke private journeys through scenic mountain trails, Nine Arch Bridge, and cascades.',
       sortOrder: 3,
       published: true
     },
@@ -42,8 +45,9 @@
       id: 'story-04',
       badge: 'OCEAN SANCTUARY',
       title: 'Mirissa Blue Waters',
+      location: 'Southern Coast • Whale Sanctuary',
       photo: 'assets/images/beach/mirissa-1.webp',
-      description: 'Gentle ocean giants and sun-kissed golden coastlines. Private sunrise catamaran voyages encountering magnificent blue whales in southern Ceylon.',
+      description: 'Gentle ocean giants and sun-kissed golden coastlines. Private sunrise catamaran voyages encountering magnificent blue whales and dolphins off the southern Ceylon shores.',
       sortOrder: 4,
       published: true
     },
@@ -51,8 +55,9 @@
       id: 'story-05',
       badge: 'ROYAL HERITAGE',
       title: 'Kandy Royal Kingdom',
+      location: 'Sacred Hill Capital • Temple of the Tooth',
       photo: 'assets/images/cultural/kandy-temple-of-tooth-4.webp',
-      description: 'The revered Temple of the Sacred Tooth Relic amidst misty hills. Exclusive VIP access to the traditional evening royal pooja with sacred blessings.',
+      description: 'The revered Temple of the Sacred Tooth Relic amidst misty hills. Exclusive VIP access to the traditional evening royal pooja ceremony with private sacred blessings.',
       sortOrder: 5,
       published: true
     }
@@ -72,6 +77,7 @@
   let elBadge = null;
   let elTitle = null;
   let elDesc = null;
+  let elLocationText = null;
   let elCurrentIdx = null;
   let elTotalCount = null;
   let elProgressBar = null;
@@ -88,6 +94,7 @@
     elBadge = document.getElementById('storyBadge');
     elTitle = document.getElementById('storyTitle');
     elDesc = document.getElementById('storyDesc');
+    elLocationText = document.getElementById('storyLocationText');
     elCurrentIdx = document.getElementById('storyCurrentIndex');
     elTotalCount = document.getElementById('storyTotalCount');
     elProgressBar = document.getElementById('storyProgressBar');
@@ -251,6 +258,11 @@
       // Update Description
       if (elDesc) {
         elDesc.textContent = story.description || '';
+      }
+
+      // Update Location Route
+      if (elLocationText) {
+        elLocationText.textContent = story.location || 'Curated Ceylon Journey';
       }
 
       // Update Counter
