@@ -1300,3 +1300,99 @@ figure.video iframe,
   transform: translateY(-2px) !important;
   box-shadow: 0 6px 18px rgba(196, 152, 79, 0.3) !important;
 }
+
+
+/* ==============================================================================
+   SACRED GOLD LUXURY BUTTON STYLING (Matched to "About Us" Emblem Gold Standard)
+   ============================================================================== */
+.btn-beach-view,
+.btn-cultural-view,
+.pkg-card-btn,
+.btn-primary-gold {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 0.65rem !important;
+  background: linear-gradient(135deg, #D4A359 0%, #C98218 50%, #B87314 100%) !important;
+  background-color: var(--sacred-gold, #D4A359) !important;
+  color: #FFFFFF !important;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  font-size: 0.88rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.04em !important;
+  padding: 0.72rem 1.45rem !important;
+  min-height: 44px !important;
+  border-radius: 9999px !important;
+  text-decoration: none !important;
+  box-sizing: border-box !important;
+  line-height: 1.2 !important;
+  box-shadow: 0 4px 18px rgba(189, 110, 15, 0.35) !important;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease !important;
+}
+
+.btn-beach-view:hover,
+.btn-cultural-view:hover,
+.pkg-card-btn:hover,
+.btn-primary-gold:hover {
+  background: linear-gradient(135deg, #B87314 0%, #A3620D 50%, #8C5208 100%) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 25px rgba(189, 110, 15, 0.5) !important;
+  color: #FFFFFF !important;
+}
+
+/* Circular Arrow Disc (Matched to About Us Button) */
+.btn-beach-view span:last-child,
+.btn-cultural-view span:last-child,
+.pkg-card-btn .btn-arrow-circle {
+  width: 24px !important;
+  height: 24px !important;
+  border-radius: 50% !important;
+  background: rgba(255, 255, 255, 0.28) !important;
+  color: #FFFFFF !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 0.8rem !important;
+  margin-left: 0.25rem !important;
+  transition: transform 0.3s ease, background 0.3s ease !important;
+  flex-shrink: 0 !important;
+}
+
+.btn-beach-view:hover span:last-child,
+.btn-cultural-view:hover span:last-child,
+.pkg-card-btn:hover .btn-arrow-circle {
+  transform: translateX(3px) !important;
+  background: rgba(255, 255, 255, 0.45) !important;
+}
+
+.btn-beach-inquire,
+.btn-cultural-inquire {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 0.5rem !important;
+  background: var(--color-dark-blue, #002B49) !important;
+  color: #FFFFFF !important;
+  border: 1.5px solid rgba(212, 163, 89, 0.45) !important;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  font-size: 0.88rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.04em !important;
+  padding: 0.72rem 1.45rem !important;
+  min-height: 44px !important;
+  border-radius: 9999px !important;
+  text-decoration: none !important;
+  box-sizing: border-box !important;
+  line-height: 1.2 !important;
+  box-shadow: 0 4px 14px rgba(0, 43, 73, 0.18) !important;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease, border-color 0.3s ease !important;
+}
+
+.btn-beach-inquire:hover,
+.btn-cultural-inquire:hover {
+  background: linear-gradient(135deg, #D4A359 0%, #C98218 50%, #B87314 100%) !important;
+  border-color: transparent !important;
+  color: #FFFFFF !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 25px rgba(189, 110, 15, 0.5) !important;
+}
