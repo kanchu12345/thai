@@ -3695,3 +3695,97 @@ html.lotus-motion-enabled .lotus-reveal-media.lotus-in-view {
   margin-left: auto !important;
   margin-right: auto !important;
 }
+
+
+/* ==============================================================================
+   UNIVERSAL PACKAGE CARD BUTTON ALIGNMENT (Guarantees bottom baseline alignment)
+   ============================================================================== */
+.beach-grid-cards,
+.beach-packages-grid,
+.cultural-grid-cards {
+  align-items: stretch !important;
+}
+
+.beach-package-card,
+.cultural-package-card {
+  display: flex !important;
+  flex-direction: column !important;
+  height: 100% !important;
+}
+
+.beach-card-body,
+.cultural-card-body {
+  display: flex !important;
+  flex-direction: column !important;
+  flex-grow: 1 !important;
+  height: 100% !important;
+}
+
+.beach-card-actions,
+.cultural-card-actions {
+  margin-top: auto !important;
+  padding-top: 1.5rem !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.75rem !important;
+  flex-wrap: wrap !important;
+  width: 100% !important;
+}
+
+.btn-beach-view,
+.btn-cultural-view {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 0.5rem !important;
+  background: var(--color-gold, #C5A880) !important;
+  color: #002B49 !important;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  font-size: 0.88rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.03em !important;
+  padding: 0.75rem 1.35rem !important;
+  min-height: 44px !important;
+  border-radius: 9999px !important;
+  text-decoration: none !important;
+  box-sizing: border-box !important;
+  line-height: 1.2 !important;
+  transition: all 0.25s ease !important;
+}
+
+.btn-beach-view:hover,
+.btn-cultural-view:hover {
+  background: #B09267 !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 18px rgba(197, 168, 128, 0.4) !important;
+  color: #001A2C !important;
+}
+
+.btn-beach-inquire,
+.btn-cultural-inquire {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 0.5rem !important;
+  background: var(--color-dark-blue, #002B49) !important;
+  color: #FFFFFF !important;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  font-size: 0.88rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.03em !important;
+  padding: 0.75rem 1.35rem !important;
+  min-height: 44px !important;
+  border-radius: 9999px !important;
+  text-decoration: none !important;
+  box-sizing: border-box !important;
+  line-height: 1.2 !important;
+  transition: all 0.25s ease !important;
+}
+
+.btn-beach-inquire:hover,
+.btn-cultural-inquire:hover {
+  background: var(--color-gold, #C4984F) !important;
+  color: #1C1B1F !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 18px rgba(196, 152, 79, 0.3) !important;
+}
