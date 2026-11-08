@@ -2825,48 +2825,39 @@ resolveImg(url) {
 
 
 
-      // Recent 5 Inquiries
-
+      // Recent 5 Inquiries (if table exists)
       const tbody = document.getElementById('dashboardInquiriesTbody');
-
-      const recent = this.inquiries.slice(0, 5);
-
-
-
-      if (recent.length === 0) {
-
-        tbody.innerHTML = '<tr><td colspan="7" style="text-align: center; color: var(--ink-muted);">No inquiries received yet.</td></tr>';
-
-        return;
-
+      if (tbody) {
+        const recent = this.inquiries.slice(0, 5);
+        if (recent.length === 0) {
+          tbody.innerHTML = '<tr><td colspan="7" style="text-align: center; color: var(--ink-muted);">No inquiries received yet.</td></tr>';
+        } else {
+          tbody.innerHTML = recent.map(inq => {
+            const refNo = this.escapeHtml(inq.reference_no || 'N/A');
+            const refAttr = this.escapeAttr(inq.reference_no || '');
+            const name = this.escapeHtml(inq.full_name || 'Guest');
+            const country = this.escapeHtml(inq.country || '');
+            const email = this.escapeHtml(inq.email || '');
+            const phone = this.escapeHtml(inq.phone || 'N/A');
+            const dates = this.escapeHtml(inq.travel_dates || 'Flexible');
+            const pax = this.escapeHtml(String(inq.travelers_count || 2));
+            const status = this.escapeHtml(inq.status || 'new');
+            return `
+            <tr>
+              <td><strong style="color: var(--lotus-primary); font-size: 0.8rem;">${refNo}</strong></td>
+              <td><strong>${name}</strong><br><small style="color: var(--ink-muted);">${country}</small></td>
+              <td>${email}<br><small style="color: var(--ink-muted);">${phone}</small></td>
+              <td>${dates}<br><small>${pax} Pax</small></td>
+              <td><span class="badge ${this.getInquiryBadgeClass(inq.status)}">${status}</span></td>
+              <td><small style="color: var(--ink-muted);">${this.formatDate(inq.created_at)}</small></td>
+              <td>
+                <button class="btn btn-outline btn-sm" onclick="AdminApp.viewInquiry('${refAttr}')">View</button>
+              </td>
+            </tr>
+          `;
+          }).join('');
+        }
       }
-
-
-
-      tbody.innerHTML = recent.map(inq => {
-        const refNo = this.escapeHtml(inq.reference_no || 'N/A');
-        const refAttr = this.escapeAttr(inq.reference_no || '');
-        const name = this.escapeHtml(inq.full_name || 'Guest');
-        const country = this.escapeHtml(inq.country || '');
-        const email = this.escapeHtml(inq.email || '');
-        const phone = this.escapeHtml(inq.phone || 'N/A');
-        const dates = this.escapeHtml(inq.travel_dates || 'Flexible');
-        const pax = this.escapeHtml(String(inq.travelers_count || 2));
-        const status = this.escapeHtml(inq.status || 'new');
-        return `
-        <tr>
-          <td><strong style="color: var(--lotus-primary); font-size: 0.8rem;">${refNo}</strong></td>
-          <td><strong>${name}</strong><br><small style="color: var(--ink-muted);">${country}</small></td>
-          <td>${email}<br><small style="color: var(--ink-muted);">${phone}</small></td>
-          <td>${dates}<br><small>${pax} Pax</small></td>
-          <td><span class="badge ${this.getInquiryBadgeClass(inq.status)}">${status}</span></td>
-          <td><small style="color: var(--ink-muted);">${this.formatDate(inq.created_at)}</small></td>
-          <td>
-            <button class="btn btn-outline btn-sm" onclick="AdminApp.viewInquiry('${refAttr}')">View</button>
-          </td>
-        </tr>
-      `;
-      }).join('');
       this.initDashboardCharts();
       this.renderAuditTrail();
 
@@ -4317,11 +4308,22 @@ const waBtn = document.getElementById('inquiryWhatsAppBtn');
 
       this.successStories.sort((a, b) => (a.sortOrder || 0) - (b.sortOrder || 0));
 
-      // 3. Cache in localStorage for public site
+      // 3. Cache in localStorage for public site (both keys)
       try {
         localStorage.setItem('lotus_success_stories_cache', JSON.stringify(this.successStories));
+        localStorage.setItem('lotus_success_stories_cache_v6', JSON.stringify(this.successStories));
         window.dispatchEvent(new CustomEvent('lotus_stories_updated', { detail: this.successStories }));
       } catch (e) {}
+
+      // Also save to Firestore siteContent/home for public REST API access
+      if (this.fbDb) {
+        try {
+          this.fbDb.collection('siteContent').doc('home').set({
+            successStories: this.successStories,
+            updatedAt: new Date().toISOString()
+          }, { merge: true });
+        } catch(e) {}
+      }
 
       this.closeModal('storyModal');
       this.renderSuccessStories();
@@ -8189,6 +8191,67 @@ const waBtn = document.getElementById('inquiryWhatsAppBtn');
       printWindow.document.close();
     },
 
+
+    setDashboardViewport(mode) {
+      const wrapper = document.getElementById('dashHomeFrameWrapper');
+      const devBar = document.getElementById('dashHomeDeviceBar');
+      const resLabel = document.getElementById('dashHomeDeviceResolution');
+      const btnDesk = document.getElementById('btnDashVpDesktop');
+      const btnTab = document.getElementById('btnDashVpTablet');
+      const btnMob = document.getElementById('btnDashVpMobile');
+
+      const buttons = [btnDesk, btnTab, btnMob];
+      buttons.forEach(b => {
+        if (b) {
+          b.style.background = 'transparent';
+          b.style.color = 'var(--ink-muted)';
+          b.style.boxShadow = 'none';
+        }
+      });
+
+      if (!wrapper) return;
+
+      if (mode === 'mobile') {
+        wrapper.style.width = '390px';
+        wrapper.style.maxWidth = '100%';
+        if (devBar) devBar.style.display = 'flex';
+        if (resLabel) resLabel.textContent = '390 x 844 (Mobile)';
+        if (btnMob) {
+          btnMob.style.background = '#ffffff';
+          btnMob.style.color = 'var(--ink)';
+          btnMob.style.boxShadow = '0 1px 3px rgba(0,0,0,0.1)';
+        }
+      } else if (mode === 'tablet') {
+        wrapper.style.width = '768px';
+        wrapper.style.maxWidth = '100%';
+        if (devBar) devBar.style.display = 'flex';
+        if (resLabel) resLabel.textContent = '768 x 1024 (Tablet)';
+        if (btnTab) {
+          btnTab.style.background = '#ffffff';
+          btnTab.style.color = 'var(--ink)';
+          btnTab.style.boxShadow = '0 1px 3px rgba(0,0,0,0.1)';
+        }
+      } else {
+        wrapper.style.width = '100%';
+        wrapper.style.maxWidth = '100%';
+        if (devBar) devBar.style.display = 'none';
+        if (btnDesk) {
+          btnDesk.style.background = '#ffffff';
+          btnDesk.style.color = 'var(--ink)';
+          btnDesk.style.boxShadow = '0 1px 3px rgba(0,0,0,0.1)';
+        }
+      }
+    },
+
+    refreshDashboardHomePreview() {
+      const iframe = document.getElementById('dashboardHomeIframe');
+      if (iframe) {
+        iframe.src = '../index.html?v=dash_' + Date.now();
+        if (typeof this.showToast === 'function') {
+          this.showToast('Home page preview refreshed', 'info');
+        }
+      }
+    },
 };
 
 

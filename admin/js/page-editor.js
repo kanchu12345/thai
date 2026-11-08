@@ -1866,9 +1866,21 @@
       }
 
       try {
+        // Auto-save active success story before publishing if open
+        if (document.getElementById('peStoryTitle')) {
+          try {
+            await this.saveActiveStory();
+          } catch (se) {
+            console.warn('[PageEditor] Auto-save story warning:', se);
+          }
+        }
+
         const payload = Object.assign({}, this.activeDocData);
         payload.status = status;
         payload.updatedAt = new Date().toISOString();
+        if (this.activePageKey === 'siteContent/home' && window.AdminApp && window.AdminApp.successStories) {
+          payload.successStories = window.AdminApp.successStories;
+        }
         payload.updatedBy = (window.AdminApp && window.AdminApp.currentUser && window.AdminApp.currentUser.email) || 'admin';
 
         // Merge current field values with dual-key mapping (both "img_1" and "destinations.img_1")
@@ -2613,9 +2625,13 @@
     },
 
     handleStoryLiveInput(field, val) {
+      const idx = (typeof this.activeStoryIndex === 'number') ? this.activeStoryIndex : 0;
+      if (window.AdminApp && window.AdminApp.successStories && window.AdminApp.successStories[idx]) {
+        window.AdminApp.successStories[idx][field] = val;
+      }
       const iframe = document.getElementById('visualCmsIframe');
       if (iframe && iframe.contentWindow) {
-        iframe.contentWindow.postMessage({ type: 'lotus:update-story-live', field: field, val: val }, '*');
+        iframe.contentWindow.postMessage({ type: 'lotus:update-story-live', field: field, val: val, index: idx }, '*');
       }
       if (field === 'photo') {
         const preview = document.getElementById('peStoryPhotoPreview');
@@ -2755,8 +2771,21 @@
         window.AdminApp.successStories.sort((a, b) => (a.sortOrder || 0) - (b.sortOrder || 0));
         try {
           localStorage.setItem('lotus_success_stories_cache', JSON.stringify(window.AdminApp.successStories));
+          localStorage.setItem('lotus_success_stories_cache_v6', JSON.stringify(window.AdminApp.successStories));
           window.dispatchEvent(new CustomEvent('lotus_stories_updated', { detail: window.AdminApp.successStories }));
         } catch (e) {}
+
+        // Also save to Firestore siteContent/home so public visitors can read it via 200 OK REST API
+        if (window.AdminApp && window.AdminApp.fbDb) {
+          try {
+            await window.AdminApp.fbDb.collection('siteContent').doc('home').set({
+              successStories: window.AdminApp.successStories,
+              updatedAt: new Date().toISOString()
+            }, { merge: true });
+          } catch(he) {
+            console.warn('[PageEditor] Could not save successStories to siteContent/home:', he);
+          }
+        }
         if (typeof window.AdminApp.renderSuccessStories === 'function') {
           window.AdminApp.renderSuccessStories();
         }
