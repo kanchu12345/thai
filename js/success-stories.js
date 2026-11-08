@@ -1,14 +1,14 @@
 /**
  * Lotus Ceylon - Our Success Stories Landscape Card & Auto-Swap Controller
- * Auto-rotates stories every 60 seconds (1 minute), with pause on hover,
+ * Auto-rotates stories every 5 seconds, with pause on hover,
  * keyboard/button navigation, and instant sync from Firestore & localStorage.
  */
 (function (window, document) {
   'use strict';
 
-  const STORAGE_KEY = 'lotus_success_stories_cache_v7';
-  const SWAP_INTERVAL_MS = 60000; // 1 minute (60s)
-  const PROGRESS_TICK_MS = 100; // Smooth progress bar updates
+  const STORAGE_KEY = 'lotus_success_stories_cache_v8';
+  const SWAP_INTERVAL_MS = 5000; // 5 seconds
+  const PROGRESS_TICK_MS = 50; // Smooth progress bar updates
 
   const DEFAULT_STORIES = [
     {
@@ -343,7 +343,7 @@
       }
     }, 180);
 
-    // Reset 1-minute progress timer
+    // Reset 5-second progress timer
     resetProgress();
   }
 

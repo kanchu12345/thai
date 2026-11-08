@@ -2268,7 +2268,7 @@
           </div>
         `;
       } else if (docKey === 'siteGlobal/contact') {
-        const email = (this.activeDocData && this.activeDocData['siteGlobal.contact.email']) || 'paliforbuddhism@gmail.com';
+        const email = (this.activeDocData && this.activeDocData['siteGlobal.contact.email']) || 'info@lotusceylon.com';
         const phone = (this.activeDocData && this.activeDocData['siteGlobal.contact.phone']) || '+94 77 722 0070';
         const address = (this.activeDocData && this.activeDocData['siteGlobal.contact.address']) || 'Colombo & Kandy, Sri Lanka';
         const wechat = (this.activeDocData && this.activeDocData['siteGlobal.contact.wechat']) || 'FGUTaiwan90';
@@ -2450,14 +2450,14 @@
 
       if (formType === 'inquiry_quick') {
         if (titleEl) titleEl.textContent = 'Quick Consultation & Tour Inquire Form (All Pages Quick Modal)';
-        if (emailEl) emailEl.value = (saved && saved.recipientEmail) || 'paliforbuddhism@gmail.com';
+        if (emailEl) emailEl.value = (saved && saved.recipientEmail) || 'info@lotusceylon.com';
         if (subjEl) subjEl.value = (saved && saved.emailSubject) || 'New Tour Consultation Inquiry - Lotus Ceylon';
         if (honeypotEl) honeypotEl.value = saved ? String(saved.honeypotEnabled) : 'true';
         if (destEl) destEl.value = (saved && saved.destinations) || 'Cultural Triangle, Hill Country, Wildlife Safari, Southern Coast, Jaffna & North';
         if (stylesEl) stylesEl.value = (saved && saved.travelStyles) || 'Luxury Heritage, Wildlife Safari, Cultural Immersion, Romantic Honeymoon, Ayurveda Wellness';
       } else {
         if (titleEl) titleEl.textContent = 'Bespoke Journey Inquiry Form (inquiry-detailed.html)';
-        if (emailEl) emailEl.value = (saved && saved.recipientEmail) || 'paliforbuddhism@gmail.com';
+        if (emailEl) emailEl.value = (saved && saved.recipientEmail) || 'info@lotusceylon.com';
         if (subjEl) subjEl.value = (saved && saved.emailSubject) || 'We received your bespoke Sri Lanka journey inquiry - Lotus Ceylon';
         if (honeypotEl) honeypotEl.value = saved ? String(saved.honeypotEnabled) : 'true';
         if (destEl) destEl.value = (saved && saved.destinations) || 'Cultural Triangle (Sigiriya/Polonnaruwa), Hill Country (Kandy/Nuwara Eliya/Ella), Wildlife and Safari (Yala/Wilpattu), Southern Coast (Galle/Mirissa/Tangalle), East Coast (Trincomalee/Pasikudah), Jaffna and Northern Province';
@@ -2475,7 +2475,7 @@
 
       const config = {
         formType,
-        recipientEmail: emailEl ? emailEl.value.trim() : 'paliforbuddhism@gmail.com',
+        recipientEmail: emailEl ? emailEl.value.trim() : 'info@lotusceylon.com',
         emailSubject: subjEl ? subjEl.value.trim() : '',
         honeypotEnabled: honeypotEl ? (honeypotEl.value === 'true') : true,
         destinations: destEl ? destEl.value.trim() : '',
@@ -2547,7 +2547,7 @@
         <div style="background: linear-gradient(135deg, #FFFBEB 0%, #FEF3C7 100%); border: 1.5px solid #F59E0B; border-radius: 8px; padding: 14px; margin-bottom: 16px;">
           <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
             <span style="font-weight: 700; font-size: 0.9rem; color: #92400E;">👑 Our Success Stories (${stories.length || 5} Landscape Stories)</span>
-            <span class="badge" style="background: #FDE68A; color: #78350F; font-size: 0.72rem; font-weight: 700;">Rotates 1 Min</span>
+            <span class="badge" style="background: #FDE68A; color: #78350F; font-size: 0.72rem; font-weight: 700;">Rotates 5s</span>
           </div>
           <p style="font-size: 0.78rem; color: #78350F; margin: 0 0 10px 0; line-height: 1.45;">
             These luxury stories rotate automatically on the homepage right below the "About Us" button. Select any story below to edit its text, badge, or landscape photo:

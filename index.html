@@ -11,7 +11,7 @@
   <link rel="preload" as="image" href="./assets/images/home/hero-sigiriya-aerial-portrait.webp" media="(max-width: 768px)" fetchpriority="high"/>
   <link rel="preload" as="image" href="./assets/images/home/hero-sigiriya-aerial-1.webp" media="(min-width: 769px)" fetchpriority="high"/>
 <title data-cms="home.seo.title">Sri Lanka Tours | Lotus Ceylon Luxury Holidays Official Site</title>
-  <meta name="description" content="Welcome to Lotus Ceylon, Sri Lanka's premier destination management company. Curated luxury travel packages, tailor-made holidays, wildlife safaris, and cultural tours." data-cms="home.seo.description" data-cms="home.seo.description">
+  <meta name="description" content="Welcome to Lotus Ceylon, Sri Lanka's premier destination management company. Curated luxury travel packages, tailor-made holidays, wildlife safaris, and cultural tours." data-cms="home.seo.description">
   <link rel="canonical" href="https://lotusceylon.com/"/>
   <!-- Open Graph & Social Sharing -->
   <meta property="og:type" content="website"/>
@@ -24,7 +24,6 @@
   <meta name="twitter:title" content="Sri Lanka Tours | Lotus Ceylon Luxury Holidays Official Site"/>
   <meta name="twitter:description" content="Welcome to Lotus Ceylon, Sri Lanka's premier destination management company. Curated luxury travel packages, tailor-made holidays, wildlife safaris, and cultural tours."/>
   <meta name="twitter:image" content="https://lotusceylon.com/assets/images/hero/sigiriya-rock-fortress-1.webp"/>
-<meta content="Welcome to Lotus Ceylon, Sri Lanka's premier destination management company. Curated luxury travel packages, tailor-made holidays, wildlife safaris, and cultural tours." name="description"/>
 <meta content="sri lanka luxury tours, private tailor made travel ceylon, bespoke sri lanka holidays, sacred ceylon experiences, lotus ceylon" name="keywords"/>
 <link href="logo.png?v=20261021_step1" rel="icon" type="image/png"/>
 <!-- Google Fonts: Luxury Modern Typography (Plus Jakarta Sans, Inter, Playfair Display) -->
@@ -33,7 +32,7 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..800;1,9..40,300..800&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;family=Inter:wght@300;400;500;600;700&amp;family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&amp;display=swap" rel="stylesheet"/>
 <!-- Master Stylesheet (Lotus Ceylon Luxury Style) -->
 <link href="css/style.css?v=20261022_sleek_btn_v9" rel="stylesheet"/>
-<link href="css/brand-header.css?v=20261107_pill_v2" rel="stylesheet"/>
+<link href="css/brand-header.css?v=20261108_stories_v3" rel="stylesheet"/>
 <script defer src="https://cdn.jsdelivr.net/npm/dompurify@3.1.6/dist/purify.min.js"></script>
 <script defer src="js/config.js"></script>
 <script defer src="js/dynamic-renderer.js"></script>
@@ -50,7 +49,7 @@
     "image": "https://lotusceylon.com/assets/images/hero/sigiriya-rock-fortress-1.webp",
     "description": "Premier Sri Lankan inbound tour operator delivering bespoke journeys, sacred cultural trails, luxury wildlife safaris, and private chauffeur-driven holidays.",
     "telephone": "+94715422384",
-    "email": "paliforbuddhism@gmail.com",
+    "email": "info@lotusceylon.com",
     "priceRange": "$$$$",
     "address": {
       "@type": "PostalAddress",
@@ -574,7 +573,7 @@
 <span data-cms="home.span_20">Why Journey With</span><br/>Lotus Ceylon
     </h2>
   </div>
-  <!-- Our Success Stories Landscape Card (Auto-swaps every 1 min) -->
+  <!-- Our Success Stories Landscape Card (5s Auto-Swap) -->
 <div class="success-stories-card-wrapper" id="homeSuccessStoriesWrapper">
   <div class="success-stories-landscape-card" id="successStoriesCard" data-cms="home.success_stories_card" data-cms-component="success-stories" title="Click to view and edit Success Stories">
     <!-- Left Landscape Photo with Burgundy Badge and Verified Tag -->
@@ -614,13 +613,12 @@
           </a>
         </div>
       </div>
-      <!-- Footer with 1-Min Progress Bar & Controls -->
+      <!-- Footer with 5-Second Progress Bar & Controls -->
       <div class="story-footer-row">
         <div class="story-progress-track">
           <div class="story-progress-bar" id="storyProgressBar"></div>
         </div>
         <div class="story-controls-bar">
-          <span class="story-auto-hint"><span class="story-live-pulse"></span> Auto-swaps every 1 min</span>
           <div class="story-nav-group">
             <button type="button" class="story-nav-btn" id="storyPrevBtn" aria-label="Previous Story" title="Previous Story">
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
@@ -781,6 +779,19 @@
 </div>
 </div>
 </a>
+<!-- Buddhist Heritage Tours -->
+<a class="hover-box" href="./tours/buddhist-heritage/index.html">
+<img alt="Sri Lanka Sacred Buddhist Heritage Pilgrimages" class="hover-box__img" loading="lazy" src="./assets/images/buddhist-heritage/jaya-sri-maha-bodhi-1.webp" decoding="async" data-cms-img="home.img_buddhist">
+<div class="hover-box__overlay"></div>
+<div class="hover-box__details">
+<p class="walker-card-title" data-cms-html="home.p_buddhist_title">Buddhist Heritage <span class="walker-card-line"></span></p>
+<p class="walker-card-desc" data-cms="home.p_buddhist_desc">Sacred Jaya Sri Maha Bodhi, Dalada Maligawa and forest hermitages</p>
+<div class="walker-hover-explore">
+<span class="explore-plus-icon">+</span>
+<span data-cms="home.span_buddhist_explore">Explore</span>
+</div>
+</div>
+</a>
 <!-- 3. Wildlife Tours -->
 <a class="hover-box" href="./tours/wildlife/index.html">
 <img alt="Sri Lanka Luxury Wildlife and Safari Tours" class="hover-box__img" loading="lazy" src="./assets/images/wildlife/yala-leopard-1.webp" decoding="async" data-cms-img="home.img_5">
@@ -822,7 +833,7 @@
 </a>
 <!-- 6. Ayurvedic Tours -->
 <a class="hover-box" href="./tours/ayurvedic/index.html">
-<img alt="Sri Lanka Ayurvedic and Wellness Retreats" class="hover-box__img" loading="lazy" src="./assets/images/cultural/kandy-temple-of-tooth-4.webp" decoding="async" data-cms-img="home.img_8">
+<img alt="Sri Lanka Ayurvedic and Wellness Retreats" class="hover-box__img" loading="lazy" src="./assets/images/ayurveda/herbal-treatment-1.webp" decoding="async" data-cms-img="home.img_8">
 <div class="hover-box__overlay"></div>
 <div class="hover-box__details">
 <p class="walker-card-title" data-cms-html="home.p_25">Ayurveda Wellness <span class="walker-card-line"></span></p>
@@ -848,7 +859,7 @@
 </a>
 <!-- 8. Family Tours -->
 <a class="hover-box" href="./tours/family/index.html">
-<img alt="Sri Lanka Family Holiday Packages" class="hover-box__img" loading="lazy" src="./assets/images/hill-country/nine-arches-bridge-1.webp" decoding="async" data-cms-img="home.img_10">
+<img alt="Sri Lanka Family Holiday Packages" class="hover-box__img" loading="lazy" src="./assets/images/family/kosgoda-turtle-hatchery-1.webp" decoding="async" data-cms-img="home.img_10">
 <div class="hover-box__overlay"></div>
 <div class="hover-box__details">
 <p class="walker-card-title" data-cms-html="home.p_29">Family Journeys <span class="walker-card-line"></span></p>
@@ -861,7 +872,7 @@
 </a>
 <!-- 9. Ramayana Tours -->
 <a class="hover-box" href="./tours/ramayana/index.html">
-<img alt="Sri Lanka Sacred Ramayana Heritage Tours" class="hover-box__img" loading="lazy" src="./assets/images/cultural/polonnaruwa-gal-vihara-3.webp" decoding="async" data-cms-img="home.img_11">
+<img alt="Sri Lanka Sacred Ramayana Heritage Tours" class="hover-box__img" loading="lazy" src="./assets/images/ramayana/seetha-amman-temple-1.webp" decoding="async" data-cms-img="home.img_11">
 <div class="hover-box__overlay"></div>
 <div class="hover-box__details">
 <p class="walker-card-title" data-cms-html="home.p_31">Ramayana Trails <span class="walker-card-line"></span></p>
@@ -874,7 +885,7 @@
 </a>
 <!-- 10. Golf Tours -->
 <a class="hover-box" href="./tours/golf/index.html">
-<img alt="Sri Lanka Golf Holidays and Championship Tours" class="hover-box__img" loading="lazy" src="./assets/images/hill-country/nuwara-eliya-tea-2.webp" decoding="async" data-cms-img="home.img_12">
+<img alt="Sri Lanka Golf Holidays and Championship Tours" class="hover-box__img" loading="lazy" src="./assets/images/golf/ceylon-championship-golf-1.webp" decoding="async" data-cms-img="home.img_12">
 <div class="hover-box__overlay"></div>
 <div class="hover-box__details">
 <p class="walker-card-title" data-cms-html="home.p_33">Championship Golf <span class="walker-card-line"></span></p>
@@ -2020,7 +2031,7 @@ SIGNATURE TRAVEL PILLARS </div>
 <script defer src="assets/js/site-data.js"></script>
 <script defer src="./assets/js/mobile-nav.js"></script>
 <script defer src="./assets/js/cms.js?v=20261107_v7"></script>
-<script defer src="js/success-stories.js"></script>
+<script defer src="js/success-stories.js?v=20261108_5s"></script>
 <script defer src="js/homepage-blogs.js"></script>
 </body>
 </html>
