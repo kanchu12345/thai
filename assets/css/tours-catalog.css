@@ -1,0 +1,440 @@
+/*
+ * © 2026 Infinite Design. All rights reserved.
+ * Built for Lotus Ceylon International Tours & Services (Pvt) Ltd.
+ * Unauthorized removal of attribution does not transfer ownership of this code.
+ * https://infiniteweb.dev/
+ */
+/**
+ * Lotus Ceylon - Tours Catalog, Filter Chips & Package Grid Styles
+ */
+
+/* Section Container */
+.all-tour-packages-section {
+  background: #FFFFFF;
+  padding: 4.5rem 0 5rem;
+  border-top: 1px solid #E2E8F0;
+  border-bottom: 1px solid #E2E8F0;
+}
+
+.catalog-header-wrap {
+  text-align: center;
+  max-width: 820px;
+  margin: 0 auto 2.5rem;
+}
+
+.catalog-kicker {
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  color: #C9962B;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.catalog-title {
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: clamp(2rem, 3.5vw, 2.75rem);
+  font-weight: 700;
+  color: #002B49;
+  line-height: 1.2;
+  margin-bottom: 0.85rem;
+}
+
+.catalog-lead {
+  color: #64748B;
+  font-size: 1.05rem;
+  line-height: 1.65;
+  margin: 0 auto;
+}
+
+/* Search Box */
+.catalog-search-wrap {
+  max-width: 680px;
+  margin: 0 auto 2rem;
+  position: relative;
+}
+
+.search-input-inner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: #FFFFFF;
+  border: 2px solid #E2E8F0;
+  border-radius: 999px;
+  padding: 0 1.25rem 0 3rem;
+  box-shadow: 0 6px 24px rgba(0, 43, 73, 0.06);
+  transition: all 0.25s ease;
+}
+
+.search-input-inner:focus-within {
+  border-color: #C9962B;
+  box-shadow: 0 8px 30px rgba(201, 150, 43, 0.18);
+}
+
+.search-icon-svg {
+  position: absolute;
+  left: 1.15rem;
+  width: 20px;
+  height: 20px;
+  color: #94A3B8;
+  pointer-events: none;
+  transition: color 0.2s ease;
+}
+
+.search-input-inner:focus-within .search-icon-svg {
+  color: #C9962B;
+}
+
+.lotus-search-input {
+  width: 100%;
+  border: none;
+  background: transparent;
+  padding: 0.95rem 0.5rem 0.95rem 0;
+  font-family: inherit;
+  font-size: 1rem;
+  color: #002B49;
+  outline: none;
+  min-height: 48px;
+}
+
+.lotus-search-input::placeholder {
+  color: #94A3B8;
+}
+
+.lotus-search-clear {
+  background: #E2E8F0;
+  border: none;
+  color: #475569;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1.1rem;
+  line-height: 1;
+  padding: 0;
+  margin-left: 0.5rem;
+  transition: all 0.2s ease;
+  min-height: 26px;
+}
+
+.lotus-search-clear:hover {
+  background: #CBD5E1;
+  color: #002B49;
+}
+
+/* Category Filter Chips */
+.lotus-chips-scroll-container {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 0.75rem;
+  margin-bottom: 1.75rem;
+  scrollbar-width: thin;
+  scrollbar-color: #CBD5E1 transparent;
+}
+
+.lotus-chips-scroll-container::-webkit-scrollbar {
+  height: 4px;
+}
+
+.lotus-chips-scroll-container::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 4px;
+}
+
+.lotus-filter-chips {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  min-width: max-content;
+  padding: 4px 2px;
+}
+
+.lotus-filter-chip {
+  background: #F8FAFC;
+  border: 1px solid #CBD5E1;
+  color: #475569;
+  padding: 0.6rem 1.15rem;
+  border-radius: 999px;
+  font-family: inherit;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 44px;
+  transition: all 0.22s cubic-bezier(0.165, 0.84, 0.44, 1);
+  user-select: none;
+}
+
+.lotus-filter-chip:hover {
+  background: #F1F5F9;
+  border-color: #002B49;
+  color: #002B49;
+}
+
+.lotus-filter-chip.active {
+  background: #002B49;
+  border-color: #002B49;
+  color: #FFFFFF;
+  box-shadow: 0 4px 14px rgba(0, 43, 73, 0.22);
+}
+
+/* Result Counter */
+.lotus-catalog-meta-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 0 1.25rem;
+  border-bottom: 1px solid #F1F5F9;
+  margin-bottom: 1.5rem;
+}
+
+.lotus-catalog-counter {
+  font-size: 0.92rem;
+  color: #64748B;
+  font-weight: 500;
+}
+
+.lotus-catalog-counter strong {
+  color: #002B49;
+  font-weight: 700;
+}
+
+/* Responsive Package Cards Grid */
+.lotus-packages-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+  gap: 28px;
+}
+
+@media (max-width: 640px) {
+  .lotus-packages-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+/* Individual Package Card */
+.lotus-package-card {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 18px rgba(0, 43, 73, 0.05);
+  display: flex;
+  flex-direction: column;
+  transition: all 0.35s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.lotus-package-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 36px rgba(0, 43, 73, 0.12);
+  border-color: #C5A880;
+}
+
+.pkg-card-media {
+  position: relative;
+  height: 220px;
+  overflow: hidden;
+  background: #E2E8F0;
+}
+
+.pkg-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+  display: block;
+}
+
+.lotus-package-card:hover .pkg-card-img {
+  transform: scale(1.06);
+}
+
+.pkg-badge-days {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background: rgba(0, 43, 73, 0.92);
+  color: #C5A880;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  backdrop-filter: blur(4px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.pkg-badge-cat {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  background: rgba(255, 255, 255, 0.94);
+  color: #002B49;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.pkg-card-body {
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.pkg-card-title {
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 1.22rem;
+  font-weight: 700;
+  color: #002B49;
+  line-height: 1.35;
+  margin-bottom: 8px;
+}
+
+.pkg-card-desc {
+  color: #64748B;
+  font-size: 0.88rem;
+  line-height: 1.6;
+  margin-bottom: 14px;
+  flex-grow: 1;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.pkg-card-destinations {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 18px;
+}
+
+.pkg-dest-pill {
+  background: #F1F5F9;
+  color: #475569;
+  font-size: 0.74rem;
+  font-weight: 600;
+  padding: 3px 9px;
+  border-radius: 6px;
+}
+
+.pkg-card-footer {
+  margin-top: auto;
+  border-top: 1px dashed #E2E8F0;
+  padding-top: 16px;
+}
+
+.pkg-card-btn {
+  background: #002B49;
+  color: #FFFFFF;
+  text-decoration: none;
+  min-height: 44px;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.88rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  transition: all 0.28s ease;
+  box-sizing: border-box;
+}
+
+.pkg-card-btn:hover {
+  background: #C9962B;
+  color: #FFFFFF;
+}
+
+/* Empty State */
+.lotus-catalog-empty {
+  background: #FDFBF7;
+  border: 1px dashed #C9962B;
+  border-radius: 16px;
+  padding: 3.5rem 2rem;
+  text-align: center;
+  margin: 2rem 0;
+}
+
+.empty-icon-wrap {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: rgba(201, 150, 43, 0.12);
+  color: #C9962B;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.lotus-catalog-empty h3 {
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: #002B49;
+  font-size: 1.4rem;
+  margin-bottom: 0.6rem;
+}
+
+.lotus-catalog-empty p {
+  color: #64748B;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  max-width: 520px;
+  margin: 0 auto 1.5rem;
+}
+
+.btn-reset-filters {
+  background: #002B49;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 8px;
+  padding: 0.75rem 1.75rem;
+  font-weight: 600;
+  font-size: 0.92rem;
+  cursor: pointer;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.25s ease;
+}
+
+.btn-reset-filters:hover {
+  background: #C9962B;
+  color: #FFFFFF;
+}
+
+/* RTL Support */
+.is-rtl .search-icon-svg {
+  left: auto;
+  right: 1.15rem;
+}
+
+.is-rtl .search-input-inner {
+  padding: 0 3rem 0 1.25rem;
+}
+
+.is-rtl .pkg-badge-days {
+  right: auto;
+  left: 14px;
+}
+
+.is-rtl .pkg-badge-cat {
+  left: auto;
+  right: 14px;
+}
