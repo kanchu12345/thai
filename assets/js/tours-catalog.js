@@ -51,9 +51,21 @@
     return './' + encodeURIComponent(categorySlug) + '/index.html';
   }
 
+  // Multilingual / Localized text resolver
+  function getLocalizedText(field) {
+    if (!field) return '';
+    if (typeof field === 'string') return field;
+    if (typeof field === 'object') {
+      const currentLang = document.documentElement.lang || localStorage.getItem('lotus_lang') || 'en';
+      const baseLang = currentLang.split('-')[0];
+      return field[currentLang] || field[baseLang] || field['en'] || Object.values(field)[0] || '';
+    }
+    return String(field);
+  }
+
   // Normalization helper (case, space, diacritics)
   function normalizeText(str) {
-    return (str || '')
+    return getLocalizedText(str)
       .normalize('NFD')
       .replace(/[\u0300-\u036f]/g, '')
       .toLowerCase()
@@ -62,26 +74,29 @@
 
   // Package Card Component Generator
   function createPackageCardHtml(pkg) {
-    const imgUrl = resolveAssetUrl(pkg.image);
+    const pkgTitle = getLocalizedText(pkg.title);
+    const pkgDesc = getLocalizedText(pkg.shortDescription || pkg.tagline);
+    const pkgCatName = getLocalizedText(pkg.categoryName || pkg.category);
+    const imgUrl = resolveAssetUrl(pkg.image || (pkg.images && pkg.images[0]) || '');
     const pkgUrl = resolvePackageUrl(pkg.category, pkg.slug);
     const destPills = (pkg.destinations || [])
       .slice(0, 4)
-      .map(d => '<span class="pkg-dest-pill">' + (typeof d === 'string' ? d : d.name) + '</span>')
+      .map(d => '<span class="pkg-dest-pill">' + (typeof d === 'string' ? d : (d.name || '')) + '</span>')
       .join('');
 
     return (
       '<article class="lotus-package-card" data-slug="' + pkg.slug + '" data-category="' + pkg.category + '">' +
         '<div class="pkg-card-media">' +
-          '<img src="' + imgUrl + '" alt="' + (pkg.title || '').replace(/"/g, '&quot;') + '" loading="lazy" width="400" height="260" class="pkg-card-img">' +
+          '<img src="' + imgUrl + '" alt="' + pkgTitle.replace(/"/g, '&quot;') + '" loading="lazy" width="400" height="260" class="pkg-card-img">' +
           '<span class="pkg-badge-days">' + pkg.days + ' ' + getI18n('catalog_days', 'Days') + '</span>' +
-          '<span class="pkg-badge-cat">' + (pkg.categoryName || pkg.category) + '</span>' +
+          '<span class="pkg-badge-cat">' + pkgCatName + '</span>' +
         '</div>' +
         '<div class="pkg-card-body">' +
-          '<h3 class="pkg-card-title">' + (pkg.title || '') + '</h3>' +
-          '<p class="pkg-card-desc">' + (pkg.shortDescription || pkg.tagline || '') + '</p>' +
+          '<h3 class="pkg-card-title">' + pkgTitle + '</h3>' +
+          '<p class="pkg-card-desc">' + pkgDesc + '</p>' +
           (destPills ? '<div class="pkg-card-destinations" aria-label="Destinations visited">' + destPills + '</div>' : '') +
           '<div class="pkg-card-footer">' +
-            '<a href="' + pkgUrl + '" class="pkg-card-btn" aria-label="View itinerary for ' + (pkg.title || '').replace(/"/g, '&quot;') + '">' +
+            '<a href="' + pkgUrl + '" class="pkg-card-btn" aria-label="View itinerary for ' + pkgTitle.replace(/"/g, '&quot;') + '">' +
               '<span>' + getI18n('catalog_view_itinerary', 'View Itinerary') + '</span>' +
               '<svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">' +
                 '<path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>' +
@@ -424,7 +439,7 @@
 
     if (!data) {
       try {
-        const res = await fetch('../assets/data/tours-data.json');
+        const res = await fetch('../data/packages.json');
         if (res.ok) {
           data = await res.json();
         }
@@ -438,7 +453,7 @@
       return;
     }
 
-    allCategories = data.categories;
+    allCategories = Array.isArray(data.categories) ? data.categories : (data.categoriesList || Object.values(data.categories));
     allPackages = data.packages;
 
     updateHeroCounts();
