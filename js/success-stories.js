@@ -6,9 +6,57 @@
 (function (window, document) {
   'use strict';
 
-  const STORAGE_KEY = 'lotus_success_stories_cache';
+  const STORAGE_KEY = 'lotus_success_stories_cache_v5';
   const SWAP_INTERVAL_MS = 60000; // 1 minute (60s)
   const PROGRESS_TICK_MS = 100; // Smooth progress bar updates
+
+  const DEFAULT_STORIES = [
+    {
+      id: 'story-01',
+      badge: 'SACRED SITES',
+      title: 'Sacred Anuradhapura',
+      photo: 'assets/images/buddhist-heritage/ruwanwelisaya-2.webp',
+      description: 'Ancient capital of colossal white stupas and the revered Sri Maha Bodhi tree. Our travellers experienced peaceful evening meditation beneath the sacred Bodhi canopy.',
+      sortOrder: 1,
+      published: true
+    },
+    {
+      id: 'story-02',
+      badge: 'UNESCO CITADEL',
+      title: 'Sigiriya Rock Fortress',
+      photo: 'assets/images/cultural/sigiriya-1.webp',
+      description: 'Marvel of 5th-century royal sky palace architecture and water gardens. Private dawn ascent guided by our resident Ceylon cultural historian.',
+      sortOrder: 2,
+      published: true
+    },
+    {
+      id: 'story-03',
+      badge: 'TEA HIGHLANDS',
+      title: 'Ella Tea Country',
+      photo: 'assets/images/hill-country/kandy-ella-train-1.webp',
+      description: 'Misty emerald tea estates, iconic colonial railways, and artisanal tea crafting. Bespoke private journeys through scenic mountain trails and cascades.',
+      sortOrder: 3,
+      published: true
+    },
+    {
+      id: 'story-04',
+      badge: 'OCEAN SANCTUARY',
+      title: 'Mirissa Blue Waters',
+      photo: 'assets/images/beach/mirissa-1.webp',
+      description: 'Gentle ocean giants and sun-kissed golden coastlines. Private sunrise catamaran voyages encountering magnificent blue whales in southern Ceylon.',
+      sortOrder: 4,
+      published: true
+    },
+    {
+      id: 'story-05',
+      badge: 'ROYAL HERITAGE',
+      title: 'Kandy Royal Kingdom',
+      photo: 'assets/images/cultural/kandy-temple-of-tooth-4.webp',
+      description: 'The revered Temple of the Sacred Tooth Relic amidst misty hills. Exclusive VIP access to the traditional evening royal pooja with sacred blessings.',
+      sortOrder: 5,
+      published: true
+    }
+  ];
 
   let stories = [];
   let currentIndex = 0;
@@ -118,12 +166,12 @@
   }
 
   async function loadData() {
-    // Check localStorage cache first for fast display
+    // Check localStorage cache first
     try {
       const cached = localStorage.getItem(STORAGE_KEY);
       if (cached) {
         const parsed = JSON.parse(cached);
-        if (Array.isArray(parsed) && parsed.length > 0) {
+        if (Array.isArray(parsed) && parsed.length >= 5) {
           stories = parsed.filter(s => s.published !== false);
         }
       }
@@ -142,13 +190,13 @@
       }
     }
 
-    // Fallback to static JSON file if still empty
-    if (!stories || stories.length === 0) {
+    // Fallback to static JSON file if still empty or fewer than 5
+    if (!stories || stories.length < 5) {
       try {
         const res = await fetch('data/success-stories.json');
         if (res.ok) {
           const json = await res.json();
-          if (Array.isArray(json)) {
+          if (Array.isArray(json) && json.length > 0) {
             stories = json.filter(s => s.published !== false);
             localStorage.setItem(STORAGE_KEY, JSON.stringify(stories));
           }
@@ -158,19 +206,12 @@
       }
     }
 
-    // Default fallback if everything else fails
-    if (!stories || stories.length === 0) {
-      stories = [
-        {
-          id: 'story-01',
-          badge: 'SACRED SITES',
-          title: 'Anuradhapura',
-          photo: 'assets/images/home/anuradhapura-success-story.jpg',
-          description: 'Ancient capital of great stupas and the revered Sri Maha Bodhi tree. Our travellers experienced peaceful evening meditation beneath the sacred Bodhi canopy.',
-          sortOrder: 1,
-          published: true
-        }
-      ];
+    // Default fallback if still empty or fewer than 5
+    if (!stories || stories.length < 5) {
+      stories = DEFAULT_STORIES.slice();
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(stories));
+      } catch (e) {}
     }
 
     // Limit to 5 maximum
@@ -193,7 +234,7 @@
     setTimeout(() => {
       // Update Image
       if (elImg) {
-        elImg.src = story.photo || 'assets/images/home/anuradhapura-success-story.jpg';
+        elImg.src = story.photo || 'assets/images/buddhist-heritage/ruwanwelisaya-2.webp';
         elImg.alt = story.title || 'Our Success Story';
       }
 
@@ -249,11 +290,13 @@
   }
 
   function nextStory() {
+    if (!stories || stories.length <= 1) return;
     const nextIdx = (currentIndex + 1) % stories.length;
     renderStory(nextIdx);
   }
 
   function prevStory() {
+    if (!stories || stories.length <= 1) return;
     const prevIdx = (currentIndex - 1 + stories.length) % stories.length;
     renderStory(prevIdx);
   }
@@ -266,7 +309,7 @@
 
     // Progress bar runner
     progressTimerId = setInterval(() => {
-      if (!isPaused) {
+      if (!isPaused && stories && stories.length > 1) {
         progressElapsedMs += PROGRESS_TICK_MS;
         const pct = Math.min(100, (progressElapsedMs / SWAP_INTERVAL_MS) * 100);
         if (elProgressBar) {
