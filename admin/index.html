@@ -521,6 +521,7 @@
 <button class="btn btn-secondary" onclick="AdminApp.syncToFirebase()" title="Upload and sync current packages to Firebase Firestore">
 <span>☁️ Seed to Firebase</span>
 </button>
+<button class="btn btn-secondary" onclick="AdminApp.feedWebsiteData()" title="Feed & reload website data into Admin Panel"><span>⚡ Feed Website Data</span></button>
 <button class="btn btn-secondary" onclick="AdminApp.fetchFromFirebase()" title="Fetch live packages from Firebase Firestore">
 <span>🔄 Fetch from Firebase</span>
 </button>
@@ -585,6 +586,7 @@
   <div style="display: flex; gap: 8px;">
     <button type="button" class="btn btn-outline btn-sm" onclick="AdminApp.bulkToggleCategories(true)">Publish All</button>
     <button type="button" class="btn btn-outline btn-sm" onclick="AdminApp.bulkToggleCategories(false)">Unpublish All</button>
+    <button type="button" class="btn btn-secondary btn-sm" onclick="AdminApp.feedWebsiteData()" title="Reload all website categories & data into Admin Panel">⚡ Feed Website Data</button>
   </div>
 </div>
 <div class="data-table-wrap">
@@ -1491,7 +1493,11 @@
 <label>Hero Featured Image *</label>
 <div style="display: flex; gap: 8px; flex-wrap: wrap;">
 <input class="form-control" id="pkgHeroImage" oninput="AdminApp.updateImagePreview('pkgHeroImage', 'pkgHeroImagePreview', 'pkgHeroPreviewCard')" placeholder="assets/images/cultural/sigiriya-1.webp or Cloudinary URL" style="flex: 1; min-width: 220px;" type="text"/>
-<button class="btn btn-secondary" onclick="AdminApp.openCloudinaryWidgetForInput('pkgHeroImage', 'pkgHeroImagePreview', 'pkgHeroPreviewCard')" title="Direct unsigned upload to Cloudinary preset" type="button">☁️ Upload Cloudinary</button>
+<label class="btn btn-primary" style="margin: 0; cursor: pointer; display: inline-flex; align-items: center; gap: 6px;" title="Upload image from your device">
+  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+  <span>Upload Image</span>
+  <input type="file" accept="image/jpeg,image/png,image/webp,image/gif" style="display: none;" onchange="if(this.files[0]) AdminApp.handleDirectImageUpload(this.files[0], 'pkgHeroImage', 'pkgHeroImagePreview', 'pkgHeroPreviewCard'); this.value='';"/>
+</label>
 <button class="btn btn-outline" onclick="AdminApp.openImagePicker('pkgHeroImage', 'pkgHeroImagePreview', 'pkgHeroPreviewCard')" type="button">Browse Media</button>
 
 </div>
@@ -1804,7 +1810,11 @@
 <label>Category Hero Image</label>
 <div style="display: flex; gap: 8px; flex-wrap: wrap;">
 <input class="form-control" id="catHeroImage" oninput="AdminApp.updateImagePreview('catHeroImage', 'catHeroPreview', 'catHeroPreviewCard')" placeholder="assets/tours/cultural/hero.jpg" style="flex: 1; min-width: 200px;" type="text"/>
-<button class="btn btn-secondary" onclick="AdminApp.openCloudinaryWidgetForInput('catHeroImage', 'catHeroPreview', 'catHeroPreviewCard')" type="button">☁️ Cloudinary</button>
+<label class="btn btn-primary" style="margin: 0; cursor: pointer; display: inline-flex; align-items: center; gap: 6px;">
+  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+  <span>Upload Image</span>
+  <input type="file" accept="image/jpeg,image/png,image/webp,image/gif" style="display: none;" onchange="if(this.files[0]) AdminApp.handleDirectImageUpload(this.files[0], 'catHeroImage', 'catHeroPreview', 'catHeroPreviewCard'); this.value='';"/>
+</label>
 <button class="btn btn-outline" onclick="AdminApp.openImagePicker('catHeroImage', 'catHeroPreview', 'catHeroPreviewCard')" type="button">Browse Media</button>
 </div>
 <div class="image-preview-card" id="catHeroPreviewCard" style="display: none;">
@@ -1947,7 +1957,11 @@
 <label>Destination Card Image</label>
 <div style="display: flex; gap: 8px; flex-wrap: wrap;">
 <input class="form-control" id="destImage" oninput="AdminApp.updateImagePreview('destImage', 'destImagePreview', 'destImagePreviewCard')" placeholder="assets/images/cultural/sigiriya-1.webp" style="flex: 1; min-width: 200px;" type="text"/>
-<button class="btn btn-secondary" onclick="AdminApp.openCloudinaryWidgetForInput('destImage', 'destImagePreview', 'destImagePreviewCard')" type="button">☁️ Cloudinary</button>
+<label class="btn btn-primary" style="margin: 0; cursor: pointer; display: inline-flex; align-items: center; gap: 6px;">
+  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+  <span>Upload Image</span>
+  <input type="file" accept="image/jpeg,image/png,image/webp,image/gif" style="display: none;" onchange="if(this.files[0]) AdminApp.handleDirectImageUpload(this.files[0], 'destImage', 'destImagePreview', 'destImagePreviewCard'); this.value='';"/>
+</label>
 <button class="btn btn-outline" onclick="AdminApp.openImagePicker('destImage', 'destImagePreview', 'destImagePreviewCard')" type="button">Browse Media</button>
 </div>
 <div class="image-preview-card" id="destImagePreviewCard" style="display: none;">
@@ -2020,7 +2034,11 @@
 <label>Guest Avatar Photo</label>
 <div style="display: flex; gap: 8px; flex-wrap: wrap;">
 <input class="form-control" id="revAvatar" oninput="AdminApp.updateImagePreview('revAvatar', 'revAvatarPreview', 'revAvatarPreviewCard')" placeholder="assets/images/avatar-1.jpg" style="flex: 1; min-width: 200px;" type="text"/>
-<button class="btn btn-secondary" onclick="AdminApp.openCloudinaryWidgetForInput('revAvatar', 'revAvatarPreview', 'revAvatarPreviewCard')" type="button">☁️ Cloudinary</button>
+<label class="btn btn-primary" style="margin: 0; cursor: pointer; display: inline-flex; align-items: center; gap: 6px;">
+  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+  <span>Upload Image</span>
+  <input type="file" accept="image/jpeg,image/png,image/webp,image/gif" style="display: none;" onchange="if(this.files[0]) AdminApp.handleDirectImageUpload(this.files[0], 'revAvatar', 'revAvatarPreview', 'revAvatarPreviewCard'); this.value='';"/>
+</label>
 <button class="btn btn-outline" onclick="AdminApp.openImagePicker('revAvatar', 'revAvatarPreview', 'revAvatarPreviewCard')" type="button">Browse Media</button>
 </div>
 <div class="image-preview-card" id="revAvatarPreviewCard" style="display: none;">
@@ -2206,6 +2224,7 @@
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
+<script src="../data/seed-catalog.js?v=20261109_v1"></script>
 <script src="../js/firebase-tour-sync.js"></script>
 <script src="js/admin-app.js?v=20261109_nodash_v1"></script>
 <script src="js/page-editor.js?v=20261109_nodash_v1"></script>
