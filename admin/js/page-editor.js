@@ -1878,9 +1878,10 @@
       this.openPage(docKey, fileName);
     },
 
-    async openPage(docKey, fileName) {
+    async openPage(docKey, fileName, subTab = null) {
       this.activePageKey = docKey;
       this.activePageFile = fileName || 'index.html';
+      this.activeSubTab = subTab;
       this.selectedElement = null;
       this.currentFieldValues = {};
 
@@ -1888,7 +1889,7 @@
         window.AdminApp.switchSection('page-editor');
       }
 
-            // Highlight only the matching sub-link / red-page-tab in sidebar and ensure its accordion is open
+      // Highlight matching sub-links
       const subLinks = document.querySelectorAll('.sidebar-nav .nav-sub-link, .sidebar-nav .red-page-tab');
       let matchedGroup = null;
       subLinks.forEach(link => {
@@ -1923,16 +1924,299 @@
         pageSelect.value = `${docKey}|${this.activePageFile}`;
       }
 
-      // Load preview in iframe
+      // Load preview in iframe if not already showing this page
       const iframe = document.getElementById('visualCmsIframe');
+      const targetSrc = `../${this.activePageFile}?edit=1&v=20261109_v4`;
       if (iframe) {
-        iframe.src = `../${this.activePageFile}?edit=1&v=20261029_slider_v5`;
+        if (!iframe.src || !iframe.src.includes(this.activePageFile)) {
+          iframe.src = targetSrc;
+        }
       }
 
-      // Fetch doc from Firestore
+      // Fetch doc from Firestore/seed
       this.activeDocData = await this.fetchPageDoc(docKey);
       this.clearSelectedElement();
       this.markSaved();
+
+      // Render dedicated section inspector and scroll preview if subTab provided
+      if (subTab) {
+        this.renderSubTabInspector(subTab, docKey);
+        this.scrollIframeToSection(subTab);
+      }
+    },
+
+    scrollIframeToSection(subTab) {
+      const iframe = document.getElementById('visualCmsIframe');
+      if (!iframe || !iframe.contentWindow) return;
+      const targetMap = {
+        'hero': 'hero',
+        'why-us': 'why-us',
+        'sustainability': 'sustainability',
+        'page-content': 'top'
+      };
+      const sec = targetMap[subTab] || subTab;
+      try {
+        iframe.contentWindow.postMessage({
+          type: 'lotus:scroll-to-section',
+          target: sec
+        }, '*');
+      } catch (e) {}
+    },
+
+    renderSubTabInspector(subTab, docKey) {
+      if (docKey === 'siteContent/home') {
+        if (subTab === 'hero') {
+          return this.renderHomeHeroInspector();
+        } else if (subTab === 'why-us') {
+          return this.renderHomeWhyUsInspector();
+        } else if (subTab === 'sustainability') {
+          return this.renderHomeSustainabilityInspector();
+        }
+      }
+      
+      const panel = document.getElementById('inspectorBody');
+      if (panel) {
+        panel.innerHTML = `
+          <div class="inspector-card">
+            <h4 style="font-size: 1.05rem; margin-bottom: 8px; color: #002B49; font-weight: 700;">Live Page Editor Active</h4>
+            <p style="color: #64748B; font-size: 0.85rem; line-height: 1.5;">
+              Click any element with a dashed outline directly inside the preview on the left to edit its text, link, or media. Changes appear live instantly.
+            </p>
+            <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 8px; padding: 12px; font-size: 0.8rem; color: #475569; margin-top: 14px;">
+              <div>• Click any text block to edit wording</div>
+              <div>• Click any image to replace photo or upload from device</div>
+              <div>• Switch language at the top bar to translate into other languages</div>
+            </div>
+          </div>
+        `;
+      }
+    },
+
+    renderHomeHeroInspector() {
+      const panel = document.getElementById('inspectorBody');
+      if (!panel) return;
+      const data = this.activeDocData || {};
+      const highlight = data['home.span_6'] || 'Timeless Wonder';
+      const heading = data['home.heading_1'] || 'Discover Your Dream Sri Lanka Vacation';
+      const btn1Text = data['home.span_7'] || 'Explore Tour Packages';
+      const btn1Link = data['home.btn_15'] || '#packages';
+      const btn2Text = data['home.span_8'] || 'Tailor Your Journey';
+      const btn2Link = data['home.btn_16'] || 'inquiry-detailed.html';
+      const heroVideo = data['home.hero_video'] || 'assets/videos/sigiriya-aerial.mp4';
+      const heroBg = data['home.hero_bg'] || 'assets/images/home/hero-sigiriya-aerial-1.webp';
+
+      panel.innerHTML = `
+        <div class="inspector-card">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+            <h4 style="font-size: 1.05rem; margin: 0; color: #002B49; font-weight: 700;">Home &gt; Hero Section</h4>
+            <span class="badge badge-success" style="font-size: 0.72rem;">Live Edit</span>
+          </div>
+          <p style="color: #64748B; font-size: 0.82rem; margin-bottom: 16px;">Edit headline, buttons, and background media. Changes update live in the preview on the left.</p>
+
+          <div class="inspector-field-group">
+            <label>Gold Highlight Phrase</label>
+            <input type="text" class="form-control" value="${this.escapeAttr(highlight)}" oninput="PageEditor.handleLiveInput('home.span_6', this.value, 'text')"/>
+          </div>
+
+          <div class="inspector-field-group" style="margin-top: 12px;">
+            <label>Main Headline</label>
+            <input type="text" class="form-control" value="${this.escapeAttr(heading)}" oninput="PageEditor.handleLiveInput('home.heading_1', this.value, 'text')"/>
+          </div>
+
+          <div class="inspector-field-group" style="margin-top: 12px;">
+            <label>Primary Button Text</label>
+            <input type="text" class="form-control" value="${this.escapeAttr(btn1Text)}" oninput="PageEditor.handleLiveInput('home.span_7', this.value, 'text')"/>
+          </div>
+
+          <div class="inspector-field-group" style="margin-top: 12px;">
+            <label>Primary Button Link</label>
+            <input type="text" class="form-control" value="${this.escapeAttr(btn1Link)}" oninput="PageEditor.handleLiveInput('home.btn_15', this.value, 'link')"/>
+          </div>
+
+          <div class="inspector-field-group" style="margin-top: 12px;">
+            <label>Secondary Button Text</label>
+            <input type="text" class="form-control" value="${this.escapeAttr(btn2Text)}" oninput="PageEditor.handleLiveInput('home.span_8', this.value, 'text')"/>
+          </div>
+
+          <div class="inspector-field-group" style="margin-top: 12px;">
+            <label>Secondary Button Link</label>
+            <input type="text" class="form-control" value="${this.escapeAttr(btn2Link)}" oninput="PageEditor.handleLiveInput('home.btn_16', this.value, 'link')"/>
+          </div>
+
+          <div class="inspector-field-group" style="margin-top: 14px;">
+            <label>Hero Background Video (MP4 / WebM)</label>
+            <div style="display: flex; gap: 8px;">
+              <input type="text" class="form-control" id="fieldInput_home.hero_video" value="${this.escapeAttr(heroVideo)}" oninput="PageEditor.handleLiveInput('home.hero_video', this.value, 'video')"/>
+              <label class="btn btn-primary btn-sm" style="margin: 0; cursor: pointer; white-space: nowrap; display: inline-flex; align-items: center; gap: 4px;">
+                <span>Upload</span>
+                <input type="file" accept="video/mp4,video/webm,video/quicktime" style="display: none;" onchange="if(this.files[0]) PageEditor.uploadFieldFile('home.hero_video', this.files[0], 'video'); this.value='';"/>
+              </label>
+              <button type="button" class="btn btn-outline btn-sm" onclick="PageEditor.openMediaPicker('home.hero_video')">Browse</button>
+            </div>
+          </div>
+
+          <div class="inspector-field-group" style="margin-top: 14px;">
+            <label>Hero Background Image (Fallback / Poster)</label>
+            <div style="display: flex; gap: 8px;">
+              <input type="text" class="form-control" id="fieldInput_home.hero_bg" value="${this.escapeAttr(heroBg)}" oninput="PageEditor.handleLiveInput('home.hero_bg', this.value, 'bg-image')"/>
+              <label class="btn btn-primary btn-sm" style="margin: 0; cursor: pointer; white-space: nowrap; display: inline-flex; align-items: center; gap: 4px;">
+                <span>Upload</span>
+                <input type="file" accept="image/*" style="display: none;" onchange="if(this.files[0]) PageEditor.uploadFieldFile('home.hero_bg', this.files[0], 'image'); this.value='';"/>
+              </label>
+              <button type="button" class="btn btn-outline btn-sm" onclick="PageEditor.openMediaPicker('home.hero_bg')">Browse</button>
+            </div>
+          </div>
+
+          <div style="margin-top: 18px;">
+            <button type="button" class="btn btn-primary btn-block" onclick="PageEditor.publish()" style="font-weight: 700;">
+              Publish Hero Updates
+            </button>
+          </div>
+        </div>
+      `;
+    },
+
+    renderHomeWhyUsInspector() {
+      const panel = document.getElementById('inspectorBody');
+      if (!panel) return;
+      const data = this.activeDocData || {};
+      const tag = data['home.span_20'] || 'Why Journey With';
+      const title = data['home.heading_2'] || 'Pure Journeys and Sacred Experiences';
+      const sub = data['home.span_9'] || 'The Authentic Soul of Sri Lanka';
+      const quote = data['home.p_2'] || 'We believe that travel is not merely visiting places...';
+      const para = data['home.p_4'] || 'Founded by passionate local Sri Lankan travel pioneers...';
+      const gov1Title = data['home.gov_title_1'] || 'Registered Inbound Operator';
+      const gov1Reg = data['home.gov_reg_1'] || 'PV 00374439';
+      const gov2Title = data['home.gov_title_2'] || 'Established Since 2014';
+      const gov2Reg = data['home.gov_reg_2'] || 'Since 2014';
+
+      panel.innerHTML = `
+        <div class="inspector-card">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+            <h4 style="font-size: 1.05rem; margin: 0; color: #002B49; font-weight: 700;">Home &gt; Why Travel With Us</h4>
+            <span class="badge badge-success" style="font-size: 0.72rem;">Live Edit</span>
+          </div>
+          <p style="color: #64748B; font-size: 0.82rem; margin-bottom: 16px;">Edit headline, editorial story, and government registration badges.</p>
+
+          <div class="inspector-field-group">
+            <label>Eyebrow Tag</label>
+            <input type="text" class="form-control" value="${this.escapeAttr(tag)}" oninput="PageEditor.handleLiveInput('home.span_20', this.value, 'text')"/>
+          </div>
+
+          <div class="inspector-field-group" style="margin-top: 12px;">
+            <label>Main Section Title</label>
+            <input type="text" class="form-control" value="${this.escapeAttr(title)}" oninput="PageEditor.handleLiveInput('home.heading_2', this.value, 'text')"/>
+          </div>
+
+          <div class="inspector-field-group" style="margin-top: 12px;">
+            <label>Subtitle / Secondary Title</label>
+            <input type="text" class="form-control" value="${this.escapeAttr(sub)}" oninput="PageEditor.handleLiveInput('home.span_9', this.value, 'text')"/>
+          </div>
+
+          <div class="inspector-field-group" style="margin-top: 12px;">
+            <label>Editorial Quote</label>
+            <textarea class="form-control" rows="3" oninput="PageEditor.handleLiveInput('home.p_2', this.value, 'text')">${this.escapeHtml(quote)}</textarea>
+          </div>
+
+          <div class="inspector-field-group" style="margin-top: 12px;">
+            <label>Narrative Paragraph</label>
+            <textarea class="form-control" rows="4" oninput="PageEditor.handleLiveInput('home.p_4', this.value, 'text')">${this.escapeHtml(para)}</textarea>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 12px;">
+            <div class="inspector-field-group">
+              <label>License 1 Title</label>
+              <input type="text" class="form-control" value="${this.escapeAttr(gov1Title)}" oninput="PageEditor.handleLiveInput('home.gov_title_1', this.value, 'text')"/>
+            </div>
+            <div class="inspector-field-group">
+              <label>License 1 Number</label>
+              <input type="text" class="form-control" value="${this.escapeAttr(gov1Reg)}" oninput="PageEditor.handleLiveInput('home.gov_reg_1', this.value, 'text')"/>
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 12px;">
+            <div class="inspector-field-group">
+              <label>License 2 Title</label>
+              <input type="text" class="form-control" value="${this.escapeAttr(gov2Title)}" oninput="PageEditor.handleLiveInput('home.gov_title_2', this.value, 'text')"/>
+            </div>
+            <div class="inspector-field-group">
+              <label>License 2 Highlight</label>
+              <input type="text" class="form-control" value="${this.escapeAttr(gov2Reg)}" oninput="PageEditor.handleLiveInput('home.gov_reg_2', this.value, 'text')"/>
+            </div>
+          </div>
+
+          <div style="margin-top: 18px;">
+            <button type="button" class="btn btn-primary btn-block" onclick="PageEditor.publish()" style="font-weight: 700;">
+              Publish Why Us Updates
+            </button>
+          </div>
+        </div>
+      `;
+    },
+
+    renderHomeSustainabilityInspector() {
+      const panel = document.getElementById('inspectorBody');
+      if (!panel) return;
+      const data = this.activeDocData || {};
+      const title = data['home.heading_sust'] || 'Sustainable Tourism & Responsible Exploration';
+      const desc = data['home.p_sust'] || 'Lotus Ceylon is deeply dedicated to environmental preservation, sacred heritage restoration, and supporting indigenous artisans and wildlife conservation sanctuaries across the pearl of the Indian Ocean.';
+
+      panel.innerHTML = `
+        <div class="inspector-card">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+            <h4 style="font-size: 1.05rem; margin: 0; color: #002B49; font-weight: 700;">Home &gt; Sustainability</h4>
+            <span class="badge badge-success" style="font-size: 0.72rem;">Live Edit</span>
+          </div>
+          <p style="color: #64748B; font-size: 0.82rem; margin-bottom: 16px;">Configure sustainability commitments and eco-conscious travel values.</p>
+
+          <div class="inspector-field-group">
+            <label>Section Title</label>
+            <input type="text" class="form-control" value="${this.escapeAttr(title)}" oninput="PageEditor.handleLiveInput('home.heading_sust', this.value, 'text')"/>
+          </div>
+
+          <div class="inspector-field-group" style="margin-top: 12px;">
+            <label>Conservation Mission &amp; Commitments</label>
+            <textarea class="form-control" rows="5" oninput="PageEditor.handleLiveInput('home.p_sust', this.value, 'text')">${this.escapeHtml(desc)}</textarea>
+          </div>
+
+          <div style="margin-top: 18px;">
+            <button type="button" class="btn btn-primary btn-block" onclick="PageEditor.publish()" style="font-weight: 700;">
+              Publish Sustainability Updates
+            </button>
+          </div>
+        </div>
+      `;
+    },
+
+    async uploadFieldFile(fieldKey, file, type = 'image') {
+      if (!file) return;
+      if (window.AdminApp) window.AdminApp.showToast(`Uploading "${file.name}"...`, 'info', 3000);
+      try {
+        let secureUrl = '';
+        const uploader = window.uploadToCloudinary || (window.AdminApp && window.AdminApp.uploadToCloudinary);
+        if (uploader) {
+          try {
+            const res = await uploader(file, { resourceType: type === 'video' ? 'video' : 'auto' });
+            secureUrl = res.secureUrl || res.url;
+          } catch (cErr) {
+            console.warn('[PageEditor upload fallback]', cErr);
+          }
+        }
+        if (!secureUrl && window.AdminApp && typeof window.AdminApp.fileToDataUrl === 'function') {
+          secureUrl = await window.AdminApp.fileToDataUrl(file);
+        }
+        if (secureUrl) {
+          const inp = document.getElementById('fieldInput_' + fieldKey);
+          if (inp) {
+            inp.value = secureUrl;
+            inp.dispatchEvent(new Event('input', { bubbles: true }));
+          }
+          this.handleLiveInput(fieldKey, secureUrl, type);
+          if (window.AdminApp) window.AdminApp.showToast(`"${file.name}" uploaded successfully!`, 'success');
+        }
+      } catch (err) {
+        if (window.AdminApp) window.AdminApp.showToast(`Upload failed: ${err.message}`, 'error');
+      }
     },
 
     handleLangChange(lang) {

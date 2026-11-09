@@ -1287,6 +1287,23 @@
           this.bindElements();
         }
 
+        // Smooth scroll to section in Page Editor preview
+        if (event.data.type === 'lotus:scroll-to-section') {
+          const target = event.data.target;
+          if (target === 'hero' || target === 'top') {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          } else if (target === 'why-us') {
+            const el = document.querySelector('[data-cms-html="home.heading_2"]') || document.querySelector('.editorial-section') || document.getElementById('why-us');
+            if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          } else if (target === 'sustainability') {
+            const el = document.querySelector('[data-cms="home.heading_sust"]') || document.querySelector('.sustainability-section') || document.querySelector('footer');
+            if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          } else {
+            const el = document.getElementById(target) || document.querySelector(target);
+            if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }
+
         // Activate specific slide in Real Experiences Carousel
         if (event.data.type === 'lotus:set-wre-slide' || event.data.type === 'lotus:set-real-exp-slide') {
           const idx = typeof event.data.index === 'number' ? event.data.index : 0;

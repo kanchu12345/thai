@@ -712,10 +712,11 @@
 <h2>Media Library</h2>
 <p>Upload and manage high-resolution imagery (Auto-compressed to WebP or via Cloudinary CDN)</p>
 </div>
-<button class="btn btn-primary" onclick="AdminApp.openCloudinaryWidget()" style="display: inline-flex; align-items: center; gap: 8px;">
+<label class="btn btn-primary" style="margin: 0; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
 <svg fill="currentColor" height="18" viewbox="0 0 24 24" width="18"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM14 13v4h-4v-4H7l5-5 5 5h-3z"></path></svg>
-<span>Upload to Cloudinary</span>
-</button>
+<span>Upload Media</span>
+<input accept="image/jpeg,image/png,image/webp,image/gif,image/svg+xml,video/mp4,video/webm,video/quicktime,.jpg,.jpeg,.png,.webp,.gif,.svg,.mp4,.webm,.mov" multiple="" onchange="if(this.files && this.files.length) AdminApp.handleMediaUpload(this.files); this.value='';" style="display: none;" type="file"/>
+</label>
 </div>
 <!-- Dropzone -->
 <!-- Storage Notice -->
@@ -1377,6 +1378,124 @@
   </div>
 </section>
 
+<!-- ========================================== -->
+<!-- SECTION: LINKED CONTENT (SINGLE SOURCE OF TRUTH) -->
+<!-- ========================================== -->
+<section class="content-section" id="section-linked-content">
+  <div class="section-header">
+    <div class="section-title-wrap">
+      <h2 id="linkedContentHeading">Linked Content</h2>
+      <p id="linkedContentSubheading">Configure presentation settings for this section. Items displayed here come directly from their primary catalog manager.</p>
+    </div>
+  </div>
+  <div id="linkedContentContainer">
+    <!-- Rendered dynamically by AdminApp.renderLinkedContentSection() -->
+  </div>
+</section>
+
+<!-- ========================================== -->
+<!-- SECTION: PAGE SEO & SOCIAL METADATA        -->
+<!-- ========================================== -->
+<section class="content-section" id="section-page-seo">
+  <div class="section-header">
+    <div class="section-title-wrap">
+      <h2 id="pageSeoHeading">Page SEO &amp; Social Metadata</h2>
+      <p>Configure Google search titles, descriptions, canonical URLs, and Open Graph share previews for each page</p>
+    </div>
+    <div style="display: flex; gap: 8px;">
+      <button type="button" class="btn btn-gold btn-sm" onclick="AdminApp.saveCurrentPageSeo()" style="font-weight: 700;">Save SEO Changes</button>
+    </div>
+  </div>
+  <div id="pageSeoContainer">
+    <!-- Rendered dynamically by AdminApp.renderPageSeoSection() -->
+  </div>
+</section>
+
+<!-- ========================================== -->
+<!-- SECTION: CONTACT DETAILS & COORDINATES     -->
+<!-- ========================================== -->
+<section class="content-section" id="section-contact-details">
+  <div class="section-header">
+    <div class="section-title-wrap">
+      <h2>Contact Details &amp; Social Coordinates</h2>
+      <p>Manage central phone numbers, WhatsApp concierge, email, and social links that sync across the website</p>
+    </div>
+    <div style="display: flex; gap: 8px;">
+      <button type="button" class="btn btn-gold btn-sm" onclick="AdminApp.saveContactDetails()" style="font-weight: 700;">Save Coordinates</button>
+    </div>
+  </div>
+  <div id="contactDetailsContainer">
+    <!-- Rendered dynamically by AdminApp.renderContactDetailsSection() -->
+  </div>
+</section>
+
+<!-- ========================================== -->
+<!-- SECTION: CURATED EXPERIENCES               -->
+<!-- ========================================== -->
+<section class="content-section" id="section-experiences">
+  <div class="section-header">
+    <div class="section-title-wrap">
+      <h2>Curated Experiences &amp; Encounters</h2>
+      <p>Manage signature private Ceylon experiences featured across the Experiences and Home pages</p>
+    </div>
+    <div style="display: flex; gap: 8px;">
+      <button type="button" class="btn btn-primary btn-sm" onclick="AdminApp.openExperienceModal()">+ Add Experience</button>
+    </div>
+  </div>
+  <div id="experiencesContainer">
+    <!-- Rendered dynamically by AdminApp.renderExperiencesSection() -->
+  </div>
+</section>
+
+<!-- ========================================== -->
+<!-- SECTION: GALLERY MEDIA SHOWCASE            -->
+<!-- ========================================== -->
+<section class="content-section" id="section-gallery">
+  <div class="section-header">
+    <div class="section-title-wrap">
+      <h2>Gallery Media Showcase</h2>
+      <p>Manage visual gallery photographs and captions showcased on the Gallery and Home pages</p>
+    </div>
+    <div style="display: flex; gap: 8px;">
+      <button type="button" class="btn btn-primary btn-sm" onclick="AdminApp.openGalleryModal()">+ Add Image</button>
+    </div>
+  </div>
+  <div id="galleryContainer">
+    <!-- Rendered dynamically by AdminApp.renderGallerySection() -->
+  </div>
+</section>
+
+<!-- ========================================== -->
+<!-- SECTION: TRIP FINDER CONFIGURATION         -->
+<!-- ========================================== -->
+<section class="content-section" id="section-trip-finder">
+  <div class="section-header">
+    <div class="section-title-wrap">
+      <h2>Trip Finder Quiz Options</h2>
+      <p>Configure season, duration, passion, and traveler group filters for the interactive trip finder</p>
+    </div>
+  </div>
+  <div id="tripFinderContainer">
+    <!-- Rendered dynamically by AdminApp.renderTripFinderSection() -->
+  </div>
+</section>
+
+<!-- ========================================== -->
+<!-- SECTION: PUBLISH / EXPORT TO GITHUB        -->
+<!-- ========================================== -->
+<section class="content-section" id="section-github">
+  <div class="section-header">
+    <div class="section-title-wrap">
+      <h2>Publish &amp; Deploy to GitHub</h2>
+      <p>Commit content updates and deploy verified changes live to the GitHub Pages repository</p>
+    </div>
+  </div>
+  <div id="githubSectionContainer">
+    <!-- Rendered dynamically by AdminApp.renderGithubSection() -->
+  </div>
+</section>
+
+
 </main>
 </div>
 </div>
@@ -1521,7 +1640,11 @@
   <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
     <label style="font-weight: 600;">Tour Gallery Images</label>
     <div style="display: flex; gap: 8px;">
-      <button class="btn btn-sm btn-secondary" onclick="AdminApp.triggerGalleryUpload()" type="button">☁️ Upload Images</button>
+      <label class="btn btn-sm btn-primary" style="margin: 0; cursor: pointer; display: inline-flex; align-items: center; gap: 6px;">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+        <span>Upload Images</span>
+        <input type="file" multiple accept="image/*" style="display: none;" onchange="if(this.files && this.files.length) AdminApp.handleGalleryFiles(this.files); this.value='';"/>
+      </label>
       <button class="btn btn-sm btn-outline" onclick="AdminApp.openGalleryMediaPicker()" type="button">Browse Media</button>
     </div>
   </div>
@@ -1635,7 +1758,11 @@
   </div>
   <div style="display: flex; gap: 8px; flex: 1; max-width: 320px;">
     <input type="text" class="form-control form-control-sm" id="pickerSearchInput" placeholder="Search media..." oninput="AdminApp.filterPickerMedia(this.value)"/>
-    <button class="btn btn-sm btn-secondary" onclick="AdminApp.triggerUploadFromPicker()" type="button" style="white-space: nowrap;">☁️ Upload New</button>
+    <label class="btn btn-sm btn-primary" style="margin: 0; cursor: pointer; display: inline-flex; align-items: center; gap: 5px; white-space: nowrap;">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+      <span>Upload New</span>
+      <input type="file" accept="image/*,video/*" style="display: none;" onchange="if(this.files[0]) AdminApp.handlePickerDirectUpload(this.files[0]); this.value='';"/>
+    </label>
   </div>
 </div>
 <div class="media-grid" id="pickerMediaGrid">
@@ -1719,7 +1846,11 @@
 <label for="teamPhotoUrl">Photo URL (Cloudinary or local image)</label>
 <div style="display: flex; gap: 8px; flex-wrap: wrap;">
 <input class="form-control" id="teamPhotoUrl" oninput="AdminApp.updateImagePreview('teamPhotoUrl', 'teamPhotoPreview', 'teamPhotoPreviewCard')" placeholder="https://res.cloudinary.com/..." style="flex: 1; min-width: 200px;" type="url"/>
-<button class="btn btn-outline btn-sm" onclick="AdminApp.openCloudinaryForTeam()" type="button">Upload Photo</button>
+<label class="btn btn-primary btn-sm" style="margin: 0; cursor: pointer; display: inline-flex; align-items: center; gap: 6px;">
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+  <span>Upload Photo</span>
+  <input type="file" accept="image/jpeg,image/png,image/webp,image/gif" style="display: none;" onchange="if(this.files[0]) AdminApp.handleDirectImageUpload(this.files[0], 'teamPhotoUrl', 'teamPhotoPreview', 'teamPhotoPreviewCard'); this.value='';"/>
+</label>
 <button class="btn btn-outline btn-sm" onclick="AdminApp.openImagePicker('teamPhotoUrl', 'teamPhotoPreview', 'teamPhotoPreviewCard')" type="button">Browse Media</button>
 </div>
 <!-- Live Image Preview Card -->
@@ -2153,7 +2284,11 @@
           <label>Cover Image *</label>
           <div style="display: flex; gap: 8px; flex-wrap: wrap;">
             <input class="form-control" id="blogCoverImage" oninput="AdminApp.updateImagePreview('blogCoverImage', 'blogCoverPreview', 'blogCoverPreviewCard')" placeholder="assets/images/sigiriya.jpg" required type="text" style="flex: 1; min-width: 200px;"/>
-            <button class="btn btn-secondary" onclick="AdminApp.triggerUploadForInput('blogCoverImage', 'blogCoverPreview', 'blogCoverPreviewCard')" type="button">☁️ Upload Cloudinary</button>
+            <label class="btn btn-primary" style="margin: 0; cursor: pointer; display: inline-flex; align-items: center; gap: 6px;">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+              <span>Upload Image</span>
+              <input type="file" accept="image/jpeg,image/png,image/webp,image/gif" style="display: none;" onchange="if(this.files[0]) AdminApp.handleDirectImageUpload(this.files[0], 'blogCoverImage', 'blogCoverPreview', 'blogCoverPreviewCard'); this.value='';"/>
+            </label>
             <button class="btn btn-outline" onclick="AdminApp.openImagePicker('blogCoverImage', 'blogCoverPreview', 'blogCoverPreviewCard')" type="button">Browse Media</button>
           </div>
           <div class="image-preview-card" id="blogCoverPreviewCard" style="display: none; margin-top: 8px;">
@@ -2226,9 +2361,9 @@
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
 <script src="../data/seed-catalog.js?v=20261109_v1"></script>
 <script src="../js/firebase-tour-sync.js"></script>
-<script src="js/admin-app.js?v=20261109_nodash_v1"></script>
-<script src="js/page-editor.js?v=20261109_nodash_v1"></script>
-<script src="js/admin-finetune.js?v=20261109_v3"></script>
+<script src="js/admin-app.js?v=20261109_v4"></script>
+<script src="js/page-editor.js?v=20261109_v4"></script>
+<script src="js/admin-finetune.js?v=20261109_v4"></script>
 
 
 

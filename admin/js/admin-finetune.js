@@ -233,6 +233,10 @@
           this.renderTripFinderSection();
         } else if (subtabConfig.sectionId === 'github') {
           this.renderGithubSection();
+        } else if (subtabConfig.sectionId === 'success-stories') {
+          if (typeof this.renderSuccessStories === 'function') {
+            this.renderSuccessStories();
+          }
         }
       } else {
         // Page Editor sub-tab (hero, why-us, sustainability, page-content)
@@ -290,6 +294,7 @@
       }
 
       // Settings keys and source data mapping
+      const seedCatalog = (typeof window !== 'undefined' && window.LOTUS_SEED_CATALOG) || {};
       const sectionMap = {
         'category-showcase': {
           titleKey: 'home.heading_3',
@@ -298,7 +303,7 @@
           defaultTitle: 'Select Your Travel Philosophy',
           defaultSubtitle: 'Eleven bespoke travel styles crafted around authentic Ceylon encounters, luxury conservation sanctuaries, and mindful pilgrimages.',
           defaultBtn: 'Explore All 11 Themes',
-          sourceItems: this.categories || [],
+          sourceItems: (this.categories && this.categories.length) ? this.categories : (seedCatalog.categories || []),
           itemType: 'category',
           sourceTab: 'tours',
           sourceSubtab: 'categories'
@@ -312,7 +317,7 @@
           defaultTitle: 'Signature Sri Lanka Journeys',
           defaultSubtitle: 'Private chauffeured expeditions curated for deep cultural immersion, wild landscapes, and sacred rest.',
           defaultBtn: 'View All 29 Packages',
-          sourceItems: (this.packages || []).filter(p => p.is_popular || p.featured || p.is_published),
+          sourceItems: ((this.packages && this.packages.length) ? this.packages : (seedCatalog.packages || seedCatalog.tours || [])).filter(p => p.is_popular || p.featured || p.is_published),
           itemType: 'package',
           sourceTab: 'tours',
           sourceSubtab: 'packages'
@@ -326,7 +331,7 @@
           defaultTitle: 'Timeless Kingdoms and Coastal Sanctuaries',
           defaultSubtitle: "Explore Sri Lanka's 24 iconic regions, UNESCO ancient cities, mist-veiled tea peaks, and untamed national parks.",
           defaultBtn: 'Explore All 24 Destinations',
-          sourceItems: this.destinations || [],
+          sourceItems: (this.destinations && this.destinations.length) ? this.destinations : (seedCatalog.destinations || []),
           itemType: 'destination',
           sourceTab: 'destinations',
           sourceSubtab: 'destinations-list'
