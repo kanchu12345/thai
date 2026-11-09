@@ -1,68 +1,68 @@
 <!-- Site design & development: Infinite Design (https://infiniteweb.dev/) — see /humans.txt and LICENSE.txt -->
 <!-- Full-Screen Slide-in Mobile Navigation Menu -->
-<div aria-hidden="true" aria-label="Mobile Navigation" class="mobile-nav-fullscreen" id="mobileNavFullscreen" role="dialog">
+<div aria-hidden="true" aria-label="Mobile Navigation" class="mobile-nav-fullscreen" data-cms-aria="siteGlobal.menu.mobileNavAria" id="mobileNavFullscreen" role="dialog">
 <div class="mobile-nav-header">
-<a class="header-brand" href="{{BASE_PATH}}index.html">
-<img alt="Lotus Ceylon Official Emblem" class="header-brand-logo" height="38" src="{{BASE_PATH}}assets/images/brand/logo-header.png" width="38" data-cms-img="siteGlobal.branding.logo"/>
+<a class="header-brand" data-cms-link="mobile_menu.section.link_1" data-cms-title="siteGlobal.branding.brandName" href="{{BASE_PATH}}index.html" title="Lotus Ceylon">
+<img alt="Lotus Ceylon Official Emblem" class="header-brand-logo" data-cms-alt="siteGlobal.branding.companyName" data-cms-img="siteGlobal.branding.logo" height="38" src="{{BASE_PATH}}assets/images/brand/logo-header.png" width="38"/>
 <span class="header-brand-name"><span class="brand-name-lotus" data-cms="siteGlobal.branding.brandNameLotus">Lotus</span> <span class="brand-name-ceylon" data-cms="siteGlobal.branding.brandNameCeylon">Ceylon</span></span>
 </a>
-<button aria-label="Close navigation menu" class="mobile-nav-close" id="mobileNavClose" type="button">×</button>
+<button aria-label="Close navigation menu" class="mobile-nav-close" data-cms="mobile_menu.section.btn_1" data-cms-aria="siteGlobal.actions.closeNavAria" id="mobileNavClose" type="button">×</button>
 </div>
 <div class="mobile-nav-body">
 <ul class="mobile-nav-list">
-<li class="mobile-nav-item"><a class="mobile-nav-link" href="{{BASE_PATH}}index.html" data-cms="siteGlobal.menu.home">Home</a></li>
+<li class="mobile-nav-item"><a class="mobile-nav-link" data-cms="siteGlobal.menu.home" data-cms-link="mobile_menu.section.link_2" href="{{BASE_PATH}}index.html">Home</a></li>
 <!-- Accordion Item for Tours -->
 <li class="mobile-nav-item has-accordion">
-<button aria-expanded="false" class="mobile-nav-link accordion-toggle" id="mobileToursToggle" type="button">
+<button aria-expanded="false" class="mobile-nav-link accordion-toggle" data-cms="mobile_menu.section.btn_2" data-cms-aria="siteGlobal.menu.toursToggleAria" id="mobileToursToggle" type="button">
 <span data-cms="siteGlobal.menu.tours">Tours and Packages</span>
 <svg class="accordion-arrow" fill="none" height="16" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="16"><polyline points="6 9 12 15 18 9"></polyline></svg>
 </button>
 <div class="mobile-accordion-submenu" id="mobileToursSubmenu">
-<a class="submenu-link" href="{{BASE_PATH}}tours/cultural/index.html" data-category-slug="cultural">Cultural Heritage</a>
-<a class="submenu-link" href="{{BASE_PATH}}tours/buddhist-heritage/index.html" data-category-slug="buddhist-heritage">Buddhist Heritage</a>
-<a class="submenu-link" href="{{BASE_PATH}}tours/wildlife/index.html" data-category-slug="wildlife">Wildlife Safaris</a>
-<a class="submenu-link" href="{{BASE_PATH}}tours/beach/index.html" data-category-slug="beach">Pristine Beaches</a>
-<a class="submenu-link" href="{{BASE_PATH}}tours/hill-country/index.html" data-category-slug="hill-country">Hill Country and Tea</a>
-<a class="submenu-link" href="{{BASE_PATH}}tours/ayurvedic/index.html" data-category-slug="ayurvedic">Ayurvedic Healing</a>
-<a class="submenu-link" href="{{BASE_PATH}}tours/honeymoon/index.html" data-category-slug="honeymoon">Honeymoon Romance</a>
-<a class="submenu-link" href="{{BASE_PATH}}tours/family/index.html" data-category-slug="family">Family Discovery</a>
-<a class="submenu-link" href="{{BASE_PATH}}tours/adventure/index.html" data-category-slug="adventure">Active Adventure</a>
-<a class="submenu-link" href="{{BASE_PATH}}tours/golf/index.html" data-category-slug="golf">Championship Golf</a>
-<a class="submenu-link" href="{{BASE_PATH}}tours/ramayana/index.html" data-category-slug="ramayana">Ramayana Trail</a>
-<a class="submenu-link submenu-link-all" href="{{BASE_PATH}}tours/index.html"><span>View All Tours &amp; Themes (29 Packages)</span> <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+<a class="submenu-link" data-category-slug="cultural" data-cms="siteGlobal.menu.cat_cultural" data-cms-link="mobile_menu.section.link_3" href="{{BASE_PATH}}tours/cultural/index.html">Cultural Heritage</a>
+<a class="submenu-link" data-category-slug="buddhist-heritage" data-cms="siteGlobal.menu.cat_buddhist" data-cms-link="mobile_menu.section.link_4" href="{{BASE_PATH}}tours/buddhist-heritage/index.html">Buddhist Heritage</a>
+<a class="submenu-link" data-category-slug="wildlife" data-cms="siteGlobal.menu.cat_wildlife" data-cms-link="mobile_menu.section.link_5" href="{{BASE_PATH}}tours/wildlife/index.html">Wildlife Safaris</a>
+<a class="submenu-link" data-category-slug="beach" data-cms="siteGlobal.menu.cat_beach" data-cms-link="mobile_menu.section.link_6" href="{{BASE_PATH}}tours/beach/index.html">Pristine Beaches</a>
+<a class="submenu-link" data-category-slug="hill-country" data-cms="siteGlobal.menu.cat_hill_country" data-cms-link="mobile_menu.section.link_7" href="{{BASE_PATH}}tours/hill-country/index.html">Hill Country and Tea</a>
+<a class="submenu-link" data-category-slug="ayurvedic" data-cms="siteGlobal.menu.cat_ayurvedic" data-cms-link="mobile_menu.section.link_8" href="{{BASE_PATH}}tours/ayurvedic/index.html">Ayurvedic Healing</a>
+<a class="submenu-link" data-category-slug="honeymoon" data-cms="siteGlobal.menu.cat_honeymoon" data-cms-link="mobile_menu.section.link_9" href="{{BASE_PATH}}tours/honeymoon/index.html">Honeymoon Romance</a>
+<a class="submenu-link" data-category-slug="family" data-cms="siteGlobal.menu.cat_family" data-cms-link="mobile_menu.section.link_10" href="{{BASE_PATH}}tours/family/index.html">Family Discovery</a>
+<a class="submenu-link" data-category-slug="adventure" data-cms="siteGlobal.menu.cat_adventure" data-cms-link="mobile_menu.section.link_11" href="{{BASE_PATH}}tours/adventure/index.html">Active Adventure</a>
+<a class="submenu-link" data-category-slug="golf" data-cms="siteGlobal.menu.cat_golf" data-cms-link="mobile_menu.section.link_12" href="{{BASE_PATH}}tours/golf/index.html">Championship Golf</a>
+<a class="submenu-link" data-category-slug="ramayana" data-cms="siteGlobal.menu.cat_ramayana" data-cms-link="mobile_menu.section.link_13" href="{{BASE_PATH}}tours/ramayana/index.html">Ramayana Trail</a>
+<a class="submenu-link submenu-link-all" data-cms-link="mobile_menu.section.link_14" href="{{BASE_PATH}}tours/index.html"><span data-cms="siteGlobal.menu.all_tours">View All Tours &amp; Themes (29 Packages)</span> <svg aria-hidden="true" fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 16 16" width="14"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></a>
 </div>
 </li>
-<li class="mobile-nav-item"><a class="mobile-nav-link" href="{{BASE_PATH}}destinations.html" data-cms="siteGlobal.menu.destinations">Destinations</a></li>
-<li class="mobile-nav-item"><a class="mobile-nav-link" href="{{BASE_PATH}}experiences.html" data-cms="siteGlobal.menu.experiences">Experiences</a></li>
-<li class="mobile-nav-item"><a class="mobile-nav-link" href="{{BASE_PATH}}about.html" data-cms="siteGlobal.menu.about">About Us</a></li>
-<li class="mobile-nav-item"><a class="mobile-nav-link" href="{{BASE_PATH}}gallery.html" data-cms="siteGlobal.menu.gallery">Gallery</a></li>
-<li class="mobile-nav-item"><a class="mobile-nav-link" href="{{BASE_PATH}}reviews.html" data-cms="siteGlobal.menu.reviews">Reviews</a></li>
-<li class="mobile-nav-item"><a class="mobile-nav-link" href="{{BASE_PATH}}blog.html" data-cms="siteGlobal.menu.blog">Blog</a></li>
-<li class="mobile-nav-item"><a class="mobile-nav-link" href="{{BASE_PATH}}contact.html" data-cms="siteGlobal.menu.contact">Contact Us</a></li>
+<li class="mobile-nav-item"><a class="mobile-nav-link" data-cms="siteGlobal.menu.destinations" data-cms-link="mobile_menu.section.link_15" href="{{BASE_PATH}}destinations.html">Destinations</a></li>
+<li class="mobile-nav-item"><a class="mobile-nav-link" data-cms="siteGlobal.menu.experiences" data-cms-link="mobile_menu.section.link_16" href="{{BASE_PATH}}experiences.html">Experiences</a></li>
+<li class="mobile-nav-item"><a class="mobile-nav-link" data-cms="siteGlobal.menu.about" data-cms-link="mobile_menu.section.link_17" href="{{BASE_PATH}}about.html">About Us</a></li>
+<li class="mobile-nav-item"><a class="mobile-nav-link" data-cms="siteGlobal.menu.gallery" data-cms-link="mobile_menu.section.link_18" href="{{BASE_PATH}}gallery.html">Gallery</a></li>
+<li class="mobile-nav-item"><a class="mobile-nav-link" data-cms="siteGlobal.menu.reviews" data-cms-link="mobile_menu.section.link_19" href="{{BASE_PATH}}reviews.html">Reviews</a></li>
+<li class="mobile-nav-item"><a class="mobile-nav-link" data-cms="siteGlobal.menu.blog" data-cms-link="mobile_menu.section.link_20" href="{{BASE_PATH}}blog.html">Blog</a></li>
+<li class="mobile-nav-item"><a class="mobile-nav-link" data-cms="siteGlobal.menu.contact" data-cms-link="mobile_menu.section.link_21" href="{{BASE_PATH}}contact.html">Contact Us</a></li>
 </ul>
 <!-- Mobile Language Selector Section -->
 <div class="mobile-lang-section">
-<p class="mobile-section-label">Select Language</p>
+<p class="mobile-section-label" data-cms="siteGlobal.languages.label">Select Language</p>
 <div class="mobile-lang-grid" id="mobileLangGrid">
-<button class="mobile-lang-btn is-active" data-lang="en" type="button">English</button>
-<button class="mobile-lang-btn" data-lang="zh-TW" type="button">繁體中文</button>
-<button class="mobile-lang-btn" data-lang="zh-CN" type="button">简体中文</button>
-<button class="mobile-lang-btn" data-lang="fr" type="button">Français</button>
-<button class="mobile-lang-btn" data-lang="de" type="button">Deutsch</button>
-<button class="mobile-lang-btn" data-lang="ru" type="button">Русский</button>
-<button class="mobile-lang-btn" data-lang="es" type="button">Español</button>
-<button class="mobile-lang-btn" data-lang="it" type="button">Italiano</button>
-<button class="mobile-lang-btn" data-lang="ja" type="button">日本語</button>
-<button class="mobile-lang-btn" data-lang="ar" type="button">العربية</button>
-<button class="mobile-lang-btn" data-lang="hi" type="button">हिन्दी</button>
-<button class="mobile-lang-btn" data-lang="vi" type="button">Tiếng Việt</button>
+<button class="mobile-lang-btn is-active" data-cms="siteGlobal.languages.en" data-lang="en" type="button">English</button>
+<button class="mobile-lang-btn" data-cms="siteGlobal.languages.zh_tw" data-lang="zh-TW" type="button">繁體中文</button>
+<button class="mobile-lang-btn" data-cms="siteGlobal.languages.zh_cn" data-lang="zh-CN" type="button">简体中文</button>
+<button class="mobile-lang-btn" data-cms="siteGlobal.languages.fr" data-lang="fr" type="button">Français</button>
+<button class="mobile-lang-btn" data-cms="siteGlobal.languages.de" data-lang="de" type="button">Deutsch</button>
+<button class="mobile-lang-btn" data-cms="siteGlobal.languages.ru" data-lang="ru" type="button">Русский</button>
+<button class="mobile-lang-btn" data-cms="siteGlobal.languages.es" data-lang="es" type="button">Español</button>
+<button class="mobile-lang-btn" data-cms="siteGlobal.languages.it" data-lang="it" type="button">Italiano</button>
+<button class="mobile-lang-btn" data-cms="siteGlobal.languages.ja" data-lang="ja" type="button">日本語</button>
+<button class="mobile-lang-btn" data-cms="siteGlobal.languages.ar" data-lang="ar" type="button">العربية</button>
+<button class="mobile-lang-btn" data-cms="siteGlobal.languages.hi" data-lang="hi" type="button">हिन्दी</button>
+<button class="mobile-lang-btn" data-cms="siteGlobal.languages.vi" data-lang="vi" type="button">Tiếng Việt</button>
 </div>
 <!-- Mobile Action Buttons -->
 <div class="mobile-nav-actions">
-<a class="btn-mobile-whatsapp" href="https://wa.me/94715422384?text=Hello%20Lotus%20Ceylon!%20I%20would%20like%20to%20inquire%20about%20a%20private%20tour." rel="noopener noreferrer" target="_blank" data-cms-link="siteGlobal.contact.whatsappUrl">
-<span>WhatsApp (+94 71 54 22 384)</span>
+<a class="btn-mobile-whatsapp" data-cms="mobile_menu.section.btn_3" data-cms-link="siteGlobal.contact.whatsappUrl" href="https://wa.me/94715422384?text=Hello%20Lotus%20Ceylon!%20I%20would%20like%20to%20inquire%20about%20a%20private%20tour." rel="noopener noreferrer" target="_blank">
+<span data-cms="siteGlobal.contact.mobileWhatsappLabel">WhatsApp (+94 71 54 22 384)</span>
 </a>
-<a class="btn-mobile-inquire" href="{{BASE_PATH}}inquiry-detailed.html">
+<a class="btn-mobile-inquire" data-cms="mobile_menu.section.btn_4" data-cms-link="mobile_menu.section.link_22" href="{{BASE_PATH}}inquiry-detailed.html">
 <span data-cms="siteGlobal.branding.planJourneyBtnText">Plan My Bespoke Journey ➔</span>
 </a>
 </div>

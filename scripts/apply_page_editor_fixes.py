@@ -60,14 +60,14 @@ methods_to_add = '''
 
       if (formType === 'inquiry_quick') {
         if (titleEl) titleEl.textContent = 'Quick Consultation & Tour Inquire Form (All Pages Quick Modal)';
-        if (emailEl) emailEl.value = (saved && saved.recipientEmail) || 'paliforbuddhism@gmail.com';
+        if (emailEl) emailEl.value = (saved && saved.recipientEmail) || 'info@lotusceylon.com';
         if (subjEl) subjEl.value = (saved && saved.emailSubject) || 'New Tour Consultation Inquiry - Lotus Ceylon';
         if (honeypotEl) honeypotEl.value = saved ? String(saved.honeypotEnabled) : 'true';
         if (destEl) destEl.value = (saved && saved.destinations) || 'Cultural Triangle, Hill Country, Wildlife Safari, Southern Coast, Jaffna & North';
         if (stylesEl) stylesEl.value = (saved && saved.travelStyles) || 'Luxury Heritage, Wildlife Safari, Cultural Immersion, Romantic Honeymoon, Ayurveda Wellness';
       } else {
         if (titleEl) titleEl.textContent = 'Bespoke Journey Inquiry Form (inquiry-detailed.html)';
-        if (emailEl) emailEl.value = (saved && saved.recipientEmail) || 'paliforbuddhism@gmail.com';
+        if (emailEl) emailEl.value = (saved && saved.recipientEmail) || 'info@lotusceylon.com';
         if (subjEl) subjEl.value = (saved && saved.emailSubject) || 'We received your bespoke Sri Lanka journey inquiry - Lotus Ceylon';
         if (honeypotEl) honeypotEl.value = saved ? String(saved.honeypotEnabled) : 'true';
         if (destEl) destEl.value = (saved && saved.destinations) || 'Cultural Triangle (Sigiriya/Polonnaruwa), Hill Country (Kandy/Nuwara Eliya/Ella), Wildlife and Safari (Yala/Wilpattu), Southern Coast (Galle/Mirissa/Tangalle), East Coast (Trincomalee/Pasikudah), Jaffna and Northern Province';
@@ -85,7 +85,7 @@ methods_to_add = '''
 
       const config = {
         formType,
-        recipientEmail: emailEl ? emailEl.value.trim() : 'paliforbuddhism@gmail.com',
+        recipientEmail: emailEl ? emailEl.value.trim() : 'info@lotusceylon.com',
         emailSubject: subjEl ? subjEl.value.trim() : '',
         honeypotEnabled: honeypotEl ? (honeypotEl.value === 'true') : true,
         destinations: destEl ? destEl.value.trim() : '',
@@ -283,7 +283,7 @@ new_render_global = '''    renderGlobalInspector(docKey, label) {
           </div>
         `;
       } else if (docKey === 'siteGlobal/contact') {
-        const email = (this.activeDocData && this.activeDocData['siteGlobal.contact.email']) || 'paliforbuddhism@gmail.com';
+        const email = (this.activeDocData && this.activeDocData['siteGlobal.contact.email']) || 'info@lotusceylon.com';
         const phone = (this.activeDocData && this.activeDocData['siteGlobal.contact.phone']) || '+94 77 722 0070';
         const address = (this.activeDocData && this.activeDocData['siteGlobal.contact.address']) || 'Colombo & Kandy, Sri Lanka';
         const wechat = (this.activeDocData && this.activeDocData['siteGlobal.contact.wechat']) || 'FGUTaiwan90';

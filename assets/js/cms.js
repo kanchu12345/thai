@@ -248,6 +248,9 @@
 
       // 1. Try from siteGlobal first if path starts with siteGlobal
       if (pathStr.startsWith('siteGlobal.')) {
+        if (this.data.page && this.data.page[pathStr] !== undefined && this.data.page[pathStr] !== null) {
+          return this.data.page[pathStr];
+        }
         const parts = pathStr.split('.');
         let curr = this.data.siteGlobal;
         for (let i = 1; i < parts.length; i++) {
@@ -344,27 +347,44 @@
         const key = el.getAttribute('data-cms') || el.getAttribute('data-cms-html') || el.getAttribute('data-cms-img') || el.getAttribute('data-cms-bg') || el.getAttribute('data-cms-video') || el.getAttribute('data-cms-link');
         if (key) {
           const hiddenVal = this.getValueByPath(key + '_hidden');
-          if (hiddenVal === 'true' || hiddenVal === true) {
+          const isHidden = hiddenVal === 'true' || hiddenVal === true;
+          const pill = el.closest('.floating-badge-pill') || el.closest('.about-experience-seal');
+          if (isHidden) {
             el.setAttribute('data-cms-hidden', 'true');
             if (window.location.search.includes('edit=1')) {
               el.style.opacity = '0.35';
               el.style.filter = 'grayscale(80%)';
               el.style.outline = '2px dashed #EF4444';
             } else {
-              el.style.display = 'none';
+              el.style.setProperty('display', 'none', 'important');
+              if (pill) {
+                pill.setAttribute('data-cms-hidden', 'true');
+                pill.style.setProperty('display', 'none', 'important');
+              }
+            }
+          } else {
+            el.removeAttribute('data-cms-hidden');
+            if (!window.location.search.includes('edit=1')) {
+              el.style.removeProperty('display');
+              if (pill) {
+                pill.removeAttribute('data-cms-hidden');
+                pill.style.removeProperty('display');
+              }
             }
           }
         }
       });
 
-      // 1. data-cms (textContent or input placeholder)
+      // 1. data-cms (textContent, meta content, or input placeholder)
       scope.querySelectorAll('[data-cms]').forEach(el => {
         const key = el.getAttribute('data-cms');
         const raw = this.getValueByPath(key);
         const val = this.resolveI18n(raw, lang);
-        if (val !== null && val !== undefined && val !== '') {
+        if (val !== null && val !== undefined) {
           if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
             el.setAttribute('placeholder', String(val));
+          } else if (el.tagName === 'META') {
+            el.setAttribute('content', String(val));
           } else {
             if (el.textContent !== String(val)) {
               el.textContent = String(val);
@@ -379,7 +399,7 @@
         const key = el.getAttribute('data-cms-html');
         const raw = this.getValueByPath(key);
         const val = this.resolveI18n(raw, lang);
-        if (val !== null && val !== undefined && val !== '') {
+        if (val !== null && val !== undefined) {
           const clean = sanitizeHtml(String(val));
           if (el.innerHTML !== clean) {
             el.innerHTML = clean;
@@ -388,15 +408,19 @@
         }
       });
 
-      // 3. data-cms-img (src)
+      // 3. data-cms-img (src or meta content)
       scope.querySelectorAll('[data-cms-img]').forEach(el => {
         const key = el.getAttribute('data-cms-img');
         const raw = this.getValueByPath(key);
         if (raw !== undefined && raw !== null) {
           const resolved = raw ? resolveImgUrl(raw) : 'assets/images/placeholder.png';
-          if (resolved && el.getAttribute('src') !== resolved) {
-            this.attachImgErrorHandler(el);
-            el.setAttribute('src', resolved);
+          if (resolved) {
+            if (el.tagName === 'META') {
+              el.setAttribute('content', resolved);
+            } else if (el.getAttribute('src') !== resolved) {
+              this.attachImgErrorHandler(el);
+              el.setAttribute('src', resolved);
+            }
           }
         }
       });
@@ -411,6 +435,26 @@
         }
       });
 
+      // 4b. data-cms-aria (aria-label)
+      scope.querySelectorAll('[data-cms-aria]').forEach(el => {
+        const key = el.getAttribute('data-cms-aria');
+        const raw = this.getValueByPath(key);
+        const val = this.resolveI18n(raw, lang);
+        if (val) {
+          el.setAttribute('aria-label', String(val));
+        }
+      });
+
+      // 4c. data-cms-title (title tooltip)
+      scope.querySelectorAll('[data-cms-title]').forEach(el => {
+        const key = el.getAttribute('data-cms-title');
+        const raw = this.getValueByPath(key);
+        const val = this.resolveI18n(raw, lang);
+        if (val) {
+          el.setAttribute('title', String(val));
+        }
+      });
+
       // 5. data-cms-bg (background-image)
       scope.querySelectorAll('[data-cms-bg]').forEach(el => {
         const key = el.getAttribute('data-cms-bg');
@@ -419,7 +463,7 @@
           const resolved = resolveImgUrl(raw);
           if (resolved) {
             if (el.classList.contains('sacred-cta-banner')) {
-              el.style.backgroundImage = `linear-gradient(135deg, rgba(13, 43, 29, 0.82) 0%, rgba(22, 54, 29, 0.90) 100%), url("${val}")`;
+              el.style.backgroundImage = `linear-gradient(135deg, rgba(13, 43, 29, 0.82) 0%, rgba(22, 54, 29, 0.90) 100%), url("${resolved}")`;
             } else if (el.classList.contains('dest-hero') || el.classList.contains('about-hero') || el.classList.contains('contact-hero') || el.classList.contains('exp-hero') || el.classList.contains('gallery-hero') || el.classList.contains('reviews-hero') || el.classList.contains('blog-hero') || el.classList.contains('beach-hero-banner') || el.classList.contains('tours-hero-banner') || el.classList.contains('banner-section-inner')) {
               el.style.backgroundImage = `linear-gradient(180deg, rgba(0, 43, 73, 0.65) 0%, rgba(0, 43, 73, 0.88) 100%), url("${resolved}")`;
             } else {
@@ -566,7 +610,7 @@
     },
 
     async fetchVersion() {
-      const url = getFirestoreRestBase() + '/siteMeta/version?key=' + getApiKey();
+      const url = getFirestoreRestBase() + '/siteMeta/version?key=' + getApiKey() + '&_t=' + Date.now();
       const res = await fetch(url, { cache: 'no-store' });
       if (!res.ok) {
         if (res.status === 404) return 1;
@@ -629,51 +673,29 @@
         this.setupPreviewListener();
       }
 
-      // Check cache if not in preview
-      if (!isPreview) {
-        const cached = this.readCache();
-        const forceRefresh = urlParams.has('cms_refresh') || urlParams.has('refresh');
-        const SESSION_VER_CHECK_KEY = 'lotus_cms_last_ver_check';
-        const VER_CHECK_INTERVAL_MS = 10 * 1000; // 5 minutes
+      // 1. Instant optimistic render from cache if available (0ms latency)
+      let renderedFromCache = false;
+      const cached = !isPreview ? this.readCache() : null;
+      const forceRefresh = urlParams.has('cms_refresh') || urlParams.has('refresh');
 
-        let lastVerCheck = 0;
-        try {
-          lastVerCheck = parseInt(sessionStorage.getItem(SESSION_VER_CHECK_KEY) || '0', 10);
-        } catch (e) {}
-
-        const shouldCheckVersion = forceRefresh || (Date.now() - lastVerCheck > VER_CHECK_INTERVAL_MS);
-
-        if (cached && cached.data && cached.pageKey === this.pageKey) {
-          this.data = cached.data;
-          this.bindElements();
-
-          if (!shouldCheckVersion) {
-            return; // Cache valid and version verified within 5-min session window: zero network calls!
-          }
-
-          // Check version asynchronously in background
-          try {
-            const currentVer = await this.fetchVersion();
-            try {
-              sessionStorage.setItem(SESSION_VER_CHECK_KEY, String(Date.now()));
-            } catch (e) {}
-
-            if (currentVer === cached.version) {
-              return; // Cache is current
-            }
-          } catch (e) {
-            return; // Network error, stick with valid cache
-          }
-        }
+      if (!isPreview && cached && cached.data && cached.pageKey === this.pageKey) {
+        this.data = cached.data;
+        this.bindElements();
+        renderedFromCache = true;
       }
 
-      // Fetch fresh data
+      // 2. Prompt version check against Firestore to ensure live published updates are displayed
       try {
         let version = 1;
         try {
           version = await this.fetchVersion();
         } catch (e) {}
 
+        if (renderedFromCache && cached && cached.version === version && !forceRefresh) {
+          return; // Cache matches live Firestore version checkpoint!
+        }
+
+        // Cache missing or version bumped by Admin publish -> fetch latest live data immediately
         const globalDocs = [
           'siteGlobal/branding',
           'siteGlobal/header',
@@ -704,13 +726,10 @@
 
         if (!isPreview) {
           this.writeCache(version, this.data);
-          try {
-            sessionStorage.setItem('lotus_cms_last_ver_check', String(Date.now()));
-          } catch (e) {}
         }
       } catch (err) {
         if (window.location.search.includes('debug=1')) {
-          console.warn('[CMS] Failed to fetch live content, falling back to hardcoded defaults:', err);
+          console.warn('[CMS] Failed to fetch live content, falling back to defaults:', err);
         }
       }
     },
@@ -860,8 +879,179 @@
       document.addEventListener('click', (e) => {
         // Prevent default navigation on links in visual edit mode so clicking cards selects element
         const anchor = e.target.closest('a');
-        if (anchor && (anchor.hasAttribute('data-cms-link') || anchor.querySelector('[data-cms], [data-cms-img], [data-cms-html]') || anchor.classList.contains('hover-box') || anchor.classList.contains('next-btn') || anchor.classList.contains('btn-beach-view') || anchor.classList.contains('btn-beach-inquire'))) {
+        if (anchor && (anchor.hasAttribute('data-cms-link') || anchor.querySelector('[data-cms], [data-cms-img], [data-cms-html]') || anchor.classList.contains('hover-box') || anchor.classList.contains('next-btn') || anchor.classList.contains('btn-beach-view') || anchor.classList.contains('btn-beach-inquire') || anchor.classList.contains('btn-inquire-gold-pill') || anchor.classList.contains('btn-cta-whatsapp') || anchor.classList.contains('walkers-acc-trigger'))) {
           e.preventDefault();
+        }
+
+        // Tour Package Detail Page Visual Edit Handler (All 29 Packages)
+        const isTourDetailPage = document.body.classList.contains('page-tour-detail') ||
+                                 ((document.body.getAttribute('data-cms-page') || '').startsWith('tourPackages/'));
+        if (isTourDetailPage) {
+          const isGlobalElement = e.target.closest('#siteHeader, .site-header-walkers, #siteFooter, .walkers-nav, .header-brand, .footer-section, [data-cms^="siteGlobal."]');
+          if (!isGlobalElement) {
+            // 1. Tour Title
+            const titleTarget = e.target.closest('.tour-title-walkers, h1');
+            if (titleTarget && !titleTarget.closest('.walkers-acc-item, .walkers-nav, header, footer')) {
+              e.preventDefault();
+              e.stopPropagation();
+              if (activeEl) activeEl.classList.remove('lotus-cms-selected-element');
+              activeEl = titleTarget;
+              activeEl.classList.add('lotus-cms-selected-element');
+              if (window.parent && window.parent !== window) {
+                window.parent.postMessage({
+                  type: 'lotus:element-selected',
+                  key: 'tour_title',
+                  attrType: 'tour-field',
+                  field: 'title',
+                  currentVal: titleTarget.textContent.trim(),
+                  sectionId: 'tour-header',
+                  label: 'Tour Package Title'
+                }, '*');
+              }
+              return;
+            }
+
+            // 2. Tagline
+            const tagTarget = e.target.closest('.tour-desc-walkers p:first-child');
+            if (tagTarget) {
+              e.preventDefault();
+              e.stopPropagation();
+              if (activeEl) activeEl.classList.remove('lotus-cms-selected-element');
+              activeEl = tagTarget;
+              activeEl.classList.add('lotus-cms-selected-element');
+              if (window.parent && window.parent !== window) {
+                window.parent.postMessage({
+                  type: 'lotus:element-selected',
+                  key: 'tour_tagline',
+                  attrType: 'tour-field',
+                  field: 'tagline',
+                  currentVal: tagTarget.textContent.trim(),
+                  sectionId: 'tour-header',
+                  label: 'Tour Tagline / Subtitle'
+                }, '*');
+              }
+              return;
+            }
+
+            // 3. Tour Badge Pill
+            const badgeTarget = e.target.closest('.tour-badge-pill-walkers');
+            if (badgeTarget) {
+              e.preventDefault();
+              e.stopPropagation();
+              if (activeEl) activeEl.classList.remove('lotus-cms-selected-element');
+              activeEl = badgeTarget;
+              activeEl.classList.add('lotus-cms-selected-element');
+              if (window.parent && window.parent !== window) {
+                window.parent.postMessage({
+                  type: 'lotus:element-selected',
+                  key: 'tour_badge',
+                  attrType: 'tour-field',
+                  field: 'badge',
+                  currentVal: badgeTarget.textContent.trim(),
+                  sectionId: 'tour-header',
+                  label: 'Tour Recommendation Badge'
+                }, '*');
+              }
+              return;
+            }
+
+            // 4. Tour Duration
+            const durTarget = e.target.closest('.tour-duration-line-walkers');
+            if (durTarget) {
+              e.preventDefault();
+              e.stopPropagation();
+              if (activeEl) activeEl.classList.remove('lotus-cms-selected-element');
+              activeEl = durTarget;
+              activeEl.classList.add('lotus-cms-selected-element');
+              if (window.parent && window.parent !== window) {
+                window.parent.postMessage({
+                  type: 'lotus:element-selected',
+                  key: 'tour_duration',
+                  attrType: 'tour-field',
+                  field: 'duration',
+                  currentVal: durTarget.textContent.trim(),
+                  sectionId: 'tour-header',
+                  label: 'Tour Duration (Days / Nights)'
+                }, '*');
+              }
+              return;
+            }
+
+            // 5. Tour Hero Banner
+            const bannerTarget = e.target.closest('.tour-banner-walkers, .tour-hero-banner');
+            if (bannerTarget && (e.target === bannerTarget || e.target.classList.contains('tour-banner-walkers') || e.target.closest('.tour-breadcrumb') == null)) {
+              e.preventDefault();
+              e.stopPropagation();
+              if (activeEl) activeEl.classList.remove('lotus-cms-selected-element');
+              activeEl = bannerTarget;
+              activeEl.classList.add('lotus-cms-selected-element');
+              let bg = bannerTarget.style.backgroundImage || '';
+              bg = bg.replace(/^url\(["']?/, '').replace(/["']?\)$/, '');
+              if (window.parent && window.parent !== window) {
+                window.parent.postMessage({
+                  type: 'lotus:element-selected',
+                  key: 'tour_hero_image',
+                  attrType: 'tour-field',
+                  field: 'hero_image',
+                  currentVal: bg,
+                  sectionId: 'hero',
+                  label: 'Tour Hero Banner Image'
+                }, '*');
+              }
+              return;
+            }
+
+            // 6. Tour Itinerary Day Item
+            const accItem = e.target.closest('.walkers-acc-item');
+            if (accItem) {
+              e.preventDefault();
+              e.stopPropagation();
+              if (activeEl) activeEl.classList.remove('lotus-cms-selected-element');
+              activeEl = accItem;
+              activeEl.classList.add('lotus-cms-selected-element');
+              const allItems = Array.from(document.querySelectorAll('.walkers-acc-item'));
+              const idx = allItems.indexOf(accItem);
+              const titleEl = accItem.querySelector('.walkers-acc-title');
+              const descEl = accItem.querySelector('.walkers-acc-desc');
+              if (window.parent && window.parent !== window) {
+                window.parent.postMessage({
+                  type: 'lotus:element-selected',
+                  key: 'tour_itinerary_' + idx,
+                  attrType: 'tour-field',
+                  field: 'itinerary',
+                  dayIndex: idx,
+                  dayTitle: titleEl ? titleEl.textContent.trim() : '',
+                  dayDesc: descEl ? descEl.textContent.trim() : '',
+                  currentVal: titleEl ? titleEl.textContent.trim() : '',
+                  sectionId: 'itinerary',
+                  label: 'Day ' + (idx + 1) + ' Itinerary'
+                }, '*');
+              }
+              return;
+            }
+
+            // 7. Tour Overview Description
+            const descTarget = e.target.closest('.tour-desc-walkers');
+            if (descTarget) {
+              e.preventDefault();
+              e.stopPropagation();
+              if (activeEl) activeEl.classList.remove('lotus-cms-selected-element');
+              activeEl = descTarget;
+              activeEl.classList.add('lotus-cms-selected-element');
+              if (window.parent && window.parent !== window) {
+                window.parent.postMessage({
+                  type: 'lotus:element-selected',
+                  key: 'tour_overview',
+                  attrType: 'tour-field',
+                  field: 'overview',
+                  currentVal: descTarget.textContent.trim(),
+                  sectionId: 'tour-overview',
+                  label: 'Tour Overview Description'
+                }, '*');
+              }
+              return;
+            }
+          }
         }
 
         // Check if element belongs to Our Success Stories homepage landscape card
@@ -1164,69 +1354,61 @@
           let targetSubtab = '';
           let modalOpenFn = '';
 
+          const cmsPageAttr = (document.body && document.body.getAttribute('data-cms-page')) || '';
           const path = (window.location.pathname || '').toLowerCase();
-          const isHomePage = path.endsWith('index.html') || path.endsWith('/') || path === '' || !path.includes('.html');
+          // STRICT Home Page detection: ONLY root home page (siteContent/home or root index.html)
+          const isHomePage = cmsPageAttr === 'siteContent/home' ||
+            (/^(\/thai)?\/((index\.html)?|\s*)$/i.test(path) &&
+             !path.includes('/tours/') &&
+             !path.includes('/destinations/') &&
+             !path.includes('/blog/') &&
+             !path.includes('/experiences') &&
+             !path.includes('/about'));
 
-          if (pkgEl || target.closest('#featuredTours, .package-card, .tour-card, .tour-grid-card, .curated-card, .beach-package-card')) {
-            if (isHomePage || target.closest('#featuredTours')) {
+          // Only Home Page preview showcases link to central catalog managers:
+          if (isHomePage) {
+            if (target.closest('#featuredTours, #packages, .package-cards-grid')) {
               isLinked = true;
               linkedSource = 'Tours > Packages';
               targetTab = 'tours';
               targetSubtab = 'packages';
               if (packageSlug) modalOpenFn = "AdminApp.openPackageModal('" + packageSlug + "');";
-            }
-          } else if (target.closest('#categoryShowcase, .cat-showcase-card, [data-category-slug]')) {
-            if (isHomePage || target.closest('#categoryShowcase')) {
+            } else if (target.closest('#categoryShowcase, .cat-showcase-grid')) {
               isLinked = true;
               linkedSource = 'Tours > Categories';
               targetTab = 'tours';
               targetSubtab = 'categories';
-            }
-          } else if (destEl || target.closest('#destinations, #destinationsGrid, .dest-card')) {
-            if (isHomePage || target.closest('#destinations')) {
+            } else if (target.closest('#destinations, #destinationsGrid')) {
               isLinked = true;
               linkedSource = 'Destinations > Destinations list';
               targetTab = 'destinations';
               targetSubtab = 'destinations-list';
               if (destinationSlug) modalOpenFn = "AdminApp.openDestinationModal('" + destinationSlug + "');";
-            }
-          } else if (target.closest('#experiences, .experience-card, .exp-grid-item, .exp-card')) {
-            if (target.closest('.experience-card, .exp-grid-item, .exp-card')) {
+            } else if (target.closest('#experiences, .exp-grid-item, .exp-card')) {
               isLinked = true;
               linkedSource = 'Experiences > Experiences list';
               targetTab = 'experiences';
               targetSubtab = 'experiences-list';
-            }
-          } else if (target.closest('#reviews, .testimonial-card, .review-card, .reviews-slider')) {
-            if (isHomePage || target.closest('#reviews')) {
+            } else if (target.closest('#reviews, .testimonial-card, .review-card, .reviews-slider')) {
               if (target.closest('.testimonial-card, .review-card, .swiper-slide')) {
                 isLinked = true;
                 linkedSource = 'Reviews > Reviews list';
                 targetTab = 'reviews';
                 targetSubtab = 'reviews-list';
               }
-            }
-          } else if (target.closest('#gallery, .gallery-grid, .gallery-item')) {
-            if (isHomePage || target.closest('#gallery')) {
+            } else if (target.closest('#gallery, .gallery-grid, .gallery-item')) {
               if (target.closest('.gallery-item, .gallery-thumb, [data-gallery-idx]')) {
                 isLinked = true;
                 linkedSource = 'Gallery > Gallery Images';
                 targetTab = 'gallery';
                 targetSubtab = 'gallery-images';
               }
-            }
-          } else if (target.closest('#newsInsights, .news-card, .news-card-big, .news-card-side, .footer-recent-posts')) {
-            if (isHomePage || target.closest('#newsInsights, .footer-recent-posts')) {
+            } else if (target.closest('#newsInsights, .footer-recent-posts')) {
               isLinked = true;
               linkedSource = 'Blog > Blog Posts';
               targetTab = 'blog';
               targetSubtab = 'blog-posts';
             }
-          } else if (target.closest('#teamGrid, .team-card, .team-member-card')) {
-            isLinked = true;
-            linkedSource = 'About Us > Team Members';
-            targetTab = 'about';
-            targetSubtab = 'team';
           }
 
           // Notify parent frame
@@ -1349,6 +1531,77 @@
           }
         }
 
+        // Live Tour Package updates (All 29 Packages)
+        if (event.data.type === 'lotus:update-tour-live') {
+          const { field, val, days, nights, dayIndex, dayField } = event.data;
+          if (field === 'title') {
+            const h1 = document.querySelector('.tour-title-walkers, h1');
+            if (h1) h1.textContent = val;
+            const bc = document.querySelector('.tour-breadcrumb span:last-child');
+            if (bc) bc.textContent = val;
+            const ih = document.querySelector('.itinerary-heading-walkers');
+            if (ih) {
+              const span = ih.querySelector('span');
+              const spanText = span ? span.outerHTML : '<span>A journey through</span>';
+              ih.innerHTML = spanText + '\n' + val;
+            }
+            document.title = val + ' | Lotus Ceylon Luxury Tours';
+          } else if (field === 'tagline') {
+            const tagEl = document.querySelector('.tour-desc-walkers p:first-child');
+            if (tagEl) tagEl.textContent = val;
+          } else if (field === 'badge') {
+            const badgeEl = document.querySelector('.tour-badge-pill-walkers');
+            if (badgeEl) badgeEl.textContent = val;
+          } else if (field === 'category') {
+            const catEl = document.querySelector('.tour-category-sub-walkers');
+            if (catEl) catEl.textContent = val;
+          } else if (field === 'duration') {
+            const durEl = document.querySelector('.tour-duration-line-walkers span, .tour-duration-line-walkers');
+            if (durEl) {
+              const n = String(nights || 0).padStart(2, '0');
+              const d = String(days || 0).padStart(2, '0');
+              durEl.textContent = n + ' Nights and ' + d + ' Days';
+            }
+          } else if (field === 'hero_image') {
+            const banner = document.querySelector('.tour-banner-walkers, .tour-hero-banner');
+            if (banner) {
+              const resolved = (val.startsWith('http') || val.startsWith('/') || val.startsWith('data:')) ? val : ('../../../' + val.replace(/^\.\.\//, ''));
+              banner.style.backgroundImage = 'url("' + resolved + '")';
+            }
+          } else if (field === 'overview') {
+            const descEl = document.querySelector('.tour-desc-walkers p:nth-child(2)');
+            if (descEl) descEl.textContent = val;
+          } else if (field === 'itinerary' && typeof dayIndex === 'number') {
+            const items = document.querySelectorAll('.walkers-acc-item');
+            const item = items[dayIndex];
+            if (item) {
+              if (dayField === 'title') {
+                const tEl = item.querySelector('.walkers-acc-title');
+                if (tEl) tEl.textContent = val;
+              } else if (dayField === 'desc') {
+                const dEl = item.querySelector('.walkers-acc-desc');
+                if (dEl) dEl.textContent = val;
+              } else if (dayField === 'overnight') {
+                const oEl = item.querySelector('.walkers-acc-pill.overnight');
+                if (oEl) oEl.textContent = 'Overnight: ' + val;
+              }
+            }
+          }
+        }
+
+        // Open and scroll to specific itinerary day accordion
+        if (event.data.type === 'lotus:open-tour-accordion') {
+          const items = document.querySelectorAll('.walkers-acc-item');
+          const item = items[event.data.dayIndex];
+          if (item) {
+            items.forEach(it => it.classList.remove('is-open'));
+            item.classList.add('is-open');
+            const trigger = item.querySelector('.walkers-acc-trigger');
+            if (trigger) trigger.setAttribute('aria-expanded', 'true');
+            item.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }
+        }
+
         // Activate specific slide in card-image-slider
         if (event.data.type === 'lotus:activate-slide') {
           const { key, index } = event.data;
@@ -1390,16 +1643,25 @@
           const cleanKey = key && key.includes('.') ? key.split('.').pop() : key;
           const el = (key ? document.querySelector(`[data-cms="${key}"], [data-cms="${cleanKey}"], [data-cms-img="${key}"], [data-cms-img="${cleanKey}"], [data-cms-bg="${key}"], [data-cms-link="${key}"]`) : null) || activeEl;
           if (el) {
+            const pill = el.closest('.floating-badge-pill') || el.closest('.about-experience-seal');
             if (hidden) {
               el.setAttribute('data-cms-hidden', 'true');
               el.style.opacity = '0.35';
               el.style.filter = 'grayscale(80%)';
               el.style.outline = '2px dashed #EF4444';
+              if (pill) {
+                pill.setAttribute('data-cms-hidden', 'true');
+                pill.style.opacity = '0.35';
+              }
             } else {
               el.removeAttribute('data-cms-hidden');
               el.style.opacity = '1';
               el.style.filter = 'none';
               el.style.outline = '';
+              if (pill) {
+                pill.removeAttribute('data-cms-hidden');
+                pill.style.opacity = '1';
+              }
             }
           }
         }
@@ -1560,6 +1822,15 @@
 
         
 
+    setupStorageListener() {
+      window.addEventListener('storage', (e) => {
+        if (e.key === 'lotus_cms_last_published' || e.key === 'lotus_data_v' || (e.key && e.key.startsWith('lotus_cms_published_'))) {
+          try { localStorage.removeItem(CACHE_KEY); } catch(err) {}
+          this.loadContent();
+        }
+      });
+    },
+
     init() {
       if (this.initialized) return;
       this.initialized = true;
@@ -1567,7 +1838,36 @@
       this.purgeLegacyCaches();
       this.detectLanguage();
       this.setupLanguageListeners();
+      this.setupStorageListener();
       this.setupVisualEditMode();
+      // Floating Admin Quick-Edit Bar on standalone public pages when admin is logged in
+      try {
+        if (window.self === window.top) {
+          const isAdmin = localStorage.getItem('lotus_admin_active') === '1' ||
+                          sessionStorage.getItem('lotus_admin_active') === '1' ||
+                          new URLSearchParams(window.location.search).has('admin') ||
+                          new URLSearchParams(window.location.search).has('edit');
+          if (isAdmin && !document.getElementById('lotus-floating-admin-bar')) {
+            const pageDoc = (document.body && document.body.getAttribute('data-cms-page')) || 'siteContent/home';
+            let rel = window.location.pathname.replace(/^\/thai\//i, '').replace(/^\//, '') || 'index.html';
+            if (rel.endsWith('/')) rel += 'index.html';
+            if (!rel.endsWith('.html')) rel += '/index.html';
+            const depth = (rel.match(/\//g) || []).length;
+            const prefix = depth > 0 ? '../'.repeat(depth) : './';
+            const adminUrl = prefix + 'admin/index.html?editPage=' + encodeURIComponent(pageDoc) + '&file=' + encodeURIComponent(rel);
+
+            const bar = document.createElement('div');
+            bar.id = 'lotus-floating-admin-bar';
+            bar.style.cssText = 'position:fixed;bottom:20px;left:20px;z-index:999999;display:flex;align-items:center;gap:10px;background:#002B49;color:#FFFFFF;padding:8px 16px;border-radius:9999px;box-shadow:0 8px 30px rgba(0,0,0,0.35);font-family:system-ui,-apple-system,sans-serif;font-size:13px;border:1px solid #D4AF37;';
+            bar.innerHTML = '<span style="color:#D4AF37;font-weight:700;">&#10022; Lotus Ceylon Admin</span>' +
+              '<a href="' + adminUrl + '" style="background:#D4AF37;color:#1C1B1F;padding:5px 14px;border-radius:9999px;text-decoration:none;font-weight:700;display:inline-flex;align-items:center;gap:5px;font-size:12px;">' +
+              '&#9998; Edit This Page</a>' +
+              '<button type="button" onclick="this.parentElement.remove()" style="background:transparent;border:none;color:#94A3B8;cursor:pointer;font-size:16px;line-height:1;padding:0 2px;">&times;</button>';
+            document.body.appendChild(bar);
+          }
+        }
+      } catch (e) {}
+
       
 
       if (document.readyState === 'loading') {

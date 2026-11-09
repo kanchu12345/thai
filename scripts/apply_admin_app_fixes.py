@@ -58,7 +58,7 @@ new_init_auth = '''    async initAuth() {
           } else {
             const active = localStorage.getItem('lotus_admin_active');
             const savedUser = localStorage.getItem('lotus_admin_user');
-            if (active === '1' && (savedUser === 'admin@lotusceylon.com' || savedUser === 'paliforbuddhism@gmail.com')) {
+            if (active === '1' && (savedUser === 'admin@lotusceylon.com' || savedUser === 'info@lotusceylon.com')) {
               this.currentUser = { email: savedUser, id: 'admin_master_session' };
               this.currentRole = 'super_admin';
               this.showApp();
@@ -87,7 +87,7 @@ new_init_auth = '''    async initAuth() {
       } else {
         const active = localStorage.getItem('lotus_admin_active');
         const savedUser = localStorage.getItem('lotus_admin_user');
-        if (active === '1' && (savedUser === 'admin@lotusceylon.com' || savedUser === 'paliforbuddhism@gmail.com')) {
+        if (active === '1' && (savedUser === 'admin@lotusceylon.com' || savedUser === 'info@lotusceylon.com')) {
           this.currentUser = { email: savedUser, id: 'admin_master_session' };
           this.currentRole = 'super_admin';
           this.showApp();
@@ -147,7 +147,7 @@ new_handle_login = '''          } catch (authErr) {
 
             // Fallback for offline mode or network request failure ONLY:
             const clean = (email || '').toLowerCase().trim();
-            const isAuthorizedEmail = (clean === 'admin@lotusceylon.com' || clean === 'paliforbuddhism@gmail.com');
+            const isAuthorizedEmail = (clean === 'admin@lotusceylon.com' || clean === 'info@lotusceylon.com');
             const isAuthorizedPassword = (password === 'LotusCeylon@2026' || password === 'Lotus@2026');
 
             if (isAuthorizedEmail && isAuthorizedPassword) {

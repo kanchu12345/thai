@@ -172,6 +172,7 @@ class FirestoreRulesTester {
   testWrite(pathStr, data, auth, isCreate = false) {
     const parts = pathStr.split('/');
     const coll = parts[0];
+    const docId = parts[1];
     const admin = this.isAdmin(auth);
 
     if (['inquiries_quick', 'inquiries_detailed', 'inquiries'].includes(coll)) {
@@ -180,6 +181,10 @@ class FirestoreRulesTester {
         return this.isValidInquiry(data, type);
       }
       return admin;
+    }
+
+    if (coll === 'siteGlobal' && docId === 'designCredit') {
+      return false; // Locked design credit: write denied for everyone
     }
 
     if (['siteMeta', 'siteGlobal', 'siteContent', 'tourPackages', 'tourCategories', 'destinations', 'team', 'reviews', 'blogPosts', 'media', 'admins', 'activityLog', 'drafts', 'users'].includes(coll)) {
@@ -246,6 +251,7 @@ async function runUnitTests() {
   assert('Regular authenticated user CANNOT read admins collection', tester.testRead('admins/admin_uid_1', regularUser) === false);
 
   console.log('\n--- SUITE 4: ADMIN & EDITOR AUTHORIZED WRITES ---');
+  assert('Admin CANNOT write to locked designCredit document', tester.testWrite('siteGlobal/designCredit', { credit: 'hacked' }, adminUid, false) === false);
   assert('Admin (by UID) CAN write siteContent/home', tester.testWrite('siteContent/home', { status: 'published' }, adminUid, false) === true);
   assert('Admin (by Email) CAN write tourPackages/southern-sands', tester.testWrite('tourPackages/southern-sands-serenade', { status: 'published' }, adminEmail, false) === true);
   assert('Editor (by UID) CAN write siteContent/about', tester.testWrite('siteContent/about', { status: 'published' }, editorUid, false) === true);

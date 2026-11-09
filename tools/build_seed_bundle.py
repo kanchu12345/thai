@@ -90,7 +90,7 @@ settings_doc = {
     'phone': '+94 71 54 22 384',
     'phoneRaw': '94715422384',
     'email': 'inquiry@lotusceylon.com',
-    'secondaryEmail': 'paliforbuddhism@gmail.com',
+    'secondaryEmail': 'info@lotusceylon.com',
     'address': {
         'line1': '286/C, Niwandama South',
         'city': 'Ja-Ela',

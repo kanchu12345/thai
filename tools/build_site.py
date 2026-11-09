@@ -178,7 +178,7 @@ def get_footer_html(rel_prefix):
             </div>
             <div class="footer-contact-item">
               <p>Email Inquiries</p>
-              <a href="mailto:paliforbuddhism@gmail.com">paliforbuddhism@gmail.com</a>
+              <a href="mailto:info@lotusceylon.com">info@lotusceylon.com</a>
             </div>
             <div class="footer-contact-item" style="margin-top: 0.85rem;">
               <a href="{rel_prefix}about.html#headquarters" style="color: var(--sacred-gold); font-size: 0.85rem; font-weight: 600; display: inline-flex; align-items: center; gap: 6px;">

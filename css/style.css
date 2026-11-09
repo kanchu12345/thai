@@ -6911,3 +6911,12 @@ html.lotus-motion-enabled .lotus-reveal-media.lotus-in-view {
   z-index: 1 !important;
   pointer-events: none !important;
 }
+
+/* Universal CMS Dynamic Visibility Override */
+[data-cms-hidden="true"],
+.floating-badge-pill[data-cms-hidden="true"],
+.about-img-floating .floating-badge-pill span[data-cms][data-cms-hidden="true"],
+.floating-badge-pill span[data-cms][data-cms-hidden="true"],
+.about-experience-seal[data-cms-hidden="true"] {
+  display: none !important;
+}

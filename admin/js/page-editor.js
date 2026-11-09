@@ -130,6 +130,48 @@
       this.selectedElement = item;
       this.activeSliderIndex = 0;
 
+      // Special handling for Tour Detail Page Elements (All 29 Packages)
+      if (item.attrType === 'tour-field' || (this.activePageKey && this.activePageKey.startsWith('tourPackages/'))) {
+        const slug = this.activePageKey.replace('tourPackages/', '');
+        if (!document.getElementById('tourInput_title')) {
+          this.renderTourPackageInspector(slug);
+        }
+        const badge = document.getElementById('inspectorSectionBadge');
+        const title = document.getElementById('inspectorTitle');
+        if (badge) badge.textContent = '📦 Live Tour Editor';
+        if (title) title.textContent = item.label || 'Tour Element';
+
+        const fieldMap = {
+          'title': 'tourInput_title',
+          'tagline': 'tourInput_tagline',
+          'badge': 'tourInput_badge',
+          'duration': 'tourInput_days',
+          'hero_image': 'tourInput_hero_image',
+          'overview': 'tourInput_overview'
+        };
+        let targetId = fieldMap[item.field];
+        if (item.field === 'itinerary' && typeof item.dayIndex === 'number') {
+          targetId = `tourInput_day_title_${item.dayIndex}`;
+          const contentEl = document.getElementById(`itineraryContent_${item.dayIndex}`);
+          if (contentEl) contentEl.style.display = 'block';
+        }
+        if (targetId) {
+          const inputEl = document.getElementById(targetId);
+          if (inputEl) {
+            inputEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            inputEl.focus();
+            inputEl.style.transition = 'box-shadow 0.3s, border-color 0.3s';
+            inputEl.style.borderColor = '#D4AF37';
+            inputEl.style.boxShadow = '0 0 12px rgba(212, 175, 55, 0.6)';
+            setTimeout(() => {
+              inputEl.style.borderColor = '';
+              inputEl.style.boxShadow = '';
+            }, 1800);
+          }
+        }
+        return;
+      }
+
       // Auto-detect slider images if not passed via postMessage
       if (!item.sliderImages || item.sliderImages.length === 0) {
         item.sliderImages = this.detectSliderImagesForItem(item);
@@ -472,9 +514,11 @@
 
     openTourDetailPage(slug) {
       if (!slug) return;
-      const cleanSlug = slug.toLowerCase().trim();
+      const cleanSlug = slug.toLowerCase().trim().replace(/^\/+/, '');
       const filePath = this.PACKAGE_FILE_MAP[cleanSlug] || `tours/cultural/${cleanSlug}/index.html`;
-      this.openPage(`tourPackages/${cleanSlug}`, filePath);
+      const docKey = `tourPackages/${cleanSlug}`;
+      console.log('[PageEditor] Opening tour detail page for live edit:', { cleanSlug, filePath, docKey });
+      this.openPage(docKey, filePath);
     },
 
     openDestinationPage(slug) {
@@ -655,35 +699,26 @@
         return;
       }
 
-      // Linked Dynamic Content Lock (Part 2)
+      // Linked Dynamic Content Notification (Part 2)
+      let linkedBannerHtml = '';
       if (item.isLinked) {
-        body.innerHTML = `
-          <div style="padding: 24px 18px;">
-            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 16px;">
-              <div style="width: 44px; height: 44px; border-radius: 8px; background: #FEF3C7; color: #92400E; display: flex; align-items: center; justify-content: center; font-size: 1.2rem;">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"/></svg>
+        linkedBannerHtml = `
+          <div style="background: #FEF3C7; border: 1px solid #FCD34D; border-radius: 8px; padding: 12px 14px; margin-bottom: 14px;">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
+              <div style="font-size: 0.84rem; font-weight: 700; color: #92400E; display: flex; align-items: center; gap: 6px;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"/></svg>
+                <span>Linked Dynamic Content</span>
               </div>
-              <div>
-                <h4 style="color: #002B49; font-size: 1rem; font-weight: 700; margin: 0;">Linked Dynamic Content</h4>
-                <div style="font-size: 0.78rem; color: #64748B;">Source: ${this.escapeHtml(item.linkedSource || 'Source Catalog')}</div>
-              </div>
+              <span class="badge" style="font-size: 0.7rem; background: #FDE68A; color: #78350F;">${this.escapeHtml(item.linkedSource || 'Source Catalog')}</span>
             </div>
-
-            <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 8px; padding: 14px; margin-bottom: 18px;">
-              <p style="font-size: 0.84rem; color: #334155; line-height: 1.5; margin: 0 0 10px 0;">
-                This item is part of a centrally managed collection. To maintain data consistency across all pages, linked items cannot be edited directly inside the visual page preview.
-              </p>
-              <div style="font-size: 0.8rem; font-weight: 600; color: #002B49;">
-                Edit this item in: <span style="color: #D4AF37;">${this.escapeHtml(item.linkedSource || 'Source Manager')}</span>
-              </div>
-            </div>
-
-            <button type="button" class="btn btn-primary btn-block" style="display: flex; align-items: center; justify-content: center; gap: 8px; padding: 10px 16px; font-weight: 700;" onclick="AdminApp.navigateToTab('${item.targetTab || 'home'}', '${item.targetSubtab || ''}'); ${item.modalOpenFn || ''}">
+            <p style="font-size: 0.78rem; color: #78350F; line-height: 1.4; margin: 0 0 10px 0;">
+              This item displays data from a central catalog. You can edit this field directly below, or update the source record:
+            </p>
+            <button type="button" class="btn btn-outline btn-sm btn-block" style="background: #FFFFFF; font-weight: 600; color: #92400E; border-color: #F59E0B;" onclick="AdminApp.navigateToTab('${item.targetTab || 'home'}', '${item.targetSubtab || ''}'); ${item.modalOpenFn || ''}">
               <span>Edit this in ${this.escapeHtml(item.linkedSource || 'Source Manager')} &rarr;</span>
             </button>
           </div>
         `;
-        return;
       }
 
       // Special Success Stories Card Inspector
@@ -692,7 +727,7 @@
         return;
       }
 
-      let html = '';
+      let html = linkedBannerHtml;
 
       // --- 1. INSPECTOR TABS: [ ✏️ Edit ] [ ➕ Add Block ] [ 🗑️ Delete ] ---
       html += `
@@ -1628,6 +1663,15 @@
       const body = document.getElementById('inspectorBody');
       if (!body) return;
 
+      if (this.activePageKey && this.activePageKey.startsWith('tourPackages/')) {
+        const slug = this.activePageKey.replace('tourPackages/', '');
+        return this.renderTourPackageInspector(slug);
+      }
+      if (this.activePageKey && this.activePageKey.startsWith('destinations/')) {
+        const slug = this.activePageKey.replace('destinations/', '');
+        return this.renderDestinationInspector(slug);
+      }
+
       const hero = this.getHeroBindingForActivePage();
       const currentHeroImg = this.getCurrentValue(hero.key, (this.activeDocData && this.activeDocData[hero.key]) || hero.defaultVal);
       const sectionImages = this.getSectionImagesForActivePage();
@@ -1887,6 +1931,23 @@
 
       if (window.AdminApp) {
         window.AdminApp.switchSection('page-editor');
+      }
+
+      // Update Topbar Title / Breadcrumb if tour package
+      if (docKey.startsWith('tourPackages/')) {
+        const slug = docKey.replace('tourPackages/', '');
+        const pkg = (window.AdminApp && window.AdminApp.packages && window.AdminApp.packages.find(p => p.slug === slug));
+        const pkgTitle = pkg ? (typeof pkg.title === 'object' ? pkg.title.en : pkg.title) : slug.replace(/-/g, ' ');
+        const pageTitleEl = document.getElementById('pageTitle');
+        if (pageTitleEl) {
+          pageTitleEl.innerHTML = `<strong>Tours</strong> &nbsp;&gt;&nbsp; Packages &nbsp;&gt;&nbsp; <span style="color: var(--sacred-gold, #C5A880); font-weight: 700;">Live Edit: ${this.escapeHtml(pkgTitle)}</span>`;
+        }
+      } else if (docKey.startsWith('destinations/')) {
+        const slug = docKey.replace('destinations/', '');
+        const pageTitleEl = document.getElementById('pageTitle');
+        if (pageTitleEl) {
+          pageTitleEl.innerHTML = `<strong>Destinations</strong> &nbsp;&gt;&nbsp; <span style="color: var(--sacred-gold, #C5A880); font-weight: 700;">Live Edit: ${this.escapeHtml(slug.replace(/-/g, ' '))}</span>`;
+        }
       }
 
       // Highlight matching sub-links
@@ -2282,19 +2343,30 @@
     // =========================================================================
 
     async fetchPageDoc(docPath) {
-      if (!window.AdminApp || !window.AdminApp.fbDb) return {};
-      try {
-        const parts = docPath.split('/');
-        const col = parts[0];
-        const docId = parts.slice(1).join('/');
-        const snap = await window.AdminApp.fbDb.collection(col).doc(docId).get();
-        if (snap && snap.exists) {
-          return snap.data() || {};
+      let docData = {};
+      if (window.AdminApp && window.AdminApp.fbDb) {
+        try {
+          const parts = docPath.split('/');
+          const col = parts[0];
+          const docId = parts.slice(1).join('/');
+          const snap = await window.AdminApp.fbDb.collection(col).doc(docId).get();
+          if (snap && snap.exists) {
+            docData = snap.data() || {};
+          }
+        } catch (e) {
+          console.warn('[PageEditor] fetchPageDoc fallback:', e);
         }
-      } catch (e) {
-        console.warn('[PageEditor] fetchPageDoc fallback:', e);
       }
-      return {};
+
+      // If docKey is tourPackages/<slug>, merge with local package in AdminApp or seed catalog
+      if (docPath.startsWith('tourPackages/')) {
+        const slug = docPath.replace('tourPackages/', '');
+        const pkg = (window.AdminApp && window.AdminApp.packages && window.AdminApp.packages.find(p => p.slug === slug));
+        if (pkg) {
+          return Object.assign({}, pkg, docData);
+        }
+      }
+      return docData;
     },
 
     async saveDraft() {
@@ -2302,6 +2374,10 @@
     },
 
     async publish() {
+      if (this.activePageKey && this.activePageKey.startsWith('tourPackages/')) {
+        const slug = this.activePageKey.replace('tourPackages/', '');
+        return this.publishTourPackage(slug);
+      }
       await this.savePageContent('published');
     },
 
@@ -2358,11 +2434,23 @@
         // Store instant published document in localStorage for immediate cross-tab sync
         if (status === 'published') {
           try {
+            const nowTs = Date.now();
             localStorage.setItem('lotus_cms_published_' + this.activePageKey, JSON.stringify(payload));
-            localStorage.setItem('lotus_cms_last_published', String(Date.now()));
-            // Clear cached bundle
+            localStorage.setItem('lotus_cms_last_published', String(nowTs));
+            // Invalidate all legacy and current front-end caches
+            localStorage.removeItem('lotus_cms_v6');
             localStorage.removeItem('lotus_cms_v5');
             localStorage.removeItem('lotus_cms_v3');
+            localStorage.removeItem('lotus_site_data_store_v1');
+            localStorage.removeItem('lotus_data_v');
+            localStorage.removeItem('lotus_data_payload');
+            try { sessionStorage.removeItem('lotus_cms_last_ver_check'); } catch (se) {}
+            // Broadcast cache bust event to iframe if preview is active
+            if (this.iframe && this.iframe.contentWindow) {
+              try {
+                this.iframe.contentWindow.postMessage({ type: 'lotus:cache-bust', version: nowTs }, '*');
+              } catch (ie) {}
+            }
           } catch (e) {}
         }
 
@@ -2376,9 +2464,11 @@
 
           // If published, increment version and record version history snapshot
           if (status === 'published') {
+            const newVer = Date.now();
             await window.AdminApp.fbDb.collection('siteMeta').doc('version').set({
-              v: Date.now(),
-              updatedAt: new Date().toISOString()
+              v: newVer,
+              updatedAt: new Date().toISOString(),
+              updatedBy: payload.updatedBy || 'admin'
             }, { merge: true });
 
             // Record snapshot in siteHistory
@@ -3350,6 +3440,414 @@
           </div>
         `;
       }).join('');
+    },
+
+    // =========================================================================
+    // DEDICATED TOUR PACKAGE LIVE INSPECTOR (All 29 Packages)
+    // =========================================================================
+
+    renderTourPackageInspector(slug) {
+      const body = document.getElementById('inspectorBody');
+      if (!body) return;
+
+      const badge = document.getElementById('inspectorSectionBadge');
+      const title = document.getElementById('inspectorTitle');
+      if (badge) badge.textContent = '📦 Tour Live Editor';
+
+      const pkg = this.activeDocData ||
+                  (window.AdminApp && window.AdminApp.packages && window.AdminApp.packages.find(p => p.slug === slug)) ||
+                  { slug: slug, title: slug.replace(/-/g, ' ') };
+
+      const titleVal = (pkg.title && typeof pkg.title === 'object' ? pkg.title.en : (pkg.title || slug));
+      if (title) title.textContent = titleVal;
+
+      const taglineVal = pkg.tagline || '';
+      const badgeVal = pkg.badge || 'Recommended for Beach Leisure, Relaxation';
+      const nightsVal = typeof pkg.nights !== 'undefined' ? pkg.nights : 9;
+      const daysVal = typeof pkg.days !== 'undefined' ? pkg.days : 10;
+      const priceVal = typeof pkg.price_from !== 'undefined' ? pkg.price_from : 2280;
+      const categoryVal = pkg.category_slug || pkg.category || '';
+      const overviewVal = pkg.overview || pkg.shortDescription || '';
+      const heroImgVal = pkg.hero_image || pkg.image || 'assets/images/beach/mirissa-1.webp';
+      const itinerary = Array.isArray(pkg.itinerary) ? pkg.itinerary : [];
+
+      const categories = (window.AdminApp && window.AdminApp.categories) || [];
+      const catOptions = categories.map(c => {
+        const cTitle = c.title && typeof c.title === 'object' ? c.title.en : (c.name || c.title || c.slug);
+        const isSelected = c.slug === categoryVal || c.id === categoryVal;
+        return `<option value="${this.escapeAttr(c.slug)}" ${isSelected ? 'selected' : ''}>${this.escapeHtml(cTitle)}</option>`;
+      }).join('');
+
+      let itineraryHtml = '';
+      if (itinerary.length > 0) {
+        itineraryHtml = itinerary.map((day, idx) => {
+          const dayNum = day.day || (idx + 1);
+          const dayTitle = day.title || '';
+          const dayDesc = day.description || '';
+          const overnight = day.overnight || '';
+          return `
+            <div class="tour-itinerary-item" style="border: 1px solid #E2E8F0; border-radius: 8px; margin-bottom: 8px; background: #FFFFFF; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.04);">
+              <div style="display: flex; align-items: center; justify-content: space-between; padding: 8px 12px; background: #F8FAFC; border-bottom: 1px solid #E2E8F0; cursor: pointer;" onclick="PageEditor.toggleItineraryItem(${idx})">
+                <div style="display: flex; align-items: center; gap: 8px; overflow: hidden;">
+                  <span class="badge" style="background: #002B49; color: #D4AF37; font-weight: 700; font-size: 0.72rem; padding: 2px 6px;">Day ${String(dayNum).padStart(2, '0')}</span>
+                  <span style="font-weight: 600; font-size: 0.8rem; color: #0F172A; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" id="itineraryHeader_${idx}">${this.escapeHtml(dayTitle)}</span>
+                </div>
+                <div style="display: flex; gap: 4px; align-items: center;">
+                  <button type="button" class="btn btn-outline btn-sm" onclick="event.stopPropagation(); PageEditor.scrollAndOpenTourAccordion(${idx})" style="font-size: 0.7rem; padding: 2px 6px; white-space: nowrap;" title="Scroll preview to this day">
+                    👁️ Preview
+                  </button>
+                  <span style="font-size: 0.8rem; color: #64748B;">▼</span>
+                </div>
+              </div>
+              <div id="itineraryContent_${idx}" style="padding: 10px 12px; display: none;">
+                <div class="form-group" style="margin-bottom: 8px;">
+                  <label style="font-size: 0.74rem; font-weight: 600; color: #475569; margin-bottom: 2px;">Day Title</label>
+                  <input type="text" class="form-control" id="tourInput_day_title_${idx}" value="${this.escapeAttr(dayTitle)}" oninput="PageEditor.handleTourItineraryInput('${this.escapeAttr(slug)}', ${idx}, 'title', this.value)" style="font-size: 0.8rem; padding: 6px 10px;"/>
+                </div>
+                <div class="form-group" style="margin-bottom: 8px;">
+                  <label style="font-size: 0.74rem; font-weight: 600; color: #475569; margin-bottom: 2px;">Day Description</label>
+                  <textarea class="form-control" id="tourInput_day_desc_${idx}" rows="2" oninput="PageEditor.handleTourItineraryInput('${this.escapeAttr(slug)}', ${idx}, 'desc', this.value)" style="font-size: 0.8rem; padding: 6px 10px;">${this.escapeHtml(dayDesc)}</textarea>
+                </div>
+                <div class="form-group" style="margin-bottom: 0;">
+                  <label style="font-size: 0.74rem; font-weight: 600; color: #475569; margin-bottom: 2px;">Overnight Stay</label>
+                  <input type="text" class="form-control" id="tourInput_day_overnight_${idx}" value="${this.escapeAttr(overnight)}" oninput="PageEditor.handleTourItineraryInput('${this.escapeAttr(slug)}', ${idx}, 'overnight', this.value)" style="font-size: 0.8rem; padding: 6px 10px;"/>
+                </div>
+              </div>
+            </div>
+          `;
+        }).join('');
+      } else {
+        itineraryHtml = `<div style="text-align: center; color: #64748B; font-size: 0.78rem; padding: 12px;">No day-by-day steps defined.</div>`;
+      }
+
+      body.innerHTML = `
+        <div class="tour-live-inspector" style="padding: 12px 14px;">
+          <!-- Header Card -->
+          <div style="background: linear-gradient(135deg, #002B49, #081B2B); border: 1px solid #D4AF37; border-radius: 10px; padding: 14px; margin-bottom: 14px; color: #FFFFFF; box-shadow: 0 4px 14px rgba(0,0,0,0.25);">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+              <span class="badge" style="background: rgba(212,175,55,0.2); color: #D4AF37; border: 1px solid #D4AF37; font-size: 0.72rem; padding: 3px 8px; border-radius: 4px; font-weight: 700;">
+                ⚡ LIVE TOUR EDITOR
+              </span>
+              <span style="font-size: 0.75rem; color: #94A3B8;">${this.escapeHtml(slug)}</span>
+            </div>
+            <h3 style="margin: 0 0 6px 0; font-size: 1.1rem; color: #FFFFFF; font-weight: 700; line-height: 1.3;" id="tourInspectorHeaderTitle">
+              ${this.escapeHtml(titleVal)}
+            </h3>
+            <div style="display: flex; gap: 8px; font-size: 0.76rem; color: #CBD5E1; margin-bottom: 12px; flex-wrap: wrap;" id="tourInspectorHeaderPills">
+              <span>📅 ${nightsVal}N / ${daysVal}D</span>
+              <span>•</span>
+              <span style="color: #FBBF24; font-weight: 700;">From $${priceVal}</span>
+              <span>•</span>
+              <span style="text-transform: capitalize;">🏷️ ${this.escapeHtml(categoryVal || 'Package')}</span>
+            </div>
+            <div style="display: flex; gap: 6px;">
+              <button type="button" class="btn btn-outline btn-sm" onclick="AdminApp.switchSection('packages')" style="flex: 1; font-size: 0.75rem; color: #E2E8F0; border-color: #475569; padding: 5px 8px; display: inline-flex; align-items: center; justify-content: center; gap: 4px;">
+                <span>← All Tours</span>
+              </button>
+              <button type="button" class="btn btn-outline btn-sm" onclick="AdminApp.openPackageModal('${this.escapeAttr(slug)}')" style="flex: 1; font-size: 0.75rem; color: #D4AF37; border-color: #D4AF37; padding: 5px 8px; display: inline-flex; align-items: center; justify-content: center; gap: 4px;">
+                <span>⚙️ Full Modal</span>
+              </button>
+              <button type="button" class="btn btn-outline btn-sm" onclick="window.open('../${this.PACKAGE_FILE_MAP[slug] || 'tours/' + slug + '/index.html'}', '_blank')" style="font-size: 0.75rem; color: #93C5FD; border-color: #3B82F6; padding: 5px 8px;" title="Open live public page in new tab">
+                <span>👁️</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Section 1: Core Details -->
+          <div class="inspector-card" style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 8px; padding: 12px 14px; margin-bottom: 14px; box-shadow: 0 1px 3px rgba(0,0,0,0.04);">
+            <h4 style="font-size: 0.88rem; font-weight: 700; color: #0F172A; margin: 0 0 10px 0; display: flex; align-items: center; gap: 6px;">
+              <span>✏️ Core Information</span>
+            </h4>
+            
+            <div class="form-group" style="margin-bottom: 10px;">
+              <label style="font-size: 0.74rem; font-weight: 600; color: #475569; margin-bottom: 3px;">Tour Title</label>
+              <input type="text" class="form-control" id="tourInput_title" value="${this.escapeAttr(titleVal)}" oninput="PageEditor.handleTourLiveInput('${this.escapeAttr(slug)}', 'title', this.value)" style="font-size: 0.82rem; padding: 6px 10px; font-weight: 600;"/>
+            </div>
+
+            <div class="form-group" style="margin-bottom: 10px;">
+              <label style="font-size: 0.74rem; font-weight: 600; color: #475569; margin-bottom: 3px;">Tagline / Subtitle</label>
+              <input type="text" class="form-control" id="tourInput_tagline" value="${this.escapeAttr(taglineVal)}" oninput="PageEditor.handleTourLiveInput('${this.escapeAttr(slug)}', 'tagline', this.value)" style="font-size: 0.82rem; padding: 6px 10px;"/>
+            </div>
+
+            <div class="form-group" style="margin-bottom: 10px;">
+              <label style="font-size: 0.74rem; font-weight: 600; color: #475569; margin-bottom: 3px;">Recommendation Badge / Pill</label>
+              <input type="text" class="form-control" id="tourInput_badge" value="${this.escapeAttr(badgeVal)}" oninput="PageEditor.handleTourLiveInput('${this.escapeAttr(slug)}', 'badge', this.value)" style="font-size: 0.82rem; padding: 6px 10px;"/>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 10px;">
+              <div class="form-group" style="margin-bottom: 0;">
+                <label style="font-size: 0.74rem; font-weight: 600; color: #475569; margin-bottom: 3px;">Nights</label>
+                <input type="number" class="form-control" id="tourInput_nights" value="${nightsVal}" min="1" max="99" oninput="PageEditor.handleTourDurationInput('${this.escapeAttr(slug)}')" style="font-size: 0.82rem; padding: 6px 10px;"/>
+              </div>
+              <div class="form-group" style="margin-bottom: 0;">
+                <label style="font-size: 0.74rem; font-weight: 600; color: #475569; margin-bottom: 3px;">Days</label>
+                <input type="number" class="form-control" id="tourInput_days" value="${daysVal}" min="1" max="99" oninput="PageEditor.handleTourDurationInput('${this.escapeAttr(slug)}')" style="font-size: 0.82rem; padding: 6px 10px;"/>
+              </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 10px;">
+              <div class="form-group" style="margin-bottom: 0;">
+                <label style="font-size: 0.74rem; font-weight: 600; color: #475569; margin-bottom: 3px;">Starting Price (USD $)</label>
+                <input type="number" class="form-control" id="tourInput_price" value="${priceVal}" min="0" oninput="PageEditor.handleTourLiveInput('${this.escapeAttr(slug)}', 'price_from', parseFloat(this.value) || 0)" style="font-size: 0.82rem; padding: 6px 10px;"/>
+              </div>
+              <div class="form-group" style="margin-bottom: 0;">
+                <label style="font-size: 0.74rem; font-weight: 600; color: #475569; margin-bottom: 3px;">Category</label>
+                <select class="form-control" id="tourInput_category" onchange="PageEditor.handleTourLiveInput('${this.escapeAttr(slug)}', 'category', this.value)" style="font-size: 0.82rem; padding: 6px 10px;">
+                  ${catOptions}
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group" style="margin-bottom: 0;">
+              <label style="font-size: 0.74rem; font-weight: 600; color: #475569; margin-bottom: 3px;">Overview &amp; Intro Narrative</label>
+              <textarea class="form-control" id="tourInput_overview" rows="3" oninput="PageEditor.handleTourLiveInput('${this.escapeAttr(slug)}', 'overview', this.value)" style="font-size: 0.82rem; padding: 6px 10px; line-height: 1.4;">${this.escapeHtml(overviewVal)}</textarea>
+            </div>
+          </div>
+
+          <!-- Section 2: Hero Banner Image -->
+          <div class="inspector-card" style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 8px; padding: 12px 14px; margin-bottom: 14px; box-shadow: 0 1px 3px rgba(0,0,0,0.04);">
+            <h4 style="font-size: 0.88rem; font-weight: 700; color: #0F172A; margin: 0 0 10px 0; display: flex; align-items: center; justify-content: space-between;">
+              <span>🖼️ Hero Banner Image</span>
+              <span class="badge" style="background: #F1F5F9; color: #475569; font-size: 0.7rem;">Top Full-Width</span>
+            </h4>
+            <div style="display: flex; gap: 10px; align-items: center; margin-bottom: 10px;">
+              <img id="tourHeroImgPreview" src="${this.resolvePreviewUrl(heroImgVal)}" style="width: 80px; height: 50px; object-fit: cover; border-radius: 6px; border: 1px solid #CBD5E1;" onerror="this.src='../assets/images/placeholder.png'"/>
+              <div style="flex: 1; min-width: 0;">
+                <input type="text" class="form-control" id="tourInput_hero_image" value="${this.escapeAttr(heroImgVal)}" oninput="PageEditor.updateTourHeroImage('${this.escapeAttr(slug)}', this.value)" style="font-size: 0.78rem; padding: 6px 8px; margin-bottom: 6px;"/>
+                <button type="button" class="btn btn-outline btn-sm btn-block" onclick="AdminApp.openMediaPicker(url => PageEditor.updateTourHeroImage('${this.escapeAttr(slug)}', url))" style="font-size: 0.74rem; padding: 4px 8px; font-weight: 600;">
+                  📁 Choose from Media Library
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section 3: Day-by-Day Itinerary -->
+          <div class="inspector-card" style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 8px; padding: 12px 14px; margin-bottom: 14px; box-shadow: 0 1px 3px rgba(0,0,0,0.04);">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
+              <h4 style="font-size: 0.88rem; font-weight: 700; color: #0F172A; margin: 0;">
+                📅 Day-by-Day Itinerary
+              </h4>
+              <span class="badge" style="background: #E0E7FF; color: #3730A3; font-size: 0.7rem;">${itinerary.length} Days</span>
+            </div>
+            <p style="font-size: 0.76rem; color: #64748B; margin: 0 0 10px 0;">Click any day to expand and edit. Click "Preview" to scroll directly to it on the live page.</p>
+            <div style="max-height: 380px; overflow-y: auto; padding-right: 2px;">
+              ${itineraryHtml}
+            </div>
+          </div>
+
+          <!-- Section 4: Save & Publish Action Button -->
+          <button type="button" class="btn btn-gold btn-block" style="padding: 12px; font-weight: 700; font-size: 0.92rem; box-shadow: 0 4px 12px rgba(212,175,55,0.3); display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 20px;" onclick="PageEditor.publishTourPackage('${this.escapeAttr(slug)}')">
+            <span>💾 Save &amp; Publish Tour Live to Website</span>
+          </button>
+        </div>
+      `;
+    },
+
+    toggleItineraryItem(idx) {
+      const el = document.getElementById(`itineraryContent_${idx}`);
+      if (el) {
+        const isHidden = el.style.display === 'none';
+        el.style.display = isHidden ? 'block' : 'none';
+      }
+    },
+
+    handleTourLiveInput(slug, field, value) {
+      this.markDirty();
+      if (!this.activeDocData) this.activeDocData = {};
+      this.activeDocData[field] = value;
+
+      if (field === 'title') {
+        const headerTitle = document.getElementById('tourInspectorHeaderTitle');
+        if (headerTitle) headerTitle.textContent = value;
+        const pageTitleEl = document.getElementById('pageTitle');
+        if (pageTitleEl) {
+          pageTitleEl.innerHTML = `<strong>Tours</strong> &nbsp;&gt;&nbsp; Packages &nbsp;&gt;&nbsp; <span style="color: var(--sacred-gold, #C5A880); font-weight: 700;">Live Edit: ${this.escapeHtml(value)}</span>`;
+        }
+      }
+
+      this.postIframeMessage({
+        type: 'lotus:update-tour-live',
+        field: field,
+        val: value
+      });
+    },
+
+    handleTourDurationInput(slug) {
+      const nights = parseInt(document.getElementById('tourInput_nights').value, 10) || 0;
+      const days = parseInt(document.getElementById('tourInput_days').value, 10) || 0;
+      this.markDirty();
+      if (!this.activeDocData) this.activeDocData = {};
+      this.activeDocData.nights = nights;
+      this.activeDocData.days = days;
+
+      const pills = document.getElementById('tourInspectorHeaderPills');
+      if (pills) {
+        const price = this.activeDocData.price_from || 0;
+        const cat = this.activeDocData.category_slug || this.activeDocData.category || 'Package';
+        pills.innerHTML = `<span>📅 ${nights}N / ${days}D</span><span>•</span><span style="color: #FBBF24; font-weight: 700;">From $${price}</span><span>•</span><span style="text-transform: capitalize;">🏷️ ${this.escapeHtml(cat)}</span>`;
+      }
+
+      this.postIframeMessage({
+        type: 'lotus:update-tour-live',
+        field: 'duration',
+        nights: nights,
+        days: days
+      });
+    },
+
+    updateTourHeroImage(slug, url) {
+      this.markDirty();
+      if (!this.activeDocData) this.activeDocData = {};
+      this.activeDocData.hero_image = url;
+      this.activeDocData.image = url;
+
+      const preview = document.getElementById('tourHeroImgPreview');
+      if (preview) preview.src = this.resolvePreviewUrl(url);
+      const input = document.getElementById('tourInput_hero_image');
+      if (input) input.value = url;
+
+      this.postIframeMessage({
+        type: 'lotus:update-tour-live',
+        field: 'hero_image',
+        val: url
+      });
+    },
+
+    handleTourItineraryInput(slug, dayIndex, dayField, value) {
+      this.markDirty();
+      if (!this.activeDocData) this.activeDocData = {};
+      if (!Array.isArray(this.activeDocData.itinerary)) this.activeDocData.itinerary = [];
+      if (!this.activeDocData.itinerary[dayIndex]) this.activeDocData.itinerary[dayIndex] = {};
+      this.activeDocData.itinerary[dayIndex][dayField] = value;
+
+      if (dayField === 'title') {
+        const header = document.getElementById(`itineraryHeader_${dayIndex}`);
+        if (header) header.textContent = value;
+      }
+
+      this.postIframeMessage({
+        type: 'lotus:update-tour-live',
+        field: 'itinerary',
+        dayIndex: dayIndex,
+        dayField: dayField,
+        val: value
+      });
+    },
+
+    scrollAndOpenTourAccordion(dayIndex) {
+      this.postIframeMessage({
+        type: 'lotus:open-tour-accordion',
+        dayIndex: dayIndex
+      });
+    },
+
+    async publishTourPackage(slug) {
+      const cleanSlug = slug.toLowerCase().trim();
+      const pubBtn = document.getElementById('visualPublishBtn');
+      const draftBtn = document.getElementById('visualSaveDraftBtn');
+      if (pubBtn) pubBtn.disabled = true;
+      if (draftBtn) draftBtn.disabled = true;
+
+      if (window.AdminApp) {
+        window.AdminApp.showToast('Publishing tour package live to website...', 'info');
+      }
+
+      try {
+        const pkgData = Object.assign({}, this.activeDocData);
+        pkgData.slug = cleanSlug;
+        pkgData.updatedAt = new Date().toISOString();
+        pkgData.updatedBy = (window.AdminApp && window.AdminApp.currentUser && window.AdminApp.currentUser.email) || 'admin';
+        pkgData.is_published = true;
+
+        // 1. Update in-memory in AdminApp.packages
+        if (window.AdminApp && Array.isArray(window.AdminApp.packages)) {
+          const idx = window.AdminApp.packages.findIndex(p => p.slug === cleanSlug);
+          if (idx >= 0) {
+            window.AdminApp.packages[idx] = Object.assign({}, window.AdminApp.packages[idx], pkgData);
+          } else {
+            window.AdminApp.packages.push(pkgData);
+          }
+          // Sync catalog cache to localStorage
+          try {
+            window.AdminApp.syncCatalogCache();
+          } catch (e) {}
+          // Re-render packages table in background
+          try {
+            window.AdminApp.renderPackages();
+          } catch (e) {}
+        }
+
+        // 2. Save to Firestore
+        if (window.AdminApp && window.AdminApp.fbDb) {
+          try {
+            await window.AdminApp.fbDb.collection('tourPackages').doc(cleanSlug).set(pkgData, { merge: true });
+            await window.AdminApp.fbDb.collection('siteMeta').doc('version').set({
+              v: Date.now(),
+              updatedAt: new Date().toISOString()
+            }, { merge: true });
+          } catch (fbErr) {
+            console.warn('[PageEditor] Firestore save warning:', fbErr);
+          }
+        }
+
+        // 3. Save to localStorage instant published state
+        try {
+          localStorage.setItem('lotus_cms_published_tourPackages/' + cleanSlug, JSON.stringify(pkgData));
+        } catch (e) {}
+
+        this.markSaved();
+        const displayTitle = pkgData.title && typeof pkgData.title === 'object' ? pkgData.title.en : (pkgData.title || cleanSlug);
+        if (window.AdminApp) {
+          window.AdminApp.showToast(`✨ Tour package "${displayTitle}" published live successfully!`, 'success');
+        }
+      } catch (err) {
+        console.error('[PageEditor] publishTourPackage error:', err);
+        if (window.AdminApp) {
+          window.AdminApp.showToast('Failed to publish tour: ' + err.message, 'error');
+        }
+      } finally {
+        if (pubBtn) pubBtn.disabled = false;
+        if (draftBtn) draftBtn.disabled = false;
+      }
+    },
+
+    renderDestinationInspector(slug) {
+      const body = document.getElementById('inspectorBody');
+      if (!body) return;
+      const badge = document.getElementById('inspectorSectionBadge');
+      const title = document.getElementById('inspectorTitle');
+      if (badge) badge.textContent = '📍 Destination Page';
+      if (title) title.textContent = slug.replace(/-/g, ' ').toUpperCase();
+
+      const dest = (window.AdminApp && window.AdminApp.destinations && window.AdminApp.destinations.find(d => d.slug === slug)) || {};
+      const name = dest.name || dest.title || slug.replace(/-/g, ' ');
+
+      body.innerHTML = `
+        <div style="padding: 14px;">
+          <div style="background: linear-gradient(135deg, #064E3B, #022C22); border: 1px solid #10B981; border-radius: 10px; padding: 14px; margin-bottom: 16px; color: #FFFFFF;">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
+              <span class="badge" style="background: rgba(16,185,129,0.2); color: #6EE7B7; border: 1px solid #10B981; font-size: 0.72rem; padding: 2px 6px;">
+                📍 DESTINATION EDITOR
+              </span>
+              <span style="font-size: 0.75rem; color: #A7F3D0;">${this.escapeHtml(slug)}</span>
+            </div>
+            <h3 style="margin: 0 0 6px 0; font-size: 1.1rem; color: #FFFFFF; font-weight: 700;">${this.escapeHtml(name)}</h3>
+            <div style="display: flex; gap: 8px; margin-top: 10px;">
+              <button type="button" class="btn btn-outline btn-sm" onclick="AdminApp.switchSection('destinations')" style="flex: 1; font-size: 0.75rem; color: #FFFFFF; border-color: #34D399;">
+                ← All Destinations
+              </button>
+              <button type="button" class="btn btn-outline btn-sm" onclick="AdminApp.openDestinationModal('${this.escapeAttr(slug)}')" style="flex: 1; font-size: 0.75rem; color: #FDE047; border-color: #FACC15;">
+                ⚙️ Destination Modal
+              </button>
+            </div>
+          </div>
+          <div style="padding: 12px; background: #F8FAFC; border: 1px dashed #CBD5E1; border-radius: 8px; text-align: center;">
+            <div style="font-size: 1.4rem; margin-bottom: 4px;">👆</div>
+            <div style="font-weight: 700; font-size: 0.84rem; color: #1E293B;">Click Anything on Left Preview</div>
+            <p style="font-size: 0.76rem; color: #64748B; margin: 0;">Click directly on any photo, headline, or paragraph in the destination page to customize it live.</p>
+          </div>
+        </div>
+      `;
     },
 
     closeVersionHistoryModal() {

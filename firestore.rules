@@ -79,9 +79,15 @@ service cloud.firestore {
     }
 
     // Global layout tokens (branding, header, footer, contact, menu) - Public Read, Admin Write Only
+    // LOCKED: Website design credit is strictly immutable and write-denied for all users (including admins)
+    match /siteGlobal/designCredit {
+      allow read: if true;
+      allow write: if false;
+    }
+
     match /siteGlobal/{docId} {
       allow read: if true;
-      allow write: if isAdmin();
+      allow write: if isAdmin() && docId != 'designCredit';
     }
 
     match /settings/{settingId} {
@@ -98,14 +104,14 @@ service cloud.firestore {
     // 4. EDITABLE PUBLIC CONTENT
     // =========================================================================
 
-    // Public pages - Public read ONLY when published, Admins can read drafts
+    // Public pages - Public read for website visitors, Admin write only
     match /siteContent/{docId} {
-      allow read: if isPublished() || isAdmin();
+      allow read: if true;
       allow write: if isAdmin();
     }
 
     match /pages/{pageId} {
-      allow read: if isPublished() || isAdmin();
+      allow read: if true;
       allow write: if isAdmin();
     }
 
@@ -114,47 +120,47 @@ service cloud.firestore {
     // =========================================================================
 
     match /tourPackages/{packageId} {
-      allow read: if isPublished() || isAdmin();
+      allow read: if true;
       allow write: if isAdmin();
     }
 
     match /packages/{packageId} {
-      allow read: if isPublished() || isAdmin();
+      allow read: if true;
       allow write: if isAdmin();
     }
 
     match /tourCategories/{categoryId} {
-      allow read: if isPublished() || isAdmin();
+      allow read: if true;
       allow write: if isAdmin();
     }
 
     match /categories/{categoryId} {
-      allow read: if isPublished() || isAdmin();
+      allow read: if true;
       allow write: if isAdmin();
     }
 
     match /destinations/{destinationId} {
-      allow read: if isPublished() || isAdmin();
+      allow read: if true;
       allow write: if isAdmin();
     }
 
     match /experiences/{experienceId} {
-      allow read: if isPublished() || isAdmin();
+      allow read: if true;
       allow write: if isAdmin();
     }
 
     match /faqs/{faqId} {
-      allow read: if isPublished() || isAdmin();
+      allow read: if true;
       allow write: if isAdmin();
     }
 
     match /team/{memberId} {
-      allow read: if isPublished() || isAdmin();
+      allow read: if true;
       allow write: if isAdmin();
     }
 
     match /reviews/{reviewId} {
-      allow read: if isPublished() || isAdmin();
+      allow read: if true;
       allow write: if isAdmin();
     }
 
@@ -164,27 +170,27 @@ service cloud.firestore {
     }
 
     match /blogPosts/{postId} {
-      allow read: if isPublished() || isAdmin();
+      allow read: if true;
       allow write: if isAdmin();
     }
 
     match /blog/{blogId} {
-      allow read: if isPublished() || isAdmin();
+      allow read: if true;
       allow write: if isAdmin();
     }
 
     match /media/{mediaId} {
-      allow read: if isPublished() || isAdmin();
+      allow read: if true;
       allow write: if isAdmin();
     }
 
     match /gallery/{galleryId} {
-      allow read: if isPublished() || isAdmin();
+      allow read: if true;
       allow write: if isAdmin();
     }
 
     match /forms/{formId} {
-      allow read: if isPublished() || isAdmin();
+      allow read: if true;
       allow write: if isAdmin();
     }
 

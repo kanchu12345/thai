@@ -48,7 +48,7 @@ replacement = '''        const generalPayload = {
           companyReg: document.getElementById('settingCompanyReg') ? document.getElementById('settingCompanyReg').value : 'PV 00374439',
           slogan: document.getElementById('settingSlogan') ? document.getElementById('settingSlogan').value : '',
           phone: document.getElementById('settingPhone') ? document.getElementById('settingPhone').value : '+94 77 722 0070',
-          email: document.getElementById('settingEmail') ? document.getElementById('settingEmail').value : 'paliforbuddhism@gmail.com',
+          email: document.getElementById('settingEmail') ? document.getElementById('settingEmail').value : 'info@lotusceylon.com',
           address: document.getElementById('settingAddress') ? document.getElementById('settingAddress').value : 'Colombo & Kandy, Sri Lanka',
           whatsapp: document.getElementById('settingWhatsApp') ? document.getElementById('settingWhatsApp').value : '+94 77 722 0070',
           wechat: document.getElementById('settingWeChat') ? document.getElementById('settingWeChat').value : 'FGUTaiwan90',

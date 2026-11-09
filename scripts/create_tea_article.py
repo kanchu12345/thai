@@ -267,7 +267,7 @@ Crafting bespoke, transformative travel experiences across sacred Ceylon with au
 </div>
 <div class="footer-contact-item">
 <p data-cms="siteGlobal.contact.emailLabel">Email Inquiries</p>
-<a href="mailto:paliforbuddhism@gmail.com" data-cms="siteGlobal.contact.email" data-cms-link="siteGlobal.contact.emailLink" style="color: #FFFFFF; font-weight: 600;">paliforbuddhism@gmail.com</a>
+<a href="mailto:info@lotusceylon.com" data-cms="siteGlobal.contact.email" data-cms-link="siteGlobal.contact.emailLink" style="color: #FFFFFF; font-weight: 600;">info@lotusceylon.com</a>
 </div>
 </div>
 </div>

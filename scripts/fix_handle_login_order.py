@@ -20,7 +20,7 @@ target = '''          } catch (authErr) {
 
             // Fallback for offline mode or network request failure ONLY:
             const clean = (email || '').toLowerCase().trim();
-            const isAuthorizedEmail = (clean === 'admin@lotusceylon.com' || clean === 'paliforbuddhism@gmail.com');
+            const isAuthorizedEmail = (clean === 'admin@lotusceylon.com' || clean === 'info@lotusceylon.com');
             const isAuthorizedPassword = (password === 'LotusCeylon@2026' || password === 'Lotus@2026');
 
             if (isAuthorizedEmail && isAuthorizedPassword) {
@@ -39,7 +39,7 @@ replacement = '''          } catch (authErr) {
 
             // Authorized master administrator fallback for offline/pre-configured credentials
             const clean = (email || '').toLowerCase().trim();
-            const isAuthorizedEmail = (clean === 'admin@lotusceylon.com' || clean === 'paliforbuddhism@gmail.com');
+            const isAuthorizedEmail = (clean === 'admin@lotusceylon.com' || clean === 'info@lotusceylon.com');
             const isAuthorizedPassword = (password === 'LotusCeylon@2026' || password === 'Lotus@2026');
 
             if (isAuthorizedEmail && isAuthorizedPassword) {

@@ -1,0 +1,1815 @@
+[
+  {
+    "rel_path": "assets/images/adventure.jpg",
+    "filename": "adventure.jpg",
+    "folder": "assets/images",
+    "format": "JPEG",
+    "dimensions": "800x533",
+    "size_kb": 148.8,
+    "html_count": 12,
+    "pages_used": [
+      "tours/adventure/island-adrenaline-rapids-expedition/index.html",
+      "tours/adventure/wild-peaks-trails-surf-safari/index.html"
+    ]
+  },
+  {
+    "rel_path": "assets/images/avatar-1.jpg",
+    "filename": "avatar-1.jpg",
+    "folder": "assets/images",
+    "format": "JPEG",
+    "dimensions": "200x300",
+    "size_kb": 12.7,
+    "html_count": 0,
+    "pages_used": []
+  },
+  {
+    "rel_path": "assets/images/avatar-2.jpg",
+    "filename": "avatar-2.jpg",
+    "folder": "assets/images",
+    "format": "JPEG",
+    "dimensions": "200x300",
+    "size_kb": 12.2,
+    "html_count": 0,
+    "pages_used": []
+  },
+  {
+    "rel_path": "assets/images/beach-galle.jpg",
+    "filename": "beach-galle.jpg",
+    "folder": "assets/images",
+    "format": "JPEG",
+    "dimensions": "1200x830",
+    "size_kb": 209.5,
+    "html_count": 3,
+    "pages_used": [
+      "tours/beach/pristine-seaboard-odyssey/index.html",
+      "tours/beach/southern-sands-serenade/index.html",
+      "tours/beach/turquoise-eastern-sanctuary/index.html"
+    ]
+  },
+  {
+    "rel_path": "assets/images/couple-travel.jpg",
+    "filename": "couple-travel.jpg",
+    "folder": "assets/images",
+    "format": "JPEG",
+    "dimensions": "800x566",
+    "size_kb": 128.1,
+    "html_count": 12,
+    "pages_used": [
+      "tours/honeymoon/enchanted-ceylon-romantic-hideaway/index.html",
+      "tours/honeymoon/pure-serenade-coastal-highland-romance/index.html"
+    ]
+  },
+  {
+    "rel_path": "assets/images/hero-nine-arches.jpg",
+    "filename": "hero-nine-arches.jpg",
+    "folder": "assets/images",
+    "format": "JPEG",
+    "dimensions": "1920x2877",
+    "size_kb": 751.6,
+    "html_count": 21,
+    "pages_used": [
+      "tours/family/island-wonder-multi-gen-family-discovery/index.html",
+      "tours/family/the-grand-ceylon-family-adventure/index.html",
+      "tours/family/wild-safari-coastal-family-holiday/index.html",
+      "tours/golf/highland-greens-coastal-links-championship/index.html",
+      "tours/golf/the-grand-ceylon-masters-golf-odyssey/index.html",
+      "tours/golf/the-royal-ceylon-fairways-tour/index.html",
+      "tours/hill-country/ceylon-tea-trails-colonial-grandeur/index.html",
+      "tours/hill-country/highland-wilderness-cascading-waterfalls/index.html",
+      "tours/hill-country/misty-peaks-scenic-railways-expedition/index.html"
+    ]
+  },
+  {
+    "rel_path": "assets/images/logo-emblem-hd.png",
+    "filename": "logo-emblem-hd.png",
+    "folder": "assets/images",
+    "format": "PNG",
+    "dimensions": "854x691",
+    "size_kb": 604.3,
+    "html_count": 0,
+    "pages_used": []
+  },
+  {
+    "rel_path": "assets/images/logo-generated-3d-transparent.png",
+    "filename": "logo-generated-3d-transparent.png",
+    "folder": "assets/images",
+    "format": "PNG",
+    "dimensions": "753x815",
+    "size_kb": 639.1,
+    "html_count": 0,
+    "pages_used": []
+  },
+  {
+    "rel_path": "assets/images/logo.png",
+    "filename": "logo.png",
+    "folder": "assets/images",
+    "format": "PNG",
+    "dimensions": "854x691",
+    "size_kb": 604.3,
+    "html_count": 3,
+    "pages_used": [
+      "admin/index.html"
+    ]
+  },
+  {
+    "rel_path": "assets/images/logo_circular_navy.jpg",
+    "filename": "logo_circular_navy.jpg",
+    "folder": "assets/images",
+    "format": "JPEG",
+    "dimensions": "1024x1024",
+    "size_kb": 294.0,
+    "html_count": 0,
+    "pages_used": []
+  },
+  {
+    "rel_path": "assets/images/logo_circular_navy_transparent.png",
+    "filename": "logo_circular_navy_transparent.png",
+    "folder": "assets/images",
+    "format": "PNG",
+    "dimensions": "1024x1024",
+    "size_kb": 1625.0,
+    "html_count": 0,
+    "pages_used": []
+  },
+  {
+    "rel_path": "assets/images/logo_icon_only.png",
+    "filename": "logo_icon_only.png",
+    "folder": "assets/images",
+    "format": "PNG",
+    "dimensions": "730x613",
+    "size_kb": 832.9,
+    "html_count": 0,
+    "pages_used": []
+  },
+  {
+    "rel_path": "assets/images/logo_luxury_dark.jpg",
+    "filename": "logo_luxury_dark.jpg",
+    "folder": "assets/images",
+    "format": "JPEG",
+    "dimensions": "1024x1024",
+    "size_kb": 236.8,
+    "html_count": 0,
+    "pages_used": []
+  },
+  {
+    "rel_path": "assets/images/logo_luxury_emblem.jpg",
+    "filename": "logo_luxury_emblem.jpg",
+    "folder": "assets/images",
+    "format": "JPEG",
+    "dimensions": "1024x1024",
+    "size_kb": 553.5,
+    "html_count": 0,
+    "pages_used": []
+  },
+  {
+    "rel_path": "assets/images/logo_luxury_transparent.png",
+    "filename": "logo_luxury_transparent.png",
+    "folder": "assets/images",
+    "format": "PNG",
+    "dimensions": "772x794",
+    "size_kb": 1112.2,
+    "html_count": 0,
+    "pages_used": []
+  },
+  {
+    "rel_path": "assets/images/logo_transparent.png",
+    "filename": "logo_transparent.png",
+    "folder": "assets/images",
+    "format": "PNG",
+    "dimensions": "1024x1024",
+    "size_kb": 1523.6,
+    "html_count": 0,
+    "pages_used": []
+  },
+  {
+    "rel_path": "assets/images/lotus-emblem-icon.png",
+    "filename": "lotus-emblem-icon.png",
+    "folder": "assets/images",
+    "format": "PNG",
+    "dimensions": "418x339",
+    "size_kb": 167.5,
+    "html_count": 0,
+    "pages_used": []
+  },
+  {
+    "rel_path": "assets/images/original_logo_dark_navy.png",
+    "filename": "original_logo_dark_navy.png",
+    "folder": "assets/images",
+    "format": "PNG",
+    "dimensions": "1254x1254",
+    "size_kb": 1479.3,
+    "html_count": 0,
+    "pages_used": []
+  },
+  {
+    "rel_path": "assets/images/original_logo_transparent.png",
+    "filename": "original_logo_transparent.png",
+    "folder": "assets/images",
+    "format": "PNG",
+    "dimensions": "1254x1254",
+    "size_kb": 2483.1,
+    "html_count": 0,
+    "pages_used": []
+  },
+  {
+    "rel_path": "assets/images/placeholder.png",
+    "filename": "placeholder.png",
+    "folder": "assets/images",
+    "format": "PNG",
+    "dimensions": "160x129",
+    "size_kb": 32.6,
+    "html_count": 4,
+    "pages_used": [
+      "admin/index.html"
+    ]
+  },
+  {
+    "rel_path": "assets/images/polonnaruwa.jpg",
+    "filename": "polonnaruwa.jpg",
+    "folder": "assets/images",
+    "format": "JPEG",
+    "dimensions": "800x533",
+    "size_kb": 103.8,
+    "html_count": 10,
+    "pages_used": [
+      "tours/ramayana/sacred-ramayana-heritage-trail/index.html",
+      "tours/ramayana/the-epic-ramayana-chronicle-pilgrimage/index.html"
+    ]
+  },
+  {
+    "rel_path": "assets/images/sigiriya.jpg",
+    "filename": "sigiriya.jpg",
+    "folder": "assets/images",
+    "format": "JPEG",
+    "dimensions": "1200x1798",
+    "size_kb": 341.3,
+    "html_count": 4,
+    "pages_used": [
+      "index.html",
+      "tours/family/island-wonder-multi-gen-family-discovery/index.html",
+      "tours/family/the-grand-ceylon-family-adventure/index.html",
+      "tours/family/wild-safari-coastal-family-holiday/index.html"
+    ]
+  },
+  {
+    "rel_path": "assets/images/sri-lanka-3d-coastal-relief-map.jpg",
+    "filename": "sri-lanka-3d-coastal-relief-map.jpg",
+    "folder": "assets/images",
+    "format": "JPEG",
+    "dimensions": "1200x896",
+    "size_kb": 713.7,
+    "html_count": 0,
+    "pages_used": []
+  },
+  {
+    "rel_path": "assets/images/sri-lanka-3d-relief-illustrated-map.jpg",
+    "filename": "sri-lanka-3d-relief-illustrated-map.jpg",
+    "folder": "assets/images",
+    "format": "JPEG",
+    "dimensions": "1024x1024",
+    "size_kb": 222.4,
+    "html_count": 0,
+    "pages_used": []
+  },
+  {
+    "rel_path": "assets/images/sri-lanka-coastal-illustrated-map.jpg",
+    "filename": "sri-lanka-coastal-illustrated-map.jpg",
+    "folder": "assets/images",
+    "format": "JPEG",
+    "dimensions": "765x877",
+    "size_kb": 150.9,
+    "html_count": 0,
+    "pages_used": []
+  },
+  {
+    "rel_path": "assets/images/sri-lanka-coastal-watercolor-map.jpg",
+    "filename": "sri-lanka-coastal-watercolor-map.jpg",
+    "folder": "assets/images",
+    "format": "JPEG",
+    "dimensions": "760x905",
+    "size_kb": 217.7,
+    "html_count": 0,
+    "pages_used": []
+  },
+  {
+    "rel_path": "assets/images/sri-lanka-illustrated-travel-map.jpg",
+    "filename": "sri-lanka-illustrated-travel-map.jpg",
+    "folder": "assets/images",
+    "format": "JPEG",
+    "dimensions": "912x1367",
+    "size_kb": 363.3,
+    "html_count": 0,
+    "pages_used": []
+  },
+  {
+    "rel_path": "assets/images/sri-lanka-official-tourist-map.jpg",
+    "filename": "sri-lanka-official-tourist-map.jpg",
+    "folder": "assets/images",
+    "format": "JPEG",
+    "dimensions": "714x1024",
+    "size_kb": 381.0,
+    "html_count": 0,
+    "pages_used": []
+  },
+  {
+    "rel_path": "assets/images/sri-lanka-tourist-map-illustrated.jpg",
+    "filename": "sri-lanka-tourist-map-illustrated.jpg",
+    "folder": "assets/images",
+    "format": "JPEG",
+    "dimensions": "714x1024",
+    "size_kb": 320.0,
+    "html_count": 0,
+    "pages_used": []
+  },
+  {
+    "rel_path": "assets/images/sri-lanka-tourist-map.jpg",
+    "filename": "sri-lanka-tourist-map.jpg",
+    "folder": "assets/images",
+    "format": "JPEG",
+    "dimensions": "714x1024",
+    "size_kb": 381.0,
+    "html_count": 0,
+    "pages_used": []
+  },
+  {
+    "rel_path": "assets/images/sunset-mirissa.jpg",
+    "filename": "sunset-mirissa.jpg",
+    "folder": "assets/images",
+    "format": "JPEG",
+    "dimensions": "800x532",
+    "size_kb": 63.9,
+    "html_count": 0,
+    "pages_used": []
+  },
+  {
+    "rel_path": "assets/images/tea-country.jpg",
+    "filename": "tea-country.jpg",
+    "folder": "assets/images",
+    "format": "JPEG",
+    "dimensions": "1200x900",
+    "size_kb": 250.3,
+    "html_count": 33,
+    "pages_used": [
+      "tours/golf/highland-greens-coastal-links-championship/index.html",
+      "tours/golf/the-grand-ceylon-masters-golf-odyssey/index.html",
+      "tours/golf/the-royal-ceylon-fairways-tour/index.html",
+      "tours/hill-country/ceylon-tea-trails-colonial-grandeur/index.html",
+      "tours/hill-country/highland-wilderness-cascading-waterfalls/index.html",
+      "tours/hill-country/misty-peaks-scenic-railways-expedition/index.html"
+    ]
+  },
+  {
+    "rel_path": "assets/images/temple-culture.jpg",
+    "filename": "temple-culture.jpg",
+    "folder": "assets/images",
+    "format": "JPEG",
+    "dimensions": "1200x800",
+    "size_kb": 229.9,
+    "html_count": 10,
+    "pages_used": [
+      "tours/ayurvedic/lotus-ayu-holistic-rejuvenation/index.html",
+      "tours/ayurvedic/sacred-serenity-forest-meditation-retreat/index.html"
+    ]
+  },
+  {
+    "rel_path": "assets/images/wildlife.jpg",
+    "filename": "wildlife.jpg",
+    "folder": "assets/images",
+    "format": "JPEG",
+    "dimensions": "1200x1800",
+    "size_kb": 430.2,
+    "html_count": 6,
+    "pages_used": [
+      "tours/family/island-wonder-multi-gen-family-discovery/index.html",
+      "tours/family/the-grand-ceylon-family-adventure/index.html",
+      "tours/family/wild-safari-coastal-family-holiday/index.html"
+    ]
+  },
+  {
+    "rel_path": "assets/images/about/hospitality-scenes-1.webp",
+    "filename": "hospitality-scenes-1.webp",
+    "folder": "assets/images/about",
+    "format": "WEBP",
+    "dimensions": "1200x800",
+    "size_kb": 193.6,
+    "html_count": 4,
+    "pages_used": [
+      "destinations.html",
+      "destinations/colombo-kelani-valley/index.html",
+      "index.html"
+    ]
+  },
+  {
+    "rel_path": "assets/images/adventure/adams-peak-2.webp",
+    "filename": "adams-peak-2.webp",
+    "folder": "assets/images/adventure",
+    "format": "WEBP",
+    "dimensions": "1920x1080",
+    "size_kb": 166.0,
+    "html_count": 2,
+    "pages_used": [
+      "destinations/sri-pada/index.html"
+    ]
+  },
+  {
+    "rel_path": "assets/images/adventure/kitulgala-rafting-1.webp",
+    "filename": "kitulgala-rafting-1.webp",
+    "folder": "assets/images/adventure",
+    "format": "WEBP",
+    "dimensions": "1200x800",
+    "size_kb": 212.9,
+    "html_count": 7,
+    "pages_used": [
+      "destinations.html",
+      "destinations/arugam-bay/index.html",
+      "index.html",
+      "tours/adventure/index.html",
+      "tours/index.html"
+    ]
+  },
+  {
+    "rel_path": "assets/images/adventure/knuckles-trek-4.webp",
+    "filename": "knuckles-trek-4.webp",
+    "folder": "assets/images/adventure",
+    "format": "WEBP",
+    "dimensions": "1200x800",
+    "size_kb": 215.7,
+    "html_count": 0,
+    "pages_used": []
+  },
+  {
+    "rel_path": "assets/images/adventure/weligama-surfing-3.webp",
+    "filename": "weligama-surfing-3.webp",
+    "folder": "assets/images/adventure",
+    "format": "WEBP",
+    "dimensions": "1200x800",
+    "size_kb": 212.9,
+    "html_count": 0,
+    "pages_used": []
+  },
+  {
+    "rel_path": "assets/images/ayurveda/herbal-treatment-1.webp",
+    "filename": "herbal-treatment-1.webp",
+    "folder": "assets/images/ayurveda",
+    "format": "WEBP",
+    "dimensions": "1200x800",
+    "size_kb": 193.6,
+    "html_count": 8,
+    "pages_used": [
+      "blog.html",
+      "blog/living-healing-traditional-ceylon-ayurveda/index.html",
+      "experiences.html",
+      "index.html",
+      "tours/index.html"
+    ]
+  },
+  {
+    "rel_path": "assets/images/ayurveda/matale-spice-garden-2.webp",
+    "filename": "matale-spice-garden-2.webp",
+    "folder": "assets/images/ayurveda",
+    "format": "WEBP",
+    "dimensions": "1200x800",
+    "size_kb": 194.7,
+    "html_count": 0,
+    "pages_used": []
+  },
+  {
+    "rel_path": "assets/images/ayurveda/sri-lanka-yoga-3.webp",
+    "filename": "sri-lanka-yoga-3.webp",
+    "folder": "assets/images/ayurveda",
+    "format": "WEBP",
+    "dimensions": "1200x800",
+    "size_kb": 193.6,
+    "html_count": 0,
+    "pages_used": []
+  },
+  {
+    "rel_path": "assets/images/beach/arugam-bay-4.webp",
+    "filename": "arugam-bay-4.webp",
+    "folder": "assets/images/beach",
+    "format": "WEBP",
+    "dimensions": "1200x800",
+    "size_kb": 154.7,
+    "html_count": 1,
+    "pages_used": [
+      "destinations/arugam-bay/index.html"
+    ]
+  },
+  {
+    "rel_path": "assets/images/beach/bentota-3.webp",
+    "filename": "bentota-3.webp",
+    "folder": "assets/images/beach",
+    "format": "WEBP",
+    "dimensions": "1920x1080",
+    "size_kb": 305.9,
+    "html_count": 4,
+    "pages_used": [
+      "destinations/bentota-beruwala/index.html",
+      "destinations/galle-dutch-fort/index.html",
+      "destinations/negombo-beach-lagoon/index.html"
+    ]
+  },
+  {
+    "rel_path": "assets/images/beach/mirissa-1.webp",
+    "filename": "mirissa-1.webp",
+    "folder": "assets/images/beach",
+    "format": "WEBP",
+    "dimensions": "1920x1080",
+    "size_kb": 285.7,
+    "html_count": 48,
+    "pages_used": [
+      "destinations.html",
+      "destinations/arugam-bay/index.html",
+      "destinations/bentota-beruwala/index.html",
+      "destinations/galle-dutch-fort/index.html",
+      "destinations/mirissa-weligama/index.html",
+      "destinations/trincomalee-nilaveli/index.html",
+      "experiences.html",
+      "gallery.html",
+      "index.html",
+      "tours/adventure/island-adrenaline-rapids-expedition/index.html",
+      "tours/adventure/wild-peaks-trails-surf-safari/index.html",
+      "tours/ayurvedic/lotus-ayu-holistic-rejuvenation/index.html",
+      "tours/ayurvedic/sacred-serenity-forest-meditation-retreat/index.html",
+      "tours/beach/index.html",
+      "tours/beach/pristine-seaboard-odyssey/index.html",
+      "tours/beach/southern-sands-serenade/index.html",
+      "tours/beach/turquoise-eastern-sanctuary/index.html",
+      "tours/buddhist-heritage/forest-hermitages-mindful-ceylon/index.html",
+      "tours/buddhist-heritage/the-sacred-bodhi-ancient-kingdoms/index.html",
+      "tours/buddhist-heritage/the-sacred-tooth-monastic-sanctuaries/index.html",
+      "tours/cultural/royal-kingdoms-sacred-temples/index.html",
+      "tours/cultural/the-sacred-lotus-triangle/index.html",
+      "tours/cultural/three-millennia-of-living-heritage/index.html",
+      "tours/family/island-wonder-multi-gen-family-discovery/index.html",
+      "tours/family/the-grand-ceylon-family-adventure/index.html",
+      "tours/family/wild-safari-coastal-family-holiday/index.html",
+      "tours/golf/highland-greens-coastal-links-championship/index.html",
+      "tours/golf/the-grand-ceylon-masters-golf-odyssey/index.html",
+      "tours/golf/the-royal-ceylon-fairways-tour/index.html",
+      "tours/hill-country/ceylon-tea-trails-colonial-grandeur/index.html",
+      "tours/hill-country/highland-wilderness-cascading-waterfalls/index.html",
+      "tours/hill-country/misty-peaks-scenic-railways-expedition/index.html",
+      "tours/honeymoon/enchanted-ceylon-romantic-hideaway/index.html",
+      "tours/honeymoon/pure-serenade-coastal-highland-romance/index.html",
+      "tours/index.html",
+      "tours/ramayana/sacred-ramayana-heritage-trail/index.html",
+      "tours/ramayana/the-epic-ramayana-chronicle-pilgrimage/index.html",
+      "tours/wildlife/the-sri-lanka-big-five-expedition/index.html",
+      "tours/wildlife/untamed-biosphere-rainforest-odyssey/index.html",
+      "tours/wildlife/wild-ceylon-predator-elephant-trail/index.html"
+    ]
+  },
+  {
+    "rel_path": "assets/images/beach/nilaveli-6.webp",
+    "filename": "nilaveli-6.webp",
+    "folder": "assets/images/beach",
+    "format": "WEBP",
+    "dimensions": "1200x800",
+    "size_kb": 154.7,
+    "html_count": 1,
+    "pages_used": [
+      "destinations/trincomalee-nilaveli/index.html"
+    ]
+  },
+  {
+    "rel_path": "assets/images/beach/pasikudah-5.webp",
+    "filename": "pasikudah-5.webp",
+    "folder": "assets/images/beach",
+    "format": "WEBP",
+    "dimensions": "1200x800",
+    "size_kb": 59.5,
+    "html_count": 15,
+    "pages_used": [
+      "destinations.html",
+      "destinations/trincomalee-nilaveli/index.html",
+      "gallery.html",
+      "tours/adventure/island-adrenaline-rapids-expedition/index.html",
+      "tours/adventure/wild-peaks-trails-surf-safari/index.html",
+      "tours/ayurvedic/lotus-ayu-holistic-rejuvenation/index.html",
+      "tours/ayurvedic/sacred-serenity-forest-meditation-retreat/index.html",
+      "tours/beach/pristine-seaboard-odyssey/index.html",
+      "tours/beach/southern-sands-serenade/index.html",
+      "tours/beach/turquoise-eastern-sanctuary/index.html",
+      "tours/honeymoon/enchanted-ceylon-romantic-hideaway/index.html",
+      "tours/honeymoon/pure-serenade-coastal-highland-romance/index.html",
+      "tours/ramayana/sacred-ramayana-heritage-trail/index.html",
+      "tours/ramayana/the-epic-ramayana-chronicle-pilgrimage/index.html"
+    ]
+  },
+  {
+    "rel_path": "assets/images/beach/unawatuna-2.webp",
+    "filename": "unawatuna-2.webp",
+    "folder": "assets/images/beach",
+    "format": "WEBP",
+    "dimensions": "1200x800",
+    "size_kb": 154.7,
+    "html_count": 5,
+    "pages_used": [
+      "gallery.html",
+      "tours/beach/pristine-seaboard-odyssey/index.html",
+      "tours/beach/southern-sands-serenade/index.html",
+      "tours/beach/turquoise-eastern-sanctuary/index.html"
+    ]
+  },
+  {
+    "rel_path": "assets/images/blog/ella-tea-making-banner.webp",
+    "filename": "ella-tea-making-banner.webp",
+    "folder": "assets/images/blog",
+    "format": "WEBP",
+    "dimensions": "1200x675",
+    "size_kb": 106.8,
+    "html_count": 0,
+    "pages_used": []
+  },
+  {
+    "rel_path": "assets/images/blog/ella-tea-making-experience.webp",
+    "filename": "ella-tea-making-experience.webp",
+    "folder": "assets/images/blog",
+    "format": "WEBP",
+    "dimensions": "920x840",
+    "size_kb": 106.8,
+    "html_count": 4,
+    "pages_used": [
+      "blog.html",
+      "blog/ella-hands-on-tea-making-experience/index.html"
+    ]
+  },
+  {
+    "rel_path": "assets/images/blog/ella-tea-making-thumb.webp",
+    "filename": "ella-tea-making-thumb.webp",
+    "folder": "assets/images/blog",
+    "format": "WEBP",
+    "dimensions": "600x400",
+    "size_kb": 50.3,
+    "html_count": 1,
+    "pages_used": [
+      "index.html"
+    ]
+  },
+  {
+    "rel_path": "assets/images/brand/logo-header.png",
+    "filename": "logo-header.png",
+    "folder": "assets/images/brand",
+    "format": "PNG",
+    "dimensions": "160x129",
+    "size_kb": 32.6,
+    "html_count": 171,
+    "pages_used": [
+      "404.html",
+      "about.html",
+      "blog.html",
+      "blog/ella-hands-on-tea-making-experience/index.html",
+      "blog/growing-a-greener-future-volunteer-reforestation-sinharaja/index.html",
+      "blog/living-healing-traditional-ceylon-ayurveda/index.html",
+      "blog/sacred-footsteps-unlocking-sri-lankas-ancient-buddhist-kingdoms/index.html",
+      "blog/the-great-gathering-watching-hundreds-of-wild-elephants-at-minneriya/index.html",
+      "cancellation-policy.html",
+      "contact.html",
+      "cookie-policy.html",
+      "destinations.html",
+      "destinations/anuradhapura/index.html",
+      "destinations/arugam-bay/index.html",
+      "destinations/bentota-beruwala/index.html",
+      "destinations/colombo-kelani-valley/index.html",
+      "destinations/dambulla/index.html",
+      "destinations/ella-demodara/index.html",
+      "destinations/galle-dutch-fort/index.html",
+      "destinations/haputale-lipton-s-seat/index.html",
+      "destinations/horton-plains-world-s-end/index.html",
+      "destinations/kandy/index.html",
+      "destinations/kataragama/index.html",
+      "destinations/kelaniya/index.html",
+      "destinations/mihintale/index.html",
+      "destinations/minneriya-national-park/index.html",
+      "destinations/mirissa-weligama/index.html",
+      "destinations/negombo-beach-lagoon/index.html",
+      "destinations/nuwara-eliya/index.html",
+      "destinations/polonnaruwa/index.html",
+      "destinations/sigiriya-rock-citadel/index.html",
+      "destinations/sri-pada/index.html",
+      "destinations/trincomalee-nilaveli/index.html",
+      "destinations/udawalawe-national-park/index.html",
+      "destinations/wilpattu-national-park/index.html",
+      "destinations/yala-national-park/index.html",
+      "experiences.html",
+      "gallery.html",
+      "index.html",
+      "inquiry-detailed.html",
+      "inquiry-quick.html",
+      "privacy-policy.html",
+      "reviews.html",
+      "terms-conditions.html",
+      "tours/adventure/index.html",
+      "tours/adventure/island-adrenaline-rapids-expedition/index.html",
+      "tours/adventure/wild-peaks-trails-surf-safari/index.html",
+      "tours/ayurvedic/index.html",
+      "tours/ayurvedic/lotus-ayu-holistic-rejuvenation/index.html",
+      "tours/ayurvedic/sacred-serenity-forest-meditation-retreat/index.html",
+      "tours/beach/index.html",
+      "tours/beach/pristine-seaboard-odyssey/index.html",
+      "tours/beach/southern-sands-serenade/index.html",
+      "tours/beach/turquoise-eastern-sanctuary/index.html",
+      "tours/buddhist-heritage/forest-hermitages-mindful-ceylon/index.html",
+      "tours/buddhist-heritage/index.html",
+      "tours/buddhist-heritage/the-sacred-bodhi-ancient-kingdoms/index.html",
+      "tours/buddhist-heritage/the-sacred-tooth-monastic-sanctuaries/index.html",
+      "tours/cultural/index.html",
+      "tours/cultural/royal-kingdoms-sacred-temples/index.html",
+      "tours/cultural/the-sacred-lotus-triangle/index.html",
+      "tours/cultural/three-millennia-of-living-heritage/index.html",
+      "tours/family/index.html",
+      "tours/family/island-wonder-multi-gen-family-discovery/index.html",
+      "tours/family/the-grand-ceylon-family-adventure/index.html",
+      "tours/family/wild-safari-coastal-family-holiday/index.html",
+      "tours/golf/highland-greens-coastal-links-championship/index.html",
+      "tours/golf/index.html",
+      "tours/golf/the-grand-ceylon-masters-golf-odyssey/index.html",
+      "tours/golf/the-royal-ceylon-fairways-tour/index.html",
+      "tours/hill-country/ceylon-tea-trails-colonial-grandeur/index.html",
+      "tours/hill-country/highland-wilderness-cascading-waterfalls/index.html",
+      "tours/hill-country/index.html",
+      "tours/hill-country/misty-peaks-scenic-railways-expedition/index.html",
+      "tours/honeymoon/enchanted-ceylon-romantic-hideaway/index.html",
+      "tours/honeymoon/index.html",
+      "tours/honeymoon/pure-serenade-coastal-highland-romance/index.html",
+      "tours/index.html",
+      "tours/ramayana/index.html",
+      "tours/ramayana/sacred-ramayana-heritage-trail/index.html",
+      "tours/ramayana/the-epic-ramayana-chronicle-pilgrimage/index.html",
+      "tours/wildlife/index.html",
+      "tours/wildlife/the-sri-lanka-big-five-expedition/index.html",
+      "tours/wildlife/untamed-biosphere-rainforest-odyssey/index.html",
+      "tours/wildlife/wild-ceylon-predator-elephant-trail/index.html"
+    ]
+  },
+  {
+    "rel_path": "assets/images/brand/logo-header.webp",
+    "filename": "logo-header.webp",
+    "folder": "assets/images/brand",
+    "format": "WEBP",
+    "dimensions": "160x129",
+    "size_kb": 11.2,
+    "html_count": 0,
+    "pages_used": []
+  },
+  {
+    "rel_path": "assets/images/buddhist-heritage/jaya-sri-maha-bodhi-1.webp",
+    "filename": "jaya-sri-maha-bodhi-1.webp",
+    "folder": "assets/images/buddhist-heritage",
+    "format": "WEBP",
+    "dimensions": "1200x800",
+    "size_kb": 193.6,
+    "html_count": 4,
+    "pages_used": [
+      "experiences.html",
+      "index.html",
+      "tours/buddhist-heritage/index.html",
+      "tours/index.html"
+    ]
+  },
+  {
+    "rel_path": "assets/images/buddhist-heritage/mihintale-3.webp",
+    "filename": "mihintale-3.webp",
+    "folder": "assets/images/buddhist-heritage",
+    "format": "WEBP",
+    "dimensions": "1920x1080",
+    "size_kb": 76.1,
+    "html_count": 3,
+    "pages_used": [
+      "destinations/mihintale/index.html",
+      "tours/buddhist-heritage/index.html"
+    ]
+  },
+  {
+    "rel_path": "assets/images/buddhist-heritage/ruwanwelisaya-2.webp",
+    "filename": "ruwanwelisaya-2.webp",
+    "folder": "assets/images/buddhist-heritage",
+    "format": "WEBP",
+    "dimensions": "1920x1080",
+    "size_kb": 189.1,
+    "html_count": 12,
+    "pages_used": [
+      "about.html",
+      "destinations/anuradhapura/index.html",
+      "destinations/kataragama/index.html",
+      "gallery.html",
+      "index.html",
+      "tours/buddhist-heritage/forest-hermitages-mindful-ceylon/index.html",
+      "tours/buddhist-heritage/index.html",
+      "tours/buddhist-heritage/the-sacred-bodhi-ancient-kingdoms/index.html",
+      "tours/buddhist-heritage/the-sacred-tooth-monastic-sanctuaries/index.html"
+    ]
+  },
+  {
+    "rel_path": "assets/images/buddhist-heritage/temple-of-the-tooth-4.backup.webp",
+    "filename": "temple-of-the-tooth-4.backup.webp",
+    "folder": "assets/images/buddhist-heritage",
+    "format": "WEBP",
+    "dimensions": "1200x800",
+    "size_kb": 135.4,
+    "html_count": 0,
+    "pages_used": []
+  },
+  {
+    "rel_path": "assets/images/buddhist-heritage/temple-of-the-tooth-4.webp",
+    "filename": "temple-of-the-tooth-4.webp",
+    "folder": "assets/images/buddhist-heritage",
+    "format": "WEBP",
+    "dimensions": "1920x1080",
+    "size_kb": 188.3,
+    "html_count": 1,
+    "pages_used": [
+      "tours/buddhist-heritage/index.html"
+    ]
+  },
+  {
+    "rel_path": "assets/images/contact/negombo-lagoon-1.webp",
+    "filename": "negombo-lagoon-1.webp",
+    "folder": "assets/images/contact",
+    "format": "WEBP",
+    "dimensions": "1200x800",
+    "size_kb": 154.7,
+    "html_count": 1,
+    "pages_used": [
+      "destinations/negombo-beach-lagoon/index.html"
+    ]
+  },
+  {
+    "rel_path": "assets/images/cultural/colombo-city-1.webp",
+    "filename": "colombo-city-1.webp",
+    "folder": "assets/images/cultural",
+    "format": "WEBP",
+    "dimensions": "1280x960",
+    "size_kb": 182.4,
+    "html_count": 1,
+    "pages_used": [
+      "destinations/colombo-kelani-valley/index.html"
+    ]
+  },
+  {
+    "rel_path": "assets/images/cultural/dambulla-cave-temple-2.webp",
+    "filename": "dambulla-cave-temple-2.webp",
+    "folder": "assets/images/cultural",
+    "format": "WEBP",
+    "dimensions": "1920x1080",
+    "size_kb": 306.9,
+    "html_count": 30,
+    "pages_used": [
+      "destinations.html",
+      "destinations/dambulla/index.html",
+      "destinations/mihintale/index.html",
+      "destinations/polonnaruwa/index.html",
+      "gallery.html",
+      "tours/buddhist-heritage/forest-hermitages-mindful-ceylon/index.html",
+      "tours/buddhist-heritage/the-sacred-bodhi-ancient-kingdoms/index.html",
+      "tours/buddhist-heritage/the-sacred-tooth-monastic-sanctuaries/index.html",
+      "tours/cultural/royal-kingdoms-sacred-temples/index.html",
+      "tours/cultural/the-sacred-lotus-triangle/index.html",
+      "tours/cultural/three-millennia-of-living-heritage/index.html",
+      "tours/ramayana/sacred-ramayana-heritage-trail/index.html",
+      "tours/ramayana/the-epic-ramayana-chronicle-pilgrimage/index.html"
+    ]
+  },
+  {
+    "rel_path": "assets/images/cultural/galle-fort-5.webp",
+    "filename": "galle-fort-5.webp",
+    "folder": "assets/images/cultural",
+    "format": "WEBP",
+    "dimensions": "1200x800",
+    "size_kb": 154.7,
+    "html_count": 3,
+    "pages_used": [
+      "destinations/galle-dutch-fort/index.html",
+      "experiences.html",
+      "gallery.html"
+    ]
+  },
+  {
+    "rel_path": "assets/images/cultural/kandy-temple-of-tooth-4.webp",
+    "filename": "kandy-temple-of-tooth-4.webp",
+    "folder": "assets/images/cultural",
+    "format": "WEBP",
+    "dimensions": "1920x1080",
+    "size_kb": 188.3,
+    "html_count": 15,
+    "pages_used": [
+      "destinations.html",
+      "destinations/anuradhapura/index.html",
+      "destinations/kandy/index.html",
+      "destinations/kelaniya/index.html",
+      "experiences.html",
+      "gallery.html",
+      "index.html",
+      "tours/ayurvedic/index.html",
+      "tours/cultural/index.html"
+    ]
+  },
+  {
+    "rel_path": "assets/images/cultural/kataragama-temple-1.webp",
+    "filename": "kataragama-temple-1.webp",
+    "folder": "assets/images/cultural",
+    "format": "WEBP",
+    "dimensions": "1280x960",
+    "size_kb": 357.0,
+    "html_count": 1,
+    "pages_used": [
+      "destinations/kataragama/index.html"
+    ]
+  },
+  {
+    "rel_path": "assets/images/cultural/kelaniya-temple-1.webp",
+    "filename": "kelaniya-temple-1.webp",
+    "folder": "assets/images/cultural",
+    "format": "WEBP",
+    "dimensions": "640x480",
+    "size_kb": 99.5,
+    "html_count": 1,
+    "pages_used": [
+      "destinations/kelaniya/index.html"
+    ]
+  },
+  {
+    "rel_path": "assets/images/cultural/polonnaruwa-gal-vihara-3.webp",
+    "filename": "polonnaruwa-gal-vihara-3.webp",
+    "folder": "assets/images/cultural",
+    "format": "WEBP",
+    "dimensions": "1200x800",
+    "size_kb": 130.9,
+    "html_count": 14,
+    "pages_used": [
+      "destinations.html",
+      "destinations/dambulla/index.html",
+      "destinations/polonnaruwa/index.html",
+      "gallery.html",
+      "index.html",
+      "tours/cultural/royal-kingdoms-sacred-temples/index.html",
+      "tours/cultural/the-sacred-lotus-triangle/index.html",
+      "tours/cultural/three-millennia-of-living-heritage/index.html",
+      "tours/ramayana/index.html"
+    ]
+  },
+  {
+    "rel_path": "assets/images/cultural/sigiriya-1.webp",
+    "filename": "sigiriya-1.webp",
+    "folder": "assets/images/cultural",
+    "format": "WEBP",
+    "dimensions": "1920x1080",
+    "size_kb": 82.5,
+    "html_count": 37,
+    "pages_used": [
+      "admin/index.html",
+      "blog.html",
+      "blog/sacred-footsteps-unlocking-sri-lankas-ancient-buddhist-kingdoms/index.html",
+      "destinations.html",
+      "destinations/kandy/index.html",
+      "destinations/kataragama/index.html",
+      "destinations/sigiriya-rock-citadel/index.html",
+      "experiences.html",
+      "gallery.html",
+      "index.html",
+      "tours/beach/pristine-seaboard-odyssey/index.html",
+      "tours/beach/southern-sands-serenade/index.html",
+      "tours/beach/turquoise-eastern-sanctuary/index.html",
+      "tours/cultural/index.html",
+      "tours/cultural/royal-kingdoms-sacred-temples/index.html",
+      "tours/cultural/the-sacred-lotus-triangle/index.html",
+      "tours/cultural/three-millennia-of-living-heritage/index.html",
+      "tours/index.html"
+    ]
+  },
+  {
+    "rel_path": "assets/images/experiences/real-experiences-ella-rock-large.jpg",
+    "filename": "real-experiences-ella-rock-large.jpg",
+    "folder": "assets/images/experiences",
+    "format": "JPEG",
+    "dimensions": "1920x897",
+    "size_kb": 318.5,
+    "html_count": 0,
+    "pages_used": []
+  },
+  {
+    "rel_path": "assets/images/experiences/real-experiences-ella-rock-large.webp",
+    "filename": "real-experiences-ella-rock-large.webp",
+    "folder": "assets/images/experiences",
+    "format": "WEBP",
+    "dimensions": "1920x897",
+    "size_kb": 243.2,
+    "html_count": 1,
+    "pages_used": [
+      "index.html"
+    ]
+  },
+  {
+    "rel_path": "assets/images/experiences/real-experiences-ella-rock.jpg",
+    "filename": "real-experiences-ella-rock.jpg",
+    "folder": "assets/images/experiences",
+    "format": "JPEG",
+    "dimensions": "738x345",
+    "size_kb": 62.7,
+    "html_count": 0,
+    "pages_used": []
+  },
+  {
+    "rel_path": "assets/images/experiences/real-experiences-ella-rock.webp",
+    "filename": "real-experiences-ella-rock.webp",
+    "folder": "assets/images/experiences",
+    "format": "WEBP",
+    "dimensions": "738x345",
+    "size_kb": 61.9,
+    "html_count": 0,
+    "pages_used": []
+  },
+  {
+    "rel_path": "assets/images/family/calm-beach-3.webp",
+    "filename": "calm-beach-3.webp",
+    "folder": "assets/images/family",
+    "format": "WEBP",
+    "dimensions": "1200x800",
+    "size_kb": 154.7,
+    "html_count": 0,
+    "pages_used": []
+  },
+  {
+    "rel_path": "assets/images/family/kosgoda-turtle-hatchery-1.webp",
+    "filename": "kosgoda-turtle-hatchery-1.webp",
+    "folder": "assets/images/family",
+    "format": "WEBP",
+    "dimensions": "1200x800",
+    "size_kb": 154.7,
+    "html_count": 4,
+    "pages_used": [
+      "index.html",
+      "tours/index.html"
+    ]
+  },
+  {
+    "rel_path": "assets/images/family/scenic-train-ride-2.webp",
+    "filename": "scenic-train-ride-2.webp",
+    "folder": "assets/images/family",
+    "format": "WEBP",
+    "dimensions": "1200x800",
+    "size_kb": 144.1,
+    "html_count": 1,
+    "pages_used": [
+      "index.html"
+    ]
+  },
+  {
+    "rel_path": "assets/images/footer/footer-sunset-palms.jpg",
+    "filename": "footer-sunset-palms.jpg",
+    "folder": "assets/images/footer",
+    "format": "JPEG",
+    "dimensions": "1920x960",
+    "size_kb": 340.6,
+    "html_count": 0,
+    "pages_used": []
+  },
+  {
+    "rel_path": "assets/images/footer/footer-sunset-palms.webp",
+    "filename": "footer-sunset-palms.webp",
+    "folder": "assets/images/footer",
+    "format": "WEBP",
+    "dimensions": "1920x960",
+    "size_kb": 232.6,
+    "html_count": 0,
+    "pages_used": []
+  },
+  {
+    "rel_path": "assets/images/golf/ceylon-championship-golf-1.jpg",
+    "filename": "ceylon-championship-golf-1.jpg",
+    "folder": "assets/images/golf",
+    "format": "JPEG",
+    "dimensions": "1376x768",
+    "size_kb": 881.6,
+    "html_count": 0,
+    "pages_used": []
+  },
+  {
+    "rel_path": "assets/images/golf/ceylon-championship-golf-1.webp",
+    "filename": "ceylon-championship-golf-1.webp",
+    "folder": "assets/images/golf",
+    "format": "JPEG",
+    "dimensions": "1376x768",
+    "size_kb": 881.6,
+    "html_count": 2,
+    "pages_used": [
+      "index.html",
+      "tours/index.html"
+    ]
+  },
+  {
+    "rel_path": "assets/images/hill-country/ceylon-tea-tasting-terrace.jpg",
+    "filename": "ceylon-tea-tasting-terrace.jpg",
+    "folder": "assets/images/hill-country",
+    "format": "JPEG",
+    "dimensions": "1024x768",
+    "size_kb": 271.5,
+    "html_count": 0,
+    "pages_used": []
+  },
+  {
+    "rel_path": "assets/images/hill-country/ceylon-tea-tasting-terrace.webp",
+    "filename": "ceylon-tea-tasting-terrace.webp",
+    "folder": "assets/images/hill-country",
+    "format": "WEBP",
+    "dimensions": "1024x768",
+    "size_kb": 201.9,
+    "html_count": 1,
+    "pages_used": [
+      "experiences.html"
+    ]
+  },
+  {
+    "rel_path": "assets/images/hill-country/ella-rock-3.webp",
+    "filename": "ella-rock-3.webp",
+    "folder": "assets/images/hill-country",
+    "format": "WEBP",
+    "dimensions": "1920x1080",
+    "size_kb": 334.3,
+    "html_count": 3,
+    "pages_used": [
+      "destinations/horton-plains-world-s-end/index.html",
+      "gallery.html"
+    ]
+  },
+  {
+    "rel_path": "assets/images/hill-country/kandy-ella-train-5.webp",
+    "filename": "kandy-ella-train-5.webp",
+    "folder": "assets/images/hill-country",
+    "format": "WEBP",
+    "dimensions": "1200x800",
+    "size_kb": 144.1,
+    "html_count": 0,
+    "pages_used": []
+  },
+  {
+    "rel_path": "assets/images/hill-country/nine-arches-bridge-1.webp",
+    "filename": "nine-arches-bridge-1.webp",
+    "folder": "assets/images/hill-country",
+    "format": "WEBP",
+    "dimensions": "1920x1080",
+    "size_kb": 535.1,
+    "html_count": 14,
+    "pages_used": [
+      "destinations.html",
+      "destinations/ella-demodara/index.html",
+      "experiences.html",
+      "gallery.html",
+      "index.html",
+      "tours/family/index.html",
+      "tours/hill-country/index.html",
+      "tours/index.html"
+    ]
+  },
+  {
+    "rel_path": "assets/images/hill-country/nuwara-eliya-tea-2.webp",
+    "filename": "nuwara-eliya-tea-2.webp",
+    "folder": "assets/images/hill-country",
+    "format": "WEBP",
+    "dimensions": "1920x1080",
+    "size_kb": 325.1,
+    "html_count": 23,
+    "pages_used": [
+      "destinations.html",
+      "destinations/haputale-lipton-s-seat/index.html",
+      "destinations/nuwara-eliya/index.html",
+      "destinations/sri-pada/index.html",
+      "experiences.html",
+      "gallery.html",
+      "index.html",
+      "tours/golf/index.html",
+      "tours/hill-country/index.html"
+    ]
+  },
+  {
+    "rel_path": "assets/images/hill-country/ramboda-falls-4.webp",
+    "filename": "ramboda-falls-4.webp",
+    "folder": "assets/images/hill-country",
+    "format": "WEBP",
+    "dimensions": "1200x800",
+    "size_kb": 194.7,
+    "html_count": 0,
+    "pages_used": []
+  },
+  {
+    "rel_path": "assets/images/home/anuradhapura-success-story.jpg",
+    "filename": "anuradhapura-success-story.jpg",
+    "folder": "assets/images/home",
+    "format": "JPEG",
+    "dimensions": "426x482",
+    "size_kb": 30.0,
+    "html_count": 0,
+    "pages_used": []
+  },
+  {
+    "rel_path": "assets/images/home/hero-sigiriya-aerial-1.webp",
+    "filename": "hero-sigiriya-aerial-1.webp",
+    "folder": "assets/images/home",
+    "format": "WEBP",
+    "dimensions": "1920x1080",
+    "size_kb": 76.9,
+    "html_count": 2,
+    "pages_used": [
+      "index.html"
+    ]
+  },
+  {
+    "rel_path": "assets/images/home/hero-sigiriya-aerial-portrait.webp",
+    "filename": "hero-sigiriya-aerial-portrait.webp",
+    "folder": "assets/images/home",
+    "format": "WEBP",
+    "dimensions": "720x1280",
+    "size_kb": 28.5,
+    "html_count": 0,
+    "pages_used": []
+  },
+  {
+    "rel_path": "assets/images/honeymoon/mirissa-sunset-2.webp",
+    "filename": "mirissa-sunset-2.webp",
+    "folder": "assets/images/honeymoon",
+    "format": "WEBP",
+    "dimensions": "1200x800",
+    "size_kb": 59.5,
+    "html_count": 8,
+    "pages_used": [
+      "destinations.html",
+      "destinations/mirissa-weligama/index.html",
+      "gallery.html",
+      "index.html",
+      "tours/beach/index.html"
+    ]
+  },
+  {
+    "rel_path": "assets/images/honeymoon/seaside-villa-1.webp",
+    "filename": "seaside-villa-1.webp",
+    "folder": "assets/images/honeymoon",
+    "format": "WEBP",
+    "dimensions": "1200x800",
+    "size_kb": 158.0,
+    "html_count": 8,
+    "pages_used": [
+      "experiences.html",
+      "gallery.html",
+      "tours/ayurvedic/lotus-ayu-holistic-rejuvenation/index.html",
+      "tours/ayurvedic/sacred-serenity-forest-meditation-retreat/index.html",
+      "tours/honeymoon/index.html",
+      "tours/index.html"
+    ]
+  },
+  {
+    "rel_path": "assets/images/honeymoon/tea-bungalow-3.webp",
+    "filename": "tea-bungalow-3.webp",
+    "folder": "assets/images/honeymoon",
+    "format": "WEBP",
+    "dimensions": "1200x800",
+    "size_kb": 194.7,
+    "html_count": 0,
+    "pages_used": []
+  },
+  {
+    "rel_path": "assets/images/icons/call-center.svg",
+    "filename": "call-center.svg",
+    "folder": "assets/images/icons",
+    "format": "SVG",
+    "dimensions": "",
+    "size_kb": 12.0,
+    "html_count": 1,
+    "pages_used": [
+      "index.html"
+    ]
+  },
+  {
+    "rel_path": "assets/images/icons/free-cancel.svg",
+    "filename": "free-cancel.svg",
+    "folder": "assets/images/icons",
+    "format": "SVG",
+    "dimensions": "",
+    "size_kb": 5.7,
+    "html_count": 1,
+    "pages_used": [
+      "index.html"
+    ]
+  },
+  {
+    "rel_path": "assets/images/icons/hassel-free.svg",
+    "filename": "hassel-free.svg",
+    "folder": "assets/images/icons",
+    "format": "SVG",
+    "dimensions": "",
+    "size_kb": 7.2,
+    "html_count": 1,
+    "pages_used": [
+      "index.html"
+    ]
+  },
+  {
+    "rel_path": "assets/images/icons/operating-travel.svg",
+    "filename": "operating-travel.svg",
+    "folder": "assets/images/icons",
+    "format": "SVG",
+    "dimensions": "",
+    "size_kb": 4.3,
+    "html_count": 1,
+    "pages_used": [
+      "index.html"
+    ]
+  },
+  {
+    "rel_path": "assets/images/icons/partner.svg",
+    "filename": "partner.svg",
+    "folder": "assets/images/icons",
+    "format": "SVG",
+    "dimensions": "",
+    "size_kb": 5.1,
+    "html_count": 1,
+    "pages_used": [
+      "index.html"
+    ]
+  },
+  {
+    "rel_path": "assets/images/ramayana/hakgala-gardens-4.webp",
+    "filename": "hakgala-gardens-4.webp",
+    "folder": "assets/images/ramayana",
+    "format": "WEBP",
+    "dimensions": "1200x800",
+    "size_kb": 194.7,
+    "html_count": 0,
+    "pages_used": []
+  },
+  {
+    "rel_path": "assets/images/ramayana/munneswaram-3.webp",
+    "filename": "munneswaram-3.webp",
+    "folder": "assets/images/ramayana",
+    "format": "WEBP",
+    "dimensions": "1200x800",
+    "size_kb": 130.9,
+    "html_count": 0,
+    "pages_used": []
+  },
+  {
+    "rel_path": "assets/images/ramayana/ravana-falls-2.webp",
+    "filename": "ravana-falls-2.webp",
+    "folder": "assets/images/ramayana",
+    "format": "WEBP",
+    "dimensions": "1200x800",
+    "size_kb": 144.1,
+    "html_count": 0,
+    "pages_used": []
+  },
+  {
+    "rel_path": "assets/images/ramayana/seetha-amman-temple-1.webp",
+    "filename": "seetha-amman-temple-1.webp",
+    "folder": "assets/images/ramayana",
+    "format": "WEBP",
+    "dimensions": "1200x800",
+    "size_kb": 193.6,
+    "html_count": 2,
+    "pages_used": [
+      "index.html",
+      "tours/index.html"
+    ]
+  },
+  {
+    "rel_path": "assets/images/team/avatar-dg.svg",
+    "filename": "avatar-dg.svg",
+    "folder": "assets/images/team",
+    "format": "SVG",
+    "dimensions": "",
+    "size_kb": 0.8,
+    "html_count": 1,
+    "pages_used": [
+      "about.html"
+    ]
+  },
+  {
+    "rel_path": "assets/images/team/avatar-ky.svg",
+    "filename": "avatar-ky.svg",
+    "folder": "assets/images/team",
+    "format": "SVG",
+    "dimensions": "",
+    "size_kb": 0.8,
+    "html_count": 1,
+    "pages_used": [
+      "about.html"
+    ]
+  },
+  {
+    "rel_path": "assets/images/team/rep-australia.svg",
+    "filename": "rep-australia.svg",
+    "folder": "assets/images/team",
+    "format": "SVG",
+    "dimensions": "",
+    "size_kb": 1.2,
+    "html_count": 1,
+    "pages_used": [
+      "about.html"
+    ]
+  },
+  {
+    "rel_path": "assets/images/team/rep-china.svg",
+    "filename": "rep-china.svg",
+    "folder": "assets/images/team",
+    "format": "SVG",
+    "dimensions": "",
+    "size_kb": 1.2,
+    "html_count": 1,
+    "pages_used": [
+      "about.html"
+    ]
+  },
+  {
+    "rel_path": "assets/images/team/rep-france.svg",
+    "filename": "rep-france.svg",
+    "folder": "assets/images/team",
+    "format": "SVG",
+    "dimensions": "",
+    "size_kb": 1.2,
+    "html_count": 1,
+    "pages_used": [
+      "about.html"
+    ]
+  },
+  {
+    "rel_path": "assets/images/team/rep-germany.svg",
+    "filename": "rep-germany.svg",
+    "folder": "assets/images/team",
+    "format": "SVG",
+    "dimensions": "",
+    "size_kb": 1.2,
+    "html_count": 1,
+    "pages_used": [
+      "about.html"
+    ]
+  },
+  {
+    "rel_path": "assets/images/team/rep-india.svg",
+    "filename": "rep-india.svg",
+    "folder": "assets/images/team",
+    "format": "SVG",
+    "dimensions": "",
+    "size_kb": 1.2,
+    "html_count": 1,
+    "pages_used": [
+      "about.html"
+    ]
+  },
+  {
+    "rel_path": "assets/images/team/rep-japan.svg",
+    "filename": "rep-japan.svg",
+    "folder": "assets/images/team",
+    "format": "SVG",
+    "dimensions": "",
+    "size_kb": 1.2,
+    "html_count": 1,
+    "pages_used": [
+      "about.html"
+    ]
+  },
+  {
+    "rel_path": "assets/images/team/rep-uae.svg",
+    "filename": "rep-uae.svg",
+    "folder": "assets/images/team",
+    "format": "SVG",
+    "dimensions": "",
+    "size_kb": 1.2,
+    "html_count": 1,
+    "pages_used": [
+      "about.html"
+    ]
+  },
+  {
+    "rel_path": "assets/images/team/rep-uk.svg",
+    "filename": "rep-uk.svg",
+    "folder": "assets/images/team",
+    "format": "SVG",
+    "dimensions": "",
+    "size_kb": 1.3,
+    "html_count": 1,
+    "pages_used": [
+      "about.html"
+    ]
+  },
+  {
+    "rel_path": "assets/images/team/rep-usa.svg",
+    "filename": "rep-usa.svg",
+    "folder": "assets/images/team",
+    "format": "SVG",
+    "dimensions": "",
+    "size_kb": 1.2,
+    "html_count": 1,
+    "pages_used": [
+      "about.html"
+    ]
+  },
+  {
+    "rel_path": "assets/images/wildlife/minneriya-elephant-gathering-2.webp",
+    "filename": "minneriya-elephant-gathering-2.webp",
+    "folder": "assets/images/wildlife",
+    "format": "WEBP",
+    "dimensions": "1200x800",
+    "size_kb": 215.7,
+    "html_count": 13,
+    "pages_used": [
+      "blog.html",
+      "blog/the-great-gathering-watching-hundreds-of-wild-elephants-at-minneriya/index.html",
+      "destinations.html",
+      "destinations/minneriya-national-park/index.html",
+      "experiences.html",
+      "gallery.html",
+      "tours/wildlife/the-sri-lanka-big-five-expedition/index.html",
+      "tours/wildlife/untamed-biosphere-rainforest-odyssey/index.html",
+      "tours/wildlife/wild-ceylon-predator-elephant-trail/index.html"
+    ]
+  },
+  {
+    "rel_path": "assets/images/wildlife/mirissa-blue-whale-4.webp",
+    "filename": "mirissa-blue-whale-4.webp",
+    "folder": "assets/images/wildlife",
+    "format": "WEBP",
+    "dimensions": "1200x800",
+    "size_kb": 59.5,
+    "html_count": 2,
+    "pages_used": [
+      "experiences.html",
+      "tours/wildlife/index.html"
+    ]
+  },
+  {
+    "rel_path": "assets/images/wildlife/sinharaja-rainforest-5.webp",
+    "filename": "sinharaja-rainforest-5.webp",
+    "folder": "assets/images/wildlife",
+    "format": "WEBP",
+    "dimensions": "1200x800",
+    "size_kb": 215.7,
+    "html_count": 9,
+    "pages_used": [
+      "blog.html",
+      "blog/growing-a-greener-future-volunteer-reforestation-sinharaja/index.html",
+      "destinations.html",
+      "destinations/horton-plains-world-s-end/index.html",
+      "experiences.html",
+      "gallery.html",
+      "tours/wildlife/index.html"
+    ]
+  },
+  {
+    "rel_path": "assets/images/wildlife/udawalawe-3.webp",
+    "filename": "udawalawe-3.webp",
+    "folder": "assets/images/wildlife",
+    "format": "WEBP",
+    "dimensions": "1200x800",
+    "size_kb": 215.7,
+    "html_count": 5,
+    "pages_used": [
+      "destinations/udawalawe-national-park/index.html",
+      "tours/wildlife/the-sri-lanka-big-five-expedition/index.html",
+      "tours/wildlife/untamed-biosphere-rainforest-odyssey/index.html",
+      "tours/wildlife/wild-ceylon-predator-elephant-trail/index.html"
+    ]
+  },
+  {
+    "rel_path": "assets/images/wildlife/wilpattu-safari-1.webp",
+    "filename": "wilpattu-safari-1.webp",
+    "folder": "assets/images/wildlife",
+    "format": "WEBP",
+    "dimensions": "1280x719",
+    "size_kb": 346.0,
+    "html_count": 1,
+    "pages_used": [
+      "destinations/wilpattu-national-park/index.html"
+    ]
+  },
+  {
+    "rel_path": "assets/images/wildlife/yala-leopard-1.webp",
+    "filename": "yala-leopard-1.webp",
+    "folder": "assets/images/wildlife",
+    "format": "WEBP",
+    "dimensions": "1920x1080",
+    "size_kb": 428.2,
+    "html_count": 26,
+    "pages_used": [
+      "destinations.html",
+      "destinations/minneriya-national-park/index.html",
+      "destinations/udawalawe-national-park/index.html",
+      "destinations/wilpattu-national-park/index.html",
+      "destinations/yala-national-park/index.html",
+      "experiences.html",
+      "gallery.html",
+      "index.html",
+      "tours/family/index.html",
+      "tours/index.html",
+      "tours/wildlife/index.html",
+      "tours/wildlife/the-sri-lanka-big-five-expedition/index.html",
+      "tours/wildlife/untamed-biosphere-rainforest-odyssey/index.html",
+      "tours/wildlife/wild-ceylon-predator-elephant-trail/index.html"
+    ]
+  },
+  {
+    "rel_path": "assets/qr/line-qr.png",
+    "filename": "line-qr.png",
+    "folder": "assets/qr",
+    "format": "PNG",
+    "dimensions": "300x300",
+    "size_kb": 0.6,
+    "html_count": 1,
+    "pages_used": [
+      "contact.html"
+    ]
+  },
+  {
+    "rel_path": "assets/qr/wechat-qr.png",
+    "filename": "wechat-qr.png",
+    "folder": "assets/qr",
+    "format": "PNG",
+    "dimensions": "300x300",
+    "size_kb": 0.6,
+    "html_count": 1,
+    "pages_used": [
+      "contact.html"
+    ]
+  },
+  {
+    "rel_path": "assets/qr/whatsapp-qr.png",
+    "filename": "whatsapp-qr.png",
+    "folder": "assets/qr",
+    "format": "PNG",
+    "dimensions": "300x300",
+    "size_kb": 0.4,
+    "html_count": 1,
+    "pages_used": [
+      "contact.html"
+    ]
+  },
+  {
+    "rel_path": "assets/tours/beach/eastern-sanctuary-1.jpg",
+    "filename": "eastern-sanctuary-1.jpg",
+    "folder": "assets/tours/beach",
+    "format": "JPEG",
+    "dimensions": "800x532",
+    "size_kb": 63.9,
+    "html_count": 0,
+    "pages_used": []
+  },
+  {
+    "rel_path": "assets/tours/beach/hero.jpg",
+    "filename": "hero.jpg",
+    "folder": "assets/tours/beach",
+    "format": "JPEG",
+    "dimensions": "1200x830",
+    "size_kb": 209.5,
+    "html_count": 2,
+    "pages_used": [
+      "destinations.html",
+      "destinations/negombo-beach-lagoon/index.html"
+    ]
+  },
+  {
+    "rel_path": "assets/tours/beach/seaboard-odyssey-1.jpg",
+    "filename": "seaboard-odyssey-1.jpg",
+    "folder": "assets/tours/beach",
+    "format": "JPEG",
+    "dimensions": "1200x830",
+    "size_kb": 209.5,
+    "html_count": 0,
+    "pages_used": []
+  },
+  {
+    "rel_path": "assets/tours/beach/southern-sands-1.jpg",
+    "filename": "southern-sands-1.jpg",
+    "folder": "assets/tours/beach",
+    "format": "JPEG",
+    "dimensions": "1200x830",
+    "size_kb": 209.5,
+    "html_count": 0,
+    "pages_used": []
+  },
+  {
+    "rel_path": "assets/tours/cultural/hero.jpg",
+    "filename": "hero.jpg",
+    "folder": "assets/tours/cultural",
+    "format": "JPEG",
+    "dimensions": "1200x1798",
+    "size_kb": 341.3,
+    "html_count": 2,
+    "pages_used": [
+      "destinations.html",
+      "destinations/kelaniya/index.html"
+    ]
+  },
+  {
+    "rel_path": "assets/tours/cultural/royal-kingdoms-1.jpg",
+    "filename": "royal-kingdoms-1.jpg",
+    "folder": "assets/tours/cultural",
+    "format": "JPEG",
+    "dimensions": "1200x1798",
+    "size_kb": 341.3,
+    "html_count": 0,
+    "pages_used": []
+  },
+  {
+    "rel_path": "assets/tours/cultural/sacred-triangle-1.jpg",
+    "filename": "sacred-triangle-1.jpg",
+    "folder": "assets/tours/cultural",
+    "format": "JPEG",
+    "dimensions": "1200x1798",
+    "size_kb": 341.3,
+    "html_count": 0,
+    "pages_used": []
+  },
+  {
+    "rel_path": "assets/tours/cultural/three-millennia-1.jpg",
+    "filename": "three-millennia-1.jpg",
+    "folder": "assets/tours/cultural",
+    "format": "JPEG",
+    "dimensions": "800x533",
+    "size_kb": 103.8,
+    "html_count": 0,
+    "pages_used": []
+  },
+  {
+    "rel_path": "assets/tours/wildlife/big-five-1.jpg",
+    "filename": "big-five-1.jpg",
+    "folder": "assets/tours/wildlife",
+    "format": "JPEG",
+    "dimensions": "1200x1800",
+    "size_kb": 430.2,
+    "html_count": 0,
+    "pages_used": []
+  },
+  {
+    "rel_path": "assets/tours/wildlife/biosphere-odyssey-1.jpg",
+    "filename": "biosphere-odyssey-1.jpg",
+    "folder": "assets/tours/wildlife",
+    "format": "JPEG",
+    "dimensions": "1200x1800",
+    "size_kb": 430.2,
+    "html_count": 0,
+    "pages_used": []
+  },
+  {
+    "rel_path": "assets/tours/wildlife/hero.jpg",
+    "filename": "hero.jpg",
+    "folder": "assets/tours/wildlife",
+    "format": "JPEG",
+    "dimensions": "1200x1800",
+    "size_kb": 430.2,
+    "html_count": 2,
+    "pages_used": [
+      "destinations.html",
+      "destinations/udawalawe-national-park/index.html"
+    ]
+  },
+  {
+    "rel_path": "assets/tours/wildlife/predator-trail-1.jpg",
+    "filename": "predator-trail-1.jpg",
+    "folder": "assets/tours/wildlife",
+    "format": "JPEG",
+    "dimensions": "1200x1800",
+    "size_kb": 430.2,
+    "html_count": 0,
+    "pages_used": []
+  },
+  {
+    "rel_path": "assets/tours/wildlife/rainforest-1.jpg",
+    "filename": "rainforest-1.jpg",
+    "folder": "assets/tours/wildlife",
+    "format": "JPEG",
+    "dimensions": "1200x1800",
+    "size_kb": 430.2,
+    "html_count": 0,
+    "pages_used": []
+  },
+  {
+    "rel_path": "assets/videos/hero-banner-backup-10s.mp4",
+    "filename": "hero-banner-backup-10s.mp4",
+    "folder": "assets/videos",
+    "format": "MP4",
+    "dimensions": "",
+    "size_kb": 82881.1,
+    "html_count": 0,
+    "pages_used": []
+  },
+  {
+    "rel_path": "assets/videos/hero-banner-old.mp4",
+    "filename": "hero-banner-old.mp4",
+    "folder": "assets/videos",
+    "format": "MP4",
+    "dimensions": "",
+    "size_kb": 15452.4,
+    "html_count": 0,
+    "pages_used": []
+  },
+  {
+    "rel_path": "assets/videos/hero-banner.mp4",
+    "filename": "hero-banner.mp4",
+    "folder": "assets/videos",
+    "format": "MP4",
+    "dimensions": "",
+    "size_kb": 88272.9,
+    "html_count": 2,
+    "pages_used": [
+      "index.html"
+    ]
+  }
+]

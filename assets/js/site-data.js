@@ -255,9 +255,9 @@
 
           const vData = await vRes.json();
 
-          if (vData && vData.fields) {
+          if (vData && vData.fields && vData.fields.v) {
 
-            remoteVersion = unwrapFirestore(vData.fields).v || Date.now();
+            remoteVersion = unwrapFirestore(vData.fields.v) || Date.now();
 
           }
 
@@ -273,7 +273,7 @@
 
       // If remote version matches cached payload, use cache
 
-      if (cachedPayload && (!remoteVersion || String(remoteVersion) === cachedVersion)) {
+      if (cachedPayload && remoteVersion && String(remoteVersion) === String(cachedVersion)) {
 
         try {
 
