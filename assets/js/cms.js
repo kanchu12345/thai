@@ -941,9 +941,9 @@
             ];
             const slideDefaults = [
               'assets/images/experiences/real-experiences-ella-rock-large.webp',
-              'assets/images/home/hero-sigiriya-aerial-1.webp',
-              'assets/images/wildlife/minneriya-elephant-gathering-2.webp',
-              'assets/images/family/scenic-train-ride-2.webp'
+              'assets/images/hill-country/nine-arches-bridge-1.webp',
+              'assets/images/cultural/sigiriya-1.webp',
+              'assets/images/wildlife/yala-leopard-1.webp'
             ];
 
             const sliderImages = slideKeys.map((k, i) => {

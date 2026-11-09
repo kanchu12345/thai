@@ -5,7 +5,7 @@
  * https://infiniteweb.dev/
  */
 /**
- * Lotus Ceylon - Interactive Leaflet & CartoDB Tour Route Map
+ * Lotus Ceylon - Interactive Leaflet & OpenStreetMap Tour Route Map
  * Privacy-first, locally vendored Leaflet, accessible, responsive & lazy-loaded.
  * Fully offline & file:/// compatible with built-in route catalog fallback.
  */
@@ -15,9 +15,13 @@
 
   const DEFAULT_CENTER = [7.879, 80.767];
   const DEFAULT_ZOOM = 8;
-  const TILE_URL = 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png';
-  const ATTRIBUTION = '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions" target="_blank" rel="noopener">CARTO</a>';
-  console.log('[LotusMap] Leaflet OpenStreetMap pure tile engine loaded v20261101_pure_osm_v9');
+  const IS_FILE_PROTOCOL = typeof window !== 'undefined' && window.location && window.location.protocol === 'file:';
+  // Pure OpenStreetMap tile layer (100% free, no API key required). HOT fallback for file:/// protocol.
+  const TILE_URL = IS_FILE_PROTOCOL 
+    ? 'https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png'
+    : 'https://tile.openstreetmap.org/{z}/{x}/{y}.png';
+  const ATTRIBUTION = '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors';
+  console.log('[LotusMap] Leaflet OpenStreetMap pure tile engine loaded v20261109_pure_osm_v10');
 
   // Palette for multi-package category routes
   const ROUTE_COLORS = [
@@ -1906,14 +1910,24 @@
       });
 
       tileLayer.on('tileerror', () => {
-        // Humanitarian OpenStreetMap fallback if default OSM mirror experiences high traffic
+        // Fallback tile provider if primary OSM mirror experiences rate-limiting or errors
         if (!this._osmFallbackAdded) {
           this._osmFallbackAdded = true;
-          L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
+          const fallbackLayer = L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
             subdomains: 'abc',
             maxZoom: 19,
             attribution: '&copy; OpenStreetMap contributors'
-          }).addTo(this.map);
+          });
+          fallbackLayer.on('tileerror', () => {
+            if (!this._esriFallbackAdded) {
+              this._esriFallbackAdded = true;
+              L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+                maxZoom: 19,
+                attribution: '&copy; Esri &mdash; Source: Esri, DeLorme, NAVTEQ'
+              }).addTo(this.map);
+            }
+          });
+          fallbackLayer.addTo(this.map);
         }
       });
 

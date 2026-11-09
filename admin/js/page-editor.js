@@ -1304,7 +1304,7 @@
             label: 'Real Experiences: Slide 3 (Kaudulla Wild Elephants & Safari Photo)',
             sectionName: '✨ Real Experiences Slides',
             sectionId: 'experiences',
-            defaultUrl: 'assets/images/wildlife/minneriya-elephant-gathering-2.webp',
+            defaultUrl: 'assets/images/wildlife/yala-leopard-1.webp',
             attrType: 'bg-image'
           },
           {
@@ -1312,7 +1312,7 @@
             label: 'Real Experiences: Slide 4 (Scenic Ceylon Highlands Train Photo)',
             sectionName: '✨ Real Experiences Slides',
             sectionId: 'experiences',
-            defaultUrl: 'assets/images/family/scenic-train-ride-2.webp',
+            defaultUrl: 'assets/images/wildlife/yala-leopard-1.webp',
             attrType: 'bg-image'
           },
 

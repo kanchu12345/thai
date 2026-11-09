@@ -255,6 +255,16 @@
 
 
 
+      // Check window.LOTUS_SEED_CATALOG before network fetch (supports file:// and offline instant load)
+      if (typeof window !== 'undefined' && window.LOTUS_SEED_CATALOG && (window.LOTUS_SEED_CATALOG.packages || window.LOTUS_SEED_CATALOG.tours)) {
+        const catData = {
+          categories: window.LOTUS_SEED_CATALOG.categories || {},
+          packages: window.LOTUS_SEED_CATALOG.packages || window.LOTUS_SEED_CATALOG.tours || []
+        };
+        this.saveToCache(catData);
+        return catData;
+      }
+
       try {
 
         const res = await fetch(resolveFallbackPath(fallbackJsonPath));
@@ -433,6 +443,10 @@
 
       }
 
+      if (typeof window !== 'undefined' && window.LOTUS_SEED_CATALOG && window.LOTUS_SEED_CATALOG.destinations && window.LOTUS_SEED_CATALOG.destinations.length > 0) {
+        return window.LOTUS_SEED_CATALOG.destinations;
+      }
+
       try {
 
         const res = await fetch(resolveFallbackPath(fallbackPath));
@@ -485,6 +499,10 @@
 
         }
 
+      }
+
+      if (typeof window !== 'undefined' && window.LOTUS_SEED_CATALOG && (window.LOTUS_SEED_CATALOG.reviews || window.LOTUS_SEED_CATALOG.testimonials)) {
+        return window.LOTUS_SEED_CATALOG.reviews || window.LOTUS_SEED_CATALOG.testimonials || [];
       }
 
       try {
@@ -727,24 +745,26 @@
 
       // Load master seed bundle
 
-      let data = null;
+      let data = (typeof window !== 'undefined' && window.LOTUS_SEED_CATALOG) ? window.LOTUS_SEED_CATALOG : null;
 
-      try {
-
-        const res = await fetch('../data/seed-catalog.json');
-
-        if (res.ok) data = await res.json();
-
-      } catch (e) {
-
+      if (!data) {
         try {
 
-          const res2 = await fetch('data/seed-catalog.json');
+          const res = await fetch('../data/seed-catalog.json');
 
-          if (res2.ok) data = await res2.json();
+          if (res.ok) data = await res.json();
 
-        } catch (e2) {}
+        } catch (e) {
 
+          try {
+
+            const res2 = await fetch('data/seed-catalog.json');
+
+            if (res2.ok) data = await res2.json();
+
+          } catch (e2) {}
+
+        }
       }
 
 
@@ -1126,7 +1146,9 @@
 
       }
 
-
+      if (typeof window !== 'undefined' && window.LOTUS_SEED_CATALOG && window.LOTUS_SEED_CATALOG.team && window.LOTUS_SEED_CATALOG.team.length > 0) {
+        return window.LOTUS_SEED_CATALOG.team;
+      }
 
       try {
 
@@ -1244,6 +1266,10 @@
         } catch (e) {
           console.warn('[LotusFirebase] Firestore success stories fetch failed, using fallback:', e.message);
         }
+      }
+
+      if (typeof window !== 'undefined' && window.LOTUS_SEED_CATALOG && (window.LOTUS_SEED_CATALOG.successStories || window.LOTUS_SEED_CATALOG.success_stories)) {
+        return window.LOTUS_SEED_CATALOG.successStories || window.LOTUS_SEED_CATALOG.success_stories || [];
       }
 
       try {

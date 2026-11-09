@@ -841,20 +841,16 @@
               <span data-cms="contact.span_10">Send Message to Concierge ➔</span>
             </button>
           </form>
-        </div>
 
-      
-      <!-- JOB 2: Dedicated Full-Width Map Section Under the Two Cards -->
-      <section class="contact-map-section" aria-label="Headquarters Location Map" style="margin-top: 3.5rem; margin-bottom: 4rem; clear: both; position: relative; z-index: 5;">
-        <div class="contact-map-wrapper" style="width: 100%; border-radius: 16px; overflow: hidden; border: 1.5px solid #E2E8F0; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
-          
-          <div class="map-touch-helper" id="mapTouchHelper" style="position: absolute; top: 12px; right: 12px; z-index: 400; background: rgba(13, 43, 29, 0.85); color: #FFFFFF; font-size: 0.78rem; font-weight: 600; padding: 6px 14px; border-radius: 9999px; pointer-events: none; backdrop-filter: blur(4px);">
-            <span data-cms="contact.span_11">Tap to interact with map</span>
+          <!-- Headquarters Location Map in Form Card Space -->
+          <div class="contact-map-wrapper" style="width: 100%; height: 330px; margin-top: 1.75rem; border-radius: 12px; overflow: hidden; border: 1.5px solid #E2E8F0; box-shadow: 0 4px 15px rgba(0,0,0,0.05); position: relative;">
+            <div class="map-touch-helper" id="mapTouchHelper" style="position: absolute; top: 12px; right: 12px; z-index: 400; background: rgba(13, 43, 29, 0.85); color: #FFFFFF; font-size: 0.78rem; font-weight: 600; padding: 6px 14px; border-radius: 9999px; pointer-events: none; backdrop-filter: blur(4px);">
+              <span data-cms="contact.span_11">Tap to interact with map</span>
+            </div>
+            <div id="contactMap" style="width: 100%; height: 100%;"></div>
           </div>
-          <div id="contactMap" style="width: 100%; height: 360px;"></div>
         </div>
-      </section>
-    </div>
+      </div>
     </div>
   </main>
 
@@ -1050,9 +1046,21 @@
             touchHelper.style.display = 'none';
           });
         }
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        var contactTileUrl = (window.location && window.location.protocol === 'file:')
+          ? 'https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png'
+          : 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+        var contactTileLayer = L.tileLayer(contactTileUrl, {
           attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener" data-cms="contact.a_40">OpenStreetMap</a> contributors'
-        }).addTo(map);
+        });
+        contactTileLayer.on('tileerror', function() {
+          if (!map._contactFallback) {
+            map._contactFallback = true;
+            L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+              attribution: '&copy; Esri &mdash; Source: Esri, DeLorme, NAVTEQ'
+            }).addTo(map);
+          }
+        });
+        contactTileLayer.addTo(map);
 
         var lotusMarker = L.marker([7.0785, 79.8913]).addTo(map);
         lotusMarker.bindPopup(
