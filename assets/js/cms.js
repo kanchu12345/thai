@@ -1556,7 +1556,8 @@
             const catEl = document.querySelector('.tour-category-sub-walkers');
             if (catEl) catEl.textContent = val;
           } else if (field === 'duration') {
-            const durEl = document.querySelector('.tour-duration-line-walkers span, .tour-duration-line-walkers');
+            const spanEl = document.querySelector('.tour-duration-line-walkers span');
+            const durEl = spanEl || document.querySelector('.tour-duration-line-walkers');
             if (durEl) {
               const n = String(nights || 0).padStart(2, '0');
               const d = String(days || 0).padStart(2, '0');

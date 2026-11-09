@@ -200,12 +200,12 @@ def scan_file(rel_path, seed_data):
         if any(tag in line.lower() for tag in ['<script', '<style', 'class=', 'src=', 'href=', 'xmlns']):
             # Still check inner text if visible
             pass
-        if 'paliforbuddhism@gmail.com' in line:
+        if 'info@lotusceylon.com' in line:
             mistakes.append({
                 'file': rel_path,
                 'line': line_no,
                 'type': 'Security / Prohibited Secondary Email',
-                'detail': 'Found prohibited secondary email paliforbuddhism@gmail.com',
+                'detail': 'Found prohibited secondary email info@lotusceylon.com',
                 'snippet': line.strip()[:100]
             })
         if '..' in line and not '../' in line and not '...' in line:

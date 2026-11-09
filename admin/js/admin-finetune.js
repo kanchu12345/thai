@@ -18,18 +18,19 @@
       docKey: 'siteContent/home',
       file: 'index.html',
       subtabs: [
-        { id: 'hero', label: 'Hero', isLinked: false },
+        { id: 'hero', label: 'Hero & Location Highlights', isLinked: false },
+        { id: 'about', label: 'About & Legacy Credentials', isLinked: false },
         { id: 'why-us', label: 'Why Travel With Us', isLinked: false },
-        { id: 'category-showcase', label: 'Category Showcase', isLinked: true, sourceTab: 'tours', sourceSubtab: 'categories', sourceLabel: 'Tours > Categories' },
-        { id: 'featured-tours', label: 'Featured Tours', isLinked: true, sourceTab: 'tours', sourceSubtab: 'packages', sourceLabel: 'Tours > Packages' },
-        { id: 'destinations', label: 'Destinations', isLinked: true, sourceTab: 'destinations', sourceSubtab: 'destinations-list', sourceLabel: 'Destinations > Destinations list' },
-        { id: 'experiences', label: 'Experiences', isLinked: true, sourceTab: 'experiences', sourceSubtab: 'experiences-list', sourceLabel: 'Experiences > Experiences list' },
-        { id: 'reviews', label: 'Reviews', isLinked: true, sourceTab: 'reviews', sourceSubtab: 'reviews-list', sourceLabel: 'Reviews > Reviews list' },
-        { id: 'gallery', label: 'Gallery', isLinked: true, sourceTab: 'gallery', sourceSubtab: 'gallery-images', sourceLabel: 'Gallery > Gallery Images' },
-        { id: 'news-insights', label: 'News and Insights', isLinked: true, sourceTab: 'blog', sourceSubtab: 'blog-posts', sourceLabel: 'Blog > Blog Posts' },
-        { id: 'success-stories', label: 'Success Stories', isLinked: false, sectionId: 'success-stories' },
-        { id: 'sustainability', label: 'Sustainability', isLinked: false },
-        { id: 'seo', label: 'SEO', isLinked: false, sectionId: 'page-seo' }
+        { id: 'category-showcase', label: 'Category Showcase (linked)', isLinked: true, sourceTab: 'tours', sourceSubtab: 'categories', sourceLabel: 'Tours > Categories' },
+        { id: 'featured-tours', label: 'Featured Tours (linked)', isLinked: true, sourceTab: 'tours', sourceSubtab: 'packages', sourceLabel: 'Tours > Packages' },
+        { id: 'destinations', label: 'Sacred Destinations (linked)', isLinked: true, sourceTab: 'destinations', sourceSubtab: 'destinations-list', sourceLabel: 'Destinations > Destinations list' },
+        { id: 'bespoke', label: 'Tailor-Made & Bespoke Journeys', isLinked: false },
+        { id: 'experiences', label: 'Immersive Experiences (linked)', isLinked: true, sourceTab: 'experiences', sourceSubtab: 'experiences-list', sourceLabel: 'Experiences > Experiences list' },
+        { id: 'reviews', label: 'Traveler Reviews (linked)', isLinked: true, sourceTab: 'reviews', sourceSubtab: 'reviews-list', sourceLabel: 'Reviews > Reviews list' },
+        { id: 'news-insights', label: 'News and Insights (linked)', isLinked: true, sourceTab: 'blog', sourceSubtab: 'blog-posts', sourceLabel: 'Blog > Blog Posts' },
+        { id: 'sustainability', label: 'Sustainability & Conservation', isLinked: false },
+        { id: 'faq', label: 'Frequently Asked Questions (FAQ)', isLinked: false },
+        { id: 'seo', label: 'SEO & Social Meta', isLinked: false, sectionId: 'page-seo' }
       ]
     },
     tours: {
@@ -38,11 +39,11 @@
       docKey: 'siteContent/toursIndex',
       file: 'tours/index.html',
       subtabs: [
-        { id: 'page-content', label: 'Page Content', isLinked: false },
+        { id: 'page-content', label: 'Page Content & Hero', isLinked: false },
         { id: 'categories', label: 'Categories', isLinked: false, sectionId: 'categories' },
-        { id: 'packages', label: 'Packages', isLinked: false, sectionId: 'packages' },
+        { id: 'packages', label: 'Packages (All 29 Packages)', isLinked: false, sectionId: 'packages' },
         { id: 'trip-finder', label: 'Trip Finder options', isLinked: false, sectionId: 'trip-finder' },
-        { id: 'seo', label: 'SEO', isLinked: false, sectionId: 'page-seo' }
+        { id: 'seo', label: 'SEO & Social Meta', isLinked: false, sectionId: 'page-seo' }
       ]
     },
     destinations: {
@@ -51,9 +52,9 @@
       docKey: 'siteContent/destinations',
       file: 'destinations.html',
       subtabs: [
-        { id: 'page-content', label: 'Page Content', isLinked: false },
-        { id: 'destinations-list', label: 'Destinations list', isLinked: false, sectionId: 'destinations' },
-        { id: 'seo', label: 'SEO', isLinked: false, sectionId: 'page-seo' }
+        { id: 'page-content', label: 'Page Content & Hero', isLinked: false },
+        { id: 'destinations-list', label: 'Destinations list (12 Curated)', isLinked: false, sectionId: 'destinations' },
+        { id: 'seo', label: 'SEO & Social Meta', isLinked: false, sectionId: 'page-seo' }
       ]
     },
     experiences: {
@@ -62,9 +63,9 @@
       docKey: 'siteContent/experiences',
       file: 'experiences.html',
       subtabs: [
-        { id: 'page-content', label: 'Page Content', isLinked: false },
+        { id: 'page-content', label: 'Page Content & Hero', isLinked: false },
         { id: 'experiences-list', label: 'Experiences list', isLinked: false, sectionId: 'experiences' },
-        { id: 'seo', label: 'SEO', isLinked: false, sectionId: 'page-seo' }
+        { id: 'seo', label: 'SEO & Social Meta', isLinked: false, sectionId: 'page-seo' }
       ]
     },
     about: {
@@ -73,9 +74,9 @@
       docKey: 'siteContent/about',
       file: 'about.html',
       subtabs: [
-        { id: 'page-content', label: 'Page Content', isLinked: false },
-        { id: 'team', label: 'Team Members', isLinked: false, sectionId: 'team' },
-        { id: 'seo', label: 'SEO', isLinked: false, sectionId: 'page-seo' }
+        { id: 'page-content', label: 'Page Content & Story', isLinked: false },
+        { id: 'team', label: 'Team Members & Leadership', isLinked: false, sectionId: 'team' },
+        { id: 'seo', label: 'SEO & Social Meta', isLinked: false, sectionId: 'page-seo' }
       ]
     },
     gallery: {
@@ -84,9 +85,9 @@
       docKey: 'siteContent/gallery',
       file: 'gallery.html',
       subtabs: [
-        { id: 'page-content', label: 'Page Content', isLinked: false },
-        { id: 'gallery-images', label: 'Gallery Images', isLinked: false, sectionId: 'gallery' },
-        { id: 'seo', label: 'SEO', isLinked: false, sectionId: 'page-seo' }
+        { id: 'page-content', label: 'Page Content & Hero', isLinked: false },
+        { id: 'gallery-images', label: 'Gallery Showcase Images', isLinked: false, sectionId: 'gallery' },
+        { id: 'seo', label: 'SEO & Social Meta', isLinked: false, sectionId: 'page-seo' }
       ]
     },
     reviews: {
@@ -95,9 +96,9 @@
       docKey: 'siteContent/reviews',
       file: 'reviews.html',
       subtabs: [
-        { id: 'page-content', label: 'Page Content', isLinked: false },
-        { id: 'reviews-list', label: 'Reviews list', isLinked: false, sectionId: 'reviews' },
-        { id: 'seo', label: 'SEO', isLinked: false, sectionId: 'page-seo' }
+        { id: 'page-content', label: 'Page Content & Hero', isLinked: false },
+        { id: 'reviews-list', label: 'Verified Reviews list', isLinked: false, sectionId: 'reviews' },
+        { id: 'seo', label: 'SEO & Social Meta', isLinked: false, sectionId: 'page-seo' }
       ]
     },
     blog: {
@@ -106,9 +107,9 @@
       docKey: 'siteContent/blog',
       file: 'blog.html',
       subtabs: [
-        { id: 'page-content', label: 'Page Content', isLinked: false },
-        { id: 'blog-posts', label: 'Blog Posts', isLinked: false, sectionId: 'blog-posts' },
-        { id: 'seo', label: 'SEO', isLinked: false, sectionId: 'page-seo' }
+        { id: 'page-content', label: 'Page Content & Hero', isLinked: false },
+        { id: 'blog-posts', label: 'Editorial Blog Posts', isLinked: false, sectionId: 'blog-posts' },
+        { id: 'seo', label: 'SEO & Social Meta', isLinked: false, sectionId: 'page-seo' }
       ]
     },
     contact: {
@@ -117,27 +118,37 @@
       docKey: 'siteContent/contact',
       file: 'contact.html',
       subtabs: [
-        { id: 'page-content', label: 'Page Content', isLinked: false },
-        { id: 'details', label: 'Contact Details and Social Links', isLinked: false, sectionId: 'contact-details' },
-        { id: 'forms', label: 'Inquiry form texts', isLinked: false, sectionId: 'forms-editor' },
-        { id: 'inquiries', label: 'Customer Inquiries', isLinked: false, sectionId: 'inquiries' },
-        { id: 'seo', label: 'SEO', isLinked: false, sectionId: 'page-seo' }
+        { id: 'page-content', label: 'Page Content & Hero', isLinked: false },
+        { id: 'details', label: 'Contact Details & Direct Channels', isLinked: false, sectionId: 'contact-details' },
+        { id: 'seo', label: 'SEO & Social Meta', isLinked: false, sectionId: 'page-seo' }
       ]
     },
-    site: {
-      id: 'site',
-      title: 'Site',
+    forms: {
+      id: 'forms',
+      title: 'Inquiry Forms',
       subtabs: [
-        { id: 'branding', label: 'Logo & Branding', isLinked: false, sectionId: 'settings', scrollTarget: 'branding' },
-        { id: 'header-footer', label: 'Header and Footer text', isLinked: false, sectionId: 'settings', scrollTarget: 'footer' },
-        { id: 'social', label: 'Social Links', isLinked: false, sectionId: 'settings', scrollTarget: 'social' },
-        { id: 'media', label: 'Media Library', isLinked: false, sectionId: 'media' },
-        { id: 'github', label: 'Publish / Export to GitHub', isLinked: false, sectionId: 'github' },
-        { id: 'users', label: 'Admin Account & Users', isLinked: false, sectionId: 'users' },
-        { id: 'advanced', label: 'Advanced & Backups', isLinked: false, sectionId: 'settings', scrollTarget: 'seeder' }
+        { id: 'detailed', label: 'Detailed Bespoke Inquiry Form', isLinked: false, sectionId: 'forms-editor', formType: 'detailed' },
+        { id: 'quick', label: 'Quick Consultation Form', isLinked: false, sectionId: 'forms-editor', formType: 'quick' },
+        { id: 'inbox', label: 'Customer Inquiries Inbox', isLinked: false, sectionId: 'inquiries' }
+      ]
+    },
+    global: {
+      id: 'global',
+      title: 'Global: Header/Footer/Social/SEO',
+      subtabs: [
+        { id: 'branding', label: 'Logo & Branding (Locked Credit)', isLinked: false, sectionId: 'settings', scrollTarget: 'branding' },
+        { id: 'header-footer', label: 'Header & Footer text', isLinked: false, sectionId: 'settings', scrollTarget: 'footer' },
+        { id: 'social', label: 'Social & Chat Links', isLinked: false, sectionId: 'settings', scrollTarget: 'social' },
+        { id: 'media', label: 'Media Library (Cloudinary)', isLinked: false, sectionId: 'media' },
+        { id: 'users', label: 'Admin Accounts & Roles', isLinked: false, sectionId: 'users' },
+        { id: 'github', label: 'Publish / Sync Status', isLinked: false, sectionId: 'github' }
       ]
     }
   };
+
+  // Backward compatibility alias for legacy 'site' tab
+  PAGE_TABS.site = PAGE_TABS.global;
+  PAGE_TABS.forms_alias = PAGE_TABS.forms;
 
   window.PAGE_TABS = PAGE_TABS;
 

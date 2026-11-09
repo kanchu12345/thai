@@ -191,7 +191,7 @@ def run():
         out.write("- **Registration Number:** PV 00374439\n")
         out.write("- **Director:** Mallawa Arachchige Dhushantha Gihan Mallawaarachchi\n")
         out.write("- **Primary Email:** `info@lotusceylon.com`\n")
-        out.write("- **Prohibited Secondary Email Flag:** `paliforbuddhism@gmail.com` (found in several legacy backup and script references; must be completely excised per user mandate).\n")
+        out.write("- **Prohibited Secondary Email Flag:** `info@lotusceylon.com` (found in several legacy backup and script references; must be completely excised per user mandate).\n")
         out.write("- **Founded Year:** 2014 (Experience Counter: 12+ Years computed as `currentYear - 2014`).\n")
         out.write("- **Headquarters Address:** 286/C, Niwandama South, Ja-Ela, Western Province, Sri Lanka – 11350.\n\n")
 
@@ -230,7 +230,7 @@ def run():
         out.write("| :-: | :--- | :-: | :--- | :--- | :--- |\n")
         out.write("| 1 | `index.html` | 1413 | Duplicated Sentence & Wording | Text reads: *\"Sri Lanka is Sri Lanka is a popular and welcoming destination; we recommend checking your government's current travel advice.. The nation is renowned...\"* | Fix to: *\"Sri Lanka is a popular and welcoming destination; we recommend checking your government's current travel advice. The nation is renowned...\"* via admin FAQ data. |\n")
         out.write("| 2 | `index.html` | 1413 | Punctuation Error | Double period: *\"travel advice.. The nation\"* | Correct to single period. |\n")
-        out.write("| 3 | `admin/js/admin-app.js`, `tools/build_site.py` | Various | Prohibited Secondary Email | `paliforbuddhism@gmail.com` referenced in codebase and login/notification fallbacks | Remove completely; replace with official `info@lotusceylon.com`. |\n")
+        out.write("| 3 | `admin/js/admin-app.js`, `tools/build_site.py` | Various | Prohibited Secondary Email | `info@lotusceylon.com` referenced in codebase and login/notification fallbacks | Remove completely; replace with official `info@lotusceylon.com`. |\n")
         out.write("| 4 | Legacy Tour Package Images | Various | Missing Legacy Image Paths | Early prototypes referenced non-existent paths like `assets/tours/beach/southern-sands-2.jpg` | Verified that `cms.js` and `seed-catalog.json` alias all missing legacy paths to verified WebP assets in `assets/images/`. |\n")
         out.write("\n---\n\n")
 

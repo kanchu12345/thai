@@ -3454,20 +3454,29 @@
       const title = document.getElementById('inspectorTitle');
       if (badge) badge.textContent = '📦 Tour Live Editor';
 
+      const extractText = (val, fallback = '') => {
+        if (!val) return fallback;
+        if (typeof val === 'string') return val;
+        if (typeof val === 'object') {
+          return val.en || val[Object.keys(val)[0]] || fallback;
+        }
+        return String(val);
+      };
+
       const pkg = this.activeDocData ||
                   (window.AdminApp && window.AdminApp.packages && window.AdminApp.packages.find(p => p.slug === slug)) ||
                   { slug: slug, title: slug.replace(/-/g, ' ') };
 
-      const titleVal = (pkg.title && typeof pkg.title === 'object' ? pkg.title.en : (pkg.title || slug));
+      const titleVal = extractText(pkg.title, slug);
       if (title) title.textContent = titleVal;
 
-      const taglineVal = pkg.tagline || '';
-      const badgeVal = pkg.badge || 'Recommended for Beach Leisure, Relaxation';
+      const taglineVal = extractText(pkg.tagline, '');
+      const badgeVal = extractText(pkg.badge, 'Recommended for Beach Leisure, Relaxation');
       const nightsVal = typeof pkg.nights !== 'undefined' ? pkg.nights : 9;
       const daysVal = typeof pkg.days !== 'undefined' ? pkg.days : 10;
       const priceVal = typeof pkg.price_from !== 'undefined' ? pkg.price_from : 2280;
-      const categoryVal = pkg.category_slug || pkg.category || '';
-      const overviewVal = pkg.overview || pkg.shortDescription || '';
+      const categoryVal = extractText(pkg.category_slug || pkg.category, '');
+      const overviewVal = extractText(pkg.overview || pkg.shortDescription, '');
       const heroImgVal = pkg.hero_image || pkg.image || 'assets/images/beach/mirissa-1.webp';
       const itinerary = Array.isArray(pkg.itinerary) ? pkg.itinerary : [];
 
@@ -3482,9 +3491,9 @@
       if (itinerary.length > 0) {
         itineraryHtml = itinerary.map((day, idx) => {
           const dayNum = day.day || (idx + 1);
-          const dayTitle = day.title || '';
-          const dayDesc = day.description || '';
-          const overnight = day.overnight || '';
+          const dayTitle = extractText(day.title, '');
+          const dayDesc = extractText(day.description, '');
+          const overnight = extractText(day.overnight, '');
           return `
             <div class="tour-itinerary-item" style="border: 1px solid #E2E8F0; border-radius: 8px; margin-bottom: 8px; background: #FFFFFF; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.04);">
               <div style="display: flex; align-items: center; justify-content: space-between; padding: 8px 12px; background: #F8FAFC; border-bottom: 1px solid #E2E8F0; cursor: pointer;" onclick="PageEditor.toggleItineraryItem(${idx})">
@@ -3652,7 +3661,7 @@
     },
 
     handleTourLiveInput(slug, field, value) {
-      this.markDirty();
+      this.markUnsavedChanges();
       if (!this.activeDocData) this.activeDocData = {};
       this.activeDocData[field] = value;
 
@@ -3675,7 +3684,7 @@
     handleTourDurationInput(slug) {
       const nights = parseInt(document.getElementById('tourInput_nights').value, 10) || 0;
       const days = parseInt(document.getElementById('tourInput_days').value, 10) || 0;
-      this.markDirty();
+      this.markUnsavedChanges();
       if (!this.activeDocData) this.activeDocData = {};
       this.activeDocData.nights = nights;
       this.activeDocData.days = days;
@@ -3696,7 +3705,7 @@
     },
 
     updateTourHeroImage(slug, url) {
-      this.markDirty();
+      this.markUnsavedChanges();
       if (!this.activeDocData) this.activeDocData = {};
       this.activeDocData.hero_image = url;
       this.activeDocData.image = url;
@@ -3714,7 +3723,7 @@
     },
 
     handleTourItineraryInput(slug, dayIndex, dayField, value) {
-      this.markDirty();
+      this.markUnsavedChanges();
       if (!this.activeDocData) this.activeDocData = {};
       if (!Array.isArray(this.activeDocData.itinerary)) this.activeDocData.itinerary = [];
       if (!this.activeDocData.itinerary[dayIndex]) this.activeDocData.itinerary[dayIndex] = {};

@@ -40,8 +40,8 @@
         "path": "projects/louterst-36b64/databases/(default)/documents/siteGlobal/contact",
         "data": {
           "status": "published",
-          "emailMailto": "mailto:paliforbuddhism@gmail.com",
-          "email": "paliforbuddhism@gmail.com",
+          "emailMailto": "mailto:info@lotusceylon.com",
+          "email": "info@lotusceylon.com",
           "emailLabel": "Email Inquiries",
           "wechat": "LotusCeylonTours",
           "line": "@lotusceylon",
@@ -76,7 +76,7 @@
           "sortOrder": 2,
           "hotline": "+94 71 54 22 384",
           "status": "published",
-          "email": "paliforbuddhism@gmail.com",
+          "email": "info@lotusceylon.com",
           "inquireButtonText": "Inquire",
           "tagline": "Transformative Sri Lanka Travel Since 2014",
           "planJourneyText": "Plan My Bespoke Journey ➔"
@@ -148,7 +148,7 @@
         "status": "published",
         "tagline": "Transformative Sri Lanka Travel Since 2014",
         "sortOrder": 2,
-        "email": "paliforbuddhism@gmail.com",
+        "email": "info@lotusceylon.com",
         "planJourneyText": "Plan My Bespoke Journey ➔",
         "hotline": "+94 71 54 22 384",
         "inquireButtonText": "Inquire"
@@ -170,11 +170,11 @@
         "whatsappLink": "https://wa.me/94715422384?text=Hello%20Lotus%20Ceylon!%20I%20would%20like%20to%20inquire%20about%20a%20private%20tour.",
         "emailLabel": "Email Inquiries",
         "status": "published",
-        "emailMailto": "mailto:paliforbuddhism@gmail.com",
+        "emailMailto": "mailto:info@lotusceylon.com",
         "phone": "+94 71 54 22 384",
         "sortOrder": 4,
         "line": "@lotusceylon",
-        "email": "paliforbuddhism@gmail.com",
+        "email": "info@lotusceylon.com",
         "whatsappUrl": "https://wa.me/94715422384?text=Hello%20Lotus%20Ceylon!%20I%20would%20like%20to%20inquire%20about%20a%20private%20tour.",
         "wechat": "LotusCeylonTours",
         "address": "286/C, Niwandama South, Ja-Ela, Sri Lanka – 11350"
@@ -10907,7 +10907,7 @@
           "phone": "+94 71 54 22 384",
           "phoneRaw": "94715422384",
           "email": "inquiry@lotusceylon.com",
-          "secondaryEmail": "paliforbuddhism@gmail.com",
+          "secondaryEmail": "info@lotusceylon.com",
           "address": {
             "line1": "286/C, Niwandama South",
             "city": "Ja-Ela",

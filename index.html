@@ -5,8 +5,8 @@
 <head>
 <meta content="Built by Infinite Design — https://infiniteweb.dev/" name="generator"/>
 <meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport">
-<meta content="#16361D" name="theme-color"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<meta content="#16361D" name="theme-color">
 <!-- Preload Critical LCP Hero Image -->
 <link as="image" fetchpriority="high" href="./assets/images/home/hero-sigiriya-aerial-portrait.webp" media="(max-width: 768px)" rel="preload"/>
 <link as="image" fetchpriority="high" href="./assets/images/home/hero-sigiriya-aerial-1.webp" media="(min-width: 769px)" rel="preload"/>
@@ -15,8 +15,8 @@
 <link data-cms-link="home.seo.canonical" href="https://lotusceylon.com/" rel="canonical"/>
 <!-- Open Graph & Social Sharing -->
 <meta content="website" data-cms="home.seo.og_type" property="og:type"/>
-<meta content="Lotus Ceylon International Tours" data-cms="home.seo.og_site_name" property="og:site_name">
-<meta content="Sri Lanka Tours | Lotus Ceylon Luxury Holidays Official Site" data-cms="home.seo.og_title" property="og:title"/>
+<meta content="Lotus Ceylon International Tours" data-cms="home.seo.og_site_name" property="og:site_name"/>
+<meta content="Sri Lanka Tours | Lotus Ceylon Luxury Holidays Official Site" data-cms="home.seo.og_title" property="og:title">
 <meta content="Welcome to Lotus Ceylon, Sri Lanka's premier destination management company. Curated luxury travel packages, tailor-made holidays, wildlife safaris, and cultural tours." data-cms="home.seo.og_description" property="og:description"/>
 <meta content="https://lotusceylon.com/" data-cms-link="home.seo.canonical" property="og:url"/>
 <meta content="https://lotusceylon.com/assets/images/hero/sigiriya-rock-fortress-1.webp" data-cms-img="home.seo.og_image" property="og:image"/>
@@ -80,7 +80,7 @@
   </script>
 </meta></meta></head>
 <body data-cms-page="siteContent/home">
-<a class="skip-to-content-link" href="#mainContent">Skip to main content</a>
+<a class="skip-to-content-link" data-cms="siteGlobal.skipToContent" href="#mainContent">Skip to main content</a>
 <!-- ==========================================================================
        HEADER & NAVIGATION (LOTUS CEYLON FLOATING STYLE)
        ========================================================================== -->
@@ -505,7 +505,7 @@
 <!-- Luxury Trust Seal Card -->
 <div class="about-experience-seal">
 <div class="seal-text">
-<strong>Pure Journeys</strong>
+<strong data-cms="home.about.strong_1">Pure Journeys</strong>
 <span data-cms="home.span_13">100% Bespoke Luxury</span>
 </div>
 </div>
@@ -909,7 +909,7 @@
 <!-- Section Watermark Header -->
 <div class="section-watermark-header">
 <p class="watermark-heading" data-cms="home.p_8">sacred destinations</p>
-<div class="sacred-badge-tag" style="margin-bottom: 0.6rem;">
+<div class="sacred-badge-tag" data-cms="home.destinations.div_1" style="margin-bottom: 0.6rem;">
 SACRED DESTINATIONS </div>
 <h2 class="section-header-title" data-cms="home.heading_5">Sacred Footsteps and Living Landscapes</h2>
 </div>
@@ -1368,7 +1368,7 @@ SACRED DESTINATIONS </div>
 <span data-cms="home.span_68">Best time to visit Sri Lanka?</span>
 <span class="accordion-icon" data-cms="home.faq.span_2">+</span>
 </button>
-<div class="accordion-body">
+<div class="accordion-body" data-cms="home.faq.div_1">
               You can visit Sri Lanka year-round! As a tropical island, Sri Lanka enjoys abundant sunshine and warm temperatures throughout the year. The island experiences two gentle monsoon seasons: the southwest monsoon (May to September) makes the East and North coasts ideal, while the northeast monsoon (November to March) makes the West and South beaches sunny and dry.
             </div>
 </div>
@@ -1378,8 +1378,8 @@ SACRED DESTINATIONS </div>
 <span data-cms="home.span_69">Is it safe to travel to Sri Lanka?</span>
 <span class="accordion-icon" data-cms="home.faq.span_3">+</span>
 </button>
-<div class="accordion-body">
-              Sri Lanka is Sri Lanka is a popular and welcoming destination; we recommend checking your government's current travel advice.. The nation is renowned for its hospitable people, tranquil Buddhist cultural traditions, and safe travel corridors. Lotus Ceylon provides government-licensed National Tourist Guide Lecturers, modern private air-conditioned touring vehicles, and direct coordinator support via WhatsApp, WeChat, and LINE for complete peace of mind.
+<div class="accordion-body" data-cms="home.faq.div_2">
+              Sri Lanka is a popular and welcoming destination; we recommend checking your government's current travel advice. The nation is renowned for its hospitable people, tranquil Buddhist cultural traditions, and safe travel corridors. Lotus Ceylon provides government-licensed National Tourist Guide Lecturers, modern private air-conditioned touring vehicles, and direct coordinator support via WhatsApp, WeChat, and LINE for complete peace of mind.
             </div>
 </div>
 <!-- Item 3 -->
@@ -1388,7 +1388,7 @@ SACRED DESTINATIONS </div>
 <span data-cms="home.span_70">Do I need a visa to enter Sri Lanka?</span>
 <span class="accordion-icon" data-cms="home.faq.span_4">+</span>
 </button>
-<div class="accordion-body">
+<div class="accordion-body" data-cms="home.faq.div_3">
               Yes, most international travelers require an Electronic Travel Authorization (ETA) prior to arrival. Your passport should have at least 6 months of validity from your arrival date. Visas can be easily applied online via the official government immigration portal (www.eta.gov.lk), and our team provides visa guidance to all our traveling guests.
             </div>
 </div>
@@ -1398,7 +1398,7 @@ SACRED DESTINATIONS </div>
 <span data-cms="home.span_71">What should I pack for my trip?</span>
 <span class="accordion-icon" data-cms="home.faq.span_5">+</span>
 </button>
-<div class="accordion-body">
+<div class="accordion-body" data-cms="home.faq.div_4">
               Lightweight cotton or linen attire is recommended for the warm coastal and cultural regions. When traveling into the central Hill Country (Nuwara Eliya, Ella), pack light sweaters or cardigans as evening temperatures can dip to 12°C. When visiting sacred Buddhist or Hindu temples, shoulders and knees must be respectfully covered.
             </div>
 </div>
@@ -1408,7 +1408,7 @@ SACRED DESTINATIONS </div>
 <span data-cms="home.span_72">What currency is used and are credit cards accepted?</span>
 <span class="accordion-icon" data-cms="home.faq.span_6">+</span>
 </button>
-<div class="accordion-body">
+<div class="accordion-body" data-cms="home.faq.div_5">
               The Sri Lankan Rupee (LKR) is the local currency. Major international credit cards (Visa, MasterCard, and Amex) are widely accepted at hotels, boutique restaurants, and shopping centers throughout the island. ATMs are readily accessible in all major towns.
             </div>
 </div>
@@ -1418,7 +1418,7 @@ SACRED DESTINATIONS </div>
 <span data-cms="home.span_73">Why should I book through a professional tour operator?</span>
 <span class="accordion-icon" data-cms="home.faq.span_7">+</span>
 </button>
-<div class="accordion-body">
+<div class="accordion-body" data-cms="home.faq.div_6">
               Sri Lanka is an experiential touring destination where local road navigation, VIP ticket access to national parks, train reservations, and vetted boutique hotels require established local connections. Lotus Ceylon eliminates logistic stress, guarantees pre-reserved scenic train seats, and offers dedicated chauffeur guides.
             </div>
 </div>
