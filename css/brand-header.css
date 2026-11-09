@@ -3004,10 +3004,7 @@ body {
 }
 
 .story-badge-group {
-  display: inline-flex !important;
-  align-items: center !important;
-  gap: 0.55rem !important;
-  flex-wrap: wrap !important;
+  display: none !important;
 }
 
 /* Sacred Sites / Category Badge Pill */
@@ -3120,41 +3117,7 @@ body {
 }
 
 .story-title-col {
-  flex: 1 1 auto !important;
-  min-width: 0 !important;
-}
-
-/* Tour Location / Route Line */
-.story-location-row {
-  display: inline-flex !important;
-  align-items: center !important;
-  gap: 5px !important;
-  font-family: 'DM Sans', sans-serif !important;
-  font-size: 0.80rem !important;
-  color: #F3EBDD !important;
-  font-weight: 600 !important;
-  margin-bottom: 0.35rem !important;
-  letter-spacing: 0.03em !important;
-  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.8) !important;
-  transition: opacity 0.25s ease, transform 0.25s ease !important;
-}
-
-.story-location-row svg {
-  color: #F6C85F !important;
-  flex-shrink: 0 !important;
-}
-
-/* Main Topic Heading */
-.story-title {
-  font-family: 'DM Serif Display', Georgia, serif !important;
-  font-size: clamp(1.45rem, 2.4vw, 1.95rem) !important;
-  font-weight: 700 !important;
-  color: #FFFFFF !important;
-  line-height: 1.18 !important;
-  margin: 0 !important;
-  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.9) !important;
-  letter-spacing: 0.01em !important;
-  transition: opacity 0.25s ease, transform 0.25s ease !important;
+  display: none !important;
 }
 
 /* Slider Controls & Navigation */
@@ -3162,6 +3125,7 @@ body {
   display: flex !important;
   align-items: center !important;
   flex-shrink: 0 !important;
+  margin-left: auto !important;
 }
 
 .story-nav-group {
@@ -3275,7 +3239,7 @@ body {
     gap: 6px !important;
   }
   .story-meta-title {
-    display: none !important;
+    display: inline-block !important;
   }
   .story-counter {
     font-size: 0.70rem !important;
