@@ -3333,8 +3333,10 @@ body {
 /* ==============================================================================
  * LOTUS CEYLON - REAL EXPERIENCES / GUEST TESTIMONIALS SLIDER
  * Full-width panoramic background cross-fade (Full Color & High Clarity),
- * Luxury Frosted Glass Card for 100% Text Readability & Contrast,
- * Side Circular Navigation, and Feathered Edge Transitions
+/* ==============================================================================
+ * REAL EXPERIENCES / GUEST TESTIMONIALS SLIDER SECTION (REDESIGNED)
+ * Open Panoramic Scenic Background with Floating Typography & Minimalist Controls
+ * (Matching Client Reference Image 2: No Opaque Box, Crisp Separation, Circular Outline Arrows)
  * ============================================================================== */
 .real-experiences-sec {
   position: relative !important;
@@ -3345,16 +3347,16 @@ body {
   flex-direction: column !important;
   align-items: center !important;
   justify-content: center !important;
-  padding: 85px 24px 85px !important;
+  padding: clamp(60px, 6vw, 100px) 24px !important;
   box-sizing: border-box !important;
-  background: linear-gradient(180deg, #F1E9E1 0%, #FAF6F2 20%, #F5EFEB 75%, #280C17 100%) !important;
-  color: #1C1B1F !important;
+  background: #1C1B1F !important;
+  color: #FFFFFF !important;
   border: none !important;
   margin-top: -1px !important;
   margin-bottom: -1px !important;
 }
 
-/* Panoramic Background Layers (Vivid, High-Definition, No Bleaching Washout) */
+/* Panoramic Background Layers (Vivid, High-Definition, Beautiful Scenic View Unblocked) */
 .real-exp-bg-layers {
   position: absolute !important;
   top: 0 !important;
@@ -3377,11 +3379,7 @@ body {
   opacity: 0 !important;
   transition: opacity 1.2s ease-in-out !important;
   z-index: 1 !important;
-  image-rendering: -webkit-optimize-contrast !important;
-  filter: brightness(0.97) contrast(1.04) saturate(1.06) !important;
-  /* Feather only the top 8% and bottom 8% so section edges dissolve seamlessly into adjacent sections, while 84% remains 100% crisp & vivid */
-  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.85) 8%, rgba(0,0,0,1) 16%, rgba(0,0,0,1) 84%, rgba(0,0,0,0.85) 92%, transparent 100%) !important;
-  mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.85) 8%, rgba(0,0,0,1) 16%, rgba(0,0,0,1) 84%, rgba(0,0,0,0.85) 92%, transparent 100%) !important;
+  filter: brightness(0.88) contrast(1.05) saturate(1.08) !important;
 }
 
 .real-exp-bg-layer.is-active {
@@ -3393,72 +3391,74 @@ body {
 .real-experiences-inner {
   position: relative !important;
   z-index: 4 !important;
-  max-width: 1020px !important;
+  max-width: 1140px !important;
   width: 100% !important;
   margin: 0 auto !important;
   text-align: center !important;
 }
 
-/* Section Header: Luxury Watermark + Bold Dark Heading with Contrast Shadow */
+/* Section Header: Crisp Watermark + Clean White Title (No Blurry Glow) */
 .real-exp-header {
   position: relative !important;
   text-align: center !important;
-  margin-bottom: 0 !important;
+  margin-bottom: clamp(1rem, 2vw, 2rem) !important;
 }
 
 .real-exp-header .watermark-heading {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
-  font-size: clamp(56px, 9.2vw, 130px) !important;
+  font-family: var(--font-main, 'DM Sans', sans-serif) !important;
+  font-size: clamp(48px, 8.5vw, 120px) !important;
   font-weight: 700 !important;
-  color: rgba(201, 84, 81, 0.30) !important;
-  text-shadow: 0 2px 10px rgba(255, 255, 255, 0.95), 0 1px 3px rgba(255, 255, 255, 0.9) !important;
+  color: rgba(255, 255, 255, 0.16) !important;
+  text-shadow: none !important;
+  filter: none !important;
   opacity: 1 !important;
   text-align: center !important;
   text-transform: lowercase !important;
   line-height: 1 !important;
   letter-spacing: -0.02em !important;
-  margin: 0 auto clamp(0.65rem, 1.4vw, 1.35rem) !important;
+  margin: 0 auto clamp(0.5rem, 1.2vw, 1.2rem) !important;
   user-select: none !important;
   pointer-events: none !important;
+  white-space: nowrap !important;
 }
 
 .real-exp-header .section-header-title {
   position: relative !important;
   z-index: 2 !important;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  font-family: var(--font-heading, 'Playfair Display', Georgia, serif) !important;
   font-size: clamp(28px, 3.8vw, 44px) !important;
-  font-weight: 800 !important;
-  color: #0A192F !important;
+  font-weight: 700 !important;
+  color: #FFFFFF !important;
   letter-spacing: -0.01em !important;
   margin-top: 0 !important;
   margin-bottom: 0 !important;
   text-align: center !important;
-  text-shadow: 0 2px 14px rgba(255, 255, 255, 0.95), 0 1px 4px rgba(255, 255, 255, 0.9) !important;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6) !important;
 }
 
-/* Carousel Slider Wrap with side navigation buttons */
+/* Carousel Slider Wrap with wide spacing for floating side circular arrows */
 .real-exp-slider-wrap {
   position: relative !important;
-  margin-top: 2.4rem !important;
-  padding: 0 45px !important;
+  margin-top: clamp(1rem, 1.8vw, 2.2rem) !important;
+  padding: 0 clamp(40px, 6vw, 80px) !important;
   box-sizing: border-box !important;
 }
 
-/* LUXURY FROSTED GLASS TESTIMONIAL CARD
- * Provides guaranteed 100% contrast & crystal-clear readability on ANY background photo
+/* TRANSPARENT FLOATING TESTIMONIAL CONTENT
+ * Completely eliminates the solid white box backdrop so the background photo is 100% visible
  */
 .real-exp-slides-container {
   position: relative !important;
-  min-height: 200px !important;
-  max-width: 860px !important;
+  min-height: 180px !important;
+  max-width: 900px !important;
   margin: 0 auto !important;
-  padding: 40px 48px 34px !important;
-  background: rgba(255, 255, 255, 0.92) !important;
-  backdrop-filter: blur(20px) saturate(180%) !important;
-  -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
-  border-radius: 22px !important;
-  border: 1px solid rgba(255, 255, 255, 0.9) !important;
-  box-shadow: 0 20px 45px rgba(0, 43, 73, 0.14), 0 4px 14px rgba(0, 0, 0, 0.05) !important;
+  padding: 10px 20px !important;
+  background: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border-radius: 0 !important;
+  border: none !important;
+  box-shadow: none !important;
   box-sizing: border-box !important;
   display: flex !important;
   align-items: center !important;
@@ -3481,58 +3481,63 @@ body {
 }
 
 .real-exp-quote-title {
-  font-family: 'Playfair Display', Georgia, 'Times New Roman', serif !important;
-  font-size: clamp(21px, 2.3vw, 26px) !important;
+  font-family: var(--font-heading, 'Playfair Display', Georgia, serif) !important;
+  font-size: clamp(22px, 2.6vw, 32px) !important;
   font-weight: 700 !important;
-  color: #0A192F !important;
+  color: #FFFFFF !important;
   margin: 0 auto 16px !important;
   line-height: 1.35 !important;
   text-align: center !important;
-  text-shadow: none !important;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.75), 0 1px 4px rgba(0, 0, 0, 0.9) !important;
+  letter-spacing: -0.01em !important;
 }
 
 .real-exp-quote-body {
-  font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
-  font-size: clamp(15px, 1.15vw, 16.5px) !important;
+  font-family: var(--font-main, 'Plus Jakarta Sans', 'DM Sans', sans-serif) !important;
+  font-size: clamp(15px, 1.2vw, 17.5px) !important;
   line-height: 1.85 !important;
-  color: #1E293B !important;
-  max-width: 780px !important;
-  margin: 0 auto 20px !important;
-  font-weight: 450 !important;
+  color: rgba(255, 255, 255, 0.94) !important;
+  max-width: 820px !important;
+  margin: 0 auto 24px !important;
+  font-weight: 400 !important;
   text-align: center !important;
-  text-shadow: none !important;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8), 0 1px 3px rgba(0, 0, 0, 0.95) !important;
 }
 
 .real-exp-author-name {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
-  font-size: 15.5px !important;
+  font-family: var(--font-main, 'Inter', 'DM Sans', sans-serif) !important;
+  font-size: clamp(14px, 1.1vw, 16px) !important;
   font-weight: 700 !important;
-  color: #832729 !important;
-  letter-spacing: 0.02em !important;
+  color: #F5C842 !important; /* Elegant gold accent */
+  letter-spacing: 0.04em !important;
   margin-bottom: 6px !important;
   text-align: center !important;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.85) !important;
 }
 
 .real-exp-tour-meta {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
-  font-size: 13.5px !important;
-  color: #B87314 !important;
-  font-weight: 600 !important;
+  font-family: var(--font-main, 'Inter', 'DM Sans', sans-serif) !important;
+  font-size: clamp(12.5px, 0.95vw, 14px) !important;
+  color: rgba(255, 255, 255, 0.82) !important;
+  font-weight: 500 !important;
   letter-spacing: 0.03em !important;
   text-align: center !important;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.8) !important;
 }
 
-/* Side Circular Navigation Buttons flanking the card */
+/* Side Circular Outline Navigation Buttons (Matching Client Reference Image 2) */
 .real-exp-nav-btn {
   position: absolute !important;
   top: 50% !important;
   transform: translateY(-50%) !important;
-  width: 48px !important;
-  height: 48px !important;
+  width: 50px !important;
+  height: 50px !important;
   border-radius: 50% !important;
-  border: 1.5px solid rgba(212, 175, 55, 0.65) !important;
-  background: #FFFFFF !important;
-  color: #0A192F !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.65) !important;
+  background: rgba(0, 0, 0, 0.25) !important;
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+  color: #FFFFFF !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
@@ -3540,15 +3545,15 @@ body {
   z-index: 10 !important;
   transition: all 0.25s ease !important;
   padding: 0 !important;
-  box-shadow: 0 6px 20px rgba(0, 43, 73, 0.16) !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4) !important;
 }
 
 .real-exp-nav-btn:hover {
   background: #D4AF37 !important;
-  color: #FFFFFF !important;
+  color: #1C1B1F !important;
   border-color: #D4AF37 !important;
-  transform: translateY(-50%) scale(1.1) !important;
-  box-shadow: 0 8px 25px rgba(212, 175, 55, 0.45) !important;
+  transform: translateY(-50%) scale(1.08) !important;
+  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.5) !important;
 }
 
 .real-exp-nav-prev { left: 0 !important; }
@@ -3559,14 +3564,14 @@ body {
   display: flex !important;
   justify-content: center !important;
   gap: 8px !important;
-  margin: 22px 0 16px !important;
+  margin: 24px 0 16px !important;
 }
 
 .real-exp-dot {
   width: 8px !important;
   height: 8px !important;
   border-radius: 50% !important;
-  background: rgba(10, 25, 47, 0.22) !important;
+  background: rgba(255, 255, 255, 0.35) !important;
   border: none !important;
   cursor: pointer !important;
   transition: all 0.3s ease !important;
@@ -3576,7 +3581,7 @@ body {
 .real-exp-dot.is-active {
   width: 26px !important;
   border-radius: 999px !important;
-  background: #C95451 !important;
+  background: #F5C842 !important;
 }
 
 /* Action Links */
@@ -3584,7 +3589,7 @@ body {
   display: flex !important;
   justify-content: center !important;
   gap: 16px !important;
-  margin-top: 18px !important;
+  margin-top: 20px !important;
   flex-wrap: wrap !important;
 }
 
@@ -3594,21 +3599,24 @@ body {
   gap: 8px !important;
   padding: 10px 22px !important;
   border-radius: 999px !important;
-  border: 1.5px solid #832729 !important;
-  background: #FFFFFF !important;
-  color: #832729 !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.75) !important;
+  background: rgba(0, 0, 0, 0.35) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  color: #FFFFFF !important;
   font-size: 13.5px !important;
   font-weight: 600 !important;
   text-decoration: none !important;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08) !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3) !important;
   transition: all 0.25s ease !important;
 }
 
 .real-exp-btn-secondary:hover {
-  background: #832729 !important;
-  color: #FFFFFF !important;
+  background: #D4AF37 !important;
+  color: #1C1B1F !important;
+  border-color: #D4AF37 !important;
   transform: translateY(-2px) !important;
-  box-shadow: 0 6px 20px rgba(131, 39, 41, 0.25) !important;
+  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.45) !important;
 }
 
 .real-exp-mobile-arrows {
@@ -3617,23 +3625,22 @@ body {
 
 @media (max-width: 768px) {
   .real-experiences-sec {
-    min-height: 560px !important;
-    padding: 60px 14px 65px !important;
+    min-height: 540px !important;
+    padding: 50px 14px 55px !important;
   }
   .real-exp-slider-wrap {
     padding: 0 !important;
-    margin-top: 1.8rem !important;
+    margin-top: 1.4rem !important;
   }
   .real-exp-slides-container {
-    padding: 26px 18px 22px !important;
-    border-radius: 16px !important;
+    padding: 10px 8px !important;
   }
   .real-exp-quote-title {
-    font-size: 18.5px !important;
+    font-size: 19px !important;
     margin-bottom: 12px !important;
   }
   .real-exp-quote-body {
-    font-size: 14px !important;
+    font-size: 14.5px !important;
     line-height: 1.7 !important;
     margin-bottom: 16px !important;
   }
@@ -4011,3 +4018,21 @@ img, video, iframe, svg, canvas {
   height: auto;
 }
 
+
+/* Specific overrides for Real Experiences on dark panoramic scenic background */
+.real-experiences-sec .real-exp-header .section-header-title,
+.real-exp-header .section-header-title,
+.real-exp-header h2 {
+  color: #FFFFFF !important;
+  font-family: var(--font-heading, 'Playfair Display', Georgia, serif) !important;
+  font-size: clamp(28px, 3.8vw, 44px) !important;
+  font-weight: 700 !important;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.8), 0 1px 4px rgba(0, 0, 0, 0.95) !important;
+}
+
+.real-experiences-sec .real-exp-header .watermark-heading,
+.real-exp-header .watermark-heading {
+  color: rgba(255, 255, 255, 0.18) !important;
+  text-shadow: none !important;
+  filter: none !important;
+}

@@ -4309,3 +4309,16 @@ img, video, iframe, svg, canvas {
   max-width: 100% !important;
   height: auto;
 }
+
+/* Dedicated Real Experiences Header Specificity Override for Transparent Panoramic Mode */
+.real-exp-header .section-header-title {
+  color: #FFFFFF !important;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.75), 0 1px 4px rgba(0, 0, 0, 0.9) !important;
+  font-family: var(--font-heading, 'Playfair Display', Georgia, serif) !important;
+}
+
+.real-exp-header .watermark-heading {
+  color: rgba(255, 255, 255, 0.16) !important;
+  text-shadow: none !important;
+  filter: none !important;
+}
