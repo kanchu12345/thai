@@ -1,4 +1,4 @@
-/*
+﻿/*
  * © 2026 Infinite Design. All rights reserved.
  * Built for Lotus Ceylon International Tours & Services (Pvt) Ltd.
  * Unauthorized removal of attribution does not transfer ownership of this code.
@@ -314,7 +314,7 @@ section + section.padding-top--100,
   letter-spacing: -0.025em;
   user-select: none;
   pointer-events: none;
-  margin: 0 auto -0.42em;
+  margin: 0 auto clamp(0.5rem, 1vw, 1rem);
   position: relative;
   z-index: 1;
   max-width: 100%;
@@ -6952,7 +6952,7 @@ html.lotus-motion-enabled .lotus-reveal-media.lotus-in-view {
 .heading--24 { font-size: clamp(1.00rem, calc(0.91rem + 0.38vw), 1.375rem); line-height: 1.35; }
 
 .section-watermark-header { position: relative; text-align: center; margin-bottom: clamp(1.25rem, 2.2vw, 2.5rem); padding-top: 0.5rem; overflow: hidden; }
-.watermark-heading { font-family: var(--font-main, 'DM Sans', sans-serif); font-size: clamp(34px, 7.2vw, 110px); font-weight: 700; color: #E2E6E9; text-align: center; text-transform: capitalize; line-height: 0.95; letter-spacing: clamp(-0.04em, -0.02vw, -0.015em); user-select: none; pointer-events: none; margin: 0 auto clamp(-1.6rem, -2.4vw, -0.5rem); position: relative; z-index: 1; max-width: 100%; display: block; white-space: nowrap; }
+.watermark-heading { font-family: var(--font-main, 'DM Sans', sans-serif); font-size: clamp(34px, 7.2vw, 110px); font-weight: 700; color: #E2E6E9; text-align: center; text-transform: capitalize; line-height: 0.95; letter-spacing: clamp(-0.04em, -0.02vw, -0.015em); user-select: none; pointer-events: none; margin: 0 auto clamp(0.5rem, 1vw, 1rem); position: relative; z-index: 1; max-width: 100%; display: block; white-space: nowrap; }
 .watermark-heading + h2, .watermark-heading + .heading--60, .section-watermark-header h2, .section-watermark-header .section-header-title { position: relative; z-index: 2; font-family: var(--font-main, 'DM Sans', sans-serif); font-size: clamp(22px, 2.8vw, 42px); font-weight: 700; color: var(--ink, #1C1B1F); text-align: center; line-height: 1.25; margin: 0 auto; }
 
 .why-book-split-grid, .bespoke-split-grid, .faq-sec-grid { gap: clamp(1.50rem, 2.20vw, 3.50rem) !important; }
@@ -7052,7 +7052,7 @@ html.lotus-motion-enabled .lotus-reveal-media.lotus-in-view {
 .watermark-heading {
   font-size: clamp(2.2rem, 6vw, 6.5rem) !important;
   line-height: 0.95 !important;
-  margin: 0 auto -0.38em !important;
+  margin: 0 auto clamp(0.5rem, 1.2vw, 1.25rem) !important;
   white-space: nowrap !important;
   overflow: hidden !important;
   text-overflow: ellipsis !important;
@@ -7306,3 +7306,4 @@ img, video, iframe, svg, canvas {
   max-width: 100% !important;
   height: auto;
 }
+

@@ -1,4 +1,4 @@
-/*
+﻿/*
  * © 2026 Infinite Design. All rights reserved.
  * Built for Lotus Ceylon International Tours & Services (Pvt) Ltd.
  * Unauthorized removal of attribution does not transfer ownership of this code.
@@ -3735,7 +3735,7 @@ body {
 .watermark-heading {
   font-size: clamp(2.2rem, 6vw, 6.5rem) !important;
   line-height: 0.95 !important;
-  margin: 0 auto -0.38em !important;
+  margin: 0 auto clamp(0.5rem, 1.2vw, 1.25rem) !important;
   white-space: nowrap !important;
   overflow: hidden !important;
   text-overflow: ellipsis !important;
@@ -3989,3 +3989,4 @@ img, video, iframe, svg, canvas {
   max-width: 100% !important;
   height: auto;
 }
+
