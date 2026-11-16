@@ -1401,23 +1401,26 @@ section + section.padding-top--100,
 
 /* Watermark Collision Prevention */
 .section-watermark-header {
-  position: relative;
-  text-align: center;
-  margin-bottom: 2rem;
+  position: relative !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 100% !important;
+  text-align: center !important;
+  margin-bottom: clamp(1.25rem, 2.2vw, 2.5rem) !important;
 }
 
 .watermark-heading {
-  user-select: none;
-  pointer-events: none;
-  opacity: 0.04;
-  margin: 0 auto !important;
+  user-select: none !important;
+  pointer-events: none !important;
+  color: rgba(201, 84, 81, 0.22) !important;
+  font-size: clamp(2.4rem, 6.2vw, 6.5rem) !important;
   line-height: 1 !important;
-}
-
-@media (max-width: 768px) {
-  .section-watermark-header .watermark-heading {
-    display: none !important;
-  }
+  margin: 0 auto clamp(0.65rem, 1.4vw, 1.35rem) !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
 }
 
 /* Header & Navigation Rules (Max 64px tall on mobile, Logo Max 40px) */
@@ -2026,11 +2029,10 @@ img, video, iframe, table {
 @media (max-width: 768px) {
   .watermark-heading,
   .section-watermark-header .watermark-heading {
-    display: none !important;
-    width: 0 !important;
-    height: 0 !important;
-    overflow: hidden !important;
-    font-size: 0 !important;
+    display: block !important;
+    font-size: clamp(2.4rem, 6.2vw, 6.5rem) !important;
+    margin: 0 auto clamp(0.65rem, 1.4vw, 1.35rem) !important;
+    line-height: 1 !important;
   }
 }
 
@@ -4035,14 +4037,22 @@ html.lotus-motion-enabled .lotus-reveal-media.lotus-in-view {
 
 /* 3. Section Watermark & Header Harmonization */
 .section-watermark-header {
-  margin-bottom: clamp(1rem, 0.75rem + 1vw, 1.85rem) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 100% !important;
+  margin-bottom: clamp(1.25rem, 2.2vw, 2.5rem) !important;
   padding-top: 0.25rem !important;
 }
 
 .watermark-heading {
-  font-size: clamp(2.2rem, 6vw, 6.5rem) !important;
-  line-height: 0.95 !important;
-  margin: 0 auto clamp(0.5rem, 1.2vw, 1.25rem) !important;
+  font-size: clamp(2.4rem, 6.2vw, 6.5rem) !important;
+  line-height: 1 !important;
+  margin: 0 auto clamp(0.65rem, 1.4vw, 1.35rem) !important;
+  color: rgba(201, 84, 81, 0.22) !important;
+  pointer-events: none !important;
+  user-select: none !important;
   white-space: nowrap !important;
   overflow: hidden !important;
   text-overflow: ellipsis !important;
@@ -4055,8 +4065,11 @@ html.lotus-motion-enabled .lotus-reveal-media.lotus-in-view {
 .watermark-heading + h2,
 .watermark-heading + .heading--60 {
   font-size: clamp(1.65rem, 1.25rem + 1.6vw, 2.55rem) !important;
-  line-height: 1.22 !important;
+  font-weight: 700 !important;
+  color: var(--color-dark-black, #1C1B1F) !important;
+  line-height: 1.25 !important;
   margin: 0 auto !important;
+  padding: 0 1rem !important;
   word-break: break-word !important;
   max-width: 900px !important;
 }

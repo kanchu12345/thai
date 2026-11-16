@@ -297,51 +297,62 @@ section + section.padding-top--100,
  * WALKERS TOURS SIGNATURE WATERMARK HEADER EFFECT (Clean Light Gray Backdrop)
  * ============================================================================== */
 .section-watermark-header {
-  position: relative;
-  text-align: center;
-  margin-bottom: 2.2rem;
-  padding-top: 0.5rem;
+  position: relative !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 100% !important;
+  text-align: center !important;
+  margin-bottom: clamp(1.25rem, 2.2vw, 2.5rem) !important;
+  padding-top: 0.5rem !important;
 }
 
 .watermark-heading {
-  font-family: var(--font-main, 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif);
-  font-size: clamp(52px, 8.8vw, 130px);
-  font-weight: 700;
-  color: #E2E6E9; /* Exact soft light gray backdrop as in reference */
-  text-align: center;
-  text-transform: capitalize;
-  line-height: 0.92;
-  letter-spacing: -0.025em;
-  user-select: none;
-  pointer-events: none;
-  margin: 0 auto clamp(0.5rem, 1vw, 1rem);
-  position: relative;
-  z-index: 1;
-  max-width: 100%;
-  display: block;
+  font-family: var(--font-main, 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif) !important;
+  font-size: clamp(2.4rem, 6.2vw, 6.5rem) !important;
+  font-weight: 700 !important;
+  color: rgba(201, 84, 81, 0.22) !important;
+  text-align: center !important;
+  text-transform: capitalize !important;
+  line-height: 1 !important;
+  letter-spacing: -0.025em !important;
+  user-select: none !important;
+  pointer-events: none !important;
+  margin: 0 auto clamp(0.65rem, 1.4vw, 1.35rem) !important;
+  position: relative !important;
+  z-index: 1 !important;
+  max-width: 100% !important;
+  display: block !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
 }
 
 .watermark-heading + h2,
 .watermark-heading + .heading--60,
 .section-watermark-header h2,
 .section-watermark-header .section-header-title {
-  position: relative;
-  z-index: 2;
-  font-family: var(--font-main, 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif);
-  font-size: clamp(26px, 3.4vw, 42px);
-  font-weight: 700;
-  color: var(--ink, #1C1B1F);
-  text-align: center;
-  letter-spacing: -0.015em;
-  line-height: 1.25;
-  margin: 0 auto;
+  position: relative !important;
+  z-index: 2 !important;
+  font-family: var(--font-main, 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif) !important;
+  font-size: clamp(1.65rem, 1.25rem + 1.6vw, 2.55rem) !important;
+  font-weight: 700 !important;
+  color: var(--color-dark-black, #1C1B1F) !important;
+  text-align: center !important;
+  letter-spacing: -0.015em !important;
+  line-height: 1.25 !important;
+  margin: 0 auto !important;
+  padding: 0 1rem !important;
+  word-break: break-word !important;
+  max-width: 900px !important;
 }
 
 .watermark-heading + h2 span,
 .watermark-heading + .heading--60 span,
 .section-watermark-header h2 span {
-  font-weight: 700;
-  color: var(--ink, #1C1B1F);
+  font-weight: 700 !important;
+  color: var(--color-dark-black, #1C1B1F) !important;
 }
 
 /* Next Button System (Walkers Tours Round Arrow Pill) */
@@ -6951,9 +6962,9 @@ html.lotus-motion-enabled .lotus-reveal-media.lotus-in-view {
 .heading--28, h4 { font-size: clamp(1.125rem, calc(1.01rem + 0.51vw), 1.625rem); line-height: 1.35; }
 .heading--24 { font-size: clamp(1.00rem, calc(0.91rem + 0.38vw), 1.375rem); line-height: 1.35; }
 
-.section-watermark-header { position: relative; text-align: center; margin-bottom: clamp(1.25rem, 2.2vw, 2.5rem); padding-top: 0.5rem; overflow: hidden; }
-.watermark-heading { font-family: var(--font-main, 'DM Sans', sans-serif); font-size: clamp(34px, 7.2vw, 110px); font-weight: 700; color: #E2E6E9; text-align: center; text-transform: capitalize; line-height: 0.95; letter-spacing: clamp(-0.04em, -0.02vw, -0.015em); user-select: none; pointer-events: none; margin: 0 auto clamp(0.5rem, 1vw, 1rem); position: relative; z-index: 1; max-width: 100%; display: block; white-space: nowrap; }
-.watermark-heading + h2, .watermark-heading + .heading--60, .section-watermark-header h2, .section-watermark-header .section-header-title { position: relative; z-index: 2; font-family: var(--font-main, 'DM Sans', sans-serif); font-size: clamp(22px, 2.8vw, 42px); font-weight: 700; color: var(--ink, #1C1B1F); text-align: center; line-height: 1.25; margin: 0 auto; }
+.section-watermark-header { position: relative !important; display: flex !important; flex-direction: column !important; align-items: center !important; justify-content: center !important; width: 100% !important; text-align: center !important; margin-bottom: clamp(1.25rem, 2.2vw, 2.5rem) !important; padding-top: 0.5rem !important; overflow: hidden !important; }
+.watermark-heading { font-family: var(--font-main, 'DM Sans', sans-serif) !important; font-size: clamp(2.4rem, 6.2vw, 6.5rem) !important; font-weight: 700 !important; color: rgba(201, 84, 81, 0.22) !important; text-align: center !important; text-transform: capitalize !important; line-height: 1 !important; letter-spacing: clamp(-0.04em, -0.02vw, -0.015em) !important; user-select: none !important; pointer-events: none !important; margin: 0 auto clamp(0.65rem, 1.4vw, 1.35rem) !important; position: relative !important; z-index: 1 !important; max-width: 100% !important; display: block !important; white-space: nowrap !important; overflow: hidden !important; text-overflow: ellipsis !important; }
+.watermark-heading + h2, .watermark-heading + .heading--60, .section-watermark-header h2, .section-watermark-header .section-header-title { position: relative !important; z-index: 2 !important; font-family: var(--font-main, 'DM Sans', sans-serif) !important; font-size: clamp(1.65rem, 1.25rem + 1.6vw, 2.55rem) !important; font-weight: 700 !important; color: var(--color-dark-black, #1C1B1F) !important; text-align: center !important; line-height: 1.25 !important; margin: 0 auto !important; padding: 0 1rem !important; }
 
 .why-book-split-grid, .bespoke-split-grid, .faq-sec-grid { gap: clamp(1.50rem, 2.20vw, 3.50rem) !important; }
 .intro-3col-grid, .package-cards-grid { gap: clamp(1.25rem, 1.80vw, 2.50rem) !important; }
@@ -7045,14 +7056,22 @@ html.lotus-motion-enabled .lotus-reveal-media.lotus-in-view {
 
 /* 3. Section Watermark & Header Harmonization */
 .section-watermark-header {
-  margin-bottom: clamp(1rem, 0.75rem + 1vw, 1.85rem) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 100% !important;
+  margin-bottom: clamp(1.25rem, 2.2vw, 2.5rem) !important;
   padding-top: 0.25rem !important;
 }
 
 .watermark-heading {
-  font-size: clamp(2.2rem, 6vw, 6.5rem) !important;
-  line-height: 0.95 !important;
-  margin: 0 auto clamp(0.5rem, 1.2vw, 1.25rem) !important;
+  font-size: clamp(2.4rem, 6.2vw, 6.5rem) !important;
+  line-height: 1 !important;
+  margin: 0 auto clamp(0.65rem, 1.4vw, 1.35rem) !important;
+  color: rgba(201, 84, 81, 0.22) !important;
+  pointer-events: none !important;
+  user-select: none !important;
   white-space: nowrap !important;
   overflow: hidden !important;
   text-overflow: ellipsis !important;
@@ -7065,8 +7084,11 @@ html.lotus-motion-enabled .lotus-reveal-media.lotus-in-view {
 .watermark-heading + h2,
 .watermark-heading + .heading--60 {
   font-size: clamp(1.65rem, 1.25rem + 1.6vw, 2.55rem) !important;
-  line-height: 1.22 !important;
+  font-weight: 700 !important;
+  color: var(--color-dark-black, #1C1B1F) !important;
+  line-height: 1.25 !important;
   margin: 0 auto !important;
+  padding: 0 1rem !important;
   word-break: break-word !important;
   max-width: 900px !important;
 }
