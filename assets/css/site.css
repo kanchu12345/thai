@@ -4042,7 +4042,7 @@ html.lotus-motion-enabled .lotus-reveal-media.lotus-in-view {
 .watermark-heading {
   font-size: clamp(2.2rem, 6vw, 6.5rem) !important;
   line-height: 0.95 !important;
-  margin: 0 auto -0.38em !important;
+  margin: 0 auto clamp(0.5rem, 1.2vw, 1.25rem) !important;
   white-space: nowrap !important;
   overflow: hidden !important;
   text-overflow: ellipsis !important;
