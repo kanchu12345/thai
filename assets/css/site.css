@@ -1834,6 +1834,61 @@ section + section.padding-top--100,
   color: #FFFFFF !important;
 }
 
+/* ==========================================================================
+   Floating Inquire Tab (Universal Single Source of Truth)
+   ========================================================================== */
+@keyframes pulseRing6s {
+  0%, 82%, 100% {
+    box-shadow: 0 6px 22px rgba(201, 162, 75, 0.35);
+  }
+  12% {
+    box-shadow: 0 0 0 16px rgba(201, 162, 75, 0), 0 6px 22px rgba(201, 162, 75, 0.5);
+  }
+}
+
+.floating-inquire-tab {
+  position: fixed !important;
+  bottom: 28px !important;
+  right: 28px !important;
+  background: linear-gradient(135deg, var(--sacred-gold, #C9A84C) 0%, var(--lotus-primary, #9E2A2B) 100%) !important;
+  color: var(--white, #FFFFFF) !important;
+  padding: 0.75rem 1.5rem !important;
+  border-radius: 9999px !important;
+  font-size: 0.85rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.55rem !important;
+  text-decoration: none !important;
+  z-index: 1400 !important;
+  border: 1px solid rgba(255, 255, 255, 0.35) !important;
+  animation: pulseRing6s 6s cubic-bezier(0.25, 0.8, 0.25, 1) infinite !important;
+  transition: transform 250ms ease, box-shadow 250ms ease !important;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.25) !important;
+  line-height: 1 !important;
+}
+
+.floating-inquire-tab:hover {
+  transform: translateY(-3px) scale(1.04) !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35) !important;
+}
+
+.floating-inquire-tab svg {
+  width: 18px !important;
+  height: 18px !important;
+  max-width: 18px !important;
+  max-height: 18px !important;
+  min-width: 18px !important;
+  min-height: 18px !important;
+  fill: currentColor !important;
+  flex-shrink: 0 !important;
+  display: inline-block !important;
+  vertical-align: middle !important;
+}
+
+
 /* Forms on Mobile (Input Font >= 16px to Prevent Auto-Zoom) */
 @media (max-width: 768px) {
   input[type="text"],

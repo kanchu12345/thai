@@ -5050,9 +5050,16 @@ section + section.padding-top--100,
 }
 
 .floating-inquire-tab svg {
-  width: 17px;
-  height: 17px;
-  fill: currentColor;
+  width: 18px !important;
+  height: 18px !important;
+  max-width: 18px !important;
+  max-height: 18px !important;
+  min-width: 18px !important;
+  min-height: 18px !important;
+  fill: currentColor !important;
+  flex-shrink: 0 !important;
+  display: inline-block !important;
+  vertical-align: middle !important;
 }
 
 .site-header-walkers .header-container {
