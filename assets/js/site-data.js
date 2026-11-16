@@ -205,6 +205,46 @@
 
       // 4. Setup storage listener for live cross-tab sync
 
+            window.addEventListener('lotus:blog-updated', (e) => {
+        if (e.detail && e.detail.blog) {
+          const b = e.detail.blog;
+          const idx = (this.store.blog || []).findIndex(x => x.slug === b.slug || x.id === b.id);
+          if (idx >= 0) this.store.blog[idx] = b;
+          else if (this.store.blog) this.store.blog.unshift(b);
+        }
+        this.hydrateBlogs();
+      });
+
+      window.addEventListener('lotus:package-updated', (e) => {
+        if (e.detail && e.detail.package) {
+          const p = e.detail.package;
+          const idx = (this.store.packages || []).findIndex(x => x.slug === p.slug || x.id === p.id);
+          if (idx >= 0) this.store.packages[idx] = p;
+          else if (this.store.packages) this.store.packages.push(p);
+        }
+        this.hydrateDOM();
+      });
+
+            window.addEventListener('lotus:blog-updated', (e) => {
+        if (e.detail && e.detail.blog) {
+          const b = e.detail.blog;
+          const idx = (this.store.blog || []).findIndex(x => x.slug === b.slug || x.id === b.id);
+          if (idx >= 0) this.store.blog[idx] = b;
+          else if (this.store.blog) this.store.blog.unshift(b);
+        }
+        this.hydrateBlogs();
+      });
+
+      window.addEventListener('lotus:package-updated', (e) => {
+        if (e.detail && e.detail.package) {
+          const p = e.detail.package;
+          const idx = (this.store.packages || []).findIndex(x => x.slug === p.slug || x.id === p.id);
+          if (idx >= 0) this.store.packages[idx] = p;
+          else if (this.store.packages) this.store.packages.push(p);
+        }
+        this.hydrateDOM();
+      });
+
       window.addEventListener('storage', (e) => {
 
         if (e.key === 'lotus_cms_last_published' || e.key === 'lotus_data_v') {
@@ -353,18 +393,13 @@
 
       // Fetch collections in parallel
 
-      const [pkgs, cats, dests, revs, teams, blogs, settingsDoc] = await Promise.all([
-
+      const [pkgs, cats, dests, revs, teams, blogsA, blogsB, settingsDoc] = await Promise.all([
         fetchCol('tourPackages'),
-
         fetchCol('tourCategories'),
-
         fetchCol('destinations'),
-
         fetchCol('reviews'),
-
         fetchCol('team'),
-
+        fetchCol('blog'),
         fetchCol('blogs'),
 
         fetch(`${FIRESTORE_BASE}/siteGlobal/branding?key=${API_KEY}`).then(r => r.ok ? r.json() : null).catch(() => null)
@@ -383,6 +418,7 @@
 
       if (teams && teams.length > 0) this.store.team = teams;
 
+      const blogs = (blogsA && blogsA.length > 0) ? blogsA : blogsB;
       if (blogs && blogs.length > 0) this.store.blog = blogs;
 
 
@@ -1316,6 +1352,52 @@
           `;
         }).join('');
       }
+
+      // 6B-2. Hydrate all elements marked with data-blog-slug directly from single source of truth
+      document.querySelectorAll('[data-blog-slug]').forEach(el => {
+        const bSlug = el.getAttribute('data-blog-slug');
+        const bPost = blogs.find(b => b.slug === bSlug || b.id === bSlug);
+        if (bPost) {
+          const t = this.getText(bPost.title, lang);
+          const e = this.getText(bPost.excerpt, lang);
+          const c = (typeof bPost.category === 'string' ? bPost.category : this.getText(bPost.category, lang)) || 'Lotus Journal';
+          const rawCover = bPost.cover || bPost.coverImage || 'assets/images/cultural/sigiriya-1.webp';
+          const fullCover = rawCover.startsWith('http') ? rawCover : `${base}${rawCover.replace(/^(\.\/)+/, '')}`;
+
+          const img = el.querySelector('img');
+          if (img) { img.src = fullCover; img.alt = t; }
+          const titleEl = el.querySelector('h3, h4, .news-side-title');
+          if (titleEl) titleEl.textContent = t;
+          const excerptEl = el.querySelector('p');
+          if (excerptEl && e) excerptEl.textContent = e;
+          const badgeEl = el.querySelector('.news-date');
+          if (badgeEl) badgeEl.innerHTML = el.classList.contains('news-card-big') ? `${c} &bull; Lotus Journal` : c;
+          if (el.tagName === 'A') el.setAttribute('href', `${base}blog/${bSlug}/index.html`);
+        }
+      });
+
+      // 6B-2. Hydrate all elements marked with data-blog-slug directly from single source of truth
+      document.querySelectorAll('[data-blog-slug]').forEach(el => {
+        const bSlug = el.getAttribute('data-blog-slug');
+        const bPost = blogs.find(b => b.slug === bSlug || b.id === bSlug);
+        if (bPost) {
+          const t = this.getText(bPost.title, lang);
+          const e = this.getText(bPost.excerpt, lang);
+          const c = (typeof bPost.category === 'string' ? bPost.category : this.getText(bPost.category, lang)) || 'Lotus Journal';
+          const rawCover = bPost.cover || bPost.coverImage || 'assets/images/cultural/sigiriya-1.webp';
+          const fullCover = rawCover.startsWith('http') ? rawCover : `${base}${rawCover.replace(/^(\.\/)+/, '')}`;
+
+          const img = el.querySelector('img');
+          if (img) { img.src = fullCover; img.alt = t; }
+          const titleEl = el.querySelector('h3, h4, .news-side-title');
+          if (titleEl) titleEl.textContent = t;
+          const excerptEl = el.querySelector('p');
+          if (excerptEl && e) excerptEl.textContent = e;
+          const badgeEl = el.querySelector('.news-date');
+          if (badgeEl) badgeEl.innerHTML = el.classList.contains('news-card-big') ? `${c} &bull; Lotus Journal` : c;
+          if (el.tagName === 'A') el.setAttribute('href', `${base}blog/${bSlug}/index.html`);
+        }
+      });
 
       // 6C. Main Blog Listing Page Grid (blog.html)
 

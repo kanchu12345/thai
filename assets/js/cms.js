@@ -680,8 +680,30 @@
 
       if (!isPreview && cached && cached.data && cached.pageKey === this.pageKey) {
         this.data = cached.data;
-        this.bindElements();
-        renderedFromCache = true;
+        // Synchronize in-memory page data with active LotusSiteData store
+      if (window.LotusSiteData && window.LotusSiteData.store && this.pageKey === 'siteContent/home') {
+        const sBlogs = window.LotusSiteData.store.blog || [];
+        if (sBlogs.length > 0) {
+          const mB = sBlogs.find(b => b.slug === 'sacred-footsteps-unlocking-sri-lankas-ancient-buddhist-kingdoms') || sBlogs[0];
+          if (mB) {
+            const mT = window.LotusSiteData.getText(mB.title, this.currentLang);
+            const mE = window.LotusSiteData.getText(mB.excerpt, this.currentLang);
+            const mC = mB.cover || mB.coverImage;
+            if (mT) this.data.page['home.heading_20'] = mT;
+            if (mE) this.data.page['home.p_73'] = mE;
+            if (mC) this.data.page['home.img_39'] = mC;
+          }
+          const eB = sBlogs.find(b => b.slug === 'ella-hands-on-tea-making-experience');
+          if (eB) {
+            const eT = window.LotusSiteData.getText(eB.title, this.currentLang);
+            const eC = eB.cover || eB.coverImage;
+            if (eT) this.data.page['home.heading_ella_tea'] = eT;
+            if (eC) this.data.page['home.img_ella_tea'] = eC;
+          }
+        }
+      }
+      this.bindElements();
+      renderedFromCache = true;
       }
 
       // 2. Prompt version check against Firestore to ensure live published updates are displayed
@@ -1302,6 +1324,18 @@
           }
 
           // Check linked href on anchor or enclosing link
+                    // Check if element is inside or part of a blog card (Single Source of Truth)
+          const blogEl = target.closest('[data-blog-slug], [data-post-slug], .blog-card, .news-card-big, .news-side-item, a[href*="/blog/"]');
+          let blogSlug = blogEl ? (blogEl.getAttribute('data-blog-slug') || blogEl.getAttribute('data-post-slug')) : null;
+          if (!blogSlug) {
+            const bLink = target.closest('a[href*="/blog/"]') || (blogEl ? blogEl.querySelector('a[href*="/blog/"]') : null);
+            if (bLink && bLink.getAttribute('href')) {
+              const href = bLink.getAttribute('href');
+              const parts = href.split('/blog/')[1].split('/').filter(p => p && !p.endsWith('.html'));
+              if (parts.length > 0) blogSlug = parts[0];
+            }
+          }
+
           const enclosingAnchor = target.closest('a') || (target.tagName === 'A' ? target : null) || (pkgEl ? pkgEl.querySelector('a') : null) || (destEl ? destEl.querySelector('a') : null);
           const linkedHref = enclosingAnchor ? enclosingAnchor.getAttribute('href') : null;
 
@@ -1403,7 +1437,12 @@
                 targetTab = 'gallery';
                 targetSubtab = 'gallery-images';
               }
-            } else if (target.closest('#newsInsights, .footer-recent-posts')) {
+            } else if (target.closest('#news, #newsInsights, .news-sec, .news-grid-layout, .news-card-big, .news-side-list, .news-side-item, .footer-recent-posts')) {
+              isLinked = true;
+              linkedSource = 'Blog > Blog Posts';
+              targetTab = 'blog-posts';
+              targetSubtab = 'blog-posts';
+              if (blogSlug) modalOpenFn = "AdminApp.openBlogModal('" + blogSlug + "');";
               isLinked = true;
               linkedSource = 'Blog > Blog Posts';
               targetTab = 'blog';
@@ -1432,6 +1471,8 @@
               sectionId: sectionId,
               packageSlug: packageSlug || null,
               destinationSlug: destinationSlug || null,
+              blogSlug: blogSlug || null,
+              blogSlug: blogSlug || null,
               linkedHref: linkedHref || null,
               isWatermark: isWatermark,
               sliderImages: sliderImages,
@@ -1452,6 +1493,68 @@
       // 3. Parent-to-Iframe Message Listener
       window.addEventListener('message', (event) => {
         if (!event.data || typeof event.data !== 'object') return;
+
+        // Single Source of Truth Live Updates
+        if (event.data.type === 'lotus:blog-updated') {
+          if (window.LotusSiteData && typeof window.LotusSiteData.hydrateBlogs === 'function') {
+            if (event.data.blog) {
+              const bIdx = (window.LotusSiteData.store.blog || []).findIndex(b => (b.slug === event.data.slug || b.id === event.data.slug));
+              if (bIdx >= 0) window.LotusSiteData.store.blog[bIdx] = event.data.blog;
+              else if (window.LotusSiteData.store.blog) window.LotusSiteData.store.blog.unshift(event.data.blog);
+            }
+            window.LotusSiteData.hydrateBlogs();
+          }
+          if (event.data.homeUpdates) {
+            Object.assign(this.data.page, event.data.homeUpdates);
+            this.bindElements();
+          }
+        }
+
+        if (event.data.type === 'lotus:package-updated') {
+          if (window.LotusSiteData && typeof window.LotusSiteData.hydrateDOM === 'function') {
+            if (event.data.package) {
+              const pIdx = (window.LotusSiteData.store.packages || []).findIndex(p => (p.slug === event.data.slug || p.id === event.data.slug));
+              if (pIdx >= 0) window.LotusSiteData.store.packages[pIdx] = event.data.package;
+              else if (window.LotusSiteData.store.packages) window.LotusSiteData.store.packages.push(event.data.package);
+            }
+            window.LotusSiteData.hydrateDOM();
+          }
+          if (event.data.homeUpdates) {
+            Object.assign(this.data.page, event.data.homeUpdates);
+            this.bindElements();
+          }
+        }
+
+        // Single Source of Truth Live Updates
+        if (event.data.type === 'lotus:blog-updated') {
+          if (window.LotusSiteData && typeof window.LotusSiteData.hydrateBlogs === 'function') {
+            if (event.data.blog) {
+              const bIdx = (window.LotusSiteData.store.blog || []).findIndex(b => (b.slug === event.data.slug || b.id === event.data.slug));
+              if (bIdx >= 0) window.LotusSiteData.store.blog[bIdx] = event.data.blog;
+              else if (window.LotusSiteData.store.blog) window.LotusSiteData.store.blog.unshift(event.data.blog);
+            }
+            window.LotusSiteData.hydrateBlogs();
+          }
+          if (event.data.homeUpdates) {
+            Object.assign(this.data.page, event.data.homeUpdates);
+            this.bindElements();
+          }
+        }
+
+        if (event.data.type === 'lotus:package-updated') {
+          if (window.LotusSiteData && typeof window.LotusSiteData.hydrateDOM === 'function') {
+            if (event.data.package) {
+              const pIdx = (window.LotusSiteData.store.packages || []).findIndex(p => (p.slug === event.data.slug || p.id === event.data.slug));
+              if (pIdx >= 0) window.LotusSiteData.store.packages[pIdx] = event.data.package;
+              else if (window.LotusSiteData.store.packages) window.LotusSiteData.store.packages.push(event.data.package);
+            }
+            window.LotusSiteData.hydrateDOM();
+          }
+          if (event.data.homeUpdates) {
+            Object.assign(this.data.page, event.data.homeUpdates);
+            this.bindElements();
+          }
+        }
 
         // Instant Field Update
         if (event.data.type === 'lotus:update-field') {

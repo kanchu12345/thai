@@ -628,7 +628,7 @@
     };
 
     /**
-     * PART 3: PAGE SEO SUB-TAB RENDERER
+     * PART 3: PAGE SEO & STRUCTURED DATA SUB-TAB RENDERER
      */
     app.renderPageSeoSection = function (pageTab) {
       const container = document.getElementById('pageSeoContainer');
@@ -645,95 +645,545 @@
       const pageDoc = (window.PageEditor && window.PageEditor.activeDocData) || {};
       const seoData = pageDoc.seo || {};
 
-      const title = seoData.title || `${pageConfig.title} - Lotus Ceylon Luxury Tours & Services`;
-      const desc = seoData.description || `Discover authentic Sri Lanka with Lotus Ceylon International Tours & Services. Private luxury chauffeured journeys, sacred heritage pilgrimages, and boutique sanctuaries.`;
-      const ogImg = seoData.ogImage || 'assets/images/cultural/sigiriya-1.webp';
-      const canonical = seoData.canonical || `https://lotusceylon.com/${pageConfig.file}`;
+      // Resolve values (checking both nested seo.* and flat [pageTab].seo.*)
+      const title = seoData.title || pageDoc[`${pageTab}.seo.title`] || `${pageConfig.title} | Lotus Ceylon Luxury Tours & Services`;
+      const desc = seoData.description || pageDoc[`${pageTab}.seo.description`] || `Discover authentic Sri Lanka with Lotus Ceylon International Tours & Services. Private luxury chauffeured journeys, sacred heritage pilgrimages, and boutique sanctuaries.`;
+      const keywords = seoData.keywords || pageDoc[`${pageTab}.seo.keywords`] || 'sri lanka luxury tours, private tailor made travel ceylon, bespoke sri lanka holidays, sacred ceylon experiences, lotus ceylon';
+      const canonical = seoData.canonical || pageDoc[`${pageTab}.seo.canonical`] || `https://kanchu12345.github.io/thai/${pageConfig.file}`;
+      const ogTitle = seoData.ogTitle || pageDoc[`${pageTab}.seo.og_title`] || title;
+      const ogImg = seoData.ogImage || pageDoc[`${pageTab}.seo.og_image`] || 'assets/images/cultural/sigiriya-1.webp';
+      const twitterCard = seoData.twitterCard || pageDoc[`${pageTab}.seo.twitter_card`] || 'summary_large_image';
+      const robots = seoData.robots || pageDoc[`${pageTab}.seo.robots`] || 'index, follow';
+
+      // Schema JSON-LD default
+      let jsonLd = '';
+      if (seoData.jsonLdSchema) {
+        jsonLd = typeof seoData.jsonLdSchema === 'object' ? JSON.stringify(seoData.jsonLdSchema, null, 2) : String(seoData.jsonLdSchema);
+      } else if (pageDoc[`${pageTab}.seo.json_ld_1`]) {
+        jsonLd = typeof pageDoc[`${pageTab}.seo.json_ld_1`] === 'object' ? JSON.stringify(pageDoc[`${pageTab}.seo.json_ld_1`], null, 2) : String(pageDoc[`${pageTab}.seo.json_ld_1`]);
+      } else {
+        jsonLd = this.buildDefaultPageSchema(pageTab, title, desc, canonical, ogImg);
+      }
 
       container.innerHTML = `
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: start;">
+        <div style="display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 24px; align-items: start;">
           <!-- Left Column: Form Fields -->
-          <div class="card">
-            <h3 style="font-size: 1.05rem; color: #002B49; margin-bottom: 14px; font-weight: 700;">Meta &amp; Social Graph Tags</h3>
+          <div class="card" style="padding: 20px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; border-bottom: 1.5px solid #F1F5F9; padding-bottom: 12px;">
+              <div>
+                <h3 style="font-size: 1.1rem; color: #002B49; margin: 0; font-weight: 700;">Search Metadata &amp; Open Graph</h3>
+                <p style="font-size: 0.8rem; color: #64748B; margin: 2px 0 0;">Configures search engine titles, snippet descriptions, social sharing, and robots indexation.</p>
+              </div>
+              <button type="button" class="btn btn-sm btn-outline" onclick="AdminApp.autoFillPageSeo('${pageTab}')" style="border-color: #C5A880; color: #8A6D3B; font-weight: 600;">
+                ✨ Auto-optimize
+              </button>
+            </div>
             
-            <div class="form-group">
-              <div style="display: flex; justify-content: space-between; align-items: center;">
-                <label>Page Meta Title</label>
-                <span id="seoTitleCount" style="font-size: 0.75rem; color: #64748B;">${title.length}/60 chars</span>
+            <div class="form-group" style="margin-bottom: 14px;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+                <label style="font-weight: 600; font-size: 0.88rem; margin: 0;">Page Meta Title Tag (&lt;title&gt;)</label>
+                <span id="seoTitleCount" class="badge" style="font-size: 0.74rem; font-weight: 700; padding: 2px 8px; border-radius: 10px; background: #E2E8F0; color: #475569;">${title.length} / 60 chars</span>
               </div>
               <input type="text" class="form-control" id="seoInputTitle" value="${this.escapeAttr(title)}" oninput="AdminApp.updateSeoPreview()" style="font-weight: 600;">
-              <small style="color: #64748B;">Recommended: 50-60 characters for optimal Google search display.</small>
+              <small style="color: #64748B; font-size: 0.76rem;">Recommended: 50–60 characters. Appears as the clickable blue headline in Google search.</small>
             </div>
 
-            <div class="form-group">
-              <div style="display: flex; justify-content: space-between; align-items: center;">
-                <label>Page Meta Description</label>
-                <span id="seoDescCount" style="font-size: 0.75rem; color: #64748B;">${desc.length}/160 chars</span>
+            <div class="form-group" style="margin-bottom: 14px;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+                <label style="font-weight: 600; font-size: 0.88rem; margin: 0;">Page Meta Description</label>
+                <span id="seoDescCount" class="badge" style="font-size: 0.74rem; font-weight: 700; padding: 2px 8px; border-radius: 10px; background: #E2E8F0; color: #475569;">${desc.length} / 160 chars</span>
               </div>
-              <textarea class="form-control" id="seoInputDesc" rows="3" oninput="AdminApp.updateSeoPreview()">${this.escapeHtml(desc)}</textarea>
-              <small style="color: #64748B;">Recommended: 150-160 characters describing the page essence.</small>
+              <textarea class="form-control" id="seoInputDesc" rows="3" oninput="AdminApp.updateSeoPreview()" style="line-height: 1.45;">${this.escapeHtml(desc)}</textarea>
+              <small style="color: #64748B; font-size: 0.76rem;">Recommended: 120–160 characters describing page value proposition.</small>
             </div>
 
-            <div class="form-group">
-              <label>Canonical URL</label>
-              <input type="url" class="form-control" id="seoInputCanonical" value="${this.escapeAttr(canonical)}">
+            <div class="form-group" style="margin-bottom: 14px;">
+              <label style="font-weight: 600; font-size: 0.88rem;">Focus Keywords (Comma-separated)</label>
+              <input type="text" class="form-control" id="seoInputKeywords" value="${this.escapeAttr(keywords)}" oninput="AdminApp.updateSeoPreview()">
+              <div id="seoKeywordTags" style="display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px;"></div>
             </div>
 
-            <div class="form-group">
-              <label>Open Graph Social Share Image</label>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px;">
+              <div class="form-group" style="margin: 0;">
+                <label style="font-weight: 600; font-size: 0.88rem;">Canonical URL</label>
+                <input type="url" class="form-control" id="seoInputCanonical" value="${this.escapeAttr(canonical)}" oninput="AdminApp.updateSeoPreview()">
+              </div>
+              <div class="form-group" style="margin: 0;">
+                <label style="font-weight: 600; font-size: 0.88rem;">Robots Meta Directives</label>
+                <select class="form-control" id="seoInputRobots">
+                  <option value="index, follow" ${robots === 'index, follow' ? 'selected' : ''}>index, follow (Allow Indexing &amp; Crawling)</option>
+                  <option value="noindex, follow" ${robots === 'noindex, follow' ? 'selected' : ''}>noindex, follow (Exclude from Search)</option>
+                  <option value="index, nofollow" ${robots === 'index, nofollow' ? 'selected' : ''}>index, nofollow (Index Page, Don't Follow Links)</option>
+                  <option value="noindex, nofollow" ${robots === 'noindex, nofollow' ? 'selected' : ''}>noindex, nofollow (Strictly Private)</option>
+                </select>
+              </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px;">
+              <div class="form-group" style="margin: 0;">
+                <label style="font-weight: 600; font-size: 0.88rem;">Open Graph Title (Social Share)</label>
+                <input type="text" class="form-control" id="seoInputOgTitle" value="${this.escapeAttr(ogTitle)}" oninput="AdminApp.updateSeoPreview()" placeholder="Defaults to Meta Title">
+              </div>
+              <div class="form-group" style="margin: 0;">
+                <label style="font-weight: 600; font-size: 0.88rem;">Twitter Card Format</label>
+                <select class="form-control" id="seoInputTwitterCard" onchange="AdminApp.updateSeoPreview()">
+                  <option value="summary_large_image" ${twitterCard === 'summary_large_image' ? 'selected' : ''}>summary_large_image (Hero Card)</option>
+                  <option value="summary" ${twitterCard === 'summary' ? 'selected' : ''}>summary (Square Thumbnail)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group" style="margin-bottom: 16px;">
+              <label style="font-weight: 600; font-size: 0.88rem;">Open Graph Social Share Image</label>
               <div style="display: flex; gap: 10px; align-items: center;">
                 <input type="text" class="form-control" id="seoInputOgImage" value="${this.escapeAttr(ogImg)}" oninput="AdminApp.updateSeoPreview()">
                 <button type="button" class="btn btn-outline btn-sm" onclick="AdminApp.pickSeoImage()">Pick Media</button>
               </div>
             </div>
+
+            <!-- Structured Data JSON-LD Editor -->
+            <div style="background: #F8FAFC; border: 1.5px solid #E2E8F0; border-radius: 8px; padding: 14px;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; flex-wrap: wrap; gap: 6px;">
+                <div style="display: flex; align-items: center; gap: 6px;">
+                  <span style="font-size: 1rem;">🏷️</span>
+                  <label style="font-weight: 700; font-size: 0.88rem; color: #002B49; margin: 0;">Structured Data Schema (JSON-LD)</label>
+                  <span id="seoSchemaStatus" class="badge" style="font-size: 0.7rem; padding: 2px 6px; border-radius: 8px; background: #DCFCE7; color: #166534;">Valid JSON</span>
+                </div>
+                <div style="display: flex; gap: 6px;">
+                  <select class="form-control form-control-sm" id="seoPresetSelect" style="width: auto; font-size: 0.76rem; padding: 2px 6px;" onchange="AdminApp.applySchemaPresetToPage(this.value, '${pageTab}')">
+                    <option value="">-- Apply Preset Schema --</option>
+                    <option value="TravelAgency">TravelAgency (Local Business)</option>
+                    <option value="TouristAttraction">TouristAttraction / Destination</option>
+                    <option value="TouristTrip">TouristTrip / Tour Catalog</option>
+                    <option value="Blog">Blog / Editorial Chronicle</option>
+                    <option value="BreadcrumbList">BreadcrumbList</option>
+                    <option value="FAQPage">FAQPage</option>
+                  </select>
+                </div>
+              </div>
+              <textarea class="form-control" id="seoInputJsonLd" rows="6" oninput="AdminApp.validateSchemaJson()" style="font-family: monospace; font-size: 0.78rem; line-height: 1.4; background: #FFFFFF;">${this.escapeHtml(jsonLd)}</textarea>
+              <small style="color: #64748B; font-size: 0.74rem; display: block; margin-top: 4px;">Search engines (Google, Bing) use this JSON-LD schema for Rich Results and Knowledge Graph snippets.</small>
+            </div>
           </div>
 
-          <!-- Right Column: Live Search Previews -->
-          <div class="card">
+          <!-- Right Column: Live Search & Social Previews -->
+          <div class="card" style="padding: 20px; position: sticky; top: 18px;">
             <h3 style="font-size: 1.05rem; color: #002B49; margin-bottom: 14px; font-weight: 700;">Live Search Engine &amp; Social Previews</h3>
             
-            <label style="font-size: 0.8rem; font-weight: 700; color: #64748B; text-transform: uppercase;">Google SERP Snippet Preview</label>
-            <div class="google-serp-preview">
-              <div class="serp-url" id="serpPreviewUrl">https://lotusceylon.com &gt; ${this.escapeHtml(pageConfig.id)}</div>
-              <div class="serp-title" id="serpPreviewTitle">${this.escapeHtml(title)}</div>
-              <div class="serp-desc" id="serpPreviewDesc">${this.escapeHtml(desc)}</div>
+            <!-- Google SERP Snippet -->
+            <label style="font-size: 0.78rem; font-weight: 700; color: #64748B; text-transform: uppercase; letter-spacing: 0.5px;">Google SERP Snippet Preview</label>
+            <div class="google-serp-preview" style="margin-top: 6px;">
+              <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
+                <img src="../assets/images/logo.png" style="width: 18px; height: 18px; border-radius: 50%;" onerror="this.src='../logo.png'">
+                <div>
+                  <div style="font-size: 0.8rem; font-weight: 600; color: #202124; line-height: 1.1;">Lotus Ceylon</div>
+                  <div class="serp-url" id="serpPreviewUrl" style="margin: 0; font-size: 0.72rem; color: #4D5156;">${this.escapeHtml(canonical)}</div>
+                </div>
+              </div>
+              <div class="serp-title" id="serpPreviewTitle" style="font-size: 1.05rem; line-height: 1.3; font-weight: 500; color: #1A0DAB; margin-bottom: 3px;">${this.escapeHtml(title)}</div>
+              <div class="serp-desc" id="serpPreviewDesc" style="font-size: 0.82rem; color: #4D5156; line-height: 1.4;">${this.escapeHtml(desc)}</div>
             </div>
 
-            <label style="font-size: 0.8rem; font-weight: 700; color: #64748B; text-transform: uppercase; margin-top: 20px; display: block;">Social Card Preview (Facebook, LinkedIn, X)</label>
-            <div style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 8px; overflow: hidden; margin-top: 6px; box-shadow: 0 1px 4px rgba(0,0,0,0.05);">
-              <img id="ogPreviewImg" src="${this.resolveImg(ogImg)}" style="width: 100%; height: 160px; object-fit: cover;" onerror="this.src='../assets/images/logo.png'">
+            <!-- Social Card Preview -->
+            <label style="font-size: 0.78rem; font-weight: 700; color: #64748B; text-transform: uppercase; letter-spacing: 0.5px; margin-top: 20px; display: block;">Social Card Preview (Facebook, LinkedIn, X)</label>
+            <div style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 8px; overflow: hidden; margin-top: 6px; box-shadow: 0 1px 4px rgba(0,0,0,0.06);">
+              <div style="position: relative; width: 100%; height: 160px; background: #0F172A; overflow: hidden;">
+                <img id="ogPreviewImg" src="${this.resolveImg(ogImg)}" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.src='../assets/images/logo.png'">
+              </div>
               <div style="padding: 12px;">
-                <div style="font-size: 0.72rem; color: #64748B; text-transform: uppercase;">LOTUSCEYLON.COM</div>
-                <div id="ogPreviewTitle" style="font-size: 0.95rem; font-weight: 700; color: #002B49; margin-top: 2px;">${this.escapeHtml(title)}</div>
-                <div id="ogPreviewDesc" style="font-size: 0.8rem; color: #64748B; margin-top: 4px; line-height: 1.4;">${this.escapeHtml(desc)}</div>
+                <div style="font-size: 0.7rem; color: #64748B; text-transform: uppercase; font-weight: 600; letter-spacing: 0.5px;">LOTUSCEYLON.COM &bull; SRI LANKA</div>
+                <div id="ogPreviewTitle" style="font-size: 0.95rem; font-weight: 700; color: #002B49; margin-top: 3px; line-height: 1.3;">${this.escapeHtml(ogTitle || title)}</div>
+                <div id="ogPreviewDesc" style="font-size: 0.78rem; color: #64748B; margin-top: 4px; line-height: 1.35; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">${this.escapeHtml(desc)}</div>
+              </div>
+            </div>
+
+            <!-- SEO Health Checklist -->
+            <div style="margin-top: 20px; background: #FAF9F6; border: 1px solid #E6D7BA; border-radius: 8px; padding: 12px 14px;">
+              <div style="font-size: 0.82rem; font-weight: 700; color: #002B49; margin-bottom: 8px; display: flex; align-items: center; gap: 6px;">
+                <span>🎯</span> Page SEO Readiness Checklist
+              </div>
+              <div id="seoHealthChecks" style="display: flex; flex-direction: column; gap: 6px; font-size: 0.78rem;">
+                <!-- Populated dynamically by updateSeoPreview() -->
               </div>
             </div>
           </div>
         </div>
       `;
+
+      this.updateSeoPreview();
     };
 
+    /**
+     * Live updates preview elements, counters, badges and health checks
+     */
     app.updateSeoPreview = function () {
       const title = document.getElementById('seoInputTitle')?.value || '';
       const desc = document.getElementById('seoInputDesc')?.value || '';
+      const keywords = document.getElementById('seoInputKeywords')?.value || '';
+      const canonical = document.getElementById('seoInputCanonical')?.value || '';
+      const ogTitle = document.getElementById('seoInputOgTitle')?.value || title;
       const ogImg = document.getElementById('seoInputOgImage')?.value || '';
 
+      // 1. Title counter
       const titleCount = document.getElementById('seoTitleCount');
-      const descCount = document.getElementById('seoDescCount');
-      if (titleCount) titleCount.textContent = `${title.length}/60 chars`;
-      if (descCount) descCount.textContent = `${desc.length}/160 chars`;
+      if (titleCount) {
+        titleCount.textContent = `${title.length} / 60 chars`;
+        if (title.length >= 45 && title.length <= 60) {
+          titleCount.style.background = '#DCFCE7';
+          titleCount.style.color = '#166534';
+        } else if (title.length > 60) {
+          titleCount.style.background = '#FEE2E2';
+          titleCount.style.color = '#991B1B';
+        } else {
+          titleCount.style.background = '#FEF3C7';
+          titleCount.style.color = '#92400E';
+        }
+      }
 
+      // 2. Description counter
+      const descCount = document.getElementById('seoDescCount');
+      if (descCount) {
+        descCount.textContent = `${desc.length} / 160 chars`;
+        if (desc.length >= 120 && desc.length <= 160) {
+          descCount.style.background = '#DCFCE7';
+          descCount.style.color = '#166534';
+        } else if (desc.length > 160) {
+          descCount.style.background = '#FEE2E2';
+          descCount.style.color = '#991B1B';
+        } else {
+          descCount.style.background = '#FEF3C7';
+          descCount.style.color = '#92400E';
+        }
+      }
+
+      // 3. Keyword chips
+      const kwBox = document.getElementById('seoKeywordTags');
+      if (kwBox) {
+        const tags = keywords.split(',').map(s => s.trim()).filter(Boolean);
+        if (tags.length === 0) {
+          kwBox.innerHTML = '<span style="color: #94A3B8; font-size: 0.74rem;">No focus keywords specified.</span>';
+        } else {
+          kwBox.innerHTML = tags.map(t => `<span class="badge" style="background: #F1F5F9; color: #334155; font-size: 0.72rem; padding: 2px 7px; border-radius: 6px;">#${this.escapeHtml(t)}</span>`).join('');
+        }
+      }
+
+      // 4. SERP Preview
+      const serpUrl = document.getElementById('serpPreviewUrl');
       const serpTitle = document.getElementById('serpPreviewTitle');
       const serpDesc = document.getElementById('serpPreviewDesc');
+      if (serpUrl) serpUrl.textContent = canonical || 'https://kanchu12345.github.io/thai/';
       if (serpTitle) serpTitle.textContent = title;
       if (serpDesc) serpDesc.textContent = desc;
 
-      const ogTitle = document.getElementById('ogPreviewTitle');
-      const ogDesc = document.getElementById('ogPreviewDesc');
+      // 5. Social Card Preview
+      const ogTitleEl = document.getElementById('ogPreviewTitle');
+      const ogDescEl = document.getElementById('ogPreviewDesc');
       const ogImgEl = document.getElementById('ogPreviewImg');
-      if (ogTitle) ogTitle.textContent = title;
-      if (ogDesc) ogDesc.textContent = desc;
+      if (ogTitleEl) ogTitleEl.textContent = ogTitle || title;
+      if (ogDescEl) ogDescEl.textContent = desc;
       if (ogImgEl && ogImg) ogImgEl.src = this.resolveImg(ogImg);
+
+      // 6. Schema JSON validation
+      this.validateSchemaJson();
+
+      // 7. Health Checklist
+      const checkContainer = document.getElementById('seoHealthChecks');
+      if (checkContainer) {
+        const titleOk = title.length >= 40 && title.length <= 65;
+        const descOk = desc.length >= 110 && desc.length <= 165;
+        const kwOk = keywords.trim().length > 0;
+        const imgOk = ogImg.trim().length > 0;
+        const canonicalOk = canonical.startsWith('http');
+
+        checkContainer.innerHTML = `
+          <div style="display: flex; align-items: center; gap: 6px; color: ${titleOk ? '#166534' : '#B45309'};">
+            <span>${titleOk ? '✓' : '⚠️'}</span>
+            <span>Title Tag Length: ${title.length} chars (${titleOk ? 'Optimal' : 'Aim for 50-60'})</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 6px; color: ${descOk ? '#166534' : '#B45309'};">
+            <span>${descOk ? '✓' : '⚠️'}</span>
+            <span>Meta Description: ${desc.length} chars (${descOk ? 'Optimal' : 'Aim for 120-160'})</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 6px; color: ${kwOk ? '#166534' : '#B45309'};">
+            <span>${kwOk ? '✓' : '⚠️'}</span>
+            <span>Focus Keywords Specified (${keywords.split(',').filter(Boolean).length} tags)</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 6px; color: ${imgOk ? '#166534' : '#B45309'};">
+            <span>${imgOk ? '✓' : '⚠️'}</span>
+            <span>Open Graph Social Image Assigned</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 6px; color: ${canonicalOk ? '#166534' : '#B45309'};">
+            <span>${canonicalOk ? '✓' : '⚠️'}</span>
+            <span>Absolute Canonical URL Specified</span>
+          </div>
+        `;
+      }
+    };
+
+    /**
+     * Validates JSON-LD schema syntax
+     */
+    app.validateSchemaJson = function () {
+      const textarea = document.getElementById('seoInputJsonLd');
+      const statusBadge = document.getElementById('seoSchemaStatus');
+      if (!textarea || !statusBadge) return true;
+
+      const val = textarea.value.trim();
+      if (!val) {
+        statusBadge.textContent = 'Empty (No Schema)';
+        statusBadge.style.background = '#F1F5F9';
+        statusBadge.style.color = '#64748B';
+        return true;
+      }
+
+      try {
+        const parsed = JSON.parse(val);
+        const type = parsed['@type'] || (Array.isArray(parsed) ? 'Graph' : 'Custom');
+        statusBadge.textContent = `✓ Valid ${type} Schema`;
+        statusBadge.style.background = '#DCFCE7';
+        statusBadge.style.color = '#166534';
+        return true;
+      } catch (err) {
+        statusBadge.textContent = '✕ Syntax Error';
+        statusBadge.style.background = '#FEE2E2';
+        statusBadge.style.color = '#991B1B';
+        return false;
+      }
+    };
+
+    /**
+     * Generates default Schema.org JSON-LD for a given page
+     */
+    app.buildDefaultPageSchema = function (pageTab, title, desc, canonical, ogImg) {
+      const brandLogo = 'https://kanchu12345.github.io/thai/assets/images/brand/logo-header.png';
+      const baseUrl = 'https://kanchu12345.github.io/thai/';
+
+      if (pageTab === 'home' || pageTab === 'about' || pageTab === 'contact') {
+        return JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "TravelAgency",
+          "name": "Lotus Ceylon International Tours & Services (Private) Limited",
+          "alternateName": "Lotus Ceylon",
+          "url": baseUrl,
+          "logo": brandLogo,
+          "image": baseUrl + (ogImg.replace(/^\.\//, '')),
+          "description": desc,
+          "telephone": "+94 71 54 22 384",
+          "email": "info@lotusceylon.com",
+          "priceRange": "$$$$",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "286/C, Niwandama South",
+            "addressLocality": "Ja-Ela",
+            "addressRegion": "Western Province",
+            "postalCode": "11350",
+            "addressCountry": "LK"
+          },
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 7.0785,
+            "longitude": 79.8913
+          },
+          "openingHoursSpecification": {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+            "opens": "00:00",
+            "closes": "23:59"
+          },
+          "sameAs": [
+            "https://facebook.com/lotusceylontours",
+            "https://instagram.com/lotusceylontours",
+            "https://youtube.com/@lotusceylontours"
+          ]
+        }, null, 2);
+      }
+
+      if (pageTab === 'tours') {
+        return JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "OfferCatalog",
+          "name": "Lotus Ceylon Bespoke Tour Packages & Private Expeditions",
+          "url": canonical,
+          "description": desc,
+          "provider": {
+            "@type": "TravelAgency",
+            "name": "Lotus Ceylon International Tours & Services",
+            "url": baseUrl
+          },
+          "numberOfItems": 29
+        }, null, 2);
+      }
+
+      if (pageTab === 'destinations' || pageTab === 'experiences') {
+        return JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "TouristAttraction",
+          "name": title.split('|')[0].trim(),
+          "description": desc,
+          "url": canonical,
+          "image": baseUrl + (ogImg.replace(/^\.\//, '')),
+          "touristType": ["Cultural Tourist", "Luxury Traveler", "Pilgrim"]
+        }, null, 2);
+      }
+
+      if (pageTab === 'blog') {
+        return JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Blog",
+          "name": "Lotus Ceylon Travel Journal & Editorial Insights",
+          "url": canonical,
+          "description": desc,
+          "publisher": {
+            "@type": "Organization",
+            "name": "Lotus Ceylon International Tours",
+            "logo": {
+              "@type": "ImageObject",
+              "url": brandLogo
+            }
+          }
+        }, null, 2);
+      }
+
+      // Default WebPage
+      return JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": title,
+        "description": desc,
+        "url": canonical
+      }, null, 2);
+    };
+
+    /**
+     * Preset schema injector
+     */
+    app.applySchemaPresetToPage = function (presetType, pageTab) {
+      if (!presetType) return;
+      const title = document.getElementById('seoInputTitle')?.value || '';
+      const desc = document.getElementById('seoInputDesc')?.value || '';
+      const canonical = document.getElementById('seoInputCanonical')?.value || '';
+      const ogImg = document.getElementById('seoInputOgImage')?.value || '';
+      const textarea = document.getElementById('seoInputJsonLd');
+      if (!textarea) return;
+
+      let schemaObj = {};
+      const baseUrl = 'https://kanchu12345.github.io/thai/';
+      const brandLogo = baseUrl + 'assets/images/brand/logo-header.png';
+
+      if (presetType === 'TravelAgency') {
+        schemaObj = {
+          "@context": "https://schema.org",
+          "@type": "TravelAgency",
+          "name": "Lotus Ceylon International Tours & Services (Private) Limited",
+          "alternateName": "Lotus Ceylon",
+          "url": baseUrl,
+          "logo": brandLogo,
+          "telephone": "+94 71 54 22 384",
+          "email": "info@lotusceylon.com",
+          "priceRange": "$$$$",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "286/C, Niwandama South",
+            "addressLocality": "Ja-Ela",
+            "addressRegion": "Western Province",
+            "postalCode": "11350",
+            "addressCountry": "LK"
+          }
+        };
+      } else if (presetType === 'TouristAttraction') {
+        schemaObj = {
+          "@context": "https://schema.org",
+          "@type": "TouristAttraction",
+          "name": title.split('|')[0].trim(),
+          "description": desc,
+          "url": canonical,
+          "touristType": ["Luxury Travelers", "Cultural Pilgrims", "Wildlife Enthusiasts"]
+        };
+      } else if (presetType === 'TouristTrip') {
+        schemaObj = {
+          "@context": "https://schema.org",
+          "@type": "TouristTrip",
+          "name": title.split('|')[0].trim(),
+          "description": desc,
+          "url": canonical,
+          "provider": {
+            "@type": "TravelAgency",
+            "name": "Lotus Ceylon International Tours"
+          }
+        };
+      } else if (presetType === 'Blog') {
+        schemaObj = {
+          "@context": "https://schema.org",
+          "@type": "Blog",
+          "name": "Lotus Ceylon Travel Journal & Editorial Insights",
+          "url": canonical,
+          "description": desc
+        };
+      } else if (presetType === 'BreadcrumbList') {
+        schemaObj = {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": baseUrl },
+            { "@type": "ListItem", "position": 2, "name": title.split('|')[0].trim(), "item": canonical }
+          ]
+        };
+      } else if (presetType === 'FAQPage') {
+        schemaObj = {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Are Lotus Ceylon tour packages fully customizable?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes. Every itinerary is 100% private and tailor-made by our destination specialists according to your pace, preferences, and luxury standards."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What vehicles are utilized for private chauffeured tours?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "We operate exclusively late-model luxury Mercedes-Benz, Toyota Land Cruiser Prado, and premium executive vans with professional English-speaking chauffeur-guides."
+              }
+            }
+          ]
+        };
+      }
+
+      textarea.value = JSON.stringify(schemaObj, null, 2);
+      this.validateSchemaJson();
+      this.showToast(`Applied ${presetType} Schema preset!`, 'success');
+    };
+
+    /**
+     * Auto-optimizes page SEO fields from page content
+     */
+    app.autoFillPageSeo = function (pageTab) {
+      const pageConfig = PAGE_TABS[pageTab];
+      if (!pageConfig) return;
+
+      const titleInp = document.getElementById('seoInputTitle');
+      const descInp = document.getElementById('seoInputDesc');
+      const canonicalInp = document.getElementById('seoInputCanonical');
+      const kwInp = document.getElementById('seoInputKeywords');
+      const ogTitleInp = document.getElementById('seoInputOgTitle');
+
+      if (titleInp && (!titleInp.value || titleInp.value.length < 30)) {
+        titleInp.value = `${pageConfig.title} | Lotus Ceylon Luxury Tours & Services`;
+      }
+      if (ogTitleInp) ogTitleInp.value = titleInp.value;
+      if (canonicalInp && !canonicalInp.value) {
+        canonicalInp.value = `https://kanchu12345.github.io/thai/${pageConfig.file}`;
+      }
+      if (kwInp && !kwInp.value) {
+        kwInp.value = `sri lanka ${pageTab} tours, private chauffeur travel ceylon, lotus ceylon ${pageTab}`;
+      }
+
+      this.updateSeoPreview();
+      this.showToast('SEO fields auto-optimized for ' + pageConfig.title, 'info');
     };
 
     app.pickSeoImage = function () {
@@ -744,35 +1194,80 @@
       });
     };
 
+    /**
+     * Saves SEO metadata to Firebase Firestore and LocalStorage
+     */
     app.saveCurrentPageSeo = async function () {
       const pageTab = this.activePageTab || 'home';
       const pageConfig = PAGE_TABS[pageTab];
       if (!pageConfig) return;
 
-      const title = document.getElementById('seoInputTitle')?.value || '';
-      const desc = document.getElementById('seoInputDesc')?.value || '';
-      const ogImg = document.getElementById('seoInputOgImage')?.value || '';
-      const canonical = document.getElementById('seoInputCanonical')?.value || '';
+      const title = (document.getElementById('seoInputTitle')?.value || '').trim();
+      const desc = (document.getElementById('seoInputDesc')?.value || '').trim();
+      const keywords = (document.getElementById('seoInputKeywords')?.value || '').trim();
+      const canonical = (document.getElementById('seoInputCanonical')?.value || '').trim();
+      const ogTitle = (document.getElementById('seoInputOgTitle')?.value || '').trim() || title;
+      const ogImg = (document.getElementById('seoInputOgImage')?.value || '').trim();
+      const twitterCard = document.getElementById('seoInputTwitterCard')?.value || 'summary_large_image';
+      const robots = document.getElementById('seoInputRobots')?.value || 'index, follow';
+      const rawJsonLd = (document.getElementById('seoInputJsonLd')?.value || '').trim();
 
+      let parsedSchema = null;
+      if (rawJsonLd) {
+        try {
+          parsedSchema = JSON.parse(rawJsonLd);
+        } catch (e) {
+          this.showToast('Schema JSON syntax error. Please correct JSON before saving.', 'error');
+          return;
+        }
+      }
+
+      // Structured SEO payload
       const seoPayload = {
         seo: {
           title: title,
           description: desc,
-          ogImage: ogImg,
+          keywords: keywords,
           canonical: canonical,
+          ogTitle: ogTitle,
+          ogImage: ogImg,
+          twitterCard: twitterCard,
+          robots: robots,
+          jsonLdSchema: parsedSchema,
           updatedAt: new Date().toISOString()
-        }
+        },
+        // Direct flat CMS bindings for instant hydration by cms.js
+        [`${pageTab}.seo.title`]: title,
+        [`${pageTab}.seo.description`]: desc,
+        [`${pageTab}.seo.keywords`]: keywords,
+        [`${pageTab}.seo.canonical`]: canonical,
+        [`${pageTab}.seo.og_title`]: ogTitle,
+        [`${pageTab}.seo.og_description`]: desc,
+        [`${pageTab}.seo.og_image`]: ogImg,
+        [`${pageTab}.seo.twitter_title`]: ogTitle,
+        [`${pageTab}.seo.twitter_description`]: desc,
+        [`${pageTab}.seo.twitter_image`]: ogImg,
+        [`${pageTab}.seo.twitter_card`]: twitterCard,
+        [`${pageTab}.seo.robots`]: robots
       };
+
+      if (rawJsonLd) {
+        seoPayload[`${pageTab}.seo.json_ld_1`] = rawJsonLd;
+      }
 
       try {
         if (this.fbDb) {
           const parts = pageConfig.docKey.split('/');
           await this.fbDb.collection(parts[0]).doc(parts[1]).set(seoPayload, { merge: true });
-          await this.fbDb.collection('siteMeta').doc('version').set({ v: Date.now() }, { merge: true });
+          await this.fbDb.collection('siteMeta').doc('version').set({ 
+            v: Date.now(),
+            updatedAt: new Date().toISOString(),
+            lastModifiedBy: 'SEO Specialist Admin'
+          }, { merge: true });
         }
         localStorage.setItem(`lotus_seo_${pageConfig.docKey}`, JSON.stringify(seoPayload.seo));
         localStorage.setItem('lotus_cms_last_published', String(Date.now()));
-        this.showToast(`${pageConfig.title} SEO metadata published!`, 'success');
+        this.showToast(`${pageConfig.title} SEO metadata &amp; Schema published live!`, 'success');
       } catch (e) {
         console.warn('[AdminApp] Save SEO error:', e);
         this.showToast('Saved SEO to local cache.', 'info');

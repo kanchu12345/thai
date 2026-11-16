@@ -2888,26 +2888,177 @@
     },
 
     
+    updateSeoCounters() {
+      const titleInput = document.getElementById('seoPageTitle');
+      const descInput = document.getElementById('seoPageDesc');
+      const titleBadge = document.getElementById('seoTitleCountBadge');
+      const descBadge = document.getElementById('seoDescCountBadge');
+
+      if (titleInput && titleBadge) {
+        const len = titleInput.value.length;
+        titleBadge.textContent = `${len} / 60 chars`;
+        if (len >= 45 && len <= 60) {
+          titleBadge.style.background = '#DCFCE7';
+          titleBadge.style.color = '#166534';
+        } else if (len > 60) {
+          titleBadge.style.background = '#FEE2E2';
+          titleBadge.style.color = '#991B1B';
+        } else {
+          titleBadge.style.background = '#FEF3C7';
+          titleBadge.style.color = '#92400E';
+        }
+      }
+
+      if (descInput && descBadge) {
+        const len = descInput.value.length;
+        descBadge.textContent = `${len} / 160 chars`;
+        if (len >= 120 && len <= 160) {
+          descBadge.style.background = '#DCFCE7';
+          descBadge.style.color = '#166534';
+        } else if (len > 160) {
+          descBadge.style.background = '#FEE2E2';
+          descBadge.style.color = '#991B1B';
+        } else {
+          descBadge.style.background = '#FEF3C7';
+          descBadge.style.color = '#92400E';
+        }
+      }
+    },
+
+    applySchemaPreset(presetType) {
+      if (!presetType) return;
+      const jsonArea = document.getElementById('seoPageJsonLd');
+      const titleVal = document.getElementById('seoPageTitle')?.value || 'Lotus Ceylon Luxury Tours';
+      const descVal = document.getElementById('seoPageDesc')?.value || '';
+      const canonicalVal = document.getElementById('seoPageCanonical')?.value || 'https://kanchu12345.github.io/thai/';
+      if (!jsonArea) return;
+
+      const baseUrl = 'https://kanchu12345.github.io/thai/';
+      const brandLogo = baseUrl + 'assets/images/brand/logo-header.png';
+      let schema = {};
+
+      if (presetType === 'TravelAgency') {
+        schema = {
+          "@context": "https://schema.org",
+          "@type": "TravelAgency",
+          "name": "Lotus Ceylon International Tours & Services (Private) Limited",
+          "alternateName": "Lotus Ceylon",
+          "url": baseUrl,
+          "logo": brandLogo,
+          "description": descVal || "Curated luxury bespoke Sri Lanka private chauffeur journeys.",
+          "telephone": "+94 71 54 22 384",
+          "email": "info@lotusceylon.com",
+          "priceRange": "$$$$",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "286/C, Niwandama South",
+            "addressLocality": "Ja-Ela",
+            "addressRegion": "Western Province",
+            "postalCode": "11350",
+            "addressCountry": "LK"
+          }
+        };
+      } else if (presetType === 'TouristAttraction') {
+        schema = {
+          "@context": "https://schema.org",
+          "@type": "TouristAttraction",
+          "name": titleVal.split('|')[0].trim(),
+          "description": descVal,
+          "url": canonicalVal,
+          "touristType": ["Luxury Travelers", "Cultural Pilgrims"]
+        };
+      } else if (presetType === 'TouristTrip') {
+        schema = {
+          "@context": "https://schema.org",
+          "@type": "TouristTrip",
+          "name": titleVal.split('|')[0].trim(),
+          "description": descVal,
+          "url": canonicalVal,
+          "provider": {
+            "@type": "TravelAgency",
+            "name": "Lotus Ceylon International Tours"
+          }
+        };
+      } else if (presetType === 'BlogPosting') {
+        schema = {
+          "@context": "https://schema.org",
+          "@type": "BlogPosting",
+          "headline": titleVal.split('|')[0].trim(),
+          "description": descVal,
+          "url": canonicalVal,
+          "author": { "@type": "Organization", "name": "Lotus Ceylon Editorial" },
+          "publisher": { "@type": "Organization", "name": "Lotus Ceylon International Tours", "logo": { "@type": "ImageObject", "url": brandLogo } },
+          "datePublished": new Date().toISOString().split('T')[0]
+        };
+      } else if (presetType === 'BreadcrumbList') {
+        schema = {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": baseUrl },
+            { "@type": "ListItem", "position": 2, "name": titleVal.split('|')[0].trim(), "item": canonicalVal }
+          ]
+        };
+      }
+
+      jsonArea.value = JSON.stringify(schema, null, 2);
+    },
+
     openSeoModal() {
       const iframe = document.getElementById('visualCmsIframe');
       let titleVal = '';
       let descVal = '';
       let imgVal = '';
+      let kwVal = '';
+      let canonicalVal = '';
+      let ogTitleVal = '';
+      let twitterCardVal = 'summary_large_image';
+      let robotsVal = 'index, follow';
+      let schemaVal = '';
+
       if (iframe && iframe.contentDocument) {
         try {
-          titleVal = iframe.contentDocument.title || '';
-          const metaDesc = iframe.contentDocument.querySelector('meta[name="description"]');
+          const doc = iframe.contentDocument;
+          titleVal = doc.title || '';
+          const metaDesc = doc.querySelector('meta[name="description"]');
           if (metaDesc) descVal = metaDesc.getAttribute('content') || '';
-          const ogImg = iframe.contentDocument.querySelector('meta[property="og:image"]');
+          const metaKw = doc.querySelector('meta[name="keywords"]');
+          if (metaKw) kwVal = metaKw.getAttribute('content') || '';
+          const linkCanon = doc.querySelector('link[rel="canonical"]');
+          if (linkCanon) canonicalVal = linkCanon.getAttribute('href') || '';
+          const ogImg = doc.querySelector('meta[property="og:image"]');
           if (ogImg) imgVal = ogImg.getAttribute('content') || '';
+          const ogTitle = doc.querySelector('meta[property="og:title"]');
+          if (ogTitle) ogTitleVal = ogTitle.getAttribute('content') || '';
+          const twitterCard = doc.querySelector('meta[name="twitter:card"]');
+          if (twitterCard) twitterCardVal = twitterCard.getAttribute('content') || 'summary_large_image';
+          const metaRobots = doc.querySelector('meta[name="robots"]');
+          if (metaRobots) robotsVal = metaRobots.getAttribute('content') || 'index, follow';
+          const scriptSchema = doc.querySelector('script[type="application/ld+json"]');
+          if (scriptSchema) schemaVal = scriptSchema.textContent.trim();
         } catch(e) {}
       }
+
       const titleInput = document.getElementById('seoPageTitle');
       const descInput = document.getElementById('seoPageDesc');
       const imgInput = document.getElementById('seoPageImage');
+      const kwInput = document.getElementById('seoPageKeywords');
+      const canonicalInput = document.getElementById('seoPageCanonical');
+      const ogTitleInput = document.getElementById('seoPageOgTitle');
+      const twitterCardInput = document.getElementById('seoPageTwitterCard');
+      const robotsInput = document.getElementById('seoPageRobots');
+      const schemaInput = document.getElementById('seoPageJsonLd');
+
       if (titleInput) titleInput.value = titleVal;
       if (descInput) descInput.value = descVal;
       if (imgInput) imgInput.value = imgVal;
+      if (kwInput) kwInput.value = kwVal;
+      if (canonicalInput) canonicalInput.value = canonicalVal;
+      if (ogTitleInput) ogTitleInput.value = ogTitleVal || titleVal;
+      if (twitterCardInput) twitterCardInput.value = twitterCardVal;
+      if (robotsInput) robotsInput.value = robotsVal;
+      if (schemaInput) schemaInput.value = schemaVal;
+
       this.updateSeoCounters();
       if (window.AdminApp && typeof window.AdminApp.openModal === 'function') {
         window.AdminApp.openModal('seoModal');
@@ -2915,18 +3066,77 @@
     },
 
     saveSeoSettings() {
-      const titleVal = document.getElementById('seoPageTitle')?.value || '';
-      const descVal = document.getElementById('seoPageDesc')?.value || '';
-      const imgVal = document.getElementById('seoPageImage')?.value || '';
+      const titleVal = document.getElementById('seoPageTitle')?.value.trim() || '';
+      const descVal = document.getElementById('seoPageDesc')?.value.trim() || '';
+      const imgVal = document.getElementById('seoPageImage')?.value.trim() || '';
+      const kwVal = document.getElementById('seoPageKeywords')?.value.trim() || '';
+      const canonicalVal = document.getElementById('seoPageCanonical')?.value.trim() || '';
+      const ogTitleVal = document.getElementById('seoPageOgTitle')?.value.trim() || titleVal;
+      const twitterCardVal = document.getElementById('seoPageTwitterCard')?.value || 'summary_large_image';
+      const robotsVal = document.getElementById('seoPageRobots')?.value || 'index, follow';
+      const schemaVal = document.getElementById('seoPageJsonLd')?.value.trim() || '';
 
       const iframe = document.getElementById('visualCmsIframe');
       if (iframe && iframe.contentDocument) {
         try {
-          iframe.contentDocument.title = titleVal;
-          const metaDesc = iframe.contentDocument.querySelector('meta[name="description"]');
-          if (metaDesc) metaDesc.setAttribute('content', descVal);
-          const ogImg = iframe.contentDocument.querySelector('meta[property="og:image"]');
+          const doc = iframe.contentDocument;
+          doc.title = titleVal;
+          
+          let metaDesc = doc.querySelector('meta[name="description"]');
+          if (!metaDesc) {
+            metaDesc = doc.createElement('meta');
+            metaDesc.setAttribute('name', 'description');
+            doc.head.appendChild(metaDesc);
+          }
+          metaDesc.setAttribute('content', descVal);
+
+          let metaKw = doc.querySelector('meta[name="keywords"]');
+          if (!metaKw && kwVal) {
+            metaKw = doc.createElement('meta');
+            metaKw.setAttribute('name', 'keywords');
+            doc.head.appendChild(metaKw);
+          }
+          if (metaKw) metaKw.setAttribute('content', kwVal);
+
+          let linkCanon = doc.querySelector('link[rel="canonical"]');
+          if (!linkCanon && canonicalVal) {
+            linkCanon = doc.createElement('link');
+            linkCanon.setAttribute('rel', 'canonical');
+            doc.head.appendChild(linkCanon);
+          }
+          if (linkCanon) linkCanon.setAttribute('href', canonicalVal);
+
+          let ogImg = doc.querySelector('meta[property="og:image"]');
+          if (!ogImg && imgVal) {
+            ogImg = doc.createElement('meta');
+            ogImg.setAttribute('property', 'og:image');
+            doc.head.appendChild(ogImg);
+          }
           if (ogImg) ogImg.setAttribute('content', imgVal);
+
+          let ogTitle = doc.querySelector('meta[property="og:title"]');
+          if (!ogTitle && ogTitleVal) {
+            ogTitle = doc.createElement('meta');
+            ogTitle.setAttribute('property', 'og:title');
+            doc.head.appendChild(ogTitle);
+          }
+          if (ogTitle) ogTitle.setAttribute('content', ogTitleVal);
+
+          let metaRobots = doc.querySelector('meta[name="robots"]');
+          if (!metaRobots && robotsVal) {
+            metaRobots = doc.createElement('meta');
+            metaRobots.setAttribute('name', 'robots');
+            doc.head.appendChild(metaRobots);
+          }
+          if (metaRobots) metaRobots.setAttribute('content', robotsVal);
+
+          let scriptSchema = doc.querySelector('script[type="application/ld+json"]');
+          if (!scriptSchema && schemaVal) {
+            scriptSchema = doc.createElement('script');
+            scriptSchema.setAttribute('type', 'application/ld+json');
+            doc.head.appendChild(scriptSchema);
+          }
+          if (scriptSchema && schemaVal) scriptSchema.textContent = schemaVal;
         } catch(e) {}
       }
 
@@ -2934,8 +3144,15 @@
         this.pendingChanges = this.pendingChanges || {};
         this.pendingChanges[`${this.activePageKey}.seo.title`] = titleVal;
         this.pendingChanges[`${this.activePageKey}.seo.description`] = descVal;
-        if (imgVal) this.pendingChanges[`${this.activePageKey}.seo.image`] = imgVal;
+        if (imgVal) this.pendingChanges[`${this.activePageKey}.seo.og_image`] = imgVal;
+        if (kwVal) this.pendingChanges[`${this.activePageKey}.seo.keywords`] = kwVal;
+        if (canonicalVal) this.pendingChanges[`${this.activePageKey}.seo.canonical`] = canonicalVal;
+        if (ogTitleVal) this.pendingChanges[`${this.activePageKey}.seo.og_title`] = ogTitleVal;
+        if (twitterCardVal) this.pendingChanges[`${this.activePageKey}.seo.twitter_card`] = twitterCardVal;
+        if (robotsVal) this.pendingChanges[`${this.activePageKey}.seo.robots`] = robotsVal;
+        if (schemaVal) this.pendingChanges[`${this.activePageKey}.seo.json_ld_1`] = schemaVal;
       }
+
       this.hasUnsavedChanges = true;
       if (typeof this.updateSaveIndicators === 'function') {
         this.updateSaveIndicators();
@@ -2946,7 +3163,6 @@
         window.AdminApp.showToast('Page SEO settings saved to draft! Click "Publish Live" to apply.', 'success');
       }
     },
-
 
     resetCurrentPage() {
       if (!confirm('Are you sure you want to reset this page and discard all unsaved edits?')) {

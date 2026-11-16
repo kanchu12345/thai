@@ -2543,7 +2543,22 @@ resolveImg(url) {
         mainBadge: (mainBadgeInput && mainBadgeInput.value.trim()) || 'Sacred Heritage',
         side: sideArray,
         sideBadges: sideBadges,
-        updatedAt: new Date().toISOString()
+        updatedAt: new Date().toISOString(),
+        seo: {
+          title: document.getElementById('blogMetaTitle')?.value.trim() || title,
+          description: document.getElementById('blogMetaDesc')?.value.trim() || (excerptInput ? excerptInput.value.trim() : ''),
+          keywords: document.getElementById('blogFocusKeywords')?.value.trim() || '',
+          canonical: document.getElementById('blogCanonicalUrl')?.value.trim() || `https://kanchu12345.github.io/thai/blog/${slug}/`,
+          ogTitle: document.getElementById('blogOgTitle')?.value.trim() || title,
+          ogImage: document.getElementById('blogOgImage')?.value.trim() || (coverInput ? coverInput.value.trim() : ''),
+          twitterCard: document.getElementById('blogTwitterCard')?.value || 'summary_large_image',
+          robots: document.getElementById('blogRobots')?.value || 'index, follow',
+          jsonLdSchema: (() => {
+            const raw = document.getElementById('blogJsonLdSchema')?.value.trim();
+            if (!raw) return null;
+            try { return JSON.parse(raw); } catch(e) { return raw; }
+          })()
+        }
       };
 
       this.homepageBlogConfig = newConfig;
@@ -2699,6 +2714,34 @@ resolveImg(url) {
         if (posInput) posInput.value = 'none';
         if (badgeInput) badgeInput.value = '';
       }
+      
+      // Populate Article SEO Fields
+      const curPost = postId ? (this.blogPosts || []).find(p => p.id === postId || p.slug === postId) : null;
+      const bSeo = (curPost && curPost.seo) || {};
+
+      const bMetaTitle = document.getElementById('blogMetaTitle');
+      const bMetaDesc = document.getElementById('blogMetaDesc');
+      const bKeywords = document.getElementById('blogFocusKeywords');
+      const bCanonical = document.getElementById('blogCanonicalUrl');
+      const bOgTitle = document.getElementById('blogOgTitle');
+      const bOgImage = document.getElementById('blogOgImage');
+      const bTwitterCard = document.getElementById('blogTwitterCard');
+      const bRobots = document.getElementById('blogRobots');
+      const bJsonLd = document.getElementById('blogJsonLdSchema');
+
+      if (bMetaTitle) bMetaTitle.value = bSeo.title || (curPost ? curPost.title : '') || '';
+      if (bMetaDesc) bMetaDesc.value = bSeo.description || (curPost ? curPost.excerpt : '') || '';
+      if (bKeywords) bKeywords.value = bSeo.keywords || (curPost ? curPost.focusKeywords : '') || '';
+      if (bCanonical) bCanonical.value = bSeo.canonical || (curPost && curPost.slug ? `https://kanchu12345.github.io/thai/blog/${curPost.slug}/` : '');
+      if (bOgTitle) bOgTitle.value = bSeo.ogTitle || (curPost ? curPost.title : '') || '';
+      if (bOgImage) bOgImage.value = bSeo.ogImage || (curPost ? (curPost.coverImage || curPost.cover) : '') || '';
+      if (bTwitterCard) bTwitterCard.value = bSeo.twitterCard || 'summary_large_image';
+      if (bRobots) bRobots.value = bSeo.robots || 'index, follow';
+      if (bJsonLd) {
+        bJsonLd.value = bSeo.jsonLdSchema ? (typeof bSeo.jsonLdSchema === 'object' ? JSON.stringify(bSeo.jsonLdSchema, null, 2) : bSeo.jsonLdSchema) : '';
+      }
+      this.updateBlogSeoCounters();
+
       this.openModal('blogPostModal');
     },
 
@@ -2708,6 +2751,107 @@ resolveImg(url) {
 
     openMediaPickerForBlog() {
       this.openImagePicker('blogCoverImage', 'blogCoverPreview', 'blogCoverPreviewCard');
+    },
+
+    
+    updateBlogSeoCounters() {
+      const titleInp = document.getElementById('blogMetaTitle');
+      const descInp = document.getElementById('blogMetaDesc');
+      const titleBadge = document.getElementById('blogMetaTitleCountBadge');
+      const descBadge = document.getElementById('blogMetaDescCountBadge');
+
+      if (titleInp && titleBadge) {
+        const len = titleInp.value.length;
+        titleBadge.textContent = `${len} / 60 chars`;
+        titleBadge.style.background = (len >= 45 && len <= 60) ? '#DCFCE7' : (len > 60 ? '#FEE2E2' : '#FEF3C7');
+        titleBadge.style.color = (len >= 45 && len <= 60) ? '#166534' : (len > 60 ? '#991B1B' : '#92400E');
+      }
+      if (descInp && descBadge) {
+        const len = descInp.value.length;
+        descBadge.textContent = `${len} / 160 chars`;
+        descBadge.style.background = (len >= 120 && len <= 160) ? '#DCFCE7' : (len > 160 ? '#FEE2E2' : '#FEF3C7');
+        descBadge.style.color = (len >= 120 && len <= 160) ? '#166534' : (len > 160 ? '#991B1B' : '#92400E');
+      }
+    },
+
+    autoGenerateBlogSeo() {
+      const title = document.getElementById('blogTitle')?.value.trim() || '';
+      const excerpt = document.getElementById('blogExcerpt')?.value.trim() || '';
+      const slug = document.getElementById('blogSlug')?.value.trim() || '';
+      const cover = document.getElementById('blogCoverImage')?.value.trim() || '';
+      const cat = document.getElementById('blogCategory')?.value.trim() || 'Editorial';
+
+      const metaTitleInp = document.getElementById('blogMetaTitle');
+      const metaDescInp = document.getElementById('blogMetaDesc');
+      const kwInp = document.getElementById('blogFocusKeywords');
+      const canonInp = document.getElementById('blogCanonicalUrl');
+      const ogTitleInp = document.getElementById('blogOgTitle');
+      const ogImgInp = document.getElementById('blogOgImage');
+
+      if (metaTitleInp && title) {
+        metaTitleInp.value = `${title} | Lotus Ceylon Journal`.slice(0, 60);
+      }
+      if (metaDescInp && excerpt) {
+        metaDescInp.value = excerpt.slice(0, 155);
+      }
+      if (kwInp) {
+        kwInp.value = `ceylon travel insights, ${cat.toLowerCase()}, sri lanka pilgrimage guide, lotus ceylon`;
+      }
+      if (canonInp && slug) {
+        canonInp.value = `https://kanchu12345.github.io/thai/blog/${slug}/`;
+      }
+      if (ogTitleInp && metaTitleInp) {
+        ogTitleInp.value = metaTitleInp.value;
+      }
+      if (ogImgInp && cover) {
+        ogImgInp.value = cover;
+      }
+
+      this.updateBlogSeoCounters();
+      this.generateBlogSchema();
+      this.showToast('Article SEO & Schema auto-generated!', 'success');
+    },
+
+    generateBlogSchema() {
+      const title = document.getElementById('blogTitle')?.value.trim() || 'Lotus Ceylon Article';
+      const excerpt = document.getElementById('blogExcerpt')?.value.trim() || '';
+      const slug = document.getElementById('blogSlug')?.value.trim() || 'article';
+      const author = document.getElementById('blogAuthor')?.value.trim() || 'Lotus Ceylon Editorial';
+      const date = document.getElementById('blogDate')?.value || new Date().toISOString().split('T')[0];
+      const cover = document.getElementById('blogCoverImage')?.value.trim() || 'assets/images/cultural/sigiriya-1.webp';
+      const canon = document.getElementById('blogCanonicalUrl')?.value.trim() || `https://kanchu12345.github.io/thai/blog/${slug}/`;
+
+      const schema = {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": title,
+        "description": excerpt,
+        "url": canon,
+        "image": "https://kanchu12345.github.io/thai/" + cover.replace(/^\.\//, ''),
+        "datePublished": date,
+        "dateModified": date,
+        "author": {
+          "@type": "Person",
+          "name": author
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "Lotus Ceylon International Tours & Services",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://kanchu12345.github.io/thai/assets/images/brand/logo-header.png"
+          }
+        },
+        "mainEntityOfPage": {
+          "@type": "WebPage",
+          "@id": canon
+        }
+      };
+
+      const schemaBox = document.getElementById('blogJsonLdSchema');
+      if (schemaBox) {
+        schemaBox.value = JSON.stringify(schema, null, 2);
+      }
     },
 
     async saveBlogModal(e) {
@@ -5145,6 +5289,32 @@ const waBtn = document.getElementById('inquiryWhatsAppBtn');
 
 
 
+      
+      // Populate Package SEO & Structured Data Fields
+      const pSeo = (pkg && pkg.seo) || {};
+      const pkgMetaTitleEl = document.getElementById('pkgMetaTitle');
+      const pkgMetaDescEl = document.getElementById('pkgMetaDescription');
+      const pkgKeywordsEl = document.getElementById('pkgFocusKeywords');
+      const pkgCanonicalEl = document.getElementById('pkgCanonicalUrl');
+      const pkgOgTitleEl = document.getElementById('pkgOgTitle');
+      const pkgOgImageEl = document.getElementById('pkgOgImage');
+      const pkgTwitterCardEl = document.getElementById('pkgTwitterCard');
+      const pkgRobotsEl = document.getElementById('pkgRobots');
+      const pkgJsonLdEl = document.getElementById('pkgJsonLdSchema');
+
+      if (pkgMetaTitleEl) pkgMetaTitleEl.value = pSeo.title || (pkg ? (pkg.metaTitle || pkg.meta_title) : '') || '';
+      if (pkgMetaDescEl) pkgMetaDescEl.value = pSeo.description || (pkg ? (pkg.metaDescription || pkg.meta_description) : '') || '';
+      if (pkgKeywordsEl) pkgKeywordsEl.value = pSeo.keywords || (pkg ? (pkg.focusKeywords || pkg.keywords) : '') || '';
+      if (pkgCanonicalEl) pkgCanonicalEl.value = pSeo.canonical || (pkg && pkg.slug ? `https://kanchu12345.github.io/thai/tours/${pkg.slug}/` : '');
+      if (pkgOgTitleEl) pkgOgTitleEl.value = pSeo.ogTitle || (pkg ? (typeof pkg.title === 'object' ? pkg.title.en : pkg.title) : '') || '';
+      if (pkgOgImageEl) pkgOgImageEl.value = pSeo.ogImage || (pkg ? (pkg.hero_image || pkg.image) : '') || '';
+      if (pkgTwitterCardEl) pkgTwitterCardEl.value = pSeo.twitterCard || 'summary_large_image';
+      if (pkgRobotsEl) pkgRobotsEl.value = pSeo.robots || 'index, follow';
+      if (pkgJsonLdEl) {
+        pkgJsonLdEl.value = pSeo.jsonLdSchema ? (typeof pSeo.jsonLdSchema === 'object' ? JSON.stringify(pSeo.jsonLdSchema, null, 2) : pSeo.jsonLdSchema) : '';
+      }
+      this.updatePkgSeoCounters();
+
       this.openModal('packageModal');
 
     },
@@ -5244,6 +5414,105 @@ const waBtn = document.getElementById('inquiryWhatsAppBtn');
 
 
 
+    
+    updatePkgSeoCounters() {
+      const titleInp = document.getElementById('pkgMetaTitle');
+      const descInp = document.getElementById('pkgMetaDescription');
+      const titleBadge = document.getElementById('pkgMetaTitleCountBadge');
+      const descBadge = document.getElementById('pkgMetaDescCountBadge');
+
+      if (titleInp && titleBadge) {
+        const len = titleInp.value.length;
+        titleBadge.textContent = `${len} / 60 chars`;
+        titleBadge.style.background = (len >= 45 && len <= 60) ? '#DCFCE7' : (len > 60 ? '#FEE2E2' : '#FEF3C7');
+        titleBadge.style.color = (len >= 45 && len <= 60) ? '#166534' : (len > 60 ? '#991B1B' : '#92400E');
+      }
+      if (descInp && descBadge) {
+        const len = descInp.value.length;
+        descBadge.textContent = `${len} / 160 chars`;
+        descBadge.style.background = (len >= 120 && len <= 160) ? '#DCFCE7' : (len > 160 ? '#FEE2E2' : '#FEF3C7');
+        descBadge.style.color = (len >= 120 && len <= 160) ? '#166534' : (len > 160 ? '#991B1B' : '#92400E');
+      }
+    },
+
+    autoGeneratePackageSeo() {
+      const title = document.getElementById('pkgTitle')?.value.trim() || '';
+      const overview = document.getElementById('pkgOverview')?.value.trim() || '';
+      const slug = document.getElementById('pkgSlug')?.value.trim() || '';
+      const hero = document.getElementById('pkgHeroImage')?.value.trim() || '';
+      const cat = document.getElementById('pkgCategory')?.value || '';
+
+      const metaTitleInp = document.getElementById('pkgMetaTitle');
+      const metaDescInp = document.getElementById('pkgMetaDescription');
+      const kwInp = document.getElementById('pkgFocusKeywords');
+      const canonInp = document.getElementById('pkgCanonicalUrl');
+      const ogTitleInp = document.getElementById('pkgOgTitle');
+      const ogImgInp = document.getElementById('pkgOgImage');
+
+      if (metaTitleInp && title) {
+        metaTitleInp.value = `${title} | Luxury Sri Lanka Tours`.slice(0, 60);
+      }
+      if (metaDescInp && overview) {
+        metaDescInp.value = overview.slice(0, 155).replace(/\s+\S*$/, '') + '...';
+      }
+      if (kwInp) {
+        kwInp.value = `sri lanka ${cat} tour, private bespoke ${slug.replace(/-/g, ' ')}, luxury chauffeur ceylon`;
+      }
+      if (canonInp && slug) {
+        canonInp.value = `https://kanchu12345.github.io/thai/tours/${slug}/`;
+      }
+      if (ogTitleInp && metaTitleInp) {
+        ogTitleInp.value = metaTitleInp.value;
+      }
+      if (ogImgInp && hero) {
+        ogImgInp.value = hero;
+      }
+
+      this.updatePkgSeoCounters();
+      this.generatePackageSchema();
+      this.showToast('Package SEO & Schema auto-generated!', 'success');
+    },
+
+    generatePackageSchema() {
+      const title = document.getElementById('pkgTitle')?.value.trim() || 'Signature Ceylon Journey';
+      const overview = document.getElementById('pkgOverview')?.value.trim() || 'Bespoke private luxury chauffeured tour.';
+      const slug = document.getElementById('pkgSlug')?.value.trim() || 'tour';
+      const price = parseFloat(document.getElementById('pkgPrice')?.value) || 1250;
+      const days = parseInt(document.getElementById('pkgDays')?.value) || 7;
+      const hero = document.getElementById('pkgHeroImage')?.value.trim() || 'assets/images/cultural/sigiriya-1.webp';
+      const canon = document.getElementById('pkgCanonicalUrl')?.value.trim() || `https://kanchu12345.github.io/thai/tours/${slug}/`;
+
+      const schema = {
+        "@context": "https://schema.org",
+        "@type": "TouristTrip",
+        "name": title,
+        "description": overview.slice(0, 300),
+        "url": canon,
+        "image": "https://kanchu12345.github.io/thai/" + hero.replace(/^\.\//, ''),
+        "touristType": ["Luxury Travelers", "Cultural Pilgrims", "Wildlife Explorers"],
+        "duration": `P${days}D`,
+        "provider": {
+          "@type": "TravelAgency",
+          "name": "Lotus Ceylon International Tours & Services (Private) Limited",
+          "url": "https://kanchu12345.github.io/thai/",
+          "telephone": "+94 71 54 22 384"
+        },
+        "offers": {
+          "@type": "Offer",
+          "price": price,
+          "priceCurrency": "USD",
+          "availability": "https://schema.org/InStock",
+          "validFrom": new Date().toISOString().split('T')[0],
+          "url": canon
+        }
+      };
+
+      const schemaBox = document.getElementById('pkgJsonLdSchema');
+      if (schemaBox) {
+        schemaBox.value = JSON.stringify(schema, null, 2);
+      }
+    },
+
     async savePackage() {
       const title = document.getElementById('pkgTitle').value.trim();
       const slug = document.getElementById('pkgSlug').value.trim();
@@ -5315,6 +5584,21 @@ const waBtn = document.getElementById('inquiryWhatsAppBtn');
         faqs: faqs,
         metaTitle: metaTitle,
         metaDescription: metaDescription,
+        seo: {
+          title: metaTitle,
+          description: metaDescription,
+          keywords: document.getElementById('pkgFocusKeywords')?.value.trim() || '',
+          canonical: document.getElementById('pkgCanonicalUrl')?.value.trim() || `https://kanchu12345.github.io/thai/tours/${slug}/`,
+          ogTitle: document.getElementById('pkgOgTitle')?.value.trim() || metaTitle,
+          ogImage: document.getElementById('pkgOgImage')?.value.trim() || document.getElementById('pkgHeroImage').value.trim(),
+          twitterCard: document.getElementById('pkgTwitterCard')?.value || 'summary_large_image',
+          robots: document.getElementById('pkgRobots')?.value || 'index, follow',
+          jsonLdSchema: (() => {
+            const raw = document.getElementById('pkgJsonLdSchema')?.value.trim();
+            if (!raw) return null;
+            try { return JSON.parse(raw); } catch(e) { return raw; }
+          })()
+        },
         promo_video: (document.getElementById('pkgPromoVideo') ? document.getElementById('pkgPromoVideo').value.trim() : '') || existing.promo_video || '',
         gallery_images: this.activePackageGallery || existing.gallery_images || existing.gallery || [],
         hero_image: document.getElementById('pkgHeroImage').value.trim() || existing.hero_image || 'assets/images/cultural-triangle.jpg',

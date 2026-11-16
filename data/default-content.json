@@ -92,7 +92,7 @@
       "slug": "romantic-honeymoon",
       "name": "Romantic Honeymoon",
       "tagline": "Private Escapes & Sunset Cruises",
-      "description": "Curated romantic hideaways with bespoke candlelit dinners.",
+      "description": "Curated romantic hideaways with private candlelit dinners.",
       "sort_order": 7,
       "is_published": true
     },
@@ -124,14 +124,14 @@
   "tours": [
     {
       "slug": "grand-ceylon-heritage",
-      "title": "Grand Ceylon Heritage & Wildlife Odyssey",
+      "title": "Grand Ceylon Heritage & Wildlife Journey",
       "category_slug": "cultural-triangle",
       "nights": 9,
       "days": 10,
       "price_from": 1450,
       "is_popular": true,
       "hero_image": "assets/images/cultural-triangle.jpg",
-      "overview": "A definitive voyage through Sri Lanka’s UNESCO world heritage wonders, misty highlands, and untamed leopard territory.",
+      "overview": "A classic journey through Sri Lanka’s UNESCO world heritage wonders, misty highlands, and untamed leopard territory.",
       "highlights": [
         "Sigiriya Rock Fortress sunrise climb",
         "Private Yala National Park jeep safari",
@@ -149,7 +149,7 @@
       "price_from": 1150,
       "is_popular": false,
       "hero_image": "assets/images/kandy.jpg",
-      "overview": "Immerse in peaceful ancient monastic ruins, sacred stupas, and guided meditation with venerable monks.",
+      "overview": "Immerse in peaceful ancient monastic ruins, sacred stupas, and guided meditation with respected monks.",
       "highlights": [
         "Anuradhapura Sacred Bodhi Tree",
         "Dambulla Golden Cave Temple",
