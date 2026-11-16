@@ -205,7 +205,14 @@
 
       // 4. Setup storage listener for live cross-tab sync
 
-            window.addEventListener('lotus:blog-updated', (e) => {
+                  window.addEventListener('lotus:team-updated', (e) => {
+        if (e.detail && e.detail.team) {
+          this.store.team = e.detail.team;
+        }
+        this.hydrateTeam();
+      });
+
+      window.addEventListener('lotus:blog-updated', (e) => {
         if (e.detail && e.detail.blog) {
           const b = e.detail.blog;
           const idx = (this.store.blog || []).findIndex(x => x.slug === b.slug || x.id === b.id);
@@ -225,25 +232,7 @@
         this.hydrateDOM();
       });
 
-            window.addEventListener('lotus:blog-updated', (e) => {
-        if (e.detail && e.detail.blog) {
-          const b = e.detail.blog;
-          const idx = (this.store.blog || []).findIndex(x => x.slug === b.slug || x.id === b.id);
-          if (idx >= 0) this.store.blog[idx] = b;
-          else if (this.store.blog) this.store.blog.unshift(b);
-        }
-        this.hydrateBlogs();
-      });
-
-      window.addEventListener('lotus:package-updated', (e) => {
-        if (e.detail && e.detail.package) {
-          const p = e.detail.package;
-          const idx = (this.store.packages || []).findIndex(x => x.slug === p.slug || x.id === p.id);
-          if (idx >= 0) this.store.packages[idx] = p;
-          else if (this.store.packages) this.store.packages.push(p);
-        }
-        this.hydrateDOM();
-      });
+            
 
       window.addEventListener('storage', (e) => {
 
@@ -1042,45 +1031,47 @@
 
 
 
-      // 4. Hydrate package cards if marked with data-package-slug
-
+      // 4. Hydrate package cards if marked with data-package-slug (Single Source of Truth)
       document.querySelectorAll('[data-package-slug]').forEach(card => {
-
         const slug = card.getAttribute('data-package-slug');
-
         const pkg = this.getPackage(slug);
-
         if (pkg) {
-
-          const titleEl = card.querySelector('.package-title, [data-cms*="title"], h3, h4');
-
+          const titleEl = card.querySelector('.package-title, [data-cms*="title"], h3, h4, .heading--24, .para--white-line');
           if (titleEl) titleEl.textContent = this.getText(pkg.title, lang);
 
-
-
-          const durationEl = card.querySelector('.package-duration, [data-cms*="duration"]');
-
+          const durationEl = card.querySelector('.package-duration, [data-cms*="duration"], .paragraph--18');
           if (durationEl && pkg.nights && pkg.days) {
-
-            durationEl.textContent = `${pkg.nights} Nights • ${pkg.days} Days`;
-
+            durationEl.textContent = `${pkg.nights} Nights and ${pkg.days} Days`;
           }
 
-
+          const catEl = card.querySelector('.package-cat, .paragraph--14.font-weight--500');
+          if (catEl) {
+            catEl.textContent = this.getText(pkg.categoryName || pkg.category, lang);
+          }
 
           const priceEl = card.querySelector('.package-price, [data-cms*="price"]');
-
           if (priceEl) {
-
             priceEl.textContent = pkg.price_from ? `$${pkg.price_from}` : (pkg.price_formatted || 'On request');
-
           }
 
+          const rawImgs = pkg.images || pkg.gallery_images || (pkg.hero_image ? [pkg.hero_image] : []);
+          if (Array.isArray(rawImgs) && rawImgs.length > 0) {
+            const sliderImgs = card.querySelectorAll('.card-image-slider img.slider-img, img.hover-box__img');
+            sliderImgs.forEach((img, idx) => {
+              const src = rawImgs[idx] || rawImgs[0];
+              if (src) {
+                img.src = src.startsWith('http') ? src : `${base}${src.replace(/^(\.\/)+/, '')}`;
+                img.alt = this.getText(pkg.title, lang);
+              }
+            });
+          }
+
+          if (card.tagName === 'A') {
+            const cat = pkg.category || 'tours';
+            card.setAttribute('href', `${base}tours/${cat}/${pkg.slug}/index.html`);
+          }
         }
-
       });
-
-
 
       // 6. Dynamic Blog Hydration (Sustainability, Homepage News, Blog Listing)
 
@@ -1352,29 +1343,6 @@
           `;
         }).join('');
       }
-
-      // 6B-2. Hydrate all elements marked with data-blog-slug directly from single source of truth
-      document.querySelectorAll('[data-blog-slug]').forEach(el => {
-        const bSlug = el.getAttribute('data-blog-slug');
-        const bPost = blogs.find(b => b.slug === bSlug || b.id === bSlug);
-        if (bPost) {
-          const t = this.getText(bPost.title, lang);
-          const e = this.getText(bPost.excerpt, lang);
-          const c = (typeof bPost.category === 'string' ? bPost.category : this.getText(bPost.category, lang)) || 'Lotus Journal';
-          const rawCover = bPost.cover || bPost.coverImage || 'assets/images/cultural/sigiriya-1.webp';
-          const fullCover = rawCover.startsWith('http') ? rawCover : `${base}${rawCover.replace(/^(\.\/)+/, '')}`;
-
-          const img = el.querySelector('img');
-          if (img) { img.src = fullCover; img.alt = t; }
-          const titleEl = el.querySelector('h3, h4, .news-side-title');
-          if (titleEl) titleEl.textContent = t;
-          const excerptEl = el.querySelector('p');
-          if (excerptEl && e) excerptEl.textContent = e;
-          const badgeEl = el.querySelector('.news-date');
-          if (badgeEl) badgeEl.innerHTML = el.classList.contains('news-card-big') ? `${c} &bull; Lotus Journal` : c;
-          if (el.tagName === 'A') el.setAttribute('href', `${base}blog/${bSlug}/index.html`);
-        }
-      });
 
       // 6B-2. Hydrate all elements marked with data-blog-slug directly from single source of truth
       document.querySelectorAll('[data-blog-slug]').forEach(el => {

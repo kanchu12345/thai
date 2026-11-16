@@ -2854,6 +2854,183 @@ resolveImg(url) {
       }
     },
 
+    
+    /**
+     * Single Source of Truth: Synchronize Blog updates across the entire site
+     * Saves to Firestore 'blog' and 'blogs', synchronizes home page keys into 'siteContent/home',
+     * bumps version, invalidates cache, and notifies live preview iframe.
+     */
+    async syncBlogToSite(blogEntry) {
+      if (!blogEntry || !blogEntry.slug) return;
+      const slug = blogEntry.slug;
+      const id = blogEntry.id || slug;
+      const lang = this.currentLang || 'en';
+      const title = typeof blogEntry.title === 'object' ? (blogEntry.title[lang] || blogEntry.title.en) : blogEntry.title;
+      const excerpt = typeof blogEntry.excerpt === 'object' ? (blogEntry.excerpt[lang] || blogEntry.excerpt.en) : blogEntry.excerpt;
+      const cover = blogEntry.coverImage || blogEntry.cover || 'assets/images/cultural/sigiriya-1.webp';
+      const category = (typeof blogEntry.category === 'object' ? (blogEntry.category[lang] || blogEntry.category.en) : blogEntry.category) || 'Lotus Journal';
+
+      // 1. Dual Firestore collection save ('blog' and 'blogs')
+      if (this.fbDb) {
+        try {
+          await this.fbDb.collection('blog').doc(id).set(blogEntry, { merge: true });
+          await this.fbDb.collection('blogs').doc(id).set(blogEntry, { merge: true });
+        } catch (err) {
+          console.warn('[AdminApp] Firebase blog save warning:', err);
+        }
+      }
+
+      // 2. Map home page keys if this blog is featured or assigned
+      const homeUpdates = {};
+      const isMain = slug === 'sacred-footsteps-unlocking-sri-lankas-ancient-buddhist-kingdoms' ||
+                     (this.homepageBlogConfig && this.homepageBlogConfig.main === slug);
+
+      if (isMain) {
+        if (title) homeUpdates['home.heading_20'] = title;
+        if (excerpt) homeUpdates['home.p_73'] = excerpt;
+        if (cover) homeUpdates['home.img_39'] = cover;
+        if (category) homeUpdates['home.span_76'] = `${category} • Lotus Journal`;
+      }
+
+      if (slug === 'ella-hands-on-tea-making-experience') {
+        if (title) homeUpdates['home.heading_ella_tea'] = title;
+        if (cover) homeUpdates['home.img_ella_tea'] = cover;
+        if (category) homeUpdates['home.span_ella_tag'] = category;
+      } else if (slug === 'the-great-gathering-watching-hundreds-of-wild-elephants-at-minneriya') {
+        if (title) homeUpdates['home.heading_1'] = title;
+        if (category) homeUpdates['home.span_78'] = category;
+      } else if (slug === 'growing-a-greener-future-volunteer-reforestation-sinharaja') {
+        if (title) homeUpdates['home.heading_2'] = title;
+        if (category) homeUpdates['home.span_79'] = category;
+      } else if (slug === 'living-healing-traditional-ceylon-ayurveda') {
+        if (title) homeUpdates['home.heading_3'] = title;
+        if (category) homeUpdates['home.span_80'] = category;
+      }
+
+      // 3. Write homeUpdates directly to 'siteContent/home' in Firestore
+      if (Object.keys(homeUpdates).length > 0 && this.fbDb) {
+        try {
+          await this.fbDb.collection('siteContent').doc('home').set(homeUpdates, { merge: true });
+        } catch (e) {
+          console.warn('[AdminApp] Sync home content doc:', e);
+        }
+      }
+
+      // 4. Update siteMeta/version
+      const nowTs = Date.now();
+      if (this.fbDb) {
+        try {
+          await this.fbDb.collection('siteMeta').doc('version').set({
+            v: nowTs,
+            updatedAt: new Date().toISOString()
+          }, { merge: true });
+        } catch (e) {}
+      }
+
+      // 5. Invalidate caches and broadcast events
+      try {
+        localStorage.setItem('lotus_cms_last_published', String(nowTs));
+        localStorage.removeItem('lotus_site_data_store_v1');
+        localStorage.removeItem('lotus_data_payload');
+        localStorage.removeItem('lotus_data_v');
+      } catch (e) {}
+
+      // Dispatch local event
+      window.dispatchEvent(new CustomEvent('lotus:blog-updated', {
+        detail: { blog: blogEntry, slug: slug, homeUpdates: homeUpdates }
+      }));
+
+      // PostMessage to preview iframe
+      const previewIframe = document.getElementById('visualCmsIframe') || document.querySelector('iframe');
+      if (previewIframe && previewIframe.contentWindow) {
+        previewIframe.contentWindow.postMessage({
+          type: 'lotus:blog-updated',
+          blog: blogEntry,
+          slug: slug,
+          homeUpdates: homeUpdates
+        }, '*');
+      }
+    },
+
+    /**
+     * Single Source of Truth: Synchronize Package updates across the entire site
+     * Saves to Firestore 'tourPackages', maps home page featured package keys into 'siteContent/home',
+     * bumps version, invalidates cache, and notifies live preview iframe.
+     */
+    async syncPackageToSite(pkgEntry) {
+      if (!pkgEntry || !pkgEntry.slug) return;
+      const slug = pkgEntry.slug;
+      const lang = this.currentLang || 'en';
+      const title = typeof pkgEntry.title === 'object' ? (pkgEntry.title[lang] || pkgEntry.title.en) : pkgEntry.title;
+      const category = typeof pkgEntry.categoryName === 'object' ? (pkgEntry.categoryName[lang] || pkgEntry.categoryName.en) : (pkgEntry.categoryName || pkgEntry.category || 'Tour Package');
+      const nights = pkgEntry.nights || 1;
+      const days = pkgEntry.days || 2;
+      const durationStr = `${nights} Nights and ${days} Days`;
+      const durationSlash = `${nights} Nights / ${days} Days`;
+
+      // 1. Map home page keys for the 6 featured package cards
+      const homeUpdates = {};
+      const PACKAGE_HOME_MAP = {
+        'three-millennia-of-living-heritage': { cat: 'home.p_43', title: 'home.p_44', duration: 'home.p_45', style: 'and' },
+        'the-sri-lanka-big-five-expedition': { cat: 'home.p_46', title: 'home.p_47', duration: 'home.p_48', style: 'slash' },
+        'southern-sands-serenade': { cat: 'home.p_49', title: 'home.p_50', duration: 'home.p_51', style: 'slash' },
+        'ceylon-tea-trails-colonial-grandeur': { cat: 'home.p_52', title: 'home.p_53', duration: 'home.p_54', style: 'slash' },
+        'lotus-ayu-holistic-rejuvenation': { cat: 'home.p_55', title: 'home.p_56', duration: 'home.p_57', style: 'slash' },
+        'pure-serenade-coastal-highland-romance': { cat: 'home.p_58', title: 'home.p_59', duration: 'home.p_60', style: 'slash' }
+      };
+
+      if (PACKAGE_HOME_MAP[slug]) {
+        const m = PACKAGE_HOME_MAP[slug];
+        if (title) homeUpdates[m.title] = title;
+        if (category) homeUpdates[m.cat] = category;
+        homeUpdates[m.duration] = m.style === 'and' ? durationStr : durationSlash;
+      }
+
+      // 2. Write homeUpdates directly to 'siteContent/home' in Firestore
+      if (Object.keys(homeUpdates).length > 0 && this.fbDb) {
+        try {
+          await this.fbDb.collection('siteContent').doc('home').set(homeUpdates, { merge: true });
+        } catch (e) {
+          console.warn('[AdminApp] Sync package home content doc:', e);
+        }
+      }
+
+      // 3. Update siteMeta/version
+      const nowTs = Date.now();
+      if (this.fbDb) {
+        try {
+          await this.fbDb.collection('siteMeta').doc('version').set({
+            v: nowTs,
+            updatedAt: new Date().toISOString()
+          }, { merge: true });
+        } catch (e) {}
+      }
+
+      // 4. Invalidate caches and broadcast events
+      try {
+        localStorage.setItem('lotus_cms_last_published', String(nowTs));
+        localStorage.removeItem('lotus_site_data_store_v1');
+        localStorage.removeItem('lotus_data_payload');
+        localStorage.removeItem('lotus_data_v');
+      } catch (e) {}
+
+      // Dispatch local event
+      window.dispatchEvent(new CustomEvent('lotus:package-updated', {
+        detail: { package: pkgEntry, slug: slug, homeUpdates: homeUpdates }
+      }));
+
+      // PostMessage to preview iframe
+      const previewIframe = document.getElementById('visualCmsIframe') || document.querySelector('iframe');
+      if (previewIframe && previewIframe.contentWindow) {
+        previewIframe.contentWindow.postMessage({
+          type: 'lotus:package-updated',
+          package: pkgEntry,
+          slug: slug,
+          homeUpdates: homeUpdates
+        }, '*');
+      }
+    },
+
     async saveBlogModal(e) {
       if (e && e.preventDefault) e.preventDefault();
       const idInput = document.getElementById('blogPostId');
@@ -2933,6 +3110,7 @@ resolveImg(url) {
         }
       }
 
+      await this.syncBlogToSite(blogEntry);
       this.syncCatalogCache();
       this.closeModal('blogPostModal');
       this.renderBlogPosts();
@@ -2948,6 +3126,11 @@ resolveImg(url) {
       if (this.fbDb) {
         try {
           await this.fbDb.collection('blog').doc(postId).delete();
+          await this.fbDb.collection('blogs').doc(postId).delete();
+          await this.fbDb.collection('siteMeta').doc('version').set({
+            v: Date.now(),
+            updatedAt: new Date().toISOString()
+          }, { merge: true });
         } catch (e) {
           console.warn('Firestore blog delete:', e);
         }
@@ -4046,44 +4229,78 @@ const waBtn = document.getElementById('inquiryWhatsAppBtn');
 
     // =========================================================================
 
+    
+    async seedTeamData() {
+      try {
+        const res = await fetch('../data/team.json');
+        if (!res.ok) throw new Error('Failed to load ../data/team.json');
+        const list = await res.json();
+        if (!Array.isArray(list) || list.length === 0) return;
+
+        this.team = list;
+        if (this.fbDb) {
+          const batch = this.fbDb.batch();
+          list.forEach(m => {
+            const ref = this.fbDb.collection('team').doc(m.id);
+            batch.set(ref, m, { merge: true });
+          });
+          const verRef = this.fbDb.collection('siteMeta').doc('version');
+          batch.set(verRef, { v: Date.now(), updatedAt: new Date().toISOString() }, { merge: true });
+          await batch.commit();
+        }
+
+        this.syncCatalogCache();
+        try {
+          window.dispatchEvent(new CustomEvent('lotus:team-updated', { detail: { team: this.team } }));
+        } catch (e) {}
+        this.renderTeam();
+        this.showToast(`Successfully seeded ${list.length} team representatives!`, 'success');
+      } catch (e) {
+        console.warn('Seed team error:', e);
+        this.showToast(`Error seeding team: ${e.message}`, 'error');
+      }
+    },
+
     async loadTeamData() {
+      // 1. Fetch directly from Firebase Firestore if available
+      if (this.fbDb) {
+        this.fbDb.collection('team').get().then(snap => {
+          if (!snap.empty) {
+            const list = [];
+            snap.forEach(doc => list.push({ id: doc.id, ...doc.data() }));
+            if (list.length > 0) {
+              list.sort((a, b) => (a.sortOrder || 1) - (b.sortOrder || 1));
+              this.team = list;
+              this.renderTeam();
+            }
+          }
+        }).catch(e => {
+          console.warn('[AdminApp] Firestore team fetch warning:', e);
+        });
+      }
+
+      // 2. Fallback to LotusFirebase helper
+      if (window.LotusFirebase && typeof window.LotusFirebase.fetchTeam === 'function') {
+        window.LotusFirebase.fetchTeam('../data/team.json').then(list => {
+          if (list && list.length > 0 && (!this.team || !this.team.length)) {
+            this.team = list;
+            this.renderTeam();
+          }
+        }).catch(() => {});
+      }
+
+      // 3. Fallback to catalog seed or local JSON
       if (typeof window !== 'undefined' && window.LOTUS_SEED_CATALOG && window.LOTUS_SEED_CATALOG.team && (!this.team || !this.team.length)) {
         this.team = window.LOTUS_SEED_CATALOG.team;
       }
-      if (window.LotusFirebase && typeof window.LotusFirebase.fetchTeam === 'function') {
-
-        try {
-
-          const list = await window.LotusFirebase.fetchTeam('../data/team.json');
-
-          if (list && list.length > 0) {
-
-            this.team = list;
-
+      if (!this.team || this.team.length === 0) {
+        fetch('../data/team.json').then(r => r.ok ? r.json() : []).then(data => {
+          if (data && data.length > 0 && (!this.team || !this.team.length)) {
+            this.team = data;
+            this.renderTeam();
           }
-
-        } catch (e) {
-
-          console.warn('[AdminApp] Team fetch error, using local fallback:', e);
-
-        }
-
+        }).catch(() => {});
       }
-
-
-
-      if (this.team.length === 0) {
-
-        try {
-
-          const res = await fetch('../data/team.json');
-
-          if (res.ok) this.team = await res.json();
-
-        } catch (e) {}
-
-      }
-
     },
 
 
@@ -4269,137 +4486,125 @@ const waBtn = document.getElementById('inquiryWhatsAppBtn');
 
 
     async saveTeamMember(e) {
-
       if (e && e.preventDefault) e.preventDefault();
-
-      const id = document.getElementById('teamMemberId').value || ('rep-' + Date.now());
-
+      const id = document.getElementById('teamMemberId').value.trim() || ('rep-' + Date.now());
       const name = document.getElementById('teamName').value.trim();
-
       const flag = document.getElementById('teamFlag').value.trim() || '🌐';
-
       const role = document.getElementById('teamRole').value.trim();
-
       const country = document.getElementById('teamCountry').value.trim();
-
       const photoUrl = document.getElementById('teamPhotoUrl').value.trim();
-
       const bio = document.getElementById('teamBio').value.trim() || 'Introduction coming soon';
-
       const sortOrder = parseInt(document.getElementById('teamSortOrder').value, 10) || 1;
-
       const published = document.getElementById('teamPublished').checked;
 
-
-
       const memberData = {
-
         id: id,
-
         name: name,
-
         flag: flag,
-
         role: role,
-
         country: country,
-
         photo: {
-
           url: photoUrl,
-
           alt: `${name}, ${role}`,
-
           cloudinaryPublicId: photoUrl.includes('cloudinary') ? photoUrl.split('/').pop().split('.')[0] : ''
-
         },
-
         bio: bio,
-
         sortOrder: sortOrder,
-
-        published: published
-
+        published: published,
+        updatedAt: new Date().toISOString()
       };
 
-
-
-      if (window.LotusFirebase && typeof window.LotusFirebase.saveTeamMember === 'function') {
-
+      // 1. Direct Firebase Firestore save (Single Source of Truth)
+      if (this.fbDb) {
         try {
-
-          await window.LotusFirebase.saveTeamMember(memberData);
-
+          await this.fbDb.collection('team').doc(id).set(memberData, { merge: true });
+          await this.fbDb.collection('siteMeta').doc('version').set({
+            v: Date.now(),
+            updatedAt: new Date().toISOString()
+          }, { merge: true });
         } catch (err) {
-
-          console.warn('[AdminApp] Firebase team save error:', err);
-
+          console.warn('[AdminApp] Firestore team save warning:', err);
         }
-
       }
 
+      // 2. LotusFirebase helper fallback
+      if (window.LotusFirebase && typeof window.LotusFirebase.saveTeamMember === 'function') {
+        try {
+          await window.LotusFirebase.saveTeamMember(memberData);
+        } catch (err) {
+          console.warn('[AdminApp] Firebase team save error:', err);
+        }
+      }
 
-
+      if (!this.team) this.team = [];
       const idx = this.team.findIndex(m => m.id === id);
-
       if (idx !== -1) {
-
         this.team[idx] = memberData;
-
       } else {
-
         this.team.push(memberData);
-
       }
-
-
 
       this.syncCatalogCache();
 
+      // 3. Broadcast real-time update event and notify preview iframe
+      try {
+        window.dispatchEvent(new CustomEvent('lotus:team-updated', { detail: { team: this.team } }));
+        const iframes = document.querySelectorAll('iframe');
+        iframes.forEach(iframe => {
+          if (iframe.contentWindow) {
+            iframe.contentWindow.postMessage({ type: 'lotus:team-updated', team: this.team }, '*');
+          }
+        });
+      } catch (e) {}
+
       this.closeModal('teamModal');
-
       this.renderTeam();
-
       this.showToast(`Saved representative: ${name}`, 'success');
-
     },
 
 
 
     async deleteTeamMember(memberId) {
-
-      const member = this.team.find(m => m.id === memberId);
-
+      const member = (this.team || []).find(m => m.id === memberId);
       const name = member ? member.name : 'this representative';
-
       if (!confirm(`Are you sure you want to delete ${name}?`)) return;
 
-
-
-      if (window.LotusFirebase && typeof window.LotusFirebase.deleteTeamMember === 'function') {
-
+      // 1. Direct Firebase Firestore delete
+      if (this.fbDb) {
         try {
-
-          await window.LotusFirebase.deleteTeamMember(memberId);
-
+          await this.fbDb.collection('team').doc(memberId).delete();
+          await this.fbDb.collection('siteMeta').doc('version').set({
+            v: Date.now(),
+            updatedAt: new Date().toISOString()
+          }, { merge: true });
         } catch (err) {
-
-          console.warn('[AdminApp] Firebase team delete error:', err);
-
+          console.warn('[AdminApp] Firestore team delete error:', err);
         }
-
       }
 
+      if (window.LotusFirebase && typeof window.LotusFirebase.deleteTeamMember === 'function') {
+        try {
+          await window.LotusFirebase.deleteTeamMember(memberId);
+        } catch (err) {
+          console.warn('[AdminApp] Firebase team delete error:', err);
+        }
+      }
 
-
-      this.team = this.team.filter(m => m.id !== memberId);
-
+      this.team = (this.team || []).filter(m => m.id !== memberId);
       this.syncCatalogCache();
 
+      try {
+        window.dispatchEvent(new CustomEvent('lotus:team-updated', { detail: { team: this.team } }));
+        const iframes = document.querySelectorAll('iframe');
+        iframes.forEach(iframe => {
+          if (iframe.contentWindow) {
+            iframe.contentWindow.postMessage({ type: 'lotus:team-updated', team: this.team }, '*');
+          }
+        });
+      } catch (e) {}
+
       this.renderTeam();
-
       this.showToast(`Deleted ${name}`, 'info');
-
     },
 
 
@@ -5644,6 +5849,7 @@ const waBtn = document.getElementById('inquiryWhatsAppBtn');
       }
 
       // 3. Immediately synchronize local cache so public website & admin match
+      await this.syncPackageToSite(payload);
       this.syncCatalogCache();
 
       this.closeModal('packageModal');

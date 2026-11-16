@@ -305,6 +305,37 @@
     init();
   }
 
+  // Single Source of Truth Live Event Listeners
+  window.addEventListener('storage', function(e) {
+    if (e.key === 'lotus_homepage_blogs_config' || e.key === 'lotus_data_payload' || e.key === 'lotus_cms_last_published' || e.key === 'lotus_data_v') {
+      loadConfig().then(loadBlogs).then(render);
+    }
+  });
+
+  window.addEventListener('lotus_homepage_blogs_updated', function(e) {
+    if (e.detail) {
+      config = Object.assign({}, DEFAULT_CONFIG, e.detail);
+      render();
+    }
+  });
+
+  window.addEventListener('lotus_stories_updated', function(e) {
+    if (Array.isArray(e.detail) && e.detail.length > 0) {
+      allBlogs = e.detail;
+      render();
+    }
+  });
+
+  window.addEventListener('lotus:blog-updated', function(e) {
+    if (e.detail && e.detail.blog) {
+      const b = e.detail.blog;
+      const idx = allBlogs.findIndex(x => x.slug === b.slug || x.id === b.id);
+      if (idx >= 0) allBlogs[idx] = b;
+      else allBlogs.unshift(b);
+      render();
+    }
+  });
+
   window.LotusHomepageBlogs = {
     init,
     render,

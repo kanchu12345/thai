@@ -1852,6 +1852,41 @@
         }, '*');
       }
 
+      // Single Source of Truth Live In-Memory Sync for Blogs and Packages
+      if (window.AdminApp) {
+        if (key === 'home.heading_20' && window.AdminApp.blogPosts) {
+          const bp = window.AdminApp.blogPosts.find(b => b.slug === 'sacred-footsteps-unlocking-sri-lankas-ancient-buddhist-kingdoms');
+          if (bp) bp.title = val;
+        } else if (key === 'home.p_73' && window.AdminApp.blogPosts) {
+          const bp = window.AdminApp.blogPosts.find(b => b.slug === 'sacred-footsteps-unlocking-sri-lankas-ancient-buddhist-kingdoms');
+          if (bp) bp.excerpt = val;
+        } else if (key === 'home.img_39' && window.AdminApp.blogPosts) {
+          const bp = window.AdminApp.blogPosts.find(b => b.slug === 'sacred-footsteps-unlocking-sri-lankas-ancient-buddhist-kingdoms');
+          if (bp) bp.coverImage = val;
+        } else if (key === 'home.heading_ella_tea' && window.AdminApp.blogPosts) {
+          const bp = window.AdminApp.blogPosts.find(b => b.slug === 'ella-hands-on-tea-making-experience');
+          if (bp) bp.title = val;
+        } else if (key === 'home.p_44' && window.AdminApp.packages) {
+          const pkg = window.AdminApp.packages.find(p => p.slug === 'three-millennia-of-living-heritage');
+          if (pkg) pkg.title = val;
+        } else if (key === 'home.p_47' && window.AdminApp.packages) {
+          const pkg = window.AdminApp.packages.find(p => p.slug === 'the-sri-lanka-big-five-expedition');
+          if (pkg) pkg.title = val;
+        } else if (key === 'home.p_50' && window.AdminApp.packages) {
+          const pkg = window.AdminApp.packages.find(p => p.slug === 'southern-sands-serenade');
+          if (pkg) pkg.title = val;
+        } else if (key === 'home.p_53' && window.AdminApp.packages) {
+          const pkg = window.AdminApp.packages.find(p => p.slug === 'ceylon-tea-trails-colonial-grandeur');
+          if (pkg) pkg.title = val;
+        } else if (key === 'home.p_56' && window.AdminApp.packages) {
+          const pkg = window.AdminApp.packages.find(p => p.slug === 'lotus-ayu-holistic-rejuvenation');
+          if (pkg) pkg.title = val;
+        } else if (key === 'home.p_59' && window.AdminApp.packages) {
+          const pkg = window.AdminApp.packages.find(p => p.slug === 'pure-serenade-coastal-highland-romance');
+          if (pkg) pkg.title = val;
+        }
+      }
+
       // If image thumbnail exists, update it live
       const thumb = document.getElementById('inspectorThumb');
       if (thumb && (attrType === 'image' || attrType === 'bg-image')) {
@@ -2461,6 +2496,49 @@
           const docId = parts.slice(1).join('/');
 
           await window.AdminApp.fbDb.collection(col).doc(docId).set(payload, { merge: true });
+
+          // Single Source of Truth dual sync: if saving home page, sync touched blogs & packages
+          if (this.activePageKey === 'siteContent/home' && window.AdminApp) {
+            try {
+              if (payload['home.heading_20'] && window.AdminApp.syncBlogToSite) {
+                const mainB = (window.AdminApp.blogPosts || []).find(b => b.slug === 'sacred-footsteps-unlocking-sri-lankas-ancient-buddhist-kingdoms');
+                if (mainB) {
+                  mainB.title = payload['home.heading_20'] || mainB.title;
+                  if (payload['home.p_73']) mainB.excerpt = payload['home.p_73'];
+                  if (payload['home.img_39']) mainB.coverImage = payload['home.img_39'];
+                  await window.AdminApp.syncBlogToSite(mainB);
+                }
+              }
+              if (payload['home.heading_ella_tea'] && window.AdminApp.syncBlogToSite) {
+                const ellaB = (window.AdminApp.blogPosts || []).find(b => b.slug === 'ella-hands-on-tea-making-experience');
+                if (ellaB) {
+                  ellaB.title = payload['home.heading_ella_tea'] || ellaB.title;
+                  if (payload['home.img_ella_tea']) ellaB.coverImage = payload['home.img_ella_tea'];
+                  await window.AdminApp.syncBlogToSite(ellaB);
+                }
+              }
+              // Sync touched packages
+              const PKG_KEY_MAP = {
+                'home.p_44': 'three-millennia-of-living-heritage',
+                'home.p_47': 'the-sri-lanka-big-five-expedition',
+                'home.p_50': 'southern-sands-serenade',
+                'home.p_53': 'ceylon-tea-trails-colonial-grandeur',
+                'home.p_56': 'lotus-ayu-holistic-rejuvenation',
+                'home.p_59': 'pure-serenade-coastal-highland-romance'
+              };
+              for (const [k, s] of Object.entries(PKG_KEY_MAP)) {
+                if (payload[k] && window.AdminApp.syncPackageToSite) {
+                  const pObj = (window.AdminApp.packages || []).find(x => x.slug === s);
+                  if (pObj) {
+                    pObj.title = payload[k];
+                    await window.AdminApp.syncPackageToSite(pObj);
+                  }
+                }
+              }
+            } catch (err) {
+              console.warn('[PageEditor] Dual sync touched entities warning:', err);
+            }
+          }
 
           // If published, increment version and record version history snapshot
           if (status === 'published') {
