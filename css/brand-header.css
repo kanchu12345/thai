@@ -3415,9 +3415,9 @@ body {
   opacity: 1 !important;
   text-align: center !important;
   text-transform: lowercase !important;
-  line-height: 0.85 !important;
+  line-height: 1 !important;
   letter-spacing: -0.02em !important;
-  margin: 0 auto !important;
+  margin: 0 auto clamp(0.65rem, 1.4vw, 1.35rem) !important;
   user-select: none !important;
   pointer-events: none !important;
 }
@@ -3430,7 +3430,7 @@ body {
   font-weight: 800 !important;
   color: #0A192F !important;
   letter-spacing: -0.01em !important;
-  margin-top: -2.2rem !important;
+  margin-top: 0 !important;
   margin-bottom: 0 !important;
   text-align: center !important;
   text-shadow: 0 2px 14px rgba(255, 255, 255, 0.95), 0 1px 4px rgba(255, 255, 255, 0.9) !important;
