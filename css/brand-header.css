@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
 ﻿/*
  * © 2026 Infinite Design. All rights reserved.
  * Built for Lotus Ceylon International Tours & Services (Pvt) Ltd.
@@ -3336,27 +3337,27 @@ body {
 /* ==============================================================================
  * REAL EXPERIENCES / GUEST TESTIMONIALS SLIDER SECTION (REDESIGNED)
  * Open Panoramic Scenic Background with Floating Typography & Minimalist Controls
- * (Matching Client Reference Image 2: No Opaque Box, Crisp Separation, Circular Outline Arrows)
+ * (Matching Client Reference Image 2: No White Box, No Blur, Circular Outline Arrows)
  * ============================================================================== */
-.real-experiences-sec {
+.real-experiences-sec,
+.testimonials-section,
+#testimonials {
   position: relative !important;
   width: 100% !important;
-  min-height: 720px !important;
+  min-height: 680px !important;
   overflow: hidden !important;
   display: flex !important;
   flex-direction: column !important;
   align-items: center !important;
   justify-content: center !important;
-  padding: clamp(60px, 6vw, 100px) 24px !important;
+  padding: clamp(60px, 6vw, 100px) clamp(1rem, 2vw, 2.5rem) !important;
   box-sizing: border-box !important;
-  background: #1C1B1F !important;
+  background: #0b1517 !important;
   color: #FFFFFF !important;
   border: none !important;
-  margin-top: -1px !important;
-  margin-bottom: -1px !important;
 }
 
-/* Panoramic Background Layers (Vivid, High-Definition, Beautiful Scenic View Unblocked) */
+/* Panoramic Background Layers - High definition, unblurred full photo */
 .real-exp-bg-layers {
   position: absolute !important;
   top: 0 !important;
@@ -3379,7 +3380,8 @@ body {
   opacity: 0 !important;
   transition: opacity 1.2s ease-in-out !important;
   z-index: 1 !important;
-  filter: brightness(0.88) contrast(1.05) saturate(1.08) !important;
+  filter: none !important;
+  -webkit-filter: none !important;
 }
 
 .real-exp-bg-layer.is-active {
@@ -3387,72 +3389,114 @@ body {
   z-index: 2 !important;
 }
 
+/* Subtle Dark Gradient Overlay for optimal text legibility */
+.real-experiences-sec::before,
+.real-exp-gradient-overlay {
+  content: "" !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  background: linear-gradient(rgba(11, 21, 23, 0.45), rgba(11, 21, 23, 0.65)) !important;
+  z-index: 3 !important;
+  pointer-events: none !important;
+}
+
 /* Inner Container */
 .real-experiences-inner {
   position: relative !important;
-  z-index: 4 !important;
+  z-index: 5 !important;
   max-width: 1140px !important;
   width: 100% !important;
   margin: 0 auto !important;
   text-align: center !important;
 }
 
-/* Section Header: Crisp Watermark + Clean White Title (No Blurry Glow) */
-.real-exp-header {
+/* Section Header */
+.section-watermark-header.real-exp-header {
   position: relative !important;
   text-align: center !important;
-  margin-bottom: clamp(1rem, 2vw, 2rem) !important;
+  margin-bottom: clamp(1.2rem, 2vw, 2.2rem) !important;
+  padding-top: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
 }
 
-.real-exp-header .watermark-heading {
-  font-family: var(--font-main, 'DM Sans', sans-serif) !important;
-  font-size: clamp(48px, 8.5vw, 120px) !important;
+/* Ambient Watermark (Clean, Subtle, No Blurry Pink Glow) */
+.real-experiences-sec .real-exp-header .watermark-heading,
+.real-experiences-sec .watermark-heading,
+#testimonials .watermark-heading {
+  font-family: 'Cinzel', serif !important;
+  font-size: clamp(2.4rem, 6.2vw, 5.5rem) !important;
   font-weight: 700 !important;
-  color: rgba(255, 255, 255, 0.16) !important;
+  color: rgba(255, 255, 255, 0.12) !important;
   text-shadow: none !important;
   filter: none !important;
+  -webkit-filter: none !important;
   opacity: 1 !important;
   text-align: center !important;
-  text-transform: lowercase !important;
+  text-transform: uppercase !important;
   line-height: 1 !important;
-  letter-spacing: -0.02em !important;
-  margin: 0 auto clamp(0.5rem, 1.2vw, 1.2rem) !important;
+  letter-spacing: 0.15em !important;
+  margin: 0 auto clamp(0.25rem, 0.5vw, 0.5rem) !important;
   user-select: none !important;
   pointer-events: none !important;
   white-space: nowrap !important;
 }
 
-.real-exp-header .section-header-title {
-  position: relative !important;
-  z-index: 2 !important;
-  font-family: var(--font-heading, 'Playfair Display', Georgia, serif) !important;
-  font-size: clamp(28px, 3.8vw, 44px) !important;
-  font-weight: 700 !important;
-  color: #FFFFFF !important;
-  letter-spacing: -0.01em !important;
-  margin-top: 0 !important;
-  margin-bottom: 0 !important;
-  text-align: center !important;
-  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6) !important;
+/* Gold Tag / Subtitle */
+.real-exp-tag {
+  display: inline-block !important;
+  font-family: 'Cinzel', serif !important;
+  letter-spacing: 0.2em !important;
+  font-size: 0.85rem !important;
+  color: #c5a880 !important;
+  text-transform: uppercase !important;
+  margin-bottom: 0.5rem !important;
+  font-weight: 600 !important;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6) !important;
 }
 
-/* Carousel Slider Wrap with wide spacing for floating side circular arrows */
+/* Section Title - Bold White Cinzel */
+.real-experiences-sec .real-exp-header .section-header-title,
+.real-experiences-sec .section-header-title,
+#testimonials .section-header-title {
+  position: relative !important;
+  z-index: 2 !important;
+  font-family: 'Cinzel', serif !important;
+  font-size: clamp(2rem, 3.5vw, 2.85rem) !important;
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5) !important;
+  margin-top: 0 !important;
+  margin-bottom: clamp(1rem, 1.8vw, 2rem) !important;
+  text-align: center !important;
+  line-height: 1.25 !important;
+  letter-spacing: 0.02em !important;
+}
+
+/* Carousel Slider Wrap with side circular outline arrows */
 .real-exp-slider-wrap {
   position: relative !important;
-  margin-top: clamp(1rem, 1.8vw, 2.2rem) !important;
-  padding: 0 clamp(40px, 6vw, 80px) !important;
+  margin-top: 0 !important;
+  padding: 0 clamp(44px, 6vw, 80px) !important;
   box-sizing: border-box !important;
 }
 
-/* TRANSPARENT FLOATING TESTIMONIAL CONTENT
- * Completely eliminates the solid white box backdrop so the background photo is 100% visible
- */
-.real-exp-slides-container {
+/* Transparent Floating Testimonial Content (No White Box, No Blur) */
+.real-exp-slides-container,
+.testimonial-card,
+.testimonial-content {
   position: relative !important;
   min-height: 180px !important;
-  max-width: 900px !important;
+  max-width: 860px !important;
   margin: 0 auto !important;
-  padding: 10px 20px !important;
+  padding: 0 !important;
   background: transparent !important;
   backdrop-filter: none !important;
   -webkit-backdrop-filter: none !important;
@@ -3480,80 +3524,85 @@ body {
   transform: translateY(0) !important;
 }
 
+/* Review Quote Headline: Elegant Italic Cinzel */
 .real-exp-quote-title {
-  font-family: var(--font-heading, 'Playfair Display', Georgia, serif) !important;
-  font-size: clamp(22px, 2.6vw, 32px) !important;
-  font-weight: 700 !important;
-  color: #FFFFFF !important;
-  margin: 0 auto 16px !important;
-  line-height: 1.35 !important;
+  font-family: 'Cinzel', serif !important;
+  font-style: italic !important;
+  font-size: clamp(1.3rem, 2vw, 1.75rem) !important;
+  color: #f5eedc !important;
+  margin: 0 auto 1.25rem !important;
+  line-height: 1.4 !important;
   text-align: center !important;
-  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.75), 0 1px 4px rgba(0, 0, 0, 0.9) !important;
-  letter-spacing: -0.01em !important;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6) !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.01em !important;
 }
 
+/* Review Paragraph: High-Contrast Legible Plus Jakarta Sans */
 .real-exp-quote-body {
-  font-family: var(--font-main, 'Plus Jakarta Sans', 'DM Sans', sans-serif) !important;
-  font-size: clamp(15px, 1.2vw, 17.5px) !important;
-  line-height: 1.85 !important;
-  color: rgba(255, 255, 255, 0.94) !important;
-  max-width: 820px !important;
-  margin: 0 auto 24px !important;
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+  font-size: clamp(1.05rem, 1.2vw, 1.2rem) !important;
+  line-height: 1.8 !important;
+  color: rgba(255, 255, 255, 0.95) !important;
+  max-width: 860px !important;
+  margin: 0 auto 1.5rem !important;
   font-weight: 400 !important;
   text-align: center !important;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8), 0 1px 3px rgba(0, 0, 0, 0.95) !important;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.7) !important;
 }
 
+/* Attribution: Gold Uppercase Cinzel */
 .real-exp-author-name {
-  font-family: var(--font-main, 'Inter', 'DM Sans', sans-serif) !important;
-  font-size: clamp(14px, 1.1vw, 16px) !important;
-  font-weight: 700 !important;
-  color: #F5C842 !important; /* Elegant gold accent */
-  letter-spacing: 0.04em !important;
-  margin-bottom: 6px !important;
-  text-align: center !important;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.85) !important;
-}
-
-.real-exp-tour-meta {
-  font-family: var(--font-main, 'Inter', 'DM Sans', sans-serif) !important;
-  font-size: clamp(12.5px, 0.95vw, 14px) !important;
-  color: rgba(255, 255, 255, 0.82) !important;
-  font-weight: 500 !important;
-  letter-spacing: 0.03em !important;
+  font-family: 'Cinzel', serif !important;
+  font-size: 1rem !important;
+  letter-spacing: 0.15em !important;
+  color: #c5a880 !important;
+  text-transform: uppercase !important;
+  font-weight: 600 !important;
+  margin-bottom: 0.4rem !important;
   text-align: center !important;
   text-shadow: 0 1px 6px rgba(0, 0, 0, 0.8) !important;
 }
 
-/* Side Circular Outline Navigation Buttons (Matching Client Reference Image 2) */
+.real-exp-tour-meta {
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+  font-size: clamp(0.85rem, 0.95vw, 0.98rem) !important;
+  color: rgba(255, 255, 255, 0.75) !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.05em !important;
+  text-align: center !important;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.7) !important;
+}
+
+/* Side Circular Outline Navigation Buttons (Client Reference Image 2) */
 .real-exp-nav-btn {
   position: absolute !important;
   top: 50% !important;
   transform: translateY(-50%) !important;
-  width: 50px !important;
-  height: 50px !important;
+  width: 48px !important;
+  height: 48px !important;
   border-radius: 50% !important;
-  border: 1.5px solid rgba(255, 255, 255, 0.65) !important;
-  background: rgba(0, 0, 0, 0.25) !important;
-  backdrop-filter: blur(8px) !important;
-  -webkit-backdrop-filter: blur(8px) !important;
-  color: #FFFFFF !important;
-  display: flex !important;
+  background: transparent !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.6) !important;
+  color: #ffffff !important;
+  display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
   cursor: pointer !important;
   z-index: 10 !important;
-  transition: all 0.25s ease !important;
+  transition: all 0.3s ease !important;
   padding: 0 !important;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4) !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
 }
 
 .real-exp-nav-btn:hover {
-  background: #D4AF37 !important;
-  color: #1C1B1F !important;
-  border-color: #D4AF37 !important;
+  border-color: #c5a880 !important;
+  color: #c5a880 !important;
+  background: rgba(197, 168, 128, 0.15) !important;
   transform: translateY(-50%) scale(1.08) !important;
-  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.5) !important;
+  box-shadow: 0 4px 16px rgba(197, 168, 128, 0.3) !important;
 }
 
 .real-exp-nav-prev { left: 0 !important; }
@@ -3564,7 +3613,7 @@ body {
   display: flex !important;
   justify-content: center !important;
   gap: 8px !important;
-  margin: 24px 0 16px !important;
+  margin: 1.75rem 0 1rem !important;
 }
 
 .real-exp-dot {
@@ -3579,9 +3628,9 @@ body {
 }
 
 .real-exp-dot.is-active {
-  width: 26px !important;
+  width: 24px !important;
   border-radius: 999px !important;
-  background: #F5C842 !important;
+  background: #c5a880 !important;
 }
 
 /* Action Links */
@@ -3589,7 +3638,7 @@ body {
   display: flex !important;
   justify-content: center !important;
   gap: 16px !important;
-  margin-top: 20px !important;
+  margin-top: 1.5rem !important;
   flex-wrap: wrap !important;
 }
 
@@ -3597,50 +3646,49 @@ body {
   display: inline-flex !important;
   align-items: center !important;
   gap: 8px !important;
-  padding: 10px 22px !important;
+  padding: 10px 24px !important;
   border-radius: 999px !important;
-  border: 1.5px solid rgba(255, 255, 255, 0.75) !important;
-  background: rgba(0, 0, 0, 0.35) !important;
-  backdrop-filter: blur(10px) !important;
-  -webkit-backdrop-filter: blur(10px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.5) !important;
+  background: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
   color: #FFFFFF !important;
-  font-size: 13.5px !important;
-  font-weight: 600 !important;
+  font-family: 'Cinzel', serif !important;
+  font-size: 0.85rem !important;
+  letter-spacing: 0.1em !important;
   text-decoration: none !important;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3) !important;
-  transition: all 0.25s ease !important;
+  transition: all 0.3s ease !important;
 }
 
 .real-exp-btn-secondary:hover {
-  background: #D4AF37 !important;
-  color: #1C1B1F !important;
-  border-color: #D4AF37 !important;
+  background: rgba(197, 168, 128, 0.15) !important;
+  color: #c5a880 !important;
+  border-color: #c5a880 !important;
   transform: translateY(-2px) !important;
-  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.45) !important;
-}
-
-.real-exp-mobile-arrows {
-  display: none !important;
 }
 
 @media (max-width: 768px) {
-  .real-experiences-sec {
-    min-height: 540px !important;
-    padding: 50px 14px 55px !important;
+  .real-experiences-sec,
+  .testimonials-section,
+  #testimonials {
+    min-height: 520px !important;
+    padding: 50px 16px 55px !important;
   }
   .real-exp-slider-wrap {
     padding: 0 !important;
-    margin-top: 1.4rem !important;
+    margin-top: 1rem !important;
   }
-  .real-exp-slides-container {
-    padding: 10px 8px !important;
+  .real-exp-slides-container,
+  .testimonial-card,
+  .testimonial-content {
+    padding: 0 4px !important;
   }
   .real-exp-quote-title {
-    font-size: 19px !important;
+    font-size: 1.15rem !important;
     margin-bottom: 12px !important;
   }
   .real-exp-quote-body {
-    font-size: 14.5px !important;
+    font-size: 0.98rem !important;
     line-height: 1.7 !important;
     margin-bottom: 16px !important;
   }
@@ -3651,14 +3699,18 @@ body {
     display: flex !important;
     justify-content: center !important;
     gap: 20px !important;
-    margin-top: 15px !important;
+    margin-top: 1.25rem !important;
   }
   .real-exp-mobile-arrows .real-exp-nav-btn {
     position: static !important;
-    display: flex !important;
+    display: inline-flex !important;
     transform: none !important;
   }
+  .real-exp-mobile-arrows .real-exp-nav-btn:hover {
+    transform: scale(1.08) !important;
+  }
 }
+
 
 /* Universal CMS Dynamic Visibility Override */
 [data-cms-hidden="true"],
@@ -3706,13 +3758,7 @@ body {
 .padding-bottom--50  { padding-bottom: clamp(1.15rem, 0.9rem + 1vw, 2rem) !important; }
 
 /* Dedicated Balance for Outlier Sections */
-.real-experiences-sec {
-  padding-top: clamp(2rem, 1.5rem + 2.2vw, 3.75rem) !important;
-  padding-bottom: clamp(2rem, 1.5rem + 2.2vw, 3.75rem) !important;
-  padding-left: clamp(1rem, 0.5rem + 1.5vw, 2rem) !important;
-  padding-right: clamp(1rem, 0.5rem + 1.5vw, 2rem) !important;
-  min-height: auto !important;
-}
+/* .real-experiences-sec outlier removed */
 
 .sacred-cta-banner {
   padding-top: clamp(2.5rem, 1.8rem + 2.8vw, 4.25rem) !important;
