@@ -4353,3 +4353,51 @@ img, video, iframe, svg, canvas {
     min-height: 520px !important;
   }
 }
+
+
+/* ==============================================================================
+   UNIVERSAL FLOATING INQUIRE TAB MASTER RULES
+   Ensures floating inquire tab is properly positioned and SVG is strictly sized,
+   preventing unstyled SVG blowups below footers across all site pages
+   ============================================================================== */
+.floating-inquire-tab {
+  position: fixed !important;
+  bottom: 28px !important;
+  right: 28px !important;
+  background: linear-gradient(135deg, var(--sacred-gold, #C9A84C) 0%, var(--lotus-primary, #832729) 100%) !important;
+  color: #FFFFFF !important;
+  padding: 0.75rem 1.5rem !important;
+  border-radius: 9999px !important;
+  font-size: 0.85rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.55rem !important;
+  text-decoration: none !important;
+  z-index: 990 !important;
+  border: 1px solid rgba(255, 255, 255, 0.35) !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25) !important;
+  transition: transform 250ms ease !important;
+}
+
+.floating-inquire-tab:hover {
+  transform: translateY(-3px) scale(1.04) !important;
+}
+
+.floating-inquire-tab svg {
+  width: 17px !important;
+  height: 17px !important;
+  max-width: 17px !important;
+  max-height: 17px !important;
+  fill: currentColor !important;
+  display: inline-block !important;
+  flex-shrink: 0 !important;
+}
+
+@media (max-width: 768px) {
+  .floating-inquire-tab {
+    display: none !important;
+  }
+}
