@@ -5314,3 +5314,212 @@ img[data-cms-img*="about.team_img"] {
   overflow: hidden !important;
   text-overflow: ellipsis !important;
 }
+
+/* ==========================================================================
+   OPTION 1: LUXURY UNIFIED DIRECT CHAT PILLS & QR CODE CARD BADGES
+   ========================================================================== */
+.chat-pill {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.65rem !important;
+  padding: 0.68rem 1.35rem !important;
+  border-radius: 9999px !important;
+  font-size: 0.88rem !important;
+  font-weight: 700 !important;
+  text-decoration: none !important;
+  background: #0A192F !important;
+  color: #FFFFFF !important;
+  border: 1px solid rgba(212, 175, 55, 0.35) !important;
+  box-shadow: 0 4px 14px rgba(10, 25, 47, 0.1) !important;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  letter-spacing: 0.01em !important;
+  cursor: pointer !important;
+  user-select: none !important;
+}
+.chat-pill svg,
+.chat-pill .chat-pill-icon {
+  width: 18px !important;
+  height: 18px !important;
+  flex-shrink: 0 !important;
+  transition: transform 0.25s ease !important;
+}
+.chat-pill--wa {
+  background: #0A192F !important;
+  border: 1px solid rgba(212, 175, 55, 0.35) !important;
+}
+.chat-pill--wa svg,
+.chat-pill--wa .chat-pill-icon {
+  fill: #25D366 !important;
+  color: #25D366 !important;
+}
+.chat-pill--wechat {
+  background: #0A192F !important;
+  border: 1px solid rgba(212, 175, 55, 0.35) !important;
+}
+.chat-pill--wechat svg,
+.chat-pill--wechat .chat-pill-icon {
+  fill: #07C160 !important;
+  color: #07C160 !important;
+}
+.chat-pill--line {
+  background: #0A192F !important;
+  border: 1px solid rgba(212, 175, 55, 0.35) !important;
+}
+.chat-pill--line svg,
+.chat-pill--line .chat-pill-icon {
+  fill: #06C755 !important;
+  color: #06C755 !important;
+}
+.chat-pill:hover {
+  transform: translateY(-2px) !important;
+  background: #002B49 !important;
+  color: #FFFFFF !important;
+  border-color: #D4AF37 !important;
+  box-shadow: 0 8px 22px rgba(10, 25, 47, 0.22), 0 0 14px rgba(212, 175, 55, 0.32) !important;
+}
+.chat-pill:hover svg,
+.chat-pill:hover .chat-pill-icon {
+  transform: scale(1.14) !important;
+}
+
+/* Luxury Unified QR Code Badges */
+.contact-qr-badge {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.45rem !important;
+  font-size: 0.74rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.04em !important;
+  padding: 0.32rem 0.8rem !important;
+  border-radius: 9999px !important;
+  margin-bottom: 0.7rem !important;
+  background: #0A192F !important;
+  color: #FFFFFF !important;
+  border: 1px solid rgba(212, 175, 55, 0.32) !important;
+  box-shadow: 0 2px 6px rgba(10, 25, 47, 0.08) !important;
+  transition: all 0.25s ease !important;
+  text-transform: uppercase !important;
+}
+.contact-qr-badge svg {
+  width: 13px !important;
+  height: 13px !important;
+  flex-shrink: 0 !important;
+  transition: transform 0.2s ease !important;
+}
+.contact-qr-badge--wa {
+  background: #0A192F !important;
+  border: 1px solid rgba(212, 175, 55, 0.32) !important;
+}
+.contact-qr-badge--wa svg {
+  fill: #25D366 !important;
+  color: #25D366 !important;
+}
+.contact-qr-badge--wechat {
+  background: #0A192F !important;
+  border: 1px solid rgba(212, 175, 55, 0.32) !important;
+}
+.contact-qr-badge--wechat svg {
+  fill: #07C160 !important;
+  color: #07C160 !important;
+}
+.contact-qr-badge--line {
+  background: #0A192F !important;
+  border: 1px solid rgba(212, 175, 55, 0.32) !important;
+}
+.contact-qr-badge--line svg {
+  fill: #06C755 !important;
+  color: #06C755 !important;
+}
+.contact-qr-card:hover .contact-qr-badge {
+  border-color: #D4AF37 !important;
+  box-shadow: 0 3px 10px rgba(212, 175, 55, 0.3) !important;
+}
+.contact-qr-card:hover .contact-qr-badge svg {
+  transform: scale(1.12) !important;
+}
+
+/* Luxury Unified QR Code Card Action Buttons */
+.contact-qr-action {
+  margin-top: auto !important;
+  font-size: 0.76rem !important;
+  font-weight: 700 !important;
+  text-decoration: none !important;
+  padding: 0.42rem 0.9rem !important;
+  border-radius: 8px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 0.4rem !important;
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  background: #FFFFFF !important;
+  border: 1px solid rgba(0, 43, 73, 0.15) !important;
+  color: #002B49 !important;
+  box-shadow: 0 1px 4px rgba(0, 43, 73, 0.04) !important;
+  cursor: pointer !important;
+}
+.contact-qr-action svg {
+  width: 12px !important;
+  height: 12px !important;
+  flex-shrink: 0 !important;
+  transition: transform 0.2s ease !important;
+}
+.contact-qr-action--wa {
+  border-color: rgba(37, 211, 102, 0.35) !important;
+  color: #002B49 !important;
+}
+.contact-qr-action--wa svg {
+  color: #25D366 !important;
+  stroke: #25D366 !important;
+}
+.contact-qr-action--wa:hover {
+  background: #0A192F !important;
+  border-color: #D4AF37 !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 4px 14px rgba(10, 25, 47, 0.16) !important;
+  transform: translateY(-1px) !important;
+}
+.contact-qr-action--wa:hover svg {
+  color: #25D366 !important;
+  stroke: #25D366 !important;
+  transform: translateX(2px) !important;
+}
+.contact-qr-action--wechat {
+  border-color: rgba(7, 193, 96, 0.35) !important;
+  color: #002B49 !important;
+}
+.contact-qr-action--wechat svg {
+  color: #07C160 !important;
+  stroke: #07C160 !important;
+}
+.contact-qr-action--wechat:hover {
+  background: #0A192F !important;
+  border-color: #D4AF37 !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 4px 14px rgba(10, 25, 47, 0.16) !important;
+  transform: translateY(-1px) !important;
+}
+.contact-qr-action--wechat:hover svg {
+  color: #07C160 !important;
+  stroke: #07C160 !important;
+  transform: scale(1.1) !important;
+}
+.contact-qr-action--line {
+  border-color: rgba(6, 199, 85, 0.35) !important;
+  color: #002B49 !important;
+}
+.contact-qr-action--line svg {
+  color: #06C755 !important;
+  stroke: #06C755 !important;
+}
+.contact-qr-action--line:hover {
+  background: #0A192F !important;
+  border-color: #D4AF37 !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 4px 14px rgba(10, 25, 47, 0.16) !important;
+  transform: translateY(-1px) !important;
+}
+.contact-qr-action--line:hover svg {
+  color: #06C755 !important;
+  stroke: #06C755 !important;
+  transform: translateX(2px) !important;
+}
