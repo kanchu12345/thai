@@ -424,6 +424,45 @@
 
       await this.loadLocalFallbacks(true);
 
+      // Harmonize blog covers with live siteContent images from Firestore if available
+      try {
+        const [homeDoc, blogDoc] = await Promise.all([
+          fetch(`${FIRESTORE_BASE}/siteContent/home?key=${API_KEY}`).then(r => r.ok ? r.json() : null).catch(() => null),
+          fetch(`${FIRESTORE_BASE}/siteContent/blog?key=${API_KEY}`).then(r => r.ok ? r.json() : null).catch(() => null)
+        ]);
+        const siteImgs = {};
+        [homeDoc, blogDoc].forEach(doc => {
+          if (doc && doc.fields) {
+            Object.keys(doc.fields).forEach(k => {
+              const val = unwrapFirestore(doc.fields[k]);
+              if (val && typeof val === 'string' && (val.startsWith('http') || val.startsWith('assets/'))) {
+                siteImgs[k] = val;
+              }
+            });
+          }
+        });
+        const liveMappings = [
+          { slug: 'the-great-gathering-watching-hundreds-of-wild-elephants-at-minneriya', keys: ['minneriya_elephant_gathering_2', 'blog.minneriya_elephant_gathering_2', 'siteContent_home.minneriya_elephant_gathering_2', 'siteContent_blog.minneriya_elephant_gathering_2', 'home.img_40', 'blog.blog_card.img_3'] },
+          { slug: 'growing-a-greener-future-volunteer-reforestation-sinharaja', keys: ['sinharaja_rainforest_5', 'blog.sinharaja_rainforest_5', 'siteContent_home.sinharaja_rainforest_5', 'siteContent_blog.sinharaja_rainforest_5', 'home.img_41', 'blog.blog_card.img_4'] },
+          { slug: 'living-healing-traditional-ceylon-ayurveda', keys: ['herbal_treatment_1', 'blog.herbal_treatment_1', 'siteContent_home.herbal_treatment_1', 'siteContent_blog.herbal_treatment_1', 'home.img_42', 'blog.blog_card.img_5'] },
+          { slug: 'sacred-footsteps-unlocking-sri-lankas-ancient-buddhist-kingdoms', keys: ['sigiriya_1', 'blog.sigiriya_1', 'siteContent_home.sigiriya_1', 'siteContent_blog.sigiriya_1', 'home.img_39', 'blog.blog_card.img_2'] }
+        ];
+        liveMappings.forEach(m => {
+          const blogItem = (this.store.blog || []).find(b => b.slug === m.slug || b.id === m.slug);
+          if (blogItem) {
+            for (const k of m.keys) {
+              if (siteImgs[k]) {
+                blogItem.cover = siteImgs[k];
+                blogItem.coverImage = siteImgs[k];
+                break;
+              }
+            }
+          }
+        });
+      } catch (e) {
+        console.warn('[SiteData] Firestore live blog patch failed:', e);
+      }
+
 
 
       // Cache the consolidated store
@@ -450,13 +489,13 @@
 
         const [pkgRes, defRes, seedRes, blogRes] = await Promise.all([
 
-          fetch(`${base}data/packages.json`).catch(() => null),
+          fetch(`${base}data/packages.json?v=${Date.now()}`).catch(() => null),
 
-          fetch(`${base}data/default-content.json`).catch(() => null),
+          fetch(`${base}data/default-content.json?v=${Date.now()}`).catch(() => null),
 
-          fetch(`${base}data/seed-catalog.json`).catch(() => null),
+          fetch(`${base}data/seed-catalog.json?v=${Date.now()}`).catch(() => null),
 
-          fetch(`${base}data/blog.json`).catch(() => null)
+          fetch(`${base}data/blog.json?v=${Date.now()}`).catch(() => null)
 
         ]);
 

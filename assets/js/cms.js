@@ -262,6 +262,26 @@
 
       // 2. Try from current page document
       if (this.data.page) {
+        // Alias check for image asset bindings
+        const keyAliases = {
+          'home.img_1': ['img_1', 'sigiriya_aerial_1', 'home.hero_sigiriya_aerial_1'],
+          'home.img_2': ['img_2', 'beach_mirissa_1', 'home.mirissa_1'],
+          'home.img_39': ['sigiriya_1', 'blog.sigiriya_1', 'siteContent_home.sigiriya_1', 'siteContent_blog.sigiriya_1'],
+          'home.img_40': ['minneriya_elephant_gathering_2', 'blog.minneriya_elephant_gathering_2', 'siteContent_home.minneriya_elephant_gathering_2', 'siteContent_blog.minneriya_elephant_gathering_2'],
+          'home.img_41': ['sinharaja_rainforest_5', 'blog.sinharaja_rainforest_5', 'siteContent_home.sinharaja_rainforest_5', 'siteContent_blog.sinharaja_rainforest_5'],
+          'home.img_42': ['herbal_treatment_1', 'blog.herbal_treatment_1', 'siteContent_home.herbal_treatment_1', 'siteContent_blog.herbal_treatment_1'],
+          'blog.blog_card.img_2': ['sigiriya_1', 'blog.sigiriya_1', 'siteContent_blog.sigiriya_1', 'home.img_39'],
+          'blog.blog_card.img_3': ['minneriya_elephant_gathering_2', 'blog.minneriya_elephant_gathering_2', 'siteContent_blog.minneriya_elephant_gathering_2', 'home.img_40'],
+          'blog.blog_card.img_4': ['sinharaja_rainforest_5', 'blog.sinharaja_rainforest_5', 'siteContent_blog.sinharaja_rainforest_5', 'home.img_41'],
+          'blog.blog_card.img_5': ['herbal_treatment_1', 'blog.herbal_treatment_1', 'siteContent_blog.herbal_treatment_1', 'home.img_42']
+        };
+        if (keyAliases[pathStr]) {
+          for (const aKey of keyAliases[pathStr]) {
+            if (this.data.page[aKey] && typeof this.data.page[aKey] === 'string' && (this.data.page[aKey].includes('179487') || this.data.page[aKey].startsWith('http'))) {
+              return this.data.page[aKey];
+            }
+          }
+        }
         // A. Direct literal key check (e.g. "destinations.img_1" or "img_1")
         if (this.data.page[pathStr] !== undefined && this.data.page[pathStr] !== null) {
           return this.data.page[pathStr];

@@ -55,7 +55,7 @@
       "hi": "पवित्र पदचिह्न: श्रीलंका के प्राचीन बौद्ध साम्राज्य"
     },
     "category": "Sacred Heritage",
-    "cover": "assets/images/cultural/sigiriya-1.webp",
+    "cover": "https://res.cloudinary.com/qmukrbh6/image/upload/f_auto,q_auto/v1794875546/fooalw0moqbvprmgoxbm.jpg",
     "author": "Lotus Ceylon Editorial Team",
     "date": "October 2026",
     "readTime": "7 min read",
@@ -73,7 +73,8 @@
       "hi": "अनुराधापुर के विशाल स्तूपों से लेकर सिगिरिया के आकाश किले और कैंडी के दंत मंदिर तक, 2,300 वर्षों की जीवित बौद्ध परंपरा का अनुभव करें।"
     },
     "contentHtml": "\n      <p>Sri Lanka is more than an emerald teardrop in the Indian Ocean; it is the proud home and guardian of over 2,300 years of unbroken Theravada Buddhist tradition. For thoughtful cultural travelers and pilgrims, journeying through the Cultural Triangle is an encounter with enduring serenity.</p>\n      <h2>The Sacred Cities of the Northern Plains</h2>\n      <p>In Anuradhapura, the ancient capital founded in the 4th century BCE, colossal white dagobas like Ruwanwelisaya and Jetavanaramaya rise like spiritual mountains against the azure horizon. Here stands the Jaya Sri Maha Bodhi, the oldest historically documented tree planted by human hands (288 BCE), grown from a sapling of the original Bodhi Tree in Bodh Gaya under which the Buddha attained supreme enlightenment.</p>\n      <div style=\"background: #FBF6EC; border-left: 4px solid #D4AF37; padding: 20px; border-radius: 8px; margin: 30px 0;\">\n        <p style=\"font-style: italic; font-weight: 600; color: #002B49; margin: 0;\">\n          &ldquo;Pilgrimage in Ceylon is not passive sightseeing; it is an intimate mindfulness journey, where the scent of jasmine blossoms and the rhythm of traditional temple drums invite deep inner reflection.&rdquo;\n        </p>\n      </div>\n      <h2>Polonnaruwa and the Living Rock of Gal Vihara</h2>\n      <p>In medieval Polonnaruwa, master sculptors transformed living granite into inspiring expressions of peace. The Gal Vihara rock temple presents four monumental Buddha statues, including the renowned 14-meter reclining Buddha, capturing the magnificent moment of Parinirvana with delicate drapery and effortless grace.</p>\n      <h2>The Temple of the Sacred Tooth Relic in Kandy</h2>\n      <p>Nestled in the mist-veiled central highlands beside Kandy Lake, Sri Dalada Maligawa preserves the venerated canine tooth of Gautama Buddha. Joining the evening <em>Thevava</em> (service) surrounded by fluttering Buddhist flags, sound of conch shells, and reverent devotees offering fragrant lotus blossoms is an unforgettable sensory memory.</p>\n    ",
-    "publishDate": "2026-10-24"
+    "publishDate": "2026-10-24",
+    "coverImage": "https://res.cloudinary.com/qmukrbh6/image/upload/f_auto,q_auto/v1794875546/fooalw0moqbvprmgoxbm.jpg"
   },
   {
     "id": "the-great-gathering-watching-hundreds-of-wild-elephants-at-minneriya",
@@ -92,7 +93,7 @@
       "hi": "द ग्रेट गैदरिंग: मिनेरिया में सैकड़ों जंगली हाथियों का विहंगम दृश्य"
     },
     "category": "Wildlife Journal",
-    "cover": "assets/images/wildlife/minneriya-elephant-gathering-2.webp",
+    "cover": "https://res.cloudinary.com/qmukrbh6/image/upload/f_auto,q_auto/v1794875559/gkvq2rxxwn29nicjqasu.jpg",
     "author": "Lotus Ceylon Wildlife Naturalist",
     "date": "October 2026",
     "readTime": "6 min read",
@@ -110,7 +111,8 @@
       "hi": "दुनिया के सबसे भव्य वन्यजीव चमत्कारों में से एक, जहाँ मिनेरिया झील के तट पर 300 से अधिक जंगली एशियाई हाथी एकत्र होते हैं।"
     },
     "contentHtml": "\n      <p>Every year during the dry season from July through October, nature orchestrates one of the most magnificent wildlife gatherings on planet Earth in Sri Lanka's North Central Province. Known globally as &ldquo;The Gathering,&rdquo; this awe-inspiring phenomenon brings together up to 300 wild Asian elephants (<em>Elephas maximus maximus</em>) along the green lakebed of Minneriya National Park.</p>\n      <h2>The Ancient Reservoir That Sustains Generations</h2>\n      <p>Built by King Mahasen in the 3rd century CE, the ancient Minneriya tank covers over 4,600 acres. As the surrounding jungle water holes evaporate under the tropical sun, the reservoir's receding waters reveal rich, tender sprout grasses that provide an irresistible banquet for elephant herds arriving from across the Matale, Polonnaruwa, and Trincomalee forest corridors.</p>\n      <h2>Ethical Safaris with Lotus Ceylon Chauffeurs</h2>\n      <p>Lotus Ceylon adheres strictly to ethical wildlife protocols. Our custom safari jeeps maintain respectful distances, never box herds in, and turn off engines during grazing periods so travelers can observe mother cows nursing newborn calves, juveniles play-sparring, and majestic matriarchs leading their families in unhurried tranquility.</p>\n    ",
-    "publishDate": "2026-10-18"
+    "publishDate": "2026-10-18",
+    "coverImage": "https://res.cloudinary.com/qmukrbh6/image/upload/f_auto,q_auto/v1794875559/gkvq2rxxwn29nicjqasu.jpg"
   },
   {
     "id": "growing-a-greener-future-volunteer-reforestation-sinharaja",
@@ -129,7 +131,7 @@
       "hi": "हरित भविष्य का निर्माण: सिंहराजा वर्षावन की छतरी में पुनर्वनीकरण"
     },
     "category": "Eco Reverence",
-    "cover": "assets/images/wildlife/sinharaja-rainforest-5.webp",
+    "cover": "https://res.cloudinary.com/qmukrbh6/image/upload/f_auto,q_auto/v1794875574/t1s8h3ewfxs8jb9zwjs9.jpg",
     "author": "Lotus Ceylon Conservation Desk",
     "date": "October 2026",
     "readTime": "5 min read",
@@ -147,7 +149,8 @@
       "hi": "जानिए कैसे लोटस सीलोन यूनेस्को सिंहराजा वर्षावन के संरक्षण और स्थानिक पक्षी प्रजातियों की सुरक्षा का समर्थन करता है।"
     },
     "contentHtml": "\n      <p>As Sri Lanka's last viable area of primary tropical rainforest, the Sinharaja Forest Reserve is a UNESCO World Heritage biodiversity hotspot of global significance. More than 60% of the trees are endemic, and many are considered critically endangered. In the canopy, over 50% of Sri Lanka's endemic wildlife species make their home.</p>\n      <h2>The Buffer Zone Protection Initiative</h2>\n      <p>Through our responsible travel charter, Lotus Ceylon contributes directly to native sapling nurseries along the southern buffer border. Guests participating in our <em>Untamed Biosphere</em> expeditions have the privileged opportunity to plant indigenous mahogany, ironwood (Na), and dipterocarp seedlings alongside community forestry wardens.</p>\n      <h2>Silent Walks Through Living Evolution</h2>\n      <p>Trekking under Sinharaja's dense emerald canopy is a transformative sensory experience. Giant tree ferns, rare carnivorous pitcher plants, and colorful mixed-species bird feeding flocks create a symphony of natural wonder that has remained undisturbed for millennia.</p>\n    ",
-    "publishDate": "2026-09-28"
+    "publishDate": "2026-09-28",
+    "coverImage": "https://res.cloudinary.com/qmukrbh6/image/upload/f_auto,q_auto/v1794875574/t1s8h3ewfxs8jb9zwjs9.jpg"
   },
   {
     "id": "living-healing-traditional-ceylon-ayurveda",
@@ -166,7 +169,7 @@
       "hi": "जीवंत आरोग्य: पारंपरिक सीलोन आयुर्वेद की प्राचीन उपचार कला और विज्ञान"
     },
     "category": "Holistic Wellness",
-    "cover": "assets/images/ayurveda/herbal-treatment-1.webp",
+    "cover": "https://res.cloudinary.com/qmukrbh6/image/upload/f_auto,q_auto/v1794875585/ls4njsnm2niicqem69ao.jpg",
     "author": "Lotus Ayu Senior Practitioner",
     "date": "October 2026",
     "readTime": "8 min read",
@@ -184,6 +187,7 @@
       "hi": "जानिए कैसे श्रीलंका की स्वदेशी चिकित्सा और पारंपरिक आयुर्वेद वात, पित्त और कफ दोषों को संतुलित कर पूर्ण कायाकल्प प्रदान करते हैं।"
     },
     "contentHtml": "\n      <p>For more than 3,000 years, the island of Sri Lanka has nurtured one of the world's most sophisticated indigenous healing traditions: <em>Deshiya Chikitsa</em>, blended seamlessly with classical Ayurveda. At Lotus Ceylon, our signature <strong>Lotus Ayu</strong> retreats offer authentic holistic rejuvenation that goes far beyond surface pampering.</p>\n      <h2>Pulse Diagnosis (Nadi Pariksha) with Resident Vaidyas</h2>\n      <p>Every healing journey begins with a private diagnostic consultation by a senior Ayurvedic physician (Vaidya). By reading the radial pulse, evaluating the tongue, and observing natural constitution (Prakriti), the Vaidya identifies deep imbalances across the three elemental doshas: Vata (air/space), Pitta (fire/water), and Kapha (earth/water).</p>\n      <h2>Custom Herbal Tonics and Traditional Treatments</h2>\n      <p>Treatments are prescribed individually using freshly prepared organic decoctions: <em>Abhyanga</em> full-body warm herbal oil massages, <em>Shirodhara</em> rhythmic oil pouring over the forehead to calm mental restlessness, <em>Swedana</em> herbal steam baths enriched with indigenous jungle leaves, and sattvic dosha-balanced dining.</p>\n      <h2>Sanctuary for the Soul</h2>\n      <p>Set within private coastal coconut groves in Bentota and secluded river sanctuaries near Sigiriya, our partner Ayurvedic boutique hospitals provide the tranquil sanctuary needed to shed modern fatigue and rediscover vitality.</p>\n    ",
-    "publishDate": "2026-09-15"
+    "publishDate": "2026-09-15",
+    "coverImage": "https://res.cloudinary.com/qmukrbh6/image/upload/f_auto,q_auto/v1794875585/ls4njsnm2niicqem69ao.jpg"
   }
 ]
