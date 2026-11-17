@@ -5293,7 +5293,10 @@ const waBtn = document.getElementById('inquiryWhatsAppBtn');
         return `
         <tr>
           <td>
-            <img src="${this.resolveImg(heroImg)}" class="table-thumb" alt="${title}" onerror="this.src='../assets/images/logo.png'">
+            <div style="position: relative; display: inline-block; cursor: pointer;" onclick="AdminApp.quickChangePackageImage('${slugAttr}')" title="Click to change package image">
+              <img src="${this.resolveImg(heroImg)}" class="table-thumb" alt="${title}" onerror="this.src='../assets/images/logo.png'">
+              <div style="position: absolute; bottom: 2px; right: 2px; background: rgba(0,43,73,0.85); color: #fff; border-radius: 50%; width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; font-size: 11px; box-shadow: 0 1px 4px rgba(0,0,0,0.3);" title="Change Image">📷</div>
+            </div>
           </td>
           <td>
             <strong>${title}</strong><br>
@@ -5377,6 +5380,36 @@ const waBtn = document.getElementById('inquiryWhatsAppBtn');
     },
 
 
+
+    /**
+     * Quick Change Package Image directly from table or modal
+     */
+    quickChangePackageImage(slug) {
+      const pkg = this.packages.find(p => p.slug === slug || p.id === slug);
+      if (!pkg) return;
+
+      this.openImagePicker(null, null, null, {
+        filter: 'image',
+        onSelect: async (url) => {
+          pkg.hero_image = url;
+          pkg.image = url;
+          if (pkg.images && pkg.images.length) pkg.images[0] = url;
+          
+          this.renderPackages();
+          this.showToast(`Updated image for "${pkg.title && typeof pkg.title === 'object' ? pkg.title.en : pkg.title}"!`, 'success');
+
+          // Save to Firebase / catalog
+          if (window.LotusFirebase && typeof window.LotusFirebase.savePackage === 'function') {
+            try {
+              await window.LotusFirebase.savePackage(pkg);
+            } catch (e) {
+              console.warn('[AdminApp] Firebase quick image save:', e);
+            }
+          }
+          this.syncCatalogCache();
+        }
+      });
+    },
 
     openPackageModal(editSlug = null) {
 
@@ -5519,7 +5552,8 @@ const waBtn = document.getElementById('inquiryWhatsAppBtn');
 
       
       // Populate Package SEO & Structured Data Fields
-      const pSeo = (pkg && pkg.seo) || {};
+      const pkgObj = editSlug ? this.packages.find(p => p.slug === editSlug || p.id === editSlug) : null;
+      const pSeo = (pkgObj && pkgObj.seo) || {};
       const pkgMetaTitleEl = document.getElementById('pkgMetaTitle');
       const pkgMetaDescEl = document.getElementById('pkgMetaDescription');
       const pkgKeywordsEl = document.getElementById('pkgFocusKeywords');
@@ -5530,12 +5564,12 @@ const waBtn = document.getElementById('inquiryWhatsAppBtn');
       const pkgRobotsEl = document.getElementById('pkgRobots');
       const pkgJsonLdEl = document.getElementById('pkgJsonLdSchema');
 
-      if (pkgMetaTitleEl) pkgMetaTitleEl.value = pSeo.title || (pkg ? (pkg.metaTitle || pkg.meta_title) : '') || '';
-      if (pkgMetaDescEl) pkgMetaDescEl.value = pSeo.description || (pkg ? (pkg.metaDescription || pkg.meta_description) : '') || '';
-      if (pkgKeywordsEl) pkgKeywordsEl.value = pSeo.keywords || (pkg ? (pkg.focusKeywords || pkg.keywords) : '') || '';
-      if (pkgCanonicalEl) pkgCanonicalEl.value = pSeo.canonical || (pkg && pkg.slug ? `https://kanchu12345.github.io/thai/tours/${pkg.slug}/` : '');
-      if (pkgOgTitleEl) pkgOgTitleEl.value = pSeo.ogTitle || (pkg ? (typeof pkg.title === 'object' ? pkg.title.en : pkg.title) : '') || '';
-      if (pkgOgImageEl) pkgOgImageEl.value = pSeo.ogImage || (pkg ? (pkg.hero_image || pkg.image) : '') || '';
+      if (pkgMetaTitleEl) pkgMetaTitleEl.value = pSeo.title || (pkgObj ? (pkgObj.metaTitle || pkgObj.meta_title) : '') || '';
+      if (pkgMetaDescEl) pkgMetaDescEl.value = pSeo.description || (pkgObj ? (pkgObj.metaDescription || pkgObj.meta_description) : '') || '';
+      if (pkgKeywordsEl) pkgKeywordsEl.value = pSeo.keywords || (pkgObj ? (pkgObj.focusKeywords || pkgObj.keywords) : '') || '';
+      if (pkgCanonicalEl) pkgCanonicalEl.value = pSeo.canonical || (pkgObj && pkgObj.slug ? `https://kanchu12345.github.io/thai/tours/${pkgObj.slug}/` : '');
+      if (pkgOgTitleEl) pkgOgTitleEl.value = pSeo.ogTitle || (pkgObj ? (typeof pkgObj.title === 'object' ? pkgObj.title.en : pkgObj.title) : '') || '';
+      if (pkgOgImageEl) pkgOgImageEl.value = pSeo.ogImage || (pkgObj ? (pkgObj.hero_image || pkgObj.image) : '') || '';
       if (pkgTwitterCardEl) pkgTwitterCardEl.value = pSeo.twitterCard || 'summary_large_image';
       if (pkgRobotsEl) pkgRobotsEl.value = pSeo.robots || 'index, follow';
       if (pkgJsonLdEl) {
