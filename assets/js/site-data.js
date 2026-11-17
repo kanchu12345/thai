@@ -212,6 +212,14 @@
         this.hydrateTeam();
       });
 
+      window.addEventListener('lotus:reviews-updated', (e) => {
+        if (e.detail && e.detail.reviews) {
+          this.store.reviews = e.detail.reviews;
+          this.store.testimonials = e.detail.reviews;
+        }
+        this.hydrateReviews();
+      });
+
       window.addEventListener('lotus:blog-updated', (e) => {
         if (e.detail && e.detail.blog) {
           const b = e.detail.blog;
@@ -1074,8 +1082,14 @@
       });
 
       // 6. Dynamic Blog Hydration (Sustainability, Homepage News, Blog Listing)
-
       this.hydrateBlogs();
+
+      // 7. Dynamic Reviews & Testimonials Hydration (Single Source of Truth)
+      this.hydrateReviews();
+
+      // 8. Dynamic Team Cards Hydration (About Page)
+      this.hydrateTeam();
+
       this.hydrateNavigation();
       this.ensureDesignCredit();
 
@@ -1213,6 +1227,102 @@
           const span = allMobileLink.querySelector('span');
           if (span) span.textContent = `View All Tours & Themes (${totalPackages} Packages)`;
         }
+      }
+    },
+
+    hydrateTeam() {
+      const teamGrid = document.getElementById('teamCardsGrid');
+      if (!teamGrid) return;
+      const teamData = this.getTeam();
+      if (!teamData || !Array.isArray(teamData) || teamData.length === 0) return;
+
+      const published = teamData.filter(m => m.published !== false);
+      published.sort((a, b) => (a.sortOrder || 1) - (b.sortOrder || 1));
+
+      teamGrid.innerHTML = published.map((m, idx) => {
+        const photoUrl = m.photo ? (m.photo.url || m.photo.secure_url || '') : '';
+        const alt = m.photo ? (m.photo.alt || `${m.name}, ${m.role}`) : `${m.name}, ${m.role}`;
+        const bio = m.bio && m.bio.trim() ? m.bio : 'Introduction coming soon';
+        const flag = m.flag || '🌐';
+        const country = m.country || '';
+        const num = idx + 1;
+
+        return `
+          <article class="person-card" style="background: #FFFFFF; border-radius: 12px; border: 1px solid rgba(0, 43, 73, 0.08); overflow: hidden; box-shadow: 0 4px 16px rgba(0, 43, 73, 0.04); transition: transform 0.25s ease, box-shadow 0.25s ease; display: flex; flex-direction: column;">
+            <div style="position: relative; width: 100%; height: 210px; overflow: hidden; background: #0A192F;">
+              ${photoUrl ? `<img src="${photoUrl}" alt="${alt}" loading="lazy" width="280" height="210" style="width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block;" decoding="async" data-cms-img="about.team_img_${num}">` : `<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:3rem;">${flag}</div>`}
+              <span style="position: absolute; top: 10px; right: 10px; background: rgba(10, 25, 47, 0.88); color: #FFFFFF; font-size: 0.72rem; font-weight: 700; padding: 3px 8px; border-radius: 12px; backdrop-filter: blur(4px); box-shadow: 0 2px 6px rgba(0,0,0,0.2);" data-cms="about.team_flag_${num}">
+                ${flag} ${country}
+              </span>
+            </div>
+            <div style="padding: 1.1rem 1.15rem 1.25rem; display: flex; flex-direction: column; flex-grow: 1;">
+              <h3 style="font-family: var(--font-serif, 'DM Sans', sans-serif); font-size: 1.05rem; color: var(--color-dark-blue); margin: 0 0 0.35rem; font-weight: 700; line-height: 1.35;" data-cms="about.team_name_${num}">
+                ${m.name}
+              </h3>
+              <p style="color: var(--color-gold, #C9A84C); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; margin: 0 0 0.65rem;" data-cms="about.team_role_${num}">
+                ${m.role}
+              </p>
+              <p style="color: #64748B; font-size: 0.82rem; line-height: 1.55; margin: 0; flex-grow: 1;" data-cms="about.team_bio_${num}">
+                ${bio}
+              </p>
+            </div>
+          </article>
+        `;
+      }).join('');
+    },
+
+    hydrateReviews() {
+      const reviews = this.getReviews();
+      if (!reviews || !Array.isArray(reviews) || reviews.length === 0) return;
+      const lang = this.currentLang || 'en';
+      const published = reviews.filter(r => r.status === 'published' || r.status === 'approved' || r.permission_received);
+
+      // A. Hydrate Home Page "Real Experiences" Slider (#realExpSlider)
+      const sliderContainer = document.querySelector('#realExpSlider .real-exp-slides-container') || document.querySelector('.real-exp-slides-container');
+      if (sliderContainer && published.length > 0) {
+        sliderContainer.innerHTML = published.slice(0, 5).map((rev, idx) => {
+          const guestName = rev.guest_name || rev.author || 'Valued Traveler';
+          const country = rev.country || '';
+          const tourTaken = rev.tour_taken || rev.tour || 'Bespoke Sri Lanka Journey';
+          const revText = typeof rev.review_text === 'object' ? (rev.review_text[lang] || rev.review_text.en) : (rev.review_text || rev.text || rev.comment || '');
+          const revTitle = rev.title || `"${tourTaken}"`;
+          const activeClass = idx === 0 ? 'is-active' : '';
+          const ariaHidden = idx === 0 ? 'false' : 'true';
+          const slot = idx + 1;
+
+          return `
+            <article aria-hidden="${ariaHidden}" class="real-exp-slide ${activeClass}">
+              <h3 class="real-exp-quote-title" data-cms="home.real_exp_title_${slot}">${revTitle.startsWith('"') ? revTitle : `"${revTitle}"`}</h3>
+              <p class="real-exp-quote-body" data-cms="home.real_exp_body_${slot}">
+                ${revText}
+              </p>
+              <div class="real-exp-author-name" data-cms="home.real_exp_author_${slot}">✦ ${country ? `${guestName}, ${country}` : guestName} ✦</div>
+              <div class="real-exp-tour-meta" data-cms="home.real_exp_tour_${slot}">${tourTaken}</div>
+            </article>
+          `;
+        }).join('');
+      }
+
+      // B. Hydrate Reviews Page Listing Grid (#approvedReviewsContainer)
+      const reviewsPageGrid = document.getElementById('approvedReviewsContainer');
+      if (reviewsPageGrid && published.length > 0) {
+        reviewsPageGrid.innerHTML = published.map(rev => {
+          const guestName = rev.guest_name || rev.author || 'Valued Traveler';
+          const country = rev.country || '';
+          const tourTaken = rev.tour_taken || rev.tour || 'Signature Ceylon Journey';
+          const rating = rev.rating || 5;
+          const revText = typeof rev.review_text === 'object' ? (rev.review_text[lang] || rev.review_text.en) : (rev.review_text || rev.text || rev.comment || '');
+          const stars = '★'.repeat(rating) + '☆'.repeat(Math.max(0, 5 - rating));
+
+          return `
+            <div style="background: #FFFFFF; border-radius: 12px; padding: 1.5rem; border: 1px solid #E2E8F0; box-shadow: 0 2px 8px rgba(0,0,0,0.04); display: flex; flex-direction: column;">
+              <div style="color: #D4AF37; font-size: 1.1rem; margin-bottom: 8px;">${stars}</div>
+              <p style="color: #334155; font-size: 0.95rem; line-height: 1.6; font-style: italic; margin-bottom: 1rem; flex-grow: 1;">"${revText}"</p>
+              <div style="font-weight: 700; color: #002B49; font-size: 0.9rem;">${guestName}</div>
+              <div style="color: #64748B; font-size: 0.8rem; margin-top: 2px;">${country ? country + ' • ' : ''}${tourTaken}</div>
+            </div>
+          `;
+        }).join('');
       }
     },
 

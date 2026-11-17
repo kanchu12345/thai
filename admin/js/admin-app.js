@@ -2589,6 +2589,29 @@ resolveImg(url) {
         window.dispatchEvent(new CustomEvent('lotus_homepage_blogs_updated', { detail: newConfig }));
       } catch (e) {}
 
+      // Single Source of Truth Dual Sync for Homepage Blogs
+      if (this.blogPosts && this.blogPosts.length > 0) {
+        const mainPost = this.blogPosts.find(b => b.slug === mainId || b.id === mainId);
+        if (mainPost && typeof this.syncBlogToSite === 'function') {
+          this.syncBlogToSite(mainPost);
+        }
+        for (const sSlug of sideArray) {
+          const sPost = this.blogPosts.find(b => b.slug === sSlug || b.id === sSlug);
+          if (sPost && typeof this.syncBlogToSite === 'function') {
+            this.syncBlogToSite(sPost);
+          }
+        }
+      }
+      try {
+        window.dispatchEvent(new CustomEvent('lotus_homepage_blogs_updated', { detail: newConfig }));
+        const iframes = document.querySelectorAll('iframe');
+        iframes.forEach(iframe => {
+          if (iframe.contentWindow) {
+            iframe.contentWindow.postMessage({ type: 'lotus_homepage_blogs_updated', config: newConfig }, '*');
+          }
+        });
+      } catch (e) {}
+
       this.renderBlogPosts();
       this.showToast('Homepage featured articles saved and published live to homepage!', 'success');
     },
@@ -6032,10 +6055,70 @@ const waBtn = document.getElementById('inquiryWhatsAppBtn');
 
       this.syncCatalogCache();
 
+      try {
+        window.dispatchEvent(new CustomEvent('lotus:reviews-updated', { detail: { reviews: this.reviews } }));
+        const iframes = document.querySelectorAll('iframe');
+        iframes.forEach(iframe => {
+          if (iframe.contentWindow) {
+            iframe.contentWindow.postMessage({ type: 'lotus:reviews-updated', reviews: this.reviews }, '*');
+          }
+        });
+      } catch (e) {}
+
       this.renderReviews();
 
       this.showToast(`Review deleted successfully`, 'success');
 
+    },
+
+    async syncReviewToSite(revEntry) {
+      if (!revEntry) return;
+      const lang = this.currentLang || 'en';
+      const guestName = revEntry.guest_name || 'Valued Traveler';
+      const country = revEntry.country || '';
+      const tourTaken = revEntry.tour_taken || '';
+      const revText = typeof revEntry.review_text === 'object' ? (revEntry.review_text[lang] || revEntry.review_text.en) : (revEntry.review_text || revEntry.text || '');
+      const revTitle = revEntry.title || `"${tourTaken || 'Unforgettable Ceylon Experience'}"`;
+
+      // 1. Dual Firestore collection save ('testimonials' and 'reviews')
+      if (this.fbDb) {
+        try {
+          await this.fbDb.collection('reviews').doc(revEntry.id).set(revEntry, { merge: true });
+          await this.fbDb.collection('testimonials').doc(revEntry.id).set(revEntry, { merge: true });
+        } catch (err) {
+          console.warn('[AdminApp] Firebase review save warning:', err);
+        }
+      }
+
+      // 2. Map home page testimonial slider keys if published
+      const homeUpdates = {};
+      const revList = (this.reviews || []).filter(r => r.status === 'published');
+      const revIdx = revList.findIndex(r => r.id === revEntry.id);
+      if (revIdx >= 0 && revIdx < 3) {
+        const slot = revIdx + 1;
+        homeUpdates[`home.real_exp_title_${slot}`] = revTitle.startsWith('"') ? revTitle : `"${revTitle}"`;
+        homeUpdates[`home.real_exp_body_${slot}`] = revText;
+        homeUpdates[`home.real_exp_author_${slot}`] = country ? `${guestName}, ${country}` : guestName;
+        if (tourTaken) homeUpdates[`home.real_exp_tour_${slot}`] = tourTaken;
+      }
+
+      if (Object.keys(homeUpdates).length > 0 && this.fbDb) {
+        try {
+          await this.fbDb.collection('siteContent').doc('home').set(homeUpdates, { merge: true });
+        } catch (e) {
+          console.warn('[AdminApp] Sync review home content doc:', e);
+        }
+      }
+
+      // 3. Increment siteMeta version
+      if (this.fbDb) {
+        try {
+          await this.fbDb.collection('siteMeta').doc('version').set({
+            v: Date.now(),
+            updatedAt: new Date().toISOString()
+          }, { merge: true });
+        } catch (e) {}
+      }
     },
 
 
@@ -8369,6 +8452,21 @@ const waBtn = document.getElementById('inquiryWhatsAppBtn');
 
 
       this.syncCatalogCache();
+
+      // Dual Sync for Testimonials / Reviews (Single Source of Truth)
+      if (typeof this.syncReviewToSite === 'function') {
+        await this.syncReviewToSite(payload);
+      }
+
+      try {
+        window.dispatchEvent(new CustomEvent('lotus:reviews-updated', { detail: { reviews: this.reviews } }));
+        const iframes = document.querySelectorAll('iframe');
+        iframes.forEach(iframe => {
+          if (iframe.contentWindow) {
+            iframe.contentWindow.postMessage({ type: 'lotus:reviews-updated', reviews: this.reviews }, '*');
+          }
+        });
+      } catch (e) {}
 
       this.closeModal('reviewModal');
 
