@@ -1083,15 +1083,15 @@
         const slug = card.getAttribute('data-package-slug');
         const pkg = this.getPackage(slug);
         if (pkg) {
-          const titleEl = card.querySelector('.package-title, [data-cms*="title"], h3, h4, .heading--24, .para--white-line');
+          const titleEl = card.querySelector('.beach-card-title, .package-title, [data-cms*="title"], h3, h4, .heading--24, .para--white-line');
           if (titleEl) titleEl.textContent = this.getText(pkg.title, lang);
 
-          const durationEl = card.querySelector('.package-duration, [data-cms*="duration"], .paragraph--18');
+          const durationEl = card.querySelector('.beach-duration-pill, .package-duration, [data-cms*="duration"], .paragraph--18');
           if (durationEl && pkg.nights && pkg.days) {
-            durationEl.textContent = `${pkg.nights} Nights and ${pkg.days} Days`;
+            durationEl.textContent = `${pkg.nights} Nights / ${pkg.days} Days`;
           }
 
-          const catEl = card.querySelector('.package-cat, .paragraph--14.font-weight--500');
+          const catEl = card.querySelector('.beach-card-category, .package-cat, .paragraph--14.font-weight--500');
           if (catEl) {
             catEl.textContent = this.getText(pkg.categoryName || pkg.category, lang);
           }
@@ -1101,10 +1101,15 @@
             priceEl.textContent = pkg.price_from ? `$${pkg.price_from}` : (pkg.price_formatted || 'On request');
           }
 
+          const descEl = card.querySelector('.beach-card-desc, .package-desc');
+          if (descEl && pkg.description) {
+            descEl.textContent = this.getText(pkg.description, lang);
+          }
+
           const rawImgs = pkg.images || pkg.gallery_images || (pkg.hero_image ? [pkg.hero_image] : []);
           if (Array.isArray(rawImgs) && rawImgs.length > 0) {
-            const sliderImgs = card.querySelectorAll('.card-image-slider img.slider-img, img.hover-box__img');
-            sliderImgs.forEach((img, idx) => {
+            const cardImgs = card.querySelectorAll('.beach-card-img-wrap img, .card-image-slider img.slider-img, img.hover-box__img');
+            cardImgs.forEach((img, idx) => {
               const src = rawImgs[idx] || rawImgs[0];
               if (src) {
                 img.src = src.startsWith('http') ? src : `${base}${src.replace(/^(\.\/)+/, '')}`;
