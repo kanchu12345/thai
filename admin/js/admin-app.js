@@ -2414,7 +2414,10 @@ resolveImg(url) {
         return `
           <tr>
             <td>
-              <img src="${coverSrc}" alt="${this.escapeAttr(post.title)}" style="width: 58px; height: 42px; object-fit: cover; border-radius: 6px; border: 1px solid #E2E8F0;" onerror="this.src='../assets/images/placeholder.png'">
+              <div style="position: relative; width: 58px; height: 42px; cursor: pointer; display: inline-block;" onclick="AdminApp.quickChangeBlogImage('${this.escapeAttr(id)}')" title="Click to change blog cover image">
+                <img src="${coverSrc}" alt="${this.escapeAttr(post.title)}" style="width: 58px; height: 42px; object-fit: cover; border-radius: 6px; border: 1px solid #E2E8F0;" onerror="this.src='../assets/images/placeholder.png'">
+                <div style="position: absolute; bottom: 2px; right: 2px; background: rgba(0,43,73,0.85); color: #fff; border-radius: 50%; width: 18px; height: 18px; display: flex; align-items: center; justify-content: center; font-size: 10px; box-shadow: 0 1px 4px rgba(0,0,0,0.3);" title="Change Image">📷</div>
+              </div>
             </td>
             <td>
               <div style="font-weight: 700; color: #0F172A; font-size: 0.92rem; max-width: 280px; line-height: 1.35;">${this.escapeHtml(post.title)}</div>
@@ -2545,12 +2548,12 @@ resolveImg(url) {
         sideBadges: sideBadges,
         updatedAt: new Date().toISOString(),
         seo: {
-          title: document.getElementById('blogMetaTitle')?.value.trim() || title,
-          description: document.getElementById('blogMetaDesc')?.value.trim() || (excerptInput ? excerptInput.value.trim() : ''),
+          title: document.getElementById('blogMetaTitle')?.value.trim() || '',
+          description: document.getElementById('blogMetaDesc')?.value.trim() || '',
           keywords: document.getElementById('blogFocusKeywords')?.value.trim() || '',
-          canonical: document.getElementById('blogCanonicalUrl')?.value.trim() || `https://kanchu12345.github.io/thai/blog/${slug}/`,
-          ogTitle: document.getElementById('blogOgTitle')?.value.trim() || title,
-          ogImage: document.getElementById('blogOgImage')?.value.trim() || (coverInput ? coverInput.value.trim() : ''),
+          canonical: document.getElementById('blogCanonicalUrl')?.value.trim() || '',
+          ogTitle: document.getElementById('blogOgTitle')?.value.trim() || '',
+          ogImage: document.getElementById('blogOgImage')?.value.trim() || '',
           twitterCard: document.getElementById('blogTwitterCard')?.value || 'summary_large_image',
           robots: document.getElementById('blogRobots')?.value || 'index, follow',
           jsonLdSchema: (() => {
@@ -5421,6 +5424,24 @@ const waBtn = document.getElementById('inquiryWhatsAppBtn');
     /**
      * Quick Change Package Image directly from table or modal
      */
+        quickChangeBlogImage(slug) {
+      const post = (this.blogPosts || []).find(p => p.slug === slug || p.id === slug);
+      if (!post) return;
+
+      this.openImagePicker(null, null, null, {
+        filter: 'image',
+        onSelect: async (url) => {
+          post.coverImage = url;
+          post.cover = url;
+          this.renderBlogPosts();
+          this.showToast(`Updated cover image for "${post.title}"!`, 'success');
+
+          await this.syncBlogToSite(post);
+          this.syncCatalogCache();
+        }
+      });
+    },
+
     quickChangePackageImage(slug) {
       const pkg = this.packages.find(p => p.slug === slug || p.id === slug);
       if (!pkg) return;
