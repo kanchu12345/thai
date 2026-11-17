@@ -1944,32 +1944,10 @@
       this.setupLanguageListeners();
       this.setupStorageListener();
       this.setupVisualEditMode();
-      // Floating Admin Quick-Edit Bar on standalone public pages when admin is logged in
+      // Floating admin pill removed permanently per client directive
       try {
-        if (window.self === window.top) {
-          const isAdmin = localStorage.getItem('lotus_admin_active') === '1' ||
-                          sessionStorage.getItem('lotus_admin_active') === '1' ||
-                          new URLSearchParams(window.location.search).has('admin') ||
-                          new URLSearchParams(window.location.search).has('edit');
-          if (isAdmin && !document.getElementById('lotus-floating-admin-bar')) {
-            const pageDoc = (document.body && document.body.getAttribute('data-cms-page')) || 'siteContent/home';
-            let rel = window.location.pathname.replace(/^\/thai\//i, '').replace(/^\//, '') || 'index.html';
-            if (rel.endsWith('/')) rel += 'index.html';
-            if (!rel.endsWith('.html')) rel += '/index.html';
-            const depth = (rel.match(/\//g) || []).length;
-            const prefix = depth > 0 ? '../'.repeat(depth) : './';
-            const adminUrl = prefix + 'admin/index.html?editPage=' + encodeURIComponent(pageDoc) + '&file=' + encodeURIComponent(rel);
-
-            const bar = document.createElement('div');
-            bar.id = 'lotus-floating-admin-bar';
-            bar.style.cssText = 'position:fixed;bottom:20px;left:20px;z-index:999999;display:flex;align-items:center;gap:10px;background:#002B49;color:#FFFFFF;padding:8px 16px;border-radius:9999px;box-shadow:0 8px 30px rgba(0,0,0,0.35);font-family:system-ui,-apple-system,sans-serif;font-size:13px;border:1px solid #D4AF37;';
-            bar.innerHTML = '<span style="color:#D4AF37;font-weight:700;">&#10022; Lotus Ceylon Admin</span>' +
-              '<a href="' + adminUrl + '" style="background:#D4AF37;color:#1C1B1F;padding:5px 14px;border-radius:9999px;text-decoration:none;font-weight:700;display:inline-flex;align-items:center;gap:5px;font-size:12px;">' +
-              '&#9998; Edit This Page</a>' +
-              '<button type="button" onclick="this.parentElement.remove()" style="background:transparent;border:none;color:#94A3B8;cursor:pointer;font-size:16px;line-height:1;padding:0 2px;">&times;</button>';
-            document.body.appendChild(bar);
-          }
-        }
+        const oldBar = document.getElementById('lotus-floating-admin-bar');
+        if (oldBar) oldBar.remove();
       } catch (e) {}
 
       

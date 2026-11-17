@@ -4199,3 +4199,13 @@ img, video, iframe, svg, canvas {
   text-shadow: none !important;
   filter: none !important;
 }
+
+
+/* Permanent Removal Safeguard: Floating Admin Pill Widget */
+#lotus-floating-admin-bar,
+.lotus-floating-admin-bar {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
