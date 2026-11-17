@@ -2243,19 +2243,21 @@
                 'assets/images/team/avatar-ky.svg',
                 'assets/images/team/rep-uk.svg',
                 'assets/images/team/rep-australia.svg',
-                'assets/images/team/rep-germany.svg',
-                'assets/images/team/rep-france.svg',
-                'assets/images/team/rep-usa.svg',
-                'assets/images/team/rep-china.svg',
-                'assets/images/team/rep-japan.svg',
-                'assets/images/team/rep-india.svg',
-                'assets/images/team/rep-uae.svg'
+                'assets/images/team/rep-germany.svg'
               ];
               const tIdx = parseInt(key.replace(/.*team_img_/, ''), 10) - 1;
               const fallback = (tIdx >= 0 && defaultTeamSvgs[tIdx]) ? defaultTeamSvgs[tIdx] : 'assets/images/team/avatar-dg.svg';
               el.setAttribute('src', resolveImgUrl(fallback));
             } else {
               el.setAttribute('src', resolveImgUrl(val));
+            }
+            if (key.includes('team_img_') || el.closest('.team-avatar-box, .team-photo-wrap, .person-card')) {
+              el.style.width = '100%';
+              el.style.height = '100%';
+              el.style.objectFit = 'cover';
+              el.style.objectPosition = 'top center';
+              el.style.display = 'block';
+              el.style.borderRadius = 'inherit';
             }
           } else {
             // Container div (avatar placeholder box)
@@ -2264,6 +2266,11 @@
               if (existingImg) {
                 existingImg.setAttribute('src', resolveImgUrl(val));
                 existingImg.style.display = 'block';
+                existingImg.style.width = '100%';
+                existingImg.style.height = '100%';
+                existingImg.style.objectFit = 'cover';
+                existingImg.style.objectPosition = 'top center';
+                existingImg.style.borderRadius = 'inherit';
               } else {
                 const newImg = document.createElement('img');
                 newImg.src = resolveImgUrl(val);
@@ -2272,8 +2279,9 @@
                 newImg.style.width = '100%';
                 newImg.style.height = '100%';
                 newImg.style.objectFit = 'cover';
-                newImg.style.objectPosition = 'center top';
+                newImg.style.objectPosition = 'top center';
                 newImg.style.display = 'block';
+                newImg.style.borderRadius = 'inherit';
                 newImg.setAttribute('data-cms-img', el.getAttribute('data-cms-img') || key);
                 el.insertBefore(newImg, el.firstChild);
               }

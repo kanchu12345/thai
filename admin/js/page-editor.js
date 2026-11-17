@@ -2711,7 +2711,11 @@
             }
             this.handleLiveInput(fieldKey, url, 'image');
             const thumb = document.getElementById('inspectorThumb');
-            if (thumb) thumb.src = this.resolvePreviewUrl(url);
+            if (thumb) {
+              thumb.src = this.resolvePreviewUrl(url);
+              thumb.style.objectFit = 'cover';
+              thumb.style.objectPosition = 'top center';
+            }
 
             if (fieldKey && fieldKey.includes('team_img_')) {
               const tIdx = (parseInt(fieldKey.replace(/.*team_img_/, ''), 10) || 1) - 1;
@@ -4295,13 +4299,7 @@
         2: 'assets/images/team/avatar-ky.svg',
         3: 'assets/images/team/rep-uk.svg',
         4: 'assets/images/team/rep-australia.svg',
-        5: 'assets/images/team/rep-germany.svg',
-        6: 'assets/images/team/rep-france.svg',
-        7: 'assets/images/team/rep-usa.svg',
-        8: 'assets/images/team/rep-china.svg',
-        9: 'assets/images/team/rep-japan.svg',
-        10: 'assets/images/team/rep-india.svg',
-        11: 'assets/images/team/rep-uae.svg'
+        5: 'assets/images/team/rep-germany.svg'
       };
       return DEFAULT_TEAM_AVATARS[num] || 'assets/images/team/avatar-dg.svg';
     },
@@ -4494,7 +4492,11 @@
       reader.onload = (e) => {
         const localDataUrl = e.target.result;
         const thumb = document.getElementById('inspectorThumb');
-        if (thumb) thumb.src = localDataUrl;
+        if (thumb) {
+          thumb.src = localDataUrl;
+          thumb.style.objectFit = 'cover';
+          thumb.style.objectPosition = 'top center';
+        }
         this.handleLiveInput(key, localDataUrl, 'image');
       };
       reader.readAsDataURL(file);
@@ -4555,13 +4557,7 @@
         2: 'assets/images/team/avatar-ky.svg',
         3: 'assets/images/team/rep-uk.svg',
         4: 'assets/images/team/rep-australia.svg',
-        5: 'assets/images/team/rep-germany.svg',
-        6: 'assets/images/team/rep-france.svg',
-        7: 'assets/images/team/rep-usa.svg',
-        8: 'assets/images/team/rep-china.svg',
-        9: 'assets/images/team/rep-japan.svg',
-        10: 'assets/images/team/rep-india.svg',
-        11: 'assets/images/team/rep-uae.svg'
+        5: 'assets/images/team/rep-germany.svg'
       };
       const defaultUrl = DEFAULT_TEAM_AVATARS[num] || 'assets/images/team/avatar-dg.svg';
 
