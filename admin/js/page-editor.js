@@ -2718,6 +2718,22 @@
             this.handleLiveInput(fieldKey, url, 'image');
             const thumb = document.getElementById('inspectorThumb');
             if (thumb) thumb.src = this.resolvePreviewUrl(url);
+
+            if (fieldKey && fieldKey.includes('team_img_')) {
+              const tIdx = (parseInt(fieldKey.replace(/.*team_img_/, ''), 10) || 1) - 1;
+              if (window.AdminApp && typeof window.AdminApp.syncTeamPhotoDirectly === 'function') {
+                window.AdminApp.syncTeamPhotoDirectly(tIdx, url);
+              }
+              const iframe = document.getElementById('visualCmsIframe');
+              if (iframe && iframe.contentWindow) {
+                try {
+                  iframe.contentWindow.postMessage({
+                    type: 'lotus:team-updated',
+                    team: (window.AdminApp && window.AdminApp.team) ? window.AdminApp.team : null
+                  }, '*');
+                } catch (e) {}
+              }
+            }
           }
         });
       }
