@@ -2254,6 +2254,10 @@
             if (key.includes('team_img_') || el.closest('.team-avatar-box, .team-photo-wrap, .person-card')) {
               el.style.width = '100%';
               el.style.height = '100%';
+              el.style.minWidth = '100%';
+              el.style.minHeight = '100%';
+              el.style.maxWidth = '100%';
+              el.style.maxHeight = '100%';
               el.style.objectFit = 'cover';
               el.style.objectPosition = 'top center';
               el.style.display = 'block';
@@ -2268,6 +2272,10 @@
                 existingImg.style.display = 'block';
                 existingImg.style.width = '100%';
                 existingImg.style.height = '100%';
+                existingImg.style.minWidth = '100%';
+                existingImg.style.minHeight = '100%';
+                existingImg.style.maxWidth = '100%';
+                existingImg.style.maxHeight = '100%';
                 existingImg.style.objectFit = 'cover';
                 existingImg.style.objectPosition = 'top center';
                 existingImg.style.borderRadius = 'inherit';
@@ -2278,6 +2286,10 @@
                 newImg.decoding = 'async';
                 newImg.style.width = '100%';
                 newImg.style.height = '100%';
+                newImg.style.minWidth = '100%';
+                newImg.style.minHeight = '100%';
+                newImg.style.maxWidth = '100%';
+                newImg.style.maxHeight = '100%';
                 newImg.style.objectFit = 'cover';
                 newImg.style.objectPosition = 'top center';
                 newImg.style.display = 'block';
@@ -2285,6 +2297,13 @@
                 newImg.setAttribute('data-cms-img', el.getAttribute('data-cms-img') || key);
                 el.insertBefore(newImg, el.firstChild);
               }
+              // Hide any placeholder text/icons inside container so uploaded photo fills completely
+              Array.from(el.childNodes).forEach(node => {
+                if (node.nodeType === 3 && node.textContent.trim()) {
+                  // wrap in span or clear text
+                  node.textContent = '';
+                }
+              });
             } else if (existingImg) {
               existingImg.remove();
             }

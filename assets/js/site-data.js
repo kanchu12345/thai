@@ -1300,21 +1300,21 @@
         const num = idx + 1;
 
         return `
-          <article class="person-card" style="background: #FFFFFF; border-radius: 12px; border: 1px solid rgba(0, 43, 73, 0.08); overflow: hidden; box-shadow: 0 4px 14px rgba(0, 43, 73, 0.04); transition: transform 0.25s ease, box-shadow 0.25s ease; display: flex; flex-direction: column;">
-            <div class="team-avatar-box team-photo-wrap" style="position: relative; width: 100%; height: 165px; overflow: hidden; background: #0A192F; cursor: pointer; border-radius: 12px 12px 0 0;">
-              ${photoUrl ? `<img src="${photoUrl}" alt="${alt}" loading="lazy" width="260" height="165" style="width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; border-radius: inherit;" decoding="async" data-cms-img="about.team_img_${num}">` : `<div class="team-avatar-placeholder" style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:2.5rem;cursor:pointer;border-radius:inherit;" data-cms-img="about.team_img_${num}" title="Click to upload/change photo">${flag}</div>`}
-              <span style="position: absolute; top: 8px; right: 8px; background: rgba(10, 25, 47, 0.88); color: #FFFFFF; font-size: 0.7rem; font-weight: 700; padding: 2px 7px; border-radius: 10px; backdrop-filter: blur(4px); box-shadow: 0 2px 6px rgba(0,0,0,0.2);" data-cms="about.team_flag_${num}">
+          <article class="person-card" style="background: #FFFFFF; border-radius: 10px; border: 1px solid rgba(0, 43, 73, 0.08); overflow: hidden; box-shadow: 0 4px 14px rgba(0, 43, 73, 0.04); transition: transform 0.25s ease, box-shadow 0.25s ease; display: flex; flex-direction: column;">
+            <div class="team-avatar-box team-photo-wrap" style="position: relative; width: 100%; height: 140px; overflow: hidden; background: #0A192F; cursor: pointer; border-radius: 10px 10px 0 0;">
+              ${photoUrl ? `<img src="${photoUrl}" alt="${alt}" loading="lazy" width="240" height="140" style="width: 100%; height: 100%; min-width: 100%; min-height: 100%; object-fit: cover; object-position: top center; display: block; border-radius: inherit;" decoding="async" data-cms-img="about.team_img_${num}">` : `<div class="team-avatar-placeholder" style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:2.2rem;cursor:pointer;border-radius:inherit;" data-cms-img="about.team_img_${num}" title="Click to upload/change photo">${flag}</div>`}
+              <span style="position: absolute; top: 8px; right: 8px; background: rgba(10, 25, 47, 0.88); color: #FFFFFF; font-size: 0.68rem; font-weight: 700; padding: 2px 7px; border-radius: 10px; backdrop-filter: blur(4px); box-shadow: 0 2px 6px rgba(0,0,0,0.2);" data-cms="about.team_flag_${num}">
                 ${flag} ${country}
               </span>
             </div>
-            <div style="padding: 0.85rem 0.9rem 1rem; display: flex; flex-direction: column; flex-grow: 1;">
-              <h3 style="font-family: var(--font-serif, 'DM Sans', sans-serif); font-size: 0.95rem; color: var(--color-dark-blue); margin: 0 0 0.25rem; font-weight: 700; line-height: 1.32; min-height: 2.6em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;" data-cms="about.team_name_${num}">
+            <div style="padding: 0.75rem 0.8rem 0.85rem; display: flex; flex-direction: column; flex-grow: 1;">
+              <h3 style="font-family: var(--font-serif, 'DM Sans', sans-serif); font-size: 0.86rem; color: var(--color-dark-blue); margin: 0 0 0.2rem; font-weight: 700; line-height: 1.25; height: 2.5em; min-height: 2.5em; max-height: 2.5em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; word-break: break-word;" data-cms="about.team_name_${num}">
                 ${m.name}
               </h3>
-              <p style="color: var(--color-gold, #C9A84C); font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin: 0 0 0.45rem; line-height: 1.35; min-height: 2.7em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;" data-cms="about.team_role_${num}">
+              <p style="color: var(--color-gold, #C9A84C); font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; margin: 0 0 0.35rem; line-height: 1.25; height: 2.5em; min-height: 2.5em; max-height: 2.5em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis;" data-cms="about.team_role_${num}">
                 ${m.role}
               </p>
-              <p style="font-size: 0.78rem; line-height: 1.48; color: #64748B; margin: 0; font-style: italic; margin-top: auto; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;" data-cms="about.team_bio_${num}">
+              <p style="font-size: 0.74rem; line-height: 1.4; color: #64748B; margin: 0; font-style: italic; margin-top: auto; height: 2.8em; min-height: 2.8em; max-height: 2.8em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis;" data-cms="about.team_bio_${num}">
                 ${bio}
               </p>
             </div>

@@ -767,51 +767,79 @@
 </div>
 
 <style>
-/* Sleek 5-Column Team Grid & Auto-Shaped Avatar Layout */
+/* 5-Column Responsive Team Grid Layout */
 .team-cards-grid {
   display: grid !important;
   grid-template-columns: repeat(5, 1fr) !important;
-  gap: 1.15rem !important;
+  gap: 0.85rem !important;
   justify-content: center !important;
-  max-width: 1360px !important;
+  max-width: 1240px !important;
   margin: 0 auto !important;
   align-items: stretch !important;
 }
 @media (max-width: 1200px) {
   .team-cards-grid {
     grid-template-columns: repeat(3, 1fr) !important;
-    gap: 1.1rem !important;
+    gap: 0.85rem !important;
   }
 }
 @media (max-width: 860px) {
   .team-cards-grid {
     grid-template-columns: repeat(2, 1fr) !important;
-    gap: 1rem !important;
+    gap: 0.8rem !important;
   }
 }
 @media (max-width: 540px) {
   .team-cards-grid {
     grid-template-columns: 1fr !important;
-    max-width: 330px !important;
-    gap: 1.15rem !important;
+    max-width: 280px !important;
+    gap: 0.85rem !important;
     margin: 0 auto !important;
   }
 }
+.person-card {
+  background: #FFFFFF !important;
+  border-radius: 10px !important;
+  border: 1px solid rgba(0, 43, 73, 0.08) !important;
+  overflow: hidden !important;
+  box-shadow: 0 4px 14px rgba(0, 43, 73, 0.04) !important;
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.28s ease, border-color 0.28s ease !important;
+  display: flex !important;
+  flex-direction: column !important;
+  height: 100% !important;
+}
+.person-card:hover {
+  transform: translateY(-4px) !important;
+  box-shadow: 0 10px 24px rgba(0, 43, 73, 0.08), 0 0 1px rgba(212, 175, 55, 0.35) !important;
+  border-color: rgba(212, 175, 55, 0.3) !important;
+}
 .team-avatar-box,
-.team-photo-wrap {
+.team-photo-wrap,
+.team-avatar-placeholder {
   position: relative !important;
   width: 100% !important;
-  height: 165px !important;
-  max-height: 165px !important;
+  height: 140px !important;
+  min-height: 140px !important;
+  max-height: 140px !important;
   overflow: hidden !important;
-  border-radius: 12px 12px 0 0 !important;
+  border-radius: 10px 10px 0 0 !important;
   background: #0A192F !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
   cursor: pointer !important;
 }
 .team-avatar-box img,
-.team-photo-wrap img {
+.team-photo-wrap img,
+.team-avatar-placeholder img,
+.person-card img[data-cms-img*="team_img"],
+img[data-cms-img*="about.team_img"] {
   width: 100% !important;
   height: 100% !important;
+  min-width: 100% !important;
+  min-height: 100% !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
   object-fit: cover !important;
   object-position: top center !important;
   display: block !important;
@@ -826,105 +854,105 @@
 <!-- Data-Driven Team Cards Grid (5 Key Leadership & Concierge Representatives) -->
 <div class="team-cards-grid" id="teamCardsGrid">
 <!-- Person 1: Founder & Chief Executive Officer -->
-<article class="person-card" style="background: #FFFFFF; border-radius: 12px; border: 1px solid rgba(0, 43, 73, 0.08); overflow: hidden; box-shadow: 0 4px 14px rgba(0, 43, 73, 0.04); transition: transform 0.25s ease, box-shadow 0.25s ease; display: flex; flex-direction: column;">
-<div class="team-avatar-box team-photo-wrap" style="position: relative; width: 100%; height: 165px; overflow: hidden; background: #0A192F; cursor: pointer; border-radius: 12px 12px 0 0;">
-<img alt="Mallawa Arachchige Dhushantha Gihan Mallawaarachchi, Founder &amp; Chief Executive Officer" data-cms-alt="about.article.alt_1" data-cms-img="about.team_img_1" decoding="async" height="165" loading="lazy" src="./assets/images/team/avatar-dg.svg" style="width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; border-radius: inherit;" width="260"/>
-<span data-cms="about.team_flag_1" style="position: absolute; top: 8px; right: 8px; background: rgba(10, 25, 47, 0.88); color: #FFFFFF; font-size: 0.7rem; font-weight: 700; padding: 2px 7px; border-radius: 10px; backdrop-filter: blur(4px); box-shadow: 0 2px 6px rgba(0,0,0,0.2);">
+<article class="person-card" style="background: #FFFFFF; border-radius: 10px; border: 1px solid rgba(0, 43, 73, 0.08); overflow: hidden; box-shadow: 0 4px 14px rgba(0, 43, 73, 0.04); transition: transform 0.25s ease, box-shadow 0.25s ease; display: flex; flex-direction: column;">
+<div class="team-avatar-box team-photo-wrap" style="position: relative; width: 100%; height: 140px; overflow: hidden; background: #0A192F; cursor: pointer; border-radius: 10px 10px 0 0;">
+<img alt="Mallawa Arachchige Dhushantha Gihan Mallawaarachchi, Founder &amp; Chief Executive Officer" data-cms-alt="about.article.alt_1" data-cms-img="about.team_img_1" decoding="async" height="140" loading="lazy" src="./assets/images/team/avatar-dg.svg" style="width: 100%; height: 100%; min-width: 100%; min-height: 100%; object-fit: cover; object-position: top center; display: block; border-radius: inherit;" width="240"/>
+<span data-cms="about.team_flag_1" style="position: absolute; top: 8px; right: 8px; background: rgba(10, 25, 47, 0.88); color: #FFFFFF; font-size: 0.68rem; font-weight: 700; padding: 2px 7px; border-radius: 10px; backdrop-filter: blur(4px); box-shadow: 0 2px 6px rgba(0,0,0,0.2);">
               🇱🇰 Sri Lanka
             </span>
 </div>
-<div style="padding: 0.85rem 0.9rem 1rem; display: flex; flex-direction: column; flex-grow: 1;">
-<h3 data-cms="about.team_name_1" style="font-family: var(--font-serif, 'DM Sans', sans-serif); font-size: 0.95rem; color: var(--color-dark-blue); margin: 0 0 0.25rem; font-weight: 700; line-height: 1.32; min-height: 2.6em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">
+<div style="padding: 0.75rem 0.8rem 0.85rem; display: flex; flex-direction: column; flex-grow: 1;">
+<h3 data-cms="about.team_name_1" style="font-family: var(--font-serif, 'DM Sans', sans-serif); font-size: 0.86rem; color: var(--color-dark-blue); margin: 0 0 0.2rem; font-weight: 700; line-height: 1.25; height: 2.5em; min-height: 2.5em; max-height: 2.5em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; word-break: break-word;">
               Mallawa Arachchige Dhushantha Gihan Mallawaarachchi
             </h3>
-<p data-cms="about.team_role_1" style="color: var(--color-gold, #C9A84C); font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin: 0 0 0.45rem; line-height: 1.35; min-height: 2.7em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">
+<p data-cms="about.team_role_1" style="color: var(--color-gold, #C9A84C); font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; margin: 0 0 0.35rem; line-height: 1.25; height: 2.5em; min-height: 2.5em; max-height: 2.5em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis;">
               Founder &amp; Chief Executive Officer
             </p>
-<p data-cms="about.team_bio_1" style="font-size: 0.78rem; line-height: 1.48; color: #64748B; margin: 0; font-style: italic; margin-top: auto; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;">
+<p data-cms="about.team_bio_1" style="font-size: 0.74rem; line-height: 1.4; color: #64748B; margin: 0; font-style: italic; margin-top: auto; height: 2.8em; min-height: 2.8em; max-height: 2.8em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis;">
               Founding director leading bespoke luxury travel expeditions across Sri Lanka.
             </p>
 </div>
 </article>
 
 <!-- Person 2: The Lotus Representative, Bhutan & Himalayas -->
-<article class="person-card" style="background: #FFFFFF; border-radius: 12px; border: 1px solid rgba(0, 43, 73, 0.08); overflow: hidden; box-shadow: 0 4px 14px rgba(0, 43, 73, 0.04); transition: transform 0.25s ease, box-shadow 0.25s ease; display: flex; flex-direction: column;">
-<div class="team-avatar-box team-photo-wrap" style="position: relative; width: 100%; height: 165px; overflow: hidden; background: #0A192F; cursor: pointer; border-radius: 12px 12px 0 0;">
-<img alt="Mr. Kuenga Yarpel, The Lotus Representative, Bhutan &amp; Himalayas" data-cms-alt="about.article.alt_2" data-cms-img="about.team_img_2" decoding="async" height="165" loading="lazy" src="./assets/images/team/avatar-ky.svg" style="width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; border-radius: inherit;" width="260"/>
-<span data-cms="about.team_flag_2" style="position: absolute; top: 8px; right: 8px; background: rgba(10, 25, 47, 0.88); color: #FFFFFF; font-size: 0.7rem; font-weight: 700; padding: 2px 7px; border-radius: 10px; backdrop-filter: blur(4px); box-shadow: 0 2px 6px rgba(0,0,0,0.2);">
+<article class="person-card" style="background: #FFFFFF; border-radius: 10px; border: 1px solid rgba(0, 43, 73, 0.08); overflow: hidden; box-shadow: 0 4px 14px rgba(0, 43, 73, 0.04); transition: transform 0.25s ease, box-shadow 0.25s ease; display: flex; flex-direction: column;">
+<div class="team-avatar-box team-photo-wrap" style="position: relative; width: 100%; height: 140px; overflow: hidden; background: #0A192F; cursor: pointer; border-radius: 10px 10px 0 0;">
+<img alt="Mr. Kuenga Yarpel, The Lotus Representative, Bhutan &amp; Himalayas" data-cms-alt="about.article.alt_2" data-cms-img="about.team_img_2" decoding="async" height="140" loading="lazy" src="./assets/images/team/avatar-ky.svg" style="width: 100%; height: 100%; min-width: 100%; min-height: 100%; object-fit: cover; object-position: center top; display: block; border-radius: inherit;" width="240"/>
+<span data-cms="about.team_flag_2" style="position: absolute; top: 8px; right: 8px; background: rgba(10, 25, 47, 0.88); color: #FFFFFF; font-size: 0.68rem; font-weight: 700; padding: 2px 7px; border-radius: 10px; backdrop-filter: blur(4px); box-shadow: 0 2px 6px rgba(0,0,0,0.2);">
               🇧🇹 Bhutan
             </span>
 </div>
-<div style="padding: 0.85rem 0.9rem 1rem; display: flex; flex-direction: column; flex-grow: 1;">
-<h3 data-cms="about.team_name_2" style="font-family: var(--font-serif, 'DM Sans', sans-serif); font-size: 0.95rem; color: var(--color-dark-blue); margin: 0 0 0.25rem; font-weight: 700; line-height: 1.32; min-height: 2.6em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">
+<div style="padding: 0.75rem 0.8rem 0.85rem; display: flex; flex-direction: column; flex-grow: 1;">
+<h3 data-cms="about.team_name_2" style="font-family: var(--font-serif, 'DM Sans', sans-serif); font-size: 0.86rem; color: var(--color-dark-blue); margin: 0 0 0.2rem; font-weight: 700; line-height: 1.25; height: 2.5em; min-height: 2.5em; max-height: 2.5em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; word-break: break-word;">
               Mr. Kuenga Yarpel
             </h3>
-<p data-cms="about.team_role_2" style="color: var(--color-gold, #C9A84C); font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin: 0 0 0.45rem; line-height: 1.35; min-height: 2.7em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">
+<p data-cms="about.team_role_2" style="color: var(--color-gold, #C9A84C); font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; margin: 0 0 0.35rem; line-height: 1.25; height: 2.5em; min-height: 2.5em; max-height: 2.5em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis;">
               The Lotus Representative, Bhutan &amp; Himalayas
             </p>
-<p data-cms="about.team_bio_2" style="font-size: 0.78rem; line-height: 1.48; color: #64748B; margin: 0; font-style: italic; margin-top: auto; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;">
+<p data-cms="about.team_bio_2" style="font-size: 0.74rem; line-height: 1.4; color: #64748B; margin: 0; font-style: italic; margin-top: auto; height: 2.8em; min-height: 2.8em; max-height: 2.8em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis;">
               Regional specialist for Bhutanese and Himalayan cultural travel partnerships.
             </p>
 </div>
 </article>
 
 <!-- Person 3: Lotus Global Representative, UK & Europe -->
-<article class="person-card" style="background: #FFFFFF; border-radius: 12px; border: 1px solid rgba(0, 43, 73, 0.08); overflow: hidden; box-shadow: 0 4px 14px rgba(0, 43, 73, 0.04); transition: transform 0.25s ease, box-shadow 0.25s ease; display: flex; flex-direction: column;">
-<div class="team-avatar-box team-photo-wrap" style="position: relative; width: 100%; height: 165px; overflow: hidden; background: #0A192F; cursor: pointer; border-radius: 12px 12px 0 0;">
-<img alt="Global Representative – United Kingdom &amp; Ireland, Lotus Global Representative, UK &amp; Europe" data-cms-alt="about.article.alt_3" data-cms-img="about.team_img_3" decoding="async" height="165" loading="lazy" src="./assets/images/team/rep-uk.svg" style="width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; border-radius: inherit;" width="260"/>
-<span data-cms="about.team_flag_3" style="position: absolute; top: 8px; right: 8px; background: rgba(10, 25, 47, 0.88); color: #FFFFFF; font-size: 0.7rem; font-weight: 700; padding: 2px 7px; border-radius: 10px; backdrop-filter: blur(4px); box-shadow: 0 2px 6px rgba(0,0,0,0.2);">
+<article class="person-card" style="background: #FFFFFF; border-radius: 10px; border: 1px solid rgba(0, 43, 73, 0.08); overflow: hidden; box-shadow: 0 4px 14px rgba(0, 43, 73, 0.04); transition: transform 0.25s ease, box-shadow 0.25s ease; display: flex; flex-direction: column;">
+<div class="team-avatar-box team-photo-wrap" style="position: relative; width: 100%; height: 140px; overflow: hidden; background: #0A192F; cursor: pointer; border-radius: 10px 10px 0 0;">
+<img alt="Global Representative – United Kingdom &amp; Ireland, Lotus Global Representative, UK &amp; Europe" data-cms-alt="about.article.alt_3" data-cms-img="about.team_img_3" decoding="async" height="140" loading="lazy" src="./assets/images/team/rep-uk.svg" style="width: 100%; height: 100%; min-width: 100%; min-height: 100%; object-fit: cover; object-position: center top; display: block; border-radius: inherit;" width="240"/>
+<span data-cms="about.team_flag_3" style="position: absolute; top: 8px; right: 8px; background: rgba(10, 25, 47, 0.88); color: #FFFFFF; font-size: 0.68rem; font-weight: 700; padding: 2px 7px; border-radius: 10px; backdrop-filter: blur(4px); box-shadow: 0 2px 6px rgba(0,0,0,0.2);">
               🇬🇧 United Kingdom
             </span>
 </div>
-<div style="padding: 0.85rem 0.9rem 1rem; display: flex; flex-direction: column; flex-grow: 1;">
-<h3 data-cms="about.team_name_3" style="font-family: var(--font-serif, 'DM Sans', sans-serif); font-size: 0.95rem; color: var(--color-dark-blue); margin: 0 0 0.25rem; font-weight: 700; line-height: 1.32; min-height: 2.6em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">
+<div style="padding: 0.75rem 0.8rem 0.85rem; display: flex; flex-direction: column; flex-grow: 1;">
+<h3 data-cms="about.team_name_3" style="font-family: var(--font-serif, 'DM Sans', sans-serif); font-size: 0.86rem; color: var(--color-dark-blue); margin: 0 0 0.2rem; font-weight: 700; line-height: 1.25; height: 2.5em; min-height: 2.5em; max-height: 2.5em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; word-break: break-word;">
               Global Representative – United Kingdom &amp; Ireland
             </h3>
-<p data-cms="about.team_role_3" style="color: var(--color-gold, #C9A84C); font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin: 0 0 0.45rem; line-height: 1.35; min-height: 2.7em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">
+<p data-cms="about.team_role_3" style="color: var(--color-gold, #C9A84C); font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; margin: 0 0 0.35rem; line-height: 1.25; height: 2.5em; min-height: 2.5em; max-height: 2.5em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis;">
               Lotus Global Representative, UK &amp; Europe
             </p>
-<p data-cms="about.team_bio_3" style="font-size: 0.78rem; line-height: 1.48; color: #64748B; margin: 0; font-style: italic; margin-top: auto; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;">
+<p data-cms="about.team_bio_3" style="font-size: 0.74rem; line-height: 1.4; color: #64748B; margin: 0; font-style: italic; margin-top: auto; height: 2.8em; min-height: 2.8em; max-height: 2.8em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis;">
               Dedicated concierge &amp; private expedition consultations for UK &amp; European travelers.
             </p>
 </div>
 </article>
 
 <!-- Person 4: Lotus Global Representative, Oceania -->
-<article class="person-card" style="background: #FFFFFF; border-radius: 12px; border: 1px solid rgba(0, 43, 73, 0.08); overflow: hidden; box-shadow: 0 4px 14px rgba(0, 43, 73, 0.04); transition: transform 0.25s ease, box-shadow 0.25s ease; display: flex; flex-direction: column;">
-<div class="team-avatar-box team-photo-wrap" style="position: relative; width: 100%; height: 165px; overflow: hidden; background: #0A192F; cursor: pointer; border-radius: 12px 12px 0 0;">
-<img alt="Global Representative – Australia &amp; New Zealand, Lotus Global Representative, Oceania" data-cms-alt="about.article.alt_4" data-cms-img="about.team_img_4" decoding="async" height="165" loading="lazy" src="./assets/images/team/rep-australia.svg" style="width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; border-radius: inherit;" width="260"/>
-<span data-cms="about.team_flag_4" style="position: absolute; top: 8px; right: 8px; background: rgba(10, 25, 47, 0.88); color: #FFFFFF; font-size: 0.7rem; font-weight: 700; padding: 2px 7px; border-radius: 10px; backdrop-filter: blur(4px); box-shadow: 0 2px 6px rgba(0,0,0,0.2);">
+<article class="person-card" style="background: #FFFFFF; border-radius: 10px; border: 1px solid rgba(0, 43, 73, 0.08); overflow: hidden; box-shadow: 0 4px 14px rgba(0, 43, 73, 0.04); transition: transform 0.25s ease, box-shadow 0.25s ease; display: flex; flex-direction: column;">
+<div class="team-avatar-box team-photo-wrap" style="position: relative; width: 100%; height: 140px; overflow: hidden; background: #0A192F; cursor: pointer; border-radius: 10px 10px 0 0;">
+<img alt="Global Representative – Australia &amp; New Zealand, Lotus Global Representative, Oceania" data-cms-alt="about.article.alt_4" data-cms-img="about.team_img_4" decoding="async" height="140" loading="lazy" src="./assets/images/team/rep-australia.svg" style="width: 100%; height: 100%; min-width: 100%; min-height: 100%; object-fit: cover; object-position: center top; display: block; border-radius: inherit;" width="240"/>
+<span data-cms="about.team_flag_4" style="position: absolute; top: 8px; right: 8px; background: rgba(10, 25, 47, 0.88); color: #FFFFFF; font-size: 0.68rem; font-weight: 700; padding: 2px 7px; border-radius: 10px; backdrop-filter: blur(4px); box-shadow: 0 2px 6px rgba(0,0,0,0.2);">
               🇦🇺 Australia
             </span>
 </div>
-<div style="padding: 0.85rem 0.9rem 1rem; display: flex; flex-direction: column; flex-grow: 1;">
-<h3 data-cms="about.team_name_4" style="font-family: var(--font-serif, 'DM Sans', sans-serif); font-size: 0.95rem; color: var(--color-dark-blue); margin: 0 0 0.25rem; font-weight: 700; line-height: 1.32; min-height: 2.6em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">
+<div style="padding: 0.75rem 0.8rem 0.85rem; display: flex; flex-direction: column; flex-grow: 1;">
+<h3 data-cms="about.team_name_4" style="font-family: var(--font-serif, 'DM Sans', sans-serif); font-size: 0.86rem; color: var(--color-dark-blue); margin: 0 0 0.2rem; font-weight: 700; line-height: 1.25; height: 2.5em; min-height: 2.5em; max-height: 2.5em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; word-break: break-word;">
               Global Representative – Australia &amp; New Zealand
             </h3>
-<p data-cms="about.team_role_4" style="color: var(--color-gold, #C9A84C); font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin: 0 0 0.45rem; line-height: 1.35; min-height: 2.7em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">
+<p data-cms="about.team_role_4" style="color: var(--color-gold, #C9A84C); font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; margin: 0 0 0.35rem; line-height: 1.25; height: 2.5em; min-height: 2.5em; max-height: 2.5em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis;">
               Lotus Global Representative, Oceania
             </p>
-<p data-cms="about.team_bio_4" style="font-size: 0.78rem; line-height: 1.48; color: #64748B; margin: 0; font-style: italic; margin-top: auto; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;">
+<p data-cms="about.team_bio_4" style="font-size: 0.74rem; line-height: 1.4; color: #64748B; margin: 0; font-style: italic; margin-top: auto; height: 2.8em; min-height: 2.8em; max-height: 2.8em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis;">
               Direct travel design and concierge services for Australian and Kiwi adventurers.
             </p>
 </div>
 </article>
 
 <!-- Person 5: Lotus Global Representative, Central Europe -->
-<article class="person-card" style="background: #FFFFFF; border-radius: 12px; border: 1px solid rgba(0, 43, 73, 0.08); overflow: hidden; box-shadow: 0 4px 14px rgba(0, 43, 73, 0.04); transition: transform 0.25s ease, box-shadow 0.25s ease; display: flex; flex-direction: column;">
-<div class="team-avatar-box team-photo-wrap" style="position: relative; width: 100%; height: 165px; overflow: hidden; background: #0A192F; cursor: pointer; border-radius: 12px 12px 0 0;">
-<img alt="Global Representative – Germany &amp; DACH, Lotus Global Representative, Central Europe" data-cms-alt="about.article.alt_5" data-cms-img="about.team_img_5" decoding="async" height="165" loading="lazy" src="./assets/images/team/rep-germany.svg" style="width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; border-radius: inherit;" width="260"/>
-<span data-cms="about.team_flag_5" style="position: absolute; top: 8px; right: 8px; background: rgba(10, 25, 47, 0.88); color: #FFFFFF; font-size: 0.7rem; font-weight: 700; padding: 2px 7px; border-radius: 10px; backdrop-filter: blur(4px); box-shadow: 0 2px 6px rgba(0,0,0,0.2);">
+<article class="person-card" style="background: #FFFFFF; border-radius: 10px; border: 1px solid rgba(0, 43, 73, 0.08); overflow: hidden; box-shadow: 0 4px 14px rgba(0, 43, 73, 0.04); transition: transform 0.25s ease, box-shadow 0.25s ease; display: flex; flex-direction: column;">
+<div class="team-avatar-box team-photo-wrap" style="position: relative; width: 100%; height: 140px; overflow: hidden; background: #0A192F; cursor: pointer; border-radius: 10px 10px 0 0;">
+<img alt="Global Representative – Germany &amp; DACH, Lotus Global Representative, Central Europe" data-cms-alt="about.article.alt_5" data-cms-img="about.team_img_5" decoding="async" height="140" loading="lazy" src="./assets/images/team/rep-germany.svg" style="width: 100%; height: 100%; min-width: 100%; min-height: 100%; object-fit: cover; object-position: center top; display: block; border-radius: inherit;" width="240"/>
+<span data-cms="about.team_flag_5" style="position: absolute; top: 8px; right: 8px; background: rgba(10, 25, 47, 0.88); color: #FFFFFF; font-size: 0.68rem; font-weight: 700; padding: 2px 7px; border-radius: 10px; backdrop-filter: blur(4px); box-shadow: 0 2px 6px rgba(0,0,0,0.2);">
               🇩🇪 Germany
             </span>
 </div>
-<div style="padding: 0.85rem 0.9rem 1rem; display: flex; flex-direction: column; flex-grow: 1;">
-<h3 data-cms="about.team_name_5" style="font-family: var(--font-serif, 'DM Sans', sans-serif); font-size: 0.95rem; color: var(--color-dark-blue); margin: 0 0 0.25rem; font-weight: 700; line-height: 1.32; min-height: 2.6em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">
+<div style="padding: 0.75rem 0.8rem 0.85rem; display: flex; flex-direction: column; flex-grow: 1;">
+<h3 data-cms="about.team_name_5" style="font-family: var(--font-serif, 'DM Sans', sans-serif); font-size: 0.86rem; color: var(--color-dark-blue); margin: 0 0 0.2rem; font-weight: 700; line-height: 1.25; height: 2.5em; min-height: 2.5em; max-height: 2.5em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; word-break: break-word;">
               Global Representative – Germany &amp; DACH
             </h3>
-<p data-cms="about.team_role_5" style="color: var(--color-gold, #C9A84C); font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin: 0 0 0.45rem; line-height: 1.35; min-height: 2.7em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">
+<p data-cms="about.team_role_5" style="color: var(--color-gold, #C9A84C); font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; margin: 0 0 0.35rem; line-height: 1.25; height: 2.5em; min-height: 2.5em; max-height: 2.5em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis;">
               Lotus Global Representative, Central Europe
             </p>
-<p data-cms="about.team_bio_5" style="font-size: 0.78rem; line-height: 1.48; color: #64748B; margin: 0; font-style: italic; margin-top: auto; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;">
+<p data-cms="about.team_bio_5" style="font-size: 0.74rem; line-height: 1.4; color: #64748B; margin: 0; font-style: italic; margin-top: auto; height: 2.8em; min-height: 2.8em; max-height: 2.8em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis;">
               Cultural expedition coordination for German, Austrian, and Swiss private clientele.
             </p>
 </div>
@@ -1302,21 +1330,21 @@
               const num = idx + 1;
 
               return `
-                <article class="person-card" style="background: #FFFFFF; border-radius: 12px; border: 1px solid rgba(0, 43, 73, 0.08); overflow: hidden; box-shadow: 0 4px 14px rgba(0, 43, 73, 0.04); transition: transform 0.25s ease, box-shadow 0.25s ease; display: flex; flex-direction: column;">
-                  <div class="team-avatar-box team-photo-wrap" style="position: relative; width: 100%; height: 165px; overflow: hidden; background: #0A192F; cursor: pointer; border-radius: 12px 12px 0 0;">
-                    ${photoUrl ? `<img src="${photoUrl}" alt="${alt}" loading="lazy" width="260" height="165" style="width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; border-radius: inherit;" decoding="async" data-cms-img="about.team_img_${num}">` : `<div class="team-avatar-placeholder" style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:2.5rem;cursor:pointer;border-radius:inherit;" data-cms-img="about.team_img_${num}" title="Click to upload/change photo">${flag}</div>`}
-                    <span style="position: absolute; top: 8px; right: 8px; background: rgba(10, 25, 47, 0.88); color: #FFFFFF; font-size: 0.7rem; font-weight: 700; padding: 2px 7px; border-radius: 10px; backdrop-filter: blur(4px); box-shadow: 0 2px 6px rgba(0,0,0,0.2);" data-cms="about.team_flag_${num}">
+                <article class="person-card" style="background: #FFFFFF; border-radius: 10px; border: 1px solid rgba(0, 43, 73, 0.08); overflow: hidden; box-shadow: 0 4px 14px rgba(0, 43, 73, 0.04); transition: transform 0.25s ease, box-shadow 0.25s ease; display: flex; flex-direction: column;">
+                  <div class="team-avatar-box team-photo-wrap" style="position: relative; width: 100%; height: 140px; overflow: hidden; background: #0A192F; cursor: pointer; border-radius: 10px 10px 0 0;">
+                    ${photoUrl ? `<img src="${photoUrl}" alt="${alt}" loading="lazy" width="240" height="140" style="width: 100%; height: 100%; min-width: 100%; min-height: 100%; object-fit: cover; object-position: top center; display: block; border-radius: inherit;" decoding="async" data-cms-img="about.team_img_${num}">` : `<div class="team-avatar-placeholder" style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:2.2rem;cursor:pointer;border-radius:inherit;" data-cms-img="about.team_img_${num}" title="Click to upload/change photo">${flag}</div>`}
+                    <span style="position: absolute; top: 8px; right: 8px; background: rgba(10, 25, 47, 0.88); color: #FFFFFF; font-size: 0.68rem; font-weight: 700; padding: 2px 7px; border-radius: 10px; backdrop-filter: blur(4px); box-shadow: 0 2px 6px rgba(0,0,0,0.2);" data-cms="about.team_flag_${num}">
                       ${flag} ${country}
                     </span>
                   </div>
-                  <div style="padding: 0.85rem 0.9rem 1rem; display: flex; flex-direction: column; flex-grow: 1;">
-                    <h3 style="font-family: var(--font-serif, 'DM Sans', sans-serif); font-size: 0.95rem; color: var(--color-dark-blue); margin: 0 0 0.25rem; font-weight: 700; line-height: 1.32; min-height: 2.6em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;" data-cms="about.team_name_${num}">
+                  <div style="padding: 0.75rem 0.8rem 0.85rem; display: flex; flex-direction: column; flex-grow: 1;">
+                    <h3 style="font-family: var(--font-serif, 'DM Sans', sans-serif); font-size: 0.86rem; color: var(--color-dark-blue); margin: 0 0 0.2rem; font-weight: 700; line-height: 1.25; height: 2.5em; min-height: 2.5em; max-height: 2.5em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; word-break: break-word;" data-cms="about.team_name_${num}">
                       ${m.name}
                     </h3>
-                    <p style="color: var(--color-gold, #C9A84C); font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin: 0 0 0.45rem; line-height: 1.35; min-height: 2.7em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;" data-cms="about.team_role_${num}">
+                    <p style="color: var(--color-gold, #C9A84C); font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; margin: 0 0 0.35rem; line-height: 1.25; height: 2.5em; min-height: 2.5em; max-height: 2.5em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis;" data-cms="about.team_role_${num}">
                       ${m.role}
                     </p>
-                    <p style="font-size: 0.78rem; line-height: 1.48; color: #64748B; margin: 0; font-style: italic; margin-top: auto; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;" data-cms="about.team_bio_${num}">
+                    <p style="font-size: 0.74rem; line-height: 1.4; color: #64748B; margin: 0; font-style: italic; margin-top: auto; height: 2.8em; min-height: 2.8em; max-height: 2.8em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis;" data-cms="about.team_bio_${num}">
                       ${bio}
                     </p>
                   </div>

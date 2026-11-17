@@ -8004,9 +8004,9 @@ img {
 .team-cards-grid {
   display: grid !important;
   grid-template-columns: repeat(5, 1fr) !important;
-  gap: 1.15rem !important;
+  gap: 0.85rem !important;
   justify-content: center !important;
-  max-width: 1360px !important;
+  max-width: 1240px !important;
   margin: 0 auto !important;
   align-items: stretch !important;
 }
@@ -8014,22 +8014,22 @@ img {
 @media (max-width: 1200px) {
   .team-cards-grid {
     grid-template-columns: repeat(3, 1fr) !important;
-    gap: 1.1rem !important;
+    gap: 0.85rem !important;
   }
 }
 
 @media (max-width: 860px) {
   .team-cards-grid {
     grid-template-columns: repeat(2, 1fr) !important;
-    gap: 1rem !important;
+    gap: 0.8rem !important;
   }
 }
 
 @media (max-width: 540px) {
   .team-cards-grid {
     grid-template-columns: 1fr !important;
-    max-width: 330px !important;
-    gap: 1.15rem !important;
+    max-width: 280px !important;
+    gap: 0.85rem !important;
     margin: 0 auto !important;
   }
 }
@@ -8037,14 +8037,15 @@ img {
 /* Compact Luxury Person Card */
 .person-card {
   background: #FFFFFF !important;
-  border-radius: 12px !important;
+  border-radius: 10px !important;
   border: 1px solid rgba(0, 43, 73, 0.08) !important;
   overflow: hidden !important;
-  box-shadow: 0 4px 16px rgba(0, 43, 73, 0.04) !important;
+  box-shadow: 0 4px 14px rgba(0, 43, 73, 0.04) !important;
   transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.28s ease, border-color 0.28s ease !important;
   display: flex !important;
   flex-direction: column !important;
   height: 100% !important;
+  max-width: 100% !important;
 }
 
 .person-card:hover {
@@ -8059,12 +8060,12 @@ img {
 .team-avatar-placeholder {
   position: relative !important;
   width: 100% !important;
-  height: 165px !important;
-  min-height: 165px !important;
-  max-height: 165px !important;
-  aspect-ratio: 4 / 3 !important;
+  height: 140px !important;
+  min-height: 140px !important;
+  max-height: 140px !important;
+  aspect-ratio: 16 / 10 !important;
   overflow: hidden !important;
-  border-radius: 12px 12px 0 0 !important;
+  border-radius: 10px 10px 0 0 !important;
   background: #0A192F !important;
   display: flex !important;
   align-items: center !important;
@@ -8080,6 +8081,8 @@ img {
 img[data-cms-img*="about.team_img"] {
   width: 100% !important;
   height: 100% !important;
+  min-width: 100% !important;
+  min-height: 100% !important;
   max-width: 100% !important;
   max-height: 100% !important;
   object-fit: cover !important;
@@ -8115,10 +8118,10 @@ img[data-cms-img*="about.team_img"] {
   right: 8px !important;
   background: rgba(10, 25, 47, 0.88) !important;
   color: #FFFFFF !important;
-  font-size: 0.7rem !important;
+  font-size: 0.68rem !important;
   font-weight: 700 !important;
-  padding: 3px 8px !important;
-  border-radius: 12px !important;
+  padding: 2px 7px !important;
+  border-radius: 10px !important;
   backdrop-filter: blur(4px) !important;
   -webkit-backdrop-filter: blur(4px) !important;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25) !important;
@@ -8130,7 +8133,7 @@ img[data-cms-img*="about.team_img"] {
 /* Compact Typography and Balanced Content Body */
 .person-card-body,
 .person-card > div:not(.team-avatar-box):not(.team-photo-wrap) {
-  padding: 0.85rem 0.95rem 1rem !important;
+  padding: 0.75rem 0.8rem 0.85rem !important;
   display: flex !important;
   flex-direction: column !important;
   flex-grow: 1 !important;
@@ -8139,32 +8142,53 @@ img[data-cms-img*="about.team_img"] {
 .person-card h3,
 .person-card [data-cms*="team_name"] {
   font-family: var(--font-serif, 'DM Sans', sans-serif) !important;
-  font-size: 0.95rem !important;
+  font-size: 0.86rem !important;
   color: var(--color-dark-blue, #002B49) !important;
-  margin: 0 0 0.25rem !important;
+  margin: 0 0 0.2rem !important;
   font-weight: 700 !important;
-  line-height: 1.3 !important;
+  line-height: 1.25 !important;
+  height: 2.5em !important;
+  min-height: 2.5em !important;
+  max-height: 2.5em !important;
+  display: -webkit-box !important;
+  -webkit-line-clamp: 2 !important;
+  -webkit-box-orient: vertical !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  word-break: break-word !important;
 }
 
 .person-card p[data-cms*="team_role"] {
   color: var(--color-gold, #C9A84C) !important;
-  font-size: 0.72rem !important;
+  font-size: 0.68rem !important;
   font-weight: 700 !important;
   text-transform: uppercase !important;
-  letter-spacing: 0.05em !important;
-  margin: 0 0 0.45rem !important;
-  line-height: 1.3 !important;
+  letter-spacing: 0.04em !important;
+  margin: 0 0 0.35rem !important;
+  line-height: 1.25 !important;
+  height: 2.5em !important;
+  min-height: 2.5em !important;
+  max-height: 2.5em !important;
+  display: -webkit-box !important;
+  -webkit-line-clamp: 2 !important;
+  -webkit-box-orient: vertical !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
 }
 
 .person-card p[data-cms*="team_bio"] {
-  font-size: 0.78rem !important;
-  line-height: 1.45 !important;
+  font-size: 0.74rem !important;
+  line-height: 1.4 !important;
   color: #64748B !important;
   margin: 0 !important;
   font-style: italic !important;
   margin-top: auto !important;
+  height: 2.8em !important;
+  min-height: 2.8em !important;
+  max-height: 2.8em !important;
   display: -webkit-box !important;
-  -webkit-line-clamp: 3 !important;
+  -webkit-line-clamp: 2 !important;
   -webkit-box-orient: vertical !important;
   overflow: hidden !important;
+  text-overflow: ellipsis !important;
 }

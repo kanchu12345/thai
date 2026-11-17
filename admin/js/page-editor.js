@@ -4392,7 +4392,7 @@
             background: #0A192F;
             margin-bottom: 14px;
             text-align: center;
-            height: 160px;
+            height: 140px;
             display: flex;
             align-items: center;
             justify-content: center;
