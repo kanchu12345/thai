@@ -1,12 +1,12 @@
 /**
  * Lotus Ceylon - Our Success Stories Landscape Card & Auto-Swap Controller
  * Auto-rotates stories every 5 seconds, with pause on hover,
- * keyboard/button navigation, and instant sync from Firestore & localStorage.
+ * keyboard/button navigation, and instant real-time sync from Firestore & localStorage.
  */
 (function (window, document) {
   'use strict';
 
-  const STORAGE_KEY = 'lotus_success_stories_cache_v8';
+  const STORAGE_KEY = 'lotus_success_stories_cache_v10';
   const SWAP_INTERVAL_MS = 5000; // 5 seconds
   const PROGRESS_TICK_MS = 50; // Smooth progress bar updates
 
@@ -16,7 +16,7 @@
       badge: 'SACRED SITES',
       title: 'Sacred Anuradhapura',
       location: 'Ancient Capital • Cultural Triangle',
-      photo: 'assets/images/buddhist-heritage/ruwanwelisaya-2.webp',
+      photo: 'https://res.cloudinary.com/qmukrbh6/image/upload/f_auto,q_auto/v1794916467/duyawh1nziw7o7esk9j5.jpg',
       description: 'Ancient capital of colossal white stupas and the revered Sri Maha Bodhi tree. Our travellers experienced peaceful evening meditation beneath the sacred Bodhi canopy with private scholarly guidance.',
       sortOrder: 1,
       published: true
@@ -26,7 +26,7 @@
       badge: 'OUR SUCCESS STORIES',
       title: 'The Coastal Marvel of Coconut Tree Hill',
       location: 'Mirissa • Southern Coast',
-      photo: 'assets/images/honeymoon/mirissa-sunset-2.webp',
+      photo: 'https://res.cloudinary.com/qmukrbh6/image/upload/f_auto,q_auto/v1794916487/ajwnjohdvb7g1hpsar3y.jpg',
       description: 'Traveling down to Mirissa, our guests stood beneath the famous palm canopy atop the red cliffs, watching a breathtaking sunset melt into the Indian Ocean—capturing memories they promised would last a lifetime.',
       sortOrder: 2,
       published: true
@@ -36,7 +36,7 @@
       badge: 'TEA HIGHLANDS',
       title: 'Ella Tea Country',
       location: 'Badulla Highlands • Scenic Railway Trails',
-      photo: 'assets/images/hill-country/kandy-ella-train-5.webp',
+      photo: 'https://res.cloudinary.com/qmukrbh6/image/upload/f_auto,q_auto/v1794916601/aove89ex9jrxa8he0qqo.jpg',
       description: 'Misty emerald tea estates, iconic colonial railways, and artisanal tea crafting. Bespoke private journeys through scenic mountain trails, Nine Arch Bridge, and cascades.',
       sortOrder: 3,
       published: true
@@ -46,7 +46,7 @@
       badge: 'OCEAN SANCTUARY',
       title: 'Mirissa Blue Waters',
       location: 'Southern Coast • Whale Sanctuary',
-      photo: 'assets/images/beach/mirissa-1.webp',
+      photo: 'https://res.cloudinary.com/qmukrbh6/image/upload/f_auto,q_auto/v1794916617/pqcluswcjxjbunl4me5s.jpg',
       description: 'Gentle ocean giants and sun-kissed golden coastlines. Private sunrise catamaran voyages encountering magnificent blue whales and dolphins off the southern Ceylon shores.',
       sortOrder: 4,
       published: true
@@ -56,14 +56,14 @@
       badge: 'ROYAL HERITAGE',
       title: 'Kandy Royal Kingdom',
       location: 'Sacred Hill Capital • Temple of the Tooth',
-      photo: 'assets/images/cultural/kandy-temple-of-tooth-4.webp',
+      photo: 'https://res.cloudinary.com/qmukrbh6/image/upload/f_auto,q_auto/v1794916634/i1sjyodoer5kr5aoxosy.jpg',
       description: 'The revered Temple of the Sacred Tooth Relic amidst misty hills. Exclusive VIP access to the traditional evening royal pooja ceremony with private sacred blessings.',
       sortOrder: 5,
       published: true
     }
   ];
 
-  let stories = [];
+  let stories = DEFAULT_STORIES.slice();
   let currentIndex = 0;
   let timerId = null;
   let progressTimerId = null;
@@ -85,6 +85,88 @@
   let elPrevBtn = null;
   let elNextBtn = null;
 
+  function saveToLocalCaches(storyList) {
+    if (!Array.isArray(storyList) || storyList.length === 0) return;
+    try {
+      const serialized = JSON.stringify(storyList);
+      localStorage.setItem(STORAGE_KEY, serialized);
+      localStorage.setItem('lotus_success_stories_cache_v8', serialized);
+      localStorage.setItem('lotus_success_stories_cache_v7', serialized);
+      localStorage.setItem('lotus_success_stories_cache_v6', serialized);
+      localStorage.setItem('lotus_success_stories_cache', serialized);
+    } catch (e) {}
+  }
+
+  async function fetchLiveStories() {
+    // 1. Direct fetch from Firestore REST API (always uncached and live)
+    try {
+      const firestoreUrl = 'https://firestore.googleapis.com/v1/projects/louterst-36b64/databases/(default)/documents/siteContent/home?key=AIzaSyD5NyCFaPHeS1cKlsgxZ_WsraswHlYonNA&_t=' + Date.now();
+      const fres = await fetch(firestoreUrl, { cache: 'no-store' });
+      if (fres.ok) {
+        const fjson = await fres.json();
+        if (fjson.fields && fjson.fields.successStories && fjson.fields.successStories.arrayValue) {
+          const rawArr = fjson.fields.successStories.arrayValue.values || [];
+          const parsed = rawArr.map(v => {
+            const f = (v.mapValue && v.mapValue.fields) || {};
+            const obj = {};
+            for (const k in f) {
+              obj[k] = f[k].stringValue || (f[k].integerValue ? parseInt(f[k].integerValue, 10) : (f[k].booleanValue !== undefined ? f[k].booleanValue : ''));
+            }
+            return obj;
+          });
+          const valid = parsed.filter(s => s && s.published !== false);
+          if (valid.length > 0) {
+            return valid.slice(0, 5);
+          }
+        }
+      }
+    } catch (fe) {
+      console.warn('[SuccessStories] Firestore fetch error:', fe);
+    }
+
+    // 2. Fetch from Firebase service if available
+    if (window.LotusFirebase && typeof window.LotusFirebase.fetchSuccessStories === 'function') {
+      try {
+        const live = await window.LotusFirebase.fetchSuccessStories('data/success-stories.json');
+        if (Array.isArray(live) && live.length > 0) {
+          const valid = live.filter(s => s && s.published !== false);
+          if (valid.length > 0) return valid.slice(0, 5);
+        }
+      } catch (e) {
+        console.warn('[SuccessStories] Firebase service fetch error:', e);
+      }
+    }
+
+    // 3. Fallback: static JSON file with cache-busting timestamp
+    try {
+      const res = await fetch('data/success-stories.json?_t=' + Date.now(), { cache: 'no-store' });
+      if (res.ok) {
+        const json = await res.json();
+        if (Array.isArray(json) && json.length > 0) {
+          const valid = json.filter(s => s && s.published !== false);
+          if (valid.length > 0) return valid.slice(0, 5);
+        }
+      }
+    } catch (e) {
+      console.warn('[SuccessStories] Static JSON fetch error:', e);
+    }
+
+    return null;
+  }
+
+  async function syncLiveStories() {
+    const live = await fetchLiveStories();
+    if (live && live.length > 0) {
+      const currentSerialized = JSON.stringify(stories);
+      const liveSerialized = JSON.stringify(live);
+      if (currentSerialized !== liveSerialized) {
+        stories = live;
+        saveToLocalCaches(stories);
+        renderStory(currentIndex >= stories.length ? 0 : currentIndex);
+      }
+    }
+  }
+
   async function init() {
     elCard = document.getElementById('successStoriesCard');
     if (!elCard) return;
@@ -102,8 +184,31 @@
     elPrevBtn = document.getElementById('storyPrevBtn');
     elNextBtn = document.getElementById('storyNextBtn');
 
-    // 1. Load data
-    await loadData();
+    // 1. Instant optimistic load for 0ms initial render
+    let loaded = false;
+    try {
+      if (window.CMS && window.CMS.data && window.CMS.data.page && Array.isArray(window.CMS.data.page.successStories) && window.CMS.data.page.successStories.length > 0) {
+        stories = window.CMS.data.page.successStories.filter(s => s.published !== false).slice(0, 5);
+        loaded = true;
+      }
+    } catch (e) {}
+
+    if (!loaded) {
+      try {
+        const cached = localStorage.getItem(STORAGE_KEY);
+        if (cached) {
+          const parsed = JSON.parse(cached);
+          if (Array.isArray(parsed) && parsed.length > 0) {
+            stories = parsed.filter(s => s.published !== false).slice(0, 5);
+            loaded = true;
+          }
+        }
+      } catch (e) {}
+    }
+
+    if (!loaded || stories.length === 0) {
+      stories = DEFAULT_STORIES.slice();
+    }
 
     // 2. Setup event listeners
     if (elPrevBtn) {
@@ -148,11 +253,11 @@
 
     // Listen to localStorage update from Admin panel (multi-tab / instant update)
     window.addEventListener('storage', (e) => {
-      if ((e.key === STORAGE_KEY || e.key === 'lotus_success_stories_cache_v7' || e.key === 'lotus_success_stories_cache_v6' || e.key === 'lotus_success_stories_cache') && e.newValue) {
+      if ((e.key === STORAGE_KEY || e.key === 'lotus_success_stories_cache_v8' || e.key === 'lotus_success_stories_cache_v7' || e.key === 'lotus_success_stories_cache_v6' || e.key === 'lotus_success_stories_cache') && e.newValue) {
         try {
           const fresh = JSON.parse(e.newValue);
           if (Array.isArray(fresh) && fresh.length > 0) {
-            stories = fresh.filter(s => s.published !== false);
+            stories = fresh.filter(s => s.published !== false).slice(0, 5);
             renderStory(currentIndex >= stories.length ? 0 : currentIndex);
           }
         } catch (err) {}
@@ -185,106 +290,18 @@
     // Custom window event for same-tab updates
     window.addEventListener('lotus_stories_updated', (e) => {
       if (e.detail && Array.isArray(e.detail)) {
-        stories = e.detail.filter(s => s.published !== false);
+        stories = e.detail.filter(s => s.published !== false).slice(0, 5);
+        saveToLocalCaches(stories);
         renderStory(currentIndex >= stories.length ? 0 : currentIndex);
       }
     });
 
-    // Initial render & start timer
+    // 3. Initial render & start timer
     renderStory(0);
     startAutoSwapTimer();
-  }
 
-  async function loadData() {
-    // 1. Check window.CMS page data (already loaded from Firestore REST API siteContent/home)
-    try {
-      if (window.CMS && window.CMS.data && window.CMS.data.page && Array.isArray(window.CMS.data.page.successStories) && window.CMS.data.page.successStories.length > 0) {
-        stories = window.CMS.data.page.successStories.filter(s => s.published !== false);
-      }
-    } catch (e) {}
-
-    // 2. Check localStorage cache (support both v6 and legacy keys)
-    if (!stories || stories.length === 0) {
-      try {
-        const cached = localStorage.getItem('lotus_success_stories_cache_v6') || localStorage.getItem('lotus_success_stories_cache');
-        if (cached) {
-          const parsed = JSON.parse(cached);
-          if (Array.isArray(parsed) && parsed.length >= 5) {
-            stories = parsed.filter(s => s.published !== false);
-          }
-        }
-      } catch (e) {}
-    }
-
-    // 3. Fetch from Firebase service if available
-    if ((!stories || stories.length < 5) && window.LotusFirebase && typeof window.LotusFirebase.fetchSuccessStories === 'function') {
-      try {
-        const live = await window.LotusFirebase.fetchSuccessStories('data/success-stories.json');
-        if (Array.isArray(live) && live.length > 0) {
-          stories = live.filter(s => s.published !== false);
-          localStorage.setItem(STORAGE_KEY, JSON.stringify(stories));
-          localStorage.setItem('lotus_success_stories_cache', JSON.stringify(stories));
-        }
-      } catch (e) {
-        console.warn('[SuccessStories] Live fetch error:', e);
-      }
-    }
-
-    // 4. Fetch directly from Firestore REST API (siteContent/home is publicly accessible with 200 OK)
-    if (!stories || stories.length < 5) {
-      try {
-        const firestoreUrl = 'https://firestore.googleapis.com/v1/projects/louterst-36b64/databases/(default)/documents/siteContent/home?key=AIzaSyD5NyCFaPHeS1cKlsgxZ_WsraswHlYonNA';
-        const fres = await fetch(firestoreUrl, { cache: 'no-store' });
-        if (fres.ok) {
-          const fjson = await fres.json();
-          if (fjson.fields && fjson.fields.successStories && fjson.fields.successStories.arrayValue) {
-            const rawArr = fjson.fields.successStories.arrayValue.values || [];
-            const parsed = rawArr.map(v => {
-              const f = (v.mapValue && v.mapValue.fields) || {};
-              const obj = {};
-              for (const k in f) {
-                obj[k] = f[k].stringValue || (f[k].integerValue ? parseInt(f[k].integerValue, 10) : (f[k].booleanValue !== undefined ? f[k].booleanValue : ''));
-              }
-              return obj;
-            });
-            if (parsed.length > 0) {
-              stories = parsed.filter(s => s.published !== false);
-              localStorage.setItem(STORAGE_KEY, JSON.stringify(stories));
-              localStorage.setItem('lotus_success_stories_cache', JSON.stringify(stories));
-            }
-          }
-        }
-      } catch (fe) {}
-    }
-
-    // 5. Fallback to static JSON file if still empty or fewer than 5
-    if (!stories || stories.length < 5) {
-      try {
-        const res = await fetch('data/success-stories.json?v=' + Date.now());
-        if (res.ok) {
-          const json = await res.json();
-          if (Array.isArray(json) && json.length > 0) {
-            stories = json.filter(s => s.published !== false);
-            localStorage.setItem(STORAGE_KEY, JSON.stringify(stories));
-            localStorage.setItem('lotus_success_stories_cache', JSON.stringify(stories));
-          }
-        }
-      } catch (e) {
-        console.warn('[SuccessStories] Static JSON fetch error:', e);
-      }
-    }
-
-    // 6. Default fallback if still empty or fewer than 5
-    if (!stories || stories.length < 5) {
-      stories = DEFAULT_STORIES.slice();
-      try {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(stories));
-        localStorage.setItem('lotus_success_stories_cache', JSON.stringify(stories));
-      } catch (e) {}
-    }
-
-    // Limit to 5 maximum
-    stories = stories.slice(0, 5);
+    // 4. Always synchronize live data asynchronously in background
+    syncLiveStories();
   }
 
   function renderStory(index) {
@@ -303,7 +320,7 @@
     setTimeout(() => {
       // Update Image
       if (elImg) {
-        elImg.src = story.photo || 'assets/images/buddhist-heritage/ruwanwelisaya-2.webp';
+        elImg.src = story.photo || 'https://res.cloudinary.com/qmukrbh6/image/upload/f_auto,q_auto/v1794916467/duyawh1nziw7o7esk9j5.jpg';
         elImg.alt = story.title || 'Our Success Story';
       }
 
@@ -414,8 +431,15 @@
   // Expose global controller
   window.LotusSuccessStories = {
     refresh: async function () {
-      await loadData();
+      await syncLiveStories();
       renderStory(0);
+    },
+    refreshWithStories: function (newStories) {
+      if (Array.isArray(newStories) && newStories.length > 0) {
+        stories = newStories.filter(s => s && s.published !== false).slice(0, 5);
+        saveToLocalCaches(stories);
+        renderStory(currentIndex >= stories.length ? 0 : currentIndex);
+      }
     },
     next: nextStory,
     prev: prevStory,

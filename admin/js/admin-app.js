@@ -5155,6 +5155,7 @@ const waBtn = document.getElementById('inquiryWhatsAppBtn');
 
       // 3. Cache in localStorage for public site (both keys)
       try {
+        localStorage.setItem('lotus_success_stories_cache_v10', JSON.stringify(this.successStories));
         localStorage.setItem('lotus_success_stories_cache', JSON.stringify(this.successStories));
         localStorage.setItem('lotus_success_stories_cache_v6', JSON.stringify(this.successStories));
         window.dispatchEvent(new CustomEvent('lotus_stories_updated', { detail: this.successStories }));
@@ -5166,6 +5167,11 @@ const waBtn = document.getElementById('inquiryWhatsAppBtn');
           this.fbDb.collection('siteContent').doc('home').set({
             successStories: this.successStories,
             updatedAt: new Date().toISOString()
+          }, { merge: true });
+          this.fbDb.collection('siteMeta').doc('version').set({
+            v: Date.now(),
+            updatedAt: new Date().toISOString(),
+            updatedBy: (this.currentUser && this.currentUser.email) || 'admin'
           }, { merge: true });
         } catch(e) {}
       }

@@ -817,6 +817,11 @@
       }
       this.bindElements();
       renderedFromCache = true;
+      if (this.data && this.data.page && Array.isArray(this.data.page.successStories) && this.data.page.successStories.length > 0) {
+        if (window.LotusSuccessStories && typeof window.LotusSuccessStories.refreshWithStories === 'function') {
+          window.LotusSuccessStories.refreshWithStories(this.data.page.successStories);
+        }
+      }
       }
 
       // 2. Prompt version check against Firestore to ensure live published updates are displayed
@@ -858,6 +863,15 @@
         };
 
         this.bindElements();
+
+        if (pageDoc && Array.isArray(pageDoc.successStories) && pageDoc.successStories.length > 0) {
+          if (window.LotusSuccessStories && typeof window.LotusSuccessStories.refreshWithStories === 'function') {
+            window.LotusSuccessStories.refreshWithStories(pageDoc.successStories);
+          }
+          try {
+            window.dispatchEvent(new CustomEvent('lotus_stories_updated', { detail: pageDoc.successStories }));
+          } catch (e) {}
+        }
 
         if (!isPreview) {
           this.writeCache(version, this.data);

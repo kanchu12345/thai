@@ -3712,17 +3712,25 @@
         }
         window.AdminApp.successStories.sort((a, b) => (a.sortOrder || 0) - (b.sortOrder || 0));
         try {
-          localStorage.setItem('lotus_success_stories_cache', JSON.stringify(window.AdminApp.successStories));
-          localStorage.setItem('lotus_success_stories_cache_v6', JSON.stringify(window.AdminApp.successStories));
+          const serialized = JSON.stringify(window.AdminApp.successStories);
+          localStorage.setItem('lotus_success_stories_cache_v10', serialized);
+          localStorage.setItem('lotus_success_stories_cache_v8', serialized);
+          localStorage.setItem('lotus_success_stories_cache_v6', serialized);
+          localStorage.setItem('lotus_success_stories_cache', serialized);
           window.dispatchEvent(new CustomEvent('lotus_stories_updated', { detail: window.AdminApp.successStories }));
         } catch (e) {}
 
-        // Also save to Firestore siteContent/home so public visitors can read it via 200 OK REST API
+        // Also save to Firestore siteContent/home and bump siteMeta/version so public visitors see it immediately
         if (window.AdminApp && window.AdminApp.fbDb) {
           try {
             await window.AdminApp.fbDb.collection('siteContent').doc('home').set({
               successStories: window.AdminApp.successStories,
               updatedAt: new Date().toISOString()
+            }, { merge: true });
+            await window.AdminApp.fbDb.collection('siteMeta').doc('version').set({
+              v: Date.now(),
+              updatedAt: new Date().toISOString(),
+              updatedBy: (window.AdminApp.currentUser && window.AdminApp.currentUser.email) || 'admin'
             }, { merge: true });
           } catch(he) {
             console.warn('[PageEditor] Could not save successStories to siteContent/home:', he);
