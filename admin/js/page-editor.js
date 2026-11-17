@@ -4285,8 +4285,8 @@
         <div class="team-avatar-inspector-card" style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 12px; padding: 16px; margin-bottom: 16px; box-shadow: 0 2px 8px rgba(0, 43, 73, 0.05);">
           <!-- Header: Identity -->
           <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
-            <span class="badge" style="background: #FEF3C7; color: #92400E; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; padding: 4px 8px; border-radius: 6px;">
-              ${this.escapeHtml(memberFlag)} Leadership &amp; Concierge Team
+            <span class="badge" style="background: #D4AF37; color: #0A192F; font-size: 0.78rem; font-weight: 800; padding: 5px 12px; border-radius: 999px; letter-spacing: 0.02em;">
+              👤 Team Member Photo: ${this.escapeHtml(memberName)}
             </span>
             <span class="badge" style="font-size: 0.72rem; background: #E2E8F0; color: #334155;">#${num}</span>
           </div>
@@ -4315,17 +4315,17 @@
           <div style="display: flex; flex-direction: column; gap: 8px; margin-bottom: 14px;">
             <button type="button" class="btn btn-primary btn-block" onclick="PageEditor.triggerTeamAvatarFileUpload('${activeKey}')" style="display: flex; align-items: center; justify-content: center; gap: 8px; padding: 10px 14px; font-weight: 700; background: linear-gradient(135deg, #008080, #005F5F); border: none; box-shadow: 0 2px 8px rgba(0, 128, 128, 0.25);">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
-              <span>Upload Photo from Computer</span>
+              <span>📷 Upload from Computer</span>
             </button>
 
             <button type="button" class="btn btn-outline btn-block" onclick="PageEditor.openMediaPicker('${activeKey}')" style="display: flex; align-items: center; justify-content: center; gap: 8px; padding: 9px 14px; font-weight: 600; border-color: #CBD5E1; color: #002B49; background: #FFFFFF;">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-              <span>Browse Media Library</span>
+              <span>🖼️ Browse Media Library</span>
             </button>
 
             <button type="button" class="btn btn-outline btn-block" onclick="PageEditor.removeTeamPhoto('${activeKey}', ${memberIndex})" style="display: flex; align-items: center; justify-content: center; gap: 8px; padding: 9px 14px; font-weight: 600; background: #FFFFFF; color: #DC2626; border: 1px solid #FCA5A5;" title="Remove custom photo completely and revert to flag/initials placeholder">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><line x1="10" y1="11" x2="10" y2="17"/><line x1="14" y1="11" x2="14" y2="17"/></svg>
-              <span>Remove Photo (Revert to Flag/Initials Box)</span>
+              <span>🗑️ Remove Photo</span>
             </button>
 
             <button type="button" class="btn btn-outline btn-block" onclick="PageEditor.resetTeamAvatarToDefault('${activeKey}', ${memberIndex})" style="display: flex; align-items: center; justify-content: center; gap: 8px; padding: 9px 14px; font-weight: 600; background: #F8FAFC; color: #475569; border: 1px solid #CBD5E1;" title="Restore standard default SVG avatar">
@@ -4408,9 +4408,10 @@
         await window.AdminApp.syncTeamPhotoDirectly(num - 1, '');
       }
 
-      if (this.iframe && this.iframe.contentWindow) {
+      const iframe = document.getElementById('visualCmsIframe');
+      if (iframe && iframe.contentWindow) {
         try {
-          this.iframe.contentWindow.postMessage({
+          iframe.contentWindow.postMessage({
             type: 'lotus:team-updated',
             team: (window.AdminApp && window.AdminApp.team) ? window.AdminApp.team : null
           }, '*');
