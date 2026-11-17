@@ -1639,13 +1639,15 @@ resolveImg(url) {
       const urlParams = new URLSearchParams(window.location.search);
       const editPage = urlParams.get('editPage');
       const editFile = urlParams.get('file');
-      if (editPage && editFile) {
+      if (editPage || editFile) {
         this.switchSection('page-editor');
-        if (window.PageEditor && typeof window.PageEditor.openPage === 'function') {
-          setTimeout(() => {
+        setTimeout(() => {
+          if (window.PageEditor && typeof window.PageEditor.openPageByParam === 'function') {
+            window.PageEditor.openPageByParam(editPage, editFile);
+          } else if (window.PageEditor && typeof window.PageEditor.openPage === 'function') {
             window.PageEditor.openPage(editPage, editFile);
-          }, 100);
-        }
+          }
+        }, 150);
       } else {
         this.switchSection(this.activeSection || 'page-editor');
       }

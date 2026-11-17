@@ -87,12 +87,15 @@
         const urlParams = new URLSearchParams(window.location.search);
         const editPage = urlParams.get('editPage');
         const editFile = urlParams.get('file');
-        if (editPage && editFile) {
-          this.activePageKey = editPage;
-          this.activePageFile = editFile;
-          const pageSelect = document.getElementById('visualPageDropdown');
-          if (pageSelect) {
-            pageSelect.value = `${editPage}|${editFile}`;
+        if (editPage || editFile) {
+          const target = this.resolvePageTarget(editPage, editFile);
+          if (target) {
+            this.activePageKey = target.docKey;
+            this.activePageFile = target.filePath;
+            const pageSelect = document.getElementById('visualPageDropdown') || document.getElementById('editPageSelect');
+            if (pageSelect) {
+              pageSelect.value = `${target.docKey}|${target.filePath}`;
+            }
           }
         }
       } catch (e) {}
@@ -126,7 +129,7 @@
         this.selectElement(event.data);
       }
       if (event.data.type === 'lotus:navigate-page') {
-        this.openLinkedHref(event.data.href);
+        this.openLinkedHref(event.data.href, event.data.packageSlug);
       }
     },
 
@@ -146,7 +149,7 @@
       }
 
       // Special handling for Tour Detail Page Elements (All 29 Packages)
-      if (item.attrType === 'tour-field' || (this.activePageKey && this.activePageKey.startsWith('tourPackages/'))) {
+      if (item.attrType === 'tour-field') {
         const slug = this.activePageKey.replace('tourPackages/', '');
         if (!document.getElementById('tourInput_title')) {
           this.renderTourPackageInspector(slug);
@@ -555,13 +558,53 @@
       this.openPage(`tourCategories/${cleanSlug}`, filePath);
     },
 
-    openLinkedHref(href) {
-      if (!href || href.startsWith('#') || href.startsWith('mailto:') || href.startsWith('tel:') || href.startsWith('javascript:')) return;
-      let clean = href.replace(/\.\.\//g, '').replace(/^\//, '').split('?')[0].split('#')[0];
+    openLinkedHref(href, packageSlug = null) {
+      if (!href && !packageSlug) return;
+      if (href && (href.startsWith('#') || href.startsWith('mailto:') || href.startsWith('tel:') || href.startsWith('javascript:'))) return;
+
+      // 1. If explicit packageSlug provided or can be extracted
+      let slug = packageSlug;
+      if (!slug && href) {
+        const parts = href.replace(/\.\.\//g, '').split('?')[0].split('#')[0].split('/').filter(p => p && !p.endsWith('.html') && p !== 'tours' && p !== 'tourPackages');
+        if (parts.length > 0) {
+          const candidate = parts[parts.length - 1];
+          if (this.PACKAGE_FILE_MAP && this.PACKAGE_FILE_MAP[candidate]) {
+            slug = candidate;
+          }
+        }
+      }
+
+      if (slug && this.PACKAGE_FILE_MAP && this.PACKAGE_FILE_MAP[slug]) {
+        const filePath = this.PACKAGE_FILE_MAP[slug];
+        const docKey = `tourPackages/${slug}`;
+        const pageSelect = document.getElementById('visualPageDropdown') || document.getElementById('editPageSelect');
+        if (pageSelect) {
+          pageSelect.value = `${docKey}|${filePath}`;
+        }
+        this.openPage(docKey, filePath);
+        return;
+      }
+
+      let clean = (href || '').replace(/\.\.\//g, '').replace(/^\//, '').split('?')[0].split('#')[0];
       if (clean.endsWith('/')) clean += 'index.html';
       if (!clean.endsWith('.html') && clean.includes('/')) clean += '/index.html';
 
-      const pageSelect = document.getElementById('visualPageDropdown');
+      // 2. Try match against PACKAGE_FILE_MAP by path ending
+      if (this.PACKAGE_FILE_MAP) {
+        for (const [s, f] of Object.entries(this.PACKAGE_FILE_MAP)) {
+          if (f === clean || f.endsWith(clean) || clean.endsWith(f)) {
+            const pageSelect = document.getElementById('visualPageDropdown') || document.getElementById('editPageSelect');
+            if (pageSelect) {
+              pageSelect.value = `tourPackages/${s}|${f}`;
+            }
+            this.openPage(`tourPackages/${s}`, f);
+            return;
+          }
+        }
+      }
+
+      // 3. Try match against visualPageDropdown / editPageSelect
+      const pageSelect = document.getElementById('visualPageDropdown') || document.getElementById('editPageSelect');
       if (pageSelect) {
         for (let i = 0; i < pageSelect.options.length; i++) {
           const opt = pageSelect.options[i];
@@ -572,6 +615,96 @@
           }
         }
       }
+
+      // 4. Fallback: try openPage directly
+      if (clean.endsWith('.html')) {
+        this.openPage(`siteContent/${clean.replace(/\.html$/, '').replace(/\//g, '_')}`, clean);
+      }
+    },
+
+    resolvePageTarget(editPage, editFile) {
+      if (!editPage && !editFile) return null;
+
+      // If combined format "docKey|file"
+      if (editPage && editPage.includes('|')) {
+        const [d, f] = editPage.split('|');
+        return { docKey: d.trim(), filePath: f.trim() };
+      }
+
+      const raw = (editPage || editFile || '').trim();
+      let clean = raw.replace(/\.\.\//g, '').replace(/^\//, '').split('?')[0].split('#')[0];
+      if (clean.endsWith('/')) clean += 'index.html';
+
+      // 1. Direct package slug lookup
+      let slug = clean.replace(/^tourPackages\//, '').replace(/^tours\//, '').replace(/\/index\.html$/, '');
+      if (slug.includes('/')) {
+        const parts = slug.split('/');
+        slug = parts[parts.length - 1];
+      }
+      if (this.PACKAGE_FILE_MAP && this.PACKAGE_FILE_MAP[slug]) {
+        return {
+          docKey: `tourPackages/${slug}`,
+          filePath: this.PACKAGE_FILE_MAP[slug]
+        };
+      }
+
+      // 2. File path match against PACKAGE_FILE_MAP
+      if (this.PACKAGE_FILE_MAP) {
+        for (const [s, f] of Object.entries(this.PACKAGE_FILE_MAP)) {
+          if (f === clean || f.endsWith(clean) || clean.endsWith(f)) {
+            return { docKey: `tourPackages/${s}`, filePath: f };
+          }
+        }
+      }
+
+      // 3. Destination lookup
+      let destSlug = clean.replace(/^destinations\//, '').replace(/\/index\.html$/, '');
+      if (destSlug.includes('/')) {
+        const parts = destSlug.split('/');
+        destSlug = parts[parts.length - 1];
+      }
+      if (this.DESTINATION_FILE_MAP && this.DESTINATION_FILE_MAP[destSlug]) {
+        return {
+          docKey: `destinations/${destSlug}`,
+          filePath: this.DESTINATION_FILE_MAP[destSlug]
+        };
+      }
+
+      // 4. Dropdown options match
+      const pageSelect = document.getElementById('visualPageDropdown') || document.getElementById('editPageSelect');
+      if (pageSelect) {
+        for (let i = 0; i < pageSelect.options.length; i++) {
+          const opt = pageSelect.options[i];
+          const [docK, fileP] = opt.value.split('|');
+          if (docK === raw || fileP === clean || fileP.endsWith(clean) || clean.endsWith(fileP)) {
+            return { docKey: docK, filePath: fileP };
+          }
+        }
+      }
+
+      // 5. Fallback with editPage & editFile or file alone
+      if (editPage && editFile) {
+        return { docKey: editPage, filePath: editFile };
+      }
+      if (clean.endsWith('.html')) {
+        const docK = editPage || ('siteContent/' + clean.replace(/\.html$/, '').replace(/\//g, '_'));
+        return { docKey: docK, filePath: clean };
+      }
+
+      return null;
+    },
+
+    openPageByParam(editPage, editFile) {
+      const target = this.resolvePageTarget(editPage, editFile);
+      if (target) {
+        const pageSelect = document.getElementById('visualPageDropdown') || document.getElementById('editPageSelect');
+        if (pageSelect) {
+          pageSelect.value = `${target.docKey}|${target.filePath}`;
+        }
+        this.openPage(target.docKey, target.filePath);
+        return true;
+      }
+      return false;
     },
 
     setInspectorTab(tab) {
@@ -2069,8 +2202,11 @@
       this.clearSelectedElement();
       this.markSaved();
 
-      // Render dedicated section inspector and scroll preview if subTab provided
-      if (subTab) {
+      // Automatically render dedicated Tour Package Live Inspector if this is a tour itinerary page!
+      if (docKey.startsWith('tourPackages/')) {
+        const slug = docKey.replace('tourPackages/', '');
+        this.renderTourPackageInspector(slug);
+      } else if (subTab) {
         this.renderSubTabInspector(subTab, docKey);
         this.scrollIframeToSection(subTab);
       }
@@ -4158,7 +4294,7 @@
       }
 
       try {
-        const pkgData = Object.assign({}, this.activeDocData);
+        const pkgData = Object.assign({}, this.activeDocData, this.currentFieldValues);
         pkgData.slug = cleanSlug;
         pkgData.updatedAt = new Date().toISOString();
         pkgData.updatedBy = (window.AdminApp && window.AdminApp.currentUser && window.AdminApp.currentUser.email) || 'admin';

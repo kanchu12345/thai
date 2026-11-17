@@ -1181,7 +1181,40 @@
       // 2. Click-to-edit interceptor
       let activeEl = null;
 
-      document.addEventListener('click', (e) => {
+            document.addEventListener('click', (e) => {
+        // Intercept clicks on "View Full Itinerary" buttons inside visual editor iframe
+        const itinBtn = e.target.closest('.btn-beach-view, .btn-walkers-itinerary, [data-itinerary-btn]');
+        const anchorEl = e.target.closest('a');
+        const isItinClick = itinBtn || (anchorEl && (/view.*itinerary|full.*itinerary/i.test(anchorEl.textContent || '') || ((anchorEl.getAttribute('href') || '').includes('/index.html') && (anchorEl.getAttribute('href') || '').includes('tours/'))));
+
+        if (isItinClick && window.parent && window.parent !== window) {
+          const targetAnchor = itinBtn || anchorEl;
+          const rawHref = targetAnchor.getAttribute('href') || '';
+          if (rawHref && !rawHref.startsWith('#') && !rawHref.startsWith('javascript:')) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            const cardEl = targetAnchor.closest('[data-package-slug], [data-slug], [data-tour], .beach-package-card, .package-card, .tour-card, article');
+            let pkgSlug = cardEl ? (cardEl.getAttribute('data-package-slug') || cardEl.getAttribute('data-slug') || cardEl.getAttribute('data-tour')) : null;
+            if (!pkgSlug && rawHref) {
+              const parts = rawHref.split('/').filter(p => p && !p.endsWith('.html') && p !== '..' && p !== '.');
+              if (parts.length > 0) pkgSlug = parts[parts.length - 1];
+            }
+
+            let cleanHref = rawHref.replace(/\.\.\//g, '').replace(/^\//, '');
+            if (cleanHref.endsWith('/')) cleanHref += 'index.html';
+            if (!cleanHref.endsWith('.html') && cleanHref.includes('/')) cleanHref += '/index.html';
+
+            window.parent.postMessage({
+              type: 'lotus:navigate-page',
+              href: cleanHref,
+              packageSlug: pkgSlug,
+              isItineraryClick: true
+            }, '*');
+            return;
+          }
+        }
+
         // Prevent default navigation on links in visual edit mode so clicking cards selects element
         const anchor = e.target.closest('a');
         if (anchor && (anchor.hasAttribute('data-cms-link') || anchor.querySelector('[data-cms], [data-cms-img], [data-cms-html]') || anchor.classList.contains('hover-box') || anchor.classList.contains('next-btn') || anchor.classList.contains('btn-beach-view') || anchor.classList.contains('btn-beach-inquire') || anchor.classList.contains('btn-inquire-gold-pill') || anchor.classList.contains('btn-cta-whatsapp') || anchor.classList.contains('walkers-acc-trigger'))) {
