@@ -4430,6 +4430,18 @@ const waBtn = document.getElementById('inquiryWhatsAppBtn');
 
 
 
+    openTeamModalByIndex(index = 0) {
+      if (this.team && this.team.length > index) {
+        const sorted = [...this.team].sort((a, b) => (a.sortOrder || 1) - (b.sortOrder || 1));
+        const member = sorted[index] || this.team[index];
+        if (member) {
+          this.openTeamModal(member.id);
+          return;
+        }
+      }
+      this.openTeamModal();
+    },
+
     openTeamModal(memberId = null) {
 
       const modal = document.getElementById('teamModal');
@@ -4547,6 +4559,50 @@ const waBtn = document.getElementById('inquiryWhatsAppBtn');
     },
 
 
+
+    async syncTeamPhotoDirectly(memberIndex, photoUrl) {
+      if (!this.team || this.team.length === 0) await this.loadTeamData();
+      const sorted = [...(this.team || [])].sort((a, b) => (a.sortOrder || 1) - (b.sortOrder || 1));
+      const member = sorted[memberIndex] || (this.team && this.team[memberIndex]);
+      if (!member) return;
+
+      member.photo = {
+        url: photoUrl || '',
+        alt: `${member.name || ''}, ${member.role || ''}`,
+        cloudinaryPublicId: photoUrl && photoUrl.includes('cloudinary') ? photoUrl.split('/').pop().split('.')[0] : ''
+      };
+      member.updatedAt = new Date().toISOString();
+
+      const memberId = member.id || ('rep-' + Date.now());
+      if (this.fbDb) {
+        try {
+          await this.fbDb.collection('team').doc(memberId).set(member, { merge: true });
+          await this.fbDb.collection('siteMeta').doc('version').set({
+            v: Date.now(),
+            updatedAt: new Date().toISOString()
+          }, { merge: true });
+        } catch (e) {
+          console.warn('[AdminApp] Firestore syncTeamPhotoDirectly warning:', e);
+        }
+      }
+
+      const idx = this.team.findIndex(m => m.id === memberId);
+      if (idx !== -1) this.team[idx] = member;
+      this.syncCatalogCache();
+
+      try {
+        window.dispatchEvent(new CustomEvent('lotus:team-updated', { detail: { team: this.team } }));
+        const iframes = document.querySelectorAll('iframe');
+        iframes.forEach(iframe => {
+          if (iframe.contentWindow) {
+            iframe.contentWindow.postMessage({ type: 'lotus:team-updated', team: this.team }, '*');
+          }
+        });
+      } catch (e) {}
+
+      this.renderTeam();
+      console.log('[AdminApp] Team member photo synchronized:', member.name, photoUrl);
+    },
 
     async saveTeamMember(e) {
       if (e && e.preventDefault) e.preventDefault();

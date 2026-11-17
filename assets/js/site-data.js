@@ -1294,7 +1294,7 @@
         return `
           <article class="person-card" style="background: #FFFFFF; border-radius: 12px; border: 1px solid rgba(0, 43, 73, 0.08); overflow: hidden; box-shadow: 0 4px 16px rgba(0, 43, 73, 0.04); transition: transform 0.25s ease, box-shadow 0.25s ease; display: flex; flex-direction: column;">
             <div style="position: relative; width: 100%; height: 210px; overflow: hidden; background: #0A192F;">
-              ${photoUrl ? `<img src="${photoUrl}" alt="${alt}" loading="lazy" width="280" height="210" style="width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block;" decoding="async" data-cms-img="about.team_img_${num}">` : `<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:3rem;">${flag}</div>`}
+              ${photoUrl ? `<img src="${photoUrl}" alt="${alt}" loading="lazy" width="280" height="210" style="width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block;" decoding="async" data-cms-img="about.team_img_${num}">` : `<div class="team-avatar-placeholder" style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:3rem;cursor:pointer;" data-cms-img="about.team_img_${num}" title="Click to upload/change photo">${flag}</div>`}
               <span style="position: absolute; top: 10px; right: 10px; background: rgba(10, 25, 47, 0.88); color: #FFFFFF; font-size: 0.72rem; font-weight: 700; padding: 3px 8px; border-radius: 12px; backdrop-filter: blur(4px); box-shadow: 0 2px 6px rgba(0,0,0,0.2);" data-cms="about.team_flag_${num}">
                 ${flag} ${country}
               </span>

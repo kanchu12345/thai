@@ -1310,9 +1310,28 @@
         }
 
         let target = null;
-        if (e.target.tagName === 'IMG' || e.target.hasAttribute('data-cms-img') || e.target.hasAttribute('data-cms-bg')) {
+        // Priority 1: Direct team avatar container or image inside team card
+        const teamAvatarWrap = e.target.closest('.team-avatar-wrap, .person-card > div:first-child, .team-avatar-cell, [data-team-photo-wrap]');
+        if (teamAvatarWrap && (e.target === teamAvatarWrap || e.target.tagName === 'IMG' || !['P', 'H1', 'H2', 'H3', 'H4', 'A', 'BUTTON'].includes(e.target.tagName))) {
+          const imgChild = teamAvatarWrap.querySelector('img[data-cms-img], img');
+          if (imgChild) {
+            target = imgChild;
+          } else {
+            // Placeholder container without an <img> tag (e.g. initials box)
+            target = teamAvatarWrap;
+            if (!target.hasAttribute('data-cms-img')) {
+              const personCard = target.closest('.person-card, [data-team-id]');
+              const allPersonCards = Array.from(document.querySelectorAll('.person-card'));
+              const pIdx = personCard ? allPersonCards.indexOf(personCard) : -1;
+              const num = pIdx >= 0 ? (pIdx + 1) : 1;
+              target.setAttribute('data-cms-img', 'about.team_img_' + num);
+            }
+          }
+        }
+
+        if (!target && (e.target.tagName === 'IMG' || e.target.hasAttribute('data-cms-img') || e.target.hasAttribute('data-cms-bg'))) {
           target = e.target;
-        } else {
+        } else if (!target) {
           const imgWrap = e.target.closest('.hover-box, .about-visual-composition, .about-img-main, .about-img-floating, .bespoke-img-main, .bespoke-img-overlap, .dest-card, .beach-card-img-wrap, .card-image-slider, .story-img-wrap, .faq-visual-wrap, .news-card-big, .news-side-item');
           if (imgWrap) {
             const isCardOrContainer = e.target.matches('.news-card-big, .news-card-big-content, .news-side-item, .news-side-item-content, .hover-box, .dest-card');
@@ -1574,6 +1593,21 @@
               textAlign: window.getComputedStyle(target).textAlign,
               color: window.getComputedStyle(target).color
             } : {};
+
+            // Check if element belongs to a team member card (Leadership / Global Representatives)
+            const teamPersonCard = target.closest('.person-card, [data-team-id]');
+            let teamMemberId = null;
+            if (teamPersonCard || (key && key.includes('team_'))) {
+              const allPersonCards = Array.from(document.querySelectorAll('.person-card'));
+              const pIdx = teamPersonCard ? allPersonCards.indexOf(teamPersonCard) : -1;
+              const num = pIdx >= 0 ? (pIdx + 1) : (key ? (parseInt(key.replace(/.*team_[a-z]+_/, ''), 10) || 1) : 1);
+              
+              isLinked = true;
+              linkedSource = 'Leadership & Concierge Team Manager';
+              targetTab = 'about';
+              targetSubtab = 'team';
+              modalOpenFn = "AdminApp.openTeamModalByIndex ? AdminApp.openTeamModalByIndex(" + (num - 1) + ") : AdminApp.navigateToTab('about', 'team')";
+            }
 
             window.parent.postMessage({
               type: 'lotus:element-selected',
@@ -2001,8 +2035,36 @@
 
       elements.forEach(el => {
         if (el.hasAttribute('data-cms-img') || el.tagName === 'IMG') {
-          const resolved = val ? resolveImgUrl(val) : resolveImgUrl('assets/images/placeholder.png');
-          el.setAttribute('src', resolved);
+          if (el.tagName === 'IMG') {
+            if (!val) {
+              el.setAttribute('src', resolveImgUrl('assets/images/team/avatar-dg.svg'));
+            } else {
+              el.setAttribute('src', resolveImgUrl(val));
+            }
+          } else {
+            // Container div (avatar placeholder box)
+            let existingImg = el.querySelector('img');
+            if (val) {
+              if (existingImg) {
+                existingImg.setAttribute('src', resolveImgUrl(val));
+                existingImg.style.display = 'block';
+              } else {
+                const newImg = document.createElement('img');
+                newImg.src = resolveImgUrl(val);
+                newImg.loading = 'lazy';
+                newImg.decoding = 'async';
+                newImg.style.width = '100%';
+                newImg.style.height = '100%';
+                newImg.style.objectFit = 'cover';
+                newImg.style.objectPosition = 'center top';
+                newImg.style.display = 'block';
+                newImg.setAttribute('data-cms-img', el.getAttribute('data-cms-img') || key);
+                el.insertBefore(newImg, el.firstChild);
+              }
+            } else if (existingImg) {
+              existingImg.remove();
+            }
+          }
         } else if (el.hasAttribute('data-cms-bg')) {
           if (!val) {
             el.style.backgroundImage = 'none';

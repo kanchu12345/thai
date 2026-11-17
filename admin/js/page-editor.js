@@ -1854,7 +1854,12 @@
 
       // Single Source of Truth Live In-Memory Sync for Blogs and Packages
       if (window.AdminApp) {
-        if (key === 'home.heading_20' && window.AdminApp.blogPosts) {
+        if (key && key.includes('team_img_') && window.AdminApp && typeof window.AdminApp.syncTeamPhotoDirectly === 'function') {
+        const teamNum = parseInt(key.replace(/.*team_img_/, ''), 10) || 1;
+        window.AdminApp.syncTeamPhotoDirectly(teamNum - 1, val);
+      }
+
+      if (key === 'home.heading_20' && window.AdminApp.blogPosts) {
           const bp = window.AdminApp.blogPosts.find(b => b.slug === 'sacred-footsteps-unlocking-sri-lankas-ancient-buddhist-kingdoms');
           if (bp) bp.title = val;
         } else if (key === 'home.p_73' && window.AdminApp.blogPosts) {
@@ -2487,6 +2492,21 @@
               } catch (ie) {}
             }
           } catch (e) {}
+        }
+
+        // If saving team member keys, dual-sync to Firestore collection 'team'
+        if (window.AdminApp && window.AdminApp.fbDb) {
+          for (const k in payload) {
+            if (k.includes('team_img_')) {
+              const num = parseInt(k.replace(/.*team_img_/, ''), 10);
+              if (!isNaN(num) && num > 0) {
+                const photoVal = payload[k];
+                if (window.AdminApp.syncTeamPhotoDirectly) {
+                  window.AdminApp.syncTeamPhotoDirectly(num - 1, photoVal);
+                }
+              }
+            }
+          }
         }
 
         // Save to Firestore
