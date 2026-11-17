@@ -814,6 +814,10 @@ input:checked + .slider:before {
 /* ==============================================================================
  * MODALS & DRAWERS
  * ============================================================================== */
+#mediaPickerModal {
+  z-index: 10050 !important;
+}
+
 .modal-overlay,
 .modal {
   position: fixed;

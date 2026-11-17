@@ -681,24 +681,117 @@
       if (!isPreview && cached && cached.data && cached.pageKey === this.pageKey) {
         this.data = cached.data;
         // Synchronize in-memory page data with active LotusSiteData store
-      if (window.LotusSiteData && window.LotusSiteData.store && this.pageKey === 'siteContent/home') {
+      if (window.LotusSiteData && window.LotusSiteData.store) {
         const sBlogs = window.LotusSiteData.store.blog || [];
-        if (sBlogs.length > 0) {
-          const mB = sBlogs.find(b => b.slug === 'sacred-footsteps-unlocking-sri-lankas-ancient-buddhist-kingdoms') || sBlogs[0];
-          if (mB) {
-            const mT = window.LotusSiteData.getText(mB.title, this.currentLang);
-            const mE = window.LotusSiteData.getText(mB.excerpt, this.currentLang);
-            const mC = mB.cover || mB.coverImage;
-            if (mT) this.data.page['home.heading_20'] = mT;
-            if (mE) this.data.page['home.p_73'] = mE;
-            if (mC) this.data.page['home.img_39'] = mC;
+        if (sBlogs.length > 0 && this.data && this.data.page) {
+          // 1. Sync for Home Page
+          if (this.pageKey === 'siteContent/home') {
+            const mB = sBlogs.find(b => b.slug === 'sacred-footsteps-unlocking-sri-lankas-ancient-buddhist-kingdoms') || sBlogs[0];
+            if (mB) {
+              const mT = window.LotusSiteData.getText(mB.title, this.currentLang);
+              const mE = window.LotusSiteData.getText(mB.excerpt, this.currentLang);
+              const mC = mB.cover || mB.coverImage;
+              const mCat = window.LotusSiteData.getText(mB.category, this.currentLang) || 'Sacred Heritage';
+              if (mT) this.data.page['home.heading_20'] = mT;
+              if (mE) this.data.page['home.p_73'] = mE;
+              if (mC) this.data.page['home.img_39'] = mC;
+              if (mCat) this.data.page['home.span_76'] = `${mCat} • Lotus Journal`;
+            }
+            const eB = sBlogs.find(b => b.slug === 'ella-hands-on-tea-making-experience');
+            if (eB) {
+              const eT = window.LotusSiteData.getText(eB.title, this.currentLang);
+              const eC = eB.cover || eB.coverImage;
+              const eCat = window.LotusSiteData.getText(eB.category, this.currentLang);
+              if (eT) this.data.page['home.heading_ella_tea'] = eT;
+              if (eC) this.data.page['home.img_ella_tea'] = eC;
+              if (eCat) this.data.page['home.span_ella_tag'] = eCat;
+            }
+            const gB = sBlogs.find(b => b.slug === 'the-great-gathering-watching-hundreds-of-wild-elephants-at-minneriya');
+            if (gB) {
+              const gT = window.LotusSiteData.getText(gB.title, this.currentLang);
+              const gC = gB.cover || gB.coverImage;
+              const gCat = window.LotusSiteData.getText(gB.category, this.currentLang);
+              if (gT) this.data.page['home.heading_1'] = gT;
+              if (gC) this.data.page['home.img_40'] = gC;
+              if (gCat) this.data.page['home.span_78'] = gCat;
+            }
+            const rB = sBlogs.find(b => b.slug === 'growing-a-greener-future-volunteer-reforestation-sinharaja');
+            if (rB) {
+              const rT = window.LotusSiteData.getText(rB.title, this.currentLang);
+              const rC = rB.cover || rB.coverImage;
+              const rCat = window.LotusSiteData.getText(rB.category, this.currentLang);
+              if (rT) this.data.page['home.heading_2'] = rT;
+              if (rC) this.data.page['home.img_41'] = rC;
+              if (rCat) this.data.page['home.span_79'] = rCat;
+            }
+            const aB = sBlogs.find(b => b.slug === 'living-healing-traditional-ceylon-ayurveda');
+            if (aB) {
+              const aT = window.LotusSiteData.getText(aB.title, this.currentLang);
+              const aC = aB.cover || aB.coverImage;
+              const aCat = window.LotusSiteData.getText(aB.category, this.currentLang);
+              if (aT) this.data.page['home.heading_3'] = aT;
+              if (aC) this.data.page['home.img_42'] = aC;
+              if (aCat) this.data.page['home.span_80'] = aCat;
+            }
           }
-          const eB = sBlogs.find(b => b.slug === 'ella-hands-on-tea-making-experience');
-          if (eB) {
-            const eT = window.LotusSiteData.getText(eB.title, this.currentLang);
-            const eC = eB.cover || eB.coverImage;
-            if (eT) this.data.page['home.heading_ella_tea'] = eT;
-            if (eC) this.data.page['home.img_ella_tea'] = eC;
+
+          // 2. Sync for Blog Listing Page (blog.html)
+          if (this.pageKey === 'siteContent/blog') {
+            const eB = sBlogs.find(b => b.slug === 'ella-hands-on-tea-making-experience');
+            if (eB) {
+              const t = window.LotusSiteData.getText(eB.title, this.currentLang);
+              const c = eB.cover || eB.coverImage;
+              const cat = window.LotusSiteData.getText(eB.category, this.currentLang);
+              const ex = window.LotusSiteData.getText(eB.excerpt, this.currentLang);
+              if (t) this.data.page['blog.card_ella_title'] = t;
+              if (c) this.data.page['blog.card_ella_img'] = c;
+              if (cat) this.data.page['blog.card_ella_badge'] = cat;
+              if (ex) this.data.page['blog.card_ella_desc'] = ex;
+            }
+            const mB = sBlogs.find(b => b.slug === 'sacred-footsteps-unlocking-sri-lankas-ancient-buddhist-kingdoms');
+            if (mB) {
+              const t = window.LotusSiteData.getText(mB.title, this.currentLang);
+              const c = mB.cover || mB.coverImage;
+              const cat = window.LotusSiteData.getText(mB.category, this.currentLang);
+              const ex = window.LotusSiteData.getText(mB.excerpt, this.currentLang);
+              if (t) this.data.page['blog.blog_card.h3_1'] = t;
+              if (c) this.data.page['blog.blog_card.img_2'] = c;
+              if (cat) this.data.page['blog.blog_card.span_2'] = cat;
+              if (ex) this.data.page['blog.blog_card.p_1'] = ex;
+            }
+            const gB = sBlogs.find(b => b.slug === 'the-great-gathering-watching-hundreds-of-wild-elephants-at-minneriya');
+            if (gB) {
+              const t = window.LotusSiteData.getText(gB.title, this.currentLang);
+              const c = gB.cover || gB.coverImage;
+              const cat = window.LotusSiteData.getText(gB.category, this.currentLang);
+              const ex = window.LotusSiteData.getText(gB.excerpt, this.currentLang);
+              if (t) this.data.page['blog.blog_card.h3_2'] = t;
+              if (c) this.data.page['blog.blog_card.img_3'] = c;
+              if (cat) this.data.page['blog.blog_card.span_5'] = cat;
+              if (ex) this.data.page['blog.blog_card.p_2'] = ex;
+            }
+            const rB = sBlogs.find(b => b.slug === 'growing-a-greener-future-volunteer-reforestation-sinharaja');
+            if (rB) {
+              const t = window.LotusSiteData.getText(rB.title, this.currentLang);
+              const c = rB.cover || rB.coverImage;
+              const cat = window.LotusSiteData.getText(rB.category, this.currentLang);
+              const ex = window.LotusSiteData.getText(rB.excerpt, this.currentLang);
+              if (t) this.data.page['blog.blog_card.h3_3'] = t;
+              if (c) this.data.page['blog.blog_card.img_4'] = c;
+              if (cat) this.data.page['blog.blog_card.span_8'] = cat;
+              if (ex) this.data.page['blog.blog_card.p_3'] = ex;
+            }
+            const aB = sBlogs.find(b => b.slug === 'living-healing-traditional-ceylon-ayurveda');
+            if (aB) {
+              const t = window.LotusSiteData.getText(aB.title, this.currentLang);
+              const c = aB.cover || aB.coverImage;
+              const cat = window.LotusSiteData.getText(aB.category, this.currentLang);
+              const ex = window.LotusSiteData.getText(aB.excerpt, this.currentLang);
+              if (t) this.data.page['blog.blog_card.h3_4'] = t;
+              if (c) this.data.page['blog.blog_card.img_5'] = c;
+              if (cat) this.data.page['blog.blog_card.span_11'] = cat;
+              if (ex) this.data.page['blog.blog_card.p_4'] = ex;
+            }
           }
         }
       }

@@ -2921,21 +2921,58 @@ resolveImg(url) {
         if (category) homeUpdates['home.span_ella_tag'] = category;
       } else if (slug === 'the-great-gathering-watching-hundreds-of-wild-elephants-at-minneriya') {
         if (title) homeUpdates['home.heading_1'] = title;
+        if (cover) homeUpdates['home.img_40'] = cover;
         if (category) homeUpdates['home.span_78'] = category;
       } else if (slug === 'growing-a-greener-future-volunteer-reforestation-sinharaja') {
         if (title) homeUpdates['home.heading_2'] = title;
+        if (cover) homeUpdates['home.img_41'] = cover;
         if (category) homeUpdates['home.span_79'] = category;
       } else if (slug === 'living-healing-traditional-ceylon-ayurveda') {
         if (title) homeUpdates['home.heading_3'] = title;
+        if (cover) homeUpdates['home.img_42'] = cover;
         if (category) homeUpdates['home.span_80'] = category;
       }
 
-      // 3. Write homeUpdates directly to 'siteContent/home' in Firestore
-      if (Object.keys(homeUpdates).length > 0 && this.fbDb) {
+      // 3. Map blog listing page ('blog.html' -> siteContent/blog) keys
+      const blogPageUpdates = {};
+      if (slug === 'ella-hands-on-tea-making-experience') {
+        if (title) blogPageUpdates['blog.card_ella_title'] = title;
+        if (cover) blogPageUpdates['blog.card_ella_img'] = cover;
+        if (category) blogPageUpdates['blog.card_ella_badge'] = category;
+        if (excerpt) blogPageUpdates['blog.card_ella_desc'] = excerpt;
+      } else if (slug === 'sacred-footsteps-unlocking-sri-lankas-ancient-buddhist-kingdoms') {
+        if (title) blogPageUpdates['blog.blog_card.h3_1'] = title;
+        if (cover) blogPageUpdates['blog.blog_card.img_2'] = cover;
+        if (category) blogPageUpdates['blog.blog_card.span_2'] = category;
+        if (excerpt) blogPageUpdates['blog.blog_card.p_1'] = excerpt;
+      } else if (slug === 'the-great-gathering-watching-hundreds-of-wild-elephants-at-minneriya') {
+        if (title) blogPageUpdates['blog.blog_card.h3_2'] = title;
+        if (cover) blogPageUpdates['blog.blog_card.img_3'] = cover;
+        if (category) blogPageUpdates['blog.blog_card.span_5'] = category;
+        if (excerpt) blogPageUpdates['blog.blog_card.p_2'] = excerpt;
+      } else if (slug === 'growing-a-greener-future-volunteer-reforestation-sinharaja') {
+        if (title) blogPageUpdates['blog.blog_card.h3_3'] = title;
+        if (cover) blogPageUpdates['blog.blog_card.img_4'] = cover;
+        if (category) blogPageUpdates['blog.blog_card.span_8'] = category;
+        if (excerpt) blogPageUpdates['blog.blog_card.p_3'] = excerpt;
+      } else if (slug === 'living-healing-traditional-ceylon-ayurveda') {
+        if (title) blogPageUpdates['blog.blog_card.h3_4'] = title;
+        if (cover) blogPageUpdates['blog.blog_card.img_5'] = cover;
+        if (category) blogPageUpdates['blog.blog_card.span_11'] = category;
+        if (excerpt) blogPageUpdates['blog.blog_card.p_4'] = excerpt;
+      }
+
+      // 4. Write updates directly to 'siteContent/home' and 'siteContent/blog' in Firestore
+      if (this.fbDb) {
         try {
-          await this.fbDb.collection('siteContent').doc('home').set(homeUpdates, { merge: true });
+          if (Object.keys(homeUpdates).length > 0) {
+            await this.fbDb.collection('siteContent').doc('home').set(homeUpdates, { merge: true });
+          }
+          if (Object.keys(blogPageUpdates).length > 0) {
+            await this.fbDb.collection('siteContent').doc('blog').set(blogPageUpdates, { merge: true });
+          }
         } catch (e) {
-          console.warn('[AdminApp] Sync home content doc:', e);
+          console.warn('[AdminApp] Sync site content docs:', e);
         }
       }
 
