@@ -4024,8 +4024,9 @@
         itineraryHtml = itinerary.map((day, idx) => {
           const dayNum = day.day || (idx + 1);
           const dayTitle = extractText(day.title, '');
-          const dayDesc = extractText(day.description, '');
-          const overnight = extractText(day.overnight, '');
+          const dayDesc = extractText(day.description || day.desc, '');
+          const overnight = extractText(day.overnight || day.stay, '');
+          const dayImg = day.image || day.img || '';
           return `
             <div class="tour-itinerary-item" style="border: 1px solid #E2E8F0; border-radius: 8px; margin-bottom: 8px; background: #FFFFFF; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.04);">
               <div style="display: flex; align-items: center; justify-content: space-between; padding: 8px 12px; background: #F8FAFC; border-bottom: 1px solid #E2E8F0; cursor: pointer;" onclick="PageEditor.toggleItineraryItem(${idx})">
@@ -4037,7 +4038,7 @@
                   <button type="button" class="btn btn-outline btn-sm" onclick="event.stopPropagation(); PageEditor.scrollAndOpenTourAccordion(${idx})" style="font-size: 0.7rem; padding: 2px 6px; white-space: nowrap;" title="Scroll preview to this day">
                     👁️ Preview
                   </button>
-                  <span style="font-size: 0.8rem; color: #64748B;">▼</span>
+                  <span style="font-size: 0.8rem; color: #64748B;">▾</span>
                 </div>
               </div>
               <div id="itineraryContent_${idx}" style="padding: 10px 12px; display: none;">
@@ -4049,9 +4050,19 @@
                   <label style="font-size: 0.74rem; font-weight: 600; color: #475569; margin-bottom: 2px;">Day Description</label>
                   <textarea class="form-control" id="tourInput_day_desc_${idx}" rows="2" oninput="PageEditor.handleTourItineraryInput('${this.escapeAttr(slug)}', ${idx}, 'desc', this.value)" style="font-size: 0.8rem; padding: 6px 10px;">${this.escapeHtml(dayDesc)}</textarea>
                 </div>
-                <div class="form-group" style="margin-bottom: 0;">
+                <div class="form-group" style="margin-bottom: 8px;">
                   <label style="font-size: 0.74rem; font-weight: 600; color: #475569; margin-bottom: 2px;">Overnight Stay</label>
                   <input type="text" class="form-control" id="tourInput_day_overnight_${idx}" value="${this.escapeAttr(overnight)}" oninput="PageEditor.handleTourItineraryInput('${this.escapeAttr(slug)}', ${idx}, 'overnight', this.value)" style="font-size: 0.8rem; padding: 6px 10px;"/>
+                </div>
+                <div class="form-group" style="margin-bottom: 0;">
+                  <label style="font-size: 0.74rem; font-weight: 600; color: #475569; margin-bottom: 2px;">Day Image (Photo)</label>
+                  <div style="display: flex; gap: 8px; align-items: center;">
+                    <img id="tourInput_day_img_prev_${idx}" src="${dayImg ? this.resolvePreviewUrl(dayImg) : '../assets/images/placeholder.png'}" style="width: 52px; height: 38px; object-fit: cover; border-radius: 4px; border: 1px solid #CBD5E1; background: #F1F5F9; flex-shrink: 0;" onerror="this.src='../assets/images/placeholder.png'"/>
+                    <input type="text" class="form-control" id="tourInput_day_image_${idx}" value="${this.escapeAttr(dayImg)}" placeholder="assets/images/... or https://..." oninput="PageEditor.handleTourItineraryDayImageInput('${this.escapeAttr(slug)}', ${idx}, this.value)" style="font-size: 0.78rem; padding: 5px 8px; flex: 1;"/>
+                    <button type="button" class="btn btn-outline btn-sm" onclick="PageEditor.openDayImagePicker('${this.escapeAttr(slug)}', ${idx})" style="font-size: 0.72rem; padding: 5px 8px; white-space: nowrap;">
+                      📁 Media
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>

@@ -844,6 +844,13 @@ window.uploadToCloudinary = uploadToCloudinary;
     /**
      * Enhanced Media Picker Modal
      */
+    openMediaPicker(arg1, arg2 = null, arg3 = null, arg4 = {}) {
+      if (typeof arg1 === 'function') {
+        return this.openImagePicker(null, null, null, { filter: 'image', onSelect: arg1 });
+      }
+      return this.openImagePicker(arg1, arg2, arg3, arg4);
+    },
+
     openImagePicker(targetInputId, previewImgId = null, cardId = null, options = {}) {
       this.targetPickerInputId = targetInputId;
       this.targetPickerPreviewId = previewImgId;
@@ -1128,41 +1135,24 @@ resolveImg(url) {
 
      */
 
-    updateImagePreview(inputId, previewImgId, cardId, badgeId = null) {
-
+    updateImagePreview(inputId, previewImgId, cardId = null, badgeId = null) {
       const input = document.getElementById(inputId);
-
       const preview = document.getElementById(previewImgId);
-
-      const card = document.getElementById(cardId);
-
+      const card = cardId ? document.getElementById(cardId) : null;
       const urlDisplay = document.getElementById(cardId ? cardId.replace('Card', 'Url') : null);
-
       const badge = badgeId ? document.getElementById(badgeId) : null;
-
-      if (!input || !preview || !card) return;
-
-
+      if (!input || !preview) return;
 
       const val = input.value.trim();
-
       if (!val) {
-
-        card.style.display = 'none';
-
-        preview.src = '';
-
+        if (card) card.style.display = 'none';
+        preview.src = '../assets/images/placeholder.png';
         return;
-
       }
 
-
-
       const resolved = this.resolveImg(val);
-
       preview.src = resolved;
-
-      card.style.display = 'flex';
+      if (card) card.style.display = 'flex';
 
       if (urlDisplay) urlDisplay.textContent = val;
 
@@ -5638,7 +5628,7 @@ const waBtn = document.getElementById('inquiryWhatsAppBtn');
 
         if (Array.isArray(pkg.itinerary)) {
 
-          pkg.itinerary.forEach((day, index) => this.addItineraryDay(day.title, day.desc, day.stay));
+          pkg.itinerary.forEach((day, index) => this.addItineraryDay(day.title, day.desc, day.stay, day.image || day.img || ''));
 
         }
 
@@ -5660,7 +5650,7 @@ const waBtn = document.getElementById('inquiryWhatsAppBtn');
 
         this.updateImagePreview('pkgHeroImage', 'pkgHeroImagePreview', 'pkgHeroPreviewCard', 'pkgHeroBadge');
 
-        this.addItineraryDay('Day 1: Arrival & Coastal Welcome', 'Airport greeting by personal tour executive. Transfer to hotel.', 'Negombo / Colombo');
+        this.addItineraryDay('Day 1: Arrival & Coastal Welcome', 'Airport greeting by personal tour executive. Transfer to hotel.', 'Negombo / Colombo', 'assets/images/beach/negombo-beach-1.webp');
 
         this.addHighlightItem('Private air-conditioned luxury transport');
         if (document.getElementById('pkgRoute')) document.getElementById('pkgRoute').value = '';
@@ -5710,54 +5700,50 @@ const waBtn = document.getElementById('inquiryWhatsAppBtn');
 
 
 
-    addItineraryDay(title = '', desc = '', stay = '') {
-
+    addItineraryDay(title = '', desc = '', stay = '', image = '') {
       const container = document.getElementById('itineraryContainer');
-
       const dayIndex = container.children.length + 1;
-
       const titleStr = typeof title === 'object' ? (title.en || '') : (title || '');
-
       const descStr = typeof desc === 'object' ? (desc.en || '') : (desc || '');
-
       const stayStr = typeof stay === 'object' ? (stay.en || '') : (stay || '');
+      const imgStr = typeof image === 'object' ? (image.en || '') : (image || '');
+      const inputId = 'itinImg_' + Date.now() + '_' + Math.random().toString(36).substr(2, 5);
+      const previewId = inputId + '_prev';
 
       const dayDiv = document.createElement('div');
-
       dayDiv.className = 'repeater-item';
-
       dayDiv.innerHTML = `
-
         <div class="repeater-header">
-
-          <span>Day ${dayIndex}</span>
-
+          <span style="font-weight: 700; color: var(--sacred-gold, #D4AF37);">Day ${dayIndex}</span>
           <button type="button" class="btn btn-sm btn-outline" onclick="this.closest('.repeater-item').remove()">Remove</button>
-
         </div>
-
         <div class="form-group" style="margin-bottom: 8px;">
-
           <input type="text" class="form-control itinerary-title" placeholder="Day Title (e.g. Day 1: Sigiriya Rock Fortress)" value="${titleStr}">
-
         </div>
-
         <div class="form-group" style="margin-bottom: 8px;">
-
           <textarea class="form-control itinerary-desc" rows="2" placeholder="Activities and highlights of this day...">${descStr}</textarea>
-
         </div>
-
-        <div class="form-group" style="margin-bottom: 0;">
-
+        <div class="form-group" style="margin-bottom: 8px;">
           <input type="text" class="form-control itinerary-stay" placeholder="Overnight Stay / Hotel location" value="${stayStr}">
-
         </div>
-
+        <div class="form-group" style="margin-bottom: 0;">
+          <label style="font-size: 0.76rem; font-weight: 600; color: #64748B; margin-bottom: 4px; display: block;">Day Itinerary Image (Optional)</label>
+          <div style="display: flex; gap: 8px; align-items: center;">
+            <img id="${previewId}" src="${imgStr ? (imgStr.startsWith('http') || imgStr.startsWith('/') || imgStr.startsWith('data:') ? imgStr : ('../' + imgStr)) : '../assets/images/placeholder.png'}" 
+                 style="width: 58px; height: 42px; object-fit: cover; border-radius: 6px; border: 1px solid #CBD5E1; flex-shrink: 0; background: #0F172A;" 
+                 onerror="this.src='../assets/images/placeholder.png'"/>
+            <div style="flex: 1; display: flex; gap: 6px;">
+              <input type="text" class="form-control itinerary-image" id="${inputId}" placeholder="assets/images/... or https://..." value="${imgStr}" 
+                     oninput="const p = document.getElementById('${previewId}'); if (p) p.src = this.value ? (this.value.startsWith('http') || this.value.startsWith('/') || this.value.startsWith('data:') ? this.value : ('../' + this.value)) : '../assets/images/placeholder.png';">
+              <button type="button" class="btn btn-sm btn-outline" style="white-space: nowrap; font-size: 0.75rem; padding: 5px 9px;" 
+                      onclick="AdminApp.openImagePicker('${inputId}', '${previewId}')">
+                🖼️ Choose Media
+              </button>
+            </div>
+          </div>
+        </div>
       `;
-
       container.appendChild(dayDiv);
-
     },
     addFaqItem(q = "", a = "") {
       const container = document.getElementById("faqsContainer");
@@ -5916,10 +5902,12 @@ const waBtn = document.getElementById('inquiryWhatsAppBtn');
       // Collect itinerary
       const itinerary = [];
       document.querySelectorAll('#itineraryContainer .repeater-item').forEach(item => {
+        const imgInput = item.querySelector('.itinerary-image');
         itinerary.push({
           title: item.querySelector('.itinerary-title').value,
           desc: item.querySelector('.itinerary-desc').value,
-          stay: item.querySelector('.itinerary-stay').value
+          stay: item.querySelector('.itinerary-stay').value,
+          image: imgInput ? imgInput.value.trim() : ''
         });
       });
 

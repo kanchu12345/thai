@@ -2083,6 +2083,35 @@
               } else if (dayField === 'overnight') {
                 const oEl = item.querySelector('.walkers-acc-pill.overnight');
                 if (oEl) oEl.textContent = 'Overnight: ' + val;
+              } else if (dayField === 'image') {
+                let imgEl = item.querySelector('.walkers-acc-img, .walkers-acc-content img');
+                if (val) {
+                  if (!imgEl) {
+                    const contentEl = item.querySelector('.walkers-acc-content');
+                    if (contentEl) {
+                      imgEl = document.createElement('img');
+                      imgEl.className = 'walkers-acc-img';
+                      imgEl.style.width = '100%';
+                      imgEl.style.borderRadius = '8px';
+                      imgEl.style.marginTop = '12px';
+                      imgEl.style.marginBottom = '12px';
+                      imgEl.style.objectFit = 'cover';
+                      imgEl.style.maxHeight = '280px';
+                      const pillsEl = contentEl.querySelector('.walkers-acc-pills');
+                      if (pillsEl) {
+                        contentEl.insertBefore(imgEl, pillsEl);
+                      } else {
+                        contentEl.appendChild(imgEl);
+                      }
+                    }
+                  }
+                  if (imgEl) {
+                    imgEl.src = (val.startsWith('http') || val.startsWith('/') || val.startsWith('data:')) ? val : ('../' + val);
+                    imgEl.style.display = 'block';
+                  }
+                } else if (imgEl) {
+                  imgEl.style.display = 'none';
+                }
               }
             }
           }
