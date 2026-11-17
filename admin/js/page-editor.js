@@ -60,6 +60,9 @@
   };
 
   const PageEditor = {
+    get iframe() {
+      return document.getElementById("visualCmsIframe");
+    },
     registry: null,
     activePageKey: 'siteContent/home',
     activePageFile: 'index.html',
@@ -921,7 +924,8 @@
         if (item.isTeamAvatar || (item.key && item.key.includes('team_img_'))) {
           const num = parseInt(item.key.replace(/.*team_img_/, ''), 10) || 1;
           const memberIndex = (typeof item.teamMemberIndex === 'number' && item.teamMemberIndex >= 0) ? item.teamMemberIndex : (num - 1);
-          const imgSrc = currentVal || 'assets/images/team/avatar-dg.svg';
+          const defaultAvatar = this.getDefaultTeamAvatar(num);
+          const imgSrc = currentVal || defaultAvatar;
           html += this.renderTeamAvatarInspector(item, item.key, imgSrc, memberIndex, num);
         }
         // --- B. IMAGE / BACKGROUND IMAGE INSPECTOR ---
@@ -4275,11 +4279,30 @@
       }
     },
 
+    getDefaultTeamAvatar(num) {
+      const DEFAULT_TEAM_AVATARS = {
+        1: 'assets/images/team/avatar-dg.svg',
+        2: 'assets/images/team/avatar-ky.svg',
+        3: 'assets/images/team/rep-uk.svg',
+        4: 'assets/images/team/rep-australia.svg',
+        5: 'assets/images/team/rep-germany.svg',
+        6: 'assets/images/team/rep-france.svg',
+        7: 'assets/images/team/rep-usa.svg',
+        8: 'assets/images/team/rep-china.svg',
+        9: 'assets/images/team/rep-japan.svg',
+        10: 'assets/images/team/rep-india.svg',
+        11: 'assets/images/team/rep-uae.svg'
+      };
+      return DEFAULT_TEAM_AVATARS[num] || 'assets/images/team/avatar-dg.svg';
+    },
+
     renderTeamAvatarInspector(item, activeKey, imgSrc, memberIndex, num) {
       const memberName = item.teamMemberName || `Team Member #${num}`;
       const memberRole = item.teamMemberRole || 'Global Representative';
       const memberFlag = item.teamMemberFlag || '🇱🇰';
-      const isDefault = !imgSrc || imgSrc.includes('avatar-') || imgSrc.includes('.svg') || imgSrc.includes('placeholder');
+      const defaultAvatar = this.getDefaultTeamAvatar(num);
+      const isDefault = !imgSrc || imgSrc === defaultAvatar || imgSrc.includes('avatar-') || imgSrc.includes('.svg') || imgSrc.includes('placeholder');
+      const effectiveImgSrc = imgSrc || defaultAvatar;
 
       return `
         <style>
@@ -4390,7 +4413,7 @@
 
           <!-- Avatar Preview Card -->
           <div class="team-thumb-container" style="border: 2px solid ${isDefault ? '#CBD5E1' : '#D4AF37'};">
-            <img src="${this.resolvePreviewUrl(imgSrc)}" class="inspector-thumb-preview" id="inspectorThumb" style="width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block;" onerror="this.onerror=null; this.src='../assets/images/team/avatar-dg.svg';"/>
+            <img src="${this.resolvePreviewUrl(effectiveImgSrc)}" class="inspector-thumb-preview" id="inspectorThumb" style="width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block;" onerror="this.onerror=null; this.src='../' + defaultAvatar;"/>
             <div style="position: absolute; bottom: 8px; right: 8px;">
               <span class="badge" style="background: ${isDefault ? 'rgba(245, 158, 11, 0.94)' : 'rgba(16, 185, 129, 0.94)'}; color: #FFFFFF; font-size: 0.72rem; font-weight: 700; padding: 4px 10px; border-radius: 999px; backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); box-shadow: 0 2px 8px rgba(0,0,0,0.3); display: flex; align-items: center; gap: 5px;">
                 <span style="display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: #FFFFFF; box-shadow: 0 0 4px rgba(255,255,255,0.8);"></span>
