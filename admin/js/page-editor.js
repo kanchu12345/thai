@@ -4375,7 +4375,7 @@
         <div class="team-avatar-inspector-card">
           <!-- Header: Identity -->
           <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
-            <span class="badge" style="background: #D4AF37; color: #0A192F; font-size: 0.78rem; font-weight: 800; padding: 5px 12px; border-radius: 999px; letter-spacing: 0.02em;">
+            <span class="badge" style="background: linear-gradient(135deg, #D4AF37 0%, #B8902A 100%); color: #0A192F; font-size: 0.78rem; font-weight: 800; padding: 5px 14px; border-radius: 999px; letter-spacing: 0.03em; box-shadow: 0 2px 6px rgba(212, 175, 55, 0.3);">
               👤 Team Member Photo: ${this.escapeHtml(memberName)}
             </span>
             <span class="badge" style="font-size: 0.72rem; background: #E2E8F0; color: #334155; font-weight: 700;">#${num}</span>
@@ -4426,10 +4426,10 @@
           </div>
 
           <!-- Microcopy guidance -->
-          <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 8px; padding: 10px 12px; font-size: 0.76rem; color: #64748B; line-height: 1.5; margin-bottom: 12px;">
-            <div style="font-weight: 600; color: #0F172A; margin-bottom: 2px;">⚡ Live Direct Synchronization</div>
-            <div>• Changes sync live to Firestore <code>team</code> &amp; <code>siteContent</code> collections.</div>
-            <div>• Reverting to default restores the official country flag initials SVG without modifying their role or bio.</div>
+          <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-left: 3.5px solid #D4AF37; border-radius: 8px; padding: 10px 14px; font-size: 0.76rem; color: #475569; line-height: 1.55; margin-bottom: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.02);">
+            <div style="font-weight: 700; color: #002B49; margin-bottom: 3px; display: flex; align-items: center; gap: 5px;"><span>⚡</span> Live Direct Synchronization</div>
+            <div style="color: #64748B;">• Changes sync live to Firestore <code>team</code> &amp; <code>siteContent</code> collections.</div>
+            <div style="color: #64748B;">• Reverting to default restores the official country flag initials SVG without modifying their role or bio.</div>
           </div>
 
           <!-- Advanced: Manual URL Input -->

@@ -993,15 +993,15 @@
           content: "" !important;
           position: absolute !important;
           inset: 0 !important;
-          background: rgba(10, 25, 47, 0.72) !important;
-          backdrop-filter: blur(2px) !important;
-          -webkit-backdrop-filter: blur(2px) !important;
+          background: linear-gradient(180deg, rgba(10, 25, 47, 0.45) 0%, rgba(10, 25, 47, 0.78) 100%) !important;
+          backdrop-filter: blur(4px) !important;
+          -webkit-backdrop-filter: blur(4px) !important;
           z-index: 20 !important;
           pointer-events: none !important;
           border-radius: inherit !important;
           opacity: 0 !important;
           visibility: hidden !important;
-          transition: opacity 0.22s ease, visibility 0.22s ease !important;
+          transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.25s ease !important;
         }
 
         body.cms-edit-active .team-avatar-box:hover::before,
@@ -1080,13 +1080,16 @@
         body.cms-edit-active .team-avatar-wrap.lotus-cms-selected-element::after,
         body.cms-edit-active .team-avatar-placeholder.lotus-cms-selected-element::after,
         body.cms-edit-active [data-team-photo-wrap].lotus-cms-selected-element::after {
+          opacity: 1 !important;
+          visibility: visible !important;
           content: "📷 Change Photo" !important;
           position: absolute !important;
           top: 50% !important;
           left: 50% !important;
-          transform: translate(-50%, -50%) !important;
+          transform: translate(-50%, -50%) scale(1) !important;
           font-size: 0.75rem !important;
           font-weight: 700 !important;
+          letter-spacing: 0.03em !important;
           color: #0A192F !important;
           background: #D4AF37 !important;
           border: 1.5px solid #FFFFFF !important;
