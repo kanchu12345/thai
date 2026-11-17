@@ -35946,7 +35946,11 @@
         "ru": "Chat on WhatsApp",
         "es": "Chat on WhatsApp",
         "vi": "Chat on WhatsApp"
-      }
+      },
+      "sigiriya_1": "https://res.cloudinary.com/qmukrbh6/image/upload/f_auto,q_auto/v1794875546/fooalw0moqbvprmgoxbm.jpg",
+      "minneriya_elephant_gathering_2": "https://res.cloudinary.com/qmukrbh6/image/upload/f_auto,q_auto/v1794875559/gkvq2rxxwn29nicjqasu.jpg",
+      "sinharaja_rainforest_5": "https://res.cloudinary.com/qmukrbh6/image/upload/f_auto,q_auto/v1794875574/t1s8h3ewfxs8jb9zwjs9.jpg",
+      "herbal_treatment_1": "https://res.cloudinary.com/qmukrbh6/image/upload/f_auto,q_auto/v1794875585/ls4njsnm2niicqem69ao.jpg"
     },
     "blogPosts/ella-hands-on-tea-making-experience": {
       "status": "published",
@@ -65549,7 +65553,15 @@
           "title": "Dondra Head Lighthouse",
           "sub": "Southernmost Tip of Sri Lanka"
         }
-      ]
+      ],
+      "img_39": "https://res.cloudinary.com/qmukrbh6/image/upload/f_auto,q_auto/v1794875546/fooalw0moqbvprmgoxbm.jpg",
+      "img_40": "https://res.cloudinary.com/qmukrbh6/image/upload/f_auto,q_auto/v1794875559/gkvq2rxxwn29nicjqasu.jpg",
+      "img_41": "https://res.cloudinary.com/qmukrbh6/image/upload/f_auto,q_auto/v1794875574/t1s8h3ewfxs8jb9zwjs9.jpg",
+      "img_42": "https://res.cloudinary.com/qmukrbh6/image/upload/f_auto,q_auto/v1794875585/ls4njsnm2niicqem69ao.jpg",
+      "minneriya_elephant_gathering_2": "https://res.cloudinary.com/qmukrbh6/image/upload/f_auto,q_auto/v1794875559/gkvq2rxxwn29nicjqasu.jpg",
+      "sinharaja_rainforest_5": "https://res.cloudinary.com/qmukrbh6/image/upload/f_auto,q_auto/v1794875574/t1s8h3ewfxs8jb9zwjs9.jpg",
+      "herbal_treatment_1": "https://res.cloudinary.com/qmukrbh6/image/upload/f_auto,q_auto/v1794875585/ls4njsnm2niicqem69ao.jpg",
+      "sigiriya_1": "https://res.cloudinary.com/qmukrbh6/image/upload/f_auto,q_auto/v1794875546/fooalw0moqbvprmgoxbm.jpg"
     },
     "siteContent/inquiry-detailed": {
       "status": "published",

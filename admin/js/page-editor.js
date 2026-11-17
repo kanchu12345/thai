@@ -2517,6 +2517,30 @@
                   await window.AdminApp.syncBlogToSite(ellaB);
                 }
               }
+              if ((payload['home.heading_1'] || payload['home.img_40']) && window.AdminApp.syncBlogToSite) {
+                const bPost = (window.AdminApp.blogPosts || []).find(b => b.slug === 'the-great-gathering-watching-hundreds-of-wild-elephants-at-minneriya');
+                if (bPost) {
+                  if (payload['home.heading_1']) bPost.title = payload['home.heading_1'];
+                  if (payload['home.img_40']) bPost.coverImage = payload['home.img_40'];
+                  await window.AdminApp.syncBlogToSite(bPost);
+                }
+              }
+              if ((payload['home.heading_2'] || payload['home.img_41']) && window.AdminApp.syncBlogToSite) {
+                const bPost = (window.AdminApp.blogPosts || []).find(b => b.slug === 'growing-a-greener-future-volunteer-reforestation-sinharaja');
+                if (bPost) {
+                  if (payload['home.heading_2']) bPost.title = payload['home.heading_2'];
+                  if (payload['home.img_41']) bPost.coverImage = payload['home.img_41'];
+                  await window.AdminApp.syncBlogToSite(bPost);
+                }
+              }
+              if ((payload['home.heading_3'] || payload['home.img_42']) && window.AdminApp.syncBlogToSite) {
+                const bPost = (window.AdminApp.blogPosts || []).find(b => b.slug === 'living-healing-traditional-ceylon-ayurveda');
+                if (bPost) {
+                  if (payload['home.heading_3']) bPost.title = payload['home.heading_3'];
+                  if (payload['home.img_42']) bPost.coverImage = payload['home.img_42'];
+                  await window.AdminApp.syncBlogToSite(bPost);
+                }
+              }
               // Sync touched packages
               const PKG_KEY_MAP = {
                 'home.p_44': 'three-millennia-of-living-heritage',
