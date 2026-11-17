@@ -1632,12 +1632,6 @@
           { key: 'about.team_img_3', label: 'Global Representative 2: United Kingdom & Ireland (🇬🇧)', sectionName: '👥 Leadership & Representatives', sectionId: 'ourPeople', defaultUrl: 'assets/images/team/rep-uk.svg', attrType: 'image' },
           { key: 'about.team_img_4', label: 'Global Representative 3: Australia & New Zealand (🇦🇺)', sectionName: '👥 Leadership & Representatives', sectionId: 'ourPeople', defaultUrl: 'assets/images/team/rep-australia.svg', attrType: 'image' },
           { key: 'about.team_img_5', label: 'Global Representative 4: Germany & DACH (🇩🇪)', sectionName: '👥 Leadership & Representatives', sectionId: 'ourPeople', defaultUrl: 'assets/images/team/rep-germany.svg', attrType: 'image' },
-          { key: 'about.team_img_6', label: 'Global Representative 5: France & Benelux (🇫🇷)', sectionName: '👥 Leadership & Representatives', sectionId: 'ourPeople', defaultUrl: 'assets/images/team/rep-france.svg', attrType: 'image' },
-          { key: 'about.team_img_7', label: 'Global Representative 6: United States & Canada (🇺🇸)', sectionName: '👥 Leadership & Representatives', sectionId: 'ourPeople', defaultUrl: 'assets/images/team/rep-usa.svg', attrType: 'image' },
-          { key: 'about.team_img_8', label: 'Global Representative 7: Greater China & WeChat (🇨🇳)', sectionName: '👥 Leadership & Representatives', sectionId: 'ourPeople', defaultUrl: 'assets/images/team/rep-china.svg', attrType: 'image' },
-          { key: 'about.team_img_9', label: 'Global Representative 8: Japan & LINE Concierge (🇯🇵)', sectionName: '👥 Leadership & Representatives', sectionId: 'ourPeople', defaultUrl: 'assets/images/team/rep-japan.svg', attrType: 'image' },
-          { key: 'about.team_img_10', label: 'Global Representative 9: India & South Asia (🇮🇳)', sectionName: '👥 Leadership & Representatives', sectionId: 'ourPeople', defaultUrl: 'assets/images/team/rep-india.svg', attrType: 'image' },
-          { key: 'about.team_img_11', label: 'Global Representative 10: UAE & Middle East (🇦🇪)', sectionName: '👥 Leadership & Representatives', sectionId: 'ourPeople', defaultUrl: 'assets/images/team/rep-uae.svg', attrType: 'image' },
           ctaBg
         ];
       }
@@ -4400,7 +4394,7 @@
             background: #0A192F;
             margin-bottom: 14px;
             text-align: center;
-            height: 180px;
+            height: 160px;
             display: flex;
             align-items: center;
             justify-content: center;
