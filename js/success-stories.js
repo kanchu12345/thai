@@ -260,7 +260,7 @@
     // 5. Fallback to static JSON file if still empty or fewer than 5
     if (!stories || stories.length < 5) {
       try {
-        const res = await fetch('data/success-stories.json');
+        const res = await fetch('data/success-stories.json?v=' + Date.now());
         if (res.ok) {
           const json = await res.json();
           if (Array.isArray(json) && json.length > 0) {

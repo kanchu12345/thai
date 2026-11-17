@@ -128,7 +128,7 @@
     } catch (e) {}
 
     try {
-      const res = await fetch('./data/homepage-blogs.json');
+      const res = await fetch('./data/homepage-blogs.json?v=' + Date.now());
       if (res.ok) {
         const data = await res.json();
         if (data && (data.main || Array.isArray(data.side))) {
@@ -160,7 +160,7 @@
     } catch (e) {}
 
     try {
-      const res = await fetch('./data/blog.json');
+      const res = await fetch('./data/blog.json?v=' + Date.now());
       if (res.ok) {
         const list = await res.json();
         if (Array.isArray(list) && list.length > 0) {

@@ -285,7 +285,7 @@
 
         try {
 
-          const res2 = await fetch(resolveFallbackPath(fallbackJsonPath).replace('seed-catalog.json', 'packages.json'));
+          const res2 = await fetch(resolveFallbackPath(fallbackJsonPath).replace('seed-catalog.json', 'packages.json') + '?v=' + Date.now());
 
           if (res2.ok) return await res2.json();
 
@@ -750,7 +750,7 @@
       if (!data) {
         try {
 
-          const res = await fetch('../data/seed-catalog.json');
+          const res = await fetch('../data/seed-catalog.json?v=' + Date.now());
 
           if (res.ok) data = await res.json();
 
@@ -758,7 +758,7 @@
 
           try {
 
-            const res2 = await fetch('data/seed-catalog.json');
+            const res2 = await fetch('data/seed-catalog.json?v=' + Date.now());
 
             if (res2.ok) data = await res2.json();
 

@@ -49,7 +49,7 @@
     }
     try {
       const prefix = getPrefix();
-      const res = await fetch(`${prefix}data/packages.json`);
+      const res = await fetch(`${prefix}data/packages.json?v=${Date.now()}`);
       const data = await res.json();
       packageCatalogCache = data.packages || [];
       return packageCatalogCache;
