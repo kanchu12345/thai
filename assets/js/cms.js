@@ -1428,7 +1428,7 @@
 
         let target = null;
         // Priority 1: Direct team avatar container or image inside team card
-        const teamAvatarBox = e.target.closest('.team-avatar-placeholder, .team-avatar-wrap, .team-avatar-cell, [data-team-photo-wrap], img[data-cms-img*="team_img"], .person-card > div:first-child');
+        const teamAvatarBox = e.target.closest('.team-avatar-box, .team-photo-wrap, .team-avatar-placeholder, .team-avatar-wrap, .team-avatar-cell, [data-team-photo-wrap], img[data-cms-img*="team_img"], .person-card > div:first-child');
         const flagBadge = e.target.closest('[data-cms*="team_flag"]');
 
         if (teamAvatarBox && !flagBadge && !e.target.closest('[data-cms*="team_name"], [data-cms*="team_role"], [data-cms*="team_bio"], h1, h2, h3, h4, p:not([data-cms-img])')) {
