@@ -1289,31 +1289,32 @@
 
       const published = teamData.filter(m => m.published !== false);
       published.sort((a, b) => (a.sortOrder || 1) - (b.sortOrder || 1));
+      const activeMembers = published.slice(0, 5);
 
-      teamGrid.innerHTML = published.map((m, idx) => {
+      teamGrid.innerHTML = activeMembers.map((m, idx) => {
         const photoUrl = m.photo ? (m.photo.url || m.photo.secure_url || '') : '';
         const alt = m.photo ? (m.photo.alt || `${m.name}, ${m.role}`) : `${m.name}, ${m.role}`;
         const bio = m.bio && m.bio.trim() ? m.bio : 'Introduction coming soon';
-        const flag = m.flag || '🌐';
+        const flag = m.flag || '🇱🇰';
         const country = m.country || '';
         const num = idx + 1;
 
         return `
-          <article class="person-card" style="background: #FFFFFF; border-radius: 12px; border: 1px solid rgba(0, 43, 73, 0.08); overflow: hidden; box-shadow: 0 4px 16px rgba(0, 43, 73, 0.04); transition: transform 0.25s ease, box-shadow 0.25s ease; display: flex; flex-direction: column;">
-            <div class="team-avatar-box team-photo-wrap" style="position: relative; width: 100%; height: 210px; overflow: hidden; background: #0A192F; cursor: pointer;">
-              ${photoUrl ? `<img src="${photoUrl}" alt="${alt}" loading="lazy" width="280" height="210" style="width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block;" decoding="async" data-cms-img="about.team_img_${num}">` : `<div class="team-avatar-placeholder" style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:3rem;cursor:pointer;" data-cms-img="about.team_img_${num}" title="Click to upload/change photo">${flag}</div>`}
-              <span style="position: absolute; top: 10px; right: 10px; background: rgba(10, 25, 47, 0.88); color: #FFFFFF; font-size: 0.72rem; font-weight: 700; padding: 3px 8px; border-radius: 12px; backdrop-filter: blur(4px); box-shadow: 0 2px 6px rgba(0,0,0,0.2);" data-cms="about.team_flag_${num}">
+          <article class="person-card" style="background: #FFFFFF; border-radius: 12px; border: 1px solid rgba(0, 43, 73, 0.08); overflow: hidden; box-shadow: 0 4px 14px rgba(0, 43, 73, 0.04); transition: transform 0.25s ease, box-shadow 0.25s ease; display: flex; flex-direction: column;">
+            <div class="team-avatar-box team-photo-wrap" style="position: relative; width: 100%; height: 165px; overflow: hidden; background: #0A192F; cursor: pointer; border-radius: 12px 12px 0 0;">
+              ${photoUrl ? `<img src="${photoUrl}" alt="${alt}" loading="lazy" width="260" height="165" style="width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; border-radius: inherit;" decoding="async" data-cms-img="about.team_img_${num}">` : `<div class="team-avatar-placeholder" style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:2.5rem;cursor:pointer;border-radius:inherit;" data-cms-img="about.team_img_${num}" title="Click to upload/change photo">${flag}</div>`}
+              <span style="position: absolute; top: 8px; right: 8px; background: rgba(10, 25, 47, 0.88); color: #FFFFFF; font-size: 0.7rem; font-weight: 700; padding: 2px 7px; border-radius: 10px; backdrop-filter: blur(4px); box-shadow: 0 2px 6px rgba(0,0,0,0.2);" data-cms="about.team_flag_${num}">
                 ${flag} ${country}
               </span>
             </div>
-            <div style="padding: 1.1rem 1.15rem 1.25rem; display: flex; flex-direction: column; flex-grow: 1;">
-              <h3 style="font-family: var(--font-serif, 'DM Sans', sans-serif); font-size: 1.05rem; color: var(--color-dark-blue); margin: 0 0 0.35rem; font-weight: 700; line-height: 1.35;" data-cms="about.team_name_${num}">
+            <div style="padding: 0.85rem 0.9rem 1rem; display: flex; flex-direction: column; flex-grow: 1;">
+              <h3 style="font-family: var(--font-serif, 'DM Sans', sans-serif); font-size: 0.95rem; color: var(--color-dark-blue); margin: 0 0 0.25rem; font-weight: 700; line-height: 1.32; min-height: 2.6em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;" data-cms="about.team_name_${num}">
                 ${m.name}
               </h3>
-              <p style="color: var(--color-gold, #C9A84C); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; margin: 0 0 0.65rem;" data-cms="about.team_role_${num}">
+              <p style="color: var(--color-gold, #C9A84C); font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin: 0 0 0.45rem; line-height: 1.35; min-height: 2.7em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;" data-cms="about.team_role_${num}">
                 ${m.role}
               </p>
-              <p style="color: #64748B; font-size: 0.82rem; line-height: 1.55; margin: 0; flex-grow: 1;" data-cms="about.team_bio_${num}">
+              <p style="font-size: 0.78rem; line-height: 1.48; color: #64748B; margin: 0; font-style: italic; margin-top: auto; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;" data-cms="about.team_bio_${num}">
                 ${bio}
               </p>
             </div>

@@ -7993,3 +7993,178 @@ img {
   opacity: 0 !important;
   pointer-events: none !important;
 }
+
+
+/* ==============================================================================
+   LEADERSHIP & CONCIERGE TEAM - COMPACT 5-CARD HARMONY & AUTO-SHAPED AVATARS
+   Client Directive: 5 sleek compact cards, auto-shaped cover image fit
+   ============================================================================== */
+
+/* Sleek 5-Column Grid */
+.team-cards-grid {
+  display: grid !important;
+  grid-template-columns: repeat(5, 1fr) !important;
+  gap: 1.15rem !important;
+  justify-content: center !important;
+  max-width: 1360px !important;
+  margin: 0 auto !important;
+  align-items: stretch !important;
+}
+
+@media (max-width: 1200px) {
+  .team-cards-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 1.1rem !important;
+  }
+}
+
+@media (max-width: 860px) {
+  .team-cards-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 1rem !important;
+  }
+}
+
+@media (max-width: 540px) {
+  .team-cards-grid {
+    grid-template-columns: 1fr !important;
+    max-width: 330px !important;
+    gap: 1.15rem !important;
+    margin: 0 auto !important;
+  }
+}
+
+/* Compact Luxury Person Card */
+.person-card {
+  background: #FFFFFF !important;
+  border-radius: 12px !important;
+  border: 1px solid rgba(0, 43, 73, 0.08) !important;
+  overflow: hidden !important;
+  box-shadow: 0 4px 16px rgba(0, 43, 73, 0.04) !important;
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.28s ease, border-color 0.28s ease !important;
+  display: flex !important;
+  flex-direction: column !important;
+  height: 100% !important;
+}
+
+.person-card:hover {
+  transform: translateY(-4px) !important;
+  box-shadow: 0 10px 24px rgba(0, 43, 73, 0.08), 0 0 1px rgba(212, 175, 55, 0.35) !important;
+  border-color: rgba(212, 175, 55, 0.3) !important;
+}
+
+/* Auto-Shaped Avatar Container */
+.team-avatar-box,
+.team-photo-wrap,
+.team-avatar-placeholder {
+  position: relative !important;
+  width: 100% !important;
+  height: 180px !important;
+  min-height: 180px !important;
+  max-height: 180px !important;
+  aspect-ratio: 4 / 3 !important;
+  overflow: hidden !important;
+  border-radius: 12px 12px 0 0 !important;
+  background: #0A192F !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+}
+
+/* 100% Auto-Shaped Image Fit without Distortion or Letterbox Gaps */
+.team-avatar-box img,
+.team-photo-wrap img,
+.team-avatar-placeholder img,
+.person-card img[data-cms-img*="team_img"],
+img[data-cms-img*="about.team_img"] {
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
+  object-fit: cover !important;
+  object-position: top center !important;
+  display: block !important;
+  border-radius: inherit !important;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), filter 0.25s ease !important;
+}
+
+.person-card:hover .team-avatar-box img,
+.person-card:hover .team-photo-wrap img {
+  transform: scale(1.04) !important;
+}
+
+/* Initial SVG / Placeholder within container */
+.team-avatar-placeholder,
+.team-avatar-placeholder svg,
+.team-avatar-placeholder span {
+  width: 100% !important;
+  height: 100% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border-radius: inherit !important;
+}
+
+/* Flag & Country Badge Overlay */
+.team-avatar-box > span[data-cms*="team_flag"],
+.team-photo-wrap > span[data-cms*="team_flag"],
+.person-card span[data-cms*="team_flag"] {
+  position: absolute !important;
+  top: 8px !important;
+  right: 8px !important;
+  background: rgba(10, 25, 47, 0.88) !important;
+  color: #FFFFFF !important;
+  font-size: 0.7rem !important;
+  font-weight: 700 !important;
+  padding: 3px 8px !important;
+  border-radius: 12px !important;
+  backdrop-filter: blur(4px) !important;
+  -webkit-backdrop-filter: blur(4px) !important;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25) !important;
+  border: 1px solid rgba(212, 175, 55, 0.25) !important;
+  z-index: 5 !important;
+  white-space: nowrap !important;
+}
+
+/* Compact Typography and Balanced Content Body */
+.person-card-body,
+.person-card > div:not(.team-avatar-box):not(.team-photo-wrap) {
+  padding: 0.85rem 0.95rem 1rem !important;
+  display: flex !important;
+  flex-direction: column !important;
+  flex-grow: 1 !important;
+}
+
+.person-card h3,
+.person-card [data-cms*="team_name"] {
+  font-family: var(--font-serif, 'DM Sans', sans-serif) !important;
+  font-size: 0.95rem !important;
+  color: var(--color-dark-blue, #002B49) !important;
+  margin: 0 0 0.25rem !important;
+  font-weight: 700 !important;
+  line-height: 1.3 !important;
+}
+
+.person-card p[data-cms*="team_role"] {
+  color: var(--color-gold, #C9A84C) !important;
+  font-size: 0.72rem !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  margin: 0 0 0.45rem !important;
+  line-height: 1.3 !important;
+}
+
+.person-card p[data-cms*="team_bio"] {
+  font-size: 0.78rem !important;
+  line-height: 1.45 !important;
+  color: #64748B !important;
+  margin: 0 !important;
+  font-style: italic !important;
+  margin-top: auto !important;
+  display: -webkit-box !important;
+  -webkit-line-clamp: 3 !important;
+  -webkit-box-orient: vertical !important;
+  overflow: hidden !important;
+}
