@@ -983,46 +983,82 @@
           transition: filter 0.25s ease, transform 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
         }
 
-        /* Dark semi-transparent scrim on hover */
+        /* Smooth Animated Scrim & Hover States */
+        body.cms-edit-active .team-avatar-box::before,
+        body.cms-edit-active .team-photo-wrap::before,
+        body.cms-edit-active .person-card > div:first-child::before,
+        body.cms-edit-active .team-avatar-wrap::before,
+        body.cms-edit-active .team-avatar-placeholder::before,
+        body.cms-edit-active [data-team-photo-wrap]::before {
+          content: "" !important;
+          position: absolute !important;
+          inset: 0 !important;
+          background: rgba(10, 25, 47, 0.72) !important;
+          backdrop-filter: blur(2px) !important;
+          -webkit-backdrop-filter: blur(2px) !important;
+          z-index: 20 !important;
+          pointer-events: none !important;
+          border-radius: inherit !important;
+          opacity: 0 !important;
+          visibility: hidden !important;
+          transition: opacity 0.22s ease, visibility 0.22s ease !important;
+        }
+
         body.cms-edit-active .team-avatar-box:hover::before,
         body.cms-edit-active .team-photo-wrap:hover::before,
         body.cms-edit-active .person-card > div:first-child:hover::before,
         body.cms-edit-active .team-avatar-wrap:hover::before,
         body.cms-edit-active .team-avatar-placeholder:hover::before,
-        body.cms-edit-active [data-team-photo-wrap]:hover::before {
-          content: "" !important;
-          position: absolute !important;
-          inset: 0 !important;
-          background: rgba(10, 25, 47, 0.72) !important;
-          z-index: 20 !important;
-          pointer-events: none !important;
-          border-radius: inherit !important;
+        body.cms-edit-active [data-team-photo-wrap]:hover::before,
+        body.cms-edit-active .team-avatar-box.lotus-cms-selected-element::before,
+        body.cms-edit-active .team-photo-wrap.lotus-cms-selected-element::before,
+        body.cms-edit-active .person-card > div:first-child.lotus-cms-selected-element::before,
+        body.cms-edit-active .team-avatar-wrap.lotus-cms-selected-element::before,
+        body.cms-edit-active .team-avatar-placeholder.lotus-cms-selected-element::before,
+        body.cms-edit-active [data-team-photo-wrap].lotus-cms-selected-element::before {
+          opacity: 1 !important;
+          visibility: visible !important;
         }
 
-        /* Floating camera badge overlay: 📷 Change Photo */
+        /* Floating camera badge overlay: 📷 Change Photo with spring scale & glow */
+        body.cms-edit-active .team-avatar-box::after,
+        body.cms-edit-active .team-photo-wrap::after,
+        body.cms-edit-active .person-card > div:first-child::after,
+        body.cms-edit-active .team-avatar-wrap::after,
+        body.cms-edit-active .team-avatar-placeholder::after,
+        body.cms-edit-active [data-team-photo-wrap]::after {
+          content: "📷 Change Photo" !important;
+          position: absolute !important;
+          top: 50% !important;
+          left: 50% !important;
+          transform: translate(-50%, -50%) scale(0.9) !important;
+          font-size: 0.75rem !important;
+          font-weight: 700 !important;
+          color: #FFFFFF !important;
+          background: rgba(10, 25, 47, 0.94) !important;
+          border: 1.5px solid #D4AF37 !important;
+          padding: 6px 14px !important;
+          border-radius: 999px !important;
+          box-shadow: 0 4px 14px rgba(0,0,0,0.55), 0 0 10px rgba(212, 175, 55, 0.25) !important;
+          pointer-events: none !important;
+          z-index: 25 !important;
+          white-space: nowrap !important;
+          font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+          letter-spacing: 0.03em !important;
+          opacity: 0 !important;
+          visibility: hidden !important;
+          transition: opacity 0.22s ease, transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.22s ease !important;
+        }
+
         body.cms-edit-active .team-avatar-box:hover::after,
         body.cms-edit-active .team-photo-wrap:hover::after,
         body.cms-edit-active .person-card > div:first-child:hover::after,
         body.cms-edit-active .team-avatar-wrap:hover::after,
         body.cms-edit-active .team-avatar-placeholder:hover::after,
         body.cms-edit-active [data-team-photo-wrap]:hover::after {
-          content: "📷 Change Photo" !important;
-          position: absolute !important;
-          top: 50% !important;
-          left: 50% !important;
-          transform: translate(-50%, -50%) !important;
-          font-size: 0.75rem !important;
-          font-weight: 700 !important;
-          color: #FFFFFF !important;
-          background: rgba(10, 25, 47, 0.92) !important;
-          border: 1.5px solid #D4AF37 !important;
-          padding: 6px 14px !important;
-          border-radius: 999px !important;
-          box-shadow: 0 4px 12px rgba(0,0,0,0.5) !important;
-          pointer-events: none !important;
-          z-index: 25 !important;
-          white-space: nowrap !important;
-          font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+          opacity: 1 !important;
+          visibility: visible !important;
+          transform: translate(-50%, -50%) scale(1) !important;
         }
 
         /* Active gold ring when selected */

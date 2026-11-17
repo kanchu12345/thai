@@ -4282,13 +4282,103 @@
       const isDefault = !imgSrc || imgSrc.includes('avatar-') || imgSrc.includes('.svg') || imgSrc.includes('placeholder');
 
       return `
-        <div class="team-avatar-inspector-card" style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 12px; padding: 16px; margin-bottom: 16px; box-shadow: 0 2px 8px rgba(0, 43, 73, 0.05);">
+        <style>
+          .team-avatar-inspector-card {
+            background: #FFFFFF;
+            border: 1px solid #E2E8F0;
+            border-radius: 14px;
+            padding: 16px;
+            margin-bottom: 16px;
+            box-shadow: 0 4px 14px rgba(0, 43, 73, 0.06);
+            font-family: inherit;
+          }
+          .team-action-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 10px 14px;
+            font-size: 0.84rem;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+            user-select: none;
+            width: 100%;
+          }
+          .team-action-btn:active {
+            transform: scale(0.98);
+          }
+          .team-action-btn-upload {
+            background: linear-gradient(135deg, #008080, #005F5F);
+            color: #FFFFFF;
+            border: none;
+            box-shadow: 0 2px 8px rgba(0, 128, 128, 0.25);
+            font-weight: 700;
+          }
+          .team-action-btn-upload:hover {
+            background: linear-gradient(135deg, #009494, #006B6B);
+            box-shadow: 0 4px 14px rgba(0, 128, 128, 0.38);
+            transform: translateY(-1px);
+          }
+          .team-action-btn-browse {
+            background: #FFFFFF;
+            color: #002B49;
+            border: 1px solid #CBD5E1;
+          }
+          .team-action-btn-browse:hover {
+            background: #F8FAFC;
+            border-color: #94A3B8;
+            color: #008080;
+            transform: translateY(-1px);
+          }
+          .team-action-btn-remove {
+            background: #FFFFFF;
+            color: #DC2626;
+            border: 1px solid #FCA5A5;
+          }
+          .team-action-btn-remove:hover {
+            background: #FEF2F2;
+            border-color: #EF4444;
+            color: #B91C1C;
+            transform: translateY(-1px);
+          }
+          .team-action-btn-reset {
+            background: #F8FAFC;
+            color: #475569;
+            border: 1px solid #CBD5E1;
+            font-size: 0.8rem;
+          }
+          .team-action-btn-reset:hover {
+            background: #F1F5F9;
+            border-color: #94A3B8;
+            color: #1E293B;
+          }
+          .team-thumb-container {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            background: #0A192F;
+            margin-bottom: 14px;
+            text-align: center;
+            height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+          }
+          .team-thumb-container:hover {
+            box-shadow: 0 4px 16px rgba(0, 43, 73, 0.15);
+          }
+        </style>
+
+        <div class="team-avatar-inspector-card">
           <!-- Header: Identity -->
           <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
             <span class="badge" style="background: #D4AF37; color: #0A192F; font-size: 0.78rem; font-weight: 800; padding: 5px 12px; border-radius: 999px; letter-spacing: 0.02em;">
               👤 Team Member Photo: ${this.escapeHtml(memberName)}
             </span>
-            <span class="badge" style="font-size: 0.72rem; background: #E2E8F0; color: #334155;">#${num}</span>
+            <span class="badge" style="font-size: 0.72rem; background: #E2E8F0; color: #334155; font-weight: 700;">#${num}</span>
           </div>
 
           <h3 style="font-size: 1.05rem; font-weight: 700; color: #002B49; margin: 0 0 4px 0; line-height: 1.35;">
@@ -4299,11 +4389,12 @@
           </p>
 
           <!-- Avatar Preview Card -->
-          <div style="position: relative; border-radius: 10px; overflow: hidden; background: #0A192F; border: 2px solid ${isDefault ? '#CBD5E1' : '#D4AF37'}; margin-bottom: 14px; text-align: center; height: 180px; display: flex; align-items: center; justify-content: center;">
+          <div class="team-thumb-container" style="border: 2px solid ${isDefault ? '#CBD5E1' : '#D4AF37'};">
             <img src="${this.resolvePreviewUrl(imgSrc)}" class="inspector-thumb-preview" id="inspectorThumb" style="width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block;" onerror="this.onerror=null; this.src='../assets/images/team/avatar-dg.svg';"/>
             <div style="position: absolute; bottom: 8px; right: 8px;">
-              <span class="badge" style="background: ${isDefault ? 'rgba(245, 158, 11, 0.92)' : 'rgba(16, 185, 129, 0.92)'}; color: #FFFFFF; font-size: 0.72rem; font-weight: 700; padding: 4px 8px; border-radius: 12px; backdrop-filter: blur(4px); box-shadow: 0 2px 6px rgba(0,0,0,0.25);">
-                ${isDefault ? 'Default SVG Placeholder' : '✓ Custom Photo Active'}
+              <span class="badge" style="background: ${isDefault ? 'rgba(245, 158, 11, 0.94)' : 'rgba(16, 185, 129, 0.94)'}; color: #FFFFFF; font-size: 0.72rem; font-weight: 700; padding: 4px 10px; border-radius: 999px; backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); box-shadow: 0 2px 8px rgba(0,0,0,0.3); display: flex; align-items: center; gap: 5px;">
+                <span style="display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: #FFFFFF; box-shadow: 0 0 4px rgba(255,255,255,0.8);"></span>
+                ${isDefault ? 'Default SVG Placeholder' : 'Custom Photo Active'}
               </span>
             </div>
           </div>
@@ -4313,22 +4404,22 @@
 
           <!-- Primary Actions -->
           <div style="display: flex; flex-direction: column; gap: 8px; margin-bottom: 14px;">
-            <button type="button" class="btn btn-primary btn-block" onclick="PageEditor.triggerTeamAvatarFileUpload('${activeKey}')" style="display: flex; align-items: center; justify-content: center; gap: 8px; padding: 10px 14px; font-weight: 700; background: linear-gradient(135deg, #008080, #005F5F); border: none; box-shadow: 0 2px 8px rgba(0, 128, 128, 0.25);">
+            <button type="button" class="team-action-btn team-action-btn-upload" onclick="PageEditor.triggerTeamAvatarFileUpload('${activeKey}')" title="Upload an image directly from your local computer">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
               <span>📷 Upload from Computer</span>
             </button>
 
-            <button type="button" class="btn btn-outline btn-block" onclick="PageEditor.openMediaPicker('${activeKey}')" style="display: flex; align-items: center; justify-content: center; gap: 8px; padding: 9px 14px; font-weight: 600; border-color: #CBD5E1; color: #002B49; background: #FFFFFF;">
+            <button type="button" class="team-action-btn team-action-btn-browse" onclick="PageEditor.openMediaPicker('${activeKey}')" title="Select an existing photo from the media gallery">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
               <span>🖼️ Browse Media Library</span>
             </button>
 
-            <button type="button" class="btn btn-outline btn-block" onclick="PageEditor.removeTeamPhoto('${activeKey}', ${memberIndex})" style="display: flex; align-items: center; justify-content: center; gap: 8px; padding: 9px 14px; font-weight: 600; background: #FFFFFF; color: #DC2626; border: 1px solid #FCA5A5;" title="Remove custom photo completely and revert to flag/initials placeholder">
+            <button type="button" class="team-action-btn team-action-btn-remove" onclick="PageEditor.removeTeamPhoto('${activeKey}', ${memberIndex})" title="Remove custom photo completely and revert to initials/country flag placeholder">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><line x1="10" y1="11" x2="10" y2="17"/><line x1="14" y1="11" x2="14" y2="17"/></svg>
               <span>🗑️ Remove Photo</span>
             </button>
 
-            <button type="button" class="btn btn-outline btn-block" onclick="PageEditor.resetTeamAvatarToDefault('${activeKey}', ${memberIndex})" style="display: flex; align-items: center; justify-content: center; gap: 8px; padding: 9px 14px; font-weight: 600; background: #F8FAFC; color: #475569; border: 1px solid #CBD5E1;" title="Restore standard default SVG avatar">
+            <button type="button" class="team-action-btn team-action-btn-reset" onclick="PageEditor.resetTeamAvatarToDefault('${activeKey}', ${memberIndex})" title="Restore standard default team SVG avatar">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>
               <span>Reset to Default SVG Avatar</span>
             </button>
