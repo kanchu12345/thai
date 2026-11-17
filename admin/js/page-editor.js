@@ -55,7 +55,8 @@
     'siteHeader': '🔝 Global Header & Topbar',
     'siteFooter': '🔻 Global Footer & Copyright',
     'story': '📖 Origin Story & Vision',
-    'ourPeople': '👥 Leadership & Concierge Team'
+    'ourPeople': '👥 Leadership & Concierge Team',
+    'team': '👤 Leadership & Concierge Team'
   };
 
   const PageEditor = {
@@ -129,6 +130,17 @@
     selectElement(item) {
       this.selectedElement = item;
       this.activeSliderIndex = 0;
+
+      if (item && (item.isTeamAvatar || (item.key && item.key.includes('team_img_')))) {
+        item.isTeamAvatar = true;
+        const num = parseInt(item.key.replace(/.*team_img_/, ''), 10) || 1;
+        item.teamMemberIndex = (typeof item.teamMemberIndex === 'number' && item.teamMemberIndex >= 0) ? item.teamMemberIndex : (num - 1);
+        if (!item.teamMemberName && window.AdminApp && window.AdminApp.team && window.AdminApp.team.length > 0) {
+          const sorted = [...window.AdminApp.team].sort((a, b) => (a.sortOrder || 1) - (b.sortOrder || 1));
+          const m = sorted[item.teamMemberIndex] || window.AdminApp.team[item.teamMemberIndex];
+          if (m) item.teamMemberName = m.name;
+        }
+      }
 
       // Special handling for Tour Detail Page Elements (All 29 Packages)
       if (item.attrType === 'tour-field' || (this.activePageKey && this.activePageKey.startsWith('tourPackages/'))) {
@@ -363,9 +375,14 @@
 
     getFriendlyFieldTitle(key, attrType, val, item = null) {
       if (!key) return 'Page Element';
+      if (item && item.isTeamAvatar) {
+        const name = item.teamMemberName || `Member #${(item.teamMemberIndex || 0) + 1}`;
+        return `👤 Team Member Photo: ${name}`;
+      }
       if (key && key.includes('team_img_')) {
         const num = key.replace(/.*team_img_/, '');
-        return `👥 Leadership / Global Representative #${num}`;
+        const name = (item && item.teamMemberName) || `Member #${num}`;
+        return `👤 Team Member Photo: ${name}`;
       }
       if (key && key.includes('real_exp_bg_')) {
         const slideNum = key.replace(/.*real_exp_bg_/, '');
@@ -900,8 +917,15 @@
           html += this.renderHeroSpecialControls(item);
         }
 
+        // --- B0. SPECIAL TEAM MEMBER AVATAR INSPECTOR ---
+        if (item.isTeamAvatar || (item.key && item.key.includes('team_img_'))) {
+          const num = parseInt(item.key.replace(/.*team_img_/, ''), 10) || 1;
+          const memberIndex = (typeof item.teamMemberIndex === 'number' && item.teamMemberIndex >= 0) ? item.teamMemberIndex : (num - 1);
+          const imgSrc = currentVal || 'assets/images/team/avatar-dg.svg';
+          html += this.renderTeamAvatarInspector(item, item.key, imgSrc, memberIndex, num);
+        }
         // --- B. IMAGE / BACKGROUND IMAGE INSPECTOR ---
-        if (item.attrType === 'image' || item.attrType === 'bg-image') {
+        else if (item.attrType === 'image' || item.attrType === 'bg-image') {
           const hasSlider = item.sliderImages && item.sliderImages.length > 1;
           let activeKey = item.key;
           let activeAlt = item.altText || '';
@@ -1855,9 +1879,17 @@
       // Single Source of Truth Live In-Memory Sync for Blogs and Packages
       if (window.AdminApp) {
         if (key && key.includes('team_img_') && window.AdminApp && typeof window.AdminApp.syncTeamPhotoDirectly === 'function') {
-        const teamNum = parseInt(key.replace(/.*team_img_/, ''), 10) || 1;
-        window.AdminApp.syncTeamPhotoDirectly(teamNum - 1, val);
-      }
+          const teamNum = parseInt(key.replace(/.*team_img_/, ''), 10) || 1;
+          window.AdminApp.syncTeamPhotoDirectly(teamNum - 1, val);
+          if (this.iframe && this.iframe.contentWindow) {
+            try {
+              this.iframe.contentWindow.postMessage({
+                type: 'lotus:team-updated',
+                team: window.AdminApp.team
+              }, '*');
+            } catch (e) {}
+          }
+        }
 
       if (key === 'home.heading_20' && window.AdminApp.blogPosts) {
           const bp = window.AdminApp.blogPosts.find(b => b.slug === 'sacred-footsteps-unlocking-sri-lankas-ancient-buddhist-kingdoms');
@@ -4241,6 +4273,185 @@
       if (window.AdminApp) {
         window.AdminApp.showToast('Page rolled back to chosen checkpoint and published live!', 'success');
       }
+    },
+
+    renderTeamAvatarInspector(item, activeKey, imgSrc, memberIndex, num) {
+      const memberName = item.teamMemberName || `Team Member #${num}`;
+      const memberRole = item.teamMemberRole || 'Global Representative';
+      const memberFlag = item.teamMemberFlag || '🇱🇰';
+      const isDefault = !imgSrc || imgSrc.includes('avatar-') || imgSrc.includes('.svg') || imgSrc.includes('placeholder');
+
+      return `
+        <div class="team-avatar-inspector-card" style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 12px; padding: 16px; margin-bottom: 16px; box-shadow: 0 2px 8px rgba(0, 43, 73, 0.05);">
+          <!-- Header: Identity -->
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+            <span class="badge" style="background: #FEF3C7; color: #92400E; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; padding: 4px 8px; border-radius: 6px;">
+              ${this.escapeHtml(memberFlag)} Leadership &amp; Concierge Team
+            </span>
+            <span class="badge" style="font-size: 0.72rem; background: #E2E8F0; color: #334155;">#${num}</span>
+          </div>
+
+          <h3 style="font-size: 1.05rem; font-weight: 700; color: #002B49; margin: 0 0 4px 0; line-height: 1.35;">
+            ${this.escapeHtml(memberName)}
+          </h3>
+          <p style="font-size: 0.8rem; color: #C9A84C; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin: 0 0 14px 0;">
+            ${this.escapeHtml(memberRole)}
+          </p>
+
+          <!-- Avatar Preview Card -->
+          <div style="position: relative; border-radius: 10px; overflow: hidden; background: #0A192F; border: 2px solid ${isDefault ? '#CBD5E1' : '#D4AF37'}; margin-bottom: 14px; text-align: center; height: 180px; display: flex; align-items: center; justify-content: center;">
+            <img src="${this.resolvePreviewUrl(imgSrc)}" class="inspector-thumb-preview" id="inspectorThumb" style="width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block;" onerror="this.onerror=null; this.src='../assets/images/team/avatar-dg.svg';"/>
+            <div style="position: absolute; bottom: 8px; right: 8px;">
+              <span class="badge" style="background: ${isDefault ? 'rgba(245, 158, 11, 0.92)' : 'rgba(16, 185, 129, 0.92)'}; color: #FFFFFF; font-size: 0.72rem; font-weight: 700; padding: 4px 8px; border-radius: 12px; backdrop-filter: blur(4px); box-shadow: 0 2px 6px rgba(0,0,0,0.25);">
+                ${isDefault ? 'Default SVG Placeholder' : '✓ Custom Photo Active'}
+              </span>
+            </div>
+          </div>
+
+          <!-- Hidden Native File Input for Direct Computer Upload -->
+          <input type="file" id="teamAvatarFileInput_${activeKey}" accept="image/jpeg,image/png,image/webp,image/svg+xml,.jpg,.jpeg,.png,.webp,.svg" style="display: none;" onchange="PageEditor.handleTeamAvatarFileSelect(this, '${activeKey}', ${memberIndex})"/>
+
+          <!-- Primary Actions -->
+          <div style="display: flex; flex-direction: column; gap: 8px; margin-bottom: 14px;">
+            <button type="button" class="btn btn-primary btn-block" onclick="PageEditor.triggerTeamAvatarFileUpload('${activeKey}')" style="display: flex; align-items: center; justify-content: center; gap: 8px; padding: 10px 14px; font-weight: 700; background: linear-gradient(135deg, #008080, #005F5F); border: none; box-shadow: 0 2px 8px rgba(0, 128, 128, 0.25);">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+              <span>Upload Photo from Computer</span>
+            </button>
+
+            <button type="button" class="btn btn-outline btn-block" onclick="PageEditor.openMediaPicker('${activeKey}')" style="display: flex; align-items: center; justify-content: center; gap: 8px; padding: 9px 14px; font-weight: 600; border-color: #CBD5E1; color: #002B49; background: #FFFFFF;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+              <span>Browse Media Library</span>
+            </button>
+
+            <button type="button" class="btn btn-outline btn-block" onclick="PageEditor.removeTeamPhoto('${activeKey}', ${memberIndex})" style="display: flex; align-items: center; justify-content: center; gap: 8px; padding: 9px 14px; font-weight: 600; background: #FFFFFF; color: #DC2626; border: 1px solid #FCA5A5;" title="Remove custom photo completely and revert to flag/initials placeholder">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><line x1="10" y1="11" x2="10" y2="17"/><line x1="14" y1="11" x2="14" y2="17"/></svg>
+              <span>Remove Photo (Revert to Flag/Initials Box)</span>
+            </button>
+
+            <button type="button" class="btn btn-outline btn-block" onclick="PageEditor.resetTeamAvatarToDefault('${activeKey}', ${memberIndex})" style="display: flex; align-items: center; justify-content: center; gap: 8px; padding: 9px 14px; font-weight: 600; background: #F8FAFC; color: #475569; border: 1px solid #CBD5E1;" title="Restore standard default SVG avatar">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>
+              <span>Reset to Default SVG Avatar</span>
+            </button>
+          </div>
+
+          <!-- Microcopy guidance -->
+          <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 8px; padding: 10px 12px; font-size: 0.76rem; color: #64748B; line-height: 1.5; margin-bottom: 12px;">
+            <div style="font-weight: 600; color: #0F172A; margin-bottom: 2px;">⚡ Live Direct Synchronization</div>
+            <div>• Changes sync live to Firestore <code>team</code> &amp; <code>siteContent</code> collections.</div>
+            <div>• Reverting to default restores the official country flag initials SVG without modifying their role or bio.</div>
+          </div>
+
+          <!-- Advanced: Manual URL Input -->
+          <details style="font-size: 0.78rem; color: #64748B; border-top: 1px dashed #E2E8F0; padding-top: 8px;">
+            <summary style="cursor: pointer; font-weight: 600; color: #475569; user-select: none;">Advanced: Direct Image URL</summary>
+            <div style="margin-top: 8px;">
+              <input type="text" class="form-control" id="fieldInput_${activeKey}" value="${this.escapeAttr(imgSrc)}" placeholder="Image CDN URL or path" oninput="PageEditor.handleLiveInput('${activeKey}', this.value, 'image')"/>
+            </div>
+          </details>
+        </div>
+      `;
+    },
+
+    triggerTeamAvatarFileUpload(key) {
+      const fileInput = document.getElementById(`teamAvatarFileInput_${key}`);
+      if (fileInput) {
+        fileInput.click();
+      } else {
+        this.openCloudinaryForField(key, 'image');
+      }
+    },
+
+    async handleTeamAvatarFileSelect(input, key, memberIndex) {
+      const file = input.files && input.files[0];
+      if (!file) return;
+
+      // 1. Instant local FileReader preview
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const localDataUrl = e.target.result;
+        const thumb = document.getElementById('inspectorThumb');
+        if (thumb) thumb.src = localDataUrl;
+        this.handleLiveInput(key, localDataUrl, 'image');
+      };
+      reader.readAsDataURL(file);
+
+      // 2. Upload to Cloudinary CDN
+      try {
+        const uploader = window.uploadToCloudinary || (window.AdminApp && window.AdminApp.uploadToCloudinary);
+        if (uploader) {
+          const result = await uploader(file, { resourceType: 'image' });
+          if (result && result.secureUrl) {
+            const finalUrl = result.secureUrl;
+            const inputField = document.getElementById(`fieldInput_${key}`);
+            if (inputField) inputField.value = finalUrl;
+            this.handleLiveInput(key, finalUrl, 'image');
+            if (window.AdminApp && typeof window.AdminApp.syncTeamPhotoDirectly === 'function') {
+              await window.AdminApp.syncTeamPhotoDirectly(memberIndex, finalUrl);
+            }
+          }
+        }
+      } catch (err) {
+        console.error('[PageEditor] Team avatar upload error:', err);
+      }
+    },
+
+    async removeTeamPhoto(key, memberIndex) {
+      const num = (typeof memberIndex === 'number' && memberIndex >= 0) ? (memberIndex + 1) : (parseInt(key.replace(/.*team_img_/, ''), 10) || 1);
+      const thumb = document.getElementById('inspectorThumb');
+      if (thumb) thumb.src = '../assets/images/placeholder.png';
+      const inputField = document.getElementById(`fieldInput_${key}`);
+      if (inputField) inputField.value = '';
+
+      this.handleLiveInput(key, '', 'image');
+
+      if (window.AdminApp && typeof window.AdminApp.syncTeamPhotoDirectly === 'function') {
+        await window.AdminApp.syncTeamPhotoDirectly(num - 1, '');
+      }
+
+      if (this.iframe && this.iframe.contentWindow) {
+        try {
+          this.iframe.contentWindow.postMessage({
+            type: 'lotus:team-updated',
+            team: (window.AdminApp && window.AdminApp.team) ? window.AdminApp.team : null
+          }, '*');
+        } catch (e) {}
+      }
+
+      this.renderElementForm(this.selectedElement);
+      if (window.AdminApp && typeof window.AdminApp.showToast === 'function') {
+        window.AdminApp.showToast('Team avatar removed. Reverted to initials/flag placeholder.', 'info');
+      }
+    },
+
+    async resetTeamAvatarToDefault(key, memberIndex) {
+      const num = (typeof memberIndex === 'number' && memberIndex >= 0) ? (memberIndex + 1) : (parseInt(key.replace(/.*team_img_/, ''), 10) || 1);
+      const DEFAULT_TEAM_AVATARS = {
+        1: 'assets/images/team/avatar-dg.svg',
+        2: 'assets/images/team/avatar-ky.svg',
+        3: 'assets/images/team/rep-uk.svg',
+        4: 'assets/images/team/rep-australia.svg',
+        5: 'assets/images/team/rep-germany.svg',
+        6: 'assets/images/team/rep-france.svg',
+        7: 'assets/images/team/rep-usa.svg',
+        8: 'assets/images/team/rep-china.svg',
+        9: 'assets/images/team/rep-japan.svg',
+        10: 'assets/images/team/rep-india.svg',
+        11: 'assets/images/team/rep-uae.svg'
+      };
+      const defaultUrl = DEFAULT_TEAM_AVATARS[num] || 'assets/images/team/avatar-dg.svg';
+
+      const thumb = document.getElementById('inspectorThumb');
+      if (thumb) thumb.src = this.resolvePreviewUrl(defaultUrl);
+      const inputField = document.getElementById(`fieldInput_${key}`);
+      if (inputField) inputField.value = defaultUrl;
+
+      this.handleLiveInput(key, defaultUrl, 'image');
+
+      if (window.AdminApp && typeof window.AdminApp.syncTeamPhotoDirectly === 'function') {
+        await window.AdminApp.syncTeamPhotoDirectly(num - 1, defaultUrl);
+      }
+
+      this.renderElementForm(this.selectedElement);
     },
 
     escapeAttr(str) {

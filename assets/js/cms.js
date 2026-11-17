@@ -945,6 +945,123 @@
         body.cms-edit-active a {
           cursor: pointer !important;
         }
+        /* =====================================================================
+           Team Member Avatar Visual Edit & Direct Photo Management UI/UX
+           ===================================================================== */
+        body.cms-edit-active .team-avatar-box,
+        body.cms-edit-active .team-photo-wrap,
+        body.cms-edit-active .person-card > div:first-child,
+        body.cms-edit-active .team-avatar-wrap,
+        body.cms-edit-active .team-avatar-placeholder,
+        body.cms-edit-active [data-team-photo-wrap],
+        body.cms-edit-active img[data-cms-img^="about.team_img_"] {
+          position: relative !important;
+          outline: 2px dashed rgba(212, 175, 55, 0.7) !important;
+          outline-offset: -2px !important;
+          cursor: pointer !important;
+          user-select: none !important;
+          overflow: hidden !important;
+          transition: all 0.2s ease !important;
+          pointer-events: auto !important;
+        }
+
+        body.cms-edit-active .team-avatar-box:hover,
+        body.cms-edit-active .team-photo-wrap:hover,
+        body.cms-edit-active .person-card > div:first-child:hover,
+        body.cms-edit-active .team-avatar-wrap:hover,
+        body.cms-edit-active .team-avatar-placeholder:hover,
+        body.cms-edit-active [data-team-photo-wrap]:hover {
+          outline: 2px solid #D4AF37 !important;
+        }
+
+        body.cms-edit-active .team-avatar-box:hover img,
+        body.cms-edit-active .team-photo-wrap:hover img,
+        body.cms-edit-active .person-card > div:first-child:hover img,
+        body.cms-edit-active .team-avatar-wrap:hover img {
+          filter: brightness(0.82) !important;
+          transform: scale(1.03) !important;
+          transition: filter 0.25s ease, transform 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+        }
+
+        /* Dark semi-transparent scrim on hover */
+        body.cms-edit-active .team-avatar-box:hover::before,
+        body.cms-edit-active .team-photo-wrap:hover::before,
+        body.cms-edit-active .person-card > div:first-child:hover::before,
+        body.cms-edit-active .team-avatar-wrap:hover::before,
+        body.cms-edit-active .team-avatar-placeholder:hover::before,
+        body.cms-edit-active [data-team-photo-wrap]:hover::before {
+          content: "" !important;
+          position: absolute !important;
+          inset: 0 !important;
+          background: rgba(10, 25, 47, 0.72) !important;
+          z-index: 20 !important;
+          pointer-events: none !important;
+          border-radius: inherit !important;
+        }
+
+        /* Floating camera badge overlay: 📷 Change Photo */
+        body.cms-edit-active .team-avatar-box:hover::after,
+        body.cms-edit-active .team-photo-wrap:hover::after,
+        body.cms-edit-active .person-card > div:first-child:hover::after,
+        body.cms-edit-active .team-avatar-wrap:hover::after,
+        body.cms-edit-active .team-avatar-placeholder:hover::after,
+        body.cms-edit-active [data-team-photo-wrap]:hover::after {
+          content: "📷 Change Photo" !important;
+          position: absolute !important;
+          top: 50% !important;
+          left: 50% !important;
+          transform: translate(-50%, -50%) !important;
+          font-size: 0.75rem !important;
+          font-weight: 700 !important;
+          color: #FFFFFF !important;
+          background: rgba(10, 25, 47, 0.92) !important;
+          border: 1.5px solid #D4AF37 !important;
+          padding: 6px 14px !important;
+          border-radius: 999px !important;
+          box-shadow: 0 4px 12px rgba(0,0,0,0.5) !important;
+          pointer-events: none !important;
+          z-index: 25 !important;
+          white-space: nowrap !important;
+          font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+        }
+
+        /* Active gold ring when selected */
+        body.cms-edit-active .team-avatar-box.lotus-cms-selected-element,
+        body.cms-edit-active .team-photo-wrap.lotus-cms-selected-element,
+        body.cms-edit-active .person-card > div:first-child.lotus-cms-selected-element,
+        body.cms-edit-active .team-avatar-wrap.lotus-cms-selected-element,
+        body.cms-edit-active .team-avatar-placeholder.lotus-cms-selected-element,
+        body.cms-edit-active [data-team-photo-wrap].lotus-cms-selected-element,
+        body.cms-edit-active img.lotus-cms-selected-element[data-cms-img^="about.team_img_"] {
+          outline: 3px solid #D4AF37 !important;
+          outline-offset: -2px !important;
+          box-shadow: 0 0 16px rgba(212, 175, 55, 0.6) !important;
+        }
+
+        body.cms-edit-active .team-avatar-box.lotus-cms-selected-element::after,
+        body.cms-edit-active .team-photo-wrap.lotus-cms-selected-element::after,
+        body.cms-edit-active .person-card > div:first-child.lotus-cms-selected-element::after,
+        body.cms-edit-active .team-avatar-wrap.lotus-cms-selected-element::after,
+        body.cms-edit-active .team-avatar-placeholder.lotus-cms-selected-element::after,
+        body.cms-edit-active [data-team-photo-wrap].lotus-cms-selected-element::after {
+          content: "📷 Change Photo" !important;
+          position: absolute !important;
+          top: 50% !important;
+          left: 50% !important;
+          transform: translate(-50%, -50%) !important;
+          font-size: 0.75rem !important;
+          font-weight: 700 !important;
+          color: #0A192F !important;
+          background: #D4AF37 !important;
+          border: 1.5px solid #FFFFFF !important;
+          padding: 6px 14px !important;
+          border-radius: 999px !important;
+          box-shadow: 0 4px 14px rgba(212, 175, 55, 0.6) !important;
+          pointer-events: none !important;
+          z-index: 25 !important;
+          white-space: nowrap !important;
+        }
+
         /* Disable pointer-events on overlays so underlying images and cards can be clicked */
         body.cms-edit-active .hover-box__overlay,
         body.cms-edit-active .hover-box:hover .hover-box__overlay,
@@ -1311,22 +1428,32 @@
 
         let target = null;
         // Priority 1: Direct team avatar container or image inside team card
-        const teamAvatarWrap = e.target.closest('.team-avatar-wrap, .person-card > div:first-child, .team-avatar-cell, [data-team-photo-wrap]');
-        if (teamAvatarWrap && (e.target === teamAvatarWrap || e.target.tagName === 'IMG' || !['P', 'H1', 'H2', 'H3', 'H4', 'A', 'BUTTON'].includes(e.target.tagName))) {
-          const imgChild = teamAvatarWrap.querySelector('img[data-cms-img], img');
+        const teamAvatarBox = e.target.closest('.team-avatar-placeholder, .team-avatar-wrap, .team-avatar-cell, [data-team-photo-wrap], img[data-cms-img*="team_img"], .person-card > div:first-child');
+        const flagBadge = e.target.closest('[data-cms*="team_flag"]');
+
+        if (teamAvatarBox && !flagBadge && !e.target.closest('[data-cms*="team_name"], [data-cms*="team_role"], [data-cms*="team_bio"], h1, h2, h3, h4, p:not([data-cms-img])')) {
+          const personCard = teamAvatarBox.closest('.person-card, [data-team-id]');
+          const allPersonCards = Array.from(document.querySelectorAll('.person-card'));
+          const pIdx = personCard ? allPersonCards.indexOf(personCard) : -1;
+          const num = pIdx >= 0 ? (pIdx + 1) : 1;
+          const teamImgKey = 'about.team_img_' + num;
+
+          const imgChild = teamAvatarBox.tagName === 'IMG'
+            ? teamAvatarBox
+            : teamAvatarBox.querySelector('img[data-cms-img], img');
+
           if (imgChild) {
             target = imgChild;
-          } else {
-            // Placeholder container without an <img> tag (e.g. initials box)
-            target = teamAvatarWrap;
-            if (!target.hasAttribute('data-cms-img')) {
-              const personCard = target.closest('.person-card, [data-team-id]');
-              const allPersonCards = Array.from(document.querySelectorAll('.person-card'));
-              const pIdx = personCard ? allPersonCards.indexOf(personCard) : -1;
-              const num = pIdx >= 0 ? (pIdx + 1) : 1;
-              target.setAttribute('data-cms-img', 'about.team_img_' + num);
+            if (!target.getAttribute('data-cms-img') || !target.getAttribute('data-cms-img').includes('team_img_')) {
+              target.setAttribute('data-cms-img', teamImgKey);
             }
+          } else {
+            // Placeholder container (e.g. initials box or flag avatar)
+            target = teamAvatarBox;
+            target.setAttribute('data-cms-img', teamImgKey);
           }
+        } else if (flagBadge && teamAvatarBox) {
+          target = flagBadge;
         }
 
         if (!target && (e.target.tagName === 'IMG' || e.target.hasAttribute('data-cms-img') || e.target.hasAttribute('data-cms-bg'))) {
@@ -1597,10 +1724,30 @@
             // Check if element belongs to a team member card (Leadership / Global Representatives)
             const teamPersonCard = target.closest('.person-card, [data-team-id]');
             let teamMemberId = null;
+            let teamMemberName = '';
+            let teamMemberRole = '';
+            let teamMemberFlag = '';
+            let isTeamAvatar = false;
+            let teamMemberIndex = -1;
+
             if (teamPersonCard || (key && key.includes('team_'))) {
               const allPersonCards = Array.from(document.querySelectorAll('.person-card'));
               const pIdx = teamPersonCard ? allPersonCards.indexOf(teamPersonCard) : -1;
               const num = pIdx >= 0 ? (pIdx + 1) : (key ? (parseInt(key.replace(/.*team_[a-z]+_/, ''), 10) || 1) : 1);
+              teamMemberIndex = num - 1;
+
+              if (teamPersonCard) {
+                const nameEl = teamPersonCard.querySelector('h3, [data-cms*="team_name"]');
+                const roleEl = teamPersonCard.querySelector('[data-cms*="team_role"]');
+                const flagEl = teamPersonCard.querySelector('[data-cms*="team_flag"]');
+                if (nameEl) teamMemberName = nameEl.textContent.trim();
+                if (roleEl) teamMemberRole = roleEl.textContent.trim();
+                if (flagEl) teamMemberFlag = flagEl.textContent.trim();
+              }
+
+              if (key && key.includes('team_img_')) {
+                isTeamAvatar = true;
+              }
               
               isLinked = true;
               linkedSource = 'Leadership & Concierge Team Manager';
@@ -1627,6 +1774,11 @@
               altText: altText,
               computedStyles: styleObj,
               isCreditLocked: isCreditLocked,
+              isTeamAvatar: isTeamAvatar,
+              teamMemberIndex: teamMemberIndex,
+              teamMemberName: teamMemberName,
+              teamMemberRole: teamMemberRole,
+              teamMemberFlag: teamMemberFlag,
               isLinked: isLinked,
               linkedSource: linkedSource,
               targetTab: targetTab,
@@ -1700,6 +1852,16 @@
           if (event.data.homeUpdates) {
             Object.assign(this.data.page, event.data.homeUpdates);
             this.bindElements();
+          }
+        }
+
+        // Live Team Member Updates
+        if (event.data.type === 'lotus:team-updated') {
+          if (window.LotusSiteData && typeof window.LotusSiteData.hydrateTeam === 'function') {
+            if (event.data.team) {
+              window.LotusSiteData.store.team = event.data.team;
+            }
+            window.LotusSiteData.hydrateTeam();
           }
         }
 
@@ -2037,7 +2199,22 @@
         if (el.hasAttribute('data-cms-img') || el.tagName === 'IMG') {
           if (el.tagName === 'IMG') {
             if (!val) {
-              el.setAttribute('src', resolveImgUrl('assets/images/team/avatar-dg.svg'));
+              const defaultTeamSvgs = [
+                'assets/images/team/avatar-dg.svg',
+                'assets/images/team/avatar-ky.svg',
+                'assets/images/team/rep-uk.svg',
+                'assets/images/team/rep-australia.svg',
+                'assets/images/team/rep-germany.svg',
+                'assets/images/team/rep-france.svg',
+                'assets/images/team/rep-usa.svg',
+                'assets/images/team/rep-china.svg',
+                'assets/images/team/rep-japan.svg',
+                'assets/images/team/rep-india.svg',
+                'assets/images/team/rep-uae.svg'
+              ];
+              const tIdx = parseInt(key.replace(/.*team_img_/, ''), 10) - 1;
+              const fallback = (tIdx >= 0 && defaultTeamSvgs[tIdx]) ? defaultTeamSvgs[tIdx] : 'assets/images/team/avatar-dg.svg';
+              el.setAttribute('src', resolveImgUrl(fallback));
             } else {
               el.setAttribute('src', resolveImgUrl(val));
             }

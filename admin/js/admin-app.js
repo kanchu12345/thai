@@ -4566,11 +4566,16 @@ const waBtn = document.getElementById('inquiryWhatsAppBtn');
       const member = sorted[memberIndex] || (this.team && this.team[memberIndex]);
       if (!member) return;
 
-      member.photo = {
-        url: photoUrl || '',
-        alt: `${member.name || ''}, ${member.role || ''}`,
-        cloudinaryPublicId: photoUrl && photoUrl.includes('cloudinary') ? photoUrl.split('/').pop().split('.')[0] : ''
-      };
+      const cleanPhotoUrl = (photoUrl || '').trim();
+      if (!cleanPhotoUrl) {
+        member.photo = null;
+      } else {
+        member.photo = {
+          url: cleanPhotoUrl,
+          alt: `${member.name || ''}, ${member.role || ''}`,
+          cloudinaryPublicId: cleanPhotoUrl.includes('cloudinary') ? cleanPhotoUrl.split('/').pop().split('.')[0] : ''
+        };
+      }
       member.updatedAt = new Date().toISOString();
 
       const memberId = member.id || ('rep-' + Date.now());
@@ -4622,11 +4627,11 @@ const waBtn = document.getElementById('inquiryWhatsAppBtn');
         flag: flag,
         role: role,
         country: country,
-        photo: {
-          url: photoUrl,
+        photo: (photoUrl && photoUrl.trim()) ? {
+          url: photoUrl.trim(),
           alt: `${name}, ${role}`,
           cloudinaryPublicId: photoUrl.includes('cloudinary') ? photoUrl.split('/').pop().split('.')[0] : ''
-        },
+        } : null,
         bio: bio,
         sortOrder: sortOrder,
         published: published,

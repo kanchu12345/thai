@@ -1,4 +1,4 @@
-/*
+﻿/*
 
  * © 2026 Infinite Design. All rights reserved.
 
@@ -205,7 +205,14 @@
 
       // 4. Setup storage listener for live cross-tab sync
 
-                  window.addEventListener('lotus:team-updated', (e) => {
+                  window.addEventListener('message', (e) => {
+        if (e.data && e.data.type === 'lotus:team-updated' && e.data.team) {
+          this.store.team = e.data.team;
+          this.hydrateTeam();
+        }
+      });
+
+      window.addEventListener('lotus:team-updated', (e) => {
         if (e.detail && e.detail.team) {
           this.store.team = e.detail.team;
         }
@@ -1293,7 +1300,7 @@
 
         return `
           <article class="person-card" style="background: #FFFFFF; border-radius: 12px; border: 1px solid rgba(0, 43, 73, 0.08); overflow: hidden; box-shadow: 0 4px 16px rgba(0, 43, 73, 0.04); transition: transform 0.25s ease, box-shadow 0.25s ease; display: flex; flex-direction: column;">
-            <div style="position: relative; width: 100%; height: 210px; overflow: hidden; background: #0A192F;">
+            <div class="team-avatar-box team-photo-wrap" style="position: relative; width: 100%; height: 210px; overflow: hidden; background: #0A192F; cursor: pointer;">
               ${photoUrl ? `<img src="${photoUrl}" alt="${alt}" loading="lazy" width="280" height="210" style="width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block;" decoding="async" data-cms-img="about.team_img_${num}">` : `<div class="team-avatar-placeholder" style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:3rem;cursor:pointer;" data-cms-img="about.team_img_${num}" title="Click to upload/change photo">${flag}</div>`}
               <span style="position: absolute; top: 10px; right: 10px; background: rgba(10, 25, 47, 0.88); color: #FFFFFF; font-size: 0.72rem; font-weight: 700; padding: 3px 8px; border-radius: 12px; backdrop-filter: blur(4px); box-shadow: 0 2px 6px rgba(0,0,0,0.2);" data-cms="about.team_flag_${num}">
                 ${flag} ${country}
@@ -1618,6 +1625,7 @@
     // Expose globally
 
   window.SiteData = SiteData;
+  window.LotusSiteData = SiteData;
 
 
 
