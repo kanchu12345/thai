@@ -173,13 +173,26 @@
       transition: transform 0.25s ease;
     }
     .chat-pill--wa {
-      background: #0A192F;
-      border: 1px solid rgba(212, 175, 55, 0.35);
+      background: #25D366 !important;
+      color: #FFFFFF !important;
+      border: 1px solid #25D366 !important;
+      box-shadow: 0 4px 15px rgba(37, 211, 102, 0.35) !important;
     }
     .chat-pill--wa svg,
     .chat-pill--wa .chat-pill-icon {
-      fill: #25D366 !important;
-      color: #25D366 !important;
+      fill: #FFFFFF !important;
+      color: #FFFFFF !important;
+    }
+    .chat-pill--wa:hover {
+      background: #20BD5A !important;
+      border-color: #20BD5A !important;
+      color: #FFFFFF !important;
+      box-shadow: 0 8px 25px rgba(37, 211, 102, 0.5) !important;
+    }
+    .chat-pill--wa:hover svg,
+    .chat-pill--wa:hover .chat-pill-icon {
+      fill: #FFFFFF !important;
+      color: #FFFFFF !important;
     }
     .chat-pill--wechat {
       background: #0A192F;
@@ -292,12 +305,14 @@
       transition: transform 0.2s ease;
     }
     .contact-qr-badge--wa {
-      background: #0A192F;
-      border: 1px solid rgba(212, 175, 55, 0.32);
+      background: #25D366 !important;
+      color: #FFFFFF !important;
+      border: 1px solid #25D366 !important;
+      box-shadow: 0 2px 6px rgba(37, 211, 102, 0.25) !important;
     }
     .contact-qr-badge--wa svg {
-      fill: #25D366 !important;
-      color: #25D366 !important;
+      fill: #FFFFFF !important;
+      color: #FFFFFF !important;
     }
     .contact-qr-badge--wechat {
       background: #0A192F;
@@ -388,24 +403,28 @@
       transition: transform 0.2s ease;
     }
     .contact-qr-action--wa {
-      border-color: rgba(37, 211, 102, 0.35);
-      color: #002B49;
+      background: #25D366 !important;
+      border: 1px solid #25D366 !important;
+      color: #FFFFFF !important;
+      box-shadow: 0 2px 8px rgba(37, 211, 102, 0.25) !important;
     }
     .contact-qr-action--wa svg {
-      color: #25D366;
-      stroke: #25D366;
+      color: #FFFFFF !important;
+      stroke: #FFFFFF !important;
+      fill: #FFFFFF !important;
     }
     .contact-qr-action--wa:hover {
-      background: #0A192F;
-      border-color: #D4AF37;
-      color: #FFFFFF;
-      box-shadow: 0 4px 14px rgba(10, 25, 47, 0.16);
-      transform: translateY(-1px);
+      background: #20BD5A !important;
+      border-color: #20BD5A !important;
+      color: #FFFFFF !important;
+      box-shadow: 0 4px 14px rgba(37, 211, 102, 0.45) !important;
+      transform: translateY(-1px) !important;
     }
     .contact-qr-action--wa:hover svg {
-      color: #25D366;
-      stroke: #25D366;
-      transform: translateX(2px);
+      color: #FFFFFF !important;
+      stroke: #FFFFFF !important;
+      fill: #FFFFFF !important;
+      transform: translateX(2px) !important;
     }
     .contact-qr-action--wechat {
       border-color: rgba(7, 193, 96, 0.35);
@@ -1236,8 +1255,8 @@
             <p style="color: #15803D; font-size: 0.95rem; margin-bottom: 1.25rem;">
               Your inquiry reference is <strong>${refId}</strong>. Our senior destination concierge will reply within 24 hours.
             </p>
-            <a href="https://wa.me/94715422384?text=Hello%20Lotus%20Ceylon!%20I%20sent%20message%20${refId}%20for%20${encodeURIComponent(name)}" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 8px; background: #0A192F; color: #FFFFFF; border: 1.5px solid #D4AF37; padding: 10px 22px; border-radius: 9999px; text-decoration: none; font-weight: 700; font-size: 0.88rem; box-shadow: 0 4px 14px rgba(10, 25, 47, 0.18);">
-              <span style="color: #25D366; font-size: 1.1rem;">💬</span> Immediate WhatsApp Follow-up
+            <a href="https://wa.me/94715422384?text=Hello%20Lotus%20Ceylon!%20I%20sent%20message%20${refId}%20for%20${encodeURIComponent(name)}" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 8px; background: #25D366; color: #FFFFFF; border: 1.5px solid #25D366; padding: 10px 22px; border-radius: 9999px; text-decoration: none; font-weight: 700; font-size: 0.88rem; box-shadow: 0 4px 14px rgba(37, 211, 102, 0.35);">
+              <span style="color: #FFFFFF; font-size: 1.1rem;">💬</span> Immediate WhatsApp Follow-up
             </a>
           </div>
         `;
@@ -1270,7 +1289,12 @@
       
       var actionWrap = document.getElementById('qrModalActionWrap');
       if (linkUrl) {
-        actionWrap.innerHTML = '<a href="' + linkUrl + '" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 8px; padding: 10px 24px; border-radius: 9999px; font-size: 0.88rem; font-weight: 700; text-decoration: none; background: #0A192F; color: #FFFFFF; border: 1.5px solid #D4AF37; box-shadow: 0 4px 14px rgba(10, 25, 47, 0.18); transition: all 0.2s ease;"><span>Direct Connect</span> <span style=\"color: #D4AF37;\">&#10132;</span></a>';
+        var isWa = linkUrl.indexOf('wa.me') > -1 || linkUrl.indexOf('whatsapp') > -1;
+        var btnBg = isWa ? '#25D366' : '#0A192F';
+        var btnBorder = isWa ? '1.5px solid #25D366' : '1.5px solid #D4AF37';
+        var btnShadow = isWa ? '0 4px 14px rgba(37, 211, 102, 0.35)' : '0 4px 14px rgba(10, 25, 47, 0.18)';
+        var arrowColor = isWa ? '#FFFFFF' : '#D4AF37';
+        actionWrap.innerHTML = '<a href="' + linkUrl + '" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 8px; padding: 10px 24px; border-radius: 9999px; font-size: 0.88rem; font-weight: 700; text-decoration: none; background: ' + btnBg + '; color: #FFFFFF; border: ' + btnBorder + '; box-shadow: ' + btnShadow + '; transition: all 0.2s ease;"><span>Direct Connect</span> <span style=\"color: ' + arrowColor + ';\">&#10132;</span></a>';
       } else {
         actionWrap.innerHTML = '<button type="button" onclick="copyWeChatId(\'FGUTaiwan90\', this)" style="border: 1.5px solid #D4AF37; cursor: pointer; padding: 10px 24px; border-radius: 9999px; font-size: 0.88rem; font-weight: 700; background: #0A192F; color: #FFFFFF; box-shadow: 0 4px 14px rgba(10, 25, 47, 0.18); display: inline-flex; align-items: center; justify-content: center; gap: 8px; transition: all 0.2s ease;"><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#07C160\" stroke-width=\"2.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><rect x=\"9\" y=\"9\" width=\"13\" height=\"13\" rx=\"2\" ry=\"2\"></rect><path d=\"M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1\"></path></svg> <span>Copy WeChat ID</span></button>';
       }

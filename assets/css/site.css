@@ -5344,13 +5344,26 @@ img[data-cms-img*="about.team_img"] {
   transition: transform 0.25s ease !important;
 }
 .chat-pill--wa {
-  background: #0A192F !important;
-  border: 1px solid rgba(212, 175, 55, 0.35) !important;
+  background: #25D366 !important;
+  color: #FFFFFF !important;
+  border: 1px solid #25D366 !important;
+  box-shadow: 0 4px 14px rgba(37, 211, 102, 0.35) !important;
 }
 .chat-pill--wa svg,
 .chat-pill--wa .chat-pill-icon {
-  fill: #25D366 !important;
-  color: #25D366 !important;
+  fill: #FFFFFF !important;
+  color: #FFFFFF !important;
+}
+.chat-pill--wa:hover {
+  background: #20BD5A !important;
+  border-color: #20BD5A !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 8px 22px rgba(37, 211, 102, 0.5) !important;
+}
+.chat-pill--wa:hover svg,
+.chat-pill--wa:hover .chat-pill-icon {
+  fill: #FFFFFF !important;
+  color: #FFFFFF !important;
 }
 .chat-pill--wechat {
   background: #0A192F !important;
@@ -5407,12 +5420,14 @@ img[data-cms-img*="about.team_img"] {
   transition: transform 0.2s ease !important;
 }
 .contact-qr-badge--wa {
-  background: #0A192F !important;
-  border: 1px solid rgba(212, 175, 55, 0.32) !important;
+  background: #25D366 !important;
+  color: #FFFFFF !important;
+  border: 1px solid #25D366 !important;
+  box-shadow: 0 2px 6px rgba(37, 211, 102, 0.25) !important;
 }
 .contact-qr-badge--wa svg {
-  fill: #25D366 !important;
-  color: #25D366 !important;
+  fill: #FFFFFF !important;
+  color: #FFFFFF !important;
 }
 .contact-qr-badge--wechat {
   background: #0A192F !important;
@@ -5464,23 +5479,27 @@ img[data-cms-img*="about.team_img"] {
   transition: transform 0.2s ease !important;
 }
 .contact-qr-action--wa {
-  border-color: rgba(37, 211, 102, 0.35) !important;
-  color: #002B49 !important;
+  background: #25D366 !important;
+  border: 1px solid #25D366 !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 2px 8px rgba(37, 211, 102, 0.25) !important;
 }
 .contact-qr-action--wa svg {
-  color: #25D366 !important;
-  stroke: #25D366 !important;
+  color: #FFFFFF !important;
+  stroke: #FFFFFF !important;
+  fill: #FFFFFF !important;
 }
 .contact-qr-action--wa:hover {
-  background: #0A192F !important;
-  border-color: #D4AF37 !important;
+  background: #20BD5A !important;
+  border-color: #20BD5A !important;
   color: #FFFFFF !important;
-  box-shadow: 0 4px 14px rgba(10, 25, 47, 0.16) !important;
+  box-shadow: 0 4px 14px rgba(37, 211, 102, 0.45) !important;
   transform: translateY(-1px) !important;
 }
 .contact-qr-action--wa:hover svg {
-  color: #25D366 !important;
-  stroke: #25D366 !important;
+  color: #FFFFFF !important;
+  stroke: #FFFFFF !important;
+  fill: #FFFFFF !important;
   transform: translateX(2px) !important;
 }
 .contact-qr-action--wechat {
@@ -5522,4 +5541,69 @@ img[data-cms-img*="about.team_img"] {
   color: #06C755 !important;
   stroke: #06C755 !important;
   transform: translateX(2px) !important;
+}
+
+/* ==============================================================================
+   UNIFIED WHATSAPP BRANDING - VIBRANT WHATSAPP GREEN (#25D366)
+   Matches the reference "Chat on WhatsApp" styling across every page
+   ============================================================================== */
+.cta-wa-btn,
+.sacred-cta-banner .cta-wa-btn,
+.fab-whatsapp,
+.fab-btn.fab-whatsapp,
+.unified-fab-group .fab-whatsapp,
+.btn-mobile-whatsapp,
+.btn-route-whatsapp,
+.btn-cta-whatsapp,
+.chat-pill--wa,
+.contact-qr-action--wa,
+.contact-qr-badge--wa,
+a[href*="wa.me"].btn-primary-gold,
+a[href*="whatsapp.com"].btn-primary-gold,
+a[href*="wa.me"].gold-inquire-btn,
+a[href*="wa.me"].next-btn,
+.whatsapp-fallback-btn {
+  background: #25D366 !important;
+  background-color: #25D366 !important;
+  color: #FFFFFF !important;
+  border-color: #25D366 !important;
+  box-shadow: 0 4px 15px rgba(37, 211, 102, 0.35) !important;
+  transition: all 0.25s ease !important;
+}
+
+.cta-wa-btn:hover,
+.sacred-cta-banner .cta-wa-btn:hover,
+.fab-whatsapp:hover,
+.fab-btn.fab-whatsapp:hover,
+.unified-fab-group .fab-whatsapp:hover,
+.btn-mobile-whatsapp:hover,
+.btn-route-whatsapp:hover,
+.btn-cta-whatsapp:hover,
+.chat-pill--wa:hover,
+.contact-qr-action--wa:hover,
+a[href*="wa.me"].btn-primary-gold:hover,
+a[href*="whatsapp.com"].btn-primary-gold:hover,
+a[href*="wa.me"].gold-inquire-btn:hover,
+a[href*="wa.me"].next-btn:hover,
+.whatsapp-fallback-btn:hover {
+  background: #20BD5A !important;
+  background-color: #20BD5A !important;
+  color: #FFFFFF !important;
+  border-color: #20BD5A !important;
+  box-shadow: 0 8px 25px rgba(37, 211, 102, 0.5) !important;
+  transform: translateY(-2px) !important;
+}
+
+.chat-pill--wa svg,
+.chat-pill--wa .chat-pill-icon,
+.contact-qr-badge--wa svg,
+.contact-qr-action--wa svg,
+.btn-route-whatsapp svg,
+.btn-cta-whatsapp svg,
+.fab-whatsapp svg,
+.fab-btn.fab-whatsapp svg,
+.btn-mobile-whatsapp svg {
+  fill: #FFFFFF !important;
+  color: #FFFFFF !important;
+  stroke: #FFFFFF !important;
 }
