@@ -1542,6 +1542,17 @@
           target = flagBadge;
         }
 
+        // Priority 1.4: Tour Category Cards in Categories Carousel (#categories / #categoryShowcase)
+        const catCard = e.target.closest('.hover-box');
+        if (catCard && !target) {
+          const catImg = catCard.querySelector('img.hover-box__img, img[data-cms-img]');
+          const isDirectTextEdit = e.target.matches('.walker-card-title, .walker-card-desc, [data-cms-html], [data-cms]') && !e.target.classList.contains('hover-box__overlay');
+          // If the user clicks on the image, the overlay, the card container, or details background:
+          if (!isDirectTextEdit || e.target.classList.contains('hover-box__overlay') || e.target.classList.contains('hover-box__details') || e.target === catCard || e.target.tagName === 'IMG') {
+            if (catImg) target = catImg;
+          }
+        }
+
         if (!target && (e.target.tagName === 'IMG' || e.target.hasAttribute('data-cms-img') || e.target.hasAttribute('data-cms-bg'))) {
           target = e.target;
         } else if (!target) {
@@ -1752,7 +1763,7 @@
               targetTab = 'tours';
               targetSubtab = 'packages';
               if (packageSlug) modalOpenFn = "AdminApp.openPackageModal('" + packageSlug + "');";
-            } else if (target.closest('#categoryShowcase, .cat-showcase-grid')) {
+            } else if (target.closest('#categoryShowcase, .cat-showcase-grid, #categories, .categories-carousel-wrapper, .categories-carousel-viewport')) {
               isLinked = true;
               linkedSource = 'Tours > Categories';
               targetTab = 'tours';
@@ -1842,8 +1853,31 @@
               modalOpenFn = "AdminApp.openTeamModalByIndex ? AdminApp.openTeamModalByIndex(" + (num - 1) + ") : AdminApp.navigateToTab('about', 'team')";
             }
 
+            // Check if element belongs to a Tour Category card
+            const enclosingCatCard = target.closest('.hover-box') || (target.matches && target.matches('.hover-box') ? target : null);
+            let isCategoryCard = false;
+            let categoryImgKey = null;
+            let categoryImgSrc = '';
+            let categoryTitle = '';
+            let categoryLink = '';
+
+            if (enclosingCatCard) {
+              isCategoryCard = true;
+              const cImg = enclosingCatCard.querySelector('img.hover-box__img, img[data-cms-img]');
+              const cTitle = enclosingCatCard.querySelector('.walker-card-title');
+              categoryImgKey = cImg ? (cImg.getAttribute('data-cms-img') || cImg.getAttribute('data-cms')) : null;
+              categoryImgSrc = cImg ? (cImg.getAttribute('src') || '') : '';
+              categoryTitle = cTitle ? cTitle.textContent.replace('+', '').trim() : '';
+              categoryLink = enclosingCatCard.getAttribute('href') || '';
+            }
+
             window.parent.postMessage({
               type: 'lotus:element-selected',
+              isCategoryCard: isCategoryCard,
+              categoryImgKey: categoryImgKey,
+              categoryImgSrc: categoryImgSrc,
+              categoryTitle: categoryTitle,
+              categoryLink: categoryLink,
               key: key,
               attrType: attrType,
               currentVal: (currentVal || '').trim(),

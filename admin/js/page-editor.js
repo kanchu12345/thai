@@ -60,6 +60,19 @@
   };
 
   const PageEditor = {
+    TOUR_CATEGORIES: [
+      { key: 'home.img_3', title: 'Beach Tours', icon: '🏖️', link: 'tours/beach/index.html', defaultSrc: 'assets/images/beach/mirissa-1.webp' },
+      { key: 'home.img_4', title: 'Cultural Tours', icon: '🏛️', link: 'tours/cultural/index.html', defaultSrc: 'assets/images/cultural/sigiriya-1.webp' },
+      { key: 'home.img_buddhist', title: 'Buddhist Heritage', icon: '☸️', link: 'tours/buddhist-heritage/index.html', defaultSrc: 'assets/images/buddhist-heritage/jaya-sri-maha-bodhi-1.webp' },
+      { key: 'home.img_5', title: 'Wildlife Tours', icon: '🐘', link: 'tours/wildlife/index.html', defaultSrc: 'assets/images/wildlife/yala-leopard-1.webp' },
+      { key: 'home.img_6', title: 'Highlands and Tea', icon: '🍃', link: 'tours/hill-country/index.html', defaultSrc: 'assets/images/hill-country/nuwara-eliya-tea-2.webp' },
+      { key: 'home.img_7', title: 'Adventure Tours', icon: '🧗', link: 'tours/adventure/index.html', defaultSrc: 'assets/images/adventure/kitulgala-rafting-1.webp' },
+      { key: 'home.img_8', title: 'Ayurveda Wellness', icon: '🌿', link: 'tours/ayurvedic/index.html', defaultSrc: 'assets/images/ayurveda/herbal-treatment-1.webp' },
+      { key: 'home.img_9', title: 'Romantic Escapes', icon: '🌅', link: 'tours/honeymoon/index.html', defaultSrc: 'assets/images/honeymoon/mirissa-sunset-2.webp' },
+      { key: 'home.img_10', title: 'Family Journeys', icon: '👨‍👩‍👧', link: 'tours/family/index.html', defaultSrc: 'assets/images/family/kosgoda-turtle-hatchery-1.webp' },
+      { key: 'home.img_11', title: 'Ramayana Trails', icon: '🏹', link: 'tours/ramayana/index.html', defaultSrc: 'assets/images/ramayana/seetha-amman-temple-1.webp' },
+      { key: 'home.img_12', title: 'Championship Golf', icon: '⛳', link: 'tours/golf/index.html', defaultSrc: 'assets/images/golf/ceylon-championship-golf-1.webp' }
+    ],
     get iframe() {
       return document.getElementById("visualCmsIframe");
     },
@@ -308,6 +321,54 @@
       return null;
     },
 
+    selectCategoryByKey(imgKey) {
+      if (!this.TOUR_CATEGORIES) return;
+      const cat = this.TOUR_CATEGORIES.find(c => c.key === imgKey || (c.key.includes('.') && imgKey === c.key.split('.').pop()));
+      if (!cat) return;
+
+      const currentVal = this.getCurrentValue(cat.key, cat.defaultSrc);
+      const elementItem = {
+        key: cat.key,
+        attrType: 'image',
+        currentVal: currentVal,
+        altText: `${cat.title} - Lotus Ceylon Luxury Tours`,
+        sectionId: 'categories',
+        isCategoryCard: true,
+        categoryTitle: cat.title,
+        categoryLink: cat.link
+      };
+
+      this.selectElement(elementItem);
+
+      // Scroll category card into view in preview iframe and highlight it
+      const iframe = document.getElementById('visualCmsIframe');
+      if (iframe && iframe.contentWindow) {
+        iframe.contentWindow.postMessage({
+          type: 'lotus:scroll-to-key',
+          key: cat.key
+        }, '*');
+        try {
+          if (iframe.contentDocument) {
+            const cleanKey = cat.key.includes('.') ? cat.key.split('.').pop() : cat.key;
+            const targetImg = iframe.contentDocument.querySelector(`[data-cms-img="${cat.key}"], [data-cms-img="${cleanKey}"]`);
+            if (targetImg) {
+              const card = targetImg.closest('.hover-box') || targetImg;
+              card.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
+              card.style.transition = 'outline 0.3s, box-shadow 0.3s';
+              card.style.outline = '3px solid #D4AF37';
+              card.style.boxShadow = '0 0 16px rgba(212, 175, 55, 0.7)';
+              setTimeout(() => {
+                card.style.outline = '';
+                card.style.boxShadow = '';
+              }, 2000);
+            }
+          }
+        } catch (e) {
+          console.warn('[PageEditor] Could not scroll to category card in iframe:', e);
+        }
+      }
+    },
+
     switchSliderSlide(idx) {
       if (!this.selectedElement || !this.selectedElement.sliderImages) return;
       this.activeSliderIndex = idx;
@@ -381,6 +442,16 @@
 
     getFriendlyFieldTitle(key, attrType, val, item = null) {
       if (!key) return 'Page Element';
+      if (this.TOUR_CATEGORIES) {
+        const catMatch = this.TOUR_CATEGORIES.find(c => c.key === key || (c.key.includes('.') && key === c.key.split('.').pop()));
+        if (catMatch) {
+          return `📸 Tour Category Image: ${catMatch.title}`;
+        }
+      }
+      if (item && item.isCategoryCard) {
+        if (item.categoryTitle) return `🏷️ Tour Category: ${item.categoryTitle}`;
+        return '🏷️ Tour Category Card';
+      }
       if (item && item.isTeamAvatar) {
         const name = item.teamMemberName || `Member #${(item.teamMemberIndex || 0) + 1}`;
         return `👤 Team Member Photo: ${name}`;
@@ -1063,10 +1134,35 @@
         }
         // --- B. IMAGE / BACKGROUND IMAGE INSPECTOR ---
         else if (item.attrType === 'image' || item.attrType === 'bg-image') {
+          const isCategoryImg = this.TOUR_CATEGORIES && this.TOUR_CATEGORIES.some(c => c.key === (item.key || '') || (c.key.includes('.') && item.key === c.key.split('.').pop()));
           const hasSlider = item.sliderImages && item.sliderImages.length > 1;
           let activeKey = item.key;
           let activeAlt = item.altText || '';
           let imgSrc = currentVal || 'assets/images/sigiriya.jpg';
+
+          if (isCategoryImg) {
+            const currentCat = this.TOUR_CATEGORIES.find(c => c.key === activeKey || (c.key.includes('.') && activeKey === c.key.split('.').pop()));
+            html += `
+              <div class="category-switcher-container" style="background: #F8FAFC; border: 1.5px solid #CBD5E1; border-radius: 8px; padding: 12px; margin-bottom: 14px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                  <span style="font-size: 0.82rem; font-weight: 700; color: #002B49;">🗂️ Tour Categories (${this.TOUR_CATEGORIES.length} Categories)</span>
+                  <span class="badge" style="font-size: 0.72rem; background: #FEF3C7; color: #92400E; font-weight: 700;">Active: ${currentCat ? currentCat.title : ''}</span>
+                </div>
+                <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(90px, 1fr)); gap: 6px; max-height: 180px; overflow-y: auto; padding: 2px;">
+                  ${this.TOUR_CATEGORIES.map(cat => {
+                    const isCur = cat.key === activeKey || (cat.key.includes('.') && activeKey === cat.key.split('.').pop());
+                    const catVal = this.getCurrentValue(cat.key, cat.defaultSrc);
+                    return `
+                      <button type="button" class="cat-thumb-btn ${isCur ? 'active' : ''}" onclick="PageEditor.selectCategoryByKey('${cat.key}')" style="padding: 4px; border: 2px solid ${isCur ? '#D4AF37' : '#E2E8F0'}; border-radius: 6px; background: ${isCur ? '#FFFBEB' : '#FFFFFF'}; cursor: pointer; text-align: center; transition: all 0.15s ease;" title="${this.escapeAttr(cat.title)}">
+                        <img src="${this.resolvePreviewUrl(catVal)}" style="width: 100%; height: 38px; object-fit: cover; border-radius: 4px; display: block;" onerror="this.src='../assets/images/placeholder.png'"/>
+                        <span style="display: block; font-size: 0.65rem; font-weight: ${isCur ? '700' : '500'}; color: ${isCur ? '#92400E' : '#334155'}; margin-top: 3px; line-height: 1.15; text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">${cat.icon} ${this.escapeHtml(cat.title)}</span>
+                      </button>
+                    `;
+                  }).join('')}
+                </div>
+              </div>
+            `;
+          }
 
           if (hasSlider) {
             const activeIdx = Math.min(this.activeSliderIndex || 0, item.sliderImages.length - 1);
@@ -1272,6 +1368,34 @@
             </div>
           `;
         }
+      }
+
+      // Quick Category Cover Image Manager if editing text/details on a Category Card
+      if (item.isCategoryCard && item.categoryImgKey && item.attrType !== 'image') {
+        const catImgVal = this.getCurrentValue(item.categoryImgKey, item.categoryImgSrc || 'assets/images/placeholder.png');
+        html += `
+          <div class="category-image-quick-manager" style="margin-top: 18px; padding: 14px; background: #F8FAFC; border: 1.5px solid #CBD5E1; border-radius: 8px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+              <div style="font-size: 0.84rem; font-weight: 700; color: #002B49; display: flex; align-items: center; gap: 6px;">
+                <span>📸 Category Card Photo: <strong>${this.escapeHtml(item.categoryTitle || 'This Category')}</strong></span>
+              </div>
+              <span class="badge" style="font-size: 0.7rem; background: #E2E8F0; color: #334155;">${this.escapeHtml(item.categoryImgKey)}</span>
+            </div>
+            <div style="display: flex; gap: 12px; align-items: center; margin-bottom: 12px;">
+              <img src="${this.resolvePreviewUrl(catImgVal)}" id="catQuickThumb_${this.escapeAttr(item.categoryImgKey)}" style="width: 80px; height: 56px; object-fit: cover; border-radius: 6px; border: 1px solid #CBD5E1; box-shadow: 0 1px 3px rgba(0,0,0,0.1);" onerror="this.src='../assets/images/placeholder.png'"/>
+              <div style="flex: 1; min-width: 0;">
+                <div style="font-size: 0.78rem; color: #334155; font-weight: 600; margin-bottom: 4px;">Card Cover / Background Image</div>
+                <input type="text" class="form-control" style="font-size: 0.78rem; padding: 4px 8px; height: auto;" value="${this.escapeAttr(catImgVal)}" placeholder="Image URL / path" oninput="PageEditor.handleLiveInput('${item.categoryImgKey}', this.value, 'image'); const t=document.getElementById('catQuickThumb_${this.escapeAttr(item.categoryImgKey)}'); if(t) t.src=PageEditor.resolvePreviewUrl(this.value);"/>
+              </div>
+            </div>
+            <div style="display: flex; gap: 6px; flex-wrap: wrap;">
+              <button type="button" class="btn btn-secondary btn-sm" onclick="PageEditor.openCloudinaryForField('${item.categoryImgKey}')" title="Upload new photo for this category">☁️ Upload New</button>
+              <button type="button" class="btn btn-outline btn-sm" onclick="PageEditor.openMediaPicker('${item.categoryImgKey}')" title="Select from media library">📁 Media Library</button>
+              <button type="button" class="btn btn-danger btn-sm" onclick="PageEditor.clearImageField('${item.categoryImgKey}', 'image'); const t=document.getElementById('catQuickThumb_${this.escapeAttr(item.categoryImgKey)}'); if(t) t.src='../assets/images/placeholder.png';" style="background: #EF4444; color: #FFFFFF; border: none;" title="Remove image">🗑️ Remove Image</button>
+              <button type="button" class="btn btn-outline btn-sm" onclick="PageEditor.selectCategoryByKey('${item.categoryImgKey}')" title="Open in image inspector">🔍 Switch to Full Image Inspector</button>
+            </div>
+          </div>
+        `;
       }
 
       // --- STICKY PUBLISH / SAVE ACTION BAR ---
