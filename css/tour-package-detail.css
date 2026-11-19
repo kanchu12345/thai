@@ -3265,17 +3265,26 @@ figure img {
 /* 2. TOUR PACKAGES & CARDS (600x400 ~ 3:2) */
 .tour-card,
 .package-card,
+.lotus-package-card {
+  aspect-ratio: auto !important;
+  height: auto !important;
+  overflow: hidden !important;
+}
+
 .tour-card-figure,
 .pkg-card-img,
 .tour-card-img-wrap,
+.tour-card .tour-card-img-wrap,
+.package-card .tour-card-img-wrap,
 .package-cards-grid .card-thumb,
 .walkers-img-card,
 .pkg-card-media,
 .lotus-package-card .pkg-card-media {
   width: 100% !important;
   overflow: hidden !important;
-  aspect-ratio: 3 / 2 !important;
+  aspect-ratio: 16 / 10 !important;
   position: relative !important;
+  display: block !important;
 }
 
 .tour-card img,
