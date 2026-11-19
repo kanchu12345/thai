@@ -5820,7 +5820,7 @@ figure img {
 .table-thumb {
   aspect-ratio: 1 / 1 !important;
   object-fit: cover !important;
-  object-position: center top !important;
+  object-position: center 20% !important;
 }
 
 /* 8. TEAM AVATARS & GLOBAL REPRESENTATIVES (1:1 & Compact 16:10) */
@@ -5834,9 +5834,7 @@ figure img {
 .person-card .team-photo-wrap,
 .team-avatar-placeholder {
   width: 100% !important;
-  height: 95px !important;
-  min-height: 95px !important;
-  max-height: 95px !important;
+  height: 150px !important; min-height: 150px !important; max-height: 150px !important;
   overflow: hidden !important;
 }
 
@@ -5849,6 +5847,6 @@ img[data-cms-img*="team_img"] {
   min-width: 100% !important;
   min-height: 100% !important;
   object-fit: cover !important;
-  object-position: center top !important;
+  object-position: center 20% !important;
   display: block !important;
 }
