@@ -62,6 +62,13 @@
   function resolveImgUrl(url) {
     if (!url) return '';
     url = String(url).trim();
+    if (url.includes('res.cloudinary.com') && url.includes('/upload/')) {
+      if (!url.includes('c_fill') && !url.includes('c_crop')) {
+        url = url.replace('/upload/', '/upload/c_fill,g_auto,f_auto,q_auto/');
+        url = url.replace(/\/upload\/c_fill,g_auto,f_auto,q_auto\/(f_auto,q_auto\/)+/, '/upload/c_fill,g_auto,f_auto,q_auto/');
+      }
+      return url;
+    }
     if (url.startsWith('https://') || url.startsWith('http://') || url.startsWith('data:') || url.startsWith('blob:')) {
       return url;
     }

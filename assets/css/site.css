@@ -5607,3 +5607,199 @@ img[data-cms-img*="about.team_img"] {
   flex-shrink: 0;
   vertical-align: middle;
 }
+
+
+/* ==========================================================================
+   UNIVERSAL SECTION IMAGE AUTO-ADJUSTMENT & ANTI-DISTORTION ENGINE
+   Enforces exact allocated dimensions, aspect-ratios, and object-fit cover
+   preventing squished, stretched, or distorted images ("anti-bayyai")
+   ========================================================================== */
+
+/* Universal Image Fit Normalization */
+img,
+picture img,
+figure img {
+  max-width: 100%;
+  object-fit: cover;
+  object-position: center center;
+}
+
+/* 1. HERO BANNERS & FULL-WIDTH SECTIONS */
+.banner-section,
+.tour-hero-section,
+.beach-hero-banner,
+.wildlife-hero-banner,
+.tour-banner-walkers,
+.hero-banner,
+.page-hero,
+.hero-picture-bg,
+.hero-picture-bg img,
+.hero-img-bg,
+[data-cms-img*="hero"] {
+  background-size: cover !important;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+  object-fit: cover !important;
+  object-position: center center !important;
+}
+
+/* 2. TOUR PACKAGES & CARDS */
+.tour-card,
+.package-card,
+.tour-card-figure,
+.pkg-card-img,
+.tour-card-img-wrap,
+.package-cards-grid .card-thumb,
+.walkers-img-card {
+  width: 100% !important;
+  overflow: hidden !important;
+  aspect-ratio: 16 / 10 !important;
+  position: relative !important;
+}
+
+.tour-card img,
+.package-card img,
+.tour-card-figure img,
+.pkg-card-img img,
+.tour-card-img-wrap img,
+.package-cards-grid .card-thumb img,
+.walkers-img-card img {
+  width: 100% !important;
+  height: 100% !important;
+  min-width: 100% !important;
+  min-height: 100% !important;
+  max-width: none !important;
+  object-fit: cover !important;
+  object-position: center center !important;
+  display: block !important;
+}
+
+/* 3. DAY-BY-DAY ITINERARY IMAGES */
+.walkers-acc-img,
+.itinerary-day-img,
+[data-cms-img*="itinerary"] {
+  width: 100% !important;
+  height: 280px !important;
+  max-height: 320px !important;
+  aspect-ratio: 16 / 10 !important;
+  object-fit: cover !important;
+  object-position: center center !important;
+  border-radius: 10px !important;
+  margin: 12px 0 16px 0 !important;
+  display: block !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08) !important;
+}
+
+/* 4. DESTINATION & EXPERIENCE CARDS */
+.dest-card,
+.destination-card,
+.dest-card-img,
+.destination-card-img,
+.dest-card-figure,
+.exp-card,
+.experience-card,
+.ocean-exp-card .card-img-wrap,
+.cultural-card-img,
+.wildlife-card-img {
+  width: 100% !important;
+  overflow: hidden !important;
+  aspect-ratio: 16 / 10 !important;
+}
+
+.dest-card img,
+.destination-card img,
+.dest-card-img img,
+.destination-card-img img,
+.dest-card-figure img,
+.exp-card img,
+.experience-card img,
+.ocean-exp-card .card-img-wrap img,
+.cultural-card-img img,
+.wildlife-card-img img {
+  width: 100% !important;
+  height: 100% !important;
+  min-width: 100% !important;
+  min-height: 100% !important;
+  object-fit: cover !important;
+  object-position: center center !important;
+  display: block !important;
+}
+
+/* 5. BLOG CARDS & ARTICLE COVERS */
+.blog-card-img,
+.news-card-img,
+.blog-card .card-thumb,
+.blog-cover-img {
+  width: 100% !important;
+  overflow: hidden !important;
+  aspect-ratio: 16 / 10 !important;
+}
+
+.blog-card-img img,
+.news-card-img img,
+.blog-card .card-thumb img,
+.blog-cover-img img,
+.blog-card img {
+  width: 100% !important;
+  height: 100% !important;
+  min-width: 100% !important;
+  min-height: 100% !important;
+  object-fit: cover !important;
+  object-position: center center !important;
+  display: block !important;
+}
+
+/* 6. GALLERY SHOWCASE GRID */
+.gallery-card,
+.gallery-item,
+.gallery-figure {
+  overflow: hidden !important;
+  aspect-ratio: 4 / 3 !important;
+}
+
+.gallery-card img,
+.gallery-item img,
+.gallery-figure img,
+.gallery-grid img {
+  width: 100% !important;
+  height: 100% !important;
+  min-width: 100% !important;
+  min-height: 100% !important;
+  object-fit: cover !important;
+  object-position: center center !important;
+  display: block !important;
+}
+
+/* 7. REVIEWS & TESTIMONIAL AVATARS */
+.review-card img,
+.testimonial-avatar img,
+.avatar-img,
+.table-thumb {
+  aspect-ratio: 1 / 1 !important;
+  object-fit: cover !important;
+  object-position: center center !important;
+}
+
+/* 8. TEAM & GLOBAL REPRESENTATIVES */
+.person-card .team-avatar-box,
+.person-card .team-photo-wrap,
+.team-avatar-placeholder {
+  width: 100% !important;
+  height: 95px !important;
+  min-height: 95px !important;
+  max-height: 95px !important;
+  overflow: hidden !important;
+}
+
+.person-card .team-avatar-box img,
+.person-card .team-photo-wrap img,
+.team-avatar-placeholder img,
+img[data-cms-img*="team_img"] {
+  width: 100% !important;
+  height: 100% !important;
+  min-width: 100% !important;
+  min-height: 100% !important;
+  object-fit: cover !important;
+  object-position: center center !important;
+  display: block !important;
+}
