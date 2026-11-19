@@ -767,35 +767,34 @@
 </div>
 
 <style>
-/* 5-Column Responsive Team Grid Layout */
+/* Compact Multi-Column Responsive Team Grid Layout */
 .team-cards-grid {
   display: grid !important;
-  grid-template-columns: repeat(5, 1fr) !important;
-  gap: 0.85rem !important;
+  grid-template-columns: repeat(6, 1fr) !important;
+  gap: 0.65rem !important;
   justify-content: center !important;
-  max-width: 1240px !important;
+  max-width: 1300px !important;
   margin: 0 auto !important;
   align-items: stretch !important;
 }
 @media (max-width: 1200px) {
   .team-cards-grid {
-    grid-template-columns: repeat(3, 1fr) !important;
-    gap: 0.85rem !important;
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 0.6rem !important;
   }
 }
 @media (max-width: 860px) {
   .team-cards-grid {
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 0.8rem !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 0.55rem !important;
   }
 }
-@media (max-width: 540px) {
+@media (max-width: 580px) {
   .team-cards-grid {
-    grid-template-columns: 1fr !important;
-    max-width: 280px !important;
-    gap: 0.85rem !important;
-    margin: 0 auto !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.5rem !important;
   }
+}
 }
 .person-card {
   background: #FFFFFF !important;
@@ -818,9 +817,7 @@
 .team-avatar-placeholder {
   position: relative !important;
   width: 100% !important;
-  height: 140px !important;
-  min-height: 140px !important;
-  max-height: 140px !important;
+  height: 95px !important; min-height: 95px !important; max-height: 95px !important;
   overflow: hidden !important;
   border-radius: 10px 10px 0 0 !important;
   background: #0A192F !important;
@@ -853,109 +850,481 @@ img[data-cms-img*="about.team_img"] {
 
 <!-- Data-Driven Team Cards Grid (5 Key Leadership & Concierge Representatives) -->
 <div class="team-cards-grid" id="teamCardsGrid">
-<!-- Person 1: Founder & Chief Executive Officer -->
-<article class="person-card" style="background: #FFFFFF; border-radius: 10px; border: 1px solid rgba(0, 43, 73, 0.08); overflow: hidden; box-shadow: 0 4px 14px rgba(0, 43, 73, 0.04); transition: transform 0.25s ease, box-shadow 0.25s ease; display: flex; flex-direction: column;">
-<div class="team-avatar-box team-photo-wrap" style="position: relative; width: 100%; height: 140px; overflow: hidden; background: #0A192F; cursor: pointer; border-radius: 10px 10px 0 0;">
-<img alt="Mallawa Arachchige Dhushantha Gihan Mallawaarachchi, Founder &amp; Chief Executive Officer" data-cms-alt="about.article.alt_1" data-cms-img="about.team_img_1" decoding="async" height="140" loading="lazy" src="./assets/images/team/avatar-dg.svg" style="width: 100%; height: 100%; min-width: 100%; min-height: 100%; object-fit: cover; object-position: top center; display: block; border-radius: inherit;" width="240"/>
-<span data-cms="about.team_flag_1" style="position: absolute; top: 8px; right: 8px; background: rgba(10, 25, 47, 0.88); color: #FFFFFF; font-size: 0.68rem; font-weight: 700; padding: 2px 7px; border-radius: 10px; backdrop-filter: blur(4px); box-shadow: 0 2px 6px rgba(0,0,0,0.2);">
-              🇱🇰 Sri Lanka
-            </span>
-</div>
-<div style="padding: 0.75rem 0.8rem 0.85rem; display: flex; flex-direction: column; flex-grow: 1;">
-<h3 data-cms="about.team_name_1" style="font-family: var(--font-serif, 'DM Sans', sans-serif); font-size: 0.86rem; color: var(--color-dark-blue); margin: 0 0 0.2rem; font-weight: 700; line-height: 1.25; height: 2.5em; min-height: 2.5em; max-height: 2.5em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; word-break: break-word;">
-              Mallawa Arachchige Dhushantha Gihan Mallawaarachchi
-            </h3>
-<p data-cms="about.team_role_1" style="color: var(--color-gold, #C9A84C); font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; margin: 0 0 0.35rem; line-height: 1.25; height: 2.5em; min-height: 2.5em; max-height: 2.5em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis;">
-              Founder &amp; Chief Executive Officer
-            </p>
-<p data-cms="about.team_bio_1" style="font-size: 0.74rem; line-height: 1.4; color: #64748B; margin: 0; font-style: italic; margin-top: auto; height: 2.8em; min-height: 2.8em; max-height: 2.8em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis;">
-              Founding director leading bespoke luxury travel expeditions across Sri Lanka.
-            </p>
-</div>
+<!-- Representative 1: Sri Lanka -->
+<article class="person-card compact-rep-card" style="background: #FFFFFF; border-radius: 8px; border: 1px solid rgba(0, 43, 73, 0.08); overflow: hidden; box-shadow: 0 2px 8px rgba(0, 43, 73, 0.04); transition: transform 0.25s ease, box-shadow 0.25s ease; display: flex; flex-direction: column;">
+  <div class="team-avatar-box team-photo-wrap" style="position: relative; width: 100%; height: 95px; min-height: 95px; max-height: 95px; overflow: hidden; background: #0A192F; cursor: pointer; border-radius: 8px 8px 0 0;">
+    <img alt="Mr. Gihan [靜明], Founder & Chief Executive Officer, Lotus Ceylon" data-cms-alt="about.article.alt_1" data-cms-img="about.team_img_1" decoding="async" height="95" loading="lazy" src="./assets/images/team/avatar-dg.svg" style="width: 100%; height: 100%; min-width: 100%; min-height: 100%; object-fit: cover; object-position: center center; display: block; border-radius: inherit;" width="160"/>
+    <span data-cms="about.team_flag_1" style="position: absolute; top: 5px; right: 5px; background: rgba(10, 25, 47, 0.88); color: #FFFFFF; font-size: 0.62rem; font-weight: 700; padding: 2px 6px; border-radius: 8px; backdrop-filter: blur(4px); box-shadow: 0 2px 6px rgba(0,0,0,0.2);">
+      🇱🇰 Sri Lanka
+    </span>
+  </div>
+  <div style="padding: 0.5rem 0.6rem 0.6rem; display: flex; flex-direction: column; flex-grow: 1;">
+    <h3 data-cms="about.team_name_1" style="font-family: var(--font-serif, 'DM Sans', sans-serif); font-size: 0.8rem; color: var(--color-dark-blue); margin: 0 0 0.15rem; font-weight: 700; line-height: 1.2; height: 2.4em; min-height: 2.4em; max-height: 2.4em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; word-break: break-word;">
+      Mr. Gihan [靜明]
+    </h3>
+    <p data-cms="about.team_role_1" style="color: var(--color-gold, #C9A84C); font-size: 0.64rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.03em; margin: 0; line-height: 1.2; height: 2.4em; min-height: 2.4em; max-height: 2.4em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis;">
+      Founder & Chief Executive Officer, Lotus Ceylon
+    </p>
+  </div>
 </article>
-
-<!-- Person 2: The Lotus Representative, Bhutan & Himalayas -->
-<article class="person-card" style="background: #FFFFFF; border-radius: 10px; border: 1px solid rgba(0, 43, 73, 0.08); overflow: hidden; box-shadow: 0 4px 14px rgba(0, 43, 73, 0.04); transition: transform 0.25s ease, box-shadow 0.25s ease; display: flex; flex-direction: column;">
-<div class="team-avatar-box team-photo-wrap" style="position: relative; width: 100%; height: 140px; overflow: hidden; background: #0A192F; cursor: pointer; border-radius: 10px 10px 0 0;">
-<img alt="Mr. Kuenga Yarpel, The Lotus Representative, Bhutan &amp; Himalayas" data-cms-alt="about.article.alt_2" data-cms-img="about.team_img_2" decoding="async" height="140" loading="lazy" src="./assets/images/team/avatar-ky.svg" style="width: 100%; height: 100%; min-width: 100%; min-height: 100%; object-fit: cover; object-position: center top; display: block; border-radius: inherit;" width="240"/>
-<span data-cms="about.team_flag_2" style="position: absolute; top: 8px; right: 8px; background: rgba(10, 25, 47, 0.88); color: #FFFFFF; font-size: 0.68rem; font-weight: 700; padding: 2px 7px; border-radius: 10px; backdrop-filter: blur(4px); box-shadow: 0 2px 6px rgba(0,0,0,0.2);">
-              🇧🇹 Bhutan
-            </span>
-</div>
-<div style="padding: 0.75rem 0.8rem 0.85rem; display: flex; flex-direction: column; flex-grow: 1;">
-<h3 data-cms="about.team_name_2" style="font-family: var(--font-serif, 'DM Sans', sans-serif); font-size: 0.86rem; color: var(--color-dark-blue); margin: 0 0 0.2rem; font-weight: 700; line-height: 1.25; height: 2.5em; min-height: 2.5em; max-height: 2.5em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; word-break: break-word;">
-              Mr. Kuenga Yarpel
-            </h3>
-<p data-cms="about.team_role_2" style="color: var(--color-gold, #C9A84C); font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; margin: 0 0 0.35rem; line-height: 1.25; height: 2.5em; min-height: 2.5em; max-height: 2.5em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis;">
-              The Lotus Representative, Bhutan &amp; Himalayas
-            </p>
-<p data-cms="about.team_bio_2" style="font-size: 0.74rem; line-height: 1.4; color: #64748B; margin: 0; font-style: italic; margin-top: auto; height: 2.8em; min-height: 2.8em; max-height: 2.8em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis;">
-              Regional specialist for Bhutanese and Himalayan cultural travel partnerships.
-            </p>
-</div>
+<!-- Representative 2: Bhutan -->
+<article class="person-card compact-rep-card" style="background: #FFFFFF; border-radius: 8px; border: 1px solid rgba(0, 43, 73, 0.08); overflow: hidden; box-shadow: 0 2px 8px rgba(0, 43, 73, 0.04); transition: transform 0.25s ease, box-shadow 0.25s ease; display: flex; flex-direction: column;">
+  <div class="team-avatar-box team-photo-wrap" style="position: relative; width: 100%; height: 95px; min-height: 95px; max-height: 95px; overflow: hidden; background: #0A192F; cursor: pointer; border-radius: 8px 8px 0 0;">
+    <img alt="Mr. Kuenga Yarpel, The Lotus Representative" data-cms-alt="about.article.alt_2" data-cms-img="about.team_img_2" decoding="async" height="95" loading="lazy" src="./assets/images/team/avatar-ky.svg" style="width: 100%; height: 100%; min-width: 100%; min-height: 100%; object-fit: cover; object-position: center center; display: block; border-radius: inherit;" width="160"/>
+    <span data-cms="about.team_flag_2" style="position: absolute; top: 5px; right: 5px; background: rgba(10, 25, 47, 0.88); color: #FFFFFF; font-size: 0.62rem; font-weight: 700; padding: 2px 6px; border-radius: 8px; backdrop-filter: blur(4px); box-shadow: 0 2px 6px rgba(0,0,0,0.2);">
+      🇧🇹 Bhutan
+    </span>
+  </div>
+  <div style="padding: 0.5rem 0.6rem 0.6rem; display: flex; flex-direction: column; flex-grow: 1;">
+    <h3 data-cms="about.team_name_2" style="font-family: var(--font-serif, 'DM Sans', sans-serif); font-size: 0.8rem; color: var(--color-dark-blue); margin: 0 0 0.15rem; font-weight: 700; line-height: 1.2; height: 2.4em; min-height: 2.4em; max-height: 2.4em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; word-break: break-word;">
+      Mr. Kuenga Yarpel
+    </h3>
+    <p data-cms="about.team_role_2" style="color: var(--color-gold, #C9A84C); font-size: 0.64rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.03em; margin: 0; line-height: 1.2; height: 2.4em; min-height: 2.4em; max-height: 2.4em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis;">
+      The Lotus Representative
+    </p>
+  </div>
 </article>
-
-<!-- Person 3: Lotus Global Representative, UK & Europe -->
-<article class="person-card" style="background: #FFFFFF; border-radius: 10px; border: 1px solid rgba(0, 43, 73, 0.08); overflow: hidden; box-shadow: 0 4px 14px rgba(0, 43, 73, 0.04); transition: transform 0.25s ease, box-shadow 0.25s ease; display: flex; flex-direction: column;">
-<div class="team-avatar-box team-photo-wrap" style="position: relative; width: 100%; height: 140px; overflow: hidden; background: #0A192F; cursor: pointer; border-radius: 10px 10px 0 0;">
-<img alt="Global Representative – United Kingdom &amp; Ireland, Lotus Global Representative, UK &amp; Europe" data-cms-alt="about.article.alt_3" data-cms-img="about.team_img_3" decoding="async" height="140" loading="lazy" src="./assets/images/team/rep-uk.svg" style="width: 100%; height: 100%; min-width: 100%; min-height: 100%; object-fit: cover; object-position: center top; display: block; border-radius: inherit;" width="240"/>
-<span data-cms="about.team_flag_3" style="position: absolute; top: 8px; right: 8px; background: rgba(10, 25, 47, 0.88); color: #FFFFFF; font-size: 0.68rem; font-weight: 700; padding: 2px 7px; border-radius: 10px; backdrop-filter: blur(4px); box-shadow: 0 2px 6px rgba(0,0,0,0.2);">
-              🇬🇧 United Kingdom
-            </span>
-</div>
-<div style="padding: 0.75rem 0.8rem 0.85rem; display: flex; flex-direction: column; flex-grow: 1;">
-<h3 data-cms="about.team_name_3" style="font-family: var(--font-serif, 'DM Sans', sans-serif); font-size: 0.86rem; color: var(--color-dark-blue); margin: 0 0 0.2rem; font-weight: 700; line-height: 1.25; height: 2.5em; min-height: 2.5em; max-height: 2.5em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; word-break: break-word;">
-              Global Representative – United Kingdom &amp; Ireland
-            </h3>
-<p data-cms="about.team_role_3" style="color: var(--color-gold, #C9A84C); font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; margin: 0 0 0.35rem; line-height: 1.25; height: 2.5em; min-height: 2.5em; max-height: 2.5em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis;">
-              Lotus Global Representative, UK &amp; Europe
-            </p>
-<p data-cms="about.team_bio_3" style="font-size: 0.74rem; line-height: 1.4; color: #64748B; margin: 0; font-style: italic; margin-top: auto; height: 2.8em; min-height: 2.8em; max-height: 2.8em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis;">
-              Dedicated concierge &amp; private expedition consultations for UK &amp; European travelers.
-            </p>
-</div>
+<!-- Representative 3: USA -->
+<article class="person-card compact-rep-card" style="background: #FFFFFF; border-radius: 8px; border: 1px solid rgba(0, 43, 73, 0.08); overflow: hidden; box-shadow: 0 2px 8px rgba(0, 43, 73, 0.04); transition: transform 0.25s ease, box-shadow 0.25s ease; display: flex; flex-direction: column;">
+  <div class="team-avatar-box team-photo-wrap" style="position: relative; width: 100%; height: 95px; min-height: 95px; max-height: 95px; overflow: hidden; background: #0A192F; cursor: pointer; border-radius: 8px 8px 0 0;">
+    <img alt="Mr. Walker, Global Representative" data-cms-alt="about.article.alt_3" data-cms-img="about.team_img_3" decoding="async" height="95" loading="lazy" src="./assets/images/team/rep-usa.svg" style="width: 100%; height: 100%; min-width: 100%; min-height: 100%; object-fit: cover; object-position: center center; display: block; border-radius: inherit;" width="160"/>
+    <span data-cms="about.team_flag_3" style="position: absolute; top: 5px; right: 5px; background: rgba(10, 25, 47, 0.88); color: #FFFFFF; font-size: 0.62rem; font-weight: 700; padding: 2px 6px; border-radius: 8px; backdrop-filter: blur(4px); box-shadow: 0 2px 6px rgba(0,0,0,0.2);">
+      🇺🇸 USA
+    </span>
+  </div>
+  <div style="padding: 0.5rem 0.6rem 0.6rem; display: flex; flex-direction: column; flex-grow: 1;">
+    <h3 data-cms="about.team_name_3" style="font-family: var(--font-serif, 'DM Sans', sans-serif); font-size: 0.8rem; color: var(--color-dark-blue); margin: 0 0 0.15rem; font-weight: 700; line-height: 1.2; height: 2.4em; min-height: 2.4em; max-height: 2.4em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; word-break: break-word;">
+      Mr. Walker
+    </h3>
+    <p data-cms="about.team_role_3" style="color: var(--color-gold, #C9A84C); font-size: 0.64rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.03em; margin: 0; line-height: 1.2; height: 2.4em; min-height: 2.4em; max-height: 2.4em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis;">
+      Global Representative
+    </p>
+  </div>
 </article>
-
-<!-- Person 4: Lotus Global Representative, Oceania -->
-<article class="person-card" style="background: #FFFFFF; border-radius: 10px; border: 1px solid rgba(0, 43, 73, 0.08); overflow: hidden; box-shadow: 0 4px 14px rgba(0, 43, 73, 0.04); transition: transform 0.25s ease, box-shadow 0.25s ease; display: flex; flex-direction: column;">
-<div class="team-avatar-box team-photo-wrap" style="position: relative; width: 100%; height: 140px; overflow: hidden; background: #0A192F; cursor: pointer; border-radius: 10px 10px 0 0;">
-<img alt="Global Representative – Australia &amp; New Zealand, Lotus Global Representative, Oceania" data-cms-alt="about.article.alt_4" data-cms-img="about.team_img_4" decoding="async" height="140" loading="lazy" src="./assets/images/team/rep-australia.svg" style="width: 100%; height: 100%; min-width: 100%; min-height: 100%; object-fit: cover; object-position: center top; display: block; border-radius: inherit;" width="240"/>
-<span data-cms="about.team_flag_4" style="position: absolute; top: 8px; right: 8px; background: rgba(10, 25, 47, 0.88); color: #FFFFFF; font-size: 0.68rem; font-weight: 700; padding: 2px 7px; border-radius: 10px; backdrop-filter: blur(4px); box-shadow: 0 2px 6px rgba(0,0,0,0.2);">
-              🇦🇺 Australia
-            </span>
-</div>
-<div style="padding: 0.75rem 0.8rem 0.85rem; display: flex; flex-direction: column; flex-grow: 1;">
-<h3 data-cms="about.team_name_4" style="font-family: var(--font-serif, 'DM Sans', sans-serif); font-size: 0.86rem; color: var(--color-dark-blue); margin: 0 0 0.2rem; font-weight: 700; line-height: 1.25; height: 2.5em; min-height: 2.5em; max-height: 2.5em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; word-break: break-word;">
-              Global Representative – Australia &amp; New Zealand
-            </h3>
-<p data-cms="about.team_role_4" style="color: var(--color-gold, #C9A84C); font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; margin: 0 0 0.35rem; line-height: 1.25; height: 2.5em; min-height: 2.5em; max-height: 2.5em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis;">
-              Lotus Global Representative, Oceania
-            </p>
-<p data-cms="about.team_bio_4" style="font-size: 0.74rem; line-height: 1.4; color: #64748B; margin: 0; font-style: italic; margin-top: auto; height: 2.8em; min-height: 2.8em; max-height: 2.8em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis;">
-              Direct travel design and concierge services for Australian and Kiwi adventurers.
-            </p>
-</div>
+<!-- Representative 4: Taiwan -->
+<article class="person-card compact-rep-card" style="background: #FFFFFF; border-radius: 8px; border: 1px solid rgba(0, 43, 73, 0.08); overflow: hidden; box-shadow: 0 2px 8px rgba(0, 43, 73, 0.04); transition: transform 0.25s ease, box-shadow 0.25s ease; display: flex; flex-direction: column;">
+  <div class="team-avatar-box team-photo-wrap" style="position: relative; width: 100%; height: 95px; min-height: 95px; max-height: 95px; overflow: hidden; background: #0A192F; cursor: pointer; border-radius: 8px 8px 0 0;">
+    <img alt="Mr. 林山景 (阿萌）, Global Representative" data-cms-alt="about.article.alt_4" data-cms-img="about.team_img_4" decoding="async" height="95" loading="lazy" src="./assets/images/team/rep-taiwan.svg" style="width: 100%; height: 100%; min-width: 100%; min-height: 100%; object-fit: cover; object-position: center center; display: block; border-radius: inherit;" width="160"/>
+    <span data-cms="about.team_flag_4" style="position: absolute; top: 5px; right: 5px; background: rgba(10, 25, 47, 0.88); color: #FFFFFF; font-size: 0.62rem; font-weight: 700; padding: 2px 6px; border-radius: 8px; backdrop-filter: blur(4px); box-shadow: 0 2px 6px rgba(0,0,0,0.2);">
+      🇹🇼 Taiwan
+    </span>
+  </div>
+  <div style="padding: 0.5rem 0.6rem 0.6rem; display: flex; flex-direction: column; flex-grow: 1;">
+    <h3 data-cms="about.team_name_4" style="font-family: var(--font-serif, 'DM Sans', sans-serif); font-size: 0.8rem; color: var(--color-dark-blue); margin: 0 0 0.15rem; font-weight: 700; line-height: 1.2; height: 2.4em; min-height: 2.4em; max-height: 2.4em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; word-break: break-word;">
+      Mr. 林山景 (阿萌）
+    </h3>
+    <p data-cms="about.team_role_4" style="color: var(--color-gold, #C9A84C); font-size: 0.64rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.03em; margin: 0; line-height: 1.2; height: 2.4em; min-height: 2.4em; max-height: 2.4em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis;">
+      Global Representative
+    </p>
+  </div>
 </article>
-
-<!-- Person 5: Lotus Global Representative, Central Europe -->
-<article class="person-card" style="background: #FFFFFF; border-radius: 10px; border: 1px solid rgba(0, 43, 73, 0.08); overflow: hidden; box-shadow: 0 4px 14px rgba(0, 43, 73, 0.04); transition: transform 0.25s ease, box-shadow 0.25s ease; display: flex; flex-direction: column;">
-<div class="team-avatar-box team-photo-wrap" style="position: relative; width: 100%; height: 140px; overflow: hidden; background: #0A192F; cursor: pointer; border-radius: 10px 10px 0 0;">
-<img alt="Global Representative – Germany &amp; DACH, Lotus Global Representative, Central Europe" data-cms-alt="about.article.alt_5" data-cms-img="about.team_img_5" decoding="async" height="140" loading="lazy" src="./assets/images/team/rep-germany.svg" style="width: 100%; height: 100%; min-width: 100%; min-height: 100%; object-fit: cover; object-position: center top; display: block; border-radius: inherit;" width="240"/>
-<span data-cms="about.team_flag_5" style="position: absolute; top: 8px; right: 8px; background: rgba(10, 25, 47, 0.88); color: #FFFFFF; font-size: 0.68rem; font-weight: 700; padding: 2px 7px; border-radius: 10px; backdrop-filter: blur(4px); box-shadow: 0 2px 6px rgba(0,0,0,0.2);">
-              🇩🇪 Germany
-            </span>
-</div>
-<div style="padding: 0.75rem 0.8rem 0.85rem; display: flex; flex-direction: column; flex-grow: 1;">
-<h3 data-cms="about.team_name_5" style="font-family: var(--font-serif, 'DM Sans', sans-serif); font-size: 0.86rem; color: var(--color-dark-blue); margin: 0 0 0.2rem; font-weight: 700; line-height: 1.25; height: 2.5em; min-height: 2.5em; max-height: 2.5em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; word-break: break-word;">
-              Global Representative – Germany &amp; DACH
-            </h3>
-<p data-cms="about.team_role_5" style="color: var(--color-gold, #C9A84C); font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; margin: 0 0 0.35rem; line-height: 1.25; height: 2.5em; min-height: 2.5em; max-height: 2.5em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis;">
-              Lotus Global Representative, Central Europe
-            </p>
-<p data-cms="about.team_bio_5" style="font-size: 0.74rem; line-height: 1.4; color: #64748B; margin: 0; font-style: italic; margin-top: auto; height: 2.8em; min-height: 2.8em; max-height: 2.8em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis;">
-              Cultural expedition coordination for German, Austrian, and Swiss private clientele.
-            </p>
-</div>
+<!-- Representative 5: Sweden & Scandinavian Countries -->
+<article class="person-card compact-rep-card" style="background: #FFFFFF; border-radius: 8px; border: 1px solid rgba(0, 43, 73, 0.08); overflow: hidden; box-shadow: 0 2px 8px rgba(0, 43, 73, 0.04); transition: transform 0.25s ease, box-shadow 0.25s ease; display: flex; flex-direction: column;">
+  <div class="team-avatar-box team-photo-wrap" style="position: relative; width: 100%; height: 95px; min-height: 95px; max-height: 95px; overflow: hidden; background: #0A192F; cursor: pointer; border-radius: 8px 8px 0 0;">
+    <img alt="Ms. Anna, Global Representative" data-cms-alt="about.article.alt_5" data-cms-img="about.team_img_5" decoding="async" height="95" loading="lazy" src="./assets/images/team/rep-sweden.svg" style="width: 100%; height: 100%; min-width: 100%; min-height: 100%; object-fit: cover; object-position: center center; display: block; border-radius: inherit;" width="160"/>
+    <span data-cms="about.team_flag_5" style="position: absolute; top: 5px; right: 5px; background: rgba(10, 25, 47, 0.88); color: #FFFFFF; font-size: 0.62rem; font-weight: 700; padding: 2px 6px; border-radius: 8px; backdrop-filter: blur(4px); box-shadow: 0 2px 6px rgba(0,0,0,0.2);">
+      🇸🇪 Sweden & Scandinavian Countries
+    </span>
+  </div>
+  <div style="padding: 0.5rem 0.6rem 0.6rem; display: flex; flex-direction: column; flex-grow: 1;">
+    <h3 data-cms="about.team_name_5" style="font-family: var(--font-serif, 'DM Sans', sans-serif); font-size: 0.8rem; color: var(--color-dark-blue); margin: 0 0 0.15rem; font-weight: 700; line-height: 1.2; height: 2.4em; min-height: 2.4em; max-height: 2.4em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; word-break: break-word;">
+      Ms. Anna
+    </h3>
+    <p data-cms="about.team_role_5" style="color: var(--color-gold, #C9A84C); font-size: 0.64rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.03em; margin: 0; line-height: 1.2; height: 2.4em; min-height: 2.4em; max-height: 2.4em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis;">
+      Global Representative
+    </p>
+  </div>
+</article>
+<!-- Representative 6: Singapore -->
+<article class="person-card compact-rep-card" style="background: #FFFFFF; border-radius: 8px; border: 1px solid rgba(0, 43, 73, 0.08); overflow: hidden; box-shadow: 0 2px 8px rgba(0, 43, 73, 0.04); transition: transform 0.25s ease, box-shadow 0.25s ease; display: flex; flex-direction: column;">
+  <div class="team-avatar-box team-photo-wrap" style="position: relative; width: 100%; height: 95px; min-height: 95px; max-height: 95px; overflow: hidden; background: #0A192F; cursor: pointer; border-radius: 8px 8px 0 0;">
+    <img alt="Global Representative, Global Representative" data-cms-alt="about.article.alt_6" data-cms-img="about.team_img_6" decoding="async" height="95" loading="lazy" src="./assets/images/team/rep-singapore.svg" style="width: 100%; height: 100%; min-width: 100%; min-height: 100%; object-fit: cover; object-position: center center; display: block; border-radius: inherit;" width="160"/>
+    <span data-cms="about.team_flag_6" style="position: absolute; top: 5px; right: 5px; background: rgba(10, 25, 47, 0.88); color: #FFFFFF; font-size: 0.62rem; font-weight: 700; padding: 2px 6px; border-radius: 8px; backdrop-filter: blur(4px); box-shadow: 0 2px 6px rgba(0,0,0,0.2);">
+      🇸🇬 Singapore
+    </span>
+  </div>
+  <div style="padding: 0.5rem 0.6rem 0.6rem; display: flex; flex-direction: column; flex-grow: 1;">
+    <h3 data-cms="about.team_name_6" style="font-family: var(--font-serif, 'DM Sans', sans-serif); font-size: 0.8rem; color: var(--color-dark-blue); margin: 0 0 0.15rem; font-weight: 700; line-height: 1.2; height: 2.4em; min-height: 2.4em; max-height: 2.4em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; word-break: break-word;">
+      Global Representative
+    </h3>
+    <p data-cms="about.team_role_6" style="color: var(--color-gold, #C9A84C); font-size: 0.64rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.03em; margin: 0; line-height: 1.2; height: 2.4em; min-height: 2.4em; max-height: 2.4em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis;">
+      Global Representative
+    </p>
+  </div>
+</article>
+<!-- Representative 7: Malaysia -->
+<article class="person-card compact-rep-card" style="background: #FFFFFF; border-radius: 8px; border: 1px solid rgba(0, 43, 73, 0.08); overflow: hidden; box-shadow: 0 2px 8px rgba(0, 43, 73, 0.04); transition: transform 0.25s ease, box-shadow 0.25s ease; display: flex; flex-direction: column;">
+  <div class="team-avatar-box team-photo-wrap" style="position: relative; width: 100%; height: 95px; min-height: 95px; max-height: 95px; overflow: hidden; background: #0A192F; cursor: pointer; border-radius: 8px 8px 0 0;">
+    <img alt="Global Representative, Global Representative" data-cms-alt="about.article.alt_7" data-cms-img="about.team_img_7" decoding="async" height="95" loading="lazy" src="./assets/images/team/rep-malaysia.svg" style="width: 100%; height: 100%; min-width: 100%; min-height: 100%; object-fit: cover; object-position: center center; display: block; border-radius: inherit;" width="160"/>
+    <span data-cms="about.team_flag_7" style="position: absolute; top: 5px; right: 5px; background: rgba(10, 25, 47, 0.88); color: #FFFFFF; font-size: 0.62rem; font-weight: 700; padding: 2px 6px; border-radius: 8px; backdrop-filter: blur(4px); box-shadow: 0 2px 6px rgba(0,0,0,0.2);">
+      🇲🇾 Malaysia
+    </span>
+  </div>
+  <div style="padding: 0.5rem 0.6rem 0.6rem; display: flex; flex-direction: column; flex-grow: 1;">
+    <h3 data-cms="about.team_name_7" style="font-family: var(--font-serif, 'DM Sans', sans-serif); font-size: 0.8rem; color: var(--color-dark-blue); margin: 0 0 0.15rem; font-weight: 700; line-height: 1.2; height: 2.4em; min-height: 2.4em; max-height: 2.4em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; word-break: break-word;">
+      Global Representative
+    </h3>
+    <p data-cms="about.team_role_7" style="color: var(--color-gold, #C9A84C); font-size: 0.64rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.03em; margin: 0; line-height: 1.2; height: 2.4em; min-height: 2.4em; max-height: 2.4em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis;">
+      Global Representative
+    </p>
+  </div>
+</article>
+<!-- Representative 8: Indonesia -->
+<article class="person-card compact-rep-card" style="background: #FFFFFF; border-radius: 8px; border: 1px solid rgba(0, 43, 73, 0.08); overflow: hidden; box-shadow: 0 2px 8px rgba(0, 43, 73, 0.04); transition: transform 0.25s ease, box-shadow 0.25s ease; display: flex; flex-direction: column;">
+  <div class="team-avatar-box team-photo-wrap" style="position: relative; width: 100%; height: 95px; min-height: 95px; max-height: 95px; overflow: hidden; background: #0A192F; cursor: pointer; border-radius: 8px 8px 0 0;">
+    <img alt="Global Representative, Global Representative" data-cms-alt="about.article.alt_8" data-cms-img="about.team_img_8" decoding="async" height="95" loading="lazy" src="./assets/images/team/rep-indonesia.svg" style="width: 100%; height: 100%; min-width: 100%; min-height: 100%; object-fit: cover; object-position: center center; display: block; border-radius: inherit;" width="160"/>
+    <span data-cms="about.team_flag_8" style="position: absolute; top: 5px; right: 5px; background: rgba(10, 25, 47, 0.88); color: #FFFFFF; font-size: 0.62rem; font-weight: 700; padding: 2px 6px; border-radius: 8px; backdrop-filter: blur(4px); box-shadow: 0 2px 6px rgba(0,0,0,0.2);">
+      🇮🇩 Indonesia
+    </span>
+  </div>
+  <div style="padding: 0.5rem 0.6rem 0.6rem; display: flex; flex-direction: column; flex-grow: 1;">
+    <h3 data-cms="about.team_name_8" style="font-family: var(--font-serif, 'DM Sans', sans-serif); font-size: 0.8rem; color: var(--color-dark-blue); margin: 0 0 0.15rem; font-weight: 700; line-height: 1.2; height: 2.4em; min-height: 2.4em; max-height: 2.4em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; word-break: break-word;">
+      Global Representative
+    </h3>
+    <p data-cms="about.team_role_8" style="color: var(--color-gold, #C9A84C); font-size: 0.64rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.03em; margin: 0; line-height: 1.2; height: 2.4em; min-height: 2.4em; max-height: 2.4em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis;">
+      Global Representative
+    </p>
+  </div>
+</article>
+<!-- Representative 9: Vietnam -->
+<article class="person-card compact-rep-card" style="background: #FFFFFF; border-radius: 8px; border: 1px solid rgba(0, 43, 73, 0.08); overflow: hidden; box-shadow: 0 2px 8px rgba(0, 43, 73, 0.04); transition: transform 0.25s ease, box-shadow 0.25s ease; display: flex; flex-direction: column;">
+  <div class="team-avatar-box team-photo-wrap" style="position: relative; width: 100%; height: 95px; min-height: 95px; max-height: 95px; overflow: hidden; background: #0A192F; cursor: pointer; border-radius: 8px 8px 0 0;">
+    <img alt="Global Representative, Global Representative" data-cms-alt="about.article.alt_9" data-cms-img="about.team_img_9" decoding="async" height="95" loading="lazy" src="./assets/images/team/rep-vietnam.svg" style="width: 100%; height: 100%; min-width: 100%; min-height: 100%; object-fit: cover; object-position: center center; display: block; border-radius: inherit;" width="160"/>
+    <span data-cms="about.team_flag_9" style="position: absolute; top: 5px; right: 5px; background: rgba(10, 25, 47, 0.88); color: #FFFFFF; font-size: 0.62rem; font-weight: 700; padding: 2px 6px; border-radius: 8px; backdrop-filter: blur(4px); box-shadow: 0 2px 6px rgba(0,0,0,0.2);">
+      🇻🇳 Vietnam
+    </span>
+  </div>
+  <div style="padding: 0.5rem 0.6rem 0.6rem; display: flex; flex-direction: column; flex-grow: 1;">
+    <h3 data-cms="about.team_name_9" style="font-family: var(--font-serif, 'DM Sans', sans-serif); font-size: 0.8rem; color: var(--color-dark-blue); margin: 0 0 0.15rem; font-weight: 700; line-height: 1.2; height: 2.4em; min-height: 2.4em; max-height: 2.4em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; word-break: break-word;">
+      Global Representative
+    </h3>
+    <p data-cms="about.team_role_9" style="color: var(--color-gold, #C9A84C); font-size: 0.64rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.03em; margin: 0; line-height: 1.2; height: 2.4em; min-height: 2.4em; max-height: 2.4em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis;">
+      Global Representative
+    </p>
+  </div>
+</article>
+<!-- Representative 10: India -->
+<article class="person-card compact-rep-card" style="background: #FFFFFF; border-radius: 8px; border: 1px solid rgba(0, 43, 73, 0.08); overflow: hidden; box-shadow: 0 2px 8px rgba(0, 43, 73, 0.04); transition: transform 0.25s ease, box-shadow 0.25s ease; display: flex; flex-direction: column;">
+  <div class="team-avatar-box team-photo-wrap" style="position: relative; width: 100%; height: 95px; min-height: 95px; max-height: 95px; overflow: hidden; background: #0A192F; cursor: pointer; border-radius: 8px 8px 0 0;">
+    <img alt="Global Representative, Global Representative" data-cms-alt="about.article.alt_10" data-cms-img="about.team_img_10" decoding="async" height="95" loading="lazy" src="./assets/images/team/rep-india.svg" style="width: 100%; height: 100%; min-width: 100%; min-height: 100%; object-fit: cover; object-position: center center; display: block; border-radius: inherit;" width="160"/>
+    <span data-cms="about.team_flag_10" style="position: absolute; top: 5px; right: 5px; background: rgba(10, 25, 47, 0.88); color: #FFFFFF; font-size: 0.62rem; font-weight: 700; padding: 2px 6px; border-radius: 8px; backdrop-filter: blur(4px); box-shadow: 0 2px 6px rgba(0,0,0,0.2);">
+      🇮🇳 India
+    </span>
+  </div>
+  <div style="padding: 0.5rem 0.6rem 0.6rem; display: flex; flex-direction: column; flex-grow: 1;">
+    <h3 data-cms="about.team_name_10" style="font-family: var(--font-serif, 'DM Sans', sans-serif); font-size: 0.8rem; color: var(--color-dark-blue); margin: 0 0 0.15rem; font-weight: 700; line-height: 1.2; height: 2.4em; min-height: 2.4em; max-height: 2.4em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; word-break: break-word;">
+      Global Representative
+    </h3>
+    <p data-cms="about.team_role_10" style="color: var(--color-gold, #C9A84C); font-size: 0.64rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.03em; margin: 0; line-height: 1.2; height: 2.4em; min-height: 2.4em; max-height: 2.4em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis;">
+      Global Representative
+    </p>
+  </div>
+</article>
+<!-- Representative 11: Myanmar -->
+<article class="person-card compact-rep-card" style="background: #FFFFFF; border-radius: 8px; border: 1px solid rgba(0, 43, 73, 0.08); overflow: hidden; box-shadow: 0 2px 8px rgba(0, 43, 73, 0.04); transition: transform 0.25s ease, box-shadow 0.25s ease; display: flex; flex-direction: column;">
+  <div class="team-avatar-box team-photo-wrap" style="position: relative; width: 100%; height: 95px; min-height: 95px; max-height: 95px; overflow: hidden; background: #0A192F; cursor: pointer; border-radius: 8px 8px 0 0;">
+    <img alt="Global Representative, Global Representative" data-cms-alt="about.article.alt_11" data-cms-img="about.team_img_11" decoding="async" height="95" loading="lazy" src="./assets/images/team/rep-myanmar.svg" style="width: 100%; height: 100%; min-width: 100%; min-height: 100%; object-fit: cover; object-position: center center; display: block; border-radius: inherit;" width="160"/>
+    <span data-cms="about.team_flag_11" style="position: absolute; top: 5px; right: 5px; background: rgba(10, 25, 47, 0.88); color: #FFFFFF; font-size: 0.62rem; font-weight: 700; padding: 2px 6px; border-radius: 8px; backdrop-filter: blur(4px); box-shadow: 0 2px 6px rgba(0,0,0,0.2);">
+      🇲🇲 Myanmar
+    </span>
+  </div>
+  <div style="padding: 0.5rem 0.6rem 0.6rem; display: flex; flex-direction: column; flex-grow: 1;">
+    <h3 data-cms="about.team_name_11" style="font-family: var(--font-serif, 'DM Sans', sans-serif); font-size: 0.8rem; color: var(--color-dark-blue); margin: 0 0 0.15rem; font-weight: 700; line-height: 1.2; height: 2.4em; min-height: 2.4em; max-height: 2.4em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; word-break: break-word;">
+      Global Representative
+    </h3>
+    <p data-cms="about.team_role_11" style="color: var(--color-gold, #C9A84C); font-size: 0.64rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.03em; margin: 0; line-height: 1.2; height: 2.4em; min-height: 2.4em; max-height: 2.4em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis;">
+      Global Representative
+    </p>
+  </div>
+</article>
+<!-- Representative 12: UK -->
+<article class="person-card compact-rep-card" style="background: #FFFFFF; border-radius: 8px; border: 1px solid rgba(0, 43, 73, 0.08); overflow: hidden; box-shadow: 0 2px 8px rgba(0, 43, 73, 0.04); transition: transform 0.25s ease, box-shadow 0.25s ease; display: flex; flex-direction: column;">
+  <div class="team-avatar-box team-photo-wrap" style="position: relative; width: 100%; height: 95px; min-height: 95px; max-height: 95px; overflow: hidden; background: #0A192F; cursor: pointer; border-radius: 8px 8px 0 0;">
+    <img alt="Global Representative, Global Representative" data-cms-alt="about.article.alt_12" data-cms-img="about.team_img_12" decoding="async" height="95" loading="lazy" src="./assets/images/team/rep-uk.svg" style="width: 100%; height: 100%; min-width: 100%; min-height: 100%; object-fit: cover; object-position: center center; display: block; border-radius: inherit;" width="160"/>
+    <span data-cms="about.team_flag_12" style="position: absolute; top: 5px; right: 5px; background: rgba(10, 25, 47, 0.88); color: #FFFFFF; font-size: 0.62rem; font-weight: 700; padding: 2px 6px; border-radius: 8px; backdrop-filter: blur(4px); box-shadow: 0 2px 6px rgba(0,0,0,0.2);">
+      🇬🇧 UK
+    </span>
+  </div>
+  <div style="padding: 0.5rem 0.6rem 0.6rem; display: flex; flex-direction: column; flex-grow: 1;">
+    <h3 data-cms="about.team_name_12" style="font-family: var(--font-serif, 'DM Sans', sans-serif); font-size: 0.8rem; color: var(--color-dark-blue); margin: 0 0 0.15rem; font-weight: 700; line-height: 1.2; height: 2.4em; min-height: 2.4em; max-height: 2.4em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; word-break: break-word;">
+      Global Representative
+    </h3>
+    <p data-cms="about.team_role_12" style="color: var(--color-gold, #C9A84C); font-size: 0.64rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.03em; margin: 0; line-height: 1.2; height: 2.4em; min-height: 2.4em; max-height: 2.4em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis;">
+      Global Representative
+    </p>
+  </div>
+</article>
+<!-- Representative 13: Scotland -->
+<article class="person-card compact-rep-card" style="background: #FFFFFF; border-radius: 8px; border: 1px solid rgba(0, 43, 73, 0.08); overflow: hidden; box-shadow: 0 2px 8px rgba(0, 43, 73, 0.04); transition: transform 0.25s ease, box-shadow 0.25s ease; display: flex; flex-direction: column;">
+  <div class="team-avatar-box team-photo-wrap" style="position: relative; width: 100%; height: 95px; min-height: 95px; max-height: 95px; overflow: hidden; background: #0A192F; cursor: pointer; border-radius: 8px 8px 0 0;">
+    <img alt="Global Representative, Global Representative" data-cms-alt="about.article.alt_13" data-cms-img="about.team_img_13" decoding="async" height="95" loading="lazy" src="./assets/images/team/rep-scotland.svg" style="width: 100%; height: 100%; min-width: 100%; min-height: 100%; object-fit: cover; object-position: center center; display: block; border-radius: inherit;" width="160"/>
+    <span data-cms="about.team_flag_13" style="position: absolute; top: 5px; right: 5px; background: rgba(10, 25, 47, 0.88); color: #FFFFFF; font-size: 0.62rem; font-weight: 700; padding: 2px 6px; border-radius: 8px; backdrop-filter: blur(4px); box-shadow: 0 2px 6px rgba(0,0,0,0.2);">
+      🏴󠁧󠁢󠁳󠁣󠁴󠁿 Scotland
+    </span>
+  </div>
+  <div style="padding: 0.5rem 0.6rem 0.6rem; display: flex; flex-direction: column; flex-grow: 1;">
+    <h3 data-cms="about.team_name_13" style="font-family: var(--font-serif, 'DM Sans', sans-serif); font-size: 0.8rem; color: var(--color-dark-blue); margin: 0 0 0.15rem; font-weight: 700; line-height: 1.2; height: 2.4em; min-height: 2.4em; max-height: 2.4em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; word-break: break-word;">
+      Global Representative
+    </h3>
+    <p data-cms="about.team_role_13" style="color: var(--color-gold, #C9A84C); font-size: 0.64rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.03em; margin: 0; line-height: 1.2; height: 2.4em; min-height: 2.4em; max-height: 2.4em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis;">
+      Global Representative
+    </p>
+  </div>
+</article>
+<!-- Representative 14: Belgium -->
+<article class="person-card compact-rep-card" style="background: #FFFFFF; border-radius: 8px; border: 1px solid rgba(0, 43, 73, 0.08); overflow: hidden; box-shadow: 0 2px 8px rgba(0, 43, 73, 0.04); transition: transform 0.25s ease, box-shadow 0.25s ease; display: flex; flex-direction: column;">
+  <div class="team-avatar-box team-photo-wrap" style="position: relative; width: 100%; height: 95px; min-height: 95px; max-height: 95px; overflow: hidden; background: #0A192F; cursor: pointer; border-radius: 8px 8px 0 0;">
+    <img alt="Global Representative, Global Representative" data-cms-alt="about.article.alt_14" data-cms-img="about.team_img_14" decoding="async" height="95" loading="lazy" src="./assets/images/team/rep-belgium.svg" style="width: 100%; height: 100%; min-width: 100%; min-height: 100%; object-fit: cover; object-position: center center; display: block; border-radius: inherit;" width="160"/>
+    <span data-cms="about.team_flag_14" style="position: absolute; top: 5px; right: 5px; background: rgba(10, 25, 47, 0.88); color: #FFFFFF; font-size: 0.62rem; font-weight: 700; padding: 2px 6px; border-radius: 8px; backdrop-filter: blur(4px); box-shadow: 0 2px 6px rgba(0,0,0,0.2);">
+      🇧🇪 Belgium
+    </span>
+  </div>
+  <div style="padding: 0.5rem 0.6rem 0.6rem; display: flex; flex-direction: column; flex-grow: 1;">
+    <h3 data-cms="about.team_name_14" style="font-family: var(--font-serif, 'DM Sans', sans-serif); font-size: 0.8rem; color: var(--color-dark-blue); margin: 0 0 0.15rem; font-weight: 700; line-height: 1.2; height: 2.4em; min-height: 2.4em; max-height: 2.4em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; word-break: break-word;">
+      Global Representative
+    </h3>
+    <p data-cms="about.team_role_14" style="color: var(--color-gold, #C9A84C); font-size: 0.64rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.03em; margin: 0; line-height: 1.2; height: 2.4em; min-height: 2.4em; max-height: 2.4em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis;">
+      Global Representative
+    </p>
+  </div>
+</article>
+<!-- Representative 15: Bangladesh -->
+<article class="person-card compact-rep-card" style="background: #FFFFFF; border-radius: 8px; border: 1px solid rgba(0, 43, 73, 0.08); overflow: hidden; box-shadow: 0 2px 8px rgba(0, 43, 73, 0.04); transition: transform 0.25s ease, box-shadow 0.25s ease; display: flex; flex-direction: column;">
+  <div class="team-avatar-box team-photo-wrap" style="position: relative; width: 100%; height: 95px; min-height: 95px; max-height: 95px; overflow: hidden; background: #0A192F; cursor: pointer; border-radius: 8px 8px 0 0;">
+    <img alt="Global Representative, Global Representative" data-cms-alt="about.article.alt_15" data-cms-img="about.team_img_15" decoding="async" height="95" loading="lazy" src="./assets/images/team/rep-bangladesh.svg" style="width: 100%; height: 100%; min-width: 100%; min-height: 100%; object-fit: cover; object-position: center center; display: block; border-radius: inherit;" width="160"/>
+    <span data-cms="about.team_flag_15" style="position: absolute; top: 5px; right: 5px; background: rgba(10, 25, 47, 0.88); color: #FFFFFF; font-size: 0.62rem; font-weight: 700; padding: 2px 6px; border-radius: 8px; backdrop-filter: blur(4px); box-shadow: 0 2px 6px rgba(0,0,0,0.2);">
+      🇧🇩 Bangladesh
+    </span>
+  </div>
+  <div style="padding: 0.5rem 0.6rem 0.6rem; display: flex; flex-direction: column; flex-grow: 1;">
+    <h3 data-cms="about.team_name_15" style="font-family: var(--font-serif, 'DM Sans', sans-serif); font-size: 0.8rem; color: var(--color-dark-blue); margin: 0 0 0.15rem; font-weight: 700; line-height: 1.2; height: 2.4em; min-height: 2.4em; max-height: 2.4em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; word-break: break-word;">
+      Global Representative
+    </h3>
+    <p data-cms="about.team_role_15" style="color: var(--color-gold, #C9A84C); font-size: 0.64rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.03em; margin: 0; line-height: 1.2; height: 2.4em; min-height: 2.4em; max-height: 2.4em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis;">
+      Global Representative
+    </p>
+  </div>
+</article>
+<!-- Representative 16: Japan -->
+<article class="person-card compact-rep-card" style="background: #FFFFFF; border-radius: 8px; border: 1px solid rgba(0, 43, 73, 0.08); overflow: hidden; box-shadow: 0 2px 8px rgba(0, 43, 73, 0.04); transition: transform 0.25s ease, box-shadow 0.25s ease; display: flex; flex-direction: column;">
+  <div class="team-avatar-box team-photo-wrap" style="position: relative; width: 100%; height: 95px; min-height: 95px; max-height: 95px; overflow: hidden; background: #0A192F; cursor: pointer; border-radius: 8px 8px 0 0;">
+    <img alt="Global Representative, Global Representative" data-cms-alt="about.article.alt_16" data-cms-img="about.team_img_16" decoding="async" height="95" loading="lazy" src="./assets/images/team/rep-japan.svg" style="width: 100%; height: 100%; min-width: 100%; min-height: 100%; object-fit: cover; object-position: center center; display: block; border-radius: inherit;" width="160"/>
+    <span data-cms="about.team_flag_16" style="position: absolute; top: 5px; right: 5px; background: rgba(10, 25, 47, 0.88); color: #FFFFFF; font-size: 0.62rem; font-weight: 700; padding: 2px 6px; border-radius: 8px; backdrop-filter: blur(4px); box-shadow: 0 2px 6px rgba(0,0,0,0.2);">
+      🇯🇵 Japan
+    </span>
+  </div>
+  <div style="padding: 0.5rem 0.6rem 0.6rem; display: flex; flex-direction: column; flex-grow: 1;">
+    <h3 data-cms="about.team_name_16" style="font-family: var(--font-serif, 'DM Sans', sans-serif); font-size: 0.8rem; color: var(--color-dark-blue); margin: 0 0 0.15rem; font-weight: 700; line-height: 1.2; height: 2.4em; min-height: 2.4em; max-height: 2.4em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; word-break: break-word;">
+      Global Representative
+    </h3>
+    <p data-cms="about.team_role_16" style="color: var(--color-gold, #C9A84C); font-size: 0.64rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.03em; margin: 0; line-height: 1.2; height: 2.4em; min-height: 2.4em; max-height: 2.4em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis;">
+      Global Representative
+    </p>
+  </div>
+</article>
+<!-- Representative 17: Korea -->
+<article class="person-card compact-rep-card" style="background: #FFFFFF; border-radius: 8px; border: 1px solid rgba(0, 43, 73, 0.08); overflow: hidden; box-shadow: 0 2px 8px rgba(0, 43, 73, 0.04); transition: transform 0.25s ease, box-shadow 0.25s ease; display: flex; flex-direction: column;">
+  <div class="team-avatar-box team-photo-wrap" style="position: relative; width: 100%; height: 95px; min-height: 95px; max-height: 95px; overflow: hidden; background: #0A192F; cursor: pointer; border-radius: 8px 8px 0 0;">
+    <img alt="Global Representative, Global Representative" data-cms-alt="about.article.alt_17" data-cms-img="about.team_img_17" decoding="async" height="95" loading="lazy" src="./assets/images/team/rep-korea.svg" style="width: 100%; height: 100%; min-width: 100%; min-height: 100%; object-fit: cover; object-position: center center; display: block; border-radius: inherit;" width="160"/>
+    <span data-cms="about.team_flag_17" style="position: absolute; top: 5px; right: 5px; background: rgba(10, 25, 47, 0.88); color: #FFFFFF; font-size: 0.62rem; font-weight: 700; padding: 2px 6px; border-radius: 8px; backdrop-filter: blur(4px); box-shadow: 0 2px 6px rgba(0,0,0,0.2);">
+      🇰🇷 Korea
+    </span>
+  </div>
+  <div style="padding: 0.5rem 0.6rem 0.6rem; display: flex; flex-direction: column; flex-grow: 1;">
+    <h3 data-cms="about.team_name_17" style="font-family: var(--font-serif, 'DM Sans', sans-serif); font-size: 0.8rem; color: var(--color-dark-blue); margin: 0 0 0.15rem; font-weight: 700; line-height: 1.2; height: 2.4em; min-height: 2.4em; max-height: 2.4em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; word-break: break-word;">
+      Global Representative
+    </h3>
+    <p data-cms="about.team_role_17" style="color: var(--color-gold, #C9A84C); font-size: 0.64rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.03em; margin: 0; line-height: 1.2; height: 2.4em; min-height: 2.4em; max-height: 2.4em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis;">
+      Global Representative
+    </p>
+  </div>
+</article>
+<!-- Representative 18: Canada -->
+<article class="person-card compact-rep-card" style="background: #FFFFFF; border-radius: 8px; border: 1px solid rgba(0, 43, 73, 0.08); overflow: hidden; box-shadow: 0 2px 8px rgba(0, 43, 73, 0.04); transition: transform 0.25s ease, box-shadow 0.25s ease; display: flex; flex-direction: column;">
+  <div class="team-avatar-box team-photo-wrap" style="position: relative; width: 100%; height: 95px; min-height: 95px; max-height: 95px; overflow: hidden; background: #0A192F; cursor: pointer; border-radius: 8px 8px 0 0;">
+    <img alt="Global Representative, Global Representative" data-cms-alt="about.article.alt_18" data-cms-img="about.team_img_18" decoding="async" height="95" loading="lazy" src="./assets/images/team/rep-canada.svg" style="width: 100%; height: 100%; min-width: 100%; min-height: 100%; object-fit: cover; object-position: center center; display: block; border-radius: inherit;" width="160"/>
+    <span data-cms="about.team_flag_18" style="position: absolute; top: 5px; right: 5px; background: rgba(10, 25, 47, 0.88); color: #FFFFFF; font-size: 0.62rem; font-weight: 700; padding: 2px 6px; border-radius: 8px; backdrop-filter: blur(4px); box-shadow: 0 2px 6px rgba(0,0,0,0.2);">
+      🇨🇦 Canada
+    </span>
+  </div>
+  <div style="padding: 0.5rem 0.6rem 0.6rem; display: flex; flex-direction: column; flex-grow: 1;">
+    <h3 data-cms="about.team_name_18" style="font-family: var(--font-serif, 'DM Sans', sans-serif); font-size: 0.8rem; color: var(--color-dark-blue); margin: 0 0 0.15rem; font-weight: 700; line-height: 1.2; height: 2.4em; min-height: 2.4em; max-height: 2.4em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; word-break: break-word;">
+      Global Representative
+    </h3>
+    <p data-cms="about.team_role_18" style="color: var(--color-gold, #C9A84C); font-size: 0.64rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.03em; margin: 0; line-height: 1.2; height: 2.4em; min-height: 2.4em; max-height: 2.4em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis;">
+      Global Representative
+    </p>
+  </div>
+</article>
+<!-- Representative 19: China -->
+<article class="person-card compact-rep-card" style="background: #FFFFFF; border-radius: 8px; border: 1px solid rgba(0, 43, 73, 0.08); overflow: hidden; box-shadow: 0 2px 8px rgba(0, 43, 73, 0.04); transition: transform 0.25s ease, box-shadow 0.25s ease; display: flex; flex-direction: column;">
+  <div class="team-avatar-box team-photo-wrap" style="position: relative; width: 100%; height: 95px; min-height: 95px; max-height: 95px; overflow: hidden; background: #0A192F; cursor: pointer; border-radius: 8px 8px 0 0;">
+    <img alt="Global Representative, Global Representative" data-cms-alt="about.article.alt_19" data-cms-img="about.team_img_19" decoding="async" height="95" loading="lazy" src="./assets/images/team/rep-china.svg" style="width: 100%; height: 100%; min-width: 100%; min-height: 100%; object-fit: cover; object-position: center center; display: block; border-radius: inherit;" width="160"/>
+    <span data-cms="about.team_flag_19" style="position: absolute; top: 5px; right: 5px; background: rgba(10, 25, 47, 0.88); color: #FFFFFF; font-size: 0.62rem; font-weight: 700; padding: 2px 6px; border-radius: 8px; backdrop-filter: blur(4px); box-shadow: 0 2px 6px rgba(0,0,0,0.2);">
+      🇨🇳 China
+    </span>
+  </div>
+  <div style="padding: 0.5rem 0.6rem 0.6rem; display: flex; flex-direction: column; flex-grow: 1;">
+    <h3 data-cms="about.team_name_19" style="font-family: var(--font-serif, 'DM Sans', sans-serif); font-size: 0.8rem; color: var(--color-dark-blue); margin: 0 0 0.15rem; font-weight: 700; line-height: 1.2; height: 2.4em; min-height: 2.4em; max-height: 2.4em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; word-break: break-word;">
+      Global Representative
+    </h3>
+    <p data-cms="about.team_role_19" style="color: var(--color-gold, #C9A84C); font-size: 0.64rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.03em; margin: 0; line-height: 1.2; height: 2.4em; min-height: 2.4em; max-height: 2.4em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis;">
+      Global Representative
+    </p>
+  </div>
+</article>
+<!-- Representative 20: Thailand -->
+<article class="person-card compact-rep-card" style="background: #FFFFFF; border-radius: 8px; border: 1px solid rgba(0, 43, 73, 0.08); overflow: hidden; box-shadow: 0 2px 8px rgba(0, 43, 73, 0.04); transition: transform 0.25s ease, box-shadow 0.25s ease; display: flex; flex-direction: column;">
+  <div class="team-avatar-box team-photo-wrap" style="position: relative; width: 100%; height: 95px; min-height: 95px; max-height: 95px; overflow: hidden; background: #0A192F; cursor: pointer; border-radius: 8px 8px 0 0;">
+    <img alt="Global Representative, Global Representative" data-cms-alt="about.article.alt_20" data-cms-img="about.team_img_20" decoding="async" height="95" loading="lazy" src="./assets/images/team/rep-thailand.svg" style="width: 100%; height: 100%; min-width: 100%; min-height: 100%; object-fit: cover; object-position: center center; display: block; border-radius: inherit;" width="160"/>
+    <span data-cms="about.team_flag_20" style="position: absolute; top: 5px; right: 5px; background: rgba(10, 25, 47, 0.88); color: #FFFFFF; font-size: 0.62rem; font-weight: 700; padding: 2px 6px; border-radius: 8px; backdrop-filter: blur(4px); box-shadow: 0 2px 6px rgba(0,0,0,0.2);">
+      🇹🇭 Thailand
+    </span>
+  </div>
+  <div style="padding: 0.5rem 0.6rem 0.6rem; display: flex; flex-direction: column; flex-grow: 1;">
+    <h3 data-cms="about.team_name_20" style="font-family: var(--font-serif, 'DM Sans', sans-serif); font-size: 0.8rem; color: var(--color-dark-blue); margin: 0 0 0.15rem; font-weight: 700; line-height: 1.2; height: 2.4em; min-height: 2.4em; max-height: 2.4em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; word-break: break-word;">
+      Global Representative
+    </h3>
+    <p data-cms="about.team_role_20" style="color: var(--color-gold, #C9A84C); font-size: 0.64rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.03em; margin: 0; line-height: 1.2; height: 2.4em; min-height: 2.4em; max-height: 2.4em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis;">
+      Global Representative
+    </p>
+  </div>
+</article>
+<!-- Representative 21: Hong Kong -->
+<article class="person-card compact-rep-card" style="background: #FFFFFF; border-radius: 8px; border: 1px solid rgba(0, 43, 73, 0.08); overflow: hidden; box-shadow: 0 2px 8px rgba(0, 43, 73, 0.04); transition: transform 0.25s ease, box-shadow 0.25s ease; display: flex; flex-direction: column;">
+  <div class="team-avatar-box team-photo-wrap" style="position: relative; width: 100%; height: 95px; min-height: 95px; max-height: 95px; overflow: hidden; background: #0A192F; cursor: pointer; border-radius: 8px 8px 0 0;">
+    <img alt="Global Representative, Global Representative" data-cms-alt="about.article.alt_21" data-cms-img="about.team_img_21" decoding="async" height="95" loading="lazy" src="./assets/images/team/rep-hongkong.svg" style="width: 100%; height: 100%; min-width: 100%; min-height: 100%; object-fit: cover; object-position: center center; display: block; border-radius: inherit;" width="160"/>
+    <span data-cms="about.team_flag_21" style="position: absolute; top: 5px; right: 5px; background: rgba(10, 25, 47, 0.88); color: #FFFFFF; font-size: 0.62rem; font-weight: 700; padding: 2px 6px; border-radius: 8px; backdrop-filter: blur(4px); box-shadow: 0 2px 6px rgba(0,0,0,0.2);">
+      🇭🇰 Hong Kong
+    </span>
+  </div>
+  <div style="padding: 0.5rem 0.6rem 0.6rem; display: flex; flex-direction: column; flex-grow: 1;">
+    <h3 data-cms="about.team_name_21" style="font-family: var(--font-serif, 'DM Sans', sans-serif); font-size: 0.8rem; color: var(--color-dark-blue); margin: 0 0 0.15rem; font-weight: 700; line-height: 1.2; height: 2.4em; min-height: 2.4em; max-height: 2.4em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; word-break: break-word;">
+      Global Representative
+    </h3>
+    <p data-cms="about.team_role_21" style="color: var(--color-gold, #C9A84C); font-size: 0.64rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.03em; margin: 0; line-height: 1.2; height: 2.4em; min-height: 2.4em; max-height: 2.4em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis;">
+      Global Representative
+    </p>
+  </div>
+</article>
+<!-- Representative 22: Italy -->
+<article class="person-card compact-rep-card" style="background: #FFFFFF; border-radius: 8px; border: 1px solid rgba(0, 43, 73, 0.08); overflow: hidden; box-shadow: 0 2px 8px rgba(0, 43, 73, 0.04); transition: transform 0.25s ease, box-shadow 0.25s ease; display: flex; flex-direction: column;">
+  <div class="team-avatar-box team-photo-wrap" style="position: relative; width: 100%; height: 95px; min-height: 95px; max-height: 95px; overflow: hidden; background: #0A192F; cursor: pointer; border-radius: 8px 8px 0 0;">
+    <img alt="Global Representative, Global Representative" data-cms-alt="about.article.alt_22" data-cms-img="about.team_img_22" decoding="async" height="95" loading="lazy" src="./assets/images/team/rep-italy.svg" style="width: 100%; height: 100%; min-width: 100%; min-height: 100%; object-fit: cover; object-position: center center; display: block; border-radius: inherit;" width="160"/>
+    <span data-cms="about.team_flag_22" style="position: absolute; top: 5px; right: 5px; background: rgba(10, 25, 47, 0.88); color: #FFFFFF; font-size: 0.62rem; font-weight: 700; padding: 2px 6px; border-radius: 8px; backdrop-filter: blur(4px); box-shadow: 0 2px 6px rgba(0,0,0,0.2);">
+      🇮🇹 Italy
+    </span>
+  </div>
+  <div style="padding: 0.5rem 0.6rem 0.6rem; display: flex; flex-direction: column; flex-grow: 1;">
+    <h3 data-cms="about.team_name_22" style="font-family: var(--font-serif, 'DM Sans', sans-serif); font-size: 0.8rem; color: var(--color-dark-blue); margin: 0 0 0.15rem; font-weight: 700; line-height: 1.2; height: 2.4em; min-height: 2.4em; max-height: 2.4em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; word-break: break-word;">
+      Global Representative
+    </h3>
+    <p data-cms="about.team_role_22" style="color: var(--color-gold, #C9A84C); font-size: 0.64rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.03em; margin: 0; line-height: 1.2; height: 2.4em; min-height: 2.4em; max-height: 2.4em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis;">
+      Global Representative
+    </p>
+  </div>
+</article>
+<!-- Representative 23: Germany -->
+<article class="person-card compact-rep-card" style="background: #FFFFFF; border-radius: 8px; border: 1px solid rgba(0, 43, 73, 0.08); overflow: hidden; box-shadow: 0 2px 8px rgba(0, 43, 73, 0.04); transition: transform 0.25s ease, box-shadow 0.25s ease; display: flex; flex-direction: column;">
+  <div class="team-avatar-box team-photo-wrap" style="position: relative; width: 100%; height: 95px; min-height: 95px; max-height: 95px; overflow: hidden; background: #0A192F; cursor: pointer; border-radius: 8px 8px 0 0;">
+    <img alt="Global Representative, Global Representative" data-cms-alt="about.article.alt_23" data-cms-img="about.team_img_23" decoding="async" height="95" loading="lazy" src="./assets/images/team/rep-germany.svg" style="width: 100%; height: 100%; min-width: 100%; min-height: 100%; object-fit: cover; object-position: center center; display: block; border-radius: inherit;" width="160"/>
+    <span data-cms="about.team_flag_23" style="position: absolute; top: 5px; right: 5px; background: rgba(10, 25, 47, 0.88); color: #FFFFFF; font-size: 0.62rem; font-weight: 700; padding: 2px 6px; border-radius: 8px; backdrop-filter: blur(4px); box-shadow: 0 2px 6px rgba(0,0,0,0.2);">
+      🇩🇪 Germany
+    </span>
+  </div>
+  <div style="padding: 0.5rem 0.6rem 0.6rem; display: flex; flex-direction: column; flex-grow: 1;">
+    <h3 data-cms="about.team_name_23" style="font-family: var(--font-serif, 'DM Sans', sans-serif); font-size: 0.8rem; color: var(--color-dark-blue); margin: 0 0 0.15rem; font-weight: 700; line-height: 1.2; height: 2.4em; min-height: 2.4em; max-height: 2.4em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; word-break: break-word;">
+      Global Representative
+    </h3>
+    <p data-cms="about.team_role_23" style="color: var(--color-gold, #C9A84C); font-size: 0.64rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.03em; margin: 0; line-height: 1.2; height: 2.4em; min-height: 2.4em; max-height: 2.4em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis;">
+      Global Representative
+    </p>
+  </div>
+</article>
+<!-- Representative 24: France -->
+<article class="person-card compact-rep-card" style="background: #FFFFFF; border-radius: 8px; border: 1px solid rgba(0, 43, 73, 0.08); overflow: hidden; box-shadow: 0 2px 8px rgba(0, 43, 73, 0.04); transition: transform 0.25s ease, box-shadow 0.25s ease; display: flex; flex-direction: column;">
+  <div class="team-avatar-box team-photo-wrap" style="position: relative; width: 100%; height: 95px; min-height: 95px; max-height: 95px; overflow: hidden; background: #0A192F; cursor: pointer; border-radius: 8px 8px 0 0;">
+    <img alt="Global Representative, Global Representative" data-cms-alt="about.article.alt_24" data-cms-img="about.team_img_24" decoding="async" height="95" loading="lazy" src="./assets/images/team/rep-france.svg" style="width: 100%; height: 100%; min-width: 100%; min-height: 100%; object-fit: cover; object-position: center center; display: block; border-radius: inherit;" width="160"/>
+    <span data-cms="about.team_flag_24" style="position: absolute; top: 5px; right: 5px; background: rgba(10, 25, 47, 0.88); color: #FFFFFF; font-size: 0.62rem; font-weight: 700; padding: 2px 6px; border-radius: 8px; backdrop-filter: blur(4px); box-shadow: 0 2px 6px rgba(0,0,0,0.2);">
+      🇫🇷 France
+    </span>
+  </div>
+  <div style="padding: 0.5rem 0.6rem 0.6rem; display: flex; flex-direction: column; flex-grow: 1;">
+    <h3 data-cms="about.team_name_24" style="font-family: var(--font-serif, 'DM Sans', sans-serif); font-size: 0.8rem; color: var(--color-dark-blue); margin: 0 0 0.15rem; font-weight: 700; line-height: 1.2; height: 2.4em; min-height: 2.4em; max-height: 2.4em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; word-break: break-word;">
+      Global Representative
+    </h3>
+    <p data-cms="about.team_role_24" style="color: var(--color-gold, #C9A84C); font-size: 0.64rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.03em; margin: 0; line-height: 1.2; height: 2.4em; min-height: 2.4em; max-height: 2.4em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis;">
+      Global Representative
+    </p>
+  </div>
+</article>
+<!-- Representative 25: Switzerland -->
+<article class="person-card compact-rep-card" style="background: #FFFFFF; border-radius: 8px; border: 1px solid rgba(0, 43, 73, 0.08); overflow: hidden; box-shadow: 0 2px 8px rgba(0, 43, 73, 0.04); transition: transform 0.25s ease, box-shadow 0.25s ease; display: flex; flex-direction: column;">
+  <div class="team-avatar-box team-photo-wrap" style="position: relative; width: 100%; height: 95px; min-height: 95px; max-height: 95px; overflow: hidden; background: #0A192F; cursor: pointer; border-radius: 8px 8px 0 0;">
+    <img alt="Global Representative, Global Representative" data-cms-alt="about.article.alt_25" data-cms-img="about.team_img_25" decoding="async" height="95" loading="lazy" src="./assets/images/team/rep-switzerland.svg" style="width: 100%; height: 100%; min-width: 100%; min-height: 100%; object-fit: cover; object-position: center center; display: block; border-radius: inherit;" width="160"/>
+    <span data-cms="about.team_flag_25" style="position: absolute; top: 5px; right: 5px; background: rgba(10, 25, 47, 0.88); color: #FFFFFF; font-size: 0.62rem; font-weight: 700; padding: 2px 6px; border-radius: 8px; backdrop-filter: blur(4px); box-shadow: 0 2px 6px rgba(0,0,0,0.2);">
+      🇨🇭 Switzerland
+    </span>
+  </div>
+  <div style="padding: 0.5rem 0.6rem 0.6rem; display: flex; flex-direction: column; flex-grow: 1;">
+    <h3 data-cms="about.team_name_25" style="font-family: var(--font-serif, 'DM Sans', sans-serif); font-size: 0.8rem; color: var(--color-dark-blue); margin: 0 0 0.15rem; font-weight: 700; line-height: 1.2; height: 2.4em; min-height: 2.4em; max-height: 2.4em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; word-break: break-word;">
+      Global Representative
+    </h3>
+    <p data-cms="about.team_role_25" style="color: var(--color-gold, #C9A84C); font-size: 0.64rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.03em; margin: 0; line-height: 1.2; height: 2.4em; min-height: 2.4em; max-height: 2.4em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis;">
+      Global Representative
+    </p>
+  </div>
+</article>
+<!-- Representative 26: Austria -->
+<article class="person-card compact-rep-card" style="background: #FFFFFF; border-radius: 8px; border: 1px solid rgba(0, 43, 73, 0.08); overflow: hidden; box-shadow: 0 2px 8px rgba(0, 43, 73, 0.04); transition: transform 0.25s ease, box-shadow 0.25s ease; display: flex; flex-direction: column;">
+  <div class="team-avatar-box team-photo-wrap" style="position: relative; width: 100%; height: 95px; min-height: 95px; max-height: 95px; overflow: hidden; background: #0A192F; cursor: pointer; border-radius: 8px 8px 0 0;">
+    <img alt="Global Representative, Global Representative" data-cms-alt="about.article.alt_26" data-cms-img="about.team_img_26" decoding="async" height="95" loading="lazy" src="./assets/images/team/rep-austria.svg" style="width: 100%; height: 100%; min-width: 100%; min-height: 100%; object-fit: cover; object-position: center center; display: block; border-radius: inherit;" width="160"/>
+    <span data-cms="about.team_flag_26" style="position: absolute; top: 5px; right: 5px; background: rgba(10, 25, 47, 0.88); color: #FFFFFF; font-size: 0.62rem; font-weight: 700; padding: 2px 6px; border-radius: 8px; backdrop-filter: blur(4px); box-shadow: 0 2px 6px rgba(0,0,0,0.2);">
+      🇦🇹 Austria
+    </span>
+  </div>
+  <div style="padding: 0.5rem 0.6rem 0.6rem; display: flex; flex-direction: column; flex-grow: 1;">
+    <h3 data-cms="about.team_name_26" style="font-family: var(--font-serif, 'DM Sans', sans-serif); font-size: 0.8rem; color: var(--color-dark-blue); margin: 0 0 0.15rem; font-weight: 700; line-height: 1.2; height: 2.4em; min-height: 2.4em; max-height: 2.4em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; word-break: break-word;">
+      Global Representative
+    </h3>
+    <p data-cms="about.team_role_26" style="color: var(--color-gold, #C9A84C); font-size: 0.64rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.03em; margin: 0; line-height: 1.2; height: 2.4em; min-height: 2.4em; max-height: 2.4em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis;">
+      Global Representative
+    </p>
+  </div>
+</article>
+<!-- Representative 27: Spain -->
+<article class="person-card compact-rep-card" style="background: #FFFFFF; border-radius: 8px; border: 1px solid rgba(0, 43, 73, 0.08); overflow: hidden; box-shadow: 0 2px 8px rgba(0, 43, 73, 0.04); transition: transform 0.25s ease, box-shadow 0.25s ease; display: flex; flex-direction: column;">
+  <div class="team-avatar-box team-photo-wrap" style="position: relative; width: 100%; height: 95px; min-height: 95px; max-height: 95px; overflow: hidden; background: #0A192F; cursor: pointer; border-radius: 8px 8px 0 0;">
+    <img alt="Global Representative, Global Representative" data-cms-alt="about.article.alt_27" data-cms-img="about.team_img_27" decoding="async" height="95" loading="lazy" src="./assets/images/team/rep-spain.svg" style="width: 100%; height: 100%; min-width: 100%; min-height: 100%; object-fit: cover; object-position: center center; display: block; border-radius: inherit;" width="160"/>
+    <span data-cms="about.team_flag_27" style="position: absolute; top: 5px; right: 5px; background: rgba(10, 25, 47, 0.88); color: #FFFFFF; font-size: 0.62rem; font-weight: 700; padding: 2px 6px; border-radius: 8px; backdrop-filter: blur(4px); box-shadow: 0 2px 6px rgba(0,0,0,0.2);">
+      🇪🇸 Spain
+    </span>
+  </div>
+  <div style="padding: 0.5rem 0.6rem 0.6rem; display: flex; flex-direction: column; flex-grow: 1;">
+    <h3 data-cms="about.team_name_27" style="font-family: var(--font-serif, 'DM Sans', sans-serif); font-size: 0.8rem; color: var(--color-dark-blue); margin: 0 0 0.15rem; font-weight: 700; line-height: 1.2; height: 2.4em; min-height: 2.4em; max-height: 2.4em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; word-break: break-word;">
+      Global Representative
+    </h3>
+    <p data-cms="about.team_role_27" style="color: var(--color-gold, #C9A84C); font-size: 0.64rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.03em; margin: 0; line-height: 1.2; height: 2.4em; min-height: 2.4em; max-height: 2.4em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis;">
+      Global Representative
+    </p>
+  </div>
+</article>
+<!-- Representative 28: Nepal -->
+<article class="person-card compact-rep-card" style="background: #FFFFFF; border-radius: 8px; border: 1px solid rgba(0, 43, 73, 0.08); overflow: hidden; box-shadow: 0 2px 8px rgba(0, 43, 73, 0.04); transition: transform 0.25s ease, box-shadow 0.25s ease; display: flex; flex-direction: column;">
+  <div class="team-avatar-box team-photo-wrap" style="position: relative; width: 100%; height: 95px; min-height: 95px; max-height: 95px; overflow: hidden; background: #0A192F; cursor: pointer; border-radius: 8px 8px 0 0;">
+    <img alt="Global Representative, Global Representative" data-cms-alt="about.article.alt_28" data-cms-img="about.team_img_28" decoding="async" height="95" loading="lazy" src="./assets/images/team/rep-nepal.svg" style="width: 100%; height: 100%; min-width: 100%; min-height: 100%; object-fit: cover; object-position: center center; display: block; border-radius: inherit;" width="160"/>
+    <span data-cms="about.team_flag_28" style="position: absolute; top: 5px; right: 5px; background: rgba(10, 25, 47, 0.88); color: #FFFFFF; font-size: 0.62rem; font-weight: 700; padding: 2px 6px; border-radius: 8px; backdrop-filter: blur(4px); box-shadow: 0 2px 6px rgba(0,0,0,0.2);">
+      🇳🇵 Nepal
+    </span>
+  </div>
+  <div style="padding: 0.5rem 0.6rem 0.6rem; display: flex; flex-direction: column; flex-grow: 1;">
+    <h3 data-cms="about.team_name_28" style="font-family: var(--font-serif, 'DM Sans', sans-serif); font-size: 0.8rem; color: var(--color-dark-blue); margin: 0 0 0.15rem; font-weight: 700; line-height: 1.2; height: 2.4em; min-height: 2.4em; max-height: 2.4em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; word-break: break-word;">
+      Global Representative
+    </h3>
+    <p data-cms="about.team_role_28" style="color: var(--color-gold, #C9A84C); font-size: 0.64rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.03em; margin: 0; line-height: 1.2; height: 2.4em; min-height: 2.4em; max-height: 2.4em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis;">
+      Global Representative
+    </p>
+  </div>
 </article>
 </div></div>
 </section>
@@ -1321,7 +1690,7 @@ img[data-cms-img*="about.team_img"] {
           if (grid) {
             const published = teamData.filter(m => m.published !== false);
             published.sort((a, b) => (a.sortOrder || 1) - (b.sortOrder || 1));
-            grid.innerHTML = published.slice(0, 5).map((m, idx) => {
+            grid.innerHTML = published.map((m, idx) => {
               const photoUrl = m.photo ? (m.photo.url || m.photo.secure_url || '') : '';
               const alt = m.photo ? (m.photo.alt || `${m.name}, ${m.role}`) : `${m.name}, ${m.role}`;
               const bio = m.bio && m.bio.trim() ? m.bio : 'Introduction coming soon';
@@ -1331,8 +1700,8 @@ img[data-cms-img*="about.team_img"] {
 
               return `
                 <article class="person-card" style="background: #FFFFFF; border-radius: 10px; border: 1px solid rgba(0, 43, 73, 0.08); overflow: hidden; box-shadow: 0 4px 14px rgba(0, 43, 73, 0.04); transition: transform 0.25s ease, box-shadow 0.25s ease; display: flex; flex-direction: column;">
-                  <div class="team-avatar-box team-photo-wrap" style="position: relative; width: 100%; height: 140px; overflow: hidden; background: #0A192F; cursor: pointer; border-radius: 10px 10px 0 0;">
-                    ${photoUrl ? `<img src="${photoUrl}" alt="${alt}" loading="lazy" width="240" height="140" style="width: 100%; height: 100%; min-width: 100%; min-height: 100%; object-fit: cover; object-position: top center; display: block; border-radius: inherit;" decoding="async" data-cms-img="about.team_img_${num}">` : `<div class="team-avatar-placeholder" style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:2.2rem;cursor:pointer;border-radius:inherit;" data-cms-img="about.team_img_${num}" title="Click to upload/change photo">${flag}</div>`}
+                  <div class="team-avatar-box team-photo-wrap" style="position: relative; width: 100%; height: 95px; min-height: 95px; max-height: 95px; overflow: hidden; background: #0A192F; cursor: pointer; border-radius: 10px 10px 0 0;">
+                    ${photoUrl ? `<img src="${photoUrl}" alt="${alt}" loading="lazy" width="240" height="95" style="width: 100%; height: 100%; min-width: 100%; min-height: 100%; object-fit: cover; object-position: top center; display: block; border-radius: inherit;" decoding="async" data-cms-img="about.team_img_${num}">` : `<div class="team-avatar-placeholder" style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:2.2rem;cursor:pointer;border-radius:inherit;" data-cms-img="about.team_img_${num}" title="Click to upload/change photo">${flag}</div>`}
                     <span style="position: absolute; top: 8px; right: 8px; background: rgba(10, 25, 47, 0.88); color: #FFFFFF; font-size: 0.68rem; font-weight: 700; padding: 2px 7px; border-radius: 10px; backdrop-filter: blur(4px); box-shadow: 0 2px 6px rgba(0,0,0,0.2);" data-cms="about.team_flag_${num}">
                       ${flag} ${country}
                     </span>

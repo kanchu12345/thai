@@ -1289,7 +1289,7 @@
 
       const published = teamData.filter(m => m.published !== false);
       published.sort((a, b) => (a.sortOrder || 1) - (b.sortOrder || 1));
-      const activeMembers = published.slice(0, 5);
+      const activeMembers = published;
 
       teamGrid.innerHTML = activeMembers.map((m, idx) => {
         const photoUrl = m.photo ? (m.photo.url || m.photo.secure_url || '') : '';
@@ -1301,13 +1301,13 @@
 
         return `
           <article class="person-card" style="background: #FFFFFF; border-radius: 10px; border: 1px solid rgba(0, 43, 73, 0.08); overflow: hidden; box-shadow: 0 4px 14px rgba(0, 43, 73, 0.04); transition: transform 0.25s ease, box-shadow 0.25s ease; display: flex; flex-direction: column;">
-            <div class="team-avatar-box team-photo-wrap" style="position: relative; width: 100%; height: 140px; overflow: hidden; background: #0A192F; cursor: pointer; border-radius: 10px 10px 0 0;">
-              ${photoUrl ? `<img src="${photoUrl}" alt="${alt}" loading="lazy" width="240" height="140" style="width: 100%; height: 100%; min-width: 100%; min-height: 100%; object-fit: cover; object-position: top center; display: block; border-radius: inherit;" decoding="async" data-cms-img="about.team_img_${num}">` : `<div class="team-avatar-placeholder" style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:2.2rem;cursor:pointer;border-radius:inherit;" data-cms-img="about.team_img_${num}" title="Click to upload/change photo">${flag}</div>`}
+            <div class="team-avatar-box team-photo-wrap" style="position: relative; width: 100%; height: 95px; min-height: 95px; max-height: 95px; overflow: hidden; background: #0A192F; cursor: pointer; border-radius: 10px 10px 0 0;">
+              ${photoUrl ? `<img src="${photoUrl}" alt="${alt}" loading="lazy" width="240" height="95" style="width: 100%; height: 100%; min-width: 100%; min-height: 100%; object-fit: cover; object-position: top center; display: block; border-radius: inherit;" decoding="async" data-cms-img="about.team_img_${num}">` : `<div class="team-avatar-placeholder" style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:2.2rem;cursor:pointer;border-radius:inherit;" data-cms-img="about.team_img_${num}" title="Click to upload/change photo">${flag}</div>`}
               <span style="position: absolute; top: 8px; right: 8px; background: rgba(10, 25, 47, 0.88); color: #FFFFFF; font-size: 0.68rem; font-weight: 700; padding: 2px 7px; border-radius: 10px; backdrop-filter: blur(4px); box-shadow: 0 2px 6px rgba(0,0,0,0.2);" data-cms="about.team_flag_${num}">
                 ${flag} ${country}
               </span>
             </div>
-            <div style="padding: 0.75rem 0.8rem 0.85rem; display: flex; flex-direction: column; flex-grow: 1;">
+            <div style="padding: 0.5rem 0.6rem 0.6rem; display: flex; flex-direction: column; flex-grow: 1;">
               <h3 style="font-family: var(--font-serif, 'DM Sans', sans-serif); font-size: 0.86rem; color: var(--color-dark-blue); margin: 0 0 0.2rem; font-weight: 700; line-height: 1.25; height: 2.5em; min-height: 2.5em; max-height: 2.5em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; word-break: break-word;" data-cms="about.team_name_${num}">
                 ${m.name}
               </h3>
