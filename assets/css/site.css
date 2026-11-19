@@ -5732,7 +5732,15 @@ figure img {
 
 /* 4. DESTINATION & EXPERIENCE CARDS (600x450 ~ 4:3) */
 .dest-card,
-.destination-card,
+.destination-card {
+  aspect-ratio: auto !important;
+  height: auto !important;
+  overflow: hidden !important;
+}
+
+.dest-card-media,
+.destination-card-media,
+.dest-card .dest-card-media,
 .dest-card-img,
 .destination-card-img,
 .dest-card-figure,
@@ -5742,9 +5750,12 @@ figure img {
 .cultural-card-img,
 .wildlife-card-img {
   width: 100% !important;
+  height: 220px !important;
+  min-height: 220px !important;
   overflow: hidden !important;
-  aspect-ratio: 4 / 3 !important;
   position: relative !important;
+  display: block !important;
+  background: #e2e8f0 !important;
 }
 
 .dest-card img,
