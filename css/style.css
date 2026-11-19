@@ -8054,16 +8054,16 @@ img {
   border-color: rgba(212, 175, 55, 0.3) !important;
 }
 
-/* Auto-Shaped Avatar Container */
+/* Auto-Shaped Avatar Container - 1:1 Square Portrait Framing */
 .team-avatar-box,
 .team-photo-wrap,
 .team-avatar-placeholder {
   position: relative !important;
   width: 100% !important;
-  height: 140px !important;
-  min-height: 140px !important;
-  max-height: 140px !important;
-  aspect-ratio: 16 / 10 !important;
+  aspect-ratio: 1 / 1 !important;
+  height: auto !important;
+  min-height: unset !important;
+  max-height: unset !important;
   overflow: hidden !important;
   border-radius: 10px 10px 0 0 !important;
   background: #0A192F !important;
@@ -8701,18 +8701,17 @@ figure img {
   object-position: center 20% !important;
 }
 
-/* 8. TEAM AVATARS & GLOBAL REPRESENTATIVES (1:1 & Compact 16:10) */
+/* 8. TEAM AVATARS & GLOBAL REPRESENTATIVES - 100% Full Portrait (1:1 Ratio, No Cropped Head/Collar) */
 .team-avatar-box,
 .team-photo-wrap,
-.team-avatar-placeholder {
-  overflow: hidden !important;
-}
-
+.team-avatar-placeholder,
 .person-card .team-avatar-box,
-.person-card .team-photo-wrap,
-.team-avatar-placeholder {
+.person-card .team-photo-wrap {
   width: 100% !important;
-  height: 150px !important; min-height: 150px !important; max-height: 150px !important;
+  aspect-ratio: 1 / 1 !important;
+  height: auto !important;
+  min-height: unset !important;
+  max-height: unset !important;
   overflow: hidden !important;
 }
 
@@ -8725,6 +8724,6 @@ img[data-cms-img*="team_img"] {
   min-width: 100% !important;
   min-height: 100% !important;
   object-fit: cover !important;
-  object-position: center 20% !important;
+  object-position: top center !important;
   display: block !important;
 }
