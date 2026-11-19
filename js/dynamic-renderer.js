@@ -24,7 +24,29 @@
 (function (window) {
   'use strict';
 
+  const CACHE_KEY = 'lotus_cms_v7';
+  const LEGACY_CACHE_KEYS = [
+    'lotus_cms_v6',
+    'lotus_cms_v5',
+    'lotus_cms_v4',
+    'lotus_cms_v3',
+    'lotus_cms_v2',
+    'lotus_cms_v1',
+    'lotus_seed_catalog_cache_v2',
+    'lotus_seed_catalog_cache',
+    'lotus_data_payload',
+    'lotus_cms_last_published',
+    'lotus_data_v',
+    'lotus_site_data_store_v1'
+  ];
+
+  // Auto-purge legacy browser caches on script load
+  try {
+    LEGACY_CACHE_KEYS.forEach(k => { try { localStorage.removeItem(k); } catch(e){} });
+  } catch(e){}
+
   const DynamicRenderer = {
+    CACHE_KEY: CACHE_KEY,
     currentLang: 'en',
     data: {
       settings: {},
@@ -34,9 +56,70 @@
     },
 
     /**
+     * Purge all legacy caches from localStorage
+     */
+    purgeLegacyCaches() {
+      LEGACY_CACHE_KEYS.forEach(key => {
+        try {
+          localStorage.removeItem(key);
+        } catch (e) {}
+      });
+      try {
+        const keysToRemove = [];
+        for (let i = 0; i < localStorage.length; i++) {
+          const k = localStorage.key(i);
+          if (!k) continue;
+          if (
+            k !== CACHE_KEY &&
+            k !== 'lotus_lang' &&
+            k !== 'lotus_preferred_lang' &&
+            k !== 'lotus_admin_active' &&
+            k !== 'lotus_admin_user' &&
+            k !== 'lotus_homepage_blogs_config' &&
+            (
+              /^lotus_cms_v[0-6]($|_)/.test(k) ||
+              k.startsWith('lotus_seed_catalog_cache_v') ||
+              k === 'lotus_seed_catalog_cache' ||
+              k === 'lotus_data_payload' ||
+              k === 'lotus_cms_last_published' ||
+              k === 'lotus_data_v' ||
+              k === 'lotus_site_data_store_v1'
+            )
+          ) {
+            keysToRemove.push(k);
+          }
+        }
+        keysToRemove.forEach(k => {
+          try { localStorage.removeItem(k); } catch (e) {}
+        });
+      } catch (e) {}
+    },
+
+    setupStorageListener() {
+      window.addEventListener('storage', (e) => {
+        if (e.key === 'lotus_cms_last_published' || e.key === 'lotus_data_v' || (e.key && e.key.startsWith('lotus_cms_published_'))) {
+          this.purgeLegacyCaches();
+          this.loadData().then(() => this.bindAllSections());
+        }
+      });
+      window.addEventListener('lotus:cache-invalidated', () => {
+        this.purgeLegacyCaches();
+        this.loadData().then(() => this.bindAllSections());
+      });
+      window.addEventListener('message', (e) => {
+        if (e.data && (e.data.type === 'lotus:cache-bust' || e.data.type === 'lotus:catalog-updated')) {
+          this.purgeLegacyCaches();
+          this.loadData().then(() => this.bindAllSections());
+        }
+      });
+    },
+
+    /**
      * Initialize Dynamic Content Rendering
      */
     async init() {
+      this.purgeLegacyCaches();
+      this.setupStorageListener();
       this.initLanguage();
       await this.loadData();
       this.bindAllSections();

@@ -4854,7 +4854,7 @@
           {
             "id": "grp_negombo",
             "destinationId": "negombo",
-            "label": "Negombo Seaboard",
+            "label": "Negombo Coast",
             "order": 1,
             "manualTicks": {
               "the-sacred-bodhi-ancient-kingdoms": true,

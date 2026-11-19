@@ -14,7 +14,7 @@
 (function() {
   'use strict';
   const toursData = {
-  "version": "2026.11.08",
+  "version": "2026.11.19",
   "totalCategories": 11,
   "totalPackages": 29,
   "categories": [
@@ -296,7 +296,7 @@
             "sights": [
               {
                 "id": "sight_lion_rock_citadel_5th_century_",
-                "label": "Lion Rock Citadel 5th-century summit climb",
+                "label": "Lion Rock Fortress 5th-century summit climb",
                 "order": 1,
                 "includedIn": [
                   "royal-kingdoms-sacred-temples",
@@ -498,7 +498,7 @@
           "days": 6,
           "nights": 5,
           "image": "assets/images/cultural/sigiriya-1.webp",
-          "shortDescription": "Private chauffeur journey through Sigiriya Citadel, Dambulla cave murals, and the Sacred Tooth Relic Temple in Kandy.",
+          "shortDescription": "Private chauffeur journey through Sigiriya Rock Fortress, Dambulla cave murals, and the Sacred Tooth Relic Temple in Kandy.",
           "link": "/tours/cultural/royal-kingdoms-sacred-temples/index.html",
           "destinations": [
             "Negombo",
@@ -563,7 +563,7 @@
           "days": 15,
           "nights": 14,
           "image": "assets/images/cultural/polonnaruwa-gal-vihara-3.webp",
-          "shortDescription": "Grand 15-day in-depth odyssey through Ceylon's ancient dynasties, royal reservoirs, forest hermitages, and living traditions.",
+          "shortDescription": "Grand 15-day in-depth journey through Ceylon's ancient dynasties, royal reservoirs, forest monasteries, and living traditions.",
           "link": "/tours/cultural/three-millennia-of-living-heritage/index.html",
           "destinations": [
             "Wilpattu",
@@ -603,7 +603,7 @@
       "icon": "",
       "hero_image": "assets/images/buddhist-heritage/jaya-sri-maha-bodhi-1.webp",
       "description": {
-        "en": "Follow in the footsteps of ancient pilgrims across living stupas, sacred Bodhi shrines, rock-carved Buddhas, and forest hermitages.",
+        "en": "Follow in the footsteps of ancient pilgrims across living stupas, sacred Bodhi shrines, rock-carved Buddhas, and forest monasteries.",
         "zh": "追寻古老朝圣者的足迹，探访巍峨佛塔、神圣菩提树、摩崖巨佛与深林古刹。"
       },
       "comparison": {
@@ -612,13 +612,13 @@
         "packages": [
           "the-sacred-bodhi-ancient-kingdoms",
           "the-sacred-tooth-monastic-sanctuaries",
-          "forest-hermitages-mindful-ceylon"
+          "forest-forest monasteries-mindful-ceylon"
         ],
         "groups": [
           {
             "id": "grp_negombo",
             "destinationId": "negombo",
-            "label": "Negombo Seaboard",
+            "label": "Negombo Coast",
             "order": 1,
             "manualTicks": {
               "the-sacred-bodhi-ancient-kingdoms": true,
@@ -633,7 +633,7 @@
                 "includedIn": [
                   "the-sacred-bodhi-ancient-kingdoms",
                   "the-sacred-tooth-monastic-sanctuaries",
-                  "forest-hermitages-mindful-ceylon"
+                  "forest-forest monasteries-mindful-ceylon"
                 ]
               },
               {
@@ -642,7 +642,7 @@
                 "order": 2,
                 "includedIn": [
                   "the-sacred-bodhi-ancient-kingdoms",
-                  "forest-hermitages-mindful-ceylon"
+                  "forest-forest monasteries-mindful-ceylon"
                 ]
               }
             ]
@@ -665,7 +665,7 @@
                 "includedIn": [
                   "the-sacred-bodhi-ancient-kingdoms",
                   "the-sacred-tooth-monastic-sanctuaries",
-                  "forest-hermitages-mindful-ceylon"
+                  "forest-forest monasteries-mindful-ceylon"
                 ]
               },
               {
@@ -714,7 +714,7 @@
                 "includedIn": [
                   "the-sacred-bodhi-ancient-kingdoms",
                   "the-sacred-tooth-monastic-sanctuaries",
-                  "forest-hermitages-mindful-ceylon"
+                  "forest-forest monasteries-mindful-ceylon"
                 ]
               },
               {
@@ -723,7 +723,7 @@
                 "order": 2,
                 "includedIn": [
                   "the-sacred-bodhi-ancient-kingdoms",
-                  "forest-hermitages-mindful-ceylon"
+                  "forest-forest monasteries-mindful-ceylon"
                 ]
               },
               {
@@ -731,7 +731,7 @@
                 "label": "Walking meditation along secluded stone pathways",
                 "order": 3,
                 "includedIn": [
-                  "forest-hermitages-mindful-ceylon"
+                  "forest-forest monasteries-mindful-ceylon"
                 ]
               }
             ]
@@ -783,7 +783,7 @@
                 "includedIn": [
                   "the-sacred-bodhi-ancient-kingdoms",
                   "the-sacred-tooth-monastic-sanctuaries",
-                  "forest-hermitages-mindful-ceylon"
+                  "forest-forest monasteries-mindful-ceylon"
                 ]
               },
               {
@@ -814,7 +814,7 @@
                 "includedIn": [
                   "the-sacred-bodhi-ancient-kingdoms",
                   "the-sacred-tooth-monastic-sanctuaries",
-                  "forest-hermitages-mindful-ceylon"
+                  "forest-forest monasteries-mindful-ceylon"
                 ]
               },
               {
@@ -828,10 +828,10 @@
               },
               {
                 "id": "sight_kan_hermitage",
-                "label": "Udawattakele forest hermitage walking contemplation",
+                "label": "Udawattakele forest monastery walking contemplation",
                 "order": 3,
                 "includedIn": [
-                  "forest-hermitages-mindful-ceylon"
+                  "forest-forest monasteries-mindful-ceylon"
                 ]
               }
             ]
@@ -852,7 +852,7 @@
                 "label": "Silent day of nature contemplation & Vipassana",
                 "order": 1,
                 "includedIn": [
-                  "forest-hermitages-mindful-ceylon"
+                  "forest-forest monasteries-mindful-ceylon"
                 ]
               },
               {
@@ -891,7 +891,7 @@
                 "includedIn": [
                   "the-sacred-bodhi-ancient-kingdoms",
                   "the-sacred-tooth-monastic-sanctuaries",
-                  "forest-hermitages-mindful-ceylon"
+                  "forest-forest monasteries-mindful-ceylon"
                 ]
               }
             ]
@@ -969,12 +969,12 @@
         {
           "slug": "forest-hermitages-mindful-ceylon",
           "category": "buddhist-heritage",
-          "title": "Forest Hermitages & Mindful Ceylon",
+          "title": "Forest Monasteries & Mindful Ceylon",
           "days": 6,
           "nights": 5,
           "image": "assets/images/buddhist-heritage/ruwanwelisaya-2.webp",
           "shortDescription": "Secluded meditation at Ritigala ruins, forest monastic retreats, and deep mindful contemplation.",
-          "link": "/tours/buddhist-heritage/forest-hermitages-mindful-ceylon/index.html",
+          "link": "/tours/buddhist-heritage/forest-forest monasteries-mindful-ceylon/index.html",
           "destinations": [
             "Ritigala",
             "Arankele",
@@ -1004,9 +1004,9 @@
       "slug": "wildlife",
       "title": "Sri Lanka Wildlife Safaris",
       "titleHighlight": "& Big Five Wilderness Expeditions",
-      "tagline": "ASIA’S APEX WILDLIFE • THE BIG FIVE SANCTUARY",
+      "tagline": "SRI LANKA'S WILDLIFE • THE BIG FIVE SANCTUARY",
       "description": "Encounter earth’s highest leopard density, dramatic elephant gatherings of 300+ gentle giants, elusive sloth bears, and the colossal blue whale. Experience Sri Lanka’s untamed nature in luxury tented safari camps with private expert naturalists.",
-      "overviewTitle": "Dense Jungle Tracks, Apex Predators & Oceanic Giants",
+      "overviewTitle": "Dense Jungle Tracks, Big Cats & Wild Leopards & Oceanic Giants",
       "overviewText": "Ranked among the world’s top 10 biodiversity hotspots, Sri Lanka packs astonishing faunal diversity into a compact emerald isle. Within a few hours' drive, you can transition from tracking leopards across Yala’s thorny scrub jungles to observing massive elephant herds grazing along ancient Minneriya reservoirs.",
       "watermark": "untamed",
       "heroImage": "assets/tours/wildlife/hero.jpg",
@@ -1021,7 +1021,7 @@
         "packages": [
           "wild-ceylon-predator-elephant-trail",
           "the-sri-lanka-big-five-expedition",
-          "untamed-biosphere-rainforest-odyssey"
+          "untamed-biosphere-rainforest-journey"
         ],
         "groups": [
           {
@@ -1042,7 +1042,7 @@
                 "includedIn": [
                   "wild-ceylon-predator-elephant-trail",
                   "the-sri-lanka-big-five-expedition",
-                  "untamed-biosphere-rainforest-odyssey"
+                  "untamed-biosphere-rainforest-journey"
                 ]
               },
               {
@@ -1052,7 +1052,7 @@
                 "includedIn": [
                   "wild-ceylon-predator-elephant-trail",
                   "the-sri-lanka-big-five-expedition",
-                  "untamed-biosphere-rainforest-odyssey"
+                  "untamed-biosphere-rainforest-journey"
                 ]
               },
               {
@@ -1062,7 +1062,7 @@
                 "includedIn": [
                   "wild-ceylon-predator-elephant-trail",
                   "the-sri-lanka-big-five-expedition",
-                  "untamed-biosphere-rainforest-odyssey"
+                  "untamed-biosphere-rainforest-journey"
                 ]
               }
             ]
@@ -1085,7 +1085,7 @@
                 "includedIn": [
                   "wild-ceylon-predator-elephant-trail",
                   "the-sri-lanka-big-five-expedition",
-                  "untamed-biosphere-rainforest-odyssey"
+                  "untamed-biosphere-rainforest-journey"
                 ]
               },
               {
@@ -1095,7 +1095,7 @@
                 "includedIn": [
                   "wild-ceylon-predator-elephant-trail",
                   "the-sri-lanka-big-five-expedition",
-                  "untamed-biosphere-rainforest-odyssey"
+                  "untamed-biosphere-rainforest-journey"
                 ]
               },
               {
@@ -1105,7 +1105,7 @@
                 "includedIn": [
                   "wild-ceylon-predator-elephant-trail",
                   "the-sri-lanka-big-five-expedition",
-                  "untamed-biosphere-rainforest-odyssey"
+                  "untamed-biosphere-rainforest-journey"
                 ]
               }
             ]
@@ -1164,7 +1164,7 @@
                 "order": 1,
                 "includedIn": [
                   "the-sri-lanka-big-five-expedition",
-                  "untamed-biosphere-rainforest-odyssey"
+                  "untamed-biosphere-rainforest-journey"
                 ]
               },
               {
@@ -1173,7 +1173,7 @@
                 "order": 2,
                 "includedIn": [
                   "the-sri-lanka-big-five-expedition",
-                  "untamed-biosphere-rainforest-odyssey"
+                  "untamed-biosphere-rainforest-journey"
                 ]
               },
               {
@@ -1182,7 +1182,7 @@
                 "order": 3,
                 "includedIn": [
                   "the-sri-lanka-big-five-expedition",
-                  "untamed-biosphere-rainforest-odyssey"
+                  "untamed-biosphere-rainforest-journey"
                 ]
               }
             ]
@@ -1277,7 +1277,7 @@
                 "label": "Wild elephant herd observation",
                 "order": 1,
                 "includedIn": [
-                  "untamed-biosphere-rainforest-odyssey"
+                  "untamed-biosphere-rainforest-journey"
                 ]
               },
               {
@@ -1285,7 +1285,7 @@
                 "label": "Dry-zone birding",
                 "order": 2,
                 "includedIn": [
-                  "untamed-biosphere-rainforest-odyssey"
+                  "untamed-biosphere-rainforest-journey"
                 ]
               },
               {
@@ -1293,7 +1293,7 @@
                 "label": "Sunset reservoir safari",
                 "order": 3,
                 "includedIn": [
-                  "untamed-biosphere-rainforest-odyssey"
+                  "untamed-biosphere-rainforest-journey"
                 ]
               }
             ]
@@ -1351,7 +1351,7 @@
                 "label": "Boat safari on Senanayake Samudra",
                 "order": 1,
                 "includedIn": [
-                  "untamed-biosphere-rainforest-odyssey"
+                  "untamed-biosphere-rainforest-journey"
                 ]
               },
               {
@@ -1359,7 +1359,7 @@
                 "label": "Swimming wild elephants observation",
                 "order": 2,
                 "includedIn": [
-                  "untamed-biosphere-rainforest-odyssey"
+                  "untamed-biosphere-rainforest-journey"
                 ]
               },
               {
@@ -1367,7 +1367,7 @@
                 "label": "Indigenous Vedda community walk",
                 "order": 3,
                 "includedIn": [
-                  "untamed-biosphere-rainforest-odyssey"
+                  "untamed-biosphere-rainforest-journey"
                 ]
               }
             ]
@@ -1388,7 +1388,7 @@
                 "label": "UNESCO virgin lowland rainforest trek",
                 "order": 1,
                 "includedIn": [
-                  "untamed-biosphere-rainforest-odyssey"
+                  "untamed-biosphere-rainforest-journey"
                 ]
               },
               {
@@ -1396,7 +1396,7 @@
                 "label": "Endemic mixed bird feeding flocks",
                 "order": 2,
                 "includedIn": [
-                  "untamed-biosphere-rainforest-odyssey"
+                  "untamed-biosphere-rainforest-journey"
                 ]
               },
               {
@@ -1404,7 +1404,7 @@
                 "label": "Giant fern & waterfall trail",
                 "order": 3,
                 "includedIn": [
-                  "untamed-biosphere-rainforest-odyssey"
+                  "untamed-biosphere-rainforest-journey"
                 ]
               }
             ]
@@ -1425,7 +1425,7 @@
                 "label": "Mangrove bird nesting sanctuaries",
                 "order": 1,
                 "includedIn": [
-                  "untamed-biosphere-rainforest-odyssey"
+                  "untamed-biosphere-rainforest-journey"
                 ]
               },
               {
@@ -1433,7 +1433,7 @@
                 "label": "Rare black-necked stork spotting",
                 "order": 2,
                 "includedIn": [
-                  "untamed-biosphere-rainforest-odyssey"
+                  "untamed-biosphere-rainforest-journey"
                 ]
               },
               {
@@ -1441,7 +1441,7 @@
                 "label": "Quiet wilderness 4x4 safari",
                 "order": 3,
                 "includedIn": [
-                  "untamed-biosphere-rainforest-odyssey"
+                  "untamed-biosphere-rainforest-journey"
                 ]
               }
             ]
@@ -1459,7 +1459,7 @@
             "sights": [
               {
                 "id": "sight_block_1_apex_leopard_safari",
-                "label": "Block 1 apex leopard safari",
+                "label": "Block 1 wild leopard safari",
                 "order": 1,
                 "includedIn": [
                   "wild-ceylon-predator-elephant-trail"
@@ -1500,7 +1500,7 @@
                 "order": 1,
                 "includedIn": [
                   "the-sri-lanka-big-five-expedition",
-                  "untamed-biosphere-rainforest-odyssey"
+                  "untamed-biosphere-rainforest-journey"
                 ]
               },
               {
@@ -1509,7 +1509,7 @@
                 "order": 2,
                 "includedIn": [
                   "the-sri-lanka-big-five-expedition",
-                  "untamed-biosphere-rainforest-odyssey"
+                  "untamed-biosphere-rainforest-journey"
                 ]
               },
               {
@@ -1518,7 +1518,7 @@
                 "order": 3,
                 "includedIn": [
                   "the-sri-lanka-big-five-expedition",
-                  "untamed-biosphere-rainforest-odyssey"
+                  "untamed-biosphere-rainforest-journey"
                 ]
               }
             ]
@@ -1575,7 +1575,7 @@
           "days": 17,
           "nights": 16,
           "image": "assets/images/wildlife/minneriya-elephant-gathering-2.webp",
-          "shortDescription": "Deep wilderness safari tracking apex leopards, massive elephant gatherings, and oceanic blue whales in premier national parks.",
+          "shortDescription": "Deep wilderness safari tracking wild leopards, massive elephant gatherings, and oceanic blue whales in premier national parks.",
           "link": "/tours/wildlife/wild-ceylon-predator-elephant-trail/index.html",
           "destinations": [
             "Wilpattu",
@@ -1635,12 +1635,12 @@
         {
           "slug": "untamed-biosphere-rainforest-odyssey",
           "category": "wildlife",
-          "title": "Untamed Biosphere & Rainforest Odyssey",
+          "title": "Untamed Rainforest & Wildlife Journey",
           "days": 17,
           "nights": 16,
           "image": "assets/images/wildlife/udawalawe-3.webp",
           "shortDescription": "Pristine Sinharaja primary rainforest biodiversity, endemic birding, and open savannah elephant safaris in Udawalawe.",
-          "link": "/tours/wildlife/untamed-biosphere-rainforest-odyssey/index.html",
+          "link": "/tours/wildlife/untamed-biosphere-rainforest-journey/index.html",
           "destinations": [
             "Kitulgala",
             "Sinharaja",
@@ -1687,7 +1687,7 @@
         "packages": [
           "southern-sands-serenade",
           "turquoise-eastern-sanctuary",
-          "pristine-seaboard-odyssey"
+          "pristine-seaboard-journey"
         ],
         "groups": [
           {
@@ -1708,7 +1708,7 @@
                 "includedIn": [
                   "southern-sands-serenade",
                   "turquoise-eastern-sanctuary",
-                  "pristine-seaboard-odyssey"
+                  "pristine-seaboard-journey"
                 ]
               },
               {
@@ -1718,7 +1718,7 @@
                 "includedIn": [
                   "southern-sands-serenade",
                   "turquoise-eastern-sanctuary",
-                  "pristine-seaboard-odyssey"
+                  "pristine-seaboard-journey"
                 ]
               },
               {
@@ -1728,7 +1728,7 @@
                 "includedIn": [
                   "southern-sands-serenade",
                   "turquoise-eastern-sanctuary",
-                  "pristine-seaboard-odyssey"
+                  "pristine-seaboard-journey"
                 ]
               }
             ]
@@ -1751,7 +1751,7 @@
                 "includedIn": [
                   "southern-sands-serenade",
                   "turquoise-eastern-sanctuary",
-                  "pristine-seaboard-odyssey"
+                  "pristine-seaboard-journey"
                 ]
               },
               {
@@ -1761,7 +1761,7 @@
                 "includedIn": [
                   "southern-sands-serenade",
                   "turquoise-eastern-sanctuary",
-                  "pristine-seaboard-odyssey"
+                  "pristine-seaboard-journey"
                 ]
               },
               {
@@ -1771,7 +1771,7 @@
                 "includedIn": [
                   "southern-sands-serenade",
                   "turquoise-eastern-sanctuary",
-                  "pristine-seaboard-odyssey"
+                  "pristine-seaboard-journey"
                 ]
               }
             ]
@@ -1792,7 +1792,7 @@
                 "label": "Dolphin pod boat expedition",
                 "order": 1,
                 "includedIn": [
-                  "pristine-seaboard-odyssey"
+                  "pristine-seaboard-journey"
                 ]
               },
               {
@@ -1800,7 +1800,7 @@
                 "label": "Kite surfing lagoon clinic",
                 "order": 2,
                 "includedIn": [
-                  "pristine-seaboard-odyssey"
+                  "pristine-seaboard-journey"
                 ]
               },
               {
@@ -1808,7 +1808,7 @@
                 "label": "Dutch Fort Kalpitiya exploration",
                 "order": 3,
                 "includedIn": [
-                  "pristine-seaboard-odyssey"
+                  "pristine-seaboard-journey"
                 ]
               }
             ]
@@ -1829,7 +1829,7 @@
                 "label": "Adam's Bridge sandbank expedition",
                 "order": 1,
                 "includedIn": [
-                  "pristine-seaboard-odyssey"
+                  "pristine-seaboard-journey"
                 ]
               },
               {
@@ -1837,7 +1837,7 @@
                 "label": "Ancient Baobab tree visit",
                 "order": 2,
                 "includedIn": [
-                  "pristine-seaboard-odyssey"
+                  "pristine-seaboard-journey"
                 ]
               },
               {
@@ -1845,7 +1845,7 @@
                 "label": "Flamingo salt pans birding",
                 "order": 3,
                 "includedIn": [
-                  "pristine-seaboard-odyssey"
+                  "pristine-seaboard-journey"
                 ]
               }
             ]
@@ -1866,7 +1866,7 @@
                 "label": "Nallur Kandaswamy Kovil puja",
                 "order": 1,
                 "includedIn": [
-                  "pristine-seaboard-odyssey"
+                  "pristine-seaboard-journey"
                 ]
               },
               {
@@ -1874,7 +1874,7 @@
                 "label": "Jaffna Fort ramparts walk",
                 "order": 2,
                 "includedIn": [
-                  "pristine-seaboard-odyssey"
+                  "pristine-seaboard-journey"
                 ]
               },
               {
@@ -1882,7 +1882,7 @@
                 "label": "Casuarina Beach & Karainagar Island",
                 "order": 3,
                 "includedIn": [
-                  "pristine-seaboard-odyssey"
+                  "pristine-seaboard-journey"
                 ]
               }
             ]
@@ -2126,7 +2126,7 @@
                 "order": 1,
                 "includedIn": [
                   "turquoise-eastern-sanctuary",
-                  "pristine-seaboard-odyssey"
+                  "pristine-seaboard-journey"
                 ]
               },
               {
@@ -2135,7 +2135,7 @@
                 "order": 2,
                 "includedIn": [
                   "turquoise-eastern-sanctuary",
-                  "pristine-seaboard-odyssey"
+                  "pristine-seaboard-journey"
                 ]
               },
               {
@@ -2144,7 +2144,7 @@
                 "order": 3,
                 "includedIn": [
                   "turquoise-eastern-sanctuary",
-                  "pristine-seaboard-odyssey"
+                  "pristine-seaboard-journey"
                 ]
               }
             ]
@@ -2166,7 +2166,7 @@
                 "order": 1,
                 "includedIn": [
                   "turquoise-eastern-sanctuary",
-                  "pristine-seaboard-odyssey"
+                  "pristine-seaboard-journey"
                 ]
               },
               {
@@ -2175,7 +2175,7 @@
                 "order": 2,
                 "includedIn": [
                   "turquoise-eastern-sanctuary",
-                  "pristine-seaboard-odyssey"
+                  "pristine-seaboard-journey"
                 ]
               },
               {
@@ -2184,7 +2184,7 @@
                 "order": 3,
                 "includedIn": [
                   "turquoise-eastern-sanctuary",
-                  "pristine-seaboard-odyssey"
+                  "pristine-seaboard-journey"
                 ]
               }
             ]
@@ -2336,12 +2336,12 @@
         {
           "slug": "pristine-seaboard-odyssey",
           "category": "beach",
-          "title": "Pristine Seaboard Odyssey",
+          "title": "Pristine Coastline & Islands Journey",
           "days": 14,
           "nights": 13,
           "image": "assets/images/beach/unawatuna-2.webp",
           "shortDescription": "Grand coastal loop from Kalpitiya dolphins and Jaffna lagoons to serene southern sandbars and surf breaks.",
-          "link": "/tours/beach/pristine-seaboard-odyssey/index.html",
+          "link": "/tours/beach/pristine-seaboard-journey/index.html",
           "destinations": [
             "Kalpitiya",
             "Mannar",
@@ -2374,7 +2374,7 @@
       "titleHighlight": "& Misty Mountain Trails",
       "tagline": "MISTY VALLEYS • HERITAGE TEA TRAILS • HIGHLAND SANCTUARY",
       "description": "Escape to the cool emerald highlands of Ceylon. Wander through rolling tea plantations, ride the legendary scenic railway over Nine Arches Bridge, stay in restored British colonial planter bungalows, and breathe crisp mountain air.",
-      "overviewTitle": "Verdant Tea Valleys, Cascading Waterfalls & Alpine Air",
+      "overviewTitle": "Lush Green Tea Valleys, Cascading Waterfalls & Crisp Mountain Air",
       "overviewText": "Rising into the central heartlands of Sri Lanka, the Hill Country offers an exhilarating change of climate and scenery. Towering peaks veiled in early morning mist give way to endless slopes of manicured tea bushes, dramatic cliff drops, and colonial railway engineering marvels.",
       "watermark": "tea trails",
       "heroImage": "assets/images/tea-country.jpg",
@@ -2387,7 +2387,7 @@
         "title": "Compare Destinations & Sights",
         "note": "Review how each Hill Country itinerary traverses Sri Lanka’s iconic destinations, cultural landmarks, and nature reserves.",
         "packages": [
-          "ceylon-tea-trails-colonial-grandeur",
+          "ceylon-tea-trails-colonial-splendor",
           "misty-peaks-scenic-railways-expedition",
           "highland-wilderness-cascading-waterfalls"
         ],
@@ -2408,7 +2408,7 @@
                 "label": "Old Dutch Hospital dining",
                 "order": 1,
                 "includedIn": [
-                  "ceylon-tea-trails-colonial-grandeur",
+                  "ceylon-tea-trails-colonial-splendor",
                   "highland-wilderness-cascading-waterfalls"
                 ]
               },
@@ -2417,7 +2417,7 @@
                 "label": "National Museum colonial exhibits",
                 "order": 2,
                 "includedIn": [
-                  "ceylon-tea-trails-colonial-grandeur",
+                  "ceylon-tea-trails-colonial-splendor",
                   "highland-wilderness-cascading-waterfalls"
                 ]
               },
@@ -2426,7 +2426,7 @@
                 "label": "Galle Face Green sunset walk",
                 "order": 3,
                 "includedIn": [
-                  "ceylon-tea-trails-colonial-grandeur",
+                  "ceylon-tea-trails-colonial-splendor",
                   "highland-wilderness-cascading-waterfalls"
                 ]
               }
@@ -2522,7 +2522,7 @@
                 "label": "Temple of the Sacred Tooth Relic private viewing",
                 "order": 1,
                 "includedIn": [
-                  "ceylon-tea-trails-colonial-grandeur",
+                  "ceylon-tea-trails-colonial-splendor",
                   "misty-peaks-scenic-railways-expedition"
                 ]
               },
@@ -2531,7 +2531,7 @@
                 "label": "Royal Botanic Gardens Peradeniya stroll",
                 "order": 2,
                 "includedIn": [
-                  "ceylon-tea-trails-colonial-grandeur",
+                  "ceylon-tea-trails-colonial-splendor",
                   "misty-peaks-scenic-railways-expedition"
                 ]
               },
@@ -2540,7 +2540,7 @@
                 "label": "Kandyan cultural drumming performance",
                 "order": 3,
                 "includedIn": [
-                  "ceylon-tea-trails-colonial-grandeur",
+                  "ceylon-tea-trails-colonial-splendor",
                   "misty-peaks-scenic-railways-expedition"
                 ]
               }
@@ -2673,7 +2673,7 @@
                 "label": "Pedro Tea Estate working factory tour",
                 "order": 1,
                 "includedIn": [
-                  "ceylon-tea-trails-colonial-grandeur",
+                  "ceylon-tea-trails-colonial-splendor",
                   "misty-peaks-scenic-railways-expedition",
                   "highland-wilderness-cascading-waterfalls"
                 ]
@@ -2683,7 +2683,7 @@
                 "label": "Gregory Lake swan boat cruise",
                 "order": 2,
                 "includedIn": [
-                  "ceylon-tea-trails-colonial-grandeur",
+                  "ceylon-tea-trails-colonial-splendor",
                   "misty-peaks-scenic-railways-expedition",
                   "highland-wilderness-cascading-waterfalls"
                 ]
@@ -2693,7 +2693,7 @@
                 "label": "High tea at historic Grand Hotel",
                 "order": 3,
                 "includedIn": [
-                  "ceylon-tea-trails-colonial-grandeur",
+                  "ceylon-tea-trails-colonial-splendor",
                   "misty-peaks-scenic-railways-expedition",
                   "highland-wilderness-cascading-waterfalls"
                 ]
@@ -2790,7 +2790,7 @@
                 "label": "Nine Arches Bridge scenic viaduct walk",
                 "order": 1,
                 "includedIn": [
-                  "ceylon-tea-trails-colonial-grandeur",
+                  "ceylon-tea-trails-colonial-splendor",
                   "misty-peaks-scenic-railways-expedition",
                   "highland-wilderness-cascading-waterfalls"
                 ]
@@ -2800,7 +2800,7 @@
                 "label": "Little Adam's Peak sunrise hike",
                 "order": 2,
                 "includedIn": [
-                  "ceylon-tea-trails-colonial-grandeur",
+                  "ceylon-tea-trails-colonial-splendor",
                   "misty-peaks-scenic-railways-expedition",
                   "highland-wilderness-cascading-waterfalls"
                 ]
@@ -2810,7 +2810,7 @@
                 "label": "Ravana Falls viewpoint & photography",
                 "order": 3,
                 "includedIn": [
-                  "ceylon-tea-trails-colonial-grandeur",
+                  "ceylon-tea-trails-colonial-splendor",
                   "misty-peaks-scenic-railways-expedition",
                   "highland-wilderness-cascading-waterfalls"
                 ]
@@ -2828,12 +2828,12 @@
         {
           "slug": "ceylon-tea-trails-colonial-grandeur",
           "category": "hill-country",
-          "title": "Ceylon Tea Trails & Colonial Grandeur",
+          "title": "Ceylon Tea Trails & Classic Heritage",
           "days": 8,
           "nights": 7,
           "image": "assets/images/hill-country/nuwara-eliya-tea-2.webp",
           "shortDescription": "Heritage colonial planter bungalows, private tea tastings, and misty Nuwara Eliya valleys in the emerald highlands.",
-          "link": "/tours/hill-country/ceylon-tea-trails-colonial-grandeur/index.html",
+          "link": "/tours/hill-country/ceylon-tea-trails-colonial-splendor/index.html",
           "destinations": [
             "Kandy",
             "Nuwara Eliya",
@@ -3041,7 +3041,7 @@
               },
               {
                 "id": "sight_forest_hermitage_chanting_mind",
-                "label": "Forest hermitage chanting & mindfulness",
+                "label": "Forest forest monastery chanting & mindfulness",
                 "order": 2,
                 "includedIn": [
                   "sacred-serenity-forest-meditation-retreat"
@@ -3179,7 +3179,7 @@
         {
           "slug": "lotus-ayu-holistic-rejuvenation",
           "category": "ayurvedic",
-          "title": "Lotus Ayu Holistic Rejuvenation",
+          "title": "Lotus Ayu Holistic Wellness & Renewal",
           "days": 10,
           "nights": 9,
           "image": "assets/images/ayurveda/herbal-treatment-1.webp",
@@ -4722,7 +4722,7 @@
               },
               {
                 "id": "sight_kudumbigala_forest_hermitage_t",
-                "label": "Kudumbigala forest hermitage trek",
+                "label": "Kudumbigala forest monastery trek",
                 "order": 3,
                 "includedIn": [
                   "wild-peaks-trails-surf-safari"
@@ -4823,7 +4823,7 @@
         "packages": [
           "the-royal-ceylon-fairways-tour",
           "highland-greens-coastal-links-championship",
-          "the-grand-ceylon-masters-golf-odyssey"
+          "the-grand-ceylon-masters-golf-journey"
         ],
         "groups": [
           {
@@ -4844,7 +4844,7 @@
                 "includedIn": [
                   "the-royal-ceylon-fairways-tour",
                   "highland-greens-coastal-links-championship",
-                  "the-grand-ceylon-masters-golf-odyssey"
+                  "the-grand-ceylon-masters-golf-journey"
                 ]
               },
               {
@@ -4854,7 +4854,7 @@
                 "includedIn": [
                   "the-royal-ceylon-fairways-tour",
                   "highland-greens-coastal-links-championship",
-                  "the-grand-ceylon-masters-golf-odyssey"
+                  "the-grand-ceylon-masters-golf-journey"
                 ]
               },
               {
@@ -4864,7 +4864,7 @@
                 "includedIn": [
                   "the-royal-ceylon-fairways-tour",
                   "highland-greens-coastal-links-championship",
-                  "the-grand-ceylon-masters-golf-odyssey"
+                  "the-grand-ceylon-masters-golf-journey"
                 ]
               }
             ]
@@ -4887,7 +4887,7 @@
                 "includedIn": [
                   "the-royal-ceylon-fairways-tour",
                   "highland-greens-coastal-links-championship",
-                  "the-grand-ceylon-masters-golf-odyssey"
+                  "the-grand-ceylon-masters-golf-journey"
                 ]
               },
               {
@@ -4897,7 +4897,7 @@
                 "includedIn": [
                   "the-royal-ceylon-fairways-tour",
                   "highland-greens-coastal-links-championship",
-                  "the-grand-ceylon-masters-golf-odyssey"
+                  "the-grand-ceylon-masters-golf-journey"
                 ]
               },
               {
@@ -4907,7 +4907,7 @@
                 "includedIn": [
                   "the-royal-ceylon-fairways-tour",
                   "highland-greens-coastal-links-championship",
-                  "the-grand-ceylon-masters-golf-odyssey"
+                  "the-grand-ceylon-masters-golf-journey"
                 ]
               }
             ]
@@ -4929,7 +4929,7 @@
                 "order": 1,
                 "includedIn": [
                   "highland-greens-coastal-links-championship",
-                  "the-grand-ceylon-masters-golf-odyssey"
+                  "the-grand-ceylon-masters-golf-journey"
                 ]
               },
               {
@@ -4938,7 +4938,7 @@
                 "order": 2,
                 "includedIn": [
                   "highland-greens-coastal-links-championship",
-                  "the-grand-ceylon-masters-golf-odyssey"
+                  "the-grand-ceylon-masters-golf-journey"
                 ]
               },
               {
@@ -4947,7 +4947,7 @@
                 "order": 3,
                 "includedIn": [
                   "highland-greens-coastal-links-championship",
-                  "the-grand-ceylon-masters-golf-odyssey"
+                  "the-grand-ceylon-masters-golf-journey"
                 ]
               }
             ]
@@ -4969,7 +4969,7 @@
                 "order": 1,
                 "includedIn": [
                   "highland-greens-coastal-links-championship",
-                  "the-grand-ceylon-masters-golf-odyssey"
+                  "the-grand-ceylon-masters-golf-journey"
                 ]
               },
               {
@@ -4978,7 +4978,7 @@
                 "order": 2,
                 "includedIn": [
                   "highland-greens-coastal-links-championship",
-                  "the-grand-ceylon-masters-golf-odyssey"
+                  "the-grand-ceylon-masters-golf-journey"
                 ]
               },
               {
@@ -4987,7 +4987,7 @@
                 "order": 3,
                 "includedIn": [
                   "highland-greens-coastal-links-championship",
-                  "the-grand-ceylon-masters-golf-odyssey"
+                  "the-grand-ceylon-masters-golf-journey"
                 ]
               }
             ]
@@ -5008,7 +5008,7 @@
                 "label": "Sunset dinner at historic Galle Fort",
                 "order": 1,
                 "includedIn": [
-                  "the-grand-ceylon-masters-golf-odyssey"
+                  "the-grand-ceylon-masters-golf-journey"
                 ]
               },
               {
@@ -5016,7 +5016,7 @@
                 "label": "Private transfer along Southern Expressway",
                 "order": 2,
                 "includedIn": [
-                  "the-grand-ceylon-masters-golf-odyssey"
+                  "the-grand-ceylon-masters-golf-journey"
                 ]
               },
               {
@@ -5024,7 +5024,7 @@
                 "label": "Colonial luxury hotel overnight",
                 "order": 3,
                 "includedIn": [
-                  "the-grand-ceylon-masters-golf-odyssey"
+                  "the-grand-ceylon-masters-golf-journey"
                 ]
               }
             ]
@@ -5040,7 +5040,7 @@
         {
           "slug": "the-royal-ceylon-fairways-tour",
           "category": "golf",
-          "title": "The Royal Ceylon Fairways Tour",
+          "title": "The Royal Ceylon Championship Golf Tour",
           "days": 7,
           "nights": 6,
           "image": "assets/images/golf/ceylon-championship-golf-1.webp",
@@ -5099,12 +5099,12 @@
         {
           "slug": "the-grand-ceylon-masters-golf-odyssey",
           "category": "golf",
-          "title": "The Grand Ceylon Masters Golf Odyssey",
+          "title": "The Grand Ceylon Masters Golf Journey",
           "days": 12,
           "nights": 11,
           "image": "assets/images/golf/ceylon-championship-golf-1.webp",
           "shortDescription": "The definitive 12-day Sri Lanka masters golf pilgrimage with 6 championship rounds, colonial manors, and fine dining.",
-          "link": "/tours/golf/the-grand-ceylon-masters-golf-odyssey/index.html",
+          "link": "/tours/golf/the-grand-ceylon-masters-golf-journey/index.html",
           "destinations": [
             "Colombo",
             "Kandy",
@@ -5134,7 +5134,7 @@
       "slug": "ramayana",
       "title": "Sri Lanka Ramayana Heritage Tours",
       "titleHighlight": "& Sacred Legend Trails",
-      "tagline": "EPIC LEGENDS • SACRED SHRINES • ANCIENT CHRONICLES",
+      "tagline": "EPIC LEGENDS • SACRED SHRINES • ANCIENT HISTORY",
       "description": "Walk in the footsteps of Sri Rama, Sita Devi, Lakshmana, and Hanuman. From Munneswaram and Koneswaram temples to Seetha Amman Temple and Ravana Falls, immerse in the living tapestry of the Ramayana epic.",
       "overviewTitle": "Sacred Geography, Ancient Shrines & Timeless Epics",
       "overviewText": "Sri Lanka holds over 50 prominent sites intrinsically linked to the ancient Ramayana epic. Our scholarly guides bring the Ramayana to life with deep devotional respect, comfortable chauffeured journeys, and authentic temple pujas.",
@@ -5150,7 +5150,7 @@
         "note": "Review how each Ramayana itinerary traverses Sri Lanka’s iconic destinations, cultural landmarks, and nature reserves.",
         "packages": [
           "sacred-ramayana-heritage-trail",
-          "the-epic-ramayana-chronicle-pilgrimage"
+          "the-epic-ramayana-history-pilgrimage"
         ],
         "groups": [
           {
@@ -5169,7 +5169,7 @@
                 "order": 1,
                 "includedIn": [
                   "sacred-ramayana-heritage-trail",
-                  "the-epic-ramayana-chronicle-pilgrimage"
+                  "the-epic-ramayana-history-pilgrimage"
                 ]
               },
               {
@@ -5178,7 +5178,7 @@
                 "order": 2,
                 "includedIn": [
                   "sacred-ramayana-heritage-trail",
-                  "the-epic-ramayana-chronicle-pilgrimage"
+                  "the-epic-ramayana-history-pilgrimage"
                 ]
               },
               {
@@ -5187,7 +5187,7 @@
                 "order": 3,
                 "includedIn": [
                   "sacred-ramayana-heritage-trail",
-                  "the-epic-ramayana-chronicle-pilgrimage"
+                  "the-epic-ramayana-history-pilgrimage"
                 ]
               }
             ]
@@ -5207,7 +5207,7 @@
                 "label": "Thiruketheeswaram ancient Ishwaram temple",
                 "order": 1,
                 "includedIn": [
-                  "the-epic-ramayana-chronicle-pilgrimage"
+                  "the-epic-ramayana-history-pilgrimage"
                 ]
               },
               {
@@ -5215,7 +5215,7 @@
                 "label": "Adam's Bridge (Rama Setu) geological formation",
                 "order": 2,
                 "includedIn": [
-                  "the-epic-ramayana-chronicle-pilgrimage"
+                  "the-epic-ramayana-history-pilgrimage"
                 ]
               },
               {
@@ -5223,7 +5223,7 @@
                 "label": "Baobab tree & historic Mannar fort",
                 "order": 3,
                 "includedIn": [
-                  "the-epic-ramayana-chronicle-pilgrimage"
+                  "the-epic-ramayana-history-pilgrimage"
                 ]
               }
             ]
@@ -5243,7 +5243,7 @@
                 "label": "Nallur Kandaswamy Kovil grand worship",
                 "order": 1,
                 "includedIn": [
-                  "the-epic-ramayana-chronicle-pilgrimage"
+                  "the-epic-ramayana-history-pilgrimage"
                 ]
               },
               {
@@ -5251,7 +5251,7 @@
                 "label": "Nagapooshani Amman Temple on Nainativu island",
                 "order": 2,
                 "includedIn": [
-                  "the-epic-ramayana-chronicle-pilgrimage"
+                  "the-epic-ramayana-history-pilgrimage"
                 ]
               },
               {
@@ -5259,7 +5259,7 @@
                 "label": "Keerimalai sacred natural healing spring",
                 "order": 3,
                 "includedIn": [
-                  "the-epic-ramayana-chronicle-pilgrimage"
+                  "the-epic-ramayana-history-pilgrimage"
                 ]
               }
             ]
@@ -5280,7 +5280,7 @@
                 "order": 1,
                 "includedIn": [
                   "sacred-ramayana-heritage-trail",
-                  "the-epic-ramayana-chronicle-pilgrimage"
+                  "the-epic-ramayana-history-pilgrimage"
                 ]
               },
               {
@@ -5289,7 +5289,7 @@
                 "order": 2,
                 "includedIn": [
                   "sacred-ramayana-heritage-trail",
-                  "the-epic-ramayana-chronicle-pilgrimage"
+                  "the-epic-ramayana-history-pilgrimage"
                 ]
               },
               {
@@ -5298,7 +5298,7 @@
                 "order": 3,
                 "includedIn": [
                   "sacred-ramayana-heritage-trail",
-                  "the-epic-ramayana-chronicle-pilgrimage"
+                  "the-epic-ramayana-history-pilgrimage"
                 ]
               }
             ]
@@ -5319,7 +5319,7 @@
                 "order": 1,
                 "includedIn": [
                   "sacred-ramayana-heritage-trail",
-                  "the-epic-ramayana-chronicle-pilgrimage"
+                  "the-epic-ramayana-history-pilgrimage"
                 ]
               },
               {
@@ -5328,7 +5328,7 @@
                 "order": 2,
                 "includedIn": [
                   "sacred-ramayana-heritage-trail",
-                  "the-epic-ramayana-chronicle-pilgrimage"
+                  "the-epic-ramayana-history-pilgrimage"
                 ]
               },
               {
@@ -5337,7 +5337,7 @@
                 "order": 3,
                 "includedIn": [
                   "sacred-ramayana-heritage-trail",
-                  "the-epic-ramayana-chronicle-pilgrimage"
+                  "the-epic-ramayana-history-pilgrimage"
                 ]
               }
             ]
@@ -5357,7 +5357,7 @@
                 "label": "Ravana Ella waterfall sacred pools",
                 "order": 1,
                 "includedIn": [
-                  "the-epic-ramayana-chronicle-pilgrimage"
+                  "the-epic-ramayana-history-pilgrimage"
                 ]
               },
               {
@@ -5365,7 +5365,7 @@
                 "label": "Ravana Cave high-mountain cavern trail",
                 "order": 2,
                 "includedIn": [
-                  "the-epic-ramayana-chronicle-pilgrimage"
+                  "the-epic-ramayana-history-pilgrimage"
                 ]
               },
               {
@@ -5373,7 +5373,7 @@
                 "label": "Nil Diya Pokuna underground lake entrance",
                 "order": 3,
                 "includedIn": [
-                  "the-epic-ramayana-chronicle-pilgrimage"
+                  "the-epic-ramayana-history-pilgrimage"
                 ]
               }
             ]
@@ -5393,7 +5393,7 @@
                 "label": "Koneswaram Temple atop majestic Swami Rock",
                 "order": 1,
                 "includedIn": [
-                  "the-epic-ramayana-chronicle-pilgrimage"
+                  "the-epic-ramayana-history-pilgrimage"
                 ]
               },
               {
@@ -5401,7 +5401,7 @@
                 "label": "Ravana's Cleft (Ravana Vettuwa)",
                 "order": 2,
                 "includedIn": [
-                  "the-epic-ramayana-chronicle-pilgrimage"
+                  "the-epic-ramayana-history-pilgrimage"
                 ]
               },
               {
@@ -5409,7 +5409,7 @@
                 "label": "Kanniya sacred hot water springs",
                 "order": 3,
                 "includedIn": [
-                  "the-epic-ramayana-chronicle-pilgrimage"
+                  "the-epic-ramayana-history-pilgrimage"
                 ]
               }
             ]
@@ -5492,12 +5492,12 @@
         {
           "slug": "the-epic-ramayana-chronicle-pilgrimage",
           "category": "ramayana",
-          "title": "The Epic Ramayana Chronicle Pilgrimage",
+          "title": "The Epic Ramayana Heritage Pilgrimage",
           "days": 10,
           "nights": 9,
           "image": "assets/images/ramayana/ravana-falls-2.webp",
           "shortDescription": "Comprehensive Ramayana journey from Mannar Rama Setu and Trincomalee Koneswaram to Divurumpola and Ravana caves.",
-          "link": "/tours/ramayana/the-epic-ramayana-chronicle-pilgrimage/index.html",
+          "link": "/tours/ramayana/the-epic-ramayana-history-pilgrimage/index.html",
           "destinations": [
             "Mannar",
             "Jaffna",
@@ -5967,7 +5967,7 @@
         },
         {
           "day": 9,
-          "title": "Kudumbigala Forest Hermitage & Panama Dunes",
+          "title": "Kudumbigala Forest Forest Monastery & Panama Dunes",
           "description": "Visit the ancient rock monastery of Kudumbigala rising high above the jungle canopy, followed by an evening walk along the dramatic, windswept sand dunes of Panama.",
           "overnight": "Arugam Bay Eco-Luxury Boutique Lodge",
           "stay": "Luxury Boutique Hotel in Negombo",
@@ -6066,7 +6066,7 @@
       "id": "pkg-beach-03",
       "slug": "pristine-seaboard-odyssey",
       "category": "beach",
-      "title": "Pristine Seaboard Odyssey",
+      "title": "Pristine Coastline & Islands Journey",
       "tagline": "Dolphins, Dunes & Untouched Northern Islands",
       "nights": 13,
       "days": 14,
@@ -6330,10 +6330,10 @@
       "priceNote": "Price on request (Bespoke itinerary tailored to your rhythm)",
       "images": [
         "assets/images/beach/unawatuna-2.webp",
-        "assets/tours/beach/seaboard-odyssey-2.jpg",
-        "assets/tours/beach/seaboard-odyssey-3.jpg"
+        "assets/tours/beach/seaboard-journey-2.jpg",
+        "assets/tours/beach/seaboard-journey-3.jpg"
       ],
-      "seoTitle": "Pristine Seaboard Odyssey 14-Day Tour | Lotus Ceylon",
+      "seoTitle": "Pristine Coastline & Islands Journey 14-Day Tour | Lotus Ceylon",
       "seoDescription": "The ultimate 14-day coastal voyage of Sri Lanka: Kalpitiya dolphins, Adam's Bridge in Mannar, Jaffna islands, and Pasikudah shallows.",
       "badge": "Signature Collection",
       "pace": "Leisurely & Relaxed",
@@ -6341,7 +6341,7 @@
       "groupSize": "Private Chauffeur Tour (1-8 Guests)",
       "childFriendly": true,
       "accessibilityNotes": "Accessible rooms and private ground-floor transport arranged upon advance request.",
-      "titleMain": "Pristine Seaboard Odyssey",
+      "titleMain": "Pristine Coastline & Islands Journey",
       "titleAccent": "Dolphins, Dunes & Northern Islands",
       "duration": "13 Nights / 14 Days",
       "route": [
@@ -6355,7 +6355,7 @@
       ],
       "image": "assets/images/beach/unawatuna-2.webp",
       "shortDescription": "Grand coastal loop from Kalpitiya dolphins and Jaffna lagoons to serene southern sandbars and surf breaks.",
-      "link": "./beach/pristine-seaboard-odyssey/index.html",
+      "link": "./beach/pristine-seaboard-journey/index.html",
       "categoryName": "Pristine Beaches",
       "travelers": [
         "couple",
@@ -6403,7 +6403,7 @@
           "lat": 7.957,
           "lng": 80.7603,
           "activities": [
-            "Lion Rock Citadel 5th-century summit climb",
+            "Lion Rock Fortress 5th-century summit climb",
             "Water gardens & mirror wall",
             "Pidurangala sunrise hike"
           ]
@@ -6534,7 +6534,7 @@
       "childFriendly": true,
       "accessibilityNotes": "Accessible rooms and private ground-floor transport arranged upon advance request.",
       "titleMain": "Royal Kingdoms & Sacred Temples",
-      "titleAccent": "Citadels of the Sacred Triangle",
+      "titleAccent": "Fortresses of the Sacred Triangle",
       "duration": "5 Nights / 6 Days",
       "route": [
         "negombo",
@@ -6544,7 +6544,7 @@
         "colombo"
       ],
       "image": "assets/images/cultural/sigiriya-1.webp",
-      "shortDescription": "Private chauffeur journey through Sigiriya Citadel, Dambulla cave murals, and the Sacred Tooth Relic Temple in Kandy.",
+      "shortDescription": "Private chauffeur journey through Sigiriya Rock Fortress, Dambulla cave murals, and the Sacred Tooth Relic Temple in Kandy.",
       "link": "./cultural/royal-kingdoms-sacred-temples/index.html",
       "categoryName": "Cultural Heritage",
       "travelers": [
@@ -6595,7 +6595,7 @@
           "lat": 7.957,
           "lng": 80.7603,
           "activities": [
-            "Lion Rock Citadel 5th-century summit climb",
+            "Lion Rock Fortress 5th-century summit climb",
             "Water gardens & mirror wall",
             "Pidurangala sunrise hike"
           ]
@@ -6644,7 +6644,7 @@
       "highlights": [
         "Blessing at the world’s oldest documented planted tree—the sacred Jaya Sri Maha Bodhi in Anuradhapura",
         "Cycle through the majestic ruins of medieval Polonnaruwa, marveling at the colossal Gal Vihara stone Buddhas",
-        "Climb both the iconic Sigiriya Rock and the sacred forest hermitage of Ritigala",
+        "Climb both the iconic Sigiriya Rock and the sacred forest monastery of Ritigala",
         "Experience candlelit evening pujas and sacred chanting in the Temple of the Sacred Tooth Relic",
         "Stay in eco-luxury pavilions nestled among ancient trees and serene reservoir waters"
       ],
@@ -6684,7 +6684,7 @@
         },
         {
           "day": 4,
-          "title": "Mystic Ritigala Forest Hermitage & Sigiriya",
+          "title": "Mystic Ritigala Forest Forest Monastery & Sigiriya",
           "description": "Journey south through dense forests to the enigmatic ruins of Ritigala Strict Nature Reserve, where ancient monastic walking paths wind past silent meditation platforms. Continue to your luxury resort overlooking Sigiriya.",
           "overnight": "Sigiriya Luxury Water Pavilion",
           "stay": "Luxury Boutique Hotel in Negombo",
@@ -6805,7 +6805,7 @@
       "slug": "three-millennia-of-living-heritage",
       "category": "cultural",
       "title": "Three Millennia of Living Heritage",
-      "tagline": "The Grand North-to-South Cultural & Historical Odyssey",
+      "tagline": "The Grand North-to-South Cultural & Historical Journey",
       "nights": 14,
       "days": 15,
       "tags": [
@@ -6860,7 +6860,7 @@
           "lat": 7.957,
           "lng": 80.7603,
           "activities": [
-            "Lion Rock Citadel 5th-century summit climb",
+            "Lion Rock Fortress 5th-century summit climb",
             "Water gardens & mirror wall",
             "Pidurangala sunrise hike"
           ]
@@ -6919,7 +6919,7 @@
       "highlights": [
         "Traverse the full cultural breadth of Ceylon from ancient northern Tamil kingdoms to southern colonial ramparts",
         "Discover the sacred islands, towering kovils, and colonial libraries of Jaffna",
-        "Pay homage at the sacred Bodhi Tree in Anuradhapura and climb Sigiriya Rock Citadel",
+        "Pay homage at the sacred Bodhi Tree in Anuradhapura and climb Sigiriya Rock Fortress",
         "Experience highland colonial tea estates, scenic mountain railways, and sacred mountain temples",
         "Walk the 400-year-old cobblestone lanes and ocean ramparts of UNESCO Galle Dutch Fort"
       ],
@@ -6938,7 +6938,7 @@
         {
           "day": 2,
           "title": "Wilpattu Sacred Monasteries & Anuradhapura",
-          "description": "Drive northward toward Anuradhapura, visiting tranquil forest hermitages along the border of Wilpattu. Check into your heritage sanctuary.",
+          "description": "Drive northward toward Anuradhapura, visiting tranquil forest monasteries along the border of Wilpattu. Check into your heritage sanctuary.",
           "overnight": "Anuradhapura Heritage Sanctuary",
           "stay": "Luxury Boutique Hotel in Negombo",
           "meals": "Breakfast & Gourmet Dinner",
@@ -6992,7 +6992,7 @@
         },
         {
           "day": 7,
-          "title": "Sigiriya Dawn Sky Citadel & Rural Village Life",
+          "title": "Sigiriya Dawn Sky Fortress & Rural Village Life",
           "description": "Early morning climb of Sigiriya Lion Rock Fortress. Afternoon village catamaran ride and authentic clay pot meal in Hiriwadunna.",
           "overnight": "Sigiriya Luxury Water Pavilion",
           "stay": "Luxury Boutique Hotel in Negombo",
@@ -7113,7 +7113,7 @@
         "assets/tours/cultural/three-millennia-3.jpg"
       ],
       "seoTitle": "Three Millennia of Living Heritage 15-Day Tour | Lotus Ceylon",
-      "seoDescription": "The definitive 15-day cultural odyssey of Sri Lanka: Jaffna, Anuradhapura, Sigiriya, Kandy, and Galle Fort with private luxury chauffeur guide.",
+      "seoDescription": "The definitive 15-day cultural journey of Sri Lanka: Jaffna, Anuradhapura, Sigiriya, Kandy, and Galle Fort with private luxury chauffeur guide.",
       "badge": "Signature Collection",
       "pace": "Leisurely & Relaxed",
       "difficulty": "Easy",
@@ -7136,7 +7136,7 @@
         "colombo"
       ],
       "image": "assets/images/cultural/polonnaruwa-gal-vihara-3.webp",
-      "shortDescription": "Grand 15-day in-depth odyssey through Ceylon's ancient dynasties, royal reservoirs, forest hermitages, and living traditions.",
+      "shortDescription": "Grand 15-day in-depth journey through Ceylon's ancient dynasties, royal reservoirs, forest monasteries, and living traditions.",
       "link": "./cultural/three-millennia-of-living-heritage/index.html",
       "categoryName": "Cultural Heritage",
       "travelers": [
@@ -7195,7 +7195,7 @@
           "lat": 6.3688,
           "lng": 81.5204,
           "activities": [
-            "Block 1 apex leopard safari",
+            "Block 1 wild leopard safari",
             "Sloth bear & spotted deer sightings",
             "Indian Ocean coastal dunes drive"
           ]
@@ -7348,7 +7348,7 @@
         "colombo"
       ],
       "image": "assets/images/wildlife/minneriya-elephant-gathering-2.webp",
-      "shortDescription": "Deep wilderness safari tracking apex leopards, massive elephant gatherings, and oceanic blue whales in premier national parks.",
+      "shortDescription": "Deep wilderness safari tracking wild leopards, massive elephant gatherings, and oceanic blue whales in premier national parks.",
       "link": "./wildlife/wild-ceylon-predator-elephant-trail/index.html",
       "categoryName": "Wildlife Safaris",
       "travelers": [
@@ -7368,7 +7368,7 @@
       "tags": [
         "The Big Five",
         "Marine & Land Giants",
-        "Apex Predators",
+        "Big Cats & Wild Leopards",
         "Definitive Wildlife"
       ],
       "destinations": [
@@ -7663,7 +7663,7 @@
       "id": "pkg-wildlife-03",
       "slug": "untamed-biosphere-rainforest-odyssey",
       "category": "wildlife",
-      "title": "Untamed Biosphere & Rainforest Odyssey",
+      "title": "Untamed Rainforest & Wildlife Journey",
       "tagline": "From Primary Cloud Forests to Wetland Corridors",
       "nights": 16,
       "days": 17,
@@ -7970,10 +7970,10 @@
       "priceNote": "Price on request (Customized to your wilderness preferences)",
       "images": [
         "assets/images/wildlife/udawalawe-3.webp",
-        "assets/tours/wildlife/biosphere-odyssey-2.jpg",
-        "assets/tours/wildlife/biosphere-odyssey-3.jpg"
+        "assets/tours/wildlife/biosphere-journey-2.jpg",
+        "assets/tours/wildlife/biosphere-journey-3.jpg"
       ],
-      "seoTitle": "Untamed Biosphere & Rainforest Odyssey 17-Day Safari | Lotus Ceylon",
+      "seoTitle": "Untamed Rainforest & Wildlife Journey 17-Day Safari | Lotus Ceylon",
       "seoDescription": "A grand 17-day wildlife expedition across Sri Lanka: Gal Oya swimming elephants, Sinharaja rainforest, Yala leopards, and Kumana wetlands.",
       "badge": "Signature Collection",
       "pace": "Leisurely & Relaxed",
@@ -7981,7 +7981,7 @@
       "groupSize": "Private Chauffeur Tour (1-8 Guests)",
       "childFriendly": true,
       "accessibilityNotes": "Accessible rooms and private ground-floor transport arranged upon advance request.",
-      "titleMain": "Untamed Biosphere & Rainforest Odyssey",
+      "titleMain": "Untamed Rainforest & Wildlife Journey",
       "titleAccent": "Primary Canopies & River Sanctuaries",
       "duration": "16 Nights / 17 Days",
       "route": [
@@ -7996,7 +7996,7 @@
       ],
       "image": "assets/images/wildlife/udawalawe-3.webp",
       "shortDescription": "Pristine Sinharaja primary rainforest biodiversity, endemic birding, and open savannah elephant safaris in Udawalawe.",
-      "link": "./wildlife/untamed-biosphere-rainforest-odyssey/index.html",
+      "link": "./wildlife/untamed-biosphere-rainforest-journey/index.html",
       "categoryName": "Wildlife Safaris",
       "travelers": [
         "couple",
@@ -8008,7 +8008,7 @@
       "id": "pkg-ceylon-tea-trails-colonial-grandeur",
       "slug": "ceylon-tea-trails-colonial-grandeur",
       "category": "hill-country",
-      "title": "Ceylon Tea Trails & Colonial Grandeur",
+      "title": "Ceylon Tea Trails & Classic Heritage",
       "tagline": "A refined highland journey through colonial planter estates, manicured tea gardens, and misty valleys.",
       "nights": 7,
       "days": 8,
@@ -8062,7 +8062,7 @@
       "highlights": [
         "Stay in historic restored colonial tea planter bungalows",
         "First-Class reserved seats on Kandy to Nuwara Eliya scenic railway",
-        "Private guided tea factory tour & sensory connoisseur tea tasting",
+        "Private guided tea factory tour & sensory travel lover tea tasting",
         "Sunset cocktail overlooking Nine Arches Viaduct Bridge",
         "High tea on the manicured lawn of The Grand Hotel Nuwara Eliya"
       ],
@@ -8070,7 +8070,7 @@
         {
           "day": "01",
           "title": "Ayubowan & Transfer to the Royal Hill Capital of Kandy",
-          "description": "Meet your private chauffeur guide at Bandaranaike International Airport (CMB) with a fragrant frangipani welcome. Drive through scenic lowlands into the verdant Kandyan hills. Check into your boutique mountain sanctuary overlooking Mahaweli River.",
+          "description": "Meet your private chauffeur guide at Bandaranaike International Airport (CMB) with a fragrant frangipani welcome. Drive through scenic lowlands into the lush green Kandyan hills. Check into your boutique mountain sanctuary overlooking Mahaweli River.",
           "meals": "Dinner Included",
           "stay": "Luxury Boutique Sanctuary, Kandy",
           "transfer": "Private Chauffeur-Driven Air-Conditioned Luxury Vehicle",
@@ -8099,7 +8099,7 @@
         },
         {
           "day": "04",
-          "title": "Pedro Tea Estate Plucking & Connoisseur Tea Tasting",
+          "title": "Pedro Tea Estate Plucking & Guided Tea Tasting",
           "description": "Put on a traditional woven tea basket and join local estate pluckers on misty slopes to harvest two leaves and a bud. Experience the rolling, drying, and grading process inside an operating 1885 factory followed by master tasting.",
           "meals": "Breakfast, High Tea & Dinner",
           "stay": "Historic Colonial Planter Estate, Nuwara Eliya",
@@ -8168,7 +8168,7 @@
       "images": [
         "assets/images/tea-country.jpg"
       ],
-      "seoTitle": "Ceylon Tea Trails & Colonial Grandeur 8-Day Tour | Lotus Ceylon",
+      "seoTitle": "Ceylon Tea Trails & Classic Heritage 8-Day Tour | Lotus Ceylon",
       "seoDescription": "Discover the romance of Sri Lanka's tea country with Lotus Ceylon. Colonial planter bungalows, scenic train rides, and misty Nuwara Eliya hills.",
       "badge": "Signature Highland",
       "pace": "Relaxed",
@@ -8176,7 +8176,7 @@
       "groupSize": "Private (2-8 guests)",
       "childFriendly": "Yes (Ages 6+)",
       "accessibilityNotes": "Bungalows have ground-floor suites; station platform assistance arranged.",
-      "titleMain": "Ceylon Tea Trails & Colonial Grandeur",
+      "titleMain": "Ceylon Tea Trails & Classic Heritage",
       "titleAccent": "Planter Bungalows & Misty Valleys",
       "duration": "7 Nights / 8 Days",
       "route": [
@@ -8187,7 +8187,7 @@
       ],
       "image": "assets/images/hill-country/nuwara-eliya-tea-2.webp",
       "shortDescription": "Heritage colonial planter bungalows, private tea tastings, and misty Nuwara Eliya valleys in the emerald highlands.",
-      "link": "./hill-country/ceylon-tea-trails-colonial-grandeur/index.html",
+      "link": "./hill-country/ceylon-tea-trails-colonial-splendor/index.html",
       "categoryName": "Hill Country and Tea",
       "travelers": [
         "couple",
@@ -8200,7 +8200,7 @@
       "slug": "misty-peaks-scenic-railways-expedition",
       "category": "hill-country",
       "title": "Misty Peaks & Scenic Railways Expedition",
-      "tagline": "The definitive highland railway odyssey across dramatic bridges, cloud forests, and tea valleys.",
+      "tagline": "The definitive highland railway journey across dramatic bridges, cloud forests, and tea valleys.",
       "nights": 9,
       "days": 10,
       "tags": [
@@ -8399,7 +8399,7 @@
       ],
       "seoTitle": "Misty Peaks & Scenic Railways Expedition 10-Day Tour | Lotus Ceylon",
       "seoDescription": "Experience Sri Lanka's world-famous scenic train journeys through Kandy, Hatton, Nuwara Eliya, and Ella with Lotus Ceylon.",
-      "badge": "Rail Odyssey",
+      "badge": "Rail Journey",
       "pace": "Moderate",
       "difficulty": "Easy to Moderate",
       "groupSize": "Private (2-8 guests)",
@@ -8432,7 +8432,7 @@
       "slug": "highland-wilderness-cascading-waterfalls",
       "category": "hill-country",
       "title": "Highland Wilderness & Cascading Waterfalls",
-      "tagline": "A majestic exploration of Sri Lanka's alpine wilderness, roaring cataracts, and sacred mountain peaks.",
+      "tagline": "A majestic exploration of Sri Lanka's mountain highlands, roaring waterfalls, and sacred mountain peaks.",
       "nights": 11,
       "days": 12,
       "tags": [
@@ -8938,7 +8938,7 @@
           "activities": [
             "Point break surfing with ISA instructors",
             "Lagoon safari watching crocodiles & elephants",
-            "Kudumbigala forest hermitage trek"
+            "Kudumbigala forest monastery trek"
           ]
         },
         {
@@ -9120,8 +9120,8 @@
       "id": "pkg-lotus-ayu-holistic-rejuvenation",
       "slug": "lotus-ayu-holistic-rejuvenation",
       "category": "ayurvedic",
-      "title": "Lotus Ayu Holistic Rejuvenation",
-      "tagline": "A restorative sanctuary escape dedicated to authentic physician-led panchakarma and tranquil rejuvenation.",
+      "title": "Lotus Ayu Holistic Wellness & Renewal",
+      "tagline": "A restorative sanctuary escape dedicated to authentic physician-led panchakarma and peaceful healing and relaxation.",
       "nights": 9,
       "days": 10,
       "tags": [
@@ -9298,7 +9298,7 @@
       "images": [
         "assets/images/temple-culture.jpg"
       ],
-      "seoTitle": "Lotus Ayu Holistic Rejuvenation 10-Day Retreat | Lotus Ceylon",
+      "seoTitle": "Lotus Ayu Holistic Wellness & Renewal 10-Day Retreat | Lotus Ceylon",
       "seoDescription": "Authentic physician-guided Ayurvedic panchakarma retreat in Sri Lanka. Shirodhara, daily yoga, and organic sattvic dining.",
       "badge": "Ayurveda Immersion",
       "pace": "Serene & Restorative",
@@ -9306,7 +9306,7 @@
       "groupSize": "Private / Couple",
       "childFriendly": "Adults recommended (16+)",
       "accessibilityNotes": "Resorts are fully accessible with step-free treatment pavilions and gardens.",
-      "titleMain": "Lotus Ayu Holistic Rejuvenation",
+      "titleMain": "Lotus Ayu Holistic Wellness & Renewal",
       "titleAccent": "Authentic Panchakarma & Sacred Healing",
       "duration": "9 Nights / 10 Days",
       "route": [
@@ -9354,7 +9354,7 @@
           "lng": 80.6511,
           "activities": [
             "Cave temple silent walking meditation",
-            "Forest hermitage chanting & mindfulness",
+            "Forest forest monastery chanting & mindfulness",
             "Organic herbal garden walkthrough"
           ]
         },
@@ -9390,7 +9390,7 @@
         {
           "day": "01",
           "title": "Arrival & Gentle Transfer to Cultural Forest Haven",
-          "description": "Arrival at CMB airport. Private transfer to a serene forest hermitage retreat near Dambulla surrounded by birdsong.",
+          "description": "Arrival at CMB airport. Private transfer to a serene forest monastery retreat near Dambulla surrounded by birdsong.",
           "meals": "Dinner Included",
           "stay": "Forest Meditation Sanctuary, Dambulla",
           "transfer": "Private Chauffeur-Driven Air-Conditioned Luxury Vehicle",
@@ -9409,7 +9409,7 @@
         },
         {
           "day": "03",
-          "title": "Forest Hermitage Meditation & Monastic Audience",
+          "title": "Forest Monastery Meditation & Monastic Audience",
           "description": "Visit an active Buddhist forest monastery (Aranya Senasanaya). Experience seated meditation under ancient canopy trees.",
           "meals": "Breakfast & Vegetarian Lunch",
           "stay": "Forest Meditation Sanctuary, Dambulla",
@@ -9532,7 +9532,7 @@
         "13 Nights in monastic eco-retreats and premier oceanfront Ayurvedic sanctuary",
         "All Ayurvedic therapies, doctor consultations, medicines, and daily yoga",
         "Full board dining during Ayurvedic stay and half board in cultural sanctuaries",
-        "Private scholarly Buddhist guide for temple and forest hermitage visits",
+        "Private scholarly Buddhist guide for temple and forest monastery visits",
         "Private luxury air-conditioned chauffeur throughout"
       ],
       "exclusions": [
@@ -10372,7 +10372,7 @@
         {
           "day": "04",
           "title": "Sigiriya Lion Rock Morning Exploration",
-          "description": "Morning visit to the dramatic 5th-century palace citadel. Children love the giant lion paws carved into the stone.",
+          "description": "Morning visit to the dramatic 5th-century palace fortress. Children love the giant lion paws carved into the stone.",
           "meals": "Breakfast & Dinner",
           "stay": "Safari Nature Lodge, Habarana",
           "transfer": "Private Chauffeur-Driven Air-Conditioned Luxury Vehicle",
@@ -10755,7 +10755,7 @@
       "childFriendly": "Yes (All ages)",
       "accessibilityNotes": "Paced with two-night stays at key hubs to avoid packing fatigue for families.",
       "titleMain": "The Grand Ceylon Family Adventure",
-      "titleAccent": "Ancient Citadels, Wilderness & Coastal Play",
+      "titleAccent": "Ancient Fortresses, Wilderness & Coastal Play",
       "duration": "13 Nights / 14 Days",
       "route": [
         "negombo",
@@ -10956,7 +10956,7 @@
       "id": "pkg-the-epic-ramayana-chronicle-pilgrimage",
       "slug": "the-epic-ramayana-chronicle-pilgrimage",
       "category": "ramayana",
-      "title": "The Epic Ramayana Chronicle Pilgrimage",
+      "title": "The Epic Ramayana Heritage Pilgrimage",
       "tagline": "The ultimate 10-day cross-island pilgrimage tracing sacred shrines from Mannar to Nuwara Eliya and Ella.",
       "nights": 9,
       "days": 10,
@@ -11171,7 +11171,7 @@
       "groupSize": "Private (2-12 pilgrims)",
       "childFriendly": "Yes (All ages)",
       "accessibilityNotes": "Cave and mountain shrines involve climbing steps; road journeys arranged on smooth expressways.",
-      "titleMain": "The Epic Ramayana Chronicle Pilgrimage",
+      "titleMain": "The Epic Ramayana Heritage Pilgrimage",
       "titleAccent": "Ancient Temples, Ravana Caves & Sacred Fire",
       "duration": "9 Nights / 10 Days",
       "route": [
@@ -11185,7 +11185,7 @@
       ],
       "image": "assets/images/ramayana/ravana-falls-2.webp",
       "shortDescription": "Comprehensive Ramayana journey from Mannar Rama Setu and Trincomalee Koneswaram to Divurumpola and Ravana caves.",
-      "link": "./ramayana/the-epic-ramayana-chronicle-pilgrimage/index.html",
+      "link": "./ramayana/the-epic-ramayana-history-pilgrimage/index.html",
       "categoryName": "Ramayana Trail",
       "travelers": [
         "couple",
@@ -11197,7 +11197,7 @@
       "id": "pkg-the-royal-ceylon-fairways-tour",
       "slug": "the-royal-ceylon-fairways-tour",
       "category": "golf",
-      "title": "The Royal Ceylon Fairways Tour",
+      "title": "The Royal Ceylon Championship Golf Tour",
       "tagline": "Tee off at Asia’s oldest golf clubs: Royal Colombo and Donald Steel’s spectacular Victoria Golf Resort.",
       "nights": 6,
       "days": 7,
@@ -11332,7 +11332,7 @@
       "groupSize": "Private (1-8 golfers)",
       "childFriendly": "Yes (Junior golfers welcome)",
       "accessibilityNotes": "Golf buggies and senior caddies available at both championship venues.",
-      "titleMain": "The Royal Ceylon Fairways Tour",
+      "titleMain": "The Royal Ceylon Championship Golf Tour",
       "titleAccent": "Historic RCGC & Victoria Highland Links",
       "duration": "6 Nights / 7 Days",
       "route": [
@@ -11354,7 +11354,7 @@
       "slug": "highland-greens-coastal-links-championship",
       "category": "golf",
       "title": "Highland Greens & Coastal Links Championship",
-      "tagline": "The complete golf circuit: colonial fairways, highland pine greens, and oceanfront coastal links.",
+      "tagline": "The complete golf circuit: classic golf fairways, highland pine greens, and oceanfront coastal links.",
       "nights": 9,
       "days": 10,
       "tags": [
@@ -11465,7 +11465,7 @@
         {
           "day": "06",
           "title": "Highland Tea Tasting & Scenic Descent to Southern Coast",
-          "description": "Morning tea factory connoisseur tasting. Descend through Ella Gap to Shangri-La Hambantota Golf Resort.",
+          "description": "Morning tea factory travel lover tasting. Descend through Ella Gap to Shangri-La Hambantota Golf Resort.",
           "meals": "Breakfast & Dinner",
           "stay": "Shangri-La Golf Resort & Spa, Hambantota",
           "transfer": "Private Chauffeur-Driven Air-Conditioned Luxury Vehicle",
@@ -11561,12 +11561,12 @@
       "id": "pkg-the-grand-ceylon-masters-golf-odyssey",
       "slug": "the-grand-ceylon-masters-golf-odyssey",
       "category": "golf",
-      "title": "The Grand Ceylon Masters Golf Odyssey",
+      "title": "The Grand Ceylon Masters Golf Journey",
       "tagline": "The ultimate luxury golfing journey: 6 rounds across championship courses with 5★ boutique hospitality.",
       "nights": 11,
       "days": 12,
       "tags": [
-        "Masters Odyssey",
+        "Masters Journey",
         "6 Rounds",
         "VIP Golf"
       ],
@@ -11768,7 +11768,7 @@
       "images": [
         "assets/images/tea-country.jpg"
       ],
-      "seoTitle": "The Grand Ceylon Masters Golf Odyssey 12-Day Tour | Lotus Ceylon",
+      "seoTitle": "The Grand Ceylon Masters Golf Journey 12-Day Tour | Lotus Ceylon",
       "seoDescription": "The definitive Sri Lanka golf tour: 6 championship rounds at Royal Colombo, Victoria Kandy, Nuwara Eliya, and Shangri-La.",
       "badge": "The Masters Collection",
       "pace": "Elite Golf & Leisure",
@@ -11776,7 +11776,7 @@
       "groupSize": "Private (1-8 golfers)",
       "childFriendly": "Yes",
       "accessibilityNotes": "VIP clubhouse access, dedicated luxury van with extra golf bag compartment, buggy throughout.",
-      "titleMain": "The Grand Ceylon Masters Golf Odyssey",
+      "titleMain": "The Grand Ceylon Masters Golf Journey",
       "titleAccent": "Four Championship Courses & 5-Star Stays",
       "duration": "11 Nights / 12 Days",
       "route": [
@@ -11788,7 +11788,7 @@
       ],
       "image": "assets/images/golf/ceylon-championship-golf-1.webp",
       "shortDescription": "The definitive 12-day Sri Lanka masters golf pilgrimage with 6 championship rounds, colonial manors, and fine dining.",
-      "link": "./golf/the-grand-ceylon-masters-golf-odyssey/index.html",
+      "link": "./golf/the-grand-ceylon-masters-golf-journey/index.html",
       "categoryName": "Championship Golf",
       "travelers": [
         "couple",
@@ -11833,7 +11833,7 @@
       "itinerary": [
         {
           "day": 1,
-          "title": "Arrival & Sacred Welcome at Negombo Seaboard",
+          "title": "Arrival & Sacred Welcome at Negombo Coast",
           "desc": "Arrive at airport and receive a traditional lotus greeting. Transfer to coastal hotel.",
           "stay": "Negombo"
         },
@@ -11996,7 +11996,7 @@
         {
           "day": 5,
           "title": "Sigiriya Ancient Fortress & Golden Cave Temple",
-          "desc": "Sigiriya rock citadel and Dambulla cave murals.",
+          "desc": "Sigiriya rock fortress and Dambulla cave murals.",
           "stay": "Dambulla"
         },
         {
@@ -12019,7 +12019,7 @@
         },
         {
           "day": 9,
-          "title": "Seetha Eliya & Descent to Colombo Seaboard",
+          "title": "Seetha Eliya & Descent to Colombo Coast",
           "desc": "Descend to oceanfront capital of Colombo.",
           "stay": "Colombo"
         },
@@ -12083,7 +12083,7 @@
     {
       "id": "pkg-forest-hermitages-mindful-ceylon",
       "slug": "forest-hermitages-mindful-ceylon",
-      "title": "Forest Hermitages & Mindful Ceylon",
+      "title": "Forest Monasteries & Mindful Ceylon",
       "subtitle": "Vipassana Meditation, Silent Sanctuaries & Forest Monks",
       "category_slug": "buddhist-heritage",
       "category": "buddhist-heritage",
@@ -12152,7 +12152,7 @@
         },
         {
           "day": 7,
-          "title": "Ascent to Kandy & Forest Hermitage of Udawattakele",
+          "title": "Ascent to Kandy & Forest Forest Monastery of Udawattakele",
           "desc": "Silent walking retreat through royal sanctuary.",
           "stay": "Kandy"
         },
@@ -12210,7 +12210,7 @@
       "priceNote": "Tailor-made on request",
       "image": "assets/images/buddhist-heritage/ruwanwelisaya-2.webp",
       "shortDescription": "Secluded meditation at Ritigala ruins, forest monastic retreats, and deep mindful contemplation.",
-      "link": "./buddhist-heritage/forest-hermitages-mindful-ceylon/index.html",
+      "link": "./buddhist-heritage/forest-forest monasteries-mindful-ceylon/index.html",
       "categoryName": "Buddhist Heritage",
       "travelers": [
         "couple",
@@ -12228,7 +12228,7 @@
         "Colombo"
       ],
       "title_i18n": {
-        "en": "Forest Hermitages & Mindful Ceylon",
+        "en": "Forest Monasteries & Mindful Ceylon",
         "zh": "森林禅院与正念静心之旅"
       },
       "overview_i18n": {

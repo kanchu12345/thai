@@ -2775,6 +2775,7 @@
             localStorage.setItem('lotus_cms_published_' + this.activePageKey, JSON.stringify(payload));
             localStorage.setItem('lotus_cms_last_published', String(nowTs));
             // Invalidate all legacy and current front-end caches
+            localStorage.removeItem('lotus_cms_v7');
             localStorage.removeItem('lotus_cms_v6');
             localStorage.removeItem('lotus_cms_v5');
             localStorage.removeItem('lotus_cms_v3');

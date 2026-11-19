@@ -95,7 +95,7 @@
       if (this.fallbackData) return this.fallbackData;
       // 1. Check local seed cache populated from live Firestore sync or Admin updates
       try {
-        const cachedRaw = localStorage.getItem('lotus_seed_catalog_cache_v2');
+        const cachedRaw = localStorage.getItem('lotus_seed_catalog_cache_v3') || localStorage.getItem('lotus_seed_catalog_cache_v2');
         if (cachedRaw) {
           const parsed = JSON.parse(cachedRaw);
           if (parsed && (parsed.packages || parsed.tours)) {

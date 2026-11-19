@@ -3030,6 +3030,9 @@ resolveImg(url) {
         localStorage.removeItem('lotus_site_data_store_v1');
         localStorage.removeItem('lotus_data_payload');
         localStorage.removeItem('lotus_data_v');
+        ['lotus_cms_v7', 'lotus_cms_v6', 'lotus_cms_v5', 'lotus_cms_v4', 'lotus_cms_v3', 'lotus_cms_v2', 'lotus_cms_v1'].forEach(k => {
+          try { localStorage.removeItem(k); } catch(e) {}
+        });
       } catch (e) {}
 
       // Dispatch local event
@@ -3109,6 +3112,9 @@ resolveImg(url) {
         localStorage.removeItem('lotus_site_data_store_v1');
         localStorage.removeItem('lotus_data_payload');
         localStorage.removeItem('lotus_data_v');
+        ['lotus_cms_v7', 'lotus_cms_v6', 'lotus_cms_v5', 'lotus_cms_v4', 'lotus_cms_v3', 'lotus_cms_v2', 'lotus_cms_v1'].forEach(k => {
+          try { localStorage.removeItem(k); } catch(e) {}
+        });
       } catch (e) {}
 
       // Dispatch local event
@@ -6121,52 +6127,67 @@ const waBtn = document.getElementById('inquiryWhatsAppBtn');
      */
 
     syncCatalogCache() {
-
       try {
-
         const cache = {
-
           packages: this.packages,
-
           tours: this.packages,
-
           categories: this.categories,
-
           destinations: this.destinations,
-
           reviews: this.reviews,
-
           testimonials: this.reviews,
-
           team: this.team,
-
           blogPosts: this.blogPosts,
-
           blog: this.blogPosts,
-
           homepageBlogConfig: this.homepageBlogConfig,
-
           settings: this.settings || []
-
         };
 
-        localStorage.setItem('lotus_seed_catalog_cache_v2', JSON.stringify(cache));
         const vNow = Date.now();
+        localStorage.setItem('lotus_seed_catalog_cache_v3', JSON.stringify(cache));
+        localStorage.setItem('lotus_cms_v7', JSON.stringify({ version: vNow, fetchedAt: vNow, data: cache }));
         localStorage.setItem('lotus_data_payload', JSON.stringify(cache));
         localStorage.setItem('lotus_data_v', String(vNow));
         localStorage.setItem('lotus_cms_last_published', String(vNow));
-        localStorage.removeItem('lotus_cms_v5');
-        localStorage.removeItem('lotus_cms_v3');
 
+        // Purge all legacy cache keys
+        const legacyKeys = [
+          'lotus_cms_v6', 'lotus_cms_v5', 'lotus_cms_v4', 'lotus_cms_v3', 'lotus_cms_v2', 'lotus_cms_v1',
+          'lotus_seed_catalog_cache_v2', 'lotus_seed_catalog_cache'
+        ];
+        legacyKeys.forEach(k => {
+          try { localStorage.removeItem(k); } catch (e) {}
+        });
+
+        // Dispatch cache-invalidation signals and notify listeners/iframes
+        window.dispatchEvent(new CustomEvent('lotus:cache-invalidated', {
+          detail: { version: vNow, timestamp: vNow }
+        }));
+        window.dispatchEvent(new CustomEvent('lotus:catalog-updated', {
+          detail: { version: vNow, catalog: cache }
+        }));
+        window.dispatchEvent(new CustomEvent('lotus:cache-bust', {
+          detail: { version: vNow, timestamp: vNow }
+        }));
+
+        const previewIframe = document.getElementById('visualCmsIframe') || document.querySelector('iframe');
+        if (previewIframe && previewIframe.contentWindow) {
+          try {
+            previewIframe.contentWindow.postMessage({
+              type: 'lotus:cache-bust',
+              version: vNow,
+              timestamp: vNow
+            }, '*');
+            previewIframe.contentWindow.postMessage({
+              type: 'lotus:catalog-updated',
+              version: vNow,
+              catalog: cache
+            }, '*');
+          } catch (ie) {}
+        }
       } catch (e) {
-
         console.warn('Cache sync warning:', e);
-
       }
-
     },
-
-
 
     deleteCategory(slugOrId) {
 

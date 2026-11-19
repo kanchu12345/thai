@@ -15,9 +15,31 @@
 (function (window, document) {
   'use strict';
 
-  const CACHE_KEY = 'lotus_cms_v6';
-  const CACHE_TTL_MS = 30 * 1000; // 10 minutes
-  const LEGACY_CACHE_KEYS = ['lotus_cms_v5', 'lotus_seed_catalog_cache_v2', 'lotus_seed_catalog_cache'];
+  // Auto-purge legacy browser caches on script load
+  try {
+    const _legacyList = [
+      'lotus_cms_v6', 'lotus_cms_v5', 'lotus_cms_v4', 'lotus_cms_v3', 'lotus_cms_v2', 'lotus_cms_v1',
+      'lotus_seed_catalog_cache_v2', 'lotus_seed_catalog_cache', 'lotus_data_payload', 'lotus_cms_last_published',
+      'lotus_data_v', 'lotus_site_data_store_v1'
+    ];
+    _legacyList.forEach(k => { try { localStorage.removeItem(k); } catch(e){} });
+  } catch(e){}
+
+  const CACHE_KEY = 'lotus_cms_v7';
+  const CACHE_TTL_MS = 30 * 1000; // 30 seconds
+  const LEGACY_CACHE_KEYS = [
+    'lotus_cms_v6',
+    'lotus_cms_v5',
+    'lotus_cms_v4',
+    'lotus_cms_v3',
+    'lotus_cms_v2',
+    'lotus_cms_v1',
+    'lotus_seed_catalog_cache_v2',
+    'lotus_seed_catalog_cache',
+    'lotus_data_payload',
+    'lotus_data_v',
+    'lotus_site_data_store_v1'
+  ];
 
   // Legacy Image Alias Mapping
   const IMAGE_ALIAS_MAP = {
@@ -635,6 +657,39 @@
           localStorage.removeItem(key);
         } catch (e) {}
       });
+      try {
+        const keysToRemove = [];
+        for (let i = 0; i < localStorage.length; i++) {
+          const k = localStorage.key(i);
+          if (!k) continue;
+          if (
+            k !== CACHE_KEY &&
+            k !== 'lotus_lang' &&
+            k !== 'lotus_preferred_lang' &&
+            k !== 'lotus_admin_active' &&
+            k !== 'lotus_admin_user' &&
+            k !== 'lotus_homepage_blogs_config' &&
+            k !== 'lotus_seed_catalog_cache_v3' &&
+            k !== 'lotus_seed_catalog_cache_time_v3' &&
+            (
+              /^lotus_cms_v[0-6]($|_)/.test(k) ||
+              k.startsWith('lotus_seed_catalog_cache_v1') ||
+              k.startsWith('lotus_seed_catalog_cache_v2') ||
+              k === 'lotus_seed_catalog_cache_time' ||
+              k === 'lotus_seed_catalog_cache' ||
+              k === 'lotus_data_payload' ||
+              k === 'lotus_cms_last_published' ||
+              k === 'lotus_data_v' ||
+              k === 'lotus_site_data_store_v1'
+            )
+          ) {
+            keysToRemove.push(k);
+          }
+        }
+        keysToRemove.forEach(k => {
+          try { localStorage.removeItem(k); } catch (e) {}
+        });
+      } catch (e) {}
     },
 
     readCache() {

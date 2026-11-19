@@ -17,8 +17,28 @@
 
 
 (function() {
-
   'use strict';
+
+  const CACHE_KEY = 'lotus_cms_v7';
+  const LEGACY_CACHE_KEYS = [
+    'lotus_cms_v6',
+    'lotus_cms_v5',
+    'lotus_cms_v4',
+    'lotus_cms_v3',
+    'lotus_cms_v2',
+    'lotus_cms_v1',
+    'lotus_seed_catalog_cache_v2',
+    'lotus_seed_catalog_cache',
+    'lotus_data_payload',
+    'lotus_cms_last_published',
+    'lotus_data_v',
+    'lotus_site_data_store_v1'
+  ];
+
+  // Auto-purge legacy browser caches on script load
+  try {
+    LEGACY_CACHE_KEYS.forEach(k => { try { localStorage.removeItem(k); } catch(e){} });
+  } catch(e){}
 
 
 
@@ -64,23 +84,16 @@
   class LotusTourService {
 
     constructor() {
-
       this.config = firebaseConfig;
-
       this.db = null;
-
       this.auth = null;
-
       this.initialized = false;
-
       this.isOnline = navigator.onLine;
-
-      this.cacheKey = 'lotus_seed_catalog_cache_v2';
-
-      this.cacheTimeKey = 'lotus_seed_catalog_cache_time';
-
+      this.CACHE_KEY = CACHE_KEY;
+      this.cacheKey = 'lotus_seed_catalog_cache_v3';
+      this.cacheTimeKey = 'lotus_seed_catalog_cache_time_v3';
       this.cachedData = null;
-
+      this.purgeLegacyCaches();
     }
 
 
@@ -885,6 +898,44 @@
     }
 
 
+
+    
+    purgeLegacyCaches() {
+      LEGACY_CACHE_KEYS.forEach(key => {
+        try {
+          localStorage.removeItem(key);
+        } catch (e) {}
+      });
+      try {
+        const keysToRemove = [];
+        for (let i = 0; i < localStorage.length; i++) {
+          const k = localStorage.key(i);
+          if (!k) continue;
+          if (
+            k !== CACHE_KEY &&
+            k !== 'lotus_lang' &&
+            k !== 'lotus_preferred_lang' &&
+            k !== 'lotus_admin_active' &&
+            k !== 'lotus_admin_user' &&
+            k !== 'lotus_homepage_blogs_config' &&
+            (
+              /^lotus_cms_v[0-6]($|_)/.test(k) ||
+              k === 'lotus_seed_catalog_cache_v2' ||
+              k === 'lotus_seed_catalog_cache' ||
+              k === 'lotus_data_payload' ||
+              k === 'lotus_cms_last_published' ||
+              k === 'lotus_data_v' ||
+              k === 'lotus_site_data_store_v1'
+            )
+          ) {
+            keysToRemove.push(k);
+          }
+        }
+        keysToRemove.forEach(k => {
+          try { localStorage.removeItem(k); } catch (e) {}
+        });
+      } catch (e) {}
+    }
 
     saveToCache(data) {
 
