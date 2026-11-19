@@ -2112,6 +2112,9 @@
     // =========================================================================
 
     handleLiveInput(key, val, attrType) {
+      if (attrType === 'image' && val) {
+        val = this.autoFormatImageUrl(val, key && key.includes('team_img_'));
+      }
       if (!this.currentFieldValues[this.activeLang]) {
         this.currentFieldValues[this.activeLang] = {};
       }
@@ -2597,6 +2600,9 @@
           secureUrl = await window.AdminApp.fileToDataUrl(file);
         }
         if (secureUrl) {
+          if (type === 'image') {
+            secureUrl = this.autoFormatImageUrl(secureUrl, fieldKey && fieldKey.includes('team_img_'));
+          }
           const inp = document.getElementById('fieldInput_' + fieldKey);
           if (inp) {
             inp.value = secureUrl;
@@ -2951,6 +2957,21 @@
         return this.activeDocData[key];
       }
       return fallback || '';
+    },
+
+    autoFormatImageUrl(url, isFace = false) {
+      if (!url || typeof url !== 'string') return url || '';
+      url = String(url).trim();
+      if (!url.includes('res.cloudinary.com') || !url.includes('/upload/')) return url;
+      const uploadIdx = url.indexOf('/upload/');
+      if (uploadIdx === -1) return url;
+      const prefix = url.substring(0, uploadIdx + '/upload/'.length);
+      let remainder = url.substring(uploadIdx + '/upload/'.length);
+      while (/^(?:(?:c_|w_|h_|ar_|g_|f_|q_|so_|fl_|e_|b_|co_|dpr_)[^/]*|f_auto|q_auto)\//.test(remainder)) {
+        remainder = remainder.replace(/^[^/]+\//, '');
+      }
+      const transform = isFace ? 'c_fill,g_face,f_auto,q_auto' : 'c_fill,g_auto,f_auto,q_auto';
+      return prefix + transform + '/' + remainder;
     },
 
     resolvePreviewUrl(url) {
@@ -4373,6 +4394,7 @@
 
     updateTourHeroImage(slug, url) {
       this.markUnsavedChanges();
+      url = this.autoFormatImageUrl(url);
       if (!this.activeDocData) this.activeDocData = {};
       this.activeDocData.hero_image = url;
       this.activeDocData.image = url;
@@ -4391,6 +4413,9 @@
 
     handleTourItineraryInput(slug, dayIndex, dayField, value) {
       this.markUnsavedChanges();
+      if (dayField === 'image' && value) {
+        value = this.autoFormatImageUrl(value);
+      }
       if (!this.activeDocData) this.activeDocData = {};
       if (!Array.isArray(this.activeDocData.itinerary)) this.activeDocData.itinerary = [];
       if (!this.activeDocData.itinerary[dayIndex]) this.activeDocData.itinerary[dayIndex] = {};

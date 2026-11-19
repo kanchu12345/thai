@@ -63,9 +63,14 @@
     if (!url) return '';
     url = String(url).trim();
     if (url.includes('res.cloudinary.com') && url.includes('/upload/')) {
-      if (!url.includes('c_fill') && !url.includes('c_crop')) {
-        url = url.replace('/upload/', '/upload/c_fill,g_auto,f_auto,q_auto/');
-        url = url.replace(/\/upload\/c_fill,g_auto,f_auto,q_auto\/(f_auto,q_auto\/)+/, '/upload/c_fill,g_auto,f_auto,q_auto/');
+      const uploadIdx = url.indexOf('/upload/');
+      if (uploadIdx !== -1) {
+        const prefix = url.substring(0, uploadIdx + '/upload/'.length);
+        let remainder = url.substring(uploadIdx + '/upload/'.length);
+        while (/^(?:(?:c_|w_|h_|ar_|g_|f_|q_|so_|fl_|e_|b_|co_|dpr_)[^/]*|f_auto|q_auto)\//.test(remainder)) {
+          remainder = remainder.replace(/^[^/]+\//, '');
+        }
+        return prefix + 'c_fill,g_auto,f_auto,q_auto/' + remainder;
       }
       return url;
     }

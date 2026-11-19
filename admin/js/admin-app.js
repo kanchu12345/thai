@@ -942,16 +942,19 @@ window.uploadToCloudinary = uploadToCloudinary;
       }).join('');
     },
 
-    autoFormatImageUrl(url) {
-      if (!url) return '';
+    autoFormatImageUrl(url, isFace = false) {
+      if (!url || typeof url !== 'string') return url || '';
       url = String(url).trim();
-      if (url.includes('res.cloudinary.com') && url.includes('/upload/')) {
-        if (!url.includes('c_fill') && !url.includes('c_crop')) {
-          url = url.replace('/upload/', '/upload/c_fill,g_auto,f_auto,q_auto/');
-          url = url.replace(/\/upload\/c_fill,g_auto,f_auto,q_auto\/(f_auto,q_auto\/)+/, '/upload/c_fill,g_auto,f_auto,q_auto/');
-        }
+      if (!url.includes('res.cloudinary.com') || !url.includes('/upload/')) return url;
+      const uploadIdx = url.indexOf('/upload/');
+      if (uploadIdx === -1) return url;
+      const prefix = url.substring(0, uploadIdx + '/upload/'.length);
+      let remainder = url.substring(uploadIdx + '/upload/'.length);
+      while (/^(?:(?:c_|w_|h_|ar_|g_|f_|q_|so_|fl_|e_|b_|co_|dpr_)[^/]*|f_auto|q_auto)\//.test(remainder)) {
+        remainder = remainder.replace(/^[^/]+\//, '');
       }
-      return url;
+      const transform = isFace ? 'c_fill,g_face,f_auto,q_auto' : 'c_fill,g_auto,f_auto,q_auto';
+      return prefix + transform + '/' + remainder;
     },
 
     selectPickedImage(url, isVideo = false) {
@@ -3131,8 +3134,8 @@ resolveImg(url) {
         category: (catInput ? catInput.value.trim() : 'Editorial') || 'Travel Stories',
         author: (authorInput ? authorInput.value.trim() : 'Lotus Ceylon Editorial') || 'Lotus Ceylon',
         publishDate: (dateInput ? dateInput.value : '') || new Date().toISOString().split('T')[0],
-        coverImage: (coverInput ? coverInput.value.trim() : '') || 'assets/images/cultural/sigiriya-1.webp',
-        cover: (coverInput ? coverInput.value.trim() : '') || 'assets/images/cultural/sigiriya-1.webp',
+        coverImage: this.autoFormatImageUrl((coverInput ? coverInput.value.trim() : '') || 'assets/images/cultural/sigiriya-1.webp'),
+        cover: this.autoFormatImageUrl((coverInput ? coverInput.value.trim() : '') || 'assets/images/cultural/sigiriya-1.webp'),
         excerpt: excerptInput ? excerptInput.value.trim() : '',
         content: contentInput ? contentInput.value : '',
         readTime: '6 min read',
@@ -4570,7 +4573,7 @@ const waBtn = document.getElementById('inquiryWhatsAppBtn');
       const member = sorted[memberIndex] || (this.team && this.team[memberIndex]);
       if (!member) return;
 
-      const cleanPhotoUrl = (photoUrl || '').trim();
+      const cleanPhotoUrl = this.autoFormatImageUrl((photoUrl || '').trim(), true);
       if (!cleanPhotoUrl) {
         member.photo = null;
       } else {
@@ -4620,7 +4623,7 @@ const waBtn = document.getElementById('inquiryWhatsAppBtn');
       const flag = document.getElementById('teamFlag').value.trim() || '🌐';
       const role = document.getElementById('teamRole').value.trim();
       const country = document.getElementById('teamCountry').value.trim();
-      const photoUrl = document.getElementById('teamPhotoUrl').value.trim();
+      const photoUrl = this.autoFormatImageUrl(document.getElementById('teamPhotoUrl').value.trim(), true);
       const bio = document.getElementById('teamBio').value.trim() || 'Introduction coming soon';
       const sortOrder = parseInt(document.getElementById('teamSortOrder').value, 10) || 1;
       const published = document.getElementById('teamPublished').checked;
@@ -5989,9 +5992,12 @@ const waBtn = document.getElementById('inquiryWhatsAppBtn');
           })()
         },
         promo_video: (document.getElementById('pkgPromoVideo') ? document.getElementById('pkgPromoVideo').value.trim() : '') || existing.promo_video || '',
-        gallery_images: this.activePackageGallery || existing.gallery_images || existing.gallery || [],
-        hero_image: document.getElementById('pkgHeroImage').value.trim() || existing.hero_image || 'assets/images/cultural-triangle.jpg',
-        itinerary: itinerary.length > 0 ? itinerary : (existing.itinerary || []),
+        gallery_images: (this.activePackageGallery || existing.gallery_images || existing.gallery || []).map(u => this.autoFormatImageUrl(u)),
+        hero_image: this.autoFormatImageUrl(document.getElementById('pkgHeroImage').value.trim() || existing.hero_image || 'assets/images/cultural-triangle.jpg'),
+        itinerary: (itinerary.length > 0 ? itinerary : (existing.itinerary || [])).map(item => ({
+          ...item,
+          image: this.autoFormatImageUrl(item.image)
+        })),
         highlights: highlights.length > 0 ? highlights : (existing.highlights || []),
         is_popular: document.getElementById('pkgIsPopular').checked,
         is_published: document.getElementById('pkgIsPublished').checked,
