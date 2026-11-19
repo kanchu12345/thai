@@ -492,9 +492,25 @@
           if (resolved) {
             if (el.tagName === 'META') {
               el.setAttribute('content', resolved);
-            } else if (el.getAttribute('src') !== resolved) {
-              this.attachImgErrorHandler(el);
-              el.setAttribute('src', resolved);
+            } else if (el.tagName === 'IMG') {
+              if (el.getAttribute('src') !== resolved) {
+                this.attachImgErrorHandler(el);
+                el.setAttribute('src', resolved);
+              }
+            } else {
+              let img = el.querySelector('img');
+              if (!img) {
+                img = document.createElement('img');
+                img.setAttribute('loading', 'lazy');
+                img.setAttribute('decoding', 'async');
+                img.style.cssText = 'width: 100%; height: 100%; min-width: 100%; min-height: 100%; object-fit: cover; object-position: center 20%; display: block; border-radius: inherit;';
+                el.innerHTML = '';
+                el.appendChild(img);
+              }
+              if (img.getAttribute('src') !== resolved) {
+                this.attachImgErrorHandler(img);
+                img.setAttribute('src', resolved);
+              }
             }
           }
         }
