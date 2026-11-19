@@ -2113,7 +2113,7 @@
 
     handleLiveInput(key, val, attrType) {
       if (attrType === 'image' && val) {
-        val = this.autoFormatImageUrl(val, key && key.includes('team_img_'));
+        val = this.autoFormatImageUrl(val, key || attrType);
       }
       if (!this.currentFieldValues[this.activeLang]) {
         this.currentFieldValues[this.activeLang] = {};
@@ -2959,7 +2959,7 @@
       return fallback || '';
     },
 
-    autoFormatImageUrl(url, isFace = false) {
+    autoFormatImageUrl(url, sectionOrField = '') {
       if (!url || typeof url !== 'string') return url || '';
       url = String(url).trim();
       if (!url.includes('res.cloudinary.com') || !url.includes('/upload/')) return url;
@@ -2970,7 +2970,27 @@
       while (/^(?:(?:c_|w_|h_|ar_|g_|f_|q_|so_|fl_|e_|b_|co_|dpr_)[^/]*|f_auto|q_auto)\//.test(remainder)) {
         remainder = remainder.replace(/^[^/]+\//, '');
       }
-      const transform = isFace ? 'c_fill,g_face,f_auto,q_auto' : 'c_fill,g_auto,f_auto,q_auto';
+
+      let transform = 'c_fill,g_auto,f_auto,q_auto';
+      if (typeof sectionOrField === 'boolean') {
+        transform = sectionOrField ? 'c_fill,g_face,w_400,h_400,f_auto,q_auto' : 'c_fill,g_auto,f_auto,q_auto';
+      } else {
+        const hint = String(sectionOrField || '').toLowerCase();
+        if (hint.includes('hero') || hint.includes('banner') || hint.includes('header_bg')) {
+          transform = 'c_fill,g_auto,w_1920,h_800,f_auto,q_auto';
+        } else if (hint.includes('itinerary') || hint.includes('acc-img') || hint.includes('day_img') || hint.includes('itinimg')) {
+          transform = 'c_fill,g_auto,w_800,h_500,f_auto,q_auto';
+        } else if (hint.includes('team') || hint.includes('avatar') || hint.includes('rep_') || hint.includes('person') || hint.includes('member')) {
+          transform = 'c_fill,g_face,w_400,h_400,f_auto,q_auto';
+        } else if (hint.includes('dest') || hint.includes('exp') || hint.includes('gallery') || hint.includes('attraction')) {
+          transform = 'c_fill,g_auto,w_600,h_450,f_auto,q_auto';
+        } else if (hint.includes('blog') || hint.includes('story') || hint.includes('article') || hint.includes('news')) {
+          transform = 'c_fill,g_auto,w_800,h_500,f_auto,q_auto';
+        } else if (hint.includes('tour') || hint.includes('pkg') || hint.includes('package') || hint.includes('category')) {
+          transform = 'c_fill,g_auto,w_600,h_400,f_auto,q_auto';
+        }
+      }
+
       return prefix + transform + '/' + remainder;
     },
 
@@ -4394,7 +4414,7 @@
 
     updateTourHeroImage(slug, url) {
       this.markUnsavedChanges();
-      url = this.autoFormatImageUrl(url);
+      url = this.autoFormatImageUrl(url, 'hero');
       if (!this.activeDocData) this.activeDocData = {};
       this.activeDocData.hero_image = url;
       this.activeDocData.image = url;
@@ -4414,7 +4434,7 @@
     handleTourItineraryInput(slug, dayIndex, dayField, value) {
       this.markUnsavedChanges();
       if (dayField === 'image' && value) {
-        value = this.autoFormatImageUrl(value);
+        value = this.autoFormatImageUrl(value, 'itinerary');
       }
       if (!this.activeDocData) this.activeDocData = {};
       if (!Array.isArray(this.activeDocData.itinerary)) this.activeDocData.itinerary = [];
@@ -4455,6 +4475,13 @@
 
       try {
         const pkgData = Object.assign({}, this.activeDocData, this.currentFieldValues);
+        if (pkgData.hero_image || pkgData.image) {
+          const formattedHero = this.autoFormatImageUrl(pkgData.hero_image || pkgData.image, 'hero');
+          pkgData.hero_image = formattedHero;
+          pkgData.image = formattedHero;
+          pkgData['tour_banner_walkers.bg_1'] = formattedHero;
+          pkgData[cleanSlug.replace(/-/g, '_') + '.tour_banner_walkers.bg_1'] = formattedHero;
+        }
         pkgData.slug = cleanSlug;
         pkgData.updatedAt = new Date().toISOString();
         pkgData.updatedBy = (window.AdminApp && window.AdminApp.currentUser && window.AdminApp.currentUser.email) || 'admin';

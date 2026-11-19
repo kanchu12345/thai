@@ -425,7 +425,7 @@ window.uploadToCloudinary = uploadToCloudinary;
       const urlDisplay = document.getElementById(cardId ? cardId.replace('Card', 'Url') : null);
 
       if (!input || !video || !card) return;
-      const val = input.value.trim();
+      let val = input.value.trim();
       if (!val) {
         card.style.display = 'none';
         video.src = '';
@@ -942,7 +942,7 @@ window.uploadToCloudinary = uploadToCloudinary;
       }).join('');
     },
 
-    autoFormatImageUrl(url, isFace = false) {
+    autoFormatImageUrl(url, sectionOrField = '') {
       if (!url || typeof url !== 'string') return url || '';
       url = String(url).trim();
       if (!url.includes('res.cloudinary.com') || !url.includes('/upload/')) return url;
@@ -953,12 +953,33 @@ window.uploadToCloudinary = uploadToCloudinary;
       while (/^(?:(?:c_|w_|h_|ar_|g_|f_|q_|so_|fl_|e_|b_|co_|dpr_)[^/]*|f_auto|q_auto)\//.test(remainder)) {
         remainder = remainder.replace(/^[^/]+\//, '');
       }
-      const transform = isFace ? 'c_fill,g_face,f_auto,q_auto' : 'c_fill,g_auto,f_auto,q_auto';
+
+      let transform = 'c_fill,g_auto,f_auto,q_auto';
+      if (typeof sectionOrField === 'boolean') {
+        transform = sectionOrField ? 'c_fill,g_face,w_400,h_400,f_auto,q_auto' : 'c_fill,g_auto,f_auto,q_auto';
+      } else {
+        const hint = String(sectionOrField || '').toLowerCase();
+        if (hint.includes('hero') || hint.includes('banner') || hint.includes('header_bg')) {
+          transform = 'c_fill,g_auto,w_1920,h_800,f_auto,q_auto';
+        } else if (hint.includes('itinerary') || hint.includes('acc-img') || hint.includes('day_img') || hint.includes('itinimg')) {
+          transform = 'c_fill,g_auto,w_800,h_500,f_auto,q_auto';
+        } else if (hint.includes('team') || hint.includes('avatar') || hint.includes('rep_') || hint.includes('person') || hint.includes('member')) {
+          transform = 'c_fill,g_face,w_400,h_400,f_auto,q_auto';
+        } else if (hint.includes('dest') || hint.includes('exp') || hint.includes('gallery') || hint.includes('attraction')) {
+          transform = 'c_fill,g_auto,w_600,h_450,f_auto,q_auto';
+        } else if (hint.includes('blog') || hint.includes('story') || hint.includes('article') || hint.includes('news')) {
+          transform = 'c_fill,g_auto,w_800,h_500,f_auto,q_auto';
+        } else if (hint.includes('tour') || hint.includes('pkg') || hint.includes('package') || hint.includes('category')) {
+          transform = 'c_fill,g_auto,w_600,h_400,f_auto,q_auto';
+        }
+      }
+
       return prefix + transform + '/' + remainder;
     },
 
     selectPickedImage(url, isVideo = false) {
-      const cleanUrl = this.autoFormatImageUrl(url.replace('../', ''));
+      const pickerHint = (this.pickerOptions && (this.pickerOptions.sectionHint || this.pickerOptions.section)) || this.targetPickerInputId || '';
+      const cleanUrl = this.autoFormatImageUrl(url.replace('../', ''), pickerHint);
 
       if (this.targetPickerInputId) {
         const target = document.getElementById(this.targetPickerInputId);
@@ -1167,8 +1188,14 @@ resolveImg(url) {
 
       const resolved = this.resolveImg(val);
       preview.src = resolved;
+      if (val && val.includes('res.cloudinary.com')) {
+        const formatted = this.autoFormatImageUrl(val, inputId);
+        if (formatted && formatted !== val) {
+          val = formatted;
+          input.value = formatted;
+        }
+      }
       if (card) card.style.display = 'flex';
-
       if (urlDisplay) urlDisplay.textContent = val;
 
 

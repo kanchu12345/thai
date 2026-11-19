@@ -8502,17 +8502,25 @@ figure img {
   object-position: center center;
 }
 
-/* 1. HERO BANNERS & FULL-WIDTH SECTIONS */
+/* ==========================================================================
+   UNIVERSAL SECTION-SPECIFIC IMAGE AUTO-ADJUST & RESPONSIVE CROPPING SYSTEM
+   Enforces strict aspect-ratios, container bounds, and object-fit cover
+   so any uploaded image adapts automatically without layout distortion.
+   ========================================================================== */
+
+/* 1. HERO BANNERS & FULL-WIDTH SECTIONS (1920x800 ~ 2.4:1) */
+.tour-banner-walkers,
 .banner-section,
 .tour-hero-section,
 .beach-hero-banner,
 .wildlife-hero-banner,
-.tour-banner-walkers,
 .hero-banner,
 .page-hero,
 .hero-picture-bg,
 .hero-picture-bg img,
 .hero-img-bg,
+[data-cms-bg*="tour_banner_walkers"],
+[data-cms-bg*="hero"],
 [data-cms-img*="hero"] {
   background-size: cover !important;
   background-position: center center !important;
@@ -8521,17 +8529,37 @@ figure img {
   object-position: center center !important;
 }
 
-/* 2. TOUR PACKAGES & CARDS */
+.tour-banner-walkers {
+  position: relative !important;
+  width: 100% !important;
+  aspect-ratio: 2.4 / 1 !important;
+  min-height: 380px !important;
+  max-height: 800px !important;
+  display: flex !important;
+  align-items: flex-end !important;
+  overflow: hidden !important;
+}
+
+@media (max-width: 768px) {
+  .tour-banner-walkers {
+    aspect-ratio: 16 / 9 !important;
+    min-height: 280px !important;
+  }
+}
+
+/* 2. TOUR PACKAGES & CARDS (600x400 ~ 3:2) */
 .tour-card,
 .package-card,
 .tour-card-figure,
 .pkg-card-img,
 .tour-card-img-wrap,
 .package-cards-grid .card-thumb,
-.walkers-img-card {
+.walkers-img-card,
+.pkg-card-media,
+.lotus-package-card .pkg-card-media {
   width: 100% !important;
   overflow: hidden !important;
-  aspect-ratio: 16 / 10 !important;
+  aspect-ratio: 3 / 2 !important;
   position: relative !important;
 }
 
@@ -8541,7 +8569,9 @@ figure img {
 .pkg-card-img img,
 .tour-card-img-wrap img,
 .package-cards-grid .card-thumb img,
-.walkers-img-card img {
+.walkers-img-card img,
+.pkg-card-media img,
+.lotus-package-card img {
   width: 100% !important;
   height: 100% !important;
   min-width: 100% !important;
@@ -8552,23 +8582,33 @@ figure img {
   display: block !important;
 }
 
-/* 3. DAY-BY-DAY ITINERARY IMAGES */
+/* 3. DAY-BY-DAY ITINERARY IMAGES (800x500 ~ 16:10) */
 .walkers-acc-img,
 .itinerary-day-img,
 [data-cms-img*="itinerary"] {
   width: 100% !important;
-  height: 280px !important;
-  max-height: 320px !important;
+  height: auto !important;
+  min-height: 220px !important;
+  max-height: 480px !important;
   aspect-ratio: 16 / 10 !important;
   object-fit: cover !important;
   object-position: center center !important;
   border-radius: 10px !important;
-  margin: 12px 0 16px 0 !important;
+  margin: 14px 0 16px 0 !important;
   display: block !important;
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08) !important;
 }
 
-/* 4. DESTINATION & EXPERIENCE CARDS */
+@media (max-width: 768px) {
+  .walkers-acc-img,
+  .itinerary-day-img,
+  [data-cms-img*="itinerary"] {
+    min-height: 160px !important;
+    aspect-ratio: 16 / 10 !important;
+  }
+}
+
+/* 4. DESTINATION & EXPERIENCE CARDS (600x450 ~ 4:3) */
 .dest-card,
 .destination-card,
 .dest-card-img,
@@ -8581,7 +8621,8 @@ figure img {
 .wildlife-card-img {
   width: 100% !important;
   overflow: hidden !important;
-  aspect-ratio: 16 / 10 !important;
+  aspect-ratio: 4 / 3 !important;
+  position: relative !important;
 }
 
 .dest-card img,
@@ -8603,7 +8644,7 @@ figure img {
   display: block !important;
 }
 
-/* 5. BLOG CARDS & ARTICLE COVERS */
+/* 5. BLOG CARDS & ARTICLE COVERS (800x500 ~ 16:10) */
 .blog-card-img,
 .news-card-img,
 .blog-card .card-thumb,
@@ -8611,6 +8652,7 @@ figure img {
   width: 100% !important;
   overflow: hidden !important;
   aspect-ratio: 16 / 10 !important;
+  position: relative !important;
 }
 
 .blog-card-img img,
@@ -8627,12 +8669,13 @@ figure img {
   display: block !important;
 }
 
-/* 6. GALLERY SHOWCASE GRID */
+/* 6. GALLERY SHOWCASE GRID (800x600 ~ 4:3) */
 .gallery-card,
 .gallery-item,
 .gallery-figure {
   overflow: hidden !important;
   aspect-ratio: 4 / 3 !important;
+  position: relative !important;
 }
 
 .gallery-card img,
@@ -8648,17 +8691,23 @@ figure img {
   display: block !important;
 }
 
-/* 7. REVIEWS & TESTIMONIAL AVATARS */
+/* 7. REVIEWS & TESTIMONIAL AVATARS (1:1) */
 .review-card img,
 .testimonial-avatar img,
 .avatar-img,
 .table-thumb {
   aspect-ratio: 1 / 1 !important;
   object-fit: cover !important;
-  object-position: center center !important;
+  object-position: center top !important;
 }
 
-/* 8. TEAM & GLOBAL REPRESENTATIVES */
+/* 8. TEAM AVATARS & GLOBAL REPRESENTATIVES (1:1 & Compact 16:10) */
+.team-avatar-box,
+.team-photo-wrap,
+.team-avatar-placeholder {
+  overflow: hidden !important;
+}
+
 .person-card .team-avatar-box,
 .person-card .team-photo-wrap,
 .team-avatar-placeholder {
@@ -8678,6 +8727,6 @@ img[data-cms-img*="team_img"] {
   min-width: 100% !important;
   min-height: 100% !important;
   object-fit: cover !important;
-  object-position: center center !important;
+  object-position: center top !important;
   display: block !important;
 }

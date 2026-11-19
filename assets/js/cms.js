@@ -59,7 +59,7 @@
     return segments.length === 0 ? './' : '../'.repeat(segments.length);
   }
 
-  function resolveImgUrl(url) {
+    function resolveImgUrl(url, sectionOrField = '') {
     if (!url) return '';
     url = String(url).trim();
     if (url.includes('res.cloudinary.com') && url.includes('/upload/')) {
@@ -70,7 +70,28 @@
         while (/^(?:(?:c_|w_|h_|ar_|g_|f_|q_|so_|fl_|e_|b_|co_|dpr_)[^/]*|f_auto|q_auto)\//.test(remainder)) {
           remainder = remainder.replace(/^[^/]+\//, '');
         }
-        return prefix + 'c_fill,g_auto,f_auto,q_auto/' + remainder;
+
+        let transform = 'c_fill,g_auto,f_auto,q_auto';
+        if (typeof sectionOrField === 'boolean') {
+          transform = sectionOrField ? 'c_fill,g_face,w_400,h_400,f_auto,q_auto' : 'c_fill,g_auto,f_auto,q_auto';
+        } else {
+          const hint = String(sectionOrField || '').toLowerCase();
+          if (hint.includes('hero') || hint.includes('banner') || hint.includes('header_bg')) {
+            transform = 'c_fill,g_auto,w_1920,h_800,f_auto,q_auto';
+          } else if (hint.includes('itinerary') || hint.includes('acc-img') || hint.includes('day_img') || hint.includes('itinimg')) {
+            transform = 'c_fill,g_auto,w_800,h_500,f_auto,q_auto';
+          } else if (hint.includes('team') || hint.includes('avatar') || hint.includes('rep_') || hint.includes('person') || hint.includes('member')) {
+            transform = 'c_fill,g_face,w_400,h_400,f_auto,q_auto';
+          } else if (hint.includes('dest') || hint.includes('exp') || hint.includes('gallery') || hint.includes('attraction')) {
+            transform = 'c_fill,g_auto,w_600,h_450,f_auto,q_auto';
+          } else if (hint.includes('blog') || hint.includes('story') || hint.includes('article') || hint.includes('news')) {
+            transform = 'c_fill,g_auto,w_800,h_500,f_auto,q_auto';
+          } else if (hint.includes('tour') || hint.includes('pkg') || hint.includes('package') || hint.includes('category')) {
+            transform = 'c_fill,g_auto,w_600,h_400,f_auto,q_auto';
+          }
+        }
+
+        return prefix + transform + '/' + remainder;
       }
       return url;
     }
@@ -492,7 +513,7 @@
         const key = el.getAttribute('data-cms-bg');
         const raw = this.getValueByPath(key);
         if (raw) {
-          const resolved = resolveImgUrl(raw);
+          const resolved = resolveImgUrl(raw, key || el.className);
           if (resolved) {
             if (el.classList.contains('sacred-cta-banner')) {
               el.style.backgroundImage = `linear-gradient(135deg, rgba(13, 43, 29, 0.82) 0%, rgba(22, 54, 29, 0.90) 100%), url("${resolved}")`;
@@ -2152,7 +2173,8 @@
                     }
                   }
                   if (imgEl) {
-                    imgEl.src = (val.startsWith('http') || val.startsWith('/') || val.startsWith('data:')) ? val : ('../' + val);
+                    imgEl.src = resolveImgUrl(val, 'itinerary');
+                    imgEl.style.aspectRatio = '16 / 10';
                     imgEl.style.display = 'block';
                   }
                 } else if (imgEl) {
