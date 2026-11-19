@@ -8,13 +8,15 @@
  * ============================================================================
  * GENERATED FILE - DO NOT EDIT DIRECTLY
  * Single Source of Truth is /data/packages.json
- * Regenerate with: node scripts/sync-tours-data.js
+ * Regenerate with: node scripts/sync-catalog-cache.js
  * ============================================================================
  */
 (function() {
   'use strict';
   const toursData = {
   "version": "2026.11.19",
+  "cacheVersion": "lotus_cms_v8",
+  "updatedAt": "2026-11-19T17:35:59.067Z",
   "totalCategories": 11,
   "totalPackages": 29,
   "categories": [
@@ -5781,7 +5783,9 @@
         "couple",
         "family",
         "solo"
-      ]
+      ],
+      "updatedAt": "2026-11-19T17:35:59.067Z",
+      "status": "published"
     },
     {
       "id": "pkg-beach-02",
@@ -6060,7 +6064,9 @@
         "couple",
         "family",
         "small-group"
-      ]
+      ],
+      "updatedAt": "2026-11-19T17:35:59.067Z",
+      "status": "published"
     },
     {
       "id": "pkg-beach-03",
@@ -6361,7 +6367,9 @@
         "couple",
         "small-group",
         "solo"
-      ]
+      ],
+      "updatedAt": "2026-11-19T17:35:59.067Z",
+      "status": "published"
     },
     {
       "id": "pkg-cultural-01",
@@ -6552,7 +6560,9 @@
         "small-group",
         "solo",
         "family"
-      ]
+      ],
+      "updatedAt": "2026-11-19T17:35:59.067Z",
+      "status": "published"
     },
     {
       "id": "pkg-cultural-02",
@@ -6798,7 +6808,9 @@
         "couple",
         "small-group",
         "family"
-      ]
+      ],
+      "updatedAt": "2026-11-19T17:35:59.067Z",
+      "status": "published"
     },
     {
       "id": "pkg-cultural-03",
@@ -7143,7 +7155,9 @@
         "couple",
         "small-group",
         "solo"
-      ]
+      ],
+      "updatedAt": "2026-11-19T17:35:59.067Z",
+      "status": "published"
     },
     {
       "id": "pkg-wildlife-01",
@@ -7355,7 +7369,9 @@
         "couple",
         "family",
         "small-group"
-      ]
+      ],
+      "updatedAt": "2026-11-19T17:35:59.067Z",
+      "status": "published"
     },
     {
       "id": "pkg-wildlife-02",
@@ -7657,7 +7673,9 @@
         "family",
         "small-group",
         "solo"
-      ]
+      ],
+      "updatedAt": "2026-11-19T17:35:59.067Z",
+      "status": "published"
     },
     {
       "id": "pkg-wildlife-03",
@@ -8002,7 +8020,9 @@
         "couple",
         "small-group",
         "solo"
-      ]
+      ],
+      "updatedAt": "2026-11-19T17:35:59.067Z",
+      "status": "published"
     },
     {
       "id": "pkg-ceylon-tea-trails-colonial-grandeur",
@@ -8193,7 +8213,9 @@
         "couple",
         "family",
         "small-group"
-      ]
+      ],
+      "updatedAt": "2026-11-19T17:35:59.067Z",
+      "status": "published"
     },
     {
       "id": "pkg-misty-peaks-scenic-railways-expedition",
@@ -8425,7 +8447,9 @@
         "family",
         "solo",
         "small-group"
-      ]
+      ],
+      "updatedAt": "2026-11-19T17:35:59.067Z",
+      "status": "published"
     },
     {
       "id": "pkg-highland-wilderness-cascading-waterfalls",
@@ -8686,7 +8710,9 @@
         "couple",
         "small-group",
         "solo"
-      ]
+      ],
+      "updatedAt": "2026-11-19T17:35:59.067Z",
+      "status": "published"
     },
     {
       "id": "pkg-island-adrenaline-rapids-expedition",
@@ -8885,7 +8911,9 @@
         "solo",
         "small-group",
         "couple"
-      ]
+      ],
+      "updatedAt": "2026-11-19T17:35:59.067Z",
+      "status": "published"
     },
     {
       "id": "pkg-wild-peaks-trails-surf-safari",
@@ -9114,7 +9142,9 @@
         "solo",
         "small-group",
         "couple"
-      ]
+      ],
+      "updatedAt": "2026-11-19T17:35:59.067Z",
+      "status": "published"
     },
     {
       "id": "pkg-lotus-ayu-holistic-rejuvenation",
@@ -9322,7 +9352,9 @@
       "travelers": [
         "couple",
         "solo"
-      ]
+      ],
+      "updatedAt": "2026-11-19T17:35:59.067Z",
+      "status": "published"
     },
     {
       "id": "pkg-sacred-serenity-forest-meditation-retreat",
@@ -9569,7 +9601,9 @@
       "travelers": [
         "solo",
         "couple"
-      ]
+      ],
+      "updatedAt": "2026-11-19T17:35:59.067Z",
+      "status": "published"
     },
     {
       "id": "pkg-enchanted-ceylon-romantic-hideaway",
@@ -9777,7 +9811,9 @@
       "categoryName": "Honeymoon Romance",
       "travelers": [
         "couple"
-      ]
+      ],
+      "updatedAt": "2026-11-19T17:35:59.067Z",
+      "status": "published"
     },
     {
       "id": "pkg-pure-serenade-coastal-highland-romance",
@@ -10015,7 +10051,9 @@
       "categoryName": "Honeymoon Romance",
       "travelers": [
         "couple"
-      ]
+      ],
+      "updatedAt": "2026-11-19T17:35:59.067Z",
+      "status": "published"
     },
     {
       "id": "pkg-island-wonder-multi-gen-family-discovery",
@@ -10244,7 +10282,9 @@
       "travelers": [
         "family",
         "small-group"
-      ]
+      ],
+      "updatedAt": "2026-11-19T17:35:59.067Z",
+      "status": "published"
     },
     {
       "id": "pkg-wild-safari-coastal-family-holiday",
@@ -10503,7 +10543,9 @@
       "categoryName": "Family Discovery",
       "travelers": [
         "family"
-      ]
+      ],
+      "updatedAt": "2026-11-19T17:35:59.067Z",
+      "status": "published"
     },
     {
       "id": "pkg-the-grand-ceylon-family-adventure",
@@ -10772,7 +10814,9 @@
       "travelers": [
         "family",
         "small-group"
-      ]
+      ],
+      "updatedAt": "2026-11-19T17:35:59.067Z",
+      "status": "published"
     },
     {
       "id": "pkg-sacred-ramayana-heritage-trail",
@@ -10950,7 +10994,9 @@
         "couple",
         "family",
         "small-group"
-      ]
+      ],
+      "updatedAt": "2026-11-19T17:35:59.067Z",
+      "status": "published"
     },
     {
       "id": "pkg-the-epic-ramayana-chronicle-pilgrimage",
@@ -11191,7 +11237,9 @@
         "couple",
         "family",
         "small-group"
-      ]
+      ],
+      "updatedAt": "2026-11-19T17:35:59.067Z",
+      "status": "published"
     },
     {
       "id": "pkg-the-royal-ceylon-fairways-tour",
@@ -11347,7 +11395,9 @@
         "couple",
         "small-group",
         "solo"
-      ]
+      ],
+      "updatedAt": "2026-11-19T17:35:59.067Z",
+      "status": "published"
     },
     {
       "id": "pkg-highland-greens-coastal-links-championship",
@@ -11555,7 +11605,9 @@
         "couple",
         "small-group",
         "solo"
-      ]
+      ],
+      "updatedAt": "2026-11-19T17:35:59.067Z",
+      "status": "published"
     },
     {
       "id": "pkg-the-grand-ceylon-masters-golf-odyssey",
@@ -11794,7 +11846,9 @@
         "couple",
         "small-group",
         "solo"
-      ]
+      ],
+      "updatedAt": "2026-11-19T17:35:59.067Z",
+      "status": "published"
     },
     {
       "id": "pkg-the-sacred-bodhi-ancient-kingdoms",
@@ -11931,7 +11985,9 @@
       "overview_i18n": {
         "en": "Experience morning puja offerings at the oldest living human-planted tree in recorded history (Jaya Sri Maha Bodhi), circumambulate the great Ruwanwelisaya, and meditate beneath Mihintale’s granite peak.",
         "zh": "在有记载的人类种植历史中最古老的活树（圣菩提树）前体验清晨礼拜，绕行神圣的鲁万维利萨亚大佛塔，并在米欣特莱山峰下冥想。"
-      }
+      },
+      "updatedAt": "2026-11-19T17:35:59.067Z",
+      "status": "published"
     },
     {
       "id": "pkg-the-sacred-tooth-monastic-sanctuaries",
@@ -12078,7 +12134,9 @@
       "overview_i18n": {
         "en": "Witness the rhythmic drumming and evening Tevava ceremony at Sri Dalada Maligawa in Kandy, discover the ancient rock cave murals of Dambulla, and explore living monastic traditions.",
         "zh": "见证康提佛牙寺的鼓乐与晚祷礼拜，探索丹布勒古老石窟壁画，感受生生不息的僧团修行传承。"
-      }
+      },
+      "updatedAt": "2026-11-19T17:35:59.067Z",
+      "status": "published"
     },
     {
       "id": "pkg-forest-hermitages-mindful-ceylon",
@@ -12234,7 +12292,9 @@
       "overview_i18n": {
         "en": "Step into ancient forest meditation monasteries hidden in the jungle at Ritigala, practice guided Vipassana with senior Buddhist monks, and stay in serene eco-villas.",
         "zh": "走进隐于原始密林中的利蒂加拉古老森林修道院，在资深禅师指导下体验内观冥想，沉浸于自然的静谧与祥和。"
-      }
+      },
+      "updatedAt": "2026-11-19T17:35:59.067Z",
+      "status": "published"
     }
   ]
 };

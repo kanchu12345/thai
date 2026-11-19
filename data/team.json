@@ -8,7 +8,8 @@
     "photo": {
       "cloudinaryPublicId": "lotus-ceylon/team/sri-lanka-gihan",
       "alt": "Mr. Gihan [靜明], Founder & Chief Executive Officer, Lotus Ceylon",
-      "url": "assets/images/team/avatar-dg.svg"
+      "url": "https://res.cloudinary.com/qmukrbh6/image/upload/f_auto,q_auto/v1795053862/zh4wd3jnkdlmn8bbxczo.jpg",
+      "secure_url": "https://res.cloudinary.com/qmukrbh6/image/upload/f_auto,q_auto/v1795053862/zh4wd3jnkdlmn8bbxczo.jpg"
     },
     "bio": "",
     "sortOrder": 1,
@@ -23,7 +24,8 @@
     "photo": {
       "cloudinaryPublicId": "lotus-ceylon/team/bhutan-kuenga-yarpel",
       "alt": "Mr. Kuenga Yarpel, The Lotus Representative",
-      "url": "assets/images/team/avatar-ky.svg"
+      "url": "https://res.cloudinary.com/qmukrbh6/image/upload/f_auto,q_auto/v1795053889/nh49pwzt2flox2wg8uo9.jpg",
+      "secure_url": "https://res.cloudinary.com/qmukrbh6/image/upload/f_auto,q_auto/v1795053889/nh49pwzt2flox2wg8uo9.jpg"
     },
     "bio": "",
     "sortOrder": 2,

@@ -24,8 +24,11 @@
 (function (window) {
   'use strict';
 
-  const CACHE_KEY = 'lotus_cms_v7';
+  const CACHE_KEY = 'lotus_cms_v8';
   const LEGACY_CACHE_KEYS = [
+    'lotus_cms_v7',
+    'lotus_seed_catalog_cache_v3',
+    'lotus_seed_catalog_cache_time_v3',
     'lotus_cms_v6',
     'lotus_cms_v5',
     'lotus_cms_v4',

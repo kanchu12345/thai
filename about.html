@@ -22,13 +22,13 @@
 <meta content="Discover Lotus Ceylon International Tours and Services (Pvt) Ltd. Founded in 2014, we are a Registered Sri Lankan Inbound Tour Operator (Company Reg. PV 00374439) dedicated to authentic, meaningful travel." data-cms="about.seo.twitter_description" name="twitter:description"/>
 <meta content="https://lotusceylon.com/assets/images/about/hospitality-scenes-1.webp" data-cms-img="about.seo.twitter_image" name="twitter:image"/>
 <meta content="about lotus ceylon, sri lanka inbound tour operator, PV 00374439, luxury travel sri lanka, sacred buddhist journeys, dhushantha mallawaarachchi" data-cms="about.seo.keywords" name="keywords">
-<link data-cms-img="siteGlobal.branding.favicon" href="logo.png?v=20261119_v12" rel="icon" type="image/png"/>
+<link data-cms-img="siteGlobal.branding.favicon" href="logo.png?v=20261119_v14" rel="icon" type="image/png"/>
 <!-- Master Stylesheet (Luxury Style) -->
-<link href="css/style.css?v=20261119_v12" rel="stylesheet"/>
-<link href="css/brand-header.css?v=20261119_v12" rel="stylesheet"/>
+<link href="css/style.css?v=20261119_v14" rel="stylesheet"/>
+<link href="css/brand-header.css?v=20261119_v14" rel="stylesheet"/>
 <script defer="" src="https://cdn.jsdelivr.net/npm/dompurify@3.1.6/dist/purify.min.js"></script>
-<script defer="" src="js/config.js?v=20261119_v12"></script>
-<script defer="" src="js/dynamic-renderer.js?v=20261119_v12"></script>
+<script defer="" src="js/config.js?v=20261119_v14"></script>
+<script defer="" src="js/dynamic-renderer.js?v=20261119_v14"></script>
 <style>
 
     .about-hero {
@@ -345,7 +345,7 @@
 
   </style>
 <!-- Master Unified Stylesheet -->
-<link href="./assets/css/site.css?v=20261119_v12" rel="stylesheet"/>
+<link href="./assets/css/site.css?v=20261119_v14" rel="stylesheet"/>
 <script data-cms="about.seo.json_ld_1" type="application/ld+json">{"@context": "https://schema.org", "@type": "AboutPage", "name": "About Lotus Ceylon International Tours & Services", "url": "https://lotusceylon.com/about.html", "mainEntity": {"@type": "TravelAgency", "name": "Lotus Ceylon International Tours & Services (Private) Limited", "foundingDate": "2014", "founder": {"@type": "Person", "name": "Dhushantha Mallawaarachchi"}, "telephone": "+94715422384", "email": "info@lotusceylon.com"}}</script>
 </meta></head>
 <body data-cms-page="siteContent/about">
@@ -1651,7 +1651,7 @@ img[data-cms-img*="about.team_img"] {
 <!-- Persistent Floating WhatsApp Concierge -->
 <!-- Floating WhatsApp Hotline -->
 <!-- Redundant header script removed -->
-<script defer="" src="js/firebase-tour-sync.js?v=20261119_v12"></script>
+<script defer="" src="js/firebase-tour-sync.js?v=20261119_v14"></script>
 <script>
 
     // Dynamic team loader (Firestore / data/team.json)
@@ -1712,12 +1712,18 @@ img[data-cms-img*="about.team_img"] {
             const published = teamData.filter(m => m.published !== false);
             published.sort((a, b) => (a.sortOrder || 1) - (b.sortOrder || 1));
             grid.innerHTML = published.map((m, idx) => {
-              const photoUrl = m.photo ? (m.photo.url || m.photo.secure_url || '') : '';
+              const num = idx + 1;
+              let photoUrl = m.photo ? (m.photo.url || m.photo.secure_url || '') : '';
+              if (window.LotusCMS && typeof window.LotusCMS.getValueByPath === 'function') {
+                const cmsPhoto = window.LotusCMS.getValueByPath('about.team_img_' + num) || window.LotusCMS.getValueByPath('team_img_' + num);
+                if (cmsPhoto && typeof cmsPhoto === 'string' && (cmsPhoto.startsWith('http') || cmsPhoto.includes('cloudinary') || cmsPhoto.startsWith('assets/'))) {
+                  photoUrl = cmsPhoto;
+                }
+              }
               const alt = m.photo ? (m.photo.alt || `${m.name}, ${m.role}`) : `${m.name}, ${m.role}`;
               const bio = m.bio && m.bio.trim() ? m.bio : '' ;
               const flag = m.flag || '🇱🇰';
               const country = m.country || '';
-              const num = idx + 1;
 
               return `
                 <article class="person-card" style="background: #FFFFFF; border-radius: 10px; border: 1px solid rgba(0, 43, 73, 0.08); overflow: hidden; box-shadow: 0 4px 14px rgba(0, 43, 73, 0.04); transition: transform 0.25s ease, box-shadow 0.25s ease; display: flex; flex-direction: column;">
@@ -1741,6 +1747,9 @@ img[data-cms-img*="about.team_img"] {
                 </article>
               `;
             }).join('');
+            if (window.LotusCMS && typeof window.LotusCMS.bindElements === 'function') {
+              try { window.LotusCMS.bindElements(grid); } catch (e) {}
+            }
           }
         }
 
@@ -1831,10 +1840,10 @@ img[data-cms-img*="about.team_img"] {
     // Mobile Navigation managed by assets/js/mobile-nav.js
 
   </script>
-<script defer="" src="js/site-translator.js?v=20261119_v12"></script>
-<script defer="" src="./assets/js/config.js?v=20261119_v12"></script>
-<script defer="" src="assets/js/site-data.js?v=20261119_v12"></script>
-<script defer="" src="./assets/js/mobile-nav.js?v=20261119_v12"></script>
-<script defer="" src="./assets/js/cms.js?v=20261119_v12"></script>
+<script defer="" src="js/site-translator.js?v=20261119_v14"></script>
+<script defer="" src="./assets/js/config.js?v=20261119_v14"></script>
+<script defer="" src="assets/js/site-data.js?v=20261119_v14"></script>
+<script defer="" src="./assets/js/mobile-nav.js?v=20261119_v14"></script>
+<script defer="" src="./assets/js/cms.js?v=20261119_v14"></script>
 </body>
 </html>

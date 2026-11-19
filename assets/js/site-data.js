@@ -1314,12 +1314,20 @@
       const activeMembers = published;
 
       teamGrid.innerHTML = activeMembers.map((m, idx) => {
-        const photoUrl = m.photo ? (m.photo.url || m.photo.secure_url || '') : '';
+        let photoUrl = m.photo ? (m.photo.url || m.photo.secure_url || '') : '';
+        const num = idx + 1;
+
+        // Dual-source fallback: if photoUrl is missing or default SVG, check LotusCMS live page data
+        if (window.LotusCMS && typeof window.LotusCMS.getValueByPath === 'function') {
+          const cmsPhoto = window.LotusCMS.getValueByPath('about.team_img_' + num) || window.LotusCMS.getValueByPath('team_img_' + num);
+          if (cmsPhoto && typeof cmsPhoto === 'string' && (cmsPhoto.startsWith('http') || cmsPhoto.includes('cloudinary'))) {
+            photoUrl = cmsPhoto;
+          }
+        }
         const alt = m.photo ? (m.photo.alt || `${m.name}, ${m.role}`) : `${m.name}, ${m.role}`;
         const bio = m.bio && m.bio.trim() ? m.bio : 'Introduction coming soon';
         const flag = m.flag || '🇱🇰';
         const country = m.country || '';
-        const num = idx + 1;
 
         return `
           <article class="person-card" style="background: #FFFFFF; border-radius: 10px; border: 1px solid rgba(0, 43, 73, 0.08); overflow: hidden; box-shadow: 0 4px 14px rgba(0, 43, 73, 0.04); transition: transform 0.25s ease, box-shadow 0.25s ease; display: flex; flex-direction: column;">
@@ -1343,6 +1351,13 @@
           </article>
         `;
       }).join('');
+
+      // Trigger LotusCMS dynamic binding so images are synced with live Firestore CMS values
+      if (window.LotusCMS && typeof window.LotusCMS.bindElements === 'function') {
+        try {
+          window.LotusCMS.bindElements(teamGrid);
+        } catch (e) {}
+      }
     },
 
     hydrateReviews() {
