@@ -819,9 +819,12 @@
 .team-avatar-placeholder {
   position: relative !important;
   width: 100% !important;
-  height: 150px !important; min-height: 150px !important; max-height: 150px !important;
+  aspect-ratio: 1 / 1 !important;
+  height: auto !important;
+  min-height: unset !important;
+  max-height: unset !important;
   overflow: hidden !important;
-  border-radius: 10px 10px 0 0 !important;
+  border-radius: 8px 8px 0 0 !important;
   background: #0A192F !important;
   display: flex !important;
   align-items: center !important;
@@ -840,7 +843,7 @@ img[data-cms-img*="about.team_img"] {
   max-width: 100% !important;
   max-height: 100% !important;
   object-fit: cover !important;
-  object-position: center 20% !important;
+  object-position: top center !important;
   display: block !important;
   border-radius: inherit !important;
   transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
