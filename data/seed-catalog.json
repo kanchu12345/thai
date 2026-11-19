@@ -29553,78 +29553,423 @@
   ],
   "team": [
     {
-      "id": "dhushantha-gihan-mallawaarachchi",
-      "name": "Mallawa Arachchige Dhushantha Gihan Mallawaarachchi",
-      "role": "Founder & Chief Executive Officer",
+      "id": "sri-lanka-gihan",
+      "name": "Mr. Gihan [靜明]",
+      "role": "Founder & Chief Executive Officer, Lotus Ceylon",
       "country": "Sri Lanka",
       "flag": "🇱🇰",
       "photo": {
-        "cloudinaryPublicId": "lotus-ceylon/team/dhushantha-gihan",
-        "alt": "Founder & CEO Mallawa Arachchige Dhushantha Gihan Mallawaarachchi",
+        "cloudinaryPublicId": "lotus-ceylon/team/sri-lanka-gihan",
+        "alt": "Mr. Gihan [靜明], Founder & Chief Executive Officer, Lotus Ceylon",
         "url": "assets/images/team/avatar-dg.svg"
       },
-      "bio": "Founding director leading bespoke luxury travel expeditions across Sri Lanka.",
+      "bio": "",
       "sortOrder": 1,
       "published": true
     },
     {
-      "id": "kuenga-yarpel",
+      "id": "bhutan-kuenga-yarpel",
       "name": "Mr. Kuenga Yarpel",
-      "role": "The Lotus Representative, Bhutan & Himalayas",
+      "role": "The Lotus Representative",
       "country": "Bhutan",
       "flag": "🇧🇹",
       "photo": {
-        "cloudinaryPublicId": "lotus-ceylon/team/kuenga-yarpel",
-        "alt": "Mr. Kuenga Yarpel, The Lotus Representative, Bhutan",
+        "cloudinaryPublicId": "lotus-ceylon/team/bhutan-kuenga-yarpel",
+        "alt": "Mr. Kuenga Yarpel, The Lotus Representative",
         "url": "assets/images/team/avatar-ky.svg"
       },
-      "bio": "Regional specialist for Bhutanese and Himalayan cultural travel partnerships.",
+      "bio": "",
       "sortOrder": 2,
       "published": true
     },
     {
-      "id": "rep-united-kingdom",
-      "name": "Global Representative – United Kingdom & Ireland",
-      "role": "Lotus Global Representative, UK & Europe",
-      "country": "United Kingdom",
-      "flag": "🇬🇧",
+      "id": "rep-usa",
+      "name": "Mr. Walker",
+      "role": "Global Representative",
+      "country": "USA",
+      "flag": "🇺🇸",
       "photo": {
-        "cloudinaryPublicId": "lotus-ceylon/team/rep-uk",
-        "alt": "Lotus Representative, United Kingdom",
-        "url": "assets/images/team/rep-uk.svg"
+        "cloudinaryPublicId": "lotus-ceylon/team/rep-usa",
+        "alt": "Mr. Walker, Global Representative",
+        "url": "assets/images/team/rep-usa.svg"
       },
-      "bio": "Dedicated concierge & private expedition consultations for UK & European travelers.",
+      "bio": "",
       "sortOrder": 3,
       "published": true
     },
     {
-      "id": "rep-australia",
-      "name": "Global Representative – Australia & New Zealand",
-      "role": "Lotus Global Representative, Oceania",
-      "country": "Australia",
-      "flag": "🇦🇺",
+      "id": "rep-taiwan",
+      "name": "Mr. 林山景 (阿萌）",
+      "role": "Global Representative",
+      "country": "Taiwan",
+      "flag": "🇹🇼",
       "photo": {
-        "cloudinaryPublicId": "lotus-ceylon/team/rep-australia",
-        "alt": "Lotus Representative, Australia & Oceania",
-        "url": "assets/images/team/rep-australia.svg"
+        "cloudinaryPublicId": "lotus-ceylon/team/rep-taiwan",
+        "alt": "Mr. 林山景 (阿萌）, Global Representative",
+        "url": "assets/images/team/rep-taiwan.svg"
       },
-      "bio": "Direct travel design and concierge services for Australian and Kiwi adventurers.",
+      "bio": "",
       "sortOrder": 4,
       "published": true
     },
     {
+      "id": "rep-sweden",
+      "name": "Ms. Anna",
+      "role": "Global Representative",
+      "country": "Sweden & Scandinavian Countries",
+      "flag": "🇸🇪",
+      "photo": {
+        "cloudinaryPublicId": "lotus-ceylon/team/rep-sweden",
+        "alt": "Ms. Anna, Global Representative",
+        "url": "assets/images/team/rep-sweden.svg"
+      },
+      "bio": "",
+      "sortOrder": 5,
+      "published": true
+    },
+    {
+      "id": "rep-singapore",
+      "name": "Global Representative",
+      "role": "Global Representative",
+      "country": "Singapore",
+      "flag": "🇸🇬",
+      "photo": {
+        "cloudinaryPublicId": "lotus-ceylon/team/rep-singapore",
+        "alt": "Global Representative, Global Representative",
+        "url": "assets/images/team/rep-singapore.svg"
+      },
+      "bio": "",
+      "sortOrder": 6,
+      "published": true
+    },
+    {
+      "id": "rep-malaysia",
+      "name": "Global Representative",
+      "role": "Global Representative",
+      "country": "Malaysia",
+      "flag": "🇲🇾",
+      "photo": {
+        "cloudinaryPublicId": "lotus-ceylon/team/rep-malaysia",
+        "alt": "Global Representative, Global Representative",
+        "url": "assets/images/team/rep-malaysia.svg"
+      },
+      "bio": "",
+      "sortOrder": 7,
+      "published": true
+    },
+    {
+      "id": "rep-indonesia",
+      "name": "Global Representative",
+      "role": "Global Representative",
+      "country": "Indonesia",
+      "flag": "🇮🇩",
+      "photo": {
+        "cloudinaryPublicId": "lotus-ceylon/team/rep-indonesia",
+        "alt": "Global Representative, Global Representative",
+        "url": "assets/images/team/rep-indonesia.svg"
+      },
+      "bio": "",
+      "sortOrder": 8,
+      "published": true
+    },
+    {
+      "id": "rep-vietnam",
+      "name": "Global Representative",
+      "role": "Global Representative",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "photo": {
+        "cloudinaryPublicId": "lotus-ceylon/team/rep-vietnam",
+        "alt": "Global Representative, Global Representative",
+        "url": "assets/images/team/rep-vietnam.svg"
+      },
+      "bio": "",
+      "sortOrder": 9,
+      "published": true
+    },
+    {
+      "id": "rep-india",
+      "name": "Global Representative",
+      "role": "Global Representative",
+      "country": "India",
+      "flag": "🇮🇳",
+      "photo": {
+        "cloudinaryPublicId": "lotus-ceylon/team/rep-india",
+        "alt": "Global Representative, Global Representative",
+        "url": "assets/images/team/rep-india.svg"
+      },
+      "bio": "",
+      "sortOrder": 10,
+      "published": true
+    },
+    {
+      "id": "rep-myanmar",
+      "name": "Global Representative",
+      "role": "Global Representative",
+      "country": "Myanmar",
+      "flag": "🇲🇲",
+      "photo": {
+        "cloudinaryPublicId": "lotus-ceylon/team/rep-myanmar",
+        "alt": "Global Representative, Global Representative",
+        "url": "assets/images/team/rep-myanmar.svg"
+      },
+      "bio": "",
+      "sortOrder": 11,
+      "published": true
+    },
+    {
+      "id": "rep-uk",
+      "name": "Global Representative",
+      "role": "Global Representative",
+      "country": "UK",
+      "flag": "🇬🇧",
+      "photo": {
+        "cloudinaryPublicId": "lotus-ceylon/team/rep-uk",
+        "alt": "Global Representative, Global Representative",
+        "url": "assets/images/team/rep-uk.svg"
+      },
+      "bio": "",
+      "sortOrder": 12,
+      "published": true
+    },
+    {
+      "id": "rep-scotland",
+      "name": "Global Representative",
+      "role": "Global Representative",
+      "country": "Scotland",
+      "flag": "🏴󠁧󠁢󠁳󠁣󠁴󠁿",
+      "photo": {
+        "cloudinaryPublicId": "lotus-ceylon/team/rep-scotland",
+        "alt": "Global Representative, Global Representative",
+        "url": "assets/images/team/rep-scotland.svg"
+      },
+      "bio": "",
+      "sortOrder": 13,
+      "published": true
+    },
+    {
+      "id": "rep-belgium",
+      "name": "Global Representative",
+      "role": "Global Representative",
+      "country": "Belgium",
+      "flag": "🇧🇪",
+      "photo": {
+        "cloudinaryPublicId": "lotus-ceylon/team/rep-belgium",
+        "alt": "Global Representative, Global Representative",
+        "url": "assets/images/team/rep-belgium.svg"
+      },
+      "bio": "",
+      "sortOrder": 14,
+      "published": true
+    },
+    {
+      "id": "rep-bangladesh",
+      "name": "Global Representative",
+      "role": "Global Representative",
+      "country": "Bangladesh",
+      "flag": "🇧🇩",
+      "photo": {
+        "cloudinaryPublicId": "lotus-ceylon/team/rep-bangladesh",
+        "alt": "Global Representative, Global Representative",
+        "url": "assets/images/team/rep-bangladesh.svg"
+      },
+      "bio": "",
+      "sortOrder": 15,
+      "published": true
+    },
+    {
+      "id": "rep-japan",
+      "name": "Global Representative",
+      "role": "Global Representative",
+      "country": "Japan",
+      "flag": "🇯🇵",
+      "photo": {
+        "cloudinaryPublicId": "lotus-ceylon/team/rep-japan",
+        "alt": "Global Representative, Global Representative",
+        "url": "assets/images/team/rep-japan.svg"
+      },
+      "bio": "",
+      "sortOrder": 16,
+      "published": true
+    },
+    {
+      "id": "rep-korea",
+      "name": "Global Representative",
+      "role": "Global Representative",
+      "country": "Korea",
+      "flag": "🇰🇷",
+      "photo": {
+        "cloudinaryPublicId": "lotus-ceylon/team/rep-korea",
+        "alt": "Global Representative, Global Representative",
+        "url": "assets/images/team/rep-korea.svg"
+      },
+      "bio": "",
+      "sortOrder": 17,
+      "published": true
+    },
+    {
+      "id": "rep-canada",
+      "name": "Global Representative",
+      "role": "Global Representative",
+      "country": "Canada",
+      "flag": "🇨🇦",
+      "photo": {
+        "cloudinaryPublicId": "lotus-ceylon/team/rep-canada",
+        "alt": "Global Representative, Global Representative",
+        "url": "assets/images/team/rep-canada.svg"
+      },
+      "bio": "",
+      "sortOrder": 18,
+      "published": true
+    },
+    {
+      "id": "rep-china",
+      "name": "Global Representative",
+      "role": "Global Representative",
+      "country": "China",
+      "flag": "🇨🇳",
+      "photo": {
+        "cloudinaryPublicId": "lotus-ceylon/team/rep-china",
+        "alt": "Global Representative, Global Representative",
+        "url": "assets/images/team/rep-china.svg"
+      },
+      "bio": "",
+      "sortOrder": 19,
+      "published": true
+    },
+    {
+      "id": "rep-thailand",
+      "name": "Global Representative",
+      "role": "Global Representative",
+      "country": "Thailand",
+      "flag": "🇹🇭",
+      "photo": {
+        "cloudinaryPublicId": "lotus-ceylon/team/rep-thailand",
+        "alt": "Global Representative, Global Representative",
+        "url": "assets/images/team/rep-thailand.svg"
+      },
+      "bio": "",
+      "sortOrder": 20,
+      "published": true
+    },
+    {
+      "id": "rep-hongkong",
+      "name": "Global Representative",
+      "role": "Global Representative",
+      "country": "Hong Kong",
+      "flag": "🇭🇰",
+      "photo": {
+        "cloudinaryPublicId": "lotus-ceylon/team/rep-hongkong",
+        "alt": "Global Representative, Global Representative",
+        "url": "assets/images/team/rep-hongkong.svg"
+      },
+      "bio": "",
+      "sortOrder": 21,
+      "published": true
+    },
+    {
+      "id": "rep-italy",
+      "name": "Global Representative",
+      "role": "Global Representative",
+      "country": "Italy",
+      "flag": "🇮🇹",
+      "photo": {
+        "cloudinaryPublicId": "lotus-ceylon/team/rep-italy",
+        "alt": "Global Representative, Global Representative",
+        "url": "assets/images/team/rep-italy.svg"
+      },
+      "bio": "",
+      "sortOrder": 22,
+      "published": true
+    },
+    {
       "id": "rep-germany",
-      "name": "Global Representative – Germany & DACH",
-      "role": "Lotus Global Representative, Central Europe",
+      "name": "Global Representative",
+      "role": "Global Representative",
       "country": "Germany",
       "flag": "🇩🇪",
       "photo": {
         "cloudinaryPublicId": "lotus-ceylon/team/rep-germany",
-        "alt": "Lotus Representative, Germany & DACH",
+        "alt": "Global Representative, Global Representative",
         "url": "assets/images/team/rep-germany.svg"
       },
-      "bio": "Cultural expedition coordination for German, Austrian, and Swiss private clientele.",
-      "sortOrder": 5,
+      "bio": "",
+      "sortOrder": 23,
+      "published": true
+    },
+    {
+      "id": "rep-france",
+      "name": "Global Representative",
+      "role": "Global Representative",
+      "country": "France",
+      "flag": "🇫🇷",
+      "photo": {
+        "cloudinaryPublicId": "lotus-ceylon/team/rep-france",
+        "alt": "Global Representative, Global Representative",
+        "url": "assets/images/team/rep-france.svg"
+      },
+      "bio": "",
+      "sortOrder": 24,
+      "published": true
+    },
+    {
+      "id": "rep-switzerland",
+      "name": "Global Representative",
+      "role": "Global Representative",
+      "country": "Switzerland",
+      "flag": "🇨🇭",
+      "photo": {
+        "cloudinaryPublicId": "lotus-ceylon/team/rep-switzerland",
+        "alt": "Global Representative, Global Representative",
+        "url": "assets/images/team/rep-switzerland.svg"
+      },
+      "bio": "",
+      "sortOrder": 25,
+      "published": true
+    },
+    {
+      "id": "rep-austria",
+      "name": "Global Representative",
+      "role": "Global Representative",
+      "country": "Austria",
+      "flag": "🇦🇹",
+      "photo": {
+        "cloudinaryPublicId": "lotus-ceylon/team/rep-austria",
+        "alt": "Global Representative, Global Representative",
+        "url": "assets/images/team/rep-austria.svg"
+      },
+      "bio": "",
+      "sortOrder": 26,
+      "published": true
+    },
+    {
+      "id": "rep-spain",
+      "name": "Global Representative",
+      "role": "Global Representative",
+      "country": "Spain",
+      "flag": "🇪🇸",
+      "photo": {
+        "cloudinaryPublicId": "lotus-ceylon/team/rep-spain",
+        "alt": "Global Representative, Global Representative",
+        "url": "assets/images/team/rep-spain.svg"
+      },
+      "bio": "",
+      "sortOrder": 27,
+      "published": true
+    },
+    {
+      "id": "rep-nepal",
+      "name": "Global Representative",
+      "role": "Global Representative",
+      "country": "Nepal",
+      "flag": "🇳🇵",
+      "photo": {
+        "cloudinaryPublicId": "lotus-ceylon/team/rep-nepal",
+        "alt": "Global Representative, Global Representative",
+        "url": "assets/images/team/rep-nepal.svg"
+      },
+      "bio": "",
+      "sortOrder": 28,
       "published": true
     }
   ],
@@ -31455,7 +31800,7 @@
       "badge": "SACRED SITES",
       "title": "Sacred Anuradhapura",
       "location": "Ancient Capital • Cultural Triangle",
-      "photo": "assets/images/buddhist-heritage/ruwanwelisaya-2.webp",
+      "photo": "https://res.cloudinary.com/qmukrbh6/image/upload/f_auto,q_auto/v1794916467/duyawh1nziw7o7esk9j5.jpg",
       "description": "Ancient capital of colossal white stupas and the revered Sri Maha Bodhi tree. Our travellers experienced peaceful evening meditation beneath the sacred Bodhi canopy with private scholarly guidance.",
       "sortOrder": 1,
       "published": true
@@ -31465,7 +31810,7 @@
       "badge": "OUR SUCCESS STORIES",
       "title": "The Coastal Marvel of Coconut Tree Hill",
       "location": "Mirissa • Southern Coast",
-      "photo": "assets/images/honeymoon/mirissa-sunset-2.webp",
+      "photo": "https://res.cloudinary.com/qmukrbh6/image/upload/f_auto,q_auto/v1794916487/ajwnjohdvb7g1hpsar3y.jpg",
       "description": "Traveling down to Mirissa, our guests stood beneath the famous palm canopy atop the red cliffs, watching a breathtaking sunset melt into the Indian Ocean—capturing memories they promised would last a lifetime.",
       "sortOrder": 2,
       "published": true
@@ -31475,7 +31820,7 @@
       "badge": "TEA HIGHLANDS",
       "title": "Ella Tea Country",
       "location": "Badulla Highlands • Scenic Railway Trails",
-      "photo": "assets/images/hill-country/kandy-ella-train-5.webp",
+      "photo": "https://res.cloudinary.com/qmukrbh6/image/upload/f_auto,q_auto/v1794916601/aove89ex9jrxa8he0qqo.jpg",
       "description": "Misty emerald tea estates, iconic colonial railways, and artisanal tea crafting. Bespoke private journeys through scenic mountain trails, Nine Arch Bridge, and cascades.",
       "sortOrder": 3,
       "published": true
@@ -31485,20 +31830,20 @@
       "badge": "OCEAN SANCTUARY",
       "title": "Mirissa Blue Waters",
       "location": "Southern Coast • Whale Sanctuary",
-      "photo": "assets/images/beach/mirissa-1.webp",
+      "photo": "https://res.cloudinary.com/qmukrbh6/image/upload/f_auto,q_auto/v1794916617/pqcluswcjxjbunl4me5s.jpg",
       "description": "Gentle ocean giants and sun-kissed golden coastlines. Private sunrise catamaran voyages encountering magnificent blue whales and dolphins off the southern Ceylon shores.",
       "sortOrder": 4,
       "published": true
     },
     {
       "id": "story-05",
-      "badge": "ROYAL HERITAGE",
       "title": "Kandy Royal Kingdom",
-      "location": "Sacred Hill Capital • Temple of the Tooth",
-      "photo": "assets/images/cultural/kandy-temple-of-tooth-4.webp",
+      "badge": "ROYAL HERITAGE",
+      "photo": "https://res.cloudinary.com/qmukrbh6/image/upload/f_auto,q_auto/v1794916634/i1sjyodoer5kr5aoxosy.jpg",
       "description": "The revered Temple of the Sacred Tooth Relic amidst misty hills. Exclusive VIP access to the traditional evening royal pooja ceremony with private sacred blessings.",
       "sortOrder": 5,
-      "published": true
+      "published": true,
+      "updatedAt": "2026-11-17T12:01:16.851Z"
     }
   ],
   "success_stories": [
@@ -31507,7 +31852,7 @@
       "badge": "SACRED SITES",
       "title": "Sacred Anuradhapura",
       "location": "Ancient Capital • Cultural Triangle",
-      "photo": "assets/images/buddhist-heritage/ruwanwelisaya-2.webp",
+      "photo": "https://res.cloudinary.com/qmukrbh6/image/upload/f_auto,q_auto/v1794916467/duyawh1nziw7o7esk9j5.jpg",
       "description": "Ancient capital of colossal white stupas and the revered Sri Maha Bodhi tree. Our travellers experienced peaceful evening meditation beneath the sacred Bodhi canopy with private scholarly guidance.",
       "sortOrder": 1,
       "published": true
@@ -31517,7 +31862,7 @@
       "badge": "OUR SUCCESS STORIES",
       "title": "The Coastal Marvel of Coconut Tree Hill",
       "location": "Mirissa • Southern Coast",
-      "photo": "assets/images/honeymoon/mirissa-sunset-2.webp",
+      "photo": "https://res.cloudinary.com/qmukrbh6/image/upload/f_auto,q_auto/v1794916487/ajwnjohdvb7g1hpsar3y.jpg",
       "description": "Traveling down to Mirissa, our guests stood beneath the famous palm canopy atop the red cliffs, watching a breathtaking sunset melt into the Indian Ocean—capturing memories they promised would last a lifetime.",
       "sortOrder": 2,
       "published": true
@@ -31527,7 +31872,7 @@
       "badge": "TEA HIGHLANDS",
       "title": "Ella Tea Country",
       "location": "Badulla Highlands • Scenic Railway Trails",
-      "photo": "assets/images/hill-country/kandy-ella-train-5.webp",
+      "photo": "https://res.cloudinary.com/qmukrbh6/image/upload/f_auto,q_auto/v1794916601/aove89ex9jrxa8he0qqo.jpg",
       "description": "Misty emerald tea estates, iconic colonial railways, and artisanal tea crafting. Bespoke private journeys through scenic mountain trails, Nine Arch Bridge, and cascades.",
       "sortOrder": 3,
       "published": true
@@ -31537,20 +31882,20 @@
       "badge": "OCEAN SANCTUARY",
       "title": "Mirissa Blue Waters",
       "location": "Southern Coast • Whale Sanctuary",
-      "photo": "assets/images/beach/mirissa-1.webp",
+      "photo": "https://res.cloudinary.com/qmukrbh6/image/upload/f_auto,q_auto/v1794916617/pqcluswcjxjbunl4me5s.jpg",
       "description": "Gentle ocean giants and sun-kissed golden coastlines. Private sunrise catamaran voyages encountering magnificent blue whales and dolphins off the southern Ceylon shores.",
       "sortOrder": 4,
       "published": true
     },
     {
       "id": "story-05",
-      "badge": "ROYAL HERITAGE",
       "title": "Kandy Royal Kingdom",
-      "location": "Sacred Hill Capital • Temple of the Tooth",
-      "photo": "assets/images/cultural/kandy-temple-of-tooth-4.webp",
+      "badge": "ROYAL HERITAGE",
+      "photo": "https://res.cloudinary.com/qmukrbh6/image/upload/f_auto,q_auto/v1794916634/i1sjyodoer5kr5aoxosy.jpg",
       "description": "The revered Temple of the Sacred Tooth Relic amidst misty hills. Exclusive VIP access to the traditional evening royal pooja ceremony with private sacred blessings.",
       "sortOrder": 5,
-      "published": true
+      "published": true,
+      "updatedAt": "2026-11-17T12:01:16.851Z"
     }
   ],
   "pages": {

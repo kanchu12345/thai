@@ -48,7 +48,7 @@
 
 
 
-  const SUPPORTED_LANGS = ['en', 'fr', 'de', 'zh-CN', 'zh-TW', 'ru', 'es', 'it', 'ja', 'ar', 'hi'];
+  const SUPPORTED_LANGS = ['en', 'fr', 'de', 'zh-CN', 'zh-TW', 'ru', 'es', 'it', 'ja', 'ko', 'ar', 'hi'];
 
 
 
@@ -658,7 +658,9 @@
 
           fr: "VOYAGES PURS. EXPÉRIENCES SACRÉES.",
 
-          de: "REINE REISEN. HEILIGE ERLEBNISSE."
+          de: "REINE REISEN. HEILIGE ERLEBNISSE.",
+          ja: "純粋な旅。神聖な体験。",
+          ko: "순수한 여정. 신성한 체험."
 
         },
 
@@ -1284,8 +1286,28 @@
     hydrateTeam() {
       const teamGrid = document.getElementById('teamCardsGrid');
       if (!teamGrid) return;
-      const teamData = this.getTeam();
+      let teamData = this.getTeam();
       if (!teamData || !Array.isArray(teamData) || teamData.length === 0) return;
+
+      // Ensure all 28 country representatives are rendered even if Firestore only returned 2
+      if (teamData.length < 28 && !this._teamFetching) {
+        this._teamFetching = true;
+        const b = (typeof this.detectBasePath === 'function') ? this.detectBasePath() : './';
+        fetch(`${b}data/team.json?v=${Date.now()}`)
+          .then(r => r.ok ? r.json() : null)
+          .then(full => {
+            if (Array.isArray(full) && full.length > teamData.length) {
+              full.forEach(m => {
+                if (!this.store.team.find(x => (x.id && x.id === m.id) || (x.country && x.country === m.country))) {
+                  this.store.team.push(m);
+                }
+              });
+              this.hydrateTeam();
+            }
+          })
+          .catch(() => {})
+          .finally(() => { this._teamFetching = false; });
+      }
 
       const published = teamData.filter(m => m.published !== false);
       published.sort((a, b) => (a.sortOrder || 1) - (b.sortOrder || 1));

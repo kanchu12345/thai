@@ -30,6 +30,7 @@
     { code: 'zh-CN', label: '🇨🇳 简体中文' },
     { code: 'zh-TW', label: '🇹🇼 繁體中文' },
     { code: 'ja', label: '🇯🇵 日本語' },
+    { code: 'ko', label: '🇰🇷 한국어' },
     { code: 'ar', label: '🇦🇪 العربية' },
     { code: 'hi', label: '🇮🇳 हिन्दी' },
     { code: 'it', label: '🇮🇹 Italiano' },
@@ -3766,7 +3767,7 @@
         id: 'story-01',
         title: 'Anuradhapura',
         badge: 'SACRED SITES',
-        photo: 'assets/images/home/anuradhapura-success-story.jpg',
+        photo: 'https://res.cloudinary.com/qmukrbh6/image/upload/f_auto,q_auto/v1794916467/duyawh1nziw7o7esk9j5.jpg',
         description: 'Ancient capital of great stupas and the revered Sri Maha Bodhi tree...',
         sortOrder: 1,
         published: true
