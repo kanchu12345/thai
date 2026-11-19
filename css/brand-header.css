@@ -3315,11 +3315,18 @@ body {
 }
 
 .walkers-menu-item:hover > .walkers-megamenu,
-.walkers-menu-item:focus-within > .walkers-megamenu {
+.walkers-menu-item:focus-within > .walkers-megamenu,
+.walkers-menu-item.is-open > .walkers-megamenu {
   opacity: 1 !important;
   visibility: visible !important;
   transform: translateY(4px) !important;
   pointer-events: auto !important;
+}
+
+.walkers-menu-item.is-open > .walkers-menu-link .walkers-caret,
+.walkers-menu-item:hover > .walkers-menu-link .walkers-caret {
+  transform: rotate(180deg) !important;
+  transition: transform 220ms ease !important;
 }
 
 .megamenu-link {

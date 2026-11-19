@@ -4572,11 +4572,19 @@ section + section.padding-top--100,
   white-space: normal;
 }
 
-.walkers-menu-item:hover > .walkers-megamenu {
+.walkers-menu-item:hover > .walkers-megamenu,
+.walkers-menu-item:focus-within > .walkers-megamenu,
+.walkers-menu-item.is-open > .walkers-megamenu {
   opacity: 1;
   visibility: visible;
   transform: translateY(4px);
   pointer-events: auto;
+}
+
+.walkers-menu-item.is-open > .walkers-menu-link .walkers-caret,
+.walkers-menu-item:hover > .walkers-menu-link .walkers-caret {
+  transform: rotate(180deg);
+  transition: transform 220ms ease;
 }
 
 .megamenu-header {

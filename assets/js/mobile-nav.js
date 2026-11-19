@@ -43,6 +43,7 @@
     initMobileNav();
 
     initToursAccordion();
+    initDesktopDropdownToggle();
 
     initAndroidBackNav();
 
@@ -221,6 +222,55 @@
   }
 
 
+
+    // --- 2b. Desktop & Touchscreen Tours Dropdown Click Toggle ---
+  function initDesktopDropdownToggle() {
+    const dropdownItems = document.querySelectorAll('.walkers-menu-item.has-dropdown');
+    dropdownItems.forEach(function(item) {
+      const trigger = item.querySelector('.walkers-menu-link');
+      if (!trigger) return;
+
+      trigger.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        const isOpen = item.classList.contains('is-open');
+        // Close other open dropdowns
+        dropdownItems.forEach(function(other) {
+          other.classList.remove('is-open');
+          const otherTrigger = other.querySelector('.walkers-menu-link');
+          if (otherTrigger) otherTrigger.setAttribute('aria-expanded', 'false');
+        });
+        if (!isOpen) {
+          item.classList.add('is-open');
+          trigger.setAttribute('aria-expanded', 'true');
+        } else {
+          trigger.setAttribute('aria-expanded', 'false');
+        }
+      });
+    });
+
+    // Close when clicking outside
+    document.addEventListener('click', function(e) {
+      if (!e.target.closest('.walkers-menu-item.has-dropdown')) {
+        dropdownItems.forEach(function(item) {
+          item.classList.remove('is-open');
+          const trigger = item.querySelector('.walkers-menu-link');
+          if (trigger) trigger.setAttribute('aria-expanded', 'false');
+        });
+      }
+    });
+
+    // Close on Escape key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        dropdownItems.forEach(function(item) {
+          item.classList.remove('is-open');
+          const trigger = item.querySelector('.walkers-menu-link');
+          if (trigger) trigger.setAttribute('aria-expanded', 'false');
+        });
+      }
+    });
+  }
 
   // --- 3. Android Back Button Interception ---
 
