@@ -2813,7 +2813,31 @@
           const col = parts[0];
           const docId = parts.slice(1).join('/');
 
-          await window.AdminApp.fbDb.collection(col).doc(docId).set(payload, { merge: true });
+          if (status === 'draft') {
+            // Save to drafts collection without overwriting live public website content
+            await window.AdminApp.fbDb.collection('drafts').doc(this.activePageKey.replace(/\//g, '__')).set(payload, { merge: true });
+            try { localStorage.setItem('lotus_cms_draft_' + this.activePageKey, JSON.stringify(payload)); } catch(e) {}
+          } else {
+            // Published Live: Write to canonical public collection
+            await window.AdminApp.fbDb.collection(col).doc(docId).set(payload, { merge: true });
+
+            // Dual-sync tourCategories <-> categories and tourPackages <-> packages
+            if (col === 'tourCategories') {
+              window.AdminApp.fbDb.collection('categories').doc(docId).set(payload, { merge: true }).catch(() => {});
+            } else if (col === 'categories') {
+              window.AdminApp.fbDb.collection('tourCategories').doc(docId).set(payload, { merge: true }).catch(() => {});
+            } else if (col === 'tourPackages') {
+              window.AdminApp.fbDb.collection('packages').doc(docId).set(payload, { merge: true }).catch(() => {});
+            } else if (col === 'packages') {
+              window.AdminApp.fbDb.collection('tourPackages').doc(docId).set(payload, { merge: true }).catch(() => {});
+            }
+
+            // Clear draft once published live
+            try {
+              window.AdminApp.fbDb.collection('drafts').doc(this.activePageKey.replace(/\//g, '__')).delete().catch(() => {});
+              localStorage.removeItem('lotus_cms_draft_' + this.activePageKey);
+            } catch(de) {}
+          }
 
           // Single Source of Truth dual sync: if saving home page, sync touched blogs & packages
           if (this.activePageKey === 'siteContent/home' && window.AdminApp) {

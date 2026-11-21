@@ -1,4 +1,4 @@
-
+﻿
 <!DOCTYPE html>
 
 <!-- Site design & development: Infinite Design (https://infiniteweb.dev/) — see /humans.txt and LICENSE.txt -->
@@ -10,18 +10,18 @@
 <meta content="#16361D" name="theme-color"/>
 <title data-cms="contact.seo.title">Contact Lotus Ceylon | Island Headquarters and Direct Concierge</title>
 <meta content="Reach Lotus Ceylon International Tours and Services (Pvt) Ltd. Headquarters in Ja-Ela, Sri Lanka. Direct phone, WhatsApp, WeChat, LINE, and email assistance." data-cms="contact.seo.description" name="description"/>
-<link data-cms-link="contact.seo.canonical" href="https://kanchu12345.github.io/thai/contact.html" rel="canonical"/>
+<link data-cms-link="contact.seo.canonical" href="https://lotusceylon.com/contact.html" rel="canonical"/>
 <!-- Open Graph & Social Sharing -->
 <meta content="website" data-cms="contact.seo.og_type" property="og:type"/>
 <meta content="Lotus Ceylon International Tours" data-cms="contact.seo.og_site_name" property="og:site_name"/>
 <meta content="Contact Lotus Ceylon | Island Headquarters and Direct Concierge" data-cms="contact.seo.og_title" property="og:title"/>
 <meta content="Reach Lotus Ceylon International Tours and Services (Pvt) Ltd. Headquarters in Ja-Ela, Sri Lanka. Direct phone, WhatsApp, WeChat, LINE, and email assistance." data-cms="contact.seo.og_description" property="og:description"/>
-<meta content="https://kanchu12345.github.io/thai/contact.html" data-cms-link="contact.seo.canonical" property="og:url"/>
-<meta content="https://kanchu12345.github.io/thai/assets/images/contact/negombo-lagoon-1.webp" data-cms-img="contact.seo.og_image" property="og:image"/>
+<meta content="https://lotusceylon.com/contact.html" data-cms-link="contact.seo.canonical" property="og:url"/>
+<meta content="https://lotusceylon.com/assets/images/contact/negombo-lagoon-1.webp" data-cms-img="contact.seo.og_image" property="og:image"/>
 <meta content="summary_large_image" data-cms="contact.seo.twitter_card" name="twitter:card"/>
 <meta content="Contact Lotus Ceylon | Island Headquarters and Direct Concierge" data-cms="contact.seo.twitter_title" name="twitter:title"/>
 <meta content="Reach Lotus Ceylon International Tours and Services (Pvt) Ltd. Headquarters in Ja-Ela, Sri Lanka. Direct phone, WhatsApp, WeChat, LINE, and email assistance." data-cms="contact.seo.twitter_description" name="twitter:description"/>
-<meta content="https://kanchu12345.github.io/thai/assets/images/contact/negombo-lagoon-1.webp" data-cms-img="contact.seo.twitter_image" name="twitter:image"/>
+<meta content="https://lotusceylon.com/assets/images/contact/negombo-lagoon-1.webp" data-cms-img="contact.seo.twitter_image" name="twitter:image"/>
 <link data-cms-img="siteGlobal.branding.favicon" href="logo.png?v=20261119_v12" rel="icon" type="image/png"/>
 <!-- Master Stylesheets -->
 <link href="assets/css/site.css?v=20261119_v12" rel="stylesheet"/>
@@ -591,7 +591,7 @@
       }
     }
   </style>
-<script data-cms="contact.seo.json_ld_1" type="application/ld+json">{"@context": "https://schema.org", "@type": "ContactPage", "name": "Contact Lotus Ceylon Concierge", "url": "https://kanchu12345.github.io/thai/contact.html", "mainEntity": {"@type": "TravelAgency", "name": "Lotus Ceylon International Tours & Services", "telephone": "+94715422384", "email": "info@lotusceylon.com", "address": {"@type": "PostalAddress", "streetAddress": "286/C, Niwandama South", "addressLocality": "Ja-Ela", "addressRegion": "Western Province", "postalCode": "11350", "addressCountry": "LK"}}}</script>
+<script data-cms="contact.seo.json_ld_1" type="application/ld+json">{"@context": "https://schema.org", "@type": "ContactPage", "name": "Contact Lotus Ceylon Concierge", "url": "https://lotusceylon.com/contact.html", "mainEntity": {"@type": "TravelAgency", "name": "Lotus Ceylon International Tours & Services", "telephone": "+94715422384", "email": "info@lotusceylon.com", "address": {"@type": "PostalAddress", "streetAddress": "286/C, Niwandama South", "addressLocality": "Ja-Ela", "addressRegion": "Western Province", "postalCode": "11350", "addressCountry": "LK"}}}</script>
 </head>
 <body data-cms-page="siteContent/contact">
 <a class="skip-to-content-link" data-cms="siteGlobal.skipToContent" href="#mainContent">Skip to main content</a>
@@ -1204,12 +1204,16 @@
       const year = new Date().getFullYear();
       const randomSix = Math.floor(100000 + Math.random() * 900000);
       const refId = 'LC-' + year + '-' + randomSix;
+      const nowIso = new Date().toISOString();
 
+      let transmitted = false;
+
+      // 1. Try Firebase Firestore REST API
       try {
+        const fbKey = (window.LOTUS_CONFIG && window.LOTUS_CONFIG.firebase && window.LOTUS_CONFIG.firebase.apiKey) || 'AIzaSyD5NyCFaPHeS1cKlsgxZ_WsraswHlYonNA';
         const restBase = 'https://firestore.googleapis.com/v1/projects/louterst-36b64/databases/(default)/documents';
         
-        // 1. Save to inquiries collection
-        await fetch(restBase + '/inquiries', {
+        const inqRes = await fetch(restBase + '/inquiries?key=' + encodeURIComponent(fbKey), {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
@@ -1219,33 +1223,79 @@
               name: { stringValue: name },
               email: { stringValue: email },
               whatsapp: { stringValue: phone || '' },
-              theme: { stringValue: subject },
+              theme: { stringValue: subject || 'General Inquiry' },
               notes: { stringValue: message },
               status: { stringValue: 'new' },
-              createdAt: { stringValue: new Date().toISOString() }
+              createdAt: { stringValue: nowIso },
+              submittedAt: { stringValue: nowIso },
+              timestamp: { stringValue: nowIso },
+              hp_website_lotus: { stringValue: '' }
             }
           })
         });
 
-        // 2. Trigger Email notification document
-        await fetch(restBase + '/mail', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            fields: {
-              to: { arrayValue: { values: [{ stringValue: 'info@lotusceylon.com' }] } },
-              message: {
-                mapValue: {
-                  fields: {
-                    subject: { stringValue: '[Lotus Ceylon Contact] ' + refId + ' - ' + name },
-                    html: { stringValue: '<p><strong>Ref:</strong> ' + refId + '</p><p><strong>Name:</strong> ' + name + '</p><p><strong>Email:</strong> ' + email + '</p><p><strong>Phone:</strong> ' + phone + '</p><p><strong>Theme:</strong> ' + subject + '</p><p><strong>Message:</strong> ' + message + '</p>' }
+        if (inqRes && inqRes.ok) {
+          transmitted = true;
+          // Trigger Email notification document
+          fetch(restBase + '/mail?key=' + encodeURIComponent(fbKey), {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              fields: {
+                to: { arrayValue: { values: [{ stringValue: 'info@lotusceylon.com' }] } },
+                message: {
+                  mapValue: {
+                    fields: {
+                      subject: { stringValue: '[Lotus Ceylon Contact] ' + refId + ' - ' + name },
+                      html: { stringValue: '<p><strong>Ref:</strong> ' + refId + '</p><p><strong>Name:</strong> ' + name + '</p><p><strong>Email:</strong> ' + email + '</p><p><strong>Phone:</strong> ' + (phone || 'N/A') + '</p><p><strong>Theme:</strong> ' + (subject || 'General Inquiry') + '</p><p><strong>Message:</strong> ' + message + '</p>' }
+                    }
                   }
                 }
               }
-            }
-          })
-        }).catch(() => {});
+            })
+          }).catch(() => {});
+        } else {
+          console.warn('[Contact] Firestore REST returned non-OK status:', inqRes ? inqRes.status : 'network error');
+        }
+      } catch (err) {
+        console.warn('[Contact] Firestore REST transmission notice:', err);
+      }
 
+      // 2. Fallback to Formspree if Firestore REST was not successful
+      if (!transmitted) {
+        try {
+          const endpoint = (window.LOTUS_CONFIG && window.LOTUS_CONFIG.submission && window.LOTUS_CONFIG.submission.formspreeEndpoint) || "https://formspree.io/f/mqkvnzyz";
+          const fsRes = await fetch(endpoint, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Accept': 'application/json'
+            },
+            body: JSON.stringify({
+              referenceId: refId,
+              formType: 'contact',
+              name: name,
+              email: email,
+              whatsapp: phone || '',
+              theme: subject || 'General Inquiry',
+              notes: message,
+              status: 'new',
+              createdAt: nowIso,
+              submittedAt: nowIso,
+              timestamp: nowIso
+            })
+          });
+          if (fsRes && fsRes.ok) {
+            transmitted = true;
+          } else {
+            console.warn('[Contact] Formspree returned non-OK status:', fsRes ? fsRes.status : 'network error');
+          }
+        } catch (fsErr) {
+          console.warn('[Contact] Formspree fallback notice:', fsErr);
+        }
+      }
+
+      if (transmitted) {
         form.innerHTML = `
           <div style="background: #F0FDF4; border: 1.5px solid #86EFAC; border-radius: 12px; padding: 2rem; text-align: center;">
             <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">✓</div>
@@ -1258,10 +1308,13 @@
             </a>
           </div>
         `;
-      } catch (err) {
-        console.warn('Contact form error fallback:', err);
-        const waMsg = 'Hello Lotus Ceylon! Name: ' + name + ', Email: ' + email + ', Message: ' + message;
-        window.open('https://wa.me/94715422384?text=' + encodeURIComponent(waMsg), '_blank');
+      } else {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Submit Message';
+        const waMsg = 'Hello Lotus Ceylon! Name: ' + name + ', Email: ' + email + ', Subject: ' + (subject || 'General') + ', Message: ' + message;
+        const waUrl = 'https://wa.me/94715422384?text=' + encodeURIComponent(waMsg);
+        alert('We encountered an issue transmitting your message directly. Opening WhatsApp concierge for immediate assistance.');
+        window.open(waUrl, '_blank');
       }
     }
   </script>

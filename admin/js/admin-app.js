@@ -6204,6 +6204,7 @@ const waBtn = document.getElementById('inquiryWhatsAppBtn');
       if (this.fbDb) {
 
         this.fbDb.collection('categories').doc(slugOrId).delete().catch(e => console.warn('Firestore delete cat:', e));
+        this.fbDb.collection('tourCategories').doc(slugOrId).delete().catch(e => console.warn('Firestore delete tourCat:', e));
         this.fbDb.collection('siteMeta').doc('version').set({ v: Date.now(), updatedAt: new Date().toISOString() }, { merge: true }).catch(e => {});
 
       }
@@ -7110,6 +7111,7 @@ const waBtn = document.getElementById('inquiryWhatsAppBtn');
         if (this.fbDb) {
           try {
             await this.fbDb.collection('categories').doc(slug).set({ is_published: isPublished }, { merge: true });
+            await this.fbDb.collection('tourCategories').doc(slug).set({ is_published: isPublished }, { merge: true });
           } catch(e) {}
         }
         this.showToast(`Category "${cat.name || slug}" ${isPublished ? 'published' : 'saved as draft'}.`, 'info');
@@ -7261,6 +7263,18 @@ const waBtn = document.getElementById('inquiryWhatsAppBtn');
       };
 
 
+
+      // Dual-sync categories and tourCategories collections
+      if (this.fbDb) {
+        try {
+          this.fbDb.collection('categories').doc(id).set(payload, { merge: true }).catch(() => {});
+          this.fbDb.collection('tourCategories').doc(id).set(payload, { merge: true }).catch(() => {});
+          if (slug && slug !== id) {
+            this.fbDb.collection('categories').doc(slug).set(payload, { merge: true }).catch(() => {});
+            this.fbDb.collection('tourCategories').doc(slug).set(payload, { merge: true }).catch(() => {});
+          }
+        } catch (e) {}
+      }
 
       if (window.LotusFirebase && typeof window.LotusFirebase.saveCategory === 'function') {
 

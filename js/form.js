@@ -1429,11 +1429,20 @@ async function handleFormSubmit(form, isQuickForm) {
         const db = window.firebase.firestore();
 
         const collectionName = isQuickForm ? "inquiries_quick" : "inquiries_detailed";
+        const cleanPayload = {};
+        Object.keys(payload).forEach(k => {
+          if (payload[k] !== undefined && payload[k] !== null) {
+            cleanPayload[k] = payload[k];
+          }
+        });
+        const nowIso = new Date().toISOString();
         const inqDocPayload = {
-          ...payload,
+          ...cleanPayload,
           formType: isQuickForm ? 'quick' : 'detailed',
           hp_website_lotus: "",
-          submittedAt: new Date().toISOString()
+          submittedAt: nowIso,
+          createdAt: nowIso,
+          status: 'new'
         };
 
         await db.collection(collectionName).add(inqDocPayload);
@@ -1450,15 +1459,7 @@ async function handleFormSubmit(form, isQuickForm) {
         } catch (mailErr) {
           console.warn("[Trigger Email] Mail collection write deferred:", mailErr);
         }
-        if (false) await db.collection(collectionName).add({
 
-          ...payload,
-
-          hp_website_lotus: "", // Honeypot pass
-
-          submittedAt: new Date().toISOString()
-
-        });
 
         transmitted = true;
 
@@ -1632,51 +1633,49 @@ function extractPayload(form, isQuickForm) {
 
 
 
-  return {
-
+  const nowIso = new Date().toISOString();
+  const result = {
     referenceId: refId,
-
     formType: isQuickForm ? "quick" : "detailed",
-
     name: form.querySelector("#fullName") ? form.querySelector("#fullName").value.trim() : "",
-
     country: form.querySelector("#selectedCountry") ? form.querySelector("#selectedCountry").value.trim() : "",
-
     email: form.querySelector("#emailAddress") ? form.querySelector("#emailAddress").value.trim() : "",
-
     whatsapp: fullWhatsApp,
-
     arrivalDate: form.querySelector("#arrivalDate") ? form.querySelector("#arrivalDate").value : "",
-
     departureDate: form.querySelector("#departureDate") ? form.querySelector("#departureDate").value : "",
-
-    pax: isQuickForm ? totalPax : undefined,
-
-    adults: !isQuickForm && form.querySelector("#adultsPax") ? form.querySelector("#adultsPax").value : undefined,
-
-    children: !isQuickForm && form.querySelector("#childrenPax") ? form.querySelector("#childrenPax").value : undefined,
-
     totalPax: totalPax,
-
     hotelCategory: hotelCategories,
-
-    rooms: !isQuickForm && form.querySelector("#roomsRequired") ? form.querySelector("#roomsRequired").value : undefined,
-
-    mealPlan: !isQuickForm ? mealPlans : undefined,
-
-    interests: !isQuickForm ? interests : undefined,
-
-    budget: !isQuickForm && form.querySelector("#packageBudget") ? form.querySelector("#packageBudget").value : undefined,
-
-    otherRequirements: !isQuickForm && form.querySelector("#otherRequirements") ? form.querySelector("#otherRequirements").value.trim() : undefined,
-
     prefill: form.querySelector("#prefillContext") ? form.querySelector("#prefillContext").value : "",
-
     language: document.documentElement.lang || "en",
-
-    timestamp: new Date().toISOString()
-
+    timestamp: nowIso,
+    createdAt: nowIso,
+    submittedAt: nowIso,
+    status: "new"
   };
+
+  if (isQuickForm) {
+    result.pax = totalPax;
+  } else {
+    if (form.querySelector("#adultsPax") && form.querySelector("#adultsPax").value) {
+      result.adults = form.querySelector("#adultsPax").value;
+    }
+    if (form.querySelector("#childrenPax") && form.querySelector("#childrenPax").value) {
+      result.children = form.querySelector("#childrenPax").value;
+    }
+    if (form.querySelector("#roomsRequired") && form.querySelector("#roomsRequired").value) {
+      result.rooms = form.querySelector("#roomsRequired").value;
+    }
+    if (mealPlans.length > 0) result.mealPlan = mealPlans;
+    if (interests.length > 0) result.interests = interests;
+    if (form.querySelector("#packageBudget") && form.querySelector("#packageBudget").value) {
+      result.budget = form.querySelector("#packageBudget").value;
+    }
+    if (form.querySelector("#otherRequirements") && form.querySelector("#otherRequirements").value.trim()) {
+      result.otherRequirements = form.querySelector("#otherRequirements").value.trim();
+    }
+  }
+
+  return result;
 
 }
 

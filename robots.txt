@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Sitemaps
-Sitemap: https://kanchu12345.github.io/thai/sitemap.xml
+Sitemap: https://lotusceylon.com/sitemap.xml
 
 # Disallow admin panel and private data backups
 Disallow: /admin/

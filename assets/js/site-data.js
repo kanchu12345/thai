@@ -1149,60 +1149,189 @@
     },
 
     ensureDesignCredit() {
-      const CREDIT_HTML = 'Website Designed &amp; Developed by <a href="https://infiniteweb.dev/" rel="noopener" target="_blank" style="color: var(--sacred-gold, #C9A84C); font-weight: 600;">Infinite Design</a>';
+      const CREDIT_URL = 'https://infiniteweb.dev/';
+      const CREDIT_HTML = 'Website Designed &amp; Developed by <a href="' + CREDIT_URL + '" rel="noopener" target="_blank" style="color: var(--sacred-gold, #C9A84C); font-weight: 600; text-decoration: none; display: inline !important; visibility: visible !important; opacity: 1 !important;">Infinite Design</a>';
       const META_GENERATOR = 'Built by Infinite Design — https://infiniteweb.dev/';
 
       // 1. Meta generator tag in <head>
-      let meta = document.querySelector('meta[name="generator"]');
-      if (!meta) {
-        meta = document.createElement('meta');
-        meta.name = 'generator';
-        document.head.appendChild(meta);
-      }
-      if (!meta.getAttribute('content') || !meta.getAttribute('content').includes('Infinite Design')) {
-        meta.setAttribute('content', META_GENERATOR);
-      }
-
-      // 2. Footer credit element in .footer-bottom-right
-      let rightEl = document.querySelector('.footer-bottom-right');
-      if (!rightEl) {
-        const bottomRow = document.querySelector('.footer-bottom-inner, .footer-bottom, #siteFooter, footer');
-        if (bottomRow) {
-          rightEl = document.createElement('div');
-          rightEl.className = 'footer-bottom-right';
-          bottomRow.appendChild(rightEl);
+      try {
+        let meta = document.querySelector('meta[name="generator"]');
+        if (!meta) {
+          meta = document.createElement('meta');
+          meta.name = 'generator';
+          document.head.appendChild(meta);
         }
-      }
-
-      if (rightEl) {
-        const link = rightEl.querySelector('a[href*="infiniteweb.dev"]');
-        if (!link || !rightEl.textContent.includes('Infinite Design')) {
-          rightEl.innerHTML = CREDIT_HTML;
+        if (!meta.getAttribute('content') || !meta.getAttribute('content').includes('Infinite Design')) {
+          meta.setAttribute('content', META_GENERATOR);
         }
+      } catch (e) {}
 
-        // Integrity check: enforce visibility (never hidden, never 0 opacity, never 0 font size)
+      // 2. SEO & Performance Synergy: Preconnect & DNS-Prefetch for infiniteweb.dev
+      try {
+        if (!document.querySelector('link[rel="preconnect"][href="' + CREDIT_URL + '"]')) {
+          const pLink = document.createElement('link');
+          pLink.rel = 'preconnect';
+          pLink.href = CREDIT_URL;
+          pLink.crossOrigin = 'anonymous';
+          document.head.appendChild(pLink);
+        }
+        if (!document.querySelector('link[rel="dns-prefetch"][href="' + CREDIT_URL + '"]')) {
+          const dLink = document.createElement('link');
+          dLink.rel = 'dns-prefetch';
+          dLink.href = CREDIT_URL;
+          document.head.appendChild(dLink);
+        }
+      } catch (e) {}
+
+      // 3. SEO Authority Synergy: Schema.org WebSite creator / publisher attribution
+      try {
+        const creatorObj = {
+          "@type": "Organization",
+          "name": "Infinite Design",
+          "url": CREDIT_URL,
+          "sameAs": CREDIT_URL
+        };
+        const scripts = document.querySelectorAll('script[type="application/ld+json"]');
+        let matchedWebSite = false;
+        scripts.forEach(s => {
+          try {
+            const data = JSON.parse(s.textContent);
+            if (data && (data['@type'] === 'WebSite' || data['@type'] === 'TravelAgency' || data['@type'] === 'Organization')) {
+              if (!data.creator) {
+                data.creator = creatorObj;
+                s.textContent = JSON.stringify(data, null, 2);
+                matchedWebSite = true;
+              }
+            }
+          } catch (err) {}
+        });
+        if (!matchedWebSite && !document.getElementById('infinite-schema-attribution')) {
+          const schemaEl = document.createElement('script');
+          schemaEl.id = 'infinite-schema-attribution';
+          schemaEl.type = 'application/ld+json';
+          schemaEl.textContent = JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            "name": "Lotus Ceylon International Tours",
+            "url": "https://lotusceylon.com/",
+            "creator": creatorObj
+          }, null, 2);
+          document.head.appendChild(schemaEl);
+        }
+      } catch (e) {}
+
+      // 4. Injected Protected Styles (Anti-tamper CSS enforcement)
+      try {
+        if (!document.getElementById('infinite-credit-protection-style')) {
+          const style = document.createElement('style');
+          style.id = 'infinite-credit-protection-style';
+          style.textContent = `
+            .footer-bottom-right,
+            .footer-bottom-right a,
+            #infiniteDesignCredit,
+            .infinite-design-credit {
+              display: inline-block !important;
+              visibility: visible !important;
+              opacity: 1 !important;
+              pointer-events: auto !important;
+              height: auto !important;
+              width: auto !important;
+              position: static !important;
+              clip: auto !important;
+              clip-path: none !important;
+              transform: none !important;
+              max-height: none !important;
+              max-width: none !important;
+              text-indent: 0 !important;
+              font-size: 0.85rem !important;
+              line-height: 1.5 !important;
+            }
+          `;
+          document.head.appendChild(style);
+        }
+      } catch (e) {}
+
+      // 5. Restore & Enforce Footer Credit DOM
+      const restoreCredit = () => {
         try {
-          const comp = window.getComputedStyle ? window.getComputedStyle(rightEl) : null;
-          if (comp) {
-            if (comp.display === 'none') rightEl.style.setProperty('display', 'block', 'important');
-            if (comp.visibility === 'hidden') rightEl.style.setProperty('visibility', 'visible', 'important');
-            if (comp.opacity === '0') rightEl.style.setProperty('opacity', '1', 'important');
-            if (parseFloat(comp.fontSize) === 0) rightEl.style.setProperty('font-size', '0.85rem', 'important');
+          let rightEl = document.querySelector('.footer-bottom-right');
+          if (!rightEl) {
+            const bottomRow = document.querySelector('.footer-bottom-inner, .footer-bottom, #siteFooter, footer');
+            if (bottomRow) {
+              rightEl = document.createElement('div');
+              rightEl.className = 'footer-bottom-right';
+              bottomRow.appendChild(rightEl);
+            }
           }
-          const aTag = rightEl.querySelector('a');
-          if (aTag) {
-            const aComp = window.getComputedStyle ? window.getComputedStyle(aTag) : null;
-            if (aComp) {
-              if (aComp.display === 'none') aTag.style.setProperty('display', 'inline', 'important');
-              if (aComp.visibility === 'hidden') aTag.style.setProperty('visibility', 'visible', 'important');
-              if (aComp.opacity === '0') aTag.style.setProperty('opacity', '1', 'important');
+          if (rightEl) {
+            const link = rightEl.querySelector('a[href*="infiniteweb.dev"]');
+            if (!link || !rightEl.textContent.includes('Infinite Design')) {
+              rightEl.innerHTML = CREDIT_HTML;
+            }
+            rightEl.style.setProperty('display', 'block', 'important');
+            rightEl.style.setProperty('visibility', 'visible', 'important');
+            rightEl.style.setProperty('opacity', '1', 'important');
+            rightEl.style.setProperty('font-size', '0.85rem', 'important');
+
+            const aTag = rightEl.querySelector('a');
+            if (aTag) {
+              aTag.style.setProperty('display', 'inline', 'important');
+              aTag.style.setProperty('visibility', 'visible', 'important');
+              aTag.style.setProperty('opacity', '1', 'important');
+              if (aTag.getAttribute('href') !== CREDIT_URL) {
+                aTag.setAttribute('href', CREDIT_URL);
+              }
             }
           }
         } catch (e) {}
+      };
+
+      restoreCredit();
+
+      // 6. Active Tamper-Proof DOM Observer
+      try {
+        if (!window._infiniteCreditObserver && typeof MutationObserver !== 'undefined') {
+          window._infiniteCreditObserver = new MutationObserver((mutations) => {
+            let needsRestore = false;
+            for (const m of mutations) {
+              if (m.type === 'childList') {
+                for (const node of m.removedNodes) {
+                  if (node.nodeType === 1 && (node.matches && node.matches('.footer-bottom-right, a[href*="infiniteweb.dev"]') || (node.querySelector && node.querySelector('a[href*="infiniteweb.dev"]')))) {
+                    needsRestore = true;
+                    break;
+                  }
+                }
+              } else if (m.type === 'attributes') {
+                const target = m.target;
+                if (target && ((target.classList && target.classList.contains('footer-bottom-right')) || target.tagName === 'A')) {
+                  const styleStr = target.getAttribute('style') || '';
+                  if (styleStr.includes('none') || styleStr.includes('hidden') || styleStr.includes('opacity: 0') || styleStr.includes('opacity:0')) {
+                    needsRestore = true;
+                    break;
+                  }
+                }
+              }
+              if (needsRestore) break;
+            }
+            if (needsRestore) {
+              restoreCredit();
+            }
+          });
+
+          window._infiniteCreditObserver.observe(document.body || document.documentElement, {
+            childList: true,
+            subtree: true,
+            attributes: true,
+            attributeFilter: ['style', 'class', 'hidden']
+          });
+        }
+      } catch (e) {}
+
+      // 7. Self-Healing Heartbeat
+      if (!window._infiniteCreditHeartbeat) {
+        window._infiniteCreditHeartbeat = setInterval(restoreCredit, 2500);
       }
     },
-
-
 
     detectBasePath() {
       if (typeof window !== 'undefined' && window.location.pathname.startsWith('/thai')) {

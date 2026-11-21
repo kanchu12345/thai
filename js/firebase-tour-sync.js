@@ -987,14 +987,16 @@
 
       const colName = isQuick ? 'inquiries_quick' : 'inquiries_detailed';
 
+      const cleanData = {};
+      Object.keys(data).forEach(k => {
+        if (data[k] !== undefined && data[k] !== null) cleanData[k] = data[k];
+      });
+      const nowIso = new Date().toISOString();
       const payload = {
-
-        ...data,
-
-        createdAt: new Date().toISOString(),
-
+        ...cleanData,
+        createdAt: nowIso,
+        submittedAt: nowIso,
         status: 'new'
-
       };
 
 

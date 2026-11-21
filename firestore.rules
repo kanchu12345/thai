@@ -17,7 +17,8 @@ service cloud.firestore {
          get(/databases/$(database)/documents/admins/$(request.auth.token.email)).data.role in ['super_admin', 'editor', 'admin', 'owner']) ||
         (request.auth.token.email == 'gamhewak@gmail.com' &&
          exists(/databases/$(database)/documents/admins/super_admin_gamhewak) &&
-         get(/databases/$(database)/documents/admins/super_admin_gamhewak).data.role in ['super_admin', 'editor', 'admin', 'owner'])
+         get(/databases/$(database)/documents/admins/super_admin_gamhewak).data.role in ['super_admin', 'editor', 'admin', 'owner']) ||
+        (request.auth.token.email != null && request.auth.token.email in ['admin@lotusceylon.com', 'info@lotusceylon.com', 'gamhewak@gmail.com'])
       );
     }
 
@@ -32,11 +33,12 @@ service cloud.firestore {
 
     // Strict schema, length, and honeypot validation for public inquiry submissions
     function isValidInquiry(data, expectedType) {
-      let allowedKeys = [
-        'referenceId', 'formType', 'name', 'country', 'email', 'whatsapp',
+            let allowedKeys = [
+        'referenceId', 'formType', 'name', 'country', 'email', 'whatsapp', 'phone',
         'arrivalDate', 'departureDate', 'pax', 'adults', 'children', 'totalPax',
         'hotelCategory', 'rooms', 'mealPlan', 'interests', 'budget',
-        'otherRequirements', 'prefill', 'language', 'timestamp', 'submittedAt',
+        'otherRequirements', 'prefill', 'language', 'timestamp', 'submittedAt', 'createdAt',
+        'status', 'theme', 'notes', 'subject', 'message',
         'hp_website_lotus'
       ];
 
@@ -52,6 +54,7 @@ service cloud.firestore {
         // Character length & type limits
         && (!('country' in data) || (data.country is string && data.country.size() <= 100))
         && (!('whatsapp' in data) || (data.whatsapp is string && data.whatsapp.size() <= 50))
+        && (!('phone' in data) || (data.phone is string && data.phone.size() <= 50))
         && (!('arrivalDate' in data) || (data.arrivalDate is string && data.arrivalDate.size() <= 30))
         && (!('departureDate' in data) || (data.departureDate is string && data.departureDate.size() <= 30))
         && (!('totalPax' in data) || (data.totalPax is string && data.totalPax.size() <= 20))
@@ -63,6 +66,14 @@ service cloud.firestore {
         && (!('prefill' in data) || (data.prefill is string && data.prefill.size() <= 200))
         && (!('language' in data) || (data.language is string && data.language.size() <= 10))
         && (!('otherRequirements' in data) || (data.otherRequirements is string && data.otherRequirements.size() <= 2000))
+        && (!('status' in data) || (data.status is string && data.status.size() <= 30))
+        && (!('theme' in data) || (data.theme is string && data.theme.size() <= 200))
+        && (!('subject' in data) || (data.subject is string && data.subject.size() <= 200))
+        && (!('notes' in data) || (data.notes is string && data.notes.size() <= 3000))
+        && (!('message' in data) || (data.message is string && data.message.size() <= 3000))
+        && (!('createdAt' in data) || (data.createdAt is string && data.createdAt.size() <= 40))
+        && (!('submittedAt' in data) || (data.submittedAt is string && data.submittedAt.size() <= 40))
+        && (!('timestamp' in data) || (data.timestamp is string && data.timestamp.size() <= 40))
         && (!('hotelCategory' in data) || (data.hotelCategory is list))
         && (!('mealPlan' in data) || (data.mealPlan is list))
         && (!('interests' in data) || (data.interests is list));
@@ -129,6 +140,11 @@ service cloud.firestore {
       allow write: if isAdmin();
     }
 
+    match /tours/{tourId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
     match /tourCategories/{categoryId} {
       allow read: if true;
       allow write: if isAdmin();
@@ -164,6 +180,11 @@ service cloud.firestore {
       allow write: if isAdmin();
     }
 
+    match /testimonials/{testimonialId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
     match /success_stories/{storyId} {
       allow read: if true;
       allow write: if isAdmin();
@@ -175,6 +196,11 @@ service cloud.firestore {
     }
 
     match /blog/{blogId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    match /blogs/{blogId} {
       allow read: if true;
       allow write: if isAdmin();
     }
@@ -213,6 +239,14 @@ service cloud.firestore {
       allow create: if isValidInquiry(request.resource.data, 'any');
     }
 
+    
+    match /mail/{mailId} {
+      allow get, list, update, delete: if isAdmin();
+      allow create: if request.resource.data.keys().hasOnly(['to', 'message'])
+                    && request.resource.data.to is list
+                    && request.resource.data.message is map;
+    }
+
     match /subscribers/{subscriberId} {
       allow get, list, update, delete: if isAdmin();
       allow create: if request.resource.data.keys().hasOnly(['email', 'subscribedAt', 'language', 'source'])
@@ -228,11 +262,24 @@ service cloud.firestore {
     match /admins/{adminId} {
       allow get: if request.auth != null && (
         request.auth.uid == adminId || 
-        (request.auth.token.email != null && request.auth.token.email.lower() == adminId.lower()) || 
+        (request.auth.token.email != null && request.auth.token.email == adminId) || 
         (request.auth.token.email == 'gamhewak@gmail.com' && adminId == 'super_admin_gamhewak') ||
         isAdmin()
       );
       allow list, write: if isAdmin();
+    }
+
+    
+    match /siteHistory/{document=**} {
+      allow read, write: if isAdmin();
+    }
+
+    match /siteHistory/{historyId}/versions/{versionId} {
+      allow read, write: if isAdmin();
+    }
+
+    match /versions/{versionId} {
+      allow read, write: if isAdmin();
     }
 
     match /activityLog/{logId} {
