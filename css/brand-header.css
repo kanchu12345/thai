@@ -3006,7 +3006,13 @@ body {
   .why-us-heading-col .heading--60 {
     font-size: clamp(2.2rem, 5.5vw, 3rem) !important;
   }
-  .why-us-header-flex .success-stories-card-wrapper {
+  .why-us-header-flex .success-stories-card-wrapper,
+  .success-stories-card-wrapper,
+  #homeSuccessStoriesWrapper {
+    flex: 0 0 auto !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
     max-width: 100% !important;
     width: 100% !important;
   }

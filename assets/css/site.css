@@ -4283,6 +4283,17 @@ p {
     gap: 1.5rem !important;
     margin-bottom: 2rem !important;
   }
+
+  .why-us-header-flex .success-stories-card-wrapper,
+  .success-stories-card-wrapper,
+  #homeSuccessStoriesWrapper {
+    flex: 0 0 auto !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    max-width: 100% !important;
+    width: 100% !important;
+  }
 }
 
 .why-book-split-grid {
