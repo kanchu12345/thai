@@ -1728,39 +1728,73 @@ function extractPayload(form, isQuickForm) {
 
 
 /**
-
- * Display Error Banner with Pre-filled WhatsApp Concierge Fallback
-
+ * Format Pre-filled Email Subject and Body
  */
+function formatEmailSubjectAndBody(data) {
+  const refId = data.referenceId || ("LC-" + Date.now().toString().slice(-6));
+  const name = data.name || "Traveler";
+  const subject = `[Lotus Ceylon Inquiry ${refId}] - ${name}`;
 
+  const hotelsStr = Array.isArray(data.hotelCategory) ? data.hotelCategory.join(", ") : data.hotelCategory;
+  const mealsStr = Array.isArray(data.mealPlan) ? data.mealPlan.join(", ") : data.mealPlan;
+  const interestsStr = Array.isArray(data.interests) ? data.interests.join(", ") : data.interests;
+
+  let body = `Dear Lotus Ceylon Team,\r\n\r\n`;
+  body += `I would like to make an inquiry with the following details:\r\n\r\n`;
+  body += `• Inquiry Reference: ${refId}\r\n`;
+  body += `• Full Name: ${name}\r\n`;
+  body += `• Country: ${data.country || "Not specified"}\r\n`;
+  body += `• Email: ${data.email}\r\n`;
+  if (data.whatsapp) body += `• WhatsApp / Phone: ${data.whatsapp}\r\n`;
+  body += `• Dates: ${data.arrivalDate || "TBD"} to ${data.departureDate || "TBD"}\r\n`;
+  body += `• Total Travelers: ${data.totalPax || "2"} Pax\r\n`;
+  if (hotelsStr) body += `• Hotel Selection: ${hotelsStr}\r\n`;
+  if (mealsStr) body += `• Meal Plan: ${mealsStr}\r\n`;
+  if (interestsStr) body += `• Interests: ${interestsStr}\r\n`;
+  if (data.budget) body += `• Targeted Budget: ${data.budget}\r\n`;
+  if (data.prefill) body += `• Regarding: ${data.prefill}\r\n`;
+  if (data.otherRequirements) body += `\r\nSpecial Notes / Wishes:\r\n${data.otherRequirements}\r\n`;
+  body += `\r\n---\r\nSent via lotusceylon.com inquiry form`;
+
+  return { subject, body };
+}
+
+/**
+ * Display Error Banner with Pre-filled WhatsApp & Email Fallback
+ */
 function showSubmitErrorFallback(data) {
-
   const banner = document.getElementById("formSubmitError");
-
-  const waLink = document.getElementById("waFallbackLink");
-
   if (!banner) return;
 
-
-
   const msg = formatWhatsAppMessage(data);
-
   const waUrl = `https://wa.me/94715422384?text=${encodeURIComponent(msg)}`;
 
+  const { subject, body } = formatEmailSubjectAndBody(data);
+  const encodedSubject = encodeURIComponent(subject);
+  const encodedBody = encodeURIComponent(body).replace(/%0A/g, '%0D%0A');
+  const mailtoUrl = `mailto:info@lotusceylon.com?subject=${encodedSubject}&body=${encodedBody}`;
+  const gmailWebUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=info@lotusceylon.com&su=${encodedSubject}&body=${encodedBody}`;
 
-
-  if (waLink) {
-
-    waLink.href = waUrl;
-
-  }
-
-
+  banner.innerHTML = `
+    <p id="formSubmitErrorMessage" style="margin-bottom: 12px; font-weight: 500;">Your inquiry details are safely saved. Please send them directly to our travel team via 1-click WhatsApp or Email:</p>
+    <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 10px;">
+      <a class="whatsapp-fallback-btn" href="${waUrl}" target="_blank" rel="noopener" style="flex: 1; min-width: 200px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: #25D366; color: #FFFFFF; padding: 12px 18px; border-radius: 8px; text-decoration: none; font-weight: 700; box-shadow: 0 4px 14px rgba(37,211,102,0.28);">
+        <svg fill="currentColor" height="18" viewBox="0 0 24 24" width="18"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.04 14.69 2 12.04 2M12.05 3.67C16.58 3.67 20.28 7.37 20.28 11.92C20.28 16.46 16.58 20.17 12.05 20.17C10.58 20.17 9.17 19.78 7.94 19.05L7.6 18.85L4.47 19.67L5.3 16.62L5.08 16.27C4.28 14.99 3.82 13.48 3.82 11.91C3.82 7.37 7.51 3.67 12.05 3.67Z"/></svg>
+        <span>Send via WhatsApp</span>
+      </a>
+      <a href="${mailtoUrl}" style="flex: 1; min-width: 200px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: #002B49; color: #FFFFFF; padding: 12px 18px; border-radius: 8px; text-decoration: none; font-weight: 700; box-shadow: 0 4px 14px rgba(0,43,73,0.2);">
+        <svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" height="18" viewBox="0 0 24 24" width="18"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+        <span>Send via Email (Pre-filled)</span>
+      </a>
+    </div>
+    <div style="font-size: 0.82rem; color: #64748B;">
+      <span>Using Gmail in web browser?</span>
+      <a href="${gmailWebUrl}" target="_blank" rel="noopener" style="color: #002B49; font-weight: 600; text-decoration: underline;">Click here to open Gmail Web Composer ➔</a>
+    </div>
+  `;
 
   banner.style.display = "block";
-
   banner.scrollIntoView({ behavior: "smooth", block: "center" });
-
 }
 
 
