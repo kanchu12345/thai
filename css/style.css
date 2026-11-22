@@ -8880,3 +8880,342 @@ img[data-cms-img*="team_img"] {
     word-break: break-word !important;
   }
 }
+
+
+
+/* ==============================================================================
+ * MOBILE LAYOUT INTEGRITY ENGINE (Android 360px-412px & iOS Viewports)
+ * Solves:
+ * 1. White-space gaps & card heights in OUR SUCCESS STORIES (#successStoriesCard)
+ * 2. Hero banner stacking, top/bottom conflict, section title & blog card collisions
+ * 3. Floating cards overlap breakout in About Us (.about-visual-composition)
+ * 4. Floating Action Buttons (WhatsApp + Scroll-to-Top) occlusions & clearance
+ * ============================================================================== */
+
+/* --- 1. OUR SUCCESS STORIES: Fluid Clean Mobile Height & Zero Awkward Gaps --- */
+@media (max-width: 768px) {
+  .why-us-header-flex {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 1.25rem !important;
+    margin-bottom: 1.25rem !important;
+  }
+
+  .why-us-heading-col {
+    max-width: 100% !important;
+    margin-bottom: 0 !important;
+  }
+
+  .why-us-heading-col .heading--60 {
+    font-size: clamp(1.85rem, 6vw, 2.4rem) !important;
+    line-height: 1.25 !important;
+    margin-bottom: 0 !important;
+  }
+
+  .why-us-header-flex .success-stories-card-wrapper,
+  .success-stories-card-wrapper {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+
+  .success-stories-landscape-card {
+    min-height: 250px !important;
+    height: clamp(250px, 60vw, 320px) !important;
+    border-radius: 16px !important;
+  }
+
+  .why-book-split-grid {
+    margin-top: 1.25rem !important;
+    gap: 1.5rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .success-stories-landscape-card {
+    min-height: 240px !important;
+    height: clamp(240px, 62vw, 290px) !important;
+    border-radius: 14px !important;
+  }
+
+  .story-top-row {
+    padding: 0.65rem 0.85rem 0.25rem !important;
+  }
+
+  .story-bottom-row {
+    padding: 0.25rem 0.85rem 0.75rem !important;
+    gap: 0.5rem !important;
+  }
+
+  .story-meta-pill {
+    padding: 3px 8px !important;
+    font-size: 0.64rem !important;
+  }
+
+  .story-meta-title {
+    font-size: 0.64rem !important;
+  }
+
+  .story-counter {
+    font-size: 0.65rem !important;
+  }
+
+  .story-controls-bar {
+    padding: 3px 6px !important;
+  }
+
+  .story-nav-btn {
+    width: 26px !important;
+    height: 26px !important;
+  }
+}
+
+/* --- 2. HERO BANNER & SECTION STACKING HARMONY (Eliminate Absolute Top/Bottom Conflict) --- */
+@media (max-width: 768px) {
+  .banner-section {
+    min-height: 520px !important;
+    height: auto !important;
+    max-height: none !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding-top: clamp(80px, 12vh, 100px) !important;
+    padding-bottom: clamp(36px, 6vh, 52px) !important;
+    box-sizing: border-box !important;
+    position: relative !important;
+    overflow: hidden !important;
+  }
+
+  .banner-content-wrap {
+    position: relative !important;
+    top: auto !important;
+    bottom: auto !important;
+    left: auto !important;
+    right: auto !important;
+    transform: none !important;
+    width: 100% !important;
+    max-width: 680px !important;
+    margin: 0 auto !important;
+    padding: 0 1.25rem !important;
+    box-sizing: border-box !important;
+    z-index: 10 !important;
+  }
+
+  .banner-main-title,
+  .banner-section-inner h1,
+  .banner-content-wrap h1 {
+    font-size: clamp(1.85rem, 6.5vw, 2.6rem) !important;
+    line-height: 1.2 !important;
+    margin-bottom: 0.85rem !important;
+  }
+
+  .banner-actions {
+    margin-top: 1.25rem !important;
+    gap: 0.75rem !important;
+  }
+
+  /* Watermark Header & Titles */
+  .section-watermark-header {
+    margin: 0 auto clamp(0.75rem, 2vw, 1.25rem) !important;
+    padding-top: 0 !important;
+    position: relative !important;
+  }
+
+  .watermark-heading {
+    font-size: clamp(2rem, 7vw, 3.2rem) !important;
+    margin: 0 auto 0.35rem !important;
+    line-height: 1.1 !important;
+    letter-spacing: 0.04em !important;
+    opacity: 0.45 !important;
+  }
+
+  .section-header-title {
+    font-size: clamp(1.45rem, 5vw, 2rem) !important;
+    line-height: 1.25 !important;
+    padding: 0 0.75rem !important;
+  }
+
+  /* Latest News / Blog Showcase Stacking Safety */
+  .news-grid-layout {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+    margin-top: 1.5rem !important;
+  }
+
+  .news-card-big {
+    min-height: auto !important;
+    height: auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+    position: relative !important;
+  }
+
+  .news-card-big img {
+    height: clamp(180px, 48vw, 220px) !important;
+    width: 100% !important;
+    object-fit: cover !important;
+  }
+
+  .news-card-big-content {
+    padding: 1.25rem !important;
+    display: flex !important;
+    flex-direction: column !important;
+    flex-grow: 1 !important;
+  }
+
+  .news-card-big-content h3 {
+    font-size: clamp(1.1rem, 3.8vw, 1.35rem) !important;
+    line-height: 1.35 !important;
+    margin: 0.35rem 0 0.75rem !important;
+  }
+
+  .news-card-big-content p {
+    font-size: 0.9rem !important;
+    line-height: 1.55 !important;
+    margin-bottom: 1.25rem !important;
+  }
+
+  .news-card-big-content .next-btn {
+    align-self: flex-start !important;
+    margin-top: auto !important;
+  }
+
+  .news-side-item {
+    padding: 0.85rem !important;
+    gap: 0.85rem !important;
+  }
+
+  .news-side-item img {
+    width: 80px !important;
+    height: 72px !important;
+    flex-shrink: 0 !important;
+  }
+
+  .news-side-title {
+    font-size: 0.92rem !important;
+    line-height: 1.35 !important;
+  }
+}
+
+/* --- 3. ABOUT US: Prevent Floating Cards Overlapping Content Below --- */
+@media (max-width: 768px) {
+  .about-luxury-split-grid {
+    grid-template-columns: 1fr !important;
+    gap: clamp(2rem, 5vw, 2.75rem) !important;
+  }
+
+  .about-visual-composition {
+    max-width: 100% !important;
+    width: 100% !important;
+    margin: 0 auto !important;
+    padding-right: 0 !important;
+    padding-bottom: 1.5rem !important;
+    position: relative !important;
+    box-sizing: border-box !important;
+  }
+
+  .about-img-main {
+    height: clamp(260px, 62vw, 360px) !important;
+    border-radius: 18px !important;
+    width: 100% !important;
+    overflow: hidden !important;
+  }
+
+  .about-img-floating {
+    width: clamp(135px, 35vw, 180px) !important;
+    height: clamp(135px, 35vw, 180px) !important;
+    bottom: -12px !important;
+    right: 6px !important;
+    border-width: 3.5px !important;
+    border-radius: 14px !important;
+  }
+
+  .about-experience-seal {
+    top: 0.75rem !important;
+    left: 0.5rem !important;
+    padding: 0.45rem 0.85rem !important;
+    gap: 0.45rem !important;
+    box-shadow: 0 6px 18px rgba(0, 43, 73, 0.15) !important;
+  }
+
+  .editorial-intro-wrapper {
+    margin-top: 1rem !important;
+    padding-top: 0 !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-img-main {
+    height: clamp(240px, 60vw, 300px) !important;
+    border-radius: 14px !important;
+  }
+
+  .about-img-floating {
+    width: clamp(115px, 32vw, 145px) !important;
+    height: clamp(115px, 32vw, 145px) !important;
+    bottom: -10px !important;
+    right: 4px !important;
+    border-width: 2.5px !important;
+    border-radius: 12px !important;
+  }
+
+  .about-experience-seal {
+    top: 0.5rem !important;
+    left: 0.35rem !important;
+    padding: 0.35rem 0.65rem !important;
+    gap: 0.35rem !important;
+  }
+
+  .about-experience-seal .seal-icon {
+    width: 22px !important;
+    height: 22px !important;
+    font-size: 0.75rem !important;
+  }
+
+  .about-experience-seal .seal-text strong {
+    font-size: 0.75rem !important;
+  }
+
+  .about-experience-seal .seal-text span {
+    font-size: 0.62rem !important;
+  }
+}
+
+/* --- 4. FLOATING ACTION CLUSTER (WhatsApp + Scroll-to-Top) & Touch Safety --- */
+@media (max-width: 768px) {
+  .unified-fab-group {
+    position: fixed !important;
+    bottom: calc(14px + env(safe-area-inset-bottom, 0px)) !important;
+    right: calc(14px + env(safe-area-inset-right, 0px)) !important;
+    gap: 8px !important;
+    z-index: 1200 !important;
+  }
+
+  .fab-btn {
+    width: 44px !important;
+    height: 44px !important;
+    min-width: 44px !important;
+    min-height: 44px !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.22) !important;
+  }
+
+  .fab-btn svg {
+    width: 20px !important;
+    height: 20px !important;
+  }
+
+  .floating-inquire-tab {
+    display: none !important;
+  }
+
+  body {
+    padding-bottom: env(safe-area-inset-bottom, 0px) !important;
+  }
+
+  .site-footer-walkers {
+    padding-bottom: calc(3rem + env(safe-area-inset-bottom, 0px)) !important;
+  }
+}
+
