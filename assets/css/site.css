@@ -1069,8 +1069,9 @@ p:last-child {
   padding-top: 1rem;
 }
 
-.faq-item.is-active .faq-answer {
-  display: block;
+.faq-item.is-active .faq-answer,
+.faq-answer.active {
+  display: block !important;
 }
 
 /* ==============================================================================

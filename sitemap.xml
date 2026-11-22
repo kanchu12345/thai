@@ -361,12 +361,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://lotusceylon.com/tours/detail.html</loc>
-    <lastmod>2026-10-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://lotusceylon.com/tours/family/</loc>
     <lastmod>2026-10-29</lastmod>
     <changefreq>weekly</changefreq>
@@ -457,12 +451,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://lotusceylon.com/tours/</loc>
-    <lastmod>2026-10-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://lotusceylon.com/tours/ramayana/</loc>
     <lastmod>2026-10-29</lastmod>
     <changefreq>weekly</changefreq>
@@ -503,11 +491,5 @@
     <lastmod>2026-10-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://lotusceylon.com/tours.html</loc>
-    <lastmod>2026-10-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
   </url>
   <url><loc>https://lotusceylon.com/blog/ella-hands-on-tea-making-experience/</loc><lastmod>2026-11-20</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url></urlset>

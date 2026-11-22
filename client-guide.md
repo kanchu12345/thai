@@ -65,3 +65,23 @@ Your website admin panel is designed to be **simple, visual, and intuitive**. Yo
 - Whenever you make changes, the status indicator in the top bar turns **🟠 Unsaved changes**.
 - When you are satisfied with your edits, click the gold **🚀 Publish Live** button at the top right.
 - Your updates are immediately active on your live website for travelers around the world!
+
+---
+
+## 9. Admin Login & Changing Your Credentials
+### Default Administrator Credentials
+- **Admin URL**: `admin/index.html` (or `https://yourdomain.com/admin/`)
+- **Username / Email**: `admin@lotusceylon.com` (or `info@lotusceylon.com`)
+- **Password**: `LotusCeylon@2026`
+
+### How to Change Your Admin Email & Password
+1. Log in to the Admin Dashboard.
+2. In the top bar, click the **🔑 Security & Password** button (or navigate to **Global Settings > Admin Accounts & Roles** in the left sidebar).
+3. Enter your new Email/Username, your current password, and your new password.
+4. Click **Save Credentials**. Your new credentials are now active immediately!
+
+### How to Reset Your Password If Forgotten
+1. On the Admin login screen, click **Forgot password?**.
+2. Under **⚡ Instant Master Reset**, enter the Master Recovery Key: `LotusCeylon@2026`.
+3. Type your desired new Email and new Password, and click **Set New Admin Login Credentials**.
+4. You can immediately sign in with your new credentials without needing any external email verification!

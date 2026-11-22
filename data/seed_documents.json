@@ -102,46 +102,13 @@
       "vi": "All Rights Reserved."
     },
     "addressTitle": {
-      "en": "ADDRESS",
-      "fr": "ADDRESS",
-      "de": "ADDRESS",
-      "zh-CN": "ADDRESS",
-      "zh-TW": "ADDRESS",
-      "ja": "ADDRESS",
-      "ar": "ADDRESS",
-      "hi": "ADDRESS",
-      "it": "ADDRESS",
-      "ru": "ADDRESS",
-      "es": "ADDRESS",
-      "vi": "ADDRESS"
+      "en": "REGISTERED OFFICE"
     },
     "phoneTitle": {
-      "en": "PHONE",
-      "fr": "PHONE",
-      "de": "PHONE",
-      "zh-CN": "PHONE",
-      "zh-TW": "PHONE",
-      "ja": "PHONE",
-      "ar": "PHONE",
-      "hi": "PHONE",
-      "it": "PHONE",
-      "ru": "PHONE",
-      "es": "PHONE",
-      "vi": "PHONE"
+      "en": "VOICE TELEPHONE"
     },
     "emailTitle": {
-      "en": "EMAIL",
-      "fr": "EMAIL",
-      "de": "EMAIL",
-      "zh-CN": "EMAIL",
-      "zh-TW": "EMAIL",
-      "ja": "EMAIL",
-      "ar": "EMAIL",
-      "hi": "EMAIL",
-      "it": "EMAIL",
-      "ru": "EMAIL",
-      "es": "EMAIL",
-      "vi": "EMAIL"
+      "en": "OFFICIAL CORRESPONDENCE"
     },
     "newsletterTitle": {
       "en": "NEWSLETTER",
@@ -214,18 +181,18 @@
     "line": "dpbs2024",
     "lineUrl": "https://line.me/R/ti/p/~dpbs2024",
     "address": {
-      "en": "Lotus Ceylon International Tours and Services (Pvt) Ltd, 286/C, Niwandama South, Ja-Ela, Western Province, Sri Lanka – 11350 (12 Min./13km away from Airport)",
-      "fr": "Lotus Ceylon International Tours and Services (Pvt) Ltd, 286/C, Niwandama South, Ja-Ela, Western Province, Sri Lanka – 11350 (12 Min./13km away from Airport)",
-      "de": "Lotus Ceylon International Tours and Services (Pvt) Ltd, 286/C, Niwandama South, Ja-Ela, Western Province, Sri Lanka – 11350 (12 Min./13km away from Airport)",
-      "zh-CN": "Lotus Ceylon International Tours and Services (Pvt) Ltd, 286/C, Niwandama South, Ja-Ela, Western Province, Sri Lanka – 11350 (12 Min./13km away from Airport)",
-      "zh-TW": "Lotus Ceylon International Tours and Services (Pvt) Ltd, 286/C, Niwandama South, Ja-Ela, Western Province, Sri Lanka – 11350 (12 Min./13km away from Airport)",
-      "ja": "Lotus Ceylon International Tours and Services (Pvt) Ltd, 286/C, Niwandama South, Ja-Ela, Western Province, Sri Lanka – 11350 (12 Min./13km away from Airport)",
-      "ar": "Lotus Ceylon International Tours and Services (Pvt) Ltd, 286/C, Niwandama South, Ja-Ela, Western Province, Sri Lanka – 11350 (12 Min./13km away from Airport)",
-      "hi": "Lotus Ceylon International Tours and Services (Pvt) Ltd, 286/C, Niwandama South, Ja-Ela, Western Province, Sri Lanka – 11350 (12 Min./13km away from Airport)",
-      "it": "Lotus Ceylon International Tours and Services (Pvt) Ltd, 286/C, Niwandama South, Ja-Ela, Western Province, Sri Lanka – 11350 (12 Min./13km away from Airport)",
-      "ru": "Lotus Ceylon International Tours and Services (Pvt) Ltd, 286/C, Niwandama South, Ja-Ela, Western Province, Sri Lanka – 11350 (12 Min./13km away from Airport)",
-      "es": "Lotus Ceylon International Tours and Services (Pvt) Ltd, 286/C, Niwandama South, Ja-Ela, Western Province, Sri Lanka – 11350 (12 Min./13km away from Airport)",
-      "vi": "Lotus Ceylon International Tours and Services (Pvt) Ltd, 286/C, Niwandama South, Ja-Ela, Western Province, Sri Lanka – 11350 (12 Min./13km away from Airport)"
+      "en": "286/C, Niwandama South, Ja-Ela, Western Province, Sri Lanka – 11350 (12 Min./13km away from Airport)",
+      "fr": "286/C, Niwandama South, Ja-Ela, Western Province, Sri Lanka – 11350 (12 Min./13km away from Airport)",
+      "de": "286/C, Niwandama South, Ja-Ela, Western Province, Sri Lanka – 11350 (12 Min./13km away from Airport)",
+      "zh-CN": "286/C, Niwandama South, Ja-Ela, Western Province, Sri Lanka – 11350 (12 Min./13km away from Airport)",
+      "zh-TW": "286/C, Niwandama South, Ja-Ela, Western Province, Sri Lanka – 11350 (12 Min./13km away from Airport)",
+      "ja": "286/C, Niwandama South, Ja-Ela, Western Province, Sri Lanka – 11350 (12 Min./13km away from Airport)",
+      "ar": "286/C, Niwandama South, Ja-Ela, Western Province, Sri Lanka – 11350 (12 Min./13km away from Airport)",
+      "hi": "286/C, Niwandama South, Ja-Ela, Western Province, Sri Lanka – 11350 (12 Min./13km away from Airport)",
+      "it": "286/C, Niwandama South, Ja-Ela, Western Province, Sri Lanka – 11350 (12 Min./13km away from Airport)",
+      "ru": "286/C, Niwandama South, Ja-Ela, Western Province, Sri Lanka – 11350 (12 Min./13km away from Airport)",
+      "es": "286/C, Niwandama South, Ja-Ela, Western Province, Sri Lanka – 11350 (12 Min./13km away from Airport)",
+      "vi": "286/C, Niwandama South, Ja-Ela, Western Province, Sri Lanka – 11350 (12 Min./13km away from Airport)"
     },
     "googleMapsEmbed": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3959.8828342415174!2d79.888725!3d7.0785!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zN8KwMDQnNDIuNiJOIDc5wrA1MycyOC4yIkU!5e0!3m2!1sen!2slk!4v1600000000000!5m2!1sen!2slk",
     "mobileWhatsappLabel": {
@@ -33439,7 +33406,7 @@
     "floating_actions.section.link_1": "./inquiry-detailed.html",
     "hero_scenes": [
       {
-        "start": 0.0,
+        "start": 0,
         "end": 9.4,
         "title": "Lotus Blossom Sanctuaries",
         "sub": "Sacred Waters of Ceylon"
@@ -33470,12 +33437,12 @@
       },
       {
         "start": 24.4,
-        "end": 28.0,
+        "end": 28,
         "title": "Colossal Jetavanaramaya Stupa",
         "sub": "UNESCO Sacred Heritage and Monasteries"
       },
       {
-        "start": 28.0,
+        "start": 28,
         "end": 31.6,
         "title": "Dambulla Golden Rock Temple",
         "sub": "Sacred Cave Monastery and Murals"
@@ -33512,12 +33479,12 @@
       },
       {
         "start": 49.4,
-        "end": 53.0,
+        "end": 53,
         "title": "Maskeliya and Nuwara Eliya Valleys",
         "sub": "Pure Ceylon Tea Country and Lakes"
       },
       {
-        "start": 53.0,
+        "start": 53,
         "end": 56.6,
         "title": "Wild Elephant Gathering",
         "sub": "Kaudulla and Minneriya Sanctuaries"

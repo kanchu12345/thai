@@ -417,7 +417,7 @@
 
       faqContainer.innerHTML = faqs.map((faq, i) => `
         <div class="faq-item" style="border-bottom: 1px solid rgba(28,27,31,0.1); padding: 16px 0;">
-          <button type="button" class="faq-question" style="width: 100%; text-align: left; background: none; border: none; font-size: 1.05rem; font-weight: 600; color: var(--ink); cursor: pointer; display: flex; justify-content: space-between; align-items: center;" onclick="this.nextElementSibling.classList.toggle('active'); this.querySelector('.faq-icon').textContent = this.nextElementSibling.classList.contains('active') ? '−' : '+';">
+          <button type="button" class="faq-question" style="width: 100%; text-align: left; background: none; border: none; font-size: 1.05rem; font-weight: 600; color: var(--ink); cursor: pointer; display: flex; justify-content: space-between; align-items: center;" onclick="const item = this.closest('.faq-item'); const ans = item.querySelector('.faq-answer'); const isOpen = ans.classList.toggle('active'); item.classList.toggle('is-active', isOpen); ans.style.display = isOpen ? 'block' : 'none'; this.querySelector('.faq-icon').textContent = isOpen ? '−' : '+';">
             <span>${faq.q}</span>
             <span class="faq-icon" style="font-size: 1.4rem; color: var(--sacred-gold); margin-left: 10px;">+</span>
           </button>
@@ -458,9 +458,11 @@
       });
 
       // Designer Credits (Infinite Design)
-      const creditEl = document.querySelector('.designer-credit');
-      if (creditEl) {
-        creditEl.innerHTML = `Designed & Developed by <a href="https://infiniteweb.dev/" target="_blank" rel="noopener" style="color: var(--sacred-gold); font-weight: 600;">Infinite Design</a>`;
+      document.querySelectorAll('.designer-credit, .footer-bottom-right').forEach(creditEl => {
+        creditEl.innerHTML = `Crafted with distinction by <a href="https://infiniteweb.dev/" target="_blank" rel="noopener" style="color: var(--sacred-gold); font-weight: 600;">Infinite Design</a>`;
+      });
+      if (typeof window !== 'undefined' && window.BrandIntegrity && typeof window.BrandIntegrity.ensure === 'function') {
+        window.BrandIntegrity.ensure();
       }
     },
 

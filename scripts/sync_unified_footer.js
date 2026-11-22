@@ -23,7 +23,7 @@ function getBasePath(relPath) {
 function walk(dir, fileList = []) {
   const files = fs.readdirSync(dir, { withFileTypes: true });
   for (const f of files) {
-    if (['node_modules', '.git', 'archive', 'backups', 'artifacts', 'rollout-screens', 'scratch', 'admin', 'partials'].includes(f.name)) {
+    if (['node_modules', '.git', 'archive', 'backups', 'artifacts', 'rollout-screens', 'scratch', 'admin', 'partials', 'backup-20261108'].includes(f.name)) {
       continue;
     }
     const full = path.join(dir, f.name);

@@ -235,14 +235,25 @@
       }
       if (typeof val === 'object') {
         const targetLang = lang || this.currentLang || 'en';
-        if (val[targetLang] !== undefined) return val[targetLang];
-        if (targetLang === 'zh-TW' && val['zh-Hant'] !== undefined) return val['zh-Hant'];
-        if (targetLang === 'zh-TW' && val['zh'] !== undefined) return val['zh'];
-        if (targetLang === 'zh-CN' && val['zh-Hans'] !== undefined) return val['zh-Hans'];
-        if (targetLang === 'zh-CN' && val['zh'] !== undefined) return val['zh'];
-        if (val['en'] !== undefined) return val['en'];
-        const first = Object.values(val)[0];
-        return first !== undefined ? first : '';
+        let res = null;
+        if (val[targetLang] !== undefined) res = val[targetLang];
+        else if (targetLang === 'zh-TW' && val['zh-Hant'] !== undefined) res = val['zh-Hant'];
+        else if (targetLang === 'zh-TW' && val['zh'] !== undefined) res = val['zh'];
+        else if (targetLang === 'zh-CN' && val['zh-Hans'] !== undefined) res = val['zh-Hans'];
+        else if (targetLang === 'zh-CN' && val['zh'] !== undefined) res = val['zh'];
+        else if (val['en'] !== undefined) res = val['en'];
+        else if (val.full !== undefined) res = val.full;
+        else {
+          const first = Object.values(val)[0];
+          res = first !== undefined ? first : '';
+        }
+        if (typeof res === 'object' && res !== null) {
+          if (typeof res.full === 'string') return res.full;
+          if (typeof res.line1 === 'string') return res.line1;
+          const innerFirst = Object.values(res)[0];
+          return (typeof innerFirst === 'string') ? innerFirst : '';
+        }
+        return res;
       }
       return String(val);
     },
@@ -453,6 +464,26 @@
       // 1. data-cms (textContent, meta content, or input placeholder)
       scope.querySelectorAll('[data-cms]').forEach(el => {
         const key = el.getAttribute('data-cms');
+        if (key === 'siteGlobal.contact.address' && el.classList.contains('footer-address-text')) {
+          el.innerHTML = '286/C, Niwandama South, Ja-Ela, Western Province, Sri Lanka – 11350<br/>(12 Min./13km away from Airport)';
+          el.setAttribute('data-translated-by', 'cms');
+          return;
+        }
+        if (key === 'siteGlobal.footer.addressTitle') {
+          el.textContent = 'REGISTERED OFFICE';
+          el.setAttribute('data-translated-by', 'cms');
+          return;
+        }
+        if (key === 'siteGlobal.footer.phoneTitle') {
+          el.textContent = 'VOICE TELEPHONE';
+          el.setAttribute('data-translated-by', 'cms');
+          return;
+        }
+        if (key === 'siteGlobal.footer.emailTitle') {
+          el.textContent = 'OFFICIAL CORRESPONDENCE';
+          el.setAttribute('data-translated-by', 'cms');
+          return;
+        }
         const raw = this.getValueByPath(key);
         const val = this.resolveI18n(raw, lang);
         if (val !== null && val !== undefined) {
@@ -472,6 +503,11 @@
       // 2. data-cms-html (sanitized innerHTML)
       scope.querySelectorAll('[data-cms-html]').forEach(el => {
         const key = el.getAttribute('data-cms-html');
+        if (key === 'siteGlobal.contact.address' && el.classList.contains('footer-address-text')) {
+          el.innerHTML = '286/C, Niwandama South, Ja-Ela, Western Province, Sri Lanka – 11350<br/>(12 Min./13km away from Airport)';
+          el.setAttribute('data-translated-by', 'cms');
+          return;
+        }
         const raw = this.getValueByPath(key);
         const val = this.resolveI18n(raw, lang);
         if (val !== null && val !== undefined) {
@@ -665,6 +701,11 @@
           });
         }
       });
+
+      // Enforce Infinite Design brand integrity protection
+      if (typeof window !== 'undefined' && window.BrandIntegrity && typeof window.BrandIntegrity.ensure === 'function') {
+        window.BrandIntegrity.ensure();
+      }
     },
 
     purgeLegacyCaches() {

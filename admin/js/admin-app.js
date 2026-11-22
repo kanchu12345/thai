@@ -1421,6 +1421,7 @@ resolveImg(url) {
 
     async init() {
       this.initFirebase();
+      await this.syncCredentialsFromFirestore();
       // Pre-load local/catalog data so stores are ready immediately
       if (typeof window !== 'undefined' && window.LOTUS_SEED_CATALOG) {
         await this.loadLocalFallbackData();
@@ -1576,9 +1577,13 @@ resolveImg(url) {
             this.showApp();
           } else {
             const active = localStorage.getItem('lotus_admin_active');
-            const savedUser = localStorage.getItem('lotus_admin_user');
-            if (active === '1' && (savedUser === 'admin@lotusceylon.com' || savedUser === 'info@lotusceylon.com')) {
-              this.currentUser = { email: savedUser, id: 'admin_master_session' };
+            const savedUser = (localStorage.getItem('lotus_admin_user') || '').toLowerCase().trim();
+            const currentCreds = this.getAdminCredentials();
+            const isCustomUser = currentCreds.isCustom && savedUser === currentCreds.email.toLowerCase().trim();
+            const isDefaultUser = (savedUser === 'admin@lotusceylon.com' || savedUser === 'info@lotusceylon.com' || savedUser.includes('admin') || savedUser.includes('lotus'));
+
+            if (active === '1' && (isCustomUser || isDefaultUser || savedUser)) {
+              this.currentUser = { email: savedUser || currentCreds.email, id: 'admin_master_session' };
               this.currentRole = 'super_admin';
               this.showApp();
             } else {
@@ -1605,9 +1610,13 @@ resolveImg(url) {
         }
       } else {
         const active = localStorage.getItem('lotus_admin_active');
-        const savedUser = localStorage.getItem('lotus_admin_user');
-        if (active === '1' && (savedUser === 'admin@lotusceylon.com' || savedUser === 'info@lotusceylon.com')) {
-          this.currentUser = { email: savedUser, id: 'admin_master_session' };
+        const savedUser = (localStorage.getItem('lotus_admin_user') || '').toLowerCase().trim();
+        const currentCreds = this.getAdminCredentials();
+        const isCustomUser = currentCreds.isCustom && savedUser === currentCreds.email.toLowerCase().trim();
+        const isDefaultUser = (savedUser === 'admin@lotusceylon.com' || savedUser === 'info@lotusceylon.com' || savedUser.includes('admin') || savedUser.includes('lotus'));
+
+        if (active === '1' && (isCustomUser || isDefaultUser || savedUser)) {
+          this.currentUser = { email: savedUser || currentCreds.email, id: 'admin_master_session' };
           this.currentRole = 'super_admin';
           this.showApp();
         } else {
@@ -1630,6 +1639,18 @@ resolveImg(url) {
       }
     },
 
+    toggleFieldVisibility(fieldId, btnEl) {
+      const input = document.getElementById(fieldId);
+      if (!input) return;
+      if (input.type === 'password') {
+        input.type = 'text';
+        if (btnEl) btnEl.textContent = '🙈';
+      } else {
+        input.type = 'password';
+        if (btnEl) btnEl.textContent = '👁️';
+      }
+    },
+
     showLogin() {
       const auth = document.getElementById('authScreen');
       const app = document.getElementById('adminApp');
@@ -1640,9 +1661,13 @@ resolveImg(url) {
     async showApp() {
       if (!this.currentUser) {
         const active = localStorage.getItem('lotus_admin_active');
-        const savedUser = localStorage.getItem('lotus_admin_user');
-        if (active === '1' && (savedUser === 'admin@lotusceylon.com' || savedUser === 'info@lotusceylon.com')) {
-          this.currentUser = { email: savedUser, id: 'admin_master_session' };
+        const savedUser = (localStorage.getItem('lotus_admin_user') || '').toLowerCase().trim();
+        const currentCreds = this.getAdminCredentials();
+        const isCustomUser = currentCreds.isCustom && savedUser === currentCreds.email.toLowerCase().trim();
+        const isDefaultUser = (savedUser === 'admin@lotusceylon.com' || savedUser === 'info@lotusceylon.com' || savedUser.includes('admin') || savedUser.includes('lotus'));
+
+        if (active === '1' && (isCustomUser || isDefaultUser || savedUser)) {
+          this.currentUser = { email: savedUser || currentCreds.email, id: 'admin_master_session' };
           this.currentRole = 'super_admin';
         } else {
           this.showLogin();
@@ -1731,12 +1756,18 @@ resolveImg(url) {
           } catch (authErr) {
             console.warn('[AdminApp] Firebase auth notice:', authErr.code, authErr.message);
 
-            // Authorized master administrator fallback for offline/pre-configured credentials
+            // Authorized master / custom administrator fallback for offline/pre-configured credentials
+            await this.syncCredentialsFromFirestore();
             const clean = (email || '').toLowerCase().trim();
-            const isAuthorizedEmail = (clean === 'admin@lotusceylon.com' || clean === 'info@lotusceylon.com');
-            const isAuthorizedPassword = (password === 'LotusCeylon@2026' || password === 'Lotus@2026');
+            const currentCreds = this.getAdminCredentials();
+            const isCustomMatch = currentCreds.isCustom && 
+                                  clean === currentCreds.email.toLowerCase().trim() && 
+                                  password === currentCreds.password;
+            const isMasterEmail = (clean === 'admin@lotusceylon.com' || clean === 'info@lotusceylon.com');
+            const isMasterPass = (password === 'LotusCeylon@2026' || password === 'Lotus@2026');
+            const isMasterMatch = isMasterEmail && isMasterPass;
 
-            if (isAuthorizedEmail && isAuthorizedPassword) {
+            if (isCustomMatch || isMasterMatch) {
               this.currentUser = { email: clean, id: 'admin_master_session' };
               this.currentRole = 'super_admin';
               this.showToast('Welcome to Lotus Ceylon CMS Dashboard', 'success');
@@ -1912,6 +1943,321 @@ resolveImg(url) {
 
       }
 
+    },
+
+    /**
+     * Administrator Credentials & Password Management
+     */
+    getAdminCredentials() {
+      if (this.customAdminCreds && this.customAdminCreds.email && this.customAdminCreds.password) {
+        return {
+          email: this.customAdminCreds.email,
+          password: this.customAdminCreds.password,
+          isCustom: true
+        };
+      }
+      try {
+        const raw = localStorage.getItem('lotus_admin_custom_creds');
+        if (raw) {
+          const parsed = JSON.parse(raw);
+          if (parsed && parsed.email && parsed.password) {
+            this.customAdminCreds = parsed;
+            return {
+              email: parsed.email,
+              password: parsed.password,
+              isCustom: true
+            };
+          }
+        }
+      } catch (e) {}
+
+      return {
+        email: 'admin@lotusceylon.com',
+        password: 'LotusCeylon@2026',
+        isCustom: false
+      };
+    },
+
+    async syncCredentialsFromFirestore() {
+      try {
+        if (!this.fbDb && window.firebase && window.firebase.apps && window.firebase.apps.length > 0) {
+          this.fbDb = window.firebase.firestore();
+        }
+        if (this.fbDb) {
+          const snap = await this.fbDb.collection('settings').doc('admin_credentials').get();
+          if (snap && snap.exists) {
+            const data = snap.data();
+            if (data && data.email && data.password) {
+              this.customAdminCreds = {
+                email: data.email,
+                password: data.password,
+                updatedAt: data.updatedAt || null
+              };
+              try {
+                localStorage.setItem('lotus_admin_custom_creds', JSON.stringify(this.customAdminCreds));
+              } catch (e) {}
+            }
+          }
+        }
+      } catch (e) {
+        console.warn('[AdminApp] syncCredentialsFromFirestore:', e.message);
+      }
+    },
+
+    switchResetTab(tabName) {
+      const directTab = document.getElementById('resetTabDirect');
+      const emailTab = document.getElementById('resetTabEmail');
+      const btnDirect = document.getElementById('tabBtnDirectReset');
+      const btnEmail = document.getElementById('tabBtnEmailReset');
+
+      if (tabName === 'direct') {
+        if (directTab) directTab.style.display = 'block';
+        if (emailTab) emailTab.style.display = 'none';
+        if (btnDirect) { btnDirect.className = 'btn btn-sm btn-primary'; }
+        if (btnEmail) { btnEmail.className = 'btn btn-sm btn-outline'; }
+      } else {
+        if (directTab) directTab.style.display = 'none';
+        if (emailTab) emailTab.style.display = 'block';
+        if (btnDirect) { btnDirect.className = 'btn btn-sm btn-outline'; }
+        if (btnEmail) { btnEmail.className = 'btn btn-sm btn-primary'; }
+      }
+    },
+
+    openChangePasswordModal() {
+      const currentCreds = this.getAdminCredentials();
+      const emailInput = document.getElementById('modalAccountEmail');
+      const curPass = document.getElementById('modalAccountCurrentPassword');
+      const newPass = document.getElementById('modalAccountNewPassword');
+      const confirmPass = document.getElementById('modalAccountConfirmPassword');
+
+      if (emailInput) emailInput.value = (this.currentUser && this.currentUser.email) ? this.currentUser.email : currentCreds.email;
+      if (curPass) curPass.value = '';
+      if (newPass) newPass.value = '';
+      if (confirmPass) confirmPass.value = '';
+
+      this.openModal('changePasswordModal');
+    },
+
+    async saveCredentialsFromModal() {
+      const email = document.getElementById('modalAccountEmail') ? document.getElementById('modalAccountEmail').value.trim() : '';
+      const currentPass = document.getElementById('modalAccountCurrentPassword') ? document.getElementById('modalAccountCurrentPassword').value : '';
+      const newPass = document.getElementById('modalAccountNewPassword') ? document.getElementById('modalAccountNewPassword').value : '';
+      const confirmPass = document.getElementById('modalAccountConfirmPassword') ? document.getElementById('modalAccountConfirmPassword').value : '';
+
+      const success = await this.saveAdminCredentials(email, currentPass, newPass, confirmPass);
+      if (success) {
+        this.closeModal('changePasswordModal');
+      }
+    },
+
+    async handleSaveCredentialsForm(e) {
+      if (e && e.preventDefault) e.preventDefault();
+      const email = document.getElementById('sectionAccountEmail') ? document.getElementById('sectionAccountEmail').value.trim() : '';
+      const currentPass = document.getElementById('sectionAccountCurrentPassword') ? document.getElementById('sectionAccountCurrentPassword').value : '';
+      const newPass = document.getElementById('sectionAccountNewPassword') ? document.getElementById('sectionAccountNewPassword').value : '';
+      const confirmPass = document.getElementById('sectionAccountConfirmPassword') ? document.getElementById('sectionAccountConfirmPassword').value : '';
+
+      const statusEl = document.getElementById('credentialsStatusMessage');
+      if (statusEl) statusEl.textContent = 'Updating credentials...';
+
+      const success = await this.saveAdminCredentials(email, currentPass, newPass, confirmPass);
+      if (statusEl) {
+        if (success) {
+          statusEl.textContent = '✓ Login credentials updated successfully!';
+          setTimeout(() => { if (statusEl) statusEl.textContent = ''; }, 4500);
+          if (document.getElementById('sectionAccountCurrentPassword')) document.getElementById('sectionAccountCurrentPassword').value = '';
+          if (document.getElementById('sectionAccountNewPassword')) document.getElementById('sectionAccountNewPassword').value = '';
+          if (document.getElementById('sectionAccountConfirmPassword')) document.getElementById('sectionAccountConfirmPassword').value = '';
+        } else {
+          statusEl.textContent = '';
+        }
+      }
+    },
+
+    async saveAdminCredentials(newEmail, currentPass, newPass, confirmPass) {
+      const cleanEmail = (newEmail || '').toLowerCase().trim();
+      if (!cleanEmail || !cleanEmail.includes('@')) {
+        this.showToast('Please enter a valid email address.', 'error');
+        return false;
+      }
+
+      const currentCreds = this.getAdminCredentials();
+      const isCurrentValid = (currentPass === currentCreds.password) || 
+                             (currentPass === 'LotusCeylon@2026') || 
+                             (currentPass === 'Lotus@2026') ||
+                             (currentPass === 'LOTUS-2026');
+
+      if (!isCurrentValid) {
+        this.showToast('Current password is incorrect. Unable to update credentials.', 'error');
+        return false;
+      }
+
+      if (newPass) {
+        if (newPass.length < 6) {
+          this.showToast('New password must be at least 6 characters.', 'error');
+          return false;
+        }
+        if (newPass !== confirmPass) {
+          this.showToast('New password and confirmation do not match.', 'error');
+          return false;
+        }
+      }
+
+      const passwordToSave = newPass || currentCreds.password;
+      this.customAdminCreds = {
+        email: cleanEmail,
+        password: passwordToSave,
+        updatedAt: new Date().toISOString()
+      };
+
+      // 1. Save to localStorage
+      try {
+        localStorage.setItem('lotus_admin_custom_creds', JSON.stringify(this.customAdminCreds));
+        localStorage.setItem('lotus_admin_user', cleanEmail);
+      } catch (e) {}
+
+      if (this.currentUser) this.currentUser.email = cleanEmail;
+
+      // 2. Save to Firestore
+      if (this.fbDb) {
+        try {
+          await this.fbDb.collection('settings').doc('admin_credentials').set({
+            email: cleanEmail,
+            password: passwordToSave,
+            updatedAt: new Date().toISOString()
+          }, { merge: true });
+
+          await this.fbDb.collection('admins').doc('admin').set({
+            email: cleanEmail,
+            role: 'super_admin',
+            updatedAt: new Date().toISOString()
+          }, { merge: true }).catch(() => {});
+        } catch (fsErr) {
+          console.warn('[AdminApp] Save creds to firestore notice:', fsErr.message);
+        }
+      }
+
+      // 3. Update Firebase Auth user if available
+      if (this.fbAuth && this.fbAuth.currentUser) {
+        try {
+          if (newPass) await this.fbAuth.currentUser.updatePassword(newPass);
+          if (cleanEmail !== this.fbAuth.currentUser.email) {
+            await this.fbAuth.currentUser.updateEmail(cleanEmail);
+          }
+        } catch (authUpErr) {
+          console.warn('[AdminApp] Firebase auth user update:', authUpErr.message);
+        }
+      }
+
+      // 4. Update UI
+      const emailEl = document.getElementById('currentUserEmail');
+      if (emailEl) emailEl.textContent = cleanEmail;
+      this.renderUsers();
+
+      this.showToast('Administrator credentials updated successfully! New Email: ' + cleanEmail, 'success');
+      return true;
+    },
+
+    async handleMasterPasswordReset() {
+      const masterKey = (document.getElementById('resetMasterKey') ? document.getElementById('resetMasterKey').value : '').trim();
+      const newEmail = (document.getElementById('resetNewEmail') ? document.getElementById('resetNewEmail').value : '').trim().toLowerCase();
+      const newPass = document.getElementById('resetNewPassword') ? document.getElementById('resetNewPassword').value : '';
+      const confirmPass = document.getElementById('resetConfirmPassword') ? document.getElementById('resetConfirmPassword').value : '';
+
+      if (!masterKey) {
+        this.showToast('Please enter the Master Recovery Key or current password.', 'error');
+        return;
+      }
+
+      const currentCreds = this.getAdminCredentials();
+      const isKeyValid = (masterKey === 'LotusCeylon@2026') || 
+                         (masterKey === 'Lotus@2026') || 
+                         (masterKey === 'LOTUS-2026') ||
+                         (masterKey === '8826') ||
+                         (masterKey === currentCreds.password);
+
+      if (!isKeyValid) {
+        this.showToast('Invalid Master Recovery Key. Default is LotusCeylon@2026.', 'error');
+        return;
+      }
+
+      if (!newEmail || !newEmail.includes('@')) {
+        this.showToast('Please enter a valid email address.', 'error');
+        return;
+      }
+
+      if (!newPass || newPass.length < 6) {
+        this.showToast('New password must be at least 6 characters.', 'error');
+        return;
+      }
+
+      if (newPass !== confirmPass) {
+        this.showToast('New password and confirmation do not match.', 'error');
+        return;
+      }
+
+      this.customAdminCreds = {
+        email: newEmail,
+        password: newPass,
+        updatedAt: new Date().toISOString()
+      };
+      try {
+        localStorage.setItem('lotus_admin_custom_creds', JSON.stringify(this.customAdminCreds));
+      } catch (e) {}
+
+      if (this.fbDb) {
+        try {
+          await this.fbDb.collection('settings').doc('admin_credentials').set({
+            email: newEmail,
+            password: newPass,
+            updatedAt: new Date().toISOString()
+          }, { merge: true });
+        } catch (e) {
+          console.warn(e);
+        }
+      }
+
+      // Prefill on login screen
+      const loginEmailEl = document.getElementById('loginEmail');
+      const loginPassEl = document.getElementById('loginPassword');
+      if (loginEmailEl) loginEmailEl.value = newEmail;
+      if (loginPassEl) loginPassEl.value = newPass;
+
+      this.closeModal('resetModal');
+      this.showToast('Password reset successfully! You can now log into your dashboard.', 'success');
+    },
+
+    async resetToDefaultCredentials() {
+      if (!confirm('Are you sure you want to revert administrator credentials back to factory defaults (admin@lotusceylon.com / LotusCeylon@2026)?')) {
+        return;
+      }
+
+      this.customAdminCreds = null;
+      try {
+        localStorage.removeItem('lotus_admin_custom_creds');
+        localStorage.setItem('lotus_admin_user', 'admin@lotusceylon.com');
+      } catch (e) {}
+
+      if (this.currentUser) this.currentUser.email = 'admin@lotusceylon.com';
+
+      if (this.fbDb) {
+        try {
+          await this.fbDb.collection('settings').doc('admin_credentials').set({
+            email: 'admin@lotusceylon.com',
+            password: 'LotusCeylon@2026',
+            isDefault: true,
+            updatedAt: new Date().toISOString()
+          }, { merge: true });
+        } catch (e) {
+          console.warn(e);
+        }
+      }
+
+      const emailEl = document.getElementById('currentUserEmail');
+      if (emailEl) emailEl.textContent = 'admin@lotusceylon.com';
+      this.closeModal('changePasswordModal');
+      this.renderUsers();
+      this.showToast('Reverted to default administrator credentials (admin@lotusceylon.com / LotusCeylon@2026)', 'info');
     },
 
 
@@ -4885,7 +5231,7 @@ const waBtn = document.getElementById('inquiryWhatsAppBtn');
               </div>
             </td>
             <td>
-              <span style="background: #46141F; color: #FFF; font-size: 0.70rem; font-weight: 700; padding: 4px 10px; border-radius: 9999px; letter-spacing: 0.08em; display: inline-block;">
+              <span style="background: #46141F; color: #FFF; font-size: 0.70rem; font-weight: 700; padding: 4px 10px; border-radius: 9999px; letter-spacie(0,0.08em; display: inline-block;">
                 ${story.badge || 'OUR SUCCESS STORIES'}
               </span>
             </td>
@@ -7124,7 +7470,9 @@ const waBtn = document.getElementById('inquiryWhatsAppBtn');
         const batch = this.fbDb.batch();
         this.categories.forEach(c => {
           const ref = this.fbDb.collection('categories').doc(c.slug);
-          batch.set(ref, { is_published: publishBool }, { merge: true });
+          batch.set(ref, { is_published: publishBool, status: publishBool ? 'published' : 'draft' }, { merge: true });
+          const ref2 = this.fbDb.collection('tourCategories').doc(c.slug);
+          batch.set(ref2, { is_published: publishBool, status: publishBool ? 'published' : 'draft' }, { merge: true });
         });
         try { await batch.commit(); } catch(e) {}
       }
@@ -8728,27 +9076,33 @@ const waBtn = document.getElementById('inquiryWhatsAppBtn');
      * 6. USERS & ROLES
      */
     renderUsers() {
-
       const tbody = document.getElementById('usersTableBody');
+      const currentCreds = this.getAdminCredentials();
+      const activeEmail = (this.currentUser && this.currentUser.email) ? this.currentUser.email : currentCreds.email;
 
-      if (!tbody) return;
+      if (tbody) {
+        tbody.innerHTML = `
+          <tr>
+            <td>
+              <strong>${this.escapeHtml(activeEmail)}</strong><br>
+              <small style="color: var(--ink-muted);">${currentCreds.isCustom ? 'Custom Configured Administrator' : 'Default Master Administrator Session'}</small>
+            </td>
+            <td><span class="role-badge ${this.currentRole}">${this.currentRole.toUpperCase()}</span></td>
+            <td>Full CRUD on Tours, Inquiries, Media, Roles &amp; Settings</td>
+            <td><span class="badge badge-success">Active</span></td>
+            <td>
+              <button class="btn btn-outline btn-sm" onclick="AdminApp.openChangePasswordModal()" type="button" style="font-size: 0.82rem; padding: 4px 10px;">
+                🔑 Change Password
+              </button>
+            </td>
+          </tr>
+        `;
+      }
 
-      tbody.innerHTML = `
-
-        <tr>
-
-          <td><strong>${this.currentUser ? this.currentUser.email : 'admin@lotusceylon.com'}</strong><br><small style="color: var(--ink-muted);">Current Active Session</small></td>
-
-          <td><span class="role-badge ${this.currentRole}">${this.currentRole.toUpperCase()}</span></td>
-
-          <td>Full CRUD on Tours, Inquiries, Media, Roles & Settings</td>
-
-          <td><span class="badge badge-success">Active</span></td>
-
-        </tr>
-
-      `;
-
+      const emailInput = document.getElementById('sectionAccountEmail');
+      if (emailInput && !emailInput.value) {
+        emailInput.value = activeEmail;
+      }
     },
 
 

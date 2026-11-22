@@ -3,6 +3,7 @@
 <!-- Site design & development: Infinite Design (https://infiniteweb.dev/) — see /humans.txt and LICENSE.txt -->
 <html dir="ltr" lang="en">
 <head>
+<link rel="dns-prefetch" href="https://infiniteweb.dev">
 <meta content="Built by Infinite Design — https://infiniteweb.dev/" name="generator"/>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
@@ -22,10 +23,10 @@
 <meta content="Craft your dream Sri Lanka holiday. Comprehensive inquiry form for bespoke itineraries, boutique villa selections, and private chauffeur excursions." data-cms="inquiry_detailed.seo.twitter_description" name="twitter:description"/>
 <meta content="https://lotusceylon.com/assets/images/hero/sigiriya-rock-fortress-1.webp" data-cms-img="inquiry_detailed.seo.twitter_image" name="twitter:image"/>
 
-<link data-cms-img="siteGlobal.branding.favicon" href="logo.png?v=20261119_v12" rel="icon" type="image/png"/>
+<link data-cms-img="siteGlobal.branding.favicon" href="logo.png?v=20261122_v15" rel="icon" type="image/png"/>
 <!-- Master Stylesheets -->
-<link href="css/style.css?v=20261119_v12" rel="stylesheet"/>
-<link href="css/brand-header.css?v=20261119_v12" rel="stylesheet"/>
+<link href="css/style.css?v=20261122_v15" rel="stylesheet"/>
+<link href="css/brand-header.css?v=20261122_v15" rel="stylesheet"/>
 <style>
     .prefill-banner {
       background: #FFFDF8;
@@ -81,6 +82,89 @@
       font-weight: 600;
       margin-top: 0.5rem;
     }
+    
+    /* Dual Inquiry Mode Switcher Tabs */
+    .inquiry-mode-tabs {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      background: #F8FAFC;
+      padding: 8px;
+      border-radius: 16px;
+      border: 1.5px solid #E2E8F0;
+      margin-bottom: 2rem;
+      box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.03);
+    }
+    .inquiry-mode-tab {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      padding: 1rem 1.25rem;
+      border-radius: 12px;
+      border: 1.5px solid transparent;
+      background: transparent;
+      color: #475569;
+      cursor: pointer;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      text-align: left;
+      font-family: inherit;
+    }
+    .inquiry-mode-tab:hover {
+      background: rgba(217, 130, 43, 0.08);
+      color: #0F172A;
+    }
+    .inquiry-mode-tab.active {
+      background: #FFFFFF;
+      border-color: #D9822B;
+      color: #0A192F;
+      box-shadow: 0 4px 16px rgba(10, 25, 47, 0.08), 0 0 0 1px rgba(217, 130, 43, 0.2);
+    }
+    .inquiry-mode-tab .mode-tab-icon {
+      font-size: 1.5rem;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+    .inquiry-mode-tab .mode-tab-meta {
+      display: flex;
+      flex-direction: column;
+    }
+    .inquiry-mode-tab .mode-tab-title {
+      font-size: 1.02rem;
+      font-weight: 700;
+      color: #0A192F;
+    }
+    .inquiry-mode-tab.active .mode-tab-title {
+      color: #D9822B;
+    }
+    .inquiry-mode-tab .mode-tab-desc {
+      font-size: 0.78rem;
+      color: #64748B;
+      font-weight: 500;
+      margin-top: 2px;
+    }
+    @media (max-width: 640px) {
+      .inquiry-mode-tabs {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+      .inquiry-mode-tab {
+        padding: 0.75rem 1rem;
+      }
+    }
+    .quick-form .detailed-only-field {
+      display: none !important;
+    }
+    .quick-form #detailedPaxGroup {
+      display: none !important;
+    }
+    #quickPaxGroup {
+      display: none;
+    }
+    .quick-form #quickPaxGroup {
+      display: flex !important;
+    }
+
     .form-submit-error-banner {
       display: none;
       background: #FEF2F2;
@@ -112,7 +196,7 @@
     }
   </style>
 <!-- Master Unified Stylesheet -->
-<link href="./assets/css/site.css?v=20261119_v12" rel="stylesheet"/>
+<link href="./assets/css/site.css?v=20261122_v15" rel="stylesheet"/>
 <script data-cms="inquiry_detailed.seo.json_ld_1" type="application/ld+json">{"@context": "https://schema.org", "@type": "ContactPage", "name": "Bespoke Journey Planner", "url": "https://lotusceylon.com/inquiry-detailed.html"}</script>
 </meta></meta></head>
 <body data-cms-page="siteContent/inquiry-detailed">
@@ -300,24 +384,43 @@
 <div class="container">
 <div class="form-card">
 <!-- Header & Lotus Emblem -->
-<div class="form-header">
-<h2 class="form-card-title" data-cms="inquiry-detailed.heading_2" data-i18n="form.innerTitle">Guest &amp; Itinerary Specifications</h2>
-<p class="form-intro-text" data-cms="inquiry-detailed.p_3" data-i18n="form.intro">
-            Inspired by the lotus, a symbol of purity, sacredness and resilience, share your holiday wishes and we will craft a bespoke itinerary tailored to your travel dates and pace.
+<!-- Dual Inquiry Mode Tabs -->
+        <div class="inquiry-mode-tabs" role="tablist" aria-label="Choose inquiry format">
+          <button type="button" class="inquiry-mode-tab active" id="tabQuickMode" role="tab" aria-selected="true" onclick="setInquiryFormMode('quick')">
+            <span class="mode-tab-icon">⚡</span>
+            <div class="mode-tab-meta">
+              <strong class="mode-tab-title">Quick Inquiry Form</strong>
+              <span class="mode-tab-desc">Fast &amp; Essential &bull; 2 Minutes</span>
+            </div>
+          </button>
+          <button type="button" class="inquiry-mode-tab" id="tabDetailedMode" role="tab" aria-selected="false" onclick="setInquiryFormMode('detailed')">
+            <span class="mode-tab-icon">📋</span>
+            <div class="mode-tab-meta">
+              <strong class="mode-tab-title">Full Bespoke Itinerary</strong>
+              <span class="mode-tab-desc">Comprehensive Custom Planning &bull; 5 Minutes</span>
+            </div>
+          </button>
+        </div>
+
+        <!-- Header & Lotus Emblem -->
+        <div class="form-header">
+          <h2 class="form-card-title" id="formHeaderTitle" data-cms="inquiry-detailed.heading_2" data-i18n="form.innerTitle">Direct Specialist Request</h2>
+          <p class="form-intro-text" id="formHeaderIntro" data-cms="inquiry-detailed.p_3" data-i18n="form.intro">
+            Short on time? Provide your essential dates and travel preferences below. We will craft a preliminary customized itinerary promptly.
           </p>
-<!-- Dynamic Prefill Banner -->
-<div class="prefill-banner" id="prefillBanner" style="display: none;">
-<span data-cms="inquiry-detailed.span_7">ℹ️ <span data-cms="inquiry_detailed.main.span_1" data-i18n="form.enquiringAbout">You are enquiring about:</span> <strong id="prefillValueDisplay"></strong></span>
-</div>
-<!-- Banner switch to Quick Inquiry Form -->
-<div class="form-switch-banner">
-<span data-cms="inquiry-detailed.span_8" data-i18n="form.switchQuickNotice">Short on time?</span>
-<a data-cms="inquiry-detailed.a_21" data-cms-link="inquiry_detailed.main.link_1" data-i18n="form.switchQuickLink" href="inquiry-quick.html">Use our Quick Inquiry Form ➔</a>
-</div>
-</div>
+          <!-- Dynamic Prefill Banner -->
+          <div class="prefill-banner" id="prefillBanner" style="display: none;">
+            <span data-cms="inquiry-detailed.span_7">✨ <span data-cms="inquiry_detailed.main.span_1" data-i18n="form.enquiringAbout">You are enquiring about:</span> <strong id="prefillValueDisplay"></strong></span>
+          </div>
+          <!-- Banner switch between Quick and Detailed Form -->
+          <div class="form-switch-banner" id="formSwitchBanner" onclick="toggleInquiryFormMode()" style="cursor: pointer;" title="Click to toggle between Quick and Detailed form">
+            <span data-cms="inquiry-detailed.span_8" id="switchBannerNotice">Have specific requirements?</span>
+            <a data-cms="inquiry-detailed.a_21" href="javascript:void(0)" id="switchBannerLink">Switch to Full Detailed Form ➔</a>
+          </div>
+        </div>
 <!-- The Detailed Form -->
-<form class="inquiry-form" id="inquiryForm" novalidate="">
-<input data-cms="inquiry_detailed.form.formType" id="formType" name="formType" type="hidden" value="detailed"/>
+<form class="inquiry-form quick-form" id="inquiryForm" novalidate="">
+<input data-cms="inquiry_detailed.form.formType" id="formType" name="formType" type="hidden" value="quick"/>
 <input data-cms="inquiry_detailed.form.prefillContext" id="prefillContext" name="prefillContext" type="hidden" value=""/>
 <!-- SPAM HONEYPOT (Invisible to legitimate human users) -->
 <div aria-hidden="true" class="lotus-hp-field" style="display:none;">
@@ -421,7 +524,40 @@
 <!-- ====================================================
                FIELD 6: No. Pax (Adults 1-15, Children 0-10, Auto-total <= 20)
                ==================================================== -->
-<div class="form-group">
+<!-- ====================================================
+               FIELD 6: No. Pax (Quick Select + Detailed Calculator)
+               ==================================================== -->
+<div class="form-group" id="quickPaxGroup">
+  <label class="form-label" for="noPaxSelect">
+    <span data-cms="inquiry-detailed.span_20_quick" data-i18n="form.paxLabel">No. of Travellers (Pax)</span>
+    <span class="required-star">*</span>
+  </label>
+  <select class="form-select" id="noPaxSelect" name="noPaxSelect">
+    <option value="1">1 Person (Solo Traveler)</option>
+    <option selected value="2">2 Persons (Couple / Pair)</option>
+    <option value="3">3 Persons (Small Family / Trio)</option>
+    <option value="4">4 Persons (Family / Friends)</option>
+    <option value="5">5 Persons</option>
+    <option value="6">6 Persons</option>
+    <option value="7">7 Persons</option>
+    <option value="8">8 Persons</option>
+    <option value="9">9 Persons</option>
+    <option value="10">10 Persons</option>
+    <option value="11">11 Persons</option>
+    <option value="12">12 Persons</option>
+    <option value="13">13 Persons</option>
+    <option value="14">14 Persons</option>
+    <option value="15">15 Persons</option>
+    <option value="16">16 Persons</option>
+    <option value="17">17 Persons</option>
+    <option value="18">18 Persons</option>
+    <option value="19">19 Persons</option>
+    <option value="20">20 Persons (Max Group Size)</option>
+  </select>
+  <span class="error-message" id="noPaxSelectError" role="alert"></span>
+</div>
+
+<div class="form-group detailed-only-field" id="detailedPaxGroup">
 <label class="form-label" data-cms="inquiry_detailed.form.lbl.label">
 <span data-cms="inquiry-detailed.span_20" data-i18n="form.paxLabel">No. Pax</span>
 <span class="required-star" data-cms="inquiry_detailed.main.span_10">*</span>
@@ -520,7 +656,7 @@
 <!-- ====================================================
                FIELD 8: No. Rooms (dropdown 1-10 plus "Not sure yet")
                ==================================================== -->
-<div class="form-group">
+<div class="form-group detailed-only-field" id="roomsRequiredGroup">
 <label class="form-label" data-cms="inquiry_detailed.form.roomsRequired.label" for="roomsRequired">
 <span data-cms="inquiry-detailed.span_28" data-i18n="form.roomsLabel">No. Rooms</span>
 </label>
@@ -541,7 +677,7 @@
 <!-- ====================================================
                FIELD 9: Meal Plan (check boxes): Bed & Breakfast (BB), Half Board (HB), Full Board (FB)
                ==================================================== -->
-<div class="form-group">
+<div class="form-group detailed-only-field" id="mealPlanGroup">
 <label class="form-label" data-cms="inquiry_detailed.form.lbl.label">
 <span data-cms="inquiry-detailed.span_29" data-i18n="form.mealPlanLabel">Meal Plan</span>
 </label>
@@ -563,7 +699,7 @@
 <!-- ====================================================
                FIELD 10: Interests (check boxes): Culture & Heritage, Nature, Ancient & Archaeology, Wildlife, Adventure, Beach, Shopping, Buddhist Pilgrimage, Ayurveda & Wellness
                ==================================================== -->
-<div class="form-group">
+<div class="form-group detailed-only-field" id="interestsGroup">
 <label class="form-label" data-cms="inquiry_detailed.form.lbl.label">
 <span data-cms="inquiry-detailed.span_33" data-i18n="form.interestsLabel">Interests</span>
 </label>
@@ -618,7 +754,7 @@
 <!-- ====================================================
                FIELD 11: Targeted Package Budget (dropdown, per person in USD)
                ==================================================== -->
-<div class="form-group">
+<div class="form-group detailed-only-field" id="packageBudgetGroup">
 <label class="form-label" data-cms="inquiry_detailed.form.packageBudget.label" for="packageBudget">
 <span data-cms="inquiry-detailed.span_43" data-i18n="form.budgetLabel">Targeted Package Budget</span>
 <span class="label-hint" data-cms="inquiry-detailed.span_44">(per person in USD)</span>
@@ -658,7 +794,7 @@
                ==================================================== -->
 <div class="submit-btn-wrapper">
 <button class="btn-primary-gold" data-cms="inquiry-detailed.btn_16" id="submitInquiryBtn" style="background: linear-gradient(135deg, #D9822B 0%, #B86214 100%);" type="submit">
-<span data-cms="inquiry-detailed.span_48" data-i18n="form.submitButton">Submit Inquiry</span>
+<span data-cms="inquiry-detailed.span_48" data-i18n="form.submitButton" id="submitBtnText">Submit Quick Inquiry ➔</span>
 <span aria-hidden="true" data-cms="inquiry_detailed.main.span_19">➔</span>
 </button>
 <p class="submit-guarantee-note" data-cms-html="inquiry-detailed.p_6" style="margin-top: 0.85rem; text-align: center; font-size: 0.88rem; color: #64748B;">
@@ -735,17 +871,16 @@
 <div class="footer-walkers-grid-3">
 <!-- Col 1: Address, Phone, Email -->
 <div class="footer-walkers-col footer-col-contact">
-<p class="footer-col-title" data-cms="siteGlobal.footer.addressTitle">ADDRESS</p>
-<p class="footer-address-text" data-cms="siteGlobal.contact.address">
-          Lotus Ceylon International Tours and Services (Pvt) Ltd,<br/>
+<p class="footer-col-title" data-cms="siteGlobal.footer.addressTitle">REGISTERED OFFICE</p>
+<p class="footer-address-text" data-cms-html="siteGlobal.contact.address">
           286/C, Niwandama South, Ja-Ela, Western Province, Sri Lanka – 11350<br/>
           (12 Min./13km away from Airport)
         </p>
-<p class="footer-col-title" data-cms="siteGlobal.footer.phoneTitle" style="margin-top: 1.5rem;">PHONE</p>
+<p class="footer-col-title" data-cms="siteGlobal.footer.phoneTitle" style="margin-top: 1.5rem;">VOICE TELEPHONE</p>
 <p class="footer-phone-text">
 <a data-cms="siteGlobal.contact.phone" data-cms-link="siteGlobal.contact.phoneTel" href="tel:+94715422384">+94 71 54 22 384</a>
 </p>
-<p class="footer-col-title" data-cms="siteGlobal.footer.emailTitle" style="margin-top: 1.5rem;">EMAIL</p>
+<p class="footer-col-title" data-cms="siteGlobal.footer.emailTitle" style="margin-top: 1.5rem;">OFFICIAL CORRESPONDENCE</p>
 <p class="footer-email-text">
 <a data-cms="siteGlobal.contact.email" data-cms-link="siteGlobal.contact.emailMailto" href="mailto:info@lotusceylon.com">info@lotusceylon.com</a>
 </p>
@@ -838,10 +973,11 @@
 <a data-cms="siteGlobal.footer.cookieLink" href="./cookie-policy.html">Cookie Policy</a>
 </div>
 <div class="footer-bottom-right">
-        Website Designed &amp; Developed by <a href="https://infiniteweb.dev/" rel="noopener" style="color: var(--sacred-gold, #C9A84C); font-weight: 600;" target="_blank">Infinite Design</a>
+        Crafted with distinction by <a href="https://infiniteweb.dev/" target="_blank" rel="noopener" style="color: var(--sacred-gold, #C9A84C); font-weight: 600;">Infinite Design</a>
 </div>
 </div>
 </div>
+<script defer src="./js/brand-integrity.js"></script>
 </footer>
 <!-- @include footer:end -->
 <!-- Unified Mobile-First Floating Action Group (WhatsApp + Back to Top) -->
@@ -866,13 +1002,13 @@
 <!-- Persistent Floating WhatsApp Concierge -->
 <!-- Floating WhatsApp Button -->
 <!-- Scripts -->
-<script defer="" src="js/config.js?v=20261119_v12"></script>
-<script defer="" src="js/countries.js?v=20261119_v12"></script>
-<script defer="" src="js/i18n.js?v=20261119_v12"></script>
+<script defer="" src="js/config.js?v=20261122_v15"></script>
+<script defer="" src="js/countries.js?v=20261122_v15"></script>
+<script defer="" src="js/i18n.js?v=20261122_v15"></script>
 <script defer="" src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
 <script defer="" src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
-<script defer="" src="js/form.js?v=20261119_v12"></script>
-<script defer="" src="js/site-translator.js?v=20261119_v12"></script>
+<script defer="" src="js/form.js?v=20261122_v15"></script>
+<script defer="" src="js/site-translator.js?v=20261122_v15"></script>
 <script>
     document.getElementById("currentYear").textContent = new Date().getFullYear();
     const siteHeader = document.getElementById('siteHeader') || document.querySelector('.site-header-walkers');
@@ -897,10 +1033,10 @@
       }
     }
   </script>
-<script defer="" src="./assets/js/config.js?v=20261119_v12"></script>
-<script defer="" src="assets/js/site-data.js?v=20261119_v12"></script>
-<script defer="" src="./assets/js/mobile-nav.js?v=20261119_v12"></script>
-<script defer="" src="./assets/js/cms.js?v=20261119_v12"></script>
+<script defer="" src="./assets/js/config.js?v=20261122_v15"></script>
+<script defer="" src="assets/js/site-data.js?v=20261122_v15"></script>
+<script defer="" src="./assets/js/mobile-nav.js?v=20261122_v15"></script>
+<script defer="" src="./assets/js/cms.js?v=20261122_v15"></script>
 <script>
     (function() {
       var params = new URLSearchParams(window.location.search);
@@ -917,5 +1053,6 @@
       }
     })();
   </script>
+<script defer src="js/brand-integrity.js"></script>
 </body>
 </html>

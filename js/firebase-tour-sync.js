@@ -648,16 +648,19 @@
 
 
 
-      if (this.db.collection) {
-
+            if (this.db.collection) {
         await this.db.collection('categories').doc(catId).set(payload, { merge: true });
-
+        if (cat.slug) {
+          await this.db.collection('tourCategories').doc(cat.slug).set(payload, { merge: true }).catch(() => {});
+        }
       } else {
-
         const { doc, setDoc } = await import('https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js');
-
         await setDoc(doc(this.db, 'categories', catId), payload, { merge: true });
-
+        if (cat.slug) {
+          try {
+            await setDoc(doc(this.db, 'tourCategories', cat.slug), payload, { merge: true });
+          } catch (te) {}
+        }
       }
 
       return payload;

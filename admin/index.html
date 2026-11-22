@@ -416,6 +416,10 @@
 </div>
 <span class="role-badge" id="currentUserRole">SUPER ADMIN</span>
 <span id="currentUserEmail" style="font-weight: 500; font-size: 0.85rem; color: var(--ink-light);">admin</span>
+<button class="topbar-btn" onclick="AdminApp.openChangePasswordModal()" title="Change Admin Credentials / Password" type="button">
+<svg fill="currentColor" height="16" viewBox="0 0 24 24" width="16"><path d="M12.65 10C11.83 7.67 9.61 6 7 6c-3.31 0-6 2.69-6 6s2.69 6 6 6c2.61 0 4.83-1.67 5.65-4H17v4h4v-4h2v-4H12.65zM7 14c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z"/></svg>
+<span>Security & Password</span>
+</button>
 <button class="topbar-btn" onclick="AdminApp.handleLogout()">
 <svg fill="currentColor" height="16" viewbox="0 0 24 24" width="16"><path d="M10.09 15.59L11.5 17l5-5-5-5-1.41 1.41L12.67 11H3v2h9.67l-2.58 2.59zM19 3H5c-1.11 0-2 .9-2 2v4h2V5h14v14H5v-4H3v4c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"></path></svg>
 <span>Sign Out</span>
@@ -770,11 +774,16 @@
 <section class="content-section" id="section-users">
 <div class="section-header">
 <div class="section-title-wrap">
-<h2>User Access and Permissions</h2>
-<p>Manage role permissions (Super Admin vs Editor)</p>
+<h2>User Access and Administrator Credentials</h2>
+<p>Manage administrator login credentials, passwords, and role permissions</p>
+</div>
+<div style="display: flex; gap: 8px;">
+<button class="btn btn-gold" onclick="AdminApp.openChangePasswordModal()" type="button">
+<span>🔑 Quick Change Password</span>
+</button>
 </div>
 </div>
-<div class="table-card">
+<div class="table-card" style="margin-bottom: 24px;">
 <div class="data-table-wrap">
 <table class="data-table">
 <thead>
@@ -783,6 +792,7 @@
 <th>Assigned Role</th>
 <th>Permissions</th>
 <th>Status</th>
+<th>Actions</th>
 </tr>
 </thead>
 <tbody id="usersTableBody">
@@ -790,6 +800,67 @@
 </tbody>
 </table>
 </div>
+</div>
+
+<!-- CHANGE CREDENTIALS CARD -->
+<div class="table-card" style="padding: 24px;">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px; flex-wrap: wrap; gap: 12px; border-bottom: 1px solid var(--sand-medium, #E2E8F0); padding-bottom: 16px;">
+    <div>
+      <h3 style="margin-bottom: 4px; display: flex; align-items: center; gap: 8px; font-size: 1.15rem; color: var(--sacred-gold, #C5A880);">
+        <span>🔐</span> Change Administrator Login Credentials
+      </h3>
+      <p style="color: var(--ink-muted); font-size: 0.88rem; margin: 0; line-height: 1.45;">
+        You can change the Admin Email Address and Password anytime. When handing over to your client, you or the client can set custom login credentials here.
+      </p>
+    </div>
+    <button class="btn btn-outline btn-sm" onclick="AdminApp.resetToDefaultCredentials()" type="button" style="color: #DC2626; border-color: #FCA5A5; font-size: 0.82rem;">
+      🔄 Revert to Factory Defaults
+    </button>
+  </div>
+
+  <form id="adminCredentialsForm" onsubmit="AdminApp.handleSaveCredentialsForm(event)">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-bottom: 20px;">
+      <div class="form-group">
+        <label style="font-weight: 600; font-size: 0.85rem;">Admin Email / Username</label>
+        <input class="form-control" id="sectionAccountEmail" placeholder="admin@lotusceylon.com" required="" type="email" />
+        <small style="color: var(--ink-muted); font-size: 0.78rem;">The login email address used to sign in</small>
+      </div>
+
+      <div class="form-group">
+        <label style="font-weight: 600; font-size: 0.85rem;">Current Password</label>
+        <div style="position: relative;">
+          <input class="form-control" id="sectionAccountCurrentPassword" placeholder="Enter current password" required="" style="padding-right: 42px;" type="password" />
+          <button type="button" onclick="AdminApp.toggleFieldVisibility('sectionAccountCurrentPassword', this)" style="position: absolute; right: 8px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer; color: #64748B; font-size: 1.1rem; padding: 4px;">👁️</button>
+        </div>
+        <small style="color: var(--ink-muted); font-size: 0.78rem;">Factory default is <code>LotusCeylon@2026</code></small>
+      </div>
+
+      <div class="form-group">
+        <label style="font-weight: 600; font-size: 0.85rem;">New Password</label>
+        <div style="position: relative;">
+          <input class="form-control" id="sectionAccountNewPassword" placeholder="Minimum 6 characters" required="" style="padding-right: 42px;" type="password" />
+          <button type="button" onclick="AdminApp.toggleFieldVisibility('sectionAccountNewPassword', this)" style="position: absolute; right: 8px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer; color: #64748B; font-size: 1.1rem; padding: 4px;">👁️</button>
+        </div>
+        <small style="color: var(--ink-muted); font-size: 0.78rem;">Choose a secure password for the client</small>
+      </div>
+
+      <div class="form-group">
+        <label style="font-weight: 600; font-size: 0.85rem;">Confirm New Password</label>
+        <div style="position: relative;">
+          <input class="form-control" id="sectionAccountConfirmPassword" placeholder="Re-enter new password" required="" style="padding-right: 42px;" type="password" />
+          <button type="button" onclick="AdminApp.toggleFieldVisibility('sectionAccountConfirmPassword', this)" style="position: absolute; right: 8px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer; color: #64748B; font-size: 1.1rem; padding: 4px;">👁️</button>
+        </div>
+        <small style="color: var(--ink-muted); font-size: 0.78rem;">Must match the new password above</small>
+      </div>
+    </div>
+
+    <div style="display: flex; gap: 14px; align-items: center; flex-wrap: wrap;">
+      <button class="btn btn-gold" style="font-weight: 700; padding: 11px 26px; font-size: 0.95rem;" type="submit">
+        <span>💾 Save New Login Credentials</span>
+      </button>
+      <span id="credentialsStatusMessage" style="font-size: 0.88rem; color: #059669; font-weight: 600;"></span>
+    </div>
+  </form>
 </div>
 </section>
 <!-- ========================================== -->
@@ -1882,25 +1953,131 @@
 </div>
 </div>
 </div>
-<!-- RESET PASSWORD MODAL -->
+<!-- RESET PASSWORD / RECOVERY MODAL -->
 <div class="modal-overlay" id="resetModal">
-<div class="modal-dialog" style="max-width: 420px;">
+<div class="modal-dialog" style="max-width: 480px;">
 <div class="modal-header">
-<h3>Reset Password</h3>
+<h3 style="display: flex; align-items: center; gap: 8px;">
+  <span>🔐</span> Reset Admin Credentials
+</h3>
 <button class="modal-close" onclick="AdminApp.closeModal('resetModal')">×</button>
 </div>
-<div class="modal-body">
-<p style="color: var(--ink-muted); margin-bottom: 16px; font-size: 0.88rem;">
-          Enter your registered admin email address. A password reset link will be sent to your inbox.
-        </p>
-<div class="form-group">
-<label>Email Address</label>
-<input class="form-control" id="resetEmail" placeholder="admin@lotusceylon.com" required="" type="email"/>
+<div class="modal-body" style="padding: 20px;">
+  <div style="display: flex; gap: 8px; margin-bottom: 16px; border-bottom: 1px solid var(--sand-medium, #E2E8F0); padding-bottom: 10px;">
+    <button type="button" id="tabBtnDirectReset" class="btn btn-sm btn-primary" onclick="AdminApp.switchResetTab('direct')" style="font-size: 0.85rem; padding: 6px 12px;">
+      ⚡ Instant Master Reset
+    </button>
+    <button type="button" id="tabBtnEmailReset" class="btn btn-sm btn-outline" onclick="AdminApp.switchResetTab('email')" style="font-size: 0.85rem; padding: 6px 12px;">
+      ✉️ Email Reset Link
+    </button>
+  </div>
+
+  <!-- Tab 1: Instant Reset with Master Recovery Key -->
+  <div id="resetTabDirect">
+    <p style="color: var(--ink-muted); margin-bottom: 14px; font-size: 0.86rem; line-height: 1.45;">
+      Enter the Master Recovery Key (or current password) to immediately set a new Admin Email and Password.
+    </p>
+    <div class="form-group" style="margin-bottom: 12px;">
+      <label style="font-size: 0.82rem; font-weight: 600;">Master Recovery Key / Current Password</label>
+      <div style="position: relative;">
+        <input type="password" id="resetMasterKey" class="form-control" placeholder="Enter LotusCeylon@2026 or current password" style="padding-right: 42px;" />
+        <button type="button" onclick="AdminApp.toggleFieldVisibility('resetMasterKey', this)" style="position: absolute; right: 8px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer; color: #64748B; font-size: 1.1rem; padding: 4px;">👁️</button>
+      </div>
+      <small style="color: #64748B; font-size: 0.76rem;">Default master recovery key: <code>LotusCeylon@2026</code></small>
+    </div>
+    <div class="form-group" style="margin-bottom: 12px;">
+      <label style="font-size: 0.82rem; font-weight: 600;">New Admin Email / Username</label>
+      <input type="email" id="resetNewEmail" class="form-control" placeholder="admin@lotusceylon.com" />
+    </div>
+    <div class="form-group" style="margin-bottom: 12px;">
+      <label style="font-size: 0.82rem; font-weight: 600;">New Password</label>
+      <div style="position: relative;">
+        <input type="password" id="resetNewPassword" class="form-control" placeholder="At least 6 characters" style="padding-right: 42px;" />
+        <button type="button" onclick="AdminApp.toggleFieldVisibility('resetNewPassword', this)" style="position: absolute; right: 8px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer; color: #64748B; font-size: 1.1rem; padding: 4px;">👁️</button>
+      </div>
+    </div>
+    <div class="form-group" style="margin-bottom: 16px;">
+      <label style="font-size: 0.82rem; font-weight: 600;">Confirm New Password</label>
+      <div style="position: relative;">
+        <input type="password" id="resetConfirmPassword" class="form-control" placeholder="Re-enter new password" style="padding-right: 42px;" />
+        <button type="button" onclick="AdminApp.toggleFieldVisibility('resetConfirmPassword', this)" style="position: absolute; right: 8px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer; color: #64748B; font-size: 1.1rem; padding: 4px;">👁️</button>
+      </div>
+    </div>
+    <button type="button" class="btn btn-gold" onclick="AdminApp.handleMasterPasswordReset()" style="font-weight: 700; width: 100%; padding: 10px;">
+      <span>🔒 Set New Admin Login Credentials</span>
+    </button>
+  </div>
+
+  <!-- Tab 2: Send Email Link -->
+  <div id="resetTabEmail" style="display: none;">
+    <p style="color: var(--ink-muted); margin-bottom: 16px; font-size: 0.88rem; line-height: 1.45;">
+      Enter your registered admin email address. A password reset link will be sent to your inbox via Firebase Authentication.
+    </p>
+    <div class="form-group" style="margin-bottom: 16px;">
+      <label style="font-size: 0.82rem; font-weight: 600;">Admin Email Address</label>
+      <input class="form-control" id="resetEmail" placeholder="admin@lotusceylon.com" type="email"/>
+    </div>
+    <button type="button" class="btn btn-primary" onclick="AdminApp.sendPasswordReset()" style="width: 100%; padding: 10px;">
+      <span>✉️ Send Reset Link</span>
+    </button>
+  </div>
 </div>
-</div>
-<div class="modal-footer">
+<div class="modal-footer" style="padding: 12px 20px;">
 <button class="btn btn-outline" onclick="AdminApp.closeModal('resetModal')" type="button">Cancel</button>
-<button class="btn btn-primary" onclick="AdminApp.sendPasswordReset()" type="button">Send Reset Link</button>
+</div>
+</div>
+</div>
+
+<!-- CHANGE PASSWORD / CREDENTIALS MODAL -->
+<div class="modal-overlay" id="changePasswordModal">
+<div class="modal-dialog" style="max-width: 480px;">
+<div class="modal-header">
+<h3 style="display: flex; align-items: center; gap: 8px;">
+  <span>🔑</span> Change Admin Login Credentials
+</h3>
+<button class="modal-close" onclick="AdminApp.closeModal('changePasswordModal')">×</button>
+</div>
+<div class="modal-body" style="padding: 20px;">
+  <p style="color: var(--ink-muted); font-size: 0.86rem; margin-bottom: 16px; line-height: 1.45;">
+    Update the administrator email and password used to access this CMS dashboard.
+  </p>
+  <div class="form-group" style="margin-bottom: 12px;">
+    <label style="font-size: 0.82rem; font-weight: 600;">Admin Email / Username</label>
+    <input type="email" id="modalAccountEmail" class="form-control" placeholder="admin@lotusceylon.com" />
+  </div>
+  <div class="form-group" style="margin-bottom: 12px;">
+    <label style="font-size: 0.82rem; font-weight: 600;">Current Password</label>
+    <div style="position: relative;">
+      <input type="password" id="modalAccountCurrentPassword" class="form-control" placeholder="Enter current password" style="padding-right: 42px;" />
+      <button type="button" onclick="AdminApp.toggleFieldVisibility('modalAccountCurrentPassword', this)" style="position: absolute; right: 8px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer; color: #64748B; font-size: 1.1rem; padding: 4px;">👁️</button>
+    </div>
+    <small style="color: #64748B; font-size: 0.76rem;">Default master password is <code>LotusCeylon@2026</code></small>
+  </div>
+  <div class="form-group" style="margin-bottom: 12px;">
+    <label style="font-size: 0.82rem; font-weight: 600;">New Password</label>
+    <div style="position: relative;">
+      <input type="password" id="modalAccountNewPassword" class="form-control" placeholder="Minimum 6 characters" style="padding-right: 42px;" />
+      <button type="button" onclick="AdminApp.toggleFieldVisibility('modalAccountNewPassword', this)" style="position: absolute; right: 8px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer; color: #64748B; font-size: 1.1rem; padding: 4px;">👁️</button>
+    </div>
+  </div>
+  <div class="form-group" style="margin-bottom: 16px;">
+    <label style="font-size: 0.82rem; font-weight: 600;">Confirm New Password</label>
+    <div style="position: relative;">
+      <input type="password" id="modalAccountConfirmPassword" class="form-control" placeholder="Re-enter new password" style="padding-right: 42px;" />
+      <button type="button" onclick="AdminApp.toggleFieldVisibility('modalAccountConfirmPassword', this)" style="position: absolute; right: 8px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer; color: #64748B; font-size: 1.1rem; padding: 4px;">👁️</button>
+    </div>
+  </div>
+</div>
+<div class="modal-footer" style="padding: 12px 20px; display: flex; justify-content: space-between;">
+  <button class="btn btn-outline" onclick="AdminApp.resetToDefaultCredentials()" type="button" style="color: #DC2626; border-color: #FCA5A5; font-size: 0.82rem;">
+    Reset to Default
+  </button>
+  <div style="display: flex; gap: 8px;">
+    <button class="btn btn-outline" onclick="AdminApp.closeModal('changePasswordModal')" type="button">Cancel</button>
+    <button class="btn btn-gold" onclick="AdminApp.saveCredentialsFromModal()" type="button" style="font-weight: 700;">
+      Save Credentials
+    </button>
+  </div>
 </div>
 </div>
 </div>

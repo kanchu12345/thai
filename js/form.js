@@ -60,6 +60,70 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
+
+// ============================================================================
+// DUAL INQUIRY MODE CONTROLLER (Quick vs Detailed)
+// ============================================================================
+window.setInquiryFormMode = function(mode) {
+  const form = document.getElementById("inquiryForm");
+  const tabQuick = document.getElementById("tabQuickMode");
+  const tabDetailed = document.getElementById("tabDetailedMode");
+  const title = document.getElementById("formHeaderTitle");
+  const intro = document.getElementById("formHeaderIntro");
+  const switchNotice = document.getElementById("switchBannerNotice");
+  const switchLink = document.getElementById("switchBannerLink");
+  const formType = document.getElementById("formType");
+  const submitBtn = document.getElementById("submitInquiryBtn");
+  const quickPax = document.getElementById("quickPaxGroup");
+  const detailedPax = document.getElementById("detailedPaxGroup");
+
+  if (!form) return;
+  const isQuick = mode === "quick";
+
+  if (isQuick) {
+    form.classList.add("quick-form");
+    if (formType) formType.value = "quick";
+    if (tabQuick) { tabQuick.classList.add("active"); tabQuick.setAttribute("aria-selected", "true"); }
+    if (tabDetailed) { tabDetailed.classList.remove("active"); tabDetailed.setAttribute("aria-selected", "false"); }
+    if (title) title.textContent = "Direct Specialist Request";
+    if (intro) intro.textContent = "Short on time? Provide your essential dates and travel preferences below. We will craft a preliminary customized itinerary promptly.";
+    if (switchNotice) switchNotice.textContent = "Have specific requirements?";
+    if (switchLink) switchLink.textContent = "Switch to Full Detailed Form ➔";
+    if (quickPax) quickPax.style.display = "block";
+    if (detailedPax) detailedPax.style.display = "none";
+    if (submitBtn) {
+      const textSpan = submitBtn.querySelector("span:not(.spinner-lotus)") || submitBtn;
+      textSpan.textContent = "Submit Quick Inquiry ➔";
+    }
+  } else {
+    form.classList.remove("quick-form");
+    if (formType) formType.value = "detailed";
+    if (tabQuick) { tabQuick.classList.remove("active"); tabQuick.setAttribute("aria-selected", "false"); }
+    if (tabDetailed) { tabDetailed.classList.add("active"); tabDetailed.setAttribute("aria-selected", "true"); }
+    if (title) title.textContent = "Guest & Itinerary Specifications";
+    if (intro) intro.textContent = "Inspired by the lotus, a symbol of purity, sacredness and resilience, share your holiday wishes and we will craft a bespoke itinerary tailored to your travel dates and pace.";
+    if (switchNotice) switchNotice.textContent = "Short on time?";
+    if (switchLink) switchLink.textContent = "Use our Quick Inquiry Form ➔";
+    if (quickPax) quickPax.style.display = "none";
+    if (detailedPax) detailedPax.style.display = "block";
+    if (submitBtn) {
+      const textSpan = submitBtn.querySelector("span:not(.spinner-lotus)") || submitBtn;
+      textSpan.textContent = "Submit Bespoke Inquiry ➔";
+    }
+  }
+};
+
+window.toggleInquiryFormMode = function() {
+  const form = document.getElementById("inquiryForm");
+  if (!form) return;
+  const isCurrentlyQuick = form.classList.contains("quick-form");
+  window.setInquiryFormMode(isCurrentlyQuick ? "detailed" : "quick");
+  const card = document.querySelector(".form-card");
+  if (card) {
+    card.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+};
+
 function initInquiryFormEngine() {
 
   const form = document.getElementById("inquiryForm");
@@ -68,7 +132,17 @@ function initInquiryFormEngine() {
 
 
 
-  const isQuickForm = form.classList.contains("quick-form") || window.location.pathname.includes("inquiry-quick");
+  const urlParams = new URLSearchParams(window.location.search);
+  const modeParam = urlParams.get("mode");
+  const isQuickUrl = window.location.pathname.includes("inquiry-quick");
+
+  if (modeParam === "detailed" || window.location.hash === "#detailed") {
+    if (window.setInquiryFormMode) window.setInquiryFormMode("detailed");
+  } else if (isQuickUrl || modeParam === "quick" || document.getElementById("tabQuickMode") || form.classList.contains("quick-form")) {
+    if (window.setInquiryFormMode) window.setInquiryFormMode("quick");
+  }
+
+  const isQuickForm = form.classList.contains("quick-form") || isQuickUrl;
 
 
 
@@ -703,124 +777,53 @@ function setupDatePickers() {
  */
 
 function setupPaxControls(isQuickForm) {
-
-  if (isQuickForm) {
-
-    const paxSelect = document.getElementById("noPaxSelect");
-
-    if (paxSelect) {
-
-      paxSelect.addEventListener("change", () => {
-
-        validateField(paxSelect);
-
-      });
-
-    }
-
-    return;
-
-  }
-
-
-
-  // Detailed Form
-
+  const paxSelect = document.getElementById("noPaxSelect");
   const adultsSelect = document.getElementById("adultsPax");
-
   const childrenSelect = document.getElementById("childrenPax");
-
   const totalDisplay = document.getElementById("totalPaxCount");
-
   const hiddenTotalInput = document.getElementById("totalPax");
-
   const paxWarning = document.getElementById("paxMaxWarning");
-
   const paxSummary = document.getElementById("paxSummaryText");
 
-
-
-  if (!adultsSelect || !childrenSelect || !totalDisplay) return;
-
-
-
-  function calculateDetailedPax() {
-
-    let adults = parseInt(adultsSelect.value, 10) || 1;
-
-    let children = parseInt(childrenSelect.value, 10) || 0;
-
-    let total = adults + children;
-
-
-
-    // Strict cap: never exceed 20 travellers
-
-    if (total > 20) {
-
-      children = Math.max(0, 20 - adults);
-
-      childrenSelect.value = String(children);
-
-      total = 20;
-
-
-
-      if (paxWarning) {
-
-        paxWarning.textContent = "Total travellers cannot exceed 20 guests online. Adjusted children count.";
-
-        paxWarning.style.display = "block";
-
+  if (paxSelect) {
+    paxSelect.addEventListener("change", () => {
+      validateField(paxSelect);
+      if (hiddenTotalInput) hiddenTotalInput.value = paxSelect.value;
+      if (totalDisplay) totalDisplay.textContent = paxSelect.value;
+      if (adultsSelect) {
+        const val = parseInt(paxSelect.value, 10);
+        if (val <= 15) adultsSelect.value = String(val);
       }
-
-    } else {
-
-      if (paxWarning) {
-
-        paxWarning.textContent = "";
-
-        paxWarning.style.display = "none";
-
-      }
-
-    }
-
-
-
-    totalDisplay.textContent = total;
-
-    if (hiddenTotalInput) {
-
-      hiddenTotalInput.value = total;
-
-    }
-
-
-
-    if (paxSummary) {
-
-      const adultLabel = adults === 1 ? "1 Adult" : `${adults} Adults`;
-
-      const childLabel = children === 0 ? "0 Children" : children === 1 ? "1 Child" : `${children} Children`;
-
-      paxSummary.textContent = `(${adultLabel}, ${childLabel} · Max 20 Total)`;
-
-    }
-
+    });
   }
 
+  if (adultsSelect && childrenSelect && totalDisplay) {
+    function updateTotal() {
+      const adults = parseInt(adultsSelect.value, 10) || 1;
+      const children = parseInt(childrenSelect.value, 10) || 0;
+      const total = adults + children;
 
+      if (totalDisplay) totalDisplay.textContent = String(total);
+      if (hiddenTotalInput) hiddenTotalInput.value = String(total);
+      if (paxSelect && total <= 20) paxSelect.value = String(total);
 
-  adultsSelect.addEventListener("change", calculateDetailedPax);
+      if (paxSummary) {
+        paxSummary.textContent = `(${adults} Adult${adults > 1 ? "s" : ""}, ${children} Child${children !== 1 ? "ren" : ""} — Max 20 Total)`;
+      }
 
-  childrenSelect.addEventListener("change", calculateDetailedPax);
+      if (total > 20) {
+        if (paxWarning) paxWarning.style.display = "block";
+        totalDisplay.classList.add("warning");
+      } else {
+        if (paxWarning) paxWarning.style.display = "none";
+        totalDisplay.classList.remove("warning");
+      }
+    }
 
-  calculateDetailedPax();
-
+    adultsSelect.addEventListener("change", updateTotal);
+    childrenSelect.addEventListener("change", updateTotal);
+  }
 }
-
-
 
 /**
 
@@ -1474,6 +1477,49 @@ async function handleFormSubmit(form, isQuickForm) {
     
 
 
+
+    // 6a. Direct Email Delivery to info@lotusceylon.com (FormSubmit.co API)
+    try {
+      const emailPayload = {
+        _subject: `[Lotus Ceylon ${isQuickForm ? 'Quick' : 'Bespoke'} Inquiry] ${payload.referenceId} - ${payload.name} (${payload.country || 'International'})`,
+        _replyto: payload.email,
+        _template: "table",
+        _captcha: "false",
+        "Reference ID": payload.referenceId,
+        "Inquiry Type": isQuickForm ? "Quick Inquiry Form (2 Min)" : "Detailed Bespoke Itinerary Form",
+        "Guest Name": payload.name,
+        "Country": payload.country,
+        "Email Address": payload.email,
+        "WhatsApp / Phone": payload.whatsapp || "Not provided",
+        "Arrival Date": payload.arrivalDate,
+        "Departure Date": payload.departureDate,
+        "Travellers (Pax)": payload.totalPax || payload.pax || "N/A",
+        "Hotel Category": Array.isArray(payload.hotelCategory) ? payload.hotelCategory.join(", ") : (payload.hotelCategory || "N/A"),
+        "Rooms Required": payload.roomsRequired || "N/A",
+        "Meal Plan": Array.isArray(payload.mealPlan) ? payload.mealPlan.join(", ") : (payload.mealPlan || "N/A"),
+        "Interests": Array.isArray(payload.interests) ? payload.interests.join(", ") : (payload.interests || "N/A"),
+        "Budget Benchmark": payload.packageBudget || "N/A",
+        "Special Requirements & Wishes": payload.otherRequirements || "None",
+        "Target Fixed Email": "info@lotusceylon.com",
+        "Submission Time": new Date().toLocaleString("en-US", { timeZone: "Asia/Colombo" }) + " (Sri Lanka Time)"
+      };
+
+      const fsRes = await fetch("https://formsubmit.co/ajax/info@lotusceylon.com", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify(emailPayload)
+      });
+
+      if (fsRes && fsRes.ok) {
+        transmitted = true;
+        console.log("[Lotus Inquiries] Email successfully dispatched to info@lotusceylon.com via FormSubmit");
+      }
+    } catch (fsErr) {
+      console.warn("[Lotus Inquiries] FormSubmit email dispatch notice:", fsErr);
+    }
 
     // Submit to configured endpoint (Formspree)
 

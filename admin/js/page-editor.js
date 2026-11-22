@@ -2686,12 +2686,50 @@
           const parts = docPath.split('/');
           const col = parts[0];
           const docId = parts.slice(1).join('/');
-          const snap = await window.AdminApp.fbDb.collection(col).doc(docId).get();
-          if (snap && snap.exists) {
-            docData = snap.data() || {};
+
+          // First check drafts collection
+          const draftSnap = await window.AdminApp.fbDb.collection('drafts').doc(docPath.replace(/\//g, '__')).get().catch(() => null);
+          if (draftSnap && draftSnap.exists) {
+            docData = draftSnap.data() || {};
+          } else {
+            const snap = await window.AdminApp.fbDb.collection(col).doc(docId).get().catch(() => null);
+            if (snap && snap.exists) {
+              docData = snap.data() || {};
+            } else if (col === 'tourCategories') {
+              // Unified fallback: check categories collection
+              const catSnap = await window.AdminApp.fbDb.collection('categories').doc(docId).get().catch(() => null);
+              if (catSnap && catSnap.exists) {
+                docData = catSnap.data() || {};
+              } else {
+                const catSnap2 = await window.AdminApp.fbDb.collection('categories').doc('cat-' + docId).get().catch(() => null);
+                if (catSnap2 && catSnap2.exists) docData = catSnap2.data() || {};
+              }
+            } else if (col === 'categories') {
+              // Unified fallback: check tourCategories collection
+              const tcSnap = await window.AdminApp.fbDb.collection('tourCategories').doc(docId.replace(/^cat-/, '')).get().catch(() => null);
+              if (tcSnap && tcSnap.exists) docData = tcSnap.data() || {};
+            }
           }
         } catch (e) {
           console.warn('[PageEditor] fetchPageDoc fallback:', e);
+        }
+      }
+
+      // Check local draft in localStorage
+      try {
+        const localDraft = localStorage.getItem('lotus_cms_draft_' + docPath);
+        if (localDraft) {
+          const parsedDraft = JSON.parse(localDraft);
+          if (parsedDraft) docData = Object.assign({}, docData, parsedDraft);
+        }
+      } catch (e) {}
+
+      // If docKey is tourCategories/<slug> or categories/<slug>, merge with local category in AdminApp
+      if (docPath.startsWith('tourCategories/') || docPath.startsWith('categories/')) {
+        const slug = docPath.replace(/^(tourCategories|categories)\//, '').replace(/^cat-/, '');
+        const cat = (window.AdminApp && window.AdminApp.categories && window.AdminApp.categories.find(c => c.slug === slug || c.id === 'cat-' + slug || c.id === slug));
+        if (cat) {
+          docData = Object.assign({}, cat, docData);
         }
       }
 
@@ -2707,6 +2745,10 @@
     },
 
     async saveDraft() {
+      if (this.activePageKey && this.activePageKey.startsWith('tourPackages/')) {
+        const slug = this.activePageKey.replace('tourPackages/', '');
+        return this.saveTourPackageDraft(slug);
+      }
       await this.savePageContent('draft');
     },
 
@@ -2824,8 +2866,26 @@
             // Dual-sync tourCategories <-> categories and tourPackages <-> packages
             if (col === 'tourCategories') {
               window.AdminApp.fbDb.collection('categories').doc(docId).set(payload, { merge: true }).catch(() => {});
+              window.AdminApp.fbDb.collection('categories').doc('cat-' + docId).set(payload, { merge: true }).catch(() => {});
+              if (window.AdminApp && Array.isArray(window.AdminApp.categories)) {
+                const cIdx = window.AdminApp.categories.findIndex(c => c.slug === docId || c.id === 'cat-' + docId || c.id === docId);
+                if (cIdx >= 0) {
+                  window.AdminApp.categories[cIdx] = Object.assign({}, window.AdminApp.categories[cIdx], payload);
+                  try { window.AdminApp.syncCatalogCache(); } catch(e) {}
+                  try { window.AdminApp.renderCategories(); } catch(e) {}
+                }
+              }
             } else if (col === 'categories') {
-              window.AdminApp.fbDb.collection('tourCategories').doc(docId).set(payload, { merge: true }).catch(() => {});
+              const catSlug = docId.replace(/^cat-/, '');
+              window.AdminApp.fbDb.collection('tourCategories').doc(catSlug).set(payload, { merge: true }).catch(() => {});
+              if (window.AdminApp && Array.isArray(window.AdminApp.categories)) {
+                const cIdx = window.AdminApp.categories.findIndex(c => c.slug === catSlug || c.id === docId);
+                if (cIdx >= 0) {
+                  window.AdminApp.categories[cIdx] = Object.assign({}, window.AdminApp.categories[cIdx], payload);
+                  try { window.AdminApp.syncCatalogCache(); } catch(e) {}
+                  try { window.AdminApp.renderCategories(); } catch(e) {}
+                }
+              }
             } else if (col === 'tourPackages') {
               window.AdminApp.fbDb.collection('packages').doc(docId).set(payload, { merge: true }).catch(() => {});
             } else if (col === 'packages') {
@@ -4416,8 +4476,10 @@
     },
 
     handleTourDurationInput(slug) {
-      const nights = parseInt(document.getElementById('tourInput_nights').value, 10) || 0;
-      const days = parseInt(document.getElementById('tourInput_days').value, 10) || 0;
+      const nightsEl = document.getElementById('tourInput_nights');
+      const daysEl = document.getElementById('tourInput_days');
+      const nights = nightsEl ? (parseInt(nightsEl.value, 10) || 0) : ((this.activeDocData && this.activeDocData.nights) || 0);
+      const days = daysEl ? (parseInt(daysEl.value, 10) || 0) : ((this.activeDocData && this.activeDocData.days) || 0);
       this.markUnsavedChanges();
       if (!this.activeDocData) this.activeDocData = {};
       this.activeDocData.nights = nights;
@@ -4486,6 +4548,75 @@
         type: 'lotus:open-tour-accordion',
         dayIndex: dayIndex
       });
+    },
+
+    async saveTourPackageDraft(slug) {
+      const cleanSlug = slug.toLowerCase().trim();
+      const pubBtn = document.getElementById('visualPublishBtn');
+      const draftBtn = document.getElementById('visualSaveDraftBtn');
+      if (pubBtn) pubBtn.disabled = true;
+      if (draftBtn) draftBtn.disabled = true;
+
+      if (window.AdminApp) {
+        window.AdminApp.showToast('Saving tour package draft...', 'info');
+      }
+
+      try {
+        const pkgData = Object.assign({}, this.activeDocData, this.currentFieldValues);
+        if (pkgData.hero_image || pkgData.image) {
+          const formattedHero = this.autoFormatImageUrl(pkgData.hero_image || pkgData.image, 'hero');
+          pkgData.hero_image = formattedHero;
+          pkgData.image = formattedHero;
+          pkgData['tour_banner_walkers.bg_1'] = formattedHero;
+          pkgData[cleanSlug.replace(/-/g, '_') + '.tour_banner_walkers.bg_1'] = formattedHero;
+        }
+        pkgData.slug = cleanSlug;
+        pkgData.updatedAt = new Date().toISOString();
+        pkgData.updatedBy = (window.AdminApp && window.AdminApp.currentUser && window.AdminApp.currentUser.email) || 'admin';
+        pkgData.is_published = false;
+        pkgData.status = 'draft';
+
+        // 1. Update in-memory in AdminApp.packages as draft
+        if (window.AdminApp && Array.isArray(window.AdminApp.packages)) {
+          const idx = window.AdminApp.packages.findIndex(p => p.slug === cleanSlug);
+          if (idx >= 0) {
+            window.AdminApp.packages[idx] = Object.assign({}, window.AdminApp.packages[idx], pkgData);
+          } else {
+            window.AdminApp.packages.push(pkgData);
+          }
+          try { window.AdminApp.syncCatalogCache(); } catch (e) {}
+          try { window.AdminApp.renderPackages(); } catch (e) {}
+        }
+
+        // 2. Save draft to Firestore drafts collection (isolated from public website)
+        if (window.AdminApp && window.AdminApp.fbDb) {
+          try {
+            await window.AdminApp.fbDb.collection('drafts').doc('tourPackages__' + cleanSlug).set(pkgData, { merge: true });
+          } catch (fbErr) {
+            console.warn('[PageEditor] Firestore draft save warning:', fbErr);
+          }
+        }
+
+        // 3. Update localStorage draft and remove published live override
+        try {
+          localStorage.removeItem('lotus_cms_published_tourPackages/' + cleanSlug);
+          localStorage.setItem('lotus_cms_draft_tourPackages/' + cleanSlug, JSON.stringify(pkgData));
+        } catch (e) {}
+
+        this.markSaved();
+        const displayTitle = pkgData.title && typeof pkgData.title === 'object' ? pkgData.title.en : (pkgData.title || cleanSlug);
+        if (window.AdminApp) {
+          window.AdminApp.showToast(`Draft for tour package "${displayTitle}" saved successfully!`, 'info');
+        }
+      } catch (err) {
+        console.error('[PageEditor] saveTourPackageDraft error:', err);
+        if (window.AdminApp) {
+          window.AdminApp.showToast('Failed to save tour draft: ' + err.message, 'error');
+        }
+      } finally {
+        if (pubBtn) pubBtn.disabled = false;
+        if (draftBtn) draftBtn.disabled = false;
+      }
     },
 
     async publishTourPackage(slug) {

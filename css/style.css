@@ -8755,3 +8755,102 @@ img[data-cms-img*="team_img"] {
   object-position: top center !important;
   display: block !important;
 }
+
+
+/* ============================================================================
+   DUAL INQUIRY MODE SWITCHER TABS & QUICK FORM DISPLAY
+   ============================================================================ */
+.inquiry-mode-tabs {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  background: #F8FAFC;
+  padding: 8px;
+  border-radius: 16px;
+  border: 1.5px solid #E2E8F0;
+  margin-bottom: 2rem;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.03);
+}
+
+.inquiry-mode-tab {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 1rem 1.25rem;
+  border-radius: 12px;
+  border: 1.5px solid transparent;
+  background: transparent;
+  color: #475569;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  text-align: left;
+  font-family: inherit;
+}
+
+.inquiry-mode-tab:hover {
+  background: rgba(217, 130, 43, 0.08);
+  color: #0F172A;
+}
+
+.inquiry-mode-tab.active {
+  background: #FFFFFF;
+  border-color: #D9822B;
+  color: #0A192F;
+  box-shadow: 0 4px 16px rgba(10, 25, 47, 0.08), 0 0 0 1px rgba(217, 130, 43, 0.2);
+}
+
+.inquiry-mode-tab .mode-tab-icon {
+  font-size: 1.5rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.inquiry-mode-tab .mode-tab-meta {
+  display: flex;
+  flex-direction: column;
+}
+
+.inquiry-mode-tab .mode-tab-title {
+  font-size: 1.02rem;
+  font-weight: 700;
+  color: #0A192F;
+}
+
+.inquiry-mode-tab.active .mode-tab-title {
+  color: #D9822B;
+}
+
+.inquiry-mode-tab .mode-tab-desc {
+  font-size: 0.78rem;
+  color: #64748B;
+  font-weight: 500;
+  margin-top: 2px;
+}
+
+@media (max-width: 640px) {
+  .inquiry-mode-tabs {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .inquiry-mode-tab {
+    padding: 0.75rem 1rem;
+  }
+}
+
+/* Visibility rules for quick vs detailed form fields */
+.quick-form .detailed-only-field {
+  display: none !important;
+}
+
+.quick-form #detailedPaxGroup {
+  display: none !important;
+}
+
+#quickPaxGroup {
+  display: none;
+}
+
+.quick-form #quickPaxGroup {
+  display: flex !important;
+}

@@ -760,10 +760,17 @@
 
 
 
-    getSettings() {
-
-      return this.store.settings || {};
-
+        getSettings() {
+      const s = Object.assign({}, this.store.settings || {});
+      const fullAddr = "286/C, Niwandama South, Ja-Ela, Western Province, Sri Lanka – 11350 (12 Min./13km away from Airport)";
+      if (typeof s.address === 'object' && s.address !== null) {
+        s.address = s.address.full || s.address.line1 || fullAddr;
+      } else if (!s.address || typeof s.address !== 'string') {
+        s.address = fullAddr;
+      }
+      s.phone = s.phone || "+94 71 54 22 384";
+      s.email = s.email || "info@lotusceylon.com";
+      return s;
     },
 
 
@@ -943,8 +950,39 @@
         el.setAttribute('href', `https://wa.me/${cleanPhone}${query}`);
       });
 
-      document.querySelectorAll('[data-bind-address], [data-cms="siteGlobal.contact.address"]').forEach(el => {
-        el.textContent = s.address;
+      const addressHtml = '286/C, Niwandama South, Ja-Ela, Western Province, Sri Lanka – 11350<br/>(12 Min./13km away from Airport)';
+      const addressText = '286/C, Niwandama South, Ja-Ela, Western Province, Sri Lanka – 11350 (12 Min./13km away from Airport)';
+
+      document.querySelectorAll('[data-bind-address], [data-cms="siteGlobal.contact.address"], [data-cms-html="siteGlobal.contact.address"], .footer-address-text').forEach(el => {
+        if (el.classList.contains('footer-address-text')) {
+          el.innerHTML = addressHtml;
+        } else {
+          el.textContent = addressText;
+        }
+      });
+
+      document.querySelectorAll('[data-cms="siteGlobal.footer.addressTitle"]').forEach(el => {
+        el.textContent = 'REGISTERED OFFICE';
+      });
+
+      document.querySelectorAll('[data-cms="siteGlobal.footer.phoneTitle"]').forEach(el => {
+        el.textContent = 'VOICE TELEPHONE';
+      });
+
+      document.querySelectorAll('[data-cms="siteGlobal.footer.emailTitle"]').forEach(el => {
+        el.textContent = 'OFFICIAL CORRESPONDENCE';
+      });
+
+      document.querySelectorAll('[data-cms="siteGlobal.footer.addressTitle"]').forEach(el => {
+        el.textContent = 'REGISTERED OFFICE';
+      });
+
+      document.querySelectorAll('[data-cms="siteGlobal.footer.phoneTitle"]').forEach(el => {
+        el.textContent = 'VOICE TELEPHONE';
+      });
+
+      document.querySelectorAll('[data-cms="siteGlobal.footer.emailTitle"]').forEach(el => {
+        el.textContent = 'OFFICIAL CORRESPONDENCE';
       });
 
       document.querySelectorAll('[data-bind-director], [data-cms="siteGlobal.contact.director"]').forEach(el => {
