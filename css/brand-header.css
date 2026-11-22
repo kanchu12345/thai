@@ -4324,13 +4324,17 @@ img, video, iframe, svg, canvas {
   .why-us-header-flex {
     flex-direction: column !important;
     align-items: stretch !important;
+    height: auto !important;
     gap: 1.25rem !important;
-    margin-bottom: 1.25rem !important;
+    margin-bottom: 1.5rem !important;
   }
 
   .why-us-heading-col {
+    flex: 0 0 auto !important;
+    height: auto !important;
+    width: 100% !important;
     max-width: 100% !important;
-    margin-bottom: 0 !important;
+    margin-bottom: 0.75rem !important;
   }
 
   .why-us-heading-col .heading--60 {
@@ -4340,11 +4344,16 @@ img, video, iframe, svg, canvas {
   }
 
   .why-us-header-flex .success-stories-card-wrapper,
-  .success-stories-card-wrapper {
+  .success-stories-card-wrapper,
+  #homeSuccessStoriesWrapper {
+    flex: 0 0 auto !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    width: 100% !important;
+    max-width: 100% !important;
     margin-top: 0 !important;
     margin-bottom: 0 !important;
-    max-width: 100% !important;
-    width: 100% !important;
   }
 
   .success-stories-landscape-card {
