@@ -74,6 +74,7 @@
   let elCard = null;
   let elMediaBox = null;
   let elImg = null;
+  let elImgBackdrop = null;
   let elBadge = null;
   let elTitle = null;
   let elDesc = null;
@@ -173,6 +174,7 @@
 
     elMediaBox = document.getElementById('storyMediaBox');
     elImg = document.getElementById('storyImage');
+    elImgBackdrop = document.getElementById('storyImageBackdrop');
     elBadge = document.getElementById('storyBadge');
     elTitle = document.getElementById('storyTitle');
     elDesc = document.getElementById('storyDesc');
@@ -282,7 +284,10 @@
           if (field === 'title' && elTitle) elTitle.textContent = val;
           if (field === 'badge' && elBadge) elBadge.textContent = val;
           if (field === 'description' && elDesc) elDesc.textContent = val;
-          if (field === 'photo' && elImg) elImg.src = val;
+          if (field === 'photo') {
+            if (elImg) elImg.src = val;
+            if (elImgBackdrop) elImgBackdrop.src = val;
+          }
         }
       }
     });
@@ -318,10 +323,14 @@
     }
 
     setTimeout(() => {
-      // Update Image
+      // Update Image & Ambient Blurred Backdrop
+      const photoUrl = story.photo || 'https://res.cloudinary.com/qmukrbh6/image/upload/f_auto,q_auto/v1794916467/duyawh1nziw7o7esk9j5.jpg';
       if (elImg) {
-        elImg.src = story.photo || 'https://res.cloudinary.com/qmukrbh6/image/upload/f_auto,q_auto/v1794916467/duyawh1nziw7o7esk9j5.jpg';
+        elImg.src = photoUrl;
         elImg.alt = story.title || 'Our Success Story';
+      }
+      if (elImgBackdrop) {
+        elImgBackdrop.src = photoUrl;
       }
 
       // Update Badge

@@ -2962,8 +2962,8 @@ body {
   flex-direction: column !important;
   justify-content: space-between !important;
   width: 100% !important;
-  min-height: 290px !important;
-  height: clamp(285px, 22vw, 335px) !important;
+  min-height: 350px !important;
+  height: clamp(340px, 28vw, 420px) !important;
   background: #0B1724 !important;
   border: 1.5px solid rgba(212, 175, 55, 0.45) !important;
   border-radius: 20px !important;
@@ -2979,21 +2979,36 @@ body {
   border-color: rgba(212, 175, 55, 0.75) !important;
 }
 
-/* Full-Bleed Background Image */
+/* Ambient Blurred Background Backdrop (Eliminates harsh letterboxing) */
+.success-stories-landscape-card .story-image-backdrop {
+  position: absolute !important;
+  inset: -10% !important;
+  width: 120% !important;
+  height: 120% !important;
+  object-fit: cover !important;
+  object-position: center !important;
+  filter: blur(24px) brightness(0.32) saturate(1.2) !important;
+  z-index: 1 !important;
+  pointer-events: none !important;
+  transform: scale(1.08) !important;
+  transition: opacity 0.4s ease !important;
+}
+
+/* Full Contained Foreground Image - 100% Zero Cropping */
 .success-stories-landscape-card .story-image {
   position: absolute !important;
   inset: 0 !important;
   width: 100% !important;
   height: 100% !important;
-  object-fit: cover !important;
+  object-fit: contain !important;
   object-position: center !important;
-  z-index: 1 !important;
+  z-index: 3 !important;
   display: block !important;
-  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease !important;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease !important;
 }
 
 .success-stories-landscape-card:hover .story-image {
-  transform: scale(1.04) !important;
+  transform: scale(1.02) !important;
 }
 
 /* Multi-stop Cinematic Vignette Gradient Overlay */
@@ -3014,7 +3029,7 @@ body {
 /* Top Row: Category Badge & Meta Pill */
 .story-top-row {
   position: relative !important;
-  z-index: 3 !important;
+  z-index: 4 !important;
   display: flex !important;
   align-items: center !important;
   justify-content: space-between !important;
@@ -3126,7 +3141,7 @@ body {
 /* Bottom Row: Topic (Title) & Location + Slider Controls */
 .story-bottom-row {
   position: relative !important;
-  z-index: 3 !important;
+  z-index: 4 !important;
   display: flex !important;
   align-items: flex-end !important;
   justify-content: space-between !important;
@@ -3215,7 +3230,7 @@ body {
   width: 100% !important;
   height: 3px !important;
   background: rgba(255, 255, 255, 0.18) !important;
-  z-index: 4 !important;
+  z-index: 5 !important;
   overflow: hidden !important;
 }
 
@@ -3227,8 +3242,9 @@ body {
 }
 
 /* Animating state during swap */
-.success-stories-landscape-card.is-animating .story-image {
-  opacity: 0.4 !important;
+.success-stories-landscape-card.is-animating .story-image,
+.success-stories-landscape-card.is-animating .story-image-backdrop {
+  opacity: 0.35 !important;
   transform: scale(0.98) !important;
 }
 
@@ -3241,8 +3257,8 @@ body {
 /* Responsive adjustments */
 @media (max-width: 680px) {
   .success-stories-landscape-card {
-    min-height: 250px !important;
-    height: 270px !important;
+    min-height: 280px !important;
+    height: clamp(280px, 58vw, 340px) !important;
   }
   .story-top-row {
     padding: 0.85rem 1rem 0.35rem !important;
