@@ -319,7 +319,7 @@
     }
   });
 
-  window.addEventListener('lotus_stories_updated', function(e) {
+  window.addEventListener('lotus_blogs_updated', function(e) {
     if (Array.isArray(e.detail) && e.detail.length > 0) {
       allBlogs = e.detail;
       render();

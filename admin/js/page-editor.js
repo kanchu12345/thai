@@ -3489,10 +3489,10 @@
       const jsonArea = document.getElementById('seoPageJsonLd');
       const titleVal = document.getElementById('seoPageTitle')?.value || 'Lotus Ceylon Luxury Tours';
       const descVal = document.getElementById('seoPageDesc')?.value || '';
-      const canonicalVal = document.getElementById('seoPageCanonical')?.value || 'https://kanchu12345.github.io/thai/';
+      const canonicalVal = document.getElementById('seoPageCanonical')?.value || 'https://lotusceylon.com/';
       if (!jsonArea) return;
 
-      const baseUrl = 'https://kanchu12345.github.io/thai/';
+      const baseUrl = 'https://lotusceylon.com/';
       const brandLogo = baseUrl + 'assets/images/brand/logo-header.png';
       let schema = {};
 

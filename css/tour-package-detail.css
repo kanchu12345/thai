@@ -3462,3 +3462,50 @@ img[data-cms-img*="team_img"] {
   object-position: top center !important;
   display: block !important;
 }
+
+/* ==============================================================================
+ * ANDROID & MOBILE RESPONSIVE INTEGRITY RULES (Package Detail Pages)
+ * ============================================================================== */
+@media (max-width: 768px) {
+  /* 1. Prevent Floating Action Buttons Collision */
+  .floating-inquire-tab {
+    display: none !important;
+  }
+
+  .unified-fab-group {
+    position: fixed !important;
+    bottom: calc(16px + env(safe-area-inset-bottom, 0px)) !important;
+    right: calc(16px + env(safe-area-inset-right, 0px)) !important;
+    z-index: 9999 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 10px !important;
+  }
+
+  /* 2. CTA Motif Mobile Containment */
+  .cta-motif,
+  .sacred-cta-banner .cta-motif {
+    width: min(340px, 90vw) !important;
+    height: min(340px, 90vw) !important;
+    max-width: 90vw !important;
+    max-height: 90vw !important;
+    overflow: hidden !important;
+  }
+}
+
+@media (max-width: 480px) {
+  /* 3. Interactive Map (Leaflet) Popups Mobile Containment */
+  .leaflet-popup-content-wrapper {
+    max-width: calc(100vw - 36px) !important;
+    box-sizing: border-box !important;
+  }
+  .leaflet-popup {
+    max-width: calc(100vw - 24px) !important;
+  }
+  .leaflet-popup-content {
+    margin: 10px 12px !important;
+    max-width: 100% !important;
+    word-break: break-word !important;
+  }
+}

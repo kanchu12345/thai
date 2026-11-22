@@ -649,7 +649,7 @@
       const title = seoData.title || pageDoc[`${pageTab}.seo.title`] || `${pageConfig.title} | Lotus Ceylon Luxury Tours & Services`;
       const desc = seoData.description || pageDoc[`${pageTab}.seo.description`] || `Discover authentic Sri Lanka with Lotus Ceylon International Tours & Services. Private luxury chauffeured journeys, sacred heritage pilgrimages, and boutique sanctuaries.`;
       const keywords = seoData.keywords || pageDoc[`${pageTab}.seo.keywords`] || 'sri lanka luxury tours, private tailor made travel ceylon, bespoke sri lanka holidays, sacred ceylon experiences, lotus ceylon';
-      const canonical = seoData.canonical || pageDoc[`${pageTab}.seo.canonical`] || `https://kanchu12345.github.io/thai/${pageConfig.file}`;
+      const canonical = seoData.canonical || pageDoc[`${pageTab}.seo.canonical`] || `https://lotusceylon.com/${pageConfig.file}`;
       const ogTitle = seoData.ogTitle || pageDoc[`${pageTab}.seo.og_title`] || title;
       const ogImg = seoData.ogImage || pageDoc[`${pageTab}.seo.og_image`] || 'assets/images/cultural/sigiriya-1.webp';
       const twitterCard = seoData.twitterCard || pageDoc[`${pageTab}.seo.twitter_card`] || 'summary_large_image';
@@ -871,7 +871,7 @@
       const serpUrl = document.getElementById('serpPreviewUrl');
       const serpTitle = document.getElementById('serpPreviewTitle');
       const serpDesc = document.getElementById('serpPreviewDesc');
-      if (serpUrl) serpUrl.textContent = canonical || 'https://kanchu12345.github.io/thai/';
+      if (serpUrl) serpUrl.textContent = canonical || 'https://lotusceylon.com/';
       if (serpTitle) serpTitle.textContent = title;
       if (serpDesc) serpDesc.textContent = desc;
 
@@ -955,8 +955,8 @@
      * Generates default Schema.org JSON-LD for a given page
      */
     app.buildDefaultPageSchema = function (pageTab, title, desc, canonical, ogImg) {
-      const brandLogo = 'https://kanchu12345.github.io/thai/assets/images/brand/logo-header.png';
-      const baseUrl = 'https://kanchu12345.github.io/thai/';
+      const brandLogo = 'https://lotusceylon.com/assets/images/brand/logo-header.png';
+      const baseUrl = 'https://lotusceylon.com/';
 
       if (pageTab === 'home' || pageTab === 'about' || pageTab === 'contact') {
         return JSON.stringify({
@@ -1067,7 +1067,7 @@
       if (!textarea) return;
 
       let schemaObj = {};
-      const baseUrl = 'https://kanchu12345.github.io/thai/';
+      const baseUrl = 'https://lotusceylon.com/';
       const brandLogo = baseUrl + 'assets/images/brand/logo-header.png';
 
       if (presetType === 'TravelAgency') {
@@ -1176,7 +1176,7 @@
       }
       if (ogTitleInp) ogTitleInp.value = titleInp.value;
       if (canonicalInp && !canonicalInp.value) {
-        canonicalInp.value = `https://kanchu12345.github.io/thai/${pageConfig.file}`;
+        canonicalInp.value = `https://lotusceylon.com/${pageConfig.file}`;
       }
       if (kwInp && !kwInp.value) {
         kwInp.value = `sri lanka ${pageTab} tours, private chauffeur travel ceylon, lotus ceylon ${pageTab}`;

@@ -1756,6 +1756,15 @@ section + section.padding-top--100,
   right: -18px !important;
 }
 
+@media (max-width: 768px) {
+  .categories-nav-prev {
+    left: 4px !important;
+  }
+  .categories-nav-next {
+    right: 4px !important;
+  }
+}
+
 
 
 /* ==============================================================================
@@ -2687,6 +2696,64 @@ body {
     line-height: 1.15 !important;
     margin-top: 2px !important;
     white-space: nowrap !important;
+  }
+
+  .walkers-ham {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-width: 44px !important;
+    min-height: 44px !important;
+    width: 44px !important;
+    height: 44px !important;
+    flex-shrink: 0 !important;
+    cursor: pointer !important;
+    z-index: 200 !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .site-header-walkers .header-brand-sub,
+  .site-header-walkers .walkers-brand-sub,
+  .site-header-walkers .brand-slogan,
+  .header-brand-sub,
+  .walkers-brand-sub,
+  .brand-slogan {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    height: 0 !important;
+    overflow: hidden !important;
+  }
+
+  .site-header-walkers .header-container {
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .header-top-row {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    width: 100% !important;
+    gap: 0.5rem !important;
+  }
+
+  .header-brand {
+    max-width: calc(100% - 105px) !important;
+    flex-shrink: 1 !important;
+    overflow: hidden !important;
+  }
+
+  .header-brand-logo {
+    height: 36px !important;
+    max-height: 36px !important;
+  }
+
+  .header-brand-name {
+    font-size: 1.15rem !important;
   }
 }
 

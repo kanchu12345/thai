@@ -514,21 +514,9 @@
 
           if (Array.isArray(blogData)) {
 
-            if (!mergeOnly || !this.store.blog || !this.store.blog.length) {
+            if (!this.store.blog || !this.store.blog.length) {
 
               this.store.blog = blogData;
-
-            } else {
-
-              blogData.forEach(b => {
-
-                if (!this.store.blog.find(x => (x.slug && x.slug === b.slug) || (x.id && x.id === b.id))) {
-
-                  this.store.blog.push(b);
-
-                }
-
-              });
 
             }
 
@@ -544,23 +532,9 @@
 
           if (Array.isArray(pkgData.packages)) {
 
-            if (!mergeOnly || !this.store.packages.length) {
+            if (!this.store.packages || !this.store.packages.length) {
 
               this.store.packages = pkgData.packages;
-
-            } else {
-
-              // Merge missing
-
-              pkgData.packages.forEach(p => {
-
-                if (!this.store.packages.find(x => x.slug === p.slug)) {
-
-                  this.store.packages.push(p);
-
-                }
-
-              });
 
             }
 

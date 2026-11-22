@@ -23,13 +23,13 @@
 <meta content="Contact Lotus Ceylon | Island Headquarters and Direct Concierge" data-cms="contact.seo.twitter_title" name="twitter:title"/>
 <meta content="Reach Lotus Ceylon International Tours and Services (Pvt) Ltd. Headquarters in Ja-Ela, Sri Lanka. Direct phone, WhatsApp, WeChat, LINE, and email assistance." data-cms="contact.seo.twitter_description" name="twitter:description"/>
 <meta content="https://lotusceylon.com/assets/images/contact/negombo-lagoon-1.webp" data-cms-img="contact.seo.twitter_image" name="twitter:image"/>
-<link data-cms-img="siteGlobal.branding.favicon" href="logo.png?v=20261122_v15" rel="icon" type="image/png"/>
+<link data-cms-img="siteGlobal.branding.favicon" href="logo.png?v=20261122_v16" rel="icon" type="image/png"/>
 <!-- Master Stylesheets -->
-<link href="assets/css/site.css?v=20261122_v15" rel="stylesheet"/>
-<link href="css/style.css?v=20261122_v15" rel="stylesheet"/>
-<link href="css/brand-header.css?v=20261122_v15" rel="stylesheet"/>
+<link href="assets/css/site.css?v=20261122_v16" rel="stylesheet"/>
+<link href="css/style.css?v=20261122_v16" rel="stylesheet"/>
+<link href="css/brand-header.css?v=20261122_v16" rel="stylesheet"/>
 <!-- Leaflet CSS for Map -->
-<link href="vendor/leaflet/leaflet.css?v=20261122_v15" rel="stylesheet"/>
+<link href="vendor/leaflet/leaflet.css?v=20261122_v16" rel="stylesheet"/>
 <style>
     .contact-hero {
       position: relative;
@@ -571,19 +571,265 @@
       background: #FFFFFF;
     }
     .btn-submit-contact {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
       width: 100%;
       background: #002B49;
       color: #FFFFFF;
-      border: none;
+      border: 1.5px solid #002B49;
       border-radius: 8px;
-      padding: 1rem;
+      padding: 1rem 1.5rem;
       font-size: 1rem;
       font-weight: 700;
       cursor: pointer;
-      transition: background 0.2s ease;
+      transition: all 0.25s ease;
+      box-shadow: 0 4px 14px rgba(0, 43, 73, 0.15);
     }
-    .btn-submit-contact:hover {
+    .btn-submit-contact:hover:not(:disabled) {
       background: #C9962B;
+      border-color: #C9962B;
+      box-shadow: 0 6px 18px rgba(201, 150, 43, 0.28);
+      transform: translateY(-1px);
+    }
+    .btn-submit-contact:disabled {
+      opacity: 0.88;
+      cursor: not-allowed;
+      transform: none;
+      background: #002B49;
+    }
+    .btn-spinner {
+      display: inline-block;
+      width: 18px;
+      height: 18px;
+      border: 2.5px solid rgba(255, 255, 255, 0.3);
+      border-top-color: #D4AF37;
+      border-radius: 50%;
+      animation: lotusBtnSpin 0.75s linear infinite;
+    }
+    @keyframes lotusBtnSpin {
+      to { transform: rotate(360deg); }
+    }
+    .contact-feedback-card {
+      background: #FFFFFF;
+      border: 1.5px solid #10B981;
+      border-radius: 14px;
+      padding: 2.25rem 2rem;
+      text-align: center;
+      box-shadow: 0 8px 30px rgba(16, 185, 129, 0.08);
+      animation: fadeInFeedback 0.35s ease;
+    }
+    .feedback-emblem-ring {
+      width: 64px;
+      height: 64px;
+      margin: 0 auto 1.25rem;
+      border-radius: 50%;
+      background: #ECFDF5;
+      border: 2px solid #A7F3D0;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 16px rgba(16, 185, 129, 0.16);
+    }
+    .feedback-title {
+      color: #064E3B;
+      font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-size: 1.45rem;
+      font-weight: 700;
+      margin: 0 0 0.65rem;
+    }
+    .feedback-subtitle {
+      color: #047857;
+      font-size: 0.98rem;
+      line-height: 1.6;
+      max-width: 520px;
+      margin: 0 auto 1.25rem;
+    }
+    .feedback-ref-badge {
+      display: inline-block;
+      background: #F0FDF4;
+      border: 1px dashed #059669;
+      padding: 6px 18px;
+      border-radius: 9999px;
+      color: #065F46;
+      font-size: 0.9rem;
+      margin-bottom: 0.75rem;
+    }
+    .feedback-summary-pill {
+      color: #64748B;
+      font-size: 0.88rem;
+      margin-bottom: 1.75rem;
+    }
+    .feedback-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+    .btn-concierge-wa {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #25D366;
+      color: #FFFFFF !important;
+      border: 1.5px solid #25D366;
+      padding: 11px 24px;
+      border-radius: 9999px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.92rem;
+      box-shadow: 0 4px 14px rgba(37, 211, 102, 0.35);
+      transition: all 0.2s ease;
+    }
+    .btn-concierge-wa:hover {
+      background: #20BD5A;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 18px rgba(37, 211, 102, 0.45);
+    }
+    .btn-reset-inquiry {
+      background: transparent;
+      color: #002B49;
+      border: 1.5px solid #CBD5E1;
+      padding: 10px 22px;
+      border-radius: 9999px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.88rem;
+      transition: all 0.2s ease;
+    }
+    .btn-reset-inquiry:hover {
+      border-color: #002B49;
+      background: #F8FAFC;
+    }
+    .contact-fallback-card {
+      background: #FFFDF8;
+      border: 1.5px solid #D4AF37;
+      border-radius: 14px;
+      padding: 1.65rem;
+      margin-top: 1.5rem;
+      box-shadow: 0 6px 24px rgba(212, 175, 55, 0.12);
+      animation: fadeInFeedback 0.3s ease;
+      text-align: left;
+    }
+    .fallback-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 0.85rem;
+    }
+    .fallback-badge-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: #FEF3C7;
+      border: 1.5px solid #FDE68A;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .fallback-title {
+      color: #002B49;
+      font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin: 0;
+    }
+    .fallback-ref {
+      color: #B45309;
+      font-size: 0.82rem;
+      margin: 2px 0 0;
+    }
+    .fallback-desc {
+      color: #475569;
+      font-size: 0.92rem;
+      line-height: 1.55;
+      margin-bottom: 1.25rem;
+    }
+    .fallback-buttons-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 1rem;
+    }
+    @media (min-width: 540px) {
+      .fallback-buttons-grid {
+        flex-direction: row;
+      }
+    }
+    .btn-fallback-wa {
+      flex: 1;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: #25D366;
+      color: #FFFFFF !important;
+      border: 1.5px solid #25D366;
+      padding: 11px 18px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.9rem;
+      box-shadow: 0 4px 14px rgba(37, 211, 102, 0.28);
+      transition: all 0.2s ease;
+      text-align: center;
+    }
+    .btn-fallback-wa:hover {
+      background: #20BD5A;
+      transform: translateY(-1px);
+    }
+    .btn-fallback-email {
+      flex: 1;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: #002B49;
+      color: #FFFFFF !important;
+      border: 1.5px solid #002B49;
+      padding: 11px 18px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.9rem;
+      box-shadow: 0 4px 14px rgba(0, 43, 73, 0.15);
+      transition: all 0.2s ease;
+      text-align: center;
+    }
+    .btn-fallback-email:hover {
+      background: #C9962B;
+      border-color: #C9962B;
+      transform: translateY(-1px);
+    }
+    .fallback-retry-row {
+      display: flex;
+      justify-content: flex-end;
+      border-top: 1px solid #F1E5C8;
+      padding-top: 0.75rem;
+    }
+    .btn-fallback-retry {
+      background: transparent;
+      color: #64748B;
+      border: none;
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 4px 8px;
+      transition: color 0.2s ease;
+    }
+    .btn-fallback-retry:hover {
+      color: #002B49;
+    }
+    @keyframes fadeInFeedback {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
     }
     @media (max-width: 900px) {
       .contact-grid {
@@ -879,6 +1125,7 @@
 <div class="contact-form-card">
 <h3 data-cms="contact.heading_7">Send Us a Direct Message</h3>
 <p data-cms="contact.p_10">Share your intended travel window, party size, or questions. Our senior destination designers will respond with thoughtful guidance.</p>
+<div id="contactSuccessState" style="display: none;"></div>
 <form id="contactForm" onsubmit="handleContactSubmit(event)">
 <div class="form-group-item">
 <label data-cms="contact.contact_main.label_1" for="cName">Your Full Name *</label>
@@ -909,9 +1156,10 @@
 <label data-cms="contact.contact_main.label_5" for="cMessage">Your Travel Wishes and Approximate Dates *</label>
 <textarea class="form-input-field" data-cms="contact.form.notes.placeholder" id="cMessage" name="notes" placeholder="Tell us about your preferred travel window, duration, pace, or special interests..." required="" rows="4"></textarea>
 </div>
-<button class="btn-submit-contact" data-cms="contact.btn_15" type="submit">
-<span data-cms="contact.span_10">Send Message to Concierge ➔</span>
+<button class="btn-submit-contact" data-cms="contact.btn_15" id="cSubmitBtn" type="submit">
+<span class="btn-submit-text" data-cms="contact.span_10">Send Message to Concierge ➔</span>
 </button>
+<div id="contactFallbackNotice" style="display: none;"></div>
 </form>
 <!-- Headquarters Location Map in Form Card Space -->
 <div class="contact-map-wrapper" style="width: 100%; height: 330px; margin-top: 1.75rem; border-radius: 12px; overflow: hidden; border: 1.5px solid #E2E8F0; box-shadow: 0 4px 15px rgba(0,0,0,0.05); position: relative;">
@@ -994,7 +1242,7 @@
 <!-- Col 3: Newsletter, Payment Partners, Social -->
 <div class="footer-walkers-col footer-col-actions">
 <p class="footer-col-title" data-cms="siteGlobal.footer.newsletterTitle">NEWSLETTER</p>
-<form class="footer-newsletter-pill" onsubmit="event.preventDefault(); alert('Thank you for subscribing to Lotus Ceylon Travel updates!'); this.reset();">
+<form class="footer-newsletter-pill" onsubmit="handleNewsletterSubmit(event)">
 <input aria-label="Enter your email address" data-cms="siteGlobal.footer.newsletterPlaceholder" data-cms-aria="siteGlobal.footer.newsletterAria" placeholder="Enter your email address" required="" type="email"/>
 <button aria-label="Subscribe" data-cms-aria="siteGlobal.footer.newsletterSubmitAria" type="submit">
 <svg fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewbox="0 0 24 24" width="18"><path d="M9 18l6-6-6-6"></path></svg>
@@ -1081,7 +1329,7 @@
 <!-- @include floating-actions:end -->
 <!-- Persistent Floating WhatsApp Concierge -->
 <!-- Leaflet Scripts for Headquarters Map -->
-<script defer="" src="vendor/leaflet/leaflet.js?v=20261122_v15"></script>
+<script defer="" src="vendor/leaflet/leaflet.js?v=20261122_v16"></script>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
       try {
@@ -1181,26 +1429,102 @@
 
     // Mobile Navigation managed by assets/js/mobile-nav.js
   </script>
-<script defer="" src="js/site-translator.js?v=20261122_v15"></script>
-<script defer="" src="./assets/js/config.js?v=20261122_v15"></script>
-<script defer="" src="assets/js/site-data.js?v=20261122_v15"></script>
-<script defer="" src="./assets/js/mobile-nav.js?v=20261122_v15"></script>
-<script defer="" src="./assets/js/cms.js?v=20261122_v15"></script>
+<script defer="" src="js/site-translator.js?v=20261122_v16"></script>
+<script defer="" src="./assets/js/config.js?v=20261122_v16"></script>
+<script defer="" src="assets/js/site-data.js?v=20261122_v16"></script>
+<script defer="" src="./assets/js/mobile-nav.js?v=20261122_v16"></script>
+<script defer="" src="./assets/js/cms.js?v=20261122_v16"></script>
 <script>
+    function escapeHtml(str) {
+      if (!str) return '';
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+    }
+
+    function resetContactForm() {
+      var form = document.getElementById('contactForm');
+      var successSlot = document.getElementById('contactSuccessState');
+      var fallbackNotice = document.getElementById('contactFallbackNotice');
+      if (form) {
+        form.reset();
+        form.style.display = 'block';
+      }
+      if (successSlot) {
+        successSlot.style.display = 'none';
+        successSlot.innerHTML = '';
+      }
+      if (fallbackNotice) {
+        fallbackNotice.style.display = 'none';
+        fallbackNotice.innerHTML = '';
+      }
+    }
+
+    function retryContactSubmit() {
+      var form = document.getElementById('contactForm');
+      if (form) {
+        if (typeof form.requestSubmit === 'function') {
+          form.requestSubmit();
+        } else {
+          var submitEvent = new Event('submit', { cancelable: true, bubbles: true });
+          form.dispatchEvent(submitEvent);
+        }
+      }
+    }
+
+    function handleNewsletterSubmit(e) {
+      e.preventDefault();
+      var form = e.target;
+      var input = form.querySelector('input[type="email"]');
+      var btn = form.querySelector('button[type="submit"]');
+      if (input && input.value) {
+        var origBtnHtml = btn ? btn.innerHTML : '';
+        if (btn) {
+          btn.innerHTML = '<span style="font-size: 0.85rem; font-weight: 700; color: #25D366;">✓</span>';
+        }
+        input.value = '';
+        input.placeholder = 'Thank you for subscribing!';
+        setTimeout(function() {
+          if (btn) btn.innerHTML = origBtnHtml;
+          input.placeholder = 'Enter your email address';
+        }, 3500);
+      }
+    }
+
     async function handleContactSubmit(e) {
       e.preventDefault();
       const form = e.target;
-      const submitBtn = form.querySelector('button[type="submit"]');
+      const submitBtn = document.getElementById('cSubmitBtn') || form.querySelector('button[type="submit"]');
       const name = document.getElementById('cName').value.trim();
       const email = document.getElementById('cEmail').value.trim();
       const phone = document.getElementById('cPhone').value.trim();
       const subject = document.getElementById('cSubject').value;
       const message = document.getElementById('cMessage').value.trim();
 
-      if (!name || !email || !message) return;
+      const fallbackNotice = document.getElementById('contactFallbackNotice');
+      const successSlot = document.getElementById('contactSuccessState');
 
-      submitBtn.disabled = true;
-      submitBtn.textContent = 'Transmitting Message...';
+      if (!name || !email || !message) {
+        if (!name) document.getElementById('cName').focus();
+        else if (!email) document.getElementById('cEmail').focus();
+        else if (!message) document.getElementById('cMessage').focus();
+        return;
+      }
+
+      // Luxury Loading State
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.classList.add('is-submitting');
+        submitBtn.innerHTML = '<span class="btn-spinner"></span><span>Transmitting Your Inquiry...</span>';
+      }
+
+      if (fallbackNotice) {
+        fallbackNotice.style.display = 'none';
+        fallbackNotice.innerHTML = '';
+      }
 
       const year = new Date().getFullYear();
       const randomSix = Math.floor(100000 + Math.random() * 900000);
@@ -1209,7 +1533,7 @@
 
       let transmitted = false;
 
-      // 1. Try Firebase Firestore REST API
+      // 1. Try Firebase Firestore REST API (Standard inquiry document structure)
       try {
         const fbKey = (window.LOTUS_CONFIG && window.LOTUS_CONFIG.firebase && window.LOTUS_CONFIG.firebase.apiKey) || 'AIzaSyD5NyCFaPHeS1cKlsgxZ_WsraswHlYonNA';
         const restBase = 'https://firestore.googleapis.com/v1/projects/louterst-36b64/databases/(default)/documents';
@@ -1237,7 +1561,7 @@
 
         if (inqRes && inqRes.ok) {
           transmitted = true;
-          // Trigger Email notification document
+          // Trigger Email notification document in Firestore if enabled
           fetch(restBase + '/mail?key=' + encodeURIComponent(fbKey), {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -1254,99 +1578,167 @@
                 }
               }
             })
-          }).catch(() => {});
+          }).catch(function() {});
         } else {
-          console.warn('[Contact] Firestore REST returned non-OK status:', inqRes ? inqRes.status : 'network error');
+          console.warn('[Contact] Firestore REST transmission deferred:', inqRes ? inqRes.status : 'network offline');
         }
       } catch (err) {
         console.warn('[Contact] Firestore REST transmission notice:', err);
       }
 
-      // Direct Email Delivery to info@lotusceylon.com via FormSubmit.co
-      try {
-        const fsRes = await fetch("https://formsubmit.co/ajax/info@lotusceylon.com", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "Accept": "application/json"
-          },
-          body: JSON.stringify({
-            _subject: `[Lotus Ceylon Contact] ${refId} - ${name} (${subject || 'General Inquiry'})`,
-            _replyto: email,
-            _template: "table",
-            _captcha: "false",
-            referenceId: refId,
-            fullName: name,
-            emailAddress: email,
-            phoneOrWhatsApp: phone || "Not provided",
-            travelTheme: subject || "General Inquiry",
-            message: message,
-            targetEmail: "info@lotusceylon.com",
-            submittedAt: nowIso
-          })
-        });
-        if (fsRes && fsRes.ok) {
-          transmitted = true;
-          console.log("[Contact] Dispatched to info@lotusceylon.com via FormSubmit");
-        }
-      } catch (fsErr) {
-        console.warn("[Contact] FormSubmit dispatch notice:", fsErr);
-      }
-
-      // 2. Fallback to Formspree if Firestore REST was not successful
+      // 2. Direct Email Delivery via FormSubmit
       if (!transmitted) {
         try {
-          const endpoint = (window.LOTUS_CONFIG && window.LOTUS_CONFIG.submission && window.LOTUS_CONFIG.submission.formspreeEndpoint) || "https://formspree.io/f/mqkvnzyz";
-          const fsRes = await fetch(endpoint, {
-            method: 'POST',
+          const fsRes = await fetch("https://formsubmit.co/ajax/info@lotusceylon.com", {
+            method: "POST",
             headers: {
-              'Content-Type': 'application/json',
-              'Accept': 'application/json'
+              "Content-Type": "application/json",
+              "Accept": "application/json"
             },
             body: JSON.stringify({
+              _subject: '[Lotus Ceylon Contact] ' + refId + ' - ' + name + ' (' + (subject || 'General Inquiry') + ')',
+              _replyto: email,
+              _template: "table",
+              _captcha: "false",
               referenceId: refId,
-              formType: 'contact',
-              name: name,
-              email: email,
-              whatsapp: phone || '',
-              theme: subject || 'General Inquiry',
-              notes: message,
-              status: 'new',
-              createdAt: nowIso,
-              submittedAt: nowIso,
-              timestamp: nowIso
+              fullName: name,
+              emailAddress: email,
+              phoneOrWhatsApp: phone || "Not provided",
+              travelTheme: subject || "General Inquiry",
+              message: message,
+              targetEmail: "info@lotusceylon.com",
+              submittedAt: nowIso
             })
           });
           if (fsRes && fsRes.ok) {
-            transmitted = true;
-          } else {
-            console.warn('[Contact] Formspree returned non-OK status:', fsRes ? fsRes.status : 'network error');
+            const fsData = await fsRes.json().catch(function() { return {}; });
+            if (fsData.success === true || fsData.success === "true") {
+              transmitted = true;
+              console.log("[Contact] Dispatched to info@lotusceylon.com via FormSubmit");
+            }
           }
         } catch (fsErr) {
-          console.warn('[Contact] Formspree fallback notice:', fsErr);
+          console.warn("[Contact] FormSubmit dispatch notice:", fsErr);
         }
       }
 
+      // 3. Render Luxury Inline Result States (Zero popup alerts, zero automatic forced redirects)
       if (transmitted) {
-        form.innerHTML = `
-          <div style="background: #F0FDF4; border: 1.5px solid #86EFAC; border-radius: 12px; padding: 2rem; text-align: center;">
-            <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">✓</div>
-            <h4 style="color: #166534; font-size: 1.35rem; margin-bottom: 0.5rem; font-weight: 700;">Message Received with Gratitude</h4>
-            <p style="color: #15803D; font-size: 0.95rem; margin-bottom: 1.25rem;">
-              Your inquiry reference is <strong>${refId}</strong>. Our senior destination concierge will reply within 24 hours.
-            </p>
-            <a href="https://wa.me/94715422384?text=Hello%20Lotus%20Ceylon!%20I%20sent%20message%20${refId}%20for%20${encodeURIComponent(name)}" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 8px; background: #25D366; color: #FFFFFF; border: 1.5px solid #25D366; padding: 10px 22px; border-radius: 9999px; text-decoration: none; font-weight: 700; font-size: 0.88rem; box-shadow: 0 4px 14px rgba(37, 211, 102, 0.35);">
-              <span style="color: #FFFFFF; font-size: 1.1rem;">💬</span> Immediate WhatsApp Follow-up
-            </a>
-          </div>
-        `;
+        if (form) form.style.display = 'none';
+        if (successSlot) {
+          const waSuccessText = 'Hello Lotus Ceylon Concierge! I have submitted contact inquiry ' + refId + ' for ' + name + '. Looking forward to connecting with your private travel designer.';
+          const waSuccessUrl = 'https://wa.me/94715422384?text=' + encodeURIComponent(waSuccessText);
+          successSlot.innerHTML = [
+            '<div class="contact-feedback-card" role="status" aria-live="polite">',
+            '  <div class="feedback-emblem-ring">',
+            '    <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">',
+            '      <path d="M20 6L9 17l-5-5"></path>',
+            '    </svg>',
+            '  </div>',
+            '  <h4 class="feedback-title">Inquiry Received with Gratitude</h4>',
+            '  <p class="feedback-subtitle">',
+            '    Thank you for reaching out to Lotus Ceylon. Your bespoke travel inquiry has been received. Our private travel concierge will contact you within 24 hours.',
+            '  </p>',
+            '  <div class="feedback-ref-badge">',
+            '    <span>Inquiry Reference:</span> <strong>' + refId + '</strong>',
+            '  </div>',
+            '  <div class="feedback-summary-pill">',
+            '    <span>Guest: <strong>' + escapeHtml(name) + '</strong></span> &bull; ',
+            '    <span>Theme: <strong>' + escapeHtml(subject || 'General Inquiry') + '</strong></span>',
+            '  </div>',
+            '  <div class="feedback-actions">',
+            '    <a href="' + waSuccessUrl + '" target="_blank" rel="noopener noreferrer" class="btn-concierge-wa">',
+            '      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">',
+            '        <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.04 14.69 2 12.04 2M12.05 3.67C16.58 3.67 20.28 7.37 20.28 11.92C20.28 16.46 16.58 20.17 12.05 20.17C10.58 20.17 9.17 19.78 7.94 19.05L7.6 18.85L4.47 19.67L5.3 16.62L5.08 16.27C4.28 14.99 3.82 13.48 3.82 11.91C3.82 7.37 7.51 3.67 12.05 3.67Z"/>',
+            '      </svg>',
+            '      <span>Instant WhatsApp Follow-up</span>',
+            '    </a>',
+            '    <button type="button" onclick="resetContactForm()" class="btn-reset-inquiry">',
+            '      Send Another Inquiry',
+            '    </button>',
+            '  </div>',
+            '</div>'
+          ].join('\n');
+          successSlot.style.display = 'block';
+          successSlot.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
       } else {
-        submitBtn.disabled = false;
-        submitBtn.textContent = 'Submit Message';
-        const waMsg = 'Hello Lotus Ceylon! Name: ' + name + ', Email: ' + email + ', Subject: ' + (subject || 'General') + ', Message: ' + message;
-        const waUrl = 'https://wa.me/94715422384?text=' + encodeURIComponent(waMsg);
-        alert('We encountered an issue transmitting your message directly. Opening WhatsApp concierge for immediate assistance.');
-        window.open(waUrl, '_blank');
+        // Fallback state: restore submit button and display luxury inline fallback card
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.classList.remove('is-submitting');
+          submitBtn.innerHTML = '<span class="btn-submit-text" data-cms="contact.span_10">Send Message to Concierge ➔</span>';
+        }
+
+        const waText = [
+          'Hello Lotus Ceylon Concierge!',
+          'I would like to make an inquiry (Ref: ' + refId + ').',
+          '',
+          '• Full Name: ' + name,
+          '• Email: ' + email,
+          '• Phone: ' + (phone || 'Not provided'),
+          '• Theme: ' + (subject || 'General Inquiry'),
+          '• Travel Wishes: ' + message
+        ].join('\n');
+        const waUrl = 'https://wa.me/94715422384?text=' + encodeURIComponent(waText);
+
+        const mailSubject = encodeURIComponent('[Lotus Ceylon Contact] ' + refId + ' - ' + name);
+        const mailBody = encodeURIComponent(
+          'Dear Lotus Ceylon Concierge,\n\n' +
+          'Inquiry Reference: ' + refId + '\n' +
+          'Full Name: ' + name + '\n' +
+          'Email: ' + email + '\n' +
+          'Phone / WhatsApp: ' + (phone || 'Not provided') + '\n' +
+          'Travel Theme: ' + (subject || 'General Inquiry') + '\n\n' +
+          'Travel Wishes:\n' + message + '\n\n' +
+          '---\nSent via lotusceylon.com contact form'
+        );
+        const mailtoUrl = 'mailto:info@lotusceylon.com?subject=' + mailSubject + '&body=' + mailBody;
+
+        if (fallbackNotice) {
+          fallbackNotice.innerHTML = [
+            '<div class="contact-fallback-card" role="alert">',
+            '  <div class="fallback-header">',
+            '    <div class="fallback-badge-icon">',
+            '      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C9962B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">',
+            '        <circle cx="12" cy="12" r="10"></circle>',
+            '        <line x1="12" y1="8" x2="12" y2="12"></line>',
+            '        <line x1="12" y1="16" x2="12.01" y2="16"></line>',
+            '      </svg>',
+            '    </div>',
+            '    <div class="fallback-header-text">',
+            '      <h4 class="fallback-title">Direct Concierge Connection</h4>',
+            '      <p class="fallback-ref">Inquiry Reference: <strong>' + refId + '</strong></p>',
+            '    </div>',
+            '  </div>',
+            '  <p class="fallback-desc">',
+            '    We encountered a temporary network delay transmitting directly to the server. Your message details have been preserved. Please connect directly with our private travel concierge via 1-click WhatsApp or Email for immediate assistance:',
+            '  </p>',
+            '  <div class="fallback-buttons-grid">',
+            '    <a href="' + waUrl + '" target="_blank" rel="noopener noreferrer" class="btn-fallback-wa">',
+            '      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">',
+            '        <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.04 14.69 2 12.04 2M12.05 3.67C16.58 3.67 20.28 7.37 20.28 11.92C20.28 16.46 16.58 20.17 12.05 20.17C10.58 20.17 9.17 19.78 7.94 19.05L7.6 18.85L4.47 19.67L5.3 16.62L5.08 16.27C4.28 14.99 3.82 13.48 3.82 11.91C3.82 7.37 7.51 3.67 12.05 3.67Z"/>',
+            '      </svg>',
+            '      <span>Continue with WhatsApp Concierge</span>',
+            '    </a>',
+            '    <a href="' + mailtoUrl + '" class="btn-fallback-email">',
+            '      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">',
+            '        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>',
+            '        <polyline points="22,6 12,13 2,6"></polyline>',
+            '      </svg>',
+            '      <span>Email Direct: info@lotusceylon.com</span>',
+            '    </a>',
+            '  </div>',
+            '  <div class="fallback-retry-row">',
+            '    <button type="button" onclick="retryContactSubmit()" class="btn-fallback-retry">',
+            '      <span>&#x21bb;</span> Try Transmitting Again',
+            '    </button>',
+            '  </div>',
+            '</div>'
+          ].join('\n');
+          fallbackNotice.style.display = 'block';
+          fallbackNotice.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
       }
     }
   </script>
@@ -1394,14 +1786,24 @@
     }
 
     function copyWeChatId(id, btn) {
+      function showSuccess() {
+        var orig = btn.innerHTML;
+        btn.innerHTML = '<span>\u2713 Copied: ' + id + '</span>';
+        setTimeout(function() {
+          btn.innerHTML = orig;
+        }, 3000);
+      }
+      function showFallback() {
+        var orig = btn.innerHTML;
+        btn.innerHTML = '<span>ID: ' + id + '</span>';
+        setTimeout(function() {
+          btn.innerHTML = orig;
+        }, 5000);
+      }
       if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(id).then(function() {
-          var orig = btn.innerHTML;
-          btn.innerHTML = '<span>\u2713 Copied to Clipboard!</span>';
-          setTimeout(function() { btn.innerHTML = orig; }, 2500);
-        });
+        navigator.clipboard.writeText(id).then(showSuccess).catch(showFallback);
       } else {
-        alert('WeChat ID: ' + id);
+        showFallback();
       }
     }
 

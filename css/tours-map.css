@@ -2738,3 +2738,23 @@ figure.video iframe,
 .lotus-map-accessible-fallback {
   display: none !important;
 }
+
+/* ==============================================================================
+ * MOBILE ANDROID & SMALL VIEWPORT MAP INTEGRITY (360px - 480px)
+ * ============================================================================== */
+@media (max-width: 480px) {
+  .leaflet-popup {
+    max-width: calc(100vw - 24px) !important;
+  }
+  .leaflet-popup-content-wrapper {
+    max-width: calc(100vw - 32px) !important;
+    box-sizing: border-box !important;
+    border-radius: 8px !important;
+  }
+  .leaflet-popup-content {
+    margin: 10px 12px !important;
+    line-height: 1.4 !important;
+    max-width: 100% !important;
+    word-break: break-word !important;
+  }
+}
