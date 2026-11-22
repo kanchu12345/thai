@@ -2962,7 +2962,7 @@ body {
   flex-direction: column !important;
   justify-content: space-between !important;
   width: 100% !important;
-  min-height: 350px !important;
+  min-height: 340px !important;
   height: clamp(340px, 28vw, 420px) !important;
   background: #0B1724 !important;
   border: 1.5px solid rgba(212, 175, 55, 0.45) !important;
@@ -2979,7 +2979,8 @@ body {
   border-color: rgba(212, 175, 55, 0.75) !important;
 }
 
-/* Ambient Blurred Background Backdrop (Eliminates harsh letterboxing) */
+/* Ambient Blurred Background Backdrop (Eliminates Letterboxing / Blank Side Bars) */
+.success-stories-landscape-card .story-backdrop,
 .success-stories-landscape-card .story-image-backdrop {
   position: absolute !important;
   inset: -10% !important;
@@ -2987,11 +2988,17 @@ body {
   height: 120% !important;
   object-fit: cover !important;
   object-position: center !important;
-  filter: blur(24px) brightness(0.32) saturate(1.2) !important;
+  filter: blur(24px) brightness(0.35) !important;
+  transform: scale(1.15) !important;
   z-index: 1 !important;
   pointer-events: none !important;
-  transform: scale(1.08) !important;
-  transition: opacity 0.4s ease !important;
+  display: block !important;
+  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease !important;
+}
+
+.success-stories-landscape-card:hover .story-backdrop,
+.success-stories-landscape-card:hover .story-image-backdrop {
+  transform: scale(1.2) !important;
 }
 
 /* Full Contained Foreground Image - 100% Zero Cropping */
@@ -3002,9 +3009,9 @@ body {
   height: 100% !important;
   object-fit: contain !important;
   object-position: center !important;
-  z-index: 3 !important;
+  z-index: 2 !important;
   display: block !important;
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease !important;
+  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease !important;
 }
 
 .success-stories-landscape-card:hover .story-image {
@@ -3017,10 +3024,10 @@ body {
   inset: 0 !important;
   background: linear-gradient(
     180deg,
-    rgba(7, 20, 34, 0.75) 0%,
-    rgba(7, 20, 34, 0.15) 35%,
-    rgba(7, 20, 34, 0.45) 60%,
-    rgba(7, 20, 34, 0.92) 100%
+    rgba(7, 20, 34, 0.65) 0%,
+    rgba(7, 20, 34, 0.08) 25%,
+    rgba(7, 20, 34, 0.08) 75%,
+    rgba(7, 20, 34, 0.70) 100%
   ) !important;
   z-index: 2 !important;
   pointer-events: none !important;
@@ -3243,6 +3250,7 @@ body {
 
 /* Animating state during swap */
 .success-stories-landscape-card.is-animating .story-image,
+.success-stories-landscape-card.is-animating .story-backdrop,
 .success-stories-landscape-card.is-animating .story-image-backdrop {
   opacity: 0.35 !important;
   transform: scale(0.98) !important;

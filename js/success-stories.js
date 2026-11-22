@@ -174,7 +174,20 @@
 
     elMediaBox = document.getElementById('storyMediaBox');
     elImg = document.getElementById('storyImage');
-    elImgBackdrop = document.getElementById('storyImageBackdrop');
+    elImgBackdrop = document.getElementById('storyBackdrop') || document.getElementById('storyImageBackdrop');
+    if (!elImgBackdrop && elCard) {
+      elImgBackdrop = elCard.querySelector('.story-backdrop, .story-image-backdrop');
+    }
+    if (!elImgBackdrop && elCard && elImg) {
+      elImgBackdrop = document.createElement('img');
+      elImgBackdrop.id = 'storyBackdrop';
+      elImgBackdrop.className = 'story-backdrop story-image-backdrop';
+      elImgBackdrop.alt = '';
+      elImgBackdrop.setAttribute('aria-hidden', 'true');
+      elImgBackdrop.loading = 'lazy';
+      elImgBackdrop.src = elImg.src;
+      elCard.insertBefore(elImgBackdrop, elImg);
+    }
     elBadge = document.getElementById('storyBadge');
     elTitle = document.getElementById('storyTitle');
     elDesc = document.getElementById('storyDesc');
