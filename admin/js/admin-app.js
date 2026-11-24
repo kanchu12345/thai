@@ -9185,6 +9185,21 @@ const waBtn = document.getElementById('inquiryWhatsAppBtn');
 
         try {
           await this.fbDb.collection('settings').doc('general').set(generalPayload, { merge: true });
+          await this.fbDb.collection('siteGlobal').doc('contact').set({
+            email: generalPayload.email,
+            emailMailto: 'mailto:' + generalPayload.email,
+            phone: generalPayload.phone,
+            phoneTel: 'tel:' + generalPayload.phone.replace(/\s+/g, ''),
+            address: generalPayload.address,
+            whatsapp: generalPayload.whatsapp,
+            whatsappUrl: 'https://wa.me/' + generalPayload.whatsapp.replace(/[^0-9]/g, ''),
+            wechat: generalPayload.wechat,
+            line: generalPayload.line
+          }, { merge: true });
+          await this.fbDb.collection('siteGlobal').doc('header').set({
+            email: generalPayload.email,
+            hotline: generalPayload.phone
+          }, { merge: true });
           await this.fbDb.collection('siteMeta').doc('version').set({
             v: Date.now(),
             updatedAt: new Date().toISOString()

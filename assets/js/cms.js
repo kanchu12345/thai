@@ -775,7 +775,7 @@
     },
 
     async fetchVersion() {
-      const url = getFirestoreRestBase() + '/siteMeta/version?key=' + getApiKey() + '&_t=' + Date.now();
+      const url = getFirestoreRestBase() + '/siteMeta/version?key=' + getApiKey();
       const res = await fetch(url, { cache: 'no-store' });
       if (!res.ok) {
         if (res.status === 404) return 1;

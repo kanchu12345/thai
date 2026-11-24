@@ -249,16 +249,15 @@
 
             
 
+      let _storageDebounceTimer = null;
       window.addEventListener('storage', (e) => {
-
         if (e.key === 'lotus_cms_last_published' || e.key === 'lotus_data_v') {
-
-          console.info('[SiteData] Live publish detected across tabs, reloading store...');
-
-          this.syncData().then(() => this.hydrateDOM());
-
+          clearTimeout(_storageDebounceTimer);
+          _storageDebounceTimer = setTimeout(() => {
+            console.info('[SiteData] Live publish detected across tabs, reloading store...');
+            this.syncData(true).then(() => this.hydrateDOM());
+          }, 600);
         }
-
       });
 
 
@@ -279,7 +278,7 @@
 
 
 
-    async syncData() {
+    async syncData(isFromStorageEvent = false) {
 
       const cachedVersion = localStorage.getItem('lotus_data_v');
 
@@ -339,58 +338,42 @@
 
       // Otherwise fetch fresh data bundle
 
-      await this.fetchFromFirestore(remoteVersion);
+      await this.fetchFromFirestore(remoteVersion, isFromStorageEvent);
 
     },
 
 
 
-    async fetchFromFirestore(targetVersion) {
+    async fetchFromFirestore(targetVersion, isFromStorageEvent = false) {
 
       let fetchedAny = false;
-
-
+      let collectionsForbidden = false;
 
       // Helper to fetch collection
-
       const fetchCol = async (colName) => {
-
+        if (collectionsForbidden) return null;
         try {
-
           const res = await fetch(`${FIRESTORE_BASE}/${colName}?key=${API_KEY}`, { cache: 'no-cache' });
-
-          if (res.ok) {
-
-            const data = await res.json();
-
-            if (data.documents) {
-
-              fetchedAny = true;
-
-              return data.documents.map(d => {
-
-                const docId = d.name.split('/').pop();
-
-                const fields = {};
-
-                for (const [k, v] of Object.entries(d.fields || {})) {
-
-                  fields[k] = unwrapFirestore(v);
-
-                }
-
-                return { id: docId, ...fields };
-
-              });
-
-            }
-
+          if (res.status === 403) {
+            collectionsForbidden = true;
+            return null;
           }
-
+          if (res.ok) {
+            const data = await res.json();
+            if (data.documents) {
+              fetchedAny = true;
+              return data.documents.map(d => {
+                const docId = d.name.split('/').pop();
+                const fields = {};
+                for (const [k, v] of Object.entries(d.fields || {})) {
+                  fields[k] = unwrapFirestore(v);
+                }
+                return { id: docId, ...fields };
+              });
+            }
+          }
         } catch (e) {}
-
         return null;
-
       };
 
 
@@ -473,15 +456,12 @@
 
 
       // Cache the consolidated store
-
       this.version = targetVersion || Date.now();
-
       try {
-
-        localStorage.setItem('lotus_data_v', String(this.version));
-
-        localStorage.setItem('lotus_data_payload', JSON.stringify(this.store));
-
+        if (!isFromStorageEvent) {
+          localStorage.setItem('lotus_data_v', String(this.version));
+          localStorage.setItem('lotus_data_payload', JSON.stringify(this.store));
+        }
       } catch (e) {}
 
     },

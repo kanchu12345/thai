@@ -1381,11 +1381,18 @@
           await this.fbDb.collection('settings').doc('general').set(updatePayload, { merge: true });
           await this.fbDb.collection('siteGlobal').doc('contact').set({
             phone: phone,
+            phoneTel: 'tel:' + phone.replace(/\s+/g, ''),
             whatsapp: whatsapp,
+            whatsappUrl: 'https://wa.me/' + whatsapp.replace(/[^0-9]/g, ''),
             email: email,
+            emailMailto: 'mailto:' + email,
             address: address,
             wechat: wechat,
             line: line
+          }, { merge: true });
+          await this.fbDb.collection('siteGlobal').doc('header').set({
+            email: email,
+            hotline: phone
           }, { merge: true });
           await this.fbDb.collection('siteMeta').doc('version').set({ v: Date.now() }, { merge: true });
         }

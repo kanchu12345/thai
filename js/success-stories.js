@@ -101,7 +101,7 @@
   async function fetchLiveStories() {
     // 1. Direct fetch from Firestore REST API (always uncached and live)
     try {
-      const firestoreUrl = 'https://firestore.googleapis.com/v1/projects/louterst-36b64/databases/(default)/documents/siteContent/home?key=AIzaSyD5NyCFaPHeS1cKlsgxZ_WsraswHlYonNA&_t=' + Date.now();
+      const firestoreUrl = 'https://firestore.googleapis.com/v1/projects/louterst-36b64/databases/(default)/documents/siteContent/home?key=AIzaSyD5NyCFaPHeS1cKlsgxZ_WsraswHlYonNA';
       const fres = await fetch(firestoreUrl, { cache: 'no-store' });
       if (fres.ok) {
         const fjson = await fres.json();
